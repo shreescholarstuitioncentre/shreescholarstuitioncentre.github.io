@@ -25,6 +25,13 @@ h2{color:#0b3d91;margin-bottom:30px;}
 .cta{background:#0b3d91;color:#fff;padding:40px;border-radius:10px;}
 footer{background:#0b3d91;color:#fff;padding:20px;text-align:center;margin-top:30px;}
 .whatsapp{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;padding:12px 18px;border-radius:50px;text-decoration:none;font-weight:bold;}
+
+.slider{position:relative;max-width:800px;margin:auto;overflow:hidden;border-radius:15px;}
+.slides img{width:100%;display:none;}
+.slides img.active{display:block;animation:fade 1s;}
+@keyframes fade{from{opacity:0.4}to{opacity:1}}
+.prev,.next{position:absolute;top:50%;transform:translateY(-50%);background:#0008;color:#fff;border:none;padding:10px;border-radius:50%;cursor:pointer;}
+.prev{left:10px;} .next{right:10px;}
 </style>
 </head>
 <body>
@@ -34,6 +41,20 @@ footer{background:#0b3d91;color:#fff;padding:20px;text-align:center;margin-top:3
 <p>From Foundation to Future</p>
 <button onclick="alert('Call: 8953012298')">Admissions Open</button>
 </header>
+
+<!-- 🔥 Image Slider -->
+<section class="container">
+<h2>✨ Our Highlights</h2>
+<div class="slider">
+  <div class="slides">
+    <img src="slide1.jpg" class="active">
+    <img src="slide2.jpg">
+    <img src="slide3.jpg">
+  </div>
+  <button class="prev" onclick="prevSlide()">❮</button>
+  <button class="next" onclick="nextSlide()">❯</button>
+</div>
+</section>
 
 <section class="container">
 <h2>Our Courses</h2>
@@ -96,5 +117,18 @@ footer{background:#0b3d91;color:#fff;padding:20px;text-align:center;margin-top:3
 <p>© 2026 Shri Scholars Tuition Centre</p>
 </footer>
 
+<script>
+let index=0;
+const slides=document.querySelectorAll('.slides img');
+function showSlide(i){
+  slides.forEach(s=>s.classList.remove('active'));
+  slides[i].classList.add('active');
+}
+function nextSlide(){index=(index+1)%slides.length;showSlide(index);}
+function prevSlide(){index=(index-1+slides.length)%slides.length;showSlide(index);}
+setInterval(nextSlide,3000);
+showSlide(index);
+</script>
 </body>
 </html>
+
