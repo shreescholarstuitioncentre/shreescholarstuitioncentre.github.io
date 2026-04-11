@@ -69,6 +69,21 @@ footer{background:#0b3d91;padding:20px;text-align:center;}
 </head>
 <body>
 
+  <div id="loginPage" style="display:flex;justify-content:center;align-items:center;height:100vh;background:#0b1e3c;">
+  
+  <div style="background:white;color:black;padding:30px;border-radius:10px;text-align:center;width:300px;">
+    
+    <h2>Admin Login</h2>
+
+    <input id="loginId" placeholder="Enter ID" style="width:100%;margin:10px 0;padding:10px;"><br>
+
+    <input id="loginPass" type="password" placeholder="Enter Password" style="width:100%;margin:10px 0;padding:10px;"><br>
+
+    <button onclick="login()" style="padding:10px 20px;background:#0b3d91;color:white;border:none;border-radius:5px;">Login</button>
+
+  </div>
+
+</div>
 <nav>
 <div>Shree Scholars Tuition Centre - SSTC</div>
 <div>
@@ -79,7 +94,7 @@ footer{background:#0b3d91;padding:20px;text-align:center;}
 </div>
 </nav>
 
-<header class="hero">
+<header class="hero" style="display:none;">
 <div class="slider-bg">
 <img src="banner1.jpg" class="active">
 <img src="banner2.jpg">
@@ -148,38 +163,42 @@ footer{background:#0b3d91;padding:20px;text-align:center;}
 </form>
 </section>
 
-<div class="dashboard" id="dashboard">
+<div class="dashboard" id="dashboard" style="display:none;">
+
   <h2>🚀 Admin Panel (PRO)</h2>
 
-  <div class="cards">
-    <div class="card">
-      <h3>Add Result</h3>
-      <input id="student" placeholder="Student Name">
-      <input id="marks" placeholder="Marks">
-      <button onclick="addResult()">Save</button>
-    </div>
+  <!-- Logout -->
+  <button onclick="logout()" style="background:red;color:white;padding:8px;border:none;border-radius:5px;">
+    Logout
+  </button>
 
-    <div class="card">
-      <h3>View Results</h3>
-      <button onclick="showResults()">Load Data</button>
-      <ul id="list"></ul>
-    </div>
+  <br><br>
 
-    <div class="card">
-      <h3>Attendance</h3>
-      <button onclick="alert('Coming soon')">Mark Attendance</button>
-    </div>
+  <!-- ADD RESULT -->
+  <h3>📊 Add Student Result</h3>
+  <input id="student" placeholder="Student Name">
+  <input id="marks" placeholder="Marks">
+  <button onclick="addResult()">Add Result</button>
 
-    <div class="card">
-      <h3>Fee System</h3>
-      <button onclick="alert('Coming soon')">Add Fee</button>
-    </div>
+  <br><br>
 
-    <div class="card">
-      <h3>Online Test</h3>
-      <button onclick="startTest()">Start Test</button>
-    </div>
-  </div>
+  <!-- ACTION BUTTONS -->
+  <h3>⚙️ Actions</h3>
+
+  <button onclick="showResults()">📋 View Results</button>
+
+  <button onclick="markAttendance()">📅 Mark Attendance</button>
+
+  <button onclick="payFee()">💰 Add Fee</button>
+
+  <button onclick="startTest()">🧪 Start Test</button>
+
+  <br><br>
+
+  <!-- RESULT DISPLAY -->
+  <h3>📌 Data Output</h3>
+  <ul id="list"></ul>
+
 </div>
 
 <footer>
@@ -260,7 +279,38 @@ function addResult(){
   .then(res=>res.text())
   .then(()=>alert("Saved to Database"));
 }
+// ===== LOGIN SYSTEM =====
+const ADMIN_ID = "admin";
+const ADMIN_PASS = "1234";
 
+function login(){
+  let id = document.getElementById("loginId").value;
+  let pass = document.getElementById("loginPass").value;
+
+  if(id === ADMIN_ID && pass === ADMIN_PASS){
+    localStorage.setItem("admin","true");
+
+    document.getElementById("loginPage").style.display="none";
+    document.getElementById("dashboard").style.display="block";
+
+  } else {
+    alert("Wrong ID or Password");
+  }
+}
+
+// ===== CHECK LOGIN ON LOAD =====
+window.onload = function(){
+  if(localStorage.getItem("admin") === "true"){
+    document.getElementById("loginPage").style.display="none";
+    document.getElementById("dashboard").style.display="block";
+  }
+}
+
+// ===== LOGOUT =====
+function logout(){
+  localStorage.removeItem("admin");
+  location.reload();
+}
 // FETCH DATA
 function showResults(){
   fetch(API_URL)
@@ -275,7 +325,7 @@ function showResults(){
     });
   });
 }
-
+document.querySelector('.hero').style.display="block";
 </script>
 
 </body>
