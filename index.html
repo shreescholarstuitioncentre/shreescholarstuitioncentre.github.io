@@ -3,23 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shri Scholars Tuition Centre</title>
+<title>Shree Scholars Tuition Centre</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#0b1e3c;color:#fff;}
+body{background:#0b1e3c;color:#fff;overflow-x:hidden;}
 
-/* HERO BANNER EXACT STYLE */
+/* HERO */
 .hero{
   position:relative;
   width:100%;
   height:100vh;
-  background:url('banner.jpg') no-repeat center;
-  background-size:cover;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  overflow:hidden;
 }
+
+/* SLIDER BACKGROUND */
+.slider-bg{
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+.slider-bg img{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 1s;
+}
+.slider-bg img.active{opacity:1;}
 
 .hero-overlay{
   position:absolute;
@@ -28,40 +40,50 @@ body{background:#0b1e3c;color:#fff;}
   background:linear-gradient(to right,#001a33cc,#00000099);
 }
 
+/* CONTENT */
 .hero-content{
   position:relative;
   max-width:1200px;
-  width:100%;
+  margin:auto;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  height:100%;
   padding:20px;
 }
 
-.hero-left{
-  max-width:60%;
-}
+.hero-left{max-width:60%;}
 
 .hero-left h1{
-  font-size:50px;
-  font-weight:700;
+  font-size:40px;
 }
 
 .hero-left h2{
-  font-size:60px;
+  font-size:55px;
   color:#ffcc00;
-  margin-top:10px;
+  text-shadow:0 0 10px #ffcc00;
 }
 
-.hero-left p{
-  margin-top:15px;
+/* TYPING TEXT */
+.typing{
   font-size:22px;
-  color:#ddd;
+  border-right:2px solid white;
+  width:0;
+  white-space:nowrap;
+  overflow:hidden;
+  animation:typing 4s steps(30,end) forwards, blink .8s infinite;
+}
+
+@keyframes typing{
+  from{width:0}
+  to{width:100%}
+}
+@keyframes blink{
+  50%{border-color:transparent}
 }
 
 .tagline{
-  margin-top:20px;
-  display:inline-block;
+  margin-top:15px;
   border:2px solid #fff;
   padding:10px 20px;
   border-radius:30px;
@@ -74,81 +96,101 @@ body{background:#0b1e3c;color:#fff;}
   border:none;
   border-radius:30px;
   font-weight:600;
-  cursor:pointer;
-  color:#000;
 }
 
-.hero-right img{
-  width:350px;
+.hero-right img{width:320px;}
+
+/* WAVES */
+.wave{
+  position:absolute;
+  bottom:0;
+  width:200%;
+  height:100px;
+  background:url('https://svgshare.com/i/uH6.svg') repeat-x;
+  animation:wave 10s linear infinite;
 }
 
-/* FEATURES STRIP */
-.features{
-  background:#f5e6c8;
-  color:#000;
+@keyframes wave{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* TOPPERS */
+.toppers{
+  position:absolute;
+  bottom:120px;
   display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:30px;
-  padding:20px;
+  gap:10px;
+}
+.toppers img{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  border:3px solid #fff;
 }
 
-.feature{
-  text-align:center;
-  max-width:150px;
-}
+/* FEATURES */
+.features{background:#f5e6c8;color:#000;display:flex;flex-wrap:wrap;justify-content:center;padding:20px;gap:20px;}
+.feature{text-align:center;max-width:150px;}
 
-.feature img{
-  width:40px;
-  margin-bottom:10px;
-}
+.class-bar{background:#0b3d91;text-align:center;padding:15px;font-weight:600;}
 
-/* CLASS BAR */
-.class-bar{
-  background:#0b3d91;
-  text-align:center;
-  padding:15px;
-  font-size:20px;
-  font-weight:600;
-}
-
-/* GENERAL SECTIONS */
-section{padding:50px 20px;text-align:center;background:#f4f7ff;color:#000;}
+section{padding:50px 20px;background:#f4f7ff;color:#000;text-align:center;}
 .container{max-width:1100px;margin:auto;}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
 .card{background:white;padding:20px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
 
-/* FOOTER */
-footer{background:#0b3d91;color:white;text-align:center;padding:20px;}
+footer{background:#0b3d91;padding:20px;text-align:center;}
 
-.whatsapp{position:fixed;bottom:20px;right:20px;background:#25d366;padding:12px 18px;border-radius:50px;color:white;text-decoration:none;}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#25d366;padding:12px 18px;border-radius:50px;color:#fff;text-decoration:none;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.hero-content{flex-direction:column;text-align:center;}
+.hero-left{max-width:100%;}
+.hero-right img{width:220px;margin-top:20px;}
+}
 </style>
 </head>
 <body>
 
-<!-- HERO -->
 <header class="hero">
+
+<div class="slider-bg">
+  <img src="banner1.jpg" class="active">
+  <img src="banner2.jpg">
+  <img src="banner3.jpg">
+</div>
+
 <div class="hero-overlay"></div>
 
 <div class="hero-content">
   <div class="hero-left">
     <h1>Shri Scholars</h1>
     <h2>Tuition Centre</h2>
-    <p>From Foundation to Future</p>
+
+    <div class="typing">From Foundation to Future</div>
 
     <div class="tagline">Excellence in Education. Excellence in Results.</div>
 
-    <br>
     <button class="cta-btn">Admissions Open</button>
+
+    <div class="toppers">
+      <img src="topper1.jpg">
+      <img src="topper2.jpg">
+      <img src="topper3.jpg">
+    </div>
   </div>
 
   <div class="hero-right">
-    <img src="students.png" alt="Students">
+    <img src="students.png">
   </div>
 </div>
+
+<div class="wave"></div>
+
 </header>
 
-<!-- FEATURES -->
 <div class="features">
   <div class="feature">📘 Structured Learning</div>
   <div class="feature">📊 Weekly Tests</div>
@@ -157,28 +199,35 @@ footer{background:#0b3d91;color:white;text-align:center;padding:20px;}
   <div class="feature">👥 Small Batches</div>
 </div>
 
-<!-- CLASS BAR -->
 <div class="class-bar">
 Classes from LKG to 12 | All Subjects – English & Hindi Medium
 </div>
 
-<!-- COURSES -->
 <section class="container">
 <h2>Our Courses</h2>
 <div class="cards">
-<div class="card">LKG to Class 5</div>
+<div class="card">Nursery to Class 5</div>
 <div class="card">Class 6 to 10</div>
 <div class="card">Class 11 & 12</div>
 </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-<p>© 2026 Shri Scholars Tuition Centre</p>
+<p>© 2026 Shree Scholars Tuition Centre</p>
 <p>Call: 8953012298 | 9565959697</p>
 </footer>
 
 <a class="whatsapp" href="https://wa.me/918953012298">WhatsApp</a>
+
+<script>
+let slides=document.querySelectorAll('.slider-bg img');
+let i=0;
+setInterval(()=>{
+slides[i].classList.remove('active');
+i=(i+1)%slides.length;
+slides[i].classList.add('active');
+},3000);
+</script>
 
 </body>
 </html>
