@@ -84,7 +84,8 @@ footer{background:#0b3d91;padding:20px;text-align:center;}
   </div>
 
 </div>
-<nav>
+        <div id="website">
+          <nav>
 <div>Shree Scholars Tuition Centre - SSTC</div>
 <div>
 <a href="#">Home</a>
@@ -162,6 +163,7 @@ footer{background:#0b3d91;padding:20px;text-align:center;}
 <button class="cta-btn">Submit</button>
 </form>
 </section>
+        </div>
 
 <div class="dashboard" id="dashboard" style="display:none;">
 
@@ -325,6 +327,13 @@ function showResults(){
     });
   });
 }
+
+document.getElementById("website").style.display="none";
+  function logout(){
+  localStorage.removeItem("admin");
+  location.reload();
+}
+  
 document.querySelector('.hero').style.display="block";
 </script>
 
