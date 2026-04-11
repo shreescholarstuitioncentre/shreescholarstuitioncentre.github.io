@@ -7,54 +7,162 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#f4f7ff;}
+body{background:#0b1e3c;color:#fff;}
 
-/* HERO */
-.hero{position:relative;height:100vh;color:white;overflow:hidden;}
-.hero img{position:absolute;width:100%;height:100%;object-fit:cover;z-index:-2;}
-.hero::after{content:'';position:absolute;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:-1;}
-.hero-content{height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
-.hero h1{font-size:50px;}
-.hero h2{color:#ffb703;font-size:35px;}
-.cta-btn{margin-top:15px;padding:12px 30px;background:#ffb703;border:none;border-radius:30px;cursor:pointer;}
+/* HERO BANNER EXACT STYLE */
+.hero{
+  position:relative;
+  width:100%;
+  height:100vh;
+  background:url('banner.jpg') no-repeat center;
+  background-size:cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 
-/* SECTIONS */
-section{padding:60px 20px;text-align:center;}
-h2{color:#0b3d91;margin-bottom:30px;}
+.hero-overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:linear-gradient(to right,#001a33cc,#00000099);
+}
+
+.hero-content{
+  position:relative;
+  max-width:1200px;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px;
+}
+
+.hero-left{
+  max-width:60%;
+}
+
+.hero-left h1{
+  font-size:50px;
+  font-weight:700;
+}
+
+.hero-left h2{
+  font-size:60px;
+  color:#ffcc00;
+  margin-top:10px;
+}
+
+.hero-left p{
+  margin-top:15px;
+  font-size:22px;
+  color:#ddd;
+}
+
+.tagline{
+  margin-top:20px;
+  display:inline-block;
+  border:2px solid #fff;
+  padding:10px 20px;
+  border-radius:30px;
+}
+
+.cta-btn{
+  margin-top:20px;
+  padding:12px 30px;
+  background:#ffb703;
+  border:none;
+  border-radius:30px;
+  font-weight:600;
+  cursor:pointer;
+  color:#000;
+}
+
+.hero-right img{
+  width:350px;
+}
+
+/* FEATURES STRIP */
+.features{
+  background:#f5e6c8;
+  color:#000;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:30px;
+  padding:20px;
+}
+
+.feature{
+  text-align:center;
+  max-width:150px;
+}
+
+.feature img{
+  width:40px;
+  margin-bottom:10px;
+}
+
+/* CLASS BAR */
+.class-bar{
+  background:#0b3d91;
+  text-align:center;
+  padding:15px;
+  font-size:20px;
+  font-weight:600;
+}
+
+/* GENERAL SECTIONS */
+section{padding:50px 20px;text-align:center;background:#f4f7ff;color:#000;}
 .container{max-width:1100px;margin:auto;}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
 .card{background:white;padding:20px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
 
-/* GALLERY */
-.gallery-slider{max-width:800px;margin:auto;position:relative;overflow:hidden;border-radius:10px;}
-.gallery-slider img{width:100%;display:none;}
-.gallery-slider img.active{display:block;animation:fade 1s;}
-@keyframes fade{from{opacity:0.5}to{opacity:1}}
-.prev,.next{position:absolute;top:50%;transform:translateY(-50%);background:#0008;color:white;border:none;padding:10px;border-radius:50%;cursor:pointer;}
-.prev{left:10px;} .next{right:10px;}
-
-/* FORM */
-form{background:white;padding:30px;border-radius:10px;max-width:500px;margin:auto;}
-input,select{width:100%;padding:10px;margin:10px 0;border-radius:5px;border:1px solid #ccc;}
-button.submit{background:#0b3d91;color:white;padding:12px;border:none;width:100%;border-radius:5px;}
-
 /* FOOTER */
-footer{background:#0b3d91;color:white;padding:20px;text-align:center;}
+footer{background:#0b3d91;color:white;text-align:center;padding:20px;}
+
 .whatsapp{position:fixed;bottom:20px;right:20px;background:#25d366;padding:12px 18px;border-radius:50px;color:white;text-decoration:none;}
 </style>
 </head>
 <body>
 
+<!-- HERO -->
 <header class="hero">
-<img src="banner.jpg">
+<div class="hero-overlay"></div>
+
 <div class="hero-content">
-<h1>Shri Scholars</h1>
-<h2>Tuition Centre</h2>
-<p>From Foundation to Future</p>
-<button class="cta-btn">Admissions Open</button>
+  <div class="hero-left">
+    <h1>Shri Scholars</h1>
+    <h2>Tuition Centre</h2>
+    <p>From Foundation to Future</p>
+
+    <div class="tagline">Excellence in Education. Excellence in Results.</div>
+
+    <br>
+    <button class="cta-btn">Admissions Open</button>
+  </div>
+
+  <div class="hero-right">
+    <img src="students.png" alt="Students">
+  </div>
 </div>
 </header>
 
+<!-- FEATURES -->
+<div class="features">
+  <div class="feature">📘 Structured Learning</div>
+  <div class="feature">📊 Weekly Tests</div>
+  <div class="feature">🎯 Board Preparation</div>
+  <div class="feature">👨‍🏫 Expert Faculty</div>
+  <div class="feature">👥 Small Batches</div>
+</div>
+
+<!-- CLASS BAR -->
+<div class="class-bar">
+Classes from LKG to 12 | All Subjects – English & Hindi Medium
+</div>
+
+<!-- COURSES -->
 <section class="container">
 <h2>Our Courses</h2>
 <div class="cards">
@@ -64,58 +172,13 @@ footer{background:#0b3d91;color:white;padding:20px;text-align:center;}
 </div>
 </section>
 
-<section class="container">
-<h2>Why Choose Us</h2>
-<div class="cards">
-<div class="card">Experienced Teachers</div>
-<div class="card">Weekly Tests</div>
-<div class="card">Personal Attention</div>
-<div class="card">Best Results</div>
-</div>
-</section>
-
-<section>
-<h2>Photo Gallery</h2>
-<div class="gallery-slider">
-<img src="slide1.jpg" class="active">
-<img src="slide2.jpg">
-<img src="slide3.jpg">
-<button class="prev" onclick="prevSlide()">❮</button>
-<button class="next" onclick="nextSlide()">❯</button>
-</div>
-</section>
-
-<section>
-<h2>Admission Form</h2>
-<form>
-<input type="text" placeholder="Student Name" required>
-<input type="text" placeholder="Class" required>
-<input type="tel" placeholder="Mobile Number" required>
-<select>
-<option>Select Course</option>
-<option>LKG to 5</option>
-<option>6 to 10</option>
-<option>11 & 12</option>
-</select>
-<button class="submit">Submit</button>
-</form>
-</section>
-
+<!-- FOOTER -->
 <footer>
 <p>© 2026 Shri Scholars Tuition Centre</p>
-<p>Call: 8953012298</p>
+<p>Call: 8953012298 | 9565959697</p>
 </footer>
 
 <a class="whatsapp" href="https://wa.me/918953012298">WhatsApp</a>
-
-<script>
-let index=0;
-const slides=document.querySelectorAll('.gallery-slider img');
-function showSlide(i){slides.forEach(s=>s.classList.remove('active'));slides[i].classList.add('active');}
-function nextSlide(){index=(index+1)%slides.length;showSlide(index);} 
-function prevSlide(){index=(index-1+slides.length)%slides.length;showSlide(index);} 
-setInterval(nextSlide,3000);
-</script>
 
 </body>
 </html>
