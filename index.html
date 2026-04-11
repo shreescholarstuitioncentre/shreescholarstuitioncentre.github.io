@@ -52,7 +52,15 @@ section{padding:60px 20px;background:#f4f7ff;color:#000;text-align:center;}
 .dashboard h2{margin-bottom:10px;}
 input,textarea,select{padding:10px;border-radius:5px;border:1px solid #ccc;width:100%;margin-bottom:10px;}
 button{cursor:pointer;}
-
+.dashboard button{
+  margin:5px;
+  padding:10px;
+  border:none;
+  border-radius:5px;
+  background:#0b3d91;
+  color:white;
+  cursor:pointer;
+}
 footer{background:#0b3d91;padding:20px;text-align:center;}
 .whatsapp{position:fixed;bottom:20px;right:20px;background:#25d366;padding:12px 18px;border-radius:50px;color:#fff;text-decoration:none;}
 
@@ -86,7 +94,7 @@ footer{background:#0b3d91;padding:20px;text-align:center;}
 <h2>Tuition Centre</h2>
 <div class="typing">From Foundation to Future</div>
 <div class="tagline">Excellence in Education. Excellence in Results.</div>
-<button class="cta-btn" onclick="alert('Call: 8953012298')">Admissions Open</button>
+<button class="cta-btn" onclick="alert('Call or Whatsapp: 8953012298 or 9565959697')">Admissions Open</button>
 <div class="toppers">
 <img src="topper1.jpg"><img src="topper2.jpg"><img src="topper3.jpg">
 </div>
@@ -140,13 +148,38 @@ footer{background:#0b3d91;padding:20px;text-align:center;}
 </form>
 </section>
 
-<!-- DASHBOARD -->
 <div class="dashboard" id="dashboard">
-<h2>Admin Panel</h2>
-<input id="student" placeholder="Student Name">
-<input id="marks" placeholder="Marks">
-<button onclick="addResult()">Add Result</button>
-<ul id="list"></ul>
+  <h2>🚀 Admin Panel (PRO)</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Add Result</h3>
+      <input id="student" placeholder="Student Name">
+      <input id="marks" placeholder="Marks">
+      <button onclick="addResult()">Save</button>
+    </div>
+
+    <div class="card">
+      <h3>View Results</h3>
+      <button onclick="showResults()">Load Data</button>
+      <ul id="list"></ul>
+    </div>
+
+    <div class="card">
+      <h3>Attendance</h3>
+      <button onclick="alert('Coming soon')">Mark Attendance</button>
+    </div>
+
+    <div class="card">
+      <h3>Fee System</h3>
+      <button onclick="alert('Coming soon')">Add Fee</button>
+    </div>
+
+    <div class="card">
+      <h3>Online Test</h3>
+      <button onclick="startTest()">Start Test</button>
+    </div>
+  </div>
 </div>
 
 <footer>
@@ -190,6 +223,59 @@ document.getElementById('fee').innerText="Total Fee: "+(m*1000);
 
 // form
 function saveLead(e){e.preventDefault();alert("Enquiry Submitted!");}
+  function showQuestion(){
+  if(current>=questions.length){
+    alert("Test Finished. Score: "+score);
+    return;
+  }
+  let ans=prompt(questions[current].q);
+  if(ans===questions[current].a){score++;}
+  current++;
+  showQuestion();
+}
+
+// ================= STUDENT VIEW =================
+function showStudentData(){
+  let data=JSON.parse(localStorage.getItem("results"))||[];
+  let text="Your Results:\\n";
+  data.forEach(d=>{text+=d.name+" - "+d.marks+"%\\n";});
+  alert(text);
+}
+const API_URL = "https://script.google.com/macros/s/AKfycbwqZ0r47db8CWmwwOua1gNBcaUFYN7QEBS0RP3kAO4p2Q3FWDhN1yFvWvkYw-LXqmCbAg/exec";
+
+// SAVE DATA
+function addResult(){
+  let name=document.getElementById('student').value;
+  let marks=document.getElementById('marks').value;
+
+  fetch(API_URL,{
+    method:"POST",
+    body: JSON.stringify({
+      name:name,
+      marks:marks,
+      fee:"-",
+      attendance:"-"
+    })
+  })
+  .then(res=>res.text())
+  .then(()=>alert("Saved to Database"));
+}
+
+// FETCH DATA
+function showResults(){
+  fetch(API_URL)
+  .then(res=>res.json())
+  .then(data=>{
+    let list=document.getElementById('list');
+    list.innerHTML="";
+    data.forEach(row=>{
+      let li=document.createElement('li');
+      li.innerText=row.join(" | ");
+      list.appendChild(li);
+    });
+  });
+}
+
 </script>
 
 </body>
