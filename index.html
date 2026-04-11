@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shri Scholars Tuition Centre</title>
+<title>Shree Scholars Tuition Centre</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
@@ -12,6 +12,31 @@ header{background:linear-gradient(135deg,#0b3d91,#1e5eff);color:#fff;padding:60p
 header h1{font-size:40px;}
 header p{margin-top:10px;font-size:18px;}
 button{margin-top:20px;padding:12px 25px;background:#ffb703;border:none;border-radius:30px;font-weight:600;cursor:pointer;}
+  .banner{
+  background: url('banner.png') no-repeat center/cover;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.overlay{
+  background: rgba(0,0,0,0.5);
+  color: white;
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.overlay h1{
+  font-size: 40px;
+}
+
+.overlay p{
+  margin: 10px 0;
+  font-size: 18px;
+}
 section{padding:60px 20px;text-align:center;}
 h2{color:#0b3d91;margin-bottom:30px;}
 .container{max-width:1100px;margin:auto;}
@@ -36,10 +61,12 @@ footer{background:#0b3d91;color:#fff;padding:20px;text-align:center;margin-top:3
 </head>
 <body>
 
-<header>
-<h1>Shri Scholars Tuition Centre</h1>
-<p>From Foundation to Future</p>
-<button onclick="alert('Call: 8953012298')">Admissions Open</button>
+<header class="banner">
+  <div class="overlay">
+    <h1>Shri Scholars Tuition Centre</h1>
+    <p>From Foundation to Future</p>
+    <button onclick="alert('Call: 8953012298')">Admissions Open</button>
+  </div>
 </header>
 
 <!-- 🔥 Image Slider -->
