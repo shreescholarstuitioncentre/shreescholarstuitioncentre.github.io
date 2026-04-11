@@ -54,7 +54,7 @@ button{padding:8px 12px;margin:5px;border:none;border-radius:5px;cursor:pointer}
 </div>
 
 <!-- ADMIN PANEL -->
-<div id="admin">
+<div id="admin" style="display:none;">
 
 <h2>Admin Panel</h2>
 <button onclick="logout()">Logout</button>
@@ -73,7 +73,7 @@ button{padding:8px 12px;margin:5px;border:none;border-radius:5px;cursor:pointer}
 </div>
 
 <!-- STUDENT PANEL -->
-<div id="student">
+<div id="student" style="display:none;">
 
 <h2>Student Dashboard</h2>
 <button onclick="logout()">Logout</button>
@@ -102,29 +102,48 @@ document.getElementById("loginPopup").style.display="none";
 
 // ================= LOGIN =================
 function login(){
+
 let role=document.getElementById("role").value;
 let id=document.getElementById("id").value;
 let pass=document.getElementById("pass").value;
 
+// RESET VIEW FIRST
+document.getElementById("website").style.display="none";
+document.getElementById("admin").style.display="none";
+document.getElementById("student").style.display="none";
+
+// ADMIN LOGIN
 if(role==="admin" && id==="admin" && pass==="1234"){
 localStorage.setItem("role","admin");
-document.getElementById("website").style.display="none";
 document.getElementById("admin").style.display="block";
 }
-else{
+
+// STUDENT LOGIN
+else if(role==="student"){
 localStorage.setItem("role","student");
 localStorage.setItem("sid",id);
-document.getElementById("website").style.display="none";
 document.getElementById("student").style.display="block";
 }
 
+else{
+alert("Wrong Login");
+return;
+}
+
+// CLOSE POPUP
 closeLogin();
 }
 
 // ================= LOGOUT =================
 function logout(){
+
 localStorage.clear();
-location.reload();
+
+// RESET VIEW
+document.getElementById("website").style.display="block";
+document.getElementById("admin").style.display="none";
+document.getElementById("student").style.display="none";
+
 }
 
 // ================= SAVE RESULT =================
@@ -193,16 +212,26 @@ datasets:[{label:"Marks",data:marks}]
 
 // ================= AUTO LOGIN =================
 window.onload=function(){
+
+// RESET ALL FIRST
+document.getElementById("website").style.display="block";
+document.getElementById("admin").style.display="none";
+document.getElementById("student").style.display="none";
+
 let role=localStorage.getItem("role");
 
+// ADMIN AUTO LOGIN
 if(role==="admin"){
 document.getElementById("website").style.display="none";
 document.getElementById("admin").style.display="block";
 }
+
+// STUDENT AUTO LOGIN
 if(role==="student"){
 document.getElementById("website").style.display="none";
 document.getElementById("student").style.display="block";
 }
+
 }
 
 </script>
