@@ -9,7 +9,12 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{background:#0b1e3c;color:#fff;overflow-x:hidden;}
 
-.hero{position:relative;height:100vh;overflow:hidden;}
+/* NAV */
+nav{position:fixed;top:0;width:100%;background:#0009;padding:10px;z-index:999;display:flex;justify-content:space-between;align-items:center;}
+nav a{color:#fff;margin:0 10px;text-decoration:none;font-weight:600;}
+nav button{background:#ffb703;border:none;padding:6px 12px;border-radius:20px;}
+
+.hero{position:relative;height:100vh;overflow:hidden;margin-top:50px;}
 .slider-bg img{position:absolute;width:100%;height:100%;object-fit:cover;opacity:0;transition:1s;}
 .slider-bg img.active{opacity:1;}
 .hero-overlay{position:absolute;width:100%;height:100%;background:linear-gradient(to right,#001a33cc,#00000099);} 
@@ -42,9 +47,11 @@ section{padding:60px 20px;background:#f4f7ff;color:#000;text-align:center;}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
 .card{background:white;padding:20px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
 
-/* FORM */
-form{display:flex;flex-direction:column;gap:10px;max-width:400px;margin:auto;}
-input,textarea{padding:10px;border-radius:5px;border:1px solid #ccc;}
+/* DASHBOARD */
+.dashboard{display:none;background:#fff;color:#000;padding:20px;}
+.dashboard h2{margin-bottom:10px;}
+input,textarea,select{padding:10px;border-radius:5px;border:1px solid #ccc;width:100%;margin-bottom:10px;}
+button{cursor:pointer;}
 
 footer{background:#0b3d91;padding:20px;text-align:center;}
 .whatsapp{position:fixed;bottom:20px;right:20px;background:#25d366;padding:12px 18px;border-radius:50px;color:#fff;text-decoration:none;}
@@ -54,11 +61,22 @@ footer{background:#0b3d91;padding:20px;text-align:center;}
 </head>
 <body>
 
+<nav>
+<div>Shree Scholars</div>
+<div>
+<a href="#">Home</a>
+<a href="#courses">Courses</a>
+<a href="#contact">Contact</a>
+<button onclick="login()">Login</button>
+</div>
+</nav>
+
 <header class="hero">
 <div class="slider-bg">
 <img src="banner1.jpg" class="active">
 <img src="banner2.jpg">
 <img src="banner3.jpg">
+  <img src="banner4.jpg">
 </div>
 <div class="hero-overlay"></div>
 
@@ -68,21 +86,13 @@ footer{background:#0b3d91;padding:20px;text-align:center;}
 <h2>Tuition Centre</h2>
 <div class="typing">From Foundation to Future</div>
 <div class="tagline">Excellence in Education. Excellence in Results.</div>
-
 <button class="cta-btn" onclick="alert('Call: 8953012298')">Admissions Open</button>
-
 <div class="toppers">
-<img src="topper1.jpg">
-<img src="topper2.jpg">
-<img src="topper3.jpg">
+<img src="topper1.jpg"><img src="topper2.jpg"><img src="topper3.jpg">
 </div>
 </div>
-
-<div class="hero-right">
-<img src="students.png">
+<div class="hero-right"><img src="students.png"></div>
 </div>
-</div>
-
 <div class="wave"></div>
 </header>
 
@@ -96,7 +106,7 @@ footer{background:#0b3d91;padding:20px;text-align:center;}
 
 <div class="class-bar">Classes from Nursery to 12 | All Subjects – English & Hindi Medium</div>
 
-<section class="container">
+<section id="courses" class="container">
 <h2>Our Courses</h2>
 <div class="cards">
 <div class="card">Nursery to Class 5</div>
@@ -106,23 +116,38 @@ footer{background:#0b3d91;padding:20px;text-align:center;}
 </section>
 
 <section>
-<h2>Student Achievements</h2>
-<div class="cards">
-<div class="card">Aman - 95%</div>
-<div class="card">Riya - 92%</div>
-<div class="card">Rahul - 90%</div>
-</div>
+<h2>Online Test</h2>
+<p>2 + 2 = ?</p>
+<select id="ans"><option>3</option><option>4</option><option>5</option></select>
+<button onclick="checkTest()">Submit</button>
+<p id="result"></p>
 </section>
 
 <section>
+<h2>Fee Calculator</h2>
+<input type="number" id="months" placeholder="Enter Months">
+<button onclick="calcFee()">Calculate</button>
+<p id="fee"></p>
+</section>
+
+<section id="contact">
 <h2>Admission Enquiry</h2>
-<form>
+<form onsubmit="saveLead(event)">
 <input type="text" placeholder="Student Name" required>
 <input type="tel" placeholder="Phone Number" required>
 <textarea placeholder="Message"></textarea>
 <button class="cta-btn">Submit</button>
 </form>
 </section>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard">
+<h2>Admin Panel</h2>
+<input id="student" placeholder="Student Name">
+<input id="marks" placeholder="Marks">
+<button onclick="addResult()">Add Result</button>
+<ul id="list"></ul>
+</div>
 
 <footer>
 <p>© 2026 Shree Scholars Tuition Centre</p>
@@ -132,13 +157,39 @@ footer{background:#0b3d91;padding:20px;text-align:center;}
 <a class="whatsapp" href="https://wa.me/918953012298">WhatsApp</a>
 
 <script>
-let slides=document.querySelectorAll('.slider-bg img');
-let i=0;
-setInterval(()=>{
-slides[i].classList.remove('active');
-i=(i+1)%slides.length;
-slides[i].classList.add('active');
-},3000);
+// slider
+let slides=document.querySelectorAll('.slider-bg img');let i=0;
+setInterval(()=>{slides[i].classList.remove('active');i=(i+1)%slides.length;slides[i].classList.add('active');},3000);
+
+// login
+function login(){
+let pass=prompt("Enter Admin Password");
+if(pass=="1234"){document.getElementById('dashboard').style.display='block';}
+}
+
+// result system
+function addResult(){
+let name=document.getElementById('student').value;
+let marks=document.getElementById('marks').value;
+let li=document.createElement('li');
+li.innerText=name+" - "+marks+"%";
+document.getElementById('list').appendChild(li);
+}
+
+// test
+function checkTest(){
+let ans=document.getElementById('ans').value;
+document.getElementById('result').innerText=(ans=="4"?"Correct":"Wrong");
+}
+
+// fee
+function calcFee(){
+let m=document.getElementById('months').value;
+document.getElementById('fee').innerText="Total Fee: "+(m*1000);
+}
+
+// form
+function saveLead(e){e.preventDefault();alert("Enquiry Submitted!");}
 </script>
 
 </body>
