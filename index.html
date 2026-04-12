@@ -31,6 +31,41 @@ body::before {
   opacity: 0.2; /* transparency control (0.1 – 0.4 best) */
   z-index: -1;
 }
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slides img {
+  width: 100%;
+  max-width: 250px;
+  margin: 0 10px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.3);
+}
+
+/* Buttons */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.prev { left: 0; }
+.next { right: 0; }
   
 .btn{padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:bold;margin:5px;display:inline-block}
 .primary{background:#d32f2f;color:#fff}
@@ -142,14 +177,21 @@ iframe{height:450px}
 
 <section class="gallery container">
 <h2>Our Toppers</h2>
-<div class="photos">
-<img src="https://via.placeholder.com/300" alt="student">
-<img src="https://via.placeholder.com/300" alt="student">
-<img src="https://via.placeholder.com/300" alt="student">
-<img src="https://via.placeholder.com/300" alt="student">
+
+<div class="slider">
+  <button class="prev">&#10094;</button>
+
+  <div class="slides" id="slides">
+    <img src="topper1.jpg">
+    <img src="topper2.jpg">
+    <img src="topper3.jpg">
+    <img src="banner4.jpg">
+    <img src="banner3.jpg">
+  </div>
+
+  <button class="next">&#10095;</button>
 </div>
 </section>
-
 <section id="form" class="form-section container">
   <h2>Admission Form</h2>
   <p>Fill the form to enroll</p>
@@ -168,14 +210,37 @@ iframe{height:450px}
 <h2>Admissions Open Now</h2>
 <p>Location : Infront of Govind Ram Haveli, Jata Shankar Chowk, Dilezakpur, Gorakhpur, Uttar Pradesh - 273001</p>
 </section>
-
+<a href="https://wa.me/918953012298" class="whatsapp on 8953012298">💬</a>
+  <a href="https://wa.me/919565959697" class="whatsapp on 9565959697">💬</a>
 <footer>
 © 2026 Shree Scholars Tuition Centre
 </footer>
 
-<a href="https://wa.me/918953012298" class="whatsapp">💬</a>
-<a href="#" onclick="showAlert()" class="btn primary">Admissions Open</a>
+<script>
+let index = 0;
+const slides = document.getElementById("slides");
+const totalImages = slides.children.length;
 
+function showSlide() {
+  slides.style.transform = `translateX(-${index * 270}px)`;
+}
+
+document.querySelector(".next").onclick = () => {
+  if (index < totalImages - 1) index++;
+  showSlide();
+};
+
+document.querySelector(".prev").onclick = () => {
+  if (index > 0) index--;
+  showSlide();
+};
+
+/* Auto slide */
+setInterval(() => {
+  index = (index + 1) % totalImages;
+  showSlide();
+}, 3000);
+</script>
 <script>
 function showAlert(){
   alert("Call or Whatsapp Now: 8953012298 0r 9565959697");
