@@ -32,28 +32,35 @@ body::before {
   z-index: -1;
 }
 
-.whatsapp{
+.whatsapp-btn{
   position: fixed;
   right: 20px;
-  background:#25D366;
-  color:#fff;
-  padding:15px;
-  border-radius:50%;
-  font-size:20px;
-  text-decoration:none;
-  box-shadow:0 4px 10px rgba(0,0,0,.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #25D366;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 30px;
+  font-size: 14px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,.3);
+  transition: 0.3s;
 }
 
-/* first button */
+.whatsapp-btn:hover{
+  background:#1ebe5d;
+  transform: scale(1.05);
+}
+
+/* positioning */
 .w1{
-  bottom:20px;
+  bottom: 20px;
 }
 
-/* second button (upar shift) */
 .w2{
-  bottom:80px;
+  bottom: 70px;
 }
-
   
 .slider {
   position: relative;
@@ -233,8 +240,13 @@ iframe{height:450px}
 <h2>Admissions Open Now</h2>
 <p>Location : Infront of Govind Ram Haveli, Jata Shankar Chowk, Dilezakpur, Gorakhpur, Uttar Pradesh - 273001</p>
 </section>
-<a href="https://wa.me/918953012298" class="whatsapp w1">💬whatsapp on 8953012298</a>
-<a href="https://wa.me/919565959697" class="whatsapp w2">💬whatsapp on 8953012298</a>
+<a href="https://wa.me/918953012298" class="whatsapp-btn w1">
+  💬 <span>Chat (8953012298)</span>
+</a>
+
+<a href="https://wa.me/919565959697" class="whatsapp-btn w2">
+  💬 <span>Chat (9565959697)</span>
+</a>
 <footer>
 © 2026 Shree Scholars Tuition Centre
 </footer>
