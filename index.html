@@ -15,6 +15,23 @@ header{padding:80px 20px;text-align:center}
 header h1{font-size:42px;color:#d32f2f}
 header p{margin-top:10px}
 
+  body {
+  position: relative;
+  background: none;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("background.jpg") no-repeat center center/cover;
+  opacity: 0.2; /* transparency control (0.1 – 0.4 best) */
+  z-index: -1;
+}
+  
 .btn{padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:bold;margin:5px;display:inline-block}
 .primary{background:#d32f2f;color:#fff}
 .outline{border:2px solid #d32f2f;color:#d32f2f}
@@ -114,6 +131,8 @@ iframe{height:450px}
 <div class="course-list">
 <div class="course-item">Maths</div>
 <div class="course-item">Science</div>
+  <div class="course-item">Computer
+  </div>
 <div class="course-item">English</div>
 <div class="course-item">Commerce</div>
 </div>
