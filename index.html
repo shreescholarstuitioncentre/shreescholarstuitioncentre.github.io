@@ -16,18 +16,56 @@ header{
   top: 0;
   left: 0;
   width: 100%;
-  background: white;
   z-index: 1000;
-  padding: 15px 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-  
-/* header{padding:80px 20px;text-align:center}
-header h1{font-size:42px;color:#d32f2f}
-header p{margin-top:10px} */
 
-  body{
-  margin-top: 140px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 30px;
+
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+/* Scroll effect */
+header.scrolled{
+  background: #ffffff;
+  padding: 8px 25px;
+}
+
+/* Logo */
+header img{
+  height: 45px;
+}
+
+/* Center content */
+.nav-text{
+  text-align: center;
+  flex: 1;
+}
+
+.nav-text h1{
+  font-size: 20px;
+  color:#d32f2f;
+}
+
+.nav-text p{
+  font-size: 12px;
+  color:#555;
+}
+
+/* Button */
+header .btn{
+  padding: 8px 15px;
+  font-size: 14px;
+}
+
+ body{
+  margin-top: 100px;
 }
   
   body {
@@ -189,7 +227,7 @@ iframe{height:450px}
 
 <body>
 
-<header class="container" style="position:relative;">
+<!-- <header class="container" style="position:relative;">
   <div style="position:absolute; top:20px; left:20px;">
   <img src="Logo.png" alt="Shree Scholars Tuition Centre" style="height:50px;">
 </div>
@@ -197,8 +235,20 @@ iframe{height:450px}
 <p>From Foundation to Future</p>
 <p>Strong foundation • Personal Attention • Best Results</p>
 <a href="#" onclick="showAlert()" class="btn primary">Contact Us</a>
-</header>
+</header> -->
+<header>
+  
+  <img src="Logo.png" alt="logo">
 
+  <div class="nav-text">
+    <h1>Shree Scholars Tuition Centre</h1>
+    <p>From Foundation to Future</p>
+  </div>
+
+  <a href="#" onclick="showAlert()" class="btn primary">Contact</a>
+
+</header>
+  
 <section class="features container">
 <div class="card"><h3>Expert Teachers</h3><p>Highly experienced faculty</p></div>
 <div class="card"><h3>All Subjects</h3><p>Nursery to Class 12</p></div>
@@ -267,6 +317,12 @@ iframe{height:450px}
 </footer>
 
 <script>
+window.addEventListener("scroll", function(){
+  document.querySelector("header").classList.toggle("scrolled", window.scrollY > 50);
+});
+</script>
+  
+<script>
 let index = 0;
 const slides = document.getElementById("slides");
 const totalImages = slides.children.length;
@@ -291,6 +347,8 @@ setInterval(() => {
   showSlide();
 }, 3000);
 </script>
+
+  
 <script>
 function showAlert(){
   alert("Call or Whatsapp Now: 8953012298 0r 9565959697");
