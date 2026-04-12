@@ -1,240 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>SSTC Software</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shree Scholars Tuition Centre</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+    body { background: linear-gradient(to bottom right, #ffffff, #fff8e1); color:#333; }
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    header { text-align:center; padding:60px 20px; }
+    header h1 { font-size:42px; color:#d32f2f; }
+    header p { margin-top:10px; font-size:18px; color:#666; }
+    header .desc { margin-top:20px; max-width:600px; margin-left:auto; margin-right:auto; }
 
-<style>
-body{margin:0;font-family:Poppins;background:#0b1e3c;color:#fff}
-nav{background:#000;padding:10px;display:flex;justify-content:space-between}
-button{padding:8px 12px;margin:5px;border:none;border-radius:5px;cursor:pointer}
-#loginPopup{display:none;position:fixed;width:100%;height:100%;background:#0008;justify-content:center;align-items:center}
-.box{background:#fff;color:#000;padding:20px;border-radius:10px}
-#admin,#student{display:none;background:#fff;color:#000;padding:20px}
-</style>
+    .btns { margin-top:25px; }
+    .btn {
+      display:inline-block;
+      padding:12px 20px;
+      margin:5px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:bold;
+    }
+    .primary { background:#d32f2f; color:white; }
+    .outline { border:2px solid #d32f2f; color:#d32f2f; }
 
+    .features { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:40px 20px; }
+    .card {
+      width:250px;
+      padding:20px;
+      border-radius:15px;
+      background:white;
+      box-shadow:0 4px 15px rgba(0,0,0,0.1);
+      text-align:center;
+    }
+
+    .courses { text-align:center; padding:50px 20px; }
+    .courses h2 { color:#d32f2f; margin-bottom:10px; }
+    .course-list { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; margin-top:20px; }
+    .course-item {
+      padding:10px 20px;
+      border:1px solid #ddd;
+      border-radius:10px;
+      background:white;
+    }
+
+    .cta {
+      background:#d32f2f;
+      color:white;
+      text-align:center;
+      padding:50px 20px;
+    }
+    .cta h2 { font-size:28px; }
+
+    footer { text-align:center; padding:20px; color:#777; }
+
+    @media (max-width:768px) {
+      header h1 { font-size:30px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- WEBSITE -->
-<div id="website">
-<nav>
-<h3>SSTC</h3>
-<button onclick="openLogin()">Login</button>
-</nav>
+<header>
+  <h1>Shree Scholars Tuition Centre</h1>
+  <p>From Foundation to Future</p>
+  <p class="desc">Building strong academic foundations with expert teachers, regular tests, and personal attention.</p>
 
-<center>
-<h1>Shree Scholars Tuition Centre</h1>
-<p>From Foundation to Future</p>
-</center>
-</div>
+  <div class="btns">
+    <a href="#" class="btn primary">Admissions Open</a>
+    <a href="#" class="btn outline">Contact Now</a>
+  </div>
+</header>
 
-<!-- LOGIN -->
-<div id="loginPopup">
-<div class="box">
+<section class="features">
+  <div class="card">
+    <h3>Expert Teachers</h3>
+    <p>Highly qualified and experienced faculty</p>
+  </div>
+  <div class="card">
+    <h3>All Subjects</h3>
+    <p>Nursery to Class 12 full coverage</p>
+  </div>
+  <div class="card">
+    <h3>Top Results</h3>
+    <p>Proven academic excellence</p>
+  </div>
+</section>
 
-<h3>Login</h3>
+<section class="courses">
+  <h2>Courses We Offer</h2>
+  <p>Classes from Nursery to 12 (All Subjects)</p>
+  <p>English & Hindi Medium</p>
 
-<select id="role">
-<option value="admin">Admin</option>
-<option value="student">Student</option>
-</select>
+  <div class="course-list">
+    <div class="course-item">Maths</div>
+    <div class="course-item">Science</div>
+    <div class="course-item">Computer</div>
+    <div class="course-item">English</div>
+    <div class="course-item">Commerce</div>
+  </div>
+</section>
 
-<br><br>
+<section class="cta">
+  <h2>Admissions Open Now</h2>
+  <p>Limited Seats Available - Enroll Today</p>
+  <p><strong>Call: 8953012298 | 9565959697</strong></p>
+</section>
 
-<input id="id" placeholder="Enter ID"><br><br>
-<input id="pass" type="password" placeholder="Password"><br><br>
-
-<button onclick="login()">Login</button>
-<button onclick="closeLogin()">Close</button>
-
-</div>
-</div>
-
-<!-- ADMIN PANEL -->
-<div id="admin" style="display:none;">
-
-<h2>Admin Panel</h2>
-<button onclick="logout()">Logout</button>
-
-<h3>Add Student Result</h3>
-<input id="sname" placeholder="Student Name">
-<input id="sid" placeholder="Student ID">
-<input id="marks" placeholder="Marks">
-
-<button onclick="saveResult()">Save</button>
-
-<button onclick="loadResults()">View All</button>
-
-<ul id="list"></ul>
-
-</div>
-
-<!-- STUDENT PANEL -->
-<div id="student" style="display:none;">
-
-<h2>Student Dashboard</h2>
-<button onclick="logout()">Logout</button>
-
-<h3>Your Result</h3>
-<button onclick="loadMyResult()">Check Result</button>
-
-<ul id="myResult"></ul>
-
-<canvas id="chart" width="300"></canvas>
-
-</div>
-
-<script>
-
-// ================= CONFIG =================
-const API_URL="https://script.google.com/macros/s/AKfycbw-BKfnl8tRue3-1dn7DwpjFMxtSo1-A5ApuOvpdBDH/dev";
-
-// ================= POPUP =================
-function openLogin(){
-document.getElementById("loginPopup").style.display="flex";
-}
-function closeLogin(){
-document.getElementById("loginPopup").style.display="none";
-}
-
-// ================= LOGIN =================
-function login(){
-
-let role=document.getElementById("role").value;
-let id=document.getElementById("id").value;
-let pass=document.getElementById("pass").value;
-
-// RESET VIEW FIRST
-document.getElementById("website").style.display="none";
-document.getElementById("admin").style.display="none";
-document.getElementById("student").style.display="none";
-
-// ADMIN LOGIN
-if(role==="admin" && id==="admin" && pass==="1234"){
-localStorage.setItem("role","admin");
-document.getElementById("admin").style.display="block";
-}
-
-// STUDENT LOGIN
-else if(role==="student"){
-localStorage.setItem("role","student");
-localStorage.setItem("sid",id);
-document.getElementById("student").style.display="block";
-}
-
-else{
-alert("Wrong Login");
-return;
-}
-
-// CLOSE POPUP
-closeLogin();
-}
-
-// ================= LOGOUT =================
-function logout(){
-
-localStorage.clear();
-
-// RESET VIEW
-document.getElementById("website").style.display="block";
-document.getElementById("admin").style.display="none";
-document.getElementById("student").style.display="none";
-
-}
-
-// ================= SAVE RESULT =================
-function saveResult(){
-let name=document.getElementById("sname").value;
-let id=document.getElementById("sid").value;
-let marks=document.getElementById("marks").value;
-
-fetch(API_URL,{
-method:"POST",
-body:JSON.stringify({name:name,id:id,marks:marks})
-})
-.then(()=>alert("Saved"));
-}
-
-// ================= LOAD ALL =================
-function loadResults(){
-fetch(API_URL)
-.then(res=>res.json())
-.then(data=>{
-let list=document.getElementById("list");
-list.innerHTML="";
-data.forEach(r=>{
-let li=document.createElement("li");
-li.innerText=r.join(" | ");
-list.appendChild(li);
-});
-});
-}
-
-// ================= STUDENT RESULT =================
-function loadMyResult(){
-let myid=localStorage.getItem("sid");
-
-fetch(API_URL)
-.then(res=>res.json())
-.then(data=>{
-let list=document.getElementById("myResult");
-list.innerHTML="";
-
-let marksArr=[];
-
-data.forEach(r=>{
-if(r[1]==myid){
-let li=document.createElement("li");
-li.innerText=r.join(" | ");
-list.appendChild(li);
-marksArr.push(r[2]);
-}
-});
-
-drawChart(marksArr);
-});
-}
-
-// ================= CHART =================
-function drawChart(marks){
-new Chart(document.getElementById("chart"),{
-type:"line",
-data:{
-labels:marks.map((_,i)=>"Test "+(i+1)),
-datasets:[{label:"Marks",data:marks}]
-}
-});
-}
-
-// ================= AUTO LOGIN =================
-window.onload=function(){
-
-// RESET ALL FIRST
-document.getElementById("website").style.display="block";
-document.getElementById("admin").style.display="none";
-document.getElementById("student").style.display="none";
-
-let role=localStorage.getItem("role");
-
-// ADMIN AUTO LOGIN
-if(role==="admin"){
-document.getElementById("website").style.display="none";
-document.getElementById("admin").style.display="block";
-}
-
-// STUDENT AUTO LOGIN
-if(role==="student"){
-document.getElementById("website").style.display="none";
-document.getElementById("student").style.display="block";
-}
-
-}
-
-</script>
+<footer>
+  © 2026 Shree Scholars Tuition Centre
+</footer>
 
 </body>
 </html>
