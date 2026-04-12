@@ -31,6 +31,117 @@ header{
   transition: all 0.3s ease;
 }
 
+  /* SECTION */
+.saas-section{
+  padding:70px 20px;
+  text-align:center;
+}
+
+.saas-sub{
+  color:#666;
+  margin-bottom:40px;
+}
+
+/* GRID */
+.saas-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+/* CARD */
+.saas-card{
+  background:linear-gradient(135deg,#ffffff,#f8f9ff);
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
+  position:relative;
+  transition:0.4s;
+}
+
+.saas-card:hover{
+  transform:translateY(-10px) scale(1.02);
+}
+
+/* PREMIUM CARD */
+.premium{
+  border:2px solid #6c2bd9;
+  box-shadow:0 0 20px rgba(108,43,217,.3);
+}
+
+.badge{
+  position:absolute;
+  top:15px;
+  right:15px;
+  background:#6c2bd9;
+  color:#fff;
+  padding:5px 10px;
+  border-radius:10px;
+  font-size:12px;
+}
+
+/* ICON */
+.icon{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+/* TEXT */
+.desc{
+  color:#777;
+  margin-bottom:15px;
+}
+
+/* PRICE */
+.price-box{
+  margin:15px 0;
+}
+
+.old{
+  text-decoration:line-through;
+  color:#aaa;
+  display:block;
+}
+
+.new{
+  font-size:22px;
+  font-weight:bold;
+  color:#2e7d32;
+}
+
+/* LIST */
+ul{
+  list-style:none;
+  padding:0;
+  margin:15px 0;
+}
+
+ul li{
+  padding:6px 0;
+  border-bottom:1px solid #eee;
+  font-size:14px;
+}
+
+/* BUTTON */
+.btn-saas{
+  display:inline-block;
+  margin-top:15px;
+  background:#333;
+  color:#fff;
+  padding:12px 22px;
+  border-radius:30px;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.btn-saas:hover{
+  transform:scale(1.08);
+}
+
+.highlight{
+  background:linear-gradient(45deg,#6c2bd9,#8e44ff);
+}
+
 .contact-section{
   display:flex;
   gap:20px;
@@ -579,7 +690,6 @@ iframe{height:450px}
     <p class="desc">All Subjects</p>
     <p class="price">₹1100 <span>/month</span></p>
     <p class="old">₹2200</p>
-    <a href="#" class="btn">Join Now</a>
 
     <ul>
       <li>✔ Concept + Practice</li>
@@ -613,8 +723,64 @@ iframe{height:450px}
       <li>✔ ₹600 / Subject</li>
     </ul>
   </div>
+
+  <section class="saas-section container">
+
+  <h2>🚀 Skill & Technology Programs</h2>
+  <p class="saas-sub">Upgrade Your Skills with Industry-Level Training</p>
+
+  <div class="saas-grid">
+
+    <!-- CARD 1 -->
+    <div class="saas-card">
+      <div class="icon">✨</div>
+      <h3>Basic Skills</h3>
+      <p class="desc">Spoken English & Computer Basics</p>
+
+      <div class="price-box">
+        <span class="old">₹1000</span>
+        <span class="new">₹500 / Month</span>
+      </div>
+
+      <ul>
+        <li>✔ Spoken English Training</li>
+        <li>✔ Computer Fundamentals</li>
+        <li>✔ Practical Learning</li>
+        <li>✔ Beginner Friendly</li>
+      </ul>
+
+      <a href="https://wa.me/918953012298" class="btn-saas">Join Now</a>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="saas-card premium">
+      <div class="badge">🔥 Trending</div>
+      <div class="icon">💻</div>
+      <h3>Programming & AI</h3>
+      <p class="desc">Coding, Designing & Artificial Intelligence</p>
+
+      <div class="price-box">
+        <span class="old">₹2400+</span>
+        <span class="new">Starting ₹1199</span>
+      </div>
+
+      <ul>
+        <li>✔ HTML + CSS — ₹999</li>
+        <li>✔ Advanced Excel — ₹999</li>
+        <li>✔ AI Basics — ₹1499</li>
+        <li>✔ CorelDraw — ₹4999</li>
+        <li>✔ Programming — ₹9999</li>
+      </ul>
+
+      <a href="https://wa.me/918953012298" class="btn-saas highlight">Enroll Now</a>
+    </div>
+
+  </div>
+
+</section>
+
   
-  <div class="pricing-col">
+  <!-- <div class="pricing-col">
     <h3>✨ Special Skill Classes / Basic Computer</h3>
     <p class="desc">Computer / English</p>
     <p class="price">₹500 <span>/month</span></p>
@@ -639,7 +805,7 @@ iframe{height:450px}
       <li>✔ HTML + CSS — ₹999 / Course</li>
       <li>✔ Advanced Excel — ₹999 / Course</li>
     </ul>
-  </div>
+  </div> -->
   
 </div>
 
