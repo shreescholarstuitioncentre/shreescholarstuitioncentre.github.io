@@ -7,35 +7,44 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:linear-gradient(to bottom right,#fff,#fff8e1);color:#333}
+body{background:linear-gradient(to bottom right,#fff,#fff8e1);color:#333;line-height:1.6}
 
-header{padding:70px 20px;text-align:center}
-header h1{font-size:40px;color:#d32f2f}
+.container{max-width:1100px;margin:auto;padding:0 20px}
+
+header{padding:80px 20px;text-align:center}
+header h1{font-size:42px;color:#d32f2f}
 header p{margin-top:10px}
+
 .btn{padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:bold;margin:5px;display:inline-block}
 .primary{background:#d32f2f;color:#fff}
 .outline{border:2px solid #d32f2f;color:#d32f2f}
 
-.features{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;padding:40px}
-.card{width:250px;padding:20px;background:#fff;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,.1);text-align:center;transition:.3s}
+/* FEATURES */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:50px 20px}
+.card{padding:20px;background:#fff;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,.1);text-align:center;transition:.3s}
 .card:hover{transform:translateY(-8px)}
 
-.courses{text-align:center;padding:50px}
-.course-list{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:20px}
-.course-item{padding:10px 15px;border:1px solid #ddd;border-radius:10px;background:#fff}
+/* COURSES */
+.courses{text-align:center;padding:60px 20px}
+.course-list{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}
+.course-item{padding:12px;border:1px solid #ddd;border-radius:10px;background:#fff}
 
-.gallery{padding:50px;text-align:center}
+/* GALLERY */
+.gallery{padding:60px 20px;text-align:center}
 .gallery h2{color:#d32f2f}
-.photos{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin-top:20px}
-.photos img{width:150px;height:150px;border-radius:15px;object-fit:cover;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+.photos{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:20px}
+.photos img{width:100%;height:160px;border-radius:15px;object-fit:cover;box-shadow:0 4px 10px rgba(0,0,0,.2)}
 
-.form-section{padding:50px;text-align:center}
-iframe{width:100%;max-width:600px;height:500px;border:none}
+/* FORM */
+.form-section{padding:60px 20px;text-align:center}
+iframe{width:100%;max-width:700px;height:500px;border:none}
 
-.map{padding:50px;text-align:center}
-.map iframe{width:100%;max-width:800px;height:300px;border:none;border-radius:10px}
+/* MAP */
+.map{padding:60px 20px;text-align:center}
+.map iframe{width:100%;max-width:900px;height:350px;border:none;border-radius:10px}
 
-.cta{background:#d32f2f;color:#fff;text-align:center;padding:50px}
+/* CTA */
+.cta{background:#d32f2f;color:#fff;text-align:center;padding:60px 20px}
 
 footer{text-align:center;padding:20px;color:#777}
 
@@ -60,17 +69,30 @@ animation:pulse 1.5s infinite
 100%{transform:scale(1)}
 }
 
-@media(max-width:768px){
+/* RESPONSIVE */
+@media(max-width:992px){
+.features{grid-template-columns:repeat(2,1fr)}
+.course-list{grid-template-columns:repeat(2,1fr)}
+.photos{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:600px){
 header h1{font-size:28px}
-.card{width:90%}
-.photos img{width:120px;height:120px}
+header{padding:60px 15px}
+.btn{display:block;width:100%;max-width:250px;margin:10px auto}
+.features{grid-template-columns:1fr}
+.course-list{grid-template-columns:1fr}
+.photos{grid-template-columns:1fr}
+.photos img{height:200px}
+iframe{height:450px}
+.map iframe{height:250px}
 }
 </style>
 </head>
 
 <body>
 
-<header>
+<header class="container">
 <h1>Shree Scholars Tuition Centre</h1>
 <p>From Foundation to Future</p>
 <p>Strong foundation • Personal Attention • Best Results</p>
@@ -78,13 +100,13 @@ header h1{font-size:28px}
 <a href="tel:8953012298" class="btn outline">Call Now</a>
 </header>
 
-<section class="features">
+<section class="features container">
 <div class="card"><h3>Expert Teachers</h3><p>Highly experienced faculty</p></div>
 <div class="card"><h3>All Subjects</h3><p>Nursery to Class 12</p></div>
 <div class="card"><h3>Top Results</h3><p>Excellent performance</p></div>
 </section>
 
-<section class="courses">
+<section class="courses container">
 <h2>Courses</h2>
 <p>Nursery to 12 • English & Hindi Medium</p>
 <div class="course-list">
@@ -95,23 +117,23 @@ header h1{font-size:28px}
 </div>
 </section>
 
-<section class="gallery">
+<section class="gallery container">
 <h2>Our Toppers</h2>
 <div class="photos">
-<img src="https://via.placeholder.com/150" alt="student">
-<img src="https://via.placeholder.com/150" alt="student">
-<img src="https://via.placeholder.com/150" alt="student">
-<img src="https://via.placeholder.com/150" alt="student">
+<img src="https://via.placeholder.com/300" alt="student">
+<img src="https://via.placeholder.com/300" alt="student">
+<img src="https://via.placeholder.com/300" alt="student">
+<img src="https://via.placeholder.com/300" alt="student">
 </div>
 </section>
 
-<section id="form" class="form-section">
+<section id="form" class="form-section container">
 <h2>Admission Form</h2>
 <p>Fill the form to enroll</p>
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfD_dummy/viewform?embedded=true"></iframe>
 </section>
 
-<section class="map">
+<section class="map container">
 <h2>Our Location</h2>
 <iframe src="https://www.google.com/maps?q=Gorakhpur&output=embed"></iframe>
 </section>
