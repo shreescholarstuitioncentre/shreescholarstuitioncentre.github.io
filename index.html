@@ -92,12 +92,14 @@ iframe{height:450px}
 
 <body>
 
-<header class="container">
+<header class="container" style="position:relative;">
+  <div style="position:absolute; top:20px; left:20px;">
+  <img src="Logo.png" alt="Shree Scholars Tuition Centre" style="height:50px;">
+</div>
 <h1>Shree Scholars Tuition Centre</h1>
 <p>From Foundation to Future</p>
 <p>Strong foundation • Personal Attention • Best Results</p>
-<a href="#form" class="btn primary">Admissions Open</a>
-<a href="tel:8953012298" class="btn outline">Call Now</a>
+<a href="#" onclick="showAlert()" class="btn primary">Contact Us</a>
 </header>
 
 <section class="features container">
@@ -130,7 +132,7 @@ iframe{height:450px}
 <section id="form" class="form-section container">
 <h2>Admission Form</h2>
 <p>Fill the form to enroll</p>
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfD_dummy/viewform?embedded=true"></iframe>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSedAOS3RrMFufn1OALf2aIQR3yp02vhBlTkBEYKB2IlWhuFnQ/viewform?usp=publish-editor"></iframe>
 </section>
 
 <section class="map container">
@@ -140,7 +142,7 @@ iframe{height:450px}
 
 <section class="cta">
 <h2>Admissions Open Now</h2>
-<p>Call: 8953012298 | 9565959697</p>
+<p>Location : Infront of Govind Ram Haveli, Jata Shankar Chowk, Dilezakpur, Gorakhpur, Uttar Pradesh - 273001</p>
 </section>
 
 <footer>
@@ -148,6 +150,12 @@ iframe{height:450px}
 </footer>
 
 <a href="https://wa.me/918953012298" class="whatsapp">💬</a>
+<a href="#" onclick="showAlert()" class="btn primary">Admissions Open</a>
 
+<script>
+function showAlert(){
+  alert("Call or Whatsapp Now: 8953012298 0r 9565959697");
+}
+</script>
 </body>
 </html>
