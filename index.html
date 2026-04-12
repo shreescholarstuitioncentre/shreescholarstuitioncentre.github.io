@@ -63,6 +63,91 @@ header{
   transform:translateY(-10px) scale(1.02);
 }
 
+
+  .flipbook-ultimate{
+  text-align:center;
+  padding:80px 20px;
+}
+
+.book{
+  width:320px;
+  height:440px;
+  margin:auto;
+  position:relative;
+  perspective:2500px;
+}
+
+/* PAGE */
+.page{
+  position:absolute;
+  width:100%;
+  height:100%;
+  transform-origin:left;
+  transition:1s cubic-bezier(.4,.2,.2,1);
+  transform-style:preserve-3d;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+/* IMAGE */
+.page img, .page video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* VIDEO */
+.video video{
+  autoplay:true;
+}
+
+/* OVERLAY */
+.overlay{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  padding:15px;
+  background:linear-gradient(to top,rgba(0,0,0,.7),transparent);
+  color:#fff;
+  text-align:left;
+}
+
+/* SHADOW REALISTIC */
+.page::after{
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  width:20px;
+  height:100%;
+  background:linear-gradient(to right,rgba(0,0,0,.2),transparent);
+}
+
+/* FLIP */
+.page.flipped{
+  transform:rotateY(-180deg);
+}
+
+/* STACK */
+.page:nth-child(1){z-index:4}
+.page:nth-child(2){z-index:3}
+.page:nth-child(3){z-index:2}
+.page:nth-child(4){z-index:1}
+
+/* BUTTON */
+.controls button{
+  margin:10px;
+  padding:10px 20px;
+  border:none;
+  background:#d32f2f;
+  color:#fff;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+
+  
 /* PREMIUM CARD */
 .premium{
   border:2px solid #6c2bd9;
@@ -621,6 +706,60 @@ iframe{height:450px}
   <button class="next">&#10095;</button>
 </div>
 </section>
+
+
+  <section class="flipbook-ultimate container">
+  <h2>📖 Memories in Pics</h2>
+
+  <!-- SOUND -->
+  <audio id="flipSound" src="https://www.soundjay.com/misc/sounds/page-flip-01.mp3"></audio>
+
+  <div class="book" id="book">
+
+    <!-- PAGE 1 -->
+    <div class="page active">
+      <img src="images/img1.jpg">
+      <div class="overlay">
+        <h3>Rahul Sharma</h3>
+        <p>Topper - Class 10 (95%)</p>
+      </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page">
+      <img src="images/img2.jpg">
+      <div class="overlay">
+        <h3>Anjali Verma</h3>
+        <p>Topper - Class 8</p>
+      </div>
+    </div>
+
+    <!-- PAGE 3 (VIDEO PAGE) -->
+    <div class="page video">
+      <video src="video.mp4" muted loop></video>
+      <div class="overlay">
+        <h3>Class Moments</h3>
+      </div>
+    </div>
+
+    <!-- PAGE 4 -->
+    <div class="page">
+      <img src="images/img3.jpg">
+      <div class="overlay">
+        <h3>Group Study</h3>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="controls">
+    <button onclick="prevPage()">⬅</button>
+    <button onclick="nextPage()">➡</button>
+  </div>
+</section>
+
+
+
   
 <section class="contact-section container">
 
@@ -835,6 +974,62 @@ setInterval(() => {
 }, 3000);
 </script>
 
+  <script>
+let current = 0;
+const pages = document.querySelectorAll(".page");
+const sound = document.getElementById("flipSound");
+
+/* NEXT */
+function nextPage(){
+  if(current < pages.length){
+    pages[current].classList.add("flipped");
+    playSound();
+    current++;
+  }
+}
+
+/* PREV */
+function prevPage(){
+  if(current > 0){
+    current--;
+    pages[current].classList.remove("flipped");
+    playSound();
+  }
+}
+
+/* SOUND */
+function playSound(){
+  sound.currentTime = 0;
+  sound.play();
+}
+
+/* AUTO SLIDE */
+setInterval(()=>{
+  if(current < pages.length){
+    nextPage();
+  } else {
+    pages.forEach(p=>p.classList.remove("flipped"));
+    current = 0;
+  }
+}, 5000);
+
+/* SWIPE SUPPORT */
+let startX = 0;
+
+document.getElementById("book").addEventListener("touchstart",e=>{
+  startX = e.touches[0].clientX;
+});
+
+document.getElementById("book").addEventListener("touchend",e=>{
+  let endX = e.changedTouches[0].clientX;
+
+  if(startX - endX > 50){
+    nextPage();
+  } else if(endX - startX > 50){
+    prevPage();
+  }
+});
+</script>
   
 <script>
 function showAlert(){
