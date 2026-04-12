@@ -1,116 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shree Scholars Tuition Centre</title>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-    body { background: linear-gradient(to bottom right, #ffffff, #fff8e1); color:#333; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shree Scholars Tuition Centre</title>
 
-    header { text-align:center; padding:60px 20px; }
-    header h1 { font-size:42px; color:#d32f2f; }
-    header p { margin-top:10px; font-size:18px; color:#666; }
-    header .desc { margin-top:20px; max-width:600px; margin-left:auto; margin-right:auto; }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:linear-gradient(to bottom right,#fff,#fff8e1);color:#333}
 
-    .btns { margin-top:25px; }
-    .btn {
-      display:inline-block;
-      padding:12px 20px;
-      margin:5px;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:bold;
-    }
-    .primary { background:#d32f2f; color:white; }
-    .outline { border:2px solid #d32f2f; color:#d32f2f; }
+header{padding:70px 20px;text-align:center}
+header h1{font-size:40px;color:#d32f2f}
+header p{margin-top:10px}
+.btn{padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:bold;margin:5px;display:inline-block}
+.primary{background:#d32f2f;color:#fff}
+.outline{border:2px solid #d32f2f;color:#d32f2f}
 
-    .features { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:40px 20px; }
-    .card {
-      width:250px;
-      padding:20px;
-      border-radius:15px;
-      background:white;
-      box-shadow:0 4px 15px rgba(0,0,0,0.1);
-      text-align:center;
-    }
+.features{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;padding:40px}
+.card{width:250px;padding:20px;background:#fff;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,.1);text-align:center;transition:.3s}
+.card:hover{transform:translateY(-8px)}
 
-    .courses { text-align:center; padding:50px 20px; }
-    .courses h2 { color:#d32f2f; margin-bottom:10px; }
-    .course-list { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; margin-top:20px; }
-    .course-item {
-      padding:10px 20px;
-      border:1px solid #ddd;
-      border-radius:10px;
-      background:white;
-    }
+.courses{text-align:center;padding:50px}
+.course-list{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:20px}
+.course-item{padding:10px 15px;border:1px solid #ddd;border-radius:10px;background:#fff}
 
-    .cta {
-      background:#d32f2f;
-      color:white;
-      text-align:center;
-      padding:50px 20px;
-    }
-    .cta h2 { font-size:28px; }
+.gallery{padding:50px;text-align:center}
+.gallery h2{color:#d32f2f}
+.photos{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin-top:20px}
+.photos img{width:150px;height:150px;border-radius:15px;object-fit:cover;box-shadow:0 4px 10px rgba(0,0,0,.2)}
 
-    footer { text-align:center; padding:20px; color:#777; }
+.form-section{padding:50px;text-align:center}
+iframe{width:100%;max-width:600px;height:500px;border:none}
 
-    @media (max-width:768px) {
-      header h1 { font-size:30px; }
-    }
-  </style>
+.map{padding:50px;text-align:center}
+.map iframe{width:100%;max-width:800px;height:300px;border:none;border-radius:10px}
+
+.cta{background:#d32f2f;color:#fff;text-align:center;padding:50px}
+
+footer{text-align:center;padding:20px;color:#777}
+
+/* WhatsApp Button */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:#fff;
+padding:15px;
+border-radius:50%;
+font-size:20px;
+text-decoration:none;
+box-shadow:0 4px 10px rgba(0,0,0,.3);
+animation:pulse 1.5s infinite
+}
+
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.1)}
+100%{transform:scale(1)}
+}
+
+@media(max-width:768px){
+header h1{font-size:28px}
+.card{width:90%}
+.photos img{width:120px;height:120px}
+}
+</style>
 </head>
+
 <body>
 
 <header>
-  <h1>Shree Scholars Tuition Centre</h1>
-  <p>From Foundation to Future</p>
-  <p class="desc">Building strong academic foundations with expert teachers, regular tests, and personal attention.</p>
-
-  <div class="btns">
-    <a href="#" class="btn primary">Admissions Open</a>
-    <a href="#" class="btn outline">Contact Now</a>
-  </div>
+<h1>Shree Scholars Tuition Centre</h1>
+<p>From Foundation to Future</p>
+<p>Strong foundation • Personal Attention • Best Results</p>
+<a href="#form" class="btn primary">Admissions Open</a>
+<a href="tel:8953012298" class="btn outline">Call Now</a>
 </header>
 
 <section class="features">
-  <div class="card">
-    <h3>Expert Teachers</h3>
-    <p>Highly qualified and experienced faculty</p>
-  </div>
-  <div class="card">
-    <h3>All Subjects</h3>
-    <p>Nursery to Class 12 full coverage</p>
-  </div>
-  <div class="card">
-    <h3>Top Results</h3>
-    <p>Proven academic excellence</p>
-  </div>
+<div class="card"><h3>Expert Teachers</h3><p>Highly experienced faculty</p></div>
+<div class="card"><h3>All Subjects</h3><p>Nursery to Class 12</p></div>
+<div class="card"><h3>Top Results</h3><p>Excellent performance</p></div>
 </section>
 
 <section class="courses">
-  <h2>Courses We Offer</h2>
-  <p>Classes from Nursery to 12 (All Subjects)</p>
-  <p>English & Hindi Medium</p>
+<h2>Courses</h2>
+<p>Nursery to 12 • English & Hindi Medium</p>
+<div class="course-list">
+<div class="course-item">Maths</div>
+<div class="course-item">Science</div>
+<div class="course-item">English</div>
+<div class="course-item">Commerce</div>
+</div>
+</section>
 
-  <div class="course-list">
-    <div class="course-item">Maths</div>
-    <div class="course-item">Science</div>
-    <div class="course-item">Computer</div>
-    <div class="course-item">English</div>
-    <div class="course-item">Commerce</div>
-  </div>
+<section class="gallery">
+<h2>Our Toppers</h2>
+<div class="photos">
+<img src="https://via.placeholder.com/150" alt="student">
+<img src="https://via.placeholder.com/150" alt="student">
+<img src="https://via.placeholder.com/150" alt="student">
+<img src="https://via.placeholder.com/150" alt="student">
+</div>
+</section>
+
+<section id="form" class="form-section">
+<h2>Admission Form</h2>
+<p>Fill the form to enroll</p>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfD_dummy/viewform?embedded=true"></iframe>
+</section>
+
+<section class="map">
+<h2>Our Location</h2>
+<iframe src="https://www.google.com/maps?q=Gorakhpur&output=embed"></iframe>
 </section>
 
 <section class="cta">
-  <h2>Admissions Open Now</h2>
-  <p>Limited Seats Available - Enroll Today</p>
-  <p><strong>Call: 8953012298 | 9565959697</strong></p>
+<h2>Admissions Open Now</h2>
+<p>Call: 8953012298 | 9565959697</p>
 </section>
 
 <footer>
-  © 2026 Shree Scholars Tuition Centre
+© 2026 Shree Scholars Tuition Centre
 </footer>
+
+<a href="https://wa.me/918953012298" class="whatsapp">💬</a>
 
 </body>
 </html>
