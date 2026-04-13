@@ -608,11 +608,11 @@ ul li{
 }
 
 .slides img {
-  width: 100%;
-  max-width: 250px;
-  margin: 0 10px;
+  width: calc(100% / 3); /* 3 images show */
+  height: 220px; /* bigger height */
+  object-fit: cover;
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.3);
+  padding: 5px;
 }
 
 /* Buttons */
@@ -620,7 +620,7 @@ ul li{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
   color: white;
   border: none;
   padding: 10px;
@@ -628,8 +628,24 @@ ul li{
   border-radius: 50%;
 }
 
-.prev { left: 0; }
-.next { right: 0; }
+.prev { left: 10px; }
+.next { right: 10px; }
+
+
+	@media(max-width:768px){
+  .slides img{
+    width: calc(100% / 2); /* mobile = 2 images */
+    height: 200px;
+  }
+}
+
+@media(max-width:480px){
+  .slides img{
+    width: 100%; /* mobile small = 1 image */
+  }
+}
+
+	
   
 .btn{padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:bold;margin:5px;display:inline-block}
 .primary{background:#d32f2f;color:#fff}
@@ -1058,13 +1074,15 @@ window.addEventListener("scroll", function(){
 let index = 0;
 const slides = document.getElementById("slides");
 const totalImages = slides.children.length;
+const visible = 3; // number of images visible
 
 function showSlide() {
-  slides.style.transform = `translateX(-${index * 270}px)`;
+  const slideWidth = slides.children[0].offsetWidth;
+  slides.style.transform = `translateX(-${index * slideWidth}px)`;
 }
 
 document.querySelector(".next").onclick = () => {
-  if (index < totalImages - 1) index++;
+  if (index < totalImages - visible) index++;
   showSlide();
 };
 
@@ -1075,7 +1093,7 @@ document.querySelector(".prev").onclick = () => {
 
 /* Auto slide */
 setInterval(() => {
-  index = (index + 1) % totalImages;
+  index = (index + 1) % (totalImages - visible + 1);
   showSlide();
 }, 3000);
 </script>
