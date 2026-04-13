@@ -608,11 +608,26 @@ ul li{
 }
 
 .slides img {
-  width: calc(100% / 3); /* 3 images show */
-  height: 220px; /* bigger height */
-  object-fit: cover;
+  width: calc(100% / 3);
+  height: 220px;
+
+  object-fit: contain; /* full image show */
+  
+  /* premium background */
+  background: linear-gradient(135deg,#f8f9fa,#e9ecef);
+
   border-radius: 15px;
-  padding: 5px;
+  padding: 10px;
+
+  /* shadow */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+
+  transition: 0.3s;
+}
+
+/* hover effect */
+.slides img:hover{
+  transform: scale(1.05);
 }
 
 /* Buttons */
