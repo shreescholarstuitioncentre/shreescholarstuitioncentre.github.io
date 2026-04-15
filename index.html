@@ -58,6 +58,64 @@ header.shrink .nav-text h1{
   font-size: 14px;
 }
 
+
+	/* SECTION BACKGROUND */
+.results{
+  padding:80px 20px;
+  text-align:center;
+  background: linear-gradient(135deg, #f5f7fa, #e4e8ec);
+  position: relative;
+  overflow:hidden;
+}
+
+/* subtle glow / light effect */
+.results::before{
+  content:"";
+  position:absolute;
+  width:400px;
+  height:400px;
+  background: radial-gradient(circle, rgba(255,87,34,0.2), transparent);
+  top:-100px;
+  left:-100px;
+  z-index:0;
+}
+
+/* HEADER BOX */
+.results-header{
+  background:#fff;
+  padding:25px;
+  border-radius:20px;
+  max-width:700px;
+  margin:0 auto 40px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  position:relative;
+  z-index:1;
+}
+
+/* TITLE */
+.results-header h2{
+  color:#d32f2f;
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+/* SUBTITLE */
+.results-header p{
+  color:#666;
+  font-size:16px;
+}
+
+.results-header h2::after{
+  content:"";
+  display:block;
+  width:80px;
+  height:3px;
+  background:#d32f2f;
+  margin:10px auto;
+  border-radius:5px;
+}
+	
+
 /* MOBILE */
 @media(max-width:768px){
 
@@ -857,22 +915,6 @@ iframe{height:450px}
 <div class="card"><h3>Top Results</h3><p>Excellent performance</p></div>
 </section>
 
-<section class="courses container">
-<h2>Courses</h2>
-<p>Nursery to 12 • English & Hindi Medium</p>
-<div class="course-list">
-<div class="course-item">Maths</div>
-<div class="course-item">Science</div>
-<div class="course-item">Computer</div>
-<div class="course-item">Hindi</div>
-<div class="course-item">Sanskrit</div>
-<div class="course-item">English</div>
-<div class="course-item">Commerce</div>
-<div class="course-item">Computer Courses</div>
-</div>
-</section>
-
-
 	<section class="results container">
 
   <h2>🏆 Our Class 10 Board Toppers</h2>
@@ -939,6 +981,26 @@ iframe{height:450px}
   </div>
 
 </section>
+
+
+	
+<section class="courses container">
+<h2>Courses</h2>
+<p>Nursery to 12 • English & Hindi Medium</p>
+<div class="course-list">
+<div class="course-item">Maths</div>
+<div class="course-item">Science</div>
+<div class="course-item">Computer</div>
+<div class="course-item">Hindi</div>
+<div class="course-item">Sanskrit</div>
+<div class="course-item">English</div>
+<div class="course-item">Commerce</div>
+<div class="course-item">Computer Courses</div>
+</div>
+</section>
+
+
+
 
 
 	
