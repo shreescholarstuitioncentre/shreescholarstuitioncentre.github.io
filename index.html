@@ -149,6 +149,107 @@ header.shrink .nav-text h1{
   object-fit:cover;
 }
 
+
+	.results{
+  text-align:center;
+  padding:80px 20px;
+}
+
+.result-sub{
+  color:#666;
+  margin-bottom:40px;
+}
+
+/* GRID */
+.result-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+
+/* CARD */
+.result-card{
+  background:#fff;
+  padding:20px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+  transition:0.4s;
+}
+
+.result-card:hover{
+  transform:translateY(-10px);
+}
+
+/* IMAGE */
+.img-box{
+  position:relative;
+}
+
+.img-box img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:15px;
+}
+
+/* BADGE */
+.badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:#ff5722;
+  color:#fff;
+  padding:5px 10px;
+  border-radius:10px;
+  font-size:12px;
+}
+
+/* TEXT */
+.percent{
+  font-size:26px;
+  color:#2e7d32;
+  font-weight:bold;
+}
+
+.division{
+  color:#555;
+}
+
+/* STATS */
+.stats{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  margin-top:50px;
+}
+
+.stats h3{
+  color:#d32f2f;
+}
+
+/* CTA */
+.result-cta{
+  margin-top:50px;
+}
+
+.btn-result{
+  display:inline-block;
+  margin-top:10px;
+  background:linear-gradient(45deg,#d32f2f,#ff5722);
+  color:#fff;
+  padding:12px 25px;
+  border-radius:30px;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.btn-result:hover{
+  transform:scale(1.1);
+}
+
+
+
+	
 /* VIDEO */
 .video video{
   autoplay:true;
@@ -771,6 +872,76 @@ iframe{height:450px}
 </div>
 </section>
 
+
+	<section class="results container">
+
+  <h2>🏆 Our Class 10 Board Toppers</h2>
+  <p class="result-sub">Outstanding Results • Proven Excellence • Trusted by Parents</p>
+
+  <div class="result-grid">
+
+    <!-- STUDENT 1 -->
+    <div class="result-card">
+      <div class="img-box">
+        <img src="t1.jpg">
+        <span class="badge">TOPPER</span>
+      </div>
+      <h3>Rahul Sharma</h3>
+      <p class="percent">95%</p>
+      <p class="division">First Division</p>
+    </div>
+
+    <!-- STUDENT 2 -->
+    <div class="result-card">
+      <div class="img-box">
+        <img src="t2.jpg">
+      </div>
+      <h3>Anjali Verma</h3>
+      <p class="percent">93%</p>
+      <p class="division">First Division</p>
+    </div>
+
+    <!-- STUDENT 3 -->
+    <div class="result-card">
+      <div class="img-box">
+        <img src="t3.jpg">
+      </div>
+      <h3>Amit Singh</h3>
+      <p class="percent">91%</p>
+      <p class="division">First Division</p>
+    </div>
+
+    <!-- STUDENT 4 -->
+    <div class="result-card">
+      <div class="img-box">
+        <img src="t4.jpg">
+      </div>
+      <h3>Neha Gupta</h3>
+      <p class="percent">90%</p>
+      <p class="division">First Division</p>
+    </div>
+
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div><h3>100%</h3><p>Result</p></div>
+    <div><h3>90%+</h3><p>Top Scores</p></div>
+    <div><h3>500+</h3><p>Students Taught</p></div>
+  </div>
+
+  <!-- CTA -->
+  <div class="result-cta">
+    <h3>🎯 Your Child Can Be Next Topper</h3>
+    <a href="https://wa.me/918953012298" target="_blank" class="btn-result">
+      📞 Enroll Now on WhatsApp
+    </a>
+  </div>
+
+</section>
+
+
+	
 <section class="gallery container">
 <h2>Our Toppers</h2>
 
@@ -819,59 +990,59 @@ iframe{height:450px}
 
     <!-- PAGE 1 -->
     <div class="page active">
-      <img src="topper1.jpg">
-      <div class="overlay">
-        <h3>Rahul Sharma</h3>
-        <p>Topper - Class 10 (95%)</p>
-      </div>
+      <img src="Mem(1).jpg">
     </div>
 
     <!-- PAGE 2 -->
     <div class="page">
-      <img src="topper2.jpg">
-      <div class="overlay">
-        <h3>Anjali Verma</h3>
-        <p>Topper - Class 8</p>
-      </div>
+      <img src="Mem(2).jpg">
     </div>
 
     <!-- PAGE 3 (VIDEO PAGE) -->
-    <div class="page video">
+    <!-- <div class="page video">
       <video src="OurNewMember.mp4" muted loop></video>
       <div class="overlay">
         <h3>Class Moments</h3>
       </div>
-    </div>
+    </div> -->
 
     <!-- PAGE 4 -->
     <div class="page">
-      <img src="topper3.jpg">
-      <div class="overlay">
-        <h3>Group Study</h3>
-      </div>
+      <img src="Mem(3).jpg">
     </div>
 
     <div class="page">
-      <img src="banner3.jpg">
-      <div class="overlay">
-        <h3>Group Study</h3>
-      </div>
+      <img src="Mem(4).jpg">
     </div>
 
     <div class="page">
-      <img src="banner2.jpg">
-      <div class="overlay">
-        <h3>Group Study</h3>
-      </div>
+      <img src="Mem(5).jpg">
     </div>
 
     <div class="page">
-      <img src="banner4.jpg">
-      <div class="overlay">
-        <h3>Group Study</h3>
-      </div>
+      <img src="Mem(6).jpg">
     </div>
 
+	<div class="page">
+      <img src="Mem(7).jpg">
+    </div>
+
+	  <div class="page">
+      <img src="Mem(8).jpg">
+    </div>
+
+	  <div class="page">
+      <img src="Mem(9).jpg">
+    </div>
+
+	  <div class="page">
+      <img src="Mem(10).jpg">
+    </div>
+
+	  <div class="page">
+      <img src="Mem(11).jpg">
+    </div>
+	  
   </div>
 
   <div class="controls">
