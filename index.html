@@ -185,12 +185,22 @@ header.shrink .nav-text h1{
   transform:translateY(-10px) scale(1.02);
 }
 
+/* .flipbook{
+  width:350px;
+  height:500px;
+} */
 
-  .flipbook-ultimate{
-  text-align:center;
-  padding:80px 20px;
+.flipbook{
+  position:relative;
+  width:350px;
+  height:500px;
+  margin:auto;
+  perspective:2000px;
 }
 
+.page{
+  backface-visibility:hidden;
+}
 .book{
   width:320px;
   height:440px;
@@ -212,15 +222,25 @@ header.shrink .nav-text h1{
   box-shadow:0 15px 40px rgba(0,0,0,.4);
 }
 
-/* IMAGE */
+/*IMAGE 
 .page img, .page video{
   width:100%;
   height:100%;
   object-fit:cover;
-}
+} */
 
 	
+.page img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+background:#000;
+}
 
+	.page{
+  backface-visibility:hidden;
+}
+	
 	.results{
   text-align:center;
   padding:80px 20px;
@@ -355,11 +375,13 @@ header.shrink .nav-text h1{
   transform:rotateY(-180deg);
 }
 
-/* STACK */
-.page:nth-child(1){z-index:4}
-.page:nth-child(2){z-index:3}
-.page:nth-child(3){z-index:2}
-.page:nth-child(4){z-index:1}
+.page{
+  z-index: auto;
+}
+
+.page:nth-child(n){
+  z-index: calc(100 - var(--i));
+}
 
 /* BUTTON */
 .controls button{
@@ -1063,16 +1085,15 @@ iframe{height:450px}
   <!-- SOUND -->
   <audio id="flipSound" src="https://www.soundjay.com/misc/sounds/page-flip-01.mp3"></audio>
 
-  <div class="book" id="book">
-
+<div class="flipbook" id="book">
     <!-- PAGE 1 -->
     <div class="page active">
-      <img src="Mem(1).jpg">
+      <img src="./Mem(1).jpg">
     </div>
 
     <!-- PAGE 2 -->
     <div class="page">
-      <img src="Mem(2).jpg">
+      <img src="./Mem(2).jpg">
     </div>
 
     <!-- PAGE 3 (VIDEO PAGE) -->
@@ -1085,39 +1106,39 @@ iframe{height:450px}
 
     <!-- PAGE 4 -->
     <div class="page">
-      <img src="Mem(3).jpg">
+      <img src="./Mem(3).jpg">
     </div>
 
     <div class="page">
-      <img src="Mem(4).jpg">
+      <img src="./Mem(4).jpg">
     </div>
 
     <div class="page">
-      <img src="Mem(5).jpg">
+      <img src="./Mem(5).jpg">
     </div>
 
     <div class="page">
-      <img src="Mem(6).jpg">
+      <img src="./Mem(6).jpg">
     </div>
 
 	<div class="page">
-      <img src="Mem(7).jpg">
+      <img src="./Mem(7).jpg">
     </div>
 
 	  <div class="page">
-      <img src="Mem(8).jpg">
+      <img src="./Mem(8).jpg">
     </div>
 
 	  <div class="page">
-      <img src="Mem(9).jpg">
+      <img src="./Mem(9).jpg">
     </div>
 
 	  <div class="page">
-      <img src="Mem(10).jpg">
+      <img src="./Mem(10).jpg">
     </div>
 
 	  <div class="page">
-      <img src="Mem(11).jpg">
+      <img src="./Mem(11).jpg">
     </div>
 	  
   </div>
@@ -1367,12 +1388,14 @@ const sound = document.getElementById("flipSound");
 
 /* NEXT */
 function nextPage(){
-  if(current < pages.length){
+  if(current < pages.length - 1){
     pages[current].classList.add("flipped");
     playSound();
     current++;
   }
 }
+
+	  
 
 /* PREV */
 function prevPage(){
