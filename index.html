@@ -6,267 +6,108 @@
 <title>Shree Scholars Tuition Centre</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:linear-gradient(to bottom right,#fff,#fff8e1);color:#333;line-height:1.6}
 
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+
+html{scroll-behavior:smooth;}
+body{
+  margin-top:80px;
+  background:none;
+  position:relative;
+  color:#333;
+}
+
+/* BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:url("background.jpg") center/cover no-repeat;
+  opacity:0.4;
+  z-index:-1;
+}
+
+/* CONTAINER */
 .container{max-width:1100px;margin:auto;padding:0 20px}
 
+/* HEADER */
 header{
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
   z-index: 1000;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  padding: 8px 20px; /* reduced height */
+  padding: 8px 20px;
   background: rgba(255,255,255,0.9);
   backdrop-filter: blur(8px);
-
   box-shadow: 0 3px 15px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
 }
 
-/* logo */
-header img{
-  height: 40px;
-}
+header img{height:40px;}
 
-/* text */
-.nav-text h1{
-  font-size: 18px;
-}
-.nav-text p{
-  font-size: 12px;
-  color:#555;
-}
+.nav-text{text-align:center;flex:1;}
+.nav-text h1{font-size:18px;color:#d32f2f;}
+.nav-text p{font-size:12px;color:#555;}
 
-/* shrink on scroll */
-header.shrink{
-  padding: 5px 15px;
-  background: rgba(255,255,255,0.95);
-}
+header.shrink{padding:5px 15px;}
+header.shrink img{height:30px;}
+header.shrink .nav-text h1{font-size:14px;}
 
-header.shrink img{
-  height: 30px;
-}
-
-header.shrink .nav-text h1{
-  font-size: 14px;
-}
-
-
-	/* SECTION BACKGROUND */
-.results{
-  padding:80px 20px;
-  text-align:center;
-  background: linear-gradient(135deg, #f5f7fa, #e4e8ec);
-  position: relative;
-  overflow:hidden;
-}
-
-/* subtle glow / light effect */
-.results::before{
-  content:"";
-  position:absolute;
-  width:400px;
-  height:400px;
-  background: radial-gradient(circle, rgba(255,87,34,0.2), transparent);
-  top:-100px;
-  left:-100px;
-  z-index:0;
-}
-
-/* HEADER BOX */
-.results-header{
-  padding:25px;
-  border-radius:30px; /* round corners */
-
-  /* glass effect */
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(10px);
-  border:1px solid rgba(255,255,255,0.3);
-
-  max-width:700px;
-  margin:0 auto 40px;
-
-  box-shadow:0 10px 30px rgba(0,0,0,0.1);
-
-  position:relative;
-  z-index:1;
-}
-
-	.results-header:hover{
-  transform: translateY(-5px);
-  transition:0.3s;
-}
-
-/* TITLE */
-.results-header h2{
-  color:#d32f2f;
-  font-size:28px;
-  margin-bottom:10px;
-}
-
-/* SUBTITLE */
-.results-header p{
-  color:#666;
-  font-size:16px;
-}
-
-.results-header h2::after{
-  content:"";
-  display:block;
-  width:80px;
-  height:3px;
+.btn{
   background:#d32f2f;
-  margin:10px auto;
-  border-radius:5px;
-}
-	
-
-/* MOBILE */
-@media(max-width:768px){
-
-  header{
-    padding:6px 12px;
-  }
-
-  .nav-text p{
-    display:none; /* subtitle hide */
-  }
-
-  .nav-text h1{
-    font-size:14px;
-  }
-
-  header img{
-    height:30px;
-  }
-
-  .btn{
-    padding:6px 10px;
-    font-size:12px;
-  }
+  color:#fff;
+  padding:8px 15px;
+  border-radius:8px;
+  text-decoration:none;
 }
 
-  /* SECTION */
-.saas-section{
-  padding:70px 20px;
-  text-align:center;
-}
-
-.saas-sub{
-  color:#666;
-  margin-bottom:40px;
-}
-
-/* GRID */
-.saas-grid{
+/* FEATURES */
+.features{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:25px;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  padding:50px 20px;
 }
 
-/* CARD */
-.saas-card{
-  background:linear-gradient(135deg,#ffffff,#f8f9ff);
-  padding:30px;
-  border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.1);
-  position:relative;
-  transition:0.4s;
-}
-
-.saas-card:hover{
-  transform:translateY(-10px) scale(1.02);
-}
-
-
-  .flipbook-ultimate{
+.card{
+  background:#fff;
+  padding:20px;
+  border-radius:15px;
   text-align:center;
-  padding:80px 20px;
+  box-shadow:0 4px 15px rgba(0,0,0,.1);
 }
 
-.book{
-  width:320px;
-  height:440px;
-  margin:auto;
-  position:relative;
-  perspective:2500px;
-}
+/* RESULTS */
+.results{padding:80px 20px;text-align:center;}
 
-/* PAGE */
-.page{
-  position:absolute;
-  width:100%;
-  height:100%;
-  transform-origin:left;
-  transition:1s cubic-bezier(.4,.2,.2,1);
-  transform-style:preserve-3d;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 15px 40px rgba(0,0,0,.4);
-}
-
-/* IMAGE */
-.page img, .page video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-	
-
-	.results{
-  text-align:center;
-  padding:80px 20px;
-}
-
-.result-sub{
-  color:#666;
-  margin-bottom:40px;
-}
-
-/* GRID */
 .result-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:25px;
 }
 
-	/* RESULT CARDS */
 .result-card{
   background:#fff;
   padding:20px;
-  border-radius:25px; /* 🔥 smooth rounded */
+  border-radius:25px;
   box-shadow:0 10px 25px rgba(0,0,0,.15);
-  transition:0.4s;
 }
 
-.result-card:hover{
-  transform:translateY(-10px);
-}
+.img-box{position:relative;}
 
-/* IMAGE */
-.img-box{
-  position:relative;
-}
-
-	/* IMAGE */
 .img-box img{
   width:100%;
   height:200px;
   object-fit:cover;
-  border-radius:20px; /* 🔥 image bhi round */
+  border-radius:20px;
 }
-	
 
-/* BADGE */
-.badge{
+.result-badge{
   position:absolute;
   top:10px;
   left:10px;
@@ -274,190 +115,76 @@ header.shrink .nav-text h1{
   color:#fff;
   padding:5px 10px;
   border-radius:10px;
-  font-size:12px;
 }
 
-/* TEXT */
-.percent{
-  font-size:26px;
-  color:#2e7d32;
-  font-weight:bold;
-}
+.percent{font-size:24px;color:#2e7d32;font-weight:bold;}
 
-.division{
-  color:#555;
-}
-
-/* STATS */
 .stats{
   display:flex;
   justify-content:center;
   gap:40px;
-  margin-top:50px;
+  margin-top:40px;
 }
 
-.stats h3{
-  color:#d32f2f;
+/* SLIDER */
+.slider{position:relative;overflow:hidden;margin-top:30px;}
+.slides{display:flex;transition:0.5s;}
+
+.slides img{
+  width:calc(100%/3);
+  height:220px;
+  object-fit:contain;
+  background:#eee;
+  border-radius:15px;
+  padding:10px;
 }
 
-/* CTA */
-.result-cta{
-  margin-top:50px;
-}
-
-.btn-result{
-  display:inline-block;
-  margin-top:10px;
-  background:linear-gradient(45deg,#d32f2f,#ff5722);
-  color:#fff;
-  padding:12px 25px;
-  border-radius:30px;
-  text-decoration:none;
-  transition:0.3s;
-}
-
-.btn-result:hover{
-  transform:scale(1.1);
-}
-
-
-
-	
-/* VIDEO */
-.video video{
-  autoplay:true;
-}
-
-/* OVERLAY */
-.overlay{
+/* BUTTONS */
+.prev,.next{
   position:absolute;
-  bottom:0;
-  width:100%;
-  padding:15px;
-  background:linear-gradient(to top,rgba(0,0,0,.7),transparent);
+  top:50%;
+  transform:translateY(-50%);
+  background:#0008;
   color:#fff;
-  text-align:left;
-}
-
-/* SHADOW REALISTIC */
-.page::after{
-  content:"";
-  position:absolute;
-  top:0;
-  right:0;
-  width:20px;
-  height:100%;
-  background:linear-gradient(to right,rgba(0,0,0,.2),transparent);
-}
-
-/* FLIP */
-.page.flipped{
-  transform:rotateY(-180deg);
-}
-
-/* STACK */
-.page:nth-child(1){z-index:4}
-.page:nth-child(2){z-index:3}
-.page:nth-child(3){z-index:2}
-.page:nth-child(4){z-index:1}
-
-/* BUTTON */
-.controls button{
-  margin:10px;
-  padding:10px 20px;
   border:none;
-  background:#d32f2f;
-  color:#fff;
-  border-radius:8px;
+  padding:10px;
   cursor:pointer;
+  border-radius:50%;
+}
+.prev{left:10px;}
+.next{right:10px;}
+
+/* FLIPBOOK */
+.book{
+  width:300px;
+  height:420px;
+  margin:auto;
+  perspective:2000px;
+  position:relative;
 }
 
-
-  
-/* PREMIUM CARD */
-.premium{
-  border:2px solid #6c2bd9;
-  box-shadow:0 0 20px rgba(108,43,217,.3);
-}
-
-.badge{
+.page{
   position:absolute;
-  top:15px;
-  right:15px;
-  background:#6c2bd9;
-  color:#fff;
-  padding:5px 10px;
-  border-radius:10px;
-  font-size:12px;
+  width:100%;
+  height:100%;
+  transform-origin:left;
+  transition:1s;
 }
 
-/* ICON */
-.icon{
-  font-size:30px;
-  margin-bottom:10px;
+.page img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-/* TEXT */
-.desc{
-  color:#777;
-  margin-bottom:15px;
-}
+.page.flipped{transform:rotateY(-180deg);}
 
-/* PRICE */
-.price-box{
-  margin:15px 0;
-}
-
-.old{
-  text-decoration:line-through;
-  color:#aaa;
-  display:block;
-}
-
-.new{
-  font-size:22px;
-  font-weight:bold;
-  color:#2e7d32;
-}
-
-/* LIST */
-ul{
-  list-style:none;
-  padding:0;
-  margin:15px 0;
-}
-
-ul li{
-  padding:6px 0;
-  border-bottom:1px solid #eee;
-  font-size:14px;
-}
-
-/* BUTTON */
-.btn-saas{
-  display:inline-block;
-  margin-top:15px;
-  background:#333;
-  color:#fff;
-  padding:12px 22px;
-  border-radius:30px;
-  text-decoration:none;
-  transition:0.3s;
-}
-
-.btn-saas:hover{
-  transform:scale(1.08);
-}
-
-.highlight{
-  background:linear-gradient(45deg,#6c2bd9,#8e44ff);
-}
-
+/* CONTACT */
 .contact-section{
   display:flex;
   gap:20px;
-  padding:60px 20px;
   flex-wrap:wrap;
+  padding:60px 20px;
 }
 
 .contact-box{
@@ -467,960 +194,185 @@ ul li{
   padding:20px;
   border-radius:15px;
   box-shadow:0 5px 20px rgba(0,0,0,.15);
-  text-align:center;
 }
 
 .contact-box iframe{
   width:100%;
-  height:400px;
+  height:350px;
   border:none;
-  border-radius:10px;
-  margin-top:10px;
 }
 
 .btn-map{
   display:inline-block;
-  margin-top:15px;
+  margin-top:10px;
   background:#d32f2f;
   color:#fff;
   padding:10px 20px;
-  border-radius:25px;
-  text-decoration:none;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-  .contact-section{
-    flex-direction:column;
-  }
-}
-  
-/* Scroll effect */
-header.scrolled{
-  background: #ffffff;
-  padding: 8px 25px;
-}
-
-/* Logo */
-header img{
-  height: 100px;
-}
-
-/* Center content */
-.nav-text{
-  text-align: center;
-  flex: 1;
-}
-
-.nav-text h1{
-  font-size: 46px;
-  color:#d32f2f;
-}
-
-.nav-text p{
-  font-size: 20px;
-  color:#555;
-}
-
-/* Button */
-header .btn{
-  padding: 8px 15px;
-  font-size: 14px;
-}
-
- body{
-  margin-top: 100px;
-}
-  
-  body {
-  position: relative;
-  background: none;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("background.jpg") no-repeat center center/cover;
-  opacity: 0.6; /* transparency control (0.1 – 0.4 best) */
-  z-index: -1;
-}
-/* MAP SECTION */
-.map-section{
-  padding: 60px 20px;
-  display:flex;
-  justify-content:center;
-}
-
-.map-card{
-  width:100%;
-  max-width:900px;
-  background:white;
-  padding:30px;
   border-radius:20px;
-  text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.15);
-  animation:fadeInUp 1s ease;
-}
-
-.map-card h2{
-  color:#d32f2f;
-  margin-bottom:10px;
-}
-
-.map-card p{
-  margin-bottom:20px;
-  color:#555;
-}
-
-/* MAP BOX */
-.map-box{
-  overflow:hidden;
-  border-radius:15px;
-  box-shadow:0 5px 20px rgba(0,0,0,.2);
-}
-
-.map-box iframe{
-  width:100%;
-  height:350px;
-  border:none;
-  transition:transform 0.5s;
-}
-
-.map-box:hover iframe{
-  transform:scale(1.05);
-}
-
-/* BUTTONS */
-.map-buttons{
-  margin-top:20px;
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  flex-wrap:wrap;
-}
-
-.btn-map{
-  background:#d32f2f;
-  color:white;
-  padding:12px 20px;
-  border-radius:30px;
   text-decoration:none;
-  font-weight:bold;
-  transition:0.3s;
-  box-shadow:0 4px 10px rgba(0,0,0,.2);
 }
 
-.btn-map:hover{
-  background:#b71c1c;
-  transform:translateY(-3px);
-}
-
-.btn-map.call{
-  background:#25D366;
-}
-
-.btn-map.call:hover{
-  background:#1ebe5d;
-}
-
-
-  .pricing-table{
-  padding:70px 20px;
-  text-align:center;
-}
-
-.subtitle{
-  margin-bottom:30px;
-  color:#555;
-}
-
-/* ROW */
+/* PRICING */
 .pricing-row{
   display:flex;
   overflow-x:auto;
   gap:20px;
-  padding-bottom:10px;
 }
 
-/* COLUMN */
 .pricing-col{
   min-width:250px;
   background:#fff;
-  border-radius:15px;
   padding:20px;
-  box-shadow:0 8px 20px rgba(0,0,0,.1);
-  position:relative;
-  transition:0.3s;
+  border-radius:15px;
 }
 
-.pricing-col:hover{
-  transform:translateY(-10px);
-}
-
-/* POPULAR */
-.popular{
-  border:2px solid #6c2bd9;
-}
-
-.tag{
-  position:absolute;
-  top:-10px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#6c2bd9;
-  color:#fff;
-  padding:5px 12px;
-  border-radius:20px;
-  font-size:12px;
-}
-
-/* TEXT */
-.desc{
-  color:#777;
-  margin-bottom:10px;
-}
-
-.price{
-  font-size:26px;
-  font-weight:bold;
-}
-
-.price span{
-  font-size:14px;
-}
-
-.old{
-  text-decoration:line-through;
-  color:#999;
-  margin-bottom:10px;
-}
-
-/* BUTTON */
-.btn{
-  display:inline-block;
-  background:#333;
-  color:#fff;
-  padding:10px 18px;
-  border-radius:8px;
-  text-decoration:none;
-  margin:10px 0;
-}
-
-.highlight{
-  background:#6c2bd9;
-}
-
-/* FEATURES */
-ul{
-  list-style:none;
-  padding:0;
-  margin-top:10px;
-}
-
-ul li{
+.pricing-col ul li{
   padding:5px 0;
-  border-bottom:1px solid #eee;
-  font-size:14px;
 }
 
-
-  
-/* ANIMATION */
-@keyframes fadeInUp{
-  from{
-    opacity:0;
-    transform:translateY(40px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
+/* WHATSAPP */
 .whatsapp-btn{
-  position: fixed;
-  right: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #25D366;
-  color: #fff;
-  padding: 10px 15px;
-  border-radius: 30px;
-  font-size: 14px;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,.3);
-  transition: 0.3s;
+  position:fixed;
+  right:20px;
+  background:#25D366;
+  color:#fff;
+  padding:10px 15px;
+  border-radius:30px;
+  text-decoration:none;
 }
 
-.whatsapp-btn:hover{
-  background:#1ebe5d;
-  transform: scale(1.05);
-}
+.w1{bottom:20px;}
+.w2{bottom:70px;}
 
-/* positioning */
-.w1{
-  bottom: 20px;
-}
-
-.w2{
-  bottom: 70px;
-}
-  
-.slider {
-  position: relative;
-  overflow: hidden;
-  margin-top: 30px;
-}
-
-.slides {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.slides img {
-  width: calc(100% / 3);
-  height: 220px;
-
-  object-fit: contain; /* full image show */
-  
-  /* premium background */
-  background: linear-gradient(135deg,#f8f9fa,#e9ecef);
-
-  border-radius: 15px;
-  padding: 10px;
-
-  /* shadow */
-  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-
-  transition: 0.3s;
-}
-.slides img:hover{
-  transform: scale(1.08);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-}
-
-/* Buttons */
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.prev { left: 10px; }
-.next { right: 10px; }
-
-
-	@media(max-width:768px){
-  .slides img{
-    width: calc(100% / 2); /* mobile = 2 images */
-    height: 200px;
-  }
+/* MOBILE */
+@media(max-width:768px){
+  .features{grid-template-columns:1fr;}
+  .slides img{width:50%;}
 }
 
 @media(max-width:480px){
-  .slides img{
-    width: 100%; /* mobile small = 1 image */
-  }
+  .slides img{width:100%;}
 }
 
-	
-  
-.btn{padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:bold;margin:5px;display:inline-block}
-.primary{background:#d32f2f;color:#fff}
-.outline{border:2px solid #d32f2f;color:#d32f2f}
-
-/* FEATURES */
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:50px 20px}
-.card{padding:20px;background:#fff;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,.1);text-align:center;transition:.3s}
-.card:hover{transform:translateY(-8px)}
-
-/* COURSES */
-.courses{text-align:center;padding:60px 20px}
-.course-list{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}
-.course-item{padding:12px;border:1px solid #ddd;border-radius:10px;background:#fff}
-
-/* GALLERY */
-.gallery{padding:60px 20px;text-align:center}
-.gallery h2{color:#d32f2f}
-.photos{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:20px}
-.photos img{width:100%;height:160px;border-radius:15px;object-fit:cover;box-shadow:0 4px 10px rgba(0,0,0,.2)}
-
-/* FORM */
-.form-section{padding:60px 20px;text-align:center}
-iframe{width:100%;max-width:700px;height:500px;border:none}
-
-/* MAP */
-.map{padding:60px 20px;text-align:center}
-.map iframe{width:100%;max-width:900px;height:350px;border:none;border-radius:10px}
-
-/* CTA */
-.cta{background:#d32f2f;color:#fff;text-align:center;padding:60px 20px}
-
-footer{text-align:center;padding:20px;color:#777}
-
-/* WhatsApp Button */
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:#fff;
-padding:15px;
-border-radius:50%;
-font-size:20px;
-text-decoration:none;
-box-shadow:0 4px 10px rgba(0,0,0,.3);
-animation:pulse 1.5s infinite
-}
-
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.1)}
-100%{transform:scale(1)}
-}
-
-/* RESPONSIVE */
-@media(max-width:992px){
-.features{grid-template-columns:repeat(2,1fr)}
-.course-list{grid-template-columns:repeat(2,1fr)}
-.photos{grid-template-columns:repeat(2,1fr)}
-}
-
-@media(max-width:600px){
-header h1{font-size:28px}
-header{padding:60px 15px}
-.btn{display:block;width:100%;max-width:250px;margin:10px auto}
-.features{grid-template-columns:1fr}
-.course-list{grid-template-columns:1fr}
-.photos{grid-template-columns:1fr}
-.photos img{height:200px}
-iframe{height:450px}
-.map iframe{height:250px}
-}
 </style>
 </head>
 
 <body>
-<header id="mainHeader">
-  
-  <img src="Logo.png" alt="logo">
 
+<header id="mainHeader">
+  <img src="Logo.png">
   <div class="nav-text">
     <h1>Shree Scholars Tuition Centre</h1>
     <p>From Foundation to Future</p>
   </div>
-
-  <a href="#" onclick="showAlert()" class="btn primary">Contact</a>
-
+  <a href="#" onclick="showAlert()" class="btn">Contact</a>
 </header>
-  
+
+<!-- FEATURES -->
 <section class="features container">
-<div class="card"><h3>Expert Teachers</h3><p>Highly experienced faculty</p></div>
-<div class="card"><h3>All Subjects</h3><p>Nursery to Class 12</p></div>
-<div class="card"><h3>Top Results</h3><p>Excellent performance</p></div>
+  <div class="card">Expert Teachers</div>
+  <div class="card">All Subjects</div>
+  <div class="card">Top Results</div>
 </section>
 
-	<section class="results container">
-
-  <h2>🏆 Our Class 10 Board Toppers</h2>
-  <p class="result-sub">Outstanding Results • Proven Excellence • Trusted by Parents</p>
+<!-- RESULTS -->
+<section class="results container">
+  <h2>🏆 Board Toppers</h2>
 
   <div class="result-grid">
-
-    <!-- STUDENT 1 -->
     <div class="result-card">
       <div class="img-box">
         <img src="t1.jpg">
-        <span class="badge">TOPPER</span>
+        <span class="result-badge">TOPPER</span>
       </div>
-      <h3>Rahul Sharma</h3>
+      <h3>Rahul</h3>
       <p class="percent">95%</p>
-      <p class="division">First Division</p>
     </div>
-
-    <!-- STUDENT 2 -->
-    <div class="result-card">
-      <div class="img-box">
-        <img src="t2.jpg">
-      </div>
-      <h3>Anjali Verma</h3>
-      <p class="percent">93%</p>
-      <p class="division">First Division</p>
-    </div>
-
-    <!-- STUDENT 3 -->
-    <div class="result-card">
-      <div class="img-box">
-        <img src="t3.jpg">
-      </div>
-      <h3>Amit Singh</h3>
-      <p class="percent">91%</p>
-      <p class="division">First Division</p>
-    </div>
-
-    <!-- STUDENT 4 -->
-    <div class="result-card">
-      <div class="img-box">
-        <img src="t4.jpg">
-      </div>
-      <h3>Neha Gupta</h3>
-      <p class="percent">90%</p>
-      <p class="division">First Division</p>
-    </div>
-
   </div>
 
-  <!-- STATS -->
   <div class="stats">
     <div><h3>100%</h3><p>Result</p></div>
-    <div><h3>90%+</h3><p>Top Scores</p></div>
-    <div><h3>500+</h3><p>Students Taught</p></div>
+    <div><h3>500+</h3><p>Students</p></div>
   </div>
-
-  <!-- CTA -->
-  <div class="result-cta">
-    <h3>🎯 Your Child Can Be Next Topper</h3>
-    <a href="https://wa.me/918953012298" target="_blank" class="btn-result">
-      📞 Enroll Now on WhatsApp
-    </a>
-  </div>
-
 </section>
 
-
-	
-<section class="courses container">
-<h2>Courses</h2>
-<p>Nursery to 12 • English & Hindi Medium</p>
-<div class="course-list">
-<div class="course-item">Maths</div>
-<div class="course-item">Science</div>
-<div class="course-item">Computer</div>
-<div class="course-item">Hindi</div>
-<div class="course-item">Sanskrit</div>
-<div class="course-item">English</div>
-<div class="course-item">Commerce</div>
-<div class="course-item">Computer Courses</div>
-</div>
-</section>
-
-
-
-
-
-	
+<!-- SLIDER -->
 <section class="gallery container">
-<h2>Our Toppers</h2>
+  <h2>Our Toppers</h2>
 
-<div class="slider">
-  <button class="prev">&#10094;</button>
+  <div class="slider">
+    <button class="prev">&#10094;</button>
 
-  <div class="slides" id="slides">
-    <img src="tp7.jpg">
-    <img src="tp1.jpg">
-    <img src="tp9.jpg">
-    <img src="tp2.jpg">
-    <img src="tp3.jpg">
-    <img src="tp4.jpg">
-    <img src="tp5.jpg">
-    <img src="tp6.jpg">    
-    <img src="tp12.jpg">
-    <img src="tp10.jpg">
-    <img src="tp11.jpg">
-    <img src="tp8.jpg">    
-    <img src="tp13.jpg">
-    <img src="tp14.jpg">
-    <img src="tp15.jpg">
-    <img src="tp16.jpg">
-    <img src="tp17.jpg">
-    <img src="tp18.jpg">
-    <img src="tp19.jpg">
-    <img src="tp20.jpg">
-    <img src="tp21.jpg">
-    <img src="tp22.jpg">
-    <img src="tp23.jpg">
-    <img src="tp24.jpg">
-  </div>
-
-  <button class="next">&#10095;</button>
-</div>
-</section>
-
-
-  <section class="flipbook-ultimate container">
-  <h2>📖 Memories in Pics</h2>
-
-  <!-- SOUND -->
-  <audio id="flipSound" src="https://www.soundjay.com/misc/sounds/page-flip-01.mp3"></audio>
-
-  <div class="book" id="book">
-
-    <!-- PAGE 1 -->
-    <div class="page active">
-      <img src="Mem(1).jpg">
+    <div class="slides" id="slides">
+      <img src="tp1.jpg">
+      <img src="tp2.jpg">
+      <img src="tp3.jpg">
+      <img src="tp4.jpg">
     </div>
 
-    <!-- PAGE 2 -->
-    <div class="page">
-      <img src="Mem(2).jpg">
-    </div>
-
-    <!-- PAGE 3 (VIDEO PAGE) -->
-    <!-- <div class="page video">
-      <video src="OurNewMember.mp4" muted loop></video>
-      <div class="overlay">
-        <h3>Class Moments</h3>
-      </div>
-    </div> -->
-
-    <!-- PAGE 4 -->
-    <div class="page">
-      <img src="Mem(3).jpg">
-    </div>
-
-    <div class="page">
-      <img src="Mem(4).jpg">
-    </div>
-
-    <div class="page">
-      <img src="Mem(5).jpg">
-    </div>
-
-    <div class="page">
-      <img src="Mem(6).jpg">
-    </div>
-
-	<div class="page">
-      <img src="Mem(7).jpg">
-    </div>
-
-	  <div class="page">
-      <img src="Mem(8).jpg">
-    </div>
-
-	  <div class="page">
-      <img src="Mem(9).jpg">
-    </div>
-
-	  <div class="page">
-      <img src="Mem(10).jpg">
-    </div>
-
-	  <div class="page">
-      <img src="Mem(11).jpg">
-    </div>
-	  
-  </div>
-
-  <div class="controls">
-    <button onclick="prevPage()">⬅</button>
-    <button onclick="nextPage()">➡</button>
+    <button class="next">&#10095;</button>
   </div>
 </section>
 
-
-
-  
+<!-- CONTACT -->
 <section class="contact-section container">
 
-  <!-- LEFT: FORM -->
   <div class="contact-box">
     <h2>Admission Form</h2>
-    <p>Fill the form to enroll</p>
-
-    <iframe 
-      src="https://docs.google.com/forms/d/e/1FAIpQLSedAOS3RrMFufn1OALf2aIQR3yp02vhBlTkBEYKB2IlWhuFnQ/viewform?embedded=true"
-      loading="lazy">
-    </iframe>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSedAOS3RrMFufn1OALf2aIQR3yp02vhBlTkBEYKB2IlWhuFnQ/viewform?embedded=true"></iframe>
   </div>
 
-  <!-- RIGHT: MAP -->
   <div class="contact-box">
-    <h2>📍 Visit Our Centre</h2>
-    <p>Infront of Govind Ram Haveli, Jata Shankar Chowk, Dilezakpur, Gorakhpur</p>
-
-    <iframe
-      src="https://www.google.com/maps?q=26.760083,83.366028&output=embed" loading="lazy">
-    </iframe>
-
-    <a href="https://www.google.com/maps?q=26.760083,83.366028" target="_blank" class="btn-map">
-      🧭 Get Directions
-    </a>
+    <h2>📍 Location</h2>
+    <iframe src="https://www.google.com/maps?q=26.760083,83.366028&output=embed"></iframe>
+    <a href="https://www.google.com/maps?q=26.760083,83.366028" target="_blank" class="btn-map">Get Directions</a>
   </div>
 
 </section>
 
-  <section class="pricing-table container">
-
-<h2>💎 Fees Structure</h2>
-<p class="subtitle">Quality Education with 50% Scholarship</p>
-
-<div class="pricing-row">
-
-  <div class="pricing-col popular">
-    <h3>Nursery – 2</h3>
-    <p class="desc">All Subjects</p>
-    <p class="price">₹500 <span>/month</span></p>
-    <p class="old">₹1000</p>
-    <a href="https://wa.me/919565959697?text=Hello%20I%20want%20to%20join%20tuition%20Class%20Nursery%20to%20class%202nd%20Batch" target="_blank" class="btn highlight">Join Now</a>
-
-    <ul>
-      <li>✔ Basic Foundation</li>
-      <li>✔ Personal Attention</li>
-      <li>✔ Homework Support</li>
-    </ul>
-  </div>
-
-  <div class="pricing-col popular">
-    <h3>Class 3 – 5</h3>
-    <p class="desc">All Subjects</p>
-    <p class="price">₹1000 <span>/month</span></p>
-    <p class="old">₹2000</p>
-    <a href="https://wa.me/919565959697?text=Hello%20I%20want%20to%20join%20tuition%20Class%203rd%20to%20-%20class%205th%20Batch" target="_blank" class="btn highlight">Join Now</a>
-
-    <ul>
-      <li>✔ Strong Concept Building</li>
-      <li>✔ Weekly Tests</li>
-      <li>✔ Doubt Clearing</li>
-    </ul>
-  </div>
-
-  <div class="pricing-col popular">
-    <h3>Class 6 – 8</h3>
-    <p class="desc">All Subjects</p>
-    <p class="price">₹1100 <span>/month</span></p>
-    <p class="old">₹2200</p>
-    <a href="https://wa.me/918953012298?text=Hello%20I%20want%20to%20join%20tuition%20Class%206th%20to%20-%20class%208th%20Batch" target="_blank" class="btn highlight">Join Now</a>
-
-    <ul>
-      <li>✔ Concept + Practice</li>
-      <li>✔ Exam Preparation</li>
-      <li>✔ Regular Tests</li>
-    </ul>
-  </div>
-
-  <div class="pricing-col popular">
-    <h3>Class 9 – 10</h3>
-    <p class="desc">All Subjects</p>
-    <p class="price">₹1500 <span>/month</span></p>
-    <p class="old">₹3000</p>
-    <a href="https://wa.me/918953012298?text=Hello%20I%20want%20to%20join%20tuition%20Class%209th%20to%20-%20class%2010th%20Batch" target="_blank" class="btn highlight">Join Now</a>
-
-    <ul>
-      <li>✔ Board Preparation</li>
-      <li>✔ All 6 Subjects</li>
-      <li>✔ ₹300 / Subject</li>
-    </ul>
-  </div>
-
-  <div class="pricing-col popular">
-    <h3>Class 11 – 12</h3>
-    <p class="desc">PCM / PCB / Commerce</p>
-    <p class="price">₹1800 <span>/month</span></p>
-    <p class="old">₹3600</p>
-    <a href="https://wa.me/918953012298?text=Hello%20I%20want%20to%20join%20tuition%20Class%2011th%20to%20-%20class%2012th%20Batch" target="_blank" class="btn highlight">Join Now</a>
-
-    <ul>
-      <li>✔ Stream-wise Coaching</li>
-      <li>✔ 3 Subjects</li>
-      <li>✔ ₹600 / Subject</li>
-    </ul>
-  </div>
-
-</div>
-
-</section>
-
-   <section class="saas-section container">
-
-  <h2>🚀 Skill & Technology Programs</h2>
-  <p class="saas-sub">Upgrade Your Skills with Industry-Level Training</p>
-
-  <div class="saas-grid">
-
-    <!-- CARD 1 -->
-    <div class="saas-card premium">
-      <div class="icon">✨</div>
-      <h3>Basic Skills</h3>
-      <p class="desc">Spoken English & Computer Basics</p>
-
-      <div class="price-box">
-        <span class="old">₹1000</span>
-        <span class="new">₹500 / Month</span>
-      </div>
-
-      <ul>
-        <li>✔ Spoken English Training</li>
-        <li>✔ Computer Fundamentals</li>
-        <li>✔ Practical Learning</li>
-        <li>✔ Beginner Friendly</li>
-      </ul>
-
-      <a href="https://wa.me/918953012298?text=Hello%20I%20want%20to%20join%20Basic%20Skills" class="btn-saas highlight">Enroll Now</a>
-    </div>
-
-    <!-- CARD 2 -->
-    <div class="saas-card premium">
-      <div class="badge">🔥 Trending</div>
-      <div class="icon">💻</div>
-      <h3>Programming / AI</h3>
-      <p class="desc">Coding, Designing & Artificial Intelligence</p>
-
-      <div class="price-box">
-        <span class="old">₹2400+</span>
-        <span class="new">Starting ₹1199</span>
-      </div>
-
-      <ul>
-        <li>✔ HTML + CSS — ₹999</li>
-        <li>✔ Advanced Excel — ₹999</li>
-        <li>✔ AI Basics — ₹1499</li>
-        <li>✔ CorelDraw — ₹4999</li>
-        <li>✔ Programming — ₹9999</li>
-      </ul>
-
-      <a href="https://wa.me/918953012298?text=Hello%20I%20want%20to%20join%20Programming%20Or%20AI" class="btn-saas highlight">Enroll Now</a>
-    </div>
-
-  </div>
-
-</section>
-
-  
-<section class="cta">
-<h2>Admissions Open Now</h2>
-<p>Location : Infront of Govind Ram Haveli, Jata Shankar Chowk, Dilezakpur, Gorakhpur, Uttar Pradesh - 273001</p>
-</section>
-<a href="https://wa.me/918953012298" class="whatsapp-btn w1">
-  💬 <span>Chat (8953012298)</span>
-</a>
-
-<a href="https://wa.me/919565959697" class="whatsapp-btn w2">
-  💬 <span>Chat (9565959697)</span>
-</a>
-<footer>
-© 2026 Shree Scholars Tuition Centre
-</footer>
+<!-- WHATSAPP -->
+<a href="https://wa.me/918953012298" class="whatsapp-btn w1">Chat 1</a>
+<a href="https://wa.me/919565959697" class="whatsapp-btn w2">Chat 2</a>
 
 <script>
+
+/* HEADER SCROLL */
 window.addEventListener("scroll", function(){
-  document.querySelector("header").classList.toggle("scrolled", window.scrollY > 50);
+  document.getElementById("mainHeader")
+  .classList.toggle("shrink", window.scrollY > 50);
 });
-</script>
 
+/* SLIDER */
+let index=0;
+const slides=document.getElementById("slides");
+const total=slides.children.length;
 
-  <script>
-window.addEventListener("scroll", function(){
-  const header = document.getElementById("mainHeader");
-
-  if(window.scrollY > 50){
-    header.classList.add("shrink");
-  } else {
-    header.classList.remove("shrink");
-  }
-});
-</script>
-
-  
-<script>
-let index = 0;
-const slides = document.getElementById("slides");
-const totalImages = slides.children.length;
-const visible = 3; // number of images visible
-
-function showSlide() {
-  const slideWidth = slides.children[0].offsetWidth;
-  slides.style.transform = `translateX(-${index * slideWidth}px)`;
+function showSlide(){
+  let w=slides.children[0].offsetWidth;
+  slides.style.transform=`translateX(-${index*w}px)`;
 }
 
-document.querySelector(".next").onclick = () => {
-  if (index < totalImages - visible) index++;
+document.querySelector(".next").onclick=()=>{
+  if(index<total-3) index++;
   showSlide();
-};
+}
 
-document.querySelector(".prev").onclick = () => {
-  if (index > 0) index--;
+document.querySelector(".prev").onclick=()=>{
+  if(index>0) index--;
   showSlide();
-};
-
-/* Auto slide */
-setInterval(() => {
-  index = (index + 1) % (totalImages - visible + 1);
-  showSlide();
-}, 3000);
-</script>
-
-  <script>
-let current = 0;
-const pages = document.querySelectorAll(".page");
-const sound = document.getElementById("flipSound");
-
-/* NEXT */
-function nextPage(){
-  if(current < pages.length){
-    pages[current].classList.add("flipped");
-    playSound();
-    current++;
-  }
 }
 
-/* PREV */
-function prevPage(){
-  if(current > 0){
-    current--;
-    pages[current].classList.remove("flipped");
-    playSound();
-  }
-}
-
-/* SOUND */
-function playSound(){
-  sound.currentTime = 0;
-  sound.play();
-}
-
-/* AUTO SLIDE */
 setInterval(()=>{
-  if(current < pages.length){
-    nextPage();
-  } else {
-    pages.forEach(p=>p.classList.remove("flipped"));
-    current = 0;
-  }
-}, 5000);
+  index=(index+1)%(total-2);
+  showSlide();
+},3000);
 
-/* SWIPE SUPPORT */
-let startX = 0;
-
-document.getElementById("book").addEventListener("touchstart",e=>{
-  startX = e.touches[0].clientX;
-});
-
-document.getElementById("book").addEventListener("touchend",e=>{
-  let endX = e.changedTouches[0].clientX;
-
-  if(startX - endX > 50){
-    nextPage();
-  } else if(endX - startX > 50){
-    prevPage();
-  }
-});
-</script>
-  
-<script>
+/* ALERT */
 function showAlert(){
-  alert("Call or Whatsapp Now: 8953012298 0r 9565959697");
+  alert("Call: 8953012298 / 9565959697");
 }
+
 </script>
+
 </body>
 </html>
