@@ -82,14 +82,26 @@ header.shrink .nav-text h1{
 
 /* HEADER BOX */
 .results-header{
-  background:#fff;
   padding:25px;
-  border-radius:30px; /* 🔥 more round */
+  border-radius:30px; /* round corners */
+
+  /* glass effect */
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  border:1px solid rgba(255,255,255,0.3);
+
   max-width:700px;
   margin:0 auto 40px;
+
   box-shadow:0 10px 30px rgba(0,0,0,0.1);
+
   position:relative;
   z-index:1;
+}
+
+	.results-header:hover{
+  transform: translateY(-5px);
+  transition:0.3s;
 }
 
 /* TITLE */
