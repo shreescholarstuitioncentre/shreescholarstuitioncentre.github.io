@@ -30,6 +30,78 @@ header{
   transition: all 0.3s ease;
 }
 
+.premium-gallery{
+  text-align:center;
+  padding:80px 20px;
+}
+
+.premium-gallery h2{
+  font-size:30px;
+  margin-bottom:30px;
+  color:#d32f2f;
+}
+
+/* WRAPPER */
+.gallery-wrapper{
+  position:relative;
+  overflow:hidden;
+  max-width:1000px;
+  margin:auto;
+}
+
+/* TRACK */
+.gallery-track{
+  display:flex;
+  transition:0.6s ease;
+}
+
+/* CARD */
+.gallery-card{
+  min-width:300px;
+  margin:0 10px;
+  border-radius:20px;
+  overflow:hidden;
+
+  background:#fff;
+  box-shadow:0 15px 40px rgba(0,0,0,0.2);
+
+  transform:scale(0.9);
+  transition:0.4s;
+}
+
+/* ACTIVE CENTER LOOK */
+.gallery-card.active{
+  transform:scale(1);
+  box-shadow:0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* IMAGE */
+.gallery-card img{
+  width:100%;
+  height:400px;
+  object-fit:contain;
+  background:#000;
+}
+
+/* BUTTON */
+.g-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:#d32f2f;
+  color:#fff;
+  border:none;
+  padding:12px 18px;
+  font-size:20px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+.prev{left:10px;}
+.next{right:10px;}
+
+
+	
 /* logo */
 header img{
   height: 40px;
@@ -1103,62 +1175,31 @@ iframe{height:450px}
 </section>
 
 
-  <section class="flipbook-ultimate container">
-  <h2>📖 Memories in Pics</h2>
+  <section class="premium-gallery container">
+  <h2>📸 Memories in Style</h2>
 
-  <audio id="flipSound" src="https://www.soundjay.com/misc/sounds/page-flip-01.mp3"></audio>
+  <div class="gallery-wrapper">
 
-  <div class="book" id="book">
+    <div class="gallery-track" id="galleryTrack">
 
-    <div class="page">
-      <img src="Mem(1).jpg">
+      <div class="gallery-card"><img src="Mem(1).jpg"></div>
+      <div class="gallery-card"><img src="Mem(2).jpg"></div>
+      <div class="gallery-card"><img src="Mem(3).jpg"></div>
+      <div class="gallery-card"><img src="Mem(4).jpg"></div>
+      <div class="gallery-card"><img src="Mem(5).jpg"></div>
+      <div class="gallery-card"><img src="Mem(6).jpg"></div>
+      <div class="gallery-card"><img src="Mem(7).jpg"></div>
+      <div class="gallery-card"><img src="Mem(8).jpg"></div>
+		<div class="gallery-card"><img src="Mem(9).jpg"></div>
+		<div class="gallery-card"><img src="Mem(10).jpg"></div>
+		<div class="gallery-card"><img src="Mem(11).jpg"></div>
+
     </div>
 
-    <div class="page">
-      <img src="Mem(2).jpg">
-    </div>
+    <!-- controls -->
+    <button class="g-btn prev">‹</button>
+    <button class="g-btn next">›</button>
 
-    <div class="page">
-      <img src="Mem(3).jpg">
-    </div>
-
-    <div class="page">
-      <img src="Mem(4).jpg">
-    </div>
-
-    <div class="page">
-      <img src="Mem(5).jpg">
-    </div>
-
-    <div class="page">
-      <img src="Mem(6).jpg">
-    </div>
-
-    <div class="page">
-      <img src="Mem(7).jpg">
-    </div>
-
-    <div class="page">
-      <img src="Mem(8).jpg">
-    </div>
-
-    <div class="page">
-      <img src="Mem(9).jpg">
-    </div>
-
-    <div class="page">
-      <img src="Mem(10).jpg">
-    </div>
-
-    <div class="page">
-      <img src="Mem(11).jpg">
-    </div>
-
-  </div>
-
-  <div class="controls">
-    <button onclick="prevPage()">⬅</button>
-    <button onclick="nextPage()">➡</button>
   </div>
 </section>
 
@@ -1451,7 +1492,46 @@ document.getElementById("book").addEventListener("touchend",e=>{
   }
 });
 </script>
-  
+
+
+	<script>
+const track = document.getElementById("galleryTrack");
+const cards = document.querySelectorAll(".gallery-card");
+
+let gIndex = 0;
+
+function updateGallery(){
+  const width = cards[0].offsetWidth + 20;
+  track.style.transform = `translateX(-${gIndex * width}px)`;
+
+  cards.forEach(c=>c.classList.remove("active"));
+  if(cards[gIndex]) cards[gIndex].classList.add("active");
+}
+
+document.querySelector(".next").onclick = ()=>{
+  if(gIndex < cards.length - 1){
+    gIndex++;
+    updateGallery();
+  }
+};
+
+document.querySelector(".prev").onclick = ()=>{
+  if(gIndex > 0){
+    gIndex--;
+    updateGallery();
+  }
+};
+
+/* AUTO SLIDE */
+setInterval(()=>{
+  gIndex = (gIndex + 1) % cards.length;
+  updateGallery();
+}, 3000);
+
+updateGallery();
+</script>
+
+	
 <script>
 function showAlert(){
   alert("Call or Whatsapp Now: 8953012298 0r 9565959697");
