@@ -425,13 +425,19 @@ background:#000;
 /* BADGE */
 .badge{
   position:absolute;
-  top:12px;
-  left:12px;
-  background:#ff5722;
+  top:10px;
+  left:50%;
+  transform:translateX(-50%);
+  
+  background:linear-gradient(45deg,#ff5722,#ff9800);
   color:#fff;
-  padding:6px 12px;
-  border-radius:12px;
-  font-size:13px;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:1px;
+
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
 /* TEXT BIGGER */
@@ -1135,8 +1141,9 @@ iframe{height:450px}
     <!-- STUDENT 1 -->
     <div class="result-card">
       <div class="img-box">
+		  <span class="badge">TOPPER</span>
         <img src="t1.jpeg">
-        <span class="badge">TOPPER</span>
+        
       </div>
       <h3>Adarsh Dwivedi</h3>
       <p class="percent">80% UP Board</p>
