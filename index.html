@@ -56,19 +56,32 @@ header{
 }
 
 	.lead-box{
-  text-align:center;
+  display:flex;
+  gap:30px;
+  justify-content:center;
+  flex-wrap:wrap;
   padding:60px 20px;
 }
 
 .lead-form{
-  max-width:400px;
-  margin:auto;
+  flex:1;
+  min-width:300px;
+  max-width:420px;
+
   background:#fff;
   padding:25px;
   border-radius:20px;
   box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+  text-align:center;
+  transition:0.3s;
 }
 
+.lead-form:hover{
+  transform:translateY(-8px);
+}
+
+/* inputs */
 .lead-form input,
 .lead-form select{
   width:100%;
@@ -78,6 +91,7 @@ header{
   border:1px solid #ddd;
 }
 
+/* buttons */
 .lead-form button{
   width:100%;
   background:#25D366;
@@ -93,7 +107,6 @@ header{
 .lead-form button:hover{
   transform:scale(1.05);
 }
-
 	.testimonials{
   text-align:center;
   padding:70px 20px;
@@ -1214,8 +1227,6 @@ iframe{height:450px}
   align-items:center;
   text-align:center;
   padding:100px 20px;
-  
-  background: linear-gradient(135deg,#fff5f5,#ffe0e0);
 }
 
 .hero-box{
@@ -1425,43 +1436,60 @@ iframe{height:450px}
 
 	<section class="lead-box container">
 
-  <h2>🎯 Check Fees & Get Free Demo</h2>
-  <p>Enter details & get instant reply on WhatsApp</p>
-
+  <!-- TEACHER 1 -->
   <div class="lead-form">
+    <h2>👨‍🏫 Pritha Srivastava Ma'am</h2>
+    <p>Commerce / Primary Classes</p>
 
-    <input type="text" id="name" placeholder="Student Name" required>
+    <input type="text" id="name1" placeholder="Student Name" required>
     
-    <select id="class">
+    <select id="class1">
       <option>Select Class</option>
       <option>Nursery / PlayWay</option>
-		<option>LKG</option>
-		<option>UKG</option>
-		<option>Class 1</option>
-		<option>Class 2</option>
+      <option>LKG</option>
+      <option>UKG</option>
+      <option>Class 1</option>
+      <option>Class 2</option>
       <option>Class 3</option>
-		<option>Class 4</option>
-		<option>Class 5</option>
-      <option>Class 6</option>
-		<option>Class 7</option>
-		<option>Class 8</option>
-      <option>Class 9</option>
-		<option>Class 10</option>
-      <option>Class 11 PCM</option>
-		<option>Class 11 PCB</option>
-		<option>Class 11 Commerce</option>
-		<option>Class 12 PCM</option>
-		<option>Class 12 PCB</option>
-		<option>Class 12 Commerce</option>
-		<option>B.Com.</option>
-		<option>Computer</option>
-		<option>Spoken English</option>
+      <option>Class 4</option>
+      <option>Class 5</option>
+      <option>Class 9 Commerce</option>
+      <option>Class 10 Commerce</option>
+      <option>Class 11 Commerce</option>
+      <option>Class 12 Commerce</option>
+      <option>B.Com.</option>
+      <option>Spoken English</option>
     </select>
 
-    <input type="number" id="phone" placeholder="Parent Mobile" required>
+    <input type="number" id="phone1" placeholder="Parent Mobile" required>
 
-    <button onclick="sendToWhatsApp()">📲 Get Details on WhatsApp</button>
+    <button onclick="sendToWhatsApp(1)">📲 Contact Ma'am</button>
+  </div>
 
+
+  <!-- TEACHER 2 -->
+  <div class="lead-form">
+    <h2>👨‍🏫 Alekh Srivastava Sir</h2>
+    <p>Science / Senior Classes</p>
+
+    <input type="text" id="name2" placeholder="Student Name" required>
+    
+    <select id="class2">
+      <option>Select Class</option>
+      <option>Class 8</option>
+      <option>Class 9</option>
+      <option>Class 10</option>
+      <option>Class 11 PCM</option>
+      <option>Class 11 PCB</option>
+      <option>Class 12 PCM</option>
+      <option>Class 12 PCB</option>
+      <option>Computer</option>
+      <option>Spoken English</option>
+    </select>
+
+    <input type="number" id="phone2" placeholder="Parent Mobile" required>
+
+    <button onclick="sendToWhatsApp(2)">📲 Contact Sir</button>
   </div>
 
 </section>
@@ -1953,13 +1981,13 @@ function showAlert(){
   alert("Call or Whatsapp Now: 8953012298 0r 9565959697");
 }
 </script>
-	
-	<script>
-function sendToWhatsApp(){
 
-  let name = document.getElementById("name").value;
-  let studentClass = document.getElementById("class").value;
-  let phone = document.getElementById("phone").value;
+	<script>
+function sendToWhatsApp(teacher){
+
+  let name = document.getElementById("name"+teacher).value;
+  let studentClass = document.getElementById("class"+teacher).value;
+  let phone = document.getElementById("phone"+teacher).value;
 
   if(name === "" || studentClass === "Select Class" || phone === ""){
     alert("Please fill all details");
@@ -1967,17 +1995,25 @@ function sendToWhatsApp(){
   }
 
   let message = `Hello, I want admission.
-  
+
 👦 Student Name: ${name}
 📚 Class: ${studentClass}
-📞 Mobile: ${phone}
+📞 Mobile: ${phone}`;
 
-Please send details.`;
+  let number = "";
 
-  let url = "https://wa.me/918953012298?text=" + encodeURIComponent(message);
+  if(teacher === 1){
+    number = "918953012298";
+  } else {
+    number = "919565959697";
+  }
+
+  let url = "https://wa.me/" + number + "?text=" + encodeURIComponent(message);
 
   window.open(url, "_blank");
 }
 </script>
+
+	
 </body>
 </html>
