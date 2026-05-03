@@ -55,6 +55,44 @@ header{
   transition:0.6s ease;
 }
 
+	.lead-box{
+  text-align:center;
+  padding:60px 20px;
+}
+
+.lead-form{
+  max-width:400px;
+  margin:auto;
+  background:#fff;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.lead-form input,
+.lead-form select{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:10px;
+  border:1px solid #ddd;
+}
+
+.lead-form button{
+  width:100%;
+  background:#25D366;
+  color:#fff;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.lead-form button:hover{
+  transform:scale(1.05);
+}
 
 	.testimonials{
   text-align:center;
@@ -1329,16 +1367,6 @@ iframe{height:450px}
     <div><h3>500+</h3><p>Students Taught</p></div>
   </div>
 		
-		<section class="progress container">
-		<h2>📈 Student Growth</h2>
-		
-		<div class="progress-box">
-		  <p>Before: 42%</p>
-		  <p>After: 80%</p>
-		</div>
-		
-		</section>
-		
   <!-- CTA -->
   <div class="result-cta">
     <h3>🎯 Your Child Can Be Next Topper</h3>
@@ -1394,6 +1422,50 @@ iframe{height:450px}
 </div>
 </section>
 
+
+	<section class="lead-box container">
+
+  <h2>🎯 Check Fees & Get Free Demo</h2>
+  <p>Enter details & get instant reply on WhatsApp</p>
+
+  <div class="lead-form">
+
+    <input type="text" id="name" placeholder="Student Name" required>
+    
+    <select id="class">
+      <option>Select Class</option>
+      <option>Nursery / PlayWay</option>
+		<option>LKG</option>
+		<option>UKG</option>
+		<option>Class 1</option>
+		<option>Class 2</option>
+      <option>Class 3</option>
+		<option>Class 4</option>
+		<option>Class 5</option>
+      <option>Class 6</option>
+		<option>Class 7</option>
+		<option>Class 8</option>
+      <option>Class 9</option>
+		<option>Class 10</option>
+      <option>Class 11 PCM</option>
+		<option>Class 11 PCB</option>
+		<option>Class 11 Commerce</option>
+		<option>Class 12 PCM</option>
+		<option>Class 12 PCB</option>
+		<option>Class 12 Commerce</option>
+		<option>B.Com.</option>
+		<option>Computer</option>
+		<option>Spoken English</option>
+    </select>
+
+    <input type="number" id="phone" placeholder="Parent Mobile" required>
+
+    <button onclick="sendToWhatsApp()">📲 Get Details on WhatsApp</button>
+
+  </div>
+
+</section>
+	
 	
 <section class="gallery container">
 <h2>Our Toppers</h2>
@@ -1879,6 +1951,32 @@ updateGallery();
 <script>
 function showAlert(){
   alert("Call or Whatsapp Now: 8953012298 0r 9565959697");
+}
+</script>
+	
+	<script>
+function sendToWhatsApp(){
+
+  let name = document.getElementById("name").value;
+  let studentClass = document.getElementById("class").value;
+  let phone = document.getElementById("phone").value;
+
+  if(name === "" || studentClass === "Select Class" || phone === ""){
+    alert("Please fill all details");
+    return;
+  }
+
+  let message = `Hello, I want admission.
+  
+👦 Student Name: ${name}
+📚 Class: ${studentClass}
+📞 Mobile: ${phone}
+
+Please send details.`;
+
+  let url = "https://wa.me/918953012298?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
 }
 </script>
 </body>
