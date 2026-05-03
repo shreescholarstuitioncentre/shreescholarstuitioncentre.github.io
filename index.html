@@ -1381,7 +1381,7 @@ iframe{height:450px}
   <!-- CTA -->
   <div class="result-cta">
     <h3>🎯 Your Child Can Be Next Topper</h3>
-    <a href="https://wa.me/918953012298" target="_blank" class="btn-result">
+    <a href="#leadbox" class="btn-result">
       📞 Enroll Now on WhatsApp
     </a>
   </div>
@@ -1402,7 +1402,7 @@ iframe{height:450px}
 
     <!-- BUTTONS -->
     <div class="hero-buttons">
-      <a href="https://wa.me/918953012298?text=I want free demo" class="btn primary">
+      <a href="#leadbox" class="btn primary">
         📞 Book Free Demo
       </a>
 
@@ -1434,10 +1434,10 @@ iframe{height:450px}
 </section>
 
 
-	<section class="lead-box container">
+	<section class="lead-box container" id="leadbox">
 
   <!-- TEACHER 1 -->
-  <div class="lead-form">
+  <div class="lead-form" id="#leadbox1">
     <h2>👨‍🏫 Pritha Srivastava Ma'am</h2>
     <p>Commerce / Primary Classes</p>
 
@@ -1468,7 +1468,7 @@ iframe{height:450px}
 
 
   <!-- TEACHER 2 -->
-  <div class="lead-form">
+  <div class="lead-form" id="#leadbox2">
     <h2>👨‍🏫 Alekh Srivastava Sir</h2>
     <p>Science / Senior Classes</p>
 
@@ -1637,7 +1637,7 @@ iframe{height:450px}
     <p class="desc">All Subjects</p>
     <p class="price">₹500 <span>/month</span></p>
     <p class="old">₹1000</p>
-    <a href="https://wa.me/919565959697?text=Hello%20I%20want%20to%20join%20tuition%20Class%20Nursery%20to%20class%202nd%20Batch" target="_blank" class="btn highlight">Join Now</a>
+    <a href="id="#leadbox1" class="btn highlight">Join Now</a>
 
     <ul>
       <li>✔ Basic Foundation</li>
@@ -1651,7 +1651,7 @@ iframe{height:450px}
     <p class="desc">All Subjects</p>
     <p class="price">₹1000 <span>/month</span></p>
     <p class="old">₹2000</p>
-    <a href="https://wa.me/919565959697?text=Hello%20I%20want%20to%20join%20tuition%20Class%203rd%20to%20-%20class%205th%20Batch" target="_blank" class="btn highlight">Join Now</a>
+    <a href="id="#leadbox1" class="btn highlight">Join Now</a>
 
     <ul>
       <li>✔ Strong Concept Building</li>
@@ -1665,7 +1665,7 @@ iframe{height:450px}
     <p class="desc">All Subjects</p>
     <p class="price">₹1100 <span>/month</span></p>
     <p class="old">₹2200</p>
-    <a href="https://wa.me/918953012298?text=Hello%20I%20want%20to%20join%20tuition%20Class%206th%20to%20-%20class%208th%20Batch" target="_blank" class="btn highlight">Join Now</a>
+    <a href="id="#leadbox2" class="btn highlight">Join Now</a>
 
     <ul>
       <li>✔ Concept + Practice</li>
@@ -1679,7 +1679,7 @@ iframe{height:450px}
     <p class="desc">All Subjects</p>
     <p class="price">₹1500 <span>/month</span></p>
     <p class="old">₹3000</p>
-    <a href="https://wa.me/918953012298?text=Hello%20I%20want%20to%20join%20tuition%20Class%209th%20to%20-%20class%2010th%20Batch" target="_blank" class="btn highlight">Join Now</a>
+    <a href="id="#leadbox2" class="btn highlight">Join Now</a>
 
     <ul>
       <li>✔ Board Preparation</li>
@@ -1693,7 +1693,7 @@ iframe{height:450px}
     <p class="desc">PCM / PCB / Commerce</p>
     <p class="price">₹1800 <span>/month</span></p>
     <p class="old">₹3600</p>
-    <a href="https://wa.me/918953012298?text=Hello%20I%20want%20to%20join%20tuition%20Class%2011th%20to%20-%20class%2012th%20Batch" target="_blank" class="btn highlight">Join Now</a>
+    <a href="id="#leadbox2" class="btn highlight">Join Now</a>
 
     <ul>
       <li>✔ Stream-wise Coaching</li>
@@ -1731,7 +1731,7 @@ iframe{height:450px}
         <li>✔ Beginner Friendly</li>
       </ul>
 
-      <a href="https://wa.me/918953012298?text=Hello%20I%20want%20to%20join%20Basic%20Skills" class="btn-saas highlight">Enroll Now</a>
+      <a href="id="#leadbox2" class="btn-saas highlight">Enroll Now</a>
     </div>
 
     <!-- CARD 2 -->
@@ -1754,7 +1754,7 @@ iframe{height:450px}
         <li>✔ Programming — ₹9999</li>
       </ul>
 
-      <a href="https://wa.me/918953012298?text=Hello%20I%20want%20to%20join%20Programming%20Or%20AI" class="btn-saas highlight">Enroll Now</a>
+      <a href="id="#leadbox2" class="btn-saas highlight">Enroll Now</a>
     </div>
 
   </div>
@@ -2003,9 +2003,9 @@ function sendToWhatsApp(teacher){
   let number = "";
 
   if(teacher === 1){
-    number = "918953012298";
-  } else {
     number = "919565959697";
+  } else {
+    number = "918953012298";
   }
 
   let url = "https://wa.me/" + number + "?text=" + encodeURIComponent(message);
