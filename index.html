@@ -1168,44 +1168,73 @@ iframe{height:450px}
   position:relative;
   z-index:1;
 }
-	.hero{
-  padding:120px 20px 80px;
+
+
+	.hero-pro{
+  display:flex;
+  justify-content:center;
+  align-items:center;
   text-align:center;
-  background:linear-gradient(135deg,#d32f2f,#ff5722);
-  color:#fff;
+  padding:100px 20px;
+  
+  background: linear-gradient(135deg,#fff5f5,#ffe0e0);
 }
 
-.hero h1{
+.hero-box{
+  max-width:700px;
+  background:rgba(255,255,255,0.9);
+  backdrop-filter: blur(10px);
+  padding:40px;
+  border-radius:25px;
+  box-shadow:0 15px 40px rgba(0,0,0,.2);
+  animation:fadeInUp 1s ease;
+}
+
+/* TITLE */
+.hero-box h1{
   font-size:36px;
-}
-
-.hero-buttons{
-  margin:20px 0;
-}
-
-.urgent{
-  margin-top:10px;
-  font-weight:bold;
-  background:#fff;
   color:#d32f2f;
-  display:inline-block;
-  padding:5px 12px;
-  border-radius:20px;
 }
 
-
-	.demo-offer{
-  text-align:center;
-  padding:60px 20px;
+/* TAGLINE */
+.tagline{
+  font-size:18px;
+  color:#555;
+  margin-bottom:20px;
 }
 
-.offer-box{
-  background:#fff3e0;
+/* OFFER BOX */
+.offer-highlight{
+  background:linear-gradient(45deg,#ff5722,#ff9800);
+  color:#fff;
   padding:20px;
   border-radius:15px;
-  margin:20px auto;
-  max-width:400px;
-  box-shadow:0 5px 20px rgba(0,0,0,.1);
+  margin:20px 0;
+  box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+/* BUTTONS */
+.hero-buttons{
+  margin-top:20px;
+}
+
+.hero-buttons .btn{
+  margin:8px;
+}
+
+/* URGENCY */
+.urgent{
+  margin-top:15px;
+  color:#d32f2f;
+  font-weight:bold;
+  animation:blink 1s infinite;
+}
+
+/* BLINK EFFECT */
+@keyframes blink{
+  0%{opacity:1}
+  50%{opacity:0.4}
+  100%{opacity:1}
 }
 
 	
@@ -1229,19 +1258,6 @@ iframe{height:450px}
 
 </header>
 	
-  <section class="hero">
-  <div class="hero-content">
-    <h1>🎯 Best Tuition in Gorakhpur</h1>
-    <p>From Weak to Topper — Proven Results</p>
-
-    <div class="hero-buttons">
-      <a href="https://wa.me/918953012298?text=I want free demo" class="btn primary">📞 Book Free Demo</a>
-      <a href="#pricing" class="btn outline">View Fees</a>
-    </div>
-
-    <p class="urgent">⚠️ Limited Seats — Only 10 Left</p>
-  </div>
-</section>
 	
 <section class="features container">
 <div class="card"><h3>Expert Teachers</h3><p>Highly experienced faculty</p></div>
@@ -1333,22 +1349,34 @@ iframe{height:450px}
 
 </section>
 
-	
+	<section class="hero-pro" id="home">
+  <div class="hero-box">
 
-	<section class="demo-offer container">
-  <h2>🎁 Free Demo Class Available</h2>
-  <p>Try before you enroll — No Risk</p>
+    <h1>🎯 Best Tuition in Gorakhpur</h1>
+    <p class="tagline">From Weak to Topper — Proven Results</p>
 
-  <div class="offer-box">
-    <h3>🔥 50% Scholarship</h3>
-    <p>Only for first 20 students</p>
+    <!-- OFFER BOX -->
+    <div class="offer-highlight">
+      <h3>🎁 Free Demo Class Available</h3>
+      <p>🔥 50% Scholarship for First 20 Students</p>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="hero-buttons">
+      <a href="https://wa.me/918953012298?text=I want free demo" class="btn primary">
+        📞 Book Free Demo
+      </a>
+
+      <a href="#pricing" class="btn outline">
+        💰 View Fees
+      </a>
+    </div>
+
+    <!-- URGENCY -->
+    <p class="urgent">⚠️ Limited Seats — Only 10 Left</p>
+
   </div>
-
-  <a href="https://wa.me/918953012298?text=I want free demo" class="btn-result">
-    Book Free Demo Now
-  </a>
 </section>
-	
 
 	
 <section class="courses container">
@@ -1497,7 +1525,7 @@ iframe{height:450px}
 
 	
 
-  <section class="pricing-table container">
+  <section class="pricing-table container" id="pricing">
 
 <h2>💎 Fees Structure</h2>
 <p class="subtitle">Quality Education with 50% Scholarship</p>
