@@ -55,19 +55,73 @@ header{
   transition:0.6s ease;
 }
 
+
 	.testimonials{
   text-align:center;
-  padding:60px 20px;
+  padding:70px 20px;
 }
 
+/* GRID */
+.review-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+  margin-top:30px;
+}
+
+/* CARD */
 .review{
   background:#fff;
-  padding:20px;
-  margin:15px auto;
-  max-width:500px;
-  border-radius:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,.1);
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+  transition:0.3s;
 }
+
+.review:hover{
+  transform:translateY(-10px);
+}
+
+/* IMAGE */
+.review img{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:10px;
+}
+
+/* NAME */
+.review h4{
+  margin:5px 0;
+}
+
+/* STARS */
+.stars{
+  color:#ff9800;
+  font-size:16px;
+}
+
+/* TEXT */
+.review p{
+  font-size:14px;
+  color:#555;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .review-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:500px){
+  .review-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+	
 .progress-box{
   background:#e8f5e9;
   padding:20px;
@@ -77,19 +131,6 @@ header{
   font-weight:bold;
 }
 	
-/* CARD */
-/* .gallery-card{
-  min-width:300px;
-  margin:0 10px;
-  border-radius:20px;
-  overflow:hidden;
-
-  background:#fff;
-  box-shadow:0 15px 40px rgba(0,0,0,0.2);
-
-  transform:scale(0.9);
-  transition:0.4s;
-} */
 
 	.gallery-card{
   min-width:300px;
@@ -1276,8 +1317,8 @@ iframe{height:450px}
 		<h2>📈 Student Growth</h2>
 		
 		<div class="progress-box">
-		  <p>Before: 52%</p>
-		  <p>After: 85%</p>
+		  <p>Before: 42%</p>
+		  <p>After: 80%</p>
 		</div>
 		
 		</section>
@@ -1363,15 +1404,6 @@ iframe{height:450px}
 </div>
 </section>
 	
-<section class="progress container">
-<h2>📈 Student Growth</h2>
-
-<div class="progress-box">
-  <p>Before: 52%</p>
-  <p>After: 85%</p>
-</div>
-
-</section>
 
   <section class="premium-gallery container">
   <h2>📸 Memories in Style</h2>
@@ -1436,14 +1468,29 @@ iframe{height:450px}
 	<section class="testimonials container">
 <h2>💬 What Parents Say</h2>
 
-<div class="review">
-  ⭐⭐⭐⭐⭐
-  <p>"My child improved from 50% to 85%"</p>
-</div>
+<div class="review-grid">
 
-<div class="review">
-  ⭐⭐⭐⭐⭐
-  <p>"Best tuition in Gorakhpur — Highly recommended"</p>
+  <div class="review">
+    <img src="parent1.jpg" alt="">
+    <h4>Rakesh Sharma</h4>
+    <p class="stars">⭐⭐⭐⭐⭐</p>
+    <p>"My child improved from 50% to 85% in just 3 months. Best decision!"</p>
+  </div>
+
+  <div class="review">
+    <img src="parent2.jpg" alt="">
+    <h4>Sunita Verma</h4>
+    <p class="stars">⭐⭐⭐⭐⭐</p>
+    <p>"Very supportive teachers and regular tests helped a lot."</p>
+  </div>
+
+  <div class="review">
+    <img src="parent3.jpg" alt="">
+    <h4>Amit Singh</h4>
+    <p class="stars">⭐⭐⭐⭐⭐</p>
+    <p>"Best tuition in Gorakhpur. Highly recommended for board classes."</p>
+  </div>
+
 </div>
 
 </section>
