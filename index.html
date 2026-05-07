@@ -41,6 +41,148 @@ header{
   color:#d32f2f;
 }
 
+	/* ========================= */
+/* 📚 STUDY HUB */
+/* ========================= */
+
+.study-hub{
+  padding:80px 20px;
+  text-align:center;
+}
+
+.study-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+  margin-top:40px;
+}
+
+.study-card{
+  background:#fff;
+  padding:30px 25px;
+  border-radius:25px;
+
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+  transition:.4s;
+  position:relative;
+  overflow:hidden;
+}
+
+.study-card:hover{
+  transform:translateY(-10px) scale(1.02);
+
+  box-shadow:0 20px 40px rgba(0,0,0,.18);
+}
+
+.study-icon{
+  font-size:50px;
+  margin-bottom:15px;
+}
+
+.study-card h3{
+  color:#d32f2f;
+  margin-bottom:10px;
+}
+
+.study-card p{
+  color:#555;
+  font-size:15px;
+}
+
+.study-card ul{
+  list-style:none;
+  padding:0;
+  margin:20px 0;
+}
+
+.study-card ul li{
+  padding:7px 0;
+  border-bottom:1px solid #eee;
+  font-size:14px;
+}
+
+.study-btn{
+  display:inline-block;
+
+  background:linear-gradient(45deg,#d32f2f,#ff9800);
+
+  color:#fff;
+  text-decoration:none;
+
+  padding:12px 22px;
+  border-radius:30px;
+
+  margin-top:10px;
+
+  transition:.3s;
+}
+
+.study-btn:hover{
+  transform:scale(1.08);
+}
+
+.study-btn.premium{
+  background:linear-gradient(45deg,#6c2bd9,#9c4dff);
+}
+
+/* ========================= */
+/* 🧠 QUIZ SECTION */
+/* ========================= */
+
+.quiz-section{
+  padding:80px 20px;
+  text-align:center;
+}
+
+.quiz-box{
+  max-width:700px;
+  margin:40px auto;
+
+  background:#fff;
+  padding:40px;
+
+  border-radius:25px;
+
+  box-shadow:0 10px 35px rgba(0,0,0,.15);
+}
+
+.quiz-box h2{
+  margin-bottom:30px;
+  color:#222;
+}
+
+.quiz-options{
+  display:grid;
+  gap:15px;
+}
+
+.quiz-options button{
+  padding:15px;
+
+  border:none;
+  border-radius:15px;
+
+  background:#f5f5f5;
+
+  cursor:pointer;
+  transition:.3s;
+
+  font-size:16px;
+}
+
+.quiz-options button:hover{
+  background:#d32f2f;
+  color:#fff;
+  transform:scale(1.03);
+}
+
+#quizResult{
+  margin-top:25px;
+  font-size:22px;
+  font-weight:bold;
+}
+
 /* WRAPPER */
 .gallery-wrapper{
   position:relative;
@@ -1660,6 +1802,156 @@ iframe{height:450px}
   </div>
 </section>
 
+	<!-- ========================= -->
+<!-- 📚 STUDY HUB SECTION -->
+<!-- ========================= -->
+
+<section class="study-hub container" id="studyhub">
+
+  <!-- HEADING -->
+  <div class="card">
+    <h3>📚 Study Material & Test Hub</h3>
+    <p>Notes • PDFs • MCQ Tests • Quiz • Affiliate Resources</p>
+  </div>
+
+  <div class="study-grid">
+
+    <!-- NOTES -->
+    <div class="study-card">
+      <div class="study-icon">📘</div>
+
+      <h3>Class Notes</h3>
+
+      <p>
+        Chapter-wise notes for Class 6 to 12 
+        (Hindi + English Medium)
+      </p>
+
+      <ul>
+        <li>✔ Science Notes</li>
+        <li>✔ Maths Notes</li>
+        <li>✔ Commerce Notes</li>
+        <li>✔ Spoken English</li>
+      </ul>
+
+      <a href="#" class="study-btn">
+        Download Notes
+      </a>
+    </div>
+
+    <!-- PDF -->
+    <div class="study-card">
+      <div class="study-icon">📄</div>
+
+      <h3>PDF Material</h3>
+
+      <p>
+        Sample Papers, Previous Year Questions 
+        & Important PDFs
+      </p>
+
+      <ul>
+        <li>✔ Board Papers</li>
+        <li>✔ Guess Papers</li>
+        <li>✔ Important Questions</li>
+        <li>✔ Revision PDFs</li>
+      </ul>
+
+      <a href="#" class="study-btn">
+        Open PDFs
+      </a>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="study-card">
+      <div class="study-icon">🧠</div>
+
+      <h3>MCQ Quiz Test</h3>
+
+      <p>
+        Daily online tests with score 
+        and instant result
+      </p>
+
+      <ul>
+        <li>✔ Daily Quiz</li>
+        <li>✔ Mock Test</li>
+        <li>✔ Instant Score</li>
+        <li>✔ Rank System</li>
+      </ul>
+
+      <a href="#quizbox" class="study-btn">
+        Start Quiz
+      </a>
+    </div>
+
+    <!-- AFFILIATE -->
+    <div class="study-card">
+      <div class="study-icon">💰</div>
+
+      <h3>Study Resources</h3>
+
+      <p>
+        Recommended books, laptops, 
+        study lamps & learning tools
+      </p>
+
+      <ul>
+        <li>✔ Best Books</li>
+        <li>✔ Online Courses</li>
+        <li>✔ Study Gadgets</li>
+        <li>✔ Smart Learning</li>
+      </ul>
+
+      <a href="#" class="study-btn premium">
+        Explore Resources
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========================= -->
+<!-- 🧠 QUIZ SECTION -->
+<!-- ========================= -->
+
+<section class="quiz-section container" id="quizbox">
+
+  <div class="card">
+    <h3>🧠 Daily MCQ Test</h3>
+    <p>Test Your Knowledge & Improve Daily</p>
+  </div>
+
+  <div class="quiz-box">
+
+    <h2>
+      Q. What is the value of π (Pi)?
+    </h2>
+
+    <div class="quiz-options">
+
+      <button onclick="checkAnswer(this,false)">
+        2.14
+      </button>
+
+      <button onclick="checkAnswer(this,true)">
+        3.14
+      </button>
+
+      <button onclick="checkAnswer(this,false)">
+        4.13
+      </button>
+
+      <button onclick="checkAnswer(this,false)">
+        5.14
+      </button>
+
+    </div>
+
+    <p id="quizResult"></p>
+
+  </div>
+</section>
 
   
 <section class="contact-section container">
@@ -2080,6 +2372,26 @@ function showAlert(){
 }
 </script>
 
+<script>
+function checkAnswer(btn,correct){
+
+  let result = document.getElementById("quizResult");
+
+  if(correct){
+    result.innerHTML = "✅ Correct Answer!";
+    result.style.color = "green";
+    btn.style.background = "#25D366";
+    btn.style.color = "#fff";
+  }else{
+    result.innerHTML = "❌ Wrong Answer!";
+    result.style.color = "red";
+    btn.style.background = "#ff5252";
+    btn.style.color = "#fff";
+  }
+
+}
+</script>
+	
 	<script>
 function sendToWhatsApp(teacher){
 
