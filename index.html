@@ -29,6 +29,127 @@ header{
   box-shadow: 0 3px 15px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
 }
+	/* ========================= */
+/* AI TEST SECTION */
+/* ========================= */
+
+.ai-test-section{
+  padding:70px 20px;
+}
+
+.heading-box{
+  margin-bottom:30px;
+}
+
+/* FORM */
+.test-form-box{
+  max-width:700px;
+  margin:auto;
+  background:#fff;
+  padding:30px;
+  border-radius:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.test-form-box select,
+.test-form-box input{
+  width:100%;
+  padding:14px;
+  margin:12px 0;
+  border-radius:12px;
+  border:1px solid #ddd;
+  font-size:16px;
+}
+
+/* CAPTCHA */
+.captcha-box{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#f5f5f5;
+  padding:12px 20px;
+  border-radius:12px;
+  margin-top:10px;
+}
+
+#captchaText{
+  font-size:24px;
+  font-weight:bold;
+  letter-spacing:4px;
+  color:#d32f2f;
+}
+
+.captcha-box button{
+  background:#d32f2f;
+  color:#fff;
+  border:none;
+  padding:8px 15px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* BUTTON */
+.start-btn,
+.submit-btn{
+  width:100%;
+  background:linear-gradient(45deg,#d32f2f,#ff5722);
+  color:#fff;
+  padding:15px;
+  border:none;
+  border-radius:15px;
+  font-size:18px;
+  cursor:pointer;
+  margin-top:20px;
+}
+
+/* QUIZ */
+.quiz-page{
+  padding:70px 20px;
+}
+
+.quiz-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:30px;
+}
+
+#timer{
+  background:#d32f2f;
+  color:#fff;
+  padding:10px 20px;
+  border-radius:15px;
+  font-size:20px;
+  font-weight:bold;
+}
+
+/* QUESTION */
+.question-box{
+  background:#fff;
+  padding:25px;
+  margin-bottom:20px;
+  border-radius:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.question-box h3{
+  margin-bottom:15px;
+}
+
+.option{
+  display:block;
+  background:#f5f5f5;
+  padding:12px;
+  border-radius:10px;
+  margin:8px 0;
+  cursor:pointer;
+}
+
+/* RESULT */
+.result-page{
+  padding:70px 20px;
+  text-align:center;
+}
 
 .premium-gallery{
   text-align:center;
@@ -136,112 +257,6 @@ header{
   border:1px solid #ddd;
 }
 
-	/* AI QUIZ */
-.ai-quiz{
-  padding:80px 20px;
-  text-align:center;
-}
-
-/* CONTROLS */
-.quiz-controls{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
-  margin-top:30px;
-}
-
-.quiz-controls select,
-.quiz-controls input{
-  padding:14px;
-  border-radius:12px;
-  border:1px solid #ddd;
-  font-size:15px;
-}
-
-.quiz-controls button{
-  background:linear-gradient(45deg,#6c2bd9,#d32f2f);
-  color:#fff;
-  border:none;
-  border-radius:12px;
-  padding:14px;
-  font-weight:bold;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.quiz-controls button:hover{
-  transform:scale(1.05);
-}
-
-/* QUIZ BOX */
-#quizBox{
-  margin-top:40px;
-  text-align:left;
-}
-
-/* QUESTION CARD */
-.question-card{
-  background:#fff;
-  padding:20px;
-  border-radius:20px;
-  margin-bottom:20px;
-  box-shadow:0 8px 20px rgba(0,0,0,.1);
-}
-
-/* QUESTION */
-.question-card h4{
-  margin-bottom:15px;
-  color:#d32f2f;
-}
-
-/* OPTIONS */
-.option{
-  display:block;
-  background:#f5f5f5;
-  padding:12px;
-  border-radius:10px;
-  margin:8px 0;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.option:hover{
-  background:#ececec;
-}
-
-/* SUBMIT */
-.submit-btn{
-  display:block;
-  margin:30px auto;
-  background:#25D366;
-  color:#fff;
-  border:none;
-  padding:15px 30px;
-  border-radius:30px;
-  font-size:18px;
-  cursor:pointer;
-}
-
-/* RESULT */
-.quiz-result{
-  margin-top:30px;
-  font-size:26px;
-  font-weight:bold;
-  color:#2e7d32;
-}
-
-/* LOADER */
-.quiz-loader{
-  display:none;
-  margin-top:20px;
-  font-size:20px;
-  color:#d32f2f;
-  animation:blink 1s infinite;
-}
-
-@keyframes blink{
-  50%{opacity:0.3;}
-}
 
 /* buttons */
 .lead-form button{
@@ -1768,19 +1783,30 @@ iframe{height:450px}
   </div>
 </section>
 
-<!-- AI QUIZ SECTION -->
-<section class="ai-quiz container">
+<!-- ========================= -->
+<!-- AI TEST PORTAL SECTION -->
+<!-- ========================= -->
 
-  <div class="card">
-    <h3>🧠 AI Smart Quiz Generator</h3>
-    <p>Select Class, Board, Subject & Chapter</p>
+<section class="ai-test-section container">
+
+  <div class="card heading-box">
+    <h2 class="outline-heading">🧠 AI Test Portal</h2>
+    <p>Select Details & Start Smart AI MCQ Test</p>
   </div>
 
-  <!-- CONTROLS -->
-  <div class="quiz-controls">
+  <div class="test-form-box">
 
-    <select id="quizClass">
-      <option value="">Select Class</option>
+    <!-- BOARD -->
+    <select id="board">
+      <option>Select Board</option>
+      <option>CBSE</option>
+      <option>ICSE</option>
+      <option>UP Board</option>
+    </select>
+
+    <!-- CLASS -->
+    <select id="class">
+      <option>Select Class</option>
       <option>Class 6</option>
       <option>Class 7</option>
       <option>Class 8</option>
@@ -1790,44 +1816,86 @@ iframe{height:450px}
       <option>Class 12</option>
     </select>
 
-    <select id="quizBoard">
-      <option value="">Select Board</option>
-      <option>CBSE</option>
-      <option>UP Board</option>
-      <option>ICSE</option>
-    </select>
-
-    <select id="quizSubject">
-      <option value="">Select Subject</option>
-      <option>Science</option>
+    <!-- SUBJECT -->
+    <select id="subject">
+      <option>Select Subject</option>
       <option>Maths</option>
+      <option>Science</option>
       <option>English</option>
       <option>Hindi</option>
-      <option>Commerce</option>
       <option>Computer</option>
     </select>
 
-    <input type="text" id="quizChapter" placeholder="Enter Chapter Name">
+    <!-- MEDIUM -->
+    <select id="medium">
+      <option>Select Medium</option>
+      <option>English Medium</option>
+      <option>Hindi Medium</option>
+    </select>
 
-    <button onclick="generateQuiz()">
-      🚀 Generate 30 Questions
+    <!-- CHAPTER -->
+    <input type="text" id="chapter" placeholder="Enter Chapter Name">
+
+    <!-- MOBILE -->
+    <input type="number" id="mobile" placeholder="Enter Mobile Number">
+
+    <!-- CAPTCHA -->
+    <div class="captcha-box">
+      <span id="captchaText"></span>
+      <button onclick="generateCaptcha()">↻</button>
+    </div>
+
+    <input type="text" id="captchaInput" placeholder="Enter Captcha">
+
+    <button class="start-btn" onclick="verifyAndStart()">
+      🚀 Start AI Test
     </button>
 
   </div>
 
-  <!-- LOADER -->
-  <div id="quizLoader" class="quiz-loader">
-    🤖 AI is generating questions...
+</section>
+
+<!-- ========================= -->
+<!-- TEST PAGE -->
+<!-- ========================= -->
+
+<section id="quizPage" class="quiz-page" style="display:none;">
+
+  <div class="quiz-header">
+    <h2>📝 AI Generated MCQ Test</h2>
+    <div id="timer">15:00</div>
   </div>
 
-  <!-- QUIZ OUTPUT -->
-  <div id="quizBox"></div>
+  <form id="quizForm">
 
-  <!-- RESULT -->
-  <div id="quizResult" class="quiz-result"></div>
+    <div id="questionsContainer"></div>
+
+    <button type="button" class="submit-btn" onclick="submitQuiz()">
+      ✅ Submit Test
+    </button>
+
+  </form>
 
 </section>
 
+<!-- ========================= -->
+<!-- RESULT PAGE -->
+<!-- ========================= -->
+
+<section id="resultPage" class="result-page" style="display:none;">
+
+  <div class="card">
+    <h2 class="outline-heading">🎉 Test Result</h2>
+
+    <h3 id="scoreText"></h3>
+
+    <div class="progress-box">
+      <p id="resultMessage"></p>
+    </div>
+
+  </div>
+
+</section>
   
 <section class="contact-section container">
 
@@ -2240,163 +2308,196 @@ setInterval(()=>{
 updateGallery();
 </script>
 
-	
 <script>
-function showAlert(){
-  alert("Call or Whatsapp Now: 8953012298 0r 9565959697");
+
+/* ========================= */
+/* CAPTCHA */
+/* ========================= */
+
+let captchaCode = "";
+
+function generateCaptcha(){
+
+  captchaCode = Math.random().toString(36).substring(2,8).toUpperCase();
+
+  document.getElementById("captchaText").innerText = captchaCode;
 }
+
+generateCaptcha();
+
+/* ========================= */
+/* VERIFY */
+/* ========================= */
+
+function verifyAndStart(){
+
+  let mobile = document.getElementById("mobile").value;
+  let captchaInput = document.getElementById("captchaInput").value;
+
+  if(mobile.length != 10){
+    alert("Enter Valid Mobile Number");
+    return;
+  }
+
+  if(captchaInput != captchaCode){
+    alert("Wrong Captcha");
+    generateCaptcha();
+    return;
+  }
+
+  document.querySelector(".ai-test-section").style.display = "none";
+
+  document.getElementById("quizPage").style.display = "block";
+
+  generateQuestions();
+
+  startTimer();
+}
+
+/* ========================= */
+/* AI QUESTIONS */
+/* ========================= */
+
+const questions = [];
+
+function generateQuestions(){
+
+  const mcqs = [
+    {
+      q:"What is CPU?",
+      o:["Brain of Computer","Mouse","Monitor","Keyboard"],
+      a:0
+    },
+    {
+      q:"2 + 2 = ?",
+      o:["3","4","5","6"],
+      a:1
+    },
+    {
+      q:"HTML stands for?",
+      o:["Hyper Text Markup Language","Home Tool Markup Language","Hyperlinks","None"],
+      a:0
+    },
+    {
+      q:"Largest planet?",
+      o:["Earth","Mars","Jupiter","Venus"],
+      a:2
+    },
+    {
+      q:"भारत की राजधानी?",
+      o:["दिल्ली","मुंबई","लखनऊ","पटना"],
+      a:0
+    }
+  ];
+
+  const container = document.getElementById("questionsContainer");
+
+  container.innerHTML = "";
+
+  questions.length = 0;
+
+  for(let i=1;i<=15;i++){
+
+    let random = mcqs[Math.floor(Math.random()*mcqs.length)];
+
+    questions.push(random);
+
+    let html = `
+      <div class="question-box">
+
+        <h3>Q${i}. ${random.q}</h3>
+
+        ${random.o.map((opt,index)=>`
+          <label class="option">
+            <input type="radio" 
+                   name="q${i}" 
+                   value="${index}">
+            ${opt}
+          </label>
+        `).join("")}
+
+      </div>
+    `;
+
+    container.innerHTML += html;
+  }
+}
+
+/* ========================= */
+/* TIMER */
+/* ========================= */
+
+let time = 900;
+let timerInterval;
+
+function startTimer(){
+
+  timerInterval = setInterval(()=>{
+
+    let minutes = Math.floor(time/60);
+    let seconds = time%60;
+
+    document.getElementById("timer").innerText =
+      `${minutes}:${seconds < 10 ? "0"+seconds : seconds}`;
+
+    time--;
+
+    if(time < 0){
+
+      clearInterval(timerInterval);
+
+      submitQuiz();
+    }
+
+  },1000);
+}
+
+/* ========================= */
+/* SUBMIT */
+/* ========================= */
+
+function submitQuiz(){
+
+  clearInterval(timerInterval);
+
+  let score = 0;
+
+  questions.forEach((q,index)=>{
+
+    let selected = document.querySelector(
+      `input[name="q${index+1}"]:checked`
+    );
+
+    if(selected && parseInt(selected.value) === q.a){
+      score++;
+    }
+
+  });
+
+  document.getElementById("quizPage").style.display = "none";
+
+  document.getElementById("resultPage").style.display = "block";
+
+  document.getElementById("scoreText").innerText =
+    `You Scored ${score} / 15`;
+
+  let msg = "";
+
+  if(score >= 12){
+    msg = "🔥 Excellent Performance";
+  }
+  else if(score >= 8){
+    msg = "👍 Good Job";
+  }
+  else{
+    msg = "📚 Need More Practice";
+  }
+
+  document.getElementById("resultMessage").innerText = msg;
+}
+
 </script>
 
-/* SAMPLE AI QUESTION BANK */
-const questionBank = [
-
-{
-q:"What is the SI unit of Force?",
-options:["Newton","Pascal","Joule","Watt"],
-answer:"Newton"
-},
-
-{
-q:"Who wrote Ramayana?",
-options:["Valmiki","Tulsidas","Premchand","Kalidas"],
-answer:"Valmiki"
-},
-
-{
-q:"2 + 2 × 5 = ?",
-options:["20","12","10","14"],
-answer:"12"
-},
-
-{
-q:"Which planet is known as Red Planet?",
-options:["Mars","Venus","Earth","Saturn"],
-answer:"Mars"
-},
-
-{
-q:"What is CPU?",
-options:[
-"Central Processing Unit",
-"Computer Personal Unit",
-"Central Power Unit",
-"Computer Processing User"
-],
-answer:"Central Processing Unit"
-}
-
-];
-
-/* GENERATE QUIZ */
-function generateQuiz(){
-
-const cls = document.getElementById("quizClass").value;
-const board = document.getElementById("quizBoard").value;
-const subject = document.getElementById("quizSubject").value;
-const chapter = document.getElementById("quizChapter").value;
-
-if(!cls || !board || !subject || !chapter){
-  alert("Please fill all fields");
-  return;
-}
-
-document.getElementById("quizLoader").style.display = "block";
-
-setTimeout(()=>{
-
-document.getElementById("quizLoader").style.display = "none";
-
-const quizBox = document.getElementById("quizBox");
-
-quizBox.innerHTML = `
-<h2>
-📘 ${cls} | ${board} | ${subject}
-</h2>
-
-<p>
-Chapter: <b>${chapter}</b>
-</p>
-`;
-
-let finalQuestions = [];
-
-/* CREATE 30 QUESTIONS */
-for(let i=1;i<=30;i++){
-
-let randomQ =
-questionBank[Math.floor(Math.random()*questionBank.length)];
-
-finalQuestions.push(randomQ);
-
-quizBox.innerHTML += `
-
-<div class="question-card">
-
-<h4>Q${i}. ${randomQ.q}</h4>
-
-${randomQ.options.map(opt=>`
-
-<label class="option">
-
-<input type="radio"
-name="q${i}"
-value="${opt}">
-
-${opt}
-
-</label>
-
-`).join("")}
-
-</div>
-
-`;
-
-}
-
-/* SUBMIT BUTTON */
-quizBox.innerHTML += `
-<button class="submit-btn"
-onclick='submitQuiz(${JSON.stringify(finalQuestions)})'>
-✅ Submit Quiz
-</button>
-`;
-
-},2000);
-
-}
-
-/* SUBMIT QUIZ */
-function submitQuiz(questions){
-
-let score = 0;
-
-questions.forEach((q,index)=>{
-
-let selected =
-document.querySelector(
-`input[name="q${index+1}"]:checked`
-);
-
-if(selected &&
-selected.value === q.answer){
-
-score++;
-
-}
-
-});
-
-document.getElementById("quizResult").innerHTML = `
-🏆 You Scored ${score} / 30
-`;
-
-window.scrollTo({
-top:document.body.scrollHeight,
-behavior:"smooth"
-});
-
-}
 	
 	<script>
 function sendToWhatsApp(teacher){
