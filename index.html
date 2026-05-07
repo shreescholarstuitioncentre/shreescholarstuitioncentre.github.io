@@ -41,147 +41,6 @@ header{
   color:#d32f2f;
 }
 
-	/* ========================= */
-/* 📚 STUDY HUB */
-/* ========================= */
-
-.study-hub{
-  padding:80px 20px;
-  text-align:center;
-}
-
-.study-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:25px;
-  margin-top:40px;
-}
-
-.study-card{
-  background:#fff;
-  padding:30px 25px;
-  border-radius:25px;
-
-  box-shadow:0 10px 30px rgba(0,0,0,.12);
-
-  transition:.4s;
-  position:relative;
-  overflow:hidden;
-}
-
-.study-card:hover{
-  transform:translateY(-10px) scale(1.02);
-
-  box-shadow:0 20px 40px rgba(0,0,0,.18);
-}
-
-.study-icon{
-  font-size:50px;
-  margin-bottom:15px;
-}
-
-.study-card h3{
-  color:#d32f2f;
-  margin-bottom:10px;
-}
-
-.study-card p{
-  color:#555;
-  font-size:15px;
-}
-
-.study-card ul{
-  list-style:none;
-  padding:0;
-  margin:20px 0;
-}
-
-.study-card ul li{
-  padding:7px 0;
-  border-bottom:1px solid #eee;
-  font-size:14px;
-}
-
-.study-btn{
-  display:inline-block;
-
-  background:linear-gradient(45deg,#d32f2f,#ff9800);
-
-  color:#fff;
-  text-decoration:none;
-
-  padding:12px 22px;
-  border-radius:30px;
-
-  margin-top:10px;
-
-  transition:.3s;
-}
-
-.study-btn:hover{
-  transform:scale(1.08);
-}
-
-.study-btn.premium{
-  background:linear-gradient(45deg,#6c2bd9,#9c4dff);
-}
-
-/* ========================= */
-/* 🧠 QUIZ SECTION */
-/* ========================= */
-
-.quiz-section{
-  padding:80px 20px;
-  text-align:center;
-}
-
-.quiz-box{
-  max-width:700px;
-  margin:40px auto;
-
-  background:#fff;
-  padding:40px;
-
-  border-radius:25px;
-
-  box-shadow:0 10px 35px rgba(0,0,0,.15);
-}
-
-.quiz-box h2{
-  margin-bottom:30px;
-  color:#222;
-}
-
-.quiz-options{
-  display:grid;
-  gap:15px;
-}
-
-.quiz-options button{
-  padding:15px;
-
-  border:none;
-  border-radius:15px;
-
-  background:#f5f5f5;
-
-  cursor:pointer;
-  transition:.3s;
-
-  font-size:16px;
-}
-
-.quiz-options button:hover{
-  background:#d32f2f;
-  color:#fff;
-  transform:scale(1.03);
-}
-
-#quizResult{
-  margin-top:25px;
-  font-size:22px;
-  font-weight:bold;
-}
 
 /* WRAPPER */
 .gallery-wrapper{
@@ -275,6 +134,113 @@ header{
   margin:10px 0;
   border-radius:10px;
   border:1px solid #ddd;
+}
+
+	/* AI QUIZ */
+.ai-quiz{
+  padding:80px 20px;
+  text-align:center;
+}
+
+/* CONTROLS */
+.quiz-controls{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  margin-top:30px;
+}
+
+.quiz-controls select,
+.quiz-controls input{
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  font-size:15px;
+}
+
+.quiz-controls button{
+  background:linear-gradient(45deg,#6c2bd9,#d32f2f);
+  color:#fff;
+  border:none;
+  border-radius:12px;
+  padding:14px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.quiz-controls button:hover{
+  transform:scale(1.05);
+}
+
+/* QUIZ BOX */
+#quizBox{
+  margin-top:40px;
+  text-align:left;
+}
+
+/* QUESTION CARD */
+.question-card{
+  background:#fff;
+  padding:20px;
+  border-radius:20px;
+  margin-bottom:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+/* QUESTION */
+.question-card h4{
+  margin-bottom:15px;
+  color:#d32f2f;
+}
+
+/* OPTIONS */
+.option{
+  display:block;
+  background:#f5f5f5;
+  padding:12px;
+  border-radius:10px;
+  margin:8px 0;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.option:hover{
+  background:#ececec;
+}
+
+/* SUBMIT */
+.submit-btn{
+  display:block;
+  margin:30px auto;
+  background:#25D366;
+  color:#fff;
+  border:none;
+  padding:15px 30px;
+  border-radius:30px;
+  font-size:18px;
+  cursor:pointer;
+}
+
+/* RESULT */
+.quiz-result{
+  margin-top:30px;
+  font-size:26px;
+  font-weight:bold;
+  color:#2e7d32;
+}
+
+/* LOADER */
+.quiz-loader{
+  display:none;
+  margin-top:20px;
+  font-size:20px;
+  color:#d32f2f;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  50%{opacity:0.3;}
 }
 
 /* buttons */
@@ -1802,155 +1768,64 @@ iframe{height:450px}
   </div>
 </section>
 
-	<!-- ========================= -->
-<!-- 📚 STUDY HUB SECTION -->
-<!-- ========================= -->
-
-<section class="study-hub container" id="studyhub">
-
-  <!-- HEADING -->
-  <div class="card">
-    <h3>📚 Study Material & Test Hub</h3>
-    <p>Notes • PDFs • MCQ Tests • Quiz • Affiliate Resources</p>
-  </div>
-
-  <div class="study-grid">
-
-    <!-- NOTES -->
-    <div class="study-card">
-      <div class="study-icon">📘</div>
-
-      <h3>Class Notes</h3>
-
-      <p>
-        Chapter-wise notes for Class 6 to 12 
-        (Hindi + English Medium)
-      </p>
-
-      <ul>
-        <li>✔ Science Notes</li>
-        <li>✔ Maths Notes</li>
-        <li>✔ Commerce Notes</li>
-        <li>✔ Spoken English</li>
-      </ul>
-
-      <a href="#" class="study-btn">
-        Download Notes
-      </a>
-    </div>
-
-    <!-- PDF -->
-    <div class="study-card">
-      <div class="study-icon">📄</div>
-
-      <h3>PDF Material</h3>
-
-      <p>
-        Sample Papers, Previous Year Questions 
-        & Important PDFs
-      </p>
-
-      <ul>
-        <li>✔ Board Papers</li>
-        <li>✔ Guess Papers</li>
-        <li>✔ Important Questions</li>
-        <li>✔ Revision PDFs</li>
-      </ul>
-
-      <a href="#" class="study-btn">
-        Open PDFs
-      </a>
-    </div>
-
-    <!-- QUIZ -->
-    <div class="study-card">
-      <div class="study-icon">🧠</div>
-
-      <h3>MCQ Quiz Test</h3>
-
-      <p>
-        Daily online tests with score 
-        and instant result
-      </p>
-
-      <ul>
-        <li>✔ Daily Quiz</li>
-        <li>✔ Mock Test</li>
-        <li>✔ Instant Score</li>
-        <li>✔ Rank System</li>
-      </ul>
-
-      <a href="#quizbox" class="study-btn">
-        Start Quiz
-      </a>
-    </div>
-
-    <!-- AFFILIATE -->
-    <div class="study-card">
-      <div class="study-icon">💰</div>
-
-      <h3>Study Resources</h3>
-
-      <p>
-        Recommended books, laptops, 
-        study lamps & learning tools
-      </p>
-
-      <ul>
-        <li>✔ Best Books</li>
-        <li>✔ Online Courses</li>
-        <li>✔ Study Gadgets</li>
-        <li>✔ Smart Learning</li>
-      </ul>
-
-      <a href="#" class="study-btn premium">
-        Explore Resources
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ========================= -->
-<!-- 🧠 QUIZ SECTION -->
-<!-- ========================= -->
-
-<section class="quiz-section container" id="quizbox">
+<!-- AI QUIZ SECTION -->
+<section class="ai-quiz container">
 
   <div class="card">
-    <h3>🧠 Daily MCQ Test</h3>
-    <p>Test Your Knowledge & Improve Daily</p>
+    <h3>🧠 AI Smart Quiz Generator</h3>
+    <p>Select Class, Board, Subject & Chapter</p>
   </div>
 
-  <div class="quiz-box">
+  <!-- CONTROLS -->
+  <div class="quiz-controls">
 
-    <h2>
-      Q. What is the value of π (Pi)?
-    </h2>
+    <select id="quizClass">
+      <option value="">Select Class</option>
+      <option>Class 6</option>
+      <option>Class 7</option>
+      <option>Class 8</option>
+      <option>Class 9</option>
+      <option>Class 10</option>
+      <option>Class 11</option>
+      <option>Class 12</option>
+    </select>
 
-    <div class="quiz-options">
+    <select id="quizBoard">
+      <option value="">Select Board</option>
+      <option>CBSE</option>
+      <option>UP Board</option>
+      <option>ICSE</option>
+    </select>
 
-      <button onclick="checkAnswer(this,false)">
-        2.14
-      </button>
+    <select id="quizSubject">
+      <option value="">Select Subject</option>
+      <option>Science</option>
+      <option>Maths</option>
+      <option>English</option>
+      <option>Hindi</option>
+      <option>Commerce</option>
+      <option>Computer</option>
+    </select>
 
-      <button onclick="checkAnswer(this,true)">
-        3.14
-      </button>
+    <input type="text" id="quizChapter" placeholder="Enter Chapter Name">
 
-      <button onclick="checkAnswer(this,false)">
-        4.13
-      </button>
-
-      <button onclick="checkAnswer(this,false)">
-        5.14
-      </button>
-
-    </div>
-
-    <p id="quizResult"></p>
+    <button onclick="generateQuiz()">
+      🚀 Generate 30 Questions
+    </button>
 
   </div>
+
+  <!-- LOADER -->
+  <div id="quizLoader" class="quiz-loader">
+    🤖 AI is generating questions...
+  </div>
+
+  <!-- QUIZ OUTPUT -->
+  <div id="quizBox"></div>
+
+  <!-- RESULT -->
+  <div id="quizResult" class="quiz-result"></div>
+
 </section>
 
   
@@ -2372,25 +2247,156 @@ function showAlert(){
 }
 </script>
 
-<script>
-function checkAnswer(btn,correct){
+/* SAMPLE AI QUESTION BANK */
+const questionBank = [
 
-  let result = document.getElementById("quizResult");
+{
+q:"What is the SI unit of Force?",
+options:["Newton","Pascal","Joule","Watt"],
+answer:"Newton"
+},
 
-  if(correct){
-    result.innerHTML = "✅ Correct Answer!";
-    result.style.color = "green";
-    btn.style.background = "#25D366";
-    btn.style.color = "#fff";
-  }else{
-    result.innerHTML = "❌ Wrong Answer!";
-    result.style.color = "red";
-    btn.style.background = "#ff5252";
-    btn.style.color = "#fff";
-  }
+{
+q:"Who wrote Ramayana?",
+options:["Valmiki","Tulsidas","Premchand","Kalidas"],
+answer:"Valmiki"
+},
+
+{
+q:"2 + 2 × 5 = ?",
+options:["20","12","10","14"],
+answer:"12"
+},
+
+{
+q:"Which planet is known as Red Planet?",
+options:["Mars","Venus","Earth","Saturn"],
+answer:"Mars"
+},
+
+{
+q:"What is CPU?",
+options:[
+"Central Processing Unit",
+"Computer Personal Unit",
+"Central Power Unit",
+"Computer Processing User"
+],
+answer:"Central Processing Unit"
+}
+
+];
+
+/* GENERATE QUIZ */
+function generateQuiz(){
+
+const cls = document.getElementById("quizClass").value;
+const board = document.getElementById("quizBoard").value;
+const subject = document.getElementById("quizSubject").value;
+const chapter = document.getElementById("quizChapter").value;
+
+if(!cls || !board || !subject || !chapter){
+  alert("Please fill all fields");
+  return;
+}
+
+document.getElementById("quizLoader").style.display = "block";
+
+setTimeout(()=>{
+
+document.getElementById("quizLoader").style.display = "none";
+
+const quizBox = document.getElementById("quizBox");
+
+quizBox.innerHTML = `
+<h2>
+📘 ${cls} | ${board} | ${subject}
+</h2>
+
+<p>
+Chapter: <b>${chapter}</b>
+</p>
+`;
+
+let finalQuestions = [];
+
+/* CREATE 30 QUESTIONS */
+for(let i=1;i<=30;i++){
+
+let randomQ =
+questionBank[Math.floor(Math.random()*questionBank.length)];
+
+finalQuestions.push(randomQ);
+
+quizBox.innerHTML += `
+
+<div class="question-card">
+
+<h4>Q${i}. ${randomQ.q}</h4>
+
+${randomQ.options.map(opt=>`
+
+<label class="option">
+
+<input type="radio"
+name="q${i}"
+value="${opt}">
+
+${opt}
+
+</label>
+
+`).join("")}
+
+</div>
+
+`;
 
 }
-</script>
+
+/* SUBMIT BUTTON */
+quizBox.innerHTML += `
+<button class="submit-btn"
+onclick='submitQuiz(${JSON.stringify(finalQuestions)})'>
+✅ Submit Quiz
+</button>
+`;
+
+},2000);
+
+}
+
+/* SUBMIT QUIZ */
+function submitQuiz(questions){
+
+let score = 0;
+
+questions.forEach((q,index)=>{
+
+let selected =
+document.querySelector(
+`input[name="q${index+1}"]:checked`
+);
+
+if(selected &&
+selected.value === q.answer){
+
+score++;
+
+}
+
+});
+
+document.getElementById("quizResult").innerHTML = `
+🏆 You Scored ${score} / 30
+`;
+
+window.scrollTo({
+top:document.body.scrollHeight,
+behavior:"smooth"
+});
+
+}
 	
 	<script>
 function sendToWhatsApp(teacher){
