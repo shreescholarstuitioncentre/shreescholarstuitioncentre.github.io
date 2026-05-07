@@ -49,10 +49,37 @@ header{
   margin:auto;
 }
 
+/* CONNECT US HEADING PREMIUM OUTLINE */
 .lead-heading{
   width:100%;
   text-align:center;
-  margin-bottom:20px;
+  margin-bottom:30px;
+
+  padding:25px;
+  border-radius:25px;
+
+  border:3px solid transparent;
+
+  background-image:
+    linear-gradient(#fff,#fff),
+    linear-gradient(45deg,#d32f2f,#ff9800,#6c2bd9);
+
+  background-origin:border-box;
+  background-clip:padding-box,border-box;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.15),
+    0 0 20px rgba(211,47,47,.25);
+
+  transition:0.4s;
+}
+
+.lead-heading:hover{
+  transform:translateY(-5px) scale(1.01);
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,.2),
+    0 0 30px rgba(255,152,0,.45);
 }
 
 .lead-heading h2{
