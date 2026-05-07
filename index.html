@@ -1152,8 +1152,57 @@ ul li{
 
 /* FEATURES */
 .features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:50px 20px}
-.card{padding:20px;background:#fff;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,.1);text-align:center;transition:.3s}
-.card:hover{transform:translateY(-8px)}
+/* FEATURES */
+.features{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  padding:50px 20px;
+}
+
+/* PREMIUM HEADING BOX */
+.card{
+  padding:20px;
+  background:rgba(255,255,255,0.92);
+  border-radius:20px;
+
+  border:3px solid transparent;
+
+  background-image:
+    linear-gradient(#fff,#fff),
+    linear-gradient(45deg,#d32f2f,#ff9800,#6c2bd9);
+
+  background-origin:border-box;
+  background-clip:padding-box,border-box;
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.15),
+    0 0 15px rgba(211,47,47,.25);
+
+  text-align:center;
+  transition:.4s;
+}
+
+/* HOVER */
+.card:hover{
+  transform:translateY(-10px) scale(1.03);
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.25),
+    0 0 25px rgba(255,152,0,.45);
+}
+
+/* HEADING TEXT */
+.card h3{
+  font-size:28px;
+  color:#d32f2f;
+  margin-bottom:8px;
+}
+
+.card p{
+  color:#555;
+  font-size:16px;
+}
 
 /* COURSES */
 .courses{text-align:center;padding:60px 20px}
