@@ -49,6 +49,23 @@ header{
   margin:auto;
 }
 
+.lead-heading{
+  width:100%;
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.lead-heading h2{
+  font-size:38px;
+  color:#d32f2f;
+  margin-bottom:10px;
+}
+
+.lead-heading p{
+  color:#555;
+  font-size:18px;
+}
+	
 /* TRACK */
 .gallery-track{
   display:flex;
@@ -1435,15 +1452,21 @@ iframe{height:450px}
 </section>
 
 
-	<section class="lead-box container" id="leadbox">
-			<div class="card"><h3>Connect Us</h3><p>New Era to Study</p></div>
+<section class="lead-box container" id="leadbox">
+
+  <!-- HEADING -->
+  <div class="lead-heading">
+    <h2>📞 Connect Us</h2>
+    <p>New Era to Study • Admissions Open Now</p>
+  </div>
+
   <!-- TEACHER 1 -->
-  <div class="lead-form" >
+  <div class="lead-form">
     <h2>👨‍🏫 Pritha Srivastava Ma'am</h2>
     <p>Commerce / Primary Classes</p>
 
     <input type="text" id="name1" placeholder="Student Name" required>
-    
+
     <select id="class1">
       <option>Select Class</option>
       <option>Nursery / PlayWay</option>
@@ -1467,14 +1490,13 @@ iframe{height:450px}
     <button onclick="sendToWhatsApp(1)">📲 Contact Ma'am</button>
   </div>
 
-
   <!-- TEACHER 2 -->
   <div class="lead-form">
     <h2>👨‍🏫 Alekh Srivastava Sir</h2>
     <p>Science / Senior Classes</p>
 
     <input type="text" id="name2" placeholder="Student Name" required>
-    
+
     <select id="class2">
       <option>Select Class</option>
       <option>Class 8</option>
