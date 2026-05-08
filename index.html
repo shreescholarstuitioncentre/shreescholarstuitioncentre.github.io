@@ -2291,119 +2291,98 @@ setInterval(()=>{
 updateGallery();
 </script>
 
-<script>
+	<script>
 
-/* ========================= */
+let generatedCaptcha = "";
+
 /* CAPTCHA */
-/* ========================= */
-
-let captchaCode = "";
-
 function generateCaptcha(){
 
-  captchaCode = Math.random().toString(36).substring(2,8).toUpperCase();
+  const chars =
+  "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 
-  document.getElementById("captchaText").innerText = captchaCode;
+  generatedCaptcha = "";
+
+  for(let i=0;i<6;i++){
+
+    generatedCaptcha +=
+    chars[Math.floor(Math.random()*chars.length)];
+
+  }
+
+  document.getElementById("captchaText")
+  .innerText = generatedCaptcha;
 }
 
 generateCaptcha();
 
-/* ========================= */
-/* VERIFY */
-/* ========================= */
 
-function verifyAndStart(){
+/* START TEST */
 
-  let mobile = document.getElementById("mobile").value;
-  let captchaInput = document.getElementById("captchaInput").value;
+function startTest(){
 
-  if(mobile.length != 10){
-    alert("Enter Valid Mobile Number");
+  let board =
+  document.getElementById("board").value;
+
+  let studentClass =
+  document.getElementById("studentClass").value;
+
+  let subject =
+  document.getElementById("subject").value;
+
+  let medium =
+  document.getElementById("medium").value;
+
+  let chapter =
+  document.getElementById("chapter").value;
+
+  let mobile =
+  document.getElementById("mobile").value;
+
+  let captchaInput =
+  document.getElementById("captchaInput").value;
+
+  /* VALIDATION */
+
+  if(
+    board === "Select Board" ||
+    studentClass === "Select Class" ||
+    subject === "Select Subject" ||
+    medium === "Select Medium" ||
+    chapter === "" ||
+    mobile.length !== 10 ||
+    captchaInput === ""
+  ){
+
+    alert("Please fill valid details");
     return;
   }
 
-  if(captchaInput != captchaCode){
+  /* CAPTCHA */
+
+  if(captchaInput !== generatedCaptcha){
+
     alert("Wrong Captcha");
     generateCaptcha();
     return;
   }
 
-  document.querySelector(".ai-test-section").style.display = "none";
+  /* SAVE */
 
-  document.getElementById("quizPage").style.display = "block";
+  localStorage.setItem("board", board);
+  localStorage.setItem("class", studentClass);
+  localStorage.setItem("subject", subject);
+  localStorage.setItem("medium", medium);
+  localStorage.setItem("chapter", chapter);
 
-  generateQuestions();
+  /* OPEN TEST PAGE */
 
-  startTimer();
+  window.location.href = "ai-test.html";
 }
 
+</script>
 
-
-  const container = document.getElementById("questionsContainer");
-
-  container.innerHTML = "";
-
-  questions.length = 0;
-
-  for(let i=1;i<=15;i++){
-
-    let random = mcqs[Math.floor(Math.random()*mcqs.length)];
-
-    questions.push(random);
-
-    let html = `
-      <div class="question-box">
-
-        <h3>Q${i}. ${random.q}</h3>
-
-        ${random.o.map((opt,index)=>`
-          <label class="option">
-            <input type="radio" 
-                   name="q${i}" 
-                   value="${index}">
-            ${opt}
-          </label>
-        `).join("")}
-
-      </div>
-    `;
-
-    container.innerHTML += html;
-  }
-}
-
-/* ========================= */
-/* TIMER */
-/* ========================= */
-
-let time = 900;
-let timerInterval;
-
-function startTimer(){
-
-  timerInterval = setInterval(()=>{
-
-    let minutes = Math.floor(time/60);
-    let seconds = time%60;
-
-    document.getElementById("timer").innerText =
-      `${minutes}:${seconds < 10 ? "0"+seconds : seconds}`;
-
-    time--;
-
-    if(time < 0){
-
-      clearInterval(timerInterval);
-
-      submitQuiz();
-    }
-
-  },1000);
-}
-
-
-	
-	<script>
+<script>
 function sendToWhatsApp(teacher){
 
   let name = document.getElementById("name"+teacher).value;
