@@ -29,64 +29,117 @@ header{
   box-shadow: 0 3px 15px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
 }
-	/* ========================= */
-/* AI TEST SECTION */
-/* ========================= */
+<!-- =========================
+CSS
+========================= -->
+
+<style>
 
 .ai-test-section{
-  padding:70px 20px;
+  padding:80px 20px;
+  text-align:center;
 }
 
-.heading-box{
+.outline-heading{
   margin-bottom:30px;
 }
 
-/* FORM */
-.test-form-box{
+.outline-heading h2{
+  font-size:38px;
+  color:#fff;
+
+  -webkit-text-stroke:2px #d32f2f;
+  text-shadow:
+    3px 3px 0 #d32f2f,
+    -1px -1px 0 #d32f2f,
+    1px -1px 0 #d32f2f,
+    -1px 1px 0 #d32f2f;
+}
+
+.outline-heading p{
+  color:#555;
+  font-size:18px;
+}
+
+.ai-test-box{
   max-width:700px;
   margin:auto;
+
   background:#fff;
   padding:30px;
   border-radius:25px;
+
   box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
 
-.test-form-box select,
-.test-form-box input{
+.ai-test-box select,
+.ai-test-box input{
   width:100%;
   padding:14px;
   margin:12px 0;
+
   border-radius:12px;
   border:1px solid #ddd;
-  font-size:16px;
+
+  font-size:15px;
 }
 
-/* CAPTCHA */
 .captcha-box{
   display:flex;
-  justify-content:space-between;
+  justify-content:center;
   align-items:center;
-  background:#f5f5f5;
-  padding:12px 20px;
-  border-radius:12px;
+  gap:10px;
+
   margin-top:10px;
 }
 
 #captchaText{
-  font-size:24px;
+  background:#222;
+  color:#fff;
+
+  padding:10px 20px;
+  border-radius:10px;
+
+  font-size:22px;
+  letter-spacing:3px;
   font-weight:bold;
-  letter-spacing:4px;
-  color:#d32f2f;
 }
 
 .captcha-box button{
   background:#d32f2f;
   color:#fff;
+
   border:none;
-  padding:8px 15px;
+  padding:10px 15px;
   border-radius:10px;
+
   cursor:pointer;
 }
+
+.start-btn{
+  width:100%;
+  margin-top:20px;
+
+  background:linear-gradient(45deg,#d32f2f,#ff5722);
+  color:#fff;
+
+  border:none;
+  padding:15px;
+
+  border-radius:15px;
+  font-size:18px;
+  font-weight:bold;
+
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.start-btn:hover{
+  transform:scale(1.03);
+}
+
+</style>
+
 
 /* BUTTON */
 .start-btn,
@@ -1787,6 +1840,81 @@ iframe{height:450px}
 <!-- AI TEST PORTAL SECTION -->
 <!-- ========================= -->
 
+	<!-- =========================
+AI TEST SECTION
+========================= -->
+
+<section class="ai-test-section container">
+
+  <div class="outline-heading">
+    <h2>🤖 AI Chapter Wise Test</h2>
+    <p>Select Board, Class, Subject & Start AI Test</p>
+  </div>
+
+  <div class="ai-test-box">
+
+    <!-- BOARD -->
+    <select id="board">
+      <option>Select Board</option>
+      <option>UP Board</option>
+      <option>CBSE</option>
+      <option>ICSE</option>
+    </select>
+
+    <!-- CLASS -->
+    <select id="studentClass">
+      <option>Select Class</option>
+      <option>Class 6</option>
+      <option>Class 7</option>
+      <option>Class 8</option>
+      <option>Class 9</option>
+      <option>Class 10</option>
+      <option>Class 11</option>
+      <option>Class 12</option>
+    </select>
+
+    <!-- SUBJECT -->
+    <select id="subject">
+      <option>Select Subject</option>
+      <option>Maths</option>
+      <option>Science</option>
+      <option>English</option>
+      <option>Hindi</option>
+      <option>Computer</option>
+    </select>
+
+    <!-- MEDIUM -->
+    <select id="medium">
+      <option>Select Medium</option>
+      <option>English Medium</option>
+      <option>Hindi Medium</option>
+    </select>
+
+    <!-- CHAPTER -->
+    <input type="text" id="chapter" placeholder="Enter Chapter Name">
+
+    <!-- MOBILE -->
+    <input type="number" id="mobile" placeholder="Enter Mobile Number">
+
+    <!-- CAPTCHA -->
+    <div class="captcha-box">
+      <span id="captchaText"></span>
+      <button onclick="generateCaptcha()" type="button">
+        🔄
+      </button>
+    </div>
+
+    <input type="text" id="captchaInput"
+           placeholder="Enter Captcha">
+
+    <!-- START BUTTON -->
+    <button class="start-btn" onclick="startTest()">
+      🚀 Start AI Test
+    </button>
+
+  </div>
+
+</section>
 
 
 <!-- ========================= -->
@@ -2363,51 +2491,6 @@ function startTimer(){
   },1000);
 }
 
-/* ========================= */
-/* SUBMIT */
-/* ========================= */
-
-function submitQuiz(){
-
-  clearInterval(timerInterval);
-
-  let score = 0;
-
-  questions.forEach((q,index)=>{
-
-    let selected = document.querySelector(
-      `input[name="q${index+1}"]:checked`
-    );
-
-    if(selected && parseInt(selected.value) === q.a){
-      score++;
-    }
-
-  });
-
-  document.getElementById("quizPage").style.display = "none";
-
-  document.getElementById("resultPage").style.display = "block";
-
-  document.getElementById("scoreText").innerText =
-    `You Scored ${score} / 15`;
-
-  let msg = "";
-
-  if(score >= 12){
-    msg = "🔥 Excellent Performance";
-  }
-  else if(score >= 8){
-    msg = "👍 Good Job";
-  }
-  else{
-    msg = "📚 Need More Practice";
-  }
-
-  document.getElementById("resultMessage").innerText = msg;
-}
-
-</script>
 
 	
 	<script>
@@ -2442,6 +2525,94 @@ function sendToWhatsApp(teacher){
 }
 </script>
 
+	
+<!-- =========================
+AI JAVASCRIPT
+========================= -->
+
+<script>
+
+let generatedCaptcha = "";
+
+/* CAPTCHA GENERATE */
+function generateCaptcha(){
+
+  const chars =
+  "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+  generatedCaptcha = "";
+
+  for(let i=0;i<6;i++){
+    generatedCaptcha +=
+    chars[Math.floor(Math.random()*chars.length)];
+  }
+
+  document.getElementById("captchaText")
+  .innerText = generatedCaptcha;
+}
+
+generateCaptcha();
+
+
+/* START TEST */
+function startTest(){
+
+  let board =
+  document.getElementById("board").value;
+
+  let studentClass =
+  document.getElementById("studentClass").value;
+
+  let subject =
+  document.getElementById("subject").value;
+
+  let medium =
+  document.getElementById("medium").value;
+
+  let chapter =
+  document.getElementById("chapter").value;
+
+  let mobile =
+  document.getElementById("mobile").value;
+
+  let captchaInput =
+  document.getElementById("captchaInput").value;
+
+  /* VALIDATION */
+
+  if(
+    board === "Select Board" ||
+    studentClass === "Select Class" ||
+    subject === "Select Subject" ||
+    medium === "Select Medium" ||
+    chapter === "" ||
+    mobile === "" ||
+    captchaInput === ""
+  ){
+    alert("Please fill all details");
+    return;
+  }
+
+  /* CAPTCHA CHECK */
+
+  if(captchaInput !== generatedCaptcha){
+    alert("Invalid Captcha");
+    generateCaptcha();
+    return;
+  }
+
+  /* SAVE DATA */
+  localStorage.setItem("board", board);
+  localStorage.setItem("class", studentClass);
+  localStorage.setItem("subject", subject);
+  localStorage.setItem("medium", medium);
+  localStorage.setItem("chapter", chapter);
+
+  /* OPEN TEST PAGE */
+  window.location.href = "ai-test.html";
+}
+
+</script>
 	
 </body>
 </html>
