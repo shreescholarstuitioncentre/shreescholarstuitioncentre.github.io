@@ -120,114 +120,40 @@ Submit Test
 
 <script>
 
-/* DATA */
+const API_KEY = "YOUR_NEW_API_KEY";
 
-const board =
-localStorage.getItem("board");
+const board = localStorage.getItem("board") || "CBSE";
+const studentClass = localStorage.getItem("class") || "10";
+const subject = localStorage.getItem("subject") || "Science";
+const chapter = localStorage.getItem("chapter") || "Physics";
 
-const studentClass =
-localStorage.getItem("class");
+document.getElementById("showBoard").innerText = board;
+document.getElementById("showClass").innerText = studentClass;
+document.getElementById("showSubject").innerText = subject;
+document.getElementById("showChapter").innerText = chapter;
 
-const subject =
-localStorage.getItem("subject");
-
-const medium =
-localStorage.getItem("medium");
-
-const chapter =
-localStorage.getItem("chapter");
-
-/* SHOW DATA */
-
-document.getElementById("showBoard")
-.innerText = board;
-
-document.getElementById("showClass")
-.innerText = studentClass;
-
-document.getElementById("showSubject")
-.innerText = subject;
-
-document.getElementById("showChapter")
-.innerText = chapter;
-
- 
-/* =========================
-GET DATA
-========================= */
-
-const board =
-localStorage.getItem("board");
-
-const studentClass =
-localStorage.getItem("class");
-
-const subject =
-localStorage.getItem("subject");
-
-const medium =
-localStorage.getItem("medium");
-
-const chapter =
-localStorage.getItem("chapter");
-
-/* SHOW DATA */
-
-document.getElementById("showBoard")
-.innerText = board;
-
-document.getElementById("showClass")
-.innerText = studentClass;
-
-document.getElementById("showSubject")
-.innerText = subject;
-
-document.getElementById("showChapter")
-.innerText = chapter;
-
-
-/* =========================
-GEMINI API
-========================= */
-
-const API_KEY =
-"AIzaSyCQ6cpPbClgpPRlBpQLBHTrdTPfhg32xyw";
-
-
-const questionsBox =
-document.getElementById("questionsBox");
+const questionsBox = document.getElementById("questionsBox");
 
 let selectedQuestions = [];
 
-
-/* =========================
-GENERATE AI QUESTIONS
-========================= */
+/* GEMINI QUESTIONS */
 
 async function generateQuestions(){
 
 questionsBox.innerHTML =
-"<h2>⏳ AI Generating Questions...</h2>";
+"<h2>Loading AI Questions...</h2>";
 
 const prompt = `
+Generate ONLY JSON.
 
-Generate 15 MCQ questions in JSON format.
+Create 15 MCQ questions for:
 
 Board: ${board}
-
 Class: ${studentClass}
-
 Subject: ${subject}
-
-Medium: ${medium}
-
 Chapter: ${chapter}
 
-Rules:
-
-1. Give ONLY JSON array.
-2. No explanation.
-3. Format:
+Format:
 
 [
 {
@@ -237,27 +163,21 @@ Rules:
 }
 ]
 
-4. Generate NEW unique questions.
-5. Language should match medium.
-6. Difficulty suitable for school students.
-
+No explanation.
+No markdown.
+Only JSON.
 `;
 
 try{
 
 const response = await fetch(
-
 `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
-
 {
 method:"POST",
-
 headers:{
 "Content-Type":"application/json"
 },
-
 body:JSON.stringify({
-
 contents:[
 {
 parts:[
@@ -267,33 +187,32 @@ text:prompt
 ]
 }
 ]
-
 })
+}
+);
+
+const data = await response.json();
+
+console.log(data);
+
+if(data.error){
+
+questionsBox.innerHTML =
+`<h3>${data.error.message}</h3>`;
+
+return;
 
 }
 
-);
-
-const data =
-await response.json();
-
 let text =
-data.candidates[0]
-.content.parts[0].text;
-
-/* REMOVE MARKDOWN */
+data.candidates[0].content.parts[0].text;
 
 text = text
 .replace(/```json/g,"")
 .replace(/```/g,"")
 .trim();
 
-/* CONVERT JSON */
-
-selectedQuestions =
-JSON.parse(text);
-
-/* SHOW QUESTIONS */
+selectedQuestions = JSON.parse(text);
 
 questionsBox.innerHTML = "";
 
@@ -304,15 +223,15 @@ questionsBox.innerHTML += `
 <div class="question">
 
 <h3>
-Q${index+1}.
-${q.q}
+Q${index+1}. ${q.q}
 </h3>
 
 ${q.o.map((opt,i)=>`
 
 <label class="option">
 
-<input type="radio"
+<input
+type="radio"
 name="q${index}"
 value="${i}">
 
@@ -334,18 +253,13 @@ catch(error){
 console.log(error);
 
 questionsBox.innerHTML =
-
-"<h2>❌ AI Failed. Try Again.</h2>";
+"<h2>Failed To Load AI Questions</h2>";
 
 }
 
 }
 
 generateQuestions();
-
-
-
-
 
 /* TIMER */
 
@@ -356,11 +270,9 @@ document.getElementById("timer");
 
 const interval = setInterval(()=>{
 
-let min =
-Math.floor(time/60);
+let min = Math.floor(time/60);
 
-let sec =
-time % 60;
+let sec = time % 60;
 
 timer.innerText =
 `${min}:${sec<10?"0":""}${sec}`;
@@ -377,7 +289,6 @@ submitTest();
 
 },1000);
 
-
 /* SUBMIT */
 
 function submitTest(){
@@ -388,8 +299,7 @@ let score = 0;
 
 selectedQuestions.forEach((q,index)=>{
 
-let ans =
-document.querySelector(
+let ans = document.querySelector(
 `input[name=q${index}]:checked`
 );
 
@@ -402,13 +312,13 @@ score++;
 });
 
 document.getElementById("questionsBox")
-style.display = "none";
+.style.display = "none";
 
 document.querySelector("button")
-style.display = "none";
+.style.display = "none";
 
 document.getElementById("resultBox")
-style.display = "block";
+.style.display = "block";
 
 document.getElementById("finalScore")
 .innerText =
@@ -438,6 +348,5 @@ document.getElementById("finalMessage")
 }
 
 </script>
-
 </body>
 </html>
