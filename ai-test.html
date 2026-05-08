@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AI Test</title>
+
+<style>
+
+body{
+  font-family:Arial;
+  background:#f5f5f5;
+  padding:20px;
+}
+
+.test-box{
+  max-width:900px;
+  margin:auto;
+
+  background:#fff;
+  padding:30px;
+
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.timer{
+  position:fixed;
+  top:20px;
+  right:20px;
+
+  background:#d32f2f;
+  color:#fff;
+
+  padding:15px 20px;
+  border-radius:15px;
+
+  font-size:22px;
+  font-weight:bold;
+}
+
+.question{
+  margin:25px 0;
+  padding:20px;
+
+  background:#fafafa;
+  border-radius:15px;
+}
+
+.question h3{
+  margin-bottom:15px;
+}
+
+.option{
+  display:block;
+  margin:10px 0;
+}
+
+.submit-btn{
+  width:100%;
+  padding:15px;
+
+  background:#25D366;
+  color:#fff;
+
+  border:none;
+  border-radius:15px;
+
+  font-size:18px;
+  cursor:pointer;
+}
+
+.result-box{
+  text-align:center;
+  margin-top:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="timer" id="timer">
+15:00
+</div>
+
+<div class="test-box">
+
+<h2>
+🤖 AI Chapter Test
+</h2>
+
+<p>
+Board:
+<span id="showBoard"></span>
+|
+Class:
+<span id="showClass"></span>
+|
+Subject:
+<span id="showSubject"></span>
+</p>
+
+<div id="quizContainer"></div>
+
+<button class="submit-btn"
+onclick="submitQuiz()">
+✅ Submit Test
+</button>
+
+<div class="result-box" id="resultBox"></div>
+
+</div>
+
+<script>
+
+/* GET DATA */
+
+document.getElementById("showBoard")
+.innerText = localStorage.getItem("board");
+
+document.getElementById("showClass")
+.innerText = localStorage.getItem("class");
+
+document.getElementById("showSubject")
+.innerText = localStorage.getItem("subject");
+
+const quizContainer =
+document.getElementById("quizContainer");
+
+/* QUESTION BANK */
+
+const sampleQuestions = [
+
+{
+q:"What is CPU?",
+o:["Brain of computer","Mouse","Keyboard","Monitor"],
+a:0
+},
+
+{
+q:"Which is prime number?",
+o:["4","6","7","8"],
+a:2
+},
+
+{
+q:"भारत की राजधानी क्या है?",
+o:["दिल्ली","मुंबई","पटना","लखनऊ"],
+a:0
+},
+
+{
+q:"2 + 2 = ?",
+o:["2","4","6","8"],
+a:1
+},
+
+{
+q:"HTML stands for?",
+o:[
+"Hyper Text Markup Language",
+"Home Tool Markup Language",
+"Hyperlinks Text",
+"None"
+],
+a:0
+}
+
+];
+
+
+/* GENERATE 15 RANDOM QUESTIONS */
+
+let questions = [];
+
+for(let i=0;i<15;i++){
+
+  let random =
+  sampleQuestions[
+    Math.floor(
+      Math.random()*sampleQuestions.length
+    )
+  ];
+
+  questions.push(random);
+}
+
+/* SHOW QUESTIONS */
+
+questions.forEach((item,index)=>{
+
+  let html = `
+  <div class="question">
+
+    <h3>
+      ${index+1}. ${item.q}
+    </h3>
+
+    ${item.o.map((opt,i)=>
+      `
+      <label class="option">
+      <input type="radio"
+      name="q${index}"
+      value="${i}">
+      ${opt}
+      </label>
+      `
+    ).join("")}
+
+  </div>
+  `;
+
+  quizContainer.innerHTML += html;
+});
+
+
+/* TIMER */
+
+let time = 900;
+
+const timer =
+document.getElementById("timer");
+
+let interval = setInterval(()=>{
+
+  let minutes =
+  Math.floor(time/60);
+
+  let seconds =
+  time%60;
+
+  timer.innerText =
+  `${minutes}:${seconds<10?"0":""}${seconds}`;
+
+  time--;
+
+  if(time < 0){
+
+    clearInterval(interval);
+
+    submitQuiz();
+  }
+
+},1000);
+
+
+/* SUBMIT */
+
+function submitQuiz(){
+
+  clearInterval(interval);
+
+  let score = 0;
+
+  questions.forEach((item,index)=>{
+
+    let selected =
+    document.querySelector(
+      `input[name="q${index}"]:checked`
+    );
+
+    if(selected &&
+       Number(selected.value)
+       === item.a){
+
+      score++;
+    }
+
+  });
+
+  document.getElementById("resultBox")
+  .innerHTML = `
+    <h2>
+      🎉 Your Score:
+      ${score} / 15
+    </h2>
+  `;
+}
+
+</script>
+
+</body>
+</html>
