@@ -176,146 +176,90 @@ header{
   padding:70px 20px;
 }
 
-	/* ===== TESTIMONIAL VIDEO SECTION ===== */
+/* =========================
+   VIDEO TESTIMONIALS
+========================= */
 
 .testimonials{
     padding:70px 20px;
+    background:#f8fbff;
     text-align:center;
-    background:#f5fbff;
 }
 
-.testimonial-heading h2{
+.card h3{
     font-size:38px;
-    font-weight:700;
-    color:#111;
     margin-bottom:10px;
+    color:#111;
 }
 
-.testimonial-heading p{
+.sub-text{
     color:#666;
-    margin-bottom:50px;
+    margin-bottom:40px;
     font-size:16px;
 }
 
-.video-testimonial-wrapper{
+.video-testimonials{
     display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:20px;
-    flex-wrap:wrap;
+    gap:25px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    padding-bottom:10px;
 }
 
-/* SIDE VERTICAL BOXES */
-
-.side-names{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
+.video-testimonials::-webkit-scrollbar{
+    height:8px;
 }
 
-.side-names span{
-    writing-mode:vertical-rl;
-    transform:rotate(180deg);
-    background:#111;
-    color:#fff;
-    padding:20px 10px;
-    letter-spacing:3px;
-    font-weight:600;
-    border-radius:12px;
-    min-height:140px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+.video-testimonials::-webkit-scrollbar-thumb{
+    background:#bbb;
+    border-radius:20px;
 }
 
-/* VIDEO BOX */
-
-.video-box{
-    position:relative;
-    width:700px;
-    max-width:100%;
+.video-card{
+    min-width:300px;
+    background:#fff;
+    border-radius:20px;
     overflow:hidden;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
-}
-
-.video-box video{
-    width:100%;
-    display:block;
-    border-radius:20px;
-}
-
-/* PLAY BUTTON */
-
-.play-btn{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:80px;
-    height:80px;
-    background:white;
-    color:#111;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:32px;
-    cursor:pointer;
+    box-shadow:0 10px 30px rgba(0,0,0,0.12);
     transition:0.3s;
-    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+    position:relative;
 }
 
-.play-btn:hover{
-    transform:translate(-50%,-50%) scale(1.1);
+.video-card:hover{
+    transform:translateY(-8px);
 }
 
-/* VIDEO INFO */
-
-.video-info{
-    position:absolute;
-    bottom:20px;
-    left:20px;
-    text-align:left;
-    color:white;
+.video-card video{
+    width:100%;
+    height:420px;
+    object-fit:cover;
+    display:block;
+    background:#000;
 }
 
-.video-info h4{
-    font-size:22px;
-    margin-bottom:5px;
-}
-
-.video-info p{
-    font-size:14px;
-    opacity:0.9;
+.video-name{
+    padding:15px;
+    font-size:18px;
+    font-weight:600;
+    letter-spacing:1px;
+    background:#fff;
 }
 
 /* MOBILE */
-
 @media(max-width:768px){
 
-    .testimonial-heading h2{
+    .video-card{
+        min-width:260px;
+    }
+
+    .video-card video{
+        height:360px;
+    }
+
+    .card h3{
         font-size:28px;
     }
-
-    .video-testimonial-wrapper{
-        gap:10px;
-    }
-
-    .side-names span{
-        min-height:100px;
-        font-size:12px;
-    }
-
-    .play-btn{
-        width:60px;
-        height:60px;
-        font-size:24px;
-    }
-
 }
-
 /* GRID */
 .review-grid{
   display:grid;
@@ -1920,31 +1864,6 @@ iframe{height:450px}
   </div>
 </section>
 
-<!-- ========================= -->
-<!-- AI TEST PORTAL SECTION -->
-<!-- ========================= -->
-
-
-
-
-<!-- ========================= -->
-<!-- RESULT PAGE -->
-<!-- ========================= -->
-
-<section id="resultPage" class="result-page" style="display:none;">
-
-  <div class="card">
-    <h2 class="outline-heading">🎉 Test Result</h2>
-
-    <h3 id="scoreText"></h3>
-
-    <div class="progress-box">
-      <p id="resultMessage"></p>
-    </div>
-
-  </div>
-
-</section>
   
 <section class="contact-section container">
 
@@ -1977,43 +1896,51 @@ iframe{height:450px}
 
 <section class="testimonials container">
 
-  <div class="testimonial-heading">
-    <h2>Over 1000+ Parents Trust Us</h2>
-    <p>Real feedback from parents and students</p>
+  <div class="card">
+    <h3>💬 What Parents Say</h3>
+    <p class="sub-text">Over 1000+ parents trust us</p>
   </div>
 
-  <div class="video-testimonial-wrapper">
+  <div class="video-testimonials">
 
-    <!-- Left Vertical Names -->
-    <div class="side-names left">
-      <span>RAKESH</span>
-      <span>SUNITA</span>
-    </div>
-
-    <!-- Main Video -->
-    <div class="video-box">
-
-      <video id="testimonialVideo" poster="thumbnail.jpg">
-        <source src="testimonial-video.mp4" type="video/mp4">
+    <!-- VIDEO 1 -->
+    <div class="video-card">
+      <video controls poster="thumb1.jpg">
+        <source src="video1.mp4" type="video/mp4">
       </video>
-
-      <!-- Play Button -->
-      <div class="play-btn" onclick="playVideo()">
-        ▶
-      </div>
-
-      <!-- Bottom Info -->
-      <div class="video-info">
-        <h4>Anita Sharma</h4>
-        <p>Parent Review</p>
-      </div>
-
+      <div class="video-name">Rakesh Sharma</div>
     </div>
 
-    <!-- Right Vertical Names -->
-    <div class="side-names right">
-      <span>AMIT</span>
-      <span>VERMA</span>
+    <!-- VIDEO 2 -->
+    <div class="video-card">
+      <video controls poster="thumb2.jpg">
+        <source src="video2.mp4" type="video/mp4">
+      </video>
+      <div class="video-name">Sunita Verma</div>
+    </div>
+
+    <!-- VIDEO 3 -->
+    <div class="video-card">
+      <video controls poster="thumb3.jpg">
+        <source src="video3.mp4" type="video/mp4">
+      </video>
+      <div class="video-name">Amit Singh</div>
+    </div>
+
+    <!-- VIDEO 4 -->
+    <div class="video-card">
+      <video controls poster="thumb4.jpg">
+        <source src="video4.mp4" type="video/mp4">
+      </video>
+      <div class="video-name">Priya Gupta</div>
+    </div>
+
+    <!-- VIDEO 5 -->
+    <div class="video-card">
+      <video controls poster="thumb5.jpg">
+        <source src="video5.mp4" type="video/mp4">
+      </video>
+      <div class="video-name">Neha Mishra</div>
     </div>
 
   </div>
