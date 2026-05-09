@@ -58,7 +58,43 @@ header{
   margin-bottom:30px;
   color:#d32f2f;
 }
+	
+.teacher-highlights{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+    margin-top:30px;
+}
 
+.highlight-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#fff;
+    padding:14px 22px;
+    border-radius:14px;
+    font-size:16px;
+    font-weight:600;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.highlight-box:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.highlight-box span{
+    color:#222;
+}
+
+.sub-text{
+    color:#666;
+    margin-top:10px;
+    font-size:16px;
+}
 
 /* WRAPPER */
 .gallery-wrapper{
@@ -1733,10 +1769,59 @@ iframe{height:450px}
 
 	<section class="testimonials container">
 
-  <div class="card">
+ <div class="card">
+
     <h3>💬 What We Say</h3>
-    <p class="sub-text">Over 1000+ parents trust us</p>
-  </div>
+
+    <p class="sub-text">
+        Experienced faculty dedicated to helping every student achieve excellent results.
+    </p>
+
+    <div class="teacher-highlights">
+
+        <div class="highlight-box">
+            ⭐
+            <span>4.9 Student Rating</span>
+        </div>
+
+        <div class="highlight-box">
+            📚
+            <span>All Subjects</span>
+        </div>
+
+        <div class="highlight-box">
+            🏆
+            <span>Top Achievements</span>
+        </div>
+
+        <div class="highlight-box">
+            🎯
+            <span>95% Success Rate</span>
+        </div>
+
+        <div class="highlight-box">
+            👨‍🎓
+            <span>5000+ Students</span>
+        </div>
+
+        <div class="highlight-box">
+            📹
+            <span>Intro Videos</span>
+        </div>
+
+        <div class="highlight-box">
+            📞
+            <span>Contact Support</span>
+        </div>
+
+        <div class="highlight-box">
+            📅
+            <span>Book Demo Class</span>
+        </div>
+
+    </div>
+
+</div>
 
   <div class="video-testimonials">
 
