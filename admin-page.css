@@ -631,3 +631,338 @@ tbody tr:hover {
   margin: 0;
   cursor: pointer;
 }
+
+
+
+
+/* =====================================================
+   ADMIN STUDENT TABLE
+===================================================== */
+
+.admin-section,
+.income-section {
+    width: min(1400px, 94%);
+    margin: 30px auto;
+    padding: 28px;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 22px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.10);
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #252525;
+}
+
+.section-heading p {
+    margin: 6px 0 0;
+    color: #777;
+    font-size: 14px;
+}
+
+
+/* TABLE */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 15px;
+}
+
+.student-table {
+    width: 100%;
+    min-width: 950px;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+.student-table th {
+    padding: 15px 12px;
+    background: linear-gradient(135deg, #6c2bd9, #9b45ff);
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.student-table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #eeeeee;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.student-table tbody tr {
+    transition: 0.25s ease;
+}
+
+.student-table tbody tr:hover {
+    background: #f7f3ff;
+    transform: scale(1.002);
+}
+
+
+/* PASSWORD */
+
+.password-cell {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.password-value {
+    min-width: 80px;
+    font-family: monospace;
+}
+
+.password-eye {
+    border: none;
+    background: #f0e9ff;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.password-eye:hover {
+    background: #dfd0ff;
+    transform: scale(1.08);
+}
+
+
+/* ACCESS BADGES */
+
+.access-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.access-rent {
+    background: #fff2cc;
+    color: #8a6100;
+}
+
+.access-buy {
+    background: #dcfce7;
+    color: #08752e;
+}
+
+
+/* PRICE */
+
+.price-value {
+    font-weight: 800;
+    color: #6424d6;
+}
+
+
+/* =====================================================
+   INCOME CARDS
+===================================================== */
+
+.income-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.income-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 22px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #f8f5ff, #ffffff);
+    border: 1px solid #eee6ff;
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.06);
+}
+
+.income-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: #eee5ff;
+    font-size: 25px;
+}
+
+.income-card h4 {
+    margin: 0 0 6px;
+    color: #777;
+    font-size: 13px;
+}
+
+.income-card strong {
+    font-size: 25px;
+    color: #292929;
+}
+
+.highlight-income {
+    background: linear-gradient(135deg, #6c2bd9, #9b45ff);
+    color: white;
+}
+
+.highlight-income h4,
+.highlight-income strong {
+    color: white;
+}
+
+.highlight-income .income-icon {
+    background: rgba(255,255,255,0.18);
+}
+
+
+/* =====================================================
+   PRICE PANEL
+===================================================== */
+
+.price-panel {
+    margin-top: 25px;
+    border: 1px solid #ececec;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.price-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px;
+    background: #faf8ff;
+}
+
+.price-panel-header h3 {
+    margin: 0;
+}
+
+.price-panel-header span {
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #e9ddff;
+    color: #6424d6;
+    font-weight: 700;
+}
+
+.price-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.price-table th,
+.price-table td {
+    padding: 13px 20px;
+    border-bottom: 1px solid #eeeeee;
+    text-align: left;
+}
+
+.price-table th {
+    background: #f4f0ff;
+}
+
+.price-table td:last-child {
+    text-align: right;
+    font-weight: 800;
+    color: #6424d6;
+}
+
+.lifetime-row {
+    background: #f4fff7;
+}
+
+
+/* =====================================================
+   REVENUE BREAKDOWN
+===================================================== */
+
+.revenue-breakdown {
+    margin-top: 25px;
+    padding: 22px;
+    border-radius: 18px;
+    background: #fafafa;
+}
+
+.revenue-breakdown h3 {
+    margin-top: 0;
+}
+
+.revenue-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+}
+
+.revenue-grid > div {
+    padding: 18px;
+    background: white;
+    border-radius: 14px;
+    border: 1px solid #eeeeee;
+}
+
+.revenue-grid span {
+    display: block;
+    color: #777;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.revenue-grid strong {
+    font-size: 20px;
+    color: #6424d6;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 1000px) {
+
+    .income-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .revenue-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .admin-section,
+    .income-section {
+        width: 92%;
+        padding: 18px;
+    }
+
+    .income-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .revenue-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2 {
+        font-size: 19px;
+    }
+
+}
