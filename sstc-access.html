@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -101,54 +101,29 @@
 
         <!-- STUDENT LOGIN -->
 
-        <form onsubmit="handleAdminLogin(event)">
-
-    <input
-        type="text"
-        id="adminId"
-        placeholder="Admin ID"
-        required
-    >
-
-    <input
-        type="password"
-        id="adminPassword"
-        placeholder="Admin Password"
-        required
-    >
-
-    <button type="submit">
-        🔐 Admin Access
-    </button>
-
-</form>
-
-
-        <!-- ADMIN LOGIN -->
-
         <form
-          id="adminLogin"
-          class="login-form"
-          onsubmit="adminLoginSubmit(event)">
+          id="studentLogin"
+          class="login-form active-form"
+          onsubmit="studentLoginSubmit(event)">
 
-          <h3>Admin Login</h3>
+          <h3>Student Login</h3>
 
           <p class="form-subtitle">
-            Authorized administration access only
+            Access your student dashboard
           </p>
 
           <label>
-            Admin ID
+            Student ID
           </label>
 
           <div class="input-box">
 
-            <span>👤</span>
+            <span>🎓</span>
 
             <input
               type="text"
-              id="adminId"
-              placeholder="Enter Admin ID"
+              id="studentId"
+              placeholder="Enter Student ID"
               autocomplete="username"
               required>
 
@@ -156,24 +131,24 @@
 
 
           <label>
-            Admin Password
+            Password
           </label>
 
           <div class="input-box">
 
-            <span>🔑</span>
+            <span>🔒</span>
 
             <input
               type="password"
-              id="adminPassword"
-              placeholder="Enter Admin Password"
+              id="studentPassword"
+              placeholder="Enter Password"
               autocomplete="current-password"
               required>
 
             <button
               type="button"
               class="password-toggle"
-              onclick="togglePassword('adminPassword', this)">
+              onclick="togglePassword('studentPassword', this)">
               👁
             </button>
 
@@ -183,24 +158,54 @@
           <div class="login-options">
 
             <label class="remember">
-              <input type="checkbox" id="rememberAdmin">
+              <input type="checkbox" id="rememberStudent">
               Remember me
             </label>
+
+            <a href="#" onclick="showForgotPassword(event)">
+              Forgot Password?
+            </a>
 
           </div>
 
 
           <button
             type="submit"
-            class="login-button admin-login-button">
+            class="login-button">
 
-            🛡️ Admin Access
+            🔐 Login as Student
 
           </button>
 
-          <div id="adminMessage" class="login-message"></div>
+          <div id="studentMessage" class="login-message"></div>
 
         </form>
+
+
+       
+
+          <!-- Admin Login Form -->
+    <form onsubmit="handleAdminLogin(event)">
+
+        <input
+            type="text"
+            id="adminId"
+            placeholder="Admin ID"
+            required
+        >
+
+        <input
+            type="password"
+            id="adminPassword"
+            placeholder="Admin Password"
+            required
+        >
+
+        <button type="submit">
+            🔐 Admin Access
+        </button>
+
+    </form>
 
 
         <!-- SECURITY -->
@@ -221,7 +226,41 @@
       </div>
 
 
-      
+      <!-- QUICK ACCESS -->
+
+      <div class="quick-access">
+
+        <h3>Quick Access</h3>
+
+        <div class="quick-grid">
+
+          <a href="#" onclick="studentQuickAccess(event)">
+            <span>📊</span>
+            <strong>My Result</strong>
+            <small>View academic result</small>
+          </a>
+
+          <a href="#" onclick="studentQuickAccess(event)">
+            <span>📝</span>
+            <strong>Online Test</strong>
+            <small>Start your test</small>
+          </a>
+
+          <a href="#" onclick="studentQuickAccess(event)">
+            <span>📅</span>
+            <strong>Attendance</strong>
+            <small>Check attendance</small>
+          </a>
+
+          <a href="#" onclick="studentQuickAccess(event)">
+            <span>💰</span>
+            <strong>Fee Status</strong>
+            <small>View fee details</small>
+          </a>
+
+        </div>
+
+      </div>
 
     </div>
 
@@ -254,7 +293,7 @@
 
         <a href="index.html#leadbox">Contact</a>
 
-        <!-- <a href="index.html#pricing">Fees</a> -->
+        <a href="index.html#pricing">Fees</a>
 
         <a href="sstc-access.html">SSTC Access</a>
 
@@ -273,7 +312,9 @@
 
 
   <script src="sstc-access.js"></script>
-<script src="admin-login-snippet.js"></script>
-  
+
+    <!-- Admin Login JavaScript -->
+    <script src="admin-login-snippet.js"></script>
+
 </body>
 </html>
