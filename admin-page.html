@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSTC Admin Dashboard | Shree Scholars Tuition Centre</title>
+  <link rel="stylesheet" href="admin-page.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Shree Scholars Tuition Centre Home">
+      <img src="logo.png" alt="Shree Scholars Tuition Centre Logo"
+           onerror="this.style.display='none'">
+      <div class="brand-text">
+        <h1>Shree Scholars Tuition Centre</h1>
+        <span>From Foundation to Future</span>
+      </div>
+    </a>
+
+    <nav class="header-actions">
+      <a class="nav-btn home-btn" href="index.html">🏠 Home</a>
+      <a class="nav-btn contact-btn" href="index.html#contact">📞 Contact</a>
+      <button class="logout-btn" id="logoutBtn" type="button">🔒 Logout</button>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="admin-main">
+    <section class="page-heading">
+      <div>
+        <span class="eyebrow">SSTC • SECURE ADMIN AREA</span>
+        <h2>Admin Dashboard</h2>
+        <p>Manage student access, eBook plans and account activity from one place.</p>
+      </div>
+      <div class="admin-badge">🛡️ Administrator</div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-grid">
+      <article class="stat-card">
+        <div class="stat-icon">👨‍🎓</div>
+        <div><span>Total Students</span><strong id="totalStudents">0</strong></div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon">🟢</div>
+        <div><span>Active Accounts</span><strong id="activeAccounts">0</strong></div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon">📚</div>
+        <div><span>eBook Members</span><strong id="ebookMembers">0</strong></div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon">♾️</div>
+        <div><span>Lifetime Buyers</span><strong id="lifetimeBuyers">0</strong></div>
+      </article>
+    </section>
+
+    <!-- TABLE PANEL -->
+    <section class="table-panel">
+      <div class="panel-top">
+        <div>
+          <h3>Student Access & eBook Records</h3>
+          <p>Student login and eBook subscription information.</p>
+        </div>
+        <div class="table-tools">
+          <input id="searchInput" type="search" placeholder="🔎 Search student ID...">
+          <select id="planFilter" aria-label="Filter by eBook plan">
+            <option value="all">All eBook Plans</option>
+            <option value="none">No eBook</option>
+            <option value="rent">Rent</option>
+            <option value="buy">Lifetime Buy</option>
+          </select>
+          <button class="add-btn" id="addStudentBtn" type="button">＋ Add Student</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="studentTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Student ID</th>
+              <th>Password</th>
+              <th>Last Login</th>
+              <th>eBook Access</th>
+              <th>Rent Duration</th>
+              <th>Plan Status</th>
+              <th>Account</th>
+            </tr>
+          </thead>
+          <tbody id="studentTableBody"></tbody>
+        </table>
+      </div>
+
+      <div class="empty-state" id="emptyState">
+        <div>📭</div>
+        <h4>No records found</h4>
+        <p>Try another search or add a student.</p>
+      </div>
+    </section>
+
+    <!-- SECURITY NOTE -->
+    <section class="security-note">
+      <span>🔐</span>
+      <div>
+        <strong>Security note</strong>
+        <p>
+          This demo dashboard stores records in the browser's localStorage.
+          For a real student portal, move authentication and student passwords to a secure server/database
+          and never store plain-text passwords in the browser.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div>
+      <strong>Shree Scholars Tuition Centre</strong>
+      <span>From Foundation to Future</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#contact">Contact</a>
+      <span>© <span id="currentYear"></span> SSTC</span>
+    </div>
+  </footer>
+
+  <!-- ADD STUDENT MODAL -->
+  <div class="modal-overlay" id="studentModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModalBtn" type="button">×</button>
+      <h3>Add Student</h3>
+      <p>Create a student access record.</p>
+
+      <form id="studentForm">
+        <label>Student ID
+          <input id="studentId" required placeholder="e.g. SSTC001">
+        </label>
+
+        <label>Student Password
+          <input id="studentPassword" required placeholder="Enter password">
+        </label>
+
+        <label>eBook Access
+          <select id="ebookAccess">
+            <option value="none">No eBook</option>
+            <option value="rent">Rent</option>
+            <option value="buy">Buy — Lifetime</option>
+          </select>
+        </label>
+
+        <label id="rentDurationWrap">Rent Duration
+          <select id="rentDuration">
+            <option value="3">3 Months</option>
+            <option value="6">6 Months</option>
+            <option value="9">9 Months</option>
+            <option value="12">12 Months</option>
+          </select>
+        </label>
+
+        <button class="save-btn" type="submit">Save Student</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="admin-page.js"></script>
+</body>
+</html>
