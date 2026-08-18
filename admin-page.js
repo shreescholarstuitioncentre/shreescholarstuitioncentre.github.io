@@ -1,531 +1,431 @@
-/* =========================================================
+/* =====================================================
    SSTC ADMIN DASHBOARD
-   Front-end demo data manager
-   ========================================================= */
+   E-BOOK PRICE & REVENUE SYSTEM
+===================================================== */
 
-const ADMIN_ID = "SSTCGKP";
 
-/*
-  SECURITY:
-  This file intentionally does NOT contain the admin password.
-  Put the credential check in your login/access page and redirect
-  to admin-page.html after successful server-side authentication.
-*/
+/* ===============================
+   E-BOOK PRICES
+================================ */
 
-const STORAGE_KEY = "sstc_student_records_v1";
+const EBOOK_PRICES = {
 
-const defaultStudents = [
-  {
-    id: "SSTC001",
-    password: "••••••••",
-    lastLogin: "18 Aug 2026, 08:42 PM",
-    ebook: "rent",
-    duration: "6",
-    active: true
-  },
-  {
-    id: "SSTC002",
-    password: "••••••••",
-    lastLogin: "18 Aug 2026, 07:18 PM",
-    ebook: "buy",
-    duration: "lifetime",
-    active: true
-  },
-  {
-    id: "SSTC003",
-    password: "••••••••",
-    lastLogin: "17 Aug 2026, 05:36 PM",
-    ebook: "rent",
-    duration: "3",
-    active: true
-  },
-  {
-    id: "SSTC004",
-    password: "••••••••",
-    lastLogin: "16 Aug 2026, 04:05 PM",
-    ebook: "none",
-    duration: "",
-    active: true
-  }
+    "3": 15,
+    "6": 25,
+    "9": 49,
+    "12": 99,
+    "lifetime": 199
+
+};
+
+
+/* ===============================
+   SAMPLE STUDENT DATA
+================================ */
+
+let students = [
+
+    {
+        id: "STU001",
+        password: "student123",
+        loginDate: "18 Aug 2026, 09:15 PM",
+        ebook: "Mathematics E-Book",
+        type: "Rent",
+        duration: "3 Months"
+    },
+
+    {
+        id: "STU002",
+        password: "science456",
+        loginDate: "18 Aug 2026, 09:42 PM",
+        ebook: "Science E-Book",
+        type: "Rent",
+        duration: "6 Months"
+    },
+
+    {
+        id: "STU003",
+        password: "english789",
+        loginDate: "18 Aug 2026, 10:05 PM",
+        ebook: "English E-Book",
+        type: "Rent",
+        duration: "12 Months"
+    },
+
+    {
+        id: "STU004",
+        password: "sst2026",
+        loginDate: "18 Aug 2026, 10:20 PM",
+        ebook: "Social Science E-Book",
+        type: "Buy",
+        duration: "Lifetime"
+    }
+
 ];
 
-const $ = (selector) => document.querySelector(selector);
 
-function getStudents() {
+/* ===============================
+   GET PRICE
+================================ */
 
-  try {
+function getPlanPrice(student) {
 
-    const saved = localStorage.getItem(STORAGE_KEY);
+    if (student.type === "Buy") {
+        return EBOOK_PRICES.lifetime;
+    }
 
-    return saved
-      ? JSON.parse(saved)
-      : [...defaultStudents];
+    const months = String(student.duration)
+        .replace(/\D/g, "");
 
-  } catch (error) {
-
-    console.error(
-      "Unable to read student records:",
-      error
-    );
-
-    return [...defaultStudents];
-  }
+    return EBOOK_PRICES[months] || 0;
 }
 
-function saveStudents(students) {
 
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(students)
-  );
+/* ===============================
+   PASSWORD SHOW / HIDE
+================================ */
+
+function toggleStudentPassword(button) {
+
+    const passwordElement =
+        button.parentElement.querySelector(".password-value");
+
+    if (!passwordElement) return;
+
+
+    const realPassword =
+        passwordElement.dataset.password;
+
+
+    if (passwordElement.dataset.visible === "true") {
+
+        passwordElement.textContent = "••••••••";
+        passwordElement.dataset.visible = "false";
+
+        button.textContent = "👁️";
+
+    } else {
+
+        passwordElement.textContent = realPassword;
+        passwordElement.dataset.visible = "true";
+
+        button.textContent = "🙈";
+
+    }
+
 }
 
-let students = getStudents();
 
-function formatPlan(student) {
+/* ===============================
+   RENDER STUDENT TABLE
+================================ */
 
-  if (student.ebook === "buy") {
+function renderStudentTable() {
 
-    return `
-      <span class="badge badge-buy">
-        ♾️ Lifetime Buy
-      </span>
-    `;
-  }
+    const tbody =
+        document.getElementById("studentTableBody");
 
-  if (student.ebook === "rent") {
+    if (!tbody) return;
 
-    return `
-      <span class="badge badge-rent">
-        📚 Rent
-      </span>
-    `;
-  }
 
-  return `
-    <span class="badge badge-none">
-      — No eBook —
-    </span>
-  `;
-}
+    tbody.innerHTML = "";
 
-function formatDuration(student) {
 
-  if (student.ebook === "buy") {
+    students.forEach((student, index) => {
 
-    return `
-      <span class="duration">
-        Lifetime
-      </span>
-    `;
-  }
+        const price = getPlanPrice(student);
 
-  if (student.ebook === "rent") {
+        const isBuy =
+            student.type.toLowerCase() === "buy";
 
-    return `
-      <span class="duration">
-        ${student.duration} Months
-      </span>
-    `;
-  }
 
-  return "—";
-}
+        const row = document.createElement("tr");
 
-function renderTable() {
 
-  const tbody = $("#studentTableBody");
+        row.innerHTML = `
 
-  const search =
-    ($("#searchInput").value || "")
-      .trim()
-      .toLowerCase();
+            <td>${index + 1}</td>
 
-  const filter =
-    $("#planFilter").value;
+            <td>
+                <strong>${escapeHTML(student.id)}</strong>
+            </td>
 
-  const filtered = students.filter(student => {
 
-    const matchesSearch =
-      student.id
-        .toLowerCase()
-        .includes(search);
+            <td>
 
-    const matchesFilter =
-      filter === "all" ||
-      (filter === "none" &&
-        student.ebook === "none") ||
-      (filter === "rent" &&
-        student.ebook === "rent") ||
-      (filter === "buy" &&
-        student.ebook === "buy");
+                <div class="password-cell">
 
-    return matchesSearch && matchesFilter;
+                    <span
+                        class="password-value"
+                        data-password="${escapeHTML(student.password)}"
+                        data-visible="false">
+                        ••••••••
+                    </span>
 
-  });
+                    <button
+                        type="button"
+                        class="password-eye"
+                        onclick="toggleStudentPassword(this)"
+                        title="Show / Hide Password">
+                        👁️
+                    </button>
 
-  tbody.innerHTML =
-    filtered.map((student, index) => `
+                </div>
 
-      <tr>
+            </td>
 
-        <td>
-          ${index + 1}
-        </td>
 
-        <td>
-          <span class="student-id">
-            ${escapeHtml(student.id)}
-          </span>
-        </td>
+            <td>
+                ${escapeHTML(student.loginDate)}
+            </td>
 
-        <td>
-          <span class="password">
-            ${escapeHtml(student.password)}
-          </span>
-        </td>
 
-        <td>
-          <span class="login-time">
-            ${escapeHtml(
-              student.lastLogin || "Never"
-            )}
-          </span>
-        </td>
+            <td>
+                📖 ${escapeHTML(student.ebook)}
+            </td>
 
-        <td>
-          ${formatPlan(student)}
-        </td>
 
-        <td>
-          ${formatDuration(student)}
-        </td>
+            <td>
 
-        <td>
-          <span class="badge status-active">
-            ● Active
-          </span>
-        </td>
+                <span class="
+                    access-badge
+                    ${isBuy ? "access-buy" : "access-rent"}
+                ">
 
-        <td>
+                    ${isBuy ? "🛒 Buy" : "🔄 Rent"}
 
-          <button
-            class="delete-btn"
-            data-id="${escapeHtml(student.id)}">
+                </span>
 
-            Delete
+            </td>
 
-          </button>
 
-        </td>
+            <td>
+                ${escapeHTML(student.duration)}
+            </td>
 
-      </tr>
 
-    `).join("");
+            <td class="price-value">
+                ₹${price}
+            </td>
 
-  $("#emptyState").style.display =
-    filtered.length
-      ? "none"
-      : "block";
+        `;
 
-  tbody
-    .querySelectorAll(".delete-btn")
-    .forEach(button => {
 
-      button.addEventListener(
-        "click",
-        () =>
-          deleteStudent(
-            button.dataset.id
-          )
-      );
+        tbody.appendChild(row);
 
     });
 
-  updateStats();
+
+    updateRevenue();
+
 }
 
-function updateStats() {
 
-  $("#totalStudents").textContent =
-    students.length;
+/* ===============================
+   REVENUE CALCULATION
+================================ */
 
-  $("#activeAccounts").textContent =
-    students.filter(
-      s => s.active
-    ).length;
+function calculateRevenue() {
 
-  $("#ebookMembers").textContent =
-    students.filter(
-      s => s.ebook !== "none"
-    ).length;
+    let total = 0;
 
-  $("#lifetimeBuyers").textContent =
-    students.filter(
-      s => s.ebook === "buy"
-    ).length;
+    let income3 = 0;
+    let income6 = 0;
+    let income9 = 0;
+    let income12 = 0;
+    let incomeLifetime = 0;
+
+
+    students.forEach(student => {
+
+        const price = getPlanPrice(student);
+
+        total += price;
+
+
+        if (student.type === "Buy") {
+
+            incomeLifetime += price;
+
+        } else {
+
+            const months =
+                String(student.duration)
+                    .replace(/\D/g, "");
+
+
+            if (months === "3")
+                income3 += price;
+
+            else if (months === "6")
+                income6 += price;
+
+            else if (months === "9")
+                income9 += price;
+
+            else if (months === "12")
+                income12 += price;
+
+        }
+
+    });
+
+
+    return {
+
+        total,
+        income3,
+        income6,
+        income9,
+        income12,
+        incomeLifetime
+
+    };
+
 }
 
-function escapeHtml(value) {
 
-  return String(value)
+/* ===============================
+   UPDATE REVENUE DASHBOARD
+================================ */
 
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
+function updateRevenue() {
 
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
+    const revenue = calculateRevenue();
 
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
 
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
+    const totalStudents =
+        document.getElementById("totalStudents");
 
-    .replaceAll(
-      "'",
-      "&#039;"
+    const totalBooks =
+        document.getElementById("totalBooks");
+
+    const totalRentals =
+        document.getElementById("totalRentals");
+
+    const overallIncome =
+        document.getElementById("overallIncome");
+
+
+    if (totalStudents)
+        totalStudents.textContent =
+            students.length;
+
+
+    if (totalBooks)
+        totalBooks.textContent =
+            students.length;
+
+
+    if (totalRentals)
+        totalRentals.textContent =
+            students.filter(
+                student => student.type === "Rent"
+            ).length;
+
+
+    if (overallIncome)
+        overallIncome.textContent =
+            "₹" + revenue.total;
+
+
+    setText("income3", "₹" + revenue.income3);
+
+    setText("income6", "₹" + revenue.income6);
+
+    setText("income9", "₹" + revenue.income9);
+
+    setText("income12", "₹" + revenue.income12);
+
+    setText(
+        "incomeLifetime",
+        "₹" + revenue.incomeLifetime
     );
+
 }
 
-function deleteStudent(id) {
 
-  const student =
-    students.find(
-      s => s.id === id
-    );
+/* ===============================
+   HELPER
+================================ */
 
-  if (!student) return;
+function setText(id, value) {
 
-  if (
-    !confirm(
-      `Delete student record "${id}"?`
-    )
-  ) return;
+    const element =
+        document.getElementById(id);
 
-  students =
-    students.filter(
-      s => s.id !== id
-    );
+    if (element) {
+        element.textContent = value;
+    }
 
-  saveStudents(students);
-
-  renderTable();
 }
 
-function openModal() {
 
-  $("#studentModal")
-    .classList
-    .add("show");
+/* ===============================
+   HTML SECURITY HELPER
+================================ */
 
-  $("#studentModal")
-    .setAttribute(
-      "aria-hidden",
-      "false"
-    );
+function escapeHTML(value) {
 
-  $("#studentId").focus();
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
 }
 
-function closeModal() {
 
-  $("#studentModal")
-    .classList
-    .remove("show");
+/* ===============================
+   ADD NEW STUDENT
+================================ */
 
-  $("#studentModal")
-    .setAttribute(
-      "aria-hidden",
-      "true"
-    );
+function addStudentRecord(
+    id,
+    password,
+    ebook,
+    type,
+    duration
+) {
 
-  $("#studentForm").reset();
+    students.push({
 
-  $("#rentDurationWrap")
-    .style.display = "block";
+        id: id,
+        password: password,
+        ebook: ebook,
+        type: type,
+        duration: duration,
+
+        loginDate:
+            new Date().toLocaleString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit"
+                }
+            )
+
+    });
+
+
+    renderStudentTable();
+
 }
 
-function updateRentField() {
 
-  $("#rentDurationWrap")
-    .style.display =
-      $("#ebookAccess").value === "rent"
-        ? "block"
-        : "none";
-}
+/* ===============================
+   INITIALIZE
+================================ */
 
-/* SEARCH */
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-$("#searchInput")
-  .addEventListener(
-    "input",
-    renderTable
-  );
-
-/* FILTER */
-
-$("#planFilter")
-  .addEventListener(
-    "change",
-    renderTable
-  );
-
-/* ADD STUDENT */
-
-$("#addStudentBtn")
-  .addEventListener(
-    "click",
-    openModal
-  );
-
-/* CLOSE MODAL */
-
-$("#closeModalBtn")
-  .addEventListener(
-    "click",
-    closeModal
-  );
-
-/* CLICK OUTSIDE MODAL */
-
-$("#studentModal")
-  .addEventListener(
-    "click",
-    (event) => {
-
-      if (
-        event.target ===
-        $("#studentModal")
-      ) {
-
-        closeModal();
-
-      }
+        renderStudentTable();
 
     }
-  );
-
-/* EBOOK TYPE */
-
-$("#ebookAccess")
-  .addEventListener(
-    "change",
-    updateRentField
-  );
-
-/* ADD STUDENT FORM */
-
-$("#studentForm")
-  .addEventListener(
-    "submit",
-    (event) => {
-
-      event.preventDefault();
-
-      const id =
-        $("#studentId")
-          .value
-          .trim()
-          .toUpperCase();
-
-      const password =
-        $("#studentPassword")
-          .value
-          .trim();
-
-      const ebook =
-        $("#ebookAccess").value;
-
-      const duration =
-        ebook === "rent"
-          ? $("#rentDuration").value
-          : (
-              ebook === "buy"
-                ? "lifetime"
-                : ""
-            );
-
-      if (!id || !password)
-        return;
-
-      if (
-        students.some(
-          student =>
-            student.id.toUpperCase() === id
-        )
-      ) {
-
-        alert(
-          "This Student ID already exists."
-        );
-
-        return;
-      }
-
-      students.unshift({
-
-        id,
-
-        password: "••••••••",
-
-        lastLogin:
-          "Not logged in yet",
-
-        ebook,
-
-        duration,
-
-        active: true
-
-      });
-
-      saveStudents(students);
-
-      renderTable();
-
-      closeModal();
-
-      alert(
-        `Student ${id} added successfully.`
-      );
-
-    }
-  );
-
-/* LOGOUT */
-
-$("#logoutBtn")
-  .addEventListener(
-    "click",
-    () => {
-
-      sessionStorage.removeItem(
-        "sstcAdminAuthenticated"
-      );
-
-      window.location.href =
-        "access.html";
-
-    }
-  );
-
-/* CURRENT YEAR */
-
-$("#currentYear")
-  .textContent =
-    new Date().getFullYear();
-
-/* INITIALIZE */
-
-updateRentField();
-
-renderTable();
+);
