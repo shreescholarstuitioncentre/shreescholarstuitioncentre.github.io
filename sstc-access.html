@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SSTC Access | Shree Scholars Tuition Centre</title>
+
+  <link rel="stylesheet" href="sstc-access.css">
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header id="mainHeader">
+
+    <a href="index.html" class="logo-link">
+      <img src="Logo.png" alt="Shree Scholars Tuition Centre Logo">
+    </a>
+
+    <div class="nav-text">
+      <h1>Shree Scholars Tuition Centre</h1>
+      <p>From Foundation to Future</p>
+    </div>
+
+    <div class="header-buttons">
+
+      <a href="index.html" class="header-btn home-btn">
+        🏠 Home
+      </a>
+
+      <a href="index.html#leadbox" class="header-btn contact-btn">
+        📞 Contact
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       ACCESS PAGE
+  ========================= -->
+
+  <main class="access-page">
+
+    <div class="access-container">
+
+      <!-- ACCESS HEADER -->
+
+      <div class="access-heading">
+
+        <div class="access-icon">
+          🔐
+        </div>
+
+        <h2>SSTC Access</h2>
+
+        <p>
+          Welcome to Shree Scholars Tuition Centre
+        </p>
+
+        <span>
+          Secure Student & Admin Access
+        </span>
+
+      </div>
+
+
+      <!-- LOGIN CARD -->
+
+      <div class="login-card">
+
+        <div class="login-tabs">
+
+          <button
+            type="button"
+            class="login-tab active"
+            id="studentTab"
+            onclick="switchLogin('student')">
+
+            👨‍🎓 Student
+
+          </button>
+
+          <button
+            type="button"
+            class="login-tab"
+            id="adminTab"
+            onclick="switchLogin('admin')">
+
+            👨‍💼 Admin
+
+          </button>
+
+        </div>
+
+
+        <!-- STUDENT LOGIN -->
+
+        <form
+          id="studentLogin"
+          class="login-form active-form"
+          onsubmit="studentLoginSubmit(event)">
+
+          <h3>Student Login</h3>
+
+          <p class="form-subtitle">
+            Access your student dashboard
+          </p>
+
+          <label>
+            Student ID
+          </label>
+
+          <div class="input-box">
+
+            <span>🎓</span>
+
+            <input
+              type="text"
+              id="studentId"
+              placeholder="Enter Student ID"
+              autocomplete="username"
+              required>
+
+          </div>
+
+
+          <label>
+            Password
+          </label>
+
+          <div class="input-box">
+
+            <span>🔒</span>
+
+            <input
+              type="password"
+              id="studentPassword"
+              placeholder="Enter Password"
+              autocomplete="current-password"
+              required>
+
+            <button
+              type="button"
+              class="password-toggle"
+              onclick="togglePassword('studentPassword', this)">
+              👁
+            </button>
+
+          </div>
+
+
+          <div class="login-options">
+
+            <label class="remember">
+              <input type="checkbox" id="rememberStudent">
+              Remember me
+            </label>
+
+            <a href="#" onclick="showForgotPassword(event)">
+              Forgot Password?
+            </a>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="login-button">
+
+            🔐 Login as Student
+
+          </button>
+
+          <div id="studentMessage" class="login-message"></div>
+
+        </form>
+
+
+        <!-- ADMIN LOGIN -->
+
+        <form
+          id="adminLogin"
+          class="login-form"
+          onsubmit="adminLoginSubmit(event)">
+
+          <h3>Admin Login</h3>
+
+          <p class="form-subtitle">
+            Authorized administration access only
+          </p>
+
+          <label>
+            Admin ID
+          </label>
+
+          <div class="input-box">
+
+            <span>👤</span>
+
+            <input
+              type="text"
+              id="adminId"
+              placeholder="Enter Admin ID"
+              autocomplete="username"
+              required>
+
+          </div>
+
+
+          <label>
+            Admin Password
+          </label>
+
+          <div class="input-box">
+
+            <span>🔑</span>
+
+            <input
+              type="password"
+              id="adminPassword"
+              placeholder="Enter Admin Password"
+              autocomplete="current-password"
+              required>
+
+            <button
+              type="button"
+              class="password-toggle"
+              onclick="togglePassword('adminPassword', this)">
+              👁
+            </button>
+
+          </div>
+
+
+          <div class="login-options">
+
+            <label class="remember">
+              <input type="checkbox" id="rememberAdmin">
+              Remember me
+            </label>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="login-button admin-login-button">
+
+            🛡️ Admin Access
+
+          </button>
+
+          <div id="adminMessage" class="login-message"></div>
+
+        </form>
+
+
+        <!-- SECURITY -->
+
+        <div class="security-note">
+
+          <span>🛡️</span>
+
+          <div>
+            <strong>Secure Access</strong>
+            <p>
+              Please do not share your login credentials with anyone.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- QUICK ACCESS -->
+
+      <div class="quick-access">
+
+        <h3>Quick Access</h3>
+
+        <div class="quick-grid">
+
+          <a href="#" onclick="studentQuickAccess(event)">
+            <span>📊</span>
+            <strong>My Result</strong>
+            <small>View academic result</small>
+          </a>
+
+          <a href="#" onclick="studentQuickAccess(event)">
+            <span>📝</span>
+            <strong>Online Test</strong>
+            <small>Start your test</small>
+          </a>
+
+          <a href="#" onclick="studentQuickAccess(event)">
+            <span>📅</span>
+            <strong>Attendance</strong>
+            <small>Check attendance</small>
+          </a>
+
+          <a href="#" onclick="studentQuickAccess(event)">
+            <span>💰</span>
+            <strong>Fee Status</strong>
+            <small>View fee details</small>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="footer-content">
+
+      <div class="footer-brand">
+
+        <img src="Logo.png" alt="SSTC Logo">
+
+        <div>
+          <h3>Shree Scholars Tuition Centre</h3>
+          <p>From Foundation to Future</p>
+        </div>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="index.html#leadbox">Contact</a>
+
+        <a href="index.html#pricing">Fees</a>
+
+        <a href="sstc-access.html">SSTC Access</a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      © 2026 Shree Scholars Tuition Centre
+      • All Rights Reserved
+
+    </div>
+
+  </footer>
+
+
+  <script src="sstc-access.js"></script>
+
+</body>
+</html>
