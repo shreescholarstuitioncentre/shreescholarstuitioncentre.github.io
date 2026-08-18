@@ -182,32 +182,111 @@
         </form>
 
 
-       
+     <!-- ================= ADMIN LOGIN ================= -->
 
-          <!-- Admin Login Form -->
-    <form onsubmit="handleAdminLogin(event)">
+<form
+  id="adminLogin"
+  class="login-form"
+  onsubmit="adminLoginSubmit(event)"
+>
 
-        <input
-            type="text"
-            id="adminId"
-            placeholder="Admin ID"
-            required
-        >
+  <h3>Admin Login</h3>
 
-        <input
-            type="password"
-            id="adminPassword"
-            placeholder="Admin Password"
-            required
-        >
+  <p class="form-subtitle">
+    Authorized administration access only
+  </p>
 
-        <button type="submit">
-            🔐 Admin Access
-        </button>
+  <!-- ADMIN ID -->
 
-    </form>
+  <label for="adminId">
+    Admin ID
+  </label>
+
+  <div class="input-box">
+
+    <span>👤</span>
+
+    <input
+      type="text"
+      id="adminId"
+      name="adminId"
+      placeholder="Enter Admin ID"
+      autocomplete="username"
+      required
+    >
+
+  </div>
 
 
+  <!-- ADMIN PASSWORD -->
+
+  <label for="adminPassword">
+    Admin Password
+  </label>
+
+  <div class="input-box">
+
+    <span>🔑</span>
+
+    <input
+      type="password"
+      id="adminPassword"
+      name="adminPassword"
+      placeholder="Enter Admin Password"
+      autocomplete="current-password"
+      required
+    >
+
+    <button
+      type="button"
+      class="password-toggle"
+      onclick="togglePassword('adminPassword', this)"
+      aria-label="Show or hide password"
+    >
+      👁️
+    </button>
+
+  </div>
+
+
+  <!-- REMEMBER ME -->
+
+  <div class="login-options">
+
+    <label class="remember">
+
+      <input
+        type="checkbox"
+        id="rememberAdmin"
+      >
+
+      <span>Remember me</span>
+
+    </label>
+
+  </div>
+
+
+  <!-- LOGIN BUTTON -->
+
+  <button
+    type="submit"
+    class="login-button admin-login-button"
+  >
+
+    🛡️ Admin Access
+
+  </button>
+
+
+  <!-- MESSAGE -->
+
+  <div
+    id="adminMessage"
+    class="login-message"
+  ></div>
+
+</form>
         <!-- SECURITY -->
 
         <div class="security-note">
