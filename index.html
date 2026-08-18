@@ -1617,6 +1617,51 @@ iframe{height:450px}
   animation:blink 1s infinite;
 }
 
+	/* =========================
+   HEADER BUTTONS
+========================= */
+
+.header-buttons{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.header-buttons .btn{
+  margin:0;
+  white-space:nowrap;
+}
+
+.sstc-access{
+  background:linear-gradient(45deg,#6c2bd9,#9c4dff);
+  color:#fff;
+  border:2px solid #6c2bd9;
+  box-shadow:0 4px 12px rgba(108,43,217,.25);
+  transition:.3s;
+}
+
+.sstc-access:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 8px 20px rgba(108,43,217,.4);
+}
+
+/* MOBILE HEADER BUTTONS */
+
+@media(max-width:600px){
+
+  .header-buttons{
+    gap:5px;
+  }
+
+  .header-buttons .btn{
+    padding:6px 9px;
+    font-size:11px;
+    margin:0;
+  }
+
+}
+
+	
 /* BLINK EFFECT */
 @keyframes blink{
   0%{opacity:1}
@@ -1636,8 +1681,17 @@ iframe{height:450px}
     <p>From Foundation to Future</p>
   </div>
 
-  <a href="#leadbox" class="btn primary">Contact</a>
-
+		 <div class="header-buttons">
+		
+		  <a href="#leadbox" class="btn primary">
+		    Contact
+		  </a>
+		
+		  <a href="sstc-access.html" class="btn sstc-access">
+		    SSTC Access
+		  </a>
+		
+		</div>
 </header>
 	
 	
