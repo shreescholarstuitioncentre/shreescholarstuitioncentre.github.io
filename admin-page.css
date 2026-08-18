@@ -570,3 +570,64 @@ tbody tr:hover {
     text-align: center;
   }
 }
+
+/* ================= ADMIN LOGIN MESSAGE ================= */
+
+.login-message {
+  min-height: 20px;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all .25s ease;
+}
+
+.login-message.success {
+  color: #168343;
+}
+
+.login-message.error {
+  color: #d52d2d;
+}
+
+/* Password eye button */
+
+.password-toggle {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 17px;
+  padding: 5px 8px;
+  border-radius: 6px;
+}
+
+.password-toggle:hover {
+  background: #f1eaff;
+}
+
+/* Remember me */
+
+.login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0 15px;
+}
+
+.remember {
+  display: flex !important;
+  align-items: center;
+  gap: 7px;
+  margin: 0 !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  color: #555;
+  cursor: pointer;
+}
+
+.remember input {
+  width: auto !important;
+  height: auto !important;
+  margin: 0;
+  cursor: pointer;
+}
