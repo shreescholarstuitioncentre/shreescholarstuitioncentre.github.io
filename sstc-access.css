@@ -1,0 +1,868 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  color:#333;
+  background:#fff8e1;
+  position:relative;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+
+  background:url("background.jpg")
+    no-repeat center center/cover;
+
+  opacity:.25;
+
+  z-index:-2;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,.88),
+    rgba(255,248,225,.88)
+  );
+
+  z-index:-1;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  position:sticky;
+  top:0;
+  left:0;
+
+  width:100%;
+  min-height:76px;
+
+  z-index:1000;
+
+  display:flex;
+  align-items:center;
+
+  padding:8px 20px;
+
+  background:rgba(255,255,255,.94);
+
+  backdrop-filter:blur(10px);
+
+  box-shadow:
+    0 3px 15px rgba(0,0,0,.10);
+
+  transition:.3s;
+}
+
+header.scrolled{
+  padding:5px 20px;
+
+  background:rgba(255,255,255,.98);
+}
+
+
+/* LOGO */
+
+.logo-link{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+}
+
+header img{
+  width:auto;
+  height:70px;
+
+  object-fit:contain;
+
+  transition:.3s;
+}
+
+header.scrolled img{
+  height:55px;
+}
+
+
+/* HEADER TEXT */
+
+.nav-text{
+  flex:1;
+  text-align:center;
+}
+
+.nav-text h1{
+  font-size:30px;
+  color:#d32f2f;
+  line-height:1.2;
+}
+
+.nav-text p{
+  margin-top:3px;
+
+  font-size:14px;
+  color:#555;
+}
+
+
+/* HEADER BUTTONS */
+
+.header-buttons{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.header-btn{
+  display:inline-block;
+
+  padding:9px 14px;
+
+  border-radius:10px;
+
+  text-decoration:none;
+
+  font-size:13px;
+  font-weight:bold;
+
+  transition:.3s;
+}
+
+.home-btn{
+  color:#d32f2f;
+  background:#fff;
+
+  border:2px solid #d32f2f;
+}
+
+.home-btn:hover{
+  background:#d32f2f;
+  color:#fff;
+
+  transform:translateY(-2px);
+}
+
+.contact-btn{
+  color:#fff;
+  background:
+    linear-gradient(
+      45deg,
+      #d32f2f,
+      #ff5722
+    );
+
+  box-shadow:
+    0 4px 12px rgba(211,47,47,.25);
+}
+
+.contact-btn:hover{
+  transform:translateY(-2px) scale(1.03);
+}
+
+
+/* =========================
+   ACCESS PAGE
+========================= */
+
+.access-page{
+  min-height:calc(100vh - 76px);
+
+  padding:60px 20px 80px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.access-container{
+  width:100%;
+  max-width:850px;
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+.access-heading{
+  text-align:center;
+
+  margin-bottom:25px;
+}
+
+.access-icon{
+  width:75px;
+  height:75px;
+
+  margin:0 auto 12px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  font-size:35px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6c2bd9,
+      #9c4dff
+    );
+
+  box-shadow:
+    0 10px 25px rgba(108,43,217,.30);
+}
+
+.access-heading h2{
+  font-size:38px;
+
+  color:#6c2bd9;
+
+  margin-bottom:5px;
+}
+
+.access-heading p{
+  color:#555;
+  font-size:17px;
+}
+
+.access-heading span{
+  display:inline-block;
+
+  margin-top:5px;
+
+  color:#777;
+  font-size:13px;
+}
+
+
+/* =========================
+   LOGIN CARD
+========================= */
+
+.login-card{
+  max-width:500px;
+
+  margin:auto;
+
+  padding:30px;
+
+  background:rgba(255,255,255,.95);
+
+  border-radius:25px;
+
+  box-shadow:
+    0 15px 45px rgba(0,0,0,.16);
+
+  border:1px solid rgba(255,255,255,.8);
+}
+
+
+/* =========================
+   LOGIN TABS
+========================= */
+
+.login-tabs{
+  display:flex;
+
+  gap:10px;
+
+  padding:5px;
+
+  margin-bottom:25px;
+
+  background:#f1f1f1;
+
+  border-radius:15px;
+}
+
+.login-tab{
+  flex:1;
+
+  padding:12px;
+
+  border:none;
+
+  border-radius:11px;
+
+  background:transparent;
+
+  color:#666;
+
+  font-size:15px;
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.login-tab.active{
+  color:#fff;
+
+  background:
+    linear-gradient(
+      45deg,
+      #d32f2f,
+      #ff5722
+    );
+
+  box-shadow:
+    0 5px 15px rgba(211,47,47,.25);
+}
+
+
+/* =========================
+   FORMS
+========================= */
+
+.login-form{
+  display:none;
+}
+
+.login-form.active-form{
+  display:block;
+
+  animation:fadeIn .4s ease;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.login-form h3{
+  text-align:center;
+
+  font-size:25px;
+
+  color:#222;
+}
+
+.form-subtitle{
+  text-align:center;
+
+  color:#777;
+
+  font-size:14px;
+
+  margin:5px 0 25px;
+}
+
+.login-form label{
+  display:block;
+
+  margin:12px 0 7px;
+
+  font-size:14px;
+  font-weight:bold;
+
+  color:#444;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.input-box{
+  display:flex;
+  align-items:center;
+
+  gap:10px;
+
+  width:100%;
+
+  padding:3px 12px;
+
+  background:#fafafa;
+
+  border:1px solid #ddd;
+
+  border-radius:12px;
+
+  transition:.3s;
+}
+
+.input-box:focus-within{
+  border-color:#6c2bd9;
+
+  box-shadow:
+    0 0 0 3px rgba(108,43,217,.10);
+}
+
+.input-box span{
+  font-size:18px;
+}
+
+.input-box input{
+  width:100%;
+
+  border:none;
+  outline:none;
+
+  padding:12px 5px;
+
+  background:transparent;
+
+  font-size:15px;
+}
+
+.password-toggle{
+  border:none;
+
+  background:transparent;
+
+  cursor:pointer;
+
+  font-size:17px;
+}
+
+
+/* =========================
+   LOGIN OPTIONS
+========================= */
+
+.login-options{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin:15px 0;
+
+  font-size:13px;
+}
+
+.login-options a{
+  color:#6c2bd9;
+
+  text-decoration:none;
+
+  font-weight:bold;
+}
+
+.login-options a:hover{
+  text-decoration:underline;
+}
+
+.remember{
+  display:flex !important;
+
+  align-items:center;
+
+  gap:5px;
+
+  margin:0 !important;
+
+  font-weight:normal !important;
+}
+
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.login-button{
+  width:100%;
+
+  padding:14px;
+
+  border:none;
+
+  border-radius:13px;
+
+  background:
+    linear-gradient(
+      45deg,
+      #d32f2f,
+      #ff5722
+    );
+
+  color:#fff;
+
+  font-size:16px;
+  font-weight:bold;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 7px 18px rgba(211,47,47,.25);
+
+  transition:.3s;
+}
+
+.login-button:hover{
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(211,47,47,.35);
+}
+
+.admin-login-button{
+  background:
+    linear-gradient(
+      45deg,
+      #6c2bd9,
+      #9c4dff
+    );
+
+  box-shadow:
+    0 7px 18px rgba(108,43,217,.25);
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.login-message{
+  min-height:20px;
+
+  margin-top:12px;
+
+  text-align:center;
+
+  font-size:13px;
+
+  font-weight:bold;
+}
+
+
+/* =========================
+   SECURITY
+========================= */
+
+.security-note{
+  display:flex;
+
+  align-items:flex-start;
+
+  gap:10px;
+
+  margin-top:25px;
+
+  padding:13px;
+
+  border-radius:12px;
+
+  background:#f6f2ff;
+
+  color:#555;
+
+  font-size:12px;
+}
+
+.security-note span{
+  font-size:20px;
+}
+
+.security-note strong{
+  color:#6c2bd9;
+}
+
+.security-note p{
+  margin-top:2px;
+}
+
+
+/* =========================
+   QUICK ACCESS
+========================= */
+
+.quick-access{
+  margin-top:35px;
+
+  text-align:center;
+}
+
+.quick-access h3{
+  color:#d32f2f;
+
+  font-size:23px;
+
+  margin-bottom:18px;
+}
+
+.quick-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:15px;
+}
+
+.quick-grid a{
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  padding:18px 10px;
+
+  background:rgba(255,255,255,.94);
+
+  border-radius:17px;
+
+  text-decoration:none;
+
+  color:#333;
+
+  box-shadow:
+    0 7px 20px rgba(0,0,0,.08);
+
+  transition:.3s;
+}
+
+.quick-grid a:hover{
+  transform:translateY(-6px);
+
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.14);
+}
+
+.quick-grid span{
+  font-size:27px;
+
+  margin-bottom:7px;
+}
+
+.quick-grid strong{
+  font-size:14px;
+}
+
+.quick-grid small{
+  margin-top:4px;
+
+  color:#777;
+
+  font-size:11px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  padding:30px 20px 15px;
+
+  background:#111827;
+
+  color:#fff;
+}
+
+.footer-content{
+  max-width:1100px;
+
+  margin:auto;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:20px;
+}
+
+.footer-brand{
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+}
+
+.footer-brand img{
+  width:55px;
+  height:55px;
+
+  object-fit:contain;
+}
+
+.footer-brand h3{
+  font-size:17px;
+}
+
+.footer-brand p{
+  color:#bbb;
+
+  font-size:12px;
+}
+
+.footer-links{
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:15px;
+}
+
+.footer-links a{
+  color:#fff;
+
+  text-decoration:none;
+
+  font-size:13px;
+
+  transition:.3s;
+}
+
+.footer-links a:hover{
+  color:#ff9800;
+}
+
+.footer-bottom{
+  text-align:center;
+
+  margin-top:25px;
+  padding-top:15px;
+
+  border-top:1px solid rgba(255,255,255,.12);
+
+  color:#aaa;
+
+  font-size:12px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+  .nav-text h1{
+    font-size:24px;
+  }
+
+  .quick-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:600px){
+
+  header{
+    min-height:65px;
+
+    padding:6px 10px;
+  }
+
+  header img{
+    height:45px;
+  }
+
+  header.scrolled img{
+    height:40px;
+  }
+
+  .nav-text h1{
+    font-size:15px;
+  }
+
+  .nav-text p{
+    display:none;
+  }
+
+  .header-buttons{
+    gap:4px;
+  }
+
+  .header-btn{
+    padding:7px 8px;
+
+    font-size:10px;
+  }
+
+  .access-page{
+    padding:40px 12px 60px;
+  }
+
+  .access-heading h2{
+    font-size:30px;
+  }
+
+  .login-card{
+    padding:20px 16px;
+
+    border-radius:20px;
+  }
+
+  .quick-grid{
+    gap:10px;
+  }
+
+  .footer-content{
+    flex-direction:column;
+
+    text-align:center;
+  }
+
+  .footer-brand{
+    justify-content:center;
+  }
+
+  .footer-links{
+    justify-content:center;
+  }
+
+}
+
+@media(max-width:380px){
+
+  .nav-text{
+    display:none;
+  }
+
+  header{
+    justify-content:space-between;
+  }
+
+  .header-buttons{
+    margin-left:auto;
+  }
+
+  .quick-grid a{
+    padding:14px 5px;
+  }
+
+}
