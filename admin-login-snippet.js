@@ -96,10 +96,14 @@ function adminLoginSubmit(event) {
       Session authentication
     */
 
-    sessionStorage.setItem(
-      "sstcAdminAuthenticated",
-      "true"
-    );
+
+     sessionStorage.setItem(
+    "sstcAdminLoggedIn",
+    "true"
+);
+
+window.location.href =
+    "admin-page.html";
 
 
     /*
