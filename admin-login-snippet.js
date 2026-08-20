@@ -1,227 +1,328 @@
 /* =========================================================
    SSTC ADMIN LOGIN
+   Shree Scholars Tuition Centre
+   ========================================================= */
+
+
+/* =========================================================
+   ADMIN CREDENTIALS
    ========================================================= */
 
 const SSTC_ADMIN_ID = "SSTCGKP";
 
-const SSTC_ADMIN_PASSWORD =
-  "Maa@adarsh2023";
+const SSTC_ADMIN_PASSWORD = "Maa@adarsh2023";
 
 
-/* ================= PASSWORD TOGGLE ================= */
+/* =========================================================
+   PASSWORD SHOW / HIDE
+   ========================================================= */
 
 function togglePassword(inputId, button) {
 
-  const input =
-    document.getElementById(inputId);
+    const input = document.getElementById(inputId);
 
-  if (!input) return;
+    if (!input || !button) {
+        return;
+    }
 
-  if (input.type === "password") {
 
-    input.type = "text";
+    /* PASSWORD → TEXT */
 
-    button.textContent = "🙈";
+    if (input.type === "password") {
 
-  } else {
+        input.type = "text";
 
-    input.type = "password";
+        button.textContent = "🙈";
 
-    button.textContent = "👁️";
+        button.setAttribute(
+            "aria-label",
+            "Hide password"
+        );
 
-  }
+        button.setAttribute(
+            "title",
+            "Hide password"
+        );
+
+    }
+
+
+    /* TEXT → PASSWORD */
+
+    else {
+
+        input.type = "password";
+
+        button.textContent = "👁️";
+
+        button.setAttribute(
+            "aria-label",
+            "Show password"
+        );
+
+        button.setAttribute(
+            "title",
+            "Show password"
+        );
+
+    }
+
 }
 
 
-/* ================= ADMIN LOGIN ================= */
+/* =========================================================
+   ADMIN LOGIN
+   ========================================================= */
 
 function adminLoginSubmit(event) {
 
-  event.preventDefault();
+    /* Stop normal form submission */
+
+    event.preventDefault();
 
 
-  const adminId =
-    document
-      .getElementById("adminId")
-      ?.value
-      .trim();
+    /* =====================================================
+       GET HTML ELEMENTS
+       ===================================================== */
 
-  const adminPassword =
-    document
-      .getElementById("adminPassword")
-      ?.value;
-
-  const rememberAdmin =
-    document
-      .getElementById("rememberAdmin")
-      ?.checked;
-
-  const message =
-    document.getElementById("adminMessage");
+    const adminIdElement =
+        document.getElementById("adminId");
 
 
-  /* Clear old message */
-
-  if (message) {
-
-    message.textContent = "";
-
-    message.className =
-      "login-message";
-
-  }
+    const adminPasswordElement =
+        document.getElementById("adminPassword");
 
 
-  /* ================= VALIDATION ================= */
-
-  if (!adminId || !adminPassword) {
-
-    showAdminMessage(
-      "Please enter Admin ID and Password.",
-      "error"
-    );
-
-    return;
-  }
+    const rememberAdminElement =
+        document.getElementById("rememberAdmin");
 
 
-  /* ================= AUTHENTICATION ================= */
-
-  if (
-    adminId === SSTC_ADMIN_ID &&
-    adminPassword === SSTC_ADMIN_PASSWORD
-  ) {
-
-    /*
-      Session authentication
-    */
+    const message =
+        document.getElementById("adminMessage");
 
 
-     sessionStorage.setItem(
-    "sstcAdminLoggedIn",
-    "true"
-);
+    /* =====================================================
+       GET VALUES
+       ===================================================== */
 
-window.location.href =
-    "admin-page.html";
+    const adminId =
+        adminIdElement
+            ? adminIdElement.value.trim()
+            : "";
 
 
-    /*
-      Remember Me
+    const adminPassword =
+        adminPasswordElement
+            ? adminPasswordElement.value
+            : "";
 
-      NOTE:
-      This stores only the Admin ID.
-      Do NOT store the password in localStorage.
-    */
 
-    if (rememberAdmin) {
+    const rememberAdmin =
+        rememberAdminElement
+            ? rememberAdminElement.checked
+            : false;
 
-      localStorage.setItem(
-        "sstcRememberedAdmin",
-        adminId
-      );
 
-    } else {
+    /* =====================================================
+       CLEAR PREVIOUS MESSAGE
+       ===================================================== */
 
-      localStorage.removeItem(
-        "sstcRememberedAdmin"
-      );
+    if (message) {
+
+        message.textContent = "";
+
+        message.className =
+            "login-message";
 
     }
 
 
-    /* SUCCESS MESSAGE */
+    /* =====================================================
+       EMPTY FIELD VALIDATION
+       ===================================================== */
 
-    showAdminMessage(
-      "Login successful! Opening Admin Dashboard...",
-      "success"
-    );
+    if (!adminId || !adminPassword) {
 
+        showAdminMessage(
+            "Please enter Admin ID and Password.",
+            "error"
+        );
 
-    /*
-      Small delay so user can see
-      success message.
-    */
+        return;
 
-    setTimeout(() => {
-
-      window.location.href =
-        "admin-page.html";
-
-    }, 600);
+    }
 
 
-    return;
-  }
-
-
-  /* ================= INVALID LOGIN ================= */
-
-  showAdminMessage(
-    "Invalid Admin ID or Password.",
-    "error"
-  );
-
-}
-
-
-/* ================= MESSAGE ================= */
-
-function showAdminMessage(
-  text,
-  type
-) {
-
-  const message =
-    document.getElementById("adminMessage");
-
-  if (!message) return;
-
-
-  message.textContent = text;
-
-  message.className =
-    "login-message " + type;
-
-}
-
-
-/* ================= REMEMBERED ADMIN ================= */
-
-document.addEventListener(
-  "DOMContentLoaded",
-  () => {
-
-    const savedAdmin =
-      localStorage.getItem(
-        "sstcRememberedAdmin"
-      );
-
-    const adminInput =
-      document.getElementById("adminId");
-
-    const rememberCheckbox =
-      document.getElementById(
-        "rememberAdmin"
-      );
-
+    /* =====================================================
+       ADMIN AUTHENTICATION
+       ===================================================== */
 
     if (
-      savedAdmin &&
-      adminInput
+        adminId === SSTC_ADMIN_ID &&
+        adminPassword === SSTC_ADMIN_PASSWORD
     ) {
 
-      adminInput.value =
-        savedAdmin;
 
-      if (rememberCheckbox) {
+        /* =================================================
+           CREATE ADMIN SESSION
+           ================================================= */
 
-        rememberCheckbox.checked =
-          true;
+        sessionStorage.setItem(
+            "sstcAdminLoggedIn",
+            "true"
+        );
 
-      }
+
+        /* =================================================
+           SAVE ADMIN ID IF REMEMBER ME IS CHECKED
+
+           IMPORTANT:
+           Password is NEVER stored in localStorage.
+           ================================================= */
+
+        if (rememberAdmin) {
+
+            localStorage.setItem(
+                "sstcRememberedAdmin",
+                adminId
+            );
+
+        }
+
+        else {
+
+            localStorage.removeItem(
+                "sstcRememberedAdmin"
+            );
+
+        }
+
+
+        /* =================================================
+           SUCCESS MESSAGE
+           ================================================= */
+
+        showAdminMessage(
+            "Login successful! Opening Admin Dashboard...",
+            "success"
+        );
+
+
+        /* =================================================
+           REDIRECT TO ADMIN DASHBOARD
+           ================================================= */
+
+        setTimeout(function () {
+
+            window.location.href =
+                "admin-page.html";
+
+        }, 600);
+
+
+        return;
 
     }
 
-  }
+
+    /* =====================================================
+       INVALID LOGIN
+       ===================================================== */
+
+    showAdminMessage(
+        "Invalid Admin ID or Password.",
+        "error"
+    );
+
+}
+
+
+/* =========================================================
+   ADMIN MESSAGE
+   ========================================================= */
+
+function showAdminMessage(text, type) {
+
+    const message =
+        document.getElementById("adminMessage");
+
+
+    if (!message) {
+
+        return;
+
+    }
+
+
+    message.textContent = text;
+
+
+    message.className =
+        "login-message " + type;
+
+}
+
+
+/* =========================================================
+   REMEMBERED ADMIN ID
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* =================================================
+           GET SAVED ADMIN ID
+           ================================================= */
+
+        const savedAdmin =
+            localStorage.getItem(
+                "sstcRememberedAdmin"
+            );
+
+
+        /* =================================================
+           GET ADMIN INPUT
+           ================================================= */
+
+        const adminInput =
+            document.getElementById(
+                "adminId"
+            );
+
+
+        /* =================================================
+           GET REMEMBER CHECKBOX
+           ================================================= */
+
+        const rememberCheckbox =
+            document.getElementById(
+                "rememberAdmin"
+            );
+
+
+        /* =================================================
+           RESTORE ADMIN ID
+           ================================================= */
+
+        if (
+            savedAdmin &&
+            adminInput
+        ) {
+
+            adminInput.value =
+                savedAdmin;
+
+
+            if (rememberCheckbox) {
+
+                rememberCheckbox.checked =
+                    true;
+
+            }
+
+        }
+
+    }
 );
