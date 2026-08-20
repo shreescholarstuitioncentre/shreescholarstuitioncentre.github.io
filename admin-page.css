@@ -966,3 +966,312 @@ tbody tr:hover {
     }
 
 }
+
+
+/* =====================================================
+   STATUS BADGES
+===================================================== */
+
+.status-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    padding: 6px 12px;
+
+    border-radius: 30px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+.status-active {
+
+    background: #dcfce7;
+
+    color: #08752e;
+
+}
+
+
+.status-inactive {
+
+    background: #eeeeee;
+
+    color: #666;
+
+}
+
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.action-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.action-btn {
+
+    border: none;
+
+    min-width: 36px;
+
+    height: 34px;
+
+    padding: 0 9px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition: all 0.2s ease;
+
+}
+
+
+.action-btn:hover {
+
+    transform: translateY(-2px);
+
+}
+
+
+.activate-btn {
+
+    background: #dcfce7;
+
+    color: #08752e;
+
+}
+
+
+.deactivate-btn {
+
+    background: #fff3cd;
+
+    color: #8a6100;
+
+}
+
+
+.delete-btn {
+
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+}
+
+
+.action-btn:active {
+
+    transform: scale(0.95);
+
+}
+
+
+/* =====================================================
+   INACTIVE ROW
+===================================================== */
+
+.student-table tr.record-inactive {
+
+    opacity: 0.58;
+
+    background: #f7f7f7;
+
+}
+
+
+.student-table tr.record-inactive td {
+
+    color: #777;
+
+}
+
+
+/* =====================================================
+   MULTIPLE E-BOOK INDICATOR
+===================================================== */
+
+.multiple-book {
+
+    display: inline-block;
+
+    margin-left: 5px;
+
+    padding: 3px 7px;
+
+    border-radius: 12px;
+
+    background: #eee5ff;
+
+    color: #6424d6;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+.admin-logout-container {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    margin: 35px 0 50px;
+
+}
+
+
+.admin-logout-btn {
+
+    border: none;
+
+    padding: 13px 30px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #dc2626,
+        #ef4444
+    );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(220, 38, 38, 0.25);
+
+    transition: all 0.25s ease;
+
+}
+
+
+.admin-logout-btn:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(220, 38, 38, 0.35);
+
+}
+
+
+.admin-logout-btn:active {
+
+    transform: scale(0.96);
+
+}
+
+
+/* =====================================================
+   CONFIRM / MESSAGE
+===================================================== */
+
+.dashboard-message {
+
+    position: fixed;
+
+    top: 25px;
+
+    right: 25px;
+
+    z-index: 9999;
+
+    padding: 14px 20px;
+
+    border-radius: 12px;
+
+    background: #222;
+
+    color: white;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.20);
+
+    font-size: 14px;
+
+    animation: dashboardMessageIn 0.3s ease;
+
+}
+
+
+@keyframes dashboardMessageIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(-15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE ACTIONS
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .action-buttons {
+
+        flex-direction: column;
+
+    }
+
+    .action-btn {
+
+        width: 100%;
+
+    }
+
+}
