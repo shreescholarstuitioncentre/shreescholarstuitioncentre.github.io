@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Student Registration | Shree Scholars Tuition Centre
+    </title>
+
+    <!-- REGISTRATION CSS -->
+    <link
+        rel="stylesheet"
+        href="student-registration.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header id="mainHeader">
+
+    <div class="header-logo">
+
+        <img
+            src="Logo.png"
+            alt="Shree Scholars Tuition Centre Logo">
+
+    </div>
+
+
+    <div class="nav-text">
+
+        <h1>
+            Shree Scholars Tuition Centre
+        </h1>
+
+        <p>
+            From Foundation to Future
+        </p>
+
+    </div>
+
+
+    <div class="header-buttons">
+
+        <a
+            href="index.html"
+            class="home-btn">
+
+            🏠 Home
+
+        </a>
+
+        <a
+            href="index.html#contact"
+            class="contact-btn">
+
+            📞 Contact
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN REGISTRATION SECTION
+     ===================================================== -->
+
+<main class="registration-page">
+
+
+    <div class="registration-wrapper">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="registration-heading">
+
+            <div class="registration-icon">
+                🎓
+            </div>
+
+            <h2>
+                Student Registration
+            </h2>
+
+            <p>
+                Register yourself for secure access
+                to Shree Scholars Tuition Centre.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             REGISTRATION CARD
+             ================================================= -->
+
+        <div class="registration-card">
+
+
+            <form
+                id="studentRegistrationForm"
+                method="POST"
+                target="registrationResponseFrame"
+                onsubmit="submitStudentRegistration(event)"
+            >
+
+
+                <!-- =========================================
+                     PERSONAL INFORMATION
+                     ========================================= -->
+
+                <div class="form-section-title">
+
+                    <span>👤</span>
+
+                    <div>
+
+                        <h3>
+                            Personal Information
+                        </h3>
+
+                        <p>
+                            Please enter your correct details.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FULL NAME -->
+
+                <div class="form-group">
+
+                    <label for="fullName">
+                        Full Name
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        maxlength="100"
+                        required>
+
+                </div>
+
+
+
+                <!-- MOBILE -->
+
+                <div class="form-group">
+
+                    <label for="mobileNumber">
+                        Mobile Number
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="mobileNumber"
+                        name="mobileNumber"
+                        placeholder="Enter 10-digit mobile number"
+                        inputmode="numeric"
+                        maxlength="10"
+                        autocomplete="tel"
+                        required>
+
+                </div>
+
+
+
+                <!-- GENDER -->
+
+                <div class="form-group">
+
+                    <label>
+                        Gender
+                        <span>*</span>
+                    </label>
+
+
+                    <div class="gender-options">
+
+
+                        <label class="gender-option">
+
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="Male"
+                                required>
+
+                            <span>
+                                👦 Male
+                            </span>
+
+                        </label>
+
+
+                        <label class="gender-option">
+
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="Female">
+
+                            <span>
+                                👧 Female
+                            </span>
+
+                        </label>
+
+
+                        <label class="gender-option">
+
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="Other">
+
+                            <span>
+                                🧑 Other
+                            </span>
+
+                        </label>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="emailId">
+                        Email ID
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="email"
+                        id="emailId"
+                        name="emailId"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                        maxlength="150"
+                        required>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     ACADEMIC INFORMATION
+                     ========================================= -->
+
+                <div class="form-section-title academic-title">
+
+                    <span>📚</span>
+
+                    <div>
+
+                        <h3>
+                            Academic Information
+                        </h3>
+
+                        <p>
+                            Enter your current school details.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CLASS -->
+
+                <div class="form-group">
+
+                    <label for="studentClass">
+                        Class
+                        <span>*</span>
+                    </label>
+
+                    <select
+                        id="studentClass"
+                        name="studentClass"
+                        required>
+
+                        <option value="">
+                            Select Class
+                        </option>
+
+                        <option value="9">
+                            Class 9
+                        </option>
+
+                        <option value="10">
+                            Class 10
+                        </option>
+
+                        <option value="11">
+                            Class 11
+                        </option>
+
+                        <option value="12">
+                            Class 12
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- BOARD -->
+
+                <div class="form-group">
+
+                    <label for="board">
+                        Board
+                        <span>*</span>
+                    </label>
+
+                    <select
+                        id="board"
+                        name="board"
+                        required>
+
+                        <option value="">
+                            Select Board
+                        </option>
+
+                        <option value="CBSE">
+                            CBSE
+                        </option>
+
+                        <option value="UP Board">
+                            UP Board
+                        </option>
+
+                        <option value="ICSE">
+                            ICSE
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- SCHOOL NAME -->
+
+                <div class="form-group">
+
+                    <label for="schoolName">
+                        School Name
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="schoolName"
+                        name="schoolName"
+                        placeholder="Enter your school name"
+                        maxlength="200"
+                        required>
+
+                </div>
+
+
+
+                <!-- SCHOOL PLACE -->
+
+                <div class="form-group">
+
+                    <label for="schoolPlace">
+                        School Place
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="schoolPlace"
+                        name="schoolPlace"
+                        placeholder="Enter school city / place"
+                        maxlength="100"
+                        required>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     TERMS
+                     ================================================= -->
+
+                <div class="registration-note">
+
+                    🛡️
+
+                    <div>
+
+                        <strong>
+                            Secure Registration
+                        </strong>
+
+                        <p>
+                            Please make sure that all information
+                            entered above is correct.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     SUBMIT BUTTON
+                     ================================================= -->
+
+                <button
+                    type="submit"
+                    id="registerButton"
+                    class="register-button">
+
+                    🎓 Register Student
+
+                </button>
+
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="registrationMessage"
+                    class="registration-message">
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+
+
+        <!-- BACK TO LOGIN -->
+
+        <div class="back-login">
+
+            Already registered?
+
+            <a href="student-login.html">
+
+                Login as Student →
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <strong>
+            Shree Scholars Tuition Centre
+        </strong>
+
+        <span>
+            From Foundation to Future
+        </span>
+
+        <span>
+            © 2026 Shree Scholars Tuition Centre
+        </span>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     HIDDEN RESPONSE FRAME
+     ===================================================== -->
+
+<iframe
+    name="registrationResponseFrame"
+    id="registrationResponseFrame"
+    class="hidden-frame">
+</iframe>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script src="student-registration.js"></script>
+
+
+</body>
+
+</html>
