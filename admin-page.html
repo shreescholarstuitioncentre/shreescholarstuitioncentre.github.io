@@ -63,35 +63,52 @@
 
     <!-- ================= STUDENT ACCESS TABLE ================= -->
 
+    <!-- =====================================================
+     STUDENT E-BOOK MANAGEMENT
+===================================================== -->
+
 <section class="admin-section">
 
     <div class="section-heading">
+
         <div>
-            <h2>👨‍🎓 Student E-Book Access</h2>
-            <p>Student login and e-book purchase/rental records</p>
+            <h2>👨‍🎓 Student E-Book Management</h2>
+            <p>
+                Manage student access, multiple e-books,
+                rental and purchase records
+            </p>
         </div>
+
     </div>
+
 
     <div class="table-wrapper">
 
         <table class="student-table">
 
             <thead>
+
                 <tr>
+
                     <th>#</th>
                     <th>Student ID</th>
                     <th>Password</th>
                     <th>Login Date & Time</th>
                     <th>E-Book</th>
-                    <th>Access Type</th>
+                    <th>Access</th>
                     <th>Duration</th>
                     <th>Price</th>
+                    <th>Status</th>
+                    <th>Action</th>
+
                 </tr>
+
             </thead>
+
 
             <tbody id="studentTableBody">
 
-                <!-- JS automatically adds students here -->
+                <!-- JavaScript will generate records -->
 
             </tbody>
 
@@ -102,62 +119,106 @@
 </section>
 
 
-<!-- ================= INCOME DASHBOARD ================= -->
+
+<!-- =====================================================
+     INCOME DASHBOARD
+===================================================== -->
 
 <section class="income-section">
 
     <div class="section-heading">
+
         <div>
+
             <h2>💰 E-Book Revenue Dashboard</h2>
-            <p>Automatic calculation according to purchase/rental plan</p>
+
+            <p>
+                Automatic income calculation
+            </p>
+
         </div>
+
     </div>
 
 
-    <!-- SUMMARY CARDS -->
+    <!-- SUMMARY -->
 
     <div class="income-cards">
 
+
         <div class="income-card">
+
             <span class="income-icon">👨‍🎓</span>
 
             <div>
+
                 <h4>Total Students</h4>
-                <strong id="totalStudents">0</strong>
+
+                <strong id="totalStudents">
+                    0
+                </strong>
+
             </div>
+
         </div>
 
 
+
         <div class="income-card">
+
             <span class="income-icon">📚</span>
 
             <div>
-                <h4>Total E-Books</h4>
-                <strong id="totalBooks">0</strong>
+
+                <h4>Total E-Book Records</h4>
+
+                <strong id="totalBooks">
+                    0
+                </strong>
+
             </div>
+
         </div>
+
 
 
         <div class="income-card">
-            <span class="income-icon">🔄</span>
+
+            <span class="income-icon">🟢</span>
 
             <div>
-                <h4>Total Rentals</h4>
-                <strong id="totalRentals">0</strong>
+
+                <h4>Active Records</h4>
+
+                <strong id="totalActive">
+                    0
+                </strong>
+
             </div>
+
         </div>
+
 
 
         <div class="income-card highlight-income">
+
             <span class="income-icon">💰</span>
 
             <div>
+
                 <h4>Overall Income</h4>
-                <strong id="overallIncome">₹0</strong>
+
+                <strong id="overallIncome">
+                    ₹0
+                </strong>
+
             </div>
+
         </div>
 
+
     </div>
+
 
 
     <!-- PRICE TABLE -->
@@ -165,19 +226,29 @@
     <div class="price-panel">
 
         <div class="price-panel-header">
-            <h3>📖 E-Book Pricing Plans</h3>
-            <span>Current Rates</span>
+
+            <h3>
+                📖 E-Book Pricing Plans
+            </h3>
+
+            <span>
+                Current Rates
+            </span>
+
         </div>
 
 
         <table class="price-table">
 
             <thead>
+
                 <tr>
                     <th>Plan</th>
                     <th>Price</th>
                 </tr>
+
             </thead>
+
 
             <tbody>
 
@@ -202,8 +273,12 @@
                 </tr>
 
                 <tr class="lifetime-row">
-                    <td>Lifetime Buy</td>
-                    <td>₹199</td>
+                    <td>
+                        <strong>Lifetime Buy</strong>
+                    </td>
+                    <td>
+                        ₹199
+                    </td>
                 </tr>
 
             </tbody>
@@ -213,38 +288,83 @@
     </div>
 
 
+
     <!-- REVENUE BREAKDOWN -->
 
     <div class="revenue-breakdown">
 
-        <h3>📊 Revenue Breakdown</h3>
+        <h3>
+            📊 Revenue Breakdown
+        </h3>
+
 
         <div class="revenue-grid">
 
-            <div>
-                <span>3 Month Rentals</span>
-                <strong id="income3">₹0</strong>
-            </div>
 
             <div>
-                <span>6 Month Rentals</span>
-                <strong id="income6">₹0</strong>
+
+                <span>
+                    3 Month Rentals
+                </span>
+
+                <strong id="income3">
+                    ₹0
+                </strong>
+
             </div>
 
-            <div>
-                <span>9 Month Rentals</span>
-                <strong id="income9">₹0</strong>
-            </div>
 
             <div>
-                <span>12 Month Rentals</span>
-                <strong id="income12">₹0</strong>
+
+                <span>
+                    6 Month Rentals
+                </span>
+
+                <strong id="income6">
+                    ₹0
+                </strong>
+
             </div>
 
+
             <div>
-                <span>Lifetime Purchases</span>
-                <strong id="incomeLifetime">₹0</strong>
+
+                <span>
+                    9 Month Rentals
+                </span>
+
+                <strong id="income9">
+                    ₹0
+                </strong>
+
             </div>
+
+
+            <div>
+
+                <span>
+                    12 Month Rentals
+                </span>
+
+                <strong id="income12">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Lifetime Purchases
+                </span>
+
+                <strong id="incomeLifetime">
+                    ₹0
+                </strong>
+
+            </div>
+
 
         </div>
 
@@ -252,20 +372,29 @@
 
 </section>
 
-   
 
-    <!-- SECURITY NOTE -->
-    <section class="security-note">
-      <span>🔐</span>
-      <div>
-        <strong>Security note</strong>
-        <p>
-          This demo dashboard stores records in the browser's localStorage.
-          For a real student portal, move authentication and student passwords to a secure server/database
-          and never store plain-text passwords in the browser.
-        </p>
-      </div>
-    </section>
+
+<!-- =====================================================
+     LOGOUT BUTTON
+===================================================== -->
+
+<div class="admin-logout-container">
+
+    <button
+        type="button"
+        class="admin-logout-btn"
+        onclick="adminLogout()">
+
+        🚪 Logout
+
+    </button>
+
+</div>
+
+
+
+
+    
   </main>
 
   <!-- FOOTER -->
