@@ -9,31 +9,28 @@
 }
 
 
-html {
-    scroll-behavior: smooth;
-}
-
-
 body {
-
-    min-height: 100vh;
 
     font-family:
         "Poppins",
         Arial,
         sans-serif;
 
-    color: #292929;
+    min-height: 100vh;
+
+    color: #222;
 
     background:
         linear-gradient(
-            rgba(255,255,255,0.90),
-            rgba(255,248,235,0.94)
+            rgba(255,255,255,0.88),
+            rgba(255,248,225,0.94)
         ),
         url("background.jpg");
 
     background-size: cover;
+
     background-position: center;
+
     background-attachment: fixed;
 
 }
@@ -43,11 +40,11 @@ body {
    HEADER
    ========================================================= */
 
-#mainHeader {
+.site-header {
 
     width: 100%;
 
-    min-height: 68px;
+    min-height: 72px;
 
     display: flex;
 
@@ -59,14 +56,16 @@ body {
         8px 20px;
 
     background:
-        rgba(255,255,255,0.97);
+        rgba(255,255,255,0.96);
 
     box-shadow:
-        0 3px 15px rgba(0,0,0,0.10);
+        0 4px 20px rgba(0,0,0,0.08);
 
-    position: relative;
+    position: sticky;
 
-    z-index: 10;
+    top: 0;
+
+    z-index: 1000;
 
 }
 
@@ -82,35 +81,31 @@ body {
 }
 
 
-.nav-text {
+.header-title {
 
     text-align: center;
-
-    flex: 1;
 
 }
 
 
-.nav-text h1 {
-
-    color: #d83232;
+.header-title h1 {
 
     font-size: 28px;
 
-    line-height: 1.2;
+    color: #dc302e;
 
     font-weight: 800;
 
 }
 
 
-.nav-text p {
+.header-title p {
 
-    margin-top: 3px;
+    font-size: 13px;
 
     color: #666;
 
-    font-size: 13px;
+    margin-top: 2px;
 
 }
 
@@ -124,7 +119,7 @@ body {
 }
 
 
-.header-buttons a {
+.header-btn {
 
     text-decoration: none;
 
@@ -137,18 +132,20 @@ body {
 
     font-weight: 700;
 
-    transition: 0.25s ease;
+    transition:
+        0.25s ease;
 
 }
 
 
 .home-btn {
 
-    color: #e22f2f;
+    color: #d92929;
 
-    border: 1px solid #e22f2f;
+    border:
+        1px solid #d92929;
 
-    background: white;
+    background: #fff;
 
 }
 
@@ -160,20 +157,17 @@ body {
     background:
         linear-gradient(
             135deg,
-            #df302f,
-            #ff512f
+            #e52d2d,
+            #ff4b22
         );
-
-    box-shadow:
-        0 5px 12px
-        rgba(223,48,47,0.22);
 
 }
 
 
-.header-buttons a:hover {
+.header-btn:hover {
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 
 }
 
@@ -185,21 +179,41 @@ body {
 .registration-page {
 
     min-height:
-        calc(100vh - 140px);
+        calc(100vh - 160px);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
 
     padding:
-        42px 15px 55px;
+        45px 20px;
 
 }
 
 
-.registration-wrapper {
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.registration-card {
 
     width: 100%;
 
     max-width: 760px;
 
-    margin: auto;
+    background:
+        rgba(255,255,255,0.97);
+
+    border-radius: 24px;
+
+    padding:
+        30px;
+
+    box-shadow:
+        0 18px 50px
+        rgba(0,0,0,0.13);
 
 }
 
@@ -212,7 +226,7 @@ body {
 
     text-align: center;
 
-    margin-bottom: 25px;
+    margin-bottom: 28px;
 
 }
 
@@ -232,29 +246,29 @@ body {
 
     justify-content: center;
 
-    border-radius: 18px;
+    border-radius: 50%;
 
     background:
         linear-gradient(
             135deg,
-            #e52f2f,
-            #ff542f
+            #ff3d1f,
+            #e3292d
         );
 
-    font-size: 30px;
+    font-size: 28px;
 
     box-shadow:
         0 8px 20px
-        rgba(230,48,48,0.22);
+        rgba(230,45,45,0.25);
 
 }
 
 
 .registration-heading h2 {
 
-    font-size: 31px;
+    font-size: 28px;
 
-    color: #272727;
+    color: #292929;
 
 }
 
@@ -263,7 +277,7 @@ body {
 
     margin-top: 5px;
 
-    color: #707070;
+    color: #777;
 
     font-size: 14px;
 
@@ -271,105 +285,24 @@ body {
 
 
 /* =========================================================
-   CARD
+   FORM GRID
    ========================================================= */
 
-.registration-card {
+.registration-form {
 
-    background:
-        rgba(255,255,255,0.97);
+    display: grid;
 
-    border-radius: 22px;
+    grid-template-columns:
+        repeat(2, 1fr);
 
-    padding: 30px;
-
-    box-shadow:
-        0 15px 45px
-        rgba(0,0,0,0.12);
-
-    border:
-        1px solid rgba(255,255,255,0.8);
+    gap: 18px;
 
 }
 
-
-/* =========================================================
-   SECTION TITLE
-   ========================================================= */
-
-.form-section-title {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    margin-bottom: 20px;
-
-    padding-bottom: 12px;
-
-    border-bottom:
-        1px solid #eeeeee;
-
-}
-
-
-.form-section-title > span {
-
-    width: 42px;
-
-    height: 42px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 12px;
-
-    background: #f4ecff;
-
-    font-size: 21px;
-
-}
-
-
-.form-section-title h3 {
-
-    font-size: 18px;
-
-    color: #333;
-
-}
-
-
-.form-section-title p {
-
-    margin-top: 2px;
-
-    font-size: 12px;
-
-    color: #777;
-
-}
-
-
-.academic-title {
-
-    margin-top: 30px;
-
-}
-
-
-/* =========================================================
-   FORM GROUP
-   ========================================================= */
 
 .form-group {
 
-    margin-bottom: 19px;
+    width: 100%;
 
 }
 
@@ -391,45 +324,34 @@ body {
 
 .form-group label span {
 
-    color: #e52f2f;
+    color: #e52d2d;
 
 }
 
 
-/* =========================================================
-   INPUT + SELECT
-   ========================================================= */
-
-.form-group input[type="text"],
-.form-group input[type="tel"],
-.form-group input[type="email"],
+.form-group input,
 .form-group select {
 
     width: 100%;
 
     height: 48px;
 
-    padding:
-        0 15px;
-
     border:
-        1px solid #d9d9d9;
+        1px solid #ddd;
 
-    border-radius: 11px;
+    border-radius: 12px;
 
-    background: #ffffff;
-
-    color: #333;
-
-    font-family: inherit;
-
-    font-size: 14px;
+    padding:
+        0 14px;
 
     outline: none;
 
+    background: #fff;
+
+    font-size: 14px;
+
     transition:
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
+        0.25s ease;
 
 }
 
@@ -437,11 +359,12 @@ body {
 .form-group input:focus,
 .form-group select:focus {
 
-    border-color: #7430df;
+    border-color:
+        #e5362f;
 
     box-shadow:
         0 0 0 3px
-        rgba(116,48,223,0.10);
+        rgba(229,54,47,0.10);
 
 }
 
@@ -452,19 +375,16 @@ body {
 
 .gender-options {
 
-    display: grid;
+    display: flex;
 
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 10px;
+    gap: 8px;
 
 }
 
 
 .gender-option {
 
-    position: relative;
+    flex: 1;
 
     cursor: pointer;
 
@@ -473,14 +393,14 @@ body {
 
 .gender-option input {
 
-    position: absolute;
-
-    opacity: 0;
+    display: none;
 
 }
 
 
 .gender-option span {
+
+    height: 48px;
 
     display: flex;
 
@@ -488,94 +408,88 @@ body {
 
     justify-content: center;
 
-    min-height: 46px;
-
     border:
-        1px solid #dddddd;
+        1px solid #ddd;
 
-    border-radius: 11px;
+    border-radius: 12px;
 
     background: #fff;
 
-    font-size: 13px;
-
     color: #555;
 
-    transition: 0.25s ease;
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition:
+        0.25s ease;
 
 }
 
 
 .gender-option input:checked + span {
 
-    color: #6d28d9;
+    color: #fff;
 
-    border-color: #7c3aed;
+    border-color:
+        #e52d2d;
 
     background:
-        #f5efff;
+        linear-gradient(
+            135deg,
+            #e52d2d,
+            #ff4b22
+        );
 
     box-shadow:
-        0 4px 12px
-        rgba(124,58,237,0.12);
-
-}
-
-
-.gender-option span:hover {
-
-    border-color: #a477e8;
+        0 5px 15px
+        rgba(229,45,45,0.20);
 
 }
 
 
 /* =========================================================
-   SECURITY NOTE
+   TERMS
    ========================================================= */
 
-.registration-note {
+.terms-box {
 
-    display: flex;
+    grid-column:
+        1 / -1;
 
-    align-items: flex-start;
-
-    gap: 12px;
-
-    margin:
-        8px 0 20px;
+    background:
+        #f8f5ff;
 
     padding:
-        14px;
+        13px 15px;
 
     border-radius: 12px;
 
-    background:
-        #f5f0ff;
+    font-size: 13px;
 
     color: #555;
 
-    font-size: 12px;
+}
+
+
+.terms-box label {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    cursor: pointer;
 
 }
 
 
-.registration-note:first-letter {
+.terms-box input {
 
-    font-size: 18px;
+    width: 16px;
 
-}
-
-
-.registration-note strong {
-
-    color: #6524d4;
-
-}
-
-
-.registration-note p {
-
-    margin-top: 3px;
+    height: 16px;
 
 }
 
@@ -586,49 +500,48 @@ body {
 
 .register-button {
 
-    width: 100%;
+    grid-column:
+        1 / -1;
 
-    min-height: 50px;
+    height: 52px;
 
     border: none;
 
-    border-radius: 12px;
+    border-radius: 13px;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 800;
 
     background:
         linear-gradient(
             135deg,
-            #df302f,
-            #ff512f
+            #e52d2d,
+            #ff4b22
         );
 
-    color: white;
-
-    font-family: inherit;
-
-    font-size: 15px;
-
-    font-weight: 800;
-
-    cursor: pointer;
-
     box-shadow:
-        0 8px 20px
-        rgba(223,48,47,0.22);
+        0 9px 22px
+        rgba(229,45,45,0.25);
 
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+        0.25s ease;
 
 }
 
 
 .register-button:hover {
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 
     box-shadow:
-        0 11px 25px
-        rgba(223,48,47,0.28);
+        0 12px 25px
+        rgba(229,45,45,0.30);
 
 }
 
@@ -650,17 +563,19 @@ body {
 
 .registration-message {
 
+    grid-column:
+        1 / -1;
+
     display: none;
 
-    margin-top: 15px;
+    padding:
+        13px 15px;
 
-    padding: 13px;
-
-    border-radius: 10px;
+    border-radius: 11px;
 
     text-align: center;
 
-    font-size: 13px;
+    font-size: 14px;
 
     font-weight: 600;
 
@@ -671,12 +586,13 @@ body {
 
     display: block;
 
-    background: #eaf9ef;
+    color: #146c2e;
 
-    color: #18833c;
+    background:
+        #e9f9ed;
 
     border:
-        1px solid #bce9c9;
+        1px solid #bce8c8;
 
 }
 
@@ -685,45 +601,46 @@ body {
 
     display: block;
 
-    background: #fff0f0;
+    color: #a11d1d;
 
-    color: #c62828;
+    background:
+        #fff0f0;
 
     border:
-        1px solid #ffc7c7;
+        1px solid #ffc4c4;
 
 }
 
 
 /* =========================================================
-   BACK TO LOGIN
+   LOGIN LINK
    ========================================================= */
 
-.back-login {
+.already-registered {
 
     text-align: center;
 
-    margin-top: 20px;
+    margin-top: 22px;
 
     color: #666;
 
-    font-size: 13px;
+    font-size: 14px;
 
 }
 
 
-.back-login a {
+.already-registered a {
 
     color: #6d28d9;
 
-    font-weight: 700;
+    font-weight: 800;
 
     text-decoration: none;
 
 }
 
 
-.back-login a:hover {
+.already-registered a:hover {
 
     text-decoration: underline;
 
@@ -734,7 +651,7 @@ body {
    FOOTER
    ========================================================= */
 
-footer {
+.site-footer {
 
     background:
         #0b1e3c;
@@ -742,113 +659,97 @@ footer {
     color: white;
 
     padding:
-        18px 15px;
-
-    text-align: center;
+        22px 20px;
 
 }
 
 
 .footer-content {
 
+    max-width: 1100px;
+
+    margin: auto;
+
     display: flex;
 
     align-items: center;
 
-    justify-content: center;
+    justify-content: space-between;
 
-    flex-wrap: wrap;
+    gap: 20px;
 
-    gap: 12px;
+}
+
+
+.footer-content h3 {
+
+    font-size: 16px;
+
+}
+
+
+.footer-content p {
 
     font-size: 12px;
 
-}
+    opacity: 0.85;
 
-
-.footer-content strong {
-
-    color: #ffffff;
-
-}
-
-
-.footer-content span {
-
-    color: #d5dbe5;
+    margin-top: 3px;
 
 }
 
 
 /* =========================================================
-   HIDDEN IFRAME
-   ========================================================= */
-
-.hidden-frame {
-
-    width: 0;
-
-    height: 0;
-
-    border: 0;
-
-    position: absolute;
-
-    left: -9999px;
-
-}
-
-
-/* =========================================================
-   RESPONSIVE
+   MOBILE
    ========================================================= */
 
 @media (max-width: 700px) {
 
-    #mainHeader {
+
+    .site-header {
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 8px;
 
         padding:
-            8px 12px;
+            10px;
 
     }
 
 
-    .header-logo img {
+    .header-logo {
 
-        width: 45px;
+        position: absolute;
 
-        height: 45px;
+        left: 10px;
 
-    }
-
-
-    .nav-text h1 {
-
-        font-size: 19px;
+        top: 8px;
 
     }
 
 
-    .nav-text p {
+    .header-title h1 {
 
-        font-size: 10px;
+        font-size: 21px;
 
     }
 
 
-    .header-buttons a {
-
-        padding:
-            7px 9px;
+    .header-title p {
 
         font-size: 11px;
 
     }
 
 
-    .contact-btn {
+    .header-buttons {
 
-        display: none;
+        width: 100%;
+
+        justify-content: center;
 
     }
 
@@ -856,39 +757,42 @@ footer {
     .registration-page {
 
         padding:
-            25px 10px 40px;
+            25px 12px;
 
     }
 
 
     .registration-card {
 
-        padding: 20px 16px;
+        padding:
+            22px 16px;
 
         border-radius: 18px;
 
     }
 
 
-    .registration-heading h2 {
+    .registration-form {
 
-        font-size: 25px;
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .terms-box,
+    .register-button,
+    .registration-message {
+
+        grid-column:
+            auto;
 
     }
 
 
     .gender-options {
 
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .gender-option span {
-
-        justify-content: flex-start;
-
-        padding-left: 16px;
+        flex-direction: column;
 
     }
 
@@ -897,7 +801,7 @@ footer {
 
         flex-direction: column;
 
-        gap: 5px;
+        text-align: center;
 
     }
 
