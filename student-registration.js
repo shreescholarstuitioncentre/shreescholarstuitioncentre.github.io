@@ -1,63 +1,972 @@
 /* =========================================================
-   SSTC STUDENT REGISTRATION
-   FRONTEND JAVASCRIPT
+   SSTC STUDENT REGISTRATION JS
    ========================================================= */
 
-
-/* =========================================================
-   GOOGLE APPS SCRIPT WEB APP URL
-   ========================================================= */
 
 /*
-   IMPORTANT:
+   =========================================================
+   IMPORTANT
+   =========================================================
 
-   Neeche apna Google Apps Script
-   Web App URL paste karo.
+   Yahan apne Google Apps Script Web App ka URL paste karein.
+
+   Example:
+
+   const GOOGLE_SCRIPT_URL =
+   "https://script.google.com/macros/s/XXXXXXXXXXXX/exec";
+
 */
 
-const SSTC_GOOGLE_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbz1w3sCKhTk7bX-CVxIky7RlGlUxm3EC5SrYfmX1WNpnc0VwHbXe8UAuNI2s7WDVtt2dw/exec";
+const GOOGLE_SCRIPT_URL =
+  "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
 
 
 /* =========================================================
-   FORM
+   ELEMENTS
    ========================================================= */
 
-const registrationForm =
-    document.getElementById(
-        "studentRegistrationForm"
-    );
+const form =
+  document.getElementById(
+    "studentRegistrationForm"
+  );
 
-
-/* =========================================================
-   MOBILE NUMBER
-   ========================================================= */
+const fullNameInput =
+  document.getElementById(
+    "fullName"
+  );
 
 const mobileInput =
-    document.getElementById(
-        "mobile"
+  document.getElementById(
+    "mobile"
+  );
+
+const emailInput =
+  document.getElementById(
+    "email"
+  );
+
+const genderInput =
+  document.getElementById(
+    "gender"
+  );
+
+const classInput =
+  document.getElementById(
+    "studentClass"
+  );
+
+const boardInput =
+  document.getElementById(
+    "board"
+  );
+
+const schoolNameInput =
+  document.getElementById(
+    "schoolName"
+  );
+
+const schoolPlaceInput =
+  document.getElementById(
+    "schoolPlace"
+  );
+
+const studentIdInput =
+  document.getElementById(
+    "studentId"
+  );
+
+const passwordInput =
+  document.getElementById(
+    "studentPassword"
+  );
+
+const termsInput =
+  document.getElementById(
+    "terms"
+  );
+
+const messageBox =
+  document.getElementById(
+    "registrationMessage"
+  );
+
+const registerButton =
+  document.getElementById(
+    "registerButton"
+  );
+
+const buttonText =
+  document.getElementById(
+    "buttonText"
+  );
+
+const buttonLoader =
+  document.getElementById(
+    "buttonLoader"
+  );
+
+const togglePasswordButton =
+  document.getElementById(
+    "togglePassword"
+  );
+
+
+/* =========================================================
+   CURRENT YEAR
+   ========================================================= */
+
+const currentYear =
+  document.getElementById(
+    "currentYear"
+  );
+
+if (currentYear) {
+
+  currentYear.textContent =
+    new Date().getFullYear();
+
+}
+
+
+/* =========================================================
+   STUDENT ID GENERATOR
+   ========================================================= */
+
+function generateStudentId() {
+
+  /*
+     SSTC + YEAR + RANDOM NUMBER
+
+     Example:
+
+     SSTC26058321
+
+     Random part makes repeated ID
+     generation very unlikely.
+  */
+
+  const year =
+    String(
+      new Date().getFullYear()
+    ).slice(-2);
+
+  const randomPart =
+    Math.floor(
+      100000 +
+      Math.random() * 900000
+    );
+
+  return (
+    "SSTC" +
+    year +
+    randomPart
+  );
+}
+
+
+/* =========================================================
+   LOCAL UNIQUE ID CHECK
+   ========================================================= */
+
+function generateUniqueStudentId() {
+
+  let id;
+
+  let attempts = 0;
+
+  do {
+
+    id =
+      generateStudentId();
+
+    attempts++;
+
+  } while (
+    localStorage.getItem(
+      "sstc_student_" + id
+    ) &&
+    attempts < 20
+  );
+
+  return id;
+}
+
+
+/* =========================================================
+   PASSWORD GENERATOR
+   ========================================================= */
+
+function generateStudentPassword(
+  fullName,
+  studentClass
+) {
+
+  /*
+     Example:
+
+     Full Name:
+     Rahul Kumar
+
+     Class:
+     10
+
+     Password:
+
+     Rahul10@SSTC
+
+  */
+
+  const cleanName =
+    fullName
+      .trim()
+      .replace(
+        /[^a-zA-Z]/g,
+        ""
+      );
+
+
+  let namePart =
+    cleanName.substring(
+      0,
+      6
     );
 
 
-if (mobileInput) {
+  if (!namePart) {
 
-    mobileInput.addEventListener(
-        "input",
-        function () {
+    namePart = "Student";
 
-            this.value =
-                this.value
-                    .replace(
-                        /[^0-9]/g,
-                        ""
-                    )
-                    .slice(
-                        0,
-                        10
-                    );
+  }
+
+
+  /*
+     First letter uppercase
+     remaining letters lowercase
+  */
+
+  namePart =
+    namePart.charAt(0).toUpperCase() +
+    namePart.slice(1).toLowerCase();
+
+
+  return (
+    namePart +
+    studentClass +
+    "@SSTC"
+  );
+}
+
+
+/* =========================================================
+   INITIAL AUTO GENERATION
+   ========================================================= */
+
+function updateAutoCredentials() {
+
+  const name =
+    fullNameInput.value.trim();
+
+  const studentClass =
+    classInput.value;
+
+
+  /*
+     Student ID
+  */
+
+  if (!studentIdInput.value) {
+
+    studentIdInput.value =
+      generateUniqueStudentId();
+
+  }
+
+
+  /*
+     Password
+  */
+
+  if (
+    name &&
+    studentClass
+  ) {
+
+    passwordInput.value =
+      generateStudentPassword(
+        name,
+        studentClass
+      );
+
+  } else {
+
+    passwordInput.value = "";
+
+  }
+
+}
+
+
+/* =========================================================
+   PASSWORD VISIBILITY
+   ========================================================= */
+
+togglePasswordButton.addEventListener(
+  "click",
+  () => {
+
+    if (
+      passwordInput.type ===
+      "password"
+    ) {
+
+      passwordInput.type =
+        "text";
+
+      togglePasswordButton.textContent =
+        "🙈";
+
+      togglePasswordButton.setAttribute(
+        "aria-label",
+        "Hide password"
+      );
+
+    } else {
+
+      passwordInput.type =
+        "password";
+
+      togglePasswordButton.textContent =
+        "👁️";
+
+      togglePasswordButton.setAttribute(
+        "aria-label",
+        "Show password"
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   NAME / CLASS CHANGE
+   ========================================================= */
+
+fullNameInput.addEventListener(
+  "input",
+  () => {
+
+    const name =
+      fullNameInput.value.trim();
+
+    const studentClass =
+      classInput.value;
+
+
+    if (
+      name &&
+      studentClass
+    ) {
+
+      passwordInput.value =
+        generateStudentPassword(
+          name,
+          studentClass
+        );
+
+    } else {
+
+      passwordInput.value =
+        "";
+
+    }
+
+  }
+);
+
+
+classInput.addEventListener(
+  "change",
+  () => {
+
+    const name =
+      fullNameInput.value.trim();
+
+    const studentClass =
+      classInput.value;
+
+
+    if (
+      name &&
+      studentClass
+    ) {
+
+      passwordInput.value =
+        generateStudentPassword(
+          name,
+          studentClass
+        );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   MOBILE VALIDATION
+   ========================================================= */
+
+mobileInput.addEventListener(
+  "input",
+  () => {
+
+    mobileInput.value =
+      mobileInput.value
+        .replace(
+          /\D/g,
+          ""
+        )
+        .substring(
+          0,
+          10
+        );
+
+  }
+);
+
+
+/* =========================================================
+   MESSAGE FUNCTION
+   ========================================================= */
+
+function showMessage(
+  text,
+  type = "error"
+) {
+
+  messageBox.textContent =
+    text;
+
+  messageBox.className =
+    "registration-message show " +
+    type;
+
+  messageBox.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+
+}
+
+
+function clearMessage() {
+
+  messageBox.textContent =
+    "";
+
+  messageBox.className =
+    "registration-message";
+
+}
+
+
+/* =========================================================
+   VALIDATION
+   ========================================================= */
+
+function validateForm() {
+
+  const name =
+    fullNameInput.value.trim();
+
+  const mobile =
+    mobileInput.value.trim();
+
+  const email =
+    emailInput.value.trim();
+
+  const gender =
+    genderInput.value;
+
+  const studentClass =
+    classInput.value;
+
+  const board =
+    boardInput.value;
+
+  const schoolName =
+    schoolNameInput.value.trim();
+
+  const schoolPlace =
+    schoolPlaceInput.value.trim();
+
+
+  if (
+    name.length < 2
+  ) {
+
+    showMessage(
+      "Please enter a valid full name.",
+      "error"
+    );
+
+    fullNameInput.focus();
+
+    return false;
+
+  }
+
+
+  if (
+    !/^[6-9]\d{9}$/.test(
+      mobile
+    )
+  ) {
+
+    showMessage(
+      "Please enter a valid 10 digit mobile number.",
+      "error"
+    );
+
+    mobileInput.focus();
+
+    return false;
+
+  }
+
+
+  const emailPattern =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+  if (
+    !emailPattern.test(
+      email
+    )
+  ) {
+
+    showMessage(
+      "Please enter a valid email ID.",
+      "error"
+    );
+
+    emailInput.focus();
+
+    return false;
+
+  }
+
+
+  if (!gender) {
+
+    showMessage(
+      "Please select your gender.",
+      "error"
+    );
+
+    genderInput.focus();
+
+    return false;
+
+  }
+
+
+  if (!studentClass) {
+
+    showMessage(
+      "Please select your class.",
+      "error"
+    );
+
+    classInput.focus();
+
+    return false;
+
+  }
+
+
+  if (!board) {
+
+    showMessage(
+      "Please select your board.",
+      "error"
+    );
+
+    boardInput.focus();
+
+    return false;
+
+  }
+
+
+  if (
+    schoolName.length < 2
+  ) {
+
+    showMessage(
+      "Please enter your school name.",
+      "error"
+    );
+
+    schoolNameInput.focus();
+
+    return false;
+
+  }
+
+
+  if (
+    schoolPlace.length < 2
+  ) {
+
+    showMessage(
+      "Please enter your school place.",
+      "error"
+    );
+
+    schoolPlaceInput.focus();
+
+    return false;
+
+  }
+
+
+  if (
+    !termsInput.checked
+  ) {
+
+    showMessage(
+      "Please confirm that the information provided is correct.",
+      "warning"
+    );
+
+    return false;
+
+  }
+
+
+  return true;
+}
+
+
+/* =========================================================
+   LOCAL DUPLICATE CHECK
+   ========================================================= */
+
+function checkLocalDuplicate(
+  mobile,
+  email
+) {
+
+  const records = [];
+
+  /*
+     Search all SSTC student records
+     stored in this browser.
+  */
+
+  for (
+    let i = 0;
+    i < localStorage.length;
+    i++
+  ) {
+
+    const key =
+      localStorage.key(i);
+
+    if (
+      !key ||
+      !key.startsWith(
+        "sstc_student_"
+      )
+    ) {
+
+      continue;
+
+    }
+
+
+    try {
+
+      const record =
+        JSON.parse(
+          localStorage.getItem(key)
+        );
+
+      if (!record) continue;
+
+
+      const sameMobile =
+        record.mobile === mobile;
+
+      const sameEmail =
+        record.email === email;
+
+
+      if (
+        sameMobile ||
+        sameEmail
+      ) {
+
+        return record;
+
+      }
+
+    } catch (error) {
+
+      console.warn(
+        "Invalid local record:",
+        key
+      );
+
+    }
+
+  }
+
+  return null;
+}
+
+
+/* =========================================================
+   SAVE LOCAL RECORD
+   ========================================================= */
+
+function saveLocalRecord(
+  record
+) {
+
+  localStorage.setItem(
+    "sstc_student_" +
+    record.studentId,
+    JSON.stringify(record)
+  );
+
+}
+
+
+/* =========================================================
+   GOOGLE SHEETS SUBMISSION
+   ========================================================= */
+
+async function saveToGoogleSheets(
+  record
+) {
+
+  /*
+     Agar URL set nahi hai to
+     local registration ko continue
+     karne diya jayega.
+
+     Google Sheets ke liye
+     URL zaroor set karein.
+  */
+
+  if (
+    !GOOGLE_SCRIPT_URL ||
+    GOOGLE_SCRIPT_URL ===
+      "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL"
+  ) {
+
+    console.warn(
+      "Google Apps Script URL is not configured."
+    );
+
+    return {
+      success: true,
+      sheetsSaved: false
+    };
+
+  }
+
+
+  try {
+
+    const response =
+      await fetch(
+        GOOGLE_SCRIPT_URL,
+        {
+
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "text/plain;charset=utf-8"
+          },
+
+          body:
+            JSON.stringify(record)
 
         }
+      );
+
+
+    const text =
+      await response.text();
+
+
+    let result;
+
+
+    try {
+
+      result =
+        JSON.parse(text);
+
+    } catch {
+
+      result = {
+        success: true,
+        raw: text
+      };
+
+    }
+
+
+    if (
+      result &&
+      result.success === false
+    ) {
+
+      return {
+        success: false,
+        duplicate:
+          result.duplicate || false,
+        studentId:
+          result.studentId || "",
+        message:
+          result.message ||
+          "Registration could not be completed."
+      };
+
+    }
+
+
+    return {
+      success: true,
+      sheetsSaved: true,
+      result
+    };
+
+  } catch (error) {
+
+    console.error(
+      "Google Sheets Error:",
+      error
     );
+
+
+    return {
+      success: false,
+      networkError: true,
+      message:
+        "Unable to connect to Google Sheets. Please try again."
+    };
+
+  }
+
+}
+
+
+/* =========================================================
+   BUTTON LOADING
+   ========================================================= */
+
+function setLoading(
+  loading
+) {
+
+  registerButton.disabled =
+    loading;
+
+
+  if (loading) {
+
+    buttonText.hidden =
+      true;
+
+    buttonLoader.hidden =
+      false;
+
+  } else {
+
+    buttonText.hidden =
+      false;
+
+    buttonLoader.hidden =
+      true;
+
+  }
+
+}
+
+
+/* =========================================================
+   REGISTRATION SUCCESS
+   ========================================================= */
+
+function registrationSuccess(
+  record
+) {
+
+  showMessage(
+    "Registration successful! Your Student ID is " +
+      record.studentId +
+      " and your password is " +
+      record.password +
+      ". Please save these credentials safely.",
+    "success"
+  );
+
+
+  /*
+     Store locally so duplicate
+     registration in same browser
+     can also be detected.
+  */
+
+  saveLocalRecord(
+    record
+  );
+
+
+  /*
+     Disable form after successful
+     registration.
+  */
+
+  form
+    .querySelectorAll(
+      "input, select, button"
+    )
+    .forEach(
+      element => {
+
+        if (
+          element.id !==
+          "togglePassword"
+        ) {
+
+          element.disabled =
+            true;
+
+        }
+
+      }
+    );
+
+
+  /*
+     Keep password visible
+     after successful registration.
+  */
+
+  passwordInput.type =
+    "text";
+
+  togglePasswordButton.textContent =
+    "🙈";
 
 }
 
@@ -66,408 +975,221 @@ if (mobileInput) {
    FORM SUBMIT
    ========================================================= */
 
-if (registrationForm) {
+form.addEventListener(
+  "submit",
+  async (event) => {
 
-    registrationForm.addEventListener(
-        "submit",
-        async function (event) {
+    event.preventDefault();
 
-            event.preventDefault();
+    clearMessage();
 
 
-            /* =============================================
-               ELEMENTS
-               ============================================= */
+    /* VALIDATION */
 
-            const registerButton =
-                document.getElementById(
-                    "registerButton"
-                );
+    if (!validateForm()) {
 
-
-            const message =
-                document.getElementById(
-                    "registrationMessage"
-                );
-
-
-            /* =============================================
-               FORM DATA
-               ============================================= */
-
-            const fullName =
-                document
-                    .getElementById(
-                        "fullName"
-                    )
-                    .value
-                    .trim();
-
-
-            const mobile =
-                document
-                    .getElementById(
-                        "mobile"
-                    )
-                    .value
-                    .trim();
-
-
-            const email =
-                document
-                    .getElementById(
-                        "email"
-                    )
-                    .value
-                    .trim();
-
-
-            const studentClass =
-                document
-                    .getElementById(
-                        "studentClass"
-                    )
-                    .value;
-
-
-            const board =
-                document
-                    .getElementById(
-                        "board"
-                    )
-                    .value;
-
-
-            const schoolName =
-                document
-                    .getElementById(
-                        "schoolName"
-                    )
-                    .value
-                    .trim();
-
-
-            const schoolPlace =
-                document
-                    .getElementById(
-                        "schoolPlace"
-                    )
-                    .value
-                    .trim();
-
-
-            const genderElement =
-                document.querySelector(
-                    'input[name="gender"]:checked'
-                );
-
-
-            const gender =
-                genderElement
-                    ? genderElement.value
-                    : "";
-
-
-            /* =============================================
-               BASIC VALIDATION
-               ============================================= */
-
-            if (
-                !fullName ||
-                !mobile ||
-                !gender ||
-                !email ||
-                !studentClass ||
-                !board ||
-                !schoolName ||
-                !schoolPlace
-            ) {
-
-                showRegistrationMessage(
-                    "Please fill all required fields.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            /* =============================================
-               MOBILE VALIDATION
-               ============================================= */
-
-            if (
-                !/^[0-9]{10}$/.test(
-                    mobile
-                )
-            ) {
-
-                showRegistrationMessage(
-                    "Please enter a valid 10-digit mobile number.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            /* =============================================
-               EMAIL VALIDATION
-               ============================================= */
-
-            if (
-                !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
-                    email
-                )
-            ) {
-
-                showRegistrationMessage(
-                    "Please enter a valid email address.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            /* =============================================
-               GOOGLE SCRIPT URL CHECK
-               ============================================= */
-
-            if (
-                SSTC_GOOGLE_SCRIPT_URL.includes(
-                    "PASTE_YOUR"
-                )
-            ) {
-
-                showRegistrationMessage(
-                    "Google Sheets connection is not configured yet.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            /* =============================================
-               BUTTON LOADING
-               ============================================= */
-
-            registerButton.disabled =
-                true;
-
-
-            registerButton.textContent =
-                "⏳ Registering...";
-
-
-            message.className =
-                "registration-message";
-
-            message.textContent =
-                "";
-
-
-            /* =============================================
-               DATA OBJECT
-               ============================================= */
-
-            const studentData = {
-
-                fullName:
-                    fullName,
-
-                mobile:
-                    mobile,
-
-                gender:
-                    gender,
-
-                email:
-                    email,
-
-                studentClass:
-                    studentClass,
-
-                board:
-                    board,
-
-                schoolName:
-                    schoolName,
-
-                schoolPlace:
-                    schoolPlace
-
-            };
-
-
-            /* =============================================
-               SEND TO GOOGLE SHEETS
-               ============================================= */
-
-            try {
-
-                const response =
-                    await fetch(
-                        SSTC_GOOGLE_SCRIPT_URL,
-                        {
-
-                            method: "POST",
-
-                            mode: "cors",
-
-                            headers: {
-
-                                "Content-Type":
-                                    "text/plain;charset=utf-8"
-
-                            },
-
-                            body:
-                                JSON.stringify(
-                                    studentData
-                                )
-
-                        }
-                    );
-
-
-                const result =
-                    await response.json();
-
-
-                /* =========================================
-                   SUCCESS
-                   ========================================= */
-
-                if (
-                    result.success
-                ) {
-
-                    showRegistrationMessage(
-                        "🎉 Registration successful! Your Student ID is: " +
-                        result.studentId,
-                        "success"
-                    );
-
-
-                    /* =====================================
-                       SHOW ID
-                       ===================================== */
-
-                    registerButton.textContent =
-                        "✅ Registration Completed";
-
-
-                    /* =====================================
-                       SAVE ID LOCALLY
-
-                       Useful for student login page.
-                       ===================================== */
-
-                    localStorage.setItem(
-                        "sstcLastRegisteredStudentId",
-                        result.studentId
-                    );
-
-
-                    /* =====================================
-                       RESET FORM
-                       ===================================== */
-
-                    registrationForm.reset();
-
-
-                    /*
-                       Keep button disabled after successful
-                       registration so accidental duplicate
-                       submission does not happen.
-                    */
-
-                    registerButton.disabled =
-                        true;
-
-
-                }
-
-                else {
-
-                    throw new Error(
-                        result.message ||
-                        "Registration failed."
-                    );
-
-                }
-
-
-            } catch (error) {
-
-
-                console.error(
-                    "SSTC Registration Error:",
-                    error
-                );
-
-
-                showRegistrationMessage(
-                    "❌ Registration failed. Please try again.",
-                    "error"
-                );
-
-
-                registerButton.disabled =
-                    false;
-
-
-                registerButton.textContent =
-                    "🎓 Register Student";
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   MESSAGE FUNCTION
-   ========================================================= */
-
-function showRegistrationMessage(
-    text,
-    type
-) {
-
-    const message =
-        document.getElementById(
-            "registrationMessage"
-        );
-
-
-    if (!message) {
-
-        return;
+      return;
 
     }
 
 
-    message.textContent =
-        text;
+    /* GENERATE ID */
+
+    const studentId =
+      studentIdInput.value ||
+      generateUniqueStudentId();
 
 
-    message.className =
-        "registration-message " +
-        type;
+    /* GENERATE PASSWORD */
+
+    const password =
+      generateStudentPassword(
+        fullNameInput.value.trim(),
+        classInput.value
+      );
 
 
-    message.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest"
-    });
+    studentIdInput.value =
+      studentId;
 
-}
+    passwordInput.value =
+      password;
+
+
+    /* GET DATA */
+
+    const mobile =
+      mobileInput.value.trim();
+
+    const email =
+      emailInput.value
+        .trim()
+        .toLowerCase();
+
+
+    /* LOCAL DUPLICATE */
+
+    const localDuplicate =
+      checkLocalDuplicate(
+        mobile,
+        email
+      );
+
+
+    if (localDuplicate) {
+
+      showMessage(
+        "This mobile number or email ID is already registered with Student ID: " +
+          localDuplicate.studentId +
+          ". Please use your existing account.",
+        "warning"
+      );
+
+      return;
+
+    }
+
+
+    /* CREATE RECORD */
+
+    const record = {
+
+      action:
+        "registerStudent",
+
+      studentId:
+        studentId,
+
+      password:
+        password,
+
+      fullName:
+        fullNameInput.value.trim(),
+
+      mobile:
+        mobile,
+
+      email:
+        email,
+
+      gender:
+        genderInput.value,
+
+      class:
+        classInput.value,
+
+      board:
+        boardInput.value,
+
+      schoolName:
+        schoolNameInput.value.trim(),
+
+      schoolPlace:
+        schoolPlaceInput.value.trim(),
+
+      registrationDate:
+        new Date().toISOString(),
+
+      registrationDateTime:
+        new Date().toLocaleString(
+          "en-IN",
+          {
+            timeZone:
+              "Asia/Kolkata"
+          }
+        ),
+
+      status:
+        "Active"
+
+    };
+
+
+    /* LOADING */
+
+    setLoading(true);
+
+
+    /*
+       SAVE TO GOOGLE SHEETS
+    */
+
+    const result =
+      await saveToGoogleSheets(
+        record
+      );
+
+
+    /* NETWORK / SERVER ERROR */
+
+    if (!result.success) {
+
+      setLoading(false);
+
+
+      if (
+        result.duplicate
+      ) {
+
+        showMessage(
+          "This mobile number or email ID is already registered with Student ID: " +
+            (
+              result.studentId ||
+              "Already Registered"
+            ),
+          "warning"
+        );
+
+      } else {
+
+        showMessage(
+          result.message ||
+            "Registration failed. Please try again.",
+          "error"
+        );
+
+      }
+
+      return;
+
+    }
+
+
+    /* SUCCESS */
+
+    setLoading(false);
+
+    registrationSuccess(
+      record
+    );
+
+  }
+);
+
+
+/* =========================================================
+   PREPARE INITIAL ID
+   ========================================================= */
+
+studentIdInput.value =
+  generateUniqueStudentId();
+
+
+/* =========================================================
+   SECURITY / UI
+   ========================================================= */
+
+document.addEventListener(
+  "contextmenu",
+  event => {
+
+    /*
+       Only registration page UI.
+       This does NOT provide real server security.
+    */
+
+    // Intentionally not disabled.
+    // Users should remain able to use normal browser controls.
+
+  }
+);
