@@ -18,7 +18,7 @@
 */
 
 const GOOGLE_SCRIPT_URL =
-  "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
+  "https://script.google.com/macros/s/AKfycbykJOQm8mEiFQDIqhgrcYnHEAWEUgU42ENgKIIvu9p5WtQGPOLFNC98-Mw1Z2K4uFM_Yg/exec";
 
 
 /* =========================================================
