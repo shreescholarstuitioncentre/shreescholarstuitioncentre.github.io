@@ -16,7 +16,7 @@
 */
 
 const SSTC_GOOGLE_SCRIPT_URL =
-    "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+    "https://script.google.com/macros/s/AKfycbz1w3sCKhTk7bX-CVxIky7RlGlUxm3EC5SrYfmX1WNpnc0VwHbXe8UAuNI2s7WDVtt2dw/exec";
 
 
 /* =========================================================
