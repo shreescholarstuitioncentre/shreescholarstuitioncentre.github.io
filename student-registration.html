@@ -1,482 +1,531 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
+  <title>Student Registration | Shree Scholars Tuition Centre</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>
-        Student Registration | Shree Scholars Tuition Centre
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="student-registration.css"
-    >
-
+  <link rel="stylesheet" href="student-registration.css">
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
-     HEADER
-     ===================================================== -->
+<!-- ================= HEADER ================= -->
 
 <header class="site-header">
 
-    <div class="header-logo">
+  <div class="header-left">
 
-        <!-- Apne existing homepage logo ka path yahan rakho -->
+    <a href="index.html" class="brand">
 
-        <img
-            src="logo.png"
-            alt="Shree Scholars Tuition Centre Logo"
-        >
+      <div class="brand-logo">
+        SSTC
+      </div>
 
-    </div>
+      <div class="brand-text">
+        <h1>Shree Scholars Tuition Centre</h1>
+        <p>From Foundation to Future</p>
+      </div>
 
+    </a>
 
-    <div class="header-title">
+  </div>
 
-        <h1>
-            Shree Scholars Tuition Centre
-        </h1>
-
-        <p>
-            From Foundation to Future
-        </p>
-
-    </div>
-
-
-    <div class="header-buttons">
-
-        <a
-            href="index.html"
-            class="header-btn home-btn"
-        >
-            🏠 Home
-        </a>
-
-        <a
-            href="index.html#contact"
-            class="header-btn contact-btn"
-        >
-            📞 Contact
-        </a>
-
-    </div>
+  <a href="sstc-access.html" class="login-link">
+    🔐 Student Login
+  </a>
 
 </header>
 
 
-
-<!-- =====================================================
-     MAIN
-     ===================================================== -->
+<!-- ================= MAIN ================= -->
 
 <main class="registration-page">
 
+  <section class="registration-wrapper">
 
-    <div class="registration-card">
+    <div class="registration-heading">
 
+      <div class="heading-icon">
+        🎓
+      </div>
 
-        <!-- HEADER -->
+      <h2>Student Registration</h2>
 
-        <div class="registration-heading">
+      <p>
+        Create your SSTC Student Account
+      </p>
 
-            <div class="registration-icon">
-                🎓
-            </div>
-
-            <h2>
-                Student Registration
-            </h2>
-
-            <p>
-                Register yourself with Shree Scholars Tuition Centre
-            </p>
-
-        </div>
-
-
-
-        <!-- FORM -->
-
-        <form
-            id="studentRegistrationForm"
-            class="registration-form"
-        >
-
-
-            <!-- FULL NAME -->
-
-            <div class="form-group">
-
-                <label for="fullName">
-                    Full Name
-                    <span>*</span>
-                </label>
-
-                <input
-                    type="text"
-                    id="fullName"
-                    name="fullName"
-                    placeholder="Enter your full name"
-                    required
-                >
-
-            </div>
-
-
-
-            <!-- MOBILE -->
-
-            <div class="form-group">
-
-                <label for="mobile">
-                    Mobile Number
-                    <span>*</span>
-                </label>
-
-                <input
-                    type="tel"
-                    id="mobile"
-                    name="mobile"
-                    placeholder="Enter 10-digit mobile number"
-                    maxlength="10"
-                    inputmode="numeric"
-                    required
-                >
-
-            </div>
-
-
-
-            <!-- GENDER -->
-
-            <div class="form-group">
-
-                <label>
-                    Gender
-                    <span>*</span>
-                </label>
-
-
-                <div class="gender-options">
-
-
-                    <label class="gender-option">
-
-                        <input
-                            type="radio"
-                            name="gender"
-                            value="Male"
-                            required
-                        >
-
-                        <span>
-                            👦 Male
-                        </span>
-
-                    </label>
-
-
-                    <label class="gender-option">
-
-                        <input
-                            type="radio"
-                            name="gender"
-                            value="Female"
-                        >
-
-                        <span>
-                            👧 Female
-                        </span>
-
-                    </label>
-
-
-                    <label class="gender-option">
-
-                        <input
-                            type="radio"
-                            name="gender"
-                            value="Other"
-                        >
-
-                        <span>
-                            🧑 Other
-                        </span>
-
-                    </label>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- EMAIL -->
-
-            <div class="form-group">
-
-                <label for="email">
-                    Email ID
-                    <span>*</span>
-                </label>
-
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email address"
-                    required
-                >
-
-            </div>
-
-
-
-            <!-- CLASS -->
-
-            <div class="form-group">
-
-                <label for="studentClass">
-                    Class
-                    <span>*</span>
-                </label>
-
-                <select
-                    id="studentClass"
-                    name="studentClass"
-                    required
-                >
-
-                    <option value="">
-                        Select Class
-                    </option>
-
-                    <option value="9">
-                        Class 9
-                    </option>
-
-                    <option value="10">
-                        Class 10
-                    </option>
-
-                    <option value="11">
-                        Class 11
-                    </option>
-
-                    <option value="12">
-                        Class 12
-                    </option>
-
-                </select>
-
-            </div>
-
-
-
-            <!-- BOARD -->
-
-            <div class="form-group">
-
-                <label for="board">
-                    Board
-                    <span>*</span>
-                </label>
-
-                <select
-                    id="board"
-                    name="board"
-                    required
-                >
-
-                    <option value="">
-                        Select Board
-                    </option>
-
-                    <option value="CBSE">
-                        CBSE
-                    </option>
-
-                    <option value="UP Board">
-                        UP Board
-                    </option>
-
-                    <option value="ICSE">
-                        ICSE
-                    </option>
-
-                    <option value="Other">
-                        Other
-                    </option>
-
-                </select>
-
-            </div>
-
-
-
-            <!-- SCHOOL NAME -->
-
-            <div class="form-group">
-
-                <label for="schoolName">
-                    School Name
-                    <span>*</span>
-                </label>
-
-                <input
-                    type="text"
-                    id="schoolName"
-                    name="schoolName"
-                    placeholder="Enter school name"
-                    required
-                >
-
-            </div>
-
-
-
-            <!-- SCHOOL PLACE -->
-
-            <div class="form-group">
-
-                <label for="schoolPlace">
-                    School Place
-                    <span>*</span>
-                </label>
-
-                <input
-                    type="text"
-                    id="schoolPlace"
-                    name="schoolPlace"
-                    placeholder="Enter school city/place"
-                    required
-                >
-
-            </div>
-
-
-
-            <!-- TERMS -->
-
-            <div class="terms-box">
-
-                <label>
-
-                    <input
-                        type="checkbox"
-                        id="registrationTerms"
-                        required
-                    >
-
-                    <span>
-                        I confirm that the information provided above
-                        is correct.
-                    </span>
-
-                </label>
-
-            </div>
-
-
-
-            <!-- SUBMIT -->
-
-            <button
-                type="submit"
-                id="registerButton"
-                class="register-button"
-            >
-
-                🎓 Register Student
-
-            </button>
-
-
-
-            <!-- MESSAGE -->
-
-            <div
-                id="registrationMessage"
-                class="registration-message"
-            ></div>
-
-
-        </form>
-
-
-        <!-- LOGIN LINK -->
-
-        <div class="already-registered">
-
-            Already registered?
-
-            <a href="sstc-access.html">
-                Login as Student →
-            </a>
-
-        </div>
-
+      <span>
+        Your Student ID and Password will be generated automatically.
+      </span>
 
     </div>
+
+
+    <!-- ================= FORM ================= -->
+
+    <form
+      id="studentRegistrationForm"
+      class="registration-form"
+      autocomplete="off"
+    >
+
+      <!-- STUDENT ID -->
+
+      <div class="form-group full-width">
+
+        <label>
+          Student ID
+        </label>
+
+        <div class="readonly-box">
+
+          <span>🆔</span>
+
+          <input
+            type="text"
+            id="studentId"
+            name="studentId"
+            placeholder="Auto Generated"
+            readonly
+          >
+
+          <span class="auto-badge">
+            AUTO
+          </span>
+
+        </div>
+
+        <small>
+          Student ID will be generated automatically.
+        </small>
+
+      </div>
+
+
+      <!-- PASSWORD -->
+
+      <div class="form-group full-width">
+
+        <label>
+          Password
+        </label>
+
+        <div class="password-box">
+
+          <span>🔑</span>
+
+          <input
+            type="password"
+            id="studentPassword"
+            name="password"
+            placeholder="Auto Generated"
+            readonly
+          >
+
+          <button
+            type="button"
+            id="togglePassword"
+            class="eye-button"
+            aria-label="Show password"
+          >
+            👁️
+          </button>
+
+          <span class="auto-badge">
+            AUTO
+          </span>
+
+        </div>
+
+        <small>
+          Password is generated automatically using your name and class.
+        </small>
+
+      </div>
+
+
+      <div class="form-divider">
+        <span>Personal Information</span>
+      </div>
+
+
+      <!-- FULL NAME -->
+
+      <div class="form-group">
+
+        <label for="fullName">
+          Full Name <b>*</b>
+        </label>
+
+        <div class="input-box">
+
+          <span>👤</span>
+
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            placeholder="Enter your full name"
+            maxlength="80"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- MOBILE -->
+
+      <div class="form-group">
+
+        <label for="mobile">
+          Mobile Number <b>*</b>
+        </label>
+
+        <div class="input-box">
+
+          <span>📱</span>
+
+          <input
+            type="tel"
+            id="mobile"
+            name="mobile"
+            placeholder="10 digit mobile number"
+            maxlength="10"
+            inputmode="numeric"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- EMAIL -->
+
+      <div class="form-group">
+
+        <label for="email">
+          Email ID <b>*</b>
+        </label>
+
+        <div class="input-box">
+
+          <span>📧</span>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            maxlength="120"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- GENDER -->
+
+      <div class="form-group">
+
+        <label for="gender">
+          Gender <b>*</b>
+        </label>
+
+        <div class="select-box">
+
+          <span>⚧️</span>
+
+          <select
+            id="gender"
+            name="gender"
+            required
+          >
+
+            <option value="">
+              Select Gender
+            </option>
+
+            <option value="Male">
+              Male
+            </option>
+
+            <option value="Female">
+              Female
+            </option>
+
+            <option value="Other">
+              Other
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-divider">
+        <span>Academic Information</span>
+      </div>
+
+
+      <!-- CLASS -->
+
+      <div class="form-group">
+
+        <label for="studentClass">
+          Class <b>*</b>
+        </label>
+
+        <div class="select-box">
+
+          <span>📚</span>
+
+          <select
+            id="studentClass"
+            name="studentClass"
+            required
+          >
+
+            <option value="">
+              Select Class
+            </option>
+
+            <option value="9">
+              Class 9
+            </option>
+
+            <option value="10">
+              Class 10
+            </option>
+
+            <option value="11">
+              Class 11
+            </option>
+
+            <option value="12">
+              Class 12
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <!-- BOARD -->
+
+      <div class="form-group">
+
+        <label for="board">
+          Board <b>*</b>
+        </label>
+
+        <div class="select-box">
+
+          <span>🏫</span>
+
+          <select
+            id="board"
+            name="board"
+            required
+          >
+
+            <option value="">
+              Select Board
+            </option>
+
+            <option value="CBSE">
+              CBSE
+            </option>
+
+            <option value="UP Board">
+              UP Board
+            </option>
+
+            <option value="Other">
+              Other
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <!-- SCHOOL NAME -->
+
+      <div class="form-group">
+
+        <label for="schoolName">
+          School Name <b>*</b>
+        </label>
+
+        <div class="input-box">
+
+          <span>🏫</span>
+
+          <input
+            type="text"
+            id="schoolName"
+            name="schoolName"
+            placeholder="Enter school name"
+            maxlength="150"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- SCHOOL PLACE -->
+
+      <div class="form-group">
+
+        <label for="schoolPlace">
+          School Place <b>*</b>
+        </label>
+
+        <div class="input-box">
+
+          <span>📍</span>
+
+          <input
+            type="text"
+            id="schoolPlace"
+            name="schoolPlace"
+            placeholder="School city / place"
+            maxlength="100"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- TERMS -->
+
+      <div class="terms-box">
+
+        <label>
+
+          <input
+            type="checkbox"
+            id="terms"
+            required
+          >
+
+          <span>
+            I confirm that the information provided by me is correct.
+          </span>
+
+        </label>
+
+      </div>
+
+
+      <!-- MESSAGE -->
+
+      <div
+        id="registrationMessage"
+        class="registration-message"
+      ></div>
+
+
+      <!-- SUBMIT -->
+
+      <button
+        type="submit"
+        id="registerButton"
+        class="register-button"
+      >
+
+        <span id="buttonText">
+          🎓 Create Student Account
+        </span>
+
+        <span
+          id="buttonLoader"
+          class="button-loader"
+          hidden
+        >
+          ⏳ Registering...
+        </span>
+
+      </button>
+
+
+      <div class="already-account">
+
+        Already registered?
+
+        <a href="sstc-access.html">
+          Login as Student →
+        </a>
+
+      </div>
+
+    </form>
+
+  </section>
 
 </main>
 
 
-
-<!-- =====================================================
-     FOOTER
-     ===================================================== -->
+<!-- ================= FOOTER ================= -->
 
 <footer class="site-footer">
 
-    <div class="footer-content">
+  <div class="footer-content">
 
-        <div>
+    <div>
+      <h3>
+        Shree Scholars Tuition Centre
+      </h3>
 
-            <h3>
-                Shree Scholars Tuition Centre
-            </h3>
+      <p>
+        From Foundation to Future
+      </p>
+    </div>
 
-            <p>
-                From Foundation to Future
-            </p>
+    <div class="footer-links">
 
-        </div>
+      <a href="index.html">
+        Home
+      </a>
 
-
-        <div>
-
-            <p>
-                © 2026 Shree Scholars Tuition Centre.
-                All Rights Reserved.
-            </p>
-
-        </div>
+      <a href="sstc-access.html">
+        Student Login
+      </a>
 
     </div>
+
+  </div>
+
+  <div class="footer-bottom">
+
+    © <span id="currentYear"></span>
+    Shree Scholars Tuition Centre.
+    All Rights Reserved.
+
+  </div>
 
 </footer>
 
 
-
-<script
-    src="student-registration.js"
-></script>
-
+<script src="student-registration.js"></script>
 
 </body>
-
 </html>
