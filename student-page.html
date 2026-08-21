@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="robots"
+        content="noindex,nofollow,noarchive">
+
+    <title>SSTC | Student E-Book Portal</title>
+
+    <link
+        rel="stylesheet"
+        href="student-page.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     SSTC HEADER
+     ========================================================= -->
+
+<header class="sstc-header">
+
+    <div class="header-container">
+
+        <div class="brand-area">
+
+            <div class="brand-logo">
+                SSTC
+            </div>
+
+            <div class="brand-text">
+
+                <h1>
+                    SHREE SCHOLARS
+                    <span>TUITION CENTER</span>
+                </h1>
+
+                <p>
+                    From Foundation to Future
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <nav class="main-nav">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="student-page.html"
+               class="active">
+                Student Portal
+            </a>
+
+            <button
+                type="button"
+                class="logout-btn"
+                onclick="studentLogout()">
+
+                🚪 Logout
+
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     PAGE
+     ========================================================= -->
+
+<main class="student-page">
+
+    <div class="portal-title">
+
+        <div>
+
+            <span class="portal-badge">
+                🎓 STUDENT PORTAL
+            </span>
+
+            <h2>
+                My E-Book Library
+            </h2>
+
+            <p>
+                Access your purchased and rented e-books securely.
+            </p>
+
+        </div>
+
+        <div class="security-badge">
+
+            🔒 Protected Reading
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MAIN GRID
+         ===================================================== -->
+
+    <section class="portal-grid">
+
+
+        <!-- =================================================
+             LEFT SIDEBAR
+             ================================================= -->
+
+        <aside class="student-sidebar">
+
+
+            <!-- PROFILE -->
+
+            <div class="profile-card">
+
+                <div class="profile-top">
+
+                    <div
+                        class="student-avatar"
+                        id="studentAvatar">
+
+                        S
+
+                    </div>
+
+                    <div>
+
+                        <h3 id="studentName">
+                            Student Name
+                        </h3>
+
+                        <p id="studentClass">
+                            Class 10
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-info">
+
+                    <div class="info-row">
+
+                        <span>
+                            Student ID
+                        </span>
+
+                        <strong id="studentId">
+                            SSTC-STU-001
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            Login Time
+                        </span>
+
+                        <strong id="loginTime">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            Account
+                        </span>
+
+                        <strong class="status-active">
+                            ● Active
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EBOOK LIST -->
+
+            <div class="library-card">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <span>
+                            📚
+                        </span>
+
+                        <h3>
+                            My E-Books
+                        </h3>
+
+                    </div>
+
+                    <span
+                        class="ebook-count"
+                        id="ebookCount">
+                        0
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="ebook-list"
+                    id="ebookList">
+
+                    <!-- JS will insert ebooks -->
+
+                </div>
+
+            </div>
+
+
+            <!-- PURCHASE SUMMARY -->
+
+            <div class="summary-card">
+
+                <h3>
+                    📊 Library Summary
+                </h3>
+
+                <div class="summary-row">
+
+                    <span>
+                        Total E-Books
+                    </span>
+
+                    <strong id="totalBooks">
+                        0
+                    </strong>
+
+                </div>
+
+                <div class="summary-row">
+
+                    <span>
+                        Rented
+                    </span>
+
+                    <strong id="rentedBooks">
+                        0
+                    </strong>
+
+                </div>
+
+                <div class="summary-row">
+
+                    <span>
+                        Purchased
+                    </span>
+
+                    <strong id="purchasedBooks">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =================================================
+             RIGHT PDF VIEWER
+             ================================================= -->
+
+        <section class="reader-section">
+
+
+            <!-- READER HEADER -->
+
+            <div class="reader-header">
+
+                <div class="reader-book-info">
+
+                    <span class="book-icon">
+                        📖
+                    </span>
+
+                    <div>
+
+                        <h3 id="currentBookTitle">
+                            Select an E-Book
+                        </h3>
+
+                        <p id="currentBookStatus">
+                            Choose a book from your library.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="reader-actions">
+
+                    <button
+                        type="button"
+                        onclick="zoomOut()"
+                        title="Zoom Out">
+
+                        −
+
+                    </button>
+
+                    <span id="zoomLevel">
+                        100%
+                    </span>
+
+                    <button
+                        type="button"
+                        onclick="zoomIn()"
+                        title="Zoom In">
+
+                        +
+
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="fitWidth()"
+                        title="Fit Width">
+
+                        ↔
+
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="fitPage()"
+                        title="Fit Page">
+
+                        ⛶
+
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="toggleFullscreen()"
+                        title="Fullscreen">
+
+                        ⛶
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SECURITY NOTICE -->
+
+            <div class="reader-security">
+
+                <span>
+                    🔐
+                </span>
+
+                <span>
+                    This e-book is for authorized student reading only.
+                    Downloading and printing are disabled.
+                </span>
+
+            </div>
+
+
+            <!-- PDF VIEWER -->
+
+            <div
+                class="pdf-viewer"
+                id="pdfViewer">
+
+                <div
+                    class="viewer-empty"
+                    id="viewerEmpty">
+
+                    <div class="empty-icon">
+                        📚
+                    </div>
+
+                    <h3>
+                        Select an E-Book
+                    </h3>
+
+                    <p>
+                        Select any active e-book from
+                        <strong>My E-Books</strong>
+                        to start reading.
+                    </p>
+
+                </div>
+
+
+                <iframe
+                    id="pdfFrame"
+                    class="pdf-frame"
+                    title="Protected E-Book Reader"
+                    loading="lazy"
+                    onload="pdfLoaded()">
+                </iframe>
+
+            </div>
+
+
+            <!-- PAGE CONTROLS -->
+
+            <div class="reader-footer-controls">
+
+                <button
+                    type="button"
+                    onclick="previousPage()">
+
+                    ◀ Previous
+
+                </button>
+
+                <div class="page-indicator">
+
+                    <span>
+                        Page
+                    </span>
+
+                    <strong id="currentPage">
+                        1
+                    </strong>
+
+                </div>
+
+                <button
+                    type="button"
+                    onclick="nextPage()">
+
+                    Next ▶
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer class="sstc-footer">
+
+    <div class="footer-container">
+
+        <div>
+
+            <h3>
+                SHREE SCHOLARS TUITION CENTER
+            </h3>
+
+            <p>
+                From Foundation to Future
+            </p>
+
+        </div>
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <span>•</span>
+
+            <a href="#">
+                Student Portal
+            </a>
+
+            <span>•</span>
+
+            <a href="#">
+                Privacy
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="copyright">
+
+        © <span id="currentYear"></span>
+        Shree Scholars Tuition Center.
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<script src="student-page.js"></script>
+
+</body>
+</html>
