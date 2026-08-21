@@ -167,6 +167,7 @@ header.scrolled img{
 
 .contact-btn{
   color:#fff;
+
   background:
     linear-gradient(
       45deg,
@@ -352,6 +353,7 @@ header.scrolled img{
 }
 
 @keyframes fadeIn{
+
   from{
     opacity:0;
     transform:translateY(10px);
@@ -361,6 +363,7 @@ header.scrolled img{
     opacity:1;
     transform:translateY(0);
   }
+
 }
 
 .login-form h3{
@@ -532,6 +535,14 @@ header.scrolled img{
     0 10px 25px rgba(211,47,47,.35);
 }
 
+.login-button:disabled{
+  opacity:.75;
+
+  cursor:not-allowed;
+
+  transform:none;
+}
+
 .admin-login-button{
   background:
     linear-gradient(
@@ -596,82 +607,6 @@ header.scrolled img{
 
 .security-note p{
   margin-top:2px;
-}
-
-
-/* =========================
-   QUICK ACCESS
-========================= */
-
-.quick-access{
-  margin-top:35px;
-
-  text-align:center;
-}
-
-.quick-access h3{
-  color:#d32f2f;
-
-  font-size:23px;
-
-  margin-bottom:18px;
-}
-
-.quick-grid{
-  display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
-  gap:15px;
-}
-
-.quick-grid a{
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-  padding:18px 10px;
-
-  background:rgba(255,255,255,.94);
-
-  border-radius:17px;
-
-  text-decoration:none;
-
-  color:#333;
-
-  box-shadow:
-    0 7px 20px rgba(0,0,0,.08);
-
-  transition:.3s;
-}
-
-.quick-grid a:hover{
-  transform:translateY(-6px);
-
-  box-shadow:
-    0 12px 28px rgba(0,0,0,.14);
-}
-
-.quick-grid span{
-  font-size:27px;
-
-  margin-bottom:7px;
-}
-
-.quick-grid strong{
-  font-size:14px;
-}
-
-.quick-grid small{
-  margin-top:4px;
-
-  color:#777;
-
-  font-size:11px;
 }
 
 
@@ -772,11 +707,6 @@ footer{
     font-size:24px;
   }
 
-  .quick-grid{
-    grid-template-columns:
-      repeat(2,1fr);
-  }
-
 }
 
 @media(max-width:600px){
@@ -827,10 +757,6 @@ footer{
     border-radius:20px;
   }
 
-  .quick-grid{
-    gap:10px;
-  }
-
   .footer-content{
     flex-direction:column;
 
@@ -861,64 +787,62 @@ footer{
     margin-left:auto;
   }
 
-  .quick-grid a{
-    padding:14px 5px;
-  }
-
 }
-
 
 
 /* =========================================================
    NEW STUDENT REGISTRATION
-   ========================================================= */
+========================================================= */
 
-.student-register-box {
+.student-register-box{
 
-    width: 100%;
-    margin-top: 14px;
-    text-align: center;
+  width:100%;
 
-    font-size: 14px;
-    color: #666;
+  margin-top:14px;
 
-}
+  text-align:center;
 
+  font-size:14px;
 
-.student-register-link {
-
-    display: inline-block;
-
-    margin-left: 5px;
-
-    color: #6d28d9;
-
-    font-weight: 700;
-
-    text-decoration: none;
-
-    transition:
-        color 0.25s ease,
-        transform 0.25s ease;
+  color:#666;
 
 }
 
 
-.student-register-link:hover {
+.student-register-link{
 
-    color: #ff3d1f;
+  display:inline-block;
 
-    transform: translateY(-1px);
+  margin-left:5px;
 
-    text-decoration: underline;
+  color:#6d28d9;
+
+  font-weight:700;
+
+  text-decoration:none;
+
+  transition:
+    color .25s ease,
+    transform .25s ease;
 
 }
 
 
-.student-register-link::after {
+.student-register-link:hover{
 
-    content: " →";
+  color:#ff3d1f;
 
-    font-weight: 800;
+  transform:translateY(-1px);
+
+  text-decoration:underline;
+
+}
+
+
+.student-register-link::after{
+
+  content:" →";
+
+  font-weight:800;
 
 }
