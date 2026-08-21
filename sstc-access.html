@@ -99,7 +99,9 @@
         </div>
 
 
-        <!-- STUDENT LOGIN -->
+        <!-- =========================
+             STUDENT LOGIN
+        ========================= -->
 
         <form
           id="studentLogin"
@@ -112,7 +114,7 @@
             Access your student dashboard
           </p>
 
-          <label>
+          <label for="studentId">
             Student ID
           </label>
 
@@ -130,7 +132,7 @@
           </div>
 
 
-          <label>
+          <label for="studentPassword">
             Password
           </label>
 
@@ -148,8 +150,11 @@
             <button
               type="button"
               class="password-toggle"
-              onclick="togglePassword('studentPassword', this)">
+              onclick="togglePassword('studentPassword', this)"
+              aria-label="Show or hide password">
+
               👁
+
             </button>
 
           </div>
@@ -158,12 +163,21 @@
           <div class="login-options">
 
             <label class="remember">
-              <input type="checkbox" id="rememberStudent">
-              Remember me
+
+              <input
+                type="checkbox"
+                id="rememberStudent">
+
+              <span>Remember me</span>
+
             </label>
 
-            <a href="#" onclick="showForgotPassword(event)">
+            <a
+              href="#"
+              onclick="showForgotPassword(event)">
+
               Forgot Password?
+
             </a>
 
           </div>
@@ -171,147 +185,161 @@
 
           <button
             type="submit"
-            class="login-button">
+            class="login-button"
+            id="studentLoginButton">
 
             🔐 Login as Student
 
           </button>
 
-          <div id="studentMessage" class="login-message"></div>
+
+          <div
+            id="studentMessage"
+            class="login-message">
+          </div>
+
+
           <!-- NEW STUDENT REGISTRATION -->
 
-            <div class="student-register-box">
-            
-                <span>New student?</span>
-            
-                <a
-                    href="student-registration.html"
-                    class="student-register-link">
-            
-                    ✨ Register Now
-            
-                </a>
-            
-            </div>
+          <div class="student-register-box">
+
+            <span>New student?</span>
+
+            <a
+              href="student-registration.html"
+              class="student-register-link">
+
+              ✨ Register Now
+
+            </a>
+
+          </div>
+
         </form>
 
 
-     <!-- ================= ADMIN LOGIN ================= -->
+        <!-- =========================
+             ADMIN LOGIN
+        ========================= -->
 
-<form
-  id="adminLogin"
-  class="login-form"
-  onsubmit="adminLoginSubmit(event)"
->
+        <form
+          id="adminLogin"
+          class="login-form"
+          onsubmit="adminLoginSubmit(event)">
 
-  <h3>Admin Login</h3>
+          <h3>Admin Login</h3>
 
-  <p class="form-subtitle">
-    Authorized administration access only
-  </p>
-
-  <!-- ADMIN ID -->
-
-  <label for="adminId">
-    Admin ID
-  </label>
-
-  <div class="input-box">
-
-    <span>👤</span>
-
-    <input
-      type="text"
-      id="adminId"
-      name="adminId"
-      placeholder="Enter Admin ID"
-      autocomplete="username"
-      required
-    >
-
-  </div>
+          <p class="form-subtitle">
+            Authorized administration access only
+          </p>
 
 
-  <!-- ADMIN PASSWORD -->
+          <!-- ADMIN ID -->
 
-  <label for="adminPassword">
-    Admin Password
-  </label>
+          <label for="adminId">
+            Admin ID
+          </label>
 
-  <div class="input-box">
+          <div class="input-box">
 
-    <span>🔑</span>
+            <span>👤</span>
 
-    <input
-      type="password"
-      id="adminPassword"
-      name="adminPassword"
-      placeholder="Enter Admin Password"
-      autocomplete="current-password"
-      required
-    >
+            <input
+              type="text"
+              id="adminId"
+              name="adminId"
+              placeholder="Enter Admin ID"
+              autocomplete="username"
+              required>
 
-    <button
-      type="button"
-      class="password-toggle"
-      onclick="togglePassword('adminPassword', this)"
-      aria-label="Show or hide password"
-    >
-      👁️
-    </button>
-
-  </div>
+          </div>
 
 
-  <!-- REMEMBER ME -->
+          <!-- ADMIN PASSWORD -->
 
-  <div class="login-options">
+          <label for="adminPassword">
+            Admin Password
+          </label>
 
-    <label class="remember">
+          <div class="input-box">
 
-      <input
-        type="checkbox"
-        id="rememberAdmin"
-      >
+            <span>🔑</span>
 
-      <span>Remember me</span>
+            <input
+              type="password"
+              id="adminPassword"
+              name="adminPassword"
+              placeholder="Enter Admin Password"
+              autocomplete="current-password"
+              required>
 
-    </label>
+            <button
+              type="button"
+              class="password-toggle"
+              onclick="togglePassword('adminPassword', this)"
+              aria-label="Show or hide password">
 
-  </div>
+              👁️
 
+            </button>
 
-  <!-- LOGIN BUTTON -->
-
-  <button
-    type="submit"
-    class="login-button admin-login-button"
-  >
-
-    🛡️ Admin Access
-
-  </button>
+          </div>
 
 
-  <!-- MESSAGE -->
+          <!-- REMEMBER ME -->
 
-  <div
-    id="adminMessage"
-    class="login-message"
-  ></div>
+          <div class="login-options">
 
-</form>
-        <!-- SECURITY -->
+            <label class="remember">
+
+              <input
+                type="checkbox"
+                id="rememberAdmin">
+
+              <span>Remember me</span>
+
+            </label>
+
+          </div>
+
+
+          <!-- LOGIN BUTTON -->
+
+          <button
+            type="submit"
+            class="login-button admin-login-button">
+
+            🛡️ Admin Access
+
+          </button>
+
+
+          <!-- MESSAGE -->
+
+          <div
+            id="adminMessage"
+            class="login-message">
+          </div>
+
+        </form>
+
+
+        <!-- =========================
+             SECURITY
+        ========================= -->
 
         <div class="security-note">
 
           <span>🛡️</span>
 
           <div>
+
             <strong>Secure Access</strong>
+
             <p>
               Please do not share your login credentials with anyone.
             </p>
+
           </div>
 
         </div>
@@ -333,11 +361,20 @@
 
       <div class="footer-brand">
 
-        <img src="Logo.png" alt="SSTC Logo">
+        <img
+          src="Logo.png"
+          alt="SSTC Logo">
 
         <div>
-          <h3>Shree Scholars Tuition Centre</h3>
-          <p>From Foundation to Future</p>
+
+          <h3>
+            Shree Scholars Tuition Centre
+          </h3>
+
+          <p>
+            From Foundation to Future
+          </p>
+
         </div>
 
       </div>
@@ -345,17 +382,26 @@
 
       <div class="footer-links">
 
-        <a href="index.html">Home</a>
+        <a href="index.html">
+          Home
+        </a>
 
-        <a href="index.html#leadbox">Contact</a>
+        <a href="index.html#leadbox">
+          Contact
+        </a>
 
-        <a href="index.html#pricing">Fees</a>
+        <a href="index.html#pricing">
+          Fees
+        </a>
 
-        <a href="sstc-access.html">SSTC Access</a>
+        <a href="sstc-access.html">
+          SSTC Access
+        </a>
 
       </div>
 
     </div>
+
 
     <div class="footer-bottom">
 
@@ -367,10 +413,18 @@
   </footer>
 
 
+  <!-- =========================
+       SSTC ACCESS JS
+  ========================= -->
+
   <script src="sstc-access.js"></script>
 
-    <!-- Admin Login JavaScript -->
-    <script src="admin-login-snippet.js"></script>
+
+  <!-- =========================
+       ADMIN LOGIN JS
+  ========================= -->
+
+  <script src="admin-login-snippet.js"></script>
 
 </body>
 </html>
