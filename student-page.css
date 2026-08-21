@@ -1,0 +1,1341 @@
+/* =========================================================
+   SSTC STUDENT PAGE
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    font-family:
+        "Poppins",
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef4ff,
+            #f8fbff
+        );
+
+    color: #17233c;
+
+    min-height: 100vh;
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
+    -moz-user-select: none;
+
+    -ms-user-select: none;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.sstc-header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 9999;
+
+    background:
+        linear-gradient(
+            135deg,
+            #071a38,
+            #102d59
+        );
+
+    box-shadow:
+        0 8px 25px rgba(
+            0,
+            0,
+            0,
+            0.18
+        );
+
+    color: white;
+}
+
+.header-container {
+
+    max-width: 1450px;
+
+    margin: auto;
+
+    padding:
+        14px 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+.brand-area {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+.brand-logo {
+
+    width: 52px;
+
+    height: 52px;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffb703,
+            #fb8500
+        );
+
+    color: #071a38;
+
+    box-shadow:
+        0 7px 18px rgba(
+            255,
+            183,
+            3,
+            0.3
+        );
+}
+
+.brand-text h1 {
+
+    font-size: 18px;
+
+    line-height: 1.15;
+
+    letter-spacing: .5px;
+}
+
+.brand-text h1 span {
+
+    display: block;
+
+    font-size: 13px;
+
+    letter-spacing: 1.2px;
+}
+
+.brand-text p {
+
+    margin-top: 4px;
+
+    font-size: 11px;
+
+    opacity: .8;
+}
+
+.main-nav {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.main-nav a,
+.logout-btn {
+
+    border: none;
+
+    text-decoration: none;
+
+    color: white;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    padding:
+        10px 15px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: .25s;
+}
+
+.main-nav a:hover,
+.main-nav a.active,
+.logout-btn:hover {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.18
+        );
+
+    transform:
+        translateY(-2px);
+}
+
+.logout-btn {
+
+    background:
+        linear-gradient(
+            135deg,
+            #e63946,
+            #c1121f
+        );
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.student-page {
+
+    max-width: 1450px;
+
+    margin: auto;
+
+    padding:
+        35px 25px 55px;
+}
+
+.portal-title {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+.portal-badge {
+
+    display: inline-block;
+
+    background:
+        #e8f0ff;
+
+    color:
+        #1455c0;
+
+    border:
+        1px solid #c9dbff;
+
+    padding:
+        6px 12px;
+
+    border-radius: 50px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .8px;
+}
+
+.portal-title h2 {
+
+    margin-top: 9px;
+
+    font-size: 30px;
+
+    color: #071a38;
+}
+
+.portal-title p {
+
+    color: #69758b;
+
+    margin-top: 5px;
+}
+
+.security-badge {
+
+    padding:
+        12px 17px;
+
+    border-radius: 13px;
+
+    background:
+        #eafbf1;
+
+    color:
+        #16834a;
+
+    border:
+        1px solid #c9f1d9;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.portal-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        360px minmax(0, 1fr);
+
+    gap: 24px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.student-sidebar {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.profile-card,
+.library-card,
+.summary-card {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.95
+        );
+
+    border:
+        1px solid #e0e8f4;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 12px 35px rgba(
+            30,
+            65,
+            110,
+            0.08
+        );
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   PROFILE
+   ========================================================= */
+
+.profile-card {
+
+    padding: 20px;
+}
+
+.profile-top {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding-bottom: 18px;
+
+    border-bottom:
+        1px solid #edf1f7;
+}
+
+.student-avatar {
+
+    width: 62px;
+
+    height: 62px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1455c0,
+            #4f8cff
+        );
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 24px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 8px 20px rgba(
+            20,
+            85,
+            192,
+            .25
+        );
+}
+
+.profile-top h3 {
+
+    font-size: 17px;
+}
+
+.profile-top p {
+
+    margin-top: 3px;
+
+    color: #738096;
+
+    font-size: 13px;
+}
+
+.profile-info {
+
+    padding-top: 10px;
+}
+
+.info-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding:
+        9px 0;
+
+    font-size: 12px;
+}
+
+.info-row span {
+
+    color: #7b879b;
+}
+
+.info-row strong {
+
+    text-align: right;
+}
+
+.status-active {
+
+    color: #159447;
+}
+
+
+/* =========================================================
+   LIBRARY
+   ========================================================= */
+
+.library-card {
+
+    padding: 18px;
+}
+
+.card-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 14px;
+}
+
+.card-heading > div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+.card-heading h3 {
+
+    font-size: 16px;
+}
+
+.ebook-count {
+
+    min-width: 28px;
+
+    height: 28px;
+
+    padding: 0 7px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        #e9f0ff;
+
+    color:
+        #1455c0;
+
+    font-weight: 800;
+
+    font-size: 12px;
+}
+
+.ebook-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    max-height: 420px;
+
+    overflow-y: auto;
+
+    padding-right: 3px;
+}
+
+.ebook-item {
+
+    width: 100%;
+
+    text-align: left;
+
+    border:
+        1px solid #e4eaf3;
+
+    background:
+        #f9fbfe;
+
+    border-radius: 13px;
+
+    padding: 12px;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+    color: #17233c;
+}
+
+.ebook-item:hover {
+
+    border-color:
+        #8eb4ff;
+
+    background:
+        #f0f6ff;
+
+    transform:
+        translateX(3px);
+}
+
+.ebook-item.selected {
+
+    border-color:
+        #2f70e9;
+
+    background:
+        #eaf2ff;
+
+    box-shadow:
+        0 5px 15px rgba(
+            47,
+            112,
+            233,
+            .12
+        );
+}
+
+.ebook-title {
+
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    margin-bottom: 6px;
+}
+
+.ebook-meta {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 5px;
+
+    font-size: 10px;
+
+    color: #748198;
+}
+
+.plan-badge {
+
+    display: inline-block;
+
+    padding:
+        3px 7px;
+
+    border-radius: 5px;
+
+    font-weight: 700;
+}
+
+.plan-rent {
+
+    background:
+        #fff4d8;
+
+    color:
+        #a66a00;
+}
+
+.plan-buy {
+
+    background:
+        #e4f9ec;
+
+    color:
+        #16733d;
+}
+
+.book-active {
+
+    color:
+        #16834a;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   SUMMARY
+   ========================================================= */
+
+.summary-card {
+
+    padding: 18px;
+}
+
+.summary-card h3 {
+
+    font-size: 15px;
+
+    margin-bottom: 10px;
+}
+
+.summary-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding:
+        8px 0;
+
+    border-bottom:
+        1px dashed #e4e9f1;
+
+    font-size: 12px;
+}
+
+.summary-row:last-child {
+
+    border-bottom: none;
+}
+
+.summary-row span {
+
+    color: #758196;
+}
+
+
+/* =========================================================
+   READER
+   ========================================================= */
+
+.reader-section {
+
+    min-width: 0;
+
+    background: white;
+
+    border:
+        1px solid #dfe7f2;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 15px 40px rgba(
+            30,
+            65,
+            110,
+            .09
+        );
+}
+
+.reader-header {
+
+    min-height: 76px;
+
+    padding:
+        14px 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    border-bottom:
+        1px solid #e6ebf3;
+}
+
+.reader-book-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 0;
+}
+
+.book-icon {
+
+    width: 44px;
+
+    height: 44px;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background:
+        #edf4ff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 21px;
+}
+
+.reader-book-info h3 {
+
+    font-size: 15px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.reader-book-info p {
+
+    margin-top: 3px;
+
+    color: #78859a;
+
+    font-size: 11px;
+}
+
+.reader-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+.reader-actions button {
+
+    width: 34px;
+
+    height: 34px;
+
+    border:
+        1px solid #dce4ef;
+
+    border-radius: 9px;
+
+    background: #fff;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    color: #274064;
+
+    transition: .2s;
+}
+
+.reader-actions button:hover {
+
+    background:
+        #edf4ff;
+
+    border-color:
+        #a8c5f8;
+}
+
+#zoomLevel {
+
+    min-width: 46px;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    color: #52627a;
+}
+
+
+/* =========================================================
+   SECURITY
+   ========================================================= */
+
+.reader-security {
+
+    min-height: 39px;
+
+    padding:
+        8px 15px;
+
+    background:
+        #fff9e9;
+
+    color:
+        #886300;
+
+    border-bottom:
+        1px solid #f3e6bd;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   PDF AREA
+   ========================================================= */
+
+.pdf-viewer {
+
+    position: relative;
+
+    height:
+        calc(100vh - 280px);
+
+    min-height: 600px;
+
+    background:
+        #4b5563;
+
+    overflow: hidden;
+}
+
+.viewer-empty {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 5;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+}
+
+.empty-icon {
+
+    width: 80px;
+
+    height: 80px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .12
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 38px;
+
+    margin-bottom: 15px;
+}
+
+.viewer-empty h3 {
+
+    font-size: 20px;
+
+    margin-bottom: 6px;
+}
+
+.viewer-empty p {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .72
+        );
+
+    font-size: 12px;
+
+    max-width: 420px;
+
+    line-height: 1.6;
+}
+
+.pdf-frame {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+
+    background: white;
+
+    display: none;
+}
+
+.pdf-frame.loaded {
+
+    display: block;
+}
+
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.reader-footer-controls {
+
+    min-height: 58px;
+
+    padding:
+        10px 15px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 20px;
+
+    border-top:
+        1px solid #e4e9f1;
+
+    background:
+        #fbfcfe;
+}
+
+.reader-footer-controls button {
+
+    border:
+        1px solid #dbe4ef;
+
+    background: white;
+
+    border-radius: 9px;
+
+    padding:
+        8px 13px;
+
+    cursor: pointer;
+
+    color: #29415f;
+
+    font-weight: 700;
+
+    font-size: 11px;
+}
+
+.reader-footer-controls button:hover {
+
+    background:
+        #edf4ff;
+}
+
+.page-indicator {
+
+    font-size: 11px;
+
+    color: #758198;
+}
+
+.page-indicator strong {
+
+    color: #17233c;
+
+    margin-left: 5px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.sstc-footer {
+
+    background:
+        #071a38;
+
+    color: white;
+
+    padding:
+        30px 25px 18px;
+}
+
+.footer-container {
+
+    max-width: 1450px;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+.footer-container h3 {
+
+    font-size: 15px;
+}
+
+.footer-container p {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .65
+        );
+
+    font-size: 11px;
+
+    margin-top: 4px;
+}
+
+.footer-links {
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+
+    font-size: 11px;
+}
+
+.footer-links a {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .75
+        );
+
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+
+    color: white;
+}
+
+.copyright {
+
+    max-width: 1450px;
+
+    margin:
+        22px auto 0;
+
+    padding-top:
+        14px;
+
+    border-top:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            .1
+        );
+
+    text-align: center;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .5
+        );
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   FULLSCREEN
+   ========================================================= */
+
+.reader-section.fullscreen-reader {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+
+    border-radius: 0;
+
+    background: white;
+}
+
+.reader-section.fullscreen-reader
+.pdf-viewer {
+
+    height:
+        calc(100vh - 135px);
+
+    min-height: 0;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+    .portal-grid {
+
+        grid-template-columns:
+            300px minmax(0, 1fr);
+    }
+
+    .header-container {
+
+        padding:
+            12px 18px;
+    }
+
+    .main-nav a {
+
+        display: none;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .portal-title {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .portal-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .student-sidebar {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .profile-card {
+
+        grid-column:
+            1 / -1;
+    }
+
+    .reader-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .reader-actions {
+
+        width: 100%;
+
+        overflow-x: auto;
+    }
+
+    .pdf-viewer {
+
+        height: 650px;
+    }
+
+}
+
+@media (max-width: 560px) {
+
+    .brand-text {
+
+        display: none;
+    }
+
+    .header-container {
+
+        justify-content: space-between;
+    }
+
+    .student-page {
+
+        padding:
+            22px 12px 40px;
+    }
+
+    .student-sidebar {
+
+        display: flex;
+    }
+
+    .portal-title h2 {
+
+        font-size: 24px;
+    }
+
+    .security-badge {
+
+        font-size: 10px;
+    }
+
+    .reader-footer-controls {
+
+        gap: 8px;
+    }
+
+    .footer-container {
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+}
