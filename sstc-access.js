@@ -1,382 +1,250 @@
 /* =========================================================
-   SSTC ACCESS PAGE
-   STUDENT LOGIN + COMMON UI
+   SSTC STUDENT LOGIN
    ========================================================= */
 
-
-/* =========================================================
-   GOOGLE APPS SCRIPT WEB APP URL
-   =========================================================
-
+/*
    IMPORTANT:
-
-   Yahan apne Google Apps Script ka DEPLOYED WEB APP URL
-   paste karein.
+   Yahan Apps Script ka WEB APP URL paste karo.
 
    Example:
-
    https://script.google.com/macros/s/XXXXXXXXXXXX/exec
 
-   Google Sheet ka URL yahan mat daalna.
-   ========================================================= */
+   "script.google.com/u/0/home/projects/..."
+   wala editor URL yahan MAT lagana.
+*/
 
-const GOOGLE_APPS_SCRIPT_URL =
+const SSTC_WEB_APP_URL =
   "https://script.google.com/macros/s/AKfycbxjXvW2heX5EFVc40j3x9q9xqF4w1xODK2s-j4zvhtH/dev";
 
 
-/* =========================================================
-   HEADER SCROLL
-   ========================================================= */
-
-window.addEventListener("scroll", function(){
-
-  const header =
-    document.getElementById("mainHeader");
-
-  if(!header) return;
-
-
-  if(window.scrollY > 40){
-
-    header.classList.add("scrolled");
-
-  }else{
-
-    header.classList.remove("scrolled");
-
-  }
-
-});
-
-
-/* =========================================================
-   LOGIN TAB SWITCH
-   ========================================================= */
-
-function switchLogin(type){
-
-  const studentTab =
-    document.getElementById("studentTab");
-
-  const adminTab =
-    document.getElementById("adminTab");
-
-  const studentLogin =
-    document.getElementById("studentLogin");
-
-  const adminLogin =
-    document.getElementById("adminLogin");
-
-
-  if(!studentTab ||
-     !adminTab ||
-     !studentLogin ||
-     !adminLogin){
-
-    return;
-
-  }
-
-
-  studentTab.classList.remove("active");
-
-  adminTab.classList.remove("active");
-
-  studentLogin.classList.remove("active-form");
-
-  adminLogin.classList.remove("active-form");
-
-
-  if(type === "student"){
-
-    studentTab.classList.add("active");
-
-    studentLogin.classList.add("active-form");
-
-  }
-
-
-  if(type === "admin"){
-
-    adminTab.classList.add("active");
-
-    adminLogin.classList.add("active-form");
-
-  }
-
-}
-
-
-/* =========================================================
-   PASSWORD SHOW / HIDE
-   ========================================================= */
-
-function togglePassword(inputId, button){
-
-  const input =
-    document.getElementById(inputId);
-
-
-  if(!input || !button){
-
-    return;
-
-  }
-
-
-  if(input.type === "password"){
-
-    input.type = "text";
-
-    button.innerText = "🙈";
-
-  }else{
-
-    input.type = "password";
-
-    button.innerText = "👁";
-
-  }
-
-}
-
-
-/* =========================================================
+/* =========================
    STUDENT LOGIN
-   ========================================================= */
+========================= */
 
-async function studentLoginSubmit(event){
+async function studentLoginSubmit(event) {
 
   event.preventDefault();
 
 
-  const studentIdInput =
-    document.getElementById("studentId");
-
-  const passwordInput =
-    document.getElementById("studentPassword");
-
-  const rememberCheckbox =
-    document.getElementById("rememberStudent");
-
-  const message =
-    document.getElementById("studentMessage");
-
-  const loginButton =
-    document.getElementById("studentLoginButton");
-
-
-  if(
-    !studentIdInput ||
-    !passwordInput ||
-    !message
-  ){
-
-    return;
-
-  }
-
-
   const studentId =
-    studentIdInput.value
-      .trim()
-      .toUpperCase();
+    document
+      .getElementById("studentId")
+      ?.value
+      .trim();
+
 
   const password =
-    passwordInput.value.trim();
+    document
+      .getElementById("studentPassword")
+      ?.value;
 
 
-  /* =====================================================
-     BASIC VALIDATION
-  ===================================================== */
-
-  if(studentId === "" || password === ""){
-
-    showStudentMessage(
-      "Please enter Student ID and Password.",
-      "error"
+  const message =
+    document.getElementById(
+      "studentMessage"
     );
+
+
+  const rememberStudent =
+    document.getElementById(
+      "rememberStudent"
+    )?.checked;
+
+
+  /* =========================
+     CLEAR MESSAGE
+  ========================= */
+
+  if (message) {
+
+    message.style.color =
+      "#6c2bd9";
+
+    message.innerText =
+      "";
+
+  }
+
+
+  /* =========================
+     VALIDATION
+  ========================= */
+
+  if (
+    !studentId ||
+    !password
+  ) {
+
+    if (message) {
+
+      message.style.color =
+        "#d32f2f";
+
+      message.innerText =
+        "Please enter Student ID and Password.";
+
+    }
 
     return;
 
   }
 
 
-  /* =====================================================
+  /* =========================
      CHECK API URL
-  ===================================================== */
+  ========================= */
 
-  if(
-    !GOOGLE_APPS_SCRIPT_URL ||
-    GOOGLE_APPS_SCRIPT_URL.includes(
-      "PASTE_YOUR_GOOGLE_APPS_SCRIPT"
-    )
-  ){
+  if (
+    SSTC_WEB_APP_URL
+      ===
+    "PASTE_YOUR_APPS_SCRIPT_WEB_APP_EXEC_URL_HERE"
+  ) {
 
-    showStudentMessage(
-      "Student login service is not configured yet.",
-      "error"
-    );
+    if (message) {
 
-    console.error(
-      "Please add your Google Apps Script Web App URL in sstc-access.js"
-    );
+      message.style.color =
+        "#d32f2f";
+
+      message.innerText =
+        "Student login API is not configured yet.";
+
+    }
 
     return;
 
   }
 
 
-  /* =====================================================
+  /* =========================
      LOADING
-  ===================================================== */
+  ========================= */
 
-  if(loginButton){
+  const loginButton =
+    document.querySelector(
+      "#studentLogin .login-button"
+    );
 
-    loginButton.disabled = true;
 
-    loginButton.innerText =
-      "⏳ Verifying Student...";
+  const originalButtonText =
+    loginButton
+      ? loginButton.innerHTML
+      : "";
+
+
+  if (loginButton) {
+
+    loginButton.disabled =
+      true;
+
+    loginButton.innerHTML =
+      "⏳ Checking Login...";
 
   }
 
 
-  showStudentMessage(
-    "Checking Student ID and Password...",
-    "loading"
-  );
+  try {
 
+    /*
+      GET request
 
-  try{
+      Apps Script:
+      ?action=studentLogin
 
-    /* ===================================================
-       SEND LOGIN REQUEST TO GOOGLE APPS SCRIPT
-    =================================================== */
+      We use URLSearchParams
+      so Student ID / password
+      are correctly encoded.
+    */
+
+    const params =
+      new URLSearchParams({
+
+        action:
+          "studentLogin",
+
+        studentId:
+          studentId,
+
+        password:
+          password
+
+      });
+
 
     const response =
       await fetch(
-        GOOGLE_APPS_SCRIPT_URL,
+
+        SSTC_WEB_APP_URL +
+        "?" +
+        params.toString(),
+
         {
 
-          method:"POST",
+          method:
+            "GET",
 
-          headers:{
-            "Content-Type":
-              "text/plain;charset=utf-8"
-          },
-
-          body:JSON.stringify({
-
-            action:"studentLogin",
-
-            studentId:
-              studentId,
-
-            password:
-              password
-
-          })
+          redirect:
+            "follow"
 
         }
+
       );
 
 
-    /* ===================================================
-       GET JSON RESPONSE
-    =================================================== */
+    if (
+      !response.ok
+    ) {
+
+      throw new Error(
+        "Server response: " +
+        response.status
+      );
+
+    }
+
 
     const result =
       await response.json();
 
 
-    console.log(
-      "SSTC Student Login Response:",
-      result
-    );
-
-
-    /* ===================================================
+    /* =========================
        LOGIN SUCCESS
-    =================================================== */
+    ========================= */
 
-    if(
-      result &&
-      result.success === true &&
-      result.student
-    ){
+    if (
+      result.success === true
+    ) {
 
-      showStudentMessage(
-        "Login successful! Opening Student Dashboard...",
-        "success"
-      );
+      if (message) {
 
+        message.style.color =
+          "#15803d";
 
-      /* ================================================
-         REMEMBER STUDENT ID
-      ================================================= */
-
-      if(
-        rememberCheckbox &&
-        rememberCheckbox.checked
-      ){
-
-        localStorage.setItem(
-          "sstcRememberedStudent",
-          studentId
-        );
-
-      }else{
-
-        localStorage.removeItem(
-          "sstcRememberedStudent"
-        );
+        message.innerText =
+          "Login successful! Opening student dashboard...";
 
       }
 
 
-      /* ================================================
-         SAVE STUDENT SESSION
-      =================================================
+      /*
+        Save only student profile/session data.
+        Password is NOT saved.
+      */
 
-         Password ko browser storage me save nahi kar rahe.
-      ================================================= */
+      if (
+        result.student
+      ) {
 
-      const studentSession = {
+        sessionStorage.setItem(
 
-        studentId:
-          result.student.studentId || studentId,
+          "sstcStudentData",
 
-        fullName:
-          result.student.fullName || "",
+          JSON.stringify(
+            result.student
+          )
 
-        mobile:
-          result.student.mobile || "",
+        );
 
-        gender:
-          result.student.gender || "",
-
-        email:
-          result.student.email || "",
-
-        className:
-          result.student.className || "",
-
-        board:
-          result.student.board || "",
-
-        schoolName:
-          result.student.schoolName || "",
-
-        schoolPlace:
-          result.student.schoolPlace || "",
-
-        registrationDate:
-          result.student.registrationDate || "",
-
-        status:
-          result.student.status || "Active"
-
-      };
+      }
 
 
       sessionStorage.setItem(
@@ -385,24 +253,47 @@ async function studentLoginSubmit(event){
       );
 
 
-      sessionStorage.setItem(
-        "sstcStudentData",
-        JSON.stringify(
-          studentSession
-        )
-      );
+      /* =========================
+         REMEMBER STUDENT
+      ========================= */
+
+      if (
+        rememberStudent
+      ) {
+
+        localStorage.setItem(
+
+          "sstcRememberedStudent",
+
+          studentId
+
+        );
+
+      } else {
+
+        localStorage.removeItem(
+          "sstcRememberedStudent"
+        );
+
+      }
 
 
-      /* ================================================
+      /* =========================
          OPEN STUDENT PAGE
-      ================================================= */
+      ========================= */
 
-      setTimeout(function(){
+      setTimeout(
 
-        window.location.href =
-          "student-page.html";
+        function(){
 
-      },700);
+          window.location.href =
+            "student-page.html";
+
+        },
+
+        700
+
+      );
 
 
       return;
@@ -410,80 +301,48 @@ async function studentLoginSubmit(event){
     }
 
 
-    /* ===================================================
-       LOGIN FAILED
-    =================================================== */
+    /* =========================
+       INACTIVE ACCOUNT
+    ========================= */
 
-    let errorMessage =
-      "Invalid Student ID or Password.";
+    if (
+      result.type ===
+      "inactive"
+    ) {
 
+      if (message) {
 
-    if(result){
+        message.style.color =
+          "#d32f2f";
 
-      if(
-        result.type ===
-        "student_not_found"
-      ){
-
-        errorMessage =
-          "Student ID not found.";
-
-      }
-
-
-      else if(
-        result.type ===
-        "invalid_password"
-      ){
-
-        errorMessage =
-          "Incorrect Student Password.";
-
-      }
-
-
-      else if(
-        result.type ===
-        "inactive"
-      ){
-
-        errorMessage =
-          "Your Student Account is inactive. Please contact SSTC administration.";
-
-      }
-
-
-      else if(
-        result.type ===
-        "validation_error"
-      ){
-
-        errorMessage =
+        message.innerText =
           result.message ||
-          "Please enter Student ID and Password.";
+          "Your account is inactive.";
 
       }
 
-
-      else if(
-        result.message
-      ){
-
-        errorMessage =
-          result.message;
-
-      }
+      return;
 
     }
 
 
-    showStudentMessage(
-      errorMessage,
-      "error"
-    );
+    /* =========================
+       INVALID LOGIN
+    ========================= */
+
+    if (message) {
+
+      message.style.color =
+        "#d32f2f";
+
+      message.innerText =
+        result.message ||
+        "Invalid Student ID or Password.";
+
+    }
 
 
-  }catch(error){
+  } catch (error) {
 
     console.error(
       "Student Login Error:",
@@ -491,27 +350,31 @@ async function studentLoginSubmit(event){
     );
 
 
-    showStudentMessage(
+    if (message) {
 
-      "Unable to connect to Student Login Server. Please try again.",
+      message.style.color =
+        "#d32f2f";
 
-      "error"
+      message.innerText =
+        "Unable to connect to Student Database. Please try again.";
 
-    );
+    }
 
-  }
+  } finally {
 
+    /* =========================
+       RESTORE BUTTON
+    ========================= */
 
-  /* =====================================================
-     RESET BUTTON
-  ===================================================== */
+    if (loginButton) {
 
-  if(loginButton){
+      loginButton.disabled =
+        false;
 
-    loginButton.disabled = false;
+      loginButton.innerHTML =
+        originalButtonText;
 
-    loginButton.innerText =
-      "🔐 Login as Student";
+    }
 
   }
 
@@ -519,65 +382,179 @@ async function studentLoginSubmit(event){
 
 
 /* =========================================================
-   STUDENT MESSAGE
+   REST OF YOUR EXISTING SSTC ACCESS JS
    ========================================================= */
 
-function showStudentMessage(
-  text,
+
+/* =========================
+   HEADER SCROLL
+========================= */
+
+window.addEventListener(
+  "scroll",
+  function(){
+
+    const header =
+      document.getElementById(
+        "mainHeader"
+      );
+
+    if (
+      !header
+    ) return;
+
+
+    if (
+      window.scrollY > 40
+    ){
+
+      header.classList.add(
+        "scrolled"
+      );
+
+    } else {
+
+      header.classList.remove(
+        "scrolled"
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================
+   LOGIN TAB SWITCH
+========================= */
+
+function switchLogin(
   type
 ){
 
-  const message =
+  const studentTab =
     document.getElementById(
-      "studentMessage"
+      "studentTab"
+    );
+
+  const adminTab =
+    document.getElementById(
+      "adminTab"
+    );
+
+  const studentLogin =
+    document.getElementById(
+      "studentLogin"
+    );
+
+  const adminLogin =
+    document.getElementById(
+      "adminLogin"
     );
 
 
-  if(!message){
+  studentTab.classList.remove(
+    "active"
+  );
 
-    return;
+  adminTab.classList.remove(
+    "active"
+  );
+
+  studentLogin.classList.remove(
+    "active-form"
+  );
+
+  adminLogin.classList.remove(
+    "active-form"
+  );
+
+
+  if (
+    type === "student"
+  ){
+
+    studentTab.classList.add(
+      "active"
+    );
+
+    studentLogin.classList.add(
+      "active-form"
+    );
 
   }
 
 
-  message.innerText =
-    text;
+  if (
+    type === "admin"
+  ){
 
+    adminTab.classList.add(
+      "active"
+    );
 
-  if(type === "success"){
-
-    message.style.color =
-      "#16803c";
-
-  }
-
-
-  else if(type === "error"){
-
-    message.style.color =
-      "#d32f2f";
-
-  }
-
-
-  else{
-
-    message.style.color =
-      "#6c2bd9";
+    adminLogin.classList.add(
+      "active-form"
+    );
 
   }
 
 }
 
 
-/* =========================================================
-   FORGOT PASSWORD
-   ========================================================= */
+/* =========================
+   PASSWORD SHOW / HIDE
+========================= */
 
-function showForgotPassword(event){
+function togglePassword(
+  inputId,
+  button
+){
+
+  const input =
+    document.getElementById(
+      inputId
+    );
+
+
+  if (
+    !input
+  ) return;
+
+
+  if (
+    input.type ===
+    "password"
+  ){
+
+    input.type =
+      "text";
+
+    button.innerText =
+      "🙈";
+
+  } else {
+
+    input.type =
+      "password";
+
+    button.innerText =
+      "👁";
+
+  }
+
+}
+
+
+/* =========================
+   FORGOT PASSWORD
+========================= */
+
+function showForgotPassword(
+  event
+){
 
   event.preventDefault();
-
 
   alert(
     "Please contact Shree Scholars Tuition Centre administration to reset your password."
@@ -586,14 +563,15 @@ function showForgotPassword(event){
 }
 
 
-/* =========================================================
+/* =========================
    QUICK ACCESS
-   ========================================================= */
+========================= */
 
-function studentQuickAccess(event){
+function studentQuickAccess(
+  event
+){
 
   event.preventDefault();
-
 
   alert(
     "Please login as a student to access this feature."
@@ -603,8 +581,8 @@ function studentQuickAccess(event){
 
 
 /* =========================================================
-   REMEMBERED STUDENT
-   ========================================================= */
+   REMEMBERED STUDENT ID
+========================================================= */
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -628,7 +606,7 @@ document.addEventListener(
       );
 
 
-    if(
+    if (
       savedStudent &&
       studentInput
     ){
@@ -637,7 +615,9 @@ document.addEventListener(
         savedStudent;
 
 
-      if(rememberCheckbox){
+      if (
+        rememberCheckbox
+      ){
 
         rememberCheckbox.checked =
           true;
@@ -648,3 +628,6 @@ document.addEventListener(
 
   }
 );
+
+
+
