@@ -97,7 +97,7 @@ async function studentLoginSubmit(event) {
   if (
     SSTC_WEB_APP_URL
       ===
-    "PASTE_YOUR_APPS_SCRIPT_WEB_APP_EXEC_URL_HERE"
+    "https://script.google.com/macros/s/AKfycbx1ezqxhDMXZnL_SJ95IAe3e0a-pJVQssgGw4IonCdfXvpGnhLFZN0UHdVOlSwkR1ERGg/exec"
   ) {
 
     if (message) {
