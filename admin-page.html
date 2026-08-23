@@ -1,453 +1,604 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SSTC Admin Dashboard | Shree Scholars Tuition Centre</title>
-  <link rel="stylesheet" href="admin-page.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    SSTC Admin Dashboard | Shree Scholars Tuition Centre
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="admin-page.css"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+  crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
 </head>
+
+
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Shree Scholars Tuition Centre Home">
-      <img src="logo.png" alt="Shree Scholars Tuition Centre Logo"
-           onerror="this.style.display='none'">
-      <div class="brand-text">
-        <h1>Shree Scholars Tuition Centre</h1>
-        <span>From Foundation to Future</span>
-      </div>
-    </a>
 
-    <nav class="header-actions">
-      <a class="nav-btn home-btn" href="index.html">🏠 Home</a>
-      <a class="nav-btn contact-btn" href="index.html#contact">📞 Contact</a>
-      <!-- <button class="logout-btn" id="logoutBtn" type="button">🔒 Logout</button> -->
-    </nav>
-  </header>
-
-  <!-- MAIN -->
-  <main class="admin-main">
-    <section class="page-heading">
-      <div>
-        <span class="eyebrow">SSTC • SECURE ADMIN AREA</span>
-        <h2>Admin Dashboard</h2>
-        <p>Manage student access, eBook plans and account activity from one place.</p>
-      </div>
-      <div class="admin-badge">🛡️ Administrator</div>
-    </section>
-
-    <!-- STATS -->
-    <section class="stats-grid">
-      <article class="stat-card">
-        <div class="stat-icon">👨‍🎓</div>
-        <div><span>Total Students</span><strong id="totalStudents">0</strong></div>
-      </article>
-      <article class="stat-card">
-        <div class="stat-icon">🟢</div>
-        <div><span>Active Accounts</span><strong id="activeAccounts">0</strong></div>
-      </article>
-      <article class="stat-card">
-        <div class="stat-icon">📚</div>
-        <div><span>eBook Members</span><strong id="ebookMembers">0</strong></div>
-      </article>
-      <article class="stat-card">
-        <div class="stat-icon">♾️</div>
-        <div><span>Lifetime Buyers</span><strong id="lifetimeBuyers">0</strong></div>
-      </article>
-    </section>
-
-
-    <!-- ================= STUDENT ACCESS TABLE ================= -->
-
-    <!-- =====================================================
-     STUDENT E-BOOK MANAGEMENT
+<!-- =====================================================
+     HEADER
 ===================================================== -->
 
-<section class="admin-section">
+<header class="site-header">
 
-    <div class="section-heading">
+  <a
+    class="brand"
+    href="index.html"
+  >
 
-        <div>
-            <h2>👨‍🎓 Student E-Book Management</h2>
-            <p>
-                Manage student access, multiple e-books,
-                rental and purchase records
-            </p>
-        </div>
+    <img
+      src="logo.png"
+      alt="Shree Scholars Tuition Centre Logo"
+      onerror="this.style.display='none'"
+    >
+
+    <div class="brand-text">
+
+      <h1>
+        Shree Scholars Tuition Centre
+      </h1>
+
+      <span>
+        From Foundation to Future
+      </span>
 
     </div>
 
+  </a>
+
+
+  <nav class="header-actions">
+
+    <a
+      class="nav-btn home-btn"
+      href="index.html"
+    >
+      🏠 Home
+    </a>
+
+
+    <a
+      class="nav-btn contact-btn"
+      href="index.html#contact"
+    >
+      📞 Contact
+    </a>
+
+  </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="admin-main">
+
+
+  <!-- PAGE HEADING -->
+
+  <section class="page-heading">
+
+    <div>
+
+      <span class="eyebrow">
+        SSTC • SECURE ADMIN AREA
+      </span>
+
+      <h2>
+        Admin Dashboard
+      </h2>
+
+      <p>
+        Manage student accounts, passwords and account activity.
+      </p>
+
+    </div>
+
+
+    <div class="admin-badge">
+      🛡️ Administrator
+    </div>
+
+  </section>
+
+
+
+  <!-- ===================================================
+       STATS
+  ==================================================== -->
+
+  <section class="stats-grid">
+
+
+    <article class="stat-card">
+
+      <div class="stat-icon">
+        👨‍🎓
+      </div>
+
+      <div>
+
+        <span>
+          Total Students
+        </span>
+
+        <strong id="statTotalStudents">
+          0
+        </strong>
+
+      </div>
+
+    </article>
+
+
+
+    <article class="stat-card">
+
+      <div class="stat-icon">
+        🟢
+      </div>
+
+      <div>
+
+        <span>
+          Active Accounts
+        </span>
+
+        <strong id="statActiveAccounts">
+          0
+        </strong>
+
+      </div>
+
+    </article>
+
+
+
+    <article class="stat-card">
+
+      <div class="stat-icon">
+        ⚪
+      </div>
+
+      <div>
+
+        <span>
+          Inactive Accounts
+        </span>
+
+        <strong id="statInactiveAccounts">
+          0
+        </strong>
+
+      </div>
+
+    </article>
+
+
+
+    <article class="stat-card">
+
+      <div class="stat-icon">
+        🔄
+      </div>
+
+      <div>
+
+        <span>
+          Last Updated
+        </span>
+
+        <strong
+          id="statLastUpdated"
+          class="small-stat"
+        >
+          --
+        </strong>
+
+      </div>
+
+    </article>
+
+
+  </section>
+
+
+
+  <!-- ===================================================
+       STUDENT MANAGEMENT
+  ==================================================== -->
+
+  <section class="admin-section">
+
+
+    <div class="section-heading">
+
+
+      <div>
+
+        <span class="section-label">
+          GOOGLE SHEET DATABASE
+        </span>
+
+        <h2>
+          👨‍🎓 Student E-Book Management
+        </h2>
+
+        <p>
+          Live student records from SSTC Student Database
+        </p>
+
+      </div>
+
+
+      <div class="table-controls">
+
+        <button
+          type="button"
+          class="refresh-btn"
+          id="refreshStudentsBtn"
+        >
+          🔄 Refresh
+        </button>
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- STATUS MESSAGE -->
+
+    <div
+      id="dashboardStatus"
+      class="dashboard-status"
+    >
+      Loading student records...
+    </div>
+
+
+
+    <!-- SEARCH -->
+
+    <div class="search-bar">
+
+      <div class="search-box">
+
+        <span>
+          🔎
+        </span>
+
+        <input
+          type="text"
+          id="studentSearch"
+          placeholder="Search Student ID, Name, Mobile, Email, Class, Board..."
+          autocomplete="off"
+        >
+
+      </div>
+
+
+      <select
+        id="statusFilter"
+        class="status-filter"
+      >
+
+        <option value="all">
+          All Status
+        </option>
+
+        <option value="Active">
+          Active
+        </option>
+
+        <option value="Inactive">
+          Inactive
+        </option>
+
+      </select>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         TABLE
+    ================================================== -->
 
     <div class="table-wrapper">
 
-        <table class="student-table">
 
-            <thead>
-
-                <tr>
-
-                    <th>#</th>
-                    <th>Student ID</th>
-                    <th>Password</th>
-                    <th>Login Date & Time</th>
-                    <th>E-Book</th>
-                    <th>Access</th>
-                    <th>Duration</th>
-                    <th>Price</th>
-                    <th>Status</th>
-                    <th>Action</th>
-
-                </tr>
-
-            </thead>
+      <table
+        class="student-table"
+        id="studentTable"
+      >
 
 
-            <tbody id="studentTableBody">
+        <thead>
 
-                <!-- JavaScript will generate records -->
+          <tr>
 
-            </tbody>
+            <th>
+              #
+            </th>
 
-        </table>
+            <th>
+              Student ID
+            </th>
 
-    </div>
+            <th>
+              Password
+            </th>
 
-</section>
+            <th>
+              Full Name
+            </th>
+
+            <th>
+              Mobile Number
+            </th>
+
+            <th>
+              Gender
+            </th>
+
+            <th>
+              Email ID
+            </th>
+
+            <th>
+              Class
+            </th>
+
+            <th>
+              Board
+            </th>
+
+            <th>
+              School Name
+            </th>
+
+            <th>
+              School Place
+            </th>
+
+            <th>
+              Registration Date & Time
+            </th>
+
+            <th>
+              Status
+            </th>
+
+            <th>
+              Action
+            </th>
+
+          </tr>
+
+        </thead>
 
 
+        <tbody id="studentTableBody">
 
-<!-- =====================================================
-     INCOME DASHBOARD
-===================================================== -->
+          <!-- Google Sheet data will appear here -->
 
-<section class="income-section">
+        </tbody>
 
-    <div class="section-heading">
+
+      </table>
+
+
+      <!-- EMPTY -->
+
+      <div
+        id="emptyState"
+        class="empty-state"
+      >
 
         <div>
-
-            <h2>💰 E-Book Revenue Dashboard</h2>
-
-            <p>
-                Automatic income calculation
-            </p>
-
+          👨‍🎓
         </div>
-
-    </div>
-
-
-    <!-- SUMMARY -->
-
-    <div class="income-cards">
-
-
-        <div class="income-card">
-
-            <span class="income-icon">👨‍🎓</span>
-
-            <div>
-
-                <h4>Total Students</h4>
-
-                <strong id="totalStudents">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="income-card">
-
-            <span class="income-icon">📚</span>
-
-            <div>
-
-                <h4>Total E-Book Records</h4>
-
-                <strong id="totalBooks">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="income-card">
-
-            <span class="income-icon">🟢</span>
-
-            <div>
-
-                <h4>Active Records</h4>
-
-                <strong id="totalActive">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="income-card highlight-income">
-
-            <span class="income-icon">💰</span>
-
-            <div>
-
-                <h4>Overall Income</h4>
-
-                <strong id="overallIncome">
-                    ₹0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- PRICE TABLE -->
-
-    <div class="price-panel">
-
-        <div class="price-panel-header">
-
-            <h3>
-                📖 E-Book Pricing Plans
-            </h3>
-
-            <span>
-                Current Rates
-            </span>
-
-        </div>
-
-
-        <table class="price-table">
-
-            <thead>
-
-                <tr>
-                    <th>Plan</th>
-                    <th>Price</th>
-                </tr>
-
-            </thead>
-
-
-            <tbody>
-
-                <tr>
-                    <td>Rent 3 Months</td>
-                    <td>₹15</td>
-                </tr>
-
-                <tr>
-                    <td>Rent 6 Months</td>
-                    <td>₹25</td>
-                </tr>
-
-                <tr>
-                    <td>Rent 9 Months</td>
-                    <td>₹49</td>
-                </tr>
-
-                <tr>
-                    <td>Rent 12 Months</td>
-                    <td>₹99</td>
-                </tr>
-
-                <tr class="lifetime-row">
-                    <td>
-                        <strong>Lifetime Buy</strong>
-                    </td>
-                    <td>
-                        ₹199
-                    </td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-
-
-    <!-- REVENUE BREAKDOWN -->
-
-    <div class="revenue-breakdown">
 
         <h3>
-            📊 Revenue Breakdown
+          No Student Records Found
         </h3>
 
+        <p>
+          Google Sheet में अभी कोई matching student record नहीं मिला।
+        </p>
 
-        <div class="revenue-grid">
+      </div>
 
-
-            <div>
-
-                <span>
-                    3 Month Rentals
-                </span>
-
-                <strong id="income3">
-                    ₹0
-                </strong>
-
-            </div>
-
-
-            <div>
-
-                <span>
-                    6 Month Rentals
-                </span>
-
-                <strong id="income6">
-                    ₹0
-                </strong>
-
-            </div>
-
-
-            <div>
-
-                <span>
-                    9 Month Rentals
-                </span>
-
-                <strong id="income9">
-                    ₹0
-                </strong>
-
-            </div>
-
-
-            <div>
-
-                <span>
-                    12 Month Rentals
-                </span>
-
-                <strong id="income12">
-                    ₹0
-                </strong>
-
-            </div>
-
-
-            <div>
-
-                <span>
-                    Lifetime Purchases
-                </span>
-
-                <strong id="incomeLifetime">
-                    ₹0
-                </strong>
-
-            </div>
-
-
-        </div>
 
     </div>
 
-</section>
+
+  </section>
+
+
+
+  <!-- ===================================================
+       DATABASE INFO
+  ==================================================== -->
+
+  <section class="database-info">
+
+
+    <div class="database-info-icon">
+      🔐
+    </div>
+
+
+    <div>
+
+      <strong>
+        SSTC Student Database
+      </strong>
+
+      <p>
+        Student records are loaded directly from the Google Sheet.
+        Passwords are hidden by default and can only be viewed from
+        the admin table using the eye button.
+      </p>
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- ===================================================
+       LOGOUT
+  ==================================================== -->
+
+  <div class="admin-logout-container">
+
+    <button
+      type="button"
+      class="admin-logout-btn"
+      onclick="adminLogout()"
+    >
+
+      🚪 Logout
+
+    </button>
+
+  </div>
+
+
+</main>
 
 
 
 <!-- =====================================================
-     LOGOUT BUTTON
+     FOOTER
 ===================================================== -->
 
-<div class="admin-logout-container">
+<footer class="site-footer">
 
-    <button
+
+  <div>
+
+    <strong>
+      Shree Scholars Tuition Centre
+    </strong>
+
+    <span>
+      From Foundation to Future
+    </span>
+
+  </div>
+
+
+  <div class="footer-links">
+
+    <a href="index.html">
+      Home
+    </a>
+
+    <a href="index.html#contact">
+      Contact
+    </a>
+
+    <span>
+      ©
+      <span id="currentYear"></span>
+      SSTC
+    </span>
+
+  </div>
+
+
+</footer>
+
+
+
+<!-- =====================================================
+     CONFIRM MODAL
+===================================================== -->
+
+<div
+  id="confirmModal"
+  class="confirm-overlay"
+>
+
+  <div class="confirm-card">
+
+    <div class="confirm-icon">
+      ⚠️
+    </div>
+
+    <h3 id="confirmTitle">
+      Confirm Action
+    </h3>
+
+    <p id="confirmText">
+      Are you sure?
+    </p>
+
+
+    <div class="confirm-buttons">
+
+      <button
         type="button"
-        class="admin-logout-btn"
-        onclick="adminLogout()">
+        id="confirmCancel"
+        class="confirm-cancel"
+      >
+        Cancel
+      </button>
 
-        🚪 Logout
 
-    </button>
+      <button
+        type="button"
+        id="confirmProceed"
+        class="confirm-proceed"
+      >
+        Confirm
+      </button>
+
+    </div>
+
+  </div>
 
 </div>
 
 
 
+<script src="admin-page.js"></script>
 
-    
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div>
-      <strong>Shree Scholars Tuition Centre</strong>
-      <span>From Foundation to Future</span>
-    </div>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="index.html#contact">Contact</a>
-      <span>© <span id="currentYear"></span> SSTC</span>
-    </div>
-  </footer>
-
-  <!-- ADD STUDENT MODAL -->
-  <div class="modal-overlay" id="studentModal" aria-hidden="true">
-    <div class="modal-card">
-      <button class="modal-close" id="closeModalBtn" type="button">×</button>
-      <h3>Add Student</h3>
-      <p>Create a student access record.</p>
-
-      <form id="studentForm">
-        <label>Student ID
-          <input id="studentId" required placeholder="e.g. SSTC001">
-        </label>
-
-        <label>Student Password
-          <input id="studentPassword" required placeholder="Enter password">
-        </label>
-
-        <label>eBook Access
-          <select id="ebookAccess">
-            <option value="none">No eBook</option>
-            <option value="rent">Rent</option>
-            <option value="buy">Buy — Lifetime</option>
-          </select>
-        </label>
-
-        <label id="rentDurationWrap">Rent Duration
-          <select id="rentDuration">
-            <option value="3">3 Months</option>
-            <option value="6">6 Months</option>
-            <option value="9">9 Months</option>
-            <option value="12">12 Months</option>
-          </select>
-        </label>
-
-        <button class="save-btn" type="submit">Save Student</button>
-      </form>
-    </div>
-  </div>
-
-  <script src="admin-page.js"></script>
 </body>
+
 </html>
