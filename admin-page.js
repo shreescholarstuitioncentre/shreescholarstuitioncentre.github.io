@@ -6,6 +6,8 @@
 
 /* =====================================================
    GOOGLE APPS SCRIPT WEB APP URL
+   IMPORTANT:
+   URL SIRF EK BAAR DECLARE HONA CHAHIYE
 ===================================================== */
 
 const GOOGLE_SCRIPT_URL =
@@ -16,7 +18,7 @@ const GOOGLE_SCRIPT_URL =
    GLOBAL STUDENT DATA
 ===================================================== */
 
-// let students = [];
+let students = [];
 
 
 /* =====================================================
@@ -26,6 +28,10 @@ const GOOGLE_SCRIPT_URL =
 document.addEventListener(
     "DOMContentLoaded",
     function () {
+
+        /* ---------------------------------------------
+           CURRENT YEAR
+        --------------------------------------------- */
 
         const year =
             document.getElementById(
@@ -40,6 +46,10 @@ document.addEventListener(
         }
 
 
+        /* ---------------------------------------------
+           REFRESH BUTTON
+        --------------------------------------------- */
+
         const refreshBtn =
             document.getElementById(
                 "refreshBtn"
@@ -49,25 +59,30 @@ document.addEventListener(
 
             refreshBtn.addEventListener(
                 "click",
-                loadStudents
+                function () {
+
+                    loadStudents();
+
+                }
             );
 
         }
 
 
-        /*
+        /* ---------------------------------------------
            ADMIN SESSION CHECK
-
-           अगर आपके admin login में
-           sstcAdminLoggedIn = true
-           save होता है तो यह check काम करेगा.
-        */
+        --------------------------------------------- */
 
         const loggedIn =
             sessionStorage.getItem(
                 "sstcAdminLoggedIn"
             );
 
+
+        /*
+           Agar login value exist karti hai
+           aur true nahi hai to login page par bhejo.
+        */
 
         if (
             loggedIn &&
@@ -81,6 +96,10 @@ document.addEventListener(
 
         }
 
+
+        /* ---------------------------------------------
+           LOAD LIVE GOOGLE SHEET DATA
+        --------------------------------------------- */
 
         loadStudents();
 
@@ -101,7 +120,28 @@ async function loadStudents() {
     hideEmpty();
 
 
+    /*
+       Table ko temporarily clear kar dete hain
+       taaki purana data na dikhe.
+    */
+
+    const tbody =
+        document.getElementById(
+            "studentTableBody"
+        );
+
+    if (tbody) {
+
+        tbody.innerHTML = "";
+
+    }
+
+
     try {
+
+        /* ---------------------------------------------
+           GOOGLE APPS SCRIPT URL
+        --------------------------------------------- */
 
         const url =
             GOOGLE_SCRIPT_URL +
@@ -109,14 +149,31 @@ async function loadStudents() {
             Date.now();
 
 
+        console.log(
+            "Fetching Google Sheet:",
+            url
+        );
+
+
+        /* ---------------------------------------------
+           FETCH
+        --------------------------------------------- */
+
         const response =
             await fetch(
                 url,
                 {
                     method: "GET",
-                    cache: "no-store"
+                    cache: "no-store",
+                    redirect: "follow"
                 }
             );
+
+
+        console.log(
+            "Google Apps Script HTTP Status:",
+            response.status
+        );
 
 
         if (!response.ok) {
@@ -129,6 +186,10 @@ async function loadStudents() {
         }
 
 
+        /* ---------------------------------------------
+           JSON RESPONSE
+        --------------------------------------------- */
+
         const data =
             await response.json();
 
@@ -138,6 +199,10 @@ async function loadStudents() {
             data
         );
 
+
+        /* ---------------------------------------------
+           CHECK SUCCESS
+        --------------------------------------------- */
 
         if (
             !data ||
@@ -154,27 +219,61 @@ async function loadStudents() {
         }
 
 
+        /* ---------------------------------------------
+           STORE STUDENTS
+        --------------------------------------------- */
+
         students =
-            Array.isArray(data.students)
+            Array.isArray(
+                data.students
+            )
                 ? data.students
                 : [];
 
 
+        console.log(
+            "Students Loaded:",
+            students.length
+        );
+
+
+        /* ---------------------------------------------
+           HIDE LOADING
+        --------------------------------------------- */
+
         hideLoading();
 
 
-        if (students.length === 0) {
+        /* ---------------------------------------------
+           EMPTY CHECK
+        --------------------------------------------- */
+
+        if (
+            students.length === 0
+        ) {
 
             showEmpty();
 
         }
 
 
+        /* ---------------------------------------------
+           RENDER TABLE
+        --------------------------------------------- */
+
         renderStudentTable();
 
 
+        /* ---------------------------------------------
+           UPDATE STATS
+        --------------------------------------------- */
+
         updateStats();
 
+
+        /* ---------------------------------------------
+           LAST UPDATED
+        --------------------------------------------- */
 
         const lastUpdated =
             document.getElementById(
@@ -196,8 +295,14 @@ async function loadStudents() {
         }
 
 
+        /* ---------------------------------------------
+           SUCCESS MESSAGE
+        --------------------------------------------- */
+
         showDashboardMessage(
-            "✅ Google Sheets data loaded"
+            "✅ Google Sheets data loaded — " +
+            students.length +
+            " student(s)"
         );
 
     }
@@ -206,7 +311,7 @@ async function loadStudents() {
     catch (error) {
 
         console.error(
-            "LOAD ERROR:",
+            "GOOGLE SHEET LOAD ERROR:",
             error
         );
 
@@ -214,9 +319,23 @@ async function loadStudents() {
         hideLoading();
 
 
+        students = [];
+
+
+        renderStudentTable();
+
+
+        updateStats();
+
+
         showError(
-            "❌ Google Sheets से data load नहीं हो पाया. " +
+            "❌ Google Sheets से data load नहीं हो पाया.\n\n" +
             error.message
+        );
+
+
+        showDashboardMessage(
+            "❌ Google Sheets data load failed"
         );
 
     }
@@ -236,23 +355,56 @@ function renderStudentTable() {
         );
 
 
-    if (!tbody) return;
+    if (!tbody) {
+
+        console.error(
+            "studentTableBody not found in HTML."
+        );
+
+        return;
+
+    }
 
 
     tbody.innerHTML = "";
 
+
+    /* ---------------------------------------------
+       NO STUDENTS
+    --------------------------------------------- */
+
+    if (
+        !Array.isArray(students) ||
+        students.length === 0
+    ) {
+
+        return;
+
+    }
+
+
+    /* ---------------------------------------------
+       CREATE ROWS
+    --------------------------------------------- */
 
     students.forEach(
         function (student, index) {
 
 
             const row =
-                document.createElement("tr");
+                document.createElement(
+                    "tr"
+                );
 
+
+            /* -----------------------------------------
+               STATUS
+            ----------------------------------------- */
 
             const status =
                 String(
-                    student.status || "Active"
+                    student.status ||
+                    "Active"
                 )
                 .trim();
 
@@ -271,25 +423,94 @@ function renderStudentTable() {
             }
 
 
+            /* -----------------------------------------
+               SAFE VALUES
+            ----------------------------------------- */
+
+            const studentId =
+                student.studentId ||
+                "";
+
+
+            const password =
+                student.password ||
+                "";
+
+
+            const fullName =
+                student.fullName ||
+                "";
+
+
+            const mobileNumber =
+                student.mobileNumber ||
+                "";
+
+
+            const gender =
+                student.gender ||
+                "";
+
+
+            const emailId =
+                student.emailId ||
+                "";
+
+
+            const className =
+                student.className ||
+                "";
+
+
+            const board =
+                student.board ||
+                "";
+
+
+            const schoolName =
+                student.schoolName ||
+                "";
+
+
+            const schoolPlace =
+                student.schoolPlace ||
+                "";
+
+
+            const registrationDate =
+                student.registrationDate ||
+                "";
+
+
+            /* -----------------------------------------
+               TABLE ROW
+            ----------------------------------------- */
+
             row.innerHTML = `
+
+                <!-- # -->
 
                 <td>
                     ${index + 1}
                 </td>
 
 
+                <!-- STUDENT ID -->
+
                 <td>
 
                     <strong class="student-id">
 
                         ${escapeHTML(
-                            student.studentId
+                            studentId
                         )}
 
                     </strong>
 
                 </td>
 
+
+                <!-- PASSWORD -->
 
                 <td>
 
@@ -298,7 +519,7 @@ function renderStudentTable() {
                         <span
                             class="password-value"
                             data-password="${escapeHTML(
-                                student.password
+                                password
                             )}"
                             data-visible="false"
                         >
@@ -320,91 +541,121 @@ function renderStudentTable() {
                 </td>
 
 
+                <!-- FULL NAME -->
+
                 <td>
+
                     ${escapeHTML(
-                        student.fullName
+                        fullName
                     )}
+
                 </td>
 
 
+                <!-- MOBILE -->
+
                 <td>
+
                     ${escapeHTML(
-                        student.mobileNumber
+                        mobileNumber
                     )}
+
                 </td>
 
 
+                <!-- GENDER -->
+
                 <td>
+
                     ${escapeHTML(
-                        student.gender
+                        gender
                     )}
+
                 </td>
 
+
+                <!-- EMAIL -->
 
                 <td
                     class="email-cell"
                     title="${escapeHTML(
-                        student.emailId
+                        emailId
                     )}"
                 >
 
                     ${escapeHTML(
-                        student.emailId
+                        emailId
                     )}
 
                 </td>
 
+
+                <!-- CLASS -->
 
                 <td>
+
                     ${escapeHTML(
-                        student.className
+                        className
                     )}
+
                 </td>
 
+
+                <!-- BOARD -->
 
                 <td>
+
                     ${escapeHTML(
-                        student.board
+                        board
                     )}
+
                 </td>
 
+
+                <!-- SCHOOL NAME -->
 
                 <td
                     class="school-cell"
                     title="${escapeHTML(
-                        student.schoolName
+                        schoolName
                     )}"
                 >
 
                     ${escapeHTML(
-                        student.schoolName
+                        schoolName
                     )}
 
                 </td>
 
+
+                <!-- SCHOOL PLACE -->
 
                 <td
                     class="school-cell"
                     title="${escapeHTML(
-                        student.schoolPlace
+                        schoolPlace
                     )}"
                 >
 
                     ${escapeHTML(
-                        student.schoolPlace
+                        schoolPlace
                     )}
 
                 </td>
 
+
+                <!-- REGISTRATION DATE -->
 
                 <td class="date-cell">
 
                     ${escapeHTML(
-                        student.registrationDate
+                        registrationDate
                     )}
 
                 </td>
 
+
+                <!-- STATUS -->
 
                 <td>
 
@@ -430,6 +681,8 @@ function renderStudentTable() {
                 </td>
 
 
+                <!-- ACTION -->
+
                 <td>
 
                     <div class="action-buttons">
@@ -438,7 +691,7 @@ function renderStudentTable() {
                         ${
                             isActive
 
-                                ?
+                            ?
 
                             `
                             <button
@@ -457,7 +710,7 @@ function renderStudentTable() {
                             </button>
                             `
 
-                                :
+                            :
 
                             `
                             <button
@@ -500,7 +753,9 @@ function renderStudentTable() {
             `;
 
 
-            tbody.appendChild(row);
+            tbody.appendChild(
+                row
+            );
 
         }
     );
@@ -512,7 +767,12 @@ function renderStudentTable() {
    PASSWORD SHOW / HIDE
 ===================================================== */
 
-function toggleStudentPassword(button) {
+function toggleStudentPassword(
+    button
+) {
+
+    if (!button) return;
+
 
     const parent =
         button.parentElement;
@@ -531,7 +791,8 @@ function toggleStudentPassword(button) {
 
 
     const password =
-        passwordElement.dataset.password;
+        passwordElement.dataset.password ||
+        "";
 
 
     const visible =
@@ -544,8 +805,10 @@ function toggleStudentPassword(button) {
         passwordElement.textContent =
             "••••••••";
 
+
         passwordElement.dataset.visible =
             "false";
+
 
         button.textContent =
             "👁️";
@@ -557,8 +820,10 @@ function toggleStudentPassword(button) {
         passwordElement.textContent =
             password;
 
+
         passwordElement.dataset.visible =
             "true";
+
 
         button.textContent =
             "🙈";
@@ -569,7 +834,7 @@ function toggleStudentPassword(button) {
 
 
 /* =====================================================
-   CHANGE STATUS
+   CHANGE STUDENT STATUS
 ===================================================== */
 
 async function changeStudentStatus(
@@ -581,7 +846,27 @@ async function changeStudentStatus(
         students[index];
 
 
-    if (!student) return;
+    if (!student) {
+
+        return;
+
+    }
+
+
+    const studentId =
+        student.studentId ||
+        "";
+
+
+    if (!studentId) {
+
+        alert(
+            "Student ID not found."
+        );
+
+        return;
+
+    }
 
 
     const actionText =
@@ -595,12 +880,17 @@ async function changeStudentStatus(
             "Are you sure you want to " +
             actionText +
             " this student?\n\n" +
+
             "Student ID: " +
-            student.studentId
+            studentId
         );
 
 
-    if (!confirmation) return;
+    if (!confirmation) {
+
+        return;
+
+    }
 
 
     showDashboardMessage(
@@ -615,7 +905,7 @@ async function changeStudentStatus(
             "?action=updateStatus" +
             "&studentId=" +
             encodeURIComponent(
-                student.studentId
+                studentId
             ) +
             "&status=" +
             encodeURIComponent(
@@ -625,14 +915,31 @@ async function changeStudentStatus(
             Date.now();
 
 
+        console.log(
+            "Status Update URL:",
+            url
+        );
+
+
         const response =
             await fetch(
                 url,
                 {
                     method: "GET",
-                    cache: "no-store"
+                    cache: "no-store",
+                    redirect: "follow"
                 }
             );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Server error: " +
+                response.status
+            );
+
+        }
 
 
         const data =
@@ -640,7 +947,7 @@ async function changeStudentStatus(
 
 
         console.log(
-            "Status Response:",
+            "Status Update Response:",
             data
         );
 
@@ -660,9 +967,9 @@ async function changeStudentStatus(
         }
 
 
-        /*
-           Local data update
-        */
+        /* -----------------------------------------
+           LOCAL UPDATE
+        ----------------------------------------- */
 
         students[index].status =
             newStatus;
@@ -686,7 +993,7 @@ async function changeStudentStatus(
     catch (error) {
 
         console.error(
-            "STATUS ERROR:",
+            "STATUS UPDATE ERROR:",
             error
         );
 
@@ -710,34 +1017,67 @@ async function changeStudentStatus(
    DELETE STUDENT
 ===================================================== */
 
-async function deleteStudent(index) {
+async function deleteStudent(
+    index
+) {
 
     const student =
         students[index];
 
 
-    if (!student) return;
+    if (!student) {
+
+        return;
+
+    }
+
+
+    const studentId =
+        student.studentId ||
+        "";
+
+
+    const fullName =
+        student.fullName ||
+        "";
+
+
+    if (!studentId) {
+
+        alert(
+            "Student ID not found."
+        );
+
+        return;
+
+    }
 
 
     const confirmation =
         confirm(
+
             "⚠️ DELETE STUDENT\n\n" +
 
             "Student ID: " +
-            student.studentId +
+            studentId +
             "\n\n" +
 
             "Full Name: " +
-            student.fullName +
+            fullName +
             "\n\n" +
 
             "यह record Google Sheet से permanently delete होगा.\n\n" +
 
             "Continue?"
+
         );
 
 
-    if (!confirmation) return;
+    if (!confirmation) {
+
+        return;
+
+    }
 
 
     showDashboardMessage(
@@ -752,10 +1092,16 @@ async function deleteStudent(index) {
             "?action=deleteStudent" +
             "&studentId=" +
             encodeURIComponent(
-                student.studentId
+                studentId
             ) +
             "&_=" +
             Date.now();
+
+
+        console.log(
+            "Delete URL:",
+            url
+        );
 
 
         const response =
@@ -763,9 +1109,20 @@ async function deleteStudent(index) {
                 url,
                 {
                     method: "GET",
-                    cache: "no-store"
+                    cache: "no-store",
+                    redirect: "follow"
                 }
             );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Server error: " +
+                response.status
+            );
+
+        }
 
 
         const data =
@@ -793,9 +1150,9 @@ async function deleteStudent(index) {
         }
 
 
-        /*
-           Local array से भी remove
-        */
+        /* -----------------------------------------
+           REMOVE FROM LOCAL ARRAY
+        ----------------------------------------- */
 
         students.splice(
             index,
@@ -809,7 +1166,9 @@ async function deleteStudent(index) {
         updateStats();
 
 
-        if (students.length === 0) {
+        if (
+            students.length === 0
+        ) {
 
             showEmpty();
 
@@ -847,13 +1206,15 @@ async function deleteStudent(index) {
 
 
 /* =====================================================
-   UPDATE STATS
+   UPDATE DASHBOARD STATS
 ===================================================== */
 
 function updateStats() {
 
     const total =
-        students.length;
+        Array.isArray(students)
+            ? students.length
+            : 0;
 
 
     const active =
@@ -861,7 +1222,8 @@ function updateStats() {
             function (student) {
 
                 return String(
-                    student.status || ""
+                    student.status ||
+                    ""
                 )
                 .trim()
                 .toLowerCase() ===
@@ -872,8 +1234,13 @@ function updateStats() {
 
 
     const inactive =
-        total - active;
+        total -
+        active;
 
+
+    /* ---------------------------------------------
+       TOTAL
+    --------------------------------------------- */
 
     setText(
         "totalStudents",
@@ -881,11 +1248,19 @@ function updateStats() {
     );
 
 
+    /* ---------------------------------------------
+       ACTIVE
+    --------------------------------------------- */
+
     setText(
         "activeAccounts",
         active
     );
 
+
+    /* ---------------------------------------------
+       INACTIVE
+    --------------------------------------------- */
 
     setText(
         "inactiveAccounts",
@@ -905,7 +1280,9 @@ function setText(
 ) {
 
     const element =
-        document.getElementById(id);
+        document.getElementById(
+            id
+        );
 
 
     if (element) {
@@ -922,7 +1299,9 @@ function setText(
    HTML ESCAPE
 ===================================================== */
 
-function escapeHTML(value) {
+function escapeHTML(
+    value
+) {
 
     return String(
         value ?? ""
@@ -1000,7 +1379,9 @@ function hideLoading() {
    ERROR
 ===================================================== */
 
-function showError(message) {
+function showError(
+    message
+) {
 
     const box =
         document.getElementById(
@@ -1008,7 +1389,15 @@ function showError(message) {
         );
 
 
-    if (!box) return;
+    if (!box) {
+
+        console.error(
+            message
+        );
+
+        return;
+
+    }
 
 
     box.textContent =
@@ -1122,7 +1511,11 @@ function showDashboardMessage(
     setTimeout(
         function () {
 
-            box.remove();
+            if (box) {
+
+                box.remove();
+
+            }
 
         },
         2500
@@ -1143,7 +1536,11 @@ function adminLogout() {
         );
 
 
-    if (!confirmation) return;
+    if (!confirmation) {
+
+        return;
+
+    }
 
 
     sessionStorage.removeItem(
