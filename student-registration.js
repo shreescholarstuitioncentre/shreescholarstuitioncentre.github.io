@@ -18,7 +18,7 @@
 */
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbx1ezqxhDMXZnL_SJ95IAe3e0a-pJVQssgGw4IonCdfXvpGnhLFZN0UHdVOlSwkR1ERGg/exec";
+  "https://script.google.com/macros/s/AKfycbzSPSlkswNdmRtJkZ0Uq3Et5hAPIBorvbgVoQvZD4e0Ed36TwPzk7bh-xSAWmdFpmqynw/exec";
 
 
 /* =========================================================
@@ -212,7 +212,7 @@ function generateStudentPassword(
 
      Password:
 
-     Rahul10@SSTC
+     Rahul1
 
   */
 
