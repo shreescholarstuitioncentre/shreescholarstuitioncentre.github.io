@@ -1,146 +1,223 @@
 /* =====================================================
-   SSTC STUDENT DATABASE API
+   SSTC ADMIN DASHBOARD
+   LIVE GOOGLE SHEETS VERSION
 ===================================================== */
-
-
-/*
-   अगर यह Apps Script सीधे Google Sheet से
-   बनाया गया है तो getActiveSpreadsheet()
-   आपकी उसी Google Sheet को access करेगा.
-*/
-
-function getStudentSheet() {
-
-    const spreadsheet =
-        SpreadsheetApp.getActiveSpreadsheet();
-
-
-    if (!spreadsheet) {
-
-        throw new Error(
-            "Google Spreadsheet नहीं मिला."
-        );
-
-    }
-
-
-    /*
-       पहली sheet use होगी.
-       Screenshot में आपका student database
-       इसी spreadsheet में है.
-    */
-
-    return spreadsheet.getSheets()[0];
-
-}
 
 
 /* =====================================================
-   GET
+   GOOGLE APPS SCRIPT WEB APP URL
 ===================================================== */
 
-function doGet(e) {
+const GOOGLE_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbzSPSlkswNdmRtJkZ0Uq3Et5hAPIBorvbgVoQvZD4e0Ed36TwPzk7bh-xSAWmdFpmqynw/exec";
+
+
+/* =====================================================
+   GLOBAL STUDENT DATA
+===================================================== */
+
+let students = [];
+
+
+/* =====================================================
+   DOM READY
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const year =
+            document.getElementById(
+                "currentYear"
+            );
+
+        if (year) {
+
+            year.textContent =
+                new Date().getFullYear();
+
+        }
+
+
+        const refreshBtn =
+            document.getElementById(
+                "refreshBtn"
+            );
+
+        if (refreshBtn) {
+
+            refreshBtn.addEventListener(
+                "click",
+                loadStudents
+            );
+
+        }
+
+
+        /*
+           ADMIN SESSION CHECK
+
+           अगर आपके admin login में
+           sstcAdminLoggedIn = true
+           save होता है तो यह check काम करेगा.
+        */
+
+        const loggedIn =
+            sessionStorage.getItem(
+                "sstcAdminLoggedIn"
+            );
+
+
+        if (
+            loggedIn &&
+            loggedIn !== "true"
+        ) {
+
+            window.location.href =
+                "index.html";
+
+            return;
+
+        }
+
+
+        loadStudents();
+
+    }
+);
+
+
+/* =====================================================
+   LOAD STUDENTS FROM GOOGLE SHEETS
+===================================================== */
+
+async function loadStudents() {
+
+    showLoading();
+
+    hideError();
+
+    hideEmpty();
+
 
     try {
 
-        const action =
-            e &&
-            e.parameter &&
-            e.parameter.action
-                ? e.parameter.action
-                : "";
+        const url =
+            GOOGLE_SCRIPT_URL +
+            "?action=getStudents&_=" +
+            Date.now();
 
 
-        /* ---------------------------------------------
-           GET STUDENTS
-        --------------------------------------------- */
+        const response =
+            await fetch(
+                url,
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
+            );
 
-        if (
-            action === "getStudents"
-        ) {
 
-            return jsonResponse(
-                getStudents()
+        if (!response.ok) {
+
+            throw new Error(
+                "Google Apps Script server error: " +
+                response.status
             );
 
         }
 
 
-        /* ---------------------------------------------
-           UPDATE STATUS
-        --------------------------------------------- */
+        const data =
+            await response.json();
+
+
+        console.log(
+            "Google Sheet Response:",
+            data
+        );
+
 
         if (
-            action === "updateStatus"
+            !data ||
+            data.success !== true
         ) {
 
-            const studentId =
-                e.parameter.studentId;
-
-
-            const status =
-                e.parameter.status;
-
-
-            return jsonResponse(
-                updateStudentStatus(
-                    studentId,
-                    status
-                )
+            throw new Error(
+                data &&
+                data.message
+                    ? data.message
+                    : "Google Sheet data load failed."
             );
 
         }
 
 
-        /* ---------------------------------------------
-           DELETE
-        --------------------------------------------- */
-
-        if (
-            action === "deleteStudent"
-        ) {
-
-            const studentId =
-                e.parameter.studentId;
+        students =
+            Array.isArray(data.students)
+                ? data.students
+                : [];
 
 
-            return jsonResponse(
-                deleteStudent(
-                    studentId
-                )
-            );
+        hideLoading();
+
+
+        if (students.length === 0) {
+
+            showEmpty();
 
         }
 
 
-        return jsonResponse({
+        renderStudentTable();
 
-            success: true,
 
-            message:
-                "SSTC Student API is working.",
+        updateStats();
 
-            actions: [
-                "getStudents",
-                "updateStatus",
-                "deleteStudent"
-            ]
 
-        });
+        const lastUpdated =
+            document.getElementById(
+                "lastUpdated"
+            );
+
+
+        if (lastUpdated) {
+
+            lastUpdated.textContent =
+                new Date().toLocaleTimeString(
+                    "en-IN",
+                    {
+                        hour: "2-digit",
+                        minute: "2-digit"
+                    }
+                );
+
+        }
+
+
+        showDashboardMessage(
+            "✅ Google Sheets data loaded"
+        );
 
     }
 
 
     catch (error) {
 
-        return jsonResponse({
+        console.error(
+            "LOAD ERROR:",
+            error
+        );
 
-            success: false,
 
-            message:
-                error.message
+        hideLoading();
 
-        });
+
+        showError(
+            "❌ Google Sheets से data load नहीं हो पाया. " +
+            error.message
+        );
 
     }
 
@@ -148,272 +225,483 @@ function doGet(e) {
 
 
 /* =====================================================
-   GET ALL STUDENTS
+   RENDER STUDENT TABLE
 ===================================================== */
 
-function getStudents() {
+function renderStudentTable() {
 
-    const sheet =
-        getStudentSheet();
-
-
-    const lastRow =
-        sheet.getLastRow();
+    const tbody =
+        document.getElementById(
+            "studentTableBody"
+        );
 
 
-    const lastColumn =
-        sheet.getLastColumn();
+    if (!tbody) return;
 
 
-    if (
-        lastRow < 2 ||
-        lastColumn < 1
-    ) {
+    tbody.innerHTML = "";
 
-        return {
 
-            success: true,
+    students.forEach(
+        function (student, index) {
 
-            students: []
 
-        };
+            const row =
+                document.createElement("tr");
+
+
+            const status =
+                String(
+                    student.status || "Active"
+                )
+                .trim();
+
+
+            const isActive =
+                status.toLowerCase() ===
+                "active";
+
+
+            if (!isActive) {
+
+                row.classList.add(
+                    "record-inactive"
+                );
+
+            }
+
+
+            row.innerHTML = `
+
+                <td>
+                    ${index + 1}
+                </td>
+
+
+                <td>
+
+                    <strong class="student-id">
+
+                        ${escapeHTML(
+                            student.studentId
+                        )}
+
+                    </strong>
+
+                </td>
+
+
+                <td>
+
+                    <div class="password-cell">
+
+                        <span
+                            class="password-value"
+                            data-password="${escapeHTML(
+                                student.password
+                            )}"
+                            data-visible="false"
+                        >
+                            ••••••••
+                        </span>
+
+
+                        <button
+                            type="button"
+                            class="password-eye"
+                            onclick="toggleStudentPassword(this)"
+                            title="Show / Hide Password"
+                        >
+                            👁️
+                        </button>
+
+                    </div>
+
+                </td>
+
+
+                <td>
+                    ${escapeHTML(
+                        student.fullName
+                    )}
+                </td>
+
+
+                <td>
+                    ${escapeHTML(
+                        student.mobileNumber
+                    )}
+                </td>
+
+
+                <td>
+                    ${escapeHTML(
+                        student.gender
+                    )}
+                </td>
+
+
+                <td
+                    class="email-cell"
+                    title="${escapeHTML(
+                        student.emailId
+                    )}"
+                >
+
+                    ${escapeHTML(
+                        student.emailId
+                    )}
+
+                </td>
+
+
+                <td>
+                    ${escapeHTML(
+                        student.className
+                    )}
+                </td>
+
+
+                <td>
+                    ${escapeHTML(
+                        student.board
+                    )}
+                </td>
+
+
+                <td
+                    class="school-cell"
+                    title="${escapeHTML(
+                        student.schoolName
+                    )}"
+                >
+
+                    ${escapeHTML(
+                        student.schoolName
+                    )}
+
+                </td>
+
+
+                <td
+                    class="school-cell"
+                    title="${escapeHTML(
+                        student.schoolPlace
+                    )}"
+                >
+
+                    ${escapeHTML(
+                        student.schoolPlace
+                    )}
+
+                </td>
+
+
+                <td class="date-cell">
+
+                    ${escapeHTML(
+                        student.registrationDate
+                    )}
+
+                </td>
+
+
+                <td>
+
+                    <span
+                        class="
+                            status-badge
+                            ${
+                                isActive
+                                    ? "status-active"
+                                    : "status-inactive"
+                            }
+                        "
+                    >
+
+                        ${
+                            isActive
+                                ? "🟢 Active"
+                                : "⚪ Inactive"
+                        }
+
+                    </span>
+
+                </td>
+
+
+                <td>
+
+                    <div class="action-buttons">
+
+
+                        ${
+                            isActive
+
+                                ?
+
+                            `
+                            <button
+                                type="button"
+                                class="
+                                    action-btn
+                                    deactivate-btn
+                                "
+                                onclick="changeStudentStatus(
+                                    ${index},
+                                    'Inactive'
+                                )"
+                                title="Deactivate Student"
+                            >
+                                ⚪
+                            </button>
+                            `
+
+                                :
+
+                            `
+                            <button
+                                type="button"
+                                class="
+                                    action-btn
+                                    activate-btn
+                                "
+                                onclick="changeStudentStatus(
+                                    ${index},
+                                    'Active'
+                                )"
+                                title="Activate Student"
+                            >
+                                🟢
+                            </button>
+                            `
+                        }
+
+
+                        <button
+                            type="button"
+                            class="
+                                action-btn
+                                delete-btn
+                            "
+                            onclick="deleteStudent(${index})"
+                            title="Delete Student"
+                        >
+
+                            🗑️
+
+                        </button>
+
+
+                    </div>
+
+                </td>
+
+            `;
+
+
+            tbody.appendChild(row);
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   PASSWORD SHOW / HIDE
+===================================================== */
+
+function toggleStudentPassword(button) {
+
+    const parent =
+        button.parentElement;
+
+
+    if (!parent) return;
+
+
+    const passwordElement =
+        parent.querySelector(
+            ".password-value"
+        );
+
+
+    if (!passwordElement) return;
+
+
+    const password =
+        passwordElement.dataset.password;
+
+
+    const visible =
+        passwordElement.dataset.visible ===
+        "true";
+
+
+    if (visible) {
+
+        passwordElement.textContent =
+            "••••••••";
+
+        passwordElement.dataset.visible =
+            "false";
+
+        button.textContent =
+            "👁️";
 
     }
 
+    else {
 
-    /*
-       A:L data
-    */
+        passwordElement.textContent =
+            password;
 
-    const data =
-        sheet
-            .getRange(
-                2,
-                1,
-                lastRow - 1,
-                Math.min(
-                    lastColumn,
-                    12
-                )
-            )
-            .getDisplayValues();
+        passwordElement.dataset.visible =
+            "true";
+
+        button.textContent =
+            "🙈";
+
+    }
+
+}
 
 
-    const students =
-        data
-            .filter(
-                function (row) {
+/* =====================================================
+   CHANGE STATUS
+===================================================== */
 
-                    return String(
-                        row[0] || ""
-                    ).trim() !== "";
+async function changeStudentStatus(
+    index,
+    newStatus
+) {
 
-                }
-            )
-            .map(
-                function (row) {
+    const student =
+        students[index];
 
-                    return {
 
-                        studentId:
-                            row[0] || "",
+    if (!student) return;
 
-                        password:
-                            row[1] || "",
 
-                        fullName:
-                            row[2] || "",
+    const actionText =
+        newStatus === "Active"
+            ? "activate"
+            : "deactivate";
 
-                        mobileNumber:
-                            row[3] || "",
 
-                        gender:
-                            row[4] || "",
+    const confirmation =
+        confirm(
+            "Are you sure you want to " +
+            actionText +
+            " this student?\n\n" +
+            "Student ID: " +
+            student.studentId
+        );
 
-                        emailId:
-                            row[5] || "",
 
-                        className:
-                            row[6] || "",
+    if (!confirmation) return;
 
-                        board:
-                            row[7] || "",
 
-                        schoolName:
-                            row[8] || "",
+    showDashboardMessage(
+        "⏳ Updating student status..."
+    );
 
-                        schoolPlace:
-                            row[9] || "",
 
-                        registrationDate:
-                            row[10] || "",
+    try {
 
-                        status:
-                            row[11] ||
-                            "Active"
+        const url =
+            GOOGLE_SCRIPT_URL +
+            "?action=updateStatus" +
+            "&studentId=" +
+            encodeURIComponent(
+                student.studentId
+            ) +
+            "&status=" +
+            encodeURIComponent(
+                newStatus
+            ) +
+            "&_=" +
+            Date.now();
 
-                    };
 
+        const response =
+            await fetch(
+                url,
+                {
+                    method: "GET",
+                    cache: "no-store"
                 }
             );
 
 
-    return {
-
-        success: true,
-
-        students: students
-
-    };
-
-}
+        const data =
+            await response.json();
 
 
-/* =====================================================
-   UPDATE STUDENT STATUS
-===================================================== */
-
-function updateStudentStatus(
-    studentId,
-    newStatus
-) {
-
-    if (!studentId) {
-
-        return {
-
-            success: false,
-
-            message:
-                "Student ID missing."
-
-        };
-
-    }
-
-
-    if (
-        newStatus !== "Active" &&
-        newStatus !== "Inactive"
-    ) {
-
-        return {
-
-            success: false,
-
-            message:
-                "Invalid status."
-
-        };
-
-    }
-
-
-    const sheet =
-        getStudentSheet();
-
-
-    const lastRow =
-        sheet.getLastRow();
-
-
-    if (lastRow < 2) {
-
-        return {
-
-            success: false,
-
-            message:
-                "No student records found."
-
-        };
-
-    }
-
-
-    /*
-       Student IDs are in Column A
-    */
-
-    const ids =
-        sheet
-            .getRange(
-                2,
-                1,
-                lastRow - 1,
-                1
-            )
-            .getDisplayValues();
-
-
-    for (
-        let i = 0;
-        i < ids.length;
-        i++
-    ) {
-
-        const currentId =
-            String(
-                ids[i][0] || ""
-            ).trim();
+        console.log(
+            "Status Response:",
+            data
+        );
 
 
         if (
-            currentId ===
-            String(studentId).trim()
+            !data ||
+            data.success !== true
         ) {
 
-            const rowNumber =
-                i + 2;
-
-
-            /*
-               Status = Column L
-            */
-
-            sheet
-                .getRange(
-                    rowNumber,
-                    12
-                )
-                .setValue(
-                    newStatus
-                );
-
-
-            SpreadsheetApp
-                .flush();
-
-
-            return {
-
-                success: true,
-
-                message:
-                    "Student status updated.",
-
-                studentId:
-                    studentId,
-
-                status:
-                    newStatus
-
-            };
+            throw new Error(
+                data &&
+                data.message
+                    ? data.message
+                    : "Status update failed."
+            );
 
         }
+
+
+        /*
+           Local data update
+        */
+
+        students[index].status =
+            newStatus;
+
+
+        renderStudentTable();
+
+
+        updateStats();
+
+
+        showDashboardMessage(
+            newStatus === "Active"
+                ? "🟢 Student Activated"
+                : "⚪ Student Deactivated"
+        );
 
     }
 
 
-    return {
+    catch (error) {
 
-        success: false,
+        console.error(
+            "STATUS ERROR:",
+            error
+        );
 
-        message:
-            "Student ID not found: " +
-            studentId
 
-    };
+        showDashboardMessage(
+            "❌ Status update failed"
+        );
+
+
+        alert(
+            "Status update failed.\n\n" +
+            error.message
+        );
+
+    }
 
 }
 
@@ -422,143 +710,453 @@ function updateStudentStatus(
    DELETE STUDENT
 ===================================================== */
 
-function deleteStudent(
-    studentId
-) {
+async function deleteStudent(index) {
 
-    if (!studentId) {
-
-        return {
-
-            success: false,
-
-            message:
-                "Student ID missing."
-
-        };
-
-    }
+    const student =
+        students[index];
 
 
-    const sheet =
-        getStudentSheet();
+    if (!student) return;
 
 
-    const lastRow =
-        sheet.getLastRow();
+    const confirmation =
+        confirm(
+            "⚠️ DELETE STUDENT\n\n" +
+
+            "Student ID: " +
+            student.studentId +
+            "\n\n" +
+
+            "Full Name: " +
+            student.fullName +
+            "\n\n" +
+
+            "यह record Google Sheet से permanently delete होगा.\n\n" +
+
+            "Continue?"
+        );
 
 
-    if (lastRow < 2) {
-
-        return {
-
-            success: false,
-
-            message:
-                "No student records found."
-
-        };
-
-    }
+    if (!confirmation) return;
 
 
-    /*
-       Student ID = Column A
-    */
-
-    const ids =
-        sheet
-            .getRange(
-                2,
-                1,
-                lastRow - 1,
-                1
-            )
-            .getDisplayValues();
+    showDashboardMessage(
+        "⏳ Deleting student..."
+    );
 
 
-    /*
-       नीचे से ऊपर search करें.
-       इससे delete करते समय row indexing
-       की समस्या नहीं होगी.
-    */
+    try {
 
-    for (
-        let i = ids.length - 1;
-        i >= 0;
-        i--
-    ) {
-
-        const currentId =
-            String(
-                ids[i][0] || ""
-            ).trim();
+        const url =
+            GOOGLE_SCRIPT_URL +
+            "?action=deleteStudent" +
+            "&studentId=" +
+            encodeURIComponent(
+                student.studentId
+            ) +
+            "&_=" +
+            Date.now();
 
 
-        if (
-            currentId ===
-            String(studentId).trim()
-        ) {
-
-            const rowNumber =
-                i + 2;
-
-
-            sheet.deleteRow(
-                rowNumber
+        const response =
+            await fetch(
+                url,
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
             );
 
 
-            SpreadsheetApp
-                .flush();
+        const data =
+            await response.json();
 
 
-            return {
+        console.log(
+            "Delete Response:",
+            data
+        );
 
-                success: true,
 
-                message:
-                    "Student deleted successfully.",
+        if (
+            !data ||
+            data.success !== true
+        ) {
 
-                studentId:
-                    studentId
-
-            };
+            throw new Error(
+                data &&
+                data.message
+                    ? data.message
+                    : "Delete failed."
+            );
 
         }
+
+
+        /*
+           Local array से भी remove
+        */
+
+        students.splice(
+            index,
+            1
+        );
+
+
+        renderStudentTable();
+
+
+        updateStats();
+
+
+        if (students.length === 0) {
+
+            showEmpty();
+
+        }
+
+
+        showDashboardMessage(
+            "🗑️ Student deleted successfully"
+        );
 
     }
 
 
-    return {
+    catch (error) {
 
-        success: false,
+        console.error(
+            "DELETE ERROR:",
+            error
+        );
 
-        message:
-            "Student ID not found: " +
-            studentId
 
-    };
+        showDashboardMessage(
+            "❌ Delete failed"
+        );
+
+
+        alert(
+            "Student delete failed.\n\n" +
+            error.message
+        );
+
+    }
 
 }
 
 
 /* =====================================================
-   JSON RESPONSE
+   UPDATE STATS
 ===================================================== */
 
-function jsonResponse(
-    data
+function updateStats() {
+
+    const total =
+        students.length;
+
+
+    const active =
+        students.filter(
+            function (student) {
+
+                return String(
+                    student.status || ""
+                )
+                .trim()
+                .toLowerCase() ===
+                "active";
+
+            }
+        ).length;
+
+
+    const inactive =
+        total - active;
+
+
+    setText(
+        "totalStudents",
+        total
+    );
+
+
+    setText(
+        "activeAccounts",
+        active
+    );
+
+
+    setText(
+        "inactiveAccounts",
+        inactive
+    );
+
+}
+
+
+/* =====================================================
+   SET TEXT
+===================================================== */
+
+function setText(
+    id,
+    value
 ) {
 
-    return ContentService
+    const element =
+        document.getElementById(id);
 
-        .createTextOutput(
-            JSON.stringify(data)
-        )
 
-        .setMimeType(
-            ContentService.MimeType.JSON
+    if (element) {
+
+        element.textContent =
+            value;
+
+    }
+
+}
+
+
+/* =====================================================
+   HTML ESCAPE
+===================================================== */
+
+function escapeHTML(value) {
+
+    return String(
+        value ?? ""
+    )
+
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+
+    .replace(
+        /</g,
+        "&lt;"
+    )
+
+    .replace(
+        />/g,
+        "&gt;"
+    )
+
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+function showLoading() {
+
+    const box =
+        document.getElementById(
+            "loadingBox"
         );
+
+
+    if (box) {
+
+        box.style.display =
+            "flex";
+
+    }
+
+}
+
+
+function hideLoading() {
+
+    const box =
+        document.getElementById(
+            "loadingBox"
+        );
+
+
+    if (box) {
+
+        box.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+function showError(message) {
+
+    const box =
+        document.getElementById(
+            "errorBox"
+        );
+
+
+    if (!box) return;
+
+
+    box.textContent =
+        message;
+
+
+    box.style.display =
+        "block";
+
+}
+
+
+function hideError() {
+
+    const box =
+        document.getElementById(
+            "errorBox"
+        );
+
+
+    if (box) {
+
+        box.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+function showEmpty() {
+
+    const box =
+        document.getElementById(
+            "emptyBox"
+        );
+
+
+    if (box) {
+
+        box.style.display =
+            "block";
+
+    }
+
+}
+
+
+function hideEmpty() {
+
+    const box =
+        document.getElementById(
+            "emptyBox"
+        );
+
+
+    if (box) {
+
+        box.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* =====================================================
+   DASHBOARD MESSAGE
+===================================================== */
+
+function showDashboardMessage(
+    message
+) {
+
+    const old =
+        document.querySelector(
+            ".dashboard-message"
+        );
+
+
+    if (old) {
+
+        old.remove();
+
+    }
+
+
+    const box =
+        document.createElement(
+            "div"
+        );
+
+
+    box.className =
+        "dashboard-message";
+
+
+    box.textContent =
+        message;
+
+
+    document.body.appendChild(
+        box
+    );
+
+
+    setTimeout(
+        function () {
+
+            box.remove();
+
+        },
+        2500
+    );
+
+}
+
+
+/* =====================================================
+   ADMIN LOGOUT
+===================================================== */
+
+function adminLogout() {
+
+    const confirmation =
+        confirm(
+            "Are you sure you want to logout?"
+        );
+
+
+    if (!confirmation) return;
+
+
+    sessionStorage.removeItem(
+        "sstcAdminLoggedIn"
+    );
+
+
+    localStorage.removeItem(
+        "sstcAdminLoggedIn"
+    );
+
+
+    window.location.href =
+        "index.html";
 
 }
