@@ -251,8 +251,7 @@ function generateStudentPassword(
 
   return (
     namePart +
-    studentClass +
-    "@SSTC"
+    studentClass
   );
 }
 
