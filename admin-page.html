@@ -3,37 +3,36 @@
 
 <head>
 
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-  <title>
-    SSTC Admin Dashboard | Shree Scholars Tuition Centre
-  </title>
+    <title>
+        SSTC Admin Dashboard | Shree Scholars Tuition Centre
+    </title>
 
-  <link
-    rel="stylesheet"
-    href="admin-page.css"
-  >
+    <link
+        rel="stylesheet"
+        href="admin-page.css"
+    >
 
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-  crossorigin
-  >
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+    >
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
 </head>
 
@@ -47,50 +46,50 @@
 
 <header class="site-header">
 
-  <a
-    class="brand"
-    href="index.html"
-  >
-
-    <img
-      src="logo.png"
-      alt="Shree Scholars Tuition Centre Logo"
-      onerror="this.style.display='none'"
-    >
-
-    <div class="brand-text">
-
-      <h1>
-        Shree Scholars Tuition Centre
-      </h1>
-
-      <span>
-        From Foundation to Future
-      </span>
-
-    </div>
-
-  </a>
-
-
-  <nav class="header-actions">
-
     <a
-      class="nav-btn home-btn"
-      href="index.html"
+        class="brand"
+        href="index.html"
     >
-      🏠 Home
+
+        <img
+            src="logo.png"
+            alt="SSTC Logo"
+            onerror="this.style.display='none'"
+        >
+
+        <div class="brand-text">
+
+            <h1>
+                Shree Scholars Tuition Centre
+            </h1>
+
+            <span>
+                From Foundation to Future
+            </span>
+
+        </div>
+
     </a>
 
 
-    <a
-      class="nav-btn contact-btn"
-      href="index.html#contact"
-    >
-      📞 Contact
-    </a>
+    <nav class="header-actions">
 
-  </nav>
+        <a
+            class="nav-btn home-btn"
+            href="index.html"
+        >
+            🏠 Home
+        </a>
+
+
+        <a
+            class="nav-btn contact-btn"
+            href="index.html#contact"
+        >
+            📞 Contact
+        </a>
+
+    </nav>
 
 </header>
 
@@ -103,400 +102,335 @@
 <main class="admin-main">
 
 
-  <!-- PAGE HEADING -->
+    <!-- PAGE HEADING -->
 
-  <section class="page-heading">
+    <section class="page-heading">
 
-    <div>
+        <div>
 
-      <span class="eyebrow">
-        SSTC • SECURE ADMIN AREA
-      </span>
+            <span class="eyebrow">
+                SSTC • SECURE ADMIN AREA
+            </span>
 
-      <h2>
-        Admin Dashboard
-      </h2>
+            <h2>
+                Admin Dashboard
+            </h2>
 
-      <p>
-        Manage student accounts, passwords and account activity.
-      </p>
+            <p>
+                Live student records from Google Sheets
+            </p>
 
-    </div>
+        </div>
 
 
-    <div class="admin-badge">
-      🛡️ Administrator
-    </div>
+        <div class="admin-badge">
+            🛡️ Administrator
+        </div>
 
-  </section>
-
-
-
-  <!-- ===================================================
-       STATS
-  ==================================================== -->
-
-  <section class="stats-grid">
-
-
-    <article class="stat-card">
-
-      <div class="stat-icon">
-        👨‍🎓
-      </div>
-
-      <div>
-
-        <span>
-          Total Students
-        </span>
-
-        <strong id="statTotalStudents">
-          0
-        </strong>
-
-      </div>
-
-    </article>
-
-
-
-    <article class="stat-card">
-
-      <div class="stat-icon">
-        🟢
-      </div>
-
-      <div>
-
-        <span>
-          Active Accounts
-        </span>
-
-        <strong id="statActiveAccounts">
-          0
-        </strong>
-
-      </div>
-
-    </article>
-
-
-
-    <article class="stat-card">
-
-      <div class="stat-icon">
-        ⚪
-      </div>
-
-      <div>
-
-        <span>
-          Inactive Accounts
-        </span>
-
-        <strong id="statInactiveAccounts">
-          0
-        </strong>
-
-      </div>
-
-    </article>
-
-
-
-    <article class="stat-card">
-
-      <div class="stat-icon">
-        🔄
-      </div>
-
-      <div>
-
-        <span>
-          Last Updated
-        </span>
-
-        <strong
-          id="statLastUpdated"
-          class="small-stat"
-        >
-          --
-        </strong>
-
-      </div>
-
-    </article>
-
-
-  </section>
-
-
-
-  <!-- ===================================================
-       STUDENT MANAGEMENT
-  ==================================================== -->
-
-  <section class="admin-section">
-
-
-    <div class="section-heading">
-
-
-      <div>
-
-        <span class="section-label">
-          GOOGLE SHEET DATABASE
-        </span>
-
-        <h2>
-          👨‍🎓 Student E-Book Management
-        </h2>
-
-        <p>
-          Live student records from SSTC Student Database
-        </p>
-
-      </div>
-
-
-      <div class="table-controls">
-
-        <button
-          type="button"
-          class="refresh-btn"
-          id="refreshStudentsBtn"
-        >
-          🔄 Refresh
-        </button>
-
-      </div>
-
-
-    </div>
-
-
-
-    <!-- STATUS MESSAGE -->
-
-    <div
-      id="dashboardStatus"
-      class="dashboard-status"
-    >
-      Loading student records...
-    </div>
-
-
-
-    <!-- SEARCH -->
-
-    <div class="search-bar">
-
-      <div class="search-box">
-
-        <span>
-          🔎
-        </span>
-
-        <input
-          type="text"
-          id="studentSearch"
-          placeholder="Search Student ID, Name, Mobile, Email, Class, Board..."
-          autocomplete="off"
-        >
-
-      </div>
-
-
-      <select
-        id="statusFilter"
-        class="status-filter"
-      >
-
-        <option value="all">
-          All Status
-        </option>
-
-        <option value="Active">
-          Active
-        </option>
-
-        <option value="Inactive">
-          Inactive
-        </option>
-
-      </select>
-
-
-    </div>
+    </section>
 
 
 
     <!-- =================================================
-         TABLE
+         STATS
     ================================================== -->
 
-    <div class="table-wrapper">
+    <section class="stats-grid">
 
 
-      <table
-        class="student-table"
-        id="studentTable"
-      >
+        <article class="stat-card">
+
+            <div class="stat-icon">
+                👨‍🎓
+            </div>
+
+            <div>
+
+                <span>
+                    Total Students
+                </span>
+
+                <strong id="totalStudents">
+                    0
+                </strong>
+
+            </div>
+
+        </article>
 
 
-        <thead>
 
-          <tr>
+        <article class="stat-card">
 
-            <th>
-              #
-            </th>
+            <div class="stat-icon">
+                🟢
+            </div>
 
-            <th>
-              Student ID
-            </th>
+            <div>
 
-            <th>
-              Password
-            </th>
+                <span>
+                    Active Accounts
+                </span>
 
-            <th>
-              Full Name
-            </th>
+                <strong id="activeAccounts">
+                    0
+                </strong>
 
-            <th>
-              Mobile Number
-            </th>
+            </div>
 
-            <th>
-              Gender
-            </th>
-
-            <th>
-              Email ID
-            </th>
-
-            <th>
-              Class
-            </th>
-
-            <th>
-              Board
-            </th>
-
-            <th>
-              School Name
-            </th>
-
-            <th>
-              School Place
-            </th>
-
-            <th>
-              Registration Date & Time
-            </th>
-
-            <th>
-              Status
-            </th>
-
-            <th>
-              Action
-            </th>
-
-          </tr>
-
-        </thead>
+        </article>
 
 
-        <tbody id="studentTableBody">
 
-          <!-- Google Sheet data will appear here -->
+        <article class="stat-card">
 
-        </tbody>
+            <div class="stat-icon">
+                🔴
+            </div>
+
+            <div>
+
+                <span>
+                    Inactive Accounts
+                </span>
+
+                <strong id="inactiveAccounts">
+                    0
+                </strong>
+
+            </div>
+
+        </article>
 
 
-      </table>
+
+        <article class="stat-card">
+
+            <div class="stat-icon">
+                📊
+            </div>
+
+            <div>
+
+                <span>
+                    Last Updated
+                </span>
+
+                <strong
+                    id="lastUpdated"
+                    class="small-stat"
+                >
+                    —
+                </strong>
+
+            </div>
+
+        </article>
 
 
-      <!-- EMPTY -->
+    </section>
 
-      <div
-        id="emptyState"
-        class="empty-state"
-      >
 
-        <div>
-          👨‍🎓
+
+    <!-- =================================================
+         STUDENT MANAGEMENT
+    ================================================== -->
+
+    <section class="admin-section">
+
+
+        <div class="section-heading">
+
+
+            <div>
+
+                <h2>
+                    👨‍🎓 Student Management
+                </h2>
+
+                <p>
+                    Live records directly from SSTC Google Sheets
+                </p>
+
+            </div>
+
+
+            <div class="table-actions">
+
+                <button
+                    type="button"
+                    class="refresh-btn"
+                    id="refreshBtn"
+                >
+                    🔄 Refresh
+                </button>
+
+            </div>
+
+
         </div>
 
-        <h3>
-          No Student Records Found
-        </h3>
 
-        <p>
-          Google Sheet में अभी कोई matching student record नहीं मिला।
-        </p>
 
-      </div>
+        <!-- LOADING -->
 
+        <div
+            id="loadingBox"
+            class="loading-box"
+        >
+
+            <div class="loader"></div>
+
+            <span>
+                Loading student data from Google Sheets...
+            </span>
+
+        </div>
+
+
+
+        <!-- ERROR -->
+
+        <div
+            id="errorBox"
+            class="error-box"
+            style="display:none;"
+        >
+
+        </div>
+
+
+
+        <!-- TABLE -->
+
+        <div class="table-wrapper">
+
+            <table
+                class="student-table"
+                id="studentTable"
+            >
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>
+                            Student ID
+                        </th>
+
+                        <th>
+                            Password
+                        </th>
+
+                        <th>
+                            Full Name
+                        </th>
+
+                        <th>
+                            Mobile Number
+                        </th>
+
+                        <th>
+                            Gender
+                        </th>
+
+                        <th>
+                            Email ID
+                        </th>
+
+                        <th>
+                            Class
+                        </th>
+
+                        <th>
+                            Board
+                        </th>
+
+                        <th>
+                            School Name
+                        </th>
+
+                        <th>
+                            School Place
+                        </th>
+
+                        <th>
+                            Registration Date & Time
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody
+                    id="studentTableBody"
+                >
+
+                </tbody>
+
+
+            </table>
+
+        </div>
+
+
+
+        <!-- EMPTY -->
+
+        <div
+            id="emptyBox"
+            class="empty-box"
+            style="display:none;"
+        >
+
+            <div>
+                👨‍🎓
+            </div>
+
+            <h3>
+                No Student Records Found
+            </h3>
+
+            <p>
+                Google Sheet में अभी कोई student record नहीं मिला।
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         LOGOUT
+    ================================================== -->
+
+    <div class="admin-logout-container">
+
+        <button
+            type="button"
+            class="admin-logout-btn"
+            onclick="adminLogout()"
+        >
+
+            🚪 Logout
+
+        </button>
 
     </div>
-
-
-  </section>
-
-
-
-  <!-- ===================================================
-       DATABASE INFO
-  ==================================================== -->
-
-  <section class="database-info">
-
-
-    <div class="database-info-icon">
-      🔐
-    </div>
-
-
-    <div>
-
-      <strong>
-        SSTC Student Database
-      </strong>
-
-      <p>
-        Student records are loaded directly from the Google Sheet.
-        Passwords are hidden by default and can only be viewed from
-        the admin table using the eye button.
-      </p>
-
-    </div>
-
-
-  </section>
-
-
-
-  <!-- ===================================================
-       LOGOUT
-  ==================================================== -->
-
-  <div class="admin-logout-container">
-
-    <button
-      type="button"
-      class="admin-logout-btn"
-      onclick="adminLogout()"
-    >
-
-      🚪 Logout
-
-    </button>
-
-  </div>
 
 
 </main>
@@ -509,95 +443,45 @@
 
 <footer class="site-footer">
 
+    <div>
 
-  <div>
+        <strong>
+            Shree Scholars Tuition Centre
+        </strong>
 
-    <strong>
-      Shree Scholars Tuition Centre
-    </strong>
+        <span>
+            From Foundation to Future
+        </span>
 
-    <span>
-      From Foundation to Future
-    </span>
-
-  </div>
+    </div>
 
 
-  <div class="footer-links">
+    <div class="footer-links">
 
-    <a href="index.html">
-      Home
-    </a>
+        <a href="index.html">
+            Home
+        </a>
 
-    <a href="index.html#contact">
-      Contact
-    </a>
+        <a href="index.html#contact">
+            Contact
+        </a>
 
-    <span>
-      ©
-      <span id="currentYear"></span>
-      SSTC
-    </span>
+        <span>
+            © <span id="currentYear"></span> SSTC
+        </span>
 
-  </div>
-
+    </div>
 
 </footer>
 
 
 
 <!-- =====================================================
-     CONFIRM MODAL
+     JAVASCRIPT
 ===================================================== -->
 
-<div
-  id="confirmModal"
-  class="confirm-overlay"
->
-
-  <div class="confirm-card">
-
-    <div class="confirm-icon">
-      ⚠️
-    </div>
-
-    <h3 id="confirmTitle">
-      Confirm Action
-    </h3>
-
-    <p id="confirmText">
-      Are you sure?
-    </p>
-
-
-    <div class="confirm-buttons">
-
-      <button
-        type="button"
-        id="confirmCancel"
-        class="confirm-cancel"
-      >
-        Cancel
-      </button>
-
-
-      <button
-        type="button"
-        id="confirmProceed"
-        class="confirm-proceed"
-      >
-        Confirm
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
 <script src="admin-page.js"></script>
+
 
 </body>
 
