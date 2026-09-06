@@ -13,6 +13,9 @@
         Student Registration | Shree Scholars Tuition Centre
     </title>
 
+
+    <!-- CSS -->
+
     <link
         rel="stylesheet"
         href="student-registration.css">
@@ -37,6 +40,7 @@
 
     </div>
 
+
     <div class="header-title">
 
         <h1>
@@ -48,6 +52,7 @@
         </p>
 
     </div>
+
 
     <div class="header-buttons">
 
@@ -66,7 +71,7 @@
 
 
 <!-- =====================================================
-     MAIN
+     MAIN REGISTRATION PAGE
      ===================================================== -->
 
 <main class="registration-page">
@@ -75,15 +80,21 @@
     <section class="registration-card">
 
 
+        <!-- =============================================
+             HEADING
+             ============================================= -->
+
         <div class="registration-heading">
 
-            <span class="registration-icon">
+            <div class="registration-icon">
                 🎓
-            </span>
+            </div>
+
 
             <h2>
                 New Student Registration
             </h2>
+
 
             <p>
                 Register with Shree Scholars Tuition Centre
@@ -93,64 +104,159 @@
 
 
 
-        <!-- MESSAGE -->
+        <!-- =============================================
+             MESSAGE BOX
+             ============================================= -->
 
         <div
             id="registrationMessage"
-            class="registration-message">
+            class="registration-message"
+            aria-live="polite">
+
         </div>
 
 
 
-        <!-- =================================================
-             FORM
-             ================================================= -->
+        <!-- =============================================
+             SUCCESS / LOGIN DETAILS BOX
+             ============================================= -->
+
+        <div
+            id="registrationSuccess"
+            class="registration-success"
+            style="display: none;">
+
+            <h3>
+                🎉 Registration Successful!
+            </h3>
+
+            <p>
+                Please save your Student ID and Password.
+            </p>
+
+
+            <div class="success-details">
+
+                <div class="success-detail-row">
+
+                    <span>
+                        Student ID
+                    </span>
+
+                    <strong id="successStudentId">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="success-detail-row">
+
+                    <span>
+                        Password
+                    </span>
+
+                    <div class="password-success-box">
+
+                        <strong
+                            id="successPassword"
+                            data-password="">
+                            ••••••••
+                        </strong>
+
+
+                        <button
+                            type="button"
+                            id="toggleSuccessPassword"
+                            title="Show / Hide Password">
+
+                            👁️
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="sstc-access.html"
+                class="success-login-button">
+
+                🔐 Login as Student
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =============================================
+             REGISTRATION FORM
+             ============================================= -->
 
         <form
             id="studentRegistrationForm"
             autocomplete="off">
 
 
-            <!-- STUDENT ID -->
+
+            <!-- =========================================
+                 STUDENT ID
+                 ========================================= -->
 
             <div class="field-group">
 
-                <label>
+                <label for="studentId">
+
                     Student ID
+
                 </label>
+
 
                 <div class="generated-box">
 
-                    <span>
+                    <span class="input-icon">
                         🆔
                     </span>
+
 
                     <input
                         type="text"
                         id="studentId"
+                        placeholder="Auto-generated"
                         readonly>
 
                 </div>
 
+
                 <small>
-                    Student ID will be generated automatically.
+                    Your unique Student ID will be generated automatically.
                 </small>
 
             </div>
 
 
 
-            <!-- FULL NAME -->
+            <!-- =========================================
+                 FULL NAME
+                 ========================================= -->
 
             <div class="field-group">
 
                 <label for="fullName">
+
                     Full Name
+
                 </label>
+
 
                 <input
                     type="text"
                     id="fullName"
+                    name="fullName"
                     placeholder="Enter student's full name"
                     required>
 
@@ -158,36 +264,49 @@
 
 
 
-            <!-- MOBILE -->
+            <!-- =========================================
+                 MOBILE NUMBER
+                 ========================================= -->
 
             <div class="field-group">
 
                 <label for="mobile">
+
                     Mobile Number
+
                 </label>
+
 
                 <input
                     type="tel"
                     id="mobile"
-                    placeholder="Enter mobile number"
+                    name="mobile"
+                    placeholder="Enter 10-digit mobile number"
                     maxlength="10"
+                    inputmode="numeric"
                     required>
 
             </div>
 
 
 
-            <!-- GENDER -->
+            <!-- =========================================
+                 GENDER
+                 ========================================= -->
 
             <div class="field-group">
 
                 <label>
+
                     Gender
+
                 </label>
+
 
                 <div class="gender-options">
 
-                    <label>
+
+                    <label class="gender-option">
 
                         <input
                             type="radio"
@@ -195,33 +314,42 @@
                             value="Male"
                             required>
 
-                        Male
+                        <span>
+                            Male
+                        </span>
 
                     </label>
 
 
-                    <label>
+
+                    <label class="gender-option">
 
                         <input
                             type="radio"
                             name="gender"
                             value="Female">
 
-                        Female
+                        <span>
+                            Female
+                        </span>
 
                     </label>
 
 
-                    <label>
+
+                    <label class="gender-option">
 
                         <input
                             type="radio"
                             name="gender"
                             value="Other">
 
-                        Other
+                        <span>
+                            Other
+                        </span>
 
                     </label>
+
 
                 </div>
 
@@ -229,17 +357,23 @@
 
 
 
-            <!-- EMAIL -->
+            <!-- =========================================
+                 EMAIL
+                 ========================================= -->
 
             <div class="field-group">
 
                 <label for="email">
+
                     Email ID
+
                 </label>
+
 
                 <input
                     type="email"
                     id="email"
+                    name="email"
                     placeholder="Enter email address"
                     required>
 
@@ -247,71 +381,99 @@
 
 
 
-            <!-- CLASS -->
+            <!-- =========================================
+                 CLASS
+                 ========================================= -->
 
             <div class="field-group">
 
                 <label for="studentClass">
+
                     Class
+
                 </label>
+
 
                 <select
                     id="studentClass"
+                    name="studentClass"
                     required>
+
 
                     <option value="">
                         Select Class
                     </option>
 
+
                     <option value="9">
                         Class 9
                     </option>
+
 
                     <option value="10">
                         Class 10
                     </option>
 
+
                     <option value="11">
                         Class 11
                     </option>
+
 
                     <option value="12">
                         Class 12
                     </option>
 
+
                 </select>
 
             </div>
 
 
 
-            <!-- BOARD -->
+            <!-- =========================================
+                 BOARD
+                 ========================================= -->
 
             <div class="field-group">
 
                 <label for="board">
+
                     Board
+
                 </label>
+
 
                 <select
                     id="board"
+                    name="board"
                     required>
+
 
                     <option value="">
                         Select Board
                     </option>
 
+
                     <option value="CBSE">
                         CBSE
                     </option>
+
 
                     <option value="UP Board">
                         UP Board
                     </option>
 
+
+                    <option value="ICSE">
+                        ICSE
+                    </option>
+
+
                     <option value="Other">
                         Other
                     </option>
+
 
                 </select>
 
@@ -319,17 +481,23 @@
 
 
 
-            <!-- SCHOOL -->
+            <!-- =========================================
+                 SCHOOL NAME
+                 ========================================= -->
 
             <div class="field-group">
 
                 <label for="schoolName">
+
                     School Name
+
                 </label>
+
 
                 <input
                     type="text"
                     id="schoolName"
+                    name="schoolName"
                     placeholder="Enter school name"
                     required>
 
@@ -337,17 +505,23 @@
 
 
 
-            <!-- SCHOOL PLACE -->
+            <!-- =========================================
+                 SCHOOL PLACE
+                 ========================================= -->
 
             <div class="field-group">
 
                 <label for="schoolPlace">
-                    School Place
+
+                    School Place / Location
+
                 </label>
+
 
                 <input
                     type="text"
                     id="schoolPlace"
+                    name="schoolPlace"
                     placeholder="Enter school location"
                     required>
 
@@ -355,29 +529,49 @@
 
 
 
-            <!-- GENERATED PASSWORD -->
+            <!-- =========================================
+                 GENERATED PASSWORD
+                 ========================================= -->
 
             <div class="field-group">
 
-                <label>
+                <label for="generatedPassword">
+
                     Login Password
+
                 </label>
+
 
                 <div class="generated-box">
 
-                    <span>
+                    <span class="input-icon">
                         🔐
                     </span>
 
+
                     <input
-                        type="text"
+                        type="password"
                         id="generatedPassword"
+                        placeholder="Password will be generated"
                         readonly>
+
+
+                    <button
+                        type="button"
+                        id="toggleGeneratedPassword"
+                        class="password-toggle-button"
+                        title="Show / Hide Password">
+
+                        👁️
+
+                    </button>
+
 
                     <button
                         type="button"
                         id="regeneratePassword"
-                        title="Generate new password">
+                        class="regenerate-password-button"
+                        title="Generate New Password">
 
                         🔄
 
@@ -385,8 +579,9 @@
 
                 </div>
 
+
                 <small>
-                    This password is generated automatically.
+                    Password is generated automatically using your details.
                     Save it safely after registration.
                 </small>
 
@@ -394,7 +589,9 @@
 
 
 
-            <!-- CONFIRMATION -->
+            <!-- =========================================
+                 CONFIRMATION
+                 ========================================= -->
 
             <label class="confirmation">
 
@@ -403,15 +600,20 @@
                     id="confirmInformation"
                     required>
 
+
                 <span>
+
                     I confirm that the information provided by me is correct.
+
                 </span>
 
             </label>
 
 
 
-            <!-- SUBMIT -->
+            <!-- =========================================
+                 REGISTER BUTTON
+                 ========================================= -->
 
             <button
                 type="submit"
@@ -426,20 +628,29 @@
         </form>
 
 
-        <!-- LOGIN LINK -->
+
+        <!-- =============================================
+             ALREADY REGISTERED
+             ============================================= -->
 
         <div class="already-registered">
 
-            Already registered?
+            <span>
+                Already registered?
+            </span>
+
 
             <a href="sstc-access.html">
+
                 Login as Student →
+
             </a>
 
         </div>
 
 
     </section>
+
 
 </main>
 
@@ -452,31 +663,27 @@
 <footer class="sstc-footer">
 
     <p>
+
         © 2026 Shree Scholars Tuition Centre.
         All Rights Reserved.
+
     </p>
 
+
     <p>
+
         From Foundation to Future
+
     </p>
+
 
 </footer>
 
 
 
-<!-- SUPABASE JS -->
-
-<script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-</script>
-
-
-<!-- CONFIG -->
-
-<script src="supabase-config.js"></script>
-
-
-<!-- REGISTRATION JS -->
+<!-- =====================================================
+     REGISTRATION JAVASCRIPT
+     ===================================================== -->
 
 <script src="student-registration.js"></script>
 
