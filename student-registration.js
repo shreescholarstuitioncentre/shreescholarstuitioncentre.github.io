@@ -52,30 +52,6 @@ const passwordInput =
     );
 
 
-const fullNameInput =
-    document.getElementById(
-        "fullName"
-    );
-
-
-const classInput =
-    document.getElementById(
-        "studentClass"
-    );
-
-
-const regeneratePasswordButton =
-    document.getElementById(
-        "regeneratePassword"
-    );
-
-
-const toggleGeneratedPassword =
-    document.getElementById(
-        "toggleGeneratedPassword"
-    );
-
-
 const successStudentId =
     document.getElementById(
         "successStudentId"
@@ -88,25 +64,25 @@ const successPassword =
     );
 
 
-const toggleSuccessPassword =
-    document.getElementById(
-        "toggleSuccessPassword"
-    );
-
-
 /* =========================================================
    MESSAGE
    ========================================================= */
 
-function showMessage(text, type) {
+function showMessage(
+    text,
+    type
+) {
 
     if (!messageBox) return;
+
 
     messageBox.textContent =
         text;
 
+
     messageBox.className =
         "registration-message";
+
 
     if (type) {
 
@@ -127,8 +103,10 @@ function clearMessage() {
 
     if (!messageBox) return;
 
+
     messageBox.textContent =
         "";
+
 
     messageBox.className =
         "registration-message";
@@ -144,6 +122,7 @@ function hideRegistrationSuccess() {
 
     if (!registrationSuccess) return;
 
+
     registrationSuccess.style.display =
         "none";
 
@@ -151,7 +130,7 @@ function hideRegistrationSuccess() {
 
 
 /* =========================================================
-   SHOW REGISTRATION SUCCESS
+   SHOW SUCCESS BOX
    ========================================================= */
 
 function showRegistrationSuccess(
@@ -169,36 +148,8 @@ function showRegistrationSuccess(
 
     if (successPassword) {
 
-        /*
-           Save actual password in dataset.
-           Eye button will use this value.
-        */
-
-        successPassword.dataset.password =
-            password || "";
-
-
-        /*
-           Initially hide password.
-        */
-
         successPassword.textContent =
-            "••••••••";
-
-
-        successPassword.dataset.visible =
-            "false";
-
-    }
-
-
-    if (toggleSuccessPassword) {
-
-        toggleSuccessPassword.textContent =
-            "👁️";
-
-        toggleSuccessPassword.title =
-            "Show Password";
+            password || "-";
 
     }
 
@@ -214,136 +165,10 @@ function showRegistrationSuccess(
 
 
 /* =========================================================
-   LOCAL PREVIEW STUDENT ID
+   INITIALIZE REGISTRATION
    ---------------------------------------------------------
-   Final unique Student ID will be generated
-   by Google Apps Script.
-   ========================================================= */
-
-function generatePreviewStudentId() {
-
-    const timestamp =
-        Date.now()
-            .toString()
-            .slice(-6);
-
-
-    const random =
-        Math.floor(
-            1000 +
-            Math.random() * 9000
-        );
-
-
-    return (
-        "SSTC" +
-        timestamp +
-        random
-    );
-
-}
-
-
-/* =========================================================
-   CLEAN NAME
-   ========================================================= */
-
-function cleanName(name) {
-
-    return String(
-        name || ""
-    )
-        .trim()
-        .replace(
-            /[^a-zA-Z]/g,
-            ""
-        );
-
-}
-
-
-/* =========================================================
-   GENERATE PASSWORD PREVIEW
-   ---------------------------------------------------------
-   Example:
-   Adarsh + 11 = Adarsh11
-   Ram Kumar + 10 = Ram10
-   ========================================================= */
-
-function generatePasswordPreview() {
-
-    const fullName =
-        fullNameInput
-            ?.value
-            .trim() || "";
-
-
-    const studentClass =
-        classInput
-            ?.value
-            .trim() || "";
-
-
-    let firstName =
-        fullName
-            .split(" ")[0] || "";
-
-
-    firstName =
-        cleanName(
-            firstName
-        );
-
-
-    if (!firstName) {
-
-        firstName =
-            "Student";
-
-    }
-
-
-    firstName =
-        firstName
-            .charAt(0)
-            .toUpperCase()
-        +
-        firstName
-            .slice(1)
-            .toLowerCase();
-
-
-    if (!studentClass) {
-
-        return firstName;
-
-    }
-
-
-    return (
-        firstName +
-        studentClass
-    );
-
-}
-
-
-/* =========================================================
-   REFRESH PASSWORD PREVIEW
-   ========================================================= */
-
-function refreshPasswordPreview() {
-
-    if (!passwordInput) return;
-
-    passwordInput.value =
-        generatePasswordPreview();
-
-}
-
-
-/* =========================================================
-   INITIAL PREVIEW
+   Student ID and Password are generated
+   only after successful registration.
    ========================================================= */
 
 function initializeRegistration() {
@@ -359,14 +184,10 @@ function initializeRegistration() {
     if (passwordInput) {
 
         passwordInput.value =
-            generatePasswordPreview();
-
-        /*
-           Password starts hidden.
-        */
+            "Auto-generated after registration";
 
         passwordInput.type =
-            "password";
+            "text";
 
     }
 
@@ -377,202 +198,12 @@ function initializeRegistration() {
 
 
 /* =========================================================
-   NAME CHANGE
-   ========================================================= */
-
-fullNameInput
-    ?.addEventListener(
-        "input",
-        function() {
-
-            refreshPasswordPreview();
-
-        }
-    );
-
-
-/* =========================================================
-   CLASS CHANGE
-   ========================================================= */
-
-classInput
-    ?.addEventListener(
-        "change",
-        function() {
-
-            refreshPasswordPreview();
-
-        }
-    );
-
-
-/* =========================================================
-   TOGGLE GENERATED PASSWORD
-   ========================================================= */
-
-toggleGeneratedPassword
-    ?.addEventListener(
-        "click",
-        function() {
-
-            if (!passwordInput) return;
-
-
-            const isHidden =
-                passwordInput.type ===
-                "password";
-
-
-            if (isHidden) {
-
-                passwordInput.type =
-                    "text";
-
-                toggleGeneratedPassword.textContent =
-                    "🙈";
-
-                toggleGeneratedPassword.title =
-                    "Hide Password";
-
-            }
-
-            else {
-
-                passwordInput.type =
-                    "password";
-
-                toggleGeneratedPassword.textContent =
-                    "👁️";
-
-                toggleGeneratedPassword.title =
-                    "Show Password";
-
-            }
-
-        }
-    );
-
-
-/* =========================================================
-   REGENERATE PASSWORD BUTTON
-   ---------------------------------------------------------
-   Password is based on First Name + Class.
-   ========================================================= */
-
-regeneratePasswordButton
-    ?.addEventListener(
-        "click",
-        function() {
-
-            refreshPasswordPreview();
-
-            showMessage(
-                "Password preview updated.",
-                "success"
-            );
-
-        }
-    );
-
-
-/* =========================================================
-   SUCCESS PASSWORD SHOW / HIDE
-   ========================================================= */
-
-toggleSuccessPassword
-    ?.addEventListener(
-        "click",
-        function() {
-
-            if (!successPassword) return;
-
-
-            /*
-               Get actual password saved
-               after successful registration.
-            */
-
-            const actualPassword =
-                successPassword.dataset.password ||
-                "";
-
-
-            if (!actualPassword) {
-
-                console.warn(
-                    "No password available."
-                );
-
-                return;
-
-            }
-
-
-            /*
-               Check visibility state.
-            */
-
-            const isVisible =
-                successPassword.dataset.visible ===
-                "true";
-
-
-            /* =============================================
-               SHOW PASSWORD
-               ============================================= */
-
-            if (!isVisible) {
-
-                successPassword.textContent =
-                    actualPassword;
-
-
-                successPassword.dataset.visible =
-                    "true";
-
-
-                toggleSuccessPassword.textContent =
-                    "🙈";
-
-
-                toggleSuccessPassword.title =
-                    "Hide Password";
-
-            }
-
-
-            /* =============================================
-               HIDE PASSWORD
-               ============================================= */
-
-            else {
-
-                successPassword.textContent =
-                    "••••••••";
-
-
-                successPassword.dataset.visible =
-                    "false";
-
-
-                toggleSuccessPassword.textContent =
-                    "👁️";
-
-
-                toggleSuccessPassword.title =
-                    "Show Password";
-
-            }
-
-        }
-    );
-
-
-/* =========================================================
    MOBILE VALIDATION
    ========================================================= */
 
-function validateMobile(mobile) {
+function validateMobile(
+    mobile
+) {
 
     return /^[6-9]\d{9}$/.test(
         mobile
@@ -585,7 +216,9 @@ function validateMobile(mobile) {
    EMAIL VALIDATION
    ========================================================= */
 
-function validateEmail(email) {
+function validateEmail(
+    email
+) {
 
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
         email
@@ -614,7 +247,7 @@ function getSelectedGender() {
 
 
 /* =========================================================
-   DISABLE / ENABLE REGISTER BUTTON
+   REGISTER BUTTON LOADING
    ========================================================= */
 
 function setRegisterButtonLoading(
@@ -646,6 +279,25 @@ function setRegisterButtonLoading(
 
 
 /* =========================================================
+   RESET BUTTON
+   ========================================================= */
+
+function resetRegisterButton() {
+
+    if (!registerButton) return;
+
+
+    registerButton.disabled =
+        false;
+
+
+    registerButton.textContent =
+        "🎓 Register Student";
+
+}
+
+
+/* =========================================================
    REGISTER STUDENT
    ========================================================= */
 
@@ -661,8 +313,8 @@ registrationForm
 
 
             /*
-               Hide old success box before
-               new registration attempt.
+               Hide old success details
+               when a new registration starts.
             */
 
             hideRegistrationSuccess();
@@ -673,7 +325,10 @@ registrationForm
                ============================================= */
 
             const fullName =
-                fullNameInput
+                document
+                    .getElementById(
+                        "fullName"
+                    )
                     ?.value
                     .trim() || "";
 
@@ -702,7 +357,10 @@ registrationForm
 
 
             const studentClass =
-                classInput
+                document
+                    .getElementById(
+                        "studentClass"
+                    )
                     ?.value
                     .trim() || "";
 
@@ -947,7 +605,7 @@ registrationForm
 
 
                 /* =============================================
-                   DUPLICATE
+                   DUPLICATE STUDENT
                    ============================================= */
 
                 if (
@@ -965,13 +623,16 @@ registrationForm
 
                     );
 
+
+                    resetRegisterButton();
+
                     return;
 
                 }
 
 
                 /* =============================================
-                   SERVER ERROR
+                   SERVER / VALIDATION ERROR
                    ============================================= */
 
                 if (
@@ -990,7 +651,7 @@ registrationForm
 
 
                 /* =============================================
-                   UPDATE FORM CREDENTIALS
+                   UPDATE STUDENT ID FIELD
                    ============================================= */
 
                 if (studentIdInput) {
@@ -1002,6 +663,13 @@ registrationForm
                 }
 
 
+                /* =============================================
+                   UPDATE PASSWORD FIELD
+                   -------------------------------------------------
+                   Password remains readonly.
+                   Only Google Apps Script result is displayed.
+                   ============================================= */
+
                 if (passwordInput) {
 
                     passwordInput.value =
@@ -1009,7 +677,7 @@ registrationForm
                         "";
 
                     passwordInput.type =
-                        "password";
+                        "text";
 
                 }
 
@@ -1033,7 +701,7 @@ registrationForm
 
                 showMessage(
 
-                    "🎉 Registration successful! Your Student ID and Password are shown below. Please save them safely.",
+                    "🎉 Registration successful! Your Student ID and Login Password are shown below. Please save them safely.",
 
                     "success"
 
@@ -1041,10 +709,14 @@ registrationForm
 
 
                 /* =============================================
-                   BUTTON
+                   SUCCESS BUTTON
                    ============================================= */
 
                 if (registerButton) {
+
+                    registerButton.disabled =
+                        true;
+
 
                     registerButton.textContent =
                         "✅ Registration Completed";
@@ -1070,7 +742,9 @@ registrationForm
 
                 /*
                    Form is intentionally not reset.
-                   Student can see registration details.
+
+                   Student ID and Password remain
+                   visible in readonly fields.
                 */
 
             }
@@ -1094,29 +768,8 @@ registrationForm
 
                 );
 
-            }
 
-
-            finally {
-
-                setTimeout(
-                    function() {
-
-                        if (
-                            registerButton
-                                ?.textContent !==
-                            "✅ Registration Completed"
-                        ) {
-
-                            setRegisterButtonLoading(
-                                false
-                            );
-
-                        }
-
-                    },
-                    300
-                );
+                resetRegisterButton();
 
             }
 
