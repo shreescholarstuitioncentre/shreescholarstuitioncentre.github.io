@@ -1,18 +1,33 @@
 /* =========================================================
    SSTC STUDENT REGISTRATION
+   student-registration.css
+   ========================================================= */
+
+
+/* =========================================================
+   RESET
    ========================================================= */
 
 * {
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
+
     margin: 0;
-    font-family: Arial, sans-serif;
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        sans-serif;
+
     background:
         linear-gradient(
             135deg,
@@ -20,8 +35,11 @@ body {
             #f5f0ff,
             #eef8ff
         );
+
     color: #252525;
+
 }
+
 
 
 /* =========================================================
@@ -33,37 +51,50 @@ body {
     min-height: 72px;
 
     display: flex;
+
     align-items: center;
 
     justify-content: space-between;
 
     padding: 10px 24px;
 
-    background: rgba(255,255,255,0.96);
+    background:
+        rgba(255, 255, 255, 0.96);
 
     box-shadow:
-        0 5px 20px rgba(0,0,0,0.10);
+        0 5px 20px
+        rgba(0, 0, 0, 0.10);
 
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
 
 }
 
 
+/* LOGO */
+
 .header-logo {
+
     width: 120px;
+
 }
+
 
 .logo-placeholder {
 
     width: 55px;
+
     height: 55px;
 
     border-radius: 50%;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     background:
@@ -77,13 +108,25 @@ body {
 
     font-weight: 800;
 
+    font-size: 14px;
+
+    box-shadow:
+        0 6px 18px
+        rgba(229, 43, 43, 0.25);
+
 }
 
+
+/* TITLE */
 
 .header-title {
+
     text-align: center;
+
     flex: 1;
+
 }
+
 
 .header-title h1 {
 
@@ -93,7 +136,10 @@ body {
 
     font-size: 27px;
 
+    font-weight: 800;
+
 }
+
 
 .header-title p {
 
@@ -105,6 +151,8 @@ body {
 
 }
 
+
+/* HEADER BUTTONS */
 
 .header-buttons {
 
@@ -127,7 +175,8 @@ body {
 
     border-radius: 10px;
 
-    border: 1px solid #e52b2b;
+    border:
+        1px solid #e52b2b;
 
     color: #e52b2b;
 
@@ -135,9 +184,11 @@ body {
 
     font-weight: 700;
 
-    transition: 0.2s;
+    transition:
+        0.2s ease;
 
 }
+
 
 .header-buttons a:hover {
 
@@ -145,7 +196,11 @@ body {
 
     color: white;
 
+    transform:
+        translateY(-1px);
+
 }
+
 
 
 /* =========================================================
@@ -154,36 +209,53 @@ body {
 
 .registration-page {
 
-    min-height: calc(100vh - 140px);
+    min-height:
+        calc(100vh - 140px);
 
-    padding: 45px 15px;
+    padding:
+        45px 15px;
 
     display: flex;
 
     justify-content: center;
 
+    align-items: flex-start;
+
 }
 
 
+
 /* =========================================================
-   CARD
+   REGISTRATION CARD
    ========================================================= */
 
 .registration-card {
 
-    width: min(720px, 100%);
+    width:
+        min(720px, 100%);
 
-    background: rgba(255,255,255,0.97);
+    background:
+        rgba(255, 255, 255, 0.97);
 
     border-radius: 25px;
 
     padding: 35px;
 
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.8);
+
     box-shadow:
-        0 20px 60px rgba(0,0,0,0.14);
+        0 20px 60px
+        rgba(0, 0, 0, 0.14);
 
 }
 
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
 
 .registration-heading {
 
@@ -196,16 +268,41 @@ body {
 
 .registration-icon {
 
-    font-size: 42px;
+    width: 70px;
+
+    height: 70px;
+
+    margin:
+        0 auto 10px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 36px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff1eb,
+            #f3eaff
+        );
 
 }
 
 
 .registration-heading h2 {
 
-    margin: 7px 0;
+    margin:
+        7px 0;
 
     font-size: 28px;
+
+    color: #242424;
 
 }
 
@@ -216,18 +313,22 @@ body {
 
     color: #777;
 
+    font-size: 14px;
+
 }
 
 
+
 /* =========================================================
-   MESSAGE
+   MESSAGE BOX
    ========================================================= */
 
 .registration-message {
 
     display: none;
 
-    padding: 13px 16px;
+    padding:
+        13px 16px;
 
     border-radius: 12px;
 
@@ -236,6 +337,8 @@ body {
     font-size: 14px;
 
     font-weight: 600;
+
+    line-height: 1.5;
 
 }
 
@@ -248,7 +351,8 @@ body {
 
     color: #087b3e;
 
-    border: 1px solid #9de4b8;
+    border:
+        1px solid #9de4b8;
 
 }
 
@@ -261,9 +365,245 @@ body {
 
     color: #c62828;
 
-    border: 1px solid #ffaaaa;
+    border:
+        1px solid #ffaaaa;
 
 }
+
+
+.registration-message.loading {
+
+    display: block;
+
+    background: #eef5ff;
+
+    color: #2458a6;
+
+    border:
+        1px solid #b9d3ff;
+
+}
+
+
+
+/* =========================================================
+   SUCCESS REGISTRATION BOX
+   ========================================================= */
+
+.registration-success {
+
+    margin-bottom: 25px;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eafff1,
+            #f2fff7
+        );
+
+    border:
+        1px solid #a8e6bf;
+
+    box-shadow:
+        0 10px 30px
+        rgba(8, 123, 62, 0.08);
+
+}
+
+
+.registration-success h3 {
+
+    margin:
+        0 0 8px;
+
+    color: #087b3e;
+
+    font-size: 22px;
+
+}
+
+
+.registration-success > p {
+
+    margin:
+        0 0 20px;
+
+    color: #4f6b5b;
+
+    font-size: 14px;
+
+}
+
+
+
+/* SUCCESS DETAILS */
+
+.success-details {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.success-detail-row {
+
+    min-height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding:
+        10px 14px;
+
+    background: white;
+
+    border:
+        1px solid #d7f0df;
+
+    border-radius: 12px;
+
+}
+
+
+.success-detail-row > span {
+
+    color: #666;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+
+.success-detail-row strong {
+
+    color: #222;
+
+    font-size: 15px;
+
+    word-break: break-word;
+
+}
+
+
+
+/* =========================================================
+   SUCCESS PASSWORD BOX
+   ========================================================= */
+
+.password-success-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+
+.password-success-box button {
+
+    width: 38px;
+
+    height: 36px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #087b3e;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition:
+        0.2s ease;
+
+}
+
+
+.password-success-box button:hover {
+
+    transform:
+        scale(1.05);
+
+}
+
+
+
+/* =========================================================
+   SUCCESS LOGIN BUTTON
+   ========================================================= */
+
+.success-login-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding:
+        10px 22px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #087b3e,
+            #13a85d
+        );
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 8px 20px
+        rgba(8, 123, 62, 0.18);
+
+    transition:
+        0.2s ease;
+
+}
+
+
+.success-login-button:hover {
+
+    transform:
+        translateY(-2px);
+
+}
+
 
 
 /* =========================================================
@@ -287,6 +627,8 @@ body {
 
     font-size: 14px;
 
+    color: #333;
+
 }
 
 
@@ -297,19 +639,34 @@ body {
 
     min-height: 48px;
 
-    padding: 12px 14px;
+    padding:
+        12px 14px;
 
-    border: 1px solid #d8d8df;
+    border:
+        1px solid #d8d8df;
 
     border-radius: 12px;
 
     background: #fff;
 
+    color: #252525;
+
     font-size: 15px;
 
     outline: none;
 
-    transition: 0.2s;
+    transition:
+        border 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.field-group input:hover,
+.field-group select:hover {
+
+    border-color:
+        #b6a1e9;
 
 }
 
@@ -317,10 +674,12 @@ body {
 .field-group input:focus,
 .field-group select:focus {
 
-    border-color: #8b3dff;
+    border-color:
+        #8b3dff;
 
     box-shadow:
-        0 0 0 3px rgba(139,61,255,0.10);
+        0 0 0 3px
+        rgba(139, 61, 255, 0.10);
 
 }
 
@@ -335,7 +694,10 @@ body {
 
     font-size: 12px;
 
+    line-height: 1.5;
+
 }
+
 
 
 /* =========================================================
@@ -344,24 +706,58 @@ body {
 
 .generated-box {
 
+    min-height: 58px;
+
     display: flex;
 
     align-items: center;
 
     gap: 8px;
 
-    border: 1px solid #d8d8df;
+    border:
+        1px solid #d8d8df;
 
     border-radius: 12px;
 
-    padding: 5px 8px;
+    padding:
+        5px 8px;
 
     background: #f7f5ff;
+
+    transition:
+        0.2s ease;
+
+}
+
+
+.generated-box:focus-within {
+
+    border-color:
+        #8b3dff;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(139, 61, 255, 0.10);
+
+}
+
+
+.input-icon {
+
+    font-size: 18px;
+
+    flex-shrink: 0;
 
 }
 
 
 .generated-box input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    min-height: 44px;
 
     border: none;
 
@@ -376,6 +772,8 @@ body {
 
 .generated-box input:focus {
 
+    border: none;
+
     box-shadow: none;
 
 }
@@ -383,43 +781,83 @@ body {
 
 .generated-box button {
 
-    border: none;
-
-    background: #7137d8;
-
-    color: white;
-
-    border-radius: 9px;
+    flex-shrink: 0;
 
     width: 40px;
 
     height: 38px;
 
+    border: none;
+
+    color: white;
+
+    border-radius: 9px;
+
     cursor: pointer;
+
+    font-size: 16px;
+
+    transition:
+        0.2s ease;
 
 }
 
 
+.generated-box button:hover {
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.password-toggle-button {
+
+    background:
+        #5b3dbd;
+
+}
+
+
+.regenerate-password-button {
+
+    background:
+        #7137d8;
+
+}
+
+
+
 /* =========================================================
-   GENDER
+   GENDER OPTIONS
    ========================================================= */
 
 .gender-options {
 
     display: flex;
 
-    gap: 15px;
+    gap: 12px;
 
     flex-wrap: wrap;
 
 }
 
 
-.gender-options label {
+.gender-option {
 
-    border: 1px solid #ddd;
+    display: flex;
 
-    padding: 11px 17px;
+    align-items: center;
+
+    gap: 7px;
+
+    min-width: 110px;
+
+    padding:
+        11px 17px;
+
+    border:
+        1px solid #ddd;
 
     border-radius: 10px;
 
@@ -427,20 +865,44 @@ body {
 
     background: white;
 
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition:
+        0.2s ease;
+
 }
 
 
-.gender-options input {
+.gender-option:hover {
+
+    border-color:
+        #8b3dff;
+
+    background:
+        #faf8ff;
+
+}
+
+
+.gender-option input {
 
     width: auto;
 
     min-height: auto;
 
+    margin: 0;
+
+    accent-color:
+        #7137d8;
+
 }
 
 
+
 /* =========================================================
-   CONFIRM
+   CONFIRMATION
    ========================================================= */
 
 .confirmation {
@@ -453,28 +915,45 @@ body {
 
     padding: 14px;
 
-    background: #f7f7ff;
+    background:
+        #f7f7ff;
 
-    border: 1px solid #e1def4;
+    border:
+        1px solid #e1def4;
 
     border-radius: 12px;
 
-    margin: 22px 0;
+    margin:
+        22px 0;
 
     font-size: 14px;
+
+    line-height: 1.5;
+
+    cursor: pointer;
 
 }
 
 
 .confirmation input {
 
+    width: auto;
+
+    min-width: 16px;
+
+    height: 16px;
+
     margin-top: 2px;
+
+    accent-color:
+        #7137d8;
 
 }
 
 
+
 /* =========================================================
-   BUTTON
+   REGISTER BUTTON
    ========================================================= */
 
 .register-button {
@@ -503,33 +982,51 @@ body {
     cursor: pointer;
 
     box-shadow:
-        0 10px 25px rgba(229,43,43,0.22);
+        0 10px 25px
+        rgba(229, 43, 43, 0.22);
 
-    transition: 0.2s;
+    transition:
+        0.2s ease;
 
 }
 
 
 .register-button:hover {
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 30px
+        rgba(229, 43, 43, 0.28);
+
+}
+
+
+.register-button:active {
+
+    transform:
+        translateY(0);
 
 }
 
 
 .register-button:disabled {
 
-    opacity: 0.6;
+    opacity: 0.65;
 
     cursor: not-allowed;
 
     transform: none;
 
+    box-shadow: none;
+
 }
 
 
+
 /* =========================================================
-   LOGIN
+   ALREADY REGISTERED
    ========================================================= */
 
 .already-registered {
@@ -547,6 +1044,8 @@ body {
 
 .already-registered a {
 
+    margin-left: 4px;
+
     color: #7137d8;
 
     font-weight: 800;
@@ -554,6 +1053,15 @@ body {
     text-decoration: none;
 
 }
+
+
+.already-registered a:hover {
+
+    text-decoration:
+        underline;
+
+}
+
 
 
 /* =========================================================
@@ -582,17 +1090,20 @@ body {
 }
 
 
+
 /* =========================================================
-   MOBILE
+   TABLET
    ========================================================= */
 
 @media (max-width: 700px) {
 
     .sstc-header {
 
-        padding: 10px 12px;
+        padding:
+            10px 12px;
 
     }
+
 
     .header-logo {
 
@@ -600,11 +1111,24 @@ body {
 
     }
 
+
+    .logo-placeholder {
+
+        width: 48px;
+
+        height: 48px;
+
+        font-size: 12px;
+
+    }
+
+
     .header-title h1 {
 
         font-size: 18px;
 
     }
+
 
     .header-title p {
 
@@ -612,33 +1136,191 @@ body {
 
     }
 
+
     .header-buttons {
 
         width: auto;
 
         flex-direction: column;
 
+        gap: 4px;
+
     }
+
 
     .header-buttons a {
 
-        padding: 6px 9px;
+        padding:
+            6px 9px;
 
         font-size: 10px;
 
+        text-align: center;
+
     }
+
+
+    .registration-page {
+
+        padding:
+            25px 12px;
+
+    }
+
 
     .registration-card {
 
-        padding: 22px 16px;
+        padding:
+            24px 16px;
 
         border-radius: 18px;
 
     }
 
+
     .registration-heading h2 {
 
         font-size: 23px;
+
+    }
+
+
+    .registration-icon {
+
+        width: 60px;
+
+        height: 60px;
+
+        font-size: 31px;
+
+    }
+
+
+    .gender-options {
+
+        gap: 8px;
+
+    }
+
+
+    .gender-option {
+
+        min-width: auto;
+
+        flex: 1;
+
+        justify-content: center;
+
+        padding:
+            10px 12px;
+
+    }
+
+
+    .success-detail-row {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 7px;
+
+    }
+
+
+    .password-success-box {
+
+        width: 100%;
+
+        justify-content: space-between;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .header-title h1 {
+
+        font-size: 15px;
+
+    }
+
+
+    .header-title p {
+
+        display: none;
+
+    }
+
+
+    .header-buttons a {
+
+        font-size: 9px;
+
+        padding:
+            5px 7px;
+
+    }
+
+
+    .registration-card {
+
+        padding:
+            20px 13px;
+
+    }
+
+
+    .registration-heading h2 {
+
+        font-size: 21px;
+
+    }
+
+
+    .generated-box {
+
+        gap: 5px;
+
+        padding:
+            5px;
+
+    }
+
+
+    .generated-box button {
+
+        width: 36px;
+
+        height: 36px;
+
+        font-size: 14px;
+
+    }
+
+
+    .generated-box input {
+
+        font-size: 13px;
+
+        padding: 5px;
+
+    }
+
+
+    .gender-option {
+
+        font-size: 12px;
+
+        padding:
+            10px 8px;
 
     }
 
