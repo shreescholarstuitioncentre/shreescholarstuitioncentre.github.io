@@ -855,3 +855,98 @@ document.addEventListener(
 
     }
 );
+/* =========================================================
+   SUCCESS PASSWORD SHOW / HIDE
+   ========================================================= */
+
+const successPassword =
+    document.getElementById(
+        "successPassword"
+    );
+
+const toggleSuccessPassword =
+    document.getElementById(
+        "toggleSuccessPassword"
+    );
+
+
+if (
+    successPassword &&
+    toggleSuccessPassword
+) {
+
+    toggleSuccessPassword.addEventListener(
+        "click",
+        function () {
+
+            const actualPassword =
+                successPassword.dataset.password;
+
+
+            /* =============================================
+               SAFETY CHECK
+            ============================================= */
+
+            if (
+                !actualPassword
+            ) {
+
+                console.warn(
+                    "No password found to display."
+                );
+
+                return;
+
+            }
+
+
+            /* =============================================
+               CHECK CURRENT STATE
+            ============================================= */
+
+            const isHidden =
+                successPassword.textContent ===
+                "********";
+
+
+            /* =============================================
+               SHOW PASSWORD
+            ============================================= */
+
+            if (
+                isHidden
+            ) {
+
+                successPassword.textContent =
+                    actualPassword;
+
+                toggleSuccessPassword.textContent =
+                    "🙈";
+
+                toggleSuccessPassword.title =
+                    "Hide Password";
+
+            }
+
+
+            /* =============================================
+               HIDE PASSWORD
+            ============================================= */
+
+            else {
+
+                successPassword.textContent =
+                    "********";
+
+                toggleSuccessPassword.textContent =
+                    "👁️";
+
+                toggleSuccessPassword.title =
+                    "Show Password";
+
+            }
+
+        }
+    );
+
+}
