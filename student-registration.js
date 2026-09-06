@@ -1,11 +1,19 @@
 /* =========================================================
    SSTC STUDENT REGISTRATION
-   SUPABASE VERSION
+   GOOGLE SHEETS VERSION
    ========================================================= */
 
 
 /* =========================================================
-   DOM
+   GOOGLE APPS SCRIPT API URL
+   ========================================================= */
+
+const SSTC_API_URL =
+    "https://script.google.com/macros/s/AKfycbzSPSlkswNdmRtJkZ0Uq3Et5hAPIBorvbgVoQvZD4e0Ed36TwPzk7bh-xSAWmdFpmqynw/exec";
+
+
+/* =========================================================
+   DOM ELEMENTS
    ========================================================= */
 
 const registrationForm =
@@ -13,24 +21,46 @@ const registrationForm =
         "studentRegistrationForm"
     );
 
+
 const registerButton =
     document.getElementById(
         "registerButton"
     );
+
 
 const messageBox =
     document.getElementById(
         "registrationMessage"
     );
 
+
 const studentIdInput =
     document.getElementById(
         "studentId"
     );
 
+
 const passwordInput =
     document.getElementById(
         "generatedPassword"
+    );
+
+
+const fullNameInput =
+    document.getElementById(
+        "fullName"
+    );
+
+
+const classInput =
+    document.getElementById(
+        "studentClass"
+    );
+
+
+const regeneratePasswordButton =
+    document.getElementById(
+        "regeneratePassword"
     );
 
 
@@ -42,266 +72,326 @@ function showMessage(text, type) {
 
     if (!messageBox) return;
 
-    messageBox.textContent = text;
+
+    messageBox.textContent =
+        text;
+
 
     messageBox.className =
-        "registration-message " + type;
+        "registration-message";
+
+
+    if (type) {
+
+        messageBox.classList.add(
+            type
+        );
+
+    }
+
+}
+
+
+function clearMessage() {
+
+    if (!messageBox) return;
+
+
+    messageBox.textContent =
+        "";
+
+
+    messageBox.className =
+        "registration-message";
 
 }
 
 
 /* =========================================================
-   NAME CLEANING
+   LOCAL PREVIEW STUDENT ID
+   ---------------------------------------------------------
+   Final unique Student ID will be generated
+   by Google Apps Script.
+   ========================================================= */
+
+function generatePreviewStudentId() {
+
+    const timestamp =
+        Date.now()
+            .toString()
+            .slice(-6);
+
+
+    const random =
+        Math.floor(
+            1000 +
+            Math.random() * 9000
+        );
+
+
+    return (
+        "SSTC" +
+        timestamp +
+        random
+    );
+
+}
+
+
+/* =========================================================
+   CLEAN NAME
    ========================================================= */
 
 function cleanName(name) {
 
-    return name
+    return String(
+        name || ""
+    )
         .trim()
-        .replace(/[^a-zA-Z0-9]/g, "")
-        .toUpperCase();
-
-}
-
-
-/* =========================================================
-   STUDENT ID
-   ========================================================= */
-
-function generateStudentId() {
-
-    const randomPart =
-        Math.random()
-            .toString(36)
-            .substring(2, 8)
-            .toUpperCase();
-
-    const timePart =
-        Date.now()
-            .toString(36)
-            .slice(-4)
-            .toUpperCase();
-
-    return `SSTC${timePart}${randomPart}`;
-
-}
-
-
-/* =========================================================
-   PASSWORD
-   ========================================================= */
-
-function generateStudentPassword() {
-
-    const name =
-        document
-            .getElementById("fullName")
-            ?.value
-            .trim() || "Student";
-
-    const studentClass =
-        document
-            .getElementById("studentClass")
-            ?.value || "10";
-
-    const clean =
-        cleanName(name)
-            .substring(0, 6);
-
-    const random =
-        Math.floor(
-            100 +
-            Math.random() * 900
+        .replace(
+            /[^a-zA-Z]/g,
+            ""
         );
 
-    return `${clean}${studentClass}@${random}`;
-
 }
 
 
 /* =========================================================
-   INITIAL VALUES
+   GENERATE PASSWORD PREVIEW
+   ---------------------------------------------------------
+   Example:
+   Adarsh + 11 = Adarsh11
+   Ram Kumar + 10 = Ram10
    ========================================================= */
 
-function refreshGeneratedCredentials() {
+function generatePasswordPreview() {
 
-    const name =
-        document
-            .getElementById("fullName")
+    const fullName =
+        fullNameInput
             ?.value
-            .trim();
+            .trim() || "";
 
-    if (!studentIdInput.value) {
 
-        studentIdInput.value =
-            generateStudentId();
+    const studentClass =
+        classInput
+            ?.value
+            .trim() || "";
+
+
+    let firstName =
+        fullName
+            .split(" ")[0] || "";
+
+
+    firstName =
+        cleanName(
+            firstName
+        );
+
+
+    if (!firstName) {
+
+        firstName =
+            "Student";
 
     }
 
-    passwordInput.value =
-        generateStudentPassword();
+
+    firstName =
+        firstName
+            .charAt(0)
+            .toUpperCase()
+
+        +
+
+        firstName
+            .slice(1)
+            .toLowerCase();
+
+
+    if (!studentClass) {
+
+        return firstName;
+
+    }
+
+
+    return (
+        firstName +
+        studentClass
+    );
 
 }
 
 
 /* =========================================================
-   REGENERATE PASSWORD
+   REFRESH PASSWORD PREVIEW
    ========================================================= */
 
-document
-    .getElementById(
-        "regeneratePassword"
-    )
-    ?.addEventListener(
-        "click",
-        () => {
+function refreshPasswordPreview() {
 
-            passwordInput.value =
-                generateStudentPassword();
+    if (!passwordInput) return;
 
-        }
-    );
+
+    passwordInput.value =
+        generatePasswordPreview();
+
+}
 
 
 /* =========================================================
-   GENERATE PASSWORD WHEN NAME / CLASS CHANGES
+   INITIAL PREVIEW
    ========================================================= */
 
-document
-    .getElementById("fullName")
+function initializeRegistration() {
+
+    if (studentIdInput) {
+
+        studentIdInput.value =
+            "Auto-generated after registration";
+
+    }
+
+
+    if (passwordInput) {
+
+        passwordInput.value =
+            generatePasswordPreview();
+
+    }
+
+}
+
+
+/* =========================================================
+   NAME CHANGE
+   ========================================================= */
+
+fullNameInput
     ?.addEventListener(
         "input",
-        () => {
+        function() {
 
-            passwordInput.value =
-                generateStudentPassword();
-
-        }
-    );
-
-
-document
-    .getElementById("studentClass")
-    ?.addEventListener(
-        "change",
-        () => {
-
-            passwordInput.value =
-                generateStudentPassword();
+            refreshPasswordPreview();
 
         }
     );
 
 
 /* =========================================================
-   VALIDATE MOBILE
+   CLASS CHANGE
+   ========================================================= */
+
+classInput
+    ?.addEventListener(
+        "change",
+        function() {
+
+            refreshPasswordPreview();
+
+        }
+    );
+
+
+/* =========================================================
+   REGENERATE PASSWORD BUTTON
+   ---------------------------------------------------------
+   Password is based on First Name + Class.
+   ========================================================= */
+
+regeneratePasswordButton
+    ?.addEventListener(
+        "click",
+        function() {
+
+            refreshPasswordPreview();
+
+            showMessage(
+                "Password preview updated.",
+                "success"
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   MOBILE VALIDATION
    ========================================================= */
 
 function validateMobile(mobile) {
 
-    return /^[6-9]\d{9}$/.test(mobile);
+    return /^[6-9]\d{9}$/.test(
+        mobile
+    );
 
 }
 
 
 /* =========================================================
-   CHECK DUPLICATE MOBILE
+   EMAIL VALIDATION
    ========================================================= */
 
-async function checkDuplicateMobile(mobile) {
+function validateEmail(email) {
 
-    const {
-        data,
-        error
-    } = await supabaseClient
-
-        .from("students")
-
-        .select(
-            "student_id, mobile"
-        )
-
-        .eq(
-            "mobile",
-            mobile
-        )
-
-        .limit(1);
-
-
-    if (error) {
-
-        console.error(
-            "Mobile duplicate check:",
-            error
-        );
-
-        throw error;
-
-    }
-
-
-    if (data && data.length > 0) {
-
-        return data[0];
-
-    }
-
-    return null;
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+        email
+    );
 
 }
 
 
 /* =========================================================
-   CHECK DUPLICATE EMAIL
+   GET SELECTED GENDER
    ========================================================= */
 
-async function checkDuplicateEmail(email) {
+function getSelectedGender() {
 
-    const {
-        data,
-        error
-    } = await supabaseClient
-
-        .from("students")
-
-        .select(
-            "student_id, email"
-        )
-
-        .eq(
-            "email",
-            email.toLowerCase()
-        )
-
-        .limit(1);
-
-
-    if (error) {
-
-        console.error(
-            "Email duplicate check:",
-            error
+    const selected =
+        document.querySelector(
+            'input[name="gender"]:checked'
         );
 
-        throw error;
 
-    }
-
-
-    if (data && data.length > 0) {
-
-        return data[0];
-
-    }
-
-    return null;
+    return selected
+        ? selected.value
+        : "";
 
 }
 
 
 /* =========================================================
-   REGISTRATION
+   DISABLE FORM BUTTON
+   ========================================================= */
+
+function setRegisterButtonLoading(isLoading) {
+
+    if (!registerButton) return;
+
+
+    registerButton.disabled =
+        isLoading;
+
+
+    if (isLoading) {
+
+        registerButton.textContent =
+            "⏳ Registering...";
+
+    }
+
+    else {
+
+        registerButton.textContent =
+            "🎓 Register Student";
+
+    }
+
+}
+
+
+/* =========================================================
+   REGISTER STUDENT
    ========================================================= */
 
 registrationForm
@@ -312,20 +402,16 @@ registrationForm
             event.preventDefault();
 
 
-            showMessage(
-                "",
-                ""
-            );
+            clearMessage();
 
 
-            /* ================= GET VALUES ================= */
+            /* =============================================
+               GET FORM VALUES
+               ============================================= */
 
             const fullName =
-                document
-                    .getElementById(
-                        "fullName"
-                    )
-                    .value
+                fullNameInput
+                    ?.value
                     .trim();
 
 
@@ -334,16 +420,12 @@ registrationForm
                     .getElementById(
                         "mobile"
                     )
-                    .value
+                    ?.value
                     .trim();
 
 
             const gender =
-                document
-                    .querySelector(
-                        'input[name="gender"]:checked'
-                    )
-                    ?.value;
+                getSelectedGender();
 
 
             const email =
@@ -351,17 +433,15 @@ registrationForm
                     .getElementById(
                         "email"
                     )
-                    .value
+                    ?.value
                     .trim()
                     .toLowerCase();
 
 
             const studentClass =
-                document
-                    .getElementById(
-                        "studentClass"
-                    )
-                    .value;
+                classInput
+                    ?.value
+                    .trim();
 
 
             const board =
@@ -369,7 +449,8 @@ registrationForm
                     .getElementById(
                         "board"
                     )
-                    .value;
+                    ?.value
+                    .trim();
 
 
             const schoolName =
@@ -377,7 +458,7 @@ registrationForm
                     .getElementById(
                         "schoolName"
                     )
-                    .value
+                    ?.value
                     .trim();
 
 
@@ -386,30 +467,21 @@ registrationForm
                     .getElementById(
                         "schoolPlace"
                     )
-                    .value
+                    ?.value
                     .trim();
 
 
-            const confirm =
+            const confirmed =
                 document
                     .getElementById(
                         "confirmInformation"
                     )
-                    .checked;
+                    ?.checked;
 
 
-            const studentId =
-                studentIdInput.value ||
-                generateStudentId();
-
-
-            const password =
-                passwordInput.value ||
-                generateStudentPassword();
-
-
-
-            /* ================= VALIDATION ================= */
+            /* =============================================
+               VALIDATION
+               ============================================= */
 
             if (!fullName) {
 
@@ -447,10 +519,10 @@ registrationForm
             }
 
 
-            if (!email) {
+            if (!validateEmail(email)) {
 
                 showMessage(
-                    "Please enter email ID.",
+                    "Please enter a valid Email ID.",
                     "error"
                 );
 
@@ -507,7 +579,7 @@ registrationForm
             }
 
 
-            if (!confirm) {
+            if (!confirmed) {
 
                 showMessage(
                     "Please confirm that the information is correct.",
@@ -519,243 +591,251 @@ registrationForm
             }
 
 
+            /* =============================================
+               LOADING
+               ============================================= */
 
-            /* ================= BUTTON ================= */
-
-            registerButton.disabled =
-                true;
-
-            registerButton.textContent =
-                "⏳ Registering...";
+            setRegisterButtonLoading(
+                true
+            );
 
 
             try {
 
 
-                /* =================================================
-                   DUPLICATE MOBILE
-                   ================================================= */
+                /* =============================================
+                   DATA FOR GOOGLE APPS SCRIPT
+                   ============================================= */
 
-                const duplicateMobile =
-                    await checkDuplicateMobile(
-                        mobile
+                const studentData = {
+
+                    fullName:
+                        fullName,
+
+                    mobile:
+                        mobile,
+
+                    gender:
+                        gender,
+
+                    email:
+                        email,
+
+                    className:
+                        studentClass,
+
+                    board:
+                        board,
+
+                    schoolName:
+                        schoolName,
+
+                    schoolPlace:
+                        schoolPlace
+
+                };
+
+
+                /* =============================================
+                   SEND TO GOOGLE APPS SCRIPT
+                   ============================================= */
+
+                const response =
+                    await fetch(
+                        SSTC_API_URL,
+                        {
+
+                            method:
+                                "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "text/plain;charset=utf-8"
+
+                            },
+
+                            body:
+                                JSON.stringify(
+                                    studentData
+                                )
+
+                        }
                     );
 
 
-                if (duplicateMobile) {
-
-                    showMessage(
-                        `This mobile number is already registered with Student ID: ${duplicateMobile.student_id}`,
-                        "error"
-                    );
-
-                    return;
-
-                }
-
-
-
-                /* =================================================
-                   DUPLICATE EMAIL
-                   ================================================= */
-
-                const duplicateEmail =
-                    await checkDuplicateEmail(
-                        email
-                    );
-
-
-                if (duplicateEmail) {
-
-                    showMessage(
-                        `This email is already registered with Student ID: ${duplicateEmail.student_id}`,
-                        "error"
-                    );
-
-                    return;
-
-                }
-
-
-
-                /* =================================================
-                   SUPABASE AUTH SIGNUP
-                   ================================================= */
-
-                const {
-                    data,
-                    error
-                } =
-                    await supabaseClient
-                        .auth
-                        .signUp({
-
-                            email: email,
-
-                            password: password,
-
-                            options: {
-
-                                data: {
-
-                                    student_id:
-                                        studentId,
-
-                                    full_name:
-                                        fullName,
-
-                                    mobile:
-                                        mobile,
-
-                                    gender:
-                                        gender,
-
-                                    class:
-                                        studentClass,
-
-                                    board:
-                                        board,
-
-                                    school_name:
-                                        schoolName,
-
-                                    school_place:
-                                        schoolPlace
-
-                                }
-
-                            }
-
-                        });
-
-
-                if (error) {
-
-                    console.error(
-                        "Supabase signup:",
-                        error
-                    );
-
-                    throw error;
-
-                }
-
-
-                if (!data || !data.user) {
+                if (!response.ok) {
 
                     throw new Error(
-                        "Registration could not be completed."
+                        "Unable to connect to SSTC registration server."
                     );
 
                 }
 
 
+                const result =
+                    await response.json();
 
-                /* =================================================
-                   SUCCESS
-                   ================================================= */
 
-                showMessage(
-                    `Registration successful! Your Student ID is ${studentId}. Your password is ${password}. Please save these credentials safely.`,
-                    "success"
+                console.log(
+                    "Registration Result:",
+                    result
                 );
 
 
-                /*
-                   Do not display password permanently
-                   after registration.
-                */
+                /* =============================================
+                   DUPLICATE
+                   ============================================= */
+
+                if (
+                    result.type ===
+                    "duplicate"
+                ) {
+
+                    showMessage(
+
+                        result.message ||
+
+                        `This student is already registered with Student ID: ${result.studentId}`,
+
+                        "error"
+
+                    );
 
 
-                studentIdInput.value =
-                    studentId;
+                    return;
+
+                }
+
+
+                /* =============================================
+                   SERVER ERROR
+                   ============================================= */
+
+                if (
+                    !result.success
+                ) {
+
+                    throw new Error(
+
+                        result.message ||
+
+                        "Registration failed. Please try again."
+
+                    );
+
+                }
+
+
+                /* =============================================
+                   SUCCESS
+                   ============================================= */
+
+                if (studentIdInput) {
+
+                    studentIdInput.value =
+                        result.studentId ||
+                        "";
+
+                }
+
+
+                if (passwordInput) {
+
+                    passwordInput.value =
+                        result.password ||
+                        "";
+
+                }
+
+
+                showMessage(
+
+                    `🎉 Registration successful!
+
+Student ID: ${result.studentId}
+
+Password: ${result.password}
+
+Please save your Student ID and Password safely.`,
+
+                    "success"
+
+                );
 
 
                 registerButton.textContent =
                     "✅ Registration Completed";
 
 
+                /* =============================================
+                   OPTIONAL:
+                   Scroll message into view
+                   ============================================= */
+
+                messageBox
+                    ?.scrollIntoView({
+
+                        behavior:
+                            "smooth",
+
+                        block:
+                            "center"
+
+                    });
+
+
                 /*
-                   Keep user signed in only if
-                   Supabase returned a session.
+                   Do not reset immediately.
+
+                   Student needs to see
+                   Student ID and Password.
                 */
 
-
-                if (!data.session) {
-
-                    showMessage(
-                        `Registration created successfully. Student ID: ${studentId}. Password: ${password}. If email confirmation is enabled in Supabase, please confirm your email before login.`,
-                        "success"
-                    );
-
-                }
-
-
             }
+
 
             catch (error) {
 
                 console.error(
+                    "Registration Error:",
                     error
                 );
 
 
-                let errorMessage =
-                    error?.message ||
-                    "Registration failed.";
-
-
-                if (
-                    errorMessage
-                        .toLowerCase()
-                        .includes(
-                            "already registered"
-                        )
-                ) {
-
-                    errorMessage =
-                        "This email is already registered.";
-
-                }
-
-
-                if (
-                    errorMessage
-                        .toLowerCase()
-                        .includes(
-                            "duplicate"
-                        )
-                ) {
-
-                    errorMessage =
-                        "This information is already registered.";
-
-                }
-
-
                 showMessage(
-                    errorMessage,
+
+                    error.message ||
+
+                    "Registration failed. Please try again.",
+
                     "error"
+
                 );
 
             }
 
+
             finally {
 
-                registerButton.disabled =
-                    false;
+                setTimeout(
+                    function() {
 
-                if (
-                    registerButton.textContent
-                        .includes(
-                            "Registering"
-                        )
-                ) {
+                        if (
+                            registerButton
+                                ?.textContent !==
+                            "✅ Registration Completed"
+                        ) {
 
-                    registerButton.textContent =
-                        "🎓 Register Student";
+                            setRegisterButtonLoading(
+                                false
+                            );
 
-                }
+                        }
+
+                    },
+                    300
+                );
 
             }
 
@@ -769,13 +849,9 @@ registrationForm
 
 document.addEventListener(
     "DOMContentLoaded",
-    () => {
+    function() {
 
-        studentIdInput.value =
-            generateStudentId();
-
-        passwordInput.value =
-            generateStudentPassword();
+        initializeRegistration();
 
     }
 );
