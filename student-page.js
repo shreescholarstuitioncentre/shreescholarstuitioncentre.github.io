@@ -340,20 +340,35 @@ function renderStudentData() {
        Name
     ===================================================== */
 
-    setText(
-        "studentClass",
-        getStudentValue(
-            [
-                "Class",
-               "className",
-               "class",
-               "CLASS",
-               "studentClass"
-            ],
-            "-"
-        )
+    /* =====================================================
+   CLASS
+===================================================== */
+
+const studentClassValue =
+    getStudentValue(
+        [
+            "className",
+            "Class",
+            "class",
+            "studentClass"
+        ],
+        "-"
     );
 
+console.log(
+    "SSTC CLASS VALUE:",
+    studentClassValue
+);
+
+console.log(
+    "SSTC COMPLETE STUDENT DATA:",
+    studentData
+);
+
+setText(
+    "studentClass",
+    studentClassValue
+);
 
     /* =====================================================
        BOARD
