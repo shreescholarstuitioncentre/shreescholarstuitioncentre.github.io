@@ -1,42 +1,55 @@
 /* =========================================================
-   SSTC STUDENT LOGIN
+   SSTC STUDENT ACCESS + LOGIN
+   =========================================================
+   
+   FEATURES
+   ---------------------------------------------------------
+   ✅ Student Login
+   ✅ Google Sheets Verification
+   ✅ Active / Inactive Account Check
+   ✅ Student Session
+   ✅ Remember Student ID
+   ✅ Login Tab Switch
+   ✅ Password Show / Hide
+   ✅ Forgot Password
+   ✅ Header Scroll
    ========================================================= */
 
-/*
+
+/* =========================================================
+   GOOGLE APPS SCRIPT WEB APP URL
+   ---------------------------------------------------------
    IMPORTANT:
-   Yahan Apps Script ka WEB APP URL paste karo.
-
-   Example:
-   https://script.google.com/macros/s/XXXXXXXXXXXX/exec
-
-   "script.google.com/u/0/home/projects/..."
-   wala editor URL yahan MAT lagana.
-*/
+   This MUST be the SAME deployment URL used by Code.gs.
+========================================================= */
 
 const SSTC_WEB_APP_URL =
-  "https://script.google.com/macros/s/AKfycbx1ezqxhDMXZnL_SJ95IAe3e0a-pJVQssgGw4IonCdfXvpGnhLFZN0UHdVOlSwkR1ERGg/exec";
+  "https://script.google.com/macros/s/AKfycbzSPSlkswNdmRtJkZ0Uq3Et5hAPIBorvbgVoQvZD4e0Ed36TwPzk7bh-xSAWmdFpmqynw/exec";
 
 
-/* =========================
+/* =========================================================
    STUDENT LOGIN
-========================= */
+========================================================= */
 
 async function studentLoginSubmit(event) {
 
   event.preventDefault();
 
 
-  const studentId =
-    document
-      .getElementById("studentId")
-      ?.value
-      .trim();
+  /* =====================================================
+     GET INPUTS
+  ===================================================== */
+
+  const studentIdInput =
+    document.getElementById(
+      "studentId"
+    );
 
 
-  const password =
-    document
-      .getElementById("studentPassword")
-      ?.value;
+  const passwordInput =
+    document.getElementById(
+      "studentPassword"
+    );
 
 
   const message =
@@ -51,9 +64,21 @@ async function studentLoginSubmit(event) {
     )?.checked;
 
 
-  /* =========================
-     CLEAR MESSAGE
-  ========================= */
+  const studentId =
+    studentIdInput
+      ? studentIdInput.value.trim()
+      : "";
+
+
+  const password =
+    passwordInput
+      ? passwordInput.value
+      : "";
+
+
+  /* =====================================================
+     CLEAR OLD MESSAGE
+  ===================================================== */
 
   if (message) {
 
@@ -66,9 +91,9 @@ async function studentLoginSubmit(event) {
   }
 
 
-  /* =========================
+  /* =====================================================
      VALIDATION
-  ========================= */
+  ===================================================== */
 
   if (
     !studentId ||
@@ -90,14 +115,15 @@ async function studentLoginSubmit(event) {
   }
 
 
-  /* =========================
+  /* =====================================================
      CHECK API URL
-  ========================= */
+  ===================================================== */
 
   if (
-    SSTC_WEB_APP_URL
-      ===
-    "https://script.google.com/macros/s/AKfycbx1ezqxhDMXZnL_SJ95IAe3e0a-pJVQssgGw4IonCdfXvpGnhLFZN0UHdVOlSwkR1ERGg/exec"
+    !SSTC_WEB_APP_URL ||
+    !SSTC_WEB_APP_URL.includes(
+      "script.google.com/macros/s/"
+    )
   ) {
 
     if (message) {
@@ -106,7 +132,7 @@ async function studentLoginSubmit(event) {
         "#d32f2f";
 
       message.innerText =
-        "Student login API is not configured yet.";
+        "Student login API is not configured.";
 
     }
 
@@ -115,9 +141,9 @@ async function studentLoginSubmit(event) {
   }
 
 
-  /* =========================
-     LOADING
-  ========================= */
+  /* =====================================================
+     LOGIN BUTTON
+  ===================================================== */
 
   const loginButton =
     document.querySelector(
@@ -144,55 +170,66 @@ async function studentLoginSubmit(event) {
 
   try {
 
-    /*
-      GET request
-
-      Apps Script:
-      ?action=studentLogin
-
-      We use URLSearchParams
-      so Student ID / password
-      are correctly encoded.
-    */
+    /* ===================================================
+       BUILD API REQUEST
+    =================================================== */
 
     const params =
-      new URLSearchParams({
+      new URLSearchParams();
 
-        action:
-          "studentLogin",
 
-        studentId:
-          studentId,
+    params.set(
+      "action",
+      "studentlogin"
+    );
 
-        password:
-          password
 
-      });
+    params.set(
+      "studentId",
+      studentId
+    );
 
+
+    params.set(
+      "password",
+      password
+    );
+
+
+    const apiUrl =
+      SSTC_WEB_APP_URL +
+      "?" +
+      params.toString();
+
+
+    console.log(
+      "SSTC Student Login API:",
+      apiUrl
+    );
+
+
+    /* ===================================================
+       FETCH GOOGLE APPS SCRIPT
+    =================================================== */
 
     const response =
       await fetch(
-
-        SSTC_WEB_APP_URL +
-        "?" +
-        params.toString(),
-
+        apiUrl,
         {
-
-          method:
-            "GET",
-
-          redirect:
-            "follow"
-
+          method: "GET",
+          cache: "no-store",
+          redirect: "follow"
         }
-
       );
 
 
-    if (
-      !response.ok
-    ) {
+    console.log(
+      "Student Login HTTP Status:",
+      response.status
+    );
+
+
+    if (!response.ok) {
 
       throw new Error(
         "Server response: " +
@@ -202,15 +239,26 @@ async function studentLoginSubmit(event) {
     }
 
 
+    /* ===================================================
+       READ JSON
+    =================================================== */
+
     const result =
       await response.json();
 
 
-    /* =========================
-       LOGIN SUCCESS
-    ========================= */
+    console.log(
+      "Student Login API Response:",
+      result
+    );
+
+
+    /* ===================================================
+       SUCCESS
+    =================================================== */
 
     if (
+      result &&
       result.success === true
     ) {
 
@@ -225,21 +273,60 @@ async function studentLoginSubmit(event) {
       }
 
 
-      /*
-        Save only student profile/session data.
-        Password is NOT saved.
-      */
+      /* ================================================
+         SAVE STUDENT SESSION
+         
+         Password ko session mein save nahi karenge.
+      ================================================= */
 
       if (
         result.student
       ) {
+
+        const studentData = {
+
+          studentId:
+            result.student.studentId || "",
+
+          fullName:
+            result.student.fullName || "",
+
+          mobile:
+            result.student.mobile || "",
+
+          gender:
+            result.student.gender || "",
+
+          email:
+            result.student.email || "",
+
+          className:
+            result.student.className || "",
+
+          board:
+            result.student.board || "",
+
+          schoolName:
+            result.student.schoolName || "",
+
+          schoolPlace:
+            result.student.schoolPlace || "",
+
+          registrationDate:
+            result.student.registrationDate || "",
+
+          status:
+            result.student.status || "Active"
+
+        };
+
 
         sessionStorage.setItem(
 
           "sstcStudentData",
 
           JSON.stringify(
-            result.student
+            studentData
           )
 
         );
@@ -247,15 +334,19 @@ async function studentLoginSubmit(event) {
       }
 
 
+      /* ================================================
+         LOGIN SESSION
+      ================================================= */
+
       sessionStorage.setItem(
         "sstcStudentLoggedIn",
         "true"
       );
 
 
-      /* =========================
-         REMEMBER STUDENT
-      ========================= */
+      /* ================================================
+         REMEMBER STUDENT ID
+      ================================================= */
 
       if (
         rememberStudent
@@ -269,7 +360,9 @@ async function studentLoginSubmit(event) {
 
         );
 
-      } else {
+      }
+
+      else {
 
         localStorage.removeItem(
           "sstcRememberedStudent"
@@ -278,21 +371,18 @@ async function studentLoginSubmit(event) {
       }
 
 
-      /* =========================
-         OPEN STUDENT PAGE
-      ========================= */
+      /* ================================================
+         OPEN STUDENT DASHBOARD
+      ================================================= */
 
       setTimeout(
-
-        function(){
+        function () {
 
           window.location.href =
             "student-page.html";
 
         },
-
         700
-
       );
 
 
@@ -301,13 +391,13 @@ async function studentLoginSubmit(event) {
     }
 
 
-    /* =========================
+    /* ===================================================
        INACTIVE ACCOUNT
-    ========================= */
+    =================================================== */
 
     if (
-      result.type ===
-      "inactive"
+      result &&
+      result.type === "inactive"
     ) {
 
       if (message) {
@@ -317,7 +407,7 @@ async function studentLoginSubmit(event) {
 
         message.innerText =
           result.message ||
-          "Your account is inactive.";
+          "Your student account is currently inactive.";
 
       }
 
@@ -326,26 +416,31 @@ async function studentLoginSubmit(event) {
     }
 
 
-    /* =========================
-       INVALID LOGIN
-    ========================= */
+    /* ===================================================
+       INVALID CREDENTIALS
+    =================================================== */
 
-    if (message) {
+    if (
+      message
+    ) {
 
       message.style.color =
         "#d32f2f";
 
       message.innerText =
-        result.message ||
-        "Invalid Student ID or Password.";
+        result &&
+        result.message
+          ? result.message
+          : "Invalid Student ID or Password.";
 
     }
 
+  }
 
-  } catch (error) {
+  catch (error) {
 
     console.error(
-      "Student Login Error:",
+      "STUDENT LOGIN ERROR:",
       error
     );
 
@@ -360,11 +455,13 @@ async function studentLoginSubmit(event) {
 
     }
 
-  } finally {
+  }
 
-    /* =========================
-       RESTORE BUTTON
-    ========================= */
+  finally {
+
+    /* =================================================
+       RESTORE LOGIN BUTTON
+    ================================================= */
 
     if (loginButton) {
 
@@ -382,37 +479,37 @@ async function studentLoginSubmit(event) {
 
 
 /* =========================================================
-   REST OF YOUR EXISTING SSTC ACCESS JS
-   ========================================================= */
-
-
-/* =========================
    HEADER SCROLL
-========================= */
+========================================================= */
 
 window.addEventListener(
   "scroll",
-  function(){
+  function () {
 
     const header =
       document.getElementById(
         "mainHeader"
       );
 
-    if (
-      !header
-    ) return;
+
+    if (!header) {
+
+      return;
+
+    }
 
 
     if (
       window.scrollY > 40
-    ){
+    ) {
 
       header.classList.add(
         "scrolled"
       );
 
-    } else {
+    }
+
+    else {
 
       header.classList.remove(
         "scrolled"
@@ -424,28 +521,31 @@ window.addEventListener(
 );
 
 
-/* =========================
+/* =========================================================
    LOGIN TAB SWITCH
-========================= */
+========================================================= */
 
 function switchLogin(
   type
-){
+) {
 
   const studentTab =
     document.getElementById(
       "studentTab"
     );
 
+
   const adminTab =
     document.getElementById(
       "adminTab"
     );
 
+
   const studentLogin =
     document.getElementById(
       "studentLogin"
     );
+
 
   const adminLogin =
     document.getElementById(
@@ -453,30 +553,54 @@ function switchLogin(
     );
 
 
+  if (
+    !studentTab ||
+    !adminTab ||
+    !studentLogin ||
+    !adminLogin
+  ) {
+
+    return;
+
+  }
+
+
+  /* =====================================================
+     REMOVE ACTIVE STATE
+  ===================================================== */
+
   studentTab.classList.remove(
     "active"
   );
+
 
   adminTab.classList.remove(
     "active"
   );
 
+
   studentLogin.classList.remove(
     "active-form"
   );
+
 
   adminLogin.classList.remove(
     "active-form"
   );
 
 
+  /* =====================================================
+     STUDENT TAB
+  ===================================================== */
+
   if (
     type === "student"
-  ){
+  ) {
 
     studentTab.classList.add(
       "active"
     );
+
 
     studentLogin.classList.add(
       "active-form"
@@ -485,13 +609,18 @@ function switchLogin(
   }
 
 
+  /* =====================================================
+     ADMIN TAB
+  ===================================================== */
+
   if (
     type === "admin"
-  ){
+  ) {
 
     adminTab.classList.add(
       "active"
     );
+
 
     adminLogin.classList.add(
       "active-form"
@@ -502,14 +631,14 @@ function switchLogin(
 }
 
 
-/* =========================
+/* =========================================================
    PASSWORD SHOW / HIDE
-========================= */
+========================================================= */
 
 function togglePassword(
   inputId,
   button
-){
+) {
 
   const input =
     document.getElementById(
@@ -517,44 +646,62 @@ function togglePassword(
     );
 
 
-  if (
-    !input
-  ) return;
+  if (!input) {
+
+    return;
+
+  }
 
 
   if (
-    input.type ===
-    "password"
-  ){
+    input.type === "password"
+  ) {
 
     input.type =
       "text";
 
-    button.innerText =
-      "🙈";
 
-  } else {
+    if (button) {
+
+      button.innerText =
+        "🙈";
+
+    }
+
+  }
+
+  else {
 
     input.type =
       "password";
 
-    button.innerText =
-      "👁";
+
+    if (button) {
+
+      button.innerText =
+        "👁";
+
+    }
 
   }
 
 }
 
 
-/* =========================
+/* =========================================================
    FORGOT PASSWORD
-========================= */
+========================================================= */
 
 function showForgotPassword(
   event
-){
+) {
 
-  event.preventDefault();
+  if (event) {
+
+    event.preventDefault();
+
+  }
+
 
   alert(
     "Please contact Shree Scholars Tuition Centre administration to reset your password."
@@ -563,15 +710,20 @@ function showForgotPassword(
 }
 
 
-/* =========================
+/* =========================================================
    QUICK ACCESS
-========================= */
+========================================================= */
 
 function studentQuickAccess(
   event
-){
+) {
 
-  event.preventDefault();
+  if (event) {
+
+    event.preventDefault();
+
+  }
+
 
   alert(
     "Please login as a student to access this feature."
@@ -586,7 +738,7 @@ function studentQuickAccess(
 
 document.addEventListener(
   "DOMContentLoaded",
-  function(){
+  function () {
 
     const savedStudent =
       localStorage.getItem(
@@ -609,7 +761,7 @@ document.addEventListener(
     if (
       savedStudent &&
       studentInput
-    ){
+    ) {
 
       studentInput.value =
         savedStudent;
@@ -617,7 +769,7 @@ document.addEventListener(
 
       if (
         rememberCheckbox
-      ){
+      ) {
 
         rememberCheckbox.checked =
           true;
