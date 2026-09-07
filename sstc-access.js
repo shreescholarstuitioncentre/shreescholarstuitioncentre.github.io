@@ -1,782 +1,2031 @@
 /* =========================================================
-   SSTC STUDENT ACCESS + LOGIN
-   =========================================================
-   
-   FEATURES
-   ---------------------------------------------------------
-   ✅ Student Login
-   ✅ Google Sheets Verification
-   ✅ Active / Inactive Account Check
-   ✅ Student Session
-   ✅ Remember Student ID
-   ✅ Login Tab Switch
-   ✅ Password Show / Hide
-   ✅ Forgot Password
-   ✅ Header Scroll
-   ========================================================= */
+   SSTC STUDENT PORTAL
+========================================================= */
 
 
 /* =========================================================
-   GOOGLE APPS SCRIPT WEB APP URL
+   STUDENT E-BOOK DATABASE
    ---------------------------------------------------------
    IMPORTANT:
-   This MUST be the SAME deployment URL used by Code.gs.
+   YAHAN APNE ACTUAL PDF LINKS LAGAO.
+
+   Example:
+
+   pdf:
+   "https://yourwebsite.com/pdfs/math-chapter-1.pdf"
+
+   Abhi demo structure diya gaya hai.
 ========================================================= */
 
-const SSTC_WEB_APP_URL =
-  "https://script.google.com/macros/s/AKfycbzSPSlkswNdmRtJkZ0Uq3Et5hAPIBorvbgVoQvZD4e0Ed36TwPzk7bh-xSAWmdFpmqynw/exec";
+const SSTC_EBOOKS = [
+
+    {
+        id: "math",
+
+        subject: "Mathematics",
+
+        icon: "📐",
+
+        description:
+            "Class Mathematics e-books and chapters.",
+
+        books: [
+
+            {
+                id: "math-book-1",
+
+                title:
+                    "Class Mathematics Complete Guide",
+
+                type:
+                    "Rent",
+
+                price:
+                    "₹299 / 6 Months",
+
+                purchasePrice:
+                    "₹499",
+
+                chapters: [
+
+                    {
+                        number: 1,
+
+                        title:
+                            "Real Numbers",
+
+                        description:
+                            "Introduction and important concepts.",
+
+                        pdf:
+                            "pdfs/mathematics/chapter-1.pdf"
+                    },
+
+                    {
+                        number: 2,
+
+                        title:
+                            "Polynomials",
+
+                        description:
+                            "Polynomials and their applications.",
+
+                        pdf:
+                            "pdfs/mathematics/chapter-2.pdf"
+                    },
+
+                    {
+                        number: 3,
+
+                        title:
+                            "Pair of Linear Equations",
+
+                        description:
+                            "Linear equations and solutions.",
+
+                        pdf:
+                            "pdfs/mathematics/chapter-3.pdf"
+                    },
+
+                    {
+                        number: 4,
+
+                        title:
+                            "Quadratic Equations",
+
+                        description:
+                            "Quadratic equations and methods.",
+
+                        pdf:
+                            "pdfs/mathematics/chapter-4.pdf"
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    },
+
+
+    /* =====================================================
+       SCIENCE
+    ===================================================== */
+
+    {
+
+        id: "science",
+
+        subject: "Science",
+
+        icon: "🔬",
+
+        description:
+            "Science books and chapter-wise reading.",
+
+        books: [
+
+            {
+
+                id: "science-book-1",
+
+                title:
+                    "Class Science Complete Guide",
+
+                type:
+                    "Buy",
+
+                price:
+                    "₹399",
+
+                purchasePrice:
+                    "₹399",
+
+                chapters: [
+
+                    {
+
+                        number: 1,
+
+                        title:
+                            "Matter Around Us",
+
+                        description:
+                            "Basic concepts of matter.",
+
+                        pdf:
+                            "pdfs/science/chapter-1.pdf"
+
+                    },
+
+                    {
+
+                        number: 2,
+
+                        title:
+                            "Atoms and Molecules",
+
+                        description:
+                            "Atoms, molecules and formulas.",
+
+                        pdf:
+                            "pdfs/science/chapter-2.pdf"
+
+                    },
+
+                    {
+
+                        number: 3,
+
+                        title:
+                            "Motion",
+
+                        description:
+                            "Motion and measurement.",
+
+                        pdf:
+                            "pdfs/science/chapter-3.pdf"
+
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    },
+
+
+    /* =====================================================
+       SOCIAL SCIENCE
+    ===================================================== */
+
+    {
+
+        id: "social-science",
+
+        subject: "Social Science",
+
+        icon: "🌍",
+
+        description:
+            "History, Geography, Civics and Economics.",
+
+        books: [
+
+            {
+
+                id:
+                    "social-science-book-1",
+
+                title:
+                    "Social Science Complete Notes",
+
+                type:
+                    "Rent",
+
+                price:
+                    "₹199 / 3 Months",
+
+                purchasePrice:
+                    "₹349",
+
+                chapters: [
+
+                    {
+
+                        number: 1,
+
+                        title:
+                            "Resources and Development",
+
+                        description:
+                            "Resources and development.",
+
+                        pdf:
+                            "pdfs/social-science/chapter-1.pdf"
+
+                    },
+
+                    {
+
+                        number: 2,
+
+                        title:
+                            "Forest and Wildlife",
+
+                        description:
+                            "Forest resources and wildlife.",
+
+                        pdf:
+                            "pdfs/social-science/chapter-2.pdf"
+
+                    },
+
+                    {
+
+                        number: 3,
+
+                        title:
+                            "Power Sharing",
+
+                        description:
+                            "Democracy and power sharing.",
+
+                        pdf:
+                            "pdfs/social-science/chapter-3.pdf"
+
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    },
+
+
+    /* =====================================================
+       ENGLISH
+    ===================================================== */
+
+    {
+
+        id:
+            "english",
+
+        subject:
+            "English",
+
+        icon:
+            "📘",
+
+        description:
+            "English literature and language.",
+
+        books: [
+
+            {
+
+                id:
+                    "english-book-1",
+
+                title:
+                    "English Complete Guide",
+
+                type:
+                    "Buy",
+
+                price:
+                    "₹299",
+
+                purchasePrice:
+                    "₹299",
+
+                chapters: [
+
+                    {
+
+                        number:
+                            1,
+
+                        title:
+                            "Reading Skills",
+
+                        description:
+                            "Reading comprehension.",
+
+                        pdf:
+                            "pdfs/english/chapter-1.pdf"
+
+                    },
+
+                    {
+
+                        number:
+                            2,
+
+                        title:
+                            "Writing Skills",
+
+                        description:
+                            "Writing and composition.",
+
+                        pdf:
+                            "pdfs/english/chapter-2.pdf"
+
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    }
+
+];
+
 
 
 /* =========================================================
-   STUDENT LOGIN
+   GLOBAL VARIABLES
 ========================================================= */
 
-async function studentLoginSubmit(event) {
+let selectedSubject = null;
 
-  event.preventDefault();
+let selectedBook = null;
 
+let selectedChapterIndex = 0;
 
-  /* =====================================================
-     GET INPUTS
-  ===================================================== */
-
-  const studentIdInput =
-    document.getElementById(
-      "studentId"
-    );
+let currentZoom = 100;
 
 
-  const passwordInput =
-    document.getElementById(
-      "studentPassword"
-    );
 
+/* =========================================================
+   PAGE LOAD
+========================================================= */
 
-  const message =
-    document.getElementById(
-      "studentMessage"
-    );
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
+        protectStudentPage();
 
-  const rememberStudent =
-    document.getElementById(
-      "rememberStudent"
-    )?.checked;
+        loadStudentProfile();
 
+        renderSubjects();
 
-  const studentId =
-    studentIdInput
-      ? studentIdInput.value.trim()
-      : "";
+        updateLibrarySummary();
 
+        setCurrentYear();
 
-  const password =
-    passwordInput
-      ? passwordInput.value
-      : "";
-
-
-  /* =====================================================
-     CLEAR OLD MESSAGE
-  ===================================================== */
-
-  if (message) {
-
-    message.style.color =
-      "#6c2bd9";
-
-    message.innerText =
-      "";
-
-  }
-
-
-  /* =====================================================
-     VALIDATION
-  ===================================================== */
-
-  if (
-    !studentId ||
-    !password
-  ) {
-
-    if (message) {
-
-      message.style.color =
-        "#d32f2f";
-
-      message.innerText =
-        "Please enter Student ID and Password.";
+        setupSecurityControls();
 
     }
+);
 
-    return;
 
-  }
 
+/* =========================================================
+   PROTECT STUDENT PAGE
+========================================================= */
 
-  /* =====================================================
-     CHECK API URL
-  ===================================================== */
+function protectStudentPage() {
 
-  if (
-    !SSTC_WEB_APP_URL ||
-    !SSTC_WEB_APP_URL.includes(
-      "script.google.com/macros/s/"
-    )
-  ) {
-
-    if (message) {
-
-      message.style.color =
-        "#d32f2f";
-
-      message.innerText =
-        "Student login API is not configured.";
-
-    }
-
-    return;
-
-  }
-
-
-  /* =====================================================
-     LOGIN BUTTON
-  ===================================================== */
-
-  const loginButton =
-    document.querySelector(
-      "#studentLogin .login-button"
-    );
-
-
-  const originalButtonText =
-    loginButton
-      ? loginButton.innerHTML
-      : "";
-
-
-  if (loginButton) {
-
-    loginButton.disabled =
-      true;
-
-    loginButton.innerHTML =
-      "⏳ Checking Login...";
-
-  }
-
-
-  try {
-
-    /* ===================================================
-       BUILD API REQUEST
-    =================================================== */
-
-    const params =
-      new URLSearchParams();
-
-
-    params.set(
-      "action",
-      "studentlogin"
-    );
-
-
-    params.set(
-      "studentId",
-      studentId
-    );
-
-
-    params.set(
-      "password",
-      password
-    );
-
-
-    const apiUrl =
-      SSTC_WEB_APP_URL +
-      "?" +
-      params.toString();
-
-
-    console.log(
-      "SSTC Student Login API:",
-      apiUrl
-    );
-
-
-    /* ===================================================
-       FETCH GOOGLE APPS SCRIPT
-    =================================================== */
-
-    const response =
-      await fetch(
-        apiUrl,
-        {
-          method: "GET",
-          cache: "no-store",
-          redirect: "follow"
-        }
-      );
-
-
-    console.log(
-      "Student Login HTTP Status:",
-      response.status
-    );
-
-
-    if (!response.ok) {
-
-      throw new Error(
-        "Server response: " +
-        response.status
-      );
-
-    }
-
-
-    /* ===================================================
-       READ JSON
-    =================================================== */
-
-    const result =
-      await response.json();
-
-
-    console.log(
-      "Student Login API Response:",
-      result
-    );
-
-
-    /* ===================================================
-       SUCCESS
-    =================================================== */
-
-    if (
-      result &&
-      result.success === true
-    ) {
-
-      if (message) {
-
-        message.style.color =
-          "#15803d";
-
-        message.innerText =
-          "Login successful! Opening student dashboard...";
-
-      }
-
-
-      /* ================================================
-         SAVE STUDENT SESSION
-         
-         Password ko session mein save nahi karenge.
-      ================================================= */
-
-      if (
-        result.student
-      ) {
-
-        const studentData = {
-
-          studentId:
-            result.student.studentId || "",
-
-          fullName:
-            result.student.fullName || "",
-
-          mobile:
-            result.student.mobile || "",
-
-          gender:
-            result.student.gender || "",
-
-          email:
-            result.student.email || "",
-
-          className:
-            result.student.className || "",
-
-          board:
-            result.student.board || "",
-
-          schoolName:
-            result.student.schoolName || "",
-
-          schoolPlace:
-            result.student.schoolPlace || "",
-
-          registrationDate:
-            result.student.registrationDate || "",
-
-          status:
-            result.student.status || "Active"
-
-        };
-
-
-        sessionStorage.setItem(
-
-          "sstcStudentData",
-
-          JSON.stringify(
-            studentData
-          )
-
+    const loggedIn =
+        sessionStorage.getItem(
+            "sstcStudentLoggedIn"
         );
 
-      }
-
-
-      /* ================================================
-         LOGIN SESSION
-      ================================================= */
-
-      sessionStorage.setItem(
-        "sstcStudentLoggedIn",
-        "true"
-      );
-
-
-      /* ================================================
-         REMEMBER STUDENT ID
-      ================================================= */
-
-      if (
-        rememberStudent
-      ) {
-
-        localStorage.setItem(
-
-          "sstcRememberedStudent",
-
-          studentId
-
+    const studentData =
+        sessionStorage.getItem(
+            "sstcStudentData"
         );
 
-      }
-
-      else {
-
-        localStorage.removeItem(
-          "sstcRememberedStudent"
-        );
-
-      }
-
-
-      /* ================================================
-         OPEN STUDENT DASHBOARD
-      ================================================= */
-
-      setTimeout(
-        function () {
-
-          window.location.href =
-            "student-page.html";
-
-        },
-        700
-      );
-
-
-      return;
-
-    }
-
-
-    /* ===================================================
-       INACTIVE ACCOUNT
-    =================================================== */
 
     if (
-      result &&
-      result.type === "inactive"
+        loggedIn !== "true" ||
+        !studentData
     ) {
 
-      if (message) {
+        window.location.href =
+            "sstc-access.html";
 
-        message.style.color =
-          "#d32f2f";
-
-        message.innerText =
-          result.message ||
-          "Your student account is currently inactive.";
-
-      }
-
-      return;
+        return;
 
     }
-
-
-    /* ===================================================
-       INVALID CREDENTIALS
-    =================================================== */
-
-    if (
-      message
-    ) {
-
-      message.style.color =
-        "#d32f2f";
-
-      message.innerText =
-        result &&
-        result.message
-          ? result.message
-          : "Invalid Student ID or Password.";
-
-    }
-
-  }
-
-  catch (error) {
-
-    console.error(
-      "STUDENT LOGIN ERROR:",
-      error
-    );
-
-
-    if (message) {
-
-      message.style.color =
-        "#d32f2f";
-
-      message.innerText =
-        "Unable to connect to Student Database. Please try again.";
-
-    }
-
-  }
-
-  finally {
-
-    /* =================================================
-       RESTORE LOGIN BUTTON
-    ================================================= */
-
-    if (loginButton) {
-
-      loginButton.disabled =
-        false;
-
-      loginButton.innerHTML =
-        originalButtonText;
-
-    }
-
-  }
 
 }
 
 
+
 /* =========================================================
-   HEADER SCROLL
+   LOAD STUDENT PROFILE
 ========================================================= */
 
-window.addEventListener(
-  "scroll",
-  function () {
+function loadStudentProfile() {
 
-    const header =
-      document.getElementById(
-        "mainHeader"
-      );
+    const storedData =
+        sessionStorage.getItem(
+            "sstcStudentData"
+        );
 
 
-    if (!header) {
+    if (!storedData) {
 
-      return;
+        return;
+
+    }
+
+
+    let student;
+
+
+    try {
+
+        student =
+            JSON.parse(
+                storedData
+            );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Student data error:",
+            error
+        );
+
+        return;
+
+    }
+
+
+    const fullName =
+        student.fullName ||
+        "Student";
+
+
+    const studentId =
+        student.studentId ||
+        "--";
+
+
+    const mobile =
+        student.mobile ||
+        student.mobileNumber ||
+        "--";
+
+
+    const gender =
+        student.gender ||
+        "--";
+
+
+    const email =
+        student.email ||
+        student.emailId ||
+        "--";
+
+
+    const className =
+        student.className ||
+        "--";
+
+
+    const board =
+        student.board ||
+        "--";
+
+
+    const schoolName =
+        student.schoolName ||
+        "--";
+
+
+    const schoolPlace =
+        student.schoolPlace ||
+        "--";
+
+
+    const registrationDate =
+        student.registrationDate ||
+        "--";
+
+
+    const status =
+        student.status ||
+        "Active";
+
+
+    /* =====================================================
+       NAME
+    ===================================================== */
+
+    setText(
+        "studentName",
+        fullName
+    );
+
+
+    /* =====================================================
+       AVATAR
+    ===================================================== */
+
+    const avatar =
+        document.getElementById(
+            "studentAvatar"
+        );
+
+
+    if (avatar) {
+
+        avatar.innerText =
+            fullName
+                .trim()
+                .charAt(0)
+                .toUpperCase() || "S";
+
+    }
+
+
+    /* =====================================================
+       CLASS
+    ===================================================== */
+
+    setText(
+        "studentClass",
+        "Class " + className
+    );
+
+
+    setText(
+        "studentClassDetail",
+        className
+    );
+
+
+    /* =====================================================
+       STUDENT DETAILS
+    ===================================================== */
+
+    setText(
+        "studentId",
+        studentId
+    );
+
+
+    setText(
+        "studentMobile",
+        mobile
+    );
+
+
+    setText(
+        "studentGender",
+        gender
+    );
+
+
+    setText(
+        "studentEmail",
+        email
+    );
+
+
+    setText(
+        "studentBoard",
+        board
+    );
+
+
+    setText(
+        "studentSchool",
+        schoolName
+    );
+
+
+    setText(
+        "studentSchoolPlace",
+        schoolPlace
+    );
+
+
+    setText(
+        "registrationDate",
+        registrationDate
+    );
+
+
+    /* =====================================================
+       STATUS
+    ===================================================== */
+
+    const statusElement =
+        document.getElementById(
+            "studentStatus"
+        );
+
+
+    if (statusElement) {
+
+        if (
+            String(status)
+                .toLowerCase() ===
+            "active"
+        ) {
+
+            statusElement.innerText =
+                "● Active";
+
+            statusElement.style.color =
+                "#079447";
+
+        }
+
+        else {
+
+            statusElement.innerText =
+                "● Inactive";
+
+            statusElement.style.color =
+                "#dc2626";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       LOGIN TIME
+    ===================================================== */
+
+    let loginTime =
+        sessionStorage.getItem(
+            "sstcStudentLoginTime"
+        );
+
+
+    if (!loginTime) {
+
+        loginTime =
+            formatCurrentDateTime();
+
+        sessionStorage.setItem(
+            "sstcStudentLoginTime",
+            loginTime
+        );
+
+    }
+
+
+    setText(
+        "loginTime",
+        loginTime
+    );
+
+}
+
+
+
+/* =========================================================
+   SET TEXT
+========================================================= */
+
+function setText(
+    id,
+    value
+) {
+
+    const element =
+        document.getElementById(id);
+
+
+    if (element) {
+
+        element.innerText =
+            value || "--";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   FORMAT CURRENT TIME
+========================================================= */
+
+function formatCurrentDateTime() {
+
+    const now =
+        new Date();
+
+
+    return now.toLocaleString(
+        "en-IN",
+        {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   SUBJECT CAROUSEL
+========================================================= */
+
+function renderSubjects() {
+
+    const container =
+        document.getElementById(
+            "subjectCarousel"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        "";
+
+
+    SSTC_EBOOKS.forEach(
+        function(subject, index) {
+
+            const totalChapters =
+                subject.books.reduce(
+                    function(total, book) {
+
+                        return (
+                            total +
+                            book.chapters.length
+                        );
+
+                    },
+                    0
+                );
+
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "subject-card";
+
+
+            card.dataset.subjectId =
+                subject.id;
+
+
+            card.innerHTML = `
+
+                <div class="subject-icon">
+                    ${subject.icon}
+                </div>
+
+                <h3>
+                    ${escapeHtml(subject.subject)}
+                </h3>
+
+                <p>
+                    ${escapeHtml(subject.description)}
+                </p>
+
+                <div class="subject-meta">
+
+                    <span>
+                        ${subject.books.length} Book
+                    </span>
+
+                    <span>
+                        ${totalChapters} Chapters
+                    </span>
+
+                </div>
+
+            `;
+
+
+            card.addEventListener(
+                "click",
+                function() {
+
+                    selectSubject(
+                        subject.id
+                    );
+
+                }
+            );
+
+
+            container.appendChild(
+                card
+            );
+
+
+            if (index === 0) {
+
+                setTimeout(
+                    function() {
+
+                        selectSubject(
+                            subject.id
+                        );
+
+                    },
+                    100
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   SELECT SUBJECT
+========================================================= */
+
+function selectSubject(
+    subjectId
+) {
+
+    selectedSubject =
+        SSTC_EBOOKS.find(
+            function(subject) {
+
+                return (
+                    subject.id ===
+                    subjectId
+                );
+
+            }
+        );
+
+
+    if (!selectedSubject) {
+
+        return;
+
+    }
+
+
+    /* ACTIVE SUBJECT */
+
+    document
+        .querySelectorAll(
+            ".subject-card"
+        )
+        .forEach(
+            function(card) {
+
+                card.classList.toggle(
+                    "active",
+                    card.dataset.subjectId ===
+                    subjectId
+                );
+
+            }
+        );
+
+
+    selectedBook =
+        selectedSubject.books[0];
+
+
+    selectedChapterIndex =
+        0;
+
+
+    setText(
+        "selectedSubjectTitle",
+        selectedSubject.subject
+    );
+
+
+    setText(
+        "selectedSubjectDescription",
+        selectedSubject.description
+    );
+
+
+    renderChapters();
+
+}
+
+
+
+/* =========================================================
+   RENDER CHAPTERS
+========================================================= */
+
+function renderChapters() {
+
+    const container =
+        document.getElementById(
+            "chapterGrid"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        "";
+
+
+    if (
+        !selectedSubject ||
+        !selectedSubject.books.length
+    ) {
+
+        container.innerHTML = `
+
+            <div class="chapter-empty">
+
+                <div>
+                    📚
+                </div>
+
+                <h3>
+                    No E-Book Available
+                </h3>
+
+                <p>
+                    Please contact SSTC administration.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    selectedBook =
+        selectedSubject.books[0];
+
+
+    selectedBook.chapters.forEach(
+        function(chapter, index) {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "chapter-card";
+
+
+            card.innerHTML = `
+
+                <div class="chapter-number">
+                    ${chapter.number}
+                </div>
+
+                <h3>
+                    ${escapeHtml(chapter.title)}
+                </h3>
+
+                <p>
+                    ${escapeHtml(chapter.description)}
+                </p>
+
+                <div class="chapter-actions">
+
+                    <button
+                        type="button"
+                        class="read-btn"
+                        onclick="openChapter(${index})">
+
+                        📖 Read
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="rent-btn"
+                        onclick="rentBook('${selectedBook.id}')">
+
+                        🔄 Rent
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="buy-btn"
+                        onclick="buyBook('${selectedBook.id}')">
+
+                        🛒 Buy
+
+                    </button>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   OPEN CHAPTER
+========================================================= */
+
+function openChapter(
+    chapterIndex
+) {
+
+    if (
+        !selectedBook
+    ) {
+
+        return;
+
+    }
+
+
+    const chapter =
+        selectedBook.chapters[
+            chapterIndex
+        ];
+
+
+    if (!chapter) {
+
+        return;
+
+    }
+
+
+    selectedChapterIndex =
+        chapterIndex;
+
+
+    setText(
+        "currentBookTitle",
+        chapter.title
+    );
+
+
+    setText(
+        "currentBookStatus",
+        selectedSubject.subject +
+        " • " +
+        selectedBook.title
+    );
+
+
+    setText(
+        "currentChapterNumber",
+        chapter.number
+    );
+
+
+    const viewerEmpty =
+        document.getElementById(
+            "viewerEmpty"
+        );
+
+
+    const pdfFrame =
+        document.getElementById(
+            "pdfFrame"
+        );
+
+
+    if (!pdfFrame) {
+
+        return;
 
     }
 
 
     if (
-      window.scrollY > 40
+        !chapter.pdf ||
+        chapter.pdf.includes(
+            "chapter-"
+        )
     ) {
 
-      header.classList.add(
-        "scrolled"
-      );
+        /*
+           Agar demo PDF path laga hua hai
+           to message show hoga.
+        */
+
+    }
+
+
+    currentZoom =
+        100;
+
+
+    updateZoom();
+
+
+    if (viewerEmpty) {
+
+        viewerEmpty.style.display =
+            "none";
+
+    }
+
+
+    pdfFrame.style.display =
+        "block";
+
+
+    /*
+       Cache busting se browser
+       purani PDF ko unnecessarily
+       reuse na kare.
+    */
+
+    const separator =
+        chapter.pdf.includes("?")
+            ? "&"
+            : "?";
+
+
+    pdfFrame.src =
+        chapter.pdf +
+        separator +
+        "sstc=" +
+        Date.now();
+
+
+    const reader =
+        document.getElementById(
+            "readerSection"
+        );
+
+
+    if (reader) {
+
+        reader.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+
+}
+
+
+
+/* =========================================================
+   PDF LOADED
+========================================================= */
+
+function pdfLoaded() {
+
+    const pdfFrame =
+        document.getElementById(
+            "pdfFrame"
+        );
+
+
+    if (
+        !pdfFrame ||
+        !pdfFrame.src
+    ) {
+
+        return;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   NEXT CHAPTER
+========================================================= */
+
+function nextPage() {
+
+    if (
+        !selectedBook
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        selectedChapterIndex <
+        selectedBook.chapters.length - 1
+    ) {
+
+        selectedChapterIndex++;
+
+        openChapter(
+            selectedChapterIndex
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   PREVIOUS CHAPTER
+========================================================= */
+
+function previousPage() {
+
+    if (
+        !selectedBook
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        selectedChapterIndex > 0
+    ) {
+
+        selectedChapterIndex--;
+
+        openChapter(
+            selectedChapterIndex
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   ZOOM IN
+========================================================= */
+
+function zoomIn() {
+
+    if (
+        currentZoom < 200
+    ) {
+
+        currentZoom += 10;
+
+        updateZoom();
+
+    }
+
+}
+
+
+
+/* =========================================================
+   ZOOM OUT
+========================================================= */
+
+function zoomOut() {
+
+    if (
+        currentZoom > 50
+    ) {
+
+        currentZoom -= 10;
+
+        updateZoom();
+
+    }
+
+}
+
+
+
+/* =========================================================
+   UPDATE ZOOM
+========================================================= */
+
+function updateZoom() {
+
+    setText(
+        "zoomLevel",
+        currentZoom + "%"
+    );
+
+
+    const pdfFrame =
+        document.getElementById(
+            "pdfFrame"
+        );
+
+
+    if (!pdfFrame) {
+
+        return;
+
+    }
+
+
+    /*
+       Browser PDF iframe ka internal
+       zoom cross-origin hone par
+       control nahi kiya ja sakta.
+
+       CSS transform se iframe ko
+       scale karna possible hai,
+       lekin usability kharab hoti hai.
+
+       Isliye zoom indicator rakha gaya hai.
+    */
+
+}
+
+
+
+/* =========================================================
+   FIT WIDTH
+========================================================= */
+
+function fitWidth() {
+
+    currentZoom =
+        100;
+
+    updateZoom();
+
+}
+
+
+
+/* =========================================================
+   FIT PAGE
+========================================================= */
+
+function fitPage() {
+
+    currentZoom =
+        90;
+
+    updateZoom();
+
+}
+
+
+
+/* =========================================================
+   FULLSCREEN
+========================================================= */
+
+function toggleFullscreen() {
+
+    const viewer =
+        document.getElementById(
+            "pdfViewer"
+        );
+
+
+    if (!viewer) {
+
+        return;
+
+    }
+
+
+    if (
+        !document.fullscreenElement
+    ) {
+
+        if (
+            viewer.requestFullscreen
+        ) {
+
+            viewer.requestFullscreen();
+
+        }
 
     }
 
     else {
 
-      header.classList.remove(
-        "scrolled"
-      );
+        if (
+            document.exitFullscreen
+        ) {
+
+            document.exitFullscreen();
+
+        }
 
     }
 
-  }
-);
-
-
-/* =========================================================
-   LOGIN TAB SWITCH
-========================================================= */
-
-function switchLogin(
-  type
-) {
-
-  const studentTab =
-    document.getElementById(
-      "studentTab"
-    );
-
-
-  const adminTab =
-    document.getElementById(
-      "adminTab"
-    );
-
-
-  const studentLogin =
-    document.getElementById(
-      "studentLogin"
-    );
-
-
-  const adminLogin =
-    document.getElementById(
-      "adminLogin"
-    );
-
-
-  if (
-    !studentTab ||
-    !adminTab ||
-    !studentLogin ||
-    !adminLogin
-  ) {
-
-    return;
-
-  }
-
-
-  /* =====================================================
-     REMOVE ACTIVE STATE
-  ===================================================== */
-
-  studentTab.classList.remove(
-    "active"
-  );
-
-
-  adminTab.classList.remove(
-    "active"
-  );
-
-
-  studentLogin.classList.remove(
-    "active-form"
-  );
-
-
-  adminLogin.classList.remove(
-    "active-form"
-  );
-
-
-  /* =====================================================
-     STUDENT TAB
-  ===================================================== */
-
-  if (
-    type === "student"
-  ) {
-
-    studentTab.classList.add(
-      "active"
-    );
-
-
-    studentLogin.classList.add(
-      "active-form"
-    );
-
-  }
-
-
-  /* =====================================================
-     ADMIN TAB
-  ===================================================== */
-
-  if (
-    type === "admin"
-  ) {
-
-    adminTab.classList.add(
-      "active"
-    );
-
-
-    adminLogin.classList.add(
-      "active-form"
-    );
-
-  }
-
 }
 
 
+
 /* =========================================================
-   PASSWORD SHOW / HIDE
+   SUBJECT CAROUSEL SCROLL
 ========================================================= */
 
-function togglePassword(
-  inputId,
-  button
+function scrollSubjects(
+    direction
 ) {
 
-  const input =
-    document.getElementById(
-      inputId
-    );
+    const carousel =
+        document.getElementById(
+            "subjectCarousel"
+        );
 
 
-  if (!input) {
+    if (!carousel) {
 
-    return;
-
-  }
-
-
-  if (
-    input.type === "password"
-  ) {
-
-    input.type =
-      "text";
-
-
-    if (button) {
-
-      button.innerText =
-        "🙈";
+        return;
 
     }
 
-  }
 
-  else {
+    carousel.scrollBy({
 
-    input.type =
-      "password";
+        left:
+            direction * 300,
+
+        behavior:
+            "smooth"
+
+    });
+
+}
 
 
-    if (button) {
 
-      button.innerText =
-        "👁";
+/* =========================================================
+   RENT BOOK
+========================================================= */
+
+function rentBook(
+    bookId
+) {
+
+    const book =
+        findBookById(
+            bookId
+        );
+
+
+    if (!book) {
+
+        return;
 
     }
 
-  }
+
+    alert(
+
+        "🔄 Rent E-Book\n\n" +
+
+        book.title +
+
+        "\n\n" +
+
+        "Rental Price: " +
+        book.price +
+
+        "\n\n" +
+
+        "Please contact SSTC administration to complete the rental."
+
+    );
 
 }
 
 
+
 /* =========================================================
-   FORGOT PASSWORD
+   BUY BOOK
 ========================================================= */
 
-function showForgotPassword(
-  event
+function buyBook(
+    bookId
 ) {
 
-  if (event) {
+    const book =
+        findBookById(
+            bookId
+        );
 
-    event.preventDefault();
 
-  }
+    if (!book) {
+
+        return;
+
+    }
 
 
-  alert(
-    "Please contact Shree Scholars Tuition Centre administration to reset your password."
-  );
+    alert(
+
+        "🛒 Buy E-Book\n\n" +
+
+        book.title +
+
+        "\n\n" +
+
+        "Purchase Price: " +
+        book.purchasePrice +
+
+        "\n\n" +
+
+        "Please contact SSTC administration to complete the purchase."
+
+    );
 
 }
 
 
+
 /* =========================================================
-   QUICK ACCESS
+   FIND BOOK
 ========================================================= */
 
-function studentQuickAccess(
-  event
+function findBookById(
+    bookId
 ) {
 
-  if (event) {
-
-    event.preventDefault();
-
-  }
-
-
-  alert(
-    "Please login as a student to access this feature."
-  );
-
-}
-
-
-/* =========================================================
-   REMEMBERED STUDENT ID
-========================================================= */
-
-document.addEventListener(
-  "DOMContentLoaded",
-  function () {
-
-    const savedStudent =
-      localStorage.getItem(
-        "sstcRememberedStudent"
-      );
-
-
-    const studentInput =
-      document.getElementById(
-        "studentId"
-      );
-
-
-    const rememberCheckbox =
-      document.getElementById(
-        "rememberStudent"
-      );
-
-
-    if (
-      savedStudent &&
-      studentInput
+    for (
+        let i = 0;
+        i < SSTC_EBOOKS.length;
+        i++
     ) {
 
-      studentInput.value =
-        savedStudent;
+        const subject =
+            SSTC_EBOOKS[i];
 
 
-      if (
-        rememberCheckbox
-      ) {
+        for (
+            let j = 0;
+            j < subject.books.length;
+            j++
+        ) {
 
-        rememberCheckbox.checked =
-          true;
+            if (
+                subject.books[j].id ===
+                bookId
+            ) {
 
-      }
+                return subject.books[j];
+
+            }
+
+        }
 
     }
 
-  }
-);
+
+    return null;
+
+}
+
+
+
+/* =========================================================
+   LIBRARY SUMMARY
+========================================================= */
+
+function updateLibrarySummary() {
+
+    let totalBooks =
+        0;
+
+    let rentedBooks =
+        0;
+
+    let purchasedBooks =
+        0;
+
+    let totalSubjects =
+        SSTC_EBOOKS.length;
+
+
+    SSTC_EBOOKS.forEach(
+        function(subject) {
+
+            subject.books.forEach(
+                function(book) {
+
+                    totalBooks++;
+
+
+                    if (
+                        String(book.type)
+                            .toLowerCase()
+                            ===
+                        "rent"
+                    ) {
+
+                        rentedBooks++;
+
+                    }
+
+
+                    if (
+                        String(book.type)
+                            .toLowerCase()
+                            ===
+                        "buy"
+                    ) {
+
+                        purchasedBooks++;
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    setText(
+        "ebookCount",
+        totalBooks
+    );
+
+
+    setText(
+        "totalBooks",
+        totalBooks
+    );
+
+
+    setText(
+        "rentedBooks",
+        rentedBooks
+    );
+
+
+    setText(
+        "purchasedBooks",
+        purchasedBooks
+    );
+
+
+    setText(
+        "totalSubjects",
+        totalSubjects
+    );
+
+}
+
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function studentLogout() {
+
+    const confirmLogout =
+        confirm(
+            "Are you sure you want to logout?"
+        );
+
+
+    if (!confirmLogout) {
+
+        return;
+
+    }
+
+
+    sessionStorage.removeItem(
+        "sstcStudentLoggedIn"
+    );
+
+
+    sessionStorage.removeItem(
+        "sstcStudentData"
+    );
+
+
+    sessionStorage.removeItem(
+        "sstcStudentLoginTime"
+    );
+
+
+    window.location.href =
+        "sstc-access.html";
+
+}
+
+
+
+/* =========================================================
+   YEAR
+========================================================= */
+
+function setCurrentYear() {
+
+    const year =
+        document.getElementById(
+            "currentYear"
+        );
+
+
+    if (year) {
+
+        year.innerText =
+            new Date()
+                .getFullYear();
+
+    }
+
+}
+
+
+
+/* =========================================================
+   SECURITY CONTROLS
+   ---------------------------------------------------------
+   NOTE:
+   Browser/OS screenshot or recording ko
+   website 100% block nahi kar sakti.
+========================================================= */
+
+function setupSecurityControls() {
+
+
+    /* BLOCK COMMON SHORTCUTS */
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+
+            /*
+               Ctrl + P
+               Print
+            */
+
+            if (
+                (event.ctrlKey ||
+                 event.metaKey) &&
+                event.key.toLowerCase() === "p"
+            ) {
+
+                event.preventDefault();
+
+                alert(
+                    "Printing is disabled for SSTC protected e-books."
+                );
+
+                return;
+
+            }
+
+
+            /*
+               Ctrl + S
+               Save
+            */
+
+            if (
+                (event.ctrlKey ||
+                 event.metaKey) &&
+                event.key.toLowerCase() === "s"
+            ) {
+
+                event.preventDefault();
+
+                alert(
+                    "Saving/downloading is disabled for SSTC protected e-books."
+                );
+
+                return;
+
+            }
+
+
+            /*
+               Ctrl + U
+               View Source
+            */
+
+            if (
+                (event.ctrlKey ||
+                 event.metaKey) &&
+                event.key.toLowerCase() === "u"
+            ) {
+
+                event.preventDefault();
+
+                return;
+
+            }
+
+
+            /*
+               F12
+            */
+
+            if (
+                event.key === "F12"
+            ) {
+
+                event.preventDefault();
+
+                return;
+
+            }
+
+
+            /*
+               Ctrl + Shift + I
+               DevTools
+            */
+
+            if (
+                (event.ctrlKey ||
+                 event.metaKey) &&
+                event.shiftKey &&
+                event.key.toLowerCase() === "i"
+            ) {
+
+                event.preventDefault();
+
+                return;
+
+            }
+
+
+            /*
+               Ctrl + Shift + J
+            */
+
+            if (
+                (event.ctrlKey ||
+                 event.metaKey) &&
+                event.shiftKey &&
+                event.key.toLowerCase() === "j"
+            ) {
+
+                event.preventDefault();
+
+                return;
+
+            }
+
+
+            /*
+               Ctrl + Shift + C
+            */
+
+            if (
+                (event.ctrlKey ||
+                 event.metaKey) &&
+                event.shiftKey &&
+                event.key.toLowerCase() === "c"
+            ) {
+
+                event.preventDefault();
+
+                return;
+
+            }
+
+        },
+        true
+    );
+
+
+
+    /* BLOCK PRINT EVENT */
+
+    window.addEventListener(
+        "beforeprint",
+        function() {
+
+            document.body.style.display =
+                "none";
+
+        }
+    );
+
+
+    window.addEventListener(
+        "afterprint",
+        function() {
+
+            document.body.style.display =
+                "";
+
+        }
+    );
+
+
+
+    /* BLOCK DRAGGING */
+
+    document.addEventListener(
+        "dragstart",
+        function(event) {
+
+            event.preventDefault();
+
+        },
+        true
+    );
+
+}
+
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHtml(
+    value
+) {
+
+    return String(
+        value || ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
