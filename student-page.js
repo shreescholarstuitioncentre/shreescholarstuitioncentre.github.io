@@ -1,27 +1,128 @@
 /* =========================================================
    SSTC STUDENT PORTAL
    LIVE LOGGED-IN STUDENT DATA
+   SESSION + PROFILE + READER + BASIC SECURITY
 ========================================================= */
 
 
 /* =========================================================
-   STUDENT SESSION
+   GLOBAL STUDENT DATA
 ========================================================= */
 
 let studentData = null;
 
 
 /* =========================================================
+   SESSION KEYS
+========================================================= */
+
+const SSTC_SESSION_LOGIN =
+    "sstcStudentLoggedIn";
+
+const SSTC_SESSION_DATA =
+    "sstcStudentData";
+
+const SSTC_SESSION_LOGIN_TIME =
+    "sstcStudentLoginTime";
+
+const SSTC_CURRENT_BOOK =
+    "sstcCurrentBook";
+
+const SSTC_CURRENT_CHAPTER =
+    "sstcCurrentChapter";
+
+const SSTC_CURRENT_PAGE =
+    "sstcCurrentPage";
+
+
+/* =========================================================
+   LOGOUT / REDIRECT CONTROL
+========================================================= */
+
+let sstcRedirecting =
+    false;
+
+let sstcLoggingOut =
+    false;
+
+
+/* =========================================================
    DOM READY
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    loadLoggedInStudent();
+        loadLoggedInStudent();
 
-    setupStudentSecurity();
+        setupStudentSecurity();
 
-});
+        setupReaderDefaults();
+
+        setCurrentYear();
+
+    }
+);
+
+
+/* =========================================================
+   PAGE SHOW
+   ---------------------------------------------------------
+   Browser Back / bfcache protection
+========================================================= */
+
+window.addEventListener(
+    "pageshow",
+    function (event) {
+
+        /*
+         * Agar page browser cache se wapas aaya hai,
+         * session ko dobara verify karo.
+         */
+
+        if (event.persisted) {
+
+            checkStudentSession();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   CHECK STUDENT SESSION
+========================================================= */
+
+function checkStudentSession() {
+
+    const loggedIn =
+        sessionStorage.getItem(
+            SSTC_SESSION_LOGIN
+        );
+
+    const savedData =
+        sessionStorage.getItem(
+            SSTC_SESSION_DATA
+        );
+
+
+    if (
+        loggedIn !== "true" ||
+        !savedData
+    ) {
+
+        redirectToAccessPage();
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
 
 
 /* =========================================================
@@ -32,35 +133,34 @@ function loadLoggedInStudent() {
 
     const loggedIn =
         sessionStorage.getItem(
-            "sstcStudentLoggedIn"
+            SSTC_SESSION_LOGIN
         );
 
     const savedData =
         sessionStorage.getItem(
-            "sstcStudentData"
+            SSTC_SESSION_DATA
         );
 
 
-    /* -----------------------------------------------------
+    /* =====================================================
        LOGIN CHECK
-    ----------------------------------------------------- */
+    ===================================================== */
 
     if (
         loggedIn !== "true" ||
         !savedData
     ) {
 
-        window.location.href =
-            "sstc-access.html";
+        redirectToAccessPage();
 
         return;
 
     }
 
 
-    /* -----------------------------------------------------
+    /* =====================================================
        READ STUDENT DATA
-    ----------------------------------------------------- */
+    ===================================================== */
 
     try {
 
@@ -74,52 +174,108 @@ function loadLoggedInStudent() {
     catch (error) {
 
         console.error(
-            "Student session data error:",
+            "SSTC student session error:",
             error
         );
 
-        sessionStorage.removeItem(
-            "sstcStudentData"
-        );
+        clearStudentSession();
 
-        sessionStorage.removeItem(
-            "sstcStudentLoggedIn"
-        );
-
-        window.location.href =
-            "sstc-access.html";
+        redirectToAccessPage();
 
         return;
 
     }
 
+
+    /* =====================================================
+       VALIDATION
+    ===================================================== */
 
     if (
         !studentData ||
         !studentData.studentId
     ) {
 
-        sessionStorage.removeItem(
-            "sstcStudentData"
-        );
+        clearStudentSession();
 
-        sessionStorage.removeItem(
-            "sstcStudentLoggedIn"
-        );
-
-        window.location.href =
-            "sstc-access.html";
+        redirectToAccessPage();
 
         return;
 
     }
 
 
-    /* -----------------------------------------------------
-       DISPLAY STUDENT DATA
-    ----------------------------------------------------- */
+    /* =====================================================
+       MAKE SURE LOGIN TIME EXISTS
+       -----------------------------------------------------
+       Agar sstc-access.js ne login ke time save nahi kiya,
+       to yahan first time create ho jayega.
+    ===================================================== */
+
+    let loginTime =
+        sessionStorage.getItem(
+            SSTC_SESSION_LOGIN_TIME
+        );
+
+
+    if (!loginTime) {
+
+        loginTime =
+            createLoginTime();
+
+
+        sessionStorage.setItem(
+            SSTC_SESSION_LOGIN_TIME,
+            loginTime
+        );
+
+    }
+
+
+    /* =====================================================
+       RENDER STUDENT
+    ===================================================== */
 
     renderStudentData();
+
+}
+
+
+/* =========================================================
+   CREATE LOGIN TIME
+========================================================= */
+
+function createLoginTime() {
+
+    const now =
+        new Date();
+
+
+    return now.toLocaleString(
+        "en-IN",
+        {
+            day:
+                "2-digit",
+
+            month:
+                "2-digit",
+
+            year:
+                "numeric",
+
+            hour:
+                "2-digit",
+
+            minute:
+                "2-digit",
+
+            second:
+                "2-digit",
+
+            hour12:
+                true
+        }
+    );
 
 }
 
@@ -135,73 +291,234 @@ function renderStudentData() {
     }
 
 
-    /* -----------------------------------------------------
-       BASIC DETAILS
-    ----------------------------------------------------- */
+    /* =====================================================
+       NAME
+    ===================================================== */
+
+    const fullName =
+        getStudentValue(
+            [
+                "fullName",
+                "name"
+            ],
+            "Student"
+        );
+
 
     setText(
         "studentName",
-        studentData.fullName
+        fullName
     );
+
 
     setText(
         "studentFullName",
-        studentData.fullName
+        fullName
     );
+
+
+    /* =====================================================
+       STUDENT ID
+    ===================================================== */
 
     setText(
         "studentId",
-        studentData.studentId
+        getStudentValue(
+            [
+                "studentId",
+                "id"
+            ],
+            "-"
+        )
     );
+
+
+    /* =====================================================
+       CLASS
+       -----------------------------------------------------
+       Backend field:
+       className
+    ===================================================== */
 
     setText(
         "studentClass",
-        studentData.className
+        getStudentValue(
+            [
+                "className",
+                "class"
+            ],
+            "-"
+        )
     );
+
+
+    /* =====================================================
+       BOARD
+    ===================================================== */
 
     setText(
         "studentBoard",
-        studentData.board
+        getStudentValue(
+            [
+                "board"
+            ],
+            "-"
+        )
     );
+
+
+    /* =====================================================
+       GENDER
+    ===================================================== */
 
     setText(
         "studentGender",
-        studentData.gender
+        getStudentValue(
+            [
+                "gender"
+            ],
+            "-"
+        )
     );
+
+
+    /* =====================================================
+       MOBILE
+       -----------------------------------------------------
+       Backend field:
+       mobileNumber
+    ===================================================== */
 
     setText(
         "studentMobile",
-        studentData.mobile
+        getStudentValue(
+            [
+                "mobileNumber",
+                "mobile",
+                "phone"
+            ],
+            "-"
+        )
     );
+
+
+    /* =====================================================
+       EMAIL
+       -----------------------------------------------------
+       Backend field:
+       emailId
+    ===================================================== */
 
     setText(
         "studentEmail",
-        studentData.email
+        getStudentValue(
+            [
+                "emailId",
+                "email"
+            ],
+            "-"
+        )
     );
+
+
+    /* =====================================================
+       SCHOOL NAME
+    ===================================================== */
 
     setText(
         "studentSchool",
-        studentData.schoolName
+        getStudentValue(
+            [
+                "schoolName",
+                "school"
+            ],
+            "-"
+        )
     );
+
+
+    /* =====================================================
+       SCHOOL PLACE
+    ===================================================== */
 
     setText(
         "studentSchoolPlace",
-        studentData.schoolPlace
+        getStudentValue(
+            [
+                "schoolPlace"
+            ],
+            "-"
+        )
     );
+
+
+    /* =====================================================
+       REGISTRATION DATE
+    ===================================================== */
+
+    const registrationDate =
+        getStudentValue(
+            [
+                "registrationDate",
+                "registrationDateTime"
+            ],
+            "-"
+        );
+
 
     setText(
         "studentRegistrationDate",
-        studentData.registrationDate
+        registrationDate
     );
 
 
-    /* -----------------------------------------------------
-       STATUS
-    ----------------------------------------------------- */
+    setText(
+        "registrationDate",
+        registrationDate
+    );
+
+
+    /* =====================================================
+       LOGIN TIME
+    ===================================================== */
+
+    const loginTime =
+        sessionStorage.getItem(
+            SSTC_SESSION_LOGIN_TIME
+        ) ||
+        createLoginTime();
+
+
+    /*
+     * Agar somehow missing ho to save bhi kar do.
+     */
+
+    sessionStorage.setItem(
+        SSTC_SESSION_LOGIN_TIME,
+        loginTime
+    );
+
+
+    setText(
+        "studentLoginTime",
+        loginTime
+    );
+
+
+    setText(
+        "loginTime",
+        loginTime
+    );
+
+
+    /* =====================================================
+       ACCOUNT STATUS
+    ===================================================== */
 
     const status =
         String(
-            studentData.status || "Active"
+            studentData.status ||
+            "Active"
         )
         .trim();
 
@@ -211,6 +528,10 @@ function renderStudentData() {
         status
     );
 
+
+    /*
+     * Agar HTML me studentStatus hai.
+     */
 
     const statusElement =
         document.getElementById(
@@ -248,67 +569,169 @@ function renderStudentData() {
     }
 
 
-    /* -----------------------------------------------------
-       INITIAL
-    ----------------------------------------------------- */
+    /*
+     * Agar HTML me account status fixed
+     * strong element hai to usko bhi update karne ki
+     * koshish.
+     */
 
-    const name =
-        String(
-            studentData.fullName || "Student"
-        ).trim();
+    const accountStatus =
+        document.querySelector(
+            ".profile-info .status-active"
+        );
 
+
+    if (
+        accountStatus &&
+        !document.getElementById("studentStatus")
+    ) {
+
+        accountStatus.textContent =
+            "● " + status;
+
+
+        accountStatus.classList.remove(
+            "status-active",
+            "status-inactive"
+        );
+
+
+        if (
+            status.toLowerCase() ===
+            "active"
+        ) {
+
+            accountStatus.classList.add(
+                "status-active"
+            );
+
+        }
+
+        else {
+
+            accountStatus.classList.add(
+                "status-inactive"
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       AVATAR
+    ===================================================== */
 
     const firstLetter =
-        name.charAt(0).toUpperCase();
+        fullName
+            .trim()
+            .charAt(0)
+            .toUpperCase();
+
+
+    setText(
+        "studentAvatar",
+        firstLetter || "S"
+    );
 
 
     setText(
         "studentInitial",
-        firstLetter
+        firstLetter || "S"
     );
 
 
-    /* -----------------------------------------------------
+    /* =====================================================
        PAGE TITLE
-    ----------------------------------------------------- */
+    ===================================================== */
 
     document.title =
         "SSTC | " +
-        name +
+        fullName +
         " - Student Portal";
 
 
-    /* -----------------------------------------------------
-       LOGIN TIME
-    ----------------------------------------------------- */
+    /* =====================================================
+       DISPATCH EVENT
+       -----------------------------------------------------
+       Future e-book system isko use kar sakta hai.
+    ===================================================== */
 
-    const loginTime =
-        sessionStorage.getItem(
-            "sstcStudentLoginTime"
-        );
+    try {
 
-
-    if (!loginTime) {
-
-        const now =
-            new Date();
-
-        sessionStorage.setItem(
-            "sstcStudentLoginTime",
-            now.toLocaleString(
-                "en-IN"
+        document.dispatchEvent(
+            new CustomEvent(
+                "sstcStudentLoaded",
+                {
+                    detail:
+                        studentData
+                }
             )
         );
 
     }
 
+    catch (error) {
 
-    setText(
-        "studentLoginTime",
-        sessionStorage.getItem(
-            "sstcStudentLoginTime"
-        )
-    );
+        console.warn(
+            "SSTC student event warning:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   GET STUDENT VALUE
+========================================================= */
+
+function getStudentValue(
+    keys,
+    fallback
+) {
+
+    if (
+        !studentData ||
+        !Array.isArray(keys)
+    ) {
+
+        return fallback;
+
+    }
+
+
+    for (
+        let i = 0;
+        i < keys.length;
+        i++
+    ) {
+
+        const key =
+            keys[i];
+
+
+        if (
+            studentData[key] !==
+                undefined &&
+            studentData[key] !==
+                null &&
+            String(
+                studentData[key]
+            ).trim() !== ""
+        ) {
+
+            return String(
+                studentData[key]
+            ).trim();
+
+        }
+
+    }
+
+
+    return fallback;
 
 }
 
@@ -328,10 +751,26 @@ function setText(
         );
 
 
-    if (element) {
+    if (!element) {
+        return;
+    }
+
+
+    if (
+        value === undefined ||
+        value === null ||
+        String(value).trim() === ""
+    ) {
 
         element.textContent =
-            value || "";
+            "-";
+
+    }
+
+    else {
+
+        element.textContent =
+            String(value);
 
     }
 
@@ -339,47 +778,605 @@ function setText(
 
 
 /* =========================================================
-   SSTC STUDENT LOGOUT
+   CLEAR STUDENT SESSION
+========================================================= */
+
+function clearStudentSession() {
+
+    try {
+
+        sessionStorage.removeItem(
+            SSTC_SESSION_LOGIN
+        );
+
+        sessionStorage.removeItem(
+            SSTC_SESSION_DATA
+        );
+
+        sessionStorage.removeItem(
+            SSTC_SESSION_LOGIN_TIME
+        );
+
+        sessionStorage.removeItem(
+            SSTC_CURRENT_BOOK
+        );
+
+        sessionStorage.removeItem(
+            SSTC_CURRENT_CHAPTER
+        );
+
+        sessionStorage.removeItem(
+            SSTC_CURRENT_PAGE
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "SSTC session clear error:",
+            error
+        );
+
+    }
+
+
+    studentData =
+        null;
+
+}
+
+
+/* =========================================================
+   REDIRECT TO ACCESS PAGE
+========================================================= */
+
+function redirectToAccessPage() {
+
+    /*
+     * Multiple redirect ko prevent karo.
+     */
+
+    if (sstcRedirecting) {
+        return;
+    }
+
+
+    /*
+     * Agar already access page par hai,
+     * kuch mat karo.
+     */
+
+    const currentPage =
+        window.location.pathname
+            .split("/")
+            .pop()
+            .toLowerCase();
+
+
+    if (
+        currentPage ===
+        "sstc-access.html"
+    ) {
+
+        return;
+
+    }
+
+
+    sstcRedirecting =
+        true;
+
+
+    /*
+     * replace() use hoga.
+     * Isse logout ke baad protected page ki
+     * unnecessary history entry nahi banegi.
+     */
+
+    window.location.replace(
+        "sstc-access.html"
+    );
+
+}
+
+
+/* =========================================================
+   STUDENT LOGOUT
 ========================================================= */
 
 function studentLogout(event) {
 
     if (event) {
+
         event.preventDefault();
+
     }
 
-    /*
-     * Student session completely clear
-     */
-    sessionStorage.removeItem("sstcStudentLoggedIn");
-    sessionStorage.removeItem("sstcStudentData");
 
     /*
-     * Remembered Student ID ko logout par delete
-     * nahi karenge.
-     *
-     * Isse "Remember me" properly kaam karega.
+     * Double click protection.
      */
 
+    if (sstcLoggingOut) {
+
+        return false;
+
+    }
+
+
+    sstcLoggingOut =
+        true;
+
+
     /*
-     * Prevent browser back button from returning
-     * directly to protected student page.
+     * Reader ko clear karo.
      */
-    window.location.replace("sstc-access.html");
+
+    const pdfFrame =
+        document.getElementById(
+            "pdfFrame"
+        );
+
+
+    if (pdfFrame) {
+
+        try {
+
+            pdfFrame.src =
+                "about:blank";
+
+        }
+
+        catch (error) {
+
+            console.warn(
+                "PDF cleanup warning:",
+                error
+            );
+
+        }
+
+    }
+
+
+    /*
+     * Complete student session clear.
+     */
+
+    clearStudentSession();
+
+
+    /*
+     * Access page par normal redirect.
+     */
+
+    window.location.replace(
+        "sstc-access.html"
+    );
+
+
+    return false;
+
 }
 
 
 /* =========================================================
-   SECURITY PROTECTION
-   BEST-EFFORT BROWSER PROTECTION
+   READER DEFAULTS
+========================================================= */
+
+function setupReaderDefaults() {
+
+    const frame =
+        document.getElementById(
+            "pdfFrame"
+        );
+
+
+    if (frame) {
+
+        frame.setAttribute(
+            "draggable",
+            "false"
+        );
+
+    }
+
+
+    const viewer =
+        document.getElementById(
+            "pdfViewer"
+        );
+
+
+    if (viewer) {
+
+        viewer.addEventListener(
+            "contextmenu",
+            function (event) {
+
+                event.preventDefault();
+
+            }
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   PDF LOADED
+========================================================= */
+
+function pdfLoaded() {
+
+    const empty =
+        document.getElementById(
+            "viewerEmpty"
+        );
+
+
+    const frame =
+        document.getElementById(
+            "pdfFrame"
+        );
+
+
+    if (
+        frame &&
+        frame.src &&
+        frame.src !==
+            window.location.href
+    ) {
+
+        if (empty) {
+
+            empty.style.display =
+                "none";
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   ZOOM
+========================================================= */
+
+let sstcZoom =
+    100;
+
+
+/* =========================================================
+   ZOOM IN
+========================================================= */
+
+function zoomIn() {
+
+    sstcZoom =
+        Math.min(
+            200,
+            sstcZoom + 10
+        );
+
+
+    applyZoom();
+
+}
+
+
+/* =========================================================
+   ZOOM OUT
+========================================================= */
+
+function zoomOut() {
+
+    sstcZoom =
+        Math.max(
+            50,
+            sstcZoom - 10
+        );
+
+
+    applyZoom();
+
+}
+
+
+/* =========================================================
+   APPLY ZOOM
+========================================================= */
+
+function applyZoom() {
+
+    setText(
+        "zoomLevel",
+        sstcZoom + "%"
+    );
+
+
+    const frame =
+        document.getElementById(
+            "pdfFrame"
+        );
+
+
+    /*
+     * Browser iframe ko CSS zoom dena possible hai,
+     * lekin PDF browser viewer ka internal zoom
+     * har browser me control nahi hota.
+     *
+     * Isliye ye best-effort hai.
+     */
+
+    if (frame) {
+
+        frame.style.transform =
+            "scale(" +
+            (sstcZoom / 100) +
+            ")";
+
+        frame.style.transformOrigin =
+            "top left";
+
+        frame.style.width =
+            (10000 / sstcZoom) +
+            "%";
+
+        frame.style.height =
+            (10000 / sstcZoom) +
+            "%";
+
+    }
+
+}
+
+
+/* =========================================================
+   FIT WIDTH
+========================================================= */
+
+function fitWidth() {
+
+    sstcZoom =
+        100;
+
+
+    applyZoom();
+
+
+    const viewer =
+        document.getElementById(
+            "pdfViewer"
+        );
+
+
+    if (viewer) {
+
+        viewer.scrollLeft =
+            0;
+
+    }
+
+}
+
+
+/* =========================================================
+   FIT PAGE
+========================================================= */
+
+function fitPage() {
+
+    sstcZoom =
+        90;
+
+
+    applyZoom();
+
+
+    const viewer =
+        document.getElementById(
+            "pdfViewer"
+        );
+
+
+    if (viewer) {
+
+        viewer.scrollTop =
+            0;
+
+        viewer.scrollLeft =
+            0;
+
+    }
+
+}
+
+
+/* =========================================================
+   FULLSCREEN
+========================================================= */
+
+function toggleFullscreen() {
+
+    const viewer =
+        document.getElementById(
+            "pdfViewer"
+        );
+
+
+    if (!viewer) {
+        return;
+    }
+
+
+    /*
+     * Agar already fullscreen hai,
+     * exit karo.
+     */
+
+    if (
+        document.fullscreenElement
+    ) {
+
+        if (
+            document.exitFullscreen
+        ) {
+
+            document.exitFullscreen();
+
+        }
+
+        return;
+
+    }
+
+
+    /*
+     * Fullscreen request.
+     */
+
+    if (
+        viewer.requestFullscreen
+    ) {
+
+        viewer.requestFullscreen()
+            .catch(
+                function (error) {
+
+                    console.warn(
+                        "Fullscreen unavailable:",
+                        error
+                    );
+
+                }
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   PREVIOUS PAGE
+   ---------------------------------------------------------
+   PDF iframe ke internal page ko browser JS se
+   universally control nahi kiya ja sakta.
+========================================================= */
+
+function previousPage() {
+
+    const current =
+        parseInt(
+            sessionStorage.getItem(
+                SSTC_CURRENT_PAGE
+            ) ||
+            "1",
+            10
+        );
+
+
+    const next =
+        Math.max(
+            1,
+            current - 1
+        );
+
+
+    sessionStorage.setItem(
+        SSTC_CURRENT_PAGE,
+        String(next)
+    );
+
+
+    setText(
+        "currentPage",
+        next
+    );
+
+
+    showSecurityMessage(
+        "PDF page controls depend on the reader."
+    );
+
+}
+
+
+/* =========================================================
+   NEXT PAGE
+========================================================= */
+
+function nextPage() {
+
+    const current =
+        parseInt(
+            sessionStorage.getItem(
+                SSTC_CURRENT_PAGE
+            ) ||
+            "1",
+            10
+        );
+
+
+    const next =
+        current + 1;
+
+
+    sessionStorage.setItem(
+        SSTC_CURRENT_PAGE,
+        String(next)
+    );
+
+
+    setText(
+        "currentPage",
+        next
+    );
+
+
+    showSecurityMessage(
+        "PDF page controls depend on the reader."
+    );
+
+}
+
+
+/* =========================================================
+   SET CURRENT YEAR
+========================================================= */
+
+function setCurrentYear() {
+
+    const year =
+        new Date()
+            .getFullYear();
+
+
+    setText(
+        "currentYear",
+        year
+    );
+
+}
+
+
+/* =========================================================
+   BASIC SECURITY
+   ---------------------------------------------------------
+   IMPORTANT:
+   Browser/OS screenshot or screen recording ko
+   100% block karna website ke control me nahi hota.
 ========================================================= */
 
 function setupStudentSecurity() {
 
 
-    /* -----------------------------------------------------
-       DISABLE RIGHT CLICK
-    ----------------------------------------------------- */
+    /* =====================================================
+       RIGHT CLICK
+    ===================================================== */
 
     document.addEventListener(
         "contextmenu",
@@ -391,9 +1388,9 @@ function setupStudentSecurity() {
     );
 
 
-    /* -----------------------------------------------------
-       DISABLE DRAG
-    ----------------------------------------------------- */
+    /* =====================================================
+       DRAG
+    ===================================================== */
 
     document.addEventListener(
         "dragstart",
@@ -405,9 +1402,9 @@ function setupStudentSecurity() {
     );
 
 
-    /* -----------------------------------------------------
-       DISABLE TEXT SELECTION
-    ----------------------------------------------------- */
+    /* =====================================================
+       TEXT SELECTION
+    ===================================================== */
 
     document.addEventListener(
         "selectstart",
@@ -419,9 +1416,9 @@ function setupStudentSecurity() {
     );
 
 
-    /* -----------------------------------------------------
+    /* =====================================================
        KEYBOARD PROTECTION
-    ----------------------------------------------------- */
+    ===================================================== */
 
     document.addEventListener(
         "keydown",
@@ -430,10 +1427,13 @@ function setupStudentSecurity() {
             const key =
                 String(
                     event.key || ""
-                ).toLowerCase();
+                )
+                .toLowerCase();
 
 
-            /* Ctrl + S */
+            /* =================================================
+               CTRL + S
+            ================================================= */
 
             if (
                 event.ctrlKey &&
@@ -451,7 +1451,9 @@ function setupStudentSecurity() {
             }
 
 
-            /* Ctrl + P */
+            /* =================================================
+               CTRL + P
+            ================================================= */
 
             if (
                 event.ctrlKey &&
@@ -469,7 +1471,9 @@ function setupStudentSecurity() {
             }
 
 
-            /* Ctrl + U */
+            /* =================================================
+               CTRL + U
+            ================================================= */
 
             if (
                 event.ctrlKey &&
@@ -478,12 +1482,18 @@ function setupStudentSecurity() {
 
                 event.preventDefault();
 
+                showSecurityMessage(
+                    "This page is protected."
+                );
+
                 return;
 
             }
 
 
-            /* Ctrl + Shift + I */
+            /* =================================================
+               CTRL + SHIFT + I
+            ================================================= */
 
             if (
                 event.ctrlKey &&
@@ -493,12 +1503,18 @@ function setupStudentSecurity() {
 
                 event.preventDefault();
 
+                showSecurityMessage(
+                    "Developer tools are disabled."
+                );
+
                 return;
 
             }
 
 
-            /* Ctrl + Shift + J */
+            /* =================================================
+               CTRL + SHIFT + J
+            ================================================= */
 
             if (
                 event.ctrlKey &&
@@ -508,25 +1524,18 @@ function setupStudentSecurity() {
 
                 event.preventDefault();
 
-                return;
-
-            }
-
-
-            /* F12 */
-
-            if (
-                event.key === "F12"
-            ) {
-
-                event.preventDefault();
+                showSecurityMessage(
+                    "Developer tools are disabled."
+                );
 
                 return;
 
             }
 
 
-            /* Ctrl + Shift + C */
+            /* =================================================
+               CTRL + SHIFT + C
+            ================================================= */
 
             if (
                 event.ctrlKey &&
@@ -536,6 +1545,30 @@ function setupStudentSecurity() {
 
                 event.preventDefault();
 
+                showSecurityMessage(
+                    "Inspection is disabled."
+                );
+
+                return;
+
+            }
+
+
+            /* =================================================
+               F12
+            ================================================= */
+
+            if (
+                event.key ===
+                "F12"
+            ) {
+
+                event.preventDefault();
+
+                showSecurityMessage(
+                    "Developer tools are disabled."
+                );
+
                 return;
 
             }
@@ -544,9 +1577,9 @@ function setupStudentSecurity() {
     );
 
 
-    /* -----------------------------------------------------
-       PRINT EVENT
-    ----------------------------------------------------- */
+    /* =====================================================
+       PRINT
+    ===================================================== */
 
     window.addEventListener(
         "beforeprint",
@@ -556,20 +1589,44 @@ function setupStudentSecurity() {
                 "print-blocked"
             );
 
+            showSecurityMessage(
+                "Printing is disabled."
+            );
+
         }
     );
 
 
-    /* -----------------------------------------------------
-       TAB / WINDOW HIDDEN
-       HIDE READING AREA TEMPORARILY
-    ----------------------------------------------------- */
+    /* =====================================================
+       AFTER PRINT
+    ===================================================== */
+
+    window.addEventListener(
+        "afterprint",
+        function () {
+
+            document.body.classList.remove(
+                "print-blocked"
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       VISIBILITY CHANGE
+       -----------------------------------------------------
+       Tab change hone par reader temporarily hide.
+    ===================================================== */
 
     document.addEventListener(
         "visibilitychange",
         function () {
 
             const viewer =
+                document.getElementById(
+                    "pdfViewer"
+                ) ||
                 document.getElementById(
                     "ebookViewer"
                 );
@@ -601,6 +1658,64 @@ function setupStudentSecurity() {
         }
     );
 
+
+    /* =====================================================
+       WINDOW BLUR
+    ===================================================== */
+
+    window.addEventListener(
+        "blur",
+        function () {
+
+            const viewer =
+                document.getElementById(
+                    "pdfViewer"
+                ) ||
+                document.getElementById(
+                    "ebookViewer"
+                );
+
+
+            if (viewer) {
+
+                viewer.classList.add(
+                    "viewer-hidden"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       WINDOW FOCUS
+    ===================================================== */
+
+    window.addEventListener(
+        "focus",
+        function () {
+
+            const viewer =
+                document.getElementById(
+                    "pdfViewer"
+                ) ||
+                document.getElementById(
+                    "ebookViewer"
+                );
+
+
+            if (viewer) {
+
+                viewer.classList.remove(
+                    "viewer-hidden"
+                );
+
+            }
+
+        }
+    );
+
 }
 
 
@@ -612,6 +1727,10 @@ function showSecurityMessage(
     message
 ) {
 
+    /*
+     * Existing message remove.
+     */
+
     const old =
         document.querySelector(
             ".security-message"
@@ -619,9 +1738,15 @@ function showSecurityMessage(
 
 
     if (old) {
+
         old.remove();
+
     }
 
+
+    /*
+     * Create message.
+     */
 
     const box =
         document.createElement(
@@ -642,13 +1767,80 @@ function showSecurityMessage(
     );
 
 
+    /*
+     * Auto remove.
+     */
+
     setTimeout(
         function () {
 
-            box.remove();
+            if (
+                box &&
+                box.parentNode
+            ) {
+
+                box.remove();
+
+            }
 
         },
         2000
     );
 
 }
+
+
+/* =========================================================
+   PREVENT UNWANTED PAGE CACHE BEHAVIOUR
+========================================================= */
+
+window.addEventListener(
+    "pagehide",
+    function () {
+
+        /*
+         * Yahan session clear nahi karna hai.
+         *
+         * Normal refresh/navigation par student logged-in
+         * rehna chahiye.
+         *
+         * Logout function already session clear karta hai.
+         */
+
+    }
+);
+
+
+/* =========================================================
+   EXPOSE FUNCTIONS FOR HTML ONCLICK
+   ---------------------------------------------------------
+   Ye ensure karta hai ki inline onclick functions
+   browser ko available rahen.
+========================================================= */
+
+window.studentLogout =
+    studentLogout;
+
+window.zoomIn =
+    zoomIn;
+
+window.zoomOut =
+    zoomOut;
+
+window.fitWidth =
+    fitWidth;
+
+window.fitPage =
+    fitPage;
+
+window.toggleFullscreen =
+    toggleFullscreen;
+
+window.previousPage =
+    previousPage;
+
+window.nextPage =
+    nextPage;
+
+window.pdfLoaded =
+    pdfLoaded;
