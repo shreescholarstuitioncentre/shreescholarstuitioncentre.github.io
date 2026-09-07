@@ -28,11 +28,14 @@
 </head>
 
 
-<body>
+<body
+    oncontextmenu="return false;"
+    ondragstart="return false;"
+    onselectstart="return false;">
 
 
 <!-- =========================================================
-     SSTC HEADER
+     HEADER
 ========================================================= -->
 
 <header class="sstc-header">
@@ -45,14 +48,22 @@
         <div class="brand-area">
 
             <div class="brand-logo">
-                SSTC
+
+                <img
+                    src="Logo.png"
+                    alt="SSTC Logo"
+                    draggable="false">
+
             </div>
+
 
             <div class="brand-text">
 
                 <h1>
                     SHREE SCHOLARS
-                    <span>TUITION CENTER</span>
+                    <span>
+                        TUITION CENTER
+                    </span>
                 </h1>
 
                 <p>
@@ -64,17 +75,13 @@
         </div>
 
 
-        <!-- NAVIGATION -->
+        <!-- NAV -->
 
         <nav class="main-nav">
 
-            <a
-                href="index.html">
-
+            <a href="index.html">
                 Home
-
             </a>
-
 
             <a
                 href="student-page.html"
@@ -83,7 +90,6 @@
                 Student Portal
 
             </a>
-
 
             <button
                 type="button"
@@ -103,39 +109,30 @@
 
 
 <!-- =========================================================
-     MAIN STUDENT PAGE
+     MAIN PAGE
 ========================================================= -->
 
 <main class="student-page">
 
 
     <!-- =====================================================
-         PORTAL TITLE
-    ===================================================== -->
+         PAGE TITLE
+    ====================================================== -->
 
-    <div class="portal-title">
-
+    <section class="portal-title">
 
         <div>
 
             <span class="portal-badge">
-
                 🎓 STUDENT PORTAL
-
             </span>
 
-
             <h2>
-
                 My E-Book Library
-
             </h2>
 
-
             <p>
-
                 Access your purchased and rented e-books securely.
-
             </p>
 
         </div>
@@ -143,660 +140,649 @@
 
         <div class="security-badge">
 
-            🔒 Protected Reading
+            🔐 Protected Reading
 
         </div>
 
-    </div>
+    </section>
 
 
 
     <!-- =====================================================
-         MAIN GRID
-    ===================================================== -->
+         STUDENT PROFILE
+    ====================================================== -->
 
-    <section class="portal-grid">
+    <section class="profile-card">
 
 
+        <div class="profile-main">
 
-        <!-- =================================================
-             LEFT SIDEBAR
-        ================================================= -->
-
-        <aside class="student-sidebar">
-
-
-
-            <!-- =================================================
-                 STUDENT PROFILE
-            ================================================= -->
-
-            <div class="profile-card">
-
-
-                <!-- PROFILE TOP -->
-
-                <div class="profile-top">
-
-
-                    <div
-                        class="student-avatar"
-                        id="studentAvatar">
-
-                        S
-
-                    </div>
-
-
-                    <div>
-
-                        <h3 id="studentName">
-
-                            Student Name
-
-                        </h3>
-
-
-                        <p id="studentClass">
-
-                            Class --
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- =================================================
-                     STUDENT DETAILS
-                ================================================= -->
-
-                <div class="profile-info">
-
-
-                    <!-- STUDENT ID -->
-
-                    <div class="info-row">
-
-                        <span>
-                            Student ID
-                        </span>
-
-                        <strong id="studentId">
-
-                            --
-
-                        </strong>
-
-                    </div>
-
-
-
-                    <!-- MOBILE -->
-
-                    <div class="info-row">
-
-                        <span>
-                            Mobile Number
-                        </span>
-
-                        <strong id="studentMobile">
-
-                            --
-
-                        </strong>
-
-                    </div>
-
-
-
-                    <!-- GENDER -->
-
-                    <div class="info-row">
-
-                        <span>
-                            Gender
-                        </span>
-
-                        <strong id="studentGender">
-
-                            --
-
-                        </strong>
-
-                    </div>
-
-
-
-                    <!-- EMAIL -->
-
-                    <div class="info-row">
-
-                        <span>
-                            Email ID
-                        </span>
-
-                        <strong id="studentEmail">
-
-                            --
-
-                        </strong>
-
-                    </div>
-
-
-
-                    <!-- CLASS -->
-
-                    <div class="info-row">
-
-                        <span>
-                            Class
-                        </span>
-
-                        <strong id="studentClassDetails">
-
-                            --
-
-                        </strong>
-
-                    </div>
-
-
-
-                    <!-- BOARD -->
-
-                    <div class="info-row">
-
-                        <span>
-                            Board
-                        </span>
-
-                        <strong id="studentBoard">
-
-                            --
-
-                        </strong>
-
-                    </div>
-
-
-
-                    <!-- SCHOOL NAME -->
-
-                    <div class="info-row">
-
-                        <span>
-                            School Name
-                        </span>
-
-                        <strong id="studentSchool">
-
-                            --
-
-                        </strong>
-
-                    </div>
-
-
-
-                    <!-- SCHOOL PLACE -->
-
-                    <div class="info-row">
-
-                        <span>
-                            School Place
-                        </span>
-
-                        <strong id="studentSchoolPlace">
-
-                            --
-
-                        </strong>
-
-                    </div>
-
-
-
-                    <!-- REGISTRATION DATE -->
-
-                    <div class="info-row">
-
-                        <span>
-                            Registration Date
-                        </span>
-
-                        <strong id="studentRegistrationDate">
-
-                            --
-
-                        </strong>
-
-                    </div>
-
-
-
-                    <!-- LOGIN TIME -->
-
-                    <div class="info-row">
-
-                        <span>
-                            Login Time
-                        </span>
-
-                        <strong id="loginTime">
-
-                            --
-
-                        </strong>
-
-                    </div>
-
-
-
-                    <!-- ACCOUNT STATUS -->
-
-                    <div class="info-row">
-
-                        <span>
-                            Account
-                        </span>
-
-                        <strong
-                            id="studentAccountStatus"
-                            class="status-active">
-
-                            ● Active
-
-                        </strong>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 MY E-BOOKS
-            ================================================= -->
-
-            <div class="library-card">
-
-
-                <!-- CARD HEADING -->
-
-                <div class="card-heading">
-
-
-                    <div>
-
-                        <span>
-                            📚
-                        </span>
-
-                        <h3>
-                            My E-Books
-                        </h3>
-
-                    </div>
-
-
-                    <span
-                        class="ebook-count"
-                        id="ebookCount">
-
-                        0
-
-                    </span>
-
-                </div>
-
-
-
-                <!-- EBOOK LIST -->
-
-                <div
-                    class="ebook-list"
-                    id="ebookList">
-
-                    <!--
-                        Student e-books will be loaded here
-                        by student-page.js
-                    -->
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 LIBRARY SUMMARY
-            ================================================= -->
-
-            <div class="summary-card">
-
-
-                <h3>
-
-                    📊 Library Summary
-
-                </h3>
-
-
-
-                <!-- TOTAL -->
-
-                <div class="summary-row">
-
-                    <span>
-
-                        Total E-Books
-
-                    </span>
-
-                    <strong id="totalBooks">
-
-                        0
-
-                    </strong>
-
-                </div>
-
-
-
-                <!-- RENTED -->
-
-                <div class="summary-row">
-
-                    <span>
-
-                        Rented
-
-                    </span>
-
-                    <strong id="rentedBooks">
-
-                        0
-
-                    </strong>
-
-                </div>
-
-
-
-                <!-- PURCHASED -->
-
-                <div class="summary-row">
-
-                    <span>
-
-                        Purchased
-
-                    </span>
-
-                    <strong id="purchasedBooks">
-
-                        0
-
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </aside>
-
-
-
-        <!-- =================================================
-             RIGHT READER
-        ================================================= -->
-
-        <section class="reader-section">
-
-
-
-            <!-- =================================================
-                 READER HEADER
-            ================================================= -->
-
-            <div class="reader-header">
-
-
-                <!-- BOOK INFO -->
-
-                <div class="reader-book-info">
-
-
-                    <span class="book-icon">
-
-                        📖
-
-                    </span>
-
-
-                    <div>
-
-                        <h3 id="currentBookTitle">
-
-                            Select an E-Book
-
-                        </h3>
-
-
-                        <p id="currentBookStatus">
-
-                            Choose a book from your library.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- READER ACTIONS -->
-
-                <div class="reader-actions">
-
-
-                    <button
-                        type="button"
-                        onclick="zoomOut()"
-                        title="Zoom Out">
-
-                        −
-
-                    </button>
-
-
-                    <span id="zoomLevel">
-
-                        100%
-
-                    </span>
-
-
-                    <button
-                        type="button"
-                        onclick="zoomIn()"
-                        title="Zoom In">
-
-                        +
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        onclick="fitWidth()"
-                        title="Fit Width">
-
-                        ↔
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        onclick="fitPage()"
-                        title="Fit Page">
-
-                        ⛶
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        onclick="toggleFullscreen()"
-                        title="Fullscreen">
-
-                        ⛶
-
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 SECURITY NOTICE
-            ================================================= -->
-
-            <div class="reader-security">
-
-
-                <span>
-
-                    🔐
-
-                </span>
-
-
-                <span>
-
-                    This e-book is for authorized student
-                    reading only. Downloading and printing
-                    are disabled.
-
-                </span>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 PDF VIEWER
-            ================================================= -->
 
             <div
-                class="pdf-viewer"
-                id="pdfViewer">
+                class="student-avatar"
+                id="studentAvatar">
+
+                S
+
+            </div>
 
 
-                <!-- EMPTY STATE -->
+            <div class="student-main-info">
 
-                <div
-                    class="viewer-empty"
-                    id="viewerEmpty">
+                <h2 id="studentName">
+                    Student Name
+                </h2>
+
+                <p id="studentClass">
+                    Class --
+                </p>
+
+                <span
+                    id="studentStatus"
+                    class="student-status">
+
+                    ● Active
+
+                </span>
+
+            </div>
+
+        </div>
 
 
-                    <div class="empty-icon">
-
-                        📚
-
-                    </div>
+        <div class="profile-details">
 
 
-                    <h3>
+            <div class="detail-item">
 
-                        Select an E-Book
+                <span>
+                    Student ID
+                </span>
 
+                <strong id="studentId">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    Mobile Number
+                </span>
+
+                <strong id="studentMobile">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    Gender
+                </span>
+
+                <strong id="studentGender">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    Email ID
+                </span>
+
+                <strong id="studentEmail">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    Class
+                </span>
+
+                <strong id="studentClassDetail">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    Board
+                </span>
+
+                <strong id="studentBoard">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    School Name
+                </span>
+
+                <strong id="studentSchool">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    School Place
+                </span>
+
+                <strong id="studentSchoolPlace">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    Registration Date
+                </span>
+
+                <strong id="registrationDate">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    Login Time
+                </span>
+
+                <strong id="loginTime">
+                    --
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SUBJECT CAROUSEL
+    ====================================================== -->
+
+    <section class="subject-section">
+
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-badge">
+                    📚 E-BOOK LIBRARY
+                </span>
+
+                <h2>
+                    Choose Your Subject
+                </h2>
+
+                <p>
+                    Select a subject to view its available chapters.
+                </p>
+
+            </div>
+
+
+            <div class="library-count">
+
+                <span>
+                    Available Books
+                </span>
+
+                <strong id="ebookCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SUBJECT CAROUSEL -->
+
+        <div class="subject-carousel-wrapper">
+
+            <button
+                type="button"
+                class="carousel-arrow"
+                onclick="scrollSubjects(-1)">
+
+                ‹
+
+            </button>
+
+
+            <div
+                class="subject-carousel"
+                id="subjectCarousel">
+
+                <!-- JS creates subjects -->
+
+            </div>
+
+
+            <button
+                type="button"
+                class="carousel-arrow"
+                onclick="scrollSubjects(1)">
+
+                ›
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CHAPTER SECTION
+    ====================================================== -->
+
+    <section
+        class="chapter-section"
+        id="chapterSection">
+
+
+        <div class="chapter-header">
+
+            <div>
+
+                <span class="chapter-label">
+                    📖 CHAPTERS
+                </span>
+
+                <h2 id="selectedSubjectTitle">
+                    Select a Subject
+                </h2>
+
+                <p id="selectedSubjectDescription">
+                    Choose a subject above to see its chapters.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="chapter-grid"
+            id="chapterGrid">
+
+            <div class="chapter-empty">
+
+                <div>
+                    📚
+                </div>
+
+                <h3>
+                    Select a Subject
+                </h3>
+
+                <p>
+                    Chapters will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         READER
+    ====================================================== -->
+
+    <section
+        class="reader-section"
+        id="readerSection">
+
+
+        <!-- READER HEADER -->
+
+        <div class="reader-header">
+
+
+            <div class="reader-book-info">
+
+                <div class="book-icon">
+                    📖
+                </div>
+
+
+                <div>
+
+                    <h3 id="currentBookTitle">
+                        Select a Chapter
                     </h3>
 
-
-                    <p>
-
-                        Select any active e-book from
-                        <strong>My E-Books</strong>
-                        to start reading.
-
+                    <p id="currentBookStatus">
+                        Select a chapter to start reading.
                     </p>
 
                 </div>
 
-
-
-                <!-- PDF FRAME -->
-
-                <iframe
-                    id="pdfFrame"
-                    class="pdf-frame"
-                    title="Protected E-Book Reader"
-                    loading="lazy"
-                    onload="pdfLoaded()">
-                </iframe>
-
             </div>
 
 
 
-            <!-- =================================================
-                 PAGE CONTROLS
-            ================================================= -->
-
-            <div class="reader-footer-controls">
+            <div class="reader-actions">
 
 
                 <button
                     type="button"
-                    onclick="previousPage()">
+                    onclick="zoomOut()"
+                    title="Zoom Out">
 
-                    ◀ Previous
+                    −
 
                 </button>
 
 
-                <div class="page-indicator">
-
-                    <span>
-
-                        Page
-
-                    </span>
+                <span id="zoomLevel">
+                    100%
+                </span>
 
 
-                    <strong id="currentPage">
+                <button
+                    type="button"
+                    onclick="zoomIn()"
+                    title="Zoom In">
 
-                        1
+                    +
 
-                    </strong>
+                </button>
 
+
+                <button
+                    type="button"
+                    onclick="fitWidth()"
+                    title="Fit Width">
+
+                    ↔
+
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="fitPage()"
+                    title="Fit Page">
+
+                    ⛶
+
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="toggleFullscreen()"
+                    title="Fullscreen">
+
+                    ⛶
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SECURITY NOTICE -->
+
+        <div class="reader-security">
+
+            <span>
+                🔐
+            </span>
+
+            <span>
+                Authorized student reading only.
+                Downloading and printing are disabled.
+            </span>
+
+        </div>
+
+
+
+        <!-- PDF VIEWER -->
+
+        <div
+            class="pdf-viewer"
+            id="pdfViewer">
+
+
+            <div
+                class="viewer-empty"
+                id="viewerEmpty">
+
+                <div class="empty-icon">
+                    📚
                 </div>
 
+                <h3>
+                    Select a Chapter
+                </h3>
 
-                <button
-                    type="button"
-                    onclick="nextPage()">
-
-                    Next ▶
-
-                </button>
+                <p>
+                    Choose a chapter above to open the protected reader.
+                </p>
 
             </div>
 
-        </section>
+
+            <iframe
+                id="pdfFrame"
+                class="pdf-frame"
+                title="SSTC Protected E-Book Reader"
+                loading="lazy"
+                onload="pdfLoaded()"
+                sandbox="allow-scripts allow-same-origin allow-forms">
+
+            </iframe>
+
+        </div>
+
+
+
+        <!-- READER FOOTER -->
+
+        <div class="reader-footer-controls">
+
+
+            <button
+                type="button"
+                onclick="previousPage()">
+
+                ◀ Previous
+
+            </button>
+
+
+            <div class="page-indicator">
+
+                <span>
+                    Chapter
+                </span>
+
+                <strong id="currentChapterNumber">
+                    1
+                </strong>
+
+            </div>
+
+
+            <button
+                type="button"
+                onclick="nextPage()">
+
+                Next ▶
+
+            </button>
+
+        </div>
 
     </section>
+
+
+
+    <!-- =====================================================
+         LIBRARY SUMMARY
+    ====================================================== -->
+
+    <section class="summary-section">
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                📚
+            </div>
+
+            <div>
+
+                <span>
+                    Total E-Books
+                </span>
+
+                <strong id="totalBooks">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                🔄
+            </div>
+
+            <div>
+
+                <span>
+                    Rented
+                </span>
+
+                <strong id="rentedBooks">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                🛒
+            </div>
+
+            <div>
+
+                <span>
+                    Purchased
+                </span>
+
+                <strong id="purchasedBooks">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                📖
+            </div>
+
+            <div>
+
+                <span>
+                    Subjects
+                </span>
+
+                <strong id="totalSubjects">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PURCHASE INFORMATION
+    ====================================================== -->
+
+    <section class="purchase-info">
+
+        <div class="purchase-info-icon">
+            🛒
+        </div>
+
+        <div>
+
+            <h3>
+                Want More E-Books?
+            </h3>
+
+            <p>
+                Choose <strong>Rent</strong> or <strong>Buy</strong>
+                on any available e-book. Contact SSTC administration
+                to complete your order.
+            </p>
+
+        </div>
+
+    </section>
+
 
 </main>
 
@@ -808,60 +794,42 @@
 
 <footer class="sstc-footer">
 
-
     <div class="footer-container">
 
 
         <div>
 
             <h3>
-
                 SHREE SCHOLARS TUITION CENTER
-
             </h3>
 
-
             <p>
-
                 From Foundation to Future
-
             </p>
 
         </div>
 
 
-
         <div class="footer-links">
 
-
             <a href="index.html">
-
                 Home
-
             </a>
-
 
             <span>
                 •
             </span>
-
 
             <a href="student-page.html">
-
                 Student Portal
-
             </a>
-
 
             <span>
                 •
             </span>
 
-
             <a href="#">
-
                 Privacy
-
             </a>
 
         </div>
@@ -869,17 +837,12 @@
     </div>
 
 
-
-    <!-- COPYRIGHT -->
-
     <div class="copyright">
 
         ©
-
         <span id="currentYear"></span>
 
         Shree Scholars Tuition Center.
-
         All Rights Reserved.
 
     </div>
@@ -889,11 +852,10 @@
 
 
 <!-- =========================================================
-     STUDENT PAGE JAVASCRIPT
+     JS
 ========================================================= -->
 
 <script src="student-page.js"></script>
-
 
 </body>
 
