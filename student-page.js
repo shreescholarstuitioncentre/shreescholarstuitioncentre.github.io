@@ -1,696 +1,93 @@
 /* =========================================================
    SSTC STUDENT PORTAL
-   ========================================================= */
+   LIVE LOGGED-IN STUDENT DATA
+========================================================= */
 
 
 /* =========================================================
-   STUDENT DATA
-   =========================================================
+   STUDENT SESSION
+========================================================= */
 
-   IMPORTANT:
-   Demo data is used here.
-
-   Later you can connect this with your
-   Google Sheets / backend / database.
-   ========================================================= */
-
-const studentData = {
-
-    id: "SSTC-STU-001",
-
-    name: "Student Name",
-
-    className: "Class 10",
-
-    loginTime:
-        new Date().toLocaleString(
-            "en-IN",
-            {
-                dateStyle: "medium",
-                timeStyle: "short"
-            }
-        ),
-
-    ebooks: [
-
-        {
-            id: "ebook001",
-
-            title:
-                "Class 10 Mathematics Complete Guide",
-
-            subject:
-                "Mathematics",
-
-            type:
-                "rent",
-
-            duration:
-                "6 Months",
-
-            startDate:
-                "20 Aug 2026",
-
-            expiryDate:
-                "20 Feb 2027",
-
-            status:
-                "active",
-
-            pdf:
-                "ebooks/class10-maths.pdf"
-        },
-
-
-        {
-            id: "ebook002",
-
-            title:
-                "Class 10 Science Complete Guide",
-
-            subject:
-                "Science",
-
-            type:
-                "buy",
-
-            duration:
-                "Lifetime",
-
-            startDate:
-                "20 Aug 2026",
-
-            expiryDate:
-                "Lifetime",
-
-            status:
-                "active",
-
-            pdf:
-                "ebooks/class10-science.pdf"
-        },
-
-
-        {
-            id: "ebook003",
-
-            title:
-                "Class 10 Social Science Notes",
-
-            subject:
-                "Social Science",
-
-            type:
-                "rent",
-
-            duration:
-                "3 Months",
-
-            startDate:
-                "20 Aug 2026",
-
-            expiryDate:
-                "20 Nov 2026",
-
-            status:
-                "active",
-
-            pdf:
-                "ebooks/class10-social-science.pdf"
-        }
-
-    ]
-
-};
-
-
-/* =========================================================
-   CURRENT STATE
-   ========================================================= */
-
-let currentBook = null;
-
-let currentZoom = 100;
+let studentData = null;
 
 
 /* =========================================================
    DOM READY
-   ========================================================= */
+========================================================= */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-        loadStudentProfile();
+    loadLoggedInStudent();
 
-        loadEbooks();
+    setupStudentSecurity();
 
-        setupProtection();
-
-        setupKeyboardProtection();
-
-        document.getElementById(
-            "currentYear"
-        ).textContent =
-            new Date().getFullYear();
-
-    }
-);
+});
 
 
 /* =========================================================
-   PROFILE
-   ========================================================= */
+   LOAD LOGGED-IN STUDENT
+========================================================= */
 
-function loadStudentProfile() {
+function loadLoggedInStudent() {
 
-    const name =
-        document.getElementById(
-            "studentName"
+    const loggedIn =
+        sessionStorage.getItem(
+            "sstcStudentLoggedIn"
         );
 
-    const studentId =
-        document.getElementById(
-            "studentId"
-        );
-
-    const studentClass =
-        document.getElementById(
-            "studentClass"
-        );
-
-    const loginTime =
-        document.getElementById(
-            "loginTime"
-        );
-
-    const avatar =
-        document.getElementById(
-            "studentAvatar"
+    const savedData =
+        sessionStorage.getItem(
+            "sstcStudentData"
         );
 
 
-    if (name) {
-
-        name.textContent =
-            studentData.name;
-
-    }
-
-
-    if (studentId) {
-
-        studentId.textContent =
-            studentData.id;
-
-    }
-
-
-    if (studentClass) {
-
-        studentClass.textContent =
-            studentData.className;
-
-    }
-
-
-    if (loginTime) {
-
-        loginTime.textContent =
-            studentData.loginTime;
-
-    }
-
+    /* -----------------------------------------------------
+       LOGIN CHECK
+    ----------------------------------------------------- */
 
     if (
-        avatar &&
-        studentData.name
+        loggedIn !== "true" ||
+        !savedData
     ) {
 
-        avatar.textContent =
-            studentData.name
-                .charAt(0)
-                .toUpperCase();
+        window.location.href =
+            "sstc-access.html";
+
+        return;
 
     }
 
-}
 
+    /* -----------------------------------------------------
+       READ STUDENT DATA
+    ----------------------------------------------------- */
 
-/* =========================================================
-   LOAD EBOOKS
-   ========================================================= */
+    try {
 
-function loadEbooks() {
-
-    const list =
-        document.getElementById(
-            "ebookList"
-        );
-
-    if (!list) return;
-
-
-    list.innerHTML = "";
-
-
-    studentData.ebooks.forEach(
-        (book, index) => {
-
-            const item =
-                document.createElement(
-                    "button"
-                );
-
-            item.type = "button";
-
-            item.className =
-                "ebook-item";
-
-
-            if (index === 0) {
-
-                item.classList.add(
-                    "selected"
-                );
-
-            }
-
-
-            const planClass =
-                book.type === "buy"
-                    ? "plan-buy"
-                    : "plan-rent";
-
-
-            const planText =
-                book.type === "buy"
-                    ? "Lifetime Buy"
-                    : "Rent " +
-                      book.duration;
-
-
-            item.innerHTML = `
-
-                <span class="ebook-title">
-                    📘 ${escapeHTML(book.title)}
-                </span>
-
-                <span class="ebook-meta">
-
-                    <span>
-                        ${escapeHTML(book.subject)}
-                    </span>
-
-                    <span
-                        class="plan-badge ${planClass}">
-                        ${escapeHTML(planText)}
-                    </span>
-
-                </span>
-
-                <span
-                    class="ebook-meta"
-                    style="margin-top:6px">
-
-                    <span>
-                        ${escapeHTML(book.expiryDate)}
-                    </span>
-
-                    <span class="book-active">
-                        ● ${escapeHTML(book.status)}
-                    </span>
-
-                </span>
-
-            `;
-
-
-            item.addEventListener(
-                "click",
-                () => {
-
-                    document
-                        .querySelectorAll(
-                            ".ebook-item"
-                        )
-                        .forEach(
-                            button => {
-
-                                button.classList
-                                    .remove(
-                                        "selected"
-                                    );
-
-                            }
-                        );
-
-
-                    item.classList.add(
-                        "selected"
-                    );
-
-
-                    openEbook(book);
-
-                }
+        studentData =
+            JSON.parse(
+                savedData
             );
 
-
-            list.appendChild(item);
-
-        }
-    );
-
-
-    updateSummary();
-
-
-    if (
-        studentData.ebooks.length
-    ) {
-
-        openEbook(
-            studentData.ebooks[0]
-        );
-
     }
 
-}
+    catch (error) {
 
-
-/* =========================================================
-   SUMMARY
-   ========================================================= */
-
-function updateSummary() {
-
-    const total =
-        studentData.ebooks.length;
-
-    const rented =
-        studentData.ebooks.filter(
-            book =>
-                book.type === "rent"
-        ).length;
-
-    const purchased =
-        studentData.ebooks.filter(
-            book =>
-                book.type === "buy"
-        ).length;
-
-
-    setText(
-        "ebookCount",
-        total
-    );
-
-    setText(
-        "totalBooks",
-        total
-    );
-
-    setText(
-        "rentedBooks",
-        rented
-    );
-
-    setText(
-        "purchasedBooks",
-        purchased
-    );
-
-}
-
-
-/* =========================================================
-   OPEN EBOOK
-   ========================================================= */
-
-function openEbook(book) {
-
-    if (!book) return;
-
-    currentBook = book;
-
-
-    const title =
-        document.getElementById(
-            "currentBookTitle"
+        console.error(
+            "Student session data error:",
+            error
         );
 
-    const status =
-        document.getElementById(
-            "currentBookStatus"
+        sessionStorage.removeItem(
+            "sstcStudentData"
         );
 
-    const frame =
-        document.getElementById(
-            "pdfFrame"
+        sessionStorage.removeItem(
+            "sstcStudentLoggedIn"
         );
 
-    const empty =
-        document.getElementById(
-            "viewerEmpty"
-        );
-
-
-    if (title) {
-
-        title.textContent =
-            book.title;
-
-    }
-
-
-    if (status) {
-
-        status.textContent =
-            getPlanText(book) +
-            " • " +
-            book.status;
-
-    }
-
-
-    if (!frame) return;
-
-
-    /*
-      PDF URL
-
-      #toolbar=0 hides the standard
-      PDF toolbar in browsers that
-      respect the PDF fragment.
-
-      This is NOT a complete security
-      mechanism.
-    */
-
-    frame.src =
-        book.pdf +
-        "#toolbar=0" +
-        "&navpanes=0" +
-        "&scrollbar=1" +
-        "&statusbar=0" +
-        "&view=FitH";
-
-
-    frame.classList.remove(
-        "loaded"
-    );
-
-
-    if (empty) {
-
-        empty.style.display =
-            "none";
-
-    }
-
-
-    currentZoom = 100;
-
-    updateZoomLabel();
-
-}
-
-
-/* =========================================================
-   PDF LOADED
-   ========================================================= */
-
-function pdfLoaded() {
-
-    const frame =
-        document.getElementById(
-            "pdfFrame"
-        );
-
-    if (!frame) return;
-
-
-    frame.classList.add(
-        "loaded"
-    );
-
-}
-
-
-/* =========================================================
-   PLAN TEXT
-   ========================================================= */
-
-function getPlanText(book) {
-
-    if (book.type === "buy") {
-
-        return "Lifetime Purchase";
-
-    }
-
-    return "Rent • " +
-        book.duration;
-
-}
-
-
-/* =========================================================
-   ZOOM
-   ========================================================= */
-
-function zoomIn() {
-
-    currentZoom += 10;
-
-    if (currentZoom > 200) {
-
-        currentZoom = 200;
-
-    }
-
-    updateZoomLabel();
-
-}
-
-
-function zoomOut() {
-
-    currentZoom -= 10;
-
-    if (currentZoom < 50) {
-
-        currentZoom = 50;
-
-    }
-
-    updateZoomLabel();
-
-}
-
-
-function updateZoomLabel() {
-
-    const label =
-        document.getElementById(
-            "zoomLevel"
-        );
-
-    if (label) {
-
-        label.textContent =
-            currentZoom + "%";
-
-    }
-
-}
-
-
-/* =========================================================
-   FIT WIDTH
-   ========================================================= */
-
-function fitWidth() {
-
-    currentZoom = 100;
-
-    updateZoomLabel();
-
-    reloadPDF(
-        "#toolbar=0" +
-        "&navpanes=0" +
-        "&view=FitH"
-    );
-
-}
-
-
-/* =========================================================
-   FIT PAGE
-   ========================================================= */
-
-function fitPage() {
-
-    currentZoom = 100;
-
-    updateZoomLabel();
-
-    reloadPDF(
-        "#toolbar=0" +
-        "&navpanes=0" +
-        "&view=Fit"
-    );
-
-}
-
-
-/* =========================================================
-   RELOAD PDF VIEW
-   ========================================================= */
-
-function reloadPDF(fragment) {
-
-    if (!currentBook) return;
-
-    const frame =
-        document.getElementById(
-            "pdfFrame"
-        );
-
-    if (!frame) return;
-
-
-    frame.src =
-        currentBook.pdf +
-        fragment;
-
-}
-
-
-/* =========================================================
-   FULLSCREEN
-   ========================================================= */
-
-function toggleFullscreen() {
-
-    const reader =
-        document.querySelector(
-            ".reader-section"
-        );
-
-    if (!reader) return;
-
-
-    if (
-        document.fullscreenElement
-    ) {
-
-        document.exitFullscreen();
-
-        reader.classList.remove(
-            "fullscreen-reader"
-        );
+        window.location.href =
+            "sstc-access.html";
 
         return;
 
@@ -698,35 +95,243 @@ function toggleFullscreen() {
 
 
     if (
-        reader.requestFullscreen
+        !studentData ||
+        !studentData.studentId
     ) {
 
-        reader
-            .requestFullscreen()
-            .then(
-                () => {
+        sessionStorage.removeItem(
+            "sstcStudentData"
+        );
 
-                    reader.classList.add(
-                        "fullscreen-reader"
-                    );
+        sessionStorage.removeItem(
+            "sstcStudentLoggedIn"
+        );
 
-                }
-            )
-            .catch(
-                () => {
+        window.location.href =
+            "sstc-access.html";
 
-                    reader.classList.add(
-                        "fullscreen-reader"
-                    );
+        return;
 
-                }
+    }
+
+
+    /* -----------------------------------------------------
+       DISPLAY STUDENT DATA
+    ----------------------------------------------------- */
+
+    renderStudentData();
+
+}
+
+
+/* =========================================================
+   RENDER STUDENT DATA
+========================================================= */
+
+function renderStudentData() {
+
+    if (!studentData) {
+        return;
+    }
+
+
+    /* -----------------------------------------------------
+       BASIC DETAILS
+    ----------------------------------------------------- */
+
+    setText(
+        "studentName",
+        studentData.fullName
+    );
+
+    setText(
+        "studentFullName",
+        studentData.fullName
+    );
+
+    setText(
+        "studentId",
+        studentData.studentId
+    );
+
+    setText(
+        "studentClass",
+        studentData.className
+    );
+
+    setText(
+        "studentBoard",
+        studentData.board
+    );
+
+    setText(
+        "studentGender",
+        studentData.gender
+    );
+
+    setText(
+        "studentMobile",
+        studentData.mobile
+    );
+
+    setText(
+        "studentEmail",
+        studentData.email
+    );
+
+    setText(
+        "studentSchool",
+        studentData.schoolName
+    );
+
+    setText(
+        "studentSchoolPlace",
+        studentData.schoolPlace
+    );
+
+    setText(
+        "studentRegistrationDate",
+        studentData.registrationDate
+    );
+
+
+    /* -----------------------------------------------------
+       STATUS
+    ----------------------------------------------------- */
+
+    const status =
+        String(
+            studentData.status || "Active"
+        )
+        .trim();
+
+
+    setText(
+        "studentStatus",
+        status
+    );
+
+
+    const statusElement =
+        document.getElementById(
+            "studentStatus"
+        );
+
+
+    if (statusElement) {
+
+        statusElement.classList.remove(
+            "status-active",
+            "status-inactive"
+        );
+
+
+        if (
+            status.toLowerCase() ===
+            "active"
+        ) {
+
+            statusElement.classList.add(
+                "status-active"
             );
 
-    } else {
+        }
 
-        reader.classList.add(
-            "fullscreen-reader"
+        else {
+
+            statusElement.classList.add(
+                "status-inactive"
+            );
+
+        }
+
+    }
+
+
+    /* -----------------------------------------------------
+       INITIAL
+    ----------------------------------------------------- */
+
+    const name =
+        String(
+            studentData.fullName || "Student"
+        ).trim();
+
+
+    const firstLetter =
+        name.charAt(0).toUpperCase();
+
+
+    setText(
+        "studentInitial",
+        firstLetter
+    );
+
+
+    /* -----------------------------------------------------
+       PAGE TITLE
+    ----------------------------------------------------- */
+
+    document.title =
+        "SSTC | " +
+        name +
+        " - Student Portal";
+
+
+    /* -----------------------------------------------------
+       LOGIN TIME
+    ----------------------------------------------------- */
+
+    const loginTime =
+        sessionStorage.getItem(
+            "sstcStudentLoginTime"
         );
+
+
+    if (!loginTime) {
+
+        const now =
+            new Date();
+
+        sessionStorage.setItem(
+            "sstcStudentLoginTime",
+            now.toLocaleString(
+                "en-IN"
+            )
+        );
+
+    }
+
+
+    setText(
+        "studentLoginTime",
+        sessionStorage.getItem(
+            "sstcStudentLoginTime"
+        )
+    );
+
+}
+
+
+/* =========================================================
+   SET TEXT
+========================================================= */
+
+function setText(
+    id,
+    value
+) {
+
+    const element =
+        document.getElementById(
+            id
+        );
+
+
+    if (element) {
+
+        element.textContent =
+            value || "";
 
     }
 
@@ -734,112 +339,56 @@ function toggleFullscreen() {
 
 
 /* =========================================================
-   PAGE NAVIGATION
-   =========================================================
-
-   Direct iframe PDF page navigation
-   is browser-dependent.
-
-   These buttons reload the document
-   to the beginning/end where supported.
-   ========================================================= */
-
-function previousPage() {
-
-    showReaderNotice(
-        "Use the PDF viewer scroll/navigation to move to the previous page."
-    );
-
-}
-
-
-function nextPage() {
-
-    showReaderNotice(
-        "Use the PDF viewer scroll/navigation to move to the next page."
-    );
-
-}
-
-
-/* =========================================================
-   READER NOTICE
-   ========================================================= */
-
-function showReaderNotice(message) {
-
-    const status =
-        document.getElementById(
-            "currentBookStatus"
-        );
-
-    if (!status) return;
-
-
-    const oldText =
-        status.textContent;
-
-
-    status.textContent =
-        message;
-
-
-    setTimeout(
-        () => {
-
-            status.textContent =
-                oldText;
-
-        },
-        2200
-    );
-
-}
-
-
-/* =========================================================
-   LOGOUT
-   ========================================================= */
+   STUDENT LOGOUT
+========================================================= */
 
 function studentLogout() {
 
-    /*
-      Remove student session.
-    */
+    const confirmation =
+        confirm(
+            "Are you sure you want to logout?"
+        );
+
+
+    if (!confirmation) {
+        return;
+    }
+
+
+    sessionStorage.removeItem(
+        "sstcStudentData"
+    );
 
     sessionStorage.removeItem(
         "sstcStudentLoggedIn"
     );
 
     sessionStorage.removeItem(
-        "sstcStudentId"
+        "sstcStudentLoginTime"
     );
 
 
-    /*
-      Go back to sign-in page.
-    */
-
     window.location.href =
-        "student-login.html";
+        "sstc-access.html";
 
 }
 
 
 /* =========================================================
-   SECURITY / DETERRENTS
-   ========================================================= */
+   SECURITY PROTECTION
+   BEST-EFFORT BROWSER PROTECTION
+========================================================= */
 
-function setupProtection() {
+function setupStudentSecurity() {
 
 
-    /*
-      Disable right click
-    */
+    /* -----------------------------------------------------
+       DISABLE RIGHT CLICK
+    ----------------------------------------------------- */
 
     document.addEventListener(
         "contextmenu",
-        event => {
+        function (event) {
 
             event.preventDefault();
 
@@ -847,27 +396,13 @@ function setupProtection() {
     );
 
 
-    /*
-      Disable text selection
-    */
-
-    document.addEventListener(
-        "selectstart",
-        event => {
-
-            event.preventDefault();
-
-        }
-    );
-
-
-    /*
-      Disable drag
-    */
+    /* -----------------------------------------------------
+       DISABLE DRAG
+    ----------------------------------------------------- */
 
     document.addEventListener(
         "dragstart",
-        event => {
+        function (event) {
 
             event.preventDefault();
 
@@ -875,13 +410,13 @@ function setupProtection() {
     );
 
 
-    /*
-      Block print event
-    */
+    /* -----------------------------------------------------
+       DISABLE TEXT SELECTION
+    ----------------------------------------------------- */
 
-    window.addEventListener(
-        "beforeprint",
-        event => {
+    document.addEventListener(
+        "selectstart",
+        function (event) {
 
             event.preventDefault();
 
@@ -889,40 +424,21 @@ function setupProtection() {
     );
 
 
-    /*
-      Try to prevent common print
-      shortcuts.
-    */
+    /* -----------------------------------------------------
+       KEYBOARD PROTECTION
+    ----------------------------------------------------- */
 
-    window.addEventListener(
+    document.addEventListener(
         "keydown",
-        event => {
+        function (event) {
 
             const key =
-                event.key.toLowerCase();
+                String(
+                    event.key || ""
+                ).toLowerCase();
 
 
-            /*
-              Ctrl + P
-            */
-
-            if (
-                event.ctrlKey &&
-                key === "p"
-            ) {
-
-                event.preventDefault();
-
-                showReaderNotice(
-                    "Printing is disabled for this e-book."
-                );
-
-            }
-
-
-            /*
-              Ctrl + S
-            */
+            /* Ctrl + S */
 
             if (
                 event.ctrlKey &&
@@ -931,16 +447,34 @@ function setupProtection() {
 
                 event.preventDefault();
 
-                showReaderNotice(
-                    "Saving this e-book is disabled."
+                showSecurityMessage(
+                    "Downloading is disabled."
                 );
+
+                return;
 
             }
 
 
-            /*
-              Ctrl + U
-            */
+            /* Ctrl + P */
+
+            if (
+                event.ctrlKey &&
+                key === "p"
+            ) {
+
+                event.preventDefault();
+
+                showSecurityMessage(
+                    "Printing is disabled."
+                );
+
+                return;
+
+            }
+
+
+            /* Ctrl + U */
 
             if (
                 event.ctrlKey &&
@@ -949,12 +483,12 @@ function setupProtection() {
 
                 event.preventDefault();
 
+                return;
+
             }
 
 
-            /*
-              Ctrl + Shift + I
-            */
+            /* Ctrl + Shift + I */
 
             if (
                 event.ctrlKey &&
@@ -964,12 +498,27 @@ function setupProtection() {
 
                 event.preventDefault();
 
+                return;
+
             }
 
 
-            /*
-              F12
-            */
+            /* Ctrl + Shift + J */
+
+            if (
+                event.ctrlKey &&
+                event.shiftKey &&
+                key === "j"
+            ) {
+
+                event.preventDefault();
+
+                return;
+
+            }
+
+
+            /* F12 */
 
             if (
                 event.key === "F12"
@@ -977,91 +526,80 @@ function setupProtection() {
 
                 event.preventDefault();
 
+                return;
+
+            }
+
+
+            /* Ctrl + Shift + C */
+
+            if (
+                event.ctrlKey &&
+                event.shiftKey &&
+                key === "c"
+            ) {
+
+                event.preventDefault();
+
+                return;
+
             }
 
         }
     );
 
-}
+
+    /* -----------------------------------------------------
+       PRINT EVENT
+    ----------------------------------------------------- */
+
+    window.addEventListener(
+        "beforeprint",
+        function () {
+
+            document.body.classList.add(
+                "print-blocked"
+            );
+
+        }
+    );
 
 
-/* =========================================================
-   KEYBOARD PROTECTION
-   ========================================================= */
-
-function setupKeyboardProtection() {
+    /* -----------------------------------------------------
+       TAB / WINDOW HIDDEN
+       HIDE READING AREA TEMPORARILY
+    ----------------------------------------------------- */
 
     document.addEventListener(
-        "keydown",
-        event => {
+        "visibilitychange",
+        function () {
 
-            /*
-              PrintScreen cannot be
-              reliably blocked by a
-              webpage.
+            const viewer =
+                document.getElementById(
+                    "ebookViewer"
+                );
 
-              We can only react to the
-              key event where the browser
-              exposes it.
-            */
+
+            if (!viewer) {
+                return;
+            }
+
 
             if (
-                event.key === "PrintScreen"
+                document.hidden
             ) {
 
-                /*
-                  Clear selection.
-                */
-
-                window
-                    .getSelection()
-                    ?.removeAllRanges();
-
-                showReaderNotice(
-                    "Screen capture is restricted on this portal."
+                viewer.classList.add(
+                    "viewer-hidden"
                 );
 
             }
 
+            else {
 
-            /*
-              Ctrl + C
-            */
-
-            if (
-                event.ctrlKey &&
-                event.key.toLowerCase() === "c"
-            ) {
-
-                event.preventDefault();
-
-            }
-
-
-            /*
-              Ctrl + X
-            */
-
-            if (
-                event.ctrlKey &&
-                event.key.toLowerCase() === "x"
-            ) {
-
-                event.preventDefault();
-
-            }
-
-
-            /*
-              Ctrl + A
-            */
-
-            if (
-                event.ctrlKey &&
-                event.key.toLowerCase() === "a"
-            ) {
-
-                event.preventDefault();
+                viewer.classList.remove(
+                    "viewer-hidden"
+                );
 
             }
 
@@ -1072,85 +610,50 @@ function setupKeyboardProtection() {
 
 
 /* =========================================================
-   ESCAPE HTML
-   ========================================================= */
+   SECURITY MESSAGE
+========================================================= */
 
-function escapeHTML(value) {
-
-    return String(value)
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
-
-
-/* =========================================================
-   SET TEXT
-   ========================================================= */
-
-function setText(
-    id,
-    value
+function showSecurityMessage(
+    message
 ) {
 
-    const element =
-        document.getElementById(id);
+    const old =
+        document.querySelector(
+            ".security-message"
+        );
 
-    if (element) {
 
-        element.textContent =
-            value;
-
+    if (old) {
+        old.remove();
     }
+
+
+    const box =
+        document.createElement(
+            "div"
+        );
+
+
+    box.className =
+        "security-message";
+
+
+    box.textContent =
+        message;
+
+
+    document.body.appendChild(
+        box
+    );
+
+
+    setTimeout(
+        function () {
+
+            box.remove();
+
+        },
+        2000
+    );
 
 }
-
-
-/* =========================================================
-   SECURITY CLEANUP
-   ========================================================= */
-
-window.addEventListener(
-    "load",
-    () => {
-
-        /*
-          Prevent browser drag of
-          iframe/container.
-        */
-
-        document
-            .querySelectorAll(
-                "iframe"
-            )
-            .forEach(
-                frame => {
-
-                    frame.setAttribute(
-                        "draggable",
-                        "false"
-                    );
-
-                }
-            );
-
-    }
-);
