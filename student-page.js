@@ -339,38 +339,33 @@ function setText(
 
 
 /* =========================================================
-   STUDENT LOGOUT
+   SSTC STUDENT LOGOUT
 ========================================================= */
 
-function studentLogout() {
+function studentLogout(event) {
 
-    const confirmation =
-        confirm(
-            "Are you sure you want to logout?"
-        );
-
-
-    if (!confirmation) {
-        return;
+    if (event) {
+        event.preventDefault();
     }
 
+    /*
+     * Student session completely clear
+     */
+    sessionStorage.removeItem("sstcStudentLoggedIn");
+    sessionStorage.removeItem("sstcStudentData");
 
-    sessionStorage.removeItem(
-        "sstcStudentData"
-    );
+    /*
+     * Remembered Student ID ko logout par delete
+     * nahi karenge.
+     *
+     * Isse "Remember me" properly kaam karega.
+     */
 
-    sessionStorage.removeItem(
-        "sstcStudentLoggedIn"
-    );
-
-    sessionStorage.removeItem(
-        "sstcStudentLoginTime"
-    );
-
-
-    window.location.href =
-        "sstc-access.html";
-
+    /*
+     * Prevent browser back button from returning
+     * directly to protected student page.
+     */
+    window.location.replace("sstc-access.html");
 }
 
 
