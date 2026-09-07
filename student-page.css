@@ -1339,3 +1339,89 @@ body {
     }
 
 }
+/* =========================================================
+   SSTC STUDENT READING PROTECTION
+========================================================= */
+
+body {
+    -webkit-user-select: none;
+    user-select: none;
+
+    -webkit-touch-callout: none;
+}
+
+
+/* Prevent image dragging */
+
+img,
+canvas,
+iframe {
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+
+/* Viewer hidden when tab is changed */
+
+.viewer-hidden {
+    filter: blur(30px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* Security message */
+
+.security-message {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 30px;
+
+    transform: translateX(-50%);
+
+    z-index: 999999;
+
+    background: #111827;
+
+    color: white;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 8px 30px
+        rgba(0, 0, 0, 0.25);
+
+}
+
+
+/* Print protection */
+
+@media print {
+
+    body * {
+        display: none !important;
+    }
+
+    body::before {
+
+        content:
+            "Printing is disabled for SSTC Student E-Book Portal.";
+
+        display: block;
+
+        font-size: 24px;
+
+        padding: 40px;
+
+    }
+
+}
