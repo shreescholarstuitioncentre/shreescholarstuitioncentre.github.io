@@ -143,10 +143,14 @@ async function loadStudents() {
            GOOGLE APPS SCRIPT URL
         --------------------------------------------- */
 
-        const url =
-            GOOGLE_SCRIPT_URL +
-            "?action=getStudents&_=" +
-            Date.now();
+        // const url =
+        //     GOOGLE_SCRIPT_URL +
+        //     "?action=getStudents&_=" +
+        //     Date.now();
+       const url =
+    GOOGLE_SCRIPT_URL +
+    "?action=getStudents&_=" +
+    Date.now();
 
 
         console.log(
