@@ -72,23 +72,23 @@ document.addEventListener(
    Browser Back / bfcache protection
 ========================================================= */
 
-window.addEventListener(
-    "pageshow",
-    function (event) {
+// window.addEventListener(
+//     "pageshow",
+//     function (event) {
 
-        /*
-         * Agar page browser cache se wapas aaya hai,
-         * session ko dobara verify karo.
-         */
+//         /*
+//          * Agar page browser cache se wapas aaya hai,
+//          * session ko dobara verify karo.
+//          */
 
-        if (event.persisted) {
+//         if (event.persisted) {
 
-            checkStudentSession();
+//             checkStudentSession();
 
-        }
+//         }
 
-    }
-);
+//     }
+// );
 
 
 /* =========================================================
