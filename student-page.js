@@ -333,18 +333,11 @@ function renderStudentData() {
     );
 
 
-    /* =====================================================
-       
-       -----------------------------------------------------
-       Backend field:
-       Name
-    ===================================================== */
-
-    /* =====================================================
+   /* =====================================================
    CLASS
 ===================================================== */
 
-const studentClassValue =
+const classValue =
     getStudentValue(
         [
             "className",
@@ -355,21 +348,23 @@ const studentClassValue =
         "-"
     );
 
-console.log(
-    "SSTC CLASS VALUE:",
-    studentClassValue
-);
 
-console.log(
-    "SSTC COMPLETE STUDENT DATA:",
-    studentData
-);
+/* Profile ke naam ke neeche */
 
 setText(
     "studentClass",
-    studentClassValue
+    classValue
 );
 
+
+/* Profile details me Class */
+
+setText(
+    "studentClassDetail",
+    classValue
+);
+
+   
     /* =====================================================
        BOARD
     ===================================================== */
