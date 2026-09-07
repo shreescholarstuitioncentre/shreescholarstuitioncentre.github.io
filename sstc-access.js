@@ -458,42 +458,36 @@ function setupPasswordToggles() {
 
 }
 
-
 /* =========================================================
    STUDENT / ADMIN TAB SWITCH
 ========================================================= */
 
-function switchLogin(
-    type
-) {
+function switchLogin(type) {
 
     const studentForm =
-        document.getElementById(
-            "studentLoginForm"
-        );
-
+        document.getElementById("studentLogin");
 
     const adminForm =
-        document.getElementById(
-            "adminLoginForm"
-        );
-
+        document.getElementById("adminLogin");
 
     const studentTab =
-        document.getElementById(
-            "studentTab"
-        );
-
+        document.getElementById("studentTab");
 
     const adminTab =
-        document.getElementById(
-            "adminTab"
-        );
+        document.getElementById("adminTab");
 
+
+    /* =====================================================
+       STUDENT LOGIN
+    ===================================================== */
 
     if (type === "student") {
 
         if (studentForm) {
+
+            studentForm.classList.add(
+                "active-form"
+            );
 
             studentForm.style.display =
                 "";
@@ -502,6 +496,10 @@ function switchLogin(
 
 
         if (adminForm) {
+
+            adminForm.classList.remove(
+                "active-form"
+            );
 
             adminForm.style.display =
                 "none";
@@ -529,11 +527,17 @@ function switchLogin(
     }
 
 
-    else if (
-        type === "admin"
-    ) {
+    /* =====================================================
+       ADMIN LOGIN
+    ===================================================== */
+
+    else if (type === "admin") {
 
         if (studentForm) {
+
+            studentForm.classList.remove(
+                "active-form"
+            );
 
             studentForm.style.display =
                 "none";
@@ -542,6 +546,10 @@ function switchLogin(
 
 
         if (adminForm) {
+
+            adminForm.classList.add(
+                "active-form"
+            );
 
             adminForm.style.display =
                 "";
