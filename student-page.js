@@ -334,18 +334,20 @@ function renderStudentData() {
 
 
     /* =====================================================
-       CLASS
+       
        -----------------------------------------------------
        Backend field:
-       className
+       Name
     ===================================================== */
 
     setText(
         "studentClass",
         getStudentValue(
             [
-                "className",
-                "class"
+                "Class",
+            "className",
+            "class",
+            "CLASS"
             ],
             "-"
         )
