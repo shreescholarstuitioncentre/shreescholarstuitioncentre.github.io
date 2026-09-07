@@ -345,9 +345,10 @@ function renderStudentData() {
         getStudentValue(
             [
                 "Class",
-            "className",
-            "class",
-            "CLASS"
+               "className",
+               "class",
+               "CLASS",
+               "studentClass"
             ],
             "-"
         )
