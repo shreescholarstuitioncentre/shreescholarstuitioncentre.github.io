@@ -55,7 +55,7 @@ const SSTC_EBOOKS = {
                 "Class 10 Science E-Book Library",
 
             image:
-                "subject-images/science.jpg",
+                "subject-images/science.png",
 
             chapters: [
 
@@ -152,7 +152,7 @@ const SSTC_EBOOKS = {
                 "Class 10 Mathematics E-Book Library",
 
             image:
-                "subject-images/mathematics.jpg",
+                "subject-images/mathematics.png",
 
             chapters: [
 
@@ -260,7 +260,7 @@ const SSTC_EBOOKS = {
                 "Class 10 Hindi E-Book Library",
 
             image:
-                "subject-images/hindi.jpg",
+                "subject-images/hindi.png",
 
             chapters: [
 
@@ -338,7 +338,7 @@ const SSTC_EBOOKS = {
                 "Class 10 English E-Book Library",
 
             image:
-                "subject-images/english.jpg",
+                "subject-images/english.png",
 
             chapters: [
 
@@ -416,7 +416,7 @@ const SSTC_EBOOKS = {
                 "Class 10 Social Science E-Book Library",
 
             image:
-                "subject-images/social-science.jpg",
+                "subject-images/social-science.png",
 
             chapters: [
 
@@ -494,7 +494,7 @@ const SSTC_EBOOKS = {
                 "Class 10 Chitrakala E-Book Library",
 
             image:
-                "subject-images/chitrakala.jpg",
+                "subject-images/chitrakala.png",
 
             chapters: [
 
@@ -542,7 +542,7 @@ const SSTC_EBOOKS = {
                 "Class 10 Home Science E-Book Library",
 
             image:
-                "subject-images/home-science.jpg",
+                "subject-images/home-science.png",
 
             chapters: [
 
@@ -590,7 +590,7 @@ const SSTC_EBOOKS = {
                 "Class 10 Computer E-Book Library",
 
             image:
-                "subject-images/computer.jpg",
+                "subject-images/computer.png",
 
             chapters: [
 
