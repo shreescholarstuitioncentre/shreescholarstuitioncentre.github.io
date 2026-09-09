@@ -1773,3 +1773,28 @@ body {
     }
 
 }
+/* =========================================================
+   SSTC PAGE BACKGROUND
+   ========================================================= */
+
+body {
+    position: relative;
+    background: #f5f7fb;
+}
+
+/* Background image layer */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background-image: url("background%20SSTC.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    opacity: 0.12;
+
+    pointer-events: none;
+    z-index: -1;
+}
