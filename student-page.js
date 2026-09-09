@@ -45,19 +45,14 @@ const SSTC_EBOOKS = {
 
     "10": {
 
+        /* =====================================================
+           CLASS 10 - SCIENCE
+           ===================================================== */
+
         "Science": {
 
             description:
                 "Class 10 Science E-Book Library",
-
-            /*
-             * Subject card image.
-             *
-             * Is file ko GitHub me:
-             * subject-images/science.jpg
-             *
-             * ke naam se rakh sakte hain.
-             */
 
             image:
                 "subject-images/science.jpg",
@@ -66,108 +61,586 @@ const SSTC_EBOOKS = {
 
                 {
                     number: 1,
-                    title:
-                        "Chemical Reactions and Equations",
-                    pdf:
-                        "ebooks/class-10/science/chapter-01.pdf"
+                    title: "Chemical Reactions and Equations",
+                    pdf: "ebooks/class-10/science/chapter-01.pdf"
                 },
 
                 {
                     number: 2,
-                    title:
-                        "Acids, Bases and Salts",
-                    pdf:
-                        "ebooks/class-10/science/chapter-02.pdf"
+                    title: "Acids, Bases and Salts",
+                    pdf: "ebooks/class-10/science/chapter-02.pdf"
                 },
 
                 {
                     number: 3,
-                    title:
-                        "Metals and Non-metals",
-                    pdf:
-                        "ebooks/class-10/science/chapter-03.pdf"
+                    title: "Metals and Non-metals",
+                    pdf: "ebooks/class-10/science/chapter-03.pdf"
                 },
 
                 {
                     number: 4,
-                    title:
-                        "Carbon and Its Compounds",
-                    pdf:
-                        "ebooks/class-10/science/chapter-04.pdf"
+                    title: "Carbon and Its Compounds",
+                    pdf: "ebooks/class-10/science/chapter-04.pdf"
                 },
 
                 {
                     number: 5,
-                    title:
-                        "Life Processes",
-                    pdf:
-                        "ebooks/class-10/science/chapter-05.pdf"
+                    title: "Life Processes",
+                    pdf: "ebooks/class-10/science/chapter-05.pdf"
                 },
 
                 {
                     number: 6,
-                    title:
-                        "Control and Coordination",
-                    pdf:
-                        "ebooks/class-10/science/chapter-06.pdf"
+                    title: "Control and Coordination",
+                    pdf: "ebooks/class-10/science/chapter-06.pdf"
                 },
 
                 {
                     number: 7,
-                    title:
-                        "How do Organisms Reproduce?",
-                    pdf:
-                        "ebooks/class-10/science/chapter-07.pdf"
+                    title: "How do Organisms Reproduce?",
+                    pdf: "ebooks/class-10/science/chapter-07.pdf"
                 },
 
                 {
                     number: 8,
-                    title:
-                        "Heredity",
-                    pdf:
-                        "ebooks/class-10/science/chapter-08.pdf"
+                    title: "Heredity",
+                    pdf: "ebooks/class-10/science/chapter-08.pdf"
                 },
 
                 {
                     number: 9,
-                    title:
-                        "Light – Reflection and Refraction",
-                    pdf:
-                        "ebooks/class-10/science/chapter-09.pdf"
+                    title: "Light – Reflection and Refraction",
+                    pdf: "ebooks/class-10/science/chapter-09.pdf"
                 },
 
                 {
                     number: 10,
-                    title:
-                        "The Human Eye and the Colourful World",
-                    pdf:
-                        "ebooks/class-10/science/chapter-10.pdf"
+                    title: "The Human Eye and the Colourful World",
+                    pdf: "ebooks/class-10/science/chapter-10.pdf"
                 },
 
                 {
                     number: 11,
-                    title:
-                        "Electricity",
-                    pdf:
-                        "ebooks/class-10/science/chapter-11.pdf"
+                    title: "Electricity",
+                    pdf: "ebooks/class-10/science/chapter-11.pdf"
                 },
 
                 {
                     number: 12,
-                    title:
-                        "Magnetic Effects of Electric Current",
-                    pdf:
-                        "ebooks/class-10/science/chapter-12.pdf"
+                    title: "Magnetic Effects of Electric Current",
+                    pdf: "ebooks/class-10/science/chapter-12.pdf"
                 },
 
                 {
                     number: 13,
-                    title:
-                        "Our Environment",
-                    pdf:
-                        "ebooks/class-10/science/chapter-13.pdf"
+                    title: "Our Environment",
+                    pdf: "ebooks/class-10/science/chapter-13.pdf"
                 }
 
+            ]
+
+        },
+
+
+        /* =====================================================
+           CLASS 10 - MATHEMATICS
+           ===================================================== */
+
+        "Mathematics": {
+
+            description:
+                "Class 10 Mathematics E-Book Library",
+
+            image:
+                "subject-images/mathematics.jpg",
+
+            chapters: [
+
+                {
+                    number: 1,
+                    title: "Chapter 1",
+                    pdf: "ebooks/class-10/mathematics/chapter-01.pdf"
+                },
+
+                {
+                    number: 2,
+                    title: "Chapter 2",
+                    pdf: "ebooks/class-10/mathematics/chapter-02.pdf"
+                },
+
+                {
+                    number: 3,
+                    title: "Chapter 3",
+                    pdf: "ebooks/class-10/mathematics/chapter-03.pdf"
+                },
+
+                {
+                    number: 4,
+                    title: "Chapter 4",
+                    pdf: "ebooks/class-10/mathematics/chapter-04.pdf"
+                },
+
+                {
+                    number: 5,
+                    title: "Chapter 5",
+                    pdf: "ebooks/class-10/mathematics/chapter-05.pdf"
+                },
+
+                {
+                    number: 6,
+                    title: "Chapter 6",
+                    pdf: "ebooks/class-10/mathematics/chapter-06.pdf"
+                },
+
+                {
+                    number: 7,
+                    title: "Chapter 7",
+                    pdf: "ebooks/class-10/mathematics/chapter-07.pdf"
+                },
+
+                {
+                    number: 8,
+                    title: "Chapter 8",
+                    pdf: "ebooks/class-10/mathematics/chapter-08.pdf"
+                },
+
+                {
+                    number: 9,
+                    title: "Chapter 9",
+                    pdf: "ebooks/class-10/mathematics/chapter-09.pdf"
+                },
+
+                {
+                    number: 10,
+                    title: "Chapter 10",
+                    pdf: "ebooks/class-10/mathematics/chapter-10.pdf"
+                },
+
+                {
+                    number: 11,
+                    title: "Chapter 11",
+                    pdf: "ebooks/class-10/mathematics/chapter-11.pdf"
+                },
+
+                {
+                    number: 12,
+                    title: "Chapter 12",
+                    pdf: "ebooks/class-10/mathematics/chapter-12.pdf"
+                },
+
+                {
+                    number: 13,
+                    title: "Chapter 13",
+                    pdf: "ebooks/class-10/mathematics/chapter-13.pdf"
+                },
+
+                {
+                    number: 14,
+                    title: "Chapter 14",
+                    pdf: "ebooks/class-10/mathematics/chapter-14.pdf"
+                },
+
+                {
+                    number: 15,
+                    title: "Chapter 15",
+                    pdf: "ebooks/class-10/mathematics/chapter-15.pdf"
+                }
+            ]
+
+        },
+
+
+        /* =====================================================
+           CLASS 10 - HINDI
+           ===================================================== */
+
+        "Hindi": {
+
+            description:
+                "Class 10 Hindi E-Book Library",
+
+            image:
+                "subject-images/hindi.jpg",
+
+            chapters: [
+
+                {
+                    number: 1,
+                    title: "Chapter 1",
+                    pdf: "ebooks/class-10/hindi/chapter-01.pdf"
+                },
+
+                {
+                    number: 2,
+                    title: "Chapter 2",
+                    pdf: "ebooks/class-10/hindi/chapter-02.pdf"
+                },
+
+                {
+                    number: 3,
+                    title: "Chapter 3",
+                    pdf: "ebooks/class-10/hindi/chapter-03.pdf"
+                },
+
+                {
+                    number: 4,
+                    title: "Chapter 4",
+                    pdf: "ebooks/class-10/hindi/chapter-04.pdf"
+                },
+
+                {
+                    number: 5,
+                    title: "Chapter 5",
+                    pdf: "ebooks/class-10/hindi/chapter-05.pdf"
+                },
+
+                {
+                    number: 6,
+                    title: "Chapter 6",
+                    pdf: "ebooks/class-10/hindi/chapter-06.pdf"
+                },
+
+                {
+                    number: 7,
+                    title: "Chapter 7",
+                    pdf: "ebooks/class-10/hindi/chapter-07.pdf"
+                },
+
+                {
+                    number: 8,
+                    title: "Chapter 8",
+                    pdf: "ebooks/class-10/hindi/chapter-08.pdf"
+                },
+
+                {
+                    number: 9,
+                    title: "Chapter 9",
+                    pdf: "ebooks/class-10/hindi/chapter-09.pdf"
+                },
+
+                {
+                    number: 10,
+                    title: "Chapter 10",
+                    pdf: "ebooks/class-10/hindi/chapter-10.pdf"
+                }
+            ]
+
+        },
+
+
+        /* =====================================================
+           CLASS 10 - ENGLISH
+           ===================================================== */
+
+        "English": {
+
+            description:
+                "Class 10 English E-Book Library",
+
+            image:
+                "subject-images/english.jpg",
+
+            chapters: [
+
+                {
+                    number: 1,
+                    title: "Chapter 1",
+                    pdf: "ebooks/class-10/english/chapter-01.pdf"
+                },
+
+                {
+                    number: 2,
+                    title: "Chapter 2",
+                    pdf: "ebooks/class-10/english/chapter-02.pdf"
+                },
+
+                {
+                    number: 3,
+                    title: "Chapter 3",
+                    pdf: "ebooks/class-10/english/chapter-03.pdf"
+                },
+
+                {
+                    number: 4,
+                    title: "Chapter 4",
+                    pdf: "ebooks/class-10/english/chapter-04.pdf"
+                },
+
+                {
+                    number: 5,
+                    title: "Chapter 5",
+                    pdf: "ebooks/class-10/english/chapter-05.pdf"
+                },
+
+                {
+                    number: 6,
+                    title: "Chapter 6",
+                    pdf: "ebooks/class-10/english/chapter-06.pdf"
+                },
+
+                {
+                    number: 7,
+                    title: "Chapter 7",
+                    pdf: "ebooks/class-10/english/chapter-07.pdf"
+                },
+
+                {
+                    number: 8,
+                    title: "Chapter 8",
+                    pdf: "ebooks/class-10/english/chapter-08.pdf"
+                },
+
+                {
+                    number: 9,
+                    title: "Chapter 9",
+                    pdf: "ebooks/class-10/english/chapter-09.pdf"
+                },
+
+                {
+                    number: 10,
+                    title: "Chapter 10",
+                    pdf: "ebooks/class-10/english/chapter-10.pdf"
+                }
+            ]
+
+        },
+
+
+        /* =====================================================
+           CLASS 10 - SOCIAL SCIENCE
+           ===================================================== */
+
+        "Social Science": {
+
+            description:
+                "Class 10 Social Science E-Book Library",
+
+            image:
+                "subject-images/social-science.jpg",
+
+            chapters: [
+
+                {
+                    number: 1,
+                    title: "Chapter 1",
+                    pdf: "ebooks/class-10/social-science/chapter-01.pdf"
+                },
+
+                {
+                    number: 2,
+                    title: "Chapter 2",
+                    pdf: "ebooks/class-10/social-science/chapter-02.pdf"
+                },
+
+                {
+                    number: 3,
+                    title: "Chapter 3",
+                    pdf: "ebooks/class-10/social-science/chapter-03.pdf"
+                },
+
+                {
+                    number: 4,
+                    title: "Chapter 4",
+                    pdf: "ebooks/class-10/social-science/chapter-04.pdf"
+                },
+
+                {
+                    number: 5,
+                    title: "Chapter 5",
+                    pdf: "ebooks/class-10/social-science/chapter-05.pdf"
+                },
+
+                {
+                    number: 6,
+                    title: "Chapter 6",
+                    pdf: "ebooks/class-10/social-science/chapter-06.pdf"
+                },
+
+                {
+                    number: 7,
+                    title: "Chapter 7",
+                    pdf: "ebooks/class-10/social-science/chapter-07.pdf"
+                },
+
+                {
+                    number: 8,
+                    title: "Chapter 8",
+                    pdf: "ebooks/class-10/social-science/chapter-08.pdf"
+                },
+
+                {
+                    number: 9,
+                    title: "Chapter 9",
+                    pdf: "ebooks/class-10/social-science/chapter-09.pdf"
+                },
+
+                {
+                    number: 10,
+                    title: "Chapter 10",
+                    pdf: "ebooks/class-10/social-science/chapter-10.pdf"
+                }
+            ]
+
+        },
+
+
+        /* =====================================================
+           CLASS 10 - CHITRAKALA
+           ===================================================== */
+
+        "Chitrakala": {
+
+            description:
+                "Class 10 Chitrakala E-Book Library",
+
+            image:
+                "subject-images/chitrakala.jpg",
+
+            chapters: [
+
+                {
+                    number: 1,
+                    title: "Chapter 1",
+                    pdf: "ebooks/class-10/chitrakala/chapter-01.pdf"
+                },
+
+                {
+                    number: 2,
+                    title: "Chapter 2",
+                    pdf: "ebooks/class-10/chitrakala/chapter-02.pdf"
+                },
+
+                {
+                    number: 3,
+                    title: "Chapter 3",
+                    pdf: "ebooks/class-10/chitrakala/chapter-03.pdf"
+                },
+
+                {
+                    number: 4,
+                    title: "Chapter 4",
+                    pdf: "ebooks/class-10/chitrakala/chapter-04.pdf"
+                },
+
+                {
+                    number: 5,
+                    title: "Chapter 5",
+                    pdf: "ebooks/class-10/chitrakala/chapter-05.pdf"
+                }
+            ]
+
+        },
+
+
+        /* =====================================================
+           CLASS 10 - HOME SCIENCE
+           ===================================================== */
+
+        "Home Science": {
+
+            description:
+                "Class 10 Home Science E-Book Library",
+
+            image:
+                "subject-images/home-science.jpg",
+
+            chapters: [
+
+                {
+                    number: 1,
+                    title: "Chapter 1",
+                    pdf: "ebooks/class-10/home-science/chapter-01.pdf"
+                },
+
+                {
+                    number: 2,
+                    title: "Chapter 2",
+                    pdf: "ebooks/class-10/home-science/chapter-02.pdf"
+                },
+
+                {
+                    number: 3,
+                    title: "Chapter 3",
+                    pdf: "ebooks/class-10/home-science/chapter-03.pdf"
+                },
+
+                {
+                    number: 4,
+                    title: "Chapter 4",
+                    pdf: "ebooks/class-10/home-science/chapter-04.pdf"
+                },
+
+                {
+                    number: 5,
+                    title: "Chapter 5",
+                    pdf: "ebooks/class-10/home-science/chapter-05.pdf"
+                }
+            ]
+
+        },
+
+
+        /* =====================================================
+           CLASS 10 - COMPUTER
+           ===================================================== */
+
+        "Computer": {
+
+            description:
+                "Class 10 Computer E-Book Library",
+
+            image:
+                "subject-images/computer.jpg",
+
+            chapters: [
+
+                {
+                    number: 1,
+                    title: "Chapter 1",
+                    pdf: "ebooks/class-10/computer/chapter-01.pdf"
+                },
+
+                {
+                    number: 2,
+                    title: "Chapter 2",
+                    pdf: "ebooks/class-10/computer/chapter-02.pdf"
+                },
+
+                {
+                    number: 3,
+                    title: "Chapter 3",
+                    pdf: "ebooks/class-10/computer/chapter-03.pdf"
+                },
+
+                {
+                    number: 4,
+                    title: "Chapter 4",
+                    pdf: "ebooks/class-10/computer/chapter-04.pdf"
+                },
+
+                {
+                    number: 5,
+                    title: "Chapter 5",
+                    pdf: "ebooks/class-10/computer/chapter-05.pdf"
+                },
+
+                {
+                    number: 6,
+                    title: "Chapter 6",
+                    pdf: "ebooks/class-10/computer/chapter-06.pdf"
+                },
+
+                {
+                    number: 7,
+                    title: "Chapter 7",
+                    pdf: "ebooks/class-10/computer/chapter-07.pdf"
+                },
+
+                {
+                    number: 8,
+                    title: "Chapter 8",
+                    pdf: "ebooks/class-10/computer/chapter-08.pdf"
+                }
             ]
 
         }
@@ -175,7 +648,6 @@ const SSTC_EBOOKS = {
     }
 
 };
-
 
 /* =========================================================
    LOGOUT / REDIRECT CONTROL
