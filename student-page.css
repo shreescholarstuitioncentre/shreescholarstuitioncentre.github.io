@@ -1798,3 +1798,425 @@ body::before {
     pointer-events: none;
     z-index: -1;
 }
+/* =========================================================
+   SSTC SUBJECT CAROUSEL
+   ========================================================= */
+
+.subject-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+
+    padding: 12px 8px 20px;
+
+    scrollbar-width: none;
+}
+
+.subject-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+   SUBJECT CARD
+   ========================================================= */
+
+.subject-card {
+    flex: 0 0 280px;
+
+    min-height: 330px;
+
+    padding: 0;
+
+    border: 2px solid transparent;
+
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.10);
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.subject-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 16px 38px rgba(0, 0, 0, 0.16);
+}
+
+
+.subject-card.active {
+    border-color: #2563eb;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 14px 35px rgba(37, 99, 235, 0.22);
+}
+
+
+/* =========================================================
+   SUBJECT IMAGE
+   ========================================================= */
+
+.subject-card-image {
+    width: 100%;
+    height: 175px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eaf2ff,
+            #f7f9ff
+        );
+}
+
+
+.subject-card-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    user-select: none;
+    -webkit-user-drag: none;
+
+    transition:
+        transform 0.35s ease;
+}
+
+
+.subject-card:hover
+.subject-card-image img {
+    transform: scale(1.06);
+}
+
+
+/* =========================================================
+   SUBJECT CONTENT
+   ========================================================= */
+
+.subject-card-content {
+    padding: 18px 20px 20px;
+}
+
+
+.subject-card-badge {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.6px;
+
+    background: #eef4ff;
+
+    color: #2563eb;
+}
+
+
+.subject-card-content h3 {
+    margin: 10px 0 6px;
+
+    font-size: 23px;
+
+    line-height: 1.2;
+
+    color: #172033;
+}
+
+
+.subject-card-content p {
+    margin: 0 0 12px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    color: #64748b;
+}
+
+
+.subject-chapter-count {
+    display: inline-flex;
+
+    align-items: center;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: #334155;
+}
+
+
+/* =========================================================
+   CHAPTER LIST
+   ========================================================= */
+
+.chapter-grid {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   CHAPTER ITEM
+   ========================================================= */
+
+.chapter-item {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        48px
+        50px
+        1fr
+        auto;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 15px 18px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.chapter-item:hover {
+    transform: translateX(4px);
+
+    border-color: #93c5fd;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+
+.chapter-item.active {
+    border-color: #2563eb;
+
+    background: #f5f9ff;
+}
+
+
+/* =========================================================
+   CHAPTER NUMBER
+   ========================================================= */
+
+.chapter-number {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #eef4ff;
+
+    color: #2563eb;
+
+    font-size: 17px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   CHAPTER ICON
+   ========================================================= */
+
+.chapter-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #f8fafc;
+
+    font-size: 20px;
+}
+
+
+/* =========================================================
+   CHAPTER INFO
+   ========================================================= */
+
+.chapter-info h3 {
+    margin: 0 0 4px;
+
+    color: #172033;
+
+    font-size: 16px;
+
+    line-height: 1.4;
+}
+
+
+.chapter-info p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   OPEN PDF
+   ========================================================= */
+
+.chapter-open {
+    white-space: nowrap;
+
+    padding: 9px 14px;
+
+    border-radius: 10px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   EMPTY LIBRARY
+   ========================================================= */
+
+.library-empty {
+    width: 100%;
+
+    padding: 45px 20px;
+
+    text-align: center;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    border: 1px dashed #cbd5e1;
+}
+
+
+.library-empty > div {
+    font-size: 42px;
+
+    margin-bottom: 10px;
+}
+
+
+.library-empty h3 {
+    margin: 0 0 8px;
+
+    color: #172033;
+}
+
+
+.library-empty p {
+    margin: 0;
+
+    color: #64748b;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .subject-card {
+        flex: 0 0 245px;
+
+        min-height: 310px;
+    }
+
+
+    .subject-card-image {
+        height: 155px;
+    }
+
+
+    .chapter-item {
+        grid-template-columns:
+            40px
+            40px
+            1fr;
+
+        gap: 10px;
+
+        padding: 13px;
+    }
+
+
+    .chapter-number,
+    .chapter-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+
+    .chapter-open {
+        grid-column: 3;
+
+        justify-self: start;
+
+        margin-top: 4px;
+    }
+
+}
