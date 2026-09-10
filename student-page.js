@@ -2071,9 +2071,28 @@ function openChapter(
     setTimeout(
         function () {
 
-            frame.src =
-                chapter.pdf;
-
+            const frame =
+                document.getElementById("pdfFrame");
+            
+            const empty =
+                document.getElementById("viewerEmpty");
+            
+            if (!frame) {
+                return;
+            }
+            
+            if (empty) {
+                empty.style.display = "flex";
+            
+                empty.innerHTML = `
+                    <div class="empty-icon">📖</div>
+                    <h3>Opening Chapter...</h3>
+                    <p>${escapeHtml(chapter.title)}</p>
+                `;
+            }
+            
+            frame.src = chapter.pdf;
+            
         },
         50
     );
