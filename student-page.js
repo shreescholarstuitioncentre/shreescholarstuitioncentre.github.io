@@ -1965,6 +1965,10 @@ function renderChapters(
    OPEN CHAPTER / PDF
    ========================================================= */
 
+/* =========================================================
+   OPEN CHAPTER / PDF
+   ========================================================= */
+
 function openChapter(
     subjectName,
     chapterIndex
@@ -2040,6 +2044,251 @@ function openChapter(
 
     }
 
+
+    /* =====================================================
+       SAVE SESSION
+       ===================================================== */
+
+    sessionStorage.setItem(
+        SSTC_CURRENT_BOOK,
+        subjectName
+    );
+
+
+    sessionStorage.setItem(
+        SSTC_CURRENT_CHAPTER,
+        String(
+            chapter.number
+        )
+    );
+
+
+    sessionStorage.setItem(
+        SSTC_CURRENT_PAGE,
+        "1"
+    );
+
+
+    /* =====================================================
+       ACTIVE CHAPTER
+       ===================================================== */
+
+    const chapterItems =
+        document.querySelectorAll(
+            ".chapter-item"
+        );
+
+
+    chapterItems.forEach(
+        function (
+            item
+        ) {
+
+            item.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+
+    const selectedChapter =
+        document.querySelector(
+            '.chapter-item[data-chapter="' +
+            chapter.number +
+            '"]'
+        );
+
+
+    if (selectedChapter) {
+
+        selectedChapter.classList.add(
+            "active"
+        );
+
+    }
+
+
+    /* =====================================================
+       READER INFORMATION
+       ===================================================== */
+
+    setText(
+        "currentBookTitle",
+        chapter.title
+    );
+
+
+    setText(
+        "currentBookStatus",
+        subjectName +
+        " • Chapter " +
+        chapter.number
+    );
+
+
+    setText(
+        "currentChapterNumber",
+        chapter.number
+    );
+
+
+    /* =====================================================
+       PDF FRAME
+       ===================================================== */
+
+    const frame =
+        document.getElementById(
+            "pdfFrame"
+        );
+
+
+    const empty =
+        document.getElementById(
+            "viewerEmpty"
+        );
+
+
+    if (!frame) {
+
+        console.error(
+            "SSTC: pdfFrame not found."
+        );
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       SHOW LOADING
+       ===================================================== */
+
+    if (empty) {
+
+        empty.style.display =
+            "flex";
+
+
+        empty.innerHTML =
+            `
+            <div class="empty-icon">
+                📖
+            </div>
+
+            <h3>
+                Opening Chapter...
+            </h3>
+
+            <p>
+                ${escapeHtml(
+                    chapter.title
+                )}
+            </p>
+            `;
+
+    }
+
+
+    /* =====================================================
+       CLEAR OLD PDF
+       ===================================================== */
+
+    frame.src =
+        "about:blank";
+
+
+    /* =====================================================
+       BUILD PDF.JS VIEWER URL
+       ===================================================== */
+
+    const pdfUrl =
+        new URL(
+            chapter.pdf,
+            window.location.href
+        ).href;
+
+
+    const viewerUrl =
+        "pdf-viewer.html?file=" +
+        encodeURIComponent(
+            pdfUrl
+        );
+
+
+    console.log(
+        "SSTC PDF:",
+        pdfUrl
+    );
+
+
+    console.log(
+        "SSTC PDF Viewer:",
+        viewerUrl
+    );
+
+
+    /* =====================================================
+       LOAD CUSTOM PDF VIEWER
+       ===================================================== */
+
+    setTimeout(
+        function () {
+
+            const currentFrame =
+                document.getElementById(
+                    "pdfFrame"
+                );
+
+
+            if (!currentFrame) {
+
+                return;
+
+            }
+
+
+            currentFrame.src =
+                viewerUrl;
+
+
+        },
+        100
+    );
+
+
+    /* =====================================================
+       SCROLL TO READER
+       ===================================================== */
+
+    const readerSection =
+        document.getElementById(
+            "readerSection"
+        );
+
+
+    if (readerSection) {
+
+        setTimeout(
+            function () {
+
+                readerSection.scrollIntoView(
+                    {
+                        behavior:
+                            "smooth",
+
+                        block:
+                            "start"
+                    }
+                );
+
+            },
+            150
+        );
+
+    }
+
+}
 
     /* =====================================================
        SAVE SESSION
