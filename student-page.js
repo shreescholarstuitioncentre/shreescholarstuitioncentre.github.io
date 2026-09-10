@@ -1965,10 +1965,6 @@ function renderChapters(
    OPEN CHAPTER / PDF
    ========================================================= */
 
-/* =========================================================
-   OPEN CHAPTER / PDF
-   ========================================================= */
-
 function openChapter(
     subjectName,
     chapterIndex
