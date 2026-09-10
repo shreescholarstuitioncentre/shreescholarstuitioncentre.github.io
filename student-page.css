@@ -2220,3 +2220,628 @@ body::before {
     }
 
 }
+/* =========================================================
+   SSTC SUBJECT CAROUSEL
+   6 CARDS VISIBLE ON DESKTOP
+   ========================================================= */
+
+.subject-carousel {
+
+    display: flex;
+
+    gap: 14px;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+
+    scroll-snap-type: x mandatory;
+
+    padding: 12px 4px 18px;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    scrollbar-width: none;
+
+}
+
+
+/* Chrome / Edge / Safari */
+
+.subject-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+   SUBJECT CARD
+   ========================================================= */
+
+.subject-card {
+
+    /*
+     * 6 cards visible
+     */
+
+    flex: 0 0 calc(
+        (100% - 70px) / 6
+    );
+
+    min-width: 0;
+
+    scroll-snap-align: start;
+
+    background: #ffffff;
+
+    border: 1px solid #dbe5f0;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+
+    box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.subject-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(0, 0, 0, 0.12);
+
+    border-color:
+        #2b6cb0;
+
+}
+
+
+/* =========================================================
+   SELECTED SUBJECT
+   ========================================================= */
+
+.subject-card.selected {
+
+    border:
+        2px solid #2563eb;
+
+    box-shadow:
+        0 8px 22px
+        rgba(37, 99, 235, 0.20);
+
+}
+
+
+/* =========================================================
+   SUBJECT IMAGE
+   ========================================================= */
+
+.subject-card-image-wrap {
+
+    width: 100%;
+
+    aspect-ratio: 1 / 0.72;
+
+    overflow: hidden;
+
+    background:
+        #f1f5f9;
+
+}
+
+
+.subject-card-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform 0.35s ease;
+
+}
+
+
+.subject-card:hover
+.subject-card-image {
+
+    transform:
+        scale(1.06);
+
+}
+
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.subject-card-content {
+
+    padding: 11px;
+
+}
+
+
+.subject-card-title {
+
+    margin:
+        0 0 5px;
+
+    font-size:
+        15px;
+
+    font-weight:
+        700;
+
+    color:
+        #17365d;
+
+    white-space:
+        nowrap;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+
+}
+
+
+.subject-card-description {
+
+    margin:
+        0 0 10px;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.4;
+
+    color:
+        #64748b;
+
+    min-height:
+        28px;
+
+}
+
+
+.subject-card-bottom {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        8px;
+
+}
+
+
+.subject-chapter-count {
+
+    font-size:
+        10px;
+
+    color:
+        #475569;
+
+    font-weight:
+        600;
+
+}
+
+
+/* =========================================================
+   VIEW CHAPTERS BUTTON
+   ========================================================= */
+
+.subject-open-btn {
+
+    width:
+        100%;
+
+    border:
+        none;
+
+    border-radius:
+        7px;
+
+    padding:
+        7px 5px;
+
+    background:
+        #17365d;
+
+    color:
+        #ffffff;
+
+    font-size:
+        10px;
+
+    font-weight:
+        600;
+
+    cursor:
+        pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.subject-open-btn:hover {
+
+    background:
+        #2563eb;
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.subject-empty {
+
+    width:
+        100%;
+
+    min-height:
+        160px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    border:
+        1px dashed #cbd5e1;
+
+    border-radius:
+        12px;
+
+}
+
+
+.subject-empty-icon {
+
+    font-size:
+        30px;
+
+    margin-bottom:
+        8px;
+
+}
+
+
+.subject-empty h3 {
+
+    margin:
+        0 0 5px;
+
+    color:
+        #17365d;
+
+}
+
+
+.subject-empty p {
+
+    margin:
+        0;
+
+    color:
+        #64748b;
+
+    font-size:
+        12px;
+
+}
+
+
+/* =========================================================
+   CHAPTER LIST
+   ========================================================= */
+
+.chapter-list-item {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        14px;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #e2e8f0;
+
+    border-radius:
+        10px;
+
+    padding:
+        12px;
+
+    margin-bottom:
+        10px;
+
+    transition:
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.chapter-list-item:hover {
+
+    transform:
+        translateX(3px);
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.08);
+
+}
+
+
+.chapter-number {
+
+    flex:
+        0 0 42px;
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        10px;
+
+    background:
+        #17365d;
+
+    color:
+        #ffffff;
+
+    font-size:
+        16px;
+
+    font-weight:
+        700;
+
+}
+
+
+.chapter-info {
+
+    flex:
+        1;
+
+    min-width:
+        0;
+
+}
+
+
+.chapter-label {
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    color:
+        #2563eb;
+
+    margin-bottom:
+        3px;
+
+}
+
+
+.chapter-info h3 {
+
+    margin:
+        0;
+
+    font-size:
+        14px;
+
+    color:
+        #17365d;
+
+}
+
+
+.chapter-read-btn {
+
+    flex:
+        0 0 auto;
+
+    border:
+        none;
+
+    border-radius:
+        7px;
+
+    padding:
+        8px 12px;
+
+    background:
+        #2563eb;
+
+    color:
+        white;
+
+    cursor:
+        pointer;
+
+    font-size:
+        11px;
+
+    font-weight:
+        600;
+
+}
+
+
+.chapter-read-btn:hover {
+
+    background:
+        #17365d;
+
+}
+
+
+/* =========================================================
+   TABLET
+   3 CARDS
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .subject-card {
+
+        flex:
+            0 0 calc(
+                (100% - 28px) / 3
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   2 CARDS
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .subject-card {
+
+        flex:
+            0 0 calc(
+                (100% - 14px) / 2
+            );
+
+    }
+
+
+    .subject-carousel {
+
+        gap:
+            14px;
+
+    }
+
+
+    .subject-card-title {
+
+        font-size:
+            13px;
+
+    }
+
+
+    .subject-card-description {
+
+        display:
+            none;
+
+    }
+
+
+    .chapter-list-item {
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    .chapter-read-btn {
+
+        padding:
+            7px 9px;
+
+        font-size:
+            10px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .subject-card {
+
+        flex:
+            0 0 100%;
+
+    }
+
+}
