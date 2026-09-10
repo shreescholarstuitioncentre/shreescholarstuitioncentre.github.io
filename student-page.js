@@ -11,6 +11,12 @@
 
 let studentData = null;
 
+let sstcRedirecting = false;
+
+let sstcLoggingOut = false;
+
+let sstcZoom = 100;
+
 
 /* =========================================================
    SESSION KEYS
@@ -37,8 +43,6 @@ const SSTC_CURRENT_PAGE =
 
 /* =========================================================
    E-BOOK LIBRARY
-   ---------------------------------------------------------
-   Yahan subjects + chapters + PDF paths rahenge.
    ========================================================= */
 
 const SSTC_EBOOKS = {
@@ -46,7 +50,7 @@ const SSTC_EBOOKS = {
     "10": {
 
         /* =====================================================
-           CLASS 10 - SCIENCE
+           SCIENCE
            ===================================================== */
 
         "Science": {
@@ -143,7 +147,7 @@ const SSTC_EBOOKS = {
 
 
         /* =====================================================
-           CLASS 10 - MATHEMATICS
+           MATHEMATICS
            ===================================================== */
 
         "Mathematics": {
@@ -245,13 +249,14 @@ const SSTC_EBOOKS = {
                     title: "Chapter 15",
                     pdf: "ebooks/class-10/mathematics/chapter-15.pdf"
                 }
+
             ]
 
         },
 
 
         /* =====================================================
-           CLASS 10 - HINDI
+           HINDI
            ===================================================== */
 
         "Hindi": {
@@ -323,13 +328,14 @@ const SSTC_EBOOKS = {
                     title: "Chapter 10",
                     pdf: "ebooks/class-10/hindi/chapter-10.pdf"
                 }
+
             ]
 
         },
 
 
         /* =====================================================
-           CLASS 10 - ENGLISH
+           ENGLISH
            ===================================================== */
 
         "English": {
@@ -401,13 +407,14 @@ const SSTC_EBOOKS = {
                     title: "Chapter 10",
                     pdf: "ebooks/class-10/english/chapter-10.pdf"
                 }
+
             ]
 
         },
 
 
         /* =====================================================
-           CLASS 10 - SOCIAL SCIENCE
+           SOCIAL SCIENCE
            ===================================================== */
 
         "Social Science": {
@@ -479,13 +486,14 @@ const SSTC_EBOOKS = {
                     title: "Chapter 10",
                     pdf: "ebooks/class-10/social-science/chapter-10.pdf"
                 }
+
             ]
 
         },
 
 
         /* =====================================================
-           CLASS 10 - CHITRAKALA
+           CHITRAKALA
            ===================================================== */
 
         "Chitrakala": {
@@ -527,13 +535,14 @@ const SSTC_EBOOKS = {
                     title: "Chapter 5",
                     pdf: "ebooks/class-10/chitrakala/chapter-05.pdf"
                 }
+
             ]
 
         },
 
 
         /* =====================================================
-           CLASS 10 - HOME SCIENCE
+           HOME SCIENCE
            ===================================================== */
 
         "Home Science": {
@@ -575,13 +584,14 @@ const SSTC_EBOOKS = {
                     title: "Chapter 5",
                     pdf: "ebooks/class-10/home-science/chapter-05.pdf"
                 }
+
             ]
 
         },
 
 
         /* =====================================================
-           CLASS 10 - COMPUTER
+           COMPUTER
            ===================================================== */
 
         "Computer": {
@@ -641,6 +651,7 @@ const SSTC_EBOOKS = {
                     title: "Chapter 8",
                     pdf: "ebooks/class-10/computer/chapter-08.pdf"
                 }
+
             ]
 
         }
@@ -648,14 +659,6 @@ const SSTC_EBOOKS = {
     }
 
 };
-
-/* =========================================================
-   LOGOUT / REDIRECT CONTROL
-   ========================================================= */
-
-let sstcRedirecting = false;
-
-let sstcLoggingOut = false;
 
 
 /* =========================================================
@@ -679,7 +682,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   CHECK STUDENT SESSION
+   CHECK SESSION
    ========================================================= */
 
 function checkStudentSession() {
@@ -713,7 +716,7 @@ function checkStudentSession() {
 
 
 /* =========================================================
-   LOAD LOGGED-IN STUDENT
+   LOAD STUDENT
    ========================================================= */
 
 function loadLoggedInStudent() {
@@ -833,11 +836,6 @@ function createLoginTime() {
 
 /* =========================================================
    NORMALIZE CLASS
-   ---------------------------------------------------------
-   "10"
-   "Class 10"
-   "10th"
-   sabko "10" bana dega.
    ========================================================= */
 
 function normalizeStudentClass(value) {
@@ -879,10 +877,6 @@ function renderStudentData() {
     }
 
 
-    /* =====================================================
-       NAME
-       ===================================================== */
-
     const fullName =
         getStudentValue(
             [
@@ -905,10 +899,6 @@ function renderStudentData() {
     );
 
 
-    /* =====================================================
-       STUDENT ID
-       ===================================================== */
-
     setText(
         "studentId",
         getStudentValue(
@@ -920,10 +910,6 @@ function renderStudentData() {
         )
     );
 
-
-    /* =====================================================
-       CLASS
-       ===================================================== */
 
     const classValue =
         getStudentValue(
@@ -949,10 +935,6 @@ function renderStudentData() {
     );
 
 
-    /* =====================================================
-       BOARD
-       ===================================================== */
-
     setText(
         "studentBoard",
         getStudentValue(
@@ -964,10 +946,6 @@ function renderStudentData() {
     );
 
 
-    /* =====================================================
-       GENDER
-       ===================================================== */
-
     setText(
         "studentGender",
         getStudentValue(
@@ -978,10 +956,6 @@ function renderStudentData() {
         )
     );
 
-
-    /* =====================================================
-       MOBILE
-       ===================================================== */
 
     setText(
         "studentMobile",
@@ -996,10 +970,6 @@ function renderStudentData() {
     );
 
 
-    /* =====================================================
-       EMAIL
-       ===================================================== */
-
     setText(
         "studentEmail",
         getStudentValue(
@@ -1011,10 +981,6 @@ function renderStudentData() {
         )
     );
 
-
-    /* =====================================================
-       SCHOOL NAME
-       ===================================================== */
 
     setText(
         "studentSchool",
@@ -1028,10 +994,6 @@ function renderStudentData() {
     );
 
 
-    /* =====================================================
-       SCHOOL PLACE
-       ===================================================== */
-
     setText(
         "studentSchoolPlace",
         getStudentValue(
@@ -1042,10 +1004,6 @@ function renderStudentData() {
         )
     );
 
-
-    /* =====================================================
-       REGISTRATION DATE
-       ===================================================== */
 
     const registrationDate =
         getStudentValue(
@@ -1068,10 +1026,6 @@ function renderStudentData() {
         registrationDate
     );
 
-
-    /* =====================================================
-       LOGIN TIME
-       ===================================================== */
 
     const loginTime =
         sessionStorage.getItem(
@@ -1097,10 +1051,6 @@ function renderStudentData() {
         loginTime
     );
 
-
-    /* =====================================================
-       ACCOUNT STATUS
-       ===================================================== */
 
     const status =
         String(
@@ -1151,10 +1101,6 @@ function renderStudentData() {
     }
 
 
-    /* =====================================================
-       AVATAR
-       ===================================================== */
-
     const firstLetter =
         fullName
             .trim()
@@ -1174,10 +1120,6 @@ function renderStudentData() {
     );
 
 
-    /* =====================================================
-       PAGE TITLE
-       ===================================================== */
-
     document.title =
         "SSTC | " +
         fullName +
@@ -1185,17 +1127,12 @@ function renderStudentData() {
 
 
     /* =====================================================
-       E-BOOK LIBRARY
-       -----------------------------------------------------
-       Student data load hone ke baad library render.
+       IMPORTANT
+       CLASS KE ACCORDING SUBJECTS LOAD
        ===================================================== */
 
     renderStudentLibrary();
 
-
-    /* =====================================================
-       DISPATCH EVENT
-       ===================================================== */
 
     try {
 
@@ -1253,10 +1190,6 @@ function renderStudentLibrary() {
         ];
 
 
-    /* =====================================================
-       NO LIBRARY
-       ===================================================== */
-
     if (
         !classLibrary ||
         Object.keys(
@@ -1271,29 +1204,19 @@ function renderStudentLibrary() {
     }
 
 
-    /* =====================================================
-       SUBJECTS
-       ===================================================== */
-
     renderSubjects(
         classLibrary
     );
 
-
-    /* =====================================================
-       COUNTS
-       ===================================================== */
 
     updateLibraryCounts(
         classLibrary
     );
 
 
-    /* =====================================================
-       DEFAULT SUBJECT
-       -----------------------------------------------------
-       Agar sirf ek subject hai to automatically select.
-       ===================================================== */
+    /*
+     * Ek hi subject ho to auto select.
+     */
 
     const subjectNames =
         Object.keys(
@@ -1355,6 +1278,10 @@ function renderSubjects(
                 ];
 
 
+            /* =============================================
+               SUBJECT CARD
+               ============================================= */
+
             const card =
                 document.createElement(
                     "button"
@@ -1387,9 +1314,9 @@ function renderSubjects(
             );
 
 
-            /* =================================================
+            /* =============================================
                IMAGE
-               ================================================= */
+               ============================================= */
 
             const imageWrapper =
                 document.createElement(
@@ -1421,14 +1348,30 @@ function renderSubjects(
                 false;
 
 
+            image.loading =
+                "lazy";
+
+
+            image.onerror =
+                function () {
+
+                    this.onerror =
+                        null;
+
+                    this.src =
+                        "Logo.png";
+
+                };
+
+
             imageWrapper.appendChild(
                 image
             );
 
 
-            /* =================================================
-               CARD CONTENT
-               ================================================= */
+            /* =============================================
+               CONTENT
+               ============================================= */
 
             const content =
                 document.createElement(
@@ -1486,7 +1429,13 @@ function renderSubjects(
 
 
             count.textContent =
-                subject.chapters.length +
+                (
+                    Array.isArray(
+                        subject.chapters
+                    )
+                        ? subject.chapters.length
+                        : 0
+                ) +
                 " Chapters";
 
 
@@ -1494,13 +1443,16 @@ function renderSubjects(
                 badge
             );
 
+
             content.appendChild(
                 title
             );
 
+
             content.appendChild(
                 description
             );
+
 
             content.appendChild(
                 count
@@ -1510,6 +1462,7 @@ function renderSubjects(
             card.appendChild(
                 imageWrapper
             );
+
 
             card.appendChild(
                 content
@@ -1581,19 +1534,11 @@ function selectSubject(
     }
 
 
-    /* =====================================================
-       SAVE CURRENT BOOK
-       ===================================================== */
-
     sessionStorage.setItem(
         SSTC_CURRENT_BOOK,
         subjectName
     );
 
-
-    /* =====================================================
-       SUBJECT TITLE
-       ===================================================== */
 
     setText(
         "selectedSubjectTitle",
@@ -1608,9 +1553,9 @@ function selectSubject(
     );
 
 
-    /* =====================================================
+    /* =============================================
        ACTIVE CARD
-       ===================================================== */
+       ============================================= */
 
     const cards =
         document.querySelectorAll(
@@ -1644,19 +1589,11 @@ function selectSubject(
     );
 
 
-    /* =====================================================
-       RENDER CHAPTERS
-       ===================================================== */
-
     renderChapters(
         subjectName,
         subject
     );
 
-
-    /* =====================================================
-       SCROLL CHAPTER SECTION
-       ===================================================== */
 
     const chapterSection =
         document.getElementById(
@@ -1670,6 +1607,7 @@ function selectSubject(
             {
                 behavior:
                     "smooth",
+
                 block:
                     "start"
             }
@@ -1744,10 +1682,6 @@ function renderChapters(
             index
         ) {
 
-            /* =============================================
-               CHAPTER ROW
-               ============================================= */
-
             const item =
                 document.createElement(
                     "button"
@@ -1784,7 +1718,7 @@ function renderChapters(
 
 
             /* =============================================
-               CHAPTER NUMBER
+               NUMBER
                ============================================= */
 
             const number =
@@ -1804,7 +1738,7 @@ function renderChapters(
 
 
             /* =============================================
-               CHAPTER ICON
+               ICON
                ============================================= */
 
             const icon =
@@ -1822,7 +1756,7 @@ function renderChapters(
 
 
             /* =============================================
-               CHAPTER INFO
+               INFO
                ============================================= */
 
             const info =
@@ -1861,13 +1795,14 @@ function renderChapters(
                 title
             );
 
+
             info.appendChild(
                 subtitle
             );
 
 
             /* =============================================
-               OPEN BUTTON
+               OPEN BUTTON TEXT
                ============================================= */
 
             const open =
@@ -1888,13 +1823,16 @@ function renderChapters(
                 number
             );
 
+
             item.appendChild(
                 icon
             );
 
+
             item.appendChild(
                 info
             );
+
 
             item.appendChild(
                 open
@@ -1912,7 +1850,7 @@ function renderChapters(
 
 
 /* =========================================================
-   OPEN CHAPTER / OPEN PDF
+   OPEN CHAPTER / PDF
    ========================================================= */
 
 function openChapter(
@@ -1980,9 +1918,20 @@ function openChapter(
     }
 
 
-    /* =====================================================
-       SAVE CURRENT BOOK / CHAPTER
-       ===================================================== */
+    if (!chapter.pdf) {
+
+        showSecurityMessage(
+            "This chapter PDF is not available yet."
+        );
+
+        return;
+
+    }
+
+
+    /* =============================================
+       SAVE SESSION
+       ============================================= */
 
     sessionStorage.setItem(
         SSTC_CURRENT_BOOK,
@@ -2004,9 +1953,9 @@ function openChapter(
     );
 
 
-    /* =====================================================
+    /* =============================================
        ACTIVE CHAPTER
-       ===================================================== */
+       ============================================= */
 
     const chapterItems =
         document.querySelectorAll(
@@ -2044,9 +1993,9 @@ function openChapter(
     }
 
 
-    /* =====================================================
-       READER TITLE
-       ===================================================== */
+    /* =============================================
+       READER INFORMATION
+       ============================================= */
 
     setText(
         "currentBookTitle",
@@ -2068,9 +2017,9 @@ function openChapter(
     );
 
 
-    /* =====================================================
-       PDF VIEWER
-       ===================================================== */
+    /* =============================================
+       PDF FRAME
+       ============================================= */
 
     const frame =
         document.getElementById(
@@ -2091,14 +2040,11 @@ function openChapter(
     }
 
 
-    /* =====================================================
-       SHOW LOADING STATE
-       ===================================================== */
-
     if (empty) {
 
         empty.style.display =
             "flex";
+
 
         empty.innerHTML =
             `
@@ -2111,12 +2057,16 @@ function openChapter(
 
 
     /*
-     * Old PDF ko clear karke new PDF load.
+     * Purana PDF clear.
      */
 
     frame.src =
         "about:blank";
 
+
+    /*
+     * New PDF load.
+     */
 
     setTimeout(
         function () {
@@ -2129,9 +2079,9 @@ function openChapter(
     );
 
 
-    /* =====================================================
-       READER SECTION
-       ===================================================== */
+    /* =============================================
+       SCROLL TO READER
+       ============================================= */
 
     const readerSection =
         document.getElementById(
@@ -2148,6 +2098,7 @@ function openChapter(
                     {
                         behavior:
                             "smooth",
+
                         block:
                             "start"
                     }
@@ -2158,6 +2109,49 @@ function openChapter(
         );
 
     }
+
+}
+
+
+/* =========================================================
+   SUBJECT CAROUSEL SCROLL
+   ========================================================= */
+
+function scrollSubjects(
+    direction
+) {
+
+    const carousel =
+        document.getElementById(
+            "subjectCarousel"
+        );
+
+
+    if (!carousel) {
+
+        return;
+
+    }
+
+
+    /*
+     * Ek baar mein approx 6 cards ka
+     * poora visible area slide hoga.
+     */
+
+    const amount =
+        carousel.clientWidth;
+
+
+    carousel.scrollBy(
+        {
+            left:
+                direction * amount,
+
+            behavior:
+                "smooth"
+        }
+    );
 
 }
 
@@ -2350,10 +2344,6 @@ function updateLibraryCounts(
     );
 
 
-    /*
-     * Abhi rent/purchase system alag se connected nahi hai.
-     */
-
     updateNumber(
         "rentedBooks",
         0
@@ -2394,40 +2384,6 @@ function updateNumber(
         String(
             value
         );
-
-}
-
-
-/* =========================================================
-   SUBJECT CAROUSEL SCROLL
-   ========================================================= */
-
-function scrollSubjects(
-    direction
-) {
-
-    const carousel =
-        document.getElementById(
-            "subjectCarousel"
-        );
-
-
-    if (!carousel) {
-
-        return;
-
-    }
-
-
-    carousel.scrollBy(
-        {
-            left:
-                direction * 300,
-
-            behavior:
-                "smooth"
-        }
-    );
 
 }
 
@@ -2529,7 +2485,7 @@ function setText(
 
 
 /* =========================================================
-   CLEAR STUDENT SESSION
+   CLEAR SESSION
    ========================================================= */
 
 function clearStudentSession() {
@@ -2579,7 +2535,7 @@ function clearStudentSession() {
 
 
 /* =========================================================
-   REDIRECT TO ACCESS PAGE
+   REDIRECT
    ========================================================= */
 
 function redirectToAccessPage() {
@@ -2620,7 +2576,7 @@ function redirectToAccessPage() {
 
 
 /* =========================================================
-   STUDENT LOGOUT
+   LOGOUT
    ========================================================= */
 
 function studentLogout(
@@ -2766,14 +2722,6 @@ function pdfLoaded() {
     }
 
 }
-
-
-/* =========================================================
-   ZOOM
-   ========================================================= */
-
-let sstcZoom =
-    100;
 
 
 /* =========================================================
@@ -2978,8 +2926,6 @@ function toggleFullscreen() {
 
 /* =========================================================
    PREVIOUS CHAPTER
-   ---------------------------------------------------------
-   HTML ka Previous button ab chapter change karega.
    ========================================================= */
 
 function previousPage() {
@@ -3095,7 +3041,8 @@ function navigateChapter(
         newChapter < 1
     ) {
 
-        newChapter = 1;
+        newChapter =
+            1;
 
     }
 
@@ -3120,7 +3067,7 @@ function navigateChapter(
 
 
 /* =========================================================
-   SET CURRENT YEAR
+   CURRENT YEAR
    ========================================================= */
 
 function setCurrentYear() {
@@ -3139,15 +3086,12 @@ function setCurrentYear() {
 
 
 /* =========================================================
-   BASIC SECURITY
+   SECURITY
    ========================================================= */
 
 function setupStudentSecurity() {
 
-
-    /* =====================================================
-       RIGHT CLICK
-       ===================================================== */
+    /* RIGHT CLICK */
 
     document.addEventListener(
         "contextmenu",
@@ -3161,9 +3105,7 @@ function setupStudentSecurity() {
     );
 
 
-    /* =====================================================
-       DRAG
-       ===================================================== */
+    /* DRAG */
 
     document.addEventListener(
         "dragstart",
@@ -3177,9 +3119,7 @@ function setupStudentSecurity() {
     );
 
 
-    /* =====================================================
-       TEXT SELECTION
-       ===================================================== */
+    /* TEXT SELECTION */
 
     document.addEventListener(
         "selectstart",
@@ -3193,9 +3133,7 @@ function setupStudentSecurity() {
     );
 
 
-    /* =====================================================
-       KEYBOARD PROTECTION
-       ===================================================== */
+    /* KEYBOARD */
 
     document.addEventListener(
         "keydown",
@@ -3326,9 +3264,7 @@ function setupStudentSecurity() {
     );
 
 
-    /* =====================================================
-       PRINT
-       ===================================================== */
+    /* PRINT */
 
     window.addEventListener(
         "beforeprint",
@@ -3358,9 +3294,7 @@ function setupStudentSecurity() {
     );
 
 
-    /* =====================================================
-       VISIBILITY
-       ===================================================== */
+    /* VISIBILITY */
 
     document.addEventListener(
         "visibilitychange",
@@ -3404,9 +3338,7 @@ function setupStudentSecurity() {
     );
 
 
-    /* =====================================================
-       WINDOW BLUR
-       ===================================================== */
+    /* WINDOW BLUR */
 
     window.addEventListener(
         "blur",
@@ -3433,9 +3365,7 @@ function setupStudentSecurity() {
     );
 
 
-    /* =====================================================
-       WINDOW FOCUS
-       ===================================================== */
+    /* WINDOW FOCUS */
 
     window.addEventListener(
         "focus",
@@ -3540,7 +3470,7 @@ window.addEventListener(
 
 
 /* =========================================================
-   EXPOSE FUNCTIONS TO HTML
+   EXPOSE FUNCTIONS
    ========================================================= */
 
 window.studentLogout =
