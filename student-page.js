@@ -42,6 +42,70 @@ const SSTC_CURRENT_PAGE =
 
 
 /* =========================================================
+   GITHUB PAGES BASE URL
+   =========================================================
+   
+   Aapki website:
+   https://shreescholarstuitioncentre.github.io/
+
+   PDF:
+   /ebooks/class-10/science/chapter-01.pdf
+
+   Is function se relative PDF path ko proper
+   GitHub Pages URL me convert kiya jayega.
+   ========================================================= */
+
+const SSTC_SITE_BASE_URL =
+    window.location.origin;
+
+
+/* =========================================================
+   PDF URL BUILDER
+   ========================================================= */
+
+function getPdfUrl(pdfPath) {
+
+    if (!pdfPath) {
+
+        return "";
+
+    }
+
+
+    let cleanPath =
+        String(pdfPath)
+            .trim()
+            .replace(/^\/+/, "");
+
+
+    /*
+     * Agar already complete URL hai
+     * to usko as-it-is use karo.
+     */
+
+    if (
+        /^https?:\/\//i.test(cleanPath)
+    ) {
+
+        return cleanPath;
+
+    }
+
+
+    /*
+     * GitHub Pages root se PDF URL banega.
+     */
+
+    return (
+        SSTC_SITE_BASE_URL +
+        "/" +
+        cleanPath
+    );
+
+}
+
+
+/* =========================================================
    E-BOOK LIBRARY
    ========================================================= */
 
@@ -65,80 +129,106 @@ const SSTC_EBOOKS = {
 
                 {
                     number: 1,
-                    title: "Chemical Reactions and Equations",
-                    pdf: "ebooks/class-10/science/chapter-01.pdf"
+                    title:
+                        "Chemical Reactions and Equations",
+                    pdf:
+                        "ebooks/class-10/science/chapter-01.pdf"
                 },
 
                 {
                     number: 2,
-                    title: "Acids, Bases and Salts",
-                    pdf: "ebooks/class-10/science/chapter-02.pdf"
+                    title:
+                        "Acids, Bases and Salts",
+                    pdf:
+                        "ebooks/class-10/science/chapter-02.pdf"
                 },
 
                 {
                     number: 3,
-                    title: "Metals and Non-metals",
-                    pdf: "ebooks/class-10/science/chapter-03.pdf"
+                    title:
+                        "Metals and Non-metals",
+                    pdf:
+                        "ebooks/class-10/science/chapter-03.pdf"
                 },
 
                 {
                     number: 4,
-                    title: "Carbon and Its Compounds",
-                    pdf: "ebooks/class-10/science/chapter-04.pdf"
+                    title:
+                        "Carbon and Its Compounds",
+                    pdf:
+                        "ebooks/class-10/science/chapter-04.pdf"
                 },
 
                 {
                     number: 5,
-                    title: "Life Processes",
-                    pdf: "ebooks/class-10/science/chapter-05.pdf"
+                    title:
+                        "Life Processes",
+                    pdf:
+                        "ebooks/class-10/science/chapter-05.pdf"
                 },
 
                 {
                     number: 6,
-                    title: "Control and Coordination",
-                    pdf: "ebooks/class-10/science/chapter-06.pdf"
+                    title:
+                        "Control and Coordination",
+                    pdf:
+                        "ebooks/class-10/science/chapter-06.pdf"
                 },
 
                 {
                     number: 7,
-                    title: "How do Organisms Reproduce?",
-                    pdf: "ebooks/class-10/science/chapter-07.pdf"
+                    title:
+                        "How do Organisms Reproduce?",
+                    pdf:
+                        "ebooks/class-10/science/chapter-07.pdf"
                 },
 
                 {
                     number: 8,
-                    title: "Heredity",
-                    pdf: "ebooks/class-10/science/chapter-08.pdf"
+                    title:
+                        "Heredity",
+                    pdf:
+                        "ebooks/class-10/science/chapter-08.pdf"
                 },
 
                 {
                     number: 9,
-                    title: "Light – Reflection and Refraction",
-                    pdf: "ebooks/class-10/science/chapter-09.pdf"
+                    title:
+                        "Light – Reflection and Refraction",
+                    pdf:
+                        "ebooks/class-10/science/chapter-09.pdf"
                 },
 
                 {
                     number: 10,
-                    title: "The Human Eye and the Colourful World",
-                    pdf: "ebooks/class-10/science/chapter-10.pdf"
+                    title:
+                        "The Human Eye and the Colourful World",
+                    pdf:
+                        "ebooks/class-10/science/chapter-10.pdf"
                 },
 
                 {
                     number: 11,
-                    title: "Electricity",
-                    pdf: "ebooks/class-10/science/chapter-11.pdf"
+                    title:
+                        "Electricity",
+                    pdf:
+                        "ebooks/class-10/science/chapter-11.pdf"
                 },
 
                 {
                     number: 12,
-                    title: "Magnetic Effects of Electric Current",
-                    pdf: "ebooks/class-10/science/chapter-12.pdf"
+                    title:
+                        "Magnetic Effects of Electric Current",
+                    pdf:
+                        "ebooks/class-10/science/chapter-12.pdf"
                 },
 
                 {
                     number: 13,
-                    title: "Our Environment",
-                    pdf: "ebooks/class-10/science/chapter-13.pdf"
+                    title:
+                        "Our Environment",
+                    pdf:
+                        "ebooks/class-10/science/chapter-13.pdf"
                 }
 
             ]
@@ -163,91 +253,106 @@ const SSTC_EBOOKS = {
                 {
                     number: 1,
                     title: "Chapter 1",
-                    pdf: "ebooks/class-10/mathematics/chapter-01.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-01.pdf"
                 },
 
                 {
                     number: 2,
                     title: "Chapter 2",
-                    pdf: "ebooks/class-10/mathematics/chapter-02.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-02.pdf"
                 },
 
                 {
                     number: 3,
                     title: "Chapter 3",
-                    pdf: "ebooks/class-10/mathematics/chapter-03.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-03.pdf"
                 },
 
                 {
                     number: 4,
                     title: "Chapter 4",
-                    pdf: "ebooks/class-10/mathematics/chapter-04.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-04.pdf"
                 },
 
                 {
                     number: 5,
                     title: "Chapter 5",
-                    pdf: "ebooks/class-10/mathematics/chapter-05.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-05.pdf"
                 },
 
                 {
                     number: 6,
                     title: "Chapter 6",
-                    pdf: "ebooks/class-10/mathematics/chapter-06.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-06.pdf"
                 },
 
                 {
                     number: 7,
                     title: "Chapter 7",
-                    pdf: "ebooks/class-10/mathematics/chapter-07.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-07.pdf"
                 },
 
                 {
                     number: 8,
                     title: "Chapter 8",
-                    pdf: "ebooks/class-10/mathematics/chapter-08.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-08.pdf"
                 },
 
                 {
                     number: 9,
                     title: "Chapter 9",
-                    pdf: "ebooks/class-10/mathematics/chapter-09.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-09.pdf"
                 },
 
                 {
                     number: 10,
                     title: "Chapter 10",
-                    pdf: "ebooks/class-10/mathematics/chapter-10.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-10.pdf"
                 },
 
                 {
                     number: 11,
                     title: "Chapter 11",
-                    pdf: "ebooks/class-10/mathematics/chapter-11.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-11.pdf"
                 },
 
                 {
                     number: 12,
                     title: "Chapter 12",
-                    pdf: "ebooks/class-10/mathematics/chapter-12.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-12.pdf"
                 },
 
                 {
                     number: 13,
                     title: "Chapter 13",
-                    pdf: "ebooks/class-10/mathematics/chapter-13.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-13.pdf"
                 },
 
                 {
                     number: 14,
                     title: "Chapter 14",
-                    pdf: "ebooks/class-10/mathematics/chapter-14.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-14.pdf"
                 },
 
                 {
                     number: 15,
                     title: "Chapter 15",
-                    pdf: "ebooks/class-10/mathematics/chapter-15.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-15.pdf"
                 }
 
             ]
@@ -256,7 +361,7 @@ const SSTC_EBOOKS = {
 
 
         /* =====================================================
-           
+           HINDI
            ===================================================== */
 
         "Hindi": {
@@ -272,61 +377,71 @@ const SSTC_EBOOKS = {
                 {
                     number: 1,
                     title: "Chapter 1",
-                    pdf: "ebooks/class-10/hindi/chapter-01.pdf"
+                    pdf:
+                        "ebooks/class-10/hindi/chapter-01.pdf"
                 },
 
                 {
                     number: 2,
                     title: "Chapter 2",
-                    pdf: "ebooks/class-10/hindi/chapter-02.pdf"
+                    pdf:
+                        "ebooks/class-10/hindi/chapter-02.pdf"
                 },
 
                 {
                     number: 3,
                     title: "Chapter 3",
-                    pdf: "ebooks/class-10/hindi/chapter-03.pdf"
+                    pdf:
+                        "ebooks/class-10/hindi/chapter-03.pdf"
                 },
 
                 {
                     number: 4,
                     title: "Chapter 4",
-                    pdf: "ebooks/class-10/hindi/chapter-04.pdf"
+                    pdf:
+                        "ebooks/class-10/hindi/chapter-04.pdf"
                 },
 
                 {
                     number: 5,
                     title: "Chapter 5",
-                    pdf: "ebooks/class-10/hindi/chapter-05.pdf"
+                    pdf:
+                        "ebooks/class-10/hindi/chapter-05.pdf"
                 },
 
                 {
                     number: 6,
                     title: "Chapter 6",
-                    pdf: "ebooks/class-10/hindi/chapter-06.pdf"
+                    pdf:
+                        "ebooks/class-10/hindi/chapter-06.pdf"
                 },
 
                 {
                     number: 7,
                     title: "Chapter 7",
-                    pdf: "ebooks/class-10/hindi/chapter-07.pdf"
+                    pdf:
+                        "ebooks/class-10/hindi/chapter-07.pdf"
                 },
 
                 {
                     number: 8,
                     title: "Chapter 8",
-                    pdf: "ebooks/class-10/hindi/chapter-08.pdf"
+                    pdf:
+                        "ebooks/class-10/hindi/chapter-08.pdf"
                 },
 
                 {
                     number: 9,
                     title: "Chapter 9",
-                    pdf: "ebooks/class-10/hindi/chapter-09.pdf"
+                    pdf:
+                        "ebooks/class-10/hindi/chapter-09.pdf"
                 },
 
                 {
                     number: 10,
                     title: "Chapter 10",
-                    pdf: "ebooks/class-10/hindi/chapter-10.pdf"
+                    pdf:
+                        "ebooks/class-10/hindi/chapter-10.pdf"
                 }
 
             ]
@@ -351,61 +466,71 @@ const SSTC_EBOOKS = {
                 {
                     number: 1,
                     title: "Chapter 1",
-                    pdf: "ebooks/class-10/english/chapter-01.pdf"
+                    pdf:
+                        "ebooks/class-10/english/chapter-01.pdf"
                 },
 
                 {
                     number: 2,
                     title: "Chapter 2",
-                    pdf: "ebooks/class-10/english/chapter-02.pdf"
+                    pdf:
+                        "ebooks/class-10/english/chapter-02.pdf"
                 },
 
                 {
                     number: 3,
                     title: "Chapter 3",
-                    pdf: "ebooks/class-10/english/chapter-03.pdf"
+                    pdf:
+                        "ebooks/class-10/english/chapter-03.pdf"
                 },
 
                 {
                     number: 4,
                     title: "Chapter 4",
-                    pdf: "ebooks/class-10/english/chapter-04.pdf"
+                    pdf:
+                        "ebooks/class-10/english/chapter-04.pdf"
                 },
 
                 {
                     number: 5,
                     title: "Chapter 5",
-                    pdf: "ebooks/class-10/english/chapter-05.pdf"
+                    pdf:
+                        "ebooks/class-10/english/chapter-05.pdf"
                 },
 
                 {
                     number: 6,
                     title: "Chapter 6",
-                    pdf: "ebooks/class-10/english/chapter-06.pdf"
+                    pdf:
+                        "ebooks/class-10/english/chapter-06.pdf"
                 },
 
                 {
                     number: 7,
                     title: "Chapter 7",
-                    pdf: "ebooks/class-10/english/chapter-07.pdf"
+                    pdf:
+                        "ebooks/class-10/english/chapter-07.pdf"
                 },
 
                 {
                     number: 8,
                     title: "Chapter 8",
-                    pdf: "ebooks/class-10/english/chapter-08.pdf"
+                    pdf:
+                        "ebooks/class-10/english/chapter-08.pdf"
                 },
 
                 {
                     number: 9,
                     title: "Chapter 9",
-                    pdf: "ebooks/class-10/english/chapter-09.pdf"
+                    pdf:
+                        "ebooks/class-10/english/chapter-09.pdf"
                 },
 
                 {
                     number: 10,
                     title: "Chapter 10",
-                    pdf: "ebooks/class-10/english/chapter-10.pdf"
+                    pdf:
+                        "ebooks/class-10/english/chapter-10.pdf"
                 }
 
             ]
@@ -430,61 +555,71 @@ const SSTC_EBOOKS = {
                 {
                     number: 1,
                     title: "Chapter 1",
-                    pdf: "ebooks/class-10/social-science/chapter-01.pdf"
+                    pdf:
+                        "ebooks/class-10/social-science/chapter-01.pdf"
                 },
 
                 {
                     number: 2,
                     title: "Chapter 2",
-                    pdf: "ebooks/class-10/social-science/chapter-02.pdf"
+                    pdf:
+                        "ebooks/class-10/social-science/chapter-02.pdf"
                 },
 
                 {
                     number: 3,
                     title: "Chapter 3",
-                    pdf: "ebooks/class-10/social-science/chapter-03.pdf"
+                    pdf:
+                        "ebooks/class-10/social-science/chapter-03.pdf"
                 },
 
                 {
                     number: 4,
                     title: "Chapter 4",
-                    pdf: "ebooks/class-10/social-science/chapter-04.pdf"
+                    pdf:
+                        "ebooks/class-10/social-science/chapter-04.pdf"
                 },
 
                 {
                     number: 5,
                     title: "Chapter 5",
-                    pdf: "ebooks/class-10/social-science/chapter-05.pdf"
+                    pdf:
+                        "ebooks/class-10/social-science/chapter-05.pdf"
                 },
 
                 {
                     number: 6,
                     title: "Chapter 6",
-                    pdf: "ebooks/class-10/social-science/chapter-06.pdf"
+                    pdf:
+                        "ebooks/class-10/social-science/chapter-06.pdf"
                 },
 
                 {
                     number: 7,
                     title: "Chapter 7",
-                    pdf: "ebooks/class-10/social-science/chapter-07.pdf"
+                    pdf:
+                        "ebooks/class-10/social-science/chapter-07.pdf"
                 },
 
                 {
                     number: 8,
                     title: "Chapter 8",
-                    pdf: "ebooks/class-10/social-science/chapter-08.pdf"
+                    pdf:
+                        "ebooks/class-10/social-science/chapter-08.pdf"
                 },
 
                 {
                     number: 9,
                     title: "Chapter 9",
-                    pdf: "ebooks/class-10/social-science/chapter-09.pdf"
+                    pdf:
+                        "ebooks/class-10/social-science/chapter-09.pdf"
                 },
 
                 {
                     number: 10,
                     title: "Chapter 10",
-                    pdf: "ebooks/class-10/social-science/chapter-10.pdf"
+                    pdf:
+                        "ebooks/class-10/social-science/chapter-10.pdf"
                 }
 
             ]
@@ -509,31 +644,36 @@ const SSTC_EBOOKS = {
                 {
                     number: 1,
                     title: "Chapter 1",
-                    pdf: "ebooks/class-10/chitrakala/chapter-01.pdf"
+                    pdf:
+                        "ebooks/class-10/chitrakala/chapter-01.pdf"
                 },
 
                 {
                     number: 2,
                     title: "Chapter 2",
-                    pdf: "ebooks/class-10/chitrakala/chapter-02.pdf"
+                    pdf:
+                        "ebooks/class-10/chitrakala/chapter-02.pdf"
                 },
 
                 {
                     number: 3,
                     title: "Chapter 3",
-                    pdf: "ebooks/class-10/chitrakala/chapter-03.pdf"
+                    pdf:
+                        "ebooks/class-10/chitrakala/chapter-03.pdf"
                 },
 
                 {
                     number: 4,
                     title: "Chapter 4",
-                    pdf: "ebooks/class-10/chitrakala/chapter-04.pdf"
+                    pdf:
+                        "ebooks/class-10/chitrakala/chapter-04.pdf"
                 },
 
                 {
                     number: 5,
                     title: "Chapter 5",
-                    pdf: "ebooks/class-10/chitrakala/chapter-05.pdf"
+                    pdf:
+                        "ebooks/class-10/chitrakala/chapter-05.pdf"
                 }
 
             ]
@@ -558,31 +698,36 @@ const SSTC_EBOOKS = {
                 {
                     number: 1,
                     title: "Chapter 1",
-                    pdf: "ebooks/class-10/home-science/chapter-01.pdf"
+                    pdf:
+                        "ebooks/class-10/home-science/chapter-01.pdf"
                 },
 
                 {
                     number: 2,
                     title: "Chapter 2",
-                    pdf: "ebooks/class-10/home-science/chapter-02.pdf"
+                    pdf:
+                        "ebooks/class-10/home-science/chapter-02.pdf"
                 },
 
                 {
                     number: 3,
                     title: "Chapter 3",
-                    pdf: "ebooks/class-10/home-science/chapter-03.pdf"
+                    pdf:
+                        "ebooks/class-10/home-science/chapter-03.pdf"
                 },
 
                 {
                     number: 4,
                     title: "Chapter 4",
-                    pdf: "ebooks/class-10/home-science/chapter-04.pdf"
+                    pdf:
+                        "ebooks/class-10/home-science/chapter-04.pdf"
                 },
 
                 {
                     number: 5,
                     title: "Chapter 5",
-                    pdf: "ebooks/class-10/home-science/chapter-05.pdf"
+                    pdf:
+                        "ebooks/class-10/home-science/chapter-05.pdf"
                 }
 
             ]
@@ -607,49 +752,57 @@ const SSTC_EBOOKS = {
                 {
                     number: 1,
                     title: "Chapter 1",
-                    pdf: "ebooks/class-10/computer/chapter-01.pdf"
+                    pdf:
+                        "ebooks/class-10/computer/chapter-01.pdf"
                 },
 
                 {
                     number: 2,
                     title: "Chapter 2",
-                    pdf: "ebooks/class-10/computer/chapter-02.pdf"
+                    pdf:
+                        "ebooks/class-10/computer/chapter-02.pdf"
                 },
 
                 {
                     number: 3,
                     title: "Chapter 3",
-                    pdf: "ebooks/class-10/computer/chapter-03.pdf"
+                    pdf:
+                        "ebooks/class-10/computer/chapter-03.pdf"
                 },
 
                 {
                     number: 4,
                     title: "Chapter 4",
-                    pdf: "ebooks/class-10/computer/chapter-04.pdf"
+                    pdf:
+                        "ebooks/class-10/computer/chapter-04.pdf"
                 },
 
                 {
                     number: 5,
                     title: "Chapter 5",
-                    pdf: "ebooks/class-10/computer/chapter-05.pdf"
+                    pdf:
+                        "ebooks/class-10/computer/chapter-05.pdf"
                 },
 
                 {
                     number: 6,
                     title: "Chapter 6",
-                    pdf: "ebooks/class-10/computer/chapter-06.pdf"
+                    pdf:
+                        "ebooks/class-10/computer/chapter-06.pdf"
                 },
 
                 {
                     number: 7,
                     title: "Chapter 7",
-                    pdf: "ebooks/class-10/computer/chapter-07.pdf"
+                    pdf:
+                        "ebooks/class-10/computer/chapter-07.pdf"
                 },
 
                 {
                     number: 8,
                     title: "Chapter 8",
-                    pdf: "ebooks/class-10/computer/chapter-08.pdf"
+                    pdf:
+                        "ebooks/class-10/computer/chapter-08.pdf"
                 }
 
             ]
@@ -1126,11 +1279,6 @@ function renderStudentData() {
         " - Student Portal";
 
 
-    /* =====================================================
-       IMPORTANT
-       CLASS KE ACCORDING SUBJECTS LOAD
-       ===================================================== */
-
     renderStudentLibrary();
 
 
@@ -1214,10 +1362,6 @@ function renderStudentLibrary() {
     );
 
 
-    /*
-     * Ek hi subject ho to auto select.
-     */
-
     const subjectNames =
         Object.keys(
             classLibrary
@@ -1278,10 +1422,6 @@ function renderSubjects(
                 ];
 
 
-            /* =============================================
-               SUBJECT CARD
-               ============================================= */
-
             const card =
                 document.createElement(
                     "button"
@@ -1313,10 +1453,6 @@ function renderSubjects(
                 }
             );
 
-
-            /* =============================================
-               IMAGE
-               ============================================= */
 
             const imageWrapper =
                 document.createElement(
@@ -1368,10 +1504,6 @@ function renderSubjects(
                 image
             );
 
-
-            /* =============================================
-               CONTENT
-               ============================================= */
 
             const content =
                 document.createElement(
@@ -1553,10 +1685,6 @@ function selectSubject(
     );
 
 
-    /* =============================================
-       ACTIVE CARD
-       ============================================= */
-
     const cards =
         document.querySelectorAll(
             ".subject-card"
@@ -1717,10 +1845,6 @@ function renderChapters(
             );
 
 
-            /* =============================================
-               NUMBER
-               ============================================= */
-
             const number =
                 document.createElement(
                     "div"
@@ -1737,10 +1861,6 @@ function renderChapters(
                 );
 
 
-            /* =============================================
-               ICON
-               ============================================= */
-
             const icon =
                 document.createElement(
                     "div"
@@ -1754,10 +1874,6 @@ function renderChapters(
             icon.textContent =
                 "📖";
 
-
-            /* =============================================
-               INFO
-               ============================================= */
 
             const info =
                 document.createElement(
@@ -1800,10 +1916,6 @@ function renderChapters(
                 subtitle
             );
 
-
-            /* =============================================
-               OPEN BUTTON TEXT
-               ============================================= */
 
             const open =
                 document.createElement(
@@ -1929,9 +2041,9 @@ function openChapter(
     }
 
 
-    /* =============================================
+    /* =====================================================
        SAVE SESSION
-       ============================================= */
+       ===================================================== */
 
     sessionStorage.setItem(
         SSTC_CURRENT_BOOK,
@@ -1953,9 +2065,9 @@ function openChapter(
     );
 
 
-    /* =============================================
+    /* =====================================================
        ACTIVE CHAPTER
-       ============================================= */
+       ===================================================== */
 
     const chapterItems =
         document.querySelectorAll(
@@ -1993,9 +2105,9 @@ function openChapter(
     }
 
 
-    /* =============================================
+    /* =====================================================
        READER INFORMATION
-       ============================================= */
+       ===================================================== */
 
     setText(
         "currentBookTitle",
@@ -2017,9 +2129,9 @@ function openChapter(
     );
 
 
-    /* =============================================
+    /* =====================================================
        PDF FRAME
-       ============================================= */
+       ===================================================== */
 
     const frame =
         document.getElementById(
@@ -2035,10 +2147,40 @@ function openChapter(
 
     if (!frame) {
 
+        console.error(
+            "SSTC PDF ERROR: #pdfFrame not found."
+        );
+
+        showSecurityMessage(
+            "PDF viewer is not available."
+        );
+
         return;
 
     }
 
+
+    /*
+     * IMPORTANT:
+     * Relative path ko GitHub Pages absolute URL me
+     * convert kar rahe hain.
+     */
+
+    const pdfUrl =
+        getPdfUrl(
+            chapter.pdf
+        );
+
+
+    console.log(
+        "SSTC PDF:",
+        pdfUrl
+    );
+
+
+    /*
+     * Opening message.
+     */
 
     if (empty) {
 
@@ -2057,7 +2199,7 @@ function openChapter(
 
 
     /*
-     * Purana PDF clear.
+     * Pehle old PDF remove.
      */
 
     frame.src =
@@ -2065,42 +2207,82 @@ function openChapter(
 
 
     /*
-     * New PDF load.
+     * Thoda delay dekar new PDF load.
      */
 
     setTimeout(
         function () {
 
-            const frame =
-                document.getElementById("pdfFrame");
-            
-            const empty =
-                document.getElementById("viewerEmpty");
-            
-            if (!frame) {
+            const currentFrame =
+                document.getElementById(
+                    "pdfFrame"
+                );
+
+
+            const currentEmpty =
+                document.getElementById(
+                    "viewerEmpty"
+                );
+
+
+            if (!currentFrame) {
+
                 return;
+
             }
-            
-            if (empty) {
-                empty.style.display = "flex";
-            
-                empty.innerHTML = `
-                    <div class="empty-icon">📖</div>
-                    <h3>Opening Chapter...</h3>
-                    <p>${escapeHtml(chapter.title)}</p>
-                `;
+
+
+            if (currentEmpty) {
+
+                currentEmpty.style.display =
+                    "flex";
+
             }
-            
-            frame.src = chapter.pdf;
-            
+
+
+            /*
+             * PDF direct GitHub Pages URL.
+             */
+
+            currentFrame.src =
+                pdfUrl;
+
+
+            /*
+             * PDF frame ko visible rakho.
+             */
+
+            currentFrame.style.display =
+                "block";
+
+
+            /*
+             * Browser ko reload ke liye force.
+             */
+
+            try {
+
+                currentFrame.contentWindow;
+
+            }
+
+            catch (error) {
+
+                console.warn(
+                    "SSTC iframe warning:",
+                    error
+                );
+
+            }
+
         },
-        50
+        100
     );
 
 
-    /* =============================================
+    /* =====================================================
        SCROLL TO READER
-       ============================================= */
+       ===================================================== */
 
     const readerSection =
         document.getElementById(
@@ -2124,7 +2306,7 @@ function openChapter(
                 );
 
             },
-            100
+            150
         );
 
     }
@@ -2152,11 +2334,6 @@ function scrollSubjects(
 
     }
 
-
-    /*
-     * Ek baar mein approx 6 cards ka
-     * poora visible area slide hoga.
-     */
 
     const amount =
         carousel.clientWidth;
@@ -2679,6 +2856,46 @@ function setupReaderDefaults() {
             "false"
         );
 
+
+        frame.setAttribute(
+            "loading",
+            "eager"
+        );
+
+
+        /*
+         * PDF load event.
+         */
+
+        frame.addEventListener(
+            "load",
+            function () {
+
+                pdfLoaded();
+
+            }
+        );
+
+
+        /*
+         * PDF error event.
+         */
+
+        frame.addEventListener(
+            "error",
+            function () {
+
+                console.error(
+                    "SSTC PDF iframe failed to load."
+                );
+
+                showSecurityMessage(
+                    "PDF could not be loaded."
+                );
+
+            }
+        );
+
     }
 
 
@@ -2724,9 +2941,21 @@ function pdfLoaded() {
         );
 
 
+    if (!frame) {
+
+        return;
+
+    }
+
+
+    /*
+     * about:blank hone par empty screen visible rahe.
+     */
+
     if (
-        frame &&
         frame.src &&
+        frame.src !==
+            "about:blank" &&
         frame.src !==
             window.location.href
     ) {
