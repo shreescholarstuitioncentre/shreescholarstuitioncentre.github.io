@@ -156,7 +156,7 @@ const SSTC_EBOOKS = {
                 "Class 10 Mathematics E-Book Library",
 
             image:
-                "subject-images/mathematics.png",
+                "subject-images/maths.png",
 
             chapters: [
 
@@ -256,7 +256,7 @@ const SSTC_EBOOKS = {
 
 
         /* =====================================================
-           HINDI
+           
            ===================================================== */
 
         "Hindi": {
@@ -265,7 +265,7 @@ const SSTC_EBOOKS = {
                 "Class 10 Hindi E-Book Library",
 
             image:
-                "subject-images/hindi.png",
+                "subject-images/Hindi.png",
 
             chapters: [
 
@@ -423,7 +423,7 @@ const SSTC_EBOOKS = {
                 "Class 10 Social Science E-Book Library",
 
             image:
-                "subject-images/social-science.png",
+                "subject-images/socialscience.png",
 
             chapters: [
 
@@ -551,7 +551,7 @@ const SSTC_EBOOKS = {
                 "Class 10 Home Science E-Book Library",
 
             image:
-                "subject-images/home-science.png",
+                "subject-images/homescience.png",
 
             chapters: [
 
