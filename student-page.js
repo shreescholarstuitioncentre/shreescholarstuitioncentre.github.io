@@ -2,6 +2,7 @@
    SSTC STUDENT PAGE
    ========================================================= */
 
+
 /* ================= GLOBAL VARIABLES ================= */
 
 let studentData = null;
@@ -27,16 +28,16 @@ const SSTC_SITE_BASE_URL = window.location.origin;
 
 
 /* =========================================================
-   PDF URL HELPER
+   IMAGE URL HELPER
    ========================================================= */
 
-function getPdfUrl(pdfPath) {
+function getImageUrl(imagePath) {
 
-    if (!pdfPath) {
+    if (!imagePath) {
         return "";
     }
 
-    const path = String(pdfPath).trim();
+    const path = String(imagePath).trim();
 
     /* Already full URL */
     if (
@@ -47,7 +48,37 @@ function getPdfUrl(pdfPath) {
     }
 
     /* Remove starting slash */
-    const cleanPath = path.replace(/^\/+/, "");
+    const cleanPath =
+        path.replace(/^\/+/, "");
+
+    return SSTC_SITE_BASE_URL + "/" + cleanPath;
+}
+
+
+/* =========================================================
+   PDF URL HELPER
+   ========================================================= */
+
+function getPdfUrl(pdfPath) {
+
+    if (!pdfPath) {
+        return "";
+    }
+
+    const path =
+        String(pdfPath).trim();
+
+    /* Already full URL */
+    if (
+        path.startsWith("http://") ||
+        path.startsWith("https://")
+    ) {
+        return path;
+    }
+
+    /* Remove starting slash */
+    const cleanPath =
+        path.replace(/^\/+/, "");
 
     return SSTC_SITE_BASE_URL + "/" + cleanPath;
 }
@@ -62,274 +93,326 @@ const SSTC_EBOOKS = {
     "10": {
 
         "Science": {
-            description: "Class 10 Science e-books and chapters.",
 
-           image:
+            description:
+                "Class 10 Science e-books and chapters.",
+
+            image:
                 "subject-images/science.png",
 
             chapters: [
 
                 {
                     title: "Chapter 01",
-                    pdf: "ebooks/class-10/science/chapter-01.pdf"
+                    pdf:
+                        "ebooks/class-10/science/chapter-01.pdf"
                 },
 
                 {
                     title: "Chapter 02",
-                    pdf: "ebooks/class-10/science/chapter-02.pdf"
+                    pdf:
+                        "ebooks/class-10/science/chapter-02.pdf"
                 },
 
                 {
                     title: "Chapter 03",
-                    pdf: "ebooks/class-10/science/chapter-03.pdf"
+                    pdf:
+                        "ebooks/class-10/science/chapter-03.pdf"
                 },
 
                 {
                     title: "Chapter 04",
-                    pdf: "ebooks/class-10/science/chapter-04.pdf"
+                    pdf:
+                        "ebooks/class-10/science/chapter-04.pdf"
                 },
 
                 {
                     title: "Chapter 05",
-                    pdf: "ebooks/class-10/science/chapter-05.pdf"
+                    pdf:
+                        "ebooks/class-10/science/chapter-05.pdf"
                 }
 
             ]
+
         },
 
 
         "Mathematics": {
-            description: "Class 10 Mathematics e-books and chapters.",
 
-           image:
+            description:
+                "Class 10 Mathematics e-books and chapters.",
+
+            image:
                 "subject-images/maths.png",
 
             chapters: [
 
                 {
                     title: "Chapter 01",
-                    pdf: "ebooks/class-10/mathematics/chapter-01.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-01.pdf"
                 },
 
                 {
                     title: "Chapter 02",
-                    pdf: "ebooks/class-10/mathematics/chapter-02.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-02.pdf"
                 },
 
                 {
                     title: "Chapter 03",
-                    pdf: "ebooks/class-10/mathematics/chapter-03.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-03.pdf"
                 },
 
                 {
                     title: "Chapter 04",
-                    pdf: "ebooks/class-10/mathematics/chapter-04.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-04.pdf"
                 },
 
                 {
                     title: "Chapter 05",
-                    pdf: "ebooks/class-10/mathematics/chapter-05.pdf"
+                    pdf:
+                        "ebooks/class-10/mathematics/chapter-05.pdf"
                 }
 
             ]
+
         },
 
 
         "Hindi": {
-            description: "Class 10 Hindi e-books and chapters.",
 
-           image:
+            description:
+                "Class 10 Hindi e-books and chapters.",
+
+            image:
                 "subject-images/Hindi.png",
 
- 
             chapters: [
 
                 {
                     title: "Chapter 01",
-                    pdf: "ebooks/class-10/hindi/chapter-01.pdf"
+                    pdf:
+                        "ebooks/class-10/hindi/chapter-01.pdf"
                 },
 
                 {
                     title: "Chapter 02",
-                    pdf: "ebooks/class-10/hindi/chapter-02.pdf"
+                    pdf:
+                        "ebooks/class-10/hindi/chapter-02.pdf"
                 },
 
                 {
                     title: "Chapter 03",
-                    pdf: "ebooks/class-10/hindi/chapter-03.pdf"
+                    pdf:
+                        "ebooks/class-10/hindi/chapter-03.pdf"
                 },
 
                 {
                     title: "Chapter 04",
-                    pdf: "ebooks/class-10/hindi/chapter-04.pdf"
+                    pdf:
+                        "ebooks/class-10/hindi/chapter-04.pdf"
                 },
 
                 {
                     title: "Chapter 05",
-                    pdf: "ebooks/class-10/hindi/chapter-05.pdf"
+                    pdf:
+                        "ebooks/class-10/hindi/chapter-05.pdf"
                 }
 
             ]
+
         },
 
 
         "English": {
-            description: "Class 10 English e-books and chapters.",
 
-           image:
+            description:
+                "Class 10 English e-books and chapters.",
+
+            image:
                 "subject-images/english.png",
 
- 
             chapters: [
 
                 {
                     title: "Chapter 01",
-                    pdf: "ebooks/class-10/english/chapter-01.pdf"
+                    pdf:
+                        "ebooks/class-10/english/chapter-01.pdf"
                 },
 
                 {
                     title: "Chapter 02",
-                    pdf: "ebooks/class-10/english/chapter-02.pdf"
+                    pdf:
+                        "ebooks/class-10/english/chapter-02.pdf"
                 },
 
                 {
                     title: "Chapter 03",
-                    pdf: "ebooks/class-10/english/chapter-03.pdf"
+                    pdf:
+                        "ebooks/class-10/english/chapter-03.pdf"
                 },
 
                 {
                     title: "Chapter 04",
-                    pdf: "ebooks/class-10/english/chapter-04.pdf"
+                    pdf:
+                        "ebooks/class-10/english/chapter-04.pdf"
                 },
 
                 {
                     title: "Chapter 05",
-                    pdf: "ebooks/class-10/english/chapter-05.pdf"
+                    pdf:
+                        "ebooks/class-10/english/chapter-05.pdf"
                 }
 
             ]
+
         },
 
 
         "Social Science": {
-            description: "Class 10 Social Science e-books and chapters.",
 
-           image:
+            description:
+                "Class 10 Social Science e-books and chapters.",
+
+            image:
                 "subject-images/socialscience.png",
 
- 
             chapters: [
 
                 {
                     title: "Chapter 01",
-                    pdf: "ebooks/class-10/social-science/chapter-01.pdf"
+                    pdf:
+                        "ebooks/class-10/social-science/chapter-01.pdf"
                 },
 
                 {
                     title: "Chapter 02",
-                    pdf: "ebooks/class-10/social-science/chapter-02.pdf"
+                    pdf:
+                        "ebooks/class-10/social-science/chapter-02.pdf"
                 },
 
                 {
                     title: "Chapter 03",
-                    pdf: "ebooks/class-10/social-science/chapter-03.pdf"
+                    pdf:
+                        "ebooks/class-10/social-science/chapter-03.pdf"
                 },
 
                 {
                     title: "Chapter 04",
-                    pdf: "ebooks/class-10/social-science/chapter-04.pdf"
+                    pdf:
+                        "ebooks/class-10/social-science/chapter-04.pdf"
                 },
 
                 {
                     title: "Chapter 05",
-                    pdf: "ebooks/class-10/social-science/chapter-05.pdf"
+                    pdf:
+                        "ebooks/class-10/social-science/chapter-05.pdf"
                 }
 
             ]
+
         },
 
 
         "Chitrakala": {
-            description: "Class 10 Chitrakala e-books and chapters.",
 
-           image:
+            description:
+                "Class 10 Chitrakala e-books and chapters.",
+
+            image:
                 "subject-images/chitrakala.png",
 
- 
             chapters: [
 
                 {
                     title: "Chapter 01",
-                    pdf: "ebooks/class-10/chitrakala/chapter-01.pdf"
+                    pdf:
+                        "ebooks/class-10/chitrakala/chapter-01.pdf"
                 },
 
                 {
                     title: "Chapter 02",
-                    pdf: "ebooks/class-10/chitrakala/chapter-02.pdf"
+                    pdf:
+                        "ebooks/class-10/chitrakala/chapter-02.pdf"
                 },
 
                 {
                     title: "Chapter 03",
-                    pdf: "ebooks/class-10/chitrakala/chapter-03.pdf"
+                    pdf:
+                        "ebooks/class-10/chitrakala/chapter-03.pdf"
                 }
 
             ]
+
         },
 
 
         "Home Science": {
-            description: "Class 10 Home Science e-books and chapters.",
 
-           image:
+            description:
+                "Class 10 Home Science e-books and chapters.",
+
+            image:
                 "subject-images/homescience.png",
 
- 
             chapters: [
 
                 {
                     title: "Chapter 01",
-                    pdf: "ebooks/class-10/home-science/chapter-01.pdf"
+                    pdf:
+                        "ebooks/class-10/home-science/chapter-01.pdf"
                 },
 
                 {
                     title: "Chapter 02",
-                    pdf: "ebooks/class-10/home-science/chapter-02.pdf"
+                    pdf:
+                        "ebooks/class-10/home-science/chapter-02.pdf"
                 },
 
                 {
                     title: "Chapter 03",
-                    pdf: "ebooks/class-10/home-science/chapter-03.pdf"
+                    pdf:
+                        "ebooks/class-10/home-science/chapter-03.pdf"
                 }
 
             ]
+
         },
 
 
         "Computer": {
-            description: "Class 10 Computer e-books and chapters.",
 
-           image:
+            description:
+                "Class 10 Computer e-books and chapters.",
+
+            image:
                 "subject-images/computer.png",
 
- 
             chapters: [
 
                 {
                     title: "Chapter 01",
-                    pdf: "ebooks/class-10/computer/chapter-01.pdf"
+                    pdf:
+                        "ebooks/class-10/computer/chapter-01.pdf"
                 },
 
                 {
                     title: "Chapter 02",
-                    pdf: "ebooks/class-10/computer/chapter-02.pdf"
+                    pdf:
+                        "ebooks/class-10/computer/chapter-02.pdf"
                 },
 
                 {
                     title: "Chapter 03",
-                    pdf: "ebooks/class-10/computer/chapter-03.pdf"
+                    pdf:
+                        "ebooks/class-10/computer/chapter-03.pdf"
                 }
 
             ]
+
         }
 
     }
@@ -341,19 +424,24 @@ const SSTC_EBOOKS = {
    DOM READY
    ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    console.log("SSTC Student Page Loaded");
+        console.log(
+            "SSTC Student Page Loaded"
+        );
 
-    loadLoggedInStudent();
+        loadLoggedInStudent();
 
-    setupStudentSecurity();
+        setupStudentSecurity();
 
-    setupReaderDefaults();
+        setupReaderDefaults();
 
-    setCurrentYear();
+        setCurrentYear();
 
-});
+    }
+);
 
 
 /* =========================================================
@@ -365,10 +453,14 @@ function loadLoggedInStudent() {
     try {
 
         const loginStatus =
-            sessionStorage.getItem(SSTC_SESSION_LOGIN);
+            sessionStorage.getItem(
+                SSTC_SESSION_LOGIN
+            );
 
         const rawStudentData =
-            sessionStorage.getItem(SSTC_SESSION_DATA);
+            sessionStorage.getItem(
+                SSTC_SESSION_DATA
+            );
 
 
         console.log(
@@ -376,13 +468,14 @@ function loadLoggedInStudent() {
             loginStatus
         );
 
+
         console.log(
             "SSTC Student Data:",
             rawStudentData
         );
 
 
-        /* No login */
+        /* ================= NO LOGIN ================= */
 
         if (
             !loginStatus ||
@@ -392,10 +485,11 @@ function loadLoggedInStudent() {
             redirectToAccess();
 
             return;
+
         }
 
 
-        /* No student data */
+        /* ================= NO STUDENT DATA ================= */
 
         if (!rawStudentData) {
 
@@ -406,16 +500,19 @@ function loadLoggedInStudent() {
             redirectToAccess();
 
             return;
+
         }
 
 
-        /* Parse student data */
+        /* ================= PARSE DATA ================= */
 
         studentData =
-            JSON.parse(rawStudentData);
+            JSON.parse(
+                rawStudentData
+            );
 
 
-        /* Student ID required */
+        /* ================= STUDENT ID REQUIRED ================= */
 
         if (
             !studentData ||
@@ -430,15 +527,16 @@ function loadLoggedInStudent() {
             redirectToAccess();
 
             return;
+
         }
 
 
-        /* Render */
+        /* ================= RENDER ================= */
 
         renderStudentData();
 
-
-    } catch (error) {
+    }
+    catch (error) {
 
         console.error(
             "SSTC Student Load Error:",
@@ -604,13 +702,17 @@ function renderStudentData() {
 
     setElementText(
         "studentRegistrationDate",
-        formatDate(registrationDate)
+        formatDate(
+            registrationDate
+        )
     );
 
 
     setElementText(
         "registrationDate",
-        formatDate(registrationDate)
+        formatDate(
+            registrationDate
+        )
     );
 
 
@@ -626,13 +728,17 @@ function renderStudentData() {
 
     setElementText(
         "studentLoginTime",
-        formatDateTime(loginTime)
+        formatDateTime(
+            loginTime
+        )
     );
 
 
     setElementText(
         "loginTime",
-        formatDateTime(loginTime)
+        formatDateTime(
+            loginTime
+        )
     );
 
 
@@ -660,15 +766,24 @@ function renderStudentData() {
             avatar.src =
                 studentData.photo;
 
-        } else if (studentData.avatar) {
+            avatar.style.display =
+                "";
+
+        }
+        else if (studentData.avatar) {
 
             avatar.src =
                 studentData.avatar;
 
-        } else {
+            avatar.style.display =
+                "";
+
+        }
+        else {
 
             avatar.style.display =
                 "none";
+
         }
 
     }
@@ -688,6 +803,7 @@ function renderStudentData() {
             studentData.fullName ||
             studentData.name ||
             "S";
+
 
         initial.textContent =
             name
@@ -709,14 +825,19 @@ function renderStudentData() {
    SAFE TEXT SETTER
    ========================================================= */
 
-function setElementText(id, value) {
+function setElementText(
+    id,
+    value
+) {
 
     const element =
         document.getElementById(id);
 
+
     if (!element) {
         return;
     }
+
 
     element.textContent =
         value !== undefined &&
@@ -748,8 +869,14 @@ function formatDate(value) {
             new Date(value);
 
 
-        if (isNaN(date.getTime())) {
+        if (
+            isNaN(
+                date.getTime()
+            )
+        ) {
+
             return value;
+
         }
 
 
@@ -762,8 +889,8 @@ function formatDate(value) {
             }
         );
 
-
-    } catch (error) {
+    }
+    catch (error) {
 
         return value;
 
@@ -792,8 +919,14 @@ function formatDateTime(value) {
             new Date(value);
 
 
-        if (isNaN(date.getTime())) {
+        if (
+            isNaN(
+                date.getTime()
+            )
+        ) {
+
             return value;
+
         }
 
 
@@ -808,8 +941,8 @@ function formatDateTime(value) {
             }
         );
 
-
-    } catch (error) {
+    }
+    catch (error) {
 
         return value;
 
@@ -862,6 +995,7 @@ function renderStudentLibrary() {
         );
 
         return;
+
     }
 
 
@@ -883,18 +1017,36 @@ function renderStudentLibrary() {
 
 
     const classBooks =
-        SSTC_EBOOKS[classNumber];
+        SSTC_EBOOKS[
+            classNumber
+        ];
 
 
     if (!classBooks) {
 
         carousel.innerHTML = `
-            <div class="sstc-empty-library">
-                <p>No e-books available for Class ${classNumber || "-"}</p>
+
+            <div class="library-empty">
+
+                <div>📚</div>
+
+                <h3>
+                    No E-Books Available
+                </h3>
+
+                <p>
+                    No e-books are available
+                    for Class ${escapeHtml(
+                        classNumber || "-"
+                    )}.
+                </p>
+
             </div>
+
         `;
 
         return;
+
     }
 
 
@@ -907,6 +1059,7 @@ function renderStudentLibrary() {
 
 /* =========================================================
    RENDER SUBJECTS
+   CSS COMPATIBLE VERSION
    ========================================================= */
 
 function renderSubjects(subjects) {
@@ -929,15 +1082,31 @@ function renderSubjects(subjects) {
         Object.keys(subjects);
 
 
-    if (subjectNames.length === 0) {
+    if (
+        subjectNames.length === 0
+    ) {
 
         carousel.innerHTML = `
-            <div class="sstc-empty-library">
-                <p>No subjects available.</p>
+
+            <div class="library-empty">
+
+                <div>📚</div>
+
+                <h3>
+                    No Subjects Available
+                </h3>
+
+                <p>
+                    There are currently
+                    no subjects in this library.
+                </p>
+
             </div>
+
         `;
 
         return;
+
     }
 
 
@@ -948,7 +1117,9 @@ function renderSubjects(subjects) {
         ) {
 
             const subject =
-                subjects[subjectName];
+                subjects[
+                    subjectName
+                ];
 
 
             const card =
@@ -957,32 +1128,104 @@ function renderSubjects(subjects) {
                 );
 
 
-            card.type = "button";
+            card.type =
+                "button";
+
 
             card.className =
                 "subject-card";
 
 
             if (index === 0) {
+
                 card.classList.add(
                     "active"
                 );
+
             }
 
 
+            const imageUrl =
+                getImageUrl(
+                    subject.image
+                );
+
+
+            const chapterCount =
+                Array.isArray(
+                    subject.chapters
+                )
+                    ? subject.chapters.length
+                    : 0;
+
+
+            /*
+             * IMPORTANT:
+             * HTML structure exactly matches CSS.
+             */
+
             card.innerHTML = `
 
-                <div class="subject-card-title">
-                    ${escapeHtml(subjectName)}
+                <div class="subject-card-image">
+
+                    ${
+                        imageUrl
+                            ? `
+                                <img
+                                    src="${escapeHtml(
+                                        imageUrl
+                                    )}"
+                                    alt="${escapeHtml(
+                                        subjectName
+                                    )}"
+                                    draggable="false"
+                                >
+                              `
+                            : `
+                                <div
+                                    style="
+                                        width:100%;
+                                        height:100%;
+                                        display:flex;
+                                        align-items:center;
+                                        justify-content:center;
+                                        font-size:45px;
+                                    "
+                                >
+                                    📚
+                                </div>
+                              `
+                    }
+
                 </div>
 
-                <div class="subject-card-count">
-                    ${
-                        subject.chapters
-                            ? subject.chapters.length
-                            : 0
-                    }
-                    Chapters
+
+                <div class="subject-card-content">
+
+                    <span class="subject-card-badge">
+                        E-BOOK
+                    </span>
+
+
+                    <h3>
+                        ${escapeHtml(
+                            subjectName
+                        )}
+                    </h3>
+
+
+                    <p>
+                        ${escapeHtml(
+                            subject.description ||
+                            "E-book and chapter library."
+                        )}
+                    </p>
+
+
+                    <span class="subject-chapter-count">
+                        📖 ${chapterCount} Chapters
+                    </span>
+
                 </div>
 
             `;
@@ -1008,11 +1251,15 @@ function renderSubjects(subjects) {
     );
 
 
-    /* Select first subject */
+    /* ================= SELECT FIRST SUBJECT ================= */
 
-    selectSubject(
-        subjectNames[0]
-    );
+    if (subjectNames.length > 0) {
+
+        selectSubject(
+            subjectNames[0]
+        );
+
+    }
 
 }
 
@@ -1023,7 +1270,9 @@ function renderSubjects(subjects) {
 
 function escapeHtml(value) {
 
-    return String(value || "")
+    return String(
+        value || ""
+    )
         .replace(
             /&/g,
             "&amp;"
@@ -1052,7 +1301,9 @@ function escapeHtml(value) {
    SELECT SUBJECT
    ========================================================= */
 
-function selectSubject(subjectName) {
+function selectSubject(
+    subjectName
+) {
 
     if (!studentData) {
         return;
@@ -1068,7 +1319,9 @@ function selectSubject(subjectName) {
 
 
     const classBooks =
-        SSTC_EBOOKS[classNumber];
+        SSTC_EBOOKS[
+            classNumber
+        ];
 
 
     if (!classBooks) {
@@ -1077,7 +1330,9 @@ function selectSubject(subjectName) {
 
 
     const subject =
-        classBooks[subjectName];
+        classBooks[
+            subjectName
+        ];
 
 
     if (!subject) {
@@ -1110,7 +1365,7 @@ function selectSubject(subjectName) {
     );
 
 
-    /* ================= ACTIVE SUBJECT CARD ================= */
+    /* ================= ACTIVE CARD ================= */
 
     const cards =
         document.querySelectorAll(
@@ -1121,9 +1376,14 @@ function selectSubject(subjectName) {
     cards.forEach(
         function (card) {
 
+            /*
+             * New CSS structure:
+             * .subject-card-content h3
+             */
+
             const title =
                 card.querySelector(
-                    ".subject-card-title"
+                    ".subject-card-content h3"
                 );
 
 
@@ -1137,7 +1397,8 @@ function selectSubject(subjectName) {
                     "active"
                 );
 
-            } else {
+            }
+            else {
 
                 card.classList.remove(
                     "active"
@@ -1161,6 +1422,7 @@ function selectSubject(subjectName) {
 
 /* =========================================================
    RENDER CHAPTERS
+   CSS COMPATIBLE VERSION
    ========================================================= */
 
 function renderChapters(
@@ -1181,21 +1443,42 @@ function renderChapters(
         );
 
         return;
+
     }
 
 
     grid.innerHTML = "";
 
 
-    if (!chapters.length) {
+    if (
+        !Array.isArray(chapters) ||
+        chapters.length === 0
+    ) {
 
         grid.innerHTML = `
-            <div class="sstc-empty-library">
-                <p>No chapters available.</p>
+
+            <div class="library-empty">
+
+                <div>📖</div>
+
+                <h3>
+                    No Chapters Available
+                </h3>
+
+                <p>
+                    No chapters are currently
+                    available for
+                    ${escapeHtml(
+                        subjectName
+                    )}.
+                </p>
+
             </div>
+
         `;
 
         return;
+
     }
 
 
@@ -1205,37 +1488,105 @@ function renderChapters(
             index
         ) {
 
-            const button =
+            /*
+             * IMPORTANT:
+             *
+             * CSS expects:
+             *
+             * .chapter-item
+             * .chapter-number
+             * .chapter-icon
+             * .chapter-info
+             * .chapter-open
+             *
+             */
+
+            const item =
                 document.createElement(
                     "button"
                 );
 
 
-            button.type = "button";
-
-            button.className =
-                "chapter-card";
+            item.type =
+                "button";
 
 
-            button.innerHTML = `
+            item.className =
+                "chapter-item";
+
+
+            const chapterTitle =
+                chapter.title ||
+                `Chapter ${index + 1}`;
+
+
+            item.innerHTML = `
 
                 <span class="chapter-number">
                     ${index + 1}
                 </span>
 
-                <span class="chapter-title">
-                    ${escapeHtml(
-                        chapter.title ||
-                        `Chapter ${index + 1}`
-                    )}
+
+                <span class="chapter-icon">
+                    📖
+                </span>
+
+
+                <span class="chapter-info">
+
+                    <h3>
+                        ${escapeHtml(
+                            chapterTitle
+                        )}
+                    </h3>
+
+                    <p>
+                        ${escapeHtml(
+                            chapter.description ||
+                            "Read this chapter from the SSTC e-book."
+                        )}
+                    </p>
+
+                </span>
+
+
+                <span class="chapter-open">
+                    Open PDF
                 </span>
 
             `;
 
 
-            button.addEventListener(
+            item.addEventListener(
                 "click",
                 function () {
+
+                    /*
+                     * Remove active class
+                     * from other chapters.
+                     */
+
+                    document
+                        .querySelectorAll(
+                            ".chapter-item"
+                        )
+                        .forEach(
+                            function (
+                                chapterItem
+                            ) {
+
+                                chapterItem.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                    item.classList.add(
+                        "active"
+                    );
+
 
                     openChapter(
                         subjectName,
@@ -1247,7 +1598,7 @@ function renderChapters(
 
 
             grid.appendChild(
-                button
+                item
             );
 
         }
@@ -1279,7 +1630,9 @@ function openChapter(
 
 
     const classBooks =
-        SSTC_EBOOKS[classNumber];
+        SSTC_EBOOKS[
+            classNumber
+        ];
 
 
     if (!classBooks) {
@@ -1290,11 +1643,14 @@ function openChapter(
         );
 
         return;
+
     }
 
 
     const subject =
-        classBooks[subjectName];
+        classBooks[
+            subjectName
+        ];
 
 
     if (!subject) {
@@ -1305,6 +1661,7 @@ function openChapter(
         );
 
         return;
+
     }
 
 
@@ -1322,6 +1679,7 @@ function openChapter(
         );
 
         return;
+
     }
 
 
@@ -1335,7 +1693,9 @@ function openChapter(
 
     sessionStorage.setItem(
         SSTC_CURRENT_CHAPTER,
-        String(chapterIndex)
+        String(
+            chapterIndex
+        )
     );
 
 
@@ -1383,17 +1743,18 @@ function openChapter(
         );
 
         return;
+
     }
 
 
-    /* Reset zoom */
+    /* ================= RESET ZOOM ================= */
 
     sstcZoom = 100;
 
     applyZoom();
 
 
-    /* Show loading state */
+    /* ================= SHOW LOADING ================= */
 
     const viewerEmpty =
         document.getElementById(
@@ -1409,7 +1770,13 @@ function openChapter(
     }
 
 
-    /* Set PDF directly inside iframe */
+    /* ================= HIDE FRAME UNTIL LOADED ================= */
+
+    currentFrame.style.display =
+        "none";
+
+
+    /* ================= SET PDF ================= */
 
     currentFrame.src =
         pdfUrl;
@@ -1510,6 +1877,20 @@ function pdfLoaded() {
 
     }
 
+
+    const frame =
+        document.getElementById(
+            "pdfFrame"
+        );
+
+
+    if (frame) {
+
+        frame.style.display =
+            "block";
+
+    }
+
 }
 
 
@@ -1542,7 +1923,9 @@ function applyZoom() {
         "top left";
 
 
-    if (sstcZoom !== 100) {
+    if (
+        sstcZoom !== 100
+    ) {
 
         frame.style.width =
             `${100 / zoom}%`;
@@ -1550,7 +1933,8 @@ function applyZoom() {
         frame.style.height =
             `${100 / zoom}%`;
 
-    } else {
+    }
+    else {
 
         frame.style.width =
             "100%";
@@ -1583,7 +1967,9 @@ function applyZoom() {
 
 function zoomIn() {
 
-    if (sstcZoom >= 200) {
+    if (
+        sstcZoom >= 200
+    ) {
         return;
     }
 
@@ -1601,7 +1987,9 @@ function zoomIn() {
 
 function zoomOut() {
 
-    if (sstcZoom <= 50) {
+    if (
+        sstcZoom <= 50
+    ) {
         return;
     }
 
@@ -1660,7 +2048,13 @@ function toggleFullscreen() {
         document.fullscreenElement
     ) {
 
-        document.exitFullscreen();
+        if (
+            document.exitFullscreen
+        ) {
+
+            document.exitFullscreen();
+
+        }
 
         return;
 
@@ -1723,7 +2117,8 @@ function scrollSubjects(
     }
 
 
-    const amount = 300;
+    const amount =
+        carousel.clientWidth * 0.85;
 
 
     carousel.scrollBy({
@@ -1733,7 +2128,8 @@ function scrollSubjects(
                 ? -amount
                 : amount,
 
-        behavior: "smooth"
+        behavior:
+            "smooth"
 
     });
 
@@ -1747,7 +2143,8 @@ function scrollSubjects(
 function setCurrentYear() {
 
     const year =
-        new Date().getFullYear();
+        new Date()
+            .getFullYear();
 
 
     const elements =
@@ -1802,28 +2199,33 @@ function studentLogout() {
             SSTC_SESSION_LOGIN
         );
 
+
         sessionStorage.removeItem(
             SSTC_SESSION_DATA
         );
+
 
         sessionStorage.removeItem(
             SSTC_SESSION_LOGIN_TIME
         );
 
+
         sessionStorage.removeItem(
             SSTC_CURRENT_BOOK
         );
+
 
         sessionStorage.removeItem(
             SSTC_CURRENT_CHAPTER
         );
 
+
         sessionStorage.removeItem(
             SSTC_CURRENT_PAGE
         );
 
-
-    } catch (error) {
+    }
+    catch (error) {
 
         console.error(
             "Logout error:",
@@ -1887,6 +2289,7 @@ function setupStudentSecurity() {
             ) {
 
                 return;
+
             }
 
 
@@ -1917,6 +2320,7 @@ function setupStudentSecurity() {
                 event.preventDefault();
 
                 return;
+
             }
 
 
@@ -1930,6 +2334,7 @@ function setupStudentSecurity() {
                 event.preventDefault();
 
                 return;
+
             }
 
 
@@ -1943,6 +2348,7 @@ function setupStudentSecurity() {
                 event.preventDefault();
 
                 return;
+
             }
 
 
@@ -1956,6 +2362,7 @@ function setupStudentSecurity() {
                 event.preventDefault();
 
                 return;
+
             }
 
 
@@ -1970,6 +2377,7 @@ function setupStudentSecurity() {
                 event.preventDefault();
 
                 return;
+
             }
 
 
@@ -1984,6 +2392,7 @@ function setupStudentSecurity() {
                 event.preventDefault();
 
                 return;
+
             }
 
 
@@ -1998,6 +2407,7 @@ function setupStudentSecurity() {
                 event.preventDefault();
 
                 return;
+
             }
 
         }
