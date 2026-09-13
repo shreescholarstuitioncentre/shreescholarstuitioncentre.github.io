@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SSTC PDF Reader</title>
+
+
+    <!-- =====================================================
+         PDF.JS
+         ===================================================== -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            overflow: hidden;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #525659;
+
+        }
+
+
+        /* =====================================================
+           MAIN APP
+           ===================================================== */
+
+        #pdfApp {
+
+            width: 100%;
+
+            height: 100%;
+
+            display: flex;
+
+            flex-direction: column;
+
+            background: #525659;
+
+        }
+
+
+        /* =====================================================
+           TOOLBAR
+           ===================================================== */
+
+        #toolbar {
+
+            height: 58px;
+
+            min-height: 58px;
+
+            background: #323232;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 12px;
+
+            gap: 8px;
+
+            user-select: none;
+
+            box-shadow:
+                0 1px 4px rgba(
+                    0,
+                    0,
+                    0,
+                    0.35
+                );
+
+            z-index: 100;
+
+        }
+
+
+        /* =====================================================
+           TITLE
+           ===================================================== */
+
+        #documentTitle {
+
+            width: 190px;
+
+            min-width: 120px;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+
+            white-space: nowrap;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            margin-left: 8px;
+
+        }
+
+
+        /* =====================================================
+           TOOL BUTTON
+           ===================================================== */
+
+        .toolButton {
+
+            width: 36px;
+
+            height: 36px;
+
+            border: 0;
+
+            border-radius: 4px;
+
+            background: transparent;
+
+            color: white;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .toolButton:hover {
+
+            background: rgba(
+                255,
+                255,
+                255,
+                0.12
+            );
+
+        }
+
+
+        .toolButton:active {
+
+            background: rgba(
+                255,
+                255,
+                255,
+                0.20
+            );
+
+        }
+
+
+        .toolButton:disabled {
+
+            opacity: 0.35;
+
+            cursor: default;
+
+        }
+
+
+        /* =====================================================
+           SEPARATOR
+           ===================================================== */
+
+        .separator {
+
+            width: 1px;
+
+            height: 28px;
+
+            background: rgba(
+                255,
+                255,
+                255,
+                0.20
+            );
+
+            margin: 0 4px;
+
+        }
+
+
+        /* =====================================================
+           PAGE NUMBER
+           ===================================================== */
+
+        #pageNumber {
+
+            width: 48px;
+
+            height: 32px;
+
+            border: 0;
+
+            border-radius: 3px;
+
+            background: #1f1f1f;
+
+            color: white;
+
+            text-align: center;
+
+            font-size: 14px;
+
+            outline: none;
+
+        }
+
+
+        #pageNumber:focus {
+
+            box-shadow:
+                0 0 0 1px #5aa9ff;
+
+        }
+
+
+        #pageCount {
+
+            font-size: 14px;
+
+            color: #eeeeee;
+
+            min-width: 45px;
+
+        }
+
+
+        /* =====================================================
+           ZOOM
+           ===================================================== */
+
+        #zoomLevel {
+
+            min-width: 58px;
+
+            text-align: center;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           VIEWER
+           ===================================================== */
+
+        #pdfViewer {
+
+            flex: 1;
+
+            width: 100%;
+
+            overflow: auto;
+
+            position: relative;
+
+            background: #525659;
+
+            text-align: center;
+
+            padding: 18px;
+
+        }
+
+
+        /* =====================================================
+           PAGE
+           ===================================================== */
+
+        .pdfPage {
+
+            position: relative;
+
+            display: block;
+
+            margin: 0 auto 18px auto;
+
+            background: white;
+
+            box-shadow:
+                0 2px 8px rgba(
+                    0,
+                    0,
+                    0,
+                    0.45
+                );
+
+        }
+
+
+        .pdfCanvas {
+
+            display: block;
+
+        }
+
+
+        /* =====================================================
+           LOADING
+           ===================================================== */
+
+        #loading {
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform:
+                translate(
+                    -50%,
+                    -50%
+                );
+
+            color: white;
+
+            font-size: 15px;
+
+            background: rgba(
+                0,
+                0,
+                0,
+                0.55
+            );
+
+            padding: 14px 22px;
+
+            border-radius: 6px;
+
+            z-index: 50;
+
+        }
+
+
+        /* =====================================================
+           ERROR
+           ===================================================== */
+
+        #errorMessage {
+
+            display: none;
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform:
+                translate(
+                    -50%,
+                    -50%
+                );
+
+            width: min(
+                90%,
+                500px
+            );
+
+            padding: 20px;
+
+            background: white;
+
+            border-radius: 8px;
+
+            color: #333;
+
+            box-shadow:
+                0 5px 25px rgba(
+                    0,
+                    0,
+                    0,
+                    0.4
+                );
+
+        }
+
+
+        #errorMessage h3 {
+
+            margin-top: 0;
+
+            color: #b00020;
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+           ===================================================== */
+
+        @media (
+            max-width: 700px
+        ) {
+
+            #toolbar {
+
+                height: 52px;
+
+                min-height: 52px;
+
+                padding: 0 5px;
+
+                gap: 2px;
+
+            }
+
+
+            #documentTitle {
+
+                display: none;
+
+            }
+
+
+            .toolButton {
+
+                width: 34px;
+
+                height: 34px;
+
+            }
+
+
+            #pageNumber {
+
+                width: 42px;
+
+            }
+
+
+            #pageCount {
+
+                min-width: 35px;
+
+            }
+
+
+            #zoomLevel {
+
+                min-width: 48px;
+
+                font-size: 12px;
+
+            }
+
+
+            .separator {
+
+                margin: 0 2px;
+
+            }
+
+
+            #pdfViewer {
+
+                padding: 8px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           FULLSCREEN
+           ===================================================== */
+
+        #pdfApp:fullscreen {
+
+            width: 100vw;
+
+            height: 100vh;
+
+        }
+
+
+        /* =====================================================
+           PRINT BLOCK
+           ===================================================== */
+
+        @media print {
+
+            html,
+            body {
+
+                display: none !important;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div id="pdfApp">
+
+
+    <!-- =====================================================
+         TOOLBAR
+         ONLY REQUIRED OPTIONS
+         ===================================================== -->
+
+    <div id="toolbar">
+
+
+        <!-- Previous -->
+
+        <button
+            id="previousPage"
+            class="toolButton"
+            title="Previous Page"
+        >
+            ◀
+        </button>
+
+
+        <!-- Page -->
+
+        <input
+            id="pageNumber"
+            type="number"
+            min="1"
+            value="1"
+            title="Page Number"
+        >
+
+
+        <span>
+            /
+        </span>
+
+
+        <span id="pageCount">
+            0
+        </span>
+
+
+        <div class="separator"></div>
+
+
+        <!-- Zoom Out -->
+
+        <button
+            id="zoomOut"
+            class="toolButton"
+            title="Zoom Out"
+        >
+            −
+        </button>
+
+
+        <span id="zoomLevel">
+            100%
+        </span>
+
+
+        <!-- Zoom In -->
+
+        <button
+            id="zoomIn"
+            class="toolButton"
+            title="Zoom In"
+        >
+            +
+        </button>
+
+
+        <div class="separator"></div>
+
+
+        <!-- Rotate -->
+
+        <button
+            id="rotate"
+            class="toolButton"
+            title="Rotate"
+        >
+            ↻
+        </button>
+
+
+        <!-- Fit Width -->
+
+        <button
+            id="fitWidth"
+            class="toolButton"
+            title="Fit Width"
+        >
+            ↔
+        </button>
+
+
+        <!-- Fullscreen -->
+
+        <button
+            id="fullscreen"
+            class="toolButton"
+            title="Fullscreen"
+        >
+            ⛶
+        </button>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         PDF AREA
+         ===================================================== -->
+
+    <div id="pdfViewer">
+
+        <div id="loading">
+            Opening PDF...
+        </div>
+
+
+        <div id="errorMessage">
+
+            <h3>
+                PDF Open Error
+            </h3>
+
+            <p id="errorText">
+                PDF could not be loaded.
+            </p>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+    /* =========================================================
+       PDF.JS WORKER
+       ========================================================= */
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+    /* =========================================================
+       VARIABLES
+       ========================================================= */
+
+    let pdfDocument = null;
+
+    let currentPage = 1;
+
+    let totalPages = 0;
+
+    let zoom = 1;
+
+    let rotation = 0;
+
+    let rendering = false;
+
+    let pendingPage = null;
+
+
+    /* =========================================================
+       ELEMENTS
+       ========================================================= */
+
+    const viewer =
+        document.getElementById(
+            "pdfViewer"
+        );
+
+
+    const loading =
+        document.getElementById(
+            "loading"
+        );
+
+
+    const errorBox =
+        document.getElementById(
+            "errorMessage"
+        );
+
+
+    const errorText =
+        document.getElementById(
+            "errorText"
+        );
+
+
+    const pageNumber =
+        document.getElementById(
+            "pageNumber"
+        );
+
+
+    const pageCount =
+        document.getElementById(
+            "pageCount"
+        );
+
+
+    const zoomLevel =
+        document.getElementById(
+            "zoomLevel"
+        );
+
+
+    const documentTitle =
+        document.getElementById(
+            "documentTitle"
+        );
+
+
+    /* =========================================================
+       GET PDF URL
+       ========================================================= */
+
+    function getPdfUrl() {
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const file =
+            params.get(
+                "file"
+            );
+
+
+        if (!file) {
+
+            return null;
+
+        }
+
+
+        return file;
+
+    }
+
+
+    /* =========================================================
+       GET FILE NAME
+       ========================================================= */
+
+    function getFileName(
+        url
+    ) {
+
+        try {
+
+            const cleanUrl =
+                decodeURIComponent(
+                    url
+                );
+
+
+            const parts =
+                cleanUrl.split(
+                    "/"
+                );
+
+
+            return (
+                parts[
+                    parts.length - 1
+                ] ||
+                "PDF Document"
+            );
+
+        }
+
+        catch (error) {
+
+            return "PDF Document";
+
+        }
+
+    }
+
+
+    /* =========================================================
+       SHOW ERROR
+       ========================================================= */
+
+    function showError(
+        message
+    ) {
+
+        loading.style.display =
+            "none";
+
+
+        errorBox.style.display =
+            "block";
+
+
+        errorText.textContent =
+            message;
+
+    }
+
+
+    /* =========================================================
+       LOAD PDF
+       ========================================================= */
+
+    async function loadPdf() {
+
+        const pdfUrl =
+            getPdfUrl();
+
+
+        if (!pdfUrl) {
+
+            showError(
+                "PDF file path is missing."
+            );
+
+            return;
+
+        }
+
+
+        document.title =
+            "SSTC | " +
+            getFileName(
+                pdfUrl
+            );
+
+
+        try {
+
+            loading.style.display =
+                "block";
+
+
+            errorBox.style.display =
+                "none";
+
+
+            pdfDocument =
+                await pdfjsLib.getDocument(
+                    {
+                        url:
+                            pdfUrl,
+
+                        withCredentials:
+                            false
+                    }
+                )
+                .promise;
+
+
+            totalPages =
+                pdfDocument.numPages;
+
+
+            pageCount.textContent =
+                totalPages;
+
+
+            pageNumber.max =
+                totalPages;
+
+
+            loading.style.display =
+                "none";
+
+
+            currentPage =
+                1;
+
+
+            rotation =
+                0;
+
+
+            zoom =
+                1;
+
+
+            await renderPage(
+                currentPage
+            );
+
+
+            updateButtons();
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "SSTC PDF ERROR:",
+                error
+            );
+
+
+            showError(
+                "PDF load failed. Please check the PDF path and file name."
+            );
+
+        }
+
+    }
+
+
+    /* =========================================================
+       RENDER PAGE
+       ========================================================= */
+
+    async function renderPage(
+        pageNum
+    ) {
+
+        if (!pdfDocument) {
+
+            return;
+
+        }
+
+
+        if (rendering) {
+
+            pendingPage =
+                pageNum;
+
+            return;
+
+        }
+
+
+        rendering =
+            true;
+
+
+        try {
+
+            const page =
+                await pdfDocument.getPage(
+                    pageNum
+                );
+
+
+            const viewport =
+                page.getViewport(
+                    {
+                        scale:
+                            zoom,
+
+                        rotation:
+                            rotation
+                    }
+                );
+
+
+            viewer
+                .querySelectorAll(
+                    ".pdfPage"
+                )
+                .forEach(
+                    function (
+                        element
+                    ) {
+
+                        element.remove();
+
+                    }
+                );
+
+
+            const pageContainer =
+                document.createElement(
+                    "div"
+                );
+
+
+            pageContainer.className =
+                "pdfPage";
+
+
+            const canvas =
+                document.createElement(
+                    "canvas"
+                );
+
+
+            canvas.className =
+                "pdfCanvas";
+
+
+            const context =
+                canvas.getContext(
+                    "2d"
+                );
+
+
+            canvas.width =
+                viewport.width;
+
+
+            canvas.height =
+                viewport.height;
+
+
+            pageContainer.appendChild(
+                canvas
+            );
+
+
+            viewer.appendChild(
+                pageContainer
+            );
+
+
+            await page.render(
+                {
+                    canvasContext:
+                        context,
+
+                    viewport:
+                        viewport
+                }
+            )
+            .promise;
+
+
+            pageNumber.value =
+                pageNum;
+
+
+            currentPage =
+                pageNum;
+
+
+            updateZoomText();
+
+            updateButtons();
+
+
+            viewer.scrollTop =
+                0;
+
+            viewer.scrollLeft =
+                0;
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Page render error:",
+                error
+            );
+
+        }
+
+
+        rendering =
+            false;
+
+
+        if (
+            pendingPage !== null
+        ) {
+
+            const nextPage =
+                pendingPage;
+
+
+            pendingPage =
+                null;
+
+
+            renderPage(
+                nextPage
+            );
+
+        }
+
+    }
+
+
+    /* =========================================================
+       PREVIOUS PAGE
+       ========================================================= */
+
+    function previousPage() {
+
+        if (
+            currentPage <= 1
+        ) {
+
+            return;
+
+        }
+
+
+        renderPage(
+            currentPage - 1
+        );
+
+    }
+
+
+    /* =========================================================
+       NEXT PAGE
+       ========================================================= */
+
+    function nextPage() {
+
+        if (
+            currentPage >=
+            totalPages
+        ) {
+
+            return;
+
+        }
+
+
+        renderPage(
+            currentPage + 1
+        );
+
+    }
+
+
+    /* =========================================================
+       PAGE INPUT
+       ========================================================= */
+
+    pageNumber.addEventListener(
+        "change",
+        function () {
+
+            let value =
+                parseInt(
+                    pageNumber.value,
+                    10
+                );
+
+
+            if (
+                isNaN(value)
+            ) {
+
+                value =
+                    1;
+
+            }
+
+
+            value =
+                Math.max(
+                    1,
+                    Math.min(
+                        totalPages,
+                        value
+                    )
+                );
+
+
+            renderPage(
+                value
+            );
+
+        }
+    );
+
+
+    pageNumber.addEventListener(
+        "keydown",
+        function (
+            event
+        ) {
+
+            if (
+                event.key ===
+                "Enter"
+            ) {
+
+                this.blur();
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       ZOOM IN
+       ========================================================= */
+
+    function zoomIn() {
+
+        zoom =
+            Math.min(
+                3,
+                zoom + 0.1
+            );
+
+
+        renderPage(
+            currentPage
+        );
+
+    }
+
+
+    /* =========================================================
+       ZOOM OUT
+       ========================================================= */
+
+    function zoomOut() {
+
+        zoom =
+            Math.max(
+                0.5,
+                zoom - 0.1
+            );
+
+
+        renderPage(
+            currentPage
+        );
+
+    }
+
+
+    /* =========================================================
+       ROTATE
+       ========================================================= */
+
+    function rotatePdf() {
+
+        rotation =
+            (
+                rotation +
+                90
+            ) %
+            360;
+
+
+        renderPage(
+            currentPage
+        );
+
+    }
+
+
+    /* =========================================================
+       FIT WIDTH
+       ========================================================= */
+
+    async function fitWidth() {
+
+        if (!pdfDocument) {
+
+            return;
+
+        }
+
+
+        try {
+
+            const page =
+                await pdfDocument.getPage(
+                    currentPage
+                );
+
+
+            const baseViewport =
+                page.getViewport(
+                    {
+                        scale:
+                            1,
+
+                        rotation:
+                            rotation
+                    }
+                );
+
+
+            const availableWidth =
+                viewer.clientWidth -
+                36;
+
+
+            zoom =
+                availableWidth /
+                baseViewport.width;
+
+
+            zoom =
+                Math.max(
+                    0.5,
+                    Math.min(
+                        3,
+                        zoom
+                    )
+                );
+
+
+            renderPage(
+                currentPage
+            );
+
+        }
+
+        catch (error) {
+
+            console.error(
+                error
+            );
+
+        }
+
+    }
+
+
+    /* =========================================================
+       FULLSCREEN
+       ========================================================= */
+
+    function toggleFullscreen() {
+
+        const app =
+            document.getElementById(
+                "pdfApp"
+            );
+
+
+        if (
+            document.fullscreenElement
+        ) {
+
+            if (
+                document.exitFullscreen
+            ) {
+
+                document.exitFullscreen();
+
+            }
+
+            return;
+
+        }
+
+
+        if (
+            app.requestFullscreen
+        ) {
+
+            app.requestFullscreen()
+                .catch(
+                    function (
+                        error
+                    ) {
+
+                        console.warn(
+                            error
+                        );
+
+                    }
+                );
+
+        }
+
+    }
+
+
+    /* =========================================================
+       UPDATE ZOOM
+       ========================================================= */
+
+    function updateZoomText() {
+
+        zoomLevel.textContent =
+            Math.round(
+                zoom * 100
+            ) +
+            "%";
+
+    }
+
+
+    /* =========================================================
+       UPDATE BUTTONS
+       ========================================================= */
+
+    function updateButtons() {
+
+        document.getElementById(
+            "previousPage"
+        ).disabled =
+            currentPage <= 1;
+
+
+        const nextButton =
+            document.getElementById(
+                "nextPage"
+            );
+
+
+        if (nextButton) {
+
+            nextButton.disabled =
+                currentPage >=
+                totalPages;
+
+        }
+
+    }
+
+
+    /* =========================================================
+       BUTTON EVENTS
+       ========================================================= */
+
+    document
+        .getElementById(
+            "previousPage"
+        )
+        .addEventListener(
+            "click",
+            previousPage
+        );
+
+
+    document
+        .getElementById(
+            "zoomOut"
+        )
+        .addEventListener(
+            "click",
+            zoomOut
+        );
+
+
+    document
+        .getElementById(
+            "zoomIn"
+        )
+        .addEventListener(
+            "click",
+            zoomIn
+        );
+
+
+    document
+        .getElementById(
+            "rotate"
+        )
+        .addEventListener(
+            "click",
+            rotatePdf
+        );
+
+
+    document
+        .getElementById(
+            "fitWidth"
+        )
+        .addEventListener(
+            "click",
+            fitWidth
+        );
+
+
+    document
+        .getElementById(
+            "fullscreen"
+        )
+        .addEventListener(
+            "click",
+            toggleFullscreen
+        );
+
+
+    /* =========================================================
+       KEYBOARD
+       ========================================================= */
+
+    document.addEventListener(
+        "keydown",
+        function (
+            event
+        ) {
+
+            if (
+                event.key ===
+                "ArrowLeft"
+            ) {
+
+                previousPage();
+
+            }
+
+
+            if (
+                event.key ===
+                "ArrowRight"
+            ) {
+
+                nextPage();
+
+            }
+
+
+            if (
+                event.key ===
+                "+"
+            ) {
+
+                zoomIn();
+
+            }
+
+
+            if (
+                event.key ===
+                "-"
+            ) {
+
+                zoomOut();
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       BLOCK RIGHT CLICK
+       ========================================================= */
+
+    document.addEventListener(
+        "contextmenu",
+        function (
+            event
+        ) {
+
+            event.preventDefault();
+
+        }
+    );
+
+
+    /* =========================================================
+       BLOCK PRINT
+       ========================================================= */
+
+    window.addEventListener(
+        "beforeprint",
+        function (
+            event
+        ) {
+
+            event.preventDefault();
+
+        }
+    );
+
+
+    /* =========================================================
+       BLOCK COMMON SAVE / PRINT
+       ========================================================= */
+
+    document.addEventListener(
+        "keydown",
+        function (
+            event
+        ) {
+
+            const key =
+                String(
+                    event.key || ""
+                ).toLowerCase();
+
+
+            if (
+                event.ctrlKey &&
+                (
+                    key === "p" ||
+                    key === "s"
+                )
+            ) {
+
+                event.preventDefault();
+
+            }
+
+        },
+        true
+    );
+
+
+    /* =========================================================
+       START
+       ========================================================= */
+
+    loadPdf();
+
+</script>
+
+
+</body>
+
+</html>
