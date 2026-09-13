@@ -46,7 +46,8 @@ const SSTC_SITE_BASE_URL =
  */
 
 const SSTC_PDFJS_VIEWER =
-    "https://mozilla.github.io/pdf.js/web/viewer.html";
+   "/pdfjs/web/viewer.html";
+    // "https://mozilla.github.io/pdf.js/web/viewer.html";
 
 
 /* =========================================================
