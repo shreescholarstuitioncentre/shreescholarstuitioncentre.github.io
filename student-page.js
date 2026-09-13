@@ -24,7 +24,29 @@ const SSTC_CURRENT_PAGE = "sstcCurrentPage";
 
 /* ================= SITE BASE URL ================= */
 
-const SSTC_SITE_BASE_URL = window.location.origin;
+const SSTC_SITE_BASE_URL =
+    window.location.origin;
+
+
+/* =========================================================
+   PDF.JS VIEWER URL
+   ========================================================= */
+
+/*
+ * IMPORTANT
+ *
+ * Direct PDF ko iframe mein load karne par
+ * mobile/tablet browsers PDF ko new tab/native viewer
+ * mein khol sakte hain.
+ *
+ * Isliye PDF.js viewer use kiya ja raha hai.
+ *
+ * Agar aap future mein apni website par PDF.js self-host
+ * karte hain to sirf is URL ko change karna hoga.
+ */
+
+const SSTC_PDFJS_VIEWER =
+    "https://mozilla.github.io/pdf.js/web/viewer.html";
 
 
 /* =========================================================
@@ -37,21 +59,34 @@ function getImageUrl(imagePath) {
         return "";
     }
 
-    const path = String(imagePath).trim();
+    const path =
+        String(imagePath).trim();
+
 
     /* Already full URL */
+
     if (
         path.startsWith("http://") ||
         path.startsWith("https://")
     ) {
+
         return path;
+
     }
 
+
     /* Remove starting slash */
+
     const cleanPath =
         path.replace(/^\/+/, "");
 
-    return SSTC_SITE_BASE_URL + "/" + cleanPath;
+
+    return (
+        SSTC_SITE_BASE_URL +
+        "/" +
+        cleanPath
+    );
+
 }
 
 
@@ -68,19 +103,58 @@ function getPdfUrl(pdfPath) {
     const path =
         String(pdfPath).trim();
 
+
     /* Already full URL */
+
     if (
         path.startsWith("http://") ||
         path.startsWith("https://")
     ) {
+
         return path;
+
     }
 
+
     /* Remove starting slash */
+
     const cleanPath =
         path.replace(/^\/+/, "");
 
-    return SSTC_SITE_BASE_URL + "/" + cleanPath;
+
+    return (
+        SSTC_SITE_BASE_URL +
+        "/" +
+        cleanPath
+    );
+
+}
+
+
+/* =========================================================
+   PDF.JS VIEWER HELPER
+   ========================================================= */
+
+function getPdfViewerUrl(pdfUrl) {
+
+    if (!pdfUrl) {
+        return "";
+    }
+
+
+    /*
+     * PDF.js viewer ke file parameter mein
+     * actual PDF URL pass kiya ja raha hai.
+     *
+     * encodeURIComponent important hai.
+     */
+
+    return (
+        SSTC_PDFJS_VIEWER +
+        "?file=" +
+        encodeURIComponent(pdfUrl)
+    );
+
 }
 
 
@@ -457,6 +531,7 @@ function loadLoggedInStudent() {
                 SSTC_SESSION_LOGIN
             );
 
+
         const rawStudentData =
             sessionStorage.getItem(
                 SSTC_SESSION_DATA
@@ -560,7 +635,9 @@ function redirectToAccess() {
         return;
     }
 
+
     sstcRedirecting = true;
+
 
     window.location.href =
         "sstc-access.html";
@@ -859,7 +936,9 @@ function formatDate(value) {
         !value ||
         value === "-"
     ) {
+
         return "-";
+
     }
 
 
@@ -909,7 +988,9 @@ function formatDateTime(value) {
         !value ||
         value === "-"
     ) {
+
         return "-";
+
     }
 
 
@@ -1059,7 +1140,6 @@ function renderStudentLibrary() {
 
 /* =========================================================
    RENDER SUBJECTS
-   CSS COMPATIBLE VERSION
    ========================================================= */
 
 function renderSubjects(subjects) {
@@ -1158,11 +1238,6 @@ function renderSubjects(subjects) {
                     ? subject.chapters.length
                     : 0;
 
-
-            /*
-             * IMPORTANT:
-             * HTML structure exactly matches CSS.
-             */
 
             card.innerHTML = `
 
@@ -1376,11 +1451,6 @@ function selectSubject(
     cards.forEach(
         function (card) {
 
-            /*
-             * New CSS structure:
-             * .subject-card-content h3
-             */
-
             const title =
                 card.querySelector(
                     ".subject-card-content h3"
@@ -1422,7 +1492,6 @@ function selectSubject(
 
 /* =========================================================
    RENDER CHAPTERS
-   CSS COMPATIBLE VERSION
    ========================================================= */
 
 function renderChapters(
@@ -1488,19 +1557,6 @@ function renderChapters(
             index
         ) {
 
-            /*
-             * IMPORTANT:
-             *
-             * CSS expects:
-             *
-             * .chapter-item
-             * .chapter-number
-             * .chapter-icon
-             * .chapter-info
-             * .chapter-open
-             *
-             */
-
             const item =
                 document.createElement(
                     "button"
@@ -1560,11 +1616,6 @@ function renderChapters(
             item.addEventListener(
                 "click",
                 function () {
-
-                    /*
-                     * Remove active class
-                     * from other chapters.
-                     */
 
                     document
                         .querySelectorAll(
@@ -1713,9 +1764,34 @@ function openChapter(
         );
 
 
+    if (!pdfUrl) {
+
+        console.error(
+            "PDF URL is empty."
+        );
+
+        return;
+
+    }
+
+
+    /* ================= PDF.JS URL ================= */
+
+    const pdfViewerUrl =
+        getPdfViewerUrl(
+            pdfUrl
+        );
+
+
     console.log(
         "Opening PDF:",
         pdfUrl
+    );
+
+
+    console.log(
+        "Opening PDF.js Viewer:",
+        pdfViewerUrl
     );
 
 
@@ -1770,16 +1846,29 @@ function openChapter(
     }
 
 
-    /* ================= HIDE FRAME UNTIL LOADED ================= */
+    /* ================= HIDE FRAME ================= */
 
     currentFrame.style.display =
         "none";
 
 
-    /* ================= SET PDF ================= */
+    /*
+     * IMPORTANT:
+     *
+     * Yahan direct pdfUrl nahi lagana hai.
+     *
+     * WRONG:
+     *
+     * currentFrame.src = pdfUrl;
+     *
+     *
+     * CORRECT:
+     *
+     * PDF.js viewer ke andar PDF load hoga.
+     */
 
     currentFrame.src =
-        pdfUrl;
+        pdfViewerUrl;
 
 
     /* ================= SCROLL TO READER ================= */
@@ -1844,7 +1933,7 @@ function setupReaderDefaults() {
         function () {
 
             console.error(
-                "PDF iframe failed to load."
+                "PDF.js iframe failed to load."
             );
 
         }
@@ -1915,34 +2004,29 @@ function applyZoom() {
         sstcZoom / 100;
 
 
+    /*
+     * PDF.js ka apna zoom hota hai.
+     *
+     * Outer iframe ko scale karna mobile par
+     * unnecessary scrolling create kar sakta hai.
+     *
+     * Isliye iframe ko normal 100% par rakha gaya hai.
+     */
+
     frame.style.transform =
-        `scale(${zoom})`;
+        "none";
 
 
     frame.style.transformOrigin =
         "top left";
 
 
-    if (
-        sstcZoom !== 100
-    ) {
+    frame.style.width =
+        "100%";
 
-        frame.style.width =
-            `${100 / zoom}%`;
 
-        frame.style.height =
-            `${100 / zoom}%`;
-
-    }
-    else {
-
-        frame.style.width =
-            "100%";
-
-        frame.style.height =
-            "100%";
-
-    }
+    frame.style.height =
+        "100%";
 
 
     const zoomText =
@@ -1957,6 +2041,16 @@ function applyZoom() {
             `${sstcZoom}%`;
 
     }
+
+
+    /*
+     * PDF.js iframe ke andar actual PDF zoom
+     * browser security ke kaaran directly control
+     * nahi kiya ja sakta.
+     *
+     * Isliye zoom buttons ko future self-hosted
+     * PDF.js integration mein connect kiya ja sakta hai.
+     */
 
 }
 
@@ -1977,6 +2071,14 @@ function zoomIn() {
     sstcZoom += 10;
 
     applyZoom();
+
+
+    /*
+     * PDF.js viewer ko URL parameter se zoom
+     * karne ki koshish.
+     *
+     * Existing viewer ko reload nahi karte.
+     */
 
 }
 
@@ -2082,6 +2184,13 @@ function previousPage() {
         "Previous page button clicked."
     );
 
+
+    /*
+     * PDF.js iframe cross-origin hone ke kaaran
+     * parent page se directly PDF.js ke internal
+     * page controls access nahi kiye ja sakte.
+     */
+
 }
 
 
@@ -2094,6 +2203,13 @@ function nextPage() {
     console.log(
         "Next page button clicked."
     );
+
+
+    /*
+     * PDF.js iframe cross-origin hone ke kaaran
+     * parent page se directly PDF.js ke internal
+     * page controls access nahi kiye ja sakte.
+     */
 
 }
 
