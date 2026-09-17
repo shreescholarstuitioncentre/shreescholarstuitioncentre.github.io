@@ -626,9 +626,21 @@ let sstcPdfJsLoading = null;
    LOAD PDF.JS
    ========================================================= */
 
+const SSTC_PDFJS_VERSION = "4.10.38";
+const SSTC_PDFJS_WORKER_SRC = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/" + SSTC_PDFJS_VERSION + "/pdf.worker.min.mjs";
+
 function loadSstcPdfJs() {
 
     if (window.pdfjsLib && window.pdfjsLib.getDocument) {
+
+        /*
+         * IMPORTANT: pdf.js 4.x har getDocument() call se pehle
+         * workerSrc maangta hai, warna PDF load reject ho jaata hai.
+         */
+        if (!window.pdfjsLib.GlobalWorkerOptions.workerSrc) {
+            window.pdfjsLib.GlobalWorkerOptions.workerSrc = SSTC_PDFJS_WORKER_SRC;
+        }
+
         return Promise.resolve();
     }
 
@@ -640,7 +652,7 @@ function loadSstcPdfJs() {
 
         const script = document.createElement("script");
 
-        script.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/" + SSTC_PDFJS_VERSION + "/pdf.min.mjs";
         script.type = "module";
 
         script.onload = function () {
@@ -656,6 +668,14 @@ function loadSstcPdfJs() {
                 tries++;
 
                 if (window.pdfjsLib && window.pdfjsLib.getDocument) {
+
+                    /*
+                     * IMPORTANT: worker path set kiye bina
+                     * getDocument() reject ho jaata hai — isi
+                     * wajah se "PDF could not be opened" aata tha.
+                     */
+                    window.pdfjsLib.GlobalWorkerOptions.workerSrc = SSTC_PDFJS_WORKER_SRC;
+
                     clearInterval(timer);
                     resolve();
                     return;
@@ -1049,7 +1069,7 @@ async function openSstcPdfJs(pdfUrl) {
         viewer.innerHTML = `
             <div class="sstc-pdf-error">
                 <strong>PDF could not be opened</strong>
-                <span>Please check the PDF file path.</span>
+                <span>${escapeHtml((error && error.message) || "Please check the PDF file path.")}</span>
             </div>
         `;
 
