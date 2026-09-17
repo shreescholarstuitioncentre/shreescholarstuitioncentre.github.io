@@ -1198,7 +1198,16 @@ async function renderSstcPdfDocument() {
             pageBox.style.height = viewport.height + "px";
 
             const canvas = document.createElement("canvas");
-            const context = canvas.getContext("2d", { alpha: false });
+
+            /*
+             * IMPORTANT:
+             * "alpha:false" opaque canvas pdf.js ke soft-mask /
+             * transparent diagrams ko galat render karta hai -
+             * wo hisse bilkul kaale (black box) dikhte the.
+             * Isliye normal alpha-capable context use karo aur
+             * white background khud paint karo.
+             */
+            const context = canvas.getContext("2d");
 
             /*
              * High DPI support.
@@ -1213,6 +1222,9 @@ async function renderSstcPdfDocument() {
             canvas.style.height = viewport.height + "px";
 
             context.setTransform(deviceScale, 0, 0, deviceScale, 0, 0);
+
+            context.fillStyle = "#ffffff";
+            context.fillRect(0, 0, viewport.width, viewport.height);
 
             pageBox.appendChild(canvas);
             pages.appendChild(pageBox);
