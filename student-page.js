@@ -2508,6 +2508,1077 @@ async function applySstcMobilePdfZoom() {
 }
 
 
+/* =========================================================
+   SSTC PDF.JS COMPLETE VIEWER
+   Mobile + Tablet + Desktop
+   ========================================================= */
+
+let sstcPdfDocument = null;
+let sstcPdfUrl = "";
+let sstcPdfPages = 0;
+let sstcPdfCurrentPage = 1;
+let sstcPdfScale = 1;
+
+let sstcPdfJsLoading = null;
+
+
+/* =========================================================
+   LOAD PDF.JS
+   ========================================================= */
+
+function loadSstcPdfJs() {
+
+    if (
+        window.pdfjsLib &&
+        window.pdfjsLib.getDocument
+    ) {
+        return Promise.resolve();
+    }
+
+    if (sstcPdfJsLoading) {
+        return sstcPdfJsLoading;
+    }
+
+    sstcPdfJsLoading = new Promise(
+        function (resolve, reject) {
+
+            const script =
+                document.createElement("script");
+
+            script.src =
+                "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
+
+            script.type = "module";
+
+            script.onload =
+                function () {
+
+                    /*
+                     * pdfjsLib ES module ko
+                     * window par expose hone me
+                     * thoda time lag sakta hai.
+                     */
+                    let tries = 0;
+
+                    const timer =
+                        setInterval(
+                            function () {
+
+                                tries++;
+
+                                if (
+                                    window.pdfjsLib &&
+                                    window.pdfjsLib.getDocument
+                                ) {
+
+                                    clearInterval(timer);
+
+                                    resolve();
+
+                                    return;
+                                }
+
+                                if (tries > 100) {
+
+                                    clearInterval(timer);
+
+                                    reject(
+                                        new Error(
+                                            "PDF.js could not be initialized."
+                                        )
+                                    );
+                                }
+
+                            },
+                            100
+                        );
+                };
+
+            script.onerror =
+                function () {
+
+                    reject(
+                        new Error(
+                            "PDF.js library could not be loaded."
+                        )
+                    );
+
+                };
+
+            document.head.appendChild(script);
+
+        }
+    );
+
+    return sstcPdfJsLoading;
+}
+
+
+/* =========================================================
+   CREATE PDF.JS VIEWER
+   ========================================================= */
+
+function createSstcPdfJsViewer() {
+
+    const pdfViewer =
+        document.getElementById(
+            "pdfViewer"
+        );
+
+    if (!pdfViewer) {
+        return null;
+    }
+
+    let viewer =
+        document.getElementById(
+            "sstcPdfJsViewer"
+        );
+
+    if (viewer) {
+        return viewer;
+    }
+
+    viewer =
+        document.createElement(
+            "div"
+        );
+
+    viewer.id =
+        "sstcPdfJsViewer";
+
+    viewer.style.cssText =
+        [
+            "position:relative",
+            "width:100%",
+            "height:100%",
+            "overflow:auto",
+            "background:#525659",
+            "box-sizing:border-box",
+            "padding:18px 10px 40px",
+            "overscroll-behavior:contain",
+            "-webkit-overflow-scrolling:touch"
+        ].join(";");
+
+    pdfViewer.appendChild(
+        viewer
+    );
+
+    return viewer;
+}
+
+
+/* =========================================================
+   PDF.JS VIEWER CSS
+   ========================================================= */
+
+function injectSstcPdfJsStyles() {
+
+    if (
+        document.getElementById(
+            "sstcPdfJsStyles"
+        )
+    ) {
+        return;
+    }
+
+    const style =
+        document.createElement(
+            "style"
+        );
+
+    style.id =
+        "sstcPdfJsStyles";
+
+    style.textContent = `
+
+        #sstcPdfJsViewer {
+            scrollbar-width: thin;
+        }
+
+        #sstcPdfJsViewer .sstc-pdf-page {
+            position:relative;
+            display:block;
+            margin:0 auto 18px;
+            background:#ffffff;
+            box-shadow:0 4px 18px rgba(0,0,0,.35);
+            max-width:none;
+        }
+
+        #sstcPdfJsViewer canvas {
+            display:block;
+            width:100%;
+            height:auto;
+        }
+
+        #sstcPdfJsViewer .sstc-pdf-loading {
+            min-height:180px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex-direction:column;
+            gap:10px;
+            color:#ffffff;
+            font-family:Arial,sans-serif;
+            text-align:center;
+            padding:30px;
+            box-sizing:border-box;
+        }
+
+        #sstcPdfJsViewer .sstc-pdf-error {
+            min-height:220px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex-direction:column;
+            gap:12px;
+            color:#ffffff;
+            font-family:Arial,sans-serif;
+            text-align:center;
+            padding:30px;
+            box-sizing:border-box;
+        }
+
+        #sstcPdfJsViewer .sstc-pdf-error strong {
+            font-size:18px;
+        }
+
+        #sstcPdfJsViewer .sstc-pdf-error span {
+            font-size:13px;
+            opacity:.85;
+        }
+
+        #sstcPdfJsToolbar {
+            position:sticky;
+            top:8px;
+            z-index:999;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:7px;
+            flex-wrap:wrap;
+            width:max-content;
+            max-width:calc(100% - 20px);
+            margin:0 auto 14px;
+            padding:7px 9px;
+            border-radius:12px;
+            background:rgba(15,23,42,.94);
+            box-shadow:0 5px 20px rgba(0,0,0,.3);
+            backdrop-filter:blur(8px);
+        }
+
+        #sstcPdfJsToolbar button {
+            border:0;
+            border-radius:7px;
+            padding:7px 10px;
+            background:#ffffff;
+            color:#111827;
+            cursor:pointer;
+            font-size:13px;
+            font-weight:600;
+            min-width:38px;
+        }
+
+        #sstcPdfJsToolbar button:disabled {
+            opacity:.4;
+            cursor:not-allowed;
+        }
+
+        #sstcPdfJsToolbar .sstc-pdf-page-info {
+            color:#ffffff;
+            font-size:13px;
+            font-weight:600;
+            min-width:78px;
+            text-align:center;
+        }
+
+        @media (max-width:600px) {
+
+            #sstcPdfJsViewer {
+                padding:10px 5px 25px;
+            }
+
+            #sstcPdfJsToolbar {
+                top:5px;
+                gap:4px;
+                padding:6px;
+            }
+
+            #sstcPdfJsToolbar button {
+                padding:6px 8px;
+                font-size:12px;
+            }
+
+            #sstcPdfJsViewer .sstc-pdf-page {
+                margin-bottom:12px;
+            }
+        }
+
+        #pdfViewer.sstc-pdf-active #pdfFrame {
+            display:none !important;
+        }
+
+    `;
+
+    document.head.appendChild(
+        style
+    );
+}
+
+
+/* =========================================================
+   CREATE TOOLBAR
+   ========================================================= */
+
+function createSstcPdfToolbar(viewer) {
+
+    let toolbar =
+        document.getElementById(
+            "sstcPdfJsToolbar"
+        );
+
+    if (toolbar) {
+        return toolbar;
+    }
+
+    toolbar =
+        document.createElement(
+            "div"
+        );
+
+    toolbar.id =
+        "sstcPdfJsToolbar";
+
+    toolbar.innerHTML = `
+
+        <button
+            type="button"
+            id="sstcPdfPrev"
+            title="Previous PDF page">
+            ◀
+        </button>
+
+        <span
+            class="sstc-pdf-page-info"
+            id="sstcPdfPageInfo">
+            1 / 1
+        </span>
+
+        <button
+            type="button"
+            id="sstcPdfNext"
+            title="Next PDF page">
+            ▶
+        </button>
+
+        <button
+            type="button"
+            id="sstcPdfZoomOut"
+            title="Zoom out">
+            −
+        </button>
+
+        <span
+            class="sstc-pdf-page-info"
+            id="sstcPdfZoomInfo">
+            100%
+        </span>
+
+        <button
+            type="button"
+            id="sstcPdfZoomIn"
+            title="Zoom in">
+            +
+        </button>
+
+        <button
+            type="button"
+            id="sstcPdfFit"
+            title="Fit width">
+            Fit
+        </button>
+
+    `;
+
+    viewer.prepend(
+        toolbar
+    );
+
+    const prev =
+        document.getElementById(
+            "sstcPdfPrev"
+        );
+
+    const next =
+        document.getElementById(
+            "sstcPdfNext"
+        );
+
+    const zoomOut =
+        document.getElementById(
+            "sstcPdfZoomOut"
+        );
+
+    const zoomIn =
+        document.getElementById(
+            "sstcPdfZoomIn"
+        );
+
+    const fit =
+        document.getElementById(
+            "sstcPdfFit"
+        );
+
+    if (prev) {
+
+        prev.onclick =
+            function () {
+
+                sstcPdfGoToPage(
+                    sstcPdfCurrentPage - 1
+                );
+
+            };
+    }
+
+    if (next) {
+
+        next.onclick =
+            function () {
+
+                sstcPdfGoToPage(
+                    sstcPdfCurrentPage + 1
+                );
+
+            };
+    }
+
+    if (zoomOut) {
+
+        zoomOut.onclick =
+            function () {
+
+                sstcPdfScale =
+                    Math.max(
+                        0.5,
+                        sstcPdfScale - 0.1
+                    );
+
+                renderSstcPdfDocument();
+
+            };
+    }
+
+    if (zoomIn) {
+
+        zoomIn.onclick =
+            function () {
+
+                sstcPdfScale =
+                    Math.min(
+                        2.5,
+                        sstcPdfScale + 0.1
+                    );
+
+                renderSstcPdfDocument();
+
+            };
+    }
+
+    if (fit) {
+
+        fit.onclick =
+            function () {
+
+                fitSstcPdfWidth();
+
+            };
+    }
+
+    return toolbar;
+}
+
+
+/* =========================================================
+   UPDATE TOOLBAR
+   ========================================================= */
+
+function updateSstcPdfToolbar() {
+
+    const info =
+        document.getElementById(
+            "sstcPdfPageInfo"
+        );
+
+    const zoom =
+        document.getElementById(
+            "sstcPdfZoomInfo"
+        );
+
+    const prev =
+        document.getElementById(
+            "sstcPdfPrev"
+        );
+
+    const next =
+        document.getElementById(
+            "sstcPdfNext"
+        );
+
+    if (info) {
+
+        info.textContent =
+            sstcPdfCurrentPage +
+            " / " +
+            sstcPdfPages;
+
+    }
+
+    if (zoom) {
+
+        zoom.textContent =
+            Math.round(
+                sstcPdfScale * 100
+            ) +
+            "%";
+
+    }
+
+    if (prev) {
+
+        prev.disabled =
+            sstcPdfCurrentPage <= 1;
+
+    }
+
+    if (next) {
+
+        next.disabled =
+            sstcPdfCurrentPage >= sstcPdfPages;
+
+    }
+}
+
+
+/* =========================================================
+   OPEN PDF.JS
+   ========================================================= */
+
+async function openSstcPdfJs(pdfUrl) {
+
+    const empty =
+        document.getElementById(
+            "viewerEmpty"
+        );
+
+    const frame =
+        document.getElementById(
+            "pdfFrame"
+        );
+
+    const pdfViewer =
+        document.getElementById(
+            "pdfViewer"
+        );
+
+    if (!pdfViewer) {
+
+        console.error(
+            "SSTC PDF Viewer not found."
+        );
+
+        return;
+
+    }
+
+    injectSstcPdfJsStyles();
+
+    const viewer =
+        createSstcPdfJsViewer();
+
+    if (!viewer) {
+        return;
+    }
+
+    /*
+     * Browser iframe completely hide.
+     */
+    if (frame) {
+
+        frame.src =
+            "about:blank";
+
+        frame.style.display =
+            "none";
+
+    }
+
+    pdfViewer.classList.add(
+        "sstc-pdf-active"
+    );
+
+    viewer.innerHTML = `
+
+        <div class="sstc-pdf-loading">
+
+            <div style="font-size:32px;">
+                📖
+            </div>
+
+            <strong>
+                Opening PDF...
+            </strong>
+
+            <span>
+                Please wait
+            </span>
+
+        </div>
+
+    `;
+
+    try {
+
+        await loadSstcPdfJs();
+
+        /*
+         * pdfjsLib global available
+         */
+        const loadingTask =
+            window.pdfjsLib.getDocument(
+                {
+                    url: pdfUrl,
+                    disableAutoFetch: false,
+                    disableStream: false
+                }
+            );
+
+        sstcPdfDocument =
+            await loadingTask.promise;
+
+        sstcPdfUrl =
+            pdfUrl;
+
+        sstcPdfPages =
+            sstcPdfDocument.numPages;
+
+        sstcPdfCurrentPage =
+            1;
+
+        /*
+         * Initial scale.
+         */
+        sstcPdfScale =
+            getSstcPdfInitialScale();
+
+        viewer.innerHTML =
+            "";
+
+        createSstcPdfToolbar(
+            viewer
+        );
+
+        await renderSstcPdfDocument();
+
+        updateSstcPdfToolbar();
+
+        if (empty) {
+
+            empty.style.display =
+                "none";
+
+        }
+
+    }
+    catch (error) {
+
+        console.error(
+            "SSTC PDF.js error:",
+            error
+        );
+
+        viewer.innerHTML = `
+
+            <div class="sstc-pdf-error">
+
+                <strong>
+                    PDF could not be opened
+                </strong>
+
+                <span>
+                    Please check the PDF file path.
+                </span>
+
+            </div>
+
+        `;
+
+        if (empty) {
+
+            empty.style.display =
+                "none";
+
+        }
+
+    }
+}
+
+
+/* =========================================================
+   INITIAL SCALE
+   ========================================================= */
+
+function getSstcPdfInitialScale() {
+
+    const pdfViewer =
+        document.getElementById(
+            "pdfViewer"
+        );
+
+    if (!pdfViewer) {
+        return 1;
+    }
+
+    const width =
+        pdfViewer.clientWidth;
+
+    if (!width) {
+        return 1;
+    }
+
+    /*
+     * Approximate A4 PDF width at 72 DPI.
+     */
+    const available =
+        Math.max(
+            280,
+            width - 30
+        );
+
+    return Math.max(
+        0.5,
+        Math.min(
+            1.5,
+            available / 595
+        )
+    );
+}
+
+
+/* =========================================================
+   RENDER ALL PDF PAGES
+   ========================================================= */
+
+async function renderSstcPdfDocument() {
+
+    if (!sstcPdfDocument) {
+        return;
+    }
+
+    const viewer =
+        document.getElementById(
+            "sstcPdfJsViewer"
+        );
+
+    if (!viewer) {
+        return;
+    }
+
+    /*
+     * Toolbar preserve.
+     */
+    const toolbar =
+        document.getElementById(
+            "sstcPdfJsToolbar"
+        );
+
+    viewer.innerHTML =
+        "";
+
+    if (toolbar) {
+
+        viewer.appendChild(
+            toolbar
+        );
+
+    }
+
+    /*
+     * Render every page.
+     */
+    for (
+        let pageNumber = 1;
+        pageNumber <= sstcPdfPages;
+        pageNumber++
+    ) {
+
+        try {
+
+            const page =
+                await sstcPdfDocument.getPage(
+                    pageNumber
+                );
+
+            const viewport =
+                page.getViewport(
+                    {
+                        scale:
+                            sstcPdfScale
+                    }
+                );
+
+            const pageBox =
+                document.createElement(
+                    "div"
+                );
+
+            pageBox.className =
+                "sstc-pdf-page";
+
+            pageBox.dataset.page =
+                String(
+                    pageNumber
+                );
+
+            pageBox.style.width =
+                viewport.width +
+                "px";
+
+            pageBox.style.height =
+                viewport.height +
+                "px";
+
+            const canvas =
+                document.createElement(
+                    "canvas"
+                );
+
+            const context =
+                canvas.getContext(
+                    "2d",
+                    {
+                        alpha:false
+                    }
+                );
+
+            /*
+             * High DPI support.
+             * Limit to 2 so mobile memory
+             * usage does not become excessive.
+             */
+            const deviceScale =
+                Math.min(
+                    window.devicePixelRatio ||
+                    1,
+                    2
+                );
+
+            canvas.width =
+                Math.floor(
+                    viewport.width *
+                    deviceScale
+                );
+
+            canvas.height =
+                Math.floor(
+                    viewport.height *
+                    deviceScale
+                );
+
+            canvas.style.width =
+                viewport.width +
+                "px";
+
+            canvas.style.height =
+                viewport.height +
+                "px";
+
+            context.setTransform(
+                deviceScale,
+                0,
+                0,
+                deviceScale,
+                0,
+                0
+            );
+
+            pageBox.appendChild(
+                canvas
+            );
+
+            viewer.appendChild(
+                pageBox
+            );
+
+            await page.render(
+                {
+                    canvasContext:
+                        context,
+
+                    viewport:
+                        viewport
+                }
+            ).promise;
+
+        }
+        catch (error) {
+
+            console.error(
+                "SSTC PDF page render error:",
+                pageNumber,
+                error
+            );
+
+        }
+
+    }
+
+    updateSstcPdfToolbar();
+
+}
+
+
+/* =========================================================
+   GO TO PDF PAGE
+   ========================================================= */
+
+function sstcPdfGoToPage(
+    pageNumber
+) {
+
+    if (!sstcPdfDocument) {
+        return;
+    }
+
+    pageNumber =
+        Math.max(
+            1,
+            Math.min(
+                sstcPdfPages,
+                pageNumber
+            )
+        );
+
+    sstcPdfCurrentPage =
+        pageNumber;
+
+    const viewer =
+        document.getElementById(
+            "sstcPdfJsViewer"
+        );
+
+    if (!viewer) {
+        return;
+    }
+
+    const pageBox =
+        viewer.querySelector(
+            '.sstc-pdf-page[data-page="' +
+            pageNumber +
+            '"]'
+        );
+
+    if (pageBox) {
+
+        pageBox.scrollIntoView(
+            {
+                behavior:"smooth",
+                block:"start"
+            }
+        );
+
+    }
+
+    updateSstcPdfToolbar();
+
+}
+
+
+/* =========================================================
+   FIT PDF WIDTH
+   ========================================================= */
+
+function fitSstcPdfWidth() {
+
+    const viewer =
+        document.getElementById(
+            "sstcPdfJsViewer"
+        );
+
+    if (!viewer) {
+        return;
+    }
+
+    const width =
+        viewer.clientWidth;
+
+    const available =
+        Math.max(
+            280,
+            width - 30
+        );
+
+    sstcPdfScale =
+        Math.max(
+            0.5,
+            Math.min(
+                2.5,
+                available / 595
+            )
+        );
+
+    renderSstcPdfDocument();
+
+}
+
+
+/* =========================================================
+   CLEAN PDF.JS VIEWER
+   ========================================================= */
+
+function destroySstcPdfJsViewer() {
+
+    sstcPdfDocument =
+        null;
+
+    sstcPdfUrl =
+        "";
+
+    sstcPdfPages =
+        0;
+
+    sstcPdfCurrentPage =
+        1;
+
+    const viewer =
+        document.getElementById(
+            "sstcPdfJsViewer"
+        );
+
+    if (viewer) {
+
+        viewer.innerHTML =
+            "";
+
+    }
+
+    const pdfViewer =
+        document.getElementById(
+            "pdfViewer"
+        );
+
+    if (pdfViewer) {
+
+        pdfViewer.classList.remove(
+            "sstc-pdf-active"
+        );
+
+    }
+
+}
+
+
+
+
 
 /* =========================================================
    OPEN CHAPTER / PDF
@@ -2745,90 +3816,16 @@ function openChapter(
 
     }
 
+      /*
+       * PDF.js complete viewer
+       */
+      
+      destroySstcPdfJsViewer();
+      
+      openSstcPdfJs(
+          pdfUrl
+      );
 
-    /*
-     * Pehle old PDF remove.
-     */
-
-    frame.src =
-        "about:blank";
-
-
-/*
- * Mobile / Tablet:
- * PDF.js ke through same page ke andar PDF render hoga.
- *
- * Desktop / Laptop:
- * Existing iframe viewer bilkul same rahega.
- */
-if (
-    isSstcMobileOrTablet()
-) {
-
-    openSstcMobilePdf(
-        pdfUrl
-    );
-
-}
-else {
-
-    setTimeout(
-        function () {
-
-            const currentFrame =
-                document.getElementById(
-                    "pdfFrame"
-                );
-
-            const currentEmpty =
-                document.getElementById(
-                    "viewerEmpty"
-                );
-
-
-            if (!currentFrame) {
-
-                return;
-
-            }
-
-
-            if (currentEmpty) {
-
-                currentEmpty.style.display =
-                    "flex";
-
-            }
-
-
-            /*
-             * Existing desktop PDF viewer.
-             */
-            currentFrame.src =
-                pdfUrl;
-
-
-            currentFrame.style.display =
-                "block";
-
-
-            try {
-
-                currentFrame.contentWindow;
-
-            }
-            catch (error) {
-
-                console.warn(
-                    "SSTC iframe warning:",
-                    error
-                );
-
-            }
-
-        },
-        100
-    );
 
 }
    
