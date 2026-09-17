@@ -17,6 +17,19 @@ let sstcLoggingOut = false;
 
 let sstcZoom = 100;
 
+/* =========================================================
+   MOBILE / TABLET PDF.JS READER STATE
+   Desktop keeps the existing native PDF iframe.
+   Mobile + tablet use PDF.js so the PDF stays inside
+   the student portal instead of opening in another tab.
+   ========================================================= */
+let sstcPdfDocument = null;
+let sstcPdfLoadingTask = null;
+let sstcPdfJsReady = null;
+let sstcPdfPages = [];
+let sstcPdfRenderToken = 0;
+
+
 
 /* =========================================================
    SESSION KEYS
@@ -106,145 +119,1221 @@ function getPdfUrl(pdfPath) {
 
 
 /* =========================================================
-   E-BOOK LIBRARY
+   DEVICE DETECTION
    ========================================================= */
 
-const SSTC_EBOOKS = {
+function isMobileOrTablet() {
 
-    "10": {
+    const width =
+        window.innerWidth ||
+        document.documentElement.clientWidth ||
+        0;
 
-        /* =====================================================
-           SCIENCE
-           ===================================================== */
+    const ua =
+        navigator.userAgent ||
+        navigator.vendor ||
+        window.opera ||
+        "";
 
-        "Science": {
+    const touch =
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0;
 
-            description:
-                "Class 10 Science E-Book Library",
+    const mobileUA =
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
+            .test(ua);
 
-            image:
-                "subject-images/science.png",
+    return (
+        mobileUA ||
+        (touch && width <= 1024)
+    );
 
-            chapters: [
+}
 
-                {
-                    number: 1,
-                    title:
-                        "Chemical Reactions and Equations",
-                    pdf:
-                        "ebooks/class-10/science/chapter-01.pdf"
-                },
 
-                {
-                    number: 2,
-                    title:
-                        "Acids, Bases and Salts",
-                    pdf:
-                        "ebooks/class-10/science/chapter-02.pdf"
-                },
+/* =========================================================
+   LOAD PDF.JS
+   ========================================================= */
 
-                {
-                    number: 3,
-                    title:
-                        "Metals and Non-metals",
-                    pdf:
-                        "ebooks/class-10/science/chapter-03.pdf"
-                },
+function loadPdfJs() {
 
-                {
-                    number: 4,
-                    title:
-                        "Carbon and Its Compounds",
-                    pdf:
-                        "ebooks/class-10/science/chapter-04.pdf"
-                },
+    if (
+        window.pdfjsLib
+    ) {
 
-                {
-                    number: 5,
-                    title:
-                        "Life Processes",
-                    pdf:
-                        "ebooks/class-10/science/chapter-05.pdf"
-                },
+        return Promise.resolve(
+            window.pdfjsLib
+        );
 
-                {
-                    number: 6,
-                    title:
-                        "Control and Coordination",
-                    pdf:
-                        "ebooks/class-10/science/chapter-06.pdf"
-                },
+    }
 
-                {
-                    number: 7,
-                    title:
-                        "How do Organisms Reproduce?",
-                    pdf:
-                        "ebooks/class-10/science/chapter-07.pdf"
-                },
 
-                {
-                    number: 8,
-                    title:
-                        "Heredity",
-                    pdf:
-                        "ebooks/class-10/science/chapter-08.pdf"
-                },
+    if (
+        sstcPdfJsReady
+    ) {
 
-                {
-                    number: 9,
-                    title:
-                        "Light – Reflection and Refraction",
-                    pdf:
-                        "ebooks/class-10/science/chapter-09.pdf"
-                },
+        return sstcPdfJsReady;
 
-                {
-                    number: 10,
-                    title:
-                        "The Human Eye and the Colourful World",
-                    pdf:
-                        "ebooks/class-10/science/chapter-10.pdf"
-                },
+    }
 
-                {
-                    number: 11,
-                    title:
-                        "Electricity",
-                    pdf:
-                        "ebooks/class-10/science/chapter-11.pdf"
-                },
 
-                {
-                    number: 12,
-                    title:
-                        "Magnetic Effects of Electric Current",
-                    pdf:
-                        "ebooks/class-10/science/chapter-12.pdf"
-                },
+    sstcPdfJsReady =
+        new Promise(
+            function (
+                resolve,
+                reject
+            ) {
 
-                {
-                    number: 13,
-                    title:
-                        "Our Environment",
-                    pdf:
-                        "ebooks/class-10/science/chapter-13.pdf"
+                const existing =
+                    document.querySelector(
+                        'script[data-sstc-pdfjs="true"]'
+                    );
+
+
+                if (existing) {
+
+                    existing.addEventListener(
+                        "load",
+                        function () {
+
+                            if (
+                                window.pdfjsLib
+                            ) {
+
+                                resolve(
+                                    window.pdfjsLib
+                                );
+
+                            } else {
+
+                                reject(
+                                    new Error(
+                                        "PDF.js loaded but pdfjsLib is unavailable."
+                                    )
+                                );
+
+                            }
+
+                        }
+                    );
+
+
+                    existing.addEventListener(
+                        "error",
+                        function () {
+
+                            reject(
+                                new Error(
+                                    "PDF.js could not be loaded."
+                                )
+                            );
+
+                        }
+                    );
+
+
+                    return;
+
                 }
 
-            ]
 
-        },
+                const script =
+                    document.createElement(
+                        "script"
+                    );
+
+                script.src =
+                    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
+
+                script.type =
+                    "module";
+
+                script.dataset.sstcPdfjs =
+                    "true";
 
 
-        /* =====================================================
-           MATHEMATICS
-           ===================================================== */
+                script.onload =
+                    function () {
 
-        "Mathematics": {
+                        if (
+                            window.pdfjsLib
+                        ) {
 
-            description:
-                "Class 10 Mathematics E-Book Library",
+                            resolve(
+                                window.pdfjsLib
+                            );
 
+                        } else {
+
+                            /*
+                             * PDF.js 4.x module build may not expose
+                             * pdfjsLib globally. Fallback loader below.
+                             */
+
+                            loadPdfJsLegacy()
+                                .then(
+                                    resolve
+                                )
+                                .catch(
+                                    reject
+                                );
+
+                        }
+
+                    };
+
+
+                script.onerror =
+                    function () {
+
+                        loadPdfJsLegacy()
+                            .then(
+                                resolve
+                            )
+                            .catch(
+                                reject
+                            );
+
+                    };
+
+
+                document.head.appendChild(
+                    script
+                );
+
+            }
+        );
+
+
+    return sstcPdfJsReady;
+
+}
+
+
+/* =========================================================
+   PDF.JS FALLBACK LOADER
+   ========================================================= */
+
+function loadPdfJsLegacy() {
+
+    if (
+        window.pdfjsLib
+    ) {
+
+        return Promise.resolve(
+            window.pdfjsLib
+        );
+
+    }
+
+
+    return new Promise(
+        function (
+            resolve,
+            reject
+        ) {
+
+            const existing =
+                document.querySelector(
+                    'script[data-sstc-pdfjs-legacy="true"]'
+                );
+
+
+            if (existing) {
+
+                existing.addEventListener(
+                    "load",
+                    function () {
+
+                        if (
+                            window.pdfjsLib
+                        ) {
+
+                            resolve(
+                                window.pdfjsLib
+                            );
+
+                        } else {
+
+                            reject(
+                                new Error(
+                                    "PDF.js fallback unavailable."
+                                )
+                            );
+
+                        }
+
+                    }
+                );
+
+
+                existing.addEventListener(
+                    "error",
+                    reject
+                );
+
+
+                return;
+
+            }
+
+
+            const script =
+                document.createElement(
+                    "script"
+                );
+
+            script.src =
+                "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js";
+
+            script.dataset.sstcPdfjsLegacy =
+                "true";
+
+
+            script.onload =
+                function () {
+
+                    if (
+                        window.pdfjsLib
+                    ) {
+
+                        resolve(
+                            window.pdfjsLib
+                        );
+
+                    } else {
+
+                        reject(
+                            new Error(
+                                "PDF.js fallback loaded but pdfjsLib is unavailable."
+                            )
+                        );
+
+                    }
+
+                };
+
+
+            script.onerror =
+                function () {
+
+                    reject(
+                        new Error(
+                            "Unable to load PDF.js."
+                        )
+                    );
+
+                };
+
+
+            document.head.appendChild(
+                script
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   PDF.JS WORKER
+   ========================================================= */
+
+function setupPdfJsWorker(
+    pdfjsLib
+) {
+
+    if (
+        !pdfjsLib
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+        if (
+            pdfjsLib.GlobalWorkerOptions
+        ) {
+
+            pdfjsLib.GlobalWorkerOptions.workerSrc =
+                "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+        }
+
+    } catch (
+        error
+    ) {
+
+        console.warn(
+            "SSTC PDF worker setup warning:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CREATE MOBILE PDF READER
+   ========================================================= */
+
+function createMobilePdfReader() {
+
+    const viewer =
+        document.getElementById(
+            "pdfViewer"
+        );
+
+    if (
+        !viewer
+    ) {
+
+        return null;
+
+    }
+
+
+    let mobileReader =
+        document.getElementById(
+            "sstcMobilePdfReader"
+        );
+
+
+    if (
+        mobileReader
+    ) {
+
+        return mobileReader;
+
+    }
+
+
+    mobileReader =
+        document.createElement(
+            "div"
+        );
+
+    mobileReader.id =
+        "sstcMobilePdfReader";
+
+
+    mobileReader.innerHTML = `
+        <div
+            id="sstcMobilePdfStatus"
+            style="
+                display:none;
+                padding:14px;
+                text-align:center;
+                font-family:Arial,sans-serif;
+                font-size:14px;
+                background:#fff8df;
+                color:#6b4e00;
+            "
+        ></div>
+
+        <div
+            id="sstcMobilePdfCanvasContainer"
+            style="
+                width:100%;
+                height:100%;
+                overflow:auto;
+                background:#525659;
+                -webkit-overflow-scrolling:touch;
+                touch-action:pan-x pan-y;
+            "
+        ></div>
+    `;
+
+
+    /*
+     * iframe ke just pehle mobile reader insert hoga.
+     */
+
+    viewer.parentNode.insertBefore(
+        mobileReader,
+        viewer
+    );
+
+
+    mobileReader.style.display =
+        "none";
+
+    mobileReader.style.width =
+        "100%";
+
+    mobileReader.style.height =
+        "100%";
+
+    mobileReader.style.overflow =
+        "hidden";
+
+
+    return mobileReader;
+
+}
+
+
+/* =========================================================
+   MOBILE PDF STATUS
+   ========================================================= */
+
+function setMobilePdfStatus(
+    message,
+    show
+) {
+
+    const status =
+        document.getElementById(
+            "sstcMobilePdfStatus"
+        );
+
+    if (
+        !status
+    ) {
+
+        return;
+
+    }
+
+
+    status.textContent =
+        message || "";
+
+
+    status.style.display =
+        show
+            ? "block"
+            : "none";
+
+}
+
+
+/* =========================================================
+   OPEN PDF WITH PDF.JS
+   ========================================================= */
+
+async function openPdfWithPdfJs(
+    pdfUrl
+) {
+
+    const viewer =
+        document.getElementById(
+            "pdfViewer"
+        );
+
+    const frame =
+        document.getElementById(
+            "pdfFrame"
+        );
+
+
+    if (
+        !viewer
+    ) {
+
+        return false;
+
+    }
+
+
+    const mobileReader =
+        createMobilePdfReader();
+
+
+    if (
+        !mobileReader
+    ) {
+
+        return false;
+
+    }
+
+
+    const container =
+        document.getElementById(
+            "sstcMobilePdfCanvasContainer"
+        );
+
+
+    if (
+        !container
+    ) {
+
+        return false;
+
+    }
+
+
+    /*
+     * Existing native iframe ko hide karo.
+     * Isse mobile browser PDF ko external tab me
+     * open nahi karega.
+     */
+
+    if (
+        frame
+    ) {
+
+        frame.style.display =
+            "none";
+
+    }
+
+
+    mobileReader.style.display =
+        "block";
+
+
+    container.innerHTML =
+        "";
+
+
+    setMobilePdfStatus(
+        "Loading PDF…",
+        true
+    );
+
+
+    const currentToken =
+        ++sstcPdfRenderToken;
+
+
+    try {
+
+        const pdfjsLib =
+            await loadPdfJs();
+
+
+        if (
+            currentToken !==
+            sstcPdfRenderToken
+        ) {
+
+            return false;
+
+        }
+
+
+        setupPdfJsWorker(
+            pdfjsLib
+        );
+
+
+        /*
+         * Purana loading task/document close karo.
+         */
+
+        try {
+
+            if (
+                sstcPdfLoadingTask &&
+                sstcPdfLoadingTask.destroy
+            ) {
+
+                await sstcPdfLoadingTask.destroy();
+
+            }
+
+        } catch (
+            error
+        ) {
+
+            console.warn(
+                "Previous PDF loading task cleanup:",
+                error
+            );
+
+        }
+
+
+        sstcPdfDocument =
+            null;
+
+
+        sstcPdfPages =
+            [];
+
+
+        /*
+         * PDF.js se document load.
+         */
+
+        sstcPdfLoadingTask =
+            pdfjsLib.getDocument(
+                {
+                    url:
+                        pdfUrl,
+
+                    withCredentials:
+                        false
+                }
+            );
+
+
+        const pdf =
+            await sstcPdfLoadingTask.promise;
+
+
+        if (
+            currentToken !==
+            sstcPdfRenderToken
+        ) {
+
+            try {
+
+                await pdf.destroy();
+
+            } catch (
+                ignored
+            ) {}
+
+            return false;
+
+        }
+
+
+        sstcPdfDocument =
+            pdf;
+
+
+        /*
+         * PDF ke saare pages canvas me render karenge.
+         * Mobile par browser native PDF viewer ki zarurat nahi.
+         */
+
+        for (
+            let pageNumber = 1;
+            pageNumber <= pdf.numPages;
+            pageNumber++
+        ) {
+
+            if (
+                currentToken !==
+                sstcPdfRenderToken
+            ) {
+
+                return false;
+
+            }
+
+
+            const page =
+                await pdf.getPage(
+                    pageNumber
+                );
+
+
+            const wrapper =
+                document.createElement(
+                    "div"
+                );
+
+
+            wrapper.className =
+                "sstc-mobile-pdf-page";
+
+
+            wrapper.dataset.pageNumber =
+                pageNumber;
+
+
+            wrapper.style.width =
+                "100%";
+
+            wrapper.style.display =
+                "flex";
+
+            wrapper.style.justifyContent =
+                "center";
+
+            wrapper.style.alignItems =
+                "flex-start";
+
+            wrapper.style.padding =
+                "10px 0";
+
+            wrapper.style.boxSizing =
+                "border-box";
+
+
+            const canvas =
+                document.createElement(
+                    "canvas"
+                );
+
+
+            canvas.className =
+                "sstc-mobile-pdf-canvas";
+
+
+            canvas.style.display =
+                "block";
+
+            canvas.style.maxWidth =
+                "none";
+
+            canvas.style.height =
+                "auto";
+
+            canvas.style.background =
+                "#ffffff";
+
+            canvas.style.boxShadow =
+                "0 2px 8px rgba(0,0,0,.35)";
+
+
+            wrapper.appendChild(
+                canvas
+            );
+
+
+            container.appendChild(
+                wrapper
+            );
+
+
+            sstcPdfPages.push(
+                {
+                    page:
+                        page,
+
+                    wrapper:
+                        wrapper,
+
+                    canvas:
+                        canvas
+                }
+            );
+
+
+            await renderMobilePdfPage(
+                page,
+                canvas
+            );
+
+        }
+
+
+        setMobilePdfStatus(
+            "",
+            false
+        );
+
+
+        /*
+         * Existing zoom value apply karo.
+         */
+
+        applyMobilePdfZoom();
+
+
+        /*
+         * Existing current page indicator preserve.
+         */
+
+        try {
+
+            setText(
+                "pdfPageCount",
+                pdf.numPages
+            );
+
+        } catch (
+            ignored
+        ) {}
+
+
+        return true;
+
+    } catch (
+        error
+    ) {
+
+        console.error(
+            "SSTC PDF.js reader error:",
+            error
+        );
+
+
+        setMobilePdfStatus(
+            "PDF load nahi ho pa raha. Please internet connection check karein.",
+            true
+        );
+
+
+        /*
+         * Agar PDF.js fail ho jaye to iframe ko visible
+         * rakhna possible hai, lekin mobile par usse
+         * external viewer khul sakta hai. Isliye current
+         * internal reader me error hi show karenge.
+         */
+
+        return false;
+
+    }
+
+}
+
+
+/* =========================================================
+   RENDER MOBILE PDF PAGE
+   ========================================================= */
+
+async function renderMobilePdfPage(
+    page,
+    canvas
+) {
+
+    if (
+        !page ||
+        !canvas
+    ) {
+
+        return;
+
+    }
+
+
+    const container =
+        document.getElementById(
+            "sstcMobilePdfCanvasContainer"
+        );
+
+
+    if (
+        !container
+    ) {
+
+        return;
+
+    }
+
+
+    const containerWidth =
+        Math.max(
+            container.clientWidth - 20,
+            280
+        );
+
+
+    const unscaledViewport =
+        page.getViewport(
+            {
+                scale:
+                    1
+            }
+        );
+
+
+    const fitScale =
+        containerWidth /
+        unscaledViewport.width;
+
+
+    /*
+     * Initial rendering fit-to-width.
+     */
+
+    const scale =
+        Math.max(
+            fitScale,
+            0.5
+        );
+
+
+    const viewport =
+        page.getViewport(
+            {
+                scale:
+                    scale
+            }
+        );
+
+
+    const devicePixelRatio =
+        Math.min(
+            window.devicePixelRatio || 1,
+            2
+        );
+
+
+    canvas.width =
+        Math.floor(
+            viewport.width *
+            devicePixelRatio
+        );
+
+
+    canvas.height =
+        Math.floor(
+            viewport.height *
+            devicePixelRatio
+        );
+
+
+    canvas.style.width =
+        Math.floor(
+            viewport.width
+        ) +
+        "px";
+
+
+    canvas.style.height =
+        Math.floor(
+            viewport.height
+        ) +
+        "px";
+
+
+    const context =
+        canvas.getContext(
+            "2d",
+            {
+                alpha:
+                    false
+            }
+        );
+
+
+    if (
+        !context
+    ) {
+
+        return;
+
+    }
+
+
+    context.setTransform(
+        devicePixelRatio,
+        0,
+        0,
+        devicePixelRatio,
+        0,
+        0
+    );
+
+
+    await page.render(
+        {
+            canvasContext:
+                context,
+
+            viewport:
+                viewport
+        }
+    ).promise;
+
+}
+
+
+/* =========================================================
+   APPLY MOBILE PDF ZOOM
+   ========================================================= */
+
+function applyMobilePdfZoom() {
+
+    const container =
+        document.getElementById(
+            "sstcMobilePdfCanvasContainer"
+        );
+
+
+    if (
+        !container ||
+        !sstcPdfPages.length
+    ) {
+
+        return;
+
+    }
+
+
+    const zoom =
+        Math.max(
+            50,
+            Math.min(
+                300,
+                Number(
+                    sstcZoom
+                ) || 100
+            )
+        );
+
+
+    sstcPdfPages.forEach(
+        function (
+            item
+        ) {
+
+            if (
+                !item ||
+                !item.canvas
+            ) {
+
+                return;
+
+            }
+
+
+            item.canvas.style.zoom =
+                String(
+                    zoom /
+                    100
+                );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   MOBILE PDF READER VISIBILITY
+   ========================================================= */
+
+function showMobilePdfReader() {
+
+    const frame =
+        document.getElementById(
+            "pdfFrame"
+        );
+
+    const mobileReader =
+        document.getElementById(
+            "sstcMobilePdfReader"
+        );
+
+
+    if (
+        frame
+    ) {
+
+        frame.style.display =
+            "none";
+
+    }
+
+
+    if (
+        mobileReader
+    ) {
+
+        mobileReader.style.display =
+            "block";
+
+    }
+
+}
+
+
+/* =========================================================
+   SHOW NATIVE DESKTOP PDF READER
+   ========================================================= */
+
+function showDesktopPdfReader() {
+
+    const frame =
+        document.getElementById(
+            "pdfFrame"
+        );
+
+    const mobileReader =
+        document.getElementById(
+            "sstcMobilePdfReader"
+        );
+
+
+    if (
+        mobileReader
+    ) {
+
+        mobileReader.style.display =
+            "none";
+
+    }
+
+
+    if (
+        frame
+    ) {
+
+        frame.style.display =
+            "block";
+
+    }
+
+}
+
+
+/* =========================================================
+   RESIZE MOBILE PDF
+   ========================================================= */
+
+let sstcResizeTimer =
+    null;
+
+
+window.addEventListener(
+    "resize",
+    function () {
+
+        clearTimeout(
+            sstcResizeTimer
+        );
+
+
+        sstcResizeTimer =
+            setTimeout(
+                function () {
+
+                    if (
+                        isMobileOrTablet() &&
+                        sstcPdfPages.length
+                    ) {
+
+                        sstcPdfPages.forEach(
+                            function (
+                                item
+                            ) {
+
+                                if (
+                                    item &&
+                                    item.page &&
+                                    item.canvas
+                                ) {
+
+                                    renderMobilePdfPage(
+                                        item.page,
+                                        item.canvas
+                                    );
+
+                                }
+
+                            }
+                        );
+
+
+                        applyMobilePdfZoom();
+
+                    }
+
+                },
+                250
+            );
+
+    }
+);
+
+
+/* =========================================================
+   CONTINUE EXISTING CODE
+   ========================================================= */
             image:
                 "subject-images/maths.png",
 
@@ -2151,9 +3240,11 @@ function openChapter(
             "SSTC PDF ERROR: #pdfFrame not found."
         );
 
+
         showSecurityMessage(
             "PDF viewer is not available."
         );
+
 
         return;
 
@@ -2196,88 +3287,165 @@ function openChapter(
             `;
 
     }
-
-
     /*
-     * Pehle old PDF remove.
+     * Mobile / Tablet:
+     * PDF ko isi page ke andar PDF.js reader me open karo.
+     *
+     * Desktop / Laptop:
+     * Existing native iframe PDF viewer hi use hoga.
      */
 
-    frame.src =
-        "about:blank";
+    if (
+        isMobileOrTablet()
+    ) {
+
+        /*
+         * Existing iframe ko blank rakho.
+         * Mobile browser ko native PDF tab open karne ka
+         * chance nahi milega.
+         */
+
+        frame.src =
+            "about:blank";
 
 
-    /*
-     * Thoda delay dekar new PDF load.
-     */
+        /*
+         * PDF.js internal reader open karo.
+         */
 
-    setTimeout(
-        function () {
+        openPdfWithPdfJs(
+            pdfUrl
+        )
+        .then(
+            function (
+                loaded
+            ) {
 
-            const currentFrame =
-                document.getElementById(
-                    "pdfFrame"
-                );
-
-
-            const currentEmpty =
-                document.getElementById(
-                    "viewerEmpty"
-                );
-
-
-            if (!currentFrame) {
-
-                return;
-
-            }
+                const currentEmpty =
+                    document.getElementById(
+                        "viewerEmpty"
+                    );
 
 
-            if (currentEmpty) {
+                if (
+                    loaded &&
+                    currentEmpty
+                ) {
 
-                currentEmpty.style.display =
-                    "flex";
+                    currentEmpty.style.display =
+                        "none";
 
-            }
-
-
-            /*
-             * PDF direct GitHub Pages URL.
-             */
-
-            currentFrame.src =
-                pdfUrl;
-
-
-            /*
-             * PDF frame ko visible rakho.
-             */
-
-            currentFrame.style.display =
-                "block";
-
-
-            /*
-             * Browser ko reload ke liye force.
-             */
-
-            try {
-
-                currentFrame.contentWindow;
+                }
 
             }
+        )
+        .catch(
+            function (
+                error
+            ) {
 
-            catch (error) {
-
-                console.warn(
-                    "SSTC iframe warning:",
+                console.error(
+                    "SSTC mobile PDF error:",
                     error
                 );
 
             }
+        );
 
-        },
-        100
-    );
+    }
+
+    else {
+
+        /*
+         * Desktop / Laptop par existing iframe
+         * exactly waise hi use hoga.
+         */
+
+        showDesktopPdfReader();
+
+
+        /*
+         * Pehle old PDF remove.
+         */
+
+        frame.src =
+            "about:blank";
+
+
+        /*
+         * Thoda delay dekar new PDF load.
+         */
+
+        setTimeout(
+            function () {
+
+                const currentFrame =
+                    document.getElementById(
+                        "pdfFrame"
+                    );
+
+
+                const currentEmpty =
+                    document.getElementById(
+                        "viewerEmpty"
+                    );
+
+
+                if (!currentFrame) {
+
+                    return;
+
+                }
+
+
+                if (currentEmpty) {
+
+                    currentEmpty.style.display =
+                        "flex";
+
+                }
+
+
+                /*
+                 * PDF direct GitHub Pages URL.
+                 */
+
+                currentFrame.src =
+                    pdfUrl;
+
+
+                /*
+                 * PDF frame ko visible rakho.
+                 */
+
+                currentFrame.style.display =
+                    "block";
+
+
+                /*
+                 * Browser ko reload ke liye force.
+                 */
+
+                try {
+
+                    currentFrame.contentWindow;
+
+                }
+
+                catch (error) {
+
+                    console.warn(
+                        "SSTC iframe warning:",
+                        error
+                    );
+
+                }
+
+            },
+            100
+        );
+
+    }
 
 
     /* =====================================================
@@ -2342,7 +3510,8 @@ function scrollSubjects(
     carousel.scrollBy(
         {
             left:
-                direction * amount,
+                direction *
+                amount,
 
             behavior:
                 "smooth"
@@ -2692,21 +3861,26 @@ function clearStudentSession() {
             SSTC_SESSION_LOGIN
         );
 
+
         sessionStorage.removeItem(
             SSTC_SESSION_DATA
         );
+
 
         sessionStorage.removeItem(
             SSTC_SESSION_LOGIN_TIME
         );
 
+
         sessionStorage.removeItem(
             SSTC_CURRENT_BOOK
         );
 
+
         sessionStorage.removeItem(
             SSTC_CURRENT_CHAPTER
         );
+
 
         sessionStorage.removeItem(
             SSTC_CURRENT_PAGE
@@ -2824,6 +3998,46 @@ function studentLogout(
     }
 
 
+    /*
+     * Mobile PDF.js document cleanup.
+     */
+
+    try {
+
+        sstcPdfRenderToken++;
+
+
+        if (
+            sstcPdfLoadingTask &&
+            sstcPdfLoadingTask.destroy
+        ) {
+
+            sstcPdfLoadingTask.destroy();
+
+        }
+
+
+        if (
+            sstcPdfDocument &&
+            sstcPdfDocument.destroy
+        ) {
+
+            sstcPdfDocument.destroy();
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.warn(
+            "Mobile PDF cleanup warning:",
+            error
+        );
+
+    }
+
+
     clearStudentSession();
 
 
@@ -2871,7 +4085,18 @@ function setupReaderDefaults() {
             "load",
             function () {
 
-                pdfLoaded();
+                /*
+                 * Mobile reader use hone par iframe
+                 * about:blank rahega.
+                 */
+
+                if (
+                    !isMobileOrTablet()
+                ) {
+
+                    pdfLoaded();
+
+                }
 
             }
         );
@@ -2888,6 +4113,7 @@ function setupReaderDefaults() {
                 console.error(
                     "SSTC PDF iframe failed to load."
                 );
+
 
                 showSecurityMessage(
                     "PDF could not be loaded."
@@ -3020,6 +4246,25 @@ function applyZoom() {
     );
 
 
+    /*
+     * Mobile / Tablet PDF.js reader.
+     */
+
+    if (
+        isMobileOrTablet()
+    ) {
+
+        applyMobilePdfZoom();
+
+        return;
+
+    }
+
+
+    /*
+     * Desktop / Laptop existing iframe zoom.
+     */
+
     const frame =
         document.getElementById(
             "pdfFrame"
@@ -3104,6 +4349,7 @@ function fitPage() {
 
         viewer.scrollTop =
             0;
+
 
         viewer.scrollLeft =
             0;
@@ -3252,6 +4498,7 @@ function navigateChapter(
             "Please select a subject first."
         );
 
+
         return;
 
     }
@@ -3331,16 +4578,6 @@ function setCurrentYear() {
     );
 
 }
-
-
-/* =========================================================
-   SECURITY
-   ========================================================= */
-
-function setupStudentSecurity() {
-
-    /* RIGHT CLICK */
-
     document.addEventListener(
         "contextmenu",
         function (
@@ -3724,35 +4961,46 @@ window.addEventListener(
 window.studentLogout =
     studentLogout;
 
+
 window.zoomIn =
     zoomIn;
+
 
 window.zoomOut =
     zoomOut;
 
+
 window.fitWidth =
     fitWidth;
+
 
 window.fitPage =
     fitPage;
 
+
 window.toggleFullscreen =
     toggleFullscreen;
+
 
 window.previousPage =
     previousPage;
 
+
 window.nextPage =
     nextPage;
+
 
 window.pdfLoaded =
     pdfLoaded;
 
+
 window.scrollSubjects =
     scrollSubjects;
 
+
 window.selectSubject =
     selectSubject;
+
 
 window.openChapter =
     openChapter;
