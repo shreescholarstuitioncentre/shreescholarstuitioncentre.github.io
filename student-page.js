@@ -620,6 +620,7 @@ let sstcPdfPages = 0;
 let sstcPdfCurrentPage = 1;
 let sstcPdfScale = 1;
 let sstcPdfJsLoading = null;
+let sstcPdfBaseWidth = 0;
 
 
 /* =========================================================
@@ -721,21 +722,55 @@ function createSstcPdfJsViewer() {
     viewer = document.createElement("div");
     viewer.id = "sstcPdfJsViewer";
 
+    /*
+     * IMPORTANT:
+     * Toolbar aur pages ko ALAG rakha gaya hai (flex column).
+     * Pehle toolbar "sticky" tha aur scroll hote waqt page
+     * content ke UPAR overlap ho jaata tha (page 2+ ka content
+     * chhup jaata tha). Ab toolbar apni fixed height wali row
+     * me rehta hai aur neeche wala pages area alag se scroll
+     * hota hai - koi overlap nahi hota.
+     */
     viewer.style.cssText = [
         "position:relative",
         "width:100%",
         "height:100%",
-        "overflow:auto",
+        "display:flex",
+        "flex-direction:column",
         "background:#525659",
         "box-sizing:border-box",
-        "padding:18px 10px 40px",
+        "overflow:hidden"
+    ].join(";");
+
+    const pages = document.createElement("div");
+    pages.id = "sstcPdfJsPages";
+
+    pages.style.cssText = [
+        "position:relative",
+        "flex:1 1 auto",
+        "min-height:0",
+        "width:100%",
+        "overflow:auto",
+        "box-sizing:border-box",
+        "padding:14px 10px 40px",
         "overscroll-behavior:contain",
         "-webkit-overflow-scrolling:touch"
     ].join(";");
 
+    viewer.appendChild(pages);
+
     pdfViewer.appendChild(viewer);
 
     return viewer;
+}
+
+
+/* =========================================================
+   GET PAGES CONTAINER
+   ========================================================= */
+
+function getSstcPdfPagesContainer() {
+    return document.getElementById("sstcPdfJsPages");
 }
 
 
@@ -754,11 +789,11 @@ function injectSstcPdfJsStyles() {
 
     style.textContent = `
 
-        #sstcPdfJsViewer {
+        #sstcPdfJsPages {
             scrollbar-width: thin;
         }
 
-        #sstcPdfJsViewer .sstc-pdf-page {
+        #sstcPdfJsPages .sstc-pdf-page {
             position:relative;
             display:block;
             margin:0 auto 18px;
@@ -767,7 +802,7 @@ function injectSstcPdfJsStyles() {
             max-width:none;
         }
 
-        #sstcPdfJsViewer canvas {
+        #sstcPdfJsPages canvas {
             display:block;
             width:100%;
             height:auto;
@@ -811,22 +846,20 @@ function injectSstcPdfJsStyles() {
         }
 
         #sstcPdfJsToolbar {
-            position:sticky;
-            top:8px;
-            z-index:999;
+            position:relative;
+            flex:0 0 auto;
+            z-index:2;
             display:flex;
             align-items:center;
             justify-content:center;
             gap:7px;
             flex-wrap:wrap;
-            width:max-content;
-            max-width:calc(100% - 20px);
-            margin:0 auto 14px;
-            padding:7px 9px;
-            border-radius:12px;
-            background:rgba(15,23,42,.94);
-            box-shadow:0 5px 20px rgba(0,0,0,.3);
-            backdrop-filter:blur(8px);
+            width:100%;
+            box-sizing:border-box;
+            margin:0;
+            padding:8px 9px;
+            background:rgba(15,23,42,.96);
+            box-shadow:0 2px 10px rgba(0,0,0,.3);
         }
 
         #sstcPdfJsToolbar button {
@@ -856,12 +889,11 @@ function injectSstcPdfJsStyles() {
 
         @media (max-width:600px) {
 
-            #sstcPdfJsViewer {
+            #sstcPdfJsPages {
                 padding:10px 5px 25px;
             }
 
             #sstcPdfJsToolbar {
-                top:5px;
                 gap:4px;
                 padding:6px;
             }
@@ -871,7 +903,7 @@ function injectSstcPdfJsStyles() {
                 font-size:12px;
             }
 
-            #sstcPdfJsViewer .sstc-pdf-page {
+            #sstcPdfJsPages .sstc-pdf-page {
                 margin-bottom:12px;
             }
         }
@@ -1048,11 +1080,38 @@ async function openSstcPdfJs(pdfUrl) {
         sstcPdfPages = sstcPdfDocument.numPages;
         sstcPdfCurrentPage = 1;
 
+        /*
+         * IMPORTANT:
+         * Har PDF ka page-size same nahi hota (A4 / landscape /
+         * custom). Pehle scale hardcoded 595pt (A4) maan kar
+         * calculate hoti thi, jisse non-A4 chapters ke pages
+         * kate hue / galat size me dikhte the. Ab actual page 1
+         * ki width nikal kar usi se scale calculate karte hain.
+         */
+        const firstPage = await sstcPdfDocument.getPage(1);
+        const baseViewport = firstPage.getViewport({ scale: 1 });
+        sstcPdfBaseWidth = baseViewport.width;
+
         sstcPdfScale = getSstcPdfInitialScale();
 
         viewer.innerHTML = "";
 
         createSstcPdfToolbar(viewer);
+
+        const pages = document.createElement("div");
+        pages.id = "sstcPdfJsPages";
+        pages.style.cssText = [
+            "position:relative",
+            "flex:1 1 auto",
+            "min-height:0",
+            "width:100%",
+            "overflow:auto",
+            "box-sizing:border-box",
+            "padding:14px 10px 40px",
+            "overscroll-behavior:contain",
+            "-webkit-overflow-scrolling:touch"
+        ].join(";");
+        viewer.appendChild(pages);
 
         await renderSstcPdfDocument();
 
@@ -1094,16 +1153,13 @@ function getSstcPdfInitialScale() {
 
     const width = pdfViewer.clientWidth;
 
-    if (!width) {
+    if (!width || !sstcPdfBaseWidth) {
         return 1;
     }
 
-    /*
-     * Approximate A4 PDF width at 72 DPI.
-     */
     const available = Math.max(280, width - 30);
 
-    return Math.max(0.5, Math.min(1.5, available / 595));
+    return Math.max(0.5, Math.min(1.5, available / sstcPdfBaseWidth));
 }
 
 
@@ -1117,22 +1173,13 @@ async function renderSstcPdfDocument() {
         return;
     }
 
-    const viewer = document.getElementById("sstcPdfJsViewer");
+    const pages = getSstcPdfPagesContainer();
 
-    if (!viewer) {
+    if (!pages) {
         return;
     }
 
-    /*
-     * Toolbar preserve.
-     */
-    const toolbar = document.getElementById("sstcPdfJsToolbar");
-
-    viewer.innerHTML = "";
-
-    if (toolbar) {
-        viewer.appendChild(toolbar);
-    }
+    pages.innerHTML = "";
 
     /*
      * Render every page.
@@ -1168,7 +1215,7 @@ async function renderSstcPdfDocument() {
             context.setTransform(deviceScale, 0, 0, deviceScale, 0, 0);
 
             pageBox.appendChild(canvas);
-            viewer.appendChild(pageBox);
+            pages.appendChild(pageBox);
 
             await page.render({ canvasContext: context, viewport: viewport }).promise;
 
@@ -1195,13 +1242,13 @@ function sstcPdfGoToPage(pageNumber) {
     pageNumber = Math.max(1, Math.min(sstcPdfPages, pageNumber));
     sstcPdfCurrentPage = pageNumber;
 
-    const viewer = document.getElementById("sstcPdfJsViewer");
+    const pages = getSstcPdfPagesContainer();
 
-    if (!viewer) {
+    if (!pages) {
         return;
     }
 
-    const pageBox = viewer.querySelector('.sstc-pdf-page[data-page="' + pageNumber + '"]');
+    const pageBox = pages.querySelector('.sstc-pdf-page[data-page="' + pageNumber + '"]');
 
     if (pageBox) {
         pageBox.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1217,16 +1264,16 @@ function sstcPdfGoToPage(pageNumber) {
 
 function fitSstcPdfWidth() {
 
-    const viewer = document.getElementById("sstcPdfJsViewer");
+    const pages = getSstcPdfPagesContainer();
 
-    if (!viewer) {
+    if (!pages || !sstcPdfBaseWidth) {
         return;
     }
 
-    const width = viewer.clientWidth;
+    const width = pages.clientWidth;
     const available = Math.max(280, width - 30);
 
-    sstcPdfScale = Math.max(0.5, Math.min(2.5, available / 595));
+    sstcPdfScale = Math.max(0.5, Math.min(2.5, available / sstcPdfBaseWidth));
 
     renderSstcPdfDocument();
 }
@@ -1242,6 +1289,7 @@ function destroySstcPdfJsViewer() {
     sstcPdfUrl = "";
     sstcPdfPages = 0;
     sstcPdfCurrentPage = 1;
+    sstcPdfBaseWidth = 0;
 
     const viewer = document.getElementById("sstcPdfJsViewer");
 
