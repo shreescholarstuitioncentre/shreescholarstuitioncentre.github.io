@@ -2566,3 +2566,625 @@ body::before {
     }
 
 }
+
+
+/* =========================================================
+   ★ NEW ★
+   SSTC MY STUDY SUBJECTS  (Add to My Subjects)
+   ---------------------------------------------------------
+   Ye poora block naya hai - upar ka purana CSS untouched.
+   ========================================================= */
+
+/* --- Profile status colours (JS adds these classes) --- */
+
+.student-status.status-active {
+    color: #079447;
+}
+
+.student-status.status-inactive {
+    color: #dc2626;
+}
+
+
+/* --- Study panel (chips + save status + filter) --- */
+
+.study-panel {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-bottom: 14px;
+
+    padding: 14px 16px;
+
+    background: #ffffff;
+
+    border: 1px solid #cfe9d9;
+
+    border-left: 4px solid #16a34a;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 6px 18px rgba(30, 70, 120, 0.05);
+}
+
+
+.study-panel-main {
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.study-panel-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+
+    color: #0b3b22;
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+
+.study-count {
+
+    min-width: 22px;
+
+    height: 22px;
+
+    padding: 0 7px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 999px;
+
+    background: #16a34a;
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+.study-chips {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+
+.study-empty {
+
+    color: #6b7e97;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+.study-chip {
+
+    display: inline-flex;
+
+    align-items: stretch;
+
+    overflow: hidden;
+
+    border: 1px solid #b9efd1;
+
+    border-radius: 999px;
+
+    background: #effcf4;
+}
+
+
+.study-chip-name,
+.study-chip-remove {
+
+    border: none;
+
+    background: transparent;
+
+    font-family: inherit;
+
+    cursor: pointer;
+}
+
+
+.study-chip-name {
+
+    padding: 6px 6px 6px 12px;
+
+    color: #0b6b36;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.study-chip-remove {
+
+    padding: 6px 10px 6px 6px;
+
+    color: #5b8b72;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+.study-chip-name:hover {
+
+    text-decoration: underline;
+}
+
+
+.study-chip-remove:hover {
+
+    color: #dc2626;
+}
+
+
+.study-panel-side {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+}
+
+
+/* --- Save status (Google Sheet me save hua ya nahi) --- */
+
+.save-status {
+
+    min-height: 16px;
+
+    max-width: 340px;
+
+    text-align: right;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+.save-status[data-state="saving"] {
+
+    color: #b45309;
+}
+
+
+.save-status[data-state="saved"] {
+
+    color: #087b43;
+}
+
+
+.save-status[data-state="error"],
+.save-status[data-state="nourl"] {
+
+    color: #b91c1c;
+}
+
+
+.save-status[data-state="error"] {
+
+    cursor: pointer;
+
+    text-decoration: underline;
+}
+
+
+/* --- All Subjects / My Subjects filter --- */
+
+.subject-filter {
+
+    display: inline-flex;
+
+    gap: 3px;
+
+    padding: 3px;
+
+    border-radius: 10px;
+
+    background: #eef3fa;
+}
+
+
+.subject-filter button {
+
+    padding: 7px 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: #3b5b82;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+}
+
+
+.subject-filter button.active {
+
+    background: #ffffff;
+
+    color: #0a58b5;
+
+    box-shadow:
+        0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+
+.subject-filter-empty {
+
+    margin-top: 6px;
+
+    padding: 18px;
+
+    border: 1px dashed #cbd5e1;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+.subject-filter-empty[hidden] {
+
+    display: none;
+}
+
+
+/* --- Subject card: selected state --- */
+
+.subject-card {
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* Button hamesha card ke neeche (sab cards me same line par) */
+
+.subject-card-image {
+
+    flex-shrink: 0;
+}
+
+
+.subject-card-content {
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.subject-card-content .subject-chapter-count {
+
+    margin-bottom: 8px;
+}
+
+
+.subject-card-content .subject-card-badge {
+
+    align-self: flex-start;
+}
+
+
+.subject-card.is-hidden {
+
+    display: none !important;
+}
+
+
+.subject-card.selected {
+
+    border: 2px solid #16a34a;
+
+    box-shadow:
+        0 8px 22px rgba(22, 163, 74, 0.18);
+}
+
+
+.subject-card.selected:hover {
+
+    border-color: #16a34a;
+
+    box-shadow:
+        0 10px 26px rgba(22, 163, 74, 0.26);
+}
+
+
+.subject-card.selected.active {
+
+    border-color: #2563eb;
+}
+
+
+.subject-card:focus-visible {
+
+    outline: 3px solid #93c5fd;
+
+    outline-offset: 2px;
+}
+
+
+.subject-card.selected .subject-card-image {
+
+    position: relative;
+}
+
+
+.subject-card.selected .subject-card-image::after {
+
+    content: "✓ Added";
+
+    position: absolute;
+
+    top: 6px;
+
+    left: 6px;
+
+    padding: 3px 8px;
+
+    border-radius: 999px;
+
+    background: #16a34a;
+
+    color: #ffffff;
+
+    font-size: 10px;
+
+    font-weight: 800;
+}
+
+
+/* --- "+ Add to My Subjects" button on every card --- */
+
+.subject-select-toggle {
+
+    display: block;
+
+    width: 100%;
+
+    margin-top: auto;
+
+    padding: 8px 6px;
+
+    border: 1.5px solid #2563eb;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #2563eb;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    text-align: center;
+
+    white-space: normal;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.subject-select-toggle:hover {
+
+    background: #eaf2ff;
+}
+
+
+.subject-select-toggle.is-selected {
+
+    border-color: #16a34a;
+
+    background: #16a34a;
+
+    color: #ffffff;
+}
+
+
+.subject-select-toggle.is-selected:hover {
+
+    border-color: #15803d;
+
+    background: #15803d;
+}
+
+
+.subject-select-toggle:focus-visible,
+.study-chip-name:focus-visible,
+.study-chip-remove:focus-visible,
+.subject-filter button:focus-visible {
+
+    outline: 3px solid #93c5fd;
+
+    outline-offset: 1px;
+}
+
+
+/* --- Toast message (added / removed) + security message --- */
+
+.sstc-toast,
+.security-message {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 28px;
+
+    z-index: 5000;
+
+    max-width: calc(100% - 32px);
+
+    padding: 11px 18px;
+
+    border-radius: 12px;
+
+    background: #0f172a;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.28);
+
+    pointer-events: none;
+}
+
+
+.sstc-toast {
+
+    opacity: 0;
+
+    transform: translate(-50%, 16px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.sstc-toast.show {
+
+    opacity: 1;
+
+    transform: translate(-50%, 0);
+}
+
+
+.sstc-toast-success {
+
+    background: #15803d;
+}
+
+
+.sstc-toast-info {
+
+    background: #334155;
+}
+
+
+.security-message {
+
+    transform: translate(-50%, 0);
+
+    background: #b91c1c;
+}
+
+
+/* --- Responsive --- */
+
+@media (max-width: 800px) {
+
+    .study-panel {
+
+        flex-direction: column;
+    }
+
+    .study-panel-side {
+
+        width: 100%;
+
+        align-items: stretch;
+    }
+
+    .subject-filter {
+
+        width: 100%;
+    }
+
+    .subject-filter button {
+
+        flex: 1;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .sstc-toast,
+    .subject-select-toggle {
+
+        transition: none;
+    }
+
+}
