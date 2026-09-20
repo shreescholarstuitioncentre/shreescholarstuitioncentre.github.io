@@ -9,60 +9,98 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0">
 
+    <meta
+        name="robots"
+        content="noindex,nofollow,noarchive">
+
+    <meta
+        name="googlebot"
+        content="noindex,nofollow,noarchive">
+
     <title>
-        Student Registration | Shree Scholars Tuition Centre
+        SSTC | Student E-Book Portal
     </title>
-
-
-    <!-- CSS -->
 
     <link
         rel="stylesheet"
-        href="student-registration.css">
+        href="student-page.css?v=2">
 
 </head>
 
 
-<body>
+<body
+    oncontextmenu="return false;"
+    ondragstart="return false;"
+    onselectstart="return false;">
 
 
-<!-- =====================================================
+<!-- =========================================================
      HEADER
-     ===================================================== -->
+========================================================= -->
 
 <header class="sstc-header">
 
-    <div class="header-logo">
+    <div class="header-container">
 
-        <div class="logo-placeholder">
-            SSTC
+
+        <!-- BRAND -->
+
+        <div class="brand-area">
+
+            <div class="brand-logo">
+
+                <img
+                    src="Logo.png"
+                    alt="SSTC Logo"
+                    draggable="false">
+
+            </div>
+
+
+            <div class="brand-text">
+
+                <h1>
+                    SHREE SCHOLARS
+                    <span>
+                        TUITION CENTER
+                    </span>
+                </h1>
+
+                <p>
+                    From Foundation to Future
+                </p>
+
+            </div>
+
         </div>
 
-    </div>
 
+        <!-- NAV -->
 
-    <div class="header-title">
+        <nav class="main-nav">
 
-        <h1>
-            Shree Scholars Tuition Centre
-        </h1>
+            <a href="index.html">
+                Home
+            </a>
 
-        <p>
-            From Foundation to Future
-        </p>
+            <a
+                href="student-page.html"
+                class="active">
 
-    </div>
+                Student Portal
 
+            </a>
 
-    <div class="header-buttons">
+            <button
+                type="button"
+                class="logout-btn"
+                onclick="studentLogout(event)">
+            
+                🚪 Logout
+            
+            </button>
 
-        <a href="index.html">
-            🏠 Home
-        </a>
-
-        <a href="sstc-access.html">
-            🔐 Access
-        </a>
+        </nav>
 
     </div>
 
@@ -70,553 +108,747 @@
 
 
 
-<!-- =====================================================
-     MAIN REGISTRATION PAGE
-     ===================================================== -->
+<!-- =========================================================
+     MAIN PAGE
+========================================================= -->
 
-<main class="registration-page">
-
-
-    <section class="registration-card">
+<main class="student-page">
 
 
-        <!-- =============================================
-             HEADING
-             ============================================= -->
+    <!-- =====================================================
+         PAGE TITLE
+    ====================================================== -->
 
-        <div class="registration-heading">
+    <section class="portal-title">
 
-            <div class="registration-icon">
-                🎓
-            </div>
+        <div>
 
+            <span class="portal-badge">
+                🎓 STUDENT PORTAL
+            </span>
 
             <h2>
-                New Student Registration
+                My E-Book Library
             </h2>
 
-
             <p>
-                Register with Shree Scholars Tuition Centre
+                Access your purchased and rented e-books securely.
             </p>
 
         </div>
 
 
+        <div class="security-badge">
 
-        <!-- =============================================
-             MESSAGE BOX
-             ============================================= -->
-
-        <div
-            id="registrationMessage"
-            class="registration-message"
-            aria-live="polite">
+            🔐 Protected Reading
 
         </div>
 
+    </section>
 
 
-        <!-- =============================================
-             SUCCESS / LOGIN DETAILS BOX
-             ============================================= -->
 
-        <div
-            id="registrationSuccess"
-            class="registration-success"
-            style="display: none;">
+    <!-- =====================================================
+         STUDENT PROFILE
+    ====================================================== -->
 
-            <h3>
-                🎉 Registration Successful!
-            </h3>
-
-            <p>
-                Please save your Student ID and Password.
-            </p>
+    <section class="profile-card">
 
 
-            <div class="success-details">
-
-                <div class="success-detail-row">
-
-                    <span>
-                        Student ID
-                    </span>
-
-                    <strong id="successStudentId">
-                        -
-                    </strong>
-
-                </div>
+        <div class="profile-main">
 
 
-                <div class="success-detail-row">
+            <div
+                class="student-avatar"
+                id="studentAvatar">
 
-                    <span>
-                        Password
-                    </span>
-
-                    <div class="password-success-box">
-                    
-                        <strong
-                            id="successPassword">
-                    
-                            -
-                    
-                        </strong>
-                    
-                    </div>
-                </div>
+                S
 
             </div>
 
 
-            <a
-                href="sstc-access.html"
-                class="success-login-button">
+            <div class="student-main-info">
 
-                🔐 Login as Student
+                <h2 id="studentName">
+                    Student Name
+                </h2>
 
-            </a>
+                <p id="studentClass">
+                    Class --
+                </p>
 
-        </div>
+                <span
+                    id="studentStatus"
+                    class="student-status">
 
-
-
-        <!-- =============================================
-             REGISTRATION FORM
-             ============================================= -->
-
-        <form
-            id="studentRegistrationForm"
-            autocomplete="off">
-
-
-
-            <!-- =========================================
-                 STUDENT ID
-                 ========================================= -->
-
-            <div class="field-group">
-
-                <label for="studentId">
-
-                    Student ID
-
-                </label>
-
-
-                <div class="generated-box">
-
-                    <span class="input-icon">
-                        🆔
-                    </span>
-
-
-                    <input
-                        type="text"
-                        id="studentId"
-                        placeholder="Auto-generated"
-                        readonly>
-
-                </div>
-
-
-                <small>
-                    Your unique Student ID will be generated automatically.
-                </small>
-
-            </div>
-
-
-
-            <!-- =========================================
-                 FULL NAME
-                 ========================================= -->
-
-            <div class="field-group">
-
-                <label for="fullName">
-
-                    Full Name
-
-                </label>
-
-
-                <input
-                    type="text"
-                    id="fullName"
-                    name="fullName"
-                    placeholder="Enter student's full name"
-                    required>
-
-            </div>
-
-
-
-            <!-- =========================================
-                 MOBILE NUMBER
-                 ========================================= -->
-
-            <div class="field-group">
-
-                <label for="mobile">
-
-                    Mobile Number
-
-                </label>
-
-
-                <input
-                    type="tel"
-                    id="mobile"
-                    name="mobile"
-                    placeholder="Enter 10-digit mobile number"
-                    maxlength="10"
-                    inputmode="numeric"
-                    required>
-
-            </div>
-
-
-
-            <!-- =========================================
-                 GENDER
-                 ========================================= -->
-
-            <div class="field-group">
-
-                <label>
-
-                    Gender
-
-                </label>
-
-
-                <div class="gender-options">
-
-
-                    <label class="gender-option">
-
-                        <input
-                            type="radio"
-                            name="gender"
-                            value="Male"
-                            required>
-
-                        <span>
-                            Male
-                        </span>
-
-                    </label>
-
-
-
-                    <label class="gender-option">
-
-                        <input
-                            type="radio"
-                            name="gender"
-                            value="Female">
-
-                        <span>
-                            Female
-                        </span>
-
-                    </label>
-
-
-
-                    <label class="gender-option">
-
-                        <input
-                            type="radio"
-                            name="gender"
-                            value="Other">
-
-                        <span>
-                            Other
-                        </span>
-
-                    </label>
-
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =========================================
-                 EMAIL
-                 ========================================= -->
-
-            <div class="field-group">
-
-                <label for="email">
-
-                    Email ID
-
-                </label>
-
-
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Enter email address"
-                    required>
-
-            </div>
-
-
-
-            <!-- =========================================
-                 CLASS
-                 ========================================= -->
-
-            <div class="field-group">
-
-                <label for="studentClass">
-
-                    Class
-
-                </label>
-
-
-                <select
-                    id="studentClass"
-                    name="studentClass"
-                    required>
-
-
-                    <option value="">
-                        Select Class
-                    </option>
-
-
-                    <option value="9">
-                        Class 9
-                    </option>
-
-
-                    <option value="10">
-                        Class 10
-                    </option>
-
-
-                    <option value="11">
-                        Class 11
-                    </option>
-
-
-                    <option value="12">
-                        Class 12
-                    </option>
-
-
-                </select>
-
-            </div>
-
-
-
-            <!-- =========================================
-                 BOARD
-                 ========================================= -->
-
-            <div class="field-group">
-
-                <label for="board">
-
-                    Board
-
-                </label>
-
-
-                <select
-                    id="board"
-                    name="board"
-                    required>
-
-
-                    <option value="">
-                        Select Board
-                    </option>
-
-
-                    <option value="CBSE">
-                        CBSE
-                    </option>
-
-
-                    <option value="UP Board">
-                        UP Board
-                    </option>
-
-
-                    <option value="ICSE">
-                        ICSE
-                    </option>
-
-
-                    <option value="Other">
-                        Other
-                    </option>
-
-
-                </select>
-
-            </div>
-
-
-
-            <!-- =========================================
-                 SCHOOL NAME
-                 ========================================= -->
-
-            <div class="field-group">
-
-                <label for="schoolName">
-
-                    School Name
-
-                </label>
-
-
-                <input
-                    type="text"
-                    id="schoolName"
-                    name="schoolName"
-                    placeholder="Enter school name"
-                    required>
-
-            </div>
-
-
-
-            <!-- =========================================
-                 SCHOOL PLACE
-                 ========================================= -->
-
-            <div class="field-group">
-
-                <label for="schoolPlace">
-
-                    School Place / Location
-
-                </label>
-
-
-                <input
-                    type="text"
-                    id="schoolPlace"
-                    name="schoolPlace"
-                    placeholder="Enter school location"
-                    required>
-
-            </div>
-
-
-
-            <!-- =========================================
-                 GENERATED PASSWORD
-                 ========================================= -->
-
-            <div class="field-group">
-
-                <label for="generatedPassword">
-
-                    Login Password
-
-                </label>
-
-
-                <div class="generated-box">
-
-                    <span class="input-icon">
-                        🔐
-                    </span>
-
-
-                    <input
-                        type="text"
-                        id="generatedPassword"
-                        placeholder="Auto-generated after registration"
-                        value="Auto-generated after registration"
-                        readonly>
-                       
-                </div>
-
-
-                <small>
-                    Password is generated automatically using your details.
-                    Save it safely after registration.
-                </small>
-
-            </div>
-
-
-
-            <!-- =========================================
-                 CONFIRMATION
-                 ========================================= -->
-
-            <label class="confirmation">
-
-                <input
-                    type="checkbox"
-                    id="confirmInformation"
-                    required>
-
-
-                <span>
-
-                    I confirm that the information provided by me is correct.
+                    ● Active
 
                 </span>
 
-            </label>
+            </div>
+
+        </div>
+
+
+        <div class="profile-details">
+
+
+            <div class="detail-item">
+
+                <span>
+                    Student ID
+                </span>
+
+                <strong id="studentId">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    Mobile Number
+                </span>
+
+                <strong id="studentMobile">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    Gender
+                </span>
+
+                <strong id="studentGender">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    Email ID
+                </span>
+
+                <strong id="studentEmail">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    Class
+                </span>
+
+                <strong id="studentClassDetail">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    Board
+                </span>
+
+                <strong id="studentBoard">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    School Name
+                </span>
+
+                <strong id="studentSchool">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    School Place
+                </span>
+
+                <strong id="studentSchoolPlace">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    Registration Date
+                </span>
+
+                <strong id="registrationDate">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    Login Time
+                </span>
+
+                <strong id="loginTime">
+                    --
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </section>
 
 
 
-            <!-- =========================================
-                 REGISTER BUTTON
-                 ========================================= -->
+    <!-- =====================================================
+         SUBJECT CAROUSEL
+    ====================================================== -->
+
+    <section class="subject-section">
+
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-badge">
+                    📚 E-BOOK LIBRARY
+                </span>
+
+                <h2>
+                    Choose Your Subject
+                </h2>
+
+                <p>
+                    Tap a subject card to view its chapters. Use
+                    “+ Add to My Subjects” to build your own study list.
+                </p>
+
+            </div>
+
+
+            <div class="library-count">
+
+                <span>
+                    Available Books
+                </span>
+
+                <strong id="ebookCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             MY STUDY SUBJECTS (saved in Google Sheet)
+        ================================================== -->
+
+        <div
+            class="study-panel"
+            id="studyPanel">
+
+
+            <div class="study-panel-main">
+
+                <div class="study-panel-title">
+
+                    ⭐ My Study Subjects
+
+                    <span
+                        class="study-count"
+                        id="selectedCount">
+                        0
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="study-chips"
+                    id="studyChips">
+
+                    <!-- JS creates selected subject chips -->
+
+                </div>
+
+            </div>
+
+
+            <div class="study-panel-side">
+
+                <span
+                    class="save-status"
+                    id="saveStatus"
+                    data-state="idle"
+                    role="status"
+                    aria-live="polite">
+                </span>
+
+
+                <div
+                    class="subject-filter"
+                    role="group"
+                    aria-label="Filter subjects">
+
+                    <button
+                        type="button"
+                        class="active"
+                        data-filter="all"
+                        onclick="setSubjectFilter('all')">
+
+                        All Subjects (<span id="filterAllCount">0</span>)
+
+                    </button>
+
+                    <button
+                        type="button"
+                        data-filter="mine"
+                        onclick="setSubjectFilter('mine')">
+
+                        My Subjects (<span id="filterMineCount">0</span>)
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SUBJECT CAROUSEL -->
+
+        <div class="subject-carousel-wrapper">
 
             <button
-                type="submit"
-                id="registerButton"
-                class="register-button">
+                type="button"
+                class="carousel-arrow"
+                onclick="scrollSubjects(-1)">
 
-                🎓 Register Student
+                ‹
 
             </button>
 
 
-        </form>
+            <div
+                class="subject-carousel"
+                id="subjectCarousel">
+
+                <!-- JS creates subjects -->
+
+            </div>
 
 
+            <button
+                type="button"
+                class="carousel-arrow"
+                onclick="scrollSubjects(1)">
 
-        <!-- =============================================
-             ALREADY REGISTERED
-             ============================================= -->
+                ›
 
-        <div class="already-registered">
-
-            <span>
-                Already registered?
-            </span>
-
-
-            <a href="sstc-access.html">
-
-                Login as Student →
-
-            </a>
+            </button>
 
         </div>
 
+
+        <p
+            class="subject-filter-empty"
+            id="subjectFilterEmpty"
+            hidden>
+
+            You have not added any subject yet. Switch to
+            “All Subjects” and tap “+ Add to My Subjects”.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CHAPTER SECTION
+    ====================================================== -->
+
+    <section
+        class="chapter-section"
+        id="chapterSection">
+
+
+        <div class="chapter-header">
+
+            <div>
+
+                <span class="chapter-label">
+                    📖 CHAPTERS
+                </span>
+
+                <h2 id="selectedSubjectTitle">
+                    Select a Subject
+                </h2>
+
+                <p id="selectedSubjectDescription">
+                    Choose a subject above to see its chapters.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="chapter-grid"
+            id="chapterGrid">
+
+            <div class="chapter-empty">
+
+                <div>
+                    📚
+                </div>
+
+                <h3>
+                    Select a Subject
+                </h3>
+
+                <p>
+                    Chapters will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         READER
+    ====================================================== -->
+
+    <section
+        class="reader-section"
+        id="readerSection">
+
+
+        <!-- READER HEADER -->
+
+        <div class="reader-header">
+
+
+            <div class="reader-book-info">
+
+                <div class="book-icon">
+                    📖
+                </div>
+
+
+                <div>
+
+                    <h3 id="currentBookTitle">
+                        Select a Chapter
+                    </h3>
+
+                    <p id="currentBookStatus">
+                        Select a chapter to start reading.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="reader-actions">
+
+
+                <button
+                    type="button"
+                    onclick="zoomOut()"
+                    title="Zoom Out">
+
+                    −
+
+                </button>
+
+
+                <span id="zoomLevel">
+                    100%
+                </span>
+
+
+                <button
+                    type="button"
+                    onclick="zoomIn()"
+                    title="Zoom In">
+
+                    +
+
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="fitWidth()"
+                    title="Fit Width">
+
+                    ↔
+
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="fitPage()"
+                    title="Fit Page">
+
+                    ⛶
+
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="toggleFullscreen()"
+                    title="Fullscreen">
+
+                    ⛶
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PDF VIEWER -->
+
+        <div
+            class="pdf-viewer"
+            id="pdfViewer">
+
+
+            <div
+                class="viewer-empty"
+                id="viewerEmpty">
+
+                <div class="empty-icon">
+                    📚
+                </div>
+
+                <h3>
+                    Select a Chapter
+                </h3>
+
+                <p>
+                    Choose a chapter above to open the protected reader.
+                </p>
+
+            </div>
+
+
+            <iframe
+                id="pdfFrame"
+                class="pdf-frame"
+                title="SSTC Protected E-Book Reader"
+                loading="lazy"
+                onload="if (window.pdfLoaded) pdfLoaded();">
+            </iframe>
+
+        </div>
+
+
+
+        <!-- READER FOOTER -->
+
+        <div class="reader-footer-controls">
+
+
+            <button
+                type="button"
+                onclick="previousPage()">
+
+                ◀ Previous
+
+            </button>
+
+
+            <div class="page-indicator">
+
+                <span>
+                    Chapter
+                </span>
+
+                <strong id="currentChapterNumber">
+                    1
+                </strong>
+
+            </div>
+
+
+            <button
+                type="button"
+                onclick="nextPage()">
+
+                Next ▶
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         LIBRARY SUMMARY
+    ====================================================== -->
+
+    <section class="summary-section">
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                📚
+            </div>
+
+            <div>
+
+                <span>
+                    Total E-Books
+                </span>
+
+                <strong id="totalBooks">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                🔄
+            </div>
+
+            <div>
+
+                <span>
+                    Rented
+                </span>
+
+                <strong id="rentedBooks">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                🛒
+            </div>
+
+            <div>
+
+                <span>
+                    Purchased
+                </span>
+
+                <strong id="purchasedBooks">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                📖
+            </div>
+
+            <div>
+
+                <span>
+                    Subjects
+                </span>
+
+                <strong id="totalSubjects">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PURCHASE INFORMATION
+    ====================================================== -->
+
+    <section class="purchase-info">
+
+        <div class="purchase-info-icon">
+            🛒
+        </div>
+
+        <div>
+
+            <h3>
+                Want More E-Books?
+            </h3>
+
+            <p>
+                Choose <strong>Rent</strong> or <strong>Buy</strong>
+                on any available e-book. Contact SSTC administration
+                to complete your order.
+            </p>
+
+        </div>
 
     </section>
 
@@ -625,37 +857,74 @@
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      FOOTER
-     ===================================================== -->
+========================================================= -->
 
 <footer class="sstc-footer">
 
-    <p>
+    <div class="footer-container">
 
-        © 2026 Shree Scholars Tuition Centre.
+
+        <div>
+
+            <h3>
+                SHREE SCHOLARS TUITION CENTER
+            </h3>
+
+            <p>
+                From Foundation to Future
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <span>
+                •
+            </span>
+
+            <a href="student-page.html">
+                Student Portal
+            </a>
+
+            <span>
+                •
+            </span>
+
+            <a href="#">
+                Privacy
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        ©
+        <span id="currentYear"></span>
+
+        Shree Scholars Tuition Center.
         All Rights Reserved.
 
-    </p>
-
-
-    <p>
-
-        From Foundation to Future
-
-    </p>
-
+    </div>
 
 </footer>
 
 
 
-<!-- =====================================================
-     REGISTRATION JAVASCRIPT
-     ===================================================== -->
+<!-- =========================================================
+     JS
+========================================================= -->
 
-<script src="student-registration.js"></script>
-
+<script src="student-page.js?v=2"></script>
 
 </body>
 
