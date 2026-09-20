@@ -846,7 +846,16 @@ function setSaveStatus(state, detail) {
     };
 
     element.setAttribute("data-state", state);
-    element.textContent = labels[state] || "";
+
+    let text = labels[state] || "";
+
+    /* Error ka reason screen par bhi dikhao (admin ko debug me help) */
+
+    if (state === "error" && detail) {
+        text = "⚠ Not saved – " + String(detail).substring(0, 110);
+    }
+
+    element.textContent = text;
     element.title = detail || "";
 }
 
@@ -997,6 +1006,15 @@ async function flushSubjectSave() {
             throw new Error((result && result.message) || "Save failed.");
         }
 
+        /*
+         * Purana Apps Script deployment kisi bhi unknown action par
+         * {success:true, message:"API is running"} de deta hai.
+         * Isliye sirf success:true kaafi nahi - type bhi check karo.
+         */
+        if (result.type !== "subjects_updated") {
+            throw new Error("Apps Script is running an OLD version. Deploy > Manage deployments > Edit > New version > Deploy.");
+        }
+
         saved = true;
 
         console.log(
@@ -1098,9 +1116,36 @@ async function syncSelectedSubjectsFromSheet() {
             return;
         }
 
+        if (result.type !== "subjects") {
+
+            console.warn("SSTC: Apps Script ka purana version chal raha hai (getsubjects support nahi).");
+
+            setSaveStatus("error", "Apps Script is running an OLD version. Deploy a New version.");
+
+            return;
+        }
+
         /* Student ne is beech khud change kar diya ho to uska change na todo */
 
         if (sstcSelectionTouched) {
+            return;
+        }
+
+        /*
+         * Sheet khaali hai par is session me selection hai = pehle ka
+         * save fail hua tha (jaise URL set nahi tha). Selection mat
+         * hatao - use ab Sheet me save kar do.
+         */
+        const localCsv = getSelectedSubjectsCsv();
+
+        if (String(result.selectedSubjects || "").trim() === "" && localCsv !== "") {
+
+            console.log("SSTC: Sheet khaali hai, session me selection hai - ab Sheet me save kar rahe hain:", localCsv);
+
+            setSaveStatus("saving");
+
+            flushSubjectSave();
+
             return;
         }
 
