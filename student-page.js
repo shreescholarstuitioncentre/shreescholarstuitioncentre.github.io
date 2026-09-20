@@ -2,7 +2,7 @@
    SSTC STUDENT PORTAL
    LIVE STUDENT DATA
    SESSION + PROFILE + E-BOOK LIBRARY + PDF READER
-   (FIXED VERSION)
+   + MY STUDY SUBJECTS (select -> saved in Google Sheet)
    ========================================================= */
 
 
@@ -16,13 +16,24 @@ let sstcLoggingOut = false;
 let sstcZoom = 100;
 let sstcSelectedSubjects = new Set();
 
+/* --- study-list (subject selection) state --- */
+let sstcSubjectFilter = "all";      // "all" | "mine"
+let sstcSelectionTouched = false;   // student ne khud kuch select/unselect kiya?
+let sstcSaveTimer = null;           // debounce timer
+let sstcSaveInFlight = false;       // save request chal rahi hai?
+let sstcSaveQueued = false;         // save ke dauran naya change aaya?
+
 
 /* =========================================================
    STUDENT DATABASE API (for saving selected subjects)
-   (ADMIN: apne "sstc-student-database" Apps Script ka
-   deployment URL yahan daalein - jab tak khaali hai,
-   subject-selection sirf is browser session me hi save
-   rahega, Google Sheet me save nahi hoga)
+   ---------------------------------------------------------
+   ⚠️ ZAROORI: Apps Script ka "Web App" deployment URL yahan
+   paste karein (jo "https://script.google.com/macros/s/.../exec"
+   se shuru hota hai). Wahi URL jo sstc-access.html / admin
+   page me use ho raha hai.
+
+   Jab tak ye khaali hai, selection Google Sheet me SAVE NAHI
+   hoga - page par "Not saved" ka warning dikhega.
    ========================================================= */
 
 const SSTC_STUDENT_API_URL = "";
@@ -220,6 +231,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loadLoggedInStudent();
     setupStudentSecurity();
     setupReaderDefaults();
+    setupSubjectSelectionUI();
     setCurrentYear();
 });
 
@@ -398,6 +410,20 @@ function renderStudentData() {
 
 
 /* =========================================================
+   CURRENT CLASS LIBRARY (helper)
+   ========================================================= */
+
+function getCurrentClassLibrary() {
+
+    const classNumber = normalizeStudentClass(
+        getStudentValue(["className", "Class", "class", "studentClass"], "")
+    );
+
+    return SSTC_EBOOKS[classNumber] || null;
+}
+
+
+/* =========================================================
    RENDER STUDENT LIBRARY
    ========================================================= */
 
@@ -412,14 +438,20 @@ function renderStudentLibrary() {
         return;
     }
 
+    pruneSelectedSubjects(classLibrary);
+
     renderSubjects(classLibrary);
     updateLibraryCounts(classLibrary);
+    refreshSubjectSelectionUI();
 
     const subjectNames = Object.keys(classLibrary);
 
     if (subjectNames.length === 1) {
         selectSubject(subjectNames[0]);
     }
+
+    /* Google Sheet me jo subjects save hain unhe load karo */
+    syncSelectedSubjectsFromSheet();
 }
 
 
@@ -443,47 +475,33 @@ function renderSubjects(classLibrary) {
 
         const subject = classLibrary[subjectName];
 
-        const card = document.createElement("button");
-        card.type = "button";
+        /*
+         * Card ab <div role="button"> hai (pehle <button> tha),
+         * kyunki <button> ke andar <button> (Add to My Subjects)
+         * HTML me valid nahi hota aur kuch browsers me click
+         * properly kaam nahi karta.
+         */
+        const card = document.createElement("div");
         card.className = "subject-card";
+        card.setAttribute("role", "button");
+        card.setAttribute("tabindex", "0");
         card.setAttribute("data-subject", subjectName);
-        card.style.position = "relative";
 
         card.addEventListener("click", function () {
             selectSubject(subjectName);
         });
 
-        /*
-         * SELECT-TO-STUDY TOGGLE
-         * Card ke click se alag hai (event.stopPropagation) -
-         * isse student apni study list me subject add/remove
-         * kar sakta hai. Google Sheet me bhi save hota hai
-         * (agar SSTC_STUDENT_API_URL set ho).
-         */
-        const selectToggle = document.createElement("button");
-        selectToggle.type = "button";
-        selectToggle.className = "subject-select-toggle";
+        card.addEventListener("keydown", function (event) {
 
-        updateSstcSelectToggleUI(selectToggle, sstcSelectedSubjects.has(subjectName));
-
-        selectToggle.addEventListener("click", function (event) {
-
-            event.stopPropagation();
-
-            const nowSelected = !sstcSelectedSubjects.has(subjectName);
-
-            if (nowSelected) {
-                sstcSelectedSubjects.add(subjectName);
-            }
-            else {
-                sstcSelectedSubjects.delete(subjectName);
+            if (event.target !== card) {
+                return;
             }
 
-            updateSstcSelectToggleUI(selectToggle, nowSelected);
-            persistSelectedSubjects();
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                selectSubject(subjectName);
+            }
         });
-
-        card.appendChild(selectToggle);
 
         const imageWrapper = document.createElement("div");
         imageWrapper.className = "subject-card-image";
@@ -518,10 +536,28 @@ function renderSubjects(classLibrary) {
         count.className = "subject-chapter-count";
         count.textContent = (Array.isArray(subject.chapters) ? subject.chapters.length : 0) + " Chapters";
 
+        /*
+         * ADD TO MY SUBJECTS BUTTON
+         * Card ke click se alag hai (event.stopPropagation).
+         * Student isse apni study list me subject add/remove
+         * karta hai; Google Sheet me bhi save hota hai.
+         */
+        const selectToggle = document.createElement("button");
+        selectToggle.type = "button";
+        selectToggle.className = "subject-select-toggle";
+
+        updateSstcSelectToggleUI(selectToggle, sstcSelectedSubjects.has(subjectName));
+
+        selectToggle.addEventListener("click", function (event) {
+            event.stopPropagation();
+            toggleSubjectSelection(subjectName);
+        });
+
         content.appendChild(badge);
         content.appendChild(title);
         content.appendChild(description);
         content.appendChild(count);
+        content.appendChild(selectToggle);
 
         card.appendChild(imageWrapper);
         card.appendChild(content);
@@ -537,28 +573,18 @@ function renderSubjects(classLibrary) {
 
 function updateSstcSelectToggleUI(button, selected) {
 
-    button.textContent = selected ? "✓ Selected" : "+ Select to Study";
+    button.textContent = selected ? "✓ Added to My Subjects" : "+ Add to My Subjects";
 
-    button.style.cssText = [
-        "position:absolute",
-        "top:8px",
-        "right:8px",
-        "z-index:2",
-        "border-radius:20px",
-        "padding:5px 10px",
-        "font-size:10px",
-        "font-weight:700",
-        "cursor:pointer",
-        "white-space:nowrap",
-        selected
-            ? "background:#16a34a;color:#ffffff;border:1px solid #16a34a;"
-            : "background:rgba(255,255,255,.95);color:#2563eb;border:1px solid #2563eb;"
-    ].join(";");
+    button.classList.toggle("is-selected", !!selected);
+
+    button.setAttribute("aria-pressed", selected ? "true" : "false");
+
+    button.title = selected
+        ? "Tap to remove from your study list"
+        : "Add this subject to your study list";
 }
 
-function getSelectedSubjectsSet() {
-
-    const raw = getStudentValue(["selectedSubjects"], "");
+function parseSubjectCsv(raw) {
 
     const set = new Set();
 
@@ -578,13 +604,312 @@ function getSelectedSubjectsSet() {
     return set;
 }
 
+function getSelectedSubjectsSet() {
+
+    return parseSubjectCsv(getStudentValue(["selectedSubjects"], ""));
+}
+
+/* Sirf wahi subjects rakho jo student ki class library me hain */
+
+function pruneSelectedSubjects(classLibrary) {
+
+    const cleaned = new Set();
+
+    sstcSelectedSubjects.forEach(function (name) {
+
+        if (classLibrary && classLibrary[name]) {
+            cleaned.add(name);
+        }
+    });
+
+    sstcSelectedSubjects = cleaned;
+}
+
+/* Selected subject names - subject cards ke order me */
+
+function getSelectedSubjectNames() {
+
+    const library = getCurrentClassLibrary();
+
+    if (!library) {
+        return Array.from(sstcSelectedSubjects);
+    }
+
+    return Object.keys(library).filter(function (name) {
+        return sstcSelectedSubjects.has(name);
+    });
+}
+
+function getSelectedSubjectsCsv() {
+
+    return getSelectedSubjectNames().join(",");
+}
+
+/* Ek subject add / remove */
+
+function toggleSubjectSelection(subjectName) {
+
+    sstcSelectionTouched = true;
+
+    const nowSelected = !sstcSelectedSubjects.has(subjectName);
+
+    if (nowSelected) {
+        sstcSelectedSubjects.add(subjectName);
+    }
+    else {
+        sstcSelectedSubjects.delete(subjectName);
+    }
+
+    refreshSubjectSelectionUI();
+
+    showSstcToast(
+        nowSelected
+            ? subjectName + " added to My Subjects ✓"
+            : subjectName + " removed from My Subjects",
+        nowSelected ? "success" : "info"
+    );
+
+    persistSelectedSubjects();
+}
+
+/* Saare cards, chips, counts aur filter ko update karo */
+
+function refreshSubjectSelectionUI() {
+
+    const cards = document.querySelectorAll(".subject-card");
+
+    cards.forEach(function (card) {
+
+        const name = card.getAttribute("data-subject");
+        const selected = sstcSelectedSubjects.has(name);
+
+        card.classList.toggle("selected", selected);
+
+        const toggle = card.querySelector(".subject-select-toggle");
+
+        if (toggle) {
+            updateSstcSelectToggleUI(toggle, selected);
+        }
+    });
+
+    renderStudyChips();
+    applySubjectFilter();
+}
+
+/* "My Study Subjects" chips */
+
+function renderStudyChips() {
+
+    const box = document.getElementById("studyChips");
+    const names = getSelectedSubjectNames();
+    const library = getCurrentClassLibrary();
+
+    updateNumber("selectedCount", names.length);
+    updateNumber("filterMineCount", names.length);
+    updateNumber("filterAllCount", library ? Object.keys(library).length : 0);
+
+    if (!box) {
+        return;
+    }
+
+    box.innerHTML = "";
+
+    if (names.length === 0) {
+
+        const empty = document.createElement("span");
+        empty.className = "study-empty";
+        empty.textContent = "No subject added yet. Tap “+ Add to My Subjects” on a subject card below.";
+
+        box.appendChild(empty);
+        return;
+    }
+
+    names.forEach(function (name) {
+
+        const chip = document.createElement("span");
+        chip.className = "study-chip";
+
+        const label = document.createElement("button");
+        label.type = "button";
+        label.className = "study-chip-name";
+        label.textContent = name;
+        label.title = "Open " + name + " chapters";
+
+        label.addEventListener("click", function () {
+            selectSubject(name);
+        });
+
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "study-chip-remove";
+        remove.textContent = "✕";
+        remove.title = "Remove " + name + " from My Subjects";
+        remove.setAttribute("aria-label", "Remove " + name + " from My Subjects");
+
+        remove.addEventListener("click", function () {
+            toggleSubjectSelection(name);
+        });
+
+        chip.appendChild(label);
+        chip.appendChild(remove);
+
+        box.appendChild(chip);
+    });
+}
+
+/* Filter: All Subjects / My Subjects */
+
+function setSubjectFilter(mode) {
+
+    sstcSubjectFilter = (mode === "mine") ? "mine" : "all";
+
+    applySubjectFilter();
+
+    const carousel = document.getElementById("subjectCarousel");
+
+    if (carousel) {
+        carousel.scrollLeft = 0;
+    }
+}
+
+function applySubjectFilter() {
+
+    const cards = document.querySelectorAll(".subject-card");
+
+    let visible = 0;
+
+    cards.forEach(function (card) {
+
+        const name = card.getAttribute("data-subject");
+        const hide = sstcSubjectFilter === "mine" && !sstcSelectedSubjects.has(name);
+
+        card.classList.toggle("is-hidden", hide);
+
+        if (!hide) {
+            visible++;
+        }
+    });
+
+    const buttons = document.querySelectorAll(".subject-filter button");
+
+    buttons.forEach(function (button) {
+
+        const active = button.getAttribute("data-filter") === sstcSubjectFilter;
+
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+
+    const message = document.getElementById("subjectFilterEmpty");
+
+    if (message) {
+        message.hidden = !(sstcSubjectFilter === "mine" && cards.length > 0 && visible === 0);
+    }
+}
+
+function setupSubjectSelectionUI() {
+
+    /* Save status par click = dobara try (error hone par) */
+
+    const statusElement = document.getElementById("saveStatus");
+
+    if (statusElement) {
+
+        statusElement.addEventListener("click", function () {
+
+            if (statusElement.getAttribute("data-state") === "error") {
+                flushSubjectSave();
+            }
+        });
+    }
+}
+
+
+/* =========================================================
+   SAVE STATUS + TOAST
+   ========================================================= */
+
+function setSaveStatus(state, detail) {
+
+    const element = document.getElementById("saveStatus");
+
+    if (!element) {
+        return;
+    }
+
+    const labels = {
+        idle: "",
+        saving: "⏳ Saving…",
+        saved: "✅ Saved to your account",
+        error: "⚠ Not saved – tap to retry",
+        nourl: "⚠ Not saved – setup incomplete"
+    };
+
+    element.setAttribute("data-state", state);
+    element.textContent = labels[state] || "";
+    element.title = detail || "";
+}
+
+function showSstcToast(message, type) {
+
+    const old = document.querySelector(".sstc-toast");
+
+    if (old) {
+        old.remove();
+    }
+
+    const box = document.createElement("div");
+    box.className = "sstc-toast sstc-toast-" + (type || "info");
+    box.setAttribute("role", "status");
+    box.textContent = message;
+
+    document.body.appendChild(box);
+
+    requestAnimationFrame(function () {
+        box.classList.add("show");
+    });
+
+    setTimeout(function () {
+
+        box.classList.remove("show");
+
+        setTimeout(function () {
+
+            if (box && box.parentNode) {
+                box.remove();
+            }
+
+        }, 250);
+
+    }, 2200);
+}
+
+
+/* =========================================================
+   SAVE SELECTED SUBJECTS -> GOOGLE SHEET
+   ========================================================= */
+
+function buildStudentApiUrl(action, params) {
+
+    let url =
+        SSTC_STUDENT_API_URL +
+        (SSTC_STUDENT_API_URL.indexOf("?") > -1 ? "&" : "?") +
+        "action=" + encodeURIComponent(action);
+
+    Object.keys(params).forEach(function (key) {
+        url += "&" + key + "=" + encodeURIComponent(params[key]);
+    });
+
+    return url;
+}
+
 function persistSelectedSubjects() {
 
-    const csv = Array.from(sstcSelectedSubjects).join(",");
+    const csv = getSelectedSubjectsCsv();
 
     /*
-     * Turant session me bhi save kar do, taaki reload hone par
-     * bhi (Sheet se dobara load hone se pehle) selection dikhe.
+     * Turant session me bhi save kar do, taaki page reload par
+     * (Sheet se dobara load hone se pehle) selection dikhe.
      */
     if (studentData) {
 
@@ -598,40 +923,213 @@ function persistSelectedSubjects() {
         }
     }
 
-    saveSelectedSubjectsToSheet(csv);
+    setSaveStatus("saving");
+
+    /* Kai clicks ek saath ho to sirf aakhri list save hogi */
+
+    if (sstcSaveTimer) {
+        clearTimeout(sstcSaveTimer);
+    }
+
+    sstcSaveTimer = setTimeout(flushSubjectSave, 500);
 }
 
-async function saveSelectedSubjectsToSheet(csv) {
+async function flushSubjectSave() {
+
+    sstcSaveTimer = null;
+
+    if (sstcSaveInFlight) {
+        sstcSaveQueued = true;
+        return;
+    }
 
     if (!SSTC_STUDENT_API_URL) {
-        console.warn("SSTC: Student API URL set nahi hai - subject selection sirf is browser session me save hai, Google Sheet me save nahi hoga.");
+
+        setSaveStatus("nourl", "SSTC_STUDENT_API_URL is empty in student-page.js");
+
+        console.warn("SSTC: ❌ SSTC_STUDENT_API_URL khaali hai - subjects Google Sheet me save NAHI ho rahe. student-page.js me Apps Script Web App URL paste karein.");
+
         return;
     }
 
     const studentId = getStudentValue(["studentId", "id"], "");
+    const password = getStudentValue(["password"], "");
 
-    if (!studentId) {
+    if (!studentId || !password) {
+
+        setSaveStatus("error", "Student ID / password missing in session. Please logout and login again.");
+
+        console.error("SSTC: studentId ya password session me nahi mila. Dobara login karein.");
+
+        return;
+    }
+
+    sstcSaveInFlight = true;
+
+    const csvSent = getSelectedSubjectsCsv();
+
+    setSaveStatus("saving");
+
+    let saved = false;
+
+    try {
+
+        const url = buildStudentApiUrl("updatesubjects", {
+            studentId: studentId,
+            password: password,
+            subjects: csvSent
+        });
+
+        const response = await fetch(url, { cache: "no-store" });
+
+        const text = await response.text();
+
+        let result;
+
+        try {
+            result = JSON.parse(text);
+        }
+        catch (parseError) {
+            throw new Error("Server did not return valid data. Check that the Web App access is set to 'Anyone'.");
+        }
+
+        if (!result || !result.success) {
+            throw new Error((result && result.message) || "Save failed.");
+        }
+
+        saved = true;
+
+        console.log(
+            "SSTC: ✅ Google Sheet me save hua (row " + result.sheetRow + "):",
+            result.selectedSubjects || "(none)"
+        );
+    }
+    catch (error) {
+
+        console.error("SSTC selected-subjects save error:", error);
+
+        setSaveStatus("error", error.message);
+    }
+    finally {
+
+        sstcSaveInFlight = false;
+    }
+
+    /* Save ke dauran naya change aaya to latest list dobara bhejo */
+
+    if (sstcSaveQueued) {
+
+        sstcSaveQueued = false;
+
+        flushSubjectSave();
+
+        return;
+    }
+
+    if (saved) {
+        setSaveStatus("saved");
+    }
+}
+
+/* Logout / tab close par pending save chhootna nahi chahiye */
+
+function flushPendingSubjectSaveOnExit() {
+
+    if (!sstcSaveTimer) {
+        return;
+    }
+
+    clearTimeout(sstcSaveTimer);
+    sstcSaveTimer = null;
+
+    if (!SSTC_STUDENT_API_URL || !studentData) {
+        return;
+    }
+
+    const studentId = getStudentValue(["studentId", "id"], "");
+    const password = getStudentValue(["password"], "");
+
+    if (!studentId || !password) {
         return;
     }
 
     try {
 
-        const url =
-            SSTC_STUDENT_API_URL +
-            "?action=updatesubjects" +
-            "&studentId=" + encodeURIComponent(studentId) +
-            "&subjects=" + encodeURIComponent(csv);
-
-        const response = await fetch(url, { cache: "no-store" });
-
-        const result = await response.json();
-
-        if (!result || !result.success) {
-            console.error("SSTC selected-subjects save failed:", result && result.message);
-        }
+        fetch(
+            buildStudentApiUrl("updatesubjects", {
+                studentId: studentId,
+                password: password,
+                subjects: getSelectedSubjectsCsv()
+            }),
+            { keepalive: true, cache: "no-store" }
+        ).catch(function () { });
     }
     catch (error) {
-        console.error("SSTC selected-subjects save error:", error);
+        console.warn("SSTC exit save warning:", error);
+    }
+}
+
+/* Page open hone par Google Sheet se saved subjects laao */
+
+async function syncSelectedSubjectsFromSheet() {
+
+    if (!SSTC_STUDENT_API_URL) {
+        return;
+    }
+
+    const studentId = getStudentValue(["studentId", "id"], "");
+    const password = getStudentValue(["password"], "");
+
+    if (!studentId || !password) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            buildStudentApiUrl("getsubjects", { studentId: studentId, password: password }),
+            { cache: "no-store" }
+        );
+
+        const result = JSON.parse(await response.text());
+
+        if (!result || !result.success) {
+            console.warn("SSTC: subjects Sheet se load nahi hue:", result && result.message);
+            return;
+        }
+
+        /* Student ne is beech khud change kar diya ho to uska change na todo */
+
+        if (sstcSelectionTouched) {
+            return;
+        }
+
+        sstcSelectedSubjects = parseSubjectCsv(result.selectedSubjects);
+
+        const library = getCurrentClassLibrary();
+
+        if (library) {
+            pruneSelectedSubjects(library);
+        }
+
+        if (studentData) {
+
+            studentData.selectedSubjects = getSelectedSubjectsCsv();
+
+            try {
+                sessionStorage.setItem(SSTC_SESSION_DATA, JSON.stringify(studentData));
+            }
+            catch (error) {
+                console.warn("SSTC session save warning:", error);
+            }
+        }
+
+        refreshSubjectSelectionUI();
+
+        console.log("SSTC: ✅ Google Sheet se subjects load hue:", result.selectedSubjects || "(none)");
+    }
+    catch (error) {
+        console.warn("SSTC subjects sync warning:", error);
     }
 }
 
@@ -1738,6 +2236,9 @@ function studentLogout(event) {
 
     sstcLoggingOut = true;
 
+    /* Pending subject selection ko logout se pehle save karo */
+    flushPendingSubjectSaveOnExit();
+
     const pdfFrame = document.getElementById("pdfFrame");
 
     if (pdfFrame) {
@@ -2139,6 +2640,9 @@ function showSecurityMessage(message) {
    ========================================================= */
 
 window.addEventListener("pagehide", function () {
+
+    /* Tab close / navigate par pending subject save bhej do */
+    flushPendingSubjectSaveOnExit();
 });
 
 
@@ -2158,3 +2662,4 @@ window.pdfLoaded = pdfLoaded;
 window.scrollSubjects = scrollSubjects;
 window.selectSubject = selectSubject;
 window.openChapter = openChapter;
+window.setSubjectFilter = setSubjectFilter;
