@@ -14,6 +14,18 @@ let studentData = null;
 let sstcRedirecting = false;
 let sstcLoggingOut = false;
 let sstcZoom = 100;
+let sstcSelectedSubjects = new Set();
+
+
+/* =========================================================
+   STUDENT DATABASE API (for saving selected subjects)
+   (ADMIN: apne "sstc-student-database" Apps Script ka
+   deployment URL yahan daalein - jab tak khaali hai,
+   subject-selection sirf is browser session me hi save
+   rahega, Google Sheet me save nahi hoga)
+   ========================================================= */
+
+const SSTC_STUDENT_API_URL = "";
 
 
 /* =========================================================
@@ -372,6 +384,8 @@ function renderStudentData() {
 
     document.title = "SSTC | " + fullName + " - Student Portal";
 
+    sstcSelectedSubjects = getSelectedSubjectsSet();
+
     renderStudentLibrary();
 
     try {
@@ -433,10 +447,43 @@ function renderSubjects(classLibrary) {
         card.type = "button";
         card.className = "subject-card";
         card.setAttribute("data-subject", subjectName);
+        card.style.position = "relative";
 
         card.addEventListener("click", function () {
             selectSubject(subjectName);
         });
+
+        /*
+         * SELECT-TO-STUDY TOGGLE
+         * Card ke click se alag hai (event.stopPropagation) -
+         * isse student apni study list me subject add/remove
+         * kar sakta hai. Google Sheet me bhi save hota hai
+         * (agar SSTC_STUDENT_API_URL set ho).
+         */
+        const selectToggle = document.createElement("button");
+        selectToggle.type = "button";
+        selectToggle.className = "subject-select-toggle";
+
+        updateSstcSelectToggleUI(selectToggle, sstcSelectedSubjects.has(subjectName));
+
+        selectToggle.addEventListener("click", function (event) {
+
+            event.stopPropagation();
+
+            const nowSelected = !sstcSelectedSubjects.has(subjectName);
+
+            if (nowSelected) {
+                sstcSelectedSubjects.add(subjectName);
+            }
+            else {
+                sstcSelectedSubjects.delete(subjectName);
+            }
+
+            updateSstcSelectToggleUI(selectToggle, nowSelected);
+            persistSelectedSubjects();
+        });
+
+        card.appendChild(selectToggle);
 
         const imageWrapper = document.createElement("div");
         imageWrapper.className = "subject-card-image";
@@ -481,6 +528,111 @@ function renderSubjects(classLibrary) {
 
         carousel.appendChild(card);
     });
+}
+
+
+/* =========================================================
+   SELECTED SUBJECTS (STUDY LIST)
+   ========================================================= */
+
+function updateSstcSelectToggleUI(button, selected) {
+
+    button.textContent = selected ? "✓ Selected" : "+ Select to Study";
+
+    button.style.cssText = [
+        "position:absolute",
+        "top:8px",
+        "right:8px",
+        "z-index:2",
+        "border-radius:20px",
+        "padding:5px 10px",
+        "font-size:10px",
+        "font-weight:700",
+        "cursor:pointer",
+        "white-space:nowrap",
+        selected
+            ? "background:#16a34a;color:#ffffff;border:1px solid #16a34a;"
+            : "background:rgba(255,255,255,.95);color:#2563eb;border:1px solid #2563eb;"
+    ].join(";");
+}
+
+function getSelectedSubjectsSet() {
+
+    const raw = getStudentValue(["selectedSubjects"], "");
+
+    const set = new Set();
+
+    if (!raw) {
+        return set;
+    }
+
+    String(raw).split(",").forEach(function (token) {
+
+        const trimmed = token.trim();
+
+        if (trimmed) {
+            set.add(trimmed);
+        }
+    });
+
+    return set;
+}
+
+function persistSelectedSubjects() {
+
+    const csv = Array.from(sstcSelectedSubjects).join(",");
+
+    /*
+     * Turant session me bhi save kar do, taaki reload hone par
+     * bhi (Sheet se dobara load hone se pehle) selection dikhe.
+     */
+    if (studentData) {
+
+        studentData.selectedSubjects = csv;
+
+        try {
+            sessionStorage.setItem(SSTC_SESSION_DATA, JSON.stringify(studentData));
+        }
+        catch (error) {
+            console.warn("SSTC session save warning:", error);
+        }
+    }
+
+    saveSelectedSubjectsToSheet(csv);
+}
+
+async function saveSelectedSubjectsToSheet(csv) {
+
+    if (!SSTC_STUDENT_API_URL) {
+        console.warn("SSTC: Student API URL set nahi hai - subject selection sirf is browser session me save hai, Google Sheet me save nahi hoga.");
+        return;
+    }
+
+    const studentId = getStudentValue(["studentId", "id"], "");
+
+    if (!studentId) {
+        return;
+    }
+
+    try {
+
+        const url =
+            SSTC_STUDENT_API_URL +
+            "?action=updatesubjects" +
+            "&studentId=" + encodeURIComponent(studentId) +
+            "&subjects=" + encodeURIComponent(csv);
+
+        const response = await fetch(url, { cache: "no-store" });
+
+        const result = await response.json();
+
+        if (!result || !result.success) {
+            console.error("SSTC selected-subjects save failed:", result && result.message);
+        }
+    }
+    catch (error) {
+        console.error("SSTC selected-subjects save error:", error);
+    }
 }
 
 
@@ -634,10 +786,6 @@ function loadSstcPdfJs() {
 
     if (window.pdfjsLib && window.pdfjsLib.getDocument) {
 
-        /*
-         * IMPORTANT: pdf.js 4.x har getDocument() call se pehle
-         * workerSrc maangta hai, warna PDF load reject ho jaata hai.
-         */
         if (!window.pdfjsLib.GlobalWorkerOptions.workerSrc) {
             window.pdfjsLib.GlobalWorkerOptions.workerSrc = SSTC_PDFJS_WORKER_SRC;
         }
@@ -658,10 +806,6 @@ function loadSstcPdfJs() {
 
         script.onload = function () {
 
-            /*
-             * pdfjsLib ES module ko window par
-             * expose hone me thoda time lag sakta hai.
-             */
             let tries = 0;
 
             const timer = setInterval(function () {
@@ -670,11 +814,6 @@ function loadSstcPdfJs() {
 
                 if (window.pdfjsLib && window.pdfjsLib.getDocument) {
 
-                    /*
-                     * IMPORTANT: worker path set kiye bina
-                     * getDocument() reject ho jaata hai — isi
-                     * wajah se "PDF could not be opened" aata tha.
-                     */
                     window.pdfjsLib.GlobalWorkerOptions.workerSrc = SSTC_PDFJS_WORKER_SRC;
 
                     clearInterval(timer);
@@ -722,15 +861,6 @@ function createSstcPdfJsViewer() {
     viewer = document.createElement("div");
     viewer.id = "sstcPdfJsViewer";
 
-    /*
-     * IMPORTANT:
-     * Toolbar aur pages ko ALAG rakha gaya hai (flex column).
-     * Pehle toolbar "sticky" tha aur scroll hote waqt page
-     * content ke UPAR overlap ho jaata tha (page 2+ ka content
-     * chhup jaata tha). Ab toolbar apni fixed height wali row
-     * me rehta hai aur neeche wala pages area alag se scroll
-     * hota hai - koi overlap nahi hota.
-     */
     viewer.style.cssText = [
         "position:relative",
         "width:100%",
@@ -1047,9 +1177,6 @@ async function openSstcPdfJs(pdfUrl) {
         return;
     }
 
-    /*
-     * Browser iframe completely hide.
-     */
     if (frame) {
         frame.src = "about:blank";
         frame.style.display = "none";
@@ -1080,14 +1207,6 @@ async function openSstcPdfJs(pdfUrl) {
         sstcPdfPages = sstcPdfDocument.numPages;
         sstcPdfCurrentPage = 1;
 
-        /*
-         * IMPORTANT:
-         * Har PDF ka page-size same nahi hota (A4 / landscape /
-         * custom). Pehle scale hardcoded 595pt (A4) maan kar
-         * calculate hoti thi, jisse non-A4 chapters ke pages
-         * kate hue / galat size me dikhte the. Ab actual page 1
-         * ki width nikal kar usi se scale calculate karte hain.
-         */
         const firstPage = await sstcPdfDocument.getPage(1);
         const baseViewport = firstPage.getViewport({ scale: 1 });
         sstcPdfBaseWidth = baseViewport.width;
@@ -1181,9 +1300,6 @@ async function renderSstcPdfDocument() {
 
     pages.innerHTML = "";
 
-    /*
-     * Render every page.
-     */
     for (let pageNumber = 1; pageNumber <= sstcPdfPages; pageNumber++) {
 
         try {
@@ -1198,22 +1314,8 @@ async function renderSstcPdfDocument() {
             pageBox.style.height = viewport.height + "px";
 
             const canvas = document.createElement("canvas");
-
-            /*
-             * IMPORTANT:
-             * "alpha:false" opaque canvas pdf.js ke soft-mask /
-             * transparent diagrams ko galat render karta hai -
-             * wo hisse bilkul kaale (black box) dikhte the.
-             * Isliye normal alpha-capable context use karo aur
-             * white background khud paint karo.
-             */
             const context = canvas.getContext("2d");
 
-            /*
-             * High DPI support.
-             * Limit to 2 so mobile memory usage
-             * does not become excessive.
-             */
             const deviceScale = Math.min(window.devicePixelRatio || 1, 2);
 
             canvas.width = Math.floor(viewport.width * deviceScale);
@@ -1354,17 +1456,9 @@ function openChapter(subjectName, chapterIndex) {
         return;
     }
 
-    /* =====================================================
-       SAVE SESSION
-       ===================================================== */
-
     sessionStorage.setItem(SSTC_CURRENT_BOOK, subjectName);
     sessionStorage.setItem(SSTC_CURRENT_CHAPTER, String(chapter.number));
     sessionStorage.setItem(SSTC_CURRENT_PAGE, "1");
-
-    /* =====================================================
-       ACTIVE CHAPTER
-       ===================================================== */
 
     const chapterItems = document.querySelectorAll(".chapter-item");
 
@@ -1378,17 +1472,9 @@ function openChapter(subjectName, chapterIndex) {
         selectedChapter.classList.add("active");
     }
 
-    /* =====================================================
-       READER INFORMATION
-       ===================================================== */
-
     setText("currentBookTitle", chapter.title);
     setText("currentBookStatus", subjectName + " • Chapter " + chapter.number);
     setText("currentChapterNumber", chapter.number);
-
-    /* =====================================================
-       PDF FRAME
-       ===================================================== */
 
     const frame = document.getElementById("pdfFrame");
     const empty = document.getElementById("viewerEmpty");
@@ -1399,19 +1485,9 @@ function openChapter(subjectName, chapterIndex) {
         return;
     }
 
-    /*
-     * IMPORTANT:
-     * Relative path ko GitHub Pages absolute URL me
-     * convert kar rahe hain.
-     */
-
     const pdfUrl = getPdfUrl(chapter.pdf);
 
     console.log("SSTC PDF:", pdfUrl);
-
-    /*
-     * Opening message.
-     */
 
     if (empty) {
 
@@ -1424,16 +1500,8 @@ function openChapter(subjectName, chapterIndex) {
         `;
     }
 
-    /*
-     * PDF.js complete viewer
-     */
-
     destroySstcPdfJsViewer();
     openSstcPdfJs(pdfUrl);
-
-    /* =====================================================
-       SCROLL TO READER
-       ===================================================== */
 
     const readerSection = document.getElementById("readerSection");
 
@@ -1702,16 +1770,10 @@ function setupReaderDefaults() {
         frame.setAttribute("draggable", "false");
         frame.setAttribute("loading", "eager");
 
-        /*
-         * PDF load event.
-         */
         frame.addEventListener("load", function () {
             pdfLoaded();
         });
 
-        /*
-         * PDF error event.
-         */
         frame.addEventListener("error", function () {
             console.error("SSTC PDF iframe failed to load.");
             showSecurityMessage("PDF could not be loaded.");
@@ -1741,9 +1803,6 @@ function pdfLoaded() {
         return;
     }
 
-    /*
-     * about:blank hone par empty screen visible rahe.
-     */
     if (frame.src && frame.src !== "about:blank" && frame.src !== window.location.href) {
 
         if (empty) {
@@ -1943,22 +2002,18 @@ function setCurrentYear() {
 
 function setupStudentSecurity() {
 
-    /* RIGHT CLICK */
     document.addEventListener("contextmenu", function (event) {
         event.preventDefault();
     });
 
-    /* DRAG */
     document.addEventListener("dragstart", function (event) {
         event.preventDefault();
     });
 
-    /* TEXT SELECTION */
     document.addEventListener("selectstart", function (event) {
         event.preventDefault();
     });
 
-    /* KEYBOARD */
     document.addEventListener("keydown", function (event) {
 
         const key = String(event.key || "").toLowerCase();
@@ -2006,7 +2061,6 @@ function setupStudentSecurity() {
         }
     });
 
-    /* PRINT */
     window.addEventListener("beforeprint", function () {
         document.body.classList.add("print-blocked");
         showSecurityMessage("Printing is disabled.");
@@ -2016,7 +2070,6 @@ function setupStudentSecurity() {
         document.body.classList.remove("print-blocked");
     });
 
-    /* VISIBILITY */
     document.addEventListener("visibilitychange", function () {
 
         const viewer = document.getElementById("pdfViewer") || document.getElementById("ebookViewer");
@@ -2033,7 +2086,6 @@ function setupStudentSecurity() {
         }
     });
 
-    /* WINDOW BLUR */
     window.addEventListener("blur", function () {
 
         const viewer = document.getElementById("pdfViewer") || document.getElementById("ebookViewer");
@@ -2043,7 +2095,6 @@ function setupStudentSecurity() {
         }
     });
 
-    /* WINDOW FOCUS */
     window.addEventListener("focus", function () {
 
         const viewer = document.getElementById("pdfViewer") || document.getElementById("ebookViewer");
@@ -2088,9 +2139,6 @@ function showSecurityMessage(message) {
    ========================================================= */
 
 window.addEventListener("pagehide", function () {
-    /*
-     * Session clear nahi karna.
-     */
 });
 
 
