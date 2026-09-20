@@ -349,7 +349,8 @@
                 </h2>
 
                 <p>
-                    Select a subject to view its available chapters.
+                    Tap a subject card to view its chapters. Use
+                    “+ Add to My Subjects” to build your own study list.
                 </p>
 
             </div>
@@ -364,6 +365,84 @@
                 <strong id="ebookCount">
                     0
                 </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             MY STUDY SUBJECTS (saved in Google Sheet)
+        ================================================== -->
+
+        <div
+            class="study-panel"
+            id="studyPanel">
+
+
+            <div class="study-panel-main">
+
+                <div class="study-panel-title">
+
+                    ⭐ My Study Subjects
+
+                    <span
+                        class="study-count"
+                        id="selectedCount">
+                        0
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="study-chips"
+                    id="studyChips">
+
+                    <!-- JS creates selected subject chips -->
+
+                </div>
+
+            </div>
+
+
+            <div class="study-panel-side">
+
+                <span
+                    class="save-status"
+                    id="saveStatus"
+                    data-state="idle"
+                    role="status"
+                    aria-live="polite">
+                </span>
+
+
+                <div
+                    class="subject-filter"
+                    role="group"
+                    aria-label="Filter subjects">
+
+                    <button
+                        type="button"
+                        class="active"
+                        data-filter="all"
+                        onclick="setSubjectFilter('all')">
+
+                        All Subjects (<span id="filterAllCount">0</span>)
+
+                    </button>
+
+                    <button
+                        type="button"
+                        data-filter="mine"
+                        onclick="setSubjectFilter('mine')">
+
+                        My Subjects (<span id="filterMineCount">0</span>)
+
+                    </button>
+
+                </div>
 
             </div>
 
@@ -404,6 +483,17 @@
             </button>
 
         </div>
+
+
+        <p
+            class="subject-filter-empty"
+            id="subjectFilterEmpty"
+            hidden>
+
+            You have not added any subject yet. Switch to
+            “All Subjects” and tap “+ Add to My Subjects”.
+
+        </p>
 
     </section>
 
@@ -594,7 +684,7 @@
                 class="pdf-frame"
                 title="SSTC Protected E-Book Reader"
                 loading="lazy"
-                onload="pdfLoaded()">
+                onload="if (window.pdfLoaded) pdfLoaded();">
             </iframe>
 
         </div>
