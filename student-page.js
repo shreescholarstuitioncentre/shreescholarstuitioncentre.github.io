@@ -2,7 +2,7 @@
    SSTC STUDENT PORTAL
    LIVE STUDENT DATA
    SESSION + PROFILE + E-BOOK LIBRARY + PDF READER
-   + MY STUDY SUBJECTS (select -> saved in Google Sheet)
+   + RENT SUBJECTS (3 / 6 / 12 months -> saved in Google Sheet)
    ========================================================= */
 
 
@@ -14,29 +14,63 @@ let studentData = null;
 let sstcRedirecting = false;
 let sstcLoggingOut = false;
 let sstcZoom = 100;
-let sstcSelectedSubjects = new Set();
 
-/* --- study-list (subject selection) state --- */
+/* --- rent state --- */
+let sstcRentals = [];               // server se aayi rentals (Pending / Active / Expired)
+let sstcRentalsLoaded = false;      // rentals server se load ho chuki hain?
+let sstcRentalsError = "";          // load fail hua to reason
+let sstcRequiresApproval = true;    // server: rent ke baad admin approval chahiye?
 let sstcSubjectFilter = "all";      // "all" | "mine"
-let sstcSelectionTouched = false;   // student ne khud kuch select/unselect kiya?
-let sstcSaveTimer = null;           // debounce timer
-let sstcSaveInFlight = false;       // save request chal rahi hai?
-let sstcSaveQueued = false;         // save ke dauran naya change aaya?
+let sstcShownSubject = "";          // chapter list me abhi kaun sa subject khula hai
+let sstcRentModalSubject = "";      // rent window kis subject ki hai
+let sstcRentModalMonths = 0;        // rent window me chuna hua plan
+let sstcRentBusy = false;           // rent/cancel request chal rahi hai?
+let sstcRentModalReturnFocus = null;
 
 
 /* =========================================================
-   STUDENT DATABASE API (for saving selected subjects)
+   STUDENT DATABASE API + RENT SETTINGS
    ---------------------------------------------------------
    ⚠️ ZAROORI: Apps Script ka "Web App" deployment URL yahan
    paste karein (jo "https://script.google.com/macros/s/.../exec"
    se shuru hota hai). Wahi URL jo sstc-access.html / admin
    page me use ho raha hai.
 
-   Jab tak ye khaali hai, selection Google Sheet me SAVE NAHI
-   hoga - page par "Not saved" ka warning dikhega.
+   Jab tak ye khaali hai, rent Google Sheet me SAVE NAHI hoga -
+   page par "setup incomplete" ka warning dikhega.
    ========================================================= */
 
-const SSTC_STUDENT_API_URL = "https://script.google.com/macros/s/AKfycbzSPSlkswNdmRtJkZ0Uq3Et5hAPIBorvbgVoQvZD4e0Ed36TwPzk7bh-xSAWmdFpmqynw/exec";
+const SSTC_STUDENT_API_URL = "";
+
+
+/* =========================================================
+   RENT SETTINGS
+   ========================================================= */
+
+/*
+ * true  = subject rent kiye bina uske chapters read nahi honge
+ * false = sab chapters pehle jaise free khulenge (rent sirf record)
+ */
+const SSTC_REQUIRE_RENT_TO_READ = true;
+
+/*
+ * Rent request bhejne ke baad student ko ye message dikhega.
+ * Yahan apna UPI ID / phone number bhi likh sakte hain.
+ */
+const SSTC_PAYMENT_HELP = "Please contact SSTC administration to complete the payment.";
+
+/*
+ * Rent plans. Yahan ka price sirf screen par dikhane ke liye hai;
+ * asli (final) price Code.gs ke RENT_PLANS se aata hai. Price badalna
+ * ho to DONO jagah badlein.
+ */
+const SSTC_RENT_PLANS = [
+    { months: 3, label: "3 Months", price: 49 },
+    { months: 6, label: "6 Months", price: 69 },
+    { months: 12, label: "12 Months (1 Year)", price: 99 }
+];
+
+let sstcRentPlans = SSTC_RENT_PLANS.slice();
 
 
 /* =========================================================
@@ -231,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loadLoggedInStudent();
     setupStudentSecurity();
     setupReaderDefaults();
-    setupSubjectSelectionUI();
+    setupRentalUI();
     setCurrentYear();
 });
 
@@ -396,8 +430,6 @@ function renderStudentData() {
 
     document.title = "SSTC | " + fullName + " - Student Portal";
 
-    sstcSelectedSubjects = getSelectedSubjectsSet();
-
     renderStudentLibrary();
 
     try {
@@ -438,11 +470,9 @@ function renderStudentLibrary() {
         return;
     }
 
-    pruneSelectedSubjects(classLibrary);
-
     renderSubjects(classLibrary);
     updateLibraryCounts(classLibrary);
-    refreshSubjectSelectionUI();
+    refreshRentalUI();
 
     const subjectNames = Object.keys(classLibrary);
 
@@ -450,8 +480,8 @@ function renderStudentLibrary() {
         selectSubject(subjectNames[0]);
     }
 
-    /* Google Sheet me jo subjects save hain unhe load karo */
-    syncSelectedSubjectsFromSheet();
+    /* Google Sheet se meri rentals load karo */
+    loadRentals();
 }
 
 
@@ -477,7 +507,7 @@ function renderSubjects(classLibrary) {
 
         /*
          * Card ab <div role="button"> hai (pehle <button> tha),
-         * kyunki <button> ke andar <button> (Add to My Subjects)
+         * kyunki <button> ke andar <button> (Rent This Subject)
          * HTML me valid nahi hota aur kuch browsers me click
          * properly kaam nahi karta.
          */
@@ -486,6 +516,7 @@ function renderSubjects(classLibrary) {
         card.setAttribute("role", "button");
         card.setAttribute("tabindex", "0");
         card.setAttribute("data-subject", subjectName);
+        card.setAttribute("data-rent", "none");
 
         card.addEventListener("click", function () {
             selectSubject(subjectName);
@@ -537,27 +568,27 @@ function renderSubjects(classLibrary) {
         count.textContent = (Array.isArray(subject.chapters) ? subject.chapters.length : 0) + " Chapters";
 
         /*
-         * ADD TO MY SUBJECTS BUTTON
+         * RENT THIS SUBJECT BUTTON
          * Card ke click se alag hai (event.stopPropagation).
-         * Student isse apni study list me subject add/remove
-         * karta hai; Google Sheet me bhi save hota hai.
+         * Isse rent window khulti hai jahan 3 / 6 / 12 months
+         * ka plan chunte hain.
          */
-        const selectToggle = document.createElement("button");
-        selectToggle.type = "button";
-        selectToggle.className = "subject-select-toggle";
+        const rentToggle = document.createElement("button");
+        rentToggle.type = "button";
+        rentToggle.className = "subject-rent-toggle";
 
-        updateSstcSelectToggleUI(selectToggle, sstcSelectedSubjects.has(subjectName));
+        updateRentButtonUI(rentToggle, subjectName);
 
-        selectToggle.addEventListener("click", function (event) {
+        rentToggle.addEventListener("click", function (event) {
             event.stopPropagation();
-            toggleSubjectSelection(subjectName);
+            openRentModal(subjectName);
         });
 
         content.appendChild(badge);
         content.appendChild(title);
         content.appendChild(description);
         content.appendChild(count);
-        content.appendChild(selectToggle);
+        content.appendChild(rentToggle);
 
         card.appendChild(imageWrapper);
         card.appendChild(content);
@@ -568,140 +599,218 @@ function renderSubjects(classLibrary) {
 
 
 /* =========================================================
-   SELECTED SUBJECTS (STUDY LIST)
+   RENT SUBJECT  (3 / 6 / 12 months)
+   ---------------------------------------------------------
+   - Har subject card par "Rent This Subject" button
+   - Plan chuno -> Google Sheet ("Rentals") me request save
+   - Status: Pending -> Active -> Expired
    ========================================================= */
 
-function updateSstcSelectToggleUI(button, selected) {
+function normalizeSubjectKey(name) {
 
-    button.textContent = selected ? "✓ Added to My Subjects" : "+ Add to My Subjects";
-
-    button.classList.toggle("is-selected", !!selected);
-
-    button.setAttribute("aria-pressed", selected ? "true" : "false");
-
-    button.title = selected
-        ? "Tap to remove from your study list"
-        : "Add this subject to your study list";
+    return String(name || "").trim().toLowerCase();
 }
 
-function parseSubjectCsv(raw) {
+function formatRentDate(iso) {
 
-    const set = new Set();
-
-    if (!raw) {
-        return set;
+    if (!iso) {
+        return "";
     }
 
-    String(raw).split(",").forEach(function (token) {
+    const date = new Date(iso);
 
-        const trimmed = token.trim();
+    if (isNaN(date.getTime())) {
+        return "";
+    }
 
-        if (trimmed) {
-            set.add(trimmed);
+    return date.toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+    });
+}
+
+function getRentalDaysLeft(rental) {
+
+    if (!rental || !rental.expiryDate) {
+        return null;
+    }
+
+    const expiry = new Date(rental.expiryDate);
+
+    if (isNaN(expiry.getTime())) {
+        return null;
+    }
+
+    return Math.ceil((expiry.getTime() - Date.now()) / 86400000);
+}
+
+function getPlanByMonths(months) {
+
+    for (let i = 0; i < sstcRentPlans.length; i++) {
+
+        if (Number(sstcRentPlans[i].months) === Number(months)) {
+            return sstcRentPlans[i];
+        }
+    }
+
+    return null;
+}
+
+function getPlanTag(months) {
+
+    if (Number(months) === 6) {
+        return "POPULAR";
+    }
+
+    if (Number(months) === 12) {
+        return "BEST VALUE";
+    }
+
+    return "";
+}
+
+/*
+ * Ek subject ki current rental:
+ * Active > Pending > Expired (barabar ho to sabse nayi).
+ * return { status: "none" | "pending" | "active" | "expired", rental }
+ */
+
+function getRentalState(subjectName) {
+
+    const key = normalizeSubjectKey(subjectName);
+    const priority = { active: 3, pending: 2, expired: 1 };
+
+    let best = null;
+    let bestStatus = "none";
+    let bestScore = 0;
+
+    sstcRentals.forEach(function (rental) {
+
+        if (normalizeSubjectKey(rental.subject) !== key) {
+            return;
+        }
+
+        let status = String(rental.status || "").toLowerCase();
+
+        /* Browser ki clock se bhi expiry check */
+
+        if (status === "active" && rental.expiryDate) {
+
+            const expiry = new Date(rental.expiryDate);
+
+            if (!isNaN(expiry.getTime()) && expiry.getTime() <= Date.now()) {
+                status = "expired";
+            }
+        }
+
+        const score = priority[status] || 0;
+
+        if (score > bestScore) {
+            best = rental;
+            bestStatus = status;
+            bestScore = score;
         }
     });
 
-    return set;
+    return { status: bestStatus, rental: best };
 }
 
-function getSelectedSubjectsSet() {
+function canReadSubject(subjectName) {
 
-    return parseSubjectCsv(getStudentValue(["selectedSubjects"], ""));
+    if (!SSTC_REQUIRE_RENT_TO_READ) {
+        return true;
+    }
+
+    return getRentalState(subjectName).status === "active";
 }
 
-/* Sirf wahi subjects rakho jo student ki class library me hain */
+/* Card ka rent button (text + colour state) */
 
-function pruneSelectedSubjects(classLibrary) {
+function updateRentButtonUI(button, subjectName) {
 
-    const cleaned = new Set();
+    const state = getRentalState(subjectName);
+    const rental = state.rental;
 
-    sstcSelectedSubjects.forEach(function (name) {
+    let text = "🔑 Rent This Subject";
+    let title = "Rent this subject for 3, 6 or 12 months";
 
-        if (classLibrary && classLibrary[name]) {
-            cleaned.add(name);
-        }
-    });
+    if (state.status === "active") {
 
-    sstcSelectedSubjects = cleaned;
+        const days = getRentalDaysLeft(rental);
+
+        text = (days !== null && days > 0)
+            ? "✓ Rented · " + days + (days === 1 ? " day left" : " days left")
+            : "✓ Rented";
+
+        title = (rental && rental.expiryDate)
+            ? "Rented till " + formatRentDate(rental.expiryDate)
+            : "Rented";
+    }
+    else if (state.status === "pending") {
+
+        text = "⏳ Rent Pending";
+        title = "Waiting for SSTC to confirm your payment";
+    }
+    else if (state.status === "expired") {
+
+        text = "↻ Renew Rental";
+        title = "Your rental has expired. Tap to renew.";
+    }
+
+    button.textContent = text;
+    button.title = title;
+    button.setAttribute("data-rent", state.status);
+    button.setAttribute("aria-label", subjectName + ": " + text);
 }
 
-/* Selected subject names - subject cards ke order me */
+/* Subject names jinki koi rental hai (library ke order me) */
 
-function getSelectedSubjectNames() {
+function getRentedSubjectNames() {
 
     const library = getCurrentClassLibrary();
 
     if (!library) {
-        return Array.from(sstcSelectedSubjects);
+        return [];
     }
 
     return Object.keys(library).filter(function (name) {
-        return sstcSelectedSubjects.has(name);
+        return getRentalState(name).status !== "none";
     });
 }
 
-function getSelectedSubjectsCsv() {
+/* Saare cards, chips, counts, filter aur chapter locks update */
 
-    return getSelectedSubjectNames().join(",");
-}
-
-/* Ek subject add / remove */
-
-function toggleSubjectSelection(subjectName) {
-
-    sstcSelectionTouched = true;
-
-    const nowSelected = !sstcSelectedSubjects.has(subjectName);
-
-    if (nowSelected) {
-        sstcSelectedSubjects.add(subjectName);
-    }
-    else {
-        sstcSelectedSubjects.delete(subjectName);
-    }
-
-    refreshSubjectSelectionUI();
-
-    showSstcToast(
-        nowSelected
-            ? subjectName + " added to My Subjects ✓"
-            : subjectName + " removed from My Subjects",
-        nowSelected ? "success" : "info"
-    );
-
-    persistSelectedSubjects();
-}
-
-/* Saare cards, chips, counts aur filter ko update karo */
-
-function refreshSubjectSelectionUI() {
+function refreshRentalUI() {
 
     const cards = document.querySelectorAll(".subject-card");
 
     cards.forEach(function (card) {
 
         const name = card.getAttribute("data-subject");
-        const selected = sstcSelectedSubjects.has(name);
+        const state = getRentalState(name);
 
-        card.classList.toggle("selected", selected);
+        card.setAttribute("data-rent", state.status);
 
-        const toggle = card.querySelector(".subject-select-toggle");
+        const button = card.querySelector(".subject-rent-toggle");
 
-        if (toggle) {
-            updateSstcSelectToggleUI(toggle, selected);
+        if (button) {
+            updateRentButtonUI(button, name);
         }
     });
 
-    renderStudyChips();
+    renderRentedChips();
     applySubjectFilter();
+    updateChapterLocks();
+    updateRentedSummary();
 }
 
-/* "My Study Subjects" chips */
+/* "My Rented Subjects" chips */
 
-function renderStudyChips() {
+function renderRentedChips() {
 
     const box = document.getElementById("studyChips");
-    const names = getSelectedSubjectNames();
+    const names = getRentedSubjectNames();
     const library = getCurrentClassLibrary();
 
     updateNumber("selectedCount", names.length);
@@ -718,7 +827,9 @@ function renderStudyChips() {
 
         const empty = document.createElement("span");
         empty.className = "study-empty";
-        empty.textContent = "No subject added yet. Tap “+ Add to My Subjects” on a subject card below.";
+        empty.textContent = sstcRentalsLoaded
+            ? "You have not rented any subject yet. Tap “Rent This Subject” on a subject card below."
+            : "Your rented subjects will appear here.";
 
         box.appendChild(empty);
         return;
@@ -726,38 +837,213 @@ function renderStudyChips() {
 
     names.forEach(function (name) {
 
-        const chip = document.createElement("span");
-        chip.className = "study-chip";
+        const state = getRentalState(name);
 
-        const label = document.createElement("button");
-        label.type = "button";
-        label.className = "study-chip-name";
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "rented-chip";
+        chip.setAttribute("data-rent", state.status);
+        chip.title = "View rental details";
+
+        const label = document.createElement("strong");
         label.textContent = name;
-        label.title = "Open " + name + " chapters";
 
-        label.addEventListener("click", function () {
-            selectSubject(name);
-        });
+        const info = document.createElement("span");
 
-        const remove = document.createElement("button");
-        remove.type = "button";
-        remove.className = "study-chip-remove";
-        remove.textContent = "✕";
-        remove.title = "Remove " + name + " from My Subjects";
-        remove.setAttribute("aria-label", "Remove " + name + " from My Subjects");
-
-        remove.addEventListener("click", function () {
-            toggleSubjectSelection(name);
-        });
+        if (state.status === "active") {
+            info.textContent = state.rental && state.rental.expiryDate
+                ? "till " + formatRentDate(state.rental.expiryDate)
+                : "Active";
+        }
+        else if (state.status === "pending") {
+            info.textContent = "Pending";
+        }
+        else {
+            info.textContent = "Expired";
+        }
 
         chip.appendChild(label);
-        chip.appendChild(remove);
+        chip.appendChild(info);
+
+        chip.addEventListener("click", function () {
+            openRentModal(name);
+        });
 
         box.appendChild(chip);
     });
 }
 
-/* Filter: All Subjects / My Subjects */
+/* Summary card: "Rented" = active rental wale subjects ke e-books (chapters) */
+
+function updateRentedSummary() {
+
+    const library = getCurrentClassLibrary();
+
+    let total = 0;
+
+    if (library) {
+
+        Object.keys(library).forEach(function (name) {
+
+            if (getRentalState(name).status === "active") {
+
+                const subject = library[name];
+
+                if (subject && Array.isArray(subject.chapters)) {
+                    total += subject.chapters.length;
+                }
+            }
+        });
+    }
+
+    updateNumber("rentedBooks", total);
+}
+
+/* Chapter list me lock label / banner refresh (rental badalne par) */
+
+function updateChapterLocks() {
+
+    if (!sstcShownSubject) {
+        return;
+    }
+
+    const library = getCurrentClassLibrary();
+    const subject = library ? library[sstcShownSubject] : null;
+
+    if (!subject) {
+        return;
+    }
+
+    renderChapters(sstcShownSubject, subject);
+
+    if (sstcPdfDocument) {
+
+        const currentChapter = sessionStorage.getItem(SSTC_CURRENT_CHAPTER);
+
+        const item = document.querySelector('.chapter-item[data-chapter="' + currentChapter + '"]');
+
+        if (item) {
+            item.classList.add("active");
+        }
+    }
+}
+
+/* Chapters ke upar rent banner (lock / pending / expired / active) */
+
+function createRentBanner(subjectName) {
+
+    if (!SSTC_REQUIRE_RENT_TO_READ) {
+        return null;
+    }
+
+    const state = getRentalState(subjectName);
+
+    const banner = document.createElement("div");
+    banner.className = "chapter-rent-banner";
+
+    const text = document.createElement("span");
+
+    let actionLabel = "";
+
+    if (!sstcRentalsLoaded) {
+
+        banner.setAttribute("data-rent", "loading");
+
+        text.textContent = sstcRentalsError
+            ? "⚠ Could not check your rentals."
+            : "⏳ Checking your rentals…";
+    }
+    else if (state.status === "active") {
+
+        const days = getRentalDaysLeft(state.rental);
+
+        banner.setAttribute("data-rent", "active");
+
+        text.textContent = "✓ Rented – valid till " +
+            formatRentDate(state.rental && state.rental.expiryDate) +
+            ((days !== null && days > 0) ? " (" + days + (days === 1 ? " day" : " days") + " left)" : "");
+
+        actionLabel = "Details";
+    }
+    else if (state.status === "pending") {
+
+        banner.setAttribute("data-rent", "pending");
+
+        text.textContent = "⏳ Your rent request is pending. Chapters unlock after SSTC confirms your payment.";
+
+        actionLabel = "View Request";
+    }
+    else if (state.status === "expired") {
+
+        banner.setAttribute("data-rent", "expired");
+
+        text.textContent = "⌛ Your rental has expired. Renew it to keep reading.";
+
+        actionLabel = "Renew";
+    }
+    else {
+
+        banner.setAttribute("data-rent", "none");
+
+        text.textContent = "🔒 Rent this subject to read its chapters.";
+
+        actionLabel = "Rent Now";
+    }
+
+    banner.appendChild(text);
+
+    if (actionLabel) {
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = actionLabel;
+
+        button.addEventListener("click", function () {
+            openRentModal(subjectName);
+        });
+
+        banner.appendChild(button);
+    }
+
+    return banner;
+}
+
+/* Locked chapter par click */
+
+function handleLockedSubject(subjectName) {
+
+    if (!sstcRentalsLoaded) {
+
+        showSstcToast(
+            SSTC_STUDENT_API_URL
+                ? "Checking your rentals… please try again in a moment."
+                : "Rental server is not connected yet (setup incomplete).",
+            "info"
+        );
+
+        if (SSTC_STUDENT_API_URL && sstcRentalsError) {
+            loadRentals();
+        }
+
+        return;
+    }
+
+    const state = getRentalState(subjectName);
+
+    showSstcToast(
+        state.status === "pending"
+            ? "Your rent request for " + subjectName + " is pending."
+            : "Rent " + subjectName + " to read this chapter.",
+        "info"
+    );
+
+    openRentModal(subjectName);
+}
+
+
+/* =========================================================
+   FILTER: All Subjects / My Rented
+   ========================================================= */
 
 function setSubjectFilter(mode) {
 
@@ -781,7 +1067,7 @@ function applySubjectFilter() {
     cards.forEach(function (card) {
 
         const name = card.getAttribute("data-subject");
-        const hide = sstcSubjectFilter === "mine" && !sstcSelectedSubjects.has(name);
+        const hide = sstcSubjectFilter === "mine" && getRentalState(name).status === "none";
 
         card.classList.toggle("is-hidden", hide);
 
@@ -807,9 +1093,9 @@ function applySubjectFilter() {
     }
 }
 
-function setupSubjectSelectionUI() {
+function setupRentalUI() {
 
-    /* Save status par click = dobara try (error hone par) */
+    /* Status par click = dobara try (error hone par) */
 
     const statusElement = document.getElementById("saveStatus");
 
@@ -818,15 +1104,24 @@ function setupSubjectSelectionUI() {
         statusElement.addEventListener("click", function () {
 
             if (statusElement.getAttribute("data-state") === "error") {
-                flushSubjectSave();
+                loadRentals();
             }
         });
     }
+
+    /* Esc = rent window band */
+
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+            closeRentModal();
+        }
+    });
 }
 
 
 /* =========================================================
-   SAVE STATUS + TOAST
+   STATUS + TOAST
    ========================================================= */
 
 function setSaveStatus(state, detail) {
@@ -839,10 +1134,9 @@ function setSaveStatus(state, detail) {
 
     const labels = {
         idle: "",
-        saving: "⏳ Saving…",
-        saved: "✅ Saved to your account",
-        error: "⚠ Not saved – tap to retry",
-        nourl: "⚠ Not saved – setup incomplete"
+        loading: "⏳ Loading your rentals…",
+        error: "⚠ Could not load rentals – tap to retry",
+        nourl: "⚠ Rental server not connected – setup incomplete"
     };
 
     element.setAttribute("data-state", state);
@@ -852,7 +1146,7 @@ function setSaveStatus(state, detail) {
     /* Error ka reason screen par bhi dikhao (admin ko debug me help) */
 
     if (state === "error" && detail) {
-        text = "⚠ Not saved – " + String(detail).substring(0, 110);
+        text = "⚠ " + String(detail).substring(0, 110);
     }
 
     element.textContent = text;
@@ -890,12 +1184,12 @@ function showSstcToast(message, type) {
 
         }, 250);
 
-    }, 2200);
+    }, 2600);
 }
 
 
 /* =========================================================
-   SAVE SELECTED SUBJECTS -> GOOGLE SHEET
+   RENT API (Google Apps Script)
    ========================================================= */
 
 function buildStudentApiUrl(action, params) {
@@ -912,269 +1206,506 @@ function buildStudentApiUrl(action, params) {
     return url;
 }
 
-function persistSelectedSubjects() {
-
-    const csv = getSelectedSubjectsCsv();
+function expectResultType(result, type) {
 
     /*
-     * Turant session me bhi save kar do, taaki page reload par
-     * (Sheet se dobara load hone se pehle) selection dikhe.
+     * Purana Apps Script deployment kisi bhi unknown action par
+     * {success:true, type:"api"} deta hai. Isliye type bhi check karo.
      */
-    if (studentData) {
 
-        studentData.selectedSubjects = csv;
-
-        try {
-            sessionStorage.setItem(SSTC_SESSION_DATA, JSON.stringify(studentData));
-        }
-        catch (error) {
-            console.warn("SSTC session save warning:", error);
-        }
+    if (!result || result.type !== type) {
+        throw new Error("Apps Script is running an OLD version. Deploy > Manage deployments > Edit > New version > Deploy.");
     }
-
-    setSaveStatus("saving");
-
-    /* Kai clicks ek saath ho to sirf aakhri list save hogi */
-
-    if (sstcSaveTimer) {
-        clearTimeout(sstcSaveTimer);
-    }
-
-    sstcSaveTimer = setTimeout(flushSubjectSave, 500);
 }
 
-async function flushSubjectSave() {
-
-    sstcSaveTimer = null;
-
-    if (sstcSaveInFlight) {
-        sstcSaveQueued = true;
-        return;
-    }
+async function callRentalApi(action, params) {
 
     if (!SSTC_STUDENT_API_URL) {
+
+        throw new Error("Rental server is not connected yet (setup incomplete). Please contact SSTC administration.");
+    }
+
+    const studentId = getStudentValue(["studentId", "id"], "");
+    const password = getStudentValue(["password"], "");
+
+    if (!studentId || !password) {
+
+        throw new Error("Student ID / password missing in session. Please logout and login again.");
+    }
+
+    const payload = Object.assign({ studentId: studentId, password: password }, params || {});
+
+    const response = await fetch(buildStudentApiUrl(action, payload), { cache: "no-store" });
+
+    const text = await response.text();
+
+    let result;
+
+    try {
+        result = JSON.parse(text);
+    }
+    catch (parseError) {
+        throw new Error("Server did not return valid data. Check that the Web App access is set to 'Anyone'.");
+    }
+
+    if (!result || !result.success) {
+        throw new Error((result && result.message) || "Request failed.");
+    }
+
+    return result;
+}
+
+function applyRentalsResult(result) {
+
+    sstcRentals = Array.isArray(result.rentals) ? result.rentals : [];
+
+    if (Array.isArray(result.plans) && result.plans.length) {
+        sstcRentPlans = result.plans;
+    }
+
+    if (typeof result.requiresApproval === "boolean") {
+        sstcRequiresApproval = result.requiresApproval;
+    }
+}
+
+/* Page open hone par Google Sheet se meri rentals laao */
+
+async function loadRentals() {
+
+    if (!SSTC_STUDENT_API_URL) {
+
+        sstcRentalsError = "nourl";
 
         setSaveStatus("nourl", "SSTC_STUDENT_API_URL is empty in student-page.js");
 
-        console.warn("SSTC: ❌ SSTC_STUDENT_API_URL khaali hai - subjects Google Sheet me save NAHI ho rahe. student-page.js me Apps Script Web App URL paste karein.");
+        console.warn("SSTC: ❌ SSTC_STUDENT_API_URL khaali hai - rentals Google Sheet se load/save NAHI ho sakte. student-page.js me Apps Script Web App URL paste karein.");
+
+        refreshRentalUI();
 
         return;
     }
 
-    const studentId = getStudentValue(["studentId", "id"], "");
-    const password = getStudentValue(["password"], "");
-
-    if (!studentId || !password) {
-
-        setSaveStatus("error", "Student ID / password missing in session. Please logout and login again.");
-
-        console.error("SSTC: studentId ya password session me nahi mila. Dobara login karein.");
-
-        return;
-    }
-
-    sstcSaveInFlight = true;
-
-    const csvSent = getSelectedSubjectsCsv();
-
-    setSaveStatus("saving");
-
-    let saved = false;
+    setSaveStatus("loading");
 
     try {
 
-        const url = buildStudentApiUrl("updatesubjects", {
-            studentId: studentId,
-            password: password,
-            subjects: csvSent
-        });
+        const result = await callRentalApi("getrentals");
 
-        const response = await fetch(url, { cache: "no-store" });
+        expectResultType(result, "rentals");
 
-        const text = await response.text();
+        applyRentalsResult(result);
 
-        let result;
+        sstcRentalsLoaded = true;
+        sstcRentalsError = "";
 
-        try {
-            result = JSON.parse(text);
-        }
-        catch (parseError) {
-            throw new Error("Server did not return valid data. Check that the Web App access is set to 'Anyone'.");
-        }
+        setSaveStatus("idle");
 
-        if (!result || !result.success) {
-            throw new Error((result && result.message) || "Save failed.");
-        }
-
-        /*
-         * Purana Apps Script deployment kisi bhi unknown action par
-         * {success:true, message:"API is running"} de deta hai.
-         * Isliye sirf success:true kaafi nahi - type bhi check karo.
-         */
-        if (result.type !== "subjects_updated") {
-            throw new Error("Apps Script is running an OLD version. Deploy > Manage deployments > Edit > New version > Deploy.");
-        }
-
-        saved = true;
-
-        console.log(
-            "SSTC: ✅ Google Sheet me save hua (row " + result.sheetRow + "):",
-            result.selectedSubjects || "(none)"
-        );
+        console.log("SSTC: ✅ Rentals Google Sheet se load hui:", sstcRentals.length);
     }
     catch (error) {
 
-        console.error("SSTC selected-subjects save error:", error);
+        sstcRentalsError = error.message || "error";
 
         setSaveStatus("error", error.message);
+
+        console.error("SSTC rentals load error:", error);
+    }
+
+    refreshRentalUI();
+}
+
+
+/* =========================================================
+   RENT WINDOW (plan chuno / details)
+   ========================================================= */
+
+function getRentEl(id) {
+
+    return document.getElementById(id);
+}
+
+function showRentError(message) {
+
+    const box = getRentEl("rentError");
+
+    if (!box) {
+        return;
+    }
+
+    box.textContent = message || "";
+    box.hidden = !message;
+}
+
+function openRentModal(subjectName) {
+
+    const modal = getRentEl("rentModal");
+
+    if (!modal) {
+        return;
+    }
+
+    sstcRentModalSubject = subjectName;
+    sstcRentModalMonths = 0;
+    sstcRentModalReturnFocus = document.activeElement;
+
+    const state = getRentalState(subjectName);
+
+    if (state.status === "pending" || state.status === "active") {
+        renderRentModalDetails(state.rental, state.status, "");
+    }
+    else {
+        renderRentModalPlans(subjectName, state.status === "expired");
+    }
+
+    modal.hidden = false;
+    document.body.classList.add("sstc-modal-open");
+
+    const focusTarget =
+        modal.querySelector(".sstc-rent-plan") ||
+        modal.querySelector(".sstc-rent-close");
+
+    if (focusTarget) {
+        focusTarget.focus();
+    }
+}
+
+function closeRentModal() {
+
+    const modal = getRentEl("rentModal");
+
+    if (!modal || modal.hidden) {
+        return;
+    }
+
+    modal.hidden = true;
+    document.body.classList.remove("sstc-modal-open");
+
+    if (sstcRentModalReturnFocus && sstcRentModalReturnFocus.focus) {
+
+        try {
+            sstcRentModalReturnFocus.focus();
+        }
+        catch (error) {
+            /* ignore */
+        }
+    }
+
+    sstcRentModalReturnFocus = null;
+}
+
+/* --- Plan selection screen --- */
+
+function renderRentModalPlans(subjectName, isRenew) {
+
+    getRentEl("rentModalTitle").textContent = (isRenew ? "Renew " : "Rent ") + subjectName;
+    getRentEl("rentModalSubtitle").textContent = "Choose how long you want to rent this subject.";
+
+    const plansBox = getRentEl("rentPlans");
+    const details = getRentEl("rentDetails");
+    const success = getRentEl("rentSuccess");
+    const confirm = getRentEl("rentConfirmBtn");
+    const cancelRequest = getRentEl("rentCancelRequestBtn");
+
+    plansBox.hidden = false;
+    details.hidden = true;
+    success.hidden = true;
+    cancelRequest.hidden = true;
+
+    plansBox.innerHTML = "";
+
+    sstcRentPlans.forEach(function (plan) {
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "sstc-rent-plan";
+        button.setAttribute("role", "radio");
+        button.setAttribute("aria-checked", "false");
+        button.setAttribute("data-months", String(plan.months));
+
+        const main = document.createElement("span");
+        main.className = "sstc-rent-plan-main";
+
+        const label = document.createElement("strong");
+        label.textContent = plan.label;
+
+        const perMonth = document.createElement("small");
+        perMonth.textContent = "≈ ₹" + Math.round(plan.price / plan.months) + " / month";
+
+        main.appendChild(label);
+        main.appendChild(perMonth);
+
+        const price = document.createElement("span");
+        price.className = "sstc-rent-plan-price";
+        price.textContent = "₹" + plan.price;
+
+        button.appendChild(main);
+        button.appendChild(price);
+
+        const tagText = getPlanTag(plan.months);
+
+        if (tagText) {
+
+            const tag = document.createElement("em");
+            tag.className = "sstc-rent-plan-tag";
+            tag.textContent = tagText;
+
+            button.appendChild(tag);
+        }
+
+        button.addEventListener("click", function () {
+            selectRentPlan(plan.months);
+        });
+
+        plansBox.appendChild(button);
+    });
+
+    confirm.hidden = false;
+    confirm.disabled = true;
+    confirm.textContent = "Choose a plan";
+
+    getRentEl("rentNote").textContent = sstcRequiresApproval
+        ? "Your rental starts after SSTC confirms your payment."
+        : "Your rental starts immediately.";
+
+    if (!SSTC_STUDENT_API_URL) {
+
+        showRentError("Rental server is not connected yet (setup incomplete). Please contact SSTC administration.");
+
+        confirm.disabled = true;
+    }
+    else {
+        showRentError("");
+    }
+}
+
+function selectRentPlan(months) {
+
+    const plan = getPlanByMonths(months);
+
+    if (!plan) {
+        return;
+    }
+
+    sstcRentModalMonths = Number(months);
+
+    const buttons = document.querySelectorAll("#rentPlans .sstc-rent-plan");
+
+    buttons.forEach(function (button) {
+
+        const selected = Number(button.getAttribute("data-months")) === sstcRentModalMonths;
+
+        button.classList.toggle("selected", selected);
+        button.setAttribute("aria-checked", selected ? "true" : "false");
+    });
+
+    const confirm = getRentEl("rentConfirmBtn");
+
+    confirm.textContent = "Confirm Rent · ₹" + plan.price;
+    confirm.disabled = !SSTC_STUDENT_API_URL;
+
+    getRentEl("rentNote").textContent =
+        plan.label + " for ₹" + plan.price + ". " +
+        (sstcRequiresApproval
+            ? "Your rental starts after SSTC confirms your payment. " + SSTC_PAYMENT_HELP
+            : "Your rental starts immediately.");
+}
+
+/* --- Details screen (pending / active / just requested) --- */
+
+function renderRentModalDetails(rental, status, successText) {
+
+    const plansBox = getRentEl("rentPlans");
+    const details = getRentEl("rentDetails");
+    const success = getRentEl("rentSuccess");
+    const confirm = getRentEl("rentConfirmBtn");
+    const cancelRequest = getRentEl("rentCancelRequestBtn");
+
+    plansBox.hidden = true;
+    confirm.hidden = true;
+    details.hidden = false;
+
+    cancelRequest.hidden = status !== "pending";
+
+    showRentError("");
+
+    success.textContent = successText || "";
+    success.hidden = !successText;
+
+    details.innerHTML = "";
+
+    if (!rental) {
+        return;
+    }
+
+    getRentEl("rentModalTitle").textContent = rental.subject;
+
+    const statusLabels = {
+        active: "✓ Active",
+        pending: "⏳ Pending approval",
+        expired: "Expired"
+    };
+
+    getRentEl("rentModalSubtitle").textContent = statusLabels[status] || "";
+
+    const rows = [
+        ["Subject", rental.subject],
+        ["Plan", rental.plan + " · ₹" + rental.price],
+        ["Requested on", formatRentDate(rental.requestedOn)]
+    ];
+
+    if (rental.startDate) {
+        rows.push(["Started on", formatRentDate(rental.startDate)]);
+    }
+
+    if (rental.expiryDate) {
+
+        const days = getRentalDaysLeft(rental);
+
+        rows.push([
+            status === "expired" ? "Expired on" : "Valid till",
+            formatRentDate(rental.expiryDate) +
+                ((status === "active" && days !== null && days > 0)
+                    ? " (" + days + (days === 1 ? " day" : " days") + " left)"
+                    : "")
+        ]);
+    }
+
+    rows.forEach(function (pair) {
+
+        const row = document.createElement("div");
+        row.className = "sstc-rent-detail-row";
+
+        const label = document.createElement("span");
+        label.textContent = pair[0];
+
+        const value = document.createElement("strong");
+        value.textContent = pair[1] || "-";
+
+        row.appendChild(label);
+        row.appendChild(value);
+
+        details.appendChild(row);
+    });
+
+    getRentEl("rentNote").textContent =
+        status === "pending"
+            ? SSTC_PAYMENT_HELP
+            : (status === "active"
+                ? "You can renew this subject after it expires."
+                : "");
+}
+
+/* --- Confirm rent --- */
+
+async function confirmRent() {
+
+    const subjectName = sstcRentModalSubject;
+    const months = sstcRentModalMonths;
+
+    if (!subjectName || !months || sstcRentBusy) {
+        return;
+    }
+
+    sstcRentBusy = true;
+
+    const confirm = getRentEl("rentConfirmBtn");
+    const previousText = confirm.textContent;
+
+    confirm.disabled = true;
+    confirm.textContent = "Sending…";
+
+    showRentError("");
+
+    try {
+
+        const result = await callRentalApi("rentsubject", { subject: subjectName, months: months });
+
+        expectResultType(result, "rent_requested");
+
+        applyRentalsResult(result);
+
+        sstcRentalsLoaded = true;
+        sstcRentalsError = "";
+
+        setSaveStatus("idle");
+
+        refreshRentalUI();
+
+        const state = getRentalState(subjectName);
+
+        renderRentModalDetails(
+            state.rental,
+            state.status,
+            state.status === "active"
+                ? "✅ Subject rented successfully!"
+                : "✅ Rent request sent! " + SSTC_PAYMENT_HELP
+        );
+
+        console.log("SSTC: ✅ Rent Google Sheet me save hua:", result.rental);
+    }
+    catch (error) {
+
+        console.error("SSTC rent error:", error);
+
+        showRentError(error.message);
+
+        confirm.textContent = previousText;
+        confirm.disabled = false;
     }
     finally {
 
-        sstcSaveInFlight = false;
-    }
-
-    /* Save ke dauran naya change aaya to latest list dobara bhejo */
-
-    if (sstcSaveQueued) {
-
-        sstcSaveQueued = false;
-
-        flushSubjectSave();
-
-        return;
-    }
-
-    if (saved) {
-        setSaveStatus("saved");
+        sstcRentBusy = false;
     }
 }
 
-/* Logout / tab close par pending save chhootna nahi chahiye */
+/* --- Cancel a pending request --- */
 
-function flushPendingSubjectSaveOnExit() {
+async function cancelRentRequest() {
 
-    if (!sstcSaveTimer) {
+    const subjectName = sstcRentModalSubject;
+    const state = getRentalState(subjectName);
+
+    if (!state.rental || state.status !== "pending" || sstcRentBusy) {
         return;
     }
 
-    clearTimeout(sstcSaveTimer);
-    sstcSaveTimer = null;
-
-    if (!SSTC_STUDENT_API_URL || !studentData) {
+    if (!window.confirm("Cancel your rent request for " + subjectName + "?")) {
         return;
     }
 
-    const studentId = getStudentValue(["studentId", "id"], "");
-    const password = getStudentValue(["password"], "");
+    sstcRentBusy = true;
 
-    if (!studentId || !password) {
-        return;
-    }
+    const button = getRentEl("rentCancelRequestBtn");
+
+    button.disabled = true;
+
+    showRentError("");
 
     try {
 
-        fetch(
-            buildStudentApiUrl("updatesubjects", {
-                studentId: studentId,
-                password: password,
-                subjects: getSelectedSubjectsCsv()
-            }),
-            { keepalive: true, cache: "no-store" }
-        ).catch(function () { });
+        const result = await callRentalApi("cancelrental", { rentalId: state.rental.rentalId });
+
+        expectResultType(result, "rental_cancelled");
+
+        applyRentalsResult(result);
+
+        refreshRentalUI();
+
+        closeRentModal();
+
+        showSstcToast("Rent request for " + subjectName + " cancelled.", "info");
     }
     catch (error) {
-        console.warn("SSTC exit save warning:", error);
+
+        console.error("SSTC cancel rent error:", error);
+
+        showRentError(error.message);
     }
-}
+    finally {
 
-/* Page open hone par Google Sheet se saved subjects laao */
+        sstcRentBusy = false;
 
-async function syncSelectedSubjectsFromSheet() {
-
-    if (!SSTC_STUDENT_API_URL) {
-        return;
-    }
-
-    const studentId = getStudentValue(["studentId", "id"], "");
-    const password = getStudentValue(["password"], "");
-
-    if (!studentId || !password) {
-        return;
-    }
-
-    try {
-
-        const response = await fetch(
-            buildStudentApiUrl("getsubjects", { studentId: studentId, password: password }),
-            { cache: "no-store" }
-        );
-
-        const result = JSON.parse(await response.text());
-
-        if (!result || !result.success) {
-            console.warn("SSTC: subjects Sheet se load nahi hue:", result && result.message);
-            return;
-        }
-
-        if (result.type !== "subjects") {
-
-            console.warn("SSTC: Apps Script ka purana version chal raha hai (getsubjects support nahi).");
-
-            setSaveStatus("error", "Apps Script is running an OLD version. Deploy a New version.");
-
-            return;
-        }
-
-        /* Student ne is beech khud change kar diya ho to uska change na todo */
-
-        if (sstcSelectionTouched) {
-            return;
-        }
-
-        /*
-         * Sheet khaali hai par is session me selection hai = pehle ka
-         * save fail hua tha (jaise URL set nahi tha). Selection mat
-         * hatao - use ab Sheet me save kar do.
-         */
-        const localCsv = getSelectedSubjectsCsv();
-
-        if (String(result.selectedSubjects || "").trim() === "" && localCsv !== "") {
-
-            console.log("SSTC: Sheet khaali hai, session me selection hai - ab Sheet me save kar rahe hain:", localCsv);
-
-            setSaveStatus("saving");
-
-            flushSubjectSave();
-
-            return;
-        }
-
-        sstcSelectedSubjects = parseSubjectCsv(result.selectedSubjects);
-
-        const library = getCurrentClassLibrary();
-
-        if (library) {
-            pruneSelectedSubjects(library);
-        }
-
-        if (studentData) {
-
-            studentData.selectedSubjects = getSelectedSubjectsCsv();
-
-            try {
-                sessionStorage.setItem(SSTC_SESSION_DATA, JSON.stringify(studentData));
-            }
-            catch (error) {
-                console.warn("SSTC session save warning:", error);
-            }
-        }
-
-        refreshSubjectSelectionUI();
-
-        console.log("SSTC: ✅ Google Sheet se subjects load hue:", result.selectedSubjects || "(none)");
-    }
-    catch (error) {
-        console.warn("SSTC subjects sync warning:", error);
+        button.disabled = false;
     }
 }
 
@@ -1206,6 +1737,8 @@ function selectSubject(subjectName) {
     }
 
     sessionStorage.setItem(SSTC_CURRENT_BOOK, subjectName);
+
+    sstcShownSubject = subjectName;
 
     setText("selectedSubjectTitle", subjectName);
     setText("selectedSubjectDescription", subject.description || "Select a chapter to start reading.");
@@ -1243,6 +1776,12 @@ function renderChapters(subjectName, subject) {
     }
 
     grid.innerHTML = "";
+
+    const rentBanner = createRentBanner(subjectName);
+
+    if (rentBanner) {
+        grid.appendChild(rentBanner);
+    }
 
     if (!subject.chapters || subject.chapters.length === 0) {
 
@@ -1292,7 +1831,14 @@ function renderChapters(subjectName, subject) {
 
         const open = document.createElement("span");
         open.className = "chapter-open";
-        open.textContent = "Open PDF →";
+
+        if (canReadSubject(subjectName)) {
+            open.textContent = "Open PDF →";
+        }
+        else {
+            open.classList.add("locked");
+            open.textContent = "🔒 Rent to read";
+        }
 
         item.appendChild(number);
         item.appendChild(icon);
@@ -1994,6 +2540,12 @@ function openChapter(subjectName, chapterIndex) {
         return;
     }
 
+    /* Rent kiye bina chapter nahi khulega */
+    if (!canReadSubject(subjectName)) {
+        handleLockedSubject(subjectName);
+        return;
+    }
+
     if (!chapter.pdf) {
         showSecurityMessage("This chapter PDF is not available yet.");
         return;
@@ -2280,9 +2832,6 @@ function studentLogout(event) {
     }
 
     sstcLoggingOut = true;
-
-    /* Pending subject selection ko logout se pehle save karo */
-    flushPendingSubjectSaveOnExit();
 
     const pdfFrame = document.getElementById("pdfFrame");
 
@@ -2685,9 +3234,6 @@ function showSecurityMessage(message) {
    ========================================================= */
 
 window.addEventListener("pagehide", function () {
-
-    /* Tab close / navigate par pending subject save bhej do */
-    flushPendingSubjectSaveOnExit();
 });
 
 
@@ -2708,3 +3254,7 @@ window.scrollSubjects = scrollSubjects;
 window.selectSubject = selectSubject;
 window.openChapter = openChapter;
 window.setSubjectFilter = setSubjectFilter;
+window.openRentModal = openRentModal;
+window.closeRentModal = closeRentModal;
+window.confirmRent = confirmRent;
+window.cancelRentRequest = cancelRentRequest;
