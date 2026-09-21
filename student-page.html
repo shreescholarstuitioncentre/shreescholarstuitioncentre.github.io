@@ -23,7 +23,7 @@
 
     <link
         rel="stylesheet"
-        href="student-page.css">
+        href="student-page.css?v=3">
 
 </head>
 
@@ -349,8 +349,8 @@
                 </h2>
 
                 <p>
-                    Tap a subject card to view its chapters. Use
-                    “+ Add to My Subjects” to build your own study list.
+                    Tap a subject card to view its chapters. Rent a
+                    subject for 3, 6 or 12 months to read it.
                 </p>
 
             </div>
@@ -385,7 +385,7 @@
 
                 <div class="study-panel-title">
 
-                    ⭐ My Study Subjects
+                    🔑 My Rented Subjects
 
                     <span
                         class="study-count"
@@ -438,7 +438,7 @@
                         data-filter="mine"
                         onclick="setSubjectFilter('mine')">
 
-                        My Subjects (<span id="filterMineCount">0</span>)
+                        My Rented (<span id="filterMineCount">0</span>)
 
                     </button>
 
@@ -490,8 +490,8 @@
             id="subjectFilterEmpty"
             hidden>
 
-            You have not added any subject yet. Switch to
-            “All Subjects” and tap “+ Add to My Subjects”.
+            You have not rented any subject yet. Switch to
+            “All Subjects” and tap “Rent This Subject”.
 
         </p>
 
@@ -839,13 +839,16 @@
         <div>
 
             <h3>
-                Want More E-Books?
+                Want More Subjects?
             </h3>
 
             <p>
-                Choose <strong>Rent</strong> or <strong>Buy</strong>
-                on any available e-book. Contact SSTC administration
-                to complete your order.
+                <strong>Rent</strong> any subject for
+                <strong>3 months (₹49)</strong>,
+                <strong>6 months (₹69)</strong> or
+                <strong>12 months (₹99)</strong>. Tap
+                “Rent This Subject” on a subject card above.
+                Contact SSTC administration to complete the payment.
             </p>
 
         </div>
@@ -921,10 +924,149 @@
 
 
 <!-- =========================================================
+     RENT WINDOW (plan chuno / rental details)
+========================================================= -->
+
+<div
+    class="sstc-rent-modal"
+    id="rentModal"
+    hidden>
+
+
+    <div
+        class="sstc-rent-backdrop"
+        onclick="closeRentModal()">
+    </div>
+
+
+    <div
+        class="sstc-rent-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="rentModalTitle">
+
+
+        <button
+            type="button"
+            class="sstc-rent-close"
+            onclick="closeRentModal()"
+            aria-label="Close">
+
+            ✕
+
+        </button>
+
+
+        <div class="sstc-rent-head">
+
+            <div class="sstc-rent-head-icon">
+                🔑
+            </div>
+
+            <div>
+
+                <h3 id="rentModalTitle">
+                    Rent Subject
+                </h3>
+
+                <p id="rentModalSubtitle">
+                    Choose how long you want to rent this subject.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <p
+            class="sstc-rent-success"
+            id="rentSuccess"
+            hidden>
+        </p>
+
+
+        <div
+            class="sstc-rent-plans"
+            id="rentPlans"
+            role="radiogroup"
+            aria-label="Rental plans">
+
+            <!-- JS creates 3 / 6 / 12 month plans -->
+
+        </div>
+
+
+        <div
+            class="sstc-rent-details"
+            id="rentDetails"
+            hidden>
+
+            <!-- JS creates rental details -->
+
+        </div>
+
+
+        <p
+            class="sstc-rent-note"
+            id="rentNote">
+        </p>
+
+
+        <p
+            class="sstc-rent-error"
+            id="rentError"
+            role="alert"
+            hidden>
+        </p>
+
+
+        <div class="sstc-rent-actions">
+
+            <button
+                type="button"
+                class="sstc-rent-btn secondary"
+                onclick="closeRentModal()">
+
+                Close
+
+            </button>
+
+            <button
+                type="button"
+                class="sstc-rent-btn danger"
+                id="rentCancelRequestBtn"
+                onclick="cancelRentRequest()"
+                hidden>
+
+                Cancel Request
+
+            </button>
+
+            <button
+                type="button"
+                class="sstc-rent-btn primary"
+                id="rentConfirmBtn"
+                onclick="confirmRent()"
+                disabled>
+
+                Choose a plan
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<!-- =========================================================
      JS
 ========================================================= -->
 
-<script src="student-page.js"></script>
+<script src="student-page.js?v=3"></script>
 
 </body>
 
