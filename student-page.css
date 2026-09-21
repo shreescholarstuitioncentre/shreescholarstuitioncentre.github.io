@@ -2570,7 +2570,7 @@ body::before {
 
 /* =========================================================
    ★ NEW ★
-   SSTC MY STUDY SUBJECTS  (Add to My Subjects)
+   SSTC RENT SUBJECTS  (Rent This Subject + Rent window)
    ---------------------------------------------------------
    Ye poora block naya hai - upar ka purana CSS untouched.
    ========================================================= */
@@ -2586,7 +2586,7 @@ body::before {
 }
 
 
-/* --- Study panel (chips + save status + filter) --- */
+/* --- "My Rented Subjects" panel (chips + status + filter) --- */
 
 .study-panel {
 
@@ -2687,68 +2687,73 @@ body::before {
 }
 
 
-.study-chip {
+/* --- Rented chips (Active / Pending / Expired) --- */
+
+.rented-chip {
 
     display: inline-flex;
 
-    align-items: stretch;
+    align-items: center;
 
-    overflow: hidden;
+    gap: 7px;
+
+    padding: 6px 12px;
 
     border: 1px solid #b9efd1;
 
     border-radius: 999px;
 
     background: #effcf4;
-}
 
-
-.study-chip-name,
-.study-chip-remove {
-
-    border: none;
-
-    background: transparent;
+    color: #0b6b36;
 
     font-family: inherit;
+
+    font-size: 12px;
 
     cursor: pointer;
 }
 
 
-.study-chip-name {
+.rented-chip strong {
 
-    padding: 6px 6px 6px 12px;
-
-    color: #0b6b36;
-
-    font-size: 12px;
-
-    font-weight: 700;
+    font-weight: 800;
 }
 
 
-.study-chip-remove {
-
-    padding: 6px 10px 6px 6px;
-
-    color: #5b8b72;
+.rented-chip span {
 
     font-size: 11px;
 
-    font-weight: 700;
+    font-weight: 600;
+
+    opacity: 0.85;
 }
 
 
-.study-chip-name:hover {
+.rented-chip[data-rent="pending"] {
 
-    text-decoration: underline;
+    border-color: #f6d58b;
+
+    background: #fff8e6;
+
+    color: #8a5b00;
 }
 
 
-.study-chip-remove:hover {
+.rented-chip[data-rent="expired"] {
 
-    color: #dc2626;
+    border-color: #e6c5c5;
+
+    background: #fdf1f1;
+
+    color: #a12a2a;
+}
+
+
+.rented-chip:hover {
+
+    filter: brightness(0.96);
 }
 
 
@@ -2766,7 +2771,7 @@ body::before {
 }
 
 
-/* --- Save status (Google Sheet me save hua ya nahi) --- */
+/* --- Status (loading / error / setup incomplete) --- */
 
 .save-status {
 
@@ -2784,15 +2789,9 @@ body::before {
 }
 
 
-.save-status[data-state="saving"] {
+.save-status[data-state="loading"] {
 
     color: #b45309;
-}
-
-
-.save-status[data-state="saved"] {
-
-    color: #087b43;
 }
 
 
@@ -2811,7 +2810,7 @@ body::before {
 }
 
 
-/* --- All Subjects / My Subjects filter --- */
+/* --- All Subjects / My Rented filter --- */
 
 .subject-filter {
 
@@ -2888,7 +2887,7 @@ body::before {
 }
 
 
-/* --- Subject card: selected state --- */
+/* --- Subject card: rent states --- */
 
 .subject-card {
 
@@ -2900,11 +2899,51 @@ body::before {
 }
 
 
+.subject-card.is-hidden {
+
+    display: none !important;
+}
+
+
+.subject-card:focus-visible {
+
+    outline: 3px solid #93c5fd;
+
+    outline-offset: 2px;
+}
+
+
+.subject-card[data-rent="active"]:not(.active) {
+
+    border: 2px solid #16a34a;
+
+    box-shadow:
+        0 8px 22px rgba(22, 163, 74, 0.18);
+}
+
+
+.subject-card[data-rent="pending"]:not(.active) {
+
+    border: 2px solid #f59e0b;
+
+    box-shadow:
+        0 8px 22px rgba(245, 158, 11, 0.18);
+}
+
+
+.subject-card[data-rent="expired"]:not(.active) {
+
+    border: 2px solid #cbd5e1;
+}
+
+
 /* Button hamesha card ke neeche (sab cards me same line par) */
 
 .subject-card-image {
 
     flex-shrink: 0;
+
+    position: relative;
 }
 
 
@@ -2930,53 +2969,11 @@ body::before {
 }
 
 
-.subject-card.is-hidden {
+/* Image ke upar corner ribbon */
 
-    display: none !important;
-}
-
-
-.subject-card.selected {
-
-    border: 2px solid #16a34a;
-
-    box-shadow:
-        0 8px 22px rgba(22, 163, 74, 0.18);
-}
-
-
-.subject-card.selected:hover {
-
-    border-color: #16a34a;
-
-    box-shadow:
-        0 10px 26px rgba(22, 163, 74, 0.26);
-}
-
-
-.subject-card.selected.active {
-
-    border-color: #2563eb;
-}
-
-
-.subject-card:focus-visible {
-
-    outline: 3px solid #93c5fd;
-
-    outline-offset: 2px;
-}
-
-
-.subject-card.selected .subject-card-image {
-
-    position: relative;
-}
-
-
-.subject-card.selected .subject-card-image::after {
-
-    content: "✓ Added";
+.subject-card[data-rent="active"] .subject-card-image::after,
+.subject-card[data-rent="pending"] .subject-card-image::after,
+.subject-card[data-rent="expired"] .subject-card-image::after {
 
     position: absolute;
 
@@ -2988,8 +2985,6 @@ body::before {
 
     border-radius: 999px;
 
-    background: #16a34a;
-
     color: #ffffff;
 
     font-size: 10px;
@@ -2998,9 +2993,33 @@ body::before {
 }
 
 
-/* --- "+ Add to My Subjects" button on every card --- */
+.subject-card[data-rent="active"] .subject-card-image::after {
 
-.subject-select-toggle {
+    content: "✓ Rented";
+
+    background: #16a34a;
+}
+
+
+.subject-card[data-rent="pending"] .subject-card-image::after {
+
+    content: "⏳ Pending";
+
+    background: #d97706;
+}
+
+
+.subject-card[data-rent="expired"] .subject-card-image::after {
+
+    content: "Expired";
+
+    background: #94a3b8;
+}
+
+
+/* --- "Rent This Subject" button on every card --- */
+
+.subject-rent-toggle {
 
     display: block;
 
@@ -3039,13 +3058,13 @@ body::before {
 }
 
 
-.subject-select-toggle:hover {
+.subject-rent-toggle:hover {
 
     background: #eaf2ff;
 }
 
 
-.subject-select-toggle.is-selected {
+.subject-rent-toggle[data-rent="active"] {
 
     border-color: #16a34a;
 
@@ -3055,18 +3074,41 @@ body::before {
 }
 
 
-.subject-select-toggle.is-selected:hover {
-
-    border-color: #15803d;
+.subject-rent-toggle[data-rent="active"]:hover {
 
     background: #15803d;
+
+    border-color: #15803d;
 }
 
 
-.subject-select-toggle:focus-visible,
-.study-chip-name:focus-visible,
-.study-chip-remove:focus-visible,
-.subject-filter button:focus-visible {
+.subject-rent-toggle[data-rent="pending"] {
+
+    border-color: #f59e0b;
+
+    background: #fff8e6;
+
+    color: #b45309;
+}
+
+
+.subject-rent-toggle[data-rent="expired"] {
+
+    border-color: #dc2626;
+
+    background: #ffffff;
+
+    color: #dc2626;
+}
+
+
+.subject-rent-toggle:focus-visible,
+.rented-chip:focus-visible,
+.subject-filter button:focus-visible,
+.chapter-rent-banner button:focus-visible,
+.sstc-rent-btn:focus-visible,
+.sstc-rent-plan:focus-visible,
+.sstc-rent-close:focus-visible {
 
     outline: 3px solid #93c5fd;
 
@@ -3074,7 +3116,563 @@ body::before {
 }
 
 
-/* --- Toast message (added / removed) + security message --- */
+/* --- Chapters: banner + lock label --- */
+
+.chapter-rent-banner {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 12px 16px;
+
+    border: 1px solid #cde1ff;
+
+    border-radius: 14px;
+
+    background: #f1f7ff;
+
+    color: #0b3a6e;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 1.45;
+}
+
+
+.chapter-rent-banner[data-rent="active"] {
+
+    border-color: #b9efd1;
+
+    background: #effcf4;
+
+    color: #087b43;
+}
+
+
+.chapter-rent-banner[data-rent="pending"] {
+
+    border-color: #f6d58b;
+
+    background: #fff8e6;
+
+    color: #8a5b00;
+}
+
+
+.chapter-rent-banner[data-rent="expired"] {
+
+    border-color: #f1c4c4;
+
+    background: #fef2f2;
+
+    color: #b91c1c;
+}
+
+
+.chapter-rent-banner[data-rent="loading"] {
+
+    border-color: #dbe6f5;
+
+    background: #f8fafc;
+
+    color: #64748b;
+}
+
+
+.chapter-rent-banner button {
+
+    flex-shrink: 0;
+
+    padding: 8px 14px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+
+.chapter-open.locked {
+
+    border: 1px solid #d5dee9;
+
+    background: #f1f5f9;
+
+    color: #64748b;
+}
+
+
+/* --- Rent window (modal) --- */
+
+body.sstc-modal-open {
+
+    overflow: hidden;
+}
+
+
+.sstc-rent-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 6000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 16px;
+}
+
+
+.sstc-rent-modal[hidden],
+.sstc-rent-plans[hidden],
+.sstc-rent-details[hidden],
+.sstc-rent-success[hidden],
+.sstc-rent-error[hidden],
+.sstc-rent-btn[hidden] {
+
+    display: none !important;
+}
+
+
+.sstc-rent-backdrop {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(15, 23, 42, 0.58);
+}
+
+
+.sstc-rent-dialog {
+
+    position: relative;
+
+    width: 100%;
+
+    max-width: 460px;
+
+    max-height: calc(100vh - 32px);
+
+    overflow-y: auto;
+
+    padding: 22px;
+
+    border-radius: 20px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+
+.sstc-rent-close {
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 12px;
+
+    width: 32px;
+
+    height: 32px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #eef3fa;
+
+    color: #3b5b82;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+.sstc-rent-head {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 16px;
+
+    padding-right: 34px;
+}
+
+
+.sstc-rent-head-icon {
+
+    width: 46px;
+
+    height: 46px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: #eaf2ff;
+
+    font-size: 23px;
+}
+
+
+.sstc-rent-head h3 {
+
+    color: #062957;
+
+    font-size: 19px;
+
+    line-height: 1.25;
+}
+
+
+.sstc-rent-head p {
+
+    margin-top: 3px;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+.sstc-rent-plans {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    padding-top: 6px;
+}
+
+
+.sstc-rent-plan {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 14px 16px;
+
+    border: 2px solid #dbe6f5;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    font-family: inherit;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.sstc-rent-plan:hover {
+
+    border-color: #93c5fd;
+}
+
+
+.sstc-rent-plan.selected {
+
+    border-color: #2563eb;
+
+    background: #f2f7ff;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+
+.sstc-rent-plan-main strong {
+
+    display: block;
+
+    color: #082d5b;
+
+    font-size: 15px;
+}
+
+
+.sstc-rent-plan-main small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+.sstc-rent-plan-price {
+
+    color: #0a58b5;
+
+    font-size: 22px;
+
+    font-weight: 800;
+}
+
+
+.sstc-rent-plan-tag {
+
+    position: absolute;
+
+    top: -9px;
+
+    right: 14px;
+
+    padding: 2px 9px;
+
+    border-radius: 999px;
+
+    background: #16a34a;
+
+    color: #ffffff;
+
+    font-size: 9px;
+
+    font-style: normal;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+}
+
+
+.sstc-rent-details {
+
+    overflow: hidden;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 14px;
+}
+
+
+.sstc-rent-detail-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 11px 14px;
+
+    border-bottom: 1px dashed #e2e8f0;
+
+    font-size: 13px;
+}
+
+
+.sstc-rent-detail-row:last-child {
+
+    border-bottom: none;
+}
+
+
+.sstc-rent-detail-row span {
+
+    color: #64748b;
+}
+
+
+.sstc-rent-detail-row strong {
+
+    color: #082d5b;
+
+    text-align: right;
+}
+
+
+.sstc-rent-success {
+
+    margin-bottom: 12px;
+
+    padding: 11px 14px;
+
+    border: 1px solid #b9efd1;
+
+    border-radius: 12px;
+
+    background: #effcf4;
+
+    color: #087b43;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 1.45;
+}
+
+
+.sstc-rent-note {
+
+    margin-top: 14px;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+.sstc-rent-note:empty {
+
+    display: none;
+}
+
+
+.sstc-rent-error {
+
+    margin-top: 12px;
+
+    padding: 10px 12px;
+
+    border: 1px solid #fecaca;
+
+    border-radius: 10px;
+
+    background: #fef2f2;
+
+    color: #b91c1c;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    line-height: 1.45;
+}
+
+
+.sstc-rent-actions {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+
+.sstc-rent-btn {
+
+    padding: 11px 18px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+
+.sstc-rent-btn.primary {
+
+    background: #16a34a;
+
+    color: #ffffff;
+}
+
+
+.sstc-rent-btn.primary:hover:not(:disabled) {
+
+    background: #15803d;
+}
+
+
+.sstc-rent-btn.primary:disabled {
+
+    background: #cbd5e1;
+
+    cursor: not-allowed;
+}
+
+
+.sstc-rent-btn.secondary {
+
+    background: #eef3fa;
+
+    color: #3b5b82;
+}
+
+
+.sstc-rent-btn.danger {
+
+    border: 1.5px solid #dc2626;
+
+    background: #ffffff;
+
+    color: #dc2626;
+}
+
+
+/* --- Toast message (rent / cancel) + security message --- */
 
 .sstc-toast,
 .security-message {
@@ -3085,7 +3683,7 @@ body::before {
 
     bottom: 28px;
 
-    z-index: 5000;
+    z-index: 7000;
 
     max-width: calc(100% - 32px);
 
@@ -3166,6 +3764,11 @@ body::before {
         align-items: stretch;
     }
 
+    .save-status {
+
+        text-align: left;
+    }
+
     .subject-filter {
 
         width: 100%;
@@ -3179,10 +3782,44 @@ body::before {
 }
 
 
+@media (max-width: 520px) {
+
+    .sstc-rent-modal {
+
+        align-items: flex-end;
+
+        padding: 0;
+    }
+
+    .sstc-rent-dialog {
+
+        max-width: 100%;
+
+        max-height: 92vh;
+
+        border-radius: 20px 20px 0 0;
+    }
+
+    .sstc-rent-actions .sstc-rent-btn {
+
+        flex: 1;
+    }
+
+    .chapter-rent-banner {
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+}
+
+
 @media (prefers-reduced-motion: reduce) {
 
     .sstc-toast,
-    .subject-select-toggle {
+    .subject-rent-toggle,
+    .sstc-rent-plan {
 
         transition: none;
     }
