@@ -26,6 +26,8 @@ let sstcRentModalSubject = "";      // rent window kis subject ki hai
 let sstcRentModalMonths = 0;        // rent window me chuna hua plan
 let sstcRentBusy = false;           // rent/cancel request chal rahi hai?
 let sstcRentModalReturnFocus = null;
+let sstcPaymentSelected = new Set();  // Pay Now window me chuni hui rentals
+let sstcPaymentReturnFocus = null;
 
 
 /* =========================================================
@@ -40,7 +42,7 @@ let sstcRentModalReturnFocus = null;
    page par "setup incomplete" ka warning dikhega.
    ========================================================= */
 
-const SSTC_STUDENT_API_URL = "https://script.google.com/macros/s/AKfycbzSPSlkswNdmRtJkZ0Uq3Et5hAPIBorvbgVoQvZD4e0Ed36TwPzk7bh-xSAWmdFpmqynw/exec";
+const SSTC_STUDENT_API_URL = "";
 
 
 /* =========================================================
@@ -58,6 +60,18 @@ const SSTC_REQUIRE_RENT_TO_READ = true;
  * Yahan apna UPI ID / phone number bhi likh sakte hain.
  */
 const SSTC_PAYMENT_HELP = "Please contact SSTC administration to complete the payment.";
+
+/*
+ * UPI PAYMENT SETTINGS
+ * ---------------------------------------------------------
+ * SSTC_UPI_ID khaali rahega to "Pay Now" window me sirf ye
+ * message dikhega: "UPI payment is not set up yet." Apna
+ * asli UPI ID daalne ke baad hi "Pay via UPI" button aur
+ * QR code dikhenge.
+ */
+const SSTC_UPI_ID = "";                      // jaise "sstc@okaxis"
+const SSTC_UPI_PAYEE_NAME = "Shree Scholars Tuition Center";
+const SSTC_SHOW_UPI_QR = true;
 
 /*
  * Rent plans. Yahan ka price sirf screen par dikhane ke liye hai;
@@ -725,6 +739,21 @@ function canReadSubject(subjectName) {
     return getRentalState(subjectName).status === "active";
 }
 
+/*
+ * Chapter 1 hamesha free hai (rent ki state kuch bhi ho) -
+ * ek "free preview" jisse student khareedne se pehle dekh sake.
+ * Baaki chapters rent honi chahiye (canReadSubject).
+ */
+
+function canReadChapter(subjectName, chapterIndex) {
+
+    if (Number(chapterIndex) === 0) {
+        return true;
+    }
+
+    return canReadSubject(subjectName);
+}
+
 /* Card ka rent button (text + colour state) */
 
 function updateRentButtonUI(button, subjectName) {
@@ -803,6 +832,7 @@ function refreshRentalUI() {
     applySubjectFilter();
     updateChapterLocks();
     updateRentedSummary();
+    updatePayButton();
 }
 
 /* "My Rented Subjects" chips */
@@ -969,7 +999,7 @@ function createRentBanner(subjectName) {
 
         banner.setAttribute("data-rent", "pending");
 
-        text.textContent = "⏳ Your rent request is pending. Chapters unlock after SSTC confirms your payment.";
+        text.textContent = "⏳ Your rent request is pending. Chapter 1 is free to read; the rest unlock after SSTC confirms your payment.";
 
         actionLabel = "View Request";
     }
@@ -977,7 +1007,7 @@ function createRentBanner(subjectName) {
 
         banner.setAttribute("data-rent", "expired");
 
-        text.textContent = "⌛ Your rental has expired. Renew it to keep reading.";
+        text.textContent = "⌛ Your rental has expired. Chapter 1 is still free — renew to keep reading the rest.";
 
         actionLabel = "Renew";
     }
@@ -985,7 +1015,7 @@ function createRentBanner(subjectName) {
 
         banner.setAttribute("data-rent", "none");
 
-        text.textContent = "🔒 Rent this subject to read its chapters.";
+        text.textContent = "📖 Chapter 1 is free to read. Rent this subject to unlock the rest.";
 
         actionLabel = "Rent Now";
     }
@@ -1115,6 +1145,7 @@ function setupRentalUI() {
 
         if (event.key === "Escape") {
             closeRentModal();
+            closePaymentModal();
         }
     });
 }
@@ -1711,6 +1742,321 @@ async function cancelRentRequest() {
 
 
 /* =========================================================
+   PAY NOW  (pending rentals ka total + UPI payment)
+   ---------------------------------------------------------
+   "My Rented Subjects" panel ka "Pay Now" button:
+   - Saare Pending rentals list karta hai (checkbox se
+     student chun sakta hai kis-kis ka abhi payment karna hai)
+   - Chuni hui rentals ka total (₹) calculate karta hai
+   - UPI ID, Student ID aur payment note dikhata hai, saath
+     me "Pay via UPI App" link aur QR code
+   - Koi automatic payment verify nahi hota - student pay
+     karke SSTC ko batata hai, admin Rentals sheet me Status
+     ko "Active" karta hai (RENT_REQUIRES_APPROVAL flow)
+   ========================================================= */
+
+function getPendingRentalsList() {
+
+    return sstcRentals.filter(function (rental) {
+        return String(rental.status || "").toLowerCase() === "pending";
+    });
+}
+
+/* "Pay Now" button dikhana / chhupana + total dikhana */
+
+function updatePayButton() {
+
+    const button = document.getElementById("payNowBtn");
+
+    if (!button) {
+        return;
+    }
+
+    const pending = getPendingRentalsList();
+
+    if (pending.length === 0) {
+
+        button.hidden = true;
+        return;
+    }
+
+    const total = pending.reduce(function (sum, rental) {
+        return sum + (Number(rental.price) || 0);
+    }, 0);
+
+    button.hidden = false;
+
+    button.textContent =
+        "💳 Pay Now · ₹" + total +
+        " (" + pending.length + (pending.length === 1 ? " subject" : " subjects") + ")";
+}
+
+function buildUpiLink(amount, note) {
+
+    const params = [
+        "pa=" + encodeURIComponent(SSTC_UPI_ID),
+        "pn=" + encodeURIComponent(SSTC_UPI_PAYEE_NAME),
+        "am=" + encodeURIComponent(amount),
+        "cu=INR",
+        "tn=" + encodeURIComponent(note)
+    ];
+
+    return "upi://pay?" + params.join("&");
+}
+
+function openPaymentModal() {
+
+    const modal = getRentEl("paymentModal");
+
+    if (!modal) {
+        return;
+    }
+
+    const pending = getPendingRentalsList();
+
+    if (pending.length === 0) {
+
+        showSstcToast("No pending rent request to pay for.", "info");
+        return;
+    }
+
+    /* Default: saare pending rentals chune hue */
+
+    sstcPaymentSelected = new Set(
+        pending.map(function (rental) {
+            return rental.rentalId;
+        })
+    );
+
+    sstcPaymentReturnFocus = document.activeElement;
+
+    renderPaymentList();
+    updatePaymentTotal();
+
+    modal.hidden = false;
+    document.body.classList.add("sstc-modal-open");
+
+    const focusTarget = modal.querySelector(".sstc-pay-close");
+
+    if (focusTarget) {
+        focusTarget.focus();
+    }
+}
+
+function closePaymentModal() {
+
+    const modal = getRentEl("paymentModal");
+
+    if (!modal || modal.hidden) {
+        return;
+    }
+
+    modal.hidden = true;
+    document.body.classList.remove("sstc-modal-open");
+
+    if (sstcPaymentReturnFocus && sstcPaymentReturnFocus.focus) {
+
+        try {
+            sstcPaymentReturnFocus.focus();
+        }
+        catch (error) {
+            /* ignore */
+        }
+    }
+
+    sstcPaymentReturnFocus = null;
+}
+
+/* Har pending rental ki checkbox row */
+
+function renderPaymentList() {
+
+    const box = getRentEl("paymentList");
+
+    if (!box) {
+        return;
+    }
+
+    box.innerHTML = "";
+
+    getPendingRentalsList().forEach(function (rental) {
+
+        const row = document.createElement("label");
+        row.className = "sstc-pay-row";
+
+        const left = document.createElement("span");
+        left.className = "sstc-pay-row-main";
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = sstcPaymentSelected.has(rental.rentalId);
+        checkbox.setAttribute("data-rental-id", rental.rentalId);
+
+        checkbox.addEventListener("change", function () {
+
+            if (checkbox.checked) {
+                sstcPaymentSelected.add(rental.rentalId);
+            }
+            else {
+                sstcPaymentSelected.delete(rental.rentalId);
+            }
+
+            updatePaymentTotal();
+        });
+
+        const text = document.createElement("span");
+        text.className = "sstc-pay-row-text";
+
+        const name = document.createElement("strong");
+        name.textContent = rental.subject;
+
+        const plan = document.createElement("small");
+        plan.textContent = rental.plan;
+
+        text.appendChild(name);
+        text.appendChild(plan);
+
+        left.appendChild(checkbox);
+        left.appendChild(text);
+
+        const price = document.createElement("span");
+        price.className = "sstc-pay-row-price";
+        price.textContent = "₹" + (Number(rental.price) || 0);
+
+        row.appendChild(left);
+        row.appendChild(price);
+
+        box.appendChild(row);
+    });
+}
+
+/* Checkbox badalne par total, UPI link, QR sab refresh */
+
+function updatePaymentTotal() {
+
+    const chosen = getPendingRentalsList().filter(function (rental) {
+        return sstcPaymentSelected.has(rental.rentalId);
+    });
+
+    const total = chosen.reduce(function (sum, rental) {
+        return sum + (Number(rental.price) || 0);
+    }, 0);
+
+    getRentEl("paymentTotal").textContent = "₹" + total;
+
+    const confirmButton = getRentEl("payConfirmBtn");
+
+    if (confirmButton) {
+        confirmButton.disabled = chosen.length === 0;
+    }
+
+    const upiSection = getRentEl("paySection");
+    const upiEmpty = getRentEl("payUpiEmpty");
+
+    if (!SSTC_UPI_ID) {
+
+        if (upiSection) {
+            upiSection.hidden = true;
+        }
+
+        if (upiEmpty) {
+            upiEmpty.hidden = false;
+        }
+
+        return;
+    }
+
+    if (upiEmpty) {
+        upiEmpty.hidden = true;
+    }
+
+    if (upiSection) {
+        upiSection.hidden = total === 0;
+    }
+
+    if (total === 0) {
+        return;
+    }
+
+    const studentId = getStudentValue(["studentId", "id"], "");
+    const studentName = getStudentValue(["fullName", "name"], "");
+
+    const subjectNames = chosen
+        .map(function (rental) {
+            return rental.subject;
+        })
+        .join("+");
+
+    const note = "SSTC " + studentId + " " + subjectNames;
+
+    setText("payUpiId", SSTC_UPI_ID);
+    setText("payStudentId", studentId + (studentName ? " · " + studentName : ""));
+    setText("payNote", note);
+
+    const link = getRentEl("payUpiLink");
+
+    if (link) {
+        link.href = buildUpiLink(total, note);
+    }
+
+    if (SSTC_SHOW_UPI_QR) {
+
+        const qr = getRentEl("payQr");
+
+        if (qr) {
+
+            qr.hidden = false;
+            qr.src =
+                "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=" +
+                encodeURIComponent(buildUpiLink(total, note));
+        }
+    }
+}
+
+function copyUpiId() {
+
+    if (!SSTC_UPI_ID) {
+        return;
+    }
+
+    const finish = function (ok) {
+
+        showSstcToast(
+            ok ? "UPI ID copied!" : "Could not copy. UPI ID: " + SSTC_UPI_ID,
+            ok ? "success" : "info"
+        );
+    };
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+
+        navigator.clipboard
+            .writeText(SSTC_UPI_ID)
+            .then(function () {
+                finish(true);
+            })
+            .catch(function () {
+                finish(false);
+            });
+    }
+    else {
+        finish(false);
+    }
+}
+
+/* "I Have Paid" - koi backend call nahi, sirf reminder */
+
+function markPaymentSent() {
+
+    closePaymentModal();
+
+    showSstcToast(
+        "Thanks! Please wait for SSTC to confirm your payment and activate the subject.",
+        "success"
+    );
+}
+
+
+/* =========================================================
    SELECT SUBJECT
    ========================================================= */
 
@@ -1829,10 +2175,19 @@ function renderChapters(subjectName, subject) {
         info.appendChild(title);
         info.appendChild(subtitle);
 
+        if (index === 0) {
+
+            const freeBadge = document.createElement("span");
+            freeBadge.className = "chapter-free-badge";
+            freeBadge.textContent = "FREE PREVIEW";
+
+            info.appendChild(freeBadge);
+        }
+
         const open = document.createElement("span");
         open.className = "chapter-open";
 
-        if (canReadSubject(subjectName)) {
+        if (canReadChapter(subjectName, index)) {
             open.textContent = "Open PDF →";
         }
         else {
@@ -2540,8 +2895,8 @@ function openChapter(subjectName, chapterIndex) {
         return;
     }
 
-    /* Rent kiye bina chapter nahi khulega */
-    if (!canReadSubject(subjectName)) {
+    /* Chapter 1 free hai, baaki rent kiye bina nahi khulenge */
+    if (!canReadChapter(subjectName, chapterIndex)) {
         handleLockedSubject(subjectName);
         return;
     }
@@ -3258,3 +3613,7 @@ window.openRentModal = openRentModal;
 window.closeRentModal = closeRentModal;
 window.confirmRent = confirmRent;
 window.cancelRentRequest = cancelRentRequest;
+window.openPaymentModal = openPaymentModal;
+window.closePaymentModal = closePaymentModal;
+window.copyUpiId = copyUpiId;
+window.markPaymentSent = markPaymentSent;
