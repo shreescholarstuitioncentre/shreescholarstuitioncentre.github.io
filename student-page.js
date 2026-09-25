@@ -3,6 +3,7 @@
    LIVE STUDENT DATA
    SESSION + PROFILE + E-BOOK LIBRARY + PDF READER
    + RENT SUBJECTS (3 / 6 / 12 months -> saved in Google Sheet)
+   + PAY NOW (UPI payment + Payment Claim + Admin Email)
    ========================================================= */
 
 
@@ -1750,9 +1751,10 @@ async function cancelRentRequest() {
    - Chuni hui rentals ka total (₹) calculate karta hai
    - UPI ID, Student ID aur payment note dikhata hai, saath
      me "Pay via UPI App" link aur QR code
-   - Koi automatic payment verify nahi hota - student pay
-     karke SSTC ko batata hai, admin Rentals sheet me Status
-     ko "Active" karta hai (RENT_REQUIRES_APPROVAL flow)
+   - "I Have Paid" par PaymentClaimedOn Google Sheet me save
+     hota hai aur admin ko email notification jaati hai (ye
+     kaunse Student ID ne kaunse Subject/Plan ka payment
+     claim kiya hai, saath me Total Amount)
    ========================================================= */
 
 function getPendingRentalsList() {
@@ -2043,16 +2045,69 @@ function copyUpiId() {
     }
 }
 
-/* "I Have Paid" - koi backend call nahi, sirf reminder */
+/*
+ * "I Have Paid"
+ * ---------------------------------------------------------
+ * - Google Apps Script ko "claimpayment" action call karta
+ *   hai (rentalIds ek comma-separated list ke roop me)
+ * - Server Rentals sheet me PaymentClaimedOn column fill
+ *   karta hai aur admin ko email bhejta hai (Student ID,
+ *   Name, Subjects, Plans, Total Amount)
+ * - Koi automatic payment verify nahi hota - admin manually
+ *   Sheet me Status ko "Active" karega
+ */
 
-function markPaymentSent() {
+async function markPaymentSent() {
 
-    closePaymentModal();
+    const chosenIds = Array.from(sstcPaymentSelected);
 
-    showSstcToast(
-        "Thanks! Please wait for SSTC to confirm your payment and activate the subject.",
-        "success"
-    );
+    if (chosenIds.length === 0) {
+        showSstcToast("Please select at least one subject.", "info");
+        return;
+    }
+
+    const button = getRentEl("payConfirmBtn");
+    const previousText = button ? button.textContent : "";
+
+    if (button) {
+        button.disabled = true;
+        button.textContent = "Sending…";
+    }
+
+    try {
+
+        const result = await callRentalApi("claimpayment", {
+            rentalIds: chosenIds.join(",")
+        });
+
+        expectResultType(result, "payment_claimed");
+
+        applyRentalsResult(result);
+
+        refreshRentalUI();
+
+        closePaymentModal();
+
+        showSstcToast(
+            "✅ Payment claim sent! SSTC will confirm shortly and activate your subject.",
+            "success"
+        );
+
+        console.log("SSTC: ✅ Payment claim saved + admin email sent:", result);
+    }
+    catch (error) {
+
+        console.error("SSTC claim payment error:", error);
+
+        showSstcToast("Could not send claim: " + error.message, "info");
+    }
+    finally {
+
+        if (button) {
+            button.disabled = false;
+            button.textContent = previousText || "✅ I Have Paid";
+        }
+    }
 }
 
 
