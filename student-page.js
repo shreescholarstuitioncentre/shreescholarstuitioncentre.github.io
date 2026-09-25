@@ -69,7 +69,7 @@ const SSTC_PAYMENT_HELP = "Please contact SSTC administration to complete the pa
  * asli UPI ID daalne ke baad hi "Pay via UPI" button aur
  * QR code dikhenge.
  */
-const SSTC_UPI_ID = "";                      // jaise "sstc@okaxis"
+const SSTC_UPI_ID = "jeetbrother.alekhlife-3@okaxis";                      // jaise "sstc@okaxis"
 const SSTC_UPI_PAYEE_NAME = "Shree Scholars Tuition Center";
 const SSTC_SHOW_UPI_QR = true;
 
