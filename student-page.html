@@ -404,6 +404,18 @@
 
                 </div>
 
+                 <!-- ✅ NAYA: Pay Now button -->
+                <button
+                    type="button"
+                    id="payNowBtn"
+                    onclick="openPaymentModal()"
+                    hidden
+                    style="margin-top:14px;background:#16a34a;color:#fff;border:0;
+                           padding:10px 18px;border-radius:8px;font-weight:700;
+                           cursor:pointer;font-size:14px;">
+                    💳 Pay Now
+                </button>
+                            
             </div>
 
 
@@ -1059,7 +1071,90 @@
 
 </div>
 
+<!-- =========================================================
+     PAYMENT WINDOW (Pay Now - calculation + UPI + Student ID)
+========================================================= -->
 
+<div class="sstc-rent-modal" id="paymentModal" hidden>
+
+    <div class="sstc-rent-backdrop" onclick="closePaymentModal()"></div>
+
+    <div class="sstc-rent-dialog" role="dialog" aria-modal="true"
+         style="max-width:420px;">
+
+        <button type="button" class="sstc-rent-close sstc-pay-close"
+                onclick="closePaymentModal()" aria-label="Close">✕</button>
+
+        <div class="sstc-rent-head">
+            <div class="sstc-rent-head-icon">💳</div>
+            <div>
+                <h3>Pay Now</h3>
+                <p>Select subjects and complete payment via UPI.</p>
+            </div>
+        </div>
+
+        <!-- Pending rentals checkbox list -->
+        <div id="paymentList" style="display:flex;flex-direction:column;gap:8px;margin:14px 0;"></div>
+
+        <!-- Total -->
+        <div style="display:flex;justify-content:space-between;align-items:center;
+                    padding:12px 14px;background:#f1f5f9;border-radius:10px;
+                    font-weight:700;font-size:16px;margin-bottom:14px;">
+            <span>Total Amount</span>
+            <strong id="paymentTotal">₹0</strong>
+        </div>
+
+        <!-- UPI payment section -->
+        <div id="paySection" style="border-top:1px dashed #cbd5e1;padding-top:14px;">
+
+            <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;">
+                <span>Student ID</span>
+                <strong id="payStudentId">-</strong>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;">
+                <span>UPI ID</span>
+                <strong id="payUpiId">-</strong>
+                <button type="button" onclick="copyUpiId()"
+                        style="border:0;background:#e2e8f0;border-radius:6px;
+                               padding:2px 8px;cursor:pointer;font-size:12px;">Copy</button>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:12px;">
+                <span>Note</span>
+                <strong id="payNote">-</strong>
+            </div>
+
+            <div style="text-align:center;">
+                <img id="payQr" hidden alt="UPI QR Code"
+                     style="width:180px;height:180px;border-radius:8px;
+                            border:1px solid #e2e8f0;margin-bottom:12px;">
+            </div>
+
+            <a id="payUpiLink" href="#" target="_blank" rel="noopener"
+               style="display:block;text-align:center;background:#4f46e5;color:#fff;
+                      text-decoration:none;padding:11px;border-radius:8px;
+                      font-weight:700;margin-bottom:10px;">
+                📲 Pay via UPI App
+            </a>
+        </div>
+
+        <p id="payUpiEmpty" hidden style="font-size:13px;color:#b91c1c;">
+            UPI payment is not set up yet. Please contact SSTC administration.
+        </p>
+
+        <div class="sstc-rent-actions">
+            <button type="button" class="sstc-rent-btn secondary" onclick="closePaymentModal()">
+                Close
+            </button>
+            <button type="button" class="sstc-rent-btn primary"
+                    id="payConfirmBtn" onclick="markPaymentSent()">
+                ✅ I Have Paid
+            </button>
+        </div>
+
+    </div>
+</div>
 
 
 <!-- =========================================================
