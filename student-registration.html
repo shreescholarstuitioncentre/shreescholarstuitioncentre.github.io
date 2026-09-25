@@ -23,7 +23,7 @@
 
     <link
         rel="stylesheet"
-        href="student-page.css?v=2">
+        href="student-page.css?v=4">
 
 </head>
 
@@ -349,8 +349,8 @@
                 </h2>
 
                 <p>
-                    Tap a subject card to view its chapters. Use
-                    “+ Add to My Subjects” to build your own study list.
+                    Chapter 1 of every subject is free. Rent a
+                    subject for 3, 6 or 12 months to read the rest.
                 </p>
 
             </div>
@@ -385,7 +385,7 @@
 
                 <div class="study-panel-title">
 
-                    ⭐ My Study Subjects
+                    🔑 My Rented Subjects
 
                     <span
                         class="study-count"
@@ -418,6 +418,18 @@
                 </span>
 
 
+                <button
+                    type="button"
+                    class="pay-now-btn"
+                    id="payNowBtn"
+                    onclick="openPaymentModal()"
+                    hidden>
+
+                    💳 Pay Now
+
+                </button>
+
+
                 <div
                     class="subject-filter"
                     role="group"
@@ -438,7 +450,7 @@
                         data-filter="mine"
                         onclick="setSubjectFilter('mine')">
 
-                        My Subjects (<span id="filterMineCount">0</span>)
+                        My Rented (<span id="filterMineCount">0</span>)
 
                     </button>
 
@@ -490,8 +502,8 @@
             id="subjectFilterEmpty"
             hidden>
 
-            You have not added any subject yet. Switch to
-            “All Subjects” and tap “+ Add to My Subjects”.
+            You have not rented any subject yet. Switch to
+            “All Subjects” and tap “Rent This Subject”.
 
         </p>
 
@@ -839,13 +851,16 @@
         <div>
 
             <h3>
-                Want More E-Books?
+                Want More Subjects?
             </h3>
 
             <p>
-                Choose <strong>Rent</strong> or <strong>Buy</strong>
-                on any available e-book. Contact SSTC administration
-                to complete your order.
+                <strong>Rent</strong> any subject for
+                <strong>3 months (₹49)</strong>,
+                <strong>6 months (₹69)</strong> or
+                <strong>12 months (₹99)</strong>. Tap
+                “Rent This Subject” on a subject card above.
+                Contact SSTC administration to complete the payment.
             </p>
 
         </div>
@@ -921,10 +936,348 @@
 
 
 <!-- =========================================================
+     RENT WINDOW (plan chuno / rental details)
+========================================================= -->
+
+<div
+    class="sstc-rent-modal"
+    id="rentModal"
+    hidden>
+
+
+    <div
+        class="sstc-rent-backdrop"
+        onclick="closeRentModal()">
+    </div>
+
+
+    <div
+        class="sstc-rent-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="rentModalTitle">
+
+
+        <button
+            type="button"
+            class="sstc-rent-close"
+            onclick="closeRentModal()"
+            aria-label="Close">
+
+            ✕
+
+        </button>
+
+
+        <div class="sstc-rent-head">
+
+            <div class="sstc-rent-head-icon">
+                🔑
+            </div>
+
+            <div>
+
+                <h3 id="rentModalTitle">
+                    Rent Subject
+                </h3>
+
+                <p id="rentModalSubtitle">
+                    Choose how long you want to rent this subject.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <p
+            class="sstc-rent-success"
+            id="rentSuccess"
+            hidden>
+        </p>
+
+
+        <div
+            class="sstc-rent-plans"
+            id="rentPlans"
+            role="radiogroup"
+            aria-label="Rental plans">
+
+            <!-- JS creates 3 / 6 / 12 month plans -->
+
+        </div>
+
+
+        <div
+            class="sstc-rent-details"
+            id="rentDetails"
+            hidden>
+
+            <!-- JS creates rental details -->
+
+        </div>
+
+
+        <p
+            class="sstc-rent-note"
+            id="rentNote">
+        </p>
+
+
+        <p
+            class="sstc-rent-error"
+            id="rentError"
+            role="alert"
+            hidden>
+        </p>
+
+
+        <div class="sstc-rent-actions">
+
+            <button
+                type="button"
+                class="sstc-rent-btn secondary"
+                onclick="closeRentModal()">
+
+                Close
+
+            </button>
+
+            <button
+                type="button"
+                class="sstc-rent-btn danger"
+                id="rentCancelRequestBtn"
+                onclick="cancelRentRequest()"
+                hidden>
+
+                Cancel Request
+
+            </button>
+
+            <button
+                type="button"
+                class="sstc-rent-btn primary"
+                id="rentConfirmBtn"
+                onclick="confirmRent()"
+                disabled>
+
+                Choose a plan
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     PAY NOW WINDOW (pending rentals ka total + UPI payment)
+========================================================= -->
+
+<div
+    class="sstc-rent-modal"
+    id="paymentModal"
+    hidden>
+
+
+    <div
+        class="sstc-rent-backdrop"
+        onclick="closePaymentModal()">
+    </div>
+
+
+    <div
+        class="sstc-rent-dialog sstc-pay-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="paymentModalTitle">
+
+
+        <button
+            type="button"
+            class="sstc-rent-close sstc-pay-close"
+            onclick="closePaymentModal()"
+            aria-label="Close">
+
+            ✕
+
+        </button>
+
+
+        <div class="sstc-rent-head">
+
+            <div class="sstc-rent-head-icon">
+                💳
+            </div>
+
+            <div>
+
+                <h3 id="paymentModalTitle">
+                    Pay for Rentals
+                </h3>
+
+                <p>
+                    Select the subjects you want to pay for now.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="sstc-pay-list"
+            id="paymentList">
+
+            <!-- JS creates pending rental rows -->
+
+        </div>
+
+
+        <div class="sstc-pay-total-row">
+
+            <span>
+                Total Amount
+            </span>
+
+            <strong id="paymentTotal">
+                ₹0
+            </strong>
+
+        </div>
+
+
+        <div
+            class="sstc-pay-upi"
+            id="paySection">
+
+
+            <div class="sstc-pay-upi-row">
+
+                <span>
+                    UPI ID
+                </span>
+
+                <strong id="payUpiId">
+                    -
+                </strong>
+
+                <button
+                    type="button"
+                    class="sstc-pay-copy"
+                    onclick="copyUpiId()">
+
+                    Copy
+
+                </button>
+
+            </div>
+
+
+            <div class="sstc-pay-upi-row">
+
+                <span>
+                    Student ID
+                </span>
+
+                <strong id="payStudentId">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="sstc-pay-upi-row">
+
+                <span>
+                    Payment Note
+                </span>
+
+                <strong id="payNote">
+                    -
+                </strong>
+
+            </div>
+
+
+            <a
+                class="sstc-rent-btn primary sstc-pay-upi-btn"
+                id="payUpiLink"
+                href="#"
+                target="_blank"
+                rel="noopener">
+
+                📲 Pay via UPI App
+
+            </a>
+
+
+            <img
+                class="sstc-pay-qr"
+                id="payQr"
+                alt="UPI QR Code"
+                hidden>
+
+
+            <p class="sstc-rent-note">
+
+                Scan the QR code or tap “Pay via UPI App” on your phone
+                (Google Pay / PhonePe / Paytm). Please keep the payment
+                note above so SSTC can match your payment.
+
+            </p>
+
+        </div>
+
+
+        <p
+            class="sstc-pay-upi-empty"
+            id="payUpiEmpty"
+            hidden>
+
+            UPI payment is not set up yet. Please contact SSTC
+            administration to complete the payment.
+
+        </p>
+
+
+        <div class="sstc-rent-actions">
+
+            <button
+                type="button"
+                class="sstc-rent-btn secondary"
+                onclick="closePaymentModal()">
+
+                Close
+
+            </button>
+
+            <button
+                type="button"
+                class="sstc-rent-btn primary"
+                id="payConfirmBtn"
+                onclick="markPaymentSent()">
+
+                ✓ I Have Paid
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
      JS
 ========================================================= -->
 
-<script src="student-page.js?v=2"></script>
+<script src="student-page.js?v=4"></script>
 
 </body>
 
