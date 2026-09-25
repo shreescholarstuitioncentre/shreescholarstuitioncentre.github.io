@@ -42,7 +42,7 @@ let sstcPaymentReturnFocus = null;
    page par "setup incomplete" ka warning dikhega.
    ========================================================= */
 
-const SSTC_STUDENT_API_URL = "";
+const SSTC_STUDENT_API_URL = "https://script.google.com/macros/s/AKfycbzSPSlkswNdmRtJkZ0Uq3Et5hAPIBorvbgVoQvZD4e0Ed36TwPzk7bh-xSAWmdFpmqynw/exec";
 
 
 /* =========================================================
