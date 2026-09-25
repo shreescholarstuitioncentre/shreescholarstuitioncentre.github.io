@@ -2771,6 +2771,50 @@ body::before {
 }
 
 
+/* --- "Pay Now" button (pending rentals ka total) --- */
+
+.pay-now-btn {
+
+    padding: 10px 16px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: linear-gradient(135deg, #16a34a, #15803d);
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 16px rgba(22, 163, 74, 0.28);
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+
+.pay-now-btn:hover {
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 9px 20px rgba(22, 163, 74, 0.34);
+}
+
+
+.pay-now-btn[hidden] {
+
+    display: none !important;
+}
+
+
 /* --- Status (loading / error / setup incomplete) --- */
 
 .save-status {
@@ -3217,6 +3261,30 @@ body::before {
     background: #f1f5f9;
 
     color: #64748b;
+}
+
+
+/* --- "FREE PREVIEW" badge on chapter 1 --- */
+
+.chapter-free-badge {
+
+    display: inline-block;
+
+    margin-top: 6px;
+
+    padding: 2px 8px;
+
+    border-radius: 999px;
+
+    background: #dcfce7;
+
+    color: #087b43;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.4px;
 }
 
 
@@ -3822,6 +3890,352 @@ body.sstc-modal-open {
     .sstc-rent-plan {
 
         transition: none;
+    }
+
+}
+
+
+/* =========================================================
+   ★ NEW ★
+   SSTC PAY NOW  (pending rentals ka total + UPI payment)
+   ---------------------------------------------------------
+   Ye poora block naya hai - upar ka CSS untouched.
+   ========================================================= */
+
+.sstc-pay-dialog {
+
+    max-width: 420px;
+}
+
+
+/* --- Pending rentals checkbox list --- */
+
+.sstc-pay-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    max-height: 220px;
+
+    overflow-y: auto;
+
+    padding-right: 2px;
+}
+
+
+.sstc-pay-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 10px 12px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    background: #f8fafc;
+
+    cursor: pointer;
+}
+
+
+.sstc-pay-row-main {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+}
+
+
+.sstc-pay-row-main input[type="checkbox"] {
+
+    width: 17px;
+
+    height: 17px;
+
+    flex-shrink: 0;
+
+    accent-color: #16a34a;
+
+    cursor: pointer;
+}
+
+
+.sstc-pay-row-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+
+.sstc-pay-row-text strong {
+
+    color: #082d5b;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.sstc-pay-row-text small {
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+.sstc-pay-row-price {
+
+    flex-shrink: 0;
+
+    color: #0a58b5;
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+
+/* --- Total row --- */
+
+.sstc-pay-total-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: 14px;
+
+    padding: 12px 14px;
+
+    border-radius: 12px;
+
+    background: #eef4ff;
+
+    color: #062957;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.sstc-pay-total-row strong {
+
+    font-size: 20px;
+
+    color: #0a58b5;
+}
+
+
+/* --- UPI section --- */
+
+.sstc-pay-upi {
+
+    margin-top: 16px;
+
+    padding: 14px;
+
+    border: 1px solid #dbe6f5;
+
+    border-radius: 14px;
+
+    background: #fbfdff;
+}
+
+
+.sstc-pay-upi[hidden] {
+
+    display: none !important;
+}
+
+
+.sstc-pay-upi-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 8px 0;
+
+    border-bottom: 1px dashed #e2e8f0;
+
+    font-size: 12px;
+}
+
+
+.sstc-pay-upi-row:last-of-type {
+
+    border-bottom: none;
+}
+
+
+.sstc-pay-upi-row > span:first-child {
+
+    flex-shrink: 0;
+
+    color: #64748b;
+}
+
+
+.sstc-pay-upi-row strong {
+
+    flex: 1;
+
+    min-width: 0;
+
+    margin-left: 10px;
+
+    color: #082d5b;
+
+    font-size: 13px;
+
+    text-align: right;
+
+    word-break: break-word;
+}
+
+
+.sstc-pay-copy {
+
+    flex-shrink: 0;
+
+    padding: 5px 10px;
+
+    border: 1px solid #2563eb;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #2563eb;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.sstc-pay-copy:hover {
+
+    background: #eaf2ff;
+}
+
+
+.sstc-pay-upi-btn {
+
+    display: block;
+
+    width: 100%;
+
+    margin-top: 14px;
+
+    padding: 12px;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    font-size: 13px;
+}
+
+
+.sstc-pay-qr {
+
+    display: block;
+
+    width: 150px;
+
+    height: 150px;
+
+    margin: 14px auto 0;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    padding: 8px;
+}
+
+
+.sstc-pay-qr[hidden] {
+
+    display: none !important;
+}
+
+
+.sstc-pay-upi-empty {
+
+    margin-top: 16px;
+
+    padding: 12px 14px;
+
+    border: 1px dashed #cbd5e1;
+
+    border-radius: 12px;
+
+    background: #f8fafc;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    text-align: center;
+}
+
+
+.sstc-pay-upi-empty[hidden] {
+
+    display: none !important;
+}
+
+
+@media (max-width: 520px) {
+
+    .sstc-pay-dialog {
+
+        max-width: 100%;
+    }
+
+    .sstc-pay-list {
+
+        max-height: 180px;
     }
 
 }
