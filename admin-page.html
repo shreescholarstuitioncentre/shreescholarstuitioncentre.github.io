@@ -415,6 +415,283 @@
 
 
     <!-- =================================================
+         RENTAL MANAGEMENT  (NEW SECTION)
+         Rentals sheet ka live data + Approve / Reject / Delete
+    ================================================== -->
+
+    <section class="admin-section">
+
+
+        <div class="section-heading">
+
+
+            <div>
+
+                <h2>
+                    🔑 Rental Management
+                </h2>
+
+                <p>
+                    Live subject-rental requests directly from SSTC Google Sheets
+                </p>
+
+            </div>
+
+
+            <div class="table-actions">
+
+                <button
+                    type="button"
+                    class="refresh-btn"
+                    id="refreshRentalsBtn"
+                >
+                    🔄 Refresh
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- RENTAL MINI STATS -->
+
+        <div
+            class="stats-grid"
+            style="margin-bottom:20px;"
+        >
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+                    🔑
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Rentals
+                    </span>
+
+                    <strong id="totalRentals">
+                        0
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+                    ⏳
+                </div>
+
+                <div>
+
+                    <span>
+                        Pending Approval
+                    </span>
+
+                    <strong id="pendingRentals">
+                        0
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+                    ✅
+                </div>
+
+                <div>
+
+                    <span>
+                        Active Rentals
+                    </span>
+
+                    <strong id="activeRentals">
+                        0
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+                    💰
+                </div>
+
+                <div>
+
+                    <span>
+                        Pending Amount (₹)
+                    </span>
+
+                    <strong id="pendingRentalAmount">
+                        0
+                    </strong>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+
+        <!-- LOADING -->
+
+        <div
+            id="rentalsLoadingBox"
+            class="loading-box"
+        >
+
+            <div class="loader"></div>
+
+            <span>
+                Loading rental data from Google Sheets...
+            </span>
+
+        </div>
+
+
+
+        <!-- ERROR -->
+
+        <div
+            id="rentalsErrorBox"
+            class="error-box"
+            style="display:none;"
+        >
+
+        </div>
+
+
+
+        <!-- TABLE -->
+
+        <div class="table-wrapper">
+
+            <table
+                class="student-table"
+                id="rentalTable"
+            >
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>
+                            Rental ID
+                        </th>
+
+                        <th>
+                            Student ID
+                        </th>
+
+                        <th>
+                            Student Name
+                        </th>
+
+                        <th>
+                            Class
+                        </th>
+
+                        <th>
+                            Subject
+                        </th>
+
+                        <th>
+                            Plan
+                        </th>
+
+                        <th>
+                            Price (₹)
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Payment
+                        </th>
+
+                        <th>
+                            Requested On
+                        </th>
+
+                        <th>
+                            Start Date
+                        </th>
+
+                        <th>
+                            Expiry Date
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody
+                    id="rentalTableBody"
+                >
+
+                </tbody>
+
+
+            </table>
+
+        </div>
+
+
+
+        <!-- EMPTY -->
+
+        <div
+            id="rentalsEmptyBox"
+            class="empty-box"
+            style="display:none;"
+        >
+
+            <div>
+                🔑
+            </div>
+
+            <h3>
+                No Rental Records Found
+            </h3>
+
+            <p>
+                Google Sheet में अभी कोई rental record नहीं मिला।
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
          LOGOUT
     ================================================== -->
 
