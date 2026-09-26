@@ -101,6 +101,52 @@ document.addEventListener(
 
 
         /* ---------------------------------------------
+           SHOW INCOME (Custom Date Range) BUTTON
+        --------------------------------------------- */
+
+        const showIncomeRangeBtn =
+            document.getElementById(
+                "showIncomeRangeBtn"
+            );
+
+        if (showIncomeRangeBtn) {
+
+            showIncomeRangeBtn.addEventListener(
+                "click",
+                function () {
+
+                    showIncomeForRange();
+
+                }
+            );
+
+        }
+
+
+        /* ---------------------------------------------
+           CALCULATE TAX BUTTON
+        --------------------------------------------- */
+
+        const calculateTaxBtn =
+            document.getElementById(
+                "calculateTaxBtn"
+            );
+
+        if (calculateTaxBtn) {
+
+            calculateTaxBtn.addEventListener(
+                "click",
+                function () {
+
+                    calculateTaxEstimate();
+
+                }
+            );
+
+        }
+
+
+        /* ---------------------------------------------
            ADMIN SESSION CHECK
         --------------------------------------------- */
 
@@ -1401,6 +1447,26 @@ async function loadRentals() {
         }
 
 
+        /*
+           Agar Apps Script ka NAYA deployment nahi banaya gaya,
+           to purana code "getallrentals" ko unknown action samajh
+           kar {success:true, type:"api"} laut a deta hai - error
+           to nahi aata, lekin data.rentals bhi nahi hota. Isliye
+           "type" bhi check karte hain taaki saaf error dikhe.
+        */
+
+        if (
+            data.type !== "allrentals"
+        ) {
+
+            throw new Error(
+                "Apps Script is running an OLD version (Rental Management not found). " +
+                "Please go to Apps Script → Deploy → Manage deployments → Edit → New version → Deploy."
+            );
+
+        }
+
+
         rentals =
             Array.isArray(
                 data.rentals
@@ -1433,6 +1499,9 @@ async function loadRentals() {
         updateRentalStats();
 
 
+        updateIncomeReport();
+
+
         showDashboardMessage(
             "✅ Rentals loaded — " +
             rentals.length +
@@ -1460,6 +1529,9 @@ async function loadRentals() {
 
 
         updateRentalStats();
+
+
+        updateIncomeReport();
 
 
         showRentalsError(
@@ -2116,6 +2188,9 @@ async function deleteRental(
         updateRentalStats();
 
 
+        updateIncomeReport();
+
+
         if (
             rentals.length === 0
         ) {
@@ -2236,6 +2311,358 @@ function updateRentalStats() {
         pendingAmount
     );
 
+}
+
+
+/* =====================================================
+   =====================================================
+   INCOME & TAX REPORT SECTION
+   ---------------------------------------------------------
+   "Income" = rentals jinki Status "Active" ya "Expired" hai
+   (matlab payment admin ne confirm/approve kar diya hai).
+   "Pending" wali rentals ko income nahi, "Pending Amount"
+   me count kiya jaata hai (abhi tak paisa confirm nahi hua).
+
+   Income ki date = rental.startDate (jab admin ne approve
+   kiya, StartDate set hoti hai) - agar wo na ho to
+   rental.requestedOn use hota hai (fallback).
+   =====================================================
+===================================================== */
+
+/*
+ * Ek rental ki "income date" nikalta hai - StartDate ko
+ * priority (jab admin ne payment confirm/approve kiya),
+ * warna RequestedOn.
+ */
+
+function getIncomeDate(rental) {
+
+    const raw =
+        (rental && rental.startDate) ||
+        (rental && rental.requestedOn) ||
+        "";
+
+    if (!raw) {
+        return null;
+    }
+
+    const date = new Date(raw);
+
+    return isNaN(date.getTime()) ? null : date;
+}
+
+/* Kya ye rental "income" ginne layak hai (Active ya Expired)? */
+
+function isIncomeRental(rental) {
+
+    const status =
+        String(
+            (rental && rental.status) || ""
+        )
+        .trim()
+        .toLowerCase();
+
+    return status === "active" || status === "expired";
+}
+
+/* Do dates same calendar din ki hain kya? (local time) */
+
+function isSameLocalDay(a, b) {
+
+    return (
+        a.getFullYear() === b.getFullYear() &&
+        a.getMonth() === b.getMonth() &&
+        a.getDate() === b.getDate()
+    );
+}
+
+/* Diye gaye date ke calendar-week ka Monday (00:00) nikalta hai */
+
+function getMondayOfWeek(date) {
+
+    const d = new Date(date);
+    const day = d.getDay(); // 0=Sunday .. 6=Saturday
+
+    const diffToMonday =
+        (day === 0) ? -6 : (1 - day);
+
+    d.setDate(d.getDate() + diffToMonday);
+    d.setHours(0, 0, 0, 0);
+
+    return d;
+}
+
+/*
+ * Today / This Week / This Month / This Year / Pending -
+ * sab ek saath calculate karke stat cards update karta hai.
+ * Ye rentals[] (jo already loadRentals() se load ho chuka
+ * hota hai) par kaam karta hai - koi extra server call nahi.
+ */
+
+function updateIncomeReport() {
+
+    if (!Array.isArray(rentals)) {
+        return;
+    }
+
+    const now = new Date();
+    const monday = getMondayOfWeek(now);
+
+    let todayTotal = 0;
+    let weekTotal = 0;
+    let monthTotal = 0;
+    let yearTotal = 0;
+    let pendingTotal = 0;
+
+    rentals.forEach(function (rental) {
+
+        const price = Number(rental.price) || 0;
+
+        const status =
+            String(rental.status || "")
+                .trim()
+                .toLowerCase();
+
+        if (status === "pending") {
+
+            pendingTotal += price;
+            return;
+        }
+
+        if (!isIncomeRental(rental)) {
+            return;
+        }
+
+        const incomeDate = getIncomeDate(rental);
+
+        if (!incomeDate) {
+            return;
+        }
+
+        if (isSameLocalDay(incomeDate, now)) {
+            todayTotal += price;
+        }
+
+        if (incomeDate >= monday && incomeDate <= now) {
+            weekTotal += price;
+        }
+
+        if (
+            incomeDate.getFullYear() === now.getFullYear() &&
+            incomeDate.getMonth() === now.getMonth()
+        ) {
+            monthTotal += price;
+        }
+
+        if (incomeDate.getFullYear() === now.getFullYear()) {
+            yearTotal += price;
+        }
+    });
+
+    setText("incomeToday", "₹" + todayTotal);
+    setText("incomeWeek", "₹" + weekTotal);
+    setText("incomeMonth", "₹" + monthTotal);
+    setText("incomeYear", "₹" + yearTotal);
+    setText("incomePending", "₹" + pendingTotal);
+
+    /*
+       Jab tak admin koi custom date range nahi chunta, tax
+       calculator "This Year" ke total ko default base bana
+       kar rakhta hai.
+    */
+
+    lastRangeIncomeTotal = yearTotal;
+    lastRangeIncomeLabel = "This Year";
+}
+
+/* Tax calculator ka "base" amount - custom range ya (default) This Year */
+
+let lastRangeIncomeTotal = 0;
+let lastRangeIncomeLabel = "This Year";
+
+/*
+ * "Show Income" button - From/To date choose karke us range
+ * ki gross income, transaction count, aur poori list dikhata
+ * hai. Isi range ka total tax calculator ka base ban jaata
+ * hai jab tak admin dusra range na chune.
+ */
+
+function showIncomeForRange() {
+
+    const fromInput = document.getElementById("incomeFromDate");
+    const toInput = document.getElementById("incomeToDate");
+
+    const fromValue = fromInput ? fromInput.value : "";
+    const toValue = toInput ? toInput.value : "";
+
+    if (!fromValue || !toValue) {
+
+        alert("Please choose both 'From' and 'To' dates.");
+        return;
+    }
+
+    const fromDate = new Date(fromValue + "T00:00:00");
+    const toDate = new Date(toValue + "T23:59:59");
+
+    if (fromDate > toDate) {
+
+        alert("'From' date 'To' date ke baad nahi ho sakti.");
+        return;
+    }
+
+    const matched = (Array.isArray(rentals) ? rentals : [])
+        .filter(function (rental) {
+
+            if (!isIncomeRental(rental)) {
+                return false;
+            }
+
+            const incomeDate = getIncomeDate(rental);
+
+            if (!incomeDate) {
+                return false;
+            }
+
+            return incomeDate >= fromDate && incomeDate <= toDate;
+        });
+
+    const total = matched.reduce(function (sum, rental) {
+        return sum + (Number(rental.price) || 0);
+    }, 0);
+
+    setText("rangeIncomeAmount", "₹" + total);
+    setText("rangeIncomeCount", matched.length);
+
+    const resultBox = document.getElementById("incomeRangeResult");
+
+    if (resultBox) {
+        resultBox.style.display = "block";
+    }
+
+    /* Table me sabse nayi entry sabse upar */
+
+    matched.sort(function (a, b) {
+
+        const aDate = getIncomeDate(a);
+        const bDate = getIncomeDate(b);
+
+        return (bDate ? bDate.getTime() : 0) - (aDate ? aDate.getTime() : 0);
+    });
+
+    const tbody = document.getElementById("incomeRangeTableBody");
+
+    if (tbody) {
+
+        tbody.innerHTML = "";
+
+        matched.forEach(function (rental, index) {
+
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+
+                <td>
+                    ${index + 1}
+                </td>
+
+                <td class="date-cell">
+                    ${escapeHTML(formatAdminDate(rental.startDate || rental.requestedOn))}
+                </td>
+
+                <td>
+                    <strong class="student-id">
+                        ${escapeHTML(rental.studentId || "")}
+                    </strong>
+                </td>
+
+                <td>
+                    ${escapeHTML(rental.studentName || "")}
+                </td>
+
+                <td>
+                    ${escapeHTML(rental.subject || "")}
+                </td>
+
+                <td>
+                    ${escapeHTML(rental.plan || "")}
+                </td>
+
+                <td>
+                    ₹${escapeHTML(String(rental.price || 0))}
+                </td>
+
+            `;
+
+            tbody.appendChild(row);
+        });
+    }
+
+    /* Ab tax calculator isi chuni hui range ke total ko base banayega */
+
+    lastRangeIncomeTotal = total;
+    lastRangeIncomeLabel = fromValue + " to " + toValue;
+}
+
+/*
+ * GST + Income Tax estimator.
+ * ---------------------------------------------------------
+ * "Prices already GST-inclusive" checked (default):
+ *     GST Amount   = Gross × Rate / (100 + Rate)   (reverse calc)
+ *     Taxable Value = Gross − GST Amount
+ *
+ * Checkbox unchecked (prices GST-exclusive, GST alag se lagta hai):
+ *     GST Amount   = Gross × Rate / 100             (forward calc)
+ *     Taxable Value = Gross (GST alag se add hoga, income me nahi)
+ *
+ * Income Tax hamesha Taxable Value par lagta hai (GST hata kar),
+ * kyunki income tax turnover par nahi, net profit/income par
+ * lagta hai. Ye sirf ek estimate hai - CA se confirm zaroor karein.
+ */
+
+function calculateTaxEstimate() {
+
+    const gstRateInput = document.getElementById("gstRateInput");
+    const incomeTaxRateInput = document.getElementById("incomeTaxRateInput");
+    const gstInclusiveCheckbox = document.getElementById("gstInclusiveCheckbox");
+
+    const gstRate = Number(gstRateInput ? gstRateInput.value : 0) || 0;
+    const incomeTaxRate = Number(incomeTaxRateInput ? incomeTaxRateInput.value : 0) || 0;
+    const gstInclusive = gstInclusiveCheckbox ? gstInclusiveCheckbox.checked : true;
+
+    const gross = lastRangeIncomeTotal || 0;
+
+    let gstAmount = 0;
+    let taxableValue = gross;
+
+    if (gstInclusive) {
+
+        gstAmount = (gross * gstRate) / (100 + gstRate);
+        taxableValue = gross - gstAmount;
+    }
+    else {
+
+        gstAmount = (gross * gstRate) / 100;
+        taxableValue = gross;
+    }
+
+    const incomeTaxAmount = (taxableValue * incomeTaxRate) / 100;
+    const netIncome = taxableValue - incomeTaxAmount;
+
+    setText(
+        "taxGross",
+        "₹" + gross.toFixed(2) + " (" + lastRangeIncomeLabel + ")"
+    );
+
+    setText("taxGst", "₹" + gstAmount.toFixed(2));
+    setText("taxTaxable", "₹" + taxableValue.toFixed(2));
+    setText("taxIncomeTax", "₹" + incomeTaxAmount.toFixed(2));
+    setText("taxNet", "₹" + netIncome.toFixed(2));
+
+    const box = document.getElementById("taxResultBox");
+
+    if (box) {
+        box.style.display = "block";
+    }
 }
 
 
