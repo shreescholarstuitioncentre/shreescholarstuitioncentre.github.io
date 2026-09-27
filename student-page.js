@@ -4,6 +4,8 @@
    SESSION + PROFILE + E-BOOK LIBRARY + PDF READER
    + RENT SUBJECTS (3 / 6 / 12 months -> saved in Google Sheet)
    + PAY NOW (UPI payment + payment claim + admin email)
+   + SINGLE-DEVICE LOGIN ENFORCEMENT (2-hour auto-logout,
+     heartbeat check, auto-logout on browser/tab close)
    ========================================================= */
 
 
@@ -15,6 +17,13 @@ let studentData = null;
 let sstcRedirecting = false;
 let sstcLoggingOut = false;
 let sstcZoom = 100;
+
+/* --- session enforcement state --- */
+const SSTC_SESSION_MAX_DURATION_MS = 2 * 60 * 60 * 1000;  // 2 ghante
+const SSTC_SESSION_HEARTBEAT_MS = 45 * 1000;               // har 45 second me server check
+let sstcSessionHeartbeatTimer = null;
+let sstcSessionExpiryTimer = null;
+let sstcSessionEnding = false;   // duplicate "forced logout" na ho isliye guard
 
 /* --- rent state --- */
 let sstcRentals = [];               // server se aayi rentals (Pending / Active / Expired)
@@ -95,6 +104,8 @@ let sstcRentPlans = SSTC_RENT_PLANS.slice();
 const SSTC_SESSION_LOGIN = "sstcStudentLoggedIn";
 const SSTC_SESSION_DATA = "sstcStudentData";
 const SSTC_SESSION_LOGIN_TIME = "sstcStudentLoginTime";
+const SSTC_SESSION_TOKEN = "sstcSessionToken";
+const SSTC_SESSION_START_MS = "sstcSessionStartMs";
 const SSTC_CURRENT_BOOK = "sstcCurrentBook";
 const SSTC_CURRENT_CHAPTER = "sstcCurrentChapter";
 const SSTC_CURRENT_PAGE = "sstcCurrentPage";
@@ -340,7 +351,189 @@ function loadLoggedInStudent() {
         sessionStorage.setItem(SSTC_SESSION_LOGIN_TIME, loginTime);
     }
 
+    setupSessionEnforcement();
+
     renderStudentData();
+}
+
+
+/* =========================================================
+   SINGLE-DEVICE SESSION ENFORCEMENT
+   ---------------------------------------------------------
+   - sstcSessionStartMs: is TAB me student-page.js pehli baar
+     kab load hua, uska timestamp - isi se 2-ghante ka local
+     timer chalta hai (turant/proactive logout, bina server
+     ka wait kiye).
+   - Har ~45 second me server se "checksession" (heartbeat)
+     call hota hai - agar session kahin aur login hone ki
+     wajah se ya 2 ghante puri hone ki wajah se invalid ho
+     gayi, turant forced logout hota hai.
+   - Browser/tab band hone par (beforeunload/pagehide)
+     navigator.sendBeacon() se "endsession" call hota hai,
+     taaki slot turant free ho (2 ghante wait na karna pade).
+   ========================================================= */
+
+function setupSessionEnforcement() {
+
+    /* Is tab me session kab shuru hua, wo anchor sirf ek baar set hota hai */
+
+    if (!sessionStorage.getItem(SSTC_SESSION_START_MS)) {
+        sessionStorage.setItem(SSTC_SESSION_START_MS, String(Date.now()));
+    }
+
+    startSessionExpiryTimer();
+    startSessionHeartbeat();
+    setupSessionEndOnClose();
+}
+
+/* Client-side 2-ghante ka absolute timer (server heartbeat ka wait kiye bina turant logout) */
+
+function startSessionExpiryTimer() {
+
+    if (sstcSessionExpiryTimer) {
+        clearTimeout(sstcSessionExpiryTimer);
+    }
+
+    const startMs = Number(sessionStorage.getItem(SSTC_SESSION_START_MS)) || Date.now();
+    const elapsed = Date.now() - startMs;
+    const remaining = Math.max(0, SSTC_SESSION_MAX_DURATION_MS - elapsed);
+
+    sstcSessionExpiryTimer = setTimeout(function () {
+
+        forceSessionLogout("Aapka session 2 ghante poore hone ke baad khatam ho gaya hai. Kripya dobara login karein.");
+
+    }, remaining);
+}
+
+/* Server se har ~45 second me poochta hai: "kya meri session abhi bhi valid hai?" */
+
+function startSessionHeartbeat() {
+
+    if (sstcSessionHeartbeatTimer) {
+        clearInterval(sstcSessionHeartbeatTimer);
+    }
+
+    sstcSessionHeartbeatTimer = setInterval(function () {
+
+        checkSessionHeartbeat();
+
+    }, SSTC_SESSION_HEARTBEAT_MS);
+}
+
+async function checkSessionHeartbeat() {
+
+    if (!SSTC_STUDENT_API_URL || sstcSessionEnding) {
+        return;
+    }
+
+    const sessionToken = sessionStorage.getItem(SSTC_SESSION_TOKEN);
+
+    if (!sessionToken) {
+
+        /*
+           Purani session jo is update se pehle bani thi, uske
+           paas token nahi hoga - is case me sirf client-side
+           2-ghante wale timer par depend karte hain, server
+           heartbeat skip kar dete hain.
+        */
+
+        return;
+    }
+
+    try {
+
+        const result = await callRentalApi("checksession", { sessionToken: sessionToken });
+
+        /* callRentalApi already !result.success par throw karta hai */
+
+        void result;
+    }
+    catch (error) {
+
+        const message = String(error && error.message || "");
+
+        if (
+            message.indexOf("logged in from another device") > -1 ||
+            message.indexOf("expired after 2 hours") > -1 ||
+            message.indexOf("Session not found") > -1
+        ) {
+
+            forceSessionLogout(message);
+        }
+        else {
+
+            /* Network glitch waghera - agli heartbeat me phir try hoga */
+            console.warn("SSTC session heartbeat warning:", message);
+        }
+    }
+}
+
+/* Forced logout - alert dikha kar turant access page par bhej deta hai */
+
+function forceSessionLogout(message) {
+
+    if (sstcSessionEnding) {
+        return;
+    }
+
+    sstcSessionEnding = true;
+
+    if (sstcSessionHeartbeatTimer) {
+        clearInterval(sstcSessionHeartbeatTimer);
+    }
+
+    if (sstcSessionExpiryTimer) {
+        clearTimeout(sstcSessionExpiryTimer);
+    }
+
+    clearStudentSession();
+
+    alert(
+        "🔒 " +
+        (message || "Aapka session khatam ho gaya hai. Kripya dobara login karein.")
+    );
+
+    window.location.replace("sstc-access.html");
+}
+
+/*
+ * Browser/tab band hone par - navigator.sendBeacon() use
+ * karte hain kyunki normal fetch() unload ke waqt reliably
+ * complete nahi hota, lekin sendBeacon guaranteed bhejta hai.
+ */
+
+function setupSessionEndOnClose() {
+
+    const sendEndSessionBeacon = function () {
+
+        if (!SSTC_STUDENT_API_URL || !navigator.sendBeacon) {
+            return;
+        }
+
+        const studentId = getStudentValue(["studentId", "id"], "");
+        const sessionToken = sessionStorage.getItem(SSTC_SESSION_TOKEN);
+
+        if (!studentId || !sessionToken) {
+            return;
+        }
+
+        const url =
+            SSTC_STUDENT_API_URL +
+            (SSTC_STUDENT_API_URL.indexOf("?") > -1 ? "&" : "?") +
+            "action=endsession" +
+            "&studentId=" + encodeURIComponent(studentId) +
+            "&sessionToken=" + encodeURIComponent(sessionToken);
+
+        try {
+            navigator.sendBeacon(url);
+        }
+        catch (error) {
+            /* ignore - browser band ho hi raha hai */
+        }
+    };
+
+    window.addEventListener("pagehide", sendEndSessionBeacon);
+    window.addEventListener("beforeunload", sendEndSessionBeacon);
 }
 
 
@@ -3262,6 +3455,8 @@ function clearStudentSession() {
         sessionStorage.removeItem(SSTC_SESSION_LOGIN);
         sessionStorage.removeItem(SSTC_SESSION_DATA);
         sessionStorage.removeItem(SSTC_SESSION_LOGIN_TIME);
+        sessionStorage.removeItem(SSTC_SESSION_TOKEN);
+        sessionStorage.removeItem(SSTC_SESSION_START_MS);
         sessionStorage.removeItem(SSTC_CURRENT_BOOK);
         sessionStorage.removeItem(SSTC_CURRENT_CHAPTER);
         sessionStorage.removeItem(SSTC_CURRENT_PAGE);
@@ -3311,6 +3506,39 @@ function studentLogout(event) {
     }
 
     sstcLoggingOut = true;
+
+    if (sstcSessionHeartbeatTimer) {
+        clearInterval(sstcSessionHeartbeatTimer);
+    }
+
+    if (sstcSessionExpiryTimer) {
+        clearTimeout(sstcSessionExpiryTimer);
+    }
+
+    /* Server ko bata do ki session khatam ho rahi hai (best-effort, blocking nahi karte) */
+
+    try {
+
+        const studentId = getStudentValue(["studentId", "id"], "");
+        const sessionToken = sessionStorage.getItem(SSTC_SESSION_TOKEN);
+
+        if (SSTC_STUDENT_API_URL && studentId && sessionToken) {
+
+            const url =
+                SSTC_STUDENT_API_URL +
+                (SSTC_STUDENT_API_URL.indexOf("?") > -1 ? "&" : "?") +
+                "action=endsession" +
+                "&studentId=" + encodeURIComponent(studentId) +
+                "&sessionToken=" + encodeURIComponent(sessionToken);
+
+            fetch(url, { method: "GET", cache: "no-store", keepalive: true }).catch(function () {
+                /* ignore - hum aage bhi badh rahe hain */
+            });
+        }
+    }
+    catch (error) {
+        console.warn("SSTC end-session warning:", error);
+    }
 
     const pdfFrame = document.getElementById("pdfFrame");
 
