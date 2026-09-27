@@ -1,1284 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <meta name="googlebot" content="noindex,nofollow,noarchive">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <title>SSTC | Student Registration</title>
 
-    <meta
-        name="robots"
-        content="noindex,nofollow,noarchive">
-
-    <meta
-        name="googlebot"
-        content="noindex,nofollow,noarchive">
-
-    <title>
-        SSTC | Student E-Book Portal
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="student-page.css?v=4">
+    <link rel="stylesheet" href="student-registration.css">
 
 </head>
 
-
-<body
-    oncontextmenu="return false;"
-    ondragstart="return false;"
-    onselectstart="return false;">
-
+<body>
 
 <!-- =========================================================
      HEADER
 ========================================================= -->
 
-<header class="sstc-header">
+<header id="mainHeader">
 
-    <div class="header-container">
+    <a href="index.html" class="logo-link">
+        <img src="Logo.png" alt="Shree Scholars Tuition Centre Logo">
+    </a>
 
+    <div class="nav-text">
+        <h1>Shree Scholars Tuition Centre</h1>
+        <p>From Foundation to Future</p>
+    </div>
 
-        <!-- BRAND -->
+    <div class="header-buttons">
 
-        <div class="brand-area">
+        <a href="index.html" class="header-btn home-btn">🏠 Home</a>
 
-            <div class="brand-logo">
-
-                <img
-                    src="Logo.png"
-                    alt="SSTC Logo"
-                    draggable="false">
-
-            </div>
-
-
-            <div class="brand-text">
-
-                <h1>
-                    SHREE SCHOLARS
-                    <span>
-                        TUITION CENTER
-                    </span>
-                </h1>
-
-                <p>
-                    From Foundation to Future
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- NAV -->
-
-        <nav class="main-nav">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a
-                href="student-page.html"
-                class="active">
-
-                Student Portal
-
-            </a>
-
-            <button
-                type="button"
-                class="logout-btn"
-                onclick="studentLogout(event)">
-            
-                🚪 Logout
-            
-            </button>
-
-        </nav>
+        <a href="sstc-access.html" class="header-btn contact-btn">🔐 Student Login</a>
 
     </div>
 
 </header>
 
 
-
 <!-- =========================================================
-     MAIN PAGE
+     REGISTRATION PAGE
 ========================================================= -->
 
-<main class="student-page">
+<main class="registration-page">
 
+    <div class="registration-container">
 
-    <!-- =====================================================
-         PAGE TITLE
-    ====================================================== -->
+        <!-- HEADING -->
 
-    <section class="portal-title">
+        <div class="registration-heading">
 
-        <div>
+            <div class="registration-icon">🎓</div>
 
-            <span class="portal-badge">
-                🎓 STUDENT PORTAL
-            </span>
+            <h2>Student Registration</h2>
 
-            <h2>
-                My E-Book Library
-            </h2>
+            <p>Create your SSTC Student Portal account</p>
 
-            <p>
-                Access your purchased and rented e-books securely.
-            </p>
+            <span>Your Student ID and Password will be generated automatically after registration</span>
 
         </div>
 
 
-        <div class="security-badge">
+        <!-- FORM CARD -->
 
-            🔐 Protected Reading
+        <div class="registration-card">
 
-        </div>
+            <form id="studentRegistrationForm" novalidate>
 
-    </section>
+                <h3>Student Details</h3>
+                <p class="form-subtitle">Please fill in accurate information</p>
 
 
+                <!-- FULL NAME -->
 
-    <!-- =====================================================
-         STUDENT PROFILE
-    ====================================================== -->
+                <label for="fullName">Full Name</label>
 
-    <section class="profile-card">
+                <div class="input-box">
+                    <span>🧑</span>
+                    <input type="text" id="fullName" placeholder="Enter student's full name" required>
+                </div>
 
 
-        <div class="profile-main">
+                <!-- MOBILE -->
 
+                <label for="mobile">Mobile Number</label>
 
-            <div
-                class="student-avatar"
-                id="studentAvatar">
+                <div class="input-box">
+                    <span>📱</span>
+                    <input type="tel" id="mobile" placeholder="10-digit mobile number" maxlength="10" required>
+                </div>
 
-                S
 
-            </div>
+                <!-- GENDER -->
 
+                <label>Gender</label>
 
-            <div class="student-main-info">
+                <div class="gender-options">
 
-                <h2 id="studentName">
-                    Student Name
-                </h2>
+                    <label class="gender-choice">
+                        <input type="radio" name="gender" value="Male" required>
+                        <span>Male</span>
+                    </label>
 
-                <p id="studentClass">
-                    Class --
-                </p>
+                    <label class="gender-choice">
+                        <input type="radio" name="gender" value="Female">
+                        <span>Female</span>
+                    </label>
 
-                <span
-                    id="studentStatus"
-                    class="student-status">
-
-                    ● Active
-
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="profile-details">
-
-
-            <div class="detail-item">
-
-                <span>
-                    Student ID
-                </span>
-
-                <strong id="studentId">
-                    --
-                </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    Mobile Number
-                </span>
-
-                <strong id="studentMobile">
-                    --
-                </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    Gender
-                </span>
-
-                <strong id="studentGender">
-                    --
-                </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    Email ID
-                </span>
-
-                <strong id="studentEmail">
-                    --
-                </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    Class
-                </span>
-
-                <strong id="studentClassDetail">
-                    --
-                </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    Board
-                </span>
-
-                <strong id="studentBoard">
-                    --
-                </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    School Name
-                </span>
-
-                <strong id="studentSchool">
-                    --
-                </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    School Place
-                </span>
-
-                <strong id="studentSchoolPlace">
-                    --
-                </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    Registration Date
-                </span>
-
-                <strong id="registrationDate">
-                    --
-                </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    Login Time
-                </span>
-
-                <strong id="loginTime">
-                    --
-                </strong>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         SUBJECT CAROUSEL
-    ====================================================== -->
-
-    <section class="subject-section">
-
-
-        <div class="section-heading">
-
-            <div>
-
-                <span class="section-badge">
-                    📚 E-BOOK LIBRARY
-                </span>
-
-                <h2>
-                    Choose Your Subject
-                </h2>
-
-                <p>
-                    Chapter 1 of every subject is free. Rent a
-                    subject for 3, 6 or 12 months to read the rest.
-                </p>
-
-            </div>
-
-
-            <div class="library-count">
-
-                <span>
-                    Available Books
-                </span>
-
-                <strong id="ebookCount">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =================================================
-             MY STUDY SUBJECTS (saved in Google Sheet)
-        ================================================== -->
-
-        <div
-            class="study-panel"
-            id="studyPanel">
-
-
-            <div class="study-panel-main">
-
-                <div class="study-panel-title">
-
-                    🔑 My Rented Subjects
-
-                    <span
-                        class="study-count"
-                        id="selectedCount">
-                        0
-                    </span>
+                    <label class="gender-choice">
+                        <input type="radio" name="gender" value="Other">
+                        <span>Other</span>
+                    </label>
 
                 </div>
 
 
-                <div
-                    class="study-chips"
-                    id="studyChips">
+                <!-- EMAIL -->
 
-                    <!-- JS creates selected subject chips -->
+                <label for="email">Email ID</label>
 
+                <div class="input-box">
+                    <span>✉️</span>
+                    <input type="email" id="email" placeholder="Enter email address" required>
                 </div>
 
-            </div>
+
+                <!-- CLASS -->
+
+                <label for="studentClass">Class</label>
+
+                <div class="input-box select-box">
+                    <span>🏫</span>
+                    <select id="studentClass" required>
+                        <option value="" disabled selected>Select class</option>
+                        <option value="LKG">LKG</option>
+                        <option value="UKG">UKG</option>
+                        <option value="1">Class 1</option>
+                        <option value="2">Class 2</option>
+                        <option value="3">Class 3</option>
+                        <option value="4">Class 4</option>
+                        <option value="5">Class 5</option>
+                        <option value="6">Class 6</option>
+                        <option value="7">Class 7</option>
+                        <option value="8">Class 8</option>
+                        <option value="9">Class 9</option>
+                        <option value="10">Class 10</option>
+                        <option value="11">Class 11</option>
+                        <option value="12">Class 12</option>
+                    </select>
+                </div>
 
 
-            <div class="study-panel-side">
+                <!-- BOARD -->
 
-                <span
-                    class="save-status"
-                    id="saveStatus"
-                    data-state="idle"
-                    role="status"
-                    aria-live="polite">
-                </span>
+                <label for="board">Board</label>
+
+                <div class="input-box select-box">
+                    <span>📘</span>
+                    <select id="board" required>
+                        <option value="" disabled selected>Select board</option>
+                        <option value="CBSE">CBSE</option>
+                        <option value="ICSE">ICSE</option>
+                        <option value="UP Board">UP Board</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
 
 
-                <button
-                    type="button"
-                    class="pay-now-btn"
-                    id="payNowBtn"
-                    onclick="openPaymentModal()"
-                    hidden>
+                <!-- SCHOOL NAME -->
 
-                    💳 Pay Now
+                <label for="schoolName">School Name</label>
 
+                <div class="input-box">
+                    <span>🏢</span>
+                    <input type="text" id="schoolName" placeholder="Enter school name" required>
+                </div>
+
+
+                <!-- SCHOOL PLACE -->
+
+                <label for="schoolPlace">School Place</label>
+
+                <div class="input-box">
+                    <span>📍</span>
+                    <input type="text" id="schoolPlace" placeholder="Enter school location / city" required>
+                </div>
+
+
+                <!-- AUTO GENERATED (readonly, filled after success) -->
+
+                <label for="studentId">Student ID</label>
+
+                <div class="input-box readonly-box">
+                    <span>🎫</span>
+                    <input type="text" id="studentId" readonly>
+                </div>
+
+                <label for="generatedPassword">Password</label>
+
+                <div class="input-box readonly-box">
+                    <span>🔑</span>
+                    <input type="text" id="generatedPassword" readonly>
+                </div>
+
+
+                <!-- CONFIRM -->
+
+                <label class="confirm-row">
+                    <input type="checkbox" id="confirmInformation">
+                    <span>I confirm that the above information is correct.</span>
+                </label>
+
+
+                <!-- SUBMIT -->
+
+                <button type="submit" class="register-button" id="registerButton">
+                    🎓 Register Student
                 </button>
 
 
-                <div
-                    class="subject-filter"
-                    role="group"
-                    aria-label="Filter subjects">
+                <!-- MESSAGE -->
 
-                    <button
-                        type="button"
-                        class="active"
-                        data-filter="all"
-                        onclick="setSubjectFilter('all')">
+                <div id="registrationMessage" class="registration-message"></div>
 
-                        All Subjects (<span id="filterAllCount">0</span>)
 
-                    </button>
+                <!-- SUCCESS BOX -->
 
-                    <button
-                        type="button"
-                        data-filter="mine"
-                        onclick="setSubjectFilter('mine')">
+                <div id="registrationSuccess" class="registration-success" style="display:none;">
 
-                        My Rented (<span id="filterMineCount">0</span>)
+                    <h4>🎉 Registration Successful!</h4>
 
-                    </button>
+                    <p>Please save these details — you will need them to log in.</p>
+
+                    <div class="success-row">
+                        <span>Student ID</span>
+                        <strong id="successStudentId">-</strong>
+                    </div>
+
+                    <div class="success-row">
+                        <span>Password</span>
+                        <strong id="successPassword">-</strong>
+                    </div>
+
+                    <a href="sstc-access.html" class="go-login-btn">🔐 Go to Login</a>
 
                 </div>
 
-            </div>
+            </form>
 
         </div>
 
 
-
-        <!-- SUBJECT CAROUSEL -->
-
-        <div class="subject-carousel-wrapper">
-
-            <button
-                type="button"
-                class="carousel-arrow"
-                onclick="scrollSubjects(-1)">
-
-                ‹
-
-            </button>
-
-
-            <div
-                class="subject-carousel"
-                id="subjectCarousel">
-
-                <!-- JS creates subjects -->
-
-            </div>
-
-
-            <button
-                type="button"
-                class="carousel-arrow"
-                onclick="scrollSubjects(1)">
-
-                ›
-
-            </button>
-
+        <div class="already-registered">
+            Already registered? <a href="sstc-access.html">Login here</a>
         </div>
 
-
-        <p
-            class="subject-filter-empty"
-            id="subjectFilterEmpty"
-            hidden>
-
-            You have not rented any subject yet. Switch to
-            “All Subjects” and tap “Rent This Subject”.
-
-        </p>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         CHAPTER SECTION
-    ====================================================== -->
-
-    <section
-        class="chapter-section"
-        id="chapterSection">
-
-
-        <div class="chapter-header">
-
-            <div>
-
-                <span class="chapter-label">
-                    📖 CHAPTERS
-                </span>
-
-                <h2 id="selectedSubjectTitle">
-                    Select a Subject
-                </h2>
-
-                <p id="selectedSubjectDescription">
-                    Choose a subject above to see its chapters.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="chapter-grid"
-            id="chapterGrid">
-
-            <div class="chapter-empty">
-
-                <div>
-                    📚
-                </div>
-
-                <h3>
-                    Select a Subject
-                </h3>
-
-                <p>
-                    Chapters will appear here.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         READER
-    ====================================================== -->
-
-    <section
-        class="reader-section"
-        id="readerSection">
-
-
-        <!-- READER HEADER -->
-
-        <div class="reader-header">
-
-
-            <div class="reader-book-info">
-
-                <div class="book-icon">
-                    📖
-                </div>
-
-
-                <div>
-
-                    <h3 id="currentBookTitle">
-                        Select a Chapter
-                    </h3>
-
-                    <p id="currentBookStatus">
-                        Select a chapter to start reading.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="reader-actions">
-
-
-                <button
-                    type="button"
-                    onclick="zoomOut()"
-                    title="Zoom Out">
-
-                    −
-
-                </button>
-
-
-                <span id="zoomLevel">
-                    100%
-                </span>
-
-
-                <button
-                    type="button"
-                    onclick="zoomIn()"
-                    title="Zoom In">
-
-                    +
-
-                </button>
-
-
-                <button
-                    type="button"
-                    onclick="fitWidth()"
-                    title="Fit Width">
-
-                    ↔
-
-                </button>
-
-
-                <button
-                    type="button"
-                    onclick="fitPage()"
-                    title="Fit Page">
-
-                    ⛶
-
-                </button>
-
-
-                <button
-                    type="button"
-                    onclick="toggleFullscreen()"
-                    title="Fullscreen">
-
-                    ⛶
-
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- PDF VIEWER -->
-
-        <div
-            class="pdf-viewer"
-            id="pdfViewer">
-
-
-            <div
-                class="viewer-empty"
-                id="viewerEmpty">
-
-                <div class="empty-icon">
-                    📚
-                </div>
-
-                <h3>
-                    Select a Chapter
-                </h3>
-
-                <p>
-                    Choose a chapter above to open the protected reader.
-                </p>
-
-            </div>
-
-
-            <iframe
-                id="pdfFrame"
-                class="pdf-frame"
-                title="SSTC Protected E-Book Reader"
-                loading="lazy"
-                onload="if (window.pdfLoaded) pdfLoaded();">
-            </iframe>
-
-        </div>
-
-
-
-        <!-- READER FOOTER -->
-
-        <div class="reader-footer-controls">
-
-
-            <button
-                type="button"
-                onclick="previousPage()">
-
-                ◀ Previous
-
-            </button>
-
-
-            <div class="page-indicator">
-
-                <span>
-                    Chapter
-                </span>
-
-                <strong id="currentChapterNumber">
-                    1
-                </strong>
-
-            </div>
-
-
-            <button
-                type="button"
-                onclick="nextPage()">
-
-                Next ▶
-
-            </button>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         LIBRARY SUMMARY
-    ====================================================== -->
-
-    <section class="summary-section">
-
-
-        <div class="summary-card">
-
-            <div class="summary-icon">
-                📚
-            </div>
-
-            <div>
-
-                <span>
-                    Total E-Books
-                </span>
-
-                <strong id="totalBooks">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <div class="summary-card">
-
-            <div class="summary-icon">
-                🔄
-            </div>
-
-            <div>
-
-                <span>
-                    Rented
-                </span>
-
-                <strong id="rentedBooks">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <div class="summary-card">
-
-            <div class="summary-icon">
-                🛒
-            </div>
-
-            <div>
-
-                <span>
-                    Purchased
-                </span>
-
-                <strong id="purchasedBooks">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <div class="summary-card">
-
-            <div class="summary-icon">
-                📖
-            </div>
-
-            <div>
-
-                <span>
-                    Subjects
-                </span>
-
-                <strong id="totalSubjects">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         PURCHASE INFORMATION
-    ====================================================== -->
-
-    <section class="purchase-info">
-
-        <div class="purchase-info-icon">
-            🛒
-        </div>
-
-        <div>
-
-            <h3>
-                Want More Subjects?
-            </h3>
-
-            <p>
-                <strong>Rent</strong> any subject for
-                <strong>3 months (₹49)</strong>,
-                <strong>6 months (₹69)</strong> or
-                <strong>12 months (₹99)</strong>. Tap
-                “Rent This Subject” on a subject card above.
-                Contact SSTC administration to complete the payment.
-            </p>
-
-        </div>
-
-    </section>
-
+    </div>
 
 </main>
-
 
 
 <!-- =========================================================
      FOOTER
 ========================================================= -->
 
-<footer class="sstc-footer">
+<footer>
 
-    <div class="footer-container">
+    <div class="footer-content">
 
-
-        <div>
-
-            <h3>
-                SHREE SCHOLARS TUITION CENTER
-            </h3>
-
-            <p>
-                From Foundation to Future
-            </p>
-
+        <div class="footer-brand">
+            <img src="Logo.png" alt="SSTC Logo">
+            <div>
+                <h3>Shree Scholars Tuition Centre</h3>
+                <p>From Foundation to Future</p>
+            </div>
         </div>
 
-
         <div class="footer-links">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <span>
-                •
-            </span>
-
-            <a href="student-page.html">
-                Student Portal
-            </a>
-
-            <span>
-                •
-            </span>
-
-            <a href="#">
-                Privacy
-            </a>
-
+            <a href="index.html">Home</a>
+            <a href="index.html#leadbox">Contact</a>
+            <a href="sstc-access.html">SSTC Access</a>
         </div>
 
     </div>
 
-
-    <div class="copyright">
-
-        ©
-        <span id="currentYear"></span>
-
-        Shree Scholars Tuition Center.
-        All Rights Reserved.
-
+    <div class="footer-bottom">
+        © <span id="currentYear"></span> Shree Scholars Tuition Centre • All Rights Reserved
     </div>
 
 </footer>
 
 
-
-<!-- =========================================================
-     RENT WINDOW (plan chuno / rental details)
-========================================================= -->
-
-<div
-    class="sstc-rent-modal"
-    id="rentModal"
-    hidden>
-
-
-    <div
-        class="sstc-rent-backdrop"
-        onclick="closeRentModal()">
-    </div>
-
-
-    <div
-        class="sstc-rent-dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="rentModalTitle">
-
-
-        <button
-            type="button"
-            class="sstc-rent-close"
-            onclick="closeRentModal()"
-            aria-label="Close">
-
-            ✕
-
-        </button>
-
-
-        <div class="sstc-rent-head">
-
-            <div class="sstc-rent-head-icon">
-                🔑
-            </div>
-
-            <div>
-
-                <h3 id="rentModalTitle">
-                    Rent Subject
-                </h3>
-
-                <p id="rentModalSubtitle">
-                    Choose how long you want to rent this subject.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <p
-            class="sstc-rent-success"
-            id="rentSuccess"
-            hidden>
-        </p>
-
-
-        <div
-            class="sstc-rent-plans"
-            id="rentPlans"
-            role="radiogroup"
-            aria-label="Rental plans">
-
-            <!-- JS creates 3 / 6 / 12 month plans -->
-
-        </div>
-
-
-        <div
-            class="sstc-rent-details"
-            id="rentDetails"
-            hidden>
-
-            <!-- JS creates rental details -->
-
-        </div>
-
-
-        <p
-            class="sstc-rent-note"
-            id="rentNote">
-        </p>
-
-
-        <p
-            class="sstc-rent-error"
-            id="rentError"
-            role="alert"
-            hidden>
-        </p>
-
-
-        <div class="sstc-rent-actions">
-
-            <button
-                type="button"
-                class="sstc-rent-btn secondary"
-                onclick="closeRentModal()">
-
-                Close
-
-            </button>
-
-            <button
-                type="button"
-                class="sstc-rent-btn danger"
-                id="rentCancelRequestBtn"
-                onclick="cancelRentRequest()"
-                hidden>
-
-                Cancel Request
-
-            </button>
-
-            <button
-                type="button"
-                class="sstc-rent-btn primary"
-                id="rentConfirmBtn"
-                onclick="confirmRent()"
-                disabled>
-
-                Choose a plan
-
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================================================
-     PAY NOW WINDOW (pending rentals ka total + UPI payment)
-========================================================= -->
-
-<div
-    class="sstc-rent-modal"
-    id="paymentModal"
-    hidden>
-
-
-    <div
-        class="sstc-rent-backdrop"
-        onclick="closePaymentModal()">
-    </div>
-
-
-    <div
-        class="sstc-rent-dialog sstc-pay-dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="paymentModalTitle">
-
-
-        <button
-            type="button"
-            class="sstc-rent-close sstc-pay-close"
-            onclick="closePaymentModal()"
-            aria-label="Close">
-
-            ✕
-
-        </button>
-
-
-        <div class="sstc-rent-head">
-
-            <div class="sstc-rent-head-icon">
-                💳
-            </div>
-
-            <div>
-
-                <h3 id="paymentModalTitle">
-                    Pay for Rentals
-                </h3>
-
-                <p>
-                    Select the subjects you want to pay for now.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="sstc-pay-list"
-            id="paymentList">
-
-            <!-- JS creates pending rental rows -->
-
-        </div>
-
-
-        <div class="sstc-pay-total-row">
-
-            <span>
-                Total Amount
-            </span>
-
-            <strong id="paymentTotal">
-                ₹0
-            </strong>
-
-        </div>
-
-
-        <div
-            class="sstc-pay-upi"
-            id="paySection">
-
-
-            <div class="sstc-pay-upi-row">
-
-                <span>
-                    UPI ID
-                </span>
-
-                <strong id="payUpiId">
-                    -
-                </strong>
-
-                <button
-                    type="button"
-                    class="sstc-pay-copy"
-                    onclick="copyUpiId()">
-
-                    Copy
-
-                </button>
-
-            </div>
-
-
-            <div class="sstc-pay-upi-row">
-
-                <span>
-                    Student ID
-                </span>
-
-                <strong id="payStudentId">
-                    -
-                </strong>
-
-            </div>
-
-
-            <div class="sstc-pay-upi-row">
-
-                <span>
-                    Payment Note
-                </span>
-
-                <strong id="payNote">
-                    -
-                </strong>
-
-            </div>
-
-
-            <a
-                class="sstc-rent-btn primary sstc-pay-upi-btn"
-                id="payUpiLink"
-                href="#"
-                target="_blank"
-                rel="noopener">
-
-                📲 Pay via UPI App
-
-            </a>
-
-
-            <img
-                class="sstc-pay-qr"
-                id="payQr"
-                alt="UPI QR Code"
-                hidden>
-
-
-            <p class="sstc-rent-note">
-
-                Scan the QR code or tap “Pay via UPI App” on your phone
-                (Google Pay / PhonePe / Paytm). Please keep the payment
-                note above so SSTC can match your payment.
-
-            </p>
-
-        </div>
-
-
-        <p
-            class="sstc-pay-upi-empty"
-            id="payUpiEmpty"
-            hidden>
-
-            UPI payment is not set up yet. Please contact SSTC
-            administration to complete the payment.
-
-        </p>
-
-
-        <div class="sstc-rent-actions">
-
-            <button
-                type="button"
-                class="sstc-rent-btn secondary"
-                onclick="closePaymentModal()">
-
-                Close
-
-            </button>
-
-            <button
-                type="button"
-                class="sstc-rent-btn primary"
-                id="payConfirmBtn"
-                onclick="markPaymentSent()">
-
-                ✓ I Have Paid
-
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================================================
-     JS
-========================================================= -->
-
-<script src="student-page.js?v=4"></script>
+<script>
+    var yearEl = document.getElementById("currentYear");
+    if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
+</script>
+
+<script src="student-registration.js"></script>
 
 </body>
-
 </html>
