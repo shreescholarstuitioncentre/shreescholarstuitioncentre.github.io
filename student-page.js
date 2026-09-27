@@ -3586,7 +3586,7 @@ function redirectToAccessPage() {
    LOGOUT
    ========================================================= */
 
-function studentLogout(event) {
+async function studentLogout(event) {
 
     if (event) {
         event.preventDefault();
@@ -3598,13 +3598,42 @@ function studentLogout(event) {
 
     sstcLoggingOut = true;
 
+    /*
+       Logout button ka text badal do ("Logging out…") taaki
+       student ko pata chale ki kuch ho raha hai - neeche wala
+       await ek-do second le sakta hai.
+    */
+
+    const logoutButton = event && event.currentTarget;
+    let logoutButtonPrevText = "";
+
+    if (logoutButton && logoutButton.textContent !== undefined) {
+
+        logoutButtonPrevText = logoutButton.textContent;
+
+        try {
+            logoutButton.textContent = "Logging out…";
+            logoutButton.style.pointerEvents = "none";
+        }
+        catch (error) {
+            /* ignore */
+        }
+    }
+
     if (sstcSessionHeartbeatTimer) {
         clearInterval(sstcSessionHeartbeatTimer);
     }
 
     stopLogoutReminder();
 
-    /* Server ko bata do ki session khatam ho rahi hai (best-effort, blocking nahi karte) */
+    /*
+       Server ko bata do ki session khatam ho rahi hai - is baar
+       ISKA THODA WAIT (max ~3 second) karte hain, redirect karne
+       se pehle. Warna Apps Script server ki purani "Sessions" row
+       delete hone se PEHLE hi student redirect ho kar turant dobara
+       login try kar leta hai, aur server ko lagta hai session abhi
+       bhi kisi aur jagah active hai ("already login hai" error).
+    */
 
     try {
 
@@ -3620,9 +3649,16 @@ function studentLogout(event) {
                 "&studentId=" + encodeURIComponent(studentId) +
                 "&sessionToken=" + encodeURIComponent(sessionToken);
 
-            fetch(url, { method: "GET", cache: "no-store", keepalive: true }).catch(function () {
-                /* ignore - hum aage bhi badh rahe hain */
+            const endSessionPromise = fetch(url, { method: "GET", cache: "no-store", keepalive: true }).catch(function () {
+                /* ignore - network fail ho to bhi aage badhte hain */
             });
+
+            const timeoutPromise = new Promise(function (resolve) {
+                setTimeout(resolve, 3000);
+            });
+
+            /* Jo bhi pehle ho - endsession complete ya 3-second timeout */
+            await Promise.race([endSessionPromise, timeoutPromise]);
         }
     }
     catch (error) {
