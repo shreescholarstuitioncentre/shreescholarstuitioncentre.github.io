@@ -3,7 +3,7 @@
    LIVE STUDENT DATA
    SESSION + PROFILE + E-BOOK LIBRARY + PDF READER
    + RENT SUBJECTS (3 / 6 / 12 months -> saved in Google Sheet)
-   + PAY NOW (UPI payment + Payment Claim + Admin Email)
+   + PAY NOW (UPI payment + payment claim + admin email)
    ========================================================= */
 
 
@@ -869,38 +869,109 @@ function renderRentedChips() {
     names.forEach(function (name) {
 
         const state = getRentalState(name);
+        const rental = state.rental;
 
-        const chip = document.createElement("button");
-        chip.type = "button";
-        chip.className = "rented-chip";
-        chip.setAttribute("data-rent", state.status);
-        chip.title = "View rental details";
+        /*
+         * Poora card: naam + status badge (upar), aur uske
+         * neeche Requested / Start / Expiry teeno dates -
+         * bina click kiye seedha dikhengi. Click karne par
+         * bhi rent modal khulta hai (poori detail + actions
+         * ke liye).
+         */
+
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "rented-chip rented-chip-detailed";
+        card.setAttribute("data-rent", state.status);
+        card.title = "View rental details";
+
+        card.style.cssText = [
+            "display:flex",
+            "flex-direction:column",
+            "align-items:stretch",
+            "text-align:left",
+            "gap:6px",
+            "padding:10px 14px",
+            "min-width:180px"
+        ].join(";");
+
+        /* --- Header row: naam + status --- */
+
+        const headerRow = document.createElement("span");
+        headerRow.style.cssText = "display:flex; align-items:center; justify-content:space-between; gap:8px;";
 
         const label = document.createElement("strong");
         label.textContent = name;
+        label.style.cssText = "font-size:13.5px;";
 
         const info = document.createElement("span");
+        info.style.cssText = "font-size:11px; font-weight:700; white-space:nowrap;";
 
         if (state.status === "active") {
-            info.textContent = state.rental && state.rental.expiryDate
-                ? "till " + formatRentDate(state.rental.expiryDate)
+
+            const days = getRentalDaysLeft(rental);
+
+            info.textContent = (days !== null && days > 0)
+                ? days + (days === 1 ? " day left" : " days left")
                 : "Active";
         }
         else if (state.status === "pending") {
-            info.textContent = "Pending";
+            info.textContent = "⏳ Pending";
         }
         else {
-            info.textContent = "Expired";
+            info.textContent = "⌛ Expired";
         }
 
-        chip.appendChild(label);
-        chip.appendChild(info);
+        headerRow.appendChild(label);
+        headerRow.appendChild(info);
 
-        chip.addEventListener("click", function () {
+        /* --- Dates row: Requested / Start / Expiry --- */
+
+        const datesRow = document.createElement("span");
+
+        datesRow.style.cssText = [
+            "display:grid",
+            "grid-template-columns:repeat(3, 1fr)",
+            "gap:8px",
+            "padding-top:6px",
+            "border-top:1px dashed rgba(0,0,0,.12)",
+            "font-size:10.5px",
+            "line-height:1.35"
+        ].join(";");
+
+        const dateFields = [
+            ["Requested", rental ? formatRentDate(rental.requestedOn) : ""],
+            ["Start", rental && rental.startDate ? formatRentDate(rental.startDate) : "—"],
+            ["Expiry", rental && rental.expiryDate ? formatRentDate(rental.expiryDate) : "—"]
+        ];
+
+        dateFields.forEach(function (pair) {
+
+            const field = document.createElement("span");
+            field.style.cssText = "display:flex; flex-direction:column; gap:1px;";
+
+            const fieldLabel = document.createElement("em");
+            fieldLabel.textContent = pair[0];
+            fieldLabel.style.cssText = "font-style:normal; opacity:.65; font-size:9.5px; text-transform:uppercase; letter-spacing:.4px;";
+
+            const fieldValue = document.createElement("b");
+            fieldValue.textContent = pair[1] || "—";
+            fieldValue.style.cssText = "font-weight:700;";
+
+            field.appendChild(fieldLabel);
+            field.appendChild(fieldValue);
+
+            datesRow.appendChild(field);
+        });
+
+        card.appendChild(headerRow);
+        card.appendChild(datesRow);
+
+        card.addEventListener("click", function () {
             openRentModal(name);
         });
 
-        box.appendChild(chip);
+        box.appendChild(card);
     });
 }
 
@@ -1752,9 +1823,10 @@ async function cancelRentRequest() {
    - UPI ID, Student ID aur payment note dikhata hai, saath
      me "Pay via UPI App" link aur QR code
    - "I Have Paid" par PaymentClaimedOn Google Sheet me save
-     hota hai aur admin ko email notification jaati hai (ye
-     kaunse Student ID ne kaunse Subject/Plan ka payment
-     claim kiya hai, saath me Total Amount)
+     hota hai AUR admin ko email chala jaata hai (Student ID,
+     Name, Subjects, Plans, Total Amount). Koi automatic
+     payment verify nahi hota - admin UPI check karke Rentals
+     sheet me Status ko "Active" karta hai.
    ========================================================= */
 
 function getPendingRentalsList() {
@@ -2048,16 +2120,16 @@ function copyUpiId() {
 /*
  * "I Have Paid"
  * ---------------------------------------------------------
- * - Google Apps Script ko "claimpayment" action call karta
- *   hai (rentalIds ek comma-separated list ke roop me)
- * - Server Rentals sheet me PaymentClaimedOn column fill
- *   karta hai aur admin ko email bhejta hai (Student ID,
- *   Name, Subjects, Plans, Total Amount)
- * - Koi automatic payment verify nahi hota - admin manually
- *   Sheet me Status ko "Active" karega
+ * Google Sheet me PaymentClaimedOn save karta hai (server-side
+ * Code.gs ka "claimpayment" action) aur admin ko email bhejta
+ * hai - Student ID, Name, kaunse Subject/Plan, kitna Total.
+ * Koi automatic payment verify nahi hota; admin manually UPI
+ * check karke Rentals sheet me Status "Active" karta hai.
  */
 
 async function markPaymentSent() {
+
+    const button = getRentEl("payConfirmBtn");
 
     const chosenIds = Array.from(sstcPaymentSelected);
 
@@ -2065,9 +2137,6 @@ async function markPaymentSent() {
         showSstcToast("Please select at least one subject.", "info");
         return;
     }
-
-    const button = getRentEl("payConfirmBtn");
-    const previousText = button ? button.textContent : "";
 
     if (button) {
         button.disabled = true;
@@ -2105,7 +2174,7 @@ async function markPaymentSent() {
 
         if (button) {
             button.disabled = false;
-            button.textContent = previousText || "✅ I Have Paid";
+            button.textContent = "✅ I Have Paid";
         }
     }
 }
