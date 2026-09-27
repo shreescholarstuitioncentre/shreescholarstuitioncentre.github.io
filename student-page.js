@@ -4,8 +4,10 @@
    SESSION + PROFILE + E-BOOK LIBRARY + PDF READER
    + RENT SUBJECTS (3 / 6 / 12 months -> saved in Google Sheet)
    + PAY NOW (UPI payment + payment claim + admin email)
-   + SINGLE-DEVICE LOGIN ENFORCEMENT (2-hour auto-logout,
-     heartbeat check, auto-logout on browser/tab close)
+   + SINGLE-DEVICE LOGIN ENFORCEMENT (heartbeat check,
+     auto-logout on another-device login, auto-logout on
+     browser/tab close - NO 2-hour time-based auto-logout)
+   + 45-MINUTE "PLEASE LOGOUT AFTER READING" REMINDER TOAST
    ========================================================= */
 
 
@@ -18,12 +20,18 @@ let sstcRedirecting = false;
 let sstcLoggingOut = false;
 let sstcZoom = 100;
 
-/* --- session enforcement state --- */
-const SSTC_SESSION_MAX_DURATION_MS = 2 * 60 * 60 * 1000;  // 2 ghante
+/* --- session enforcement state ---
+   NOTE: 2-ghante wala time-based auto-logout hata diya gaya
+   hai (user request). Ab session sirf 2 tarike se khatam
+   hoti hai: (1) student khud Logout kare / tab band kare,
+   (2) wahi Student ID kisi doosre device se login kare. */
 const SSTC_SESSION_HEARTBEAT_MS = 45 * 1000;               // har 45 second me server check
 let sstcSessionHeartbeatTimer = null;
-let sstcSessionExpiryTimer = null;
 let sstcSessionEnding = false;   // duplicate "forced logout" na ho isliye guard
+
+/* --- 45-minute "please logout" reminder state --- */
+const SSTC_LOGOUT_REMINDER_MS = 45 * 60 * 1000;   // 45 minute
+let sstcLogoutReminderTimer = null;
 
 /* --- rent state --- */
 let sstcRentals = [];               // server se aayi rentals (Pending / Active / Expired)
@@ -360,17 +368,16 @@ function loadLoggedInStudent() {
 /* =========================================================
    SINGLE-DEVICE SESSION ENFORCEMENT
    ---------------------------------------------------------
-   - sstcSessionStartMs: is TAB me student-page.js pehli baar
-     kab load hua, uska timestamp - isi se 2-ghante ka local
-     timer chalta hai (turant/proactive logout, bina server
-     ka wait kiye).
+   - Ab koi 2-ghante ka time-based auto-logout NAHI hai.
    - Har ~45 second me server se "checksession" (heartbeat)
      call hota hai - agar session kahin aur login hone ki
-     wajah se ya 2 ghante puri hone ki wajah se invalid ho
-     gayi, turant forced logout hota hai.
+     wajah se invalid ho gayi, turant forced logout hota hai.
    - Browser/tab band hone par (beforeunload/pagehide)
      navigator.sendBeacon() se "endsession" call hota hai,
-     taaki slot turant free ho (2 ghante wait na karna pade).
+     taaki slot turant free ho.
+   - Alag se, har 45 MINUTE me ek chhota stylish reminder
+     toast dikhta hai: "padhne ke baad Logout zaroor karein"
+     (ye sirf ek reminder hai, isse koi logout nahi hota).
    ========================================================= */
 
 function setupSessionEnforcement() {
@@ -381,28 +388,9 @@ function setupSessionEnforcement() {
         sessionStorage.setItem(SSTC_SESSION_START_MS, String(Date.now()));
     }
 
-    startSessionExpiryTimer();
     startSessionHeartbeat();
     setupSessionEndOnClose();
-}
-
-/* Client-side 2-ghante ka absolute timer (server heartbeat ka wait kiye bina turant logout) */
-
-function startSessionExpiryTimer() {
-
-    if (sstcSessionExpiryTimer) {
-        clearTimeout(sstcSessionExpiryTimer);
-    }
-
-    const startMs = Number(sessionStorage.getItem(SSTC_SESSION_START_MS)) || Date.now();
-    const elapsed = Date.now() - startMs;
-    const remaining = Math.max(0, SSTC_SESSION_MAX_DURATION_MS - elapsed);
-
-    sstcSessionExpiryTimer = setTimeout(function () {
-
-        forceSessionLogout("Aapka session 2 ghante poore hone ke baad khatam ho gaya hai. Kripya dobara login karein.");
-
-    }, remaining);
+    startLogoutReminder();
 }
 
 /* Server se har ~45 second me poochta hai: "kya meri session abhi bhi valid hai?" */
@@ -454,7 +442,6 @@ async function checkSessionHeartbeat() {
 
         if (
             message.indexOf("logged in from another device") > -1 ||
-            message.indexOf("expired after 2 hours") > -1 ||
             message.indexOf("Session not found") > -1
         ) {
 
@@ -482,9 +469,7 @@ function forceSessionLogout(message) {
         clearInterval(sstcSessionHeartbeatTimer);
     }
 
-    if (sstcSessionExpiryTimer) {
-        clearTimeout(sstcSessionExpiryTimer);
-    }
+    stopLogoutReminder();
 
     clearStudentSession();
 
@@ -534,6 +519,112 @@ function setupSessionEndOnClose() {
 
     window.addEventListener("pagehide", sendEndSessionBeacon);
     window.addEventListener("beforeunload", sendEndSessionBeacon);
+}
+
+
+/* =========================================================
+   45-MINUTE LOGOUT REMINDER
+   ---------------------------------------------------------
+   Jab tak student login rahega, har 45 minute me ek chhota,
+   stylish, cute reminder popup (bottom-right toast) dikhega:
+   "padhne ke baad Logout zaroor karein". Ye SIRF ek reminder
+   hai - isse koi logout NAHI hota, sirf yaad dilata hai.
+   ========================================================= */
+
+const SSTC_LOGOUT_REMINDER_MESSAGES = [
+    "📖 Padhna ho gaya? Please Logout zaroor karein! 🌟",
+    "✨ Padhai complete? Doston, Logout karna na bhoolein! 🔒",
+    "🔔 Reminder: Padhne ke baad Surely Logout kar lein! 💫",
+    "🌸 Apna account surakshit rakhein — padhkar Logout karein! 📚"
+];
+
+function startLogoutReminder() {
+
+    if (sstcLogoutReminderTimer) {
+        clearInterval(sstcLogoutReminderTimer);
+    }
+
+    sstcLogoutReminderTimer = setInterval(function () {
+        showLogoutReminder();
+    }, SSTC_LOGOUT_REMINDER_MS);
+}
+
+function stopLogoutReminder() {
+
+    if (sstcLogoutReminderTimer) {
+        clearInterval(sstcLogoutReminderTimer);
+        sstcLogoutReminderTimer = null;
+    }
+}
+
+function showLogoutReminder() {
+
+    const old = document.querySelector(".sstc-logout-reminder");
+
+    if (old) {
+        old.remove();
+    }
+
+    const message =
+        SSTC_LOGOUT_REMINDER_MESSAGES[
+            Math.floor(Math.random() * SSTC_LOGOUT_REMINDER_MESSAGES.length)
+        ];
+
+    const box = document.createElement("div");
+    box.className = "sstc-logout-reminder";
+    box.setAttribute("role", "status");
+    box.title = "Tap to dismiss";
+
+    box.style.cssText = [
+        "position:fixed",
+        "bottom:22px",
+        "right:22px",
+        "max-width:min(320px, calc(100vw - 32px))",
+        "display:flex",
+        "align-items:center",
+        "gap:8px",
+        "background:linear-gradient(135deg,#7c3aed,#ec4899)",
+        "color:#ffffff",
+        "font-family:Arial,sans-serif",
+        "font-weight:600",
+        "font-size:13.5px",
+        "line-height:1.4",
+        "padding:14px 18px",
+        "border-radius:16px",
+        "box-shadow:0 10px 30px rgba(124,58,237,.45)",
+        "z-index:99999",
+        "opacity:0",
+        "transform:translateY(12px)",
+        "transition:opacity .35s ease, transform .35s ease",
+        "cursor:pointer"
+    ].join(";");
+
+    box.textContent = message;
+
+    const dismiss = function () {
+
+        box.style.opacity = "0";
+        box.style.transform = "translateY(12px)";
+
+        setTimeout(function () {
+
+            if (box && box.parentNode) {
+                box.remove();
+            }
+
+        }, 300);
+    };
+
+    box.addEventListener("click", dismiss);
+
+    document.body.appendChild(box);
+
+    requestAnimationFrame(function () {
+        box.style.opacity = "1";
+        box.style.transform = "translateY(0)";
+    });
+
+    setTimeout(dismiss, 8000);
 }
 
 
@@ -3511,9 +3602,7 @@ function studentLogout(event) {
         clearInterval(sstcSessionHeartbeatTimer);
     }
 
-    if (sstcSessionExpiryTimer) {
-        clearTimeout(sstcSessionExpiryTimer);
-    }
+    stopLogoutReminder();
 
     /* Server ko bata do ki session khatam ho rahi hai (best-effort, blocking nahi karte) */
 
