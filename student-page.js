@@ -2239,6 +2239,76 @@ function buildUpiLink(amount, note) {
     return "upi://pay?" + params.join("&");
 }
 
+/* =========================================================
+   STEP 1: student-page.js me ye poora block paste karein.
+   Jagah: "function openPaymentModal()" ke bilkul upar.
+   ========================================================= */
+
+/* Payment ke baad screenshot is WhatsApp number par bhejna hai */
+const SSTC_PAYMENT_WHATSAPP = "8953012298";
+
+/*
+ * Pay Now window me bold notice (English + Hindi).
+ * HTML badalne ki zaroorat nahi - ye JS se khud jud jaata hai,
+ * "paySection" ke thik neeche (Pay via UPI App button ke baad).
+ */
+function ensurePaymentNotice() {
+
+    if (document.getElementById("sstcPaymentNotice")) {
+        return;
+    }
+
+    const anchor = getRentEl("paySection");
+
+    if (!anchor) {
+        return;
+    }
+
+    const box = document.createElement("div");
+    box.id = "sstcPaymentNotice";
+    box.setAttribute("role", "note");
+
+    box.style.cssText = [
+        "margin:12px 0",
+        "padding:12px 14px",
+        "border-radius:12px",
+        "background:#fff7e6",
+        "border:1.5px solid #f59e0b",
+        "color:#7c2d12",
+        "font-size:13px",
+        "line-height:1.5",
+        "text-align:left"
+    ].join(";");
+
+    const waLink =
+        '<a href="https://wa.me/91' + SSTC_PAYMENT_WHATSAPP + '" target="_blank" rel="noopener" ' +
+        'style="color:#15803d; text-decoration:underline; font-weight:800;">' +
+        SSTC_PAYMENT_WHATSAPP + '</a>';
+
+    box.innerHTML =
+        '<p style="margin:0 0 8px;"><strong>⚠️ IMPORTANT: After your payment is successful, ' +
+        'please share the payment screenshot on WhatsApp at ' + waLink + '.</strong></p>' +
+        '<p style="margin:0;"><strong>⚠️ ज़रूरी सूचना: पेमेंट सफल होने के बाद, ' +
+        'पेमेंट का स्क्रीनशॉट WhatsApp नंबर ' + waLink + ' पर ज़रूर भेजें।</strong></p>';
+
+    anchor.insertAdjacentElement("afterend", box);
+}
+
+
+/* =========================================================
+   STEP 2: openPaymentModal() ke andar, ye line
+       renderPaymentList();
+   ke thik NEECHE add karein:
+
+       ensurePaymentNotice();
+
+   Yaani aisa dikhega:
+
+       renderPaymentList();
+       ensurePaymentNotice();
+       updatePaymentTotal();
+   ========================================================= */
+
 function openPaymentModal() {
 
     const modal = getRentEl("paymentModal");
