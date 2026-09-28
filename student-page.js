@@ -2336,6 +2336,7 @@ function openPaymentModal() {
     sstcPaymentReturnFocus = document.activeElement;
 
     renderPaymentList();
+    ensurePaymentNotice();
     updatePaymentTotal();
 
     modal.hidden = false;
