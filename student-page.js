@@ -22,12 +22,13 @@ let sstcZoom = 100;
 
 /* --- session enforcement state ---
    NOTE: 2-ghante wala time-based auto-logout hata diya gaya
-   hai (user request). Ab session sirf 2 tarike se khatam
+   hai (user request). Ab session sirf in tarikon se khatam
    hoti hai: (1) student khud Logout kare / tab band kare,
    (2) wahi Student ID kisi doosre device se login kare. */
 const SSTC_SESSION_HEARTBEAT_MS = 45 * 1000;               // har 45 second me server check
 let sstcSessionHeartbeatTimer = null;
 let sstcSessionEnding = false;   // duplicate "forced logout" na ho isliye guard
+let sstcHeartbeatBusy = false;   // heartbeat overlap na ho
 
 /* --- 45-minute "please logout" reminder state --- */
 const SSTC_LOGOUT_REMINDER_MS = 45 * 60 * 1000;   // 45 minute
@@ -368,13 +369,17 @@ function loadLoggedInStudent() {
 /* =========================================================
    SINGLE-DEVICE SESSION ENFORCEMENT
    ---------------------------------------------------------
-   - Ab koi 2-ghante ka time-based auto-logout NAHI hai.
+   - Koi 2-ghante ka time-based auto-logout NAHI hai.
    - Har ~45 second me server se "checksession" (heartbeat)
      call hota hai - agar session kahin aur login hone ki
      wajah se invalid ho gayi, turant forced logout hota hai.
+   - Agar server par session row nahi mili (jaise page refresh
+     par tab-close beacon ne hata di), to ye page chup-chaap
+     apne aap session dobara bana leta hai.
    - Browser/tab band hone par (beforeunload/pagehide)
-     navigator.sendBeacon() se "endsession" call hota hai,
-     taaki slot turant free ho.
+     navigator.sendBeacon() se "endsession" call hota hai
+     (token ya Student ID + password ke saath), taaki slot
+     turant free ho.
    - Alag se, har 45 MINUTE me ek chhota stylish reminder
      toast dikhta hai: "padhne ke baad Logout zaroor karein"
      (ye sirf ek reminder hai, isse koi logout nahi hota).
@@ -406,51 +411,117 @@ function startSessionHeartbeat() {
         checkSessionHeartbeat();
 
     }, SSTC_SESSION_HEARTBEAT_MS);
+
+    /* Page khulte hi (4 second baad) ek baar turant check - refresh ke baad jaldi recover ho */
+
+    setTimeout(function () {
+        checkSessionHeartbeat();
+    }, 4000);
+}
+
+/* Chhota device naam - Sessions sheet me dikhta hai (admin ko pata chale kaunsa device) */
+
+function getSstcDeviceInfo() {
+
+    const ua = String(navigator.userAgent || "");
+
+    let os = "Unknown OS";
+
+    if (/Android/i.test(ua)) { os = "Android"; }
+    else if (/iPhone|iPad|iPod/i.test(ua)) { os = "iOS"; }
+    else if (/Windows/i.test(ua)) { os = "Windows"; }
+    else if (/Mac OS X|Macintosh/i.test(ua)) { os = "Mac"; }
+    else if (/Linux/i.test(ua)) { os = "Linux"; }
+
+    let browser = "Browser";
+
+    if (/Edg\//i.test(ua)) { browser = "Edge"; }
+    else if (/OPR\/|Opera/i.test(ua)) { browser = "Opera"; }
+    else if (/Firefox/i.test(ua)) { browser = "Firefox"; }
+    else if (/Chrome|CriOS/i.test(ua)) { browser = "Chrome"; }
+    else if (/Safari/i.test(ua)) { browser = "Safari"; }
+
+    return os + " · " + browser;
 }
 
 async function checkSessionHeartbeat() {
 
-    if (!SSTC_STUDENT_API_URL || sstcSessionEnding) {
+    if (!SSTC_STUDENT_API_URL || sstcSessionEnding || sstcLoggingOut || sstcHeartbeatBusy) {
         return;
     }
 
-    const sessionToken = sessionStorage.getItem(SSTC_SESSION_TOKEN);
-
-    if (!sessionToken) {
-
-        /*
-           Purani session jo is update se pehle bani thi, uske
-           paas token nahi hoga - is case me sirf client-side
-           2-ghante wale timer par depend karte hain, server
-           heartbeat skip kar dete hain.
-        */
-
-        return;
-    }
+    sstcHeartbeatBusy = true;
 
     try {
 
-        const result = await callRentalApi("checksession", { sessionToken: sessionToken });
+        /*
+           Token ho to server token match karta hai (doosre device ka
+           login pakadne ke liye). Token na ho to server sirf session
+           ko "zinda" rakhta hai (LastSeenAt refresh).
+        */
 
-        /* callRentalApi already !result.success par throw karta hai */
+        const sessionToken = sessionStorage.getItem(SSTC_SESSION_TOKEN) || "";
 
-        void result;
+        await callRentalApi("checksession", { sessionToken: sessionToken });
+    }
+    catch (error) {
+
+        const message = String(error && error.message || "");
+
+        if (message.indexOf("logged in from another device") > -1) {
+
+            forceSessionLogout(message);
+        }
+        else if (message.indexOf("Session not found") > -1) {
+
+            /* Row hat chuki hai (jaise refresh par) - chup-chaap dobara bana lo */
+            await reestablishSession();
+        }
+        else {
+
+            /* Network glitch waghera - agli heartbeat me phir try hoga */
+            console.warn("SSTC session heartbeat warning:", message);
+        }
+    }
+    finally {
+
+        sstcHeartbeatBusy = false;
+    }
+}
+
+/*
+ * Server par session row nahi mili to Student ID + password se
+ * naya session bana leta hai aur naya token save kar leta hai.
+ * Agar kisi aur device par ab login ho chuka hai (already login
+ * error), ya account inactive / credentials galat hain, to
+ * forced logout hota hai.
+ */
+
+async function reestablishSession() {
+
+    try {
+
+        const result = await callRentalApi("studentlogin", { deviceInfo: getSstcDeviceInfo() });
+
+        if (result && result.sessionToken) {
+            sessionStorage.setItem(SSTC_SESSION_TOKEN, result.sessionToken);
+        }
     }
     catch (error) {
 
         const message = String(error && error.message || "");
 
         if (
-            message.indexOf("logged in from another device") > -1 ||
-            message.indexOf("Session not found") > -1
+            message.indexOf("already login") > -1 ||
+            message.indexOf("Invalid Student ID") > -1 ||
+            message.indexOf("inactive") > -1
         ) {
 
             forceSessionLogout(message);
         }
         else {
 
-            /* Network glitch waghera - agli heartbeat me phir try hoga */
-            console.warn("SSTC session heartbeat warning:", message);
+            console.warn("SSTC session re-establish warning:", message);
         }
     }
 }
@@ -485,6 +556,10 @@ function forceSessionLogout(message) {
  * Browser/tab band hone par - navigator.sendBeacon() use
  * karte hain kyunki normal fetch() unload ke waqt reliably
  * complete nahi hota, lekin sendBeacon guaranteed bhejta hai.
+ *
+ * Token ho to token ke saath, na ho to Student ID + password ke
+ * saath bhejte hain - isse login page ne token save kiya ho ya
+ * na kiya ho, tab band hone par session hat jaati hai.
  */
 
 function setupSessionEndOnClose() {
@@ -496,9 +571,10 @@ function setupSessionEndOnClose() {
         }
 
         const studentId = getStudentValue(["studentId", "id"], "");
-        const sessionToken = sessionStorage.getItem(SSTC_SESSION_TOKEN);
+        const password = getStudentValue(["password"], "");
+        const sessionToken = sessionStorage.getItem(SSTC_SESSION_TOKEN) || "";
 
-        if (!studentId || !sessionToken) {
+        if (!studentId) {
             return;
         }
 
@@ -507,7 +583,8 @@ function setupSessionEndOnClose() {
             (SSTC_STUDENT_API_URL.indexOf("?") > -1 ? "&" : "?") +
             "action=endsession" +
             "&studentId=" + encodeURIComponent(studentId) +
-            "&sessionToken=" + encodeURIComponent(sessionToken);
+            "&sessionToken=" + encodeURIComponent(sessionToken) +
+            "&password=" + encodeURIComponent(password);
 
         try {
             navigator.sendBeacon(url);
@@ -3633,21 +3710,26 @@ async function studentLogout(event) {
        delete hone se PEHLE hi student redirect ho kar turant dobara
        login try kar leta hai, aur server ko lagta hai session abhi
        bhi kisi aur jagah active hai ("already login hai" error).
+
+       Token ho to token ke saath, na ho to Student ID + password ke
+       saath endsession bhejte hain - dono me se koi bhi chalta hai.
     */
 
     try {
 
         const studentId = getStudentValue(["studentId", "id"], "");
-        const sessionToken = sessionStorage.getItem(SSTC_SESSION_TOKEN);
+        const password = getStudentValue(["password"], "");
+        const sessionToken = sessionStorage.getItem(SSTC_SESSION_TOKEN) || "";
 
-        if (SSTC_STUDENT_API_URL && studentId && sessionToken) {
+        if (SSTC_STUDENT_API_URL && studentId) {
 
             const url =
                 SSTC_STUDENT_API_URL +
                 (SSTC_STUDENT_API_URL.indexOf("?") > -1 ? "&" : "?") +
                 "action=endsession" +
                 "&studentId=" + encodeURIComponent(studentId) +
-                "&sessionToken=" + encodeURIComponent(sessionToken);
+                "&sessionToken=" + encodeURIComponent(sessionToken) +
+                "&password=" + encodeURIComponent(password);
 
             const endSessionPromise = fetch(url, { method: "GET", cache: "no-store", keepalive: true }).catch(function () {
                 /* ignore - network fail ho to bhi aage badhte hain */
