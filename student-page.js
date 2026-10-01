@@ -156,24 +156,24 @@ const SSTC_EBOOKS = {
     "10": {
 
         "Science": {
-            description: "Class 10 Science E-Book Library",
-            image: "subject-images/science.png",
-            chapters: [
-                { number: 1, title: "Chemical Reactions and Equations", pdf: "ebooks/class-10/science/chapter-01.pdf" },
-                { number: 2, title: "Acids, Bases and Salts", pdf: "ebooks/class-10/science/chapter-02.pdf" },
-                { number: 3, title: "Metals and Non-metals", pdf: "ebooks/class-10/science/chapter-03.pdf" },
-                { number: 4, title: "Carbon and Its Compounds", pdf: "ebooks/class-10/science/chapter-04.pdf" },
-                { number: 5, title: "Life Processes", pdf: "ebooks/class-10/science/chapter-05.pdf" },
-                { number: 6, title: "Control and Coordination", pdf: "ebooks/class-10/science/chapter-06.pdf" },
-                { number: 7, title: "How do Organisms Reproduce?", pdf: "ebooks/class-10/science/chapter-07.pdf" },
-                { number: 8, title: "Heredity", pdf: "ebooks/class-10/science/chapter-08.pdf" },
-                { number: 9, title: "Light – Reflection and Refraction", pdf: "ebooks/class-10/science/chapter-09.pdf" },
-                { number: 10, title: "The Human Eye and the Colourful World", pdf: "ebooks/class-10/science/chapter-10.pdf" },
-                { number: 11, title: "Electricity", pdf: "ebooks/class-10/science/chapter-11.pdf" },
-                { number: 12, title: "Magnetic Effects of Electric Current", pdf: "ebooks/class-10/science/chapter-12.pdf" },
-                { number: 13, title: "Our Environment", pdf: "ebooks/class-10/science/chapter-13.pdf" }
-            ]
-        },
+          "description": "Class 10 Science E-Book Library",
+          "image": "subject-images/science.png",
+          "chapters": [
+              { "number": 1, "title": "Chapter 1: Chemical Reactions and Equations / अध्याय 1: रासायनिक अभिक्रियाएं एवं समीकरण", "pdf": "ebooks/class-10/science/chapter-01.pdf" },
+              { "number": 2, "title": "Chapter 2: Acids, Bases and Salts / अध्याय 2: अम्ल, क्षारक एवं लवण", "pdf": "ebooks/class-10/science/chapter-02.pdf" },
+              { "number": 3, "title": "Chapter 3: Metals and Non-metals / अध्याय 3: धातु एवं अधातु", "pdf": "ebooks/class-10/science/chapter-03.pdf" },
+              { "number": 4, "title": "Chapter 4: Carbon and Its Compounds / अध्याय 4: कार्बन एवं उसके यौगिक", "pdf": "ebooks/class-10/science/chapter-04.pdf" },
+              { "number": 5, "title": "Chapter 5: Life Processes / अध्याय 5: जैव प्रक्रम", "pdf": "ebooks/class-10/science/chapter-05.pdf" },
+              { "number": 6, "title": "Chapter 6: Control and Coordination / अध्याय 6: नियंत्रण एवं समन्वय", "pdf": "ebooks/class-10/science/chapter-06.pdf" },
+              { "number": 7, "title": "Chapter 7: How do Organisms Reproduce? / अध्याय 7: जीव जनन कैसे करते हैं?", "pdf": "ebooks/class-10/science/chapter-07.pdf" },
+              { "number": 8, "title": "Chapter 8: Heredity / अध्याय 8: आनुवंशिकता", "pdf": "ebooks/class-10/science/chapter-08.pdf" },
+              { "number": 9, "title": "Chapter 9: Light – Reflection and Refraction / अध्याय 9: प्रकाश – परावर्तन तथा अपवर्तन", "pdf": "ebooks/class-10/science/chapter-09.pdf" },
+              { "number": 10, "title": "Chapter 10: The Human Eye and the Colourful World / अध्याय 10: मानव नेत्र तथा रंगबिरंगा संसार", "pdf": "ebooks/class-10/science/chapter-10.pdf" },
+              { "number": 11, "title": "Chapter 11: Electricity / अध्याय 11: विद्युत", "pdf": "ebooks/class-10/science/chapter-11.pdf" },
+              { "number": 12, "title": "Chapter 12: Magnetic Effects of Electric Current / अध्याय 12: विद्युत धारा के चुंबकीय प्रभाव", "pdf": "ebooks/class-10/science/chapter-12.pdf" },
+              { "number": 13, "title": "Chapter 13: Our Environment / अध्याय 13: हमारा पर्यावरण", "pdf": "ebooks/class-10/science/chapter-13.pdf" }
+          ]
+      },
 
         "Mathematics": {
             description: "Class 10 Mathematics E-Book Library",
