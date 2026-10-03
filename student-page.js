@@ -375,37 +375,151 @@ const SSTC_EBOOKS = {
       },
 
        "Commerce": {
-    "description": "Class 10 Commerce E-Book Library",
-    "image": "subject-images/commerce.png",
-    "chapters": [
-        { "number": 1, "title": "Chapter 1: Final Accounts with Adjustments (Accountancy) / अध्याय 1: अंतिम खाते (बहीखाता)", "pdf": "ebooks/class-10/commerce/chapter-01.pdf" },
-        { "number": 2, "title": "Chapter 2: Partnership Accounts (Accountancy) / अध्याय 2: साझेदारी खाते (बहीखाता)", "pdf": "ebooks/class-10/commerce/chapter-02.pdf" },
-        { "number": 3, "title": "Chapter 3: Bank Reconciliation Statement (Accountancy) / अध्याय 3: बैंक समाधान विवरण (बहीखाता)", "pdf": "ebooks/class-10/commerce/chapter-03.pdf" },
-        { "number": 4, "title": "Chapter 4: Depreciation (Accountancy) / अध्याय 4: ह्रास (बहीखाता)", "pdf": "ebooks/class-10/commerce/chapter-04.pdf" },
-        { "number": 5, "title": "Chapter 5: Bills of Exchange, Promissory Notes & Hundi / अध्याय 5: विनिमय-विपत्र, प्रतिज्ञा-पत्र व हुण्डी", "pdf": "ebooks/class-10/commerce/chapter-05.pdf" },
-        { "number": 6, "title": "Chapter 6: Filing / System of Filing (Business Methods) / अध्याय 6: नस्तीकरण या फाइलिंग (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-06.pdf" },
-        { "number": 7, "title": "Chapter 7: Indexing (Business Methods) / अध्याय 7: अनुक्रमणिका या श्रेणीबद्ध सूची (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-07.pdf" },
-        { "number": 8, "title": "Chapter 8: Means of Communication (Business Methods) / अध्याय 8: संदेशवाहन प्रणालियाँ (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-08.pdf" },
-        { "number": 9, "title": "Chapter 9: Time and Labor-Saving Appliances / अध्याय 9: समय व श्रम बचाने वाले यंत्र (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-09.pdf" },
-        { "number": 10, "title": "Chapter 10: Home Trade / Inland Trade (Business Methods) / अध्याय 10: देशी व्यापार (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-10.pdf" },
-        { "number": 11, "title": "Chapter 11: Wholesale Trade (Business Methods) / अध्याय 11: थोक व्यापार (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-11.pdf" },
-        { "number": 12, "title": "Chapter 12: Retail Trade (Business Methods) / अध्याय 12: फुटकर व्यापार (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-12.pdf" },
-        { "number": 13, "title": "Chapter 13: Invoice and Statement of Account / अध्याय 13: बीजक एवं व्यवहार विवरण (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-13.pdf" },
-        { "number": 14, "title": "Chapter 14: Export and Import Trade (Business Methods) / अध्याय 14: विदेशी व्यापार - आयात और निर्यात (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-14.pdf" },
-        { "number": 15, "title": "Chapter 15: Banking: Origin and Functions (Banking) / अध्याय 15: बैंक: उत्पत्ति एवं कार्य (अधिकोषण तत्त्व)", "pdf": "ebooks/class-10/commerce/chapter-15.pdf" },
-        { "number": 16, "title": "Chapter 16: Central Bank / Reserve Bank of India (Banking) / अध्याय 16: केन्द्रीय बैंक / भारतीय रिजर्व बैंक (अधिकोषण तत्त्व)", "pdf": "ebooks/class-10/commerce/chapter-16.pdf" },
-        { "number": 17, "title": "Chapter 17: Commercial Banks and Co-operative Banks / अध्याय 17: व्यापारिक बैंक एवं सहकारी बैंक (अधिकोषण तत्त्व)", "pdf": "ebooks/class-10/commerce/chapter-17.pdf" },
-        { "number": 18, "title": "Chapter 18: State Bank of India (Banking) / अध्याय 18: भारतीय स्टेट बैंक (अधिकोषण तत्त्व)", "pdf": "ebooks/class-10/commerce/chapter-18.pdf" },
-        { "number": 19, "title": "Chapter 19: Indigenous Bankers / अध्याय 19: देशी बैंकर या साहूकार (अधिकोषण तत्त्व)", "pdf": "ebooks/class-10/commerce/chapter-19.pdf" },
-        { "number": 20, "title": "Chapter 20: Meaning and Scope of Economics (Economics) / अध्याय 20: अर्थशास्त्र का अर्थ एवं क्षेत्र (अर्थशास्त्र)", "pdf": "ebooks/class-10/commerce/chapter-20.pdf" },
-        { "number": 21, "title": "Chapter 21: Factors of Production: Land, Labor, Capital / अध्याय 21: उत्पादन के साधन: भूमि, श्रम, पूँजी (अर्थशास्त्र)", "pdf": "ebooks/class-10/commerce/chapter-21.pdf" },
-        { "number": 22, "title": "Chapter 22: Organization and Enterprise (Economics) / अध्याय 22: संगठन एवं साहस (अर्थशास्त्र)", "pdf": "ebooks/class-10/commerce/chapter-22.pdf" },
-        { "number": 23, "title": "Chapter 23: Consumer's Surplus (Economics) / अध्याय 23: उपभोक्ता की बचत (अर्थशास्त्र)", "pdf": "ebooks/class-10/commerce/chapter-23.pdf" }
-    ]
-}
-
+             "description": "Class 10 Commerce E-Book Library",
+             "image": "subject-images/commerce.png",
+             "chapters": [
+                 { "number": 1, "title": "Chapter 1: Final Accounts with Adjustments (Accountancy) / अध्याय 1: अंतिम खाते (बहीखाता)", "pdf": "ebooks/class-10/commerce/chapter-01.pdf" },
+                 { "number": 2, "title": "Chapter 2: Partnership Accounts (Accountancy) / अध्याय 2: साझेदारी खाते (बहीखाता)", "pdf": "ebooks/class-10/commerce/chapter-02.pdf" },
+                 { "number": 3, "title": "Chapter 3: Bank Reconciliation Statement (Accountancy) / अध्याय 3: बैंक समाधान विवरण (बहीखाता)", "pdf": "ebooks/class-10/commerce/chapter-03.pdf" },
+                 { "number": 4, "title": "Chapter 4: Depreciation (Accountancy) / अध्याय 4: ह्रास (बहीखाता)", "pdf": "ebooks/class-10/commerce/chapter-04.pdf" },
+                 { "number": 5, "title": "Chapter 5: Bills of Exchange, Promissory Notes & Hundi / अध्याय 5: विनिमय-विपत्र, प्रतिज्ञा-पत्र व हुण्डी", "pdf": "ebooks/class-10/commerce/chapter-05.pdf" },
+                 { "number": 6, "title": "Chapter 6: Filing / System of Filing (Business Methods) / अध्याय 6: नस्तीकरण या फाइलिंग (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-06.pdf" },
+                 { "number": 7, "title": "Chapter 7: Indexing (Business Methods) / अध्याय 7: अनुक्रमणिका या श्रेणीबद्ध सूची (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-07.pdf" },
+                 { "number": 8, "title": "Chapter 8: Means of Communication (Business Methods) / अध्याय 8: संदेशवाहन प्रणालियाँ (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-08.pdf" },
+                 { "number": 9, "title": "Chapter 9: Time and Labor-Saving Appliances / अध्याय 9: समय व श्रम बचाने वाले यंत्र (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-09.pdf" },
+                 { "number": 10, "title": "Chapter 10: Home Trade / Inland Trade (Business Methods) / अध्याय 10: देशी व्यापार (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-10.pdf" },
+                 { "number": 11, "title": "Chapter 11: Wholesale Trade (Business Methods) / अध्याय 11: थोक व्यापार (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-11.pdf" },
+                 { "number": 12, "title": "Chapter 12: Retail Trade (Business Methods) / अध्याय 12: फुटकर व्यापार (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-12.pdf" },
+                 { "number": 13, "title": "Chapter 13: Invoice and Statement of Account / अध्याय 13: बीजक एवं व्यवहार विवरण (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-13.pdf" },
+                 { "number": 14, "title": "Chapter 14: Export and Import Trade (Business Methods) / अध्याय 14: विदेशी व्यापार - आयात और निर्यात (व्यावसायिक पद्धति)", "pdf": "ebooks/class-10/commerce/chapter-14.pdf" },
+                 { "number": 15, "title": "Chapter 15: Banking: Origin and Functions (Banking) / अध्याय 15: बैंक: उत्पत्ति एवं कार्य (अधिकोषण तत्त्व)", "pdf": "ebooks/class-10/commerce/chapter-15.pdf" },
+                 { "number": 16, "title": "Chapter 16: Central Bank / Reserve Bank of India (Banking) / अध्याय 16: केन्द्रीय बैंक / भारतीय रिजर्व बैंक (अधिकोषण तत्त्व)", "pdf": "ebooks/class-10/commerce/chapter-16.pdf" },
+                 { "number": 17, "title": "Chapter 17: Commercial Banks and Co-operative Banks / अध्याय 17: व्यापारिक बैंक एवं सहकारी बैंक (अधिकोषण तत्त्व)", "pdf": "ebooks/class-10/commerce/chapter-17.pdf" },
+                 { "number": 18, "title": "Chapter 18: State Bank of India (Banking) / अध्याय 18: भारतीय स्टेट बैंक (अधिकोषण तत्त्व)", "pdf": "ebooks/class-10/commerce/chapter-18.pdf" },
+                 { "number": 19, "title": "Chapter 19: Indigenous Bankers / अध्याय 19: देशी बैंकर या साहूकार (अधिकोषण तत्त्व)", "pdf": "ebooks/class-10/commerce/chapter-19.pdf" },
+                 { "number": 20, "title": "Chapter 20: Meaning and Scope of Economics (Economics) / अध्याय 20: अर्थशास्त्र का अर्थ एवं क्षेत्र (अर्थशास्त्र)", "pdf": "ebooks/class-10/commerce/chapter-20.pdf" },
+                 { "number": 21, "title": "Chapter 21: Factors of Production: Land, Labor, Capital / अध्याय 21: उत्पादन के साधन: भूमि, श्रम, पूँजी (अर्थशास्त्र)", "pdf": "ebooks/class-10/commerce/chapter-21.pdf" },
+                 { "number": 22, "title": "Chapter 22: Organization and Enterprise (Economics) / अध्याय 22: संगठन एवं साहस (अर्थशास्त्र)", "pdf": "ebooks/class-10/commerce/chapter-22.pdf" },
+                 { "number": 23, "title": "Chapter 23: Consumer's Surplus (Economics) / अध्याय 23: उपभोक्ता की बचत (अर्थशास्त्र)", "pdf": "ebooks/class-10/commerce/chapter-23.pdf" }
+             ]
+         }
+         
 
     }
+    
+    "12": {
+
+    "English": {
+        "description": "Class 12 English E-Book Library",
+        "image": "subject-images/english.png",
+        "chapters": [
+            { "number": 1, "title": "Chapter 1: The Last Lesson / अध्याय 1: द लास्ट लेसन", "pdf": "ebooks/class-12/english/chapter-01.pdf" },
+            { "number": 2, "title": "Chapter 2: Lost Spring / अध्याय 2: लॉस्ट स्प्रिंग", "pdf": "ebooks/class-12/english/chapter-02.pdf" },
+            { "number": 3, "title": "Chapter 3: Deep Water / अध्याय 3: डीप वाटर", "pdf": "ebooks/class-12/english/chapter-03.pdf" },
+            { "number": 4, "title": "Chapter 4: The Rattrap / अध्याय 4: द रैट्रैप", "pdf": "ebooks/class-12/english/chapter-04.pdf" },
+            { "number": 5, "title": "Chapter 5: Indigo / अध्याय 5: इंडिगो", "pdf": "ebooks/class-12/english/chapter-05.pdf" },
+            { "number": 6, "title": "Chapter 6: Poets and Pancakes / अध्याय 6: पोएट्स एंड पैनकेक्स", "pdf": "ebooks/class-12/english/chapter-06.pdf" },
+            { "number": 7, "title": "Chapter 7: The Interview / अध्याय 7: द इंटरव्यू", "pdf": "ebooks/class-12/english/chapter-07.pdf" },
+            { "number": 8, "title": "Chapter 8: Going Places / अध्याय 8: गोइंग प्लेसेस", "pdf": "ebooks/class-12/english/chapter-08.pdf" },
+
+            { "number": 9, "title": "Poem 1: My Mother at Sixty-Six / कविता 1: माई मदर एट सिक्स्टी-सिक्स", "pdf": "ebooks/class-12/english/chapter-09.pdf" },
+            { "number": 10, "title": "Poem 2: An Elementary School Classroom in a Slum / कविता 2: एन एलीमेंट्री स्कूल क्लासरूम इन ए स्लम", "pdf": "ebooks/class-12/english/chapter-10.pdf" },
+            { "number": 11, "title": "Poem 3: Keeping Quiet / कविता 3: कीपिंग क्वाइट", "pdf": "ebooks/class-12/english/chapter-11.pdf" },
+            { "number": 12, "title": "Poem 4: A Thing of Beauty / कविता 4: ए थिंग ऑफ ब्यूटी", "pdf": "ebooks/class-12/english/chapter-12.pdf" },
+            { "number": 13, "title": "Poem 5: A Roadside Stand / कविता 5: ए रोडसाइड स्टैंड", "pdf": "ebooks/class-12/english/chapter-13.pdf" },
+            { "number": 14, "title": "Poem 6: Aunt Jennifer's Tigers / कविता 6: आंट जेनिफर्स टाइगर्स", "pdf": "ebooks/class-12/english/chapter-14.pdf" },
+
+            { "number": 15, "title": "Supplementary 1: The Third Level / पूरक पाठ 1: द थर्ड लेवल", "pdf": "ebooks/class-12/english/chapter-15.pdf" },
+            { "number": 16, "title": "Supplementary 2: The Tiger King / पूरक पाठ 2: द टाइगर किंग", "pdf": "ebooks/class-12/english/chapter-16.pdf" },
+            { "number": 17, "title": "Supplementary 3: Journey to the End of the Earth / पूरक पाठ 3: जर्नी टू द एंड ऑफ द अर्थ", "pdf": "ebooks/class-12/english/chapter-17.pdf" },
+            { "number": 18, "title": "Supplementary 4: The Enemy / पूरक पाठ 4: द एनिमी", "pdf": "ebooks/class-12/english/chapter-18.pdf" },
+            { "number": 19, "title": "Supplementary 5: On the Face of It / पूरक पाठ 5: ऑन द फेस ऑफ इट", "pdf": "ebooks/class-12/english/chapter-19.pdf" },
+            { "number": 20, "title": "Supplementary 6: Memories of Childhood / पूरक पाठ 6: मेमोरीज ऑफ चाइल्डहुड", "pdf": "ebooks/class-12/english/chapter-20.pdf" },
+
+            { "number": 21, "title": "Writing Skills: Notice, Invitation, Letter & Report / लेखन कौशल", "pdf": "ebooks/class-12/english/chapter-21.pdf" },
+            { "number": 22, "title": "Reading Skills: Unseen Passages / पठन कौशल: अपठित गद्यांश", "pdf": "ebooks/class-12/english/chapter-22.pdf" }
+        ]
+    },
+
+    "Mathematics": {
+        "description": "Class 12 Mathematics E-Book Library",
+        "image": "subject-images/maths.png",
+        "chapters": [
+            { "number": 1, "title": "Chapter 1: Relations and Functions / अध्याय 1: संबंध एवं फलन", "pdf": "ebooks/class-12/mathematics/chapter-01.pdf" },
+            { "number": 2, "title": "Chapter 2: Inverse Trigonometric Functions / अध्याय 2: प्रतिलोम त्रिकोणमितीय फलन", "pdf": "ebooks/class-12/mathematics/chapter-02.pdf" },
+            { "number": 3, "title": "Chapter 3: Matrices / अध्याय 3: आव्यूह", "pdf": "ebooks/class-12/mathematics/chapter-03.pdf" },
+            { "number": 4, "title": "Chapter 4: Determinants / अध्याय 4: सारणिक", "pdf": "ebooks/class-12/mathematics/chapter-04.pdf" },
+            { "number": 5, "title": "Chapter 5: Continuity and Differentiability / अध्याय 5: सांतत्य तथा अवकलनीयता", "pdf": "ebooks/class-12/mathematics/chapter-05.pdf" },
+            { "number": 6, "title": "Chapter 6: Applications of Derivatives / अध्याय 6: अवकलज के अनुप्रयोग", "pdf": "ebooks/class-12/mathematics/chapter-06.pdf" },
+            { "number": 7, "title": "Chapter 7: Integrals / अध्याय 7: समाकल", "pdf": "ebooks/class-12/mathematics/chapter-07.pdf" },
+            { "number": 8, "title": "Chapter 8: Applications of Integrals / अध्याय 8: समाकलनों के अनुप्रयोग", "pdf": "ebooks/class-12/mathematics/chapter-08.pdf" },
+            { "number": 9, "title": "Chapter 9: Differential Equations / अध्याय 9: अवकल समीकरण", "pdf": "ebooks/class-12/mathematics/chapter-09.pdf" },
+            { "number": 10, "title": "Chapter 10: Vector Algebra / अध्याय 10: सदिश बीजगणित", "pdf": "ebooks/class-12/mathematics/chapter-10.pdf" },
+            { "number": 11, "title": "Chapter 11: Three Dimensional Geometry / अध्याय 11: त्रिविमीय ज्यामिति", "pdf": "ebooks/class-12/mathematics/chapter-11.pdf" },
+            { "number": 12, "title": "Chapter 12: Linear Programming / अध्याय 12: रैखिक प्रोग्रामन", "pdf": "ebooks/class-12/mathematics/chapter-12.pdf" },
+            { "number": 13, "title": "Chapter 13: Probability / अध्याय 13: प्रायिकता", "pdf": "ebooks/class-12/mathematics/chapter-13.pdf" }
+        ]
+    },
+
+    "Physics": {
+        "description": "Class 12 Physics E-Book Library",
+        "image": "subject-images/physics.png",
+        "chapters": [
+            { "number": 1, "title": "Chapter 1: Electric Charges and Fields / अध्याय 1: वैद्युत आवेश तथा क्षेत्र", "pdf": "ebooks/class-12/physics/chapter-01.pdf" },
+            { "number": 2, "title": "Chapter 2: Electrostatic Potential and Capacitance / अध्याय 2: स्थिरवैद्युत विभव तथा धारिता", "pdf": "ebooks/class-12/physics/chapter-02.pdf" },
+            { "number": 3, "title": "Chapter 3: Current Electricity / अध्याय 3: विद्युत धारा", "pdf": "ebooks/class-12/physics/chapter-03.pdf" },
+            { "number": 4, "title": "Chapter 4: Moving Charges and Magnetism / अध्याय 4: गतिमान आवेश और चुम्बकत्व", "pdf": "ebooks/class-12/physics/chapter-04.pdf" },
+            { "number": 5, "title": "Chapter 5: Magnetism and Matter / अध्याय 5: चुम्बकत्व एवं द्रव्य", "pdf": "ebooks/class-12/physics/chapter-05.pdf" },
+            { "number": 6, "title": "Chapter 6: Electromagnetic Induction / अध्याय 6: वैद्युतचुम्बकीय प्रेरण", "pdf": "ebooks/class-12/physics/chapter-06.pdf" },
+            { "number": 7, "title": "Chapter 7: Alternating Current / अध्याय 7: प्रत्यावर्ती धारा", "pdf": "ebooks/class-12/physics/chapter-07.pdf" },
+            { "number": 8, "title": "Chapter 8: Electromagnetic Waves / अध्याय 8: वैद्युतचुम्बकीय तरंगें", "pdf": "ebooks/class-12/physics/chapter-08.pdf" },
+            { "number": 9, "title": "Chapter 9: Ray Optics and Optical Instruments / अध्याय 9: किरण प्रकाशिकी एवं प्रकाशिक यंत्र", "pdf": "ebooks/class-12/physics/chapter-09.pdf" },
+            { "number": 10, "title": "Chapter 10: Wave Optics / अध्याय 10: तरंग प्रकाशिकी", "pdf": "ebooks/class-12/physics/chapter-10.pdf" },
+            { "number": 11, "title": "Chapter 11: Dual Nature of Radiation and Matter / अध्याय 11: विकिरण तथा द्रव्य की द्वैत प्रकृति", "pdf": "ebooks/class-12/physics/chapter-11.pdf" },
+            { "number": 12, "title": "Chapter 12: Atoms / अध्याय 12: परमाणु", "pdf": "ebooks/class-12/physics/chapter-12.pdf" },
+            { "number": 13, "title": "Chapter 13: Nuclei / अध्याय 13: नाभिक", "pdf": "ebooks/class-12/physics/chapter-13.pdf" },
+            { "number": 14, "title": "Chapter 14: Semiconductor Electronics / अध्याय 14: अर्धचालक इलेक्ट्रॉनिकी", "pdf": "ebooks/class-12/physics/chapter-14.pdf" }
+        ]
+    },
+
+    "Chemistry": {
+        "description": "Class 12 Chemistry E-Book Library",
+        "image": "subject-images/chemistry.png",
+        "chapters": [
+            { "number": 1, "title": "Chapter 1: Solutions / अध्याय 1: विलयन", "pdf": "ebooks/class-12/chemistry/chapter-01.pdf" },
+            { "number": 2, "title": "Chapter 2: Electrochemistry / अध्याय 2: वैद्युतरसायन", "pdf": "ebooks/class-12/chemistry/chapter-02.pdf" },
+            { "number": 3, "title": "Chapter 3: Chemical Kinetics / अध्याय 3: रासायनिक बलगतिकी", "pdf": "ebooks/class-12/chemistry/chapter-03.pdf" },
+            { "number": 4, "title": "Chapter 4: The d- and f-Block Elements / अध्याय 4: d एवं f-ब्लॉक के तत्व", "pdf": "ebooks/class-12/chemistry/chapter-04.pdf" },
+            { "number": 5, "title": "Chapter 5: Coordination Compounds / अध्याय 5: उपसहसंयोजन यौगिक", "pdf": "ebooks/class-12/chemistry/chapter-05.pdf" },
+            { "number": 6, "title": "Chapter 6: Haloalkanes and Haloarenes / अध्याय 6: हैलोऐल्केन तथा हैलोऐरीन", "pdf": "ebooks/class-12/chemistry/chapter-06.pdf" },
+            { "number": 7, "title": "Chapter 7: Alcohols, Phenols and Ethers / अध्याय 7: ऐल्कोहॉल, फीनॉल एवं ईथर", "pdf": "ebooks/class-12/chemistry/chapter-07.pdf" },
+            { "number": 8, "title": "Chapter 8: Aldehydes, Ketones and Carboxylic Acids / अध्याय 8: ऐल्डिहाइड, कीटोन एवं कार्बोक्सिलिक अम्ल", "pdf": "ebooks/class-12/chemistry/chapter-08.pdf" },
+            { "number": 9, "title": "Chapter 9: Amines / अध्याय 9: ऐमीन", "pdf": "ebooks/class-12/chemistry/chapter-09.pdf" },
+            { "number": 10, "title": "Chapter 10: Biomolecules / अध्याय 10: जैव अणु", "pdf": "ebooks/class-12/chemistry/chapter-10.pdf" }
+        ]
+    },
+
+    "Biology": {
+        "description": "Class 12 Biology E-Book Library",
+        "image": "subject-images/biology.png",
+        "chapters": [
+            { "number": 1, "title": "Chapter 1: Sexual Reproduction in Flowering Plants / अध्याय 1: पुष्पी पादपों में लैंगिक प्रजनन", "pdf": "ebooks/class-12/biology/chapter-01.pdf" },
+            { "number": 2, "title": "Chapter 2: Human Reproduction / अध्याय 2: मानव जनन", "pdf": "ebooks/class-12/biology/chapter-02.pdf" },
+            { "number": 3, "title": "Chapter 3: Reproductive Health / अध्याय 3: जनन स्वास्थ्य", "pdf": "ebooks/class-12/biology/chapter-03.pdf" },
+            { "number": 4, "title": "Chapter 4: Principles of Inheritance and Variation / अध्याय 4: वंशागति तथा विविधता के सिद्धांत", "pdf": "ebooks/class-12/biology/chapter-04.pdf" },
+            { "number": 5, "title": "Chapter 5: Molecular Basis of Inheritance / अध्याय 5: वंशागति का आणविक आधार", "pdf": "ebooks/class-12/biology/chapter-05.pdf" },
+            { "number": 6, "title": "Chapter 6: Evolution / अध्याय 6: विकास", "pdf": "ebooks/class-12/biology/chapter-06.pdf" },
+            { "number": 7, "title": "Chapter 7: Human Health and Disease / अध्याय 7: मानव स्वास्थ्य तथा रोग", "pdf": "ebooks/class-12/biology/chapter-07.pdf" },
+            { "number": 8, "title": "Chapter 8: Microbes in Human Welfare / अध्याय 8: मानव कल्याण में सूक्ष्मजीव", "pdf": "ebooks/class-12/biology/chapter-08.pdf" },
+            { "number": 9, "title": "Chapter 9: Biotechnology: Principles and Processes / अध्याय 9: जैव प्रौद्योगिकी: सिद्धांत एवं प्रक्रम", "pdf": "ebooks/class-12/biology/chapter-09.pdf" },
+            { "number": 10, "title": "Chapter 10: Biotechnology and its Applications / अध्याय 10: जैव प्रौद्योगिकी एवं उसके अनुप्रयोग", "pdf": "ebooks/class-12/biology/chapter-10.pdf" },
+            { "number": 11, "title": "Chapter 11: Organisms and Populations / अध्याय 11: जीव और समष्टियाँ", "pdf": "ebooks/class-12/biology/chapter-11.pdf" },
+            { "number": 12, "title": "Chapter 12: Ecosystem / अध्याय 12: पारितंत्र", "pdf": "ebooks/class-12/biology/chapter-12.pdf" },
+            { "number": 13, "title": "Chapter 13: Biodiversity and Conservation / अध्याय 13: जैव विविधता एवं संरक्षण", "pdf": "ebooks/class-12/biology/chapter-13.pdf" }
+        ]
+    }
+
+}
 
 };
 
