@@ -18,7 +18,7 @@
 let studentData = null;
 let sstcRedirecting = false;
 let sstcLoggingOut = false;
-let sstcZoom = 100;
+let sstcZoom = 0;
 
 /* --- session enforcement state --- */
 const SSTC_SESSION_HEARTBEAT_MS = 45 * 1000;               // har 45 second me server check
@@ -139,7 +139,7 @@ const SSTC_EBOOKS = {
 
         "Science": {
           "description": "Class 10 Science E-Book Library",
-          "image": "subject-images/science.png",
+          "image": "subject-images/class-10/science.png",
           "chapters": [
               { "number": 1, "title": "Chapter 1: Chemical Reactions and Equations / अध्याय 1: रासायनिक अभिक्रियाएं एवं समीकरण", "pdf": "ebooks/class-10/science/chapter-01.pdf" },
               { "number": 2, "title": "Chapter 2: Acids, Bases and Salts / अध्याय 2: अम्ल, क्षारक एवं लवण", "pdf": "ebooks/class-10/science/chapter-02.pdf" },
@@ -159,7 +159,7 @@ const SSTC_EBOOKS = {
 
         "Mathematics": {
             description: "Class 10 Mathematics E-Book Library",
-            image: "subject-images/maths.png",
+            image: "subject-images/class-10/maths.png",
             chapters: [
                 { number: 1, title: "Chapter 1: Real Numbers * अध्याय 1: वास्तविक संख्याएँ", pdf: "ebooks/class-10/mathematics/chapter-01.pdf" },
                 { number: 2, title: "Chapter 2: Polynomials * अध्याय 2: बहुपद", pdf: "ebooks/class-10/mathematics/chapter-02.pdf" },
@@ -180,7 +180,7 @@ const SSTC_EBOOKS = {
 
         "Hindi": {
              "description": "Class 10 Hindi E-Book Library",
-             "image": "subject-images/Hindi.png",
+             "image": "subject-images/class-10/Hindi.png",
              "chapters": [
                  { "number": 1, "title": "Chapter 1: Mitrata (Gadya) / अध्याय 1: मित्रता (गद्य)", "pdf": "ebooks/class-10/hindi/chapter-01.pdf" },
                  { "number": 2, "title": "Chapter 2: Mamta (Gadya) / अध्याय 2: ममता (गद्य)", "pdf": "ebooks/class-10/hindi/chapter-02.pdf" },
@@ -213,7 +213,7 @@ const SSTC_EBOOKS = {
 
         "English": {
              "description": "Class 10 English E-Book Library",
-             "image": "subject-images/english.png",
+             "image": "subject-images/class-10/english.png",
              "chapters": [
                  { "number": 1, "title": "Chapter 1: A Letter to God (Prose) / अध्याय 1: ए लेटर टू गॉड (गद्य)", "pdf": "ebooks/class-10/english/chapter-01.pdf" },
                  { "number": 2, "title": "Chapter 2: Dust of Snow (Poem) / अध्याय 2: डस्ट ऑफ़ स्नो (कविता)", "pdf": "ebooks/class-10/english/chapter-02.pdf" },
@@ -253,7 +253,7 @@ const SSTC_EBOOKS = {
 
         "Social Science": {
              "description": "Class 10 Social Science E-Book Library",
-             "image": "subject-images/socialscience.png",
+             "image": "subject-images/class-10/socialscience.png",
              "chapters": [
                  { "number": 1, "title": "Chapter 1: The Rise of Nationalism in Europe / अध्याय 1: यूरोप में राष्ट्रवाद का उदय", "pdf": "ebooks/class-10/social-science/chapter-01.pdf" },
                  { "number": 2, "title": "Chapter 2: Nationalism in India / अध्याय 2: भारत में राष्ट्रवाद", "pdf": "ebooks/class-10/social-science/chapter-02.pdf" },
@@ -282,7 +282,7 @@ const SSTC_EBOOKS = {
 
         "Chitrakala": {
           "description": "Class 10 Chitrakala E-Book Library",
-          "image": "subject-images/chitrakala.png",
+          "image": "subject-images/class-10/chitrakala.png",
           "chapters": [
               { "number": 1, "title": "Chapter 1: Elements of Art & Color Theory / खण्ड 'क': कला के तत्व एवं रंग सिद्धांत", "pdf": "ebooks/class-10/chitrakala/chapter-01.pdf" },
               { "number": 2, "title": "Chapter 2: Choice of Core Practical Art / खण्ड 'ख': मुख्य व्यावहारिक कला", "pdf": "ebooks/class-10/chitrakala/chapter-02.pdf" },
@@ -297,7 +297,7 @@ const SSTC_EBOOKS = {
 
        "Home Science": {
           "description": "Class 10 Home Science E-Book Library",
-          "image": "subject-images/homescience.png",
+          "image": "subject-images/class-10/homescience.png",
           "chapters": [
               { "number": 1, "title": "Chapter 1: Family Budget / अध्याय 1: पारिवारिक बजट", "pdf": "ebooks/class-10/home-science/chapter-01.pdf" },
               { "number": 2, "title": "Chapter 2: Investment of Savings / अध्याय 2: बचत का निवेश", "pdf": "ebooks/class-10/home-science/chapter-02.pdf" },
@@ -324,7 +324,7 @@ const SSTC_EBOOKS = {
 
         "Computer": {
             description: "Class 10 Computer E-Book Library",
-            image: "subject-images/computer.png",
+            image: "subject-images/class-10/computer.png",
             chapters: [
                 { number: 1, title: "Chapter 1: Functions in C", pdf: "ebooks/class-10/computer/chapter-01.pdf" },
                 { number: 2, title: "Chapter 2: Arrays in C", pdf: "ebooks/class-10/computer/chapter-02.pdf" },
@@ -341,7 +341,7 @@ const SSTC_EBOOKS = {
 
        "Music": {
           "description": "Class 10 Music E-Book Library",
-          "image": "subject-images/music.png",
+          "image": "subject-images/class-10/music.png",
           "chapters": [
               { "number": 1, "title": "Chapter 1: Definition of Technical Terms (Nada, Shruti, Swara, Saptak) / अध्याय 1: पारिभाषिक शब्दों की व्याख्या (नाद, श्रुति, स्वर, सप्तक)", "pdf": "ebooks/class-10/music/chapter-01.pdf" },
               { "number": 2, "title": "Chapter 2: Raga Architecture: Aroha, Avaroha, Pakad, Vadi, Samvadi / अध्याय 2: राग लक्षण: आरोह, अवरोह, पकड़, वादी, संवादी स्वर", "pdf": "ebooks/class-10/music/chapter-02.pdf" },
@@ -358,7 +358,7 @@ const SSTC_EBOOKS = {
 
        "Commerce": {
              "description": "Class 10 Commerce E-Book Library",
-             "image": "subject-images/commerce.png",
+             "image": "subject-images/class-10/commerce.png",
              "chapters": [
                  { "number": 1, "title": "Chapter 1: Final Accounts with Adjustments (Accountancy) / अध्याय 1: अंतिम खाते (बहीखाता)", "pdf": "ebooks/class-10/commerce/chapter-01.pdf" },
                  { "number": 2, "title": "Chapter 2: Partnership Accounts (Accountancy) / अध्याय 2: साझेदारी खाते (बहीखाता)", "pdf": "ebooks/class-10/commerce/chapter-02.pdf" },
@@ -392,7 +392,7 @@ const SSTC_EBOOKS = {
 
     "English": {
         "description": "Class 12 English E-Book Library",
-        "image": "subject-images/english.png",
+        "image": "subject-images/class-12/english.png",
         "chapters": [
             { "number": 1, "title": "Chapter 1: The Last Lesson / अध्याय 1: द लास्ट लेसन", "pdf": "ebooks/class-12/english/chapter-01.pdf" },
             { "number": 2, "title": "Chapter 2: Lost Spring / अध्याय 2: लॉस्ट स्प्रिंग", "pdf": "ebooks/class-12/english/chapter-02.pdf" },
@@ -424,7 +424,7 @@ const SSTC_EBOOKS = {
 
     "Mathematics": {
         "description": "Class 12 Mathematics E-Book Library",
-        "image": "subject-images/maths.png",
+        "image": "subject-images/class-12/maths.png",
         "chapters": [
             { "number": 1, "title": "Chapter 1: Relations and Functions / अध्याय 1: संबंध एवं फलन", "pdf": "ebooks/class-12/mathematics/chapter-01.pdf" },
             { "number": 2, "title": "Chapter 2: Inverse Trigonometric Functions / अध्याय 2: प्रतिलोम त्रिकोणमितीय फलन", "pdf": "ebooks/class-12/mathematics/chapter-02.pdf" },
@@ -444,7 +444,7 @@ const SSTC_EBOOKS = {
 
     "Physics": {
         "description": "Class 12 Physics E-Book Library",
-        "image": "subject-images/physics.png",
+        "image": "subject-images/class-12/physics.png",
         "chapters": [
             { "number": 1, "title": "Chapter 1: Electric Charges and Fields / अध्याय 1: वैद्युत आवेश तथा क्षेत्र", "pdf": "ebooks/class-12/physics/chapter-01.pdf" },
             { "number": 2, "title": "Chapter 2: Electrostatic Potential and Capacitance / अध्याय 2: स्थिरवैद्युत विभव तथा धारिता", "pdf": "ebooks/class-12/physics/chapter-02.pdf" },
@@ -465,7 +465,7 @@ const SSTC_EBOOKS = {
 
     "Chemistry": {
         "description": "Class 12 Chemistry E-Book Library",
-        "image": "subject-images/chemistry.png",
+        "image": "subject-images/class-12/chemistry.png",
         "chapters": [
             { "number": 1, "title": "Chapter 1: Solutions / अध्याय 1: विलयन", "pdf": "ebooks/class-12/chemistry/chapter-01.pdf" },
             { "number": 2, "title": "Chapter 2: Electrochemistry / अध्याय 2: वैद्युतरसायन", "pdf": "ebooks/class-12/chemistry/chapter-02.pdf" },
@@ -482,7 +482,7 @@ const SSTC_EBOOKS = {
 
     "Biology": {
         "description": "Class 12 Biology E-Book Library",
-        "image": "subject-images/biology.png",
+        "image": "subject-images/class-12/biology.png",
         "chapters": [
             { "number": 1, "title": "Chapter 1: Sexual Reproduction in Flowering Plants / अध्याय 1: पुष्पी पादपों में लैंगिक प्रजनन", "pdf": "ebooks/class-12/biology/chapter-01.pdf" },
             { "number": 2, "title": "Chapter 2: Human Reproduction / अध्याय 2: मानव जनन", "pdf": "ebooks/class-12/biology/chapter-02.pdf" },
