@@ -20,11 +20,7 @@ let sstcRedirecting = false;
 let sstcLoggingOut = false;
 let sstcZoom = 100;
 
-/* --- session enforcement state ---
-   NOTE: 2-ghante wala time-based auto-logout hata diya gaya
-   hai (user request). Ab session sirf in tarikon se khatam
-   hoti hai: (1) student khud Logout kare / tab band kare,
-   (2) wahi Student ID kisi doosre device se login kare. */
+/* --- session enforcement state --- */
 const SSTC_SESSION_HEARTBEAT_MS = 45 * 1000;               // har 45 second me server check
 let sstcSessionHeartbeatTimer = null;
 let sstcSessionEnding = false;   // duplicate "forced logout" na ho isliye guard
@@ -51,14 +47,6 @@ let sstcPaymentReturnFocus = null;
 
 /* =========================================================
    STUDENT DATABASE API + RENT SETTINGS
-   ---------------------------------------------------------
-   ⚠️ ZAROORI: Apps Script ka "Web App" deployment URL yahan
-   paste karein (jo "https://script.google.com/macros/s/.../exec"
-   se shuru hota hai). Wahi URL jo sstc-access.html / admin
-   page me use ho raha hai.
-
-   Jab tak ye khaali hai, rent Google Sheet me SAVE NAHI hoga -
-   page par "setup incomplete" ka warning dikhega.
    ========================================================= */
 
 const SSTC_STUDENT_API_URL = "https://script.google.com/macros/s/AKfycbzSPSlkswNdmRtJkZ0Uq3Et5hAPIBorvbgVoQvZD4e0Ed36TwPzk7bh-xSAWmdFpmqynw/exec";
@@ -76,17 +64,11 @@ const SSTC_REQUIRE_RENT_TO_READ = true;
 
 /*
  * Rent request bhejne ke baad student ko ye message dikhega.
- * Yahan apna UPI ID / phone number bhi likh sakte hain.
  */
 const SSTC_PAYMENT_HELP = "Please contact SSTC administration to complete the payment.";
 
 /*
  * UPI PAYMENT SETTINGS
- * ---------------------------------------------------------
- * SSTC_UPI_ID khaali rahega to "Pay Now" window me sirf ye
- * message dikhega: "UPI payment is not set up yet." Apna
- * asli UPI ID daalne ke baad hi "Pay via UPI" button aur
- * QR code dikhenge.
  */
 const SSTC_UPI_ID = "jeetbrother.alekhlife-3@okaxis";                      // jaise "sstc@okaxis"
 const SSTC_UPI_PAYEE_NAME = "Shree Scholars Tuition Center";
@@ -403,10 +385,9 @@ const SSTC_EBOOKS = {
                  { "number": 23, "title": "Chapter 23: Consumer's Surplus (Economics) / अध्याय 23: उपभोक्ता की बचत (अर्थशास्त्र)", "pdf": "ebooks/class-10/commerce/chapter-23.pdf" }
              ]
          }
-         
 
-    }
-    
+    },
+
     "12": {
 
     "English": {
@@ -600,26 +581,9 @@ function loadLoggedInStudent() {
 
 /* =========================================================
    SINGLE-DEVICE SESSION ENFORCEMENT
-   ---------------------------------------------------------
-   - Koi 2-ghante ka time-based auto-logout NAHI hai.
-   - Har ~45 second me server se "checksession" (heartbeat)
-     call hota hai - agar session kahin aur login hone ki
-     wajah se invalid ho gayi, turant forced logout hota hai.
-   - Agar server par session row nahi mili (jaise page refresh
-     par tab-close beacon ne hata di), to ye page chup-chaap
-     apne aap session dobara bana leta hai.
-   - Browser/tab band hone par (beforeunload/pagehide)
-     navigator.sendBeacon() se "endsession" call hota hai
-     (token ya Student ID + password ke saath), taaki slot
-     turant free ho.
-   - Alag se, har 45 MINUTE me ek chhota stylish reminder
-     toast dikhta hai: "padhne ke baad Logout zaroor karein"
-     (ye sirf ek reminder hai, isse koi logout nahi hota).
    ========================================================= */
 
 function setupSessionEnforcement() {
-
-    /* Is tab me session kab shuru hua, wo anchor sirf ek baar set hota hai */
 
     if (!sessionStorage.getItem(SSTC_SESSION_START_MS)) {
         sessionStorage.setItem(SSTC_SESSION_START_MS, String(Date.now()));
@@ -644,14 +608,14 @@ function startSessionHeartbeat() {
 
     }, SSTC_SESSION_HEARTBEAT_MS);
 
-    /* Page khulte hi (4 second baad) ek baar turant check - refresh ke baad jaldi recover ho */
+    /* Page khulte hi (4 second baad) ek baar turant check */
 
     setTimeout(function () {
         checkSessionHeartbeat();
     }, 4000);
 }
 
-/* Chhota device naam - Sessions sheet me dikhta hai (admin ko pata chale kaunsa device) */
+/* Chhota device naam - Sessions sheet me dikhta hai */
 
 function getSstcDeviceInfo() {
 
@@ -686,12 +650,6 @@ async function checkSessionHeartbeat() {
 
     try {
 
-        /*
-           Token ho to server token match karta hai (doosre device ka
-           login pakadne ke liye). Token na ho to server sirf session
-           ko "zinda" rakhta hai (LastSeenAt refresh).
-        */
-
         const sessionToken = sessionStorage.getItem(SSTC_SESSION_TOKEN) || "";
 
         await callRentalApi("checksession", { sessionToken: sessionToken });
@@ -724,9 +682,6 @@ async function checkSessionHeartbeat() {
 /*
  * Server par session row nahi mili to Student ID + password se
  * naya session bana leta hai aur naya token save kar leta hai.
- * Agar kisi aur device par ab login ho chuka hai (already login
- * error), ya account inactive / credentials galat hain, to
- * forced logout hota hai.
  */
 
 async function reestablishSession() {
@@ -785,13 +740,7 @@ function forceSessionLogout(message) {
 }
 
 /*
- * Browser/tab band hone par - navigator.sendBeacon() use
- * karte hain kyunki normal fetch() unload ke waqt reliably
- * complete nahi hota, lekin sendBeacon guaranteed bhejta hai.
- *
- * Token ho to token ke saath, na ho to Student ID + password ke
- * saath bhejte hain - isse login page ne token save kiya ho ya
- * na kiya ho, tab band hone par session hat jaati hai.
+ * Browser/tab band hone par - navigator.sendBeacon() use karte hain.
  */
 
 function setupSessionEndOnClose() {
@@ -833,11 +782,6 @@ function setupSessionEndOnClose() {
 
 /* =========================================================
    45-MINUTE LOGOUT REMINDER
-   ---------------------------------------------------------
-   Jab tak student login rahega, har 45 minute me ek chhota,
-   stylish, cute reminder popup (bottom-right toast) dikhega:
-   "padhne ke baad Logout zaroor karein". Ye SIRF ek reminder
-   hai - isse koi logout NAHI hota, sirf yaad dilata hai.
    ========================================================= */
 
 const SSTC_LOGOUT_REMINDER_MESSAGES = [
@@ -1114,10 +1058,8 @@ function renderSubjects(classLibrary) {
         const subject = classLibrary[subjectName];
 
         /*
-         * Card ab <div role="button"> hai (pehle <button> tha),
-         * kyunki <button> ke andar <button> (Rent This Subject)
-         * HTML me valid nahi hota aur kuch browsers me click
-         * properly kaam nahi karta.
+         * Card <div role="button"> hai, kyunki <button> ke andar
+         * <button> (Rent This Subject) HTML me valid nahi hota.
          */
         const card = document.createElement("div");
         card.className = "subject-card";
@@ -1177,9 +1119,6 @@ function renderSubjects(classLibrary) {
 
         /*
          * RENT THIS SUBJECT BUTTON
-         * Card ke click se alag hai (event.stopPropagation).
-         * Isse rent window khulti hai jahan 3 / 6 / 12 months
-         * ka plan chunte hain.
          */
         const rentToggle = document.createElement("button");
         rentToggle.type = "button";
@@ -1208,10 +1147,6 @@ function renderSubjects(classLibrary) {
 
 /* =========================================================
    RENT SUBJECT  (3 / 6 / 12 months)
-   ---------------------------------------------------------
-   - Har subject card par "Rent This Subject" button
-   - Plan chuno -> Google Sheet ("Rentals") me request save
-   - Status: Pending -> Active -> Expired
    ========================================================= */
 
 function normalizeSubjectKey(name) {
@@ -1335,8 +1270,7 @@ function canReadSubject(subjectName) {
 
 /*
  * Chapter 1 hamesha free hai (rent ki state kuch bhi ho) -
- * ek "free preview" jisse student khareedne se pehle dekh sake.
- * Baaki chapters rent honi chahiye (canReadSubject).
+ * ek "free preview". Baaki chapters rent honi chahiye.
  */
 
 function canReadChapter(subjectName, chapterIndex) {
@@ -1463,14 +1397,6 @@ function renderRentedChips() {
 
         const state = getRentalState(name);
         const rental = state.rental;
-
-        /*
-         * Poora card: naam + status badge (upar), aur uske
-         * neeche Requested / Start / Expiry teeno dates -
-         * bina click kiye seedha dikhengi. Click karne par
-         * bhi rent modal khulta hai (poori detail + actions
-         * ke liye).
-         */
 
         const card = document.createElement("button");
         card.type = "button";
@@ -1839,8 +1765,6 @@ function setSaveStatus(state, detail) {
 
     let text = labels[state] || "";
 
-    /* Error ka reason screen par bhi dikhao (admin ko debug me help) */
-
     if (state === "error" && detail) {
         text = "⚠ " + String(detail).substring(0, 110);
     }
@@ -1903,11 +1827,6 @@ function buildStudentApiUrl(action, params) {
 }
 
 function expectResultType(result, type) {
-
-    /*
-     * Purana Apps Script deployment kisi bhi unknown action par
-     * {success:true, type:"api"} deta hai. Isliye type bhi check karo.
-     */
 
     if (!result || result.type !== type) {
         throw new Error("Apps Script is running an OLD version. Deploy > Manage deployments > Edit > New version > Deploy.");
@@ -1974,7 +1893,7 @@ async function loadRentals() {
 
         setSaveStatus("nourl", "SSTC_STUDENT_API_URL is empty in student-page.js");
 
-        console.warn("SSTC: ❌ SSTC_STUDENT_API_URL khaali hai - rentals Google Sheet se load/save NAHI ho sakte. student-page.js me Apps Script Web App URL paste karein.");
+        console.warn("SSTC: ❌ SSTC_STUDENT_API_URL khaali hai - rentals Google Sheet se load/save NAHI ho sakte.");
 
         refreshRentalUI();
 
@@ -2408,18 +2327,6 @@ async function cancelRentRequest() {
 
 /* =========================================================
    PAY NOW  (pending rentals ka total + UPI payment)
-   ---------------------------------------------------------
-   "My Rented Subjects" panel ka "Pay Now" button:
-   - Saare Pending rentals list karta hai (checkbox se
-     student chun sakta hai kis-kis ka abhi payment karna hai)
-   - Chuni hui rentals ka total (₹) calculate karta hai
-   - UPI ID, Student ID aur payment note dikhata hai, saath
-     me "Pay via UPI App" link aur QR code
-   - "I Have Paid" par PaymentClaimedOn Google Sheet me save
-     hota hai AUR admin ko email chala jaata hai (Student ID,
-     Name, Subjects, Plans, Total Amount). Koi automatic
-     payment verify nahi hota - admin UPI check karke Rentals
-     sheet me Status ko "Active" karta hai.
    ========================================================= */
 
 function getPendingRentalsList() {
@@ -2471,18 +2378,11 @@ function buildUpiLink(amount, note) {
     return "upi://pay?" + params.join("&");
 }
 
-/* =========================================================
-   STEP 1: student-page.js me ye poora block paste karein.
-   Jagah: "function openPaymentModal()" ke bilkul upar.
-   ========================================================= */
-
 /* Payment ke baad screenshot is WhatsApp number par bhejna hai */
 const SSTC_PAYMENT_WHATSAPP = "8953012298";
 
 /*
  * Pay Now window me bold notice (English + Hindi).
- * HTML badalne ki zaroorat nahi - ye JS se khud jud jaata hai,
- * "paySection" ke thik neeche (Pay via UPI App button ke baad).
  */
 function ensurePaymentNotice() {
 
@@ -2525,21 +2425,6 @@ function ensurePaymentNotice() {
 
     anchor.insertAdjacentElement("afterend", box);
 }
-
-
-/* =========================================================
-   STEP 2: openPaymentModal() ke andar, ye line
-       renderPaymentList();
-   ke thik NEECHE add karein:
-
-       ensurePaymentNotice();
-
-   Yaani aisa dikhega:
-
-       renderPaymentList();
-       ensurePaymentNotice();
-       updatePaymentTotal();
-   ========================================================= */
 
 function openPaymentModal() {
 
@@ -2783,12 +2668,8 @@ function copyUpiId() {
 
 /*
  * "I Have Paid"
- * ---------------------------------------------------------
- * Google Sheet me PaymentClaimedOn save karta hai (server-side
- * Code.gs ka "claimpayment" action) aur admin ko email bhejta
- * hai - Student ID, Name, kaunse Subject/Plan, kitna Total.
- * Koi automatic payment verify nahi hota; admin manually UPI
- * check karke Rentals sheet me Status "Active" karta hai.
+ * Google Sheet me PaymentClaimedOn save karta hai aur admin ko
+ * email bhejta hai. Koi automatic payment verify nahi hota.
  */
 
 async function markPaymentSent() {
@@ -3978,18 +3859,9 @@ async function studentLogout(event) {
 
     sstcLoggingOut = true;
 
-    /*
-       Logout button ka text badal do ("Logging out…") taaki
-       student ko pata chale ki kuch ho raha hai - neeche wala
-       await ek-do second le sakta hai.
-    */
-
     const logoutButton = event && event.currentTarget;
-    let logoutButtonPrevText = "";
 
     if (logoutButton && logoutButton.textContent !== undefined) {
-
-        logoutButtonPrevText = logoutButton.textContent;
 
         try {
             logoutButton.textContent = "Logging out…";
@@ -4007,15 +3879,8 @@ async function studentLogout(event) {
     stopLogoutReminder();
 
     /*
-       Server ko bata do ki session khatam ho rahi hai - is baar
-       ISKA THODA WAIT (max ~3 second) karte hain, redirect karne
-       se pehle. Warna Apps Script server ki purani "Sessions" row
-       delete hone se PEHLE hi student redirect ho kar turant dobara
-       login try kar leta hai, aur server ko lagta hai session abhi
-       bhi kisi aur jagah active hai ("already login hai" error).
-
-       Token ho to token ke saath, na ho to Student ID + password ke
-       saath endsession bhejte hain - dono me se koi bhi chalta hai.
+       Server ko bata do ki session khatam ho rahi hai - max ~3 second
+       wait karte hain redirect se pehle.
     */
 
     try {
@@ -4042,7 +3907,6 @@ async function studentLogout(event) {
                 setTimeout(resolve, 3000);
             });
 
-            /* Jo bhi pehle ho - endsession complete ya 3-second timeout */
             await Promise.race([endSessionPromise, timeoutPromise]);
         }
     }
