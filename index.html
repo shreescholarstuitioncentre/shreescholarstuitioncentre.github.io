@@ -1671,7 +1671,7 @@ iframe{height:450px}
 
 
 /* =====================================================
-   NEW: 50% OFF RENT PLANS  (SSTC ACCESS OFFER SECTION)
+   50% OFF SUBJECT PDF RENTAL OFFER
 ===================================================== */
 
 /* SSTC Access button glow (attention) */
@@ -1713,13 +1713,19 @@ iframe{height:450px}
   font-size:18px;
   padding:8px 20px;
   border-radius:30px;
-  animation:blink 1.4s infinite;
+  line-height:1.4;
 }
 
 .offer-access-sub{
   color:#555;
+  font-size:15px;
+  margin:10px 0 8px;
+}
+
+.offer-access-details{
+  color:#4a1d9e;
   font-size:14px;
-  margin:10px 0 16px;
+  margin-bottom:20px;
 }
 
 .offer-plans{
@@ -1768,8 +1774,8 @@ iframe{height:450px}
 }
 
 .op-old{
-  text-decoration:line-through;
-  color:#999;
+  display:block;
+  color:#666;
   font-size:15px;
   margin-top:4px;
 }
@@ -1782,9 +1788,11 @@ iframe{height:450px}
 }
 
 .op-new small{
-  font-size:13px;
+  display:block;
+  font-size:12px;
   color:#555;
   font-weight:normal;
+  margin-top:3px;
 }
 
 .op-off{
@@ -1798,47 +1806,70 @@ iframe{height:450px}
   border-radius:12px;
 }
 
-/* ARROW POINTING TO SSTC ACCESS BUTTON */
-.offer-pointer{
+.offer-price-note{
+  color:#555;
+  font-size:12px;
+  margin-top:12px;
+}
+
+.offer-registration{
   margin-top:16px;
-  display:flex;
-  justify-content:flex-end;
-  padding-right:10px;
-}
-
-.offer-pointer-inner{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
+  padding:14px 12px;
   background:#f3ecff;
-  border:2px dashed #6c2bd9;
+  border-radius:14px;
+}
+
+.offer-opening{
   color:#4a1d9e;
-  font-weight:bold;
   font-size:15px;
-  padding:8px 16px;
-  border-radius:30px;
 }
 
-.offer-pointer-inner .arrow{
-  font-size:26px;
+.offer-opening time{
+  font-weight:bold;
+  white-space:nowrap;
+}
+
+.offer-register-btn{
   display:inline-block;
-  animation:pointUp 1s infinite;
+  margin-top:10px;
+  padding:11px 26px;
+  border-radius:30px;
+  background:linear-gradient(45deg,#6c2bd9,#8b35db);
+  color:#fff;
+  font-size:15px;
+  font-weight:bold;
+  text-decoration:none;
+  box-shadow:0 4px 12px rgba(108,43,217,.25);
+  transition:transform .3s,box-shadow .3s;
 }
 
-@keyframes pointUp{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
+.offer-register-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 20px rgba(108,43,217,.35);
+}
+
+.offer-register-btn:focus-visible{
+  outline:3px solid #d32f2f;
+  outline-offset:4px;
 }
 
 @media(max-width:600px){
+  .offer-access-box{padding:18px 12px 16px}
   .offer-plans{gap:8px}
-  .offer-plan{padding:14px 4px 12px}
+  .offer-plan{padding:16px 4px 12px}
   .op-months{font-size:13px}
-  .op-new{font-size:21px}
+  .op-new{font-size:24px}
   .op-old{font-size:13px}
-  .offer-access-title{font-size:15px}
-  .offer-pointer{justify-content:center;padding-right:0}
-  .offer-pointer-inner{font-size:13px}
+  .offer-access-title{font-size:17px;padding:8px 12px}
+  .offer-access-sub,.offer-opening{font-size:14px}
+  .offer-access-details{font-size:13px}
+  .offer-plan .op-tag{font-size:10px;padding:3px 6px}
+  .op-off{font-size:10px;padding:3px 6px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .offer-plan,.offer-register-btn{transition:none}
+  .offer-plan:hover,.offer-register-btn:hover{transform:none}
 }
 
 </style>
@@ -1870,55 +1901,50 @@ iframe{height:450px}
 		</div>
 </header>
 
-<!-- =========================
-     NEW SECTION: 50% OFF RENT PLANS
-========================= -->
-<section class="offer-access container" id="offerAccess">
+<!-- SUBJECT PDF RENTAL OFFER -->
+<section class="offer-access container" id="offerAccess" aria-labelledby="offerAccessTitle">
   <div class="offer-access-box">
 
-    <div class="offer-access-title">🔥 FLAT 50% OFF on EVERY SUBJECT 🔥</div>
-    <p class="offer-access-sub">Online Subject Access (Rent) – Per Subject Offer Price</p>
+    <h2 class="offer-access-title" id="offerAccessTitle">🎉 50% OFF on EVERY SUBJECT!</h2>
+    <p class="offer-access-sub">Chhota rent, badi taiyaari! Apna subject chunein, apna plan chunein.</p>
+    <p class="offer-access-details">📚 Har subject ke chapterwise PDFs — solved questions &amp; answers ke saath!</p>
 
     <div class="offer-plans">
 
       <div class="offer-plan">
-        <div class="op-months">3 Months</div>
-        <div class="op-old">₹60</div>
-        <div class="op-new">₹29 <small>/- only</small></div>
+        <h3 class="op-months">3 Months</h3>
+        <del class="op-old">₹60</del>
+        <p class="op-new">₹29/- <small>only / subject</small></p>
         <span class="op-off">50% OFF</span>
       </div>
 
       <div class="offer-plan">
-        <div class="op-months">6 Months</div>
-        <div class="op-old">₹100</div>
-        <div class="op-new">₹49 <small>/- only</small></div>
+        <h3 class="op-months">6 Months</h3>
+        <del class="op-old">₹100</del>
+        <p class="op-new">₹49/- <small>only / subject</small></p>
         <span class="op-off">50% OFF</span>
       </div>
 
       <div class="offer-plan best">
         <div class="op-tag">⭐ BEST VALUE</div>
-        <div class="op-months">12 Months</div>
-        <div class="op-old">₹200</div>
-        <div class="op-new">₹99 <small>/- only</small></div>
+        <h3 class="op-months">12 Months</h3>
+        <del class="op-old">₹200</del>
+        <p class="op-new">₹99/- <small>only / subject</small></p>
         <span class="op-off">50% OFF</span>
       </div>
 
     </div>
 
-    <!-- ARROW → SSTC ACCESS BUTTON -->
-    <div class="offer-pointer">
-      <a href="sstc-access.html" style="text-decoration:none">
-        <span class="offer-pointer-inner">
-          <span class="arrow">👆</span>
-          <span>Upar <b>SSTC Access</b> button par click karein</span>
-        </span>
-      </a>
+    <p class="offer-price-note">Online Subject Access (Rent) • Har price ek subject ke poore selected plan ka hai.</p>
+
+    <div class="offer-registration">
+      <p class="offer-opening">🗓️ Registration opens from <time datetime="2026-10-19">19 October 2026</time></p>
+      <a href="student-registration.html" class="offer-register-btn">Register Soon <span aria-hidden="true">→</span></a>
     </div>
 
   </div>
 </section>
-	
-	
+
 <section class="features container">
 <div class="card"><h3>Expert Teachers</h3><p>Highly experienced faculty</p></div>
 <div class="card"><h3>All Subjects</h3><p>Nursery to Class 12</p></div>
