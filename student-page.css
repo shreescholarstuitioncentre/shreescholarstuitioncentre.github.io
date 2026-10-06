@@ -4239,3 +4239,55 @@ body.sstc-modal-open {
     }
 
 }
+/* =========================================================
+   SSTC NOTES BUTTON (replaces Protected Reading badge)
+   ========================================================= */
+
+.notes-btn {
+
+    padding: 13px 22px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.28);
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.notes-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 12px 26px rgba(37, 99, 235, 0.36);
+}
+
+.notes-btn:focus-visible {
+
+    outline: 3px solid #93c5fd;
+
+    outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+
+    .notes-btn {
+
+        width: 100%;
+    }
+}
