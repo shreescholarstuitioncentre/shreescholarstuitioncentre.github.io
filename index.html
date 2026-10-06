@@ -1910,6 +1910,148 @@ iframe{height:450px}
   .offer-plan:hover,.offer-register-btn:hover{transform:none}
 }
 
+
+	/* =====================================================
+   📲 SHREE SCHOLARS PWA INSTALL BOX
+===================================================== */
+
+.pwa-install-box{
+  max-width:760px;
+  margin:18px auto 25px;
+  padding:12px 16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+
+  background:linear-gradient(135deg,#ffffff,#f7f9ff);
+  border:2px solid #6c2bd9;
+  border-radius:16px;
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.12),
+    0 0 18px rgba(108,43,217,.15);
+
+  position:relative;
+  z-index:5;
+}
+
+.pwa-install-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+
+.pwa-install-icon{
+  width:42px;
+  height:42px;
+  border-radius:11px;
+  object-fit:cover;
+  flex-shrink:0;
+
+  box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
+
+.pwa-install-text{
+  text-align:left;
+}
+
+.pwa-install-text strong{
+  display:block;
+  color:#4a1d9e;
+  font-size:16px;
+  line-height:1.3;
+}
+
+.pwa-install-text span{
+  display:block;
+  color:#666;
+  font-size:12px;
+  margin-top:2px;
+}
+
+.pwa-install-btn{
+  border:none;
+  outline:none;
+
+  background:linear-gradient(45deg,#6c2bd9,#9c4dff);
+  color:#fff;
+
+  padding:9px 16px;
+  border-radius:25px;
+
+  font-size:13px;
+  font-weight:bold;
+
+  cursor:pointer;
+  white-space:nowrap;
+
+  box-shadow:0 5px 15px rgba(108,43,217,.3);
+  transition:.3s;
+}
+
+.pwa-install-btn:hover{
+  transform:translateY(-2px) scale(1.03);
+  box-shadow:0 8px 20px rgba(108,43,217,.4);
+}
+
+.pwa-install-btn:active{
+  transform:scale(.97);
+}
+
+/* hidden initially */
+#pwaInstallBox{
+  display:none;
+}
+
+/* iPhone / unsupported browser message */
+.pwa-help{
+  max-width:760px;
+  margin:8px auto 20px;
+  padding:10px 14px;
+
+  background:#fff8e1;
+  border:1px solid #f5c242;
+  border-radius:12px;
+
+  text-align:center;
+  color:#6d4c00;
+  font-size:12px;
+
+  display:none;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+  .pwa-install-box{
+    margin:12px 12px 20px;
+    padding:10px 12px;
+    gap:8px;
+  }
+
+  .pwa-install-icon{
+    width:36px;
+    height:36px;
+  }
+
+  .pwa-install-text strong{
+    font-size:13px;
+  }
+
+  .pwa-install-text span{
+    font-size:10px;
+  }
+
+  .pwa-install-btn{
+    padding:8px 11px;
+    font-size:11px;
+  }
+}
+
+	
 </style>
 	
 <body>
@@ -1986,6 +2128,43 @@ iframe{height:450px}
   </div>
 </section>
 
+
+	<!-- =====================================================
+     📲 SHREE SCHOLARS APP INSTALL
+===================================================== -->
+
+<div class="pwa-install-box" id="pwaInstallBox">
+
+  <div class="pwa-install-left">
+
+    <img
+      src="Logo.png"
+      class="pwa-install-icon"
+      alt="Shree Scholars App">
+
+    <div class="pwa-install-text">
+      <strong>📲 Install Shree Scholars App</strong>
+      <span>Fast access • App-like experience • Free</span>
+    </div>
+
+  </div>
+
+  <button
+    type="button"
+    class="pwa-install-btn"
+    id="pwaInstallBtn">
+    INSTALL
+  </button>
+
+</div>
+
+<div class="pwa-help" id="pwaHelp">
+  📱 Agar Install option nahi aa raha hai, browser ke
+  <b>⋮ Menu → Add to Home screen</b> option ka use karein.
+</div>
+
+
+	
 <section class="features container">
 <div class="card"><h3>Expert Teachers</h3><p>Highly experienced faculty</p></div>
 <div class="card"><h3>All Subjects</h3><p>Nursery to Class 12</p></div>
@@ -2942,6 +3121,113 @@ if ("serviceWorker" in navigator) {
 }
 </script>
 
+	<!-- =====================================================
+     📲 PWA INSTALL SYSTEM
+===================================================== -->
+
+<script>
+(function () {
+
+  let deferredPrompt = null;
+
+  const installBox = document.getElementById("pwaInstallBox");
+  const installBtn = document.getElementById("pwaInstallBtn");
+  const pwaHelp = document.getElementById("pwaHelp");
+
+  if (!installBox || !installBtn) {
+    return;
+  }
+
+  /*
+   * Android Chrome / Edge etc.
+   * Browser sends this event when the website
+   * is eligible to be installed.
+   */
+
+  window.addEventListener("beforeinstallprompt", function (event) {
+
+    event.preventDefault();
+
+    deferredPrompt = event;
+
+    installBox.style.display = "flex";
+    pwaHelp.style.display = "none";
+
+  });
+
+
+  /*
+   * INSTALL BUTTON
+   */
+
+  installBtn.addEventListener("click", async function () {
+
+    if (deferredPrompt) {
+
+      deferredPrompt.prompt();
+
+      const result = await deferredPrompt.userChoice;
+
+      console.log(
+        "PWA installation result:",
+        result.outcome
+      );
+
+      deferredPrompt = null;
+
+      installBox.style.display = "none";
+
+      return;
+    }
+
+
+    /*
+     * If browser doesn't support
+     * automatic install prompt.
+     */
+
+    pwaHelp.style.display = "block";
+
+  });
+
+
+  /*
+   * Detect when app has already been installed
+   */
+
+  window.addEventListener("appinstalled", function () {
+
+    console.log(
+      "Shree Scholars App installed successfully."
+    );
+
+    deferredPrompt = null;
+
+    installBox.style.display = "none";
+
+    pwaHelp.style.display = "none";
+
+  });
+
+
+  /*
+   * If website is already running
+   * as installed PWA, don't show install box.
+   */
+
+  const isStandalone =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true;
+
+  if (isStandalone) {
+
+    installBox.style.display = "none";
+    pwaHelp.style.display = "none";
+
+  }
+
+})();
+</script>
 	
 </body>
 </html>
