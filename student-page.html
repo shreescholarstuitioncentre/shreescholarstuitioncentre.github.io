@@ -4,26 +4,16 @@
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <meta name="googlebot" content="noindex,nofollow,noarchive">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <title>SSTC | Student E-Book Portal</title>
 
-    <meta
-        name="robots"
-        content="noindex,nofollow,noarchive">
+    <link rel="stylesheet" href="student-page.css?v=3">
 
-    <meta
-        name="googlebot"
-        content="noindex,nofollow,noarchive">
-
-    <title>
-        SSTC | Student E-Book Portal
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="student-page.css?v=3">
+    <!-- ✅ NAYA: SSTC Notes section ka CSS -->
+    <link rel="stylesheet" href="student-notes.css?v=1">
 
 </head>
 
@@ -42,62 +32,32 @@
 
     <div class="header-container">
 
-
         <!-- BRAND -->
-
         <div class="brand-area">
 
             <div class="brand-logo">
-
-                <img
-                    src="Logo.png"
-                    alt="SSTC Logo"
-                    draggable="false">
-
+                <img src="Logo.png" alt="SSTC Logo" draggable="false">
             </div>
 
-
             <div class="brand-text">
-
                 <h1>
                     SHREE SCHOLARS
-                    <span>
-                        TUITION CENTER
-                    </span>
+                    <span>TUITION CENTER</span>
                 </h1>
-
-                <p>
-                    From Foundation to Future
-                </p>
-
+                <p>From Foundation to Future</p>
             </div>
 
         </div>
 
-
         <!-- NAV -->
-
         <nav class="main-nav">
 
-            <a href="index.html">
-                Home
-            </a>
+            <a href="index.html">Home</a>
 
-            <a
-                href="student-page.html"
-                class="active">
+            <a href="student-page.html" class="active">Student Portal</a>
 
-                Student Portal
-
-            </a>
-
-            <button
-                type="button"
-                class="logout-btn"
-                onclick="studentLogout(event)">
-            
+            <button type="button" class="logout-btn" onclick="studentLogout(event)">
                 🚪 Logout
-            
             </button>
 
         </nav>
@@ -116,37 +76,33 @@
 
 
     <!-- =====================================================
-         PAGE TITLE
+         PAGE TITLE  (+ SSTC Notes button)
     ====================================================== -->
 
     <section class="portal-title">
 
         <div>
 
-            <span class="portal-badge">
-                🎓 STUDENT PORTAL
-            </span>
+            <span class="portal-badge">🎓 STUDENT PORTAL</span>
 
-            <h2>
-                My E-Book Library
-            </h2>
+            <h2>My E-Book Library</h2>
 
-            <p>
-                Access your purchased and rented e-books securely.
-            </p>
+            <p>Access your purchased and rented e-books securely.</p>
 
         </div>
 
-
+        <!-- ✅ BADLA: ab ye same page par Notes section kholta / band karta hai -->
         <button
-                type="button"
-                class="notes-btn"
-                id="sstcNotesBtn"
-                onclick="openSstcNotes()">
-            
-                📝 SSTC Notes
-            
-            </button>
+            type="button"
+            class="notes-btn"
+            id="sstcNotesBtn"
+            aria-expanded="false"
+            aria-controls="sstcNotesSection"
+            onclick="toggleSstcNotes()">
+
+            📝 SSTC Notes
+
+        </button>
 
     </section>
 
@@ -158,174 +114,199 @@
 
     <section class="profile-card">
 
-
         <div class="profile-main">
 
-
-            <div
-                class="student-avatar"
-                id="studentAvatar">
-
-                S
-
-            </div>
-
+            <div class="student-avatar" id="studentAvatar">S</div>
 
             <div class="student-main-info">
 
-                <h2 id="studentName">
-                    Student Name
-                </h2>
+                <h2 id="studentName">Student Name</h2>
 
-                <p id="studentClass">
-                    Class --
+                <p id="studentClass">Class --</p>
+
+                <span id="studentStatus" class="student-status">● Active</span>
+
+            </div>
+
+        </div>
+
+        <div class="profile-details">
+
+            <div class="detail-item">
+                <span>Student ID</span>
+                <strong id="studentId">--</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Mobile Number</span>
+                <strong id="studentMobile">--</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Gender</span>
+                <strong id="studentGender">--</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Email ID</span>
+                <strong id="studentEmail">--</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Class</span>
+                <strong id="studentClassDetail">--</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Board</span>
+                <strong id="studentBoard">--</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>School Name</span>
+                <strong id="studentSchool">--</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>School Place</span>
+                <strong id="studentSchoolPlace">--</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Registration Date</span>
+                <strong id="registrationDate">--</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Login Time</span>
+                <strong id="loginTime">--</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ✅ NAYA: SSTC NOTES SECTION (isi page par khulta hai)
+         1) Subject card  2) Chapter  3) Notes viewer
+         Toggle: English Medium / Hindi Medium
+    ====================================================== -->
+
+    <section class="nt-section" id="sstcNotesSection" hidden>
+
+        <div class="nt-head">
+
+            <div>
+
+                <span class="nt-tag">📝 SSTC NOTES</span>
+
+                <h2>Chapter Notes <small id="ntClassLabel" style="font-size:14px;color:#5f7370;font-weight:700;"></small></h2>
+
+                <p>
+                    Subject chuniye, medium select kijiye aur chapter ke notes yahin padhiye.
+                    Notes ko Print ya PDF me save bhi kar sakte hain.
                 </p>
 
-                <span
-                    id="studentStatus"
-                    class="student-status">
+            </div>
 
-                    ● Active
+            <div class="nt-head-right">
 
-                </span>
+                <div class="nt-medium" role="group" aria-label="Notes medium">
+
+                    <button type="button" class="active" data-medium="english" onclick="setSstcNotesMedium('english')">
+                        English Medium
+                    </button>
+
+                    <button type="button" data-medium="hindi" onclick="setSstcNotesMedium('hindi')">
+                        Hindi Medium
+                    </button>
+
+                </div>
+
+                <button type="button" class="nt-close" onclick="closeSstcNotes()">
+                    ✕ Close Notes
+                </button>
 
             </div>
 
         </div>
 
 
-        <div class="profile-details">
+        <!-- STEP 1: SUBJECTS -->
+
+        <div class="nt-step">
+
+            <div class="nt-step-title">
+                <span class="nt-step-no">1</span>
+                Subject chuniye
+            </div>
+
+            <div class="nt-subjects" id="ntSubjects">
+                <!-- JS creates subject cards -->
+            </div>
+
+        </div>
 
 
-            <div class="detail-item">
+        <!-- STEP 2: CHAPTERS -->
 
-                <span>
-                    Student ID
-                </span>
+        <div class="nt-step" id="ntChapterStep">
 
-                <strong id="studentId">
-                    --
-                </strong>
+            <div class="nt-step-title">
+                <span class="nt-step-no">2</span>
+                <span id="ntChapterTitle">Chapter chuniye</span>
+            </div>
+
+            <div class="nt-chapters" id="ntChapters">
+                <!-- JS creates chapter list -->
+            </div>
+
+        </div>
+
+
+        <!-- STEP 3: NOTES VIEWER -->
+
+        <div class="nt-viewer" id="ntViewer" hidden>
+
+            <div class="nt-bar">
+
+                <div class="nt-bar-title">
+                    <strong id="ntViewerTitle">Notes</strong>
+                    <small id="ntViewerMeta"></small>
+                </div>
+
+                <div class="nt-bar-actions">
+
+                    <button type="button" id="ntPrev" onclick="sstcNotesStep(-1)" title="Previous chapter">◀ Prev</button>
+
+                    <button type="button" id="ntNext" onclick="sstcNotesStep(1)" title="Next chapter">Next ▶</button>
+
+                    <button type="button" class="nt-print" onclick="sstcNotesPrint(false)" title="Print notes">🖨 Print</button>
+
+                    <button type="button" class="nt-print" onclick="sstcNotesPrint(true)" title="Save notes as PDF">⬇ Download PDF</button>
+
+                    <button type="button" onclick="sstcNotesFullscreen()" title="Fullscreen">⛶</button>
+
+                    <button type="button" onclick="closeSstcNotesViewer()" title="Close notes">✕</button>
+
+                </div>
 
             </div>
 
+            <div class="nt-frame-wrap">
 
-            <div class="detail-item">
+                <iframe
+                    id="ntFrame"
+                    class="nt-frame"
+                    title="SSTC Notes"
+                    src="about:blank">
+                </iframe>
 
-                <span>
-                    Mobile Number
-                </span>
-
-                <strong id="studentMobile">
-                    --
-                </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    Gender
-                </span>
-
-                <strong id="studentGender">
-                    --
-                </strong>
+                <div class="nt-overlay" id="ntOverlay"></div>
 
             </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    Email ID
-                </span>
-
-                <strong id="studentEmail">
-                    --
-                </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    Class
-                </span>
-
-                <strong id="studentClassDetail">
-                    --
-                </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    Board
-                </span>
-
-                <strong id="studentBoard">
-                    --
-                </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    School Name
-                </span>
-
-                <strong id="studentSchool">
-                    --
-                </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    School Place
-                </span>
-
-                <strong id="studentSchoolPlace">
-                    --
-                </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    Registration Date
-                </span>
-
-                <strong id="registrationDate">
-                    --
-                </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span>
-                    Login Time
-                </span>
-
-                <strong id="loginTime">
-                    --
-                </strong>
-
-            </div>
-
 
         </div>
 
@@ -339,18 +320,13 @@
 
     <section class="subject-section">
 
-
         <div class="section-heading">
 
             <div>
 
-                <span class="section-badge">
-                    📚 E-BOOK LIBRARY
-                </span>
+                <span class="section-badge">📚 E-BOOK LIBRARY</span>
 
-                <h2>
-                    Choose Your Subject
-                </h2>
+                <h2>Choose Your Subject</h2>
 
                 <p>
                     Tap a subject card to view its chapters. Rent a
@@ -359,16 +335,11 @@
 
             </div>
 
-
             <div class="library-count">
 
-                <span>
-                    Available Books
-                </span>
+                <span>Available Books</span>
 
-                <strong id="ebookCount">
-                    0
-                </strong>
+                <strong id="ebookCount">0</strong>
 
             </div>
 
@@ -376,14 +347,9 @@
 
 
 
-        <!-- =================================================
-             MY STUDY SUBJECTS (saved in Google Sheet)
-        ================================================== -->
+        <!-- MY STUDY SUBJECTS (saved in Google Sheet) -->
 
-        <div
-            class="study-panel"
-            id="studyPanel">
-
+        <div class="study-panel" id="studyPanel">
 
             <div class="study-panel-main">
 
@@ -391,24 +357,15 @@
 
                     🔑 My Rented Subjects
 
-                    <span
-                        class="study-count"
-                        id="selectedCount">
-                        0
-                    </span>
+                    <span class="study-count" id="selectedCount">0</span>
 
                 </div>
 
-
-                <div
-                    class="study-chips"
-                    id="studyChips">
-
+                <div class="study-chips" id="studyChips">
                     <!-- JS creates selected subject chips -->
-
                 </div>
 
-                 <!-- ✅ NAYA: Pay Now button -->
+                <!-- Pay Now button -->
                 <button
                     type="button"
                     id="payNowBtn"
@@ -419,9 +376,8 @@
                            cursor:pointer;font-size:14px;">
                     💳 Pay Now
                 </button>
-                            
-            </div>
 
+            </div>
 
             <div class="study-panel-side">
 
@@ -433,29 +389,14 @@
                     aria-live="polite">
                 </span>
 
+                <div class="subject-filter" role="group" aria-label="Filter subjects">
 
-                <div
-                    class="subject-filter"
-                    role="group"
-                    aria-label="Filter subjects">
-
-                    <button
-                        type="button"
-                        class="active"
-                        data-filter="all"
-                        onclick="setSubjectFilter('all')">
-
+                    <button type="button" class="active" data-filter="all" onclick="setSubjectFilter('all')">
                         All Subjects (<span id="filterAllCount">0</span>)
-
                     </button>
 
-                    <button
-                        type="button"
-                        data-filter="mine"
-                        onclick="setSubjectFilter('mine')">
-
+                    <button type="button" data-filter="mine" onclick="setSubjectFilter('mine')">
                         My Rented (<span id="filterMineCount">0</span>)
-
                     </button>
 
                 </div>
@@ -470,45 +411,20 @@
 
         <div class="subject-carousel-wrapper">
 
-            <button
-                type="button"
-                class="carousel-arrow"
-                onclick="scrollSubjects(-1)">
+            <button type="button" class="carousel-arrow" onclick="scrollSubjects(-1)">‹</button>
 
-                ‹
-
-            </button>
-
-
-            <div
-                class="subject-carousel"
-                id="subjectCarousel">
-
+            <div class="subject-carousel" id="subjectCarousel">
                 <!-- JS creates subjects -->
-
             </div>
 
-
-            <button
-                type="button"
-                class="carousel-arrow"
-                onclick="scrollSubjects(1)">
-
-                ›
-
-            </button>
+            <button type="button" class="carousel-arrow" onclick="scrollSubjects(1)">›</button>
 
         </div>
 
 
-        <p
-            class="subject-filter-empty"
-            id="subjectFilterEmpty"
-            hidden>
-
+        <p class="subject-filter-empty" id="subjectFilterEmpty" hidden>
             You have not rented any subject yet. Switch to
             “All Subjects” and tap “Rent This Subject”.
-
         </p>
 
     </section>
@@ -519,22 +435,15 @@
          CHAPTER SECTION
     ====================================================== -->
 
-    <section
-        class="chapter-section"
-        id="chapterSection">
-
+    <section class="chapter-section" id="chapterSection">
 
         <div class="chapter-header">
 
             <div>
 
-                <span class="chapter-label">
-                    📖 CHAPTERS
-                </span>
+                <span class="chapter-label">📖 CHAPTERS</span>
 
-                <h2 id="selectedSubjectTitle">
-                    Select a Subject
-                </h2>
+                <h2 id="selectedSubjectTitle">Select a Subject</h2>
 
                 <p id="selectedSubjectDescription">
                     Choose a subject above to see its chapters.
@@ -544,25 +453,12 @@
 
         </div>
 
-
-        <div
-            class="chapter-grid"
-            id="chapterGrid">
+        <div class="chapter-grid" id="chapterGrid">
 
             <div class="chapter-empty">
-
-                <div>
-                    📚
-                </div>
-
-                <h3>
-                    Select a Subject
-                </h3>
-
-                <p>
-                    Chapters will appear here.
-                </p>
-
+                <div>📚</div>
+                <h3>Select a Subject</h3>
+                <p>Chapters will appear here.</p>
             </div>
 
         </div>
@@ -575,95 +471,36 @@
          READER
     ====================================================== -->
 
-    <section
-        class="reader-section"
-        id="readerSection">
-
+    <section class="reader-section" id="readerSection">
 
         <!-- READER HEADER -->
 
         <div class="reader-header">
 
-
             <div class="reader-book-info">
 
-                <div class="book-icon">
-                    📖
-                </div>
-
+                <div class="book-icon">📖</div>
 
                 <div>
-
-                    <h3 id="currentBookTitle">
-                        Select a Chapter
-                    </h3>
-
-                    <p id="currentBookStatus">
-                        Select a chapter to start reading.
-                    </p>
-
+                    <h3 id="currentBookTitle">Select a Chapter</h3>
+                    <p id="currentBookStatus">Select a chapter to start reading.</p>
                 </div>
 
             </div>
 
-
-
             <div class="reader-actions">
 
+                <button type="button" onclick="zoomOut()" title="Zoom Out">−</button>
 
-                <button
-                    type="button"
-                    onclick="zoomOut()"
-                    title="Zoom Out">
+                <span id="zoomLevel">100%</span>
 
-                    −
+                <button type="button" onclick="zoomIn()" title="Zoom In">+</button>
 
-                </button>
+                <button type="button" onclick="fitWidth()" title="Fit Width">↔</button>
 
+                <button type="button" onclick="fitPage()" title="Fit Page">⛶</button>
 
-                <span id="zoomLevel">
-                    100%
-                </span>
-
-
-                <button
-                    type="button"
-                    onclick="zoomIn()"
-                    title="Zoom In">
-
-                    +
-
-                </button>
-
-
-                <button
-                    type="button"
-                    onclick="fitWidth()"
-                    title="Fit Width">
-
-                    ↔
-
-                </button>
-
-
-                <button
-                    type="button"
-                    onclick="fitPage()"
-                    title="Fit Page">
-
-                    ⛶
-
-                </button>
-
-
-                <button
-                    type="button"
-                    onclick="toggleFullscreen()"
-                    title="Fullscreen">
-
-                    ⛶
-
-                </button>
+                <button type="button" onclick="toggleFullscreen()" title="Fullscreen">⛶</button>
 
             </div>
 
@@ -671,29 +508,17 @@
 
         <!-- PDF VIEWER -->
 
-        <div
-            class="pdf-viewer"
-            id="pdfViewer">
+        <div class="pdf-viewer" id="pdfViewer">
 
+            <div class="viewer-empty" id="viewerEmpty">
 
-            <div
-                class="viewer-empty"
-                id="viewerEmpty">
+                <div class="empty-icon">📚</div>
 
-                <div class="empty-icon">
-                    📚
-                </div>
+                <h3>Select a Chapter</h3>
 
-                <h3>
-                    Select a Chapter
-                </h3>
-
-                <p>
-                    Choose a chapter above to open the protected reader.
-                </p>
+                <p>Choose a chapter above to open the protected reader.</p>
 
             </div>
-
 
             <iframe
                 id="pdfFrame"
@@ -705,42 +530,18 @@
 
         </div>
 
-
-
         <!-- READER FOOTER -->
 
         <div class="reader-footer-controls">
 
-
-            <button
-                type="button"
-                onclick="previousPage()">
-
-                ◀ Previous
-
-            </button>
-
+            <button type="button" onclick="previousPage()">◀ Previous</button>
 
             <div class="page-indicator">
-
-                <span>
-                    Chapter
-                </span>
-
-                <strong id="currentChapterNumber">
-                    1
-                </strong>
-
+                <span>Chapter</span>
+                <strong id="currentChapterNumber">1</strong>
             </div>
 
-
-            <button
-                type="button"
-                onclick="nextPage()">
-
-                Next ▶
-
-            </button>
+            <button type="button" onclick="nextPage()">Next ▶</button>
 
         </div>
 
@@ -754,88 +555,36 @@
 
     <section class="summary-section">
 
-
         <div class="summary-card">
-
-            <div class="summary-icon">
-                📚
-            </div>
-
+            <div class="summary-icon">📚</div>
             <div>
-
-                <span>
-                    Total E-Books
-                </span>
-
-                <strong id="totalBooks">
-                    0
-                </strong>
-
+                <span>Total E-Books</span>
+                <strong id="totalBooks">0</strong>
             </div>
-
         </div>
 
-
         <div class="summary-card">
-
-            <div class="summary-icon">
-                🔄
-            </div>
-
+            <div class="summary-icon">🔄</div>
             <div>
-
-                <span>
-                    Rented
-                </span>
-
-                <strong id="rentedBooks">
-                    0
-                </strong>
-
+                <span>Rented</span>
+                <strong id="rentedBooks">0</strong>
             </div>
-
         </div>
 
-
         <div class="summary-card">
-
-            <div class="summary-icon">
-                🛒
-            </div>
-
+            <div class="summary-icon">🛒</div>
             <div>
-
-                <span>
-                    Purchased
-                </span>
-
-                <strong id="purchasedBooks">
-                    0
-                </strong>
-
+                <span>Purchased</span>
+                <strong id="purchasedBooks">0</strong>
             </div>
-
         </div>
 
-
         <div class="summary-card">
-
-            <div class="summary-icon">
-                📖
-            </div>
-
+            <div class="summary-icon">📖</div>
             <div>
-
-                <span>
-                    Subjects
-                </span>
-
-                <strong id="totalSubjects">
-                    0
-                </strong>
-
+                <span>Subjects</span>
+                <strong id="totalSubjects">0</strong>
             </div>
-
         </div>
 
     </section>
@@ -848,15 +597,11 @@
 
     <section class="purchase-info">
 
-        <div class="purchase-info-icon">
-            🛒
-        </div>
+        <div class="purchase-info-icon">🛒</div>
 
         <div>
 
-            <h3>
-                Want More Subjects?
-            </h3>
+            <h3>Want More Subjects?</h3>
 
             <p>
                 <strong>Rent</strong> any subject for
@@ -884,55 +629,24 @@
 
     <div class="footer-container">
 
-
         <div>
-
-            <h3>
-                SHREE SCHOLARS TUITION CENTER
-            </h3>
-
-            <p>
-                From Foundation to Future
-            </p>
-
+            <h3>SHREE SCHOLARS TUITION CENTER</h3>
+            <p>From Foundation to Future</p>
         </div>
 
-
         <div class="footer-links">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <span>
-                •
-            </span>
-
-            <a href="student-page.html">
-                Student Portal
-            </a>
-
-            <span>
-                •
-            </span>
-
-            <a href="#">
-                Privacy
-            </a>
-
+            <a href="index.html">Home</a>
+            <span>•</span>
+            <a href="student-page.html">Student Portal</a>
+            <span>•</span>
+            <a href="#">Privacy</a>
         </div>
 
     </div>
 
-
     <div class="copyright">
-
-        ©
-        <span id="currentYear"></span>
-
-        Shree Scholars Tuition Center.
-        All Rights Reserved.
-
+        © <span id="currentYear"></span>
+        Shree Scholars Tuition Center. All Rights Reserved.
     </div>
 
 </footer>
@@ -943,130 +657,51 @@
      RENT WINDOW (plan chuno / rental details)
 ========================================================= -->
 
-<div
-    class="sstc-rent-modal"
-    id="rentModal"
-    hidden>
+<div class="sstc-rent-modal" id="rentModal" hidden>
 
+    <div class="sstc-rent-backdrop" onclick="closeRentModal()"></div>
 
-    <div
-        class="sstc-rent-backdrop"
-        onclick="closeRentModal()">
-    </div>
+    <div class="sstc-rent-dialog" role="dialog" aria-modal="true" aria-labelledby="rentModalTitle">
 
-
-    <div
-        class="sstc-rent-dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="rentModalTitle">
-
-
-        <button
-            type="button"
-            class="sstc-rent-close"
-            onclick="closeRentModal()"
-            aria-label="Close">
-
-            ✕
-
-        </button>
-
+        <button type="button" class="sstc-rent-close" onclick="closeRentModal()" aria-label="Close">✕</button>
 
         <div class="sstc-rent-head">
 
-            <div class="sstc-rent-head-icon">
-                🔑
-            </div>
+            <div class="sstc-rent-head-icon">🔑</div>
 
             <div>
-
-                <h3 id="rentModalTitle">
-                    Rent Subject
-                </h3>
-
-                <p id="rentModalSubtitle">
-                    Choose how long you want to rent this subject.
-                </p>
-
+                <h3 id="rentModalTitle">Rent Subject</h3>
+                <p id="rentModalSubtitle">Choose how long you want to rent this subject.</p>
             </div>
 
         </div>
 
+        <p class="sstc-rent-success" id="rentSuccess" hidden></p>
 
-        <p
-            class="sstc-rent-success"
-            id="rentSuccess"
-            hidden>
-        </p>
-
-
-        <div
-            class="sstc-rent-plans"
-            id="rentPlans"
-            role="radiogroup"
-            aria-label="Rental plans">
-
+        <div class="sstc-rent-plans" id="rentPlans" role="radiogroup" aria-label="Rental plans">
             <!-- JS creates 3 / 6 / 12 month plans -->
-
         </div>
 
-
-        <div
-            class="sstc-rent-details"
-            id="rentDetails"
-            hidden>
-
+        <div class="sstc-rent-details" id="rentDetails" hidden>
             <!-- JS creates rental details -->
-
         </div>
 
+        <p class="sstc-rent-note" id="rentNote"></p>
 
-        <p
-            class="sstc-rent-note"
-            id="rentNote">
-        </p>
-
-
-        <p
-            class="sstc-rent-error"
-            id="rentError"
-            role="alert"
-            hidden>
-        </p>
-
+        <p class="sstc-rent-error" id="rentError" role="alert" hidden></p>
 
         <div class="sstc-rent-actions">
 
-            <button
-                type="button"
-                class="sstc-rent-btn secondary"
-                onclick="closeRentModal()">
-
+            <button type="button" class="sstc-rent-btn secondary" onclick="closeRentModal()">
                 Close
-
             </button>
 
-            <button
-                type="button"
-                class="sstc-rent-btn danger"
-                id="rentCancelRequestBtn"
-                onclick="cancelRentRequest()"
-                hidden>
-
+            <button type="button" class="sstc-rent-btn danger" id="rentCancelRequestBtn" onclick="cancelRentRequest()" hidden>
                 Cancel Request
-
             </button>
 
-            <button
-                type="button"
-                class="sstc-rent-btn primary"
-                id="rentConfirmBtn"
-                onclick="confirmRent()"
-                disabled>
-
+            <button type="button" class="sstc-rent-btn primary" id="rentConfirmBtn" onclick="confirmRent()" disabled>
                 Choose a plan
-
             </button>
 
         </div>
@@ -1074,6 +709,7 @@
     </div>
 
 </div>
+
 
 <!-- =========================================================
      PAYMENT WINDOW (Pay Now - calculation + UPI + Student ID)
@@ -1083,11 +719,9 @@
 
     <div class="sstc-rent-backdrop" onclick="closePaymentModal()"></div>
 
-    <div class="sstc-rent-dialog" role="dialog" aria-modal="true"
-         style="max-width:420px;">
+    <div class="sstc-rent-dialog" role="dialog" aria-modal="true" style="max-width:420px;">
 
-        <button type="button" class="sstc-rent-close sstc-pay-close"
-                onclick="closePaymentModal()" aria-label="Close">✕</button>
+        <button type="button" class="sstc-rent-close sstc-pay-close" onclick="closePaymentModal()" aria-label="Close">✕</button>
 
         <div class="sstc-rent-head">
             <div class="sstc-rent-head-icon">💳</div>
@@ -1151,8 +785,7 @@
             <button type="button" class="sstc-rent-btn secondary" onclick="closePaymentModal()">
                 Close
             </button>
-            <button type="button" class="sstc-rent-btn primary"
-                    id="payConfirmBtn" onclick="markPaymentSent()">
+            <button type="button" class="sstc-rent-btn primary" id="payConfirmBtn" onclick="markPaymentSent()">
                 ✅ I Have Paid
             </button>
         </div>
@@ -1166,6 +799,9 @@
 ========================================================= -->
 
 <script src="student-page.js?v=3"></script>
+
+<!-- ✅ NAYA: SSTC Notes section ka JS (student-page.js ke BAAD hi rakhein) -->
+<script src="student-notes.js?v=1"></script>
 
 </body>
 
