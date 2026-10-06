@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- LOGIN GUARD: login nahi hai to turant access page par -->
+    <script>
+    (function () {
+        var loggedIn = sessionStorage.getItem("sstcStudentLoggedIn");
+        var data = sessionStorage.getItem("sstcStudentData");
+        if (loggedIn !== "true" || !data) {
+            window.location.replace("sstc-access.html");
+        }
+    })();
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <meta name="googlebot" content="noindex,nofollow,noarchive">
+
+    <title>SSTC | Subject Notes</title>
+
+    <link rel="stylesheet" href="subject-notes.css?v=1">
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="sn-header">
+    <div class="sn-header-inner">
+
+        <div class="sn-brand">
+            <div class="sn-logo">
+                <img src="Logo.png" alt="SSTC Logo" draggable="false">
+            </div>
+            <div class="sn-brand-text">
+                <h1>SHREE SCHOLARS <span>TUITION CENTER</span></h1>
+                <p>From Foundation to Future</p>
+            </div>
+        </div>
+
+        <nav class="sn-nav">
+            <button type="button" class="sn-nav-btn" id="snBackBtn">⬅ Student Portal</button>
+            <button type="button" class="sn-nav-btn sn-logout" id="snLogoutBtn">🚪 Logout</button>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="sn-page">
+
+    <!-- ================= TITLE ================= -->
+
+    <section class="sn-title">
+        <span class="sn-badge">📝 SSTC NOTES</span>
+        <h2>Subject Notes</h2>
+        <p>Subject chuno, chapter chuno, medium chuno — notes neeche khul jayenge. Print ya PDF bhi bana sakte hain.</p>
+    </section>
+
+
+    <!-- ================= STUDENT (SHORT) ================= -->
+
+    <section class="sn-student">
+        <div class="sn-avatar" id="snAvatar">S</div>
+
+        <div class="sn-student-main">
+            <h3 id="snName">Student Name</h3>
+            <p id="snClassLine">Class --</p>
+        </div>
+
+        <div class="sn-student-meta">
+            <div><span>Student ID</span><strong id="snId">--</strong></div>
+            <div><span>Board</span><strong id="snBoard">--</strong></div>
+            <div><span>Status</span><strong id="snStatus" class="sn-status">--</strong></div>
+        </div>
+    </section>
+
+
+    <!-- ================= STEP 1 : SUBJECTS ================= -->
+
+    <section class="sn-section">
+        <div class="sn-step-head">
+            <span class="sn-step">1</span>
+            <div>
+                <h3>Choose Subject</h3>
+                <p>Apni class ke subject par tap karein.</p>
+            </div>
+        </div>
+
+        <div class="sn-subject-grid" id="snSubjects"></div>
+    </section>
+
+
+    <!-- ================= STEP 2 : CHAPTERS + MEDIUM ================= -->
+
+    <section class="sn-section" id="snChapterSection">
+
+        <div class="sn-step-head sn-step-head-split">
+
+            <div class="sn-step-head-left">
+                <span class="sn-step">2</span>
+                <div>
+                    <h3 id="snChapterTitle">Choose Chapter</h3>
+                    <p id="snChapterSub">Pehle upar se subject chuno.</p>
+                </div>
+            </div>
+
+            <!-- MEDIUM TOGGLE -->
+            <div class="sn-medium" role="group" aria-label="Medium">
+                <button type="button" class="sn-medium-btn active" data-medium="en" aria-pressed="true">English Medium</button>
+                <button type="button" class="sn-medium-btn" data-medium="hi" aria-pressed="false">हिंदी माध्यम</button>
+            </div>
+
+        </div>
+
+        <div class="sn-chapter-grid" id="snChapters">
+            <div class="sn-empty">
+                <div>📚</div>
+                <p>Subject chunne ke baad chapters yahan dikhenge.</p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ================= STEP 3 : NOTES VIEWER ================= -->
+
+    <section class="sn-section sn-viewer-section" id="snViewerSection">
+
+        <div class="sn-step-head">
+            <span class="sn-step">3</span>
+            <div>
+                <h3>Read Notes</h3>
+                <p>Notes neeche khulenge. Print / Save as PDF se download karein.</p>
+            </div>
+        </div>
+
+        <div class="sn-viewer-bar">
+
+            <div class="sn-viewer-info">
+                <strong id="snViewerTitle">No chapter selected</strong>
+                <span id="snViewerMeta">Chapter chuno</span>
+            </div>
+
+            <div class="sn-viewer-actions">
+                <button type="button" class="sn-act sn-act-primary" id="snPrintBtn" disabled>🖨 Print / Save as PDF</button>
+                <button type="button" class="sn-act" id="snFullBtn" disabled>⛶ Fullscreen</button>
+                <button type="button" class="sn-act" id="snNewTabBtn" disabled>↗ New Tab</button>
+            </div>
+
+        </div>
+
+        <div class="sn-viewer" id="snViewer">
+
+            <div class="sn-viewer-msg" id="snViewerMsg">
+                <div class="sn-viewer-icon">📖</div>
+                <h4>Select a Chapter</h4>
+                <p>Chapter chunne par notes yahan khulenge.</p>
+            </div>
+
+            <iframe id="snFrame" class="sn-frame" title="SSTC Notes" hidden></iframe>
+
+        </div>
+
+        <p class="sn-tip">
+            💡 PDF banane ke liye <strong>Print / Save as PDF</strong> dabayein, phir printer me
+            <strong>“Save as PDF”</strong> chunein.
+        </p>
+
+    </section>
+
+</main>
+
+
+<footer class="sn-footer">
+    <div class="sn-footer-text">
+        © <span id="snYear"></span> Shree Scholars Tuition Center. All Rights Reserved.
+    </div>
+</footer>
+
+<script src="subject-notes.js?v=1"></script>
+
+</body>
+</html>
