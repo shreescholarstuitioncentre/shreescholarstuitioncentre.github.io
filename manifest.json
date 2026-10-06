@@ -1,0 +1,25 @@
+{
+  "name": "Shree Scholars Tuition Center",
+  "short_name": "Shree Scholars",
+  "description": "Shree Scholars Tuition Center - From Foundation to Future",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1e3c",
+  "theme_color": "#0b1e3c",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
