@@ -810,32 +810,37 @@ footer{
 
 
 .student-register-link{
-
   display:inline-block;
-
   margin-left:5px;
-
-  color:#6d28d9;
-
+  padding:11px 20px;
+  border:2px solid #ffc857;
+  border-radius:30px;
+  background:linear-gradient(135deg,#6d28d9,#8b35db);
+  color:#fff;
+  font-size:14px;
   font-weight:700;
-
+  line-height:1.4;
   text-decoration:none;
-
-  transition:
-    color .25s ease,
-    transform .25s ease;
-
+  vertical-align:middle;
+  box-shadow:0 5px 16px rgba(109,40,217,.30),0 0 0 3px rgba(255,200,87,.18);
+  transition:transform .25s ease,box-shadow .25s ease;
 }
 
-
 .student-register-link:hover{
+  color:#fff;
+  transform:translateY(-2px);
+  text-decoration:none;
+  box-shadow:0 8px 22px rgba(109,40,217,.40),0 0 0 4px rgba(255,200,87,.25);
+}
 
-  color:#ff3d1f;
+.student-register-link:focus-visible{
+  outline:3px solid #d32f2f;
+  outline-offset:4px;
+}
 
-  transform:translateY(-1px);
-
-  text-decoration:underline;
-
+@media(prefers-reduced-motion:reduce){
+  .student-register-link{transition:none}
+  .student-register-link:hover{transform:none}
 }
 
 
