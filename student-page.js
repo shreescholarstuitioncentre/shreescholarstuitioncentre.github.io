@@ -108,7 +108,38 @@ const SSTC_CURRENT_PAGE = "sstcCurrentPage";
 
 const SSTC_SITE_BASE_URL = window.location.origin;
 
+/* =========================================================
+   SSTC NOTES BUTTON
+   Login hone par hi Subject-notes.html khulta hai
+   ========================================================= */
 
+const SSTC_NOTES_PAGE = "Subject-notes.html";
+
+function openSstcNotes() {
+
+    /* Login nahi hai to checkStudentSession() khud access page par bhej deta hai */
+
+    if (!checkStudentSession()) {
+        return;
+    }
+
+    if (sstcSessionEnding || sstcLoggingOut) {
+        return;
+    }
+
+    /*
+     * NEW TAB me kholte hain (same tab me nahi), kyunki is page se
+     * jaate waqt "pagehide" par endsession chalta hai aur student
+     * logout ho jata. New tab me sessionStorage copy ho jata hai,
+     * isliye student wahan bhi logged-in rehta hai.
+     */
+
+    const notesWindow = window.open(SSTC_NOTES_PAGE, "_blank");
+
+    if (!notesWindow) {
+        showSstcToast("Popup blocked hai. Kripya popup allow karein aur dobara try karein.", "info");
+    }
+}
 /* =========================================================
    PDF URL BUILDER
    ========================================================= */
@@ -4343,3 +4374,4 @@ window.openPaymentModal = openPaymentModal;
 window.closePaymentModal = closePaymentModal;
 window.copyUpiId = copyUpiId;
 window.markPaymentSent = markPaymentSent;
+window.openSstcNotes = openSstcNotes;
