@@ -1,984 +1,725 @@
 /* =========================================================
-   SSTC SUBJECT NOTES PAGE
-   Login guard + student summary + subject cards + chapters
-   + English/Hindi toggle + notes viewer + Print / Save PDF
-   ---------------------------------------------------------
-   NOTE: Is page par student-page.js include NAHI karna.
-   (Wahan tab band hone par endsession chalta hai.)
+   SSTC NOTES  (student-page.html ke andar hi section khulta hai)
+   Subject cards -> Chapters (English / Hindi medium) -> Notes
+   viewer (linked HTML file) -> Print / Save as PDF.
+
+   Ye file student-page.js ke BAAD load hoti hai aur uske
+   functions use karti hai: getCurrentClassLibrary, getStudentValue,
+   normalizeStudentClass, checkStudentSession, showSstcToast.
    ========================================================= */
 
 (function () {
 
     "use strict";
 
-
-    /* =====================================================
+    /* -----------------------------------------------------
        SETTINGS
-       ===================================================== */
+    ----------------------------------------------------- */
 
-    const API_URL = "https://script.google.com/macros/s/AKfycbzSPSlkswNdmRtJkZ0Uq3Et5hAPIBorvbgVoQvZD4e0Ed36TwPzk7bh-xSAWmdFpmqynw/exec";
+    /*
+     * Notes ki HTML files kahan rakhi hain.
+     * Chapter ka PDF path:   ebooks/class-10/science/chapter-01.pdf
+     * Notes ka path banega:
+     *   notes/class-10/science/english/chapter-01.html   (English Medium)
+     *   notes/class-10/science/hindi/chapter-01.html     (Hindi Medium)
+     */
+    const NOTES_BASE_FOLDER = "notes";
 
-    const ACCESS_PAGE = "sstc-access.html";
-    const PORTAL_PAGE = "student-page.html";
+    /*
+     * false = notes sabke liye free
+     * true  = notes ke liye subject rent hona chahiye (Chapter 1 free preview)
+     */
+    const NOTES_REQUIRE_RENT = false;
 
-    /* Notes ka main folder (repo me) */
-    const NOTES_BASE = "notes";
+    /*
+     * Kisi chapter ki file ka naam alag ho to yahan likho. Format:
+     *   "class|Subject|chapterNumber|medium": "path/to/file.html"
+     * Example:
+     *   "10|Science|1|english": "notes/science-ch1-en.html"
+     */
+    const NOTES_FILE_OVERRIDES = window.SSTC_NOTES_FILES || {};
 
-    const HEARTBEAT_MS = 45 * 1000;
-
-    const KEY_LOGIN = "sstcStudentLoggedIn";
-    const KEY_DATA = "sstcStudentData";
-    const KEY_TOKEN = "sstcSessionToken";
-    const KEY_LOGIN_TIME = "sstcStudentLoginTime";
-    const KEY_MEDIUM = "sstcNotesMedium";
+    const MEDIUM_KEY = "sstcNotesMedium";
 
 
-    /* =====================================================
-       NOTES LIBRARY
-       -----------------------------------------------------
-       File ka path automatically ban jata hai:
+    /* -----------------------------------------------------
+       STATE
+    ----------------------------------------------------- */
 
-       notes/class-10/science/chapter-01-en.html   (English)
-       notes/class-10/science/chapter-01-hi.html   (Hindi)
-
-       Naya chapter jodna ho to bas titles me ek naam add karein.
-       ===================================================== */
-
-    function sub(folder, image, titles) {
-
-        return {
-            folder: folder,
-            image: image,
-            titles: titles
-        };
-    }
-
-    const NOTES = {
-
-        "10": {
-
-            "Science": sub("science", "subject-images/class-10/science.png", [
-                "Chemical Reactions and Equations",
-                "Acids, Bases and Salts",
-                "Metals and Non-metals",
-                "Carbon and Its Compounds",
-                "Life Processes",
-                "Control and Coordination",
-                "How do Organisms Reproduce?",
-                "Heredity",
-                "Light – Reflection and Refraction",
-                "The Human Eye and the Colourful World",
-                "Electricity",
-                "Magnetic Effects of Electric Current",
-                "Our Environment"
-            ]),
-
-            "Mathematics": sub("mathematics", "subject-images/class-10/maths.png", [
-                "Real Numbers",
-                "Polynomials",
-                "Pair of Linear Equations in Two Variables",
-                "Quadratic Equations",
-                "Arithmetic Progressions",
-                "Triangles",
-                "Coordinate Geometry",
-                "Introduction to Trigonometry",
-                "Some Applications of Trigonometry",
-                "Circles",
-                "Areas Related to Circles",
-                "Surface Areas and Volumes",
-                "Statistics",
-                "Probability"
-            ]),
-
-            "Hindi": sub("hindi", "subject-images/class-10/Hindi.png", [
-                "मित्रता (गद्य)",
-                "ममता (गद्य)",
-                "क्या लिखूँ? (गद्य)",
-                "भारतीय संस्कृति (गद्य)",
-                "ईर्ष्या, तू न गई मेरे मन से (गद्य)",
-                "अजंता (गद्य)",
-                "पानी में चंदा और चाँद पर आदमी (गद्य)",
-                "पद – सूरदास (काव्य)",
-                "धनुष भंग – तुलसीदास (काव्य)",
-                "सवैये – कवित्त – रसखान (काव्य)",
-                "भक्ति नीति – बिहारी लाल (काव्य)",
-                "स्वदेश प्रेम – रामनरेश त्रिपाठी (काव्य)",
-                "भारतमाता का मन्दिर यह – मैथिलीशरण गुप्त (काव्य)",
-                "हिमालय से – महादेवी वर्मा (काव्य)",
-                "नदी – केदारनाथ सिंह (काव्य)",
-                "पुष्प की अभिलाषा – माखनलाल चतुर्वेदी (काव्य)",
-                "वाराणसी (संस्कृत)",
-                "वीरः वीरेण पूज्यते (संस्कृत)",
-                "प्रबुद्धो ग्रामीणः (संस्कृत)",
-                "देशभक्तः चन्द्रशेखरः (संस्कृत)",
-                "भारतीय संस्कृति (संस्कृत)",
-                "जीवन-सूत्राणि (संस्कृत)",
-                "हिंदी व्याकरण – रस, अलंकार, छंद",
-                "उपसर्ग, प्रत्यय, समास, तत्सम-तद्भव",
-                "संस्कृत व्याकरण – संधि, शब्द रूप, धातु रूप",
-                "निबंध रचना एवं पत्र लेखन"
-            ]),
-
-            "English": sub("english", "subject-images/class-10/english.png", [
-                "A Letter to God (Prose)",
-                "Dust of Snow (Poem)",
-                "Fire and Ice (Poem)",
-                "Nelson Mandela: Long Walk to Freedom (Prose)",
-                "A Tiger in the Zoo (Poem)",
-                "Two Stories About Flying (Prose)",
-                "How to Tell Wild Animals (Poem)",
-                "The Ball Poem (Poem)",
-                "From the Diary of Anne Frank (Prose)",
-                "Amanda! (Poem)",
-                "Glimpses of India (Prose)",
-                "The Trees (Poem)",
-                "Mijbil the Otter (Prose)",
-                "Fog (Poem)",
-                "Madam Rides the Bus (Prose)",
-                "The Tale of Custard the Dragon (Poem)",
-                "The Sermon at Benares (Prose)",
-                "For Anne Gregory (Poem)",
-                "The Proposal (Prose)",
-                "A Triumph of Surgery (Supplementary)",
-                "The Thief's Story (Supplementary)",
-                "The Midnight Visitor (Supplementary)",
-                "A Question of Trust (Supplementary)",
-                "Footprints Without Feet (Supplementary)",
-                "The Making of a Scientist (Supplementary)",
-                "The Necklace (Supplementary)",
-                "Bholi (Supplementary)",
-                "The Book That Saved the Earth (Supplementary)",
-                "Grammar: Tenses, Articles, Reordering of Sentences",
-                "Grammar: Voice, Narration, Punctuation",
-                "Composition: Letter, Application & Paragraph Writing",
-                "Unseen Passage & Translation (Hindi to English)"
-            ]),
-
-            "Social Science": sub("social-science", "subject-images/class-10/socialscience.png", [
-                "The Rise of Nationalism in Europe",
-                "Nationalism in India",
-                "The Making of a Global World",
-                "The Age of Industrialization",
-                "Print Culture and the Modern World",
-                "Resources and Development",
-                "Forest and Wildlife Resources",
-                "Water Resources",
-                "Agriculture",
-                "Minerals and Energy Resources",
-                "Manufacturing Industries",
-                "Lifelines of National Economy",
-                "Power Sharing",
-                "Federalism",
-                "Gender, Religion and Caste",
-                "Political Parties",
-                "Outcomes of Democracy",
-                "Development",
-                "Sectors of the Indian Economy",
-                "Money and Credit",
-                "Globalization and the Indian Economy",
-                "Consumer Rights"
-            ]),
-
-            "Chitrakala": sub("chitrakala", "subject-images/class-10/chitrakala.png", [
-                "Elements of Art & Color Theory",
-                "Choice of Core Practical Art",
-                "Natural Landscape Drawing",
-                "Ornamental Design (Aalekhan)",
-                "Technical / Geometric Art (Pravaidhik)",
-                "Memory Drawing OR Indian Art",
-                "Memory Drawing (Shading Practice)",
-                "History of Indian Art (Theory)"
-            ]),
-
-            "Home Science": sub("home-science", "subject-images/class-10/homescience.png", [
-                "Family Budget",
-                "Investment of Savings",
-                "Home Cleanliness",
-                "Waste Disposal and Cleanliness",
-                "Home Decoration",
-                "Household Mathematics",
-                "Water Sources: Use and Purification",
-                "Water-Borne Diseases",
-                "Environmental Pollution and its Effect on Human Life",
-                "Some Common Diseases, Causes and Prevention",
-                "Sewing Kit and Garment Making Art",
-                "Washing and Maintenance of Clothes",
-                "Kitchen Management, Care and Cleaning",
-                "Cooking, Serving Food and Preservation of Nutrients",
-                "Human Skeleton and Joints",
-                "Fractures and Sprains",
-                "Respiratory System: Basic Knowledge",
-                "Natural and Artificial Respiration",
-                "First Aid and Care of the Sick"
-            ]),
-
-            "Computer": sub("computer", "subject-images/class-10/computer.png", [
-                "Functions in C",
-                "Arrays in C",
-                "C - Function or Subroutine: Searching and Sorting",
-                "Structures and Union",
-                "Pointers and File Handling",
-                "Introduction to AI, Types and Applications",
-                "Drone / UAV Technology",
-                "E-Commerce and E-Governance",
-                "Cyber Crimes and Security",
-                "Programs Based on C Language"
-            ]),
-
-            "Music": sub("music", "subject-images/class-10/music.png", [
-                "Definition of Technical Terms (Nada, Shruti, Swara, Saptak)",
-                "Raga Architecture: Aroha, Avaroha, Pakad, Vadi, Samvadi",
-                "Study of Ragas: Bhairav, Asavari, Kafi, Bhupali",
-                "Study of Ragas: Yaman, Bilawal, Khamaj",
-                "Concepts of Tala & Laya",
-                "Talas: Teental, Dadra, Kaharwa, Jhaptal",
-                "Talas: Chartal, Sooltal, Rupak",
-                "Indian Notation System (Bhatkhande / Paluskar)",
-                "Musical Instruments (Tanpura, Tabla, Harmonium, Sitar)",
-                "Biographies of Eminent Musicians"
-            ]),
-
-            "Commerce": sub("commerce", "subject-images/class-10/commerce.png", [
-                "Final Accounts with Adjustments",
-                "Partnership Accounts",
-                "Bank Reconciliation Statement",
-                "Depreciation",
-                "Bills of Exchange, Promissory Notes & Hundi",
-                "Filing / System of Filing",
-                "Indexing",
-                "Means of Communication",
-                "Time and Labor-Saving Appliances",
-                "Home Trade / Inland Trade",
-                "Wholesale Trade",
-                "Retail Trade",
-                "Invoice and Statement of Account",
-                "Export and Import Trade",
-                "Banking: Origin and Functions",
-                "Central Bank / Reserve Bank of India",
-                "Commercial Banks and Co-operative Banks",
-                "State Bank of India",
-                "Indigenous Bankers",
-                "Meaning and Scope of Economics",
-                "Factors of Production: Land, Labor, Capital",
-                "Organization and Enterprise",
-                "Consumer's Surplus"
-            ])
-        },
-
-        "12": {
-
-            "English": sub("english", "subject-images/class-12/english.png", [
-                "The Last Lesson",
-                "Lost Spring",
-                "Deep Water",
-                "The Rattrap",
-                "Indigo",
-                "Poets and Pancakes",
-                "The Interview",
-                "Going Places",
-                "Poem 1: My Mother at Sixty-Six",
-                "Poem 2: An Elementary School Classroom in a Slum",
-                "Poem 3: Keeping Quiet",
-                "Poem 4: A Thing of Beauty",
-                "Poem 5: A Roadside Stand",
-                "Poem 6: Aunt Jennifer's Tigers",
-                "Supplementary 1: The Third Level",
-                "Supplementary 2: The Tiger King",
-                "Supplementary 3: Journey to the End of the Earth",
-                "Supplementary 4: The Enemy",
-                "Supplementary 5: On the Face of It",
-                "Supplementary 6: Memories of Childhood",
-                "Writing Skills: Notice, Invitation, Letter & Report",
-                "Reading Skills: Unseen Passages"
-            ]),
-
-            "Mathematics": sub("mathematics", "subject-images/class-12/maths.png", [
-                "Relations and Functions",
-                "Inverse Trigonometric Functions",
-                "Matrices",
-                "Determinants",
-                "Continuity and Differentiability",
-                "Applications of Derivatives",
-                "Integrals",
-                "Applications of Integrals",
-                "Differential Equations",
-                "Vector Algebra",
-                "Three Dimensional Geometry",
-                "Linear Programming",
-                "Probability"
-            ]),
-
-            "Physics": sub("physics", "subject-images/class-12/physics.png", [
-                "Electric Charges and Fields",
-                "Electrostatic Potential and Capacitance",
-                "Current Electricity",
-                "Moving Charges and Magnetism",
-                "Magnetism and Matter",
-                "Electromagnetic Induction",
-                "Alternating Current",
-                "Electromagnetic Waves",
-                "Ray Optics and Optical Instruments",
-                "Wave Optics",
-                "Dual Nature of Radiation and Matter",
-                "Atoms",
-                "Nuclei",
-                "Semiconductor Electronics"
-            ]),
-
-            "Chemistry": sub("chemistry", "subject-images/class-12/chemistry.png", [
-                "Solutions",
-                "Electrochemistry",
-                "Chemical Kinetics",
-                "The d- and f-Block Elements",
-                "Coordination Compounds",
-                "Haloalkanes and Haloarenes",
-                "Alcohols, Phenols and Ethers",
-                "Aldehydes, Ketones and Carboxylic Acids",
-                "Amines",
-                "Biomolecules"
-            ]),
-
-            "Biology": sub("biology", "subject-images/class-12/biology.png", [
-                "Sexual Reproduction in Flowering Plants",
-                "Human Reproduction",
-                "Reproductive Health",
-                "Principles of Inheritance and Variation",
-                "Molecular Basis of Inheritance",
-                "Evolution",
-                "Human Health and Disease",
-                "Microbes in Human Welfare",
-                "Biotechnology: Principles and Processes",
-                "Biotechnology and its Applications",
-                "Organisms and Populations",
-                "Ecosystem",
-                "Biodiversity and Conservation"
-            ])
-        }
+    const state = {
+        open: false,
+        subject: "",
+        medium: "english",
+        index: -1,
+        url: "",
+        printing: false,
+        token: 0
     };
 
-
-    /* =====================================================
-       STATE
-       ===================================================== */
-
-    let studentData = null;
-    let classNumber = "";
-    let library = null;
-
-    let currentSubject = "";
-    let currentChapter = -1;       // 0-based index
-    let currentMedium = "en";      // "en" | "hi"
-    let currentUrl = "";           // abhi khula hua notes URL
-    let loadToken = 0;             // purane load ko ignore karne ke liye
-
-    let heartbeatTimer = null;
-    let heartbeatBusy = false;
-    let sessionEnding = false;
-    let leaving = false;
-
-
-    /* =====================================================
-       SMALL HELPERS
-       ===================================================== */
-
-    function el(id) {
+    function $(id) {
         return document.getElementById(id);
     }
 
-    function setText(id, value) {
 
-        const node = el(id);
+    /* -----------------------------------------------------
+       HELPERS
+    ----------------------------------------------------- */
 
-        if (!node) {
-            return;
-        }
-
-        const text = String(value === undefined || value === null ? "" : value).trim();
-
-        node.textContent = text === "" ? "-" : text;
+    function hasDevanagari(text) {
+        return /[\u0900-\u097F]/.test(text);
     }
 
-    function pad2(n) {
-        return n < 10 ? "0" + n : String(n);
-    }
+    /*
+     * "Chapter 1: Real Numbers * अध्याय 1: वास्तविक संख्याएँ"
+     *  -> { en: "Chapter 1: Real Numbers", hi: "अध्याय 1: वास्तविक संख्याएँ" }
+     * Pehla " / " ya " * " jiske baad Devanagari shuru ho, wahin se Hindi naam.
+     */
+    function splitTitle(raw) {
 
-    function studentValue(keys, fallback) {
+        const text = String(raw || "").trim();
+        const pattern = / [\/*] /g;
 
-        if (!studentData) {
-            return fallback;
-        }
+        let match;
 
-        for (let i = 0; i < keys.length; i++) {
+        while ((match = pattern.exec(text)) !== null) {
 
-            const v = studentData[keys[i]];
+            const rest = text.slice(match.index + 3);
 
-            if (v !== undefined && v !== null && String(v).trim() !== "") {
-                return String(v).trim();
+            if (rest && hasDevanagari(rest.charAt(0))) {
+
+                return {
+                    en: text.slice(0, match.index).trim(),
+                    hi: rest.trim()
+                };
             }
         }
 
-        return fallback;
+        return { en: text, hi: "" };
     }
 
-    function normalizeClass(value) {
+    function getChapterTitle(chapter, medium) {
 
-        const match = String(value || "").match(/\d+/);
+        const parts = splitTitle(chapter.title);
 
-        return match ? match[0] : "";
-    }
-
-    function showToast(message) {
-
-        const old = document.querySelector(".sn-toast");
-
-        if (old) {
-            old.remove();
+        if (medium === "hindi" && parts.hi) {
+            return parts.hi;
         }
 
-        const box = document.createElement("div");
-        box.className = "sn-toast";
-        box.setAttribute("role", "status");
-        box.textContent = message;
+        return parts.en;
+    }
 
-        document.body.appendChild(box);
+    function getClassNumber() {
 
-        requestAnimationFrame(function () {
-            box.classList.add("show");
+        return normalizeStudentClass(
+            getStudentValue(["className", "Class", "class", "studentClass"], "")
+        );
+    }
+
+    function getLibrary() {
+
+        return typeof getCurrentClassLibrary === "function"
+            ? getCurrentClassLibrary()
+            : null;
+    }
+
+    function buildNotesUrl(subjectName, chapter, medium) {
+
+        const key = [getClassNumber(), subjectName, chapter.number, medium].join("|");
+
+        let path = NOTES_FILE_OVERRIDES[key];
+
+        if (!path) {
+
+            path = String(chapter.pdf || "").trim().replace(/^\/+/, "");
+
+            if (!path) {
+                return "";
+            }
+
+            path = path
+                .replace(/^ebooks\//i, NOTES_BASE_FOLDER + "/")
+                .replace(/\/([^\/]+)\.pdf$/i, "/" + medium + "/$1.html");
+        }
+
+        try {
+            return new URL(path, document.baseURI).href;
+        }
+        catch (error) {
+            return path;
+        }
+    }
+
+    async function fileExists(url) {
+
+        try {
+
+            const response = await fetch(url, { method: "HEAD", cache: "no-store" });
+
+            return response.ok;
+        }
+        catch (error) {
+
+            /* Network glitch - iframe ko try karne do */
+            return true;
+        }
+    }
+
+    function toast(message, type) {
+
+        if (typeof showSstcToast === "function") {
+            showSstcToast(message, type || "info");
+        }
+    }
+
+    function canOpenChapter(subjectName, index) {
+
+        if (!NOTES_REQUIRE_RENT) {
+            return true;
+        }
+
+        if (typeof canReadChapter === "function") {
+            return canReadChapter(subjectName, index);
+        }
+
+        return true;
+    }
+
+
+    /* -----------------------------------------------------
+       OPEN / CLOSE SECTION
+    ----------------------------------------------------- */
+
+    function toggleSstcNotes() {
+
+        if (state.open) {
+            closeSstcNotes();
+        }
+        else {
+            openNotesSection();
+        }
+    }
+
+    function openNotesSection() {
+
+        if (typeof checkStudentSession === "function" && !checkStudentSession()) {
+            return;
+        }
+
+        const section = $("sstcNotesSection");
+
+        if (!section) {
+            return;
+        }
+
+        if (!sessionStorage.getItem(MEDIUM_KEY)) {
+
+            const studentMedium = String(
+                getStudentValue(["medium", "Medium", "studentMedium"], "")
+            ).toLowerCase();
+
+            state.medium = (studentMedium.indexOf("hindi") > -1 || studentMedium.indexOf("हिंदी") > -1)
+                ? "hindi"
+                : "english";
+        }
+        else {
+            state.medium = sessionStorage.getItem(MEDIUM_KEY) === "hindi" ? "hindi" : "english";
+        }
+
+        state.open = true;
+        section.hidden = false;
+
+        const button = $("sstcNotesBtn");
+
+        if (button) {
+            button.setAttribute("aria-expanded", "true");
+        }
+
+        renderAll();
+
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function closeSstcNotes() {
+
+        const section = $("sstcNotesSection");
+
+        if (!section) {
+            return;
+        }
+
+        closeNotesViewer();
+
+        state.open = false;
+        section.hidden = true;
+
+        const button = $("sstcNotesBtn");
+
+        if (button) {
+            button.setAttribute("aria-expanded", "false");
+            button.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+    }
+
+
+    /* -----------------------------------------------------
+       RENDER
+    ----------------------------------------------------- */
+
+    function renderAll() {
+
+        renderMediumToggle();
+        renderSubjects();
+        renderChapters();
+    }
+
+    function renderMediumToggle() {
+
+        const buttons = document.querySelectorAll("#sstcNotesSection .nt-medium button");
+
+        buttons.forEach(function (button) {
+
+            const active = button.getAttribute("data-medium") === state.medium;
+
+            button.classList.toggle("active", active);
+            button.setAttribute("aria-pressed", active ? "true" : "false");
         });
 
-        setTimeout(function () {
+        const classLabel = $("ntClassLabel");
 
-            box.classList.remove("show");
+        if (classLabel) {
 
-            setTimeout(function () {
+            const classNumber = getClassNumber();
 
-                if (box.parentNode) {
-                    box.remove();
-                }
-
-            }, 250);
-
-        }, 2800);
+            classLabel.textContent = classNumber ? "Class " + classNumber : "";
+        }
     }
-
-    function clearSession() {
-
-        try {
-            sessionStorage.removeItem(KEY_LOGIN);
-            sessionStorage.removeItem(KEY_DATA);
-            sessionStorage.removeItem(KEY_TOKEN);
-            sessionStorage.removeItem(KEY_LOGIN_TIME);
-            sessionStorage.removeItem("sstcSessionStartMs");
-            sessionStorage.removeItem("sstcCurrentBook");
-            sessionStorage.removeItem("sstcCurrentChapter");
-            sessionStorage.removeItem("sstcCurrentPage");
-        }
-        catch (error) {
-            /* ignore */
-        }
-
-        studentData = null;
-    }
-
-    function goToAccess() {
-
-        if (leaving) {
-            return;
-        }
-
-        leaving = true;
-
-        window.location.replace(ACCESS_PAGE);
-    }
-
-
-    /* =====================================================
-       INIT
-       ===================================================== */
-
-    document.addEventListener("DOMContentLoaded", init);
-
-    function init() {
-
-        const loggedIn = sessionStorage.getItem(KEY_LOGIN);
-        const saved = sessionStorage.getItem(KEY_DATA);
-
-        if (loggedIn !== "true" || !saved) {
-            goToAccess();
-            return;
-        }
-
-        try {
-            studentData = JSON.parse(saved);
-        }
-        catch (error) {
-            clearSession();
-            goToAccess();
-            return;
-        }
-
-        if (!studentData || !studentData.studentId) {
-            clearSession();
-            goToAccess();
-            return;
-        }
-
-        classNumber = normalizeClass(
-            studentValue(["className", "Class", "class", "studentClass"], "")
-        );
-
-        library = NOTES[classNumber] || null;
-
-        const savedMedium = sessionStorage.getItem(KEY_MEDIUM);
-
-        if (savedMedium === "en" || savedMedium === "hi") {
-            currentMedium = savedMedium;
-        }
-
-        renderStudent();
-        renderSubjects();
-        applyMediumUI();
-        bindEvents();
-        startHeartbeat();
-
-        setText("snYear", new Date().getFullYear());
-    }
-
-
-    /* =====================================================
-       STUDENT SUMMARY
-       ===================================================== */
-
-    function renderStudent() {
-
-        const fullName = studentValue(["fullName", "name"], "Student");
-        const classValue = studentValue(["className", "Class", "class", "studentClass"], "-");
-
-        setText("snName", fullName);
-        setText("snClassLine", classValue);
-        setText("snId", studentValue(["studentId", "id"], "-"));
-        setText("snBoard", studentValue(["board"], "-"));
-
-        const status = studentValue(["status"], "Active");
-
-        setText("snStatus", status);
-
-        const statusEl = el("snStatus");
-
-        if (statusEl) {
-            statusEl.classList.remove("ok", "bad");
-            statusEl.classList.add(status.toLowerCase() === "active" ? "ok" : "bad");
-        }
-
-        setText("snAvatar", fullName.charAt(0).toUpperCase() || "S");
-
-        document.title = "SSTC | Notes - " + fullName;
-    }
-
-
-    /* =====================================================
-       STEP 1 : SUBJECT CARDS
-       ===================================================== */
 
     function renderSubjects() {
 
-        const grid = el("snSubjects");
+        const box = $("ntSubjects");
 
-        if (!grid) {
+        if (!box) {
             return;
         }
 
-        grid.innerHTML = "";
+        box.innerHTML = "";
 
-        if (!library) {
+        const library = getLibrary();
+
+        if (!library || Object.keys(library).length === 0) {
 
             const empty = document.createElement("div");
-            empty.className = "sn-empty";
-            empty.innerHTML = "<div>📚</div><p>Aapki class ke notes abhi available nahi hain.</p>";
+            empty.className = "nt-placeholder";
+            empty.style.gridColumn = "1 / -1";
+            empty.textContent = "Aapki class ke notes abhi available nahi hain.";
 
-            grid.appendChild(empty);
+            box.appendChild(empty);
             return;
         }
 
         Object.keys(library).forEach(function (subjectName) {
 
             const subject = library[subjectName];
+            const count = Array.isArray(subject.chapters) ? subject.chapters.length : 0;
 
             const card = document.createElement("button");
             card.type = "button";
-            card.className = "sn-subject-card";
+            card.className = "nt-subject" + (subjectName === state.subject ? " active" : "");
             card.setAttribute("data-subject", subjectName);
 
-            const imgBox = document.createElement("div");
-            imgBox.className = "sn-subject-img";
+            const imageWrap = document.createElement("span");
+            imageWrap.className = "nt-subject-img";
 
-            const img = document.createElement("img");
-            img.src = subject.image || "Logo.png";
-            img.alt = subjectName;
-            img.loading = "lazy";
-            img.draggable = false;
+            const image = document.createElement("img");
+            image.src = subject.image || "Logo.png";
+            image.alt = subjectName;
+            image.draggable = false;
+            image.loading = "lazy";
 
-            img.onerror = function () {
+            image.onerror = function () {
                 this.onerror = null;
                 this.src = "Logo.png";
             };
 
-            imgBox.appendChild(img);
+            imageWrap.appendChild(image);
 
-            const body = document.createElement("div");
-            body.className = "sn-subject-body";
+            const body = document.createElement("span");
+            body.className = "nt-subject-body";
 
-            const title = document.createElement("h4");
-            title.textContent = subjectName;
+            const name = document.createElement("strong");
+            name.textContent = subjectName;
 
-            const count = document.createElement("span");
-            count.textContent = subject.titles.length + " Chapters";
+            const meta = document.createElement("span");
+            meta.textContent = count + (count === 1 ? " chapter" : " chapters");
 
-            body.appendChild(title);
-            body.appendChild(count);
+            body.appendChild(name);
+            body.appendChild(meta);
 
-            card.appendChild(imgBox);
+            card.appendChild(imageWrap);
             card.appendChild(body);
 
             card.addEventListener("click", function () {
-                selectSubject(subjectName);
+                selectNotesSubject(subjectName);
             });
 
-            grid.appendChild(card);
+            box.appendChild(card);
         });
     }
-
-    function selectSubject(subjectName) {
-
-        if (!library || !library[subjectName]) {
-            return;
-        }
-
-        currentSubject = subjectName;
-        currentChapter = -1;
-
-        document.querySelectorAll(".sn-subject-card").forEach(function (card) {
-            card.classList.toggle("active", card.getAttribute("data-subject") === subjectName);
-        });
-
-        resetViewer();
-        renderChapters();
-
-        const section = el("snChapterSection");
-
-        if (section) {
-            section.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-    }
-
-
-    /* =====================================================
-       STEP 2 : CHAPTERS
-       ===================================================== */
 
     function renderChapters() {
 
-        const grid = el("snChapters");
+        const box = $("ntChapters");
+        const title = $("ntChapterTitle");
 
-        if (!grid) {
+        if (!box) {
             return;
         }
 
-        grid.innerHTML = "";
+        box.innerHTML = "";
 
-        const subject = library && library[currentSubject];
+        const library = getLibrary();
+        const subject = library ? library[state.subject] : null;
 
-        if (!subject) {
+        if (!subject || !Array.isArray(subject.chapters)) {
+
+            if (title) {
+                title.textContent = "Chapter chuniye";
+            }
+
+            const placeholder = document.createElement("div");
+            placeholder.className = "nt-placeholder";
+            placeholder.style.gridColumn = "1 / -1";
+            placeholder.textContent = "Pehle upar se ek subject chuniye.";
+
+            box.appendChild(placeholder);
             return;
         }
 
-        setText("snChapterTitle", currentSubject + " – Choose Chapter");
-        setText("snChapterSub", subject.titles.length + " chapters available. Medium upar toggle se badlein.");
+        if (title) {
 
-        subject.titles.forEach(function (title, index) {
+            title.textContent = state.subject + " – " +
+                (state.medium === "hindi" ? "Hindi Medium" : "English Medium");
+        }
 
-            const item = document.createElement("button");
-            item.type = "button";
-            item.className = "sn-chapter";
-            item.setAttribute("data-index", String(index));
+        subject.chapters.forEach(function (chapter, index) {
 
-            const number = document.createElement("div");
-            number.className = "sn-chapter-no";
-            number.textContent = String(index + 1);
+            const row = document.createElement("button");
+            row.type = "button";
+            row.className = "nt-chapter" + (index === state.index ? " active" : "");
 
-            const text = document.createElement("div");
-            text.className = "sn-chapter-text";
+            const number = document.createElement("span");
+            number.className = "nt-chapter-no";
+            number.textContent = String(chapter.number);
 
-            const strong = document.createElement("strong");
-            strong.textContent = title;
+            const text = document.createElement("span");
+            text.className = "nt-chapter-title";
+            text.lang = state.medium === "hindi" ? "hi" : "en";
+            text.textContent = getChapterTitle(chapter, state.medium);
 
-            const small = document.createElement("small");
-            small.textContent = "Chapter " + (index + 1) + " • Notes";
+            if (NOTES_REQUIRE_RENT && index === 0) {
 
-            text.appendChild(strong);
-            text.appendChild(small);
+                const free = document.createElement("span");
+                free.className = "nt-free";
+                free.textContent = "FREE";
 
-            item.appendChild(number);
-            item.appendChild(text);
+                text.appendChild(free);
+            }
 
-            item.addEventListener("click", function () {
-                selectChapter(index);
+            const go = document.createElement("span");
+            go.className = "nt-chapter-go";
+
+            if (canOpenChapter(state.subject, index)) {
+                go.textContent = "Open Notes →";
+            }
+            else {
+                go.classList.add("locked");
+                go.textContent = "🔒 Rent to read";
+            }
+
+            row.appendChild(number);
+            row.appendChild(text);
+            row.appendChild(go);
+
+            row.addEventListener("click", function () {
+                openNotesChapter(index);
             });
 
-            grid.appendChild(item);
+            box.appendChild(row);
         });
     }
 
-    function selectChapter(index) {
 
-        const subject = library && library[currentSubject];
+    /* -----------------------------------------------------
+       SELECT SUBJECT / MEDIUM
+    ----------------------------------------------------- */
 
-        if (!subject || !subject.titles[index]) {
+    function selectNotesSubject(subjectName) {
+
+        state.subject = subjectName;
+        state.index = -1;
+
+        closeNotesViewer();
+        renderSubjects();
+        renderChapters();
+
+        const step = $("ntChapterStep");
+
+        if (step) {
+            step.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    }
+
+    function setSstcNotesMedium(medium) {
+
+        state.medium = medium === "hindi" ? "hindi" : "english";
+
+        sessionStorage.setItem(MEDIUM_KEY, state.medium);
+
+        renderMediumToggle();
+        renderChapters();
+
+        /* Notes khule hue hain to wahi chapter dusre medium me khol do */
+
+        if (state.index >= 0 && state.subject) {
+            openNotesChapter(state.index, true);
+        }
+    }
+
+
+    /* -----------------------------------------------------
+       NOTES VIEWER
+    ----------------------------------------------------- */
+
+    function setOverlay(icon, heading, message, retry) {
+
+        const overlay = $("ntOverlay");
+
+        if (!overlay) {
             return;
         }
 
-        currentChapter = index;
+        overlay.innerHTML = "";
 
-        document.querySelectorAll(".sn-chapter").forEach(function (item) {
-            item.classList.toggle("active", Number(item.getAttribute("data-index")) === index);
-        });
+        const iconEl = document.createElement("div");
+        iconEl.className = "nt-overlay-icon";
+        iconEl.textContent = icon;
 
-        loadNotes(true);
+        const headingEl = document.createElement("strong");
+        headingEl.textContent = heading;
+
+        overlay.appendChild(iconEl);
+        overlay.appendChild(headingEl);
+
+        if (message) {
+
+            const messageEl = document.createElement("span");
+            messageEl.textContent = message;
+
+            overlay.appendChild(messageEl);
+        }
+
+        if (retry) {
+
+            const button = document.createElement("button");
+            button.type = "button";
+            button.textContent = "Dobara try karein";
+
+            button.addEventListener("click", function () {
+                openNotesChapter(state.index, true);
+            });
+
+            overlay.appendChild(button);
+        }
+
+        overlay.hidden = false;
     }
 
+    async function openNotesChapter(index, keepScroll) {
 
-    /* =====================================================
-       MEDIUM TOGGLE
-       ===================================================== */
+        const library = getLibrary();
+        const subject = library ? library[state.subject] : null;
 
-    function mediumName(medium) {
-        return medium === "hi" ? "Hindi Medium" : "English Medium";
-    }
-
-    function applyMediumUI() {
-
-        document.querySelectorAll(".sn-medium-btn").forEach(function (button) {
-
-            const active = button.getAttribute("data-medium") === currentMedium;
-
-            button.classList.toggle("active", active);
-            button.setAttribute("aria-pressed", active ? "true" : "false");
-        });
-    }
-
-    function setMedium(medium) {
-
-        if (medium !== "en" && medium !== "hi") {
+        if (!subject || !Array.isArray(subject.chapters)) {
             return;
         }
 
-        if (medium === currentMedium) {
+        const chapter = subject.chapters[index];
+
+        if (!chapter) {
             return;
         }
 
-        currentMedium = medium;
+        if (!canOpenChapter(state.subject, index)) {
 
-        try {
-            sessionStorage.setItem(KEY_MEDIUM, medium);
-        }
-        catch (error) {
-            /* ignore */
-        }
+            toast("Ye notes dekhne ke liye " + state.subject + " rent karein.", "info");
 
-        applyMediumUI();
-
-        /* Chapter khula hai to usi chapter ko nayi medium me reload karo */
-
-        if (currentSubject && currentChapter > -1) {
-            loadNotes(false);
-        }
-    }
-
-
-    /* =====================================================
-       STEP 3 : NOTES VIEWER
-       ===================================================== */
-
-    function buildNotesUrl(medium) {
-
-        const subject = library[currentSubject];
-
-        return NOTES_BASE + "/class-" + classNumber + "/" + subject.folder +
-            "/chapter-" + pad2(currentChapter + 1) + "-" + medium + ".html";
-    }
-
-    function showViewerMessage(icon, title, text) {
-
-        const msg = el("snViewerMsg");
-        const frame = el("snFrame");
-
-        if (frame) {
-            frame.hidden = true;
-        }
-
-        if (msg) {
-
-            msg.hidden = false;
-            msg.innerHTML = "";
-
-            const iconBox = document.createElement("div");
-            iconBox.className = "sn-viewer-icon";
-            iconBox.textContent = icon;
-
-            const h4 = document.createElement("h4");
-            h4.textContent = title;
-
-            const p = document.createElement("p");
-            p.textContent = text;
-
-            msg.appendChild(iconBox);
-            msg.appendChild(h4);
-            msg.appendChild(p);
-        }
-    }
-
-    function setViewerButtons(enabled) {
-
-        ["snPrintBtn", "snFullBtn", "snNewTabBtn"].forEach(function (id) {
-
-            const button = el(id);
-
-            if (button) {
-                button.disabled = !enabled;
+            if (typeof openRentModal === "function") {
+                openRentModal(state.subject);
             }
-        });
-    }
 
-    function resetViewer() {
-
-        loadToken++;
-        currentUrl = "";
-
-        const frame = el("snFrame");
-
-        if (frame) {
-            frame.src = "about:blank";
-        }
-
-        setText("snViewerTitle", "No chapter selected");
-        setText("snViewerMeta", "Chapter chuno");
-
-        setViewerButtons(false);
-
-        showViewerMessage("📖", "Select a Chapter", "Chapter chunne par notes yahan khulenge.");
-    }
-
-    async function loadNotes(scrollToViewer) {
-
-        const subject = library && library[currentSubject];
-
-        if (!subject || currentChapter < 0) {
             return;
         }
 
-        const myToken = ++loadToken;
+        const token = ++state.token;
 
-        const chapterTitle = subject.titles[currentChapter];
-        const url = buildNotesUrl(currentMedium);
+        state.index = index;
 
-        setText("snViewerTitle", "Chapter " + (currentChapter + 1) + ": " + chapterTitle);
-        setText("snViewerMeta", currentSubject + " • Class " + classNumber + " • " + mediumName(currentMedium));
+        const url = buildNotesUrl(state.subject, chapter, state.medium);
 
-        setViewerButtons(false);
-        currentUrl = "";
+        state.url = "";
 
-        showViewerMessage("⏳", "Loading notes…", "Please wait.");
+        const viewer = $("ntViewer");
+        const frame = $("ntFrame");
 
-        if (scrollToViewer) {
-
-            const section = el("snViewerSection");
-
-            if (section) {
-                section.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
+        if (!viewer || !frame) {
+            return;
         }
 
-        /* Pehle check karo ki file hai ya nahi (404 par saaf message dikhane ke liye) */
+        viewer.hidden = false;
 
-        let exists = false;
+        $("ntViewerTitle").textContent = getChapterTitle(chapter, state.medium);
+        $("ntViewerMeta").textContent =
+            state.subject + " • " +
+            (state.medium === "hindi" ? "Hindi Medium" : "English Medium") +
+            " • Chapter " + chapter.number;
 
-        try {
+        $("ntPrev").disabled = index <= 0;
+        $("ntNext").disabled = index >= subject.chapters.length - 1;
 
-            const response = await fetch(url, { method: "GET", cache: "no-store" });
+        renderChapters();
 
-            exists = response.ok;
+        setOverlay("📝", "Notes khul rahe hain…", "");
+
+        frame.src = "about:blank";
+
+        if (!keepScroll) {
+            viewer.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-        catch (error) {
-            exists = false;
+
+        if (!url) {
+
+            setOverlay("📭", "Notes available nahi hain", "Is chapter ki notes file set nahi hui hai.");
+            return;
         }
 
-        if (myToken !== loadToken) {
-            return;   /* user ne beech me kuch aur chun liya */
+        const exists = await fileExists(url);
+
+        if (token !== state.token) {
+            return;
         }
 
         if (!exists) {
 
-            showViewerMessage(
-                "🛠",
-                "Notes coming soon",
-                mediumName(currentMedium) + " notes for this chapter abhi available nahi hain. " +
-                "Dusra medium try karein ya baad me aayein."
+            setOverlay(
+                "📭",
+                "Notes jald aayenge",
+                state.medium === "hindi"
+                    ? "Is chapter ke Hindi Medium notes abhi upload nahi hue hain. English Medium try kar sakte hain."
+                    : "Is chapter ke English Medium notes abhi upload nahi hue hain. Hindi Medium try kar sakte hain."
             );
 
             return;
         }
 
-        const frame = el("snFrame");
-
-        if (!frame) {
-            return;
-        }
-
         frame.onload = function () {
 
-            if (myToken !== loadToken) {
+            if (token !== state.token) {
                 return;
             }
 
-            /* PDF file ka naam achha aaye isliye title set karte hain */
+            if (frame.src && frame.src !== "about:blank") {
 
-            try {
-                frame.contentDocument.title =
-                    "SSTC Notes - Class " + classNumber + " - " + currentSubject +
-                    " - Chapter " + (currentChapter + 1) + " - " + mediumName(currentMedium);
-            }
-            catch (error) {
-                /* ignore */
+                const overlay = $("ntOverlay");
+
+                if (overlay) {
+                    overlay.hidden = true;
+                }
             }
         };
 
+        state.url = url;
         frame.src = url;
-        frame.hidden = false;
+    }
 
-        const msg = el("snViewerMsg");
+    function notesStep(direction) {
 
-        if (msg) {
-            msg.hidden = true;
+        if (state.index < 0) {
+            return;
         }
 
-        currentUrl = url;
+        openNotesChapter(state.index + direction);
+    }
 
-        setViewerButtons(true);
+    function closeNotesViewer() {
+
+        state.token++;
+        state.index = -1;
+        state.url = "";
+
+        const viewer = $("ntViewer");
+        const frame = $("ntFrame");
+
+        if (document.fullscreenElement && document.exitFullscreen) {
+            document.exitFullscreen().catch(function () { /* ignore */ });
+        }
+
+        if (frame) {
+            frame.onload = null;
+            frame.src = "about:blank";
+        }
+
+        if (viewer) {
+            viewer.hidden = true;
+        }
+
+        renderChapters();
+    }
+
+    function toggleNotesFullscreen() {
+
+        const viewer = $("ntViewer");
+
+        if (!viewer) {
+            return;
+        }
+
+        if (document.fullscreenElement) {
+
+            document.exitFullscreen();
+            return;
+        }
+
+        if (viewer.requestFullscreen) {
+
+            viewer.requestFullscreen().catch(function () {
+                toast("Fullscreen is device par available nahi hai.", "info");
+            });
+        }
     }
 
 
-    /* =====================================================
-       PRINT / SAVE AS PDF  +  FULLSCREEN  +  NEW TAB
-       ===================================================== */
+    /* -----------------------------------------------------
+       PRINT / SAVE AS PDF
+    ----------------------------------------------------- */
 
-    function printNotes() {
+    function printNotes(asPdf) {
 
-        const frame = el("snFrame");
+        const frame = $("ntFrame");
 
-        if (!currentUrl || !frame || frame.hidden) {
-            showToast("Pehle koi chapter chuno.");
+        if (!state.url || !frame) {
+
+            toast("Pehle koi chapter ke notes kholiye.", "info");
             return;
         }
+
+        state.printing = true;
+
+        toast(
+            asPdf
+                ? "Print window me Destination: “Save as PDF” chuniye."
+                : "Print window khul rahi hai…",
+            "info"
+        );
 
         try {
 
@@ -987,255 +728,48 @@
         }
         catch (error) {
 
-            /* Agar iframe print block ho jaye to new tab me kholo */
-
-            console.warn("SSTC notes print fallback:", error);
-
-            showToast("Naye tab me khol rahe hain — wahan Ctrl+P dabayein.");
-
-            window.open(currentUrl, "_blank");
-        }
-    }
-
-    function toggleFullscreen() {
-
-        const viewer = el("snViewer");
-
-        if (!viewer) {
-            return;
+            /* Fallback: notes ko naye tab me kholkar print karwao */
+            window.open(state.url, "_blank");
         }
 
-        if (document.fullscreenElement) {
-
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            }
-
-            return;
-        }
-
-        if (viewer.requestFullscreen) {
-
-            viewer.requestFullscreen().catch(function () {
-                showToast("Fullscreen is device par available nahi hai.");
-            });
-        }
-    }
-
-    function openInNewTab() {
-
-        if (!currentUrl) {
-            return;
-        }
-
-        window.open(currentUrl, "_blank");
-    }
-
-
-    /* =====================================================
-       EVENTS
-       ===================================================== */
-
-    function bindEvents() {
-
-        document.querySelectorAll(".sn-medium-btn").forEach(function (button) {
-
-            button.addEventListener("click", function () {
-                setMedium(button.getAttribute("data-medium"));
-            });
-        });
-
-        const printBtn = el("snPrintBtn");
-        const fullBtn = el("snFullBtn");
-        const newTabBtn = el("snNewTabBtn");
-        const backBtn = el("snBackBtn");
-        const logoutBtn = el("snLogoutBtn");
-
-        if (printBtn) {
-            printBtn.addEventListener("click", printNotes);
-        }
-
-        if (fullBtn) {
-            fullBtn.addEventListener("click", toggleFullscreen);
-        }
-
-        if (newTabBtn) {
-            newTabBtn.addEventListener("click", openInNewTab);
-        }
-
-        if (backBtn) {
-            backBtn.addEventListener("click", backToPortal);
-        }
-
-        if (logoutBtn) {
-            logoutBtn.addEventListener("click", logout);
-        }
+        setTimeout(function () {
+            state.printing = false;
+        }, 5000);
     }
 
     /*
-     * Ye page student-page se NEW TAB me khulta hai, isliye
-     * "Student Portal" button is tab ko band kar deta hai
-     * (portal wala original tab pehle se khula hai).
+     * student-page.js ka "Printing is disabled" message tab na dikhe
+     * jab student hamare Print / Download PDF button se print kare.
+     * Ye listener pehle register hota hai, isliye pehle chalta hai.
      */
-    function backToPortal() {
+    window.addEventListener("beforeprint", function (event) {
 
-        if (window.opener && !window.opener.closed) {
-
-            window.close();
-
-            /* Agar browser ne close nahi kiya to portal par bhej do */
-
-            setTimeout(function () {
-                window.location.href = PORTAL_PAGE;
-            }, 300);
-
-            return;
+        if (state.printing) {
+            event.stopImmediatePropagation();
         }
-
-        window.location.href = PORTAL_PAGE;
-    }
+    }, true);
 
 
-    /* =====================================================
-       SESSION HEARTBEAT (single-device login enforce)
-       -----------------------------------------------------
-       Dusre device se login hua to ye page bhi band ho jayega.
-       Yahan endsession NAHI bhejte (tab band hone par main
-       session khatam na ho).
-       ===================================================== */
+    /* -----------------------------------------------------
+       EVENTS + EXPOSE
+    ----------------------------------------------------- */
 
-    function buildApiUrl(action) {
+    document.addEventListener("sstcStudentLoaded", function () {
 
-        const studentId = studentValue(["studentId", "id"], "");
-        const password = studentValue(["password"], "");
-        const token = sessionStorage.getItem(KEY_TOKEN) || "";
-
-        return API_URL +
-            (API_URL.indexOf("?") > -1 ? "&" : "?") +
-            "action=" + encodeURIComponent(action) +
-            "&studentId=" + encodeURIComponent(studentId) +
-            "&password=" + encodeURIComponent(password) +
-            "&sessionToken=" + encodeURIComponent(token);
-    }
-
-    function startHeartbeat() {
-
-        if (!API_URL) {
-            return;
+        if (state.open) {
+            renderAll();
         }
+    });
 
-        heartbeatTimer = setInterval(checkHeartbeat, HEARTBEAT_MS);
+    window.toggleSstcNotes = toggleSstcNotes;
+    window.closeSstcNotes = closeSstcNotes;
+    window.setSstcNotesMedium = setSstcNotesMedium;
+    window.closeSstcNotesViewer = closeNotesViewer;
+    window.sstcNotesStep = notesStep;
+    window.sstcNotesFullscreen = toggleNotesFullscreen;
+    window.sstcNotesPrint = printNotes;
 
-        setTimeout(checkHeartbeat, 4000);
-    }
-
-    async function checkHeartbeat() {
-
-        if (sessionEnding || heartbeatBusy || !studentData) {
-            return;
-        }
-
-        heartbeatBusy = true;
-
-        try {
-
-            const response = await fetch(buildApiUrl("checksession"), { cache: "no-store" });
-            const text = await response.text();
-
-            let result = null;
-
-            try {
-                result = JSON.parse(text);
-            }
-            catch (parseError) {
-                result = null;
-            }
-
-            if (result && result.success === false) {
-
-                const message = String(result.message || "");
-
-                if (message.indexOf("logged in from another device") > -1) {
-                    forceLogout(message);
-                }
-            }
-        }
-        catch (error) {
-            /* network glitch - agli baar phir check hoga */
-            console.warn("SSTC notes heartbeat warning:", error);
-        }
-        finally {
-            heartbeatBusy = false;
-        }
-    }
-
-    function forceLogout(message) {
-
-        if (sessionEnding) {
-            return;
-        }
-
-        sessionEnding = true;
-
-        if (heartbeatTimer) {
-            clearInterval(heartbeatTimer);
-        }
-
-        clearSession();
-
-        alert("🔒 " + (message || "Aapka session khatam ho gaya hai. Kripya dobara login karein."));
-
-        goToAccess();
-    }
-
-
-    /* =====================================================
-       LOGOUT
-       ===================================================== */
-
-    async function logout() {
-
-        if (sessionEnding) {
-            return;
-        }
-
-        sessionEnding = true;
-
-        if (heartbeatTimer) {
-            clearInterval(heartbeatTimer);
-        }
-
-        const button = el("snLogoutBtn");
-
-        if (button) {
-            button.textContent = "Logging out…";
-            button.style.pointerEvents = "none";
-        }
-
-        try {
-
-            if (API_URL && studentData) {
-
-                const request = fetch(buildApiUrl("endsession"), {
-                    method: "GET",
-                    cache: "no-store",
-                    keepalive: true
-                }).catch(function () { /* ignore */ });
-
-                const timeout = new Promise(function (resolve) {
-                    setTimeout(resolve, 3000);
-                });
-
-                await Promise.race([request, timeout]);
-            }
-        }
-        catch (error) {
-            console.warn("SSTC notes logout warning:", error);
-        }
-
-        clearSession();
-
-        goToAccess();
-    }
+    /* Purana openSstcNotes (naye tab wala) ab isi section ko kholta hai */
+    window.openSstcNotes = openNotesSection;
 
 })();
