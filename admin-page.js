@@ -3103,3 +3103,378 @@ function adminLogout() {
         "index.html";
 
 }
+
+
+/* =====================================================
+   =====================================================
+   NOTES RENTAL MANAGEMENT SECTION
+   (Google Sheet tab: NotesRentals)
+   =====================================================
+===================================================== */
+
+let notesRentals = [];
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const btn = document.getElementById("refreshNotesRentalsBtn");
+
+    if (btn) {
+        btn.addEventListener("click", function () {
+            loadNotesRentals();
+        });
+    }
+
+    loadNotesRentals();
+});
+
+
+/* ---------- small helpers ---------- */
+
+function nrShow(id, display) {
+    const el = document.getElementById(id);
+    if (el) { el.style.display = display; }
+}
+
+function nrError(message) {
+    const box = document.getElementById("notesRentalsErrorBox");
+    if (box) {
+        box.textContent = message;
+        box.style.display = "block";
+    }
+}
+
+
+/* ---------- LOAD ---------- */
+
+async function loadNotesRentals() {
+
+    nrShow("notesRentalsLoadingBox", "flex");
+    nrShow("notesRentalsErrorBox", "none");
+    nrShow("notesRentalsEmptyBox", "none");
+
+    const tbody = document.getElementById("notesRentalTableBody");
+
+    if (tbody) {
+        tbody.innerHTML = "";
+    }
+
+    try {
+
+        const url = GOOGLE_SCRIPT_URL + "?action=getallnotesrentals&_=" + Date.now();
+
+        const response = await fetch(url, {
+            method: "GET",
+            cache: "no-store",
+            redirect: "follow"
+        });
+
+        if (!response.ok) {
+            throw new Error("Google Apps Script server error: " + response.status);
+        }
+
+        const data = await response.json();
+
+        if (!data || data.success !== true) {
+            throw new Error(data && data.message ? data.message : "Notes rental data load failed.");
+        }
+
+        if (data.type !== "allnotesrentals") {
+            throw new Error(
+                "Apps Script is running an OLD version (Notes Rental Management not found). " +
+                "Please go to Apps Script → Deploy → Manage deployments → Edit → New version → Deploy."
+            );
+        }
+
+        notesRentals = (Array.isArray(data.rentals) ? data.rentals : []).map(function (rental) {
+            rental.isNotes = true;
+            return rental;
+        });
+
+        nrShow("notesRentalsLoadingBox", "none");
+
+        if (notesRentals.length === 0) {
+            nrShow("notesRentalsEmptyBox", "block");
+        }
+
+        renderNotesRentalTable();
+        updateNotesRentalStats();
+        updateIncomeReport();
+    }
+    catch (error) {
+
+        console.error("NOTES RENTALS LOAD ERROR:", error);
+
+        nrShow("notesRentalsLoadingBox", "none");
+
+        notesRentals = [];
+
+        renderNotesRentalTable();
+        updateNotesRentalStats();
+        updateIncomeReport();
+
+        nrError("❌ Google Sheets से notes rental data load नहीं हो पाया.\n\n" + error.message);
+    }
+}
+
+
+/* ---------- RENDER TABLE ---------- */
+
+function renderNotesRentalTable() {
+
+    const tbody = document.getElementById("notesRentalTableBody");
+
+    if (!tbody) {
+        return;
+    }
+
+    tbody.innerHTML = "";
+
+    notesRentals.forEach(function (rental, index) {
+
+        const row = document.createElement("tr");
+
+        const status = String(rental.status || "").trim();
+        const statusLower = status.toLowerCase();
+
+        if (statusLower === "expired" || statusLower === "cancelled") {
+            row.classList.add("record-inactive");
+        }
+
+        let statusBadgeClass = "status-inactive";
+        let statusLabel = "⚪ " + (status || "Unknown");
+
+        if (statusLower === "active") {
+            statusBadgeClass = "status-active";
+            statusLabel = "🟢 Active";
+        }
+        else if (statusLower === "pending") {
+            statusLabel = "⏳ Pending";
+        }
+        else if (statusLower === "expired") {
+            statusLabel = "⌛ Expired";
+        }
+        else if (statusLower === "cancelled") {
+            statusLabel = "❌ Cancelled";
+        }
+
+        const paymentBadge = rental.paymentClaimedOn
+            ? '<span class="status-badge status-active">💰 Claimed</span>'
+            : '<span class="status-badge status-inactive">— Not yet</span>';
+
+        let actions = "";
+
+        if (statusLower === "pending") {
+
+            actions +=
+                '<button type="button" class="action-btn activate-btn" ' +
+                'onclick="changeNotesRentalStatus(' + index + ', \'Active\')" title="Approve Notes Rental">✅</button>' +
+                '<button type="button" class="action-btn deactivate-btn" ' +
+                'onclick="changeNotesRentalStatus(' + index + ', \'Cancelled\')" title="Reject Notes Rental">❌</button>';
+        }
+        else if (statusLower === "active") {
+
+            actions +=
+                '<button type="button" class="action-btn deactivate-btn" ' +
+                'onclick="changeNotesRentalStatus(' + index + ', \'Expired\')" title="Mark as Expired">⌛</button>';
+        }
+
+        actions +=
+            '<button type="button" class="action-btn delete-btn" ' +
+            'onclick="deleteNotesRental(' + index + ')" title="Delete Notes Rental">🗑️</button>';
+
+        row.innerHTML =
+            "<td>" + (index + 1) + "</td>" +
+            '<td><strong class="student-id">' + escapeHTML(rental.rentalId || "") + "</strong></td>" +
+            '<td><strong class="student-id">' + escapeHTML(rental.studentId || "") + "</strong></td>" +
+            "<td>" + escapeHTML(rental.studentName || "") + "</td>" +
+            "<td>" + escapeHTML(rental.className || "") + "</td>" +
+            "<td>" + escapeHTML(rental.subject || "") + " (Notes)</td>" +
+            "<td>" + escapeHTML(rental.plan || "") + "</td>" +
+            "<td>₹" + escapeHTML(String(rental.price || 0)) + "</td>" +
+            '<td><span class="status-badge ' + statusBadgeClass + '">' + statusLabel + "</span></td>" +
+            "<td>" + paymentBadge + "</td>" +
+            '<td class="date-cell">' + escapeHTML(formatAdminDate(rental.requestedOn)) + "</td>" +
+            '<td class="date-cell">' + (escapeHTML(formatAdminDate(rental.startDate)) || "-") + "</td>" +
+            '<td class="date-cell">' + (escapeHTML(formatAdminDate(rental.expiryDate)) || "-") + "</td>" +
+            '<td><div class="action-buttons">' + actions + "</div></td>";
+
+        tbody.appendChild(row);
+    });
+}
+
+
+/* ---------- CHANGE STATUS (Approve / Reject / Expire) ---------- */
+
+async function changeNotesRentalStatus(index, newStatus) {
+
+    const rental = notesRentals[index];
+
+    if (!rental || !rental.rentalId) {
+        alert("Notes Rental ID not found.");
+        return;
+    }
+
+    const actionTextMap = {
+        Active: "approve",
+        Cancelled: "reject",
+        Expired: "mark as expired"
+    };
+
+    const confirmation = confirm(
+        "Are you sure you want to " + (actionTextMap[newStatus] || "update") + " this NOTES rental?\n\n" +
+        "Rental ID: " + rental.rentalId + "\n" +
+        "Student ID: " + (rental.studentId || "") + "\n" +
+        "Subject: " + (rental.subject || "") + " (Notes)"
+    );
+
+    if (!confirmation) {
+        return;
+    }
+
+    showDashboardMessage("⏳ Updating notes rental status...");
+
+    try {
+
+        const url =
+            GOOGLE_SCRIPT_URL +
+            "?action=updatenotesrentalstatus" +
+            "&rentalId=" + encodeURIComponent(rental.rentalId) +
+            "&status=" + encodeURIComponent(newStatus) +
+            "&_=" + Date.now();
+
+        const response = await fetch(url, {
+            method: "GET",
+            cache: "no-store",
+            redirect: "follow"
+        });
+
+        if (!response.ok) {
+            throw new Error("Server error: " + response.status);
+        }
+
+        const data = await response.json();
+
+        if (!data || data.success !== true) {
+            throw new Error(data && data.message ? data.message : "Notes rental status update failed.");
+        }
+
+        await loadNotesRentals();
+
+        showDashboardMessage(
+            newStatus === "Active"
+                ? "✅ Notes Rental Approved"
+                : (newStatus === "Cancelled" ? "❌ Notes Rental Rejected" : "⌛ Notes Rental marked as Expired")
+        );
+    }
+    catch (error) {
+
+        console.error("NOTES RENTAL STATUS UPDATE ERROR:", error);
+
+        showDashboardMessage("❌ Notes rental status update failed");
+
+        alert("Notes rental status update failed.\n\n" + error.message);
+    }
+}
+
+
+/* ---------- DELETE ---------- */
+
+async function deleteNotesRental(index) {
+
+    const rental = notesRentals[index];
+
+    if (!rental || !rental.rentalId) {
+        alert("Notes Rental ID not found.");
+        return;
+    }
+
+    const confirmation = confirm(
+        "⚠️ DELETE NOTES RENTAL\n\n" +
+        "Rental ID: " + rental.rentalId + "\n\n" +
+        "Student ID: " + (rental.studentId || "") + "\n" +
+        "Subject: " + (rental.subject || "") + " (Notes)\n\n" +
+        "यह record Google Sheet से permanently delete होगा.\n\n" +
+        "Continue?"
+    );
+
+    if (!confirmation) {
+        return;
+    }
+
+    showDashboardMessage("⏳ Deleting notes rental...");
+
+    try {
+
+        const url =
+            GOOGLE_SCRIPT_URL +
+            "?action=deletenotesrentaladmin" +
+            "&rentalId=" + encodeURIComponent(rental.rentalId) +
+            "&_=" + Date.now();
+
+        const response = await fetch(url, {
+            method: "GET",
+            cache: "no-store",
+            redirect: "follow"
+        });
+
+        if (!response.ok) {
+            throw new Error("Server error: " + response.status);
+        }
+
+        const data = await response.json();
+
+        if (!data || data.success !== true) {
+            throw new Error(data && data.message ? data.message : "Delete failed.");
+        }
+
+        notesRentals.splice(index, 1);
+
+        renderNotesRentalTable();
+        updateNotesRentalStats();
+        updateIncomeReport();
+
+        if (notesRentals.length === 0) {
+            nrShow("notesRentalsEmptyBox", "block");
+        }
+
+        showDashboardMessage("🗑️ Notes rental deleted successfully");
+    }
+    catch (error) {
+
+        console.error("DELETE NOTES RENTAL ERROR:", error);
+
+        showDashboardMessage("❌ Notes rental delete failed");
+
+        alert("Notes rental delete failed.\n\n" + error.message);
+    }
+}
+
+
+/* ---------- STATS ---------- */
+
+function updateNotesRentalStats() {
+
+    const isStatus = function (rental, name) {
+        return String(rental.status || "").trim().toLowerCase() === name;
+    };
+
+    const pendingList = notesRentals.filter(function (rental) {
+        return isStatus(rental, "pending");
+    });
+
+    const activeCount = notesRentals.filter(function (rental) {
+        return isStatus(rental, "active");
+    }).length;
+
+    const pendingAmount = pendingList.reduce(function (sum, rental) {
+        return sum + (Number(rental.price) || 0);
+    }, 0);
+
+    setText("totalNotesRentals", notesRentals.length);
+    setText("pendingNotesRentals", pendingList.length);
+    setText("activeNotesRentals", activeCount);
+    setText("pendingNotesRentalAmount", pendingAmount);
+}
+
+
+
