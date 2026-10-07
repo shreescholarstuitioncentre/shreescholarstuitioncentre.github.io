@@ -1736,10 +1736,38 @@ iframe{height:450px}
 
 .offer-plans{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
 }
 
+/* ===== 5 PLANS IN ONE ROW ===== */
+.offer-plans{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+}
+
+/* Tablet */
+@media(max-width:900px){
+  .offer-plans{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+/* Mobile */
+@media(max-width:600px){
+  .offer-plans{
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+  }
+
+  .offer-plan{
+    padding:16px 4px 12px;
+  }
+}	
+	
+
+	
 .offer-plan{
   position:relative;
   background:linear-gradient(135deg,#ffffff,#f8f9ff);
@@ -2114,7 +2142,7 @@ iframe{height:450px}
       </div>
 
 		<div class="offer-plan best">
-	        <div class="op-tag">⭐ ⭐ POCKET MONEY VALUE ⭐ ⭐</div>
+	        <div class="op-tag">⭐ ⭐ POCKET FRIENDLY VALUE ⭐ ⭐</div>
 	        <h3 class="op-months">6 Months</h3>
 	        <del class="op-old">₹400</del>
 	        <p class="op-new">₹199/- <small>ANY 6 (SIX) subject</small></p>
@@ -2122,7 +2150,7 @@ iframe{height:450px}
 	      </div>
 
 		<div class="offer-plan best">
-	        <div class="op-tag">⭐ ⭐ ⭐ POCKET MONEY VALUE ⭐ ⭐ ⭐</div>
+	        <div class="op-tag">⭐ ⭐ ⭐ POCKET FRIENDLY VALUE ⭐ ⭐ ⭐</div>
 	        <h3 class="op-months">12 Months</h3>
 	        <del class="op-old">₹800</del>
 	        <p class="op-new">₹399/- <small>ANY 6 (SIX) subject</small></p>
