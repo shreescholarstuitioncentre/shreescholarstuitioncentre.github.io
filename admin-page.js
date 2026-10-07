@@ -2414,8 +2414,9 @@ function updateIncomeReport() {
     let yearTotal = 0;
     let pendingTotal = 0;
 
-    rentals.forEach(function (rental) {
-
+    // rentals.forEach(function (rental) {
+    rentals.concat(notesRentals).forEach(function (rental) {
+   
         const price = Number(rental.price) || 0;
 
         const status =
@@ -2510,7 +2511,8 @@ function showIncomeForRange() {
         return;
     }
 
-    const matched = (Array.isArray(rentals) ? rentals : [])
+    // const matched = (Array.isArray(rentals) ? rentals : [])
+           const matched = rentals.concat(notesRentals)
         .filter(function (rental) {
 
             if (!isIncomeRental(rental)) {
@@ -2580,7 +2582,8 @@ function showIncomeForRange() {
                 </td>
 
                 <td>
-                    ${escapeHTML(rental.subject || "")}
+                    // ${escapeHTML(rental.subject || "")}
+                    ${escapeHTML((rental.subject || "") + (rental.isNotes ? " (Notes)" : ""))}
                 </td>
 
                 <td>
