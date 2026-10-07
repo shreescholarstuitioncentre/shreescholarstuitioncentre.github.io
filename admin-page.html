@@ -689,7 +689,117 @@
 
     </section>
 
+    <!-- =================================================
+         NOTES RENTAL MANAGEMENT  (NEW SECTION)
+         NotesRentals sheet ka live data + Approve / Reject / Delete
+    ================================================== -->
 
+    <section class="admin-section">
+
+        <div class="section-heading">
+
+            <div>
+                <h2>📝 Notes Rental Management</h2>
+                <p>Live subject-notes rental requests directly from SSTC Google Sheets</p>
+            </div>
+
+            <div class="table-actions">
+                <button type="button" class="refresh-btn" id="refreshNotesRentalsBtn">
+                    🔄 Refresh
+                </button>
+            </div>
+
+        </div>
+
+        <!-- NOTES RENTAL MINI STATS -->
+
+        <div class="stats-grid" style="margin-bottom:20px;">
+
+            <article class="stat-card">
+                <div class="stat-icon">📝</div>
+                <div>
+                    <span>Total Notes Rentals</span>
+                    <strong id="totalNotesRentals">0</strong>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon">⏳</div>
+                <div>
+                    <span>Pending Approval</span>
+                    <strong id="pendingNotesRentals">0</strong>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div>
+                    <span>Active Notes Rentals</span>
+                    <strong id="activeNotesRentals">0</strong>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div>
+                    <span>Pending Amount (₹)</span>
+                    <strong id="pendingNotesRentalAmount">0</strong>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- LOADING -->
+
+        <div id="notesRentalsLoadingBox" class="loading-box">
+            <div class="loader"></div>
+            <span>Loading notes rental data from Google Sheets...</span>
+        </div>
+
+        <!-- ERROR -->
+
+        <div id="notesRentalsErrorBox" class="error-box" style="display:none;"></div>
+
+        <!-- TABLE -->
+
+        <div class="table-wrapper">
+
+            <table class="student-table" id="notesRentalTable">
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Rental ID</th>
+                        <th>Student ID</th>
+                        <th>Student Name</th>
+                        <th>Class</th>
+                        <th>Subject (Notes)</th>
+                        <th>Plan</th>
+                        <th>Price (₹)</th>
+                        <th>Status</th>
+                        <th>Payment</th>
+                        <th>Requested On</th>
+                        <th>Start Date</th>
+                        <th>Expiry Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="notesRentalTableBody"></tbody>
+
+            </table>
+
+        </div>
+
+        <!-- EMPTY -->
+
+        <div id="notesRentalsEmptyBox" class="empty-box" style="display:none;">
+            <div>📝</div>
+            <h3>No Notes Rental Records Found</h3>
+            <p>Google Sheet में अभी कोई notes rental record नहीं मिला।</p>
+        </div>
+
+    </section>
 
     <!-- =================================================
          INCOME & TAX REPORT  (NEW SECTION)
