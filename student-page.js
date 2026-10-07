@@ -2111,31 +2111,23 @@ function applyRentalsResult(result) {
 
     sstcRentals = Array.isArray(result.rentals) ? result.rentals : [];
 
-    if (Array.isArray(result.plans) && result.plans.length) {
-        // sstcRentPlans = result.plans;
-       if (result && Array.isArray(result.plans) && result.plans.length) {
-    const serverPlans = result.plans;
-
-    sstcRentPlans = SSTC_RENT_PLANS
-        .filter(function (localPlan) {
-            return !localPlan.bundle;
-        })
-        .map(function (localPlan) {
-            const serverPlan = serverPlans.find(function (p) {
-                return Number(p.months) === Number(localPlan.months);
-            });
-
-            if (serverPlan) {
-                return Object.assign({}, localPlan, serverPlan);
-            }
-
-            return localPlan;
-        });
-} else {
-    sstcRentPlans = SSTC_RENT_PLANS.filter(function (plan) {
+    const localSinglePlans = SSTC_RENT_PLANS.filter(function (plan) {
         return !plan.bundle;
     });
-}
+
+    if (Array.isArray(result.plans) && result.plans.length) {
+
+        sstcRentPlans = localSinglePlans.map(function (localPlan) {
+
+            const serverPlan = result.plans.find(function (p) {
+                return Number(p.months) === Number(localPlan.months) && !p.bundle;
+            });
+
+            return serverPlan ? Object.assign({}, localPlan, serverPlan) : localPlan;
+        });
+    }
+    else {
+        sstcRentPlans = localSinglePlans;
     }
 
     if (typeof result.requiresApproval === "boolean") {
@@ -2268,6 +2260,49 @@ function closeRentModal() {
     sstcRentModalReturnFocus = null;
 }
 
+function ensureBundleOfferNote() {
+
+    const plansBox = getRentEl("rentPlans");
+
+    if (!plansBox) {
+        return;
+    }
+
+    let note = document.getElementById("sstcBundleOffer");
+
+    if (!note) {
+
+        note = document.createElement("div");
+        note.id = "sstcBundleOffer";
+
+        note.style.cssText = [
+            "margin-top:10px",
+            "padding:10px 12px",
+            "border-radius:10px",
+            "background:#ecfdf5",
+            "border:1.5px dashed #10b981",
+            "color:#065f46",
+            "font-size:12.5px",
+            "line-height:1.5",
+            "text-align:left"
+        ].join(";");
+
+        plansBox.insertAdjacentElement("afterend", note);
+    }
+
+    const b6 = getSstcBundleRentPlan(6);
+    const b12 = getSstcBundleRentPlan(12);
+
+    note.innerHTML =
+        "🎁 <strong>Any 6 Subjects Offer:</strong><br>" +
+        "6 Months · ₹" + b6.price + " <s>₹" + b6.actualPrice + "</s><br>" +
+        "12 Months · ₹" + b12.price + " <s>₹" + b12.actualPrice + "</s><br>" +
+        "<small>6 subjects ek hi duration (6 ya 12 months) ke chunenge to bundle price apne-aap lagegi.</small>";
+
+    note.hidden = false;
+}
+
+
 /* --- Plan selection screen --- */
 
 function renderRentModalPlans(subjectName, isRenew) {
@@ -2282,6 +2317,7 @@ function renderRentModalPlans(subjectName, isRenew) {
     const cancelRequest = getRentEl("rentCancelRequestBtn");
 
     plansBox.hidden = false;
+   ensureBundleOfferNote();
     details.hidden = true;
     success.hidden = true;
     cancelRequest.hidden = true;
@@ -2396,6 +2432,8 @@ function renderRentModalDetails(rental, status, successText) {
     const cancelRequest = getRentEl("rentCancelRequestBtn");
 
     plansBox.hidden = true;
+   const offerNote = document.getElementById("sstcBundleOffer");
+if (offerNote) { offerNote.hidden = true; }
     confirm.hidden = true;
     details.hidden = false;
 
@@ -2597,7 +2635,6 @@ function getPendingRentalsList() {
 }
 
 /* "Pay Now" button dikhana / chhupana + total dikhana */
-
 function updatePayButton() {
 
     const button = document.getElementById("payNowBtn");
@@ -2614,20 +2651,15 @@ function updatePayButton() {
         return;
     }
 
-    // const total = pending.reduce(function (sum, rental) {
-    //     return sum + (Number(rental.price) || 0);
-    // }, 0);
+    const total = calculateSstcSubjectRentalTotal(pending);
 
-      const total = calculateSstcSubjectRentalTotal(pendingRentals);
-
-
-   
     button.hidden = false;
 
     button.textContent =
         "💳 Pay Now · ₹" + total +
         " (" + pending.length + (pending.length === 1 ? " subject" : " subjects") + ")";
 }
+
 
 function buildUpiLink(amount, note) {
 
