@@ -1734,12 +1734,29 @@ iframe{height:450px}
   margin-bottom:20px;
 }
 
-.offer-plans{
+/* .offer-plans{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
+  grid-template-columns:repeat(5, minmax(0,1fr));
   gap:10px;
+  align-items:stretch;
+} */
+.offer-plan-heading{
+  margin:12px 0 14px;
+  color:#4a1d9e;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.3px;
 }
 
+.offer-plan-heading span{
+  display:block;
+  margin-top:3px;
+  color:#777;
+  font-size:11px;
+  font-weight:500;
+}
+
+	
 /* ===== 5 PLANS IN ONE ROW ===== */
 .offer-plans{
   display:grid;
@@ -1766,39 +1783,56 @@ iframe{height:450px}
   }
 }	
 	
+.offer-plans{
+  display:grid;
+  grid-template-columns:repeat(5, minmax(0,1fr));
+  gap:10px;
+  align-items:stretch;
+}
 
-	
 .offer-plan{
   position:relative;
+  min-width:0;
+  box-sizing:border-box;
   background:linear-gradient(135deg,#ffffff,#f8f9ff);
   border:1px solid #e5e5e5;
   border-radius:16px;
-  padding:16px 8px 14px;
-  box-shadow:0 6px 16px rgba(0,0,0,.1);
+  padding:14px 6px 12px;
+  box-shadow:0 6px 16px rgba(0,0,0,.10);
   transition:.3s;
 }
 
 .offer-plan:hover{
-  transform:translateY(-6px);
+  transform:translateY(-5px);
 }
 
 .offer-plan.best{
   border:2px solid #6c2bd9;
-  box-shadow:0 0 18px rgba(108,43,217,.3);
+  box-shadow:0 0 16px rgba(108,43,217,.25);
 }
 
 .offer-plan .op-tag{
   position:absolute;
-  top:-10px;
+  top:-9px;
   left:50%;
   transform:translateX(-50%);
-  background:#6c2bd9;
+
+  background:linear-gradient(45deg,#6c2bd9,#9c4dff);
   color:#fff;
-  font-size:11px;
-  font-weight:bold;
-  padding:3px 10px;
-  border-radius:20px;
+
+  font-size:9px;
+  font-weight:700;
+
+  padding:3px 7px;
+  border-radius:12px;
+
   white-space:nowrap;
+  max-width:90%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+
+  box-shadow:0 3px 8px rgba(108,43,217,.25);
+  z-index:3;
 }
 
 .op-months{
@@ -2114,8 +2148,16 @@ iframe{height:450px}
   <div class="offer-access-box">
 
     <h2 class="offer-access-title" id="offerAccessTitle">🎉 50% OFF on EVERY SUBJECT!</h2>
-    <p class="offer-access-sub">Chhota rent, badi taiyaari! Apna subject chunein, apna plan chunein.</p>
-    <p class="offer-access-details">📚 Har subject ke chapterwise PDFs — solved questions &amp; answers ke saath!</p>
+    <p class="offer-access-sub">
+📚 Chapterwise Study PDFs • Solved Questions • Answers • Smart Preparation
+</p>
+	  <div class="offer-plan-heading">
+  ✨ Choose Your Study Plan ✨
+  <span>Single Subject se lekar 6-Subject Saver Plans tak</span>
+</div>
+    <p class="offer-access-details">
+🎯 Class 9–12 | Board Preparation | Revision &amp; Exam Practice
+</p>
 
     <div class="offer-plans">
 
@@ -2142,7 +2184,7 @@ iframe{height:450px}
       </div>
 
 		<div class="offer-plan best">
-	        <div class="op-tag">⭐ ⭐ POCKET FRIENDLY VALUE ⭐ ⭐</div>
+	        <div class="op-tag">⭐ POCKET FRIENDLY ⭐</div>
 	        <h3 class="op-months">6 Months</h3>
 	        <del class="op-old">₹400</del>
 	        <p class="op-new">₹199/- <small>ANY 6 (SIX) subject</small></p>
@@ -2150,7 +2192,7 @@ iframe{height:450px}
 	      </div>
 
 		<div class="offer-plan best">
-	        <div class="op-tag">⭐ ⭐ ⭐ POCKET FRIENDLY VALUE ⭐ ⭐ ⭐</div>
+	        <div class="op-tag">⭐ BEST SAVER ⭐</div>
 	        <h3 class="op-months">12 Months</h3>
 	        <del class="op-old">₹800</del>
 	        <p class="op-new">₹399/- <small>ANY 6 (SIX) subject</small></p>
@@ -2186,7 +2228,7 @@ iframe{height:450px}
       </div>
 
 		<div class="offer-plan best">
-	        <div class="op-tag">⭐ ⭐ POCKET FRIENDLY VALUE ⭐ ⭐</div>
+	        <div class="op-tag">⭐ POCKET FRIENDLY ⭐</div>
 	        <h3 class="op-months">6 Months</h3>
 	        <del class="op-old">₹800</del>
 	        <p class="op-new">₹399/- <small>ANY 6 (SIX) subject</small></p>
@@ -2194,7 +2236,7 @@ iframe{height:450px}
 	      </div>
 
 		<div class="offer-plan best">
-	        <div class="op-tag">⭐ ⭐ ⭐ POCKET FRIENDLY VALUE ⭐ ⭐ ⭐</div>
+	        <div class="op-tag">⭐ BEST SAVER ⭐</div>
 	        <h3 class="op-months">12 Months</h3>
 	        <del class="op-old">₹1200</del>
 	        <p class="op-new">₹599/- <small>ANY 6 (SIX) subject</small></p>
