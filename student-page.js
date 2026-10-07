@@ -80,14 +80,187 @@ const SSTC_SHOW_UPI_QR = true;
  * ho to DONO jagah badlein.
  */
 const SSTC_RENT_PLANS = [
-    { months: 3, label: "3 Months", price: 49 },
-    { months: 6, label: "6 Months", price: 69 },
-    { months: 12, label: "12 Months (1 Year)", price: 99 }
+    // Normal single-subject plans
+    {
+        months: 3,
+        label: "3 Months",
+        price: 49,
+        actualPrice: 49,
+        subjects: 1
+    },
+    {
+        months: 6,
+        label: "6 Months",
+        price: 69,
+        actualPrice: 69,
+        subjects: 1
+    },
+    {
+        months: 12,
+        label: "12 Months (1 Year)",
+        price: 99,
+        actualPrice: 99,
+        subjects: 1
+    },
+
+    // Any 6 Subjects Bundle Plans
+    {
+        months: 6,
+        label: "6 Months · Any 6 Subjects",
+        price: 199,
+        actualPrice: 414,
+        subjects: 6,
+        bundle: true
+    },
+    {
+        months: 12,
+        label: "12 Months (1 Year) · Any 6 Subjects",
+        price: 399,
+        actualPrice: 594,
+        subjects: 6,
+        bundle: true
+    }
 ];
 
-let sstcRentPlans = SSTC_RENT_PLANS.slice();
+
+// Notes Rental Plans
+const SSTC_RENT_NOTES_PLANS = [
+    // Normal single-subject notes plans
+    {
+        months: 3,
+        label: "3 Months",
+        price: 69,
+        actualPrice: 140,
+        subjects: 1
+    },
+    {
+        months: 6,
+        label: "6 Months",
+        price: 99,
+        actualPrice: 200,
+        subjects: 1
+    },
+    {
+        months: 12,
+        label: "12 Months (1 Year)",
+        price: 149,
+        actualPrice: 300,
+        subjects: 1
+    },
+
+    // Any 6 Subject Notes Bundle Plans
+    {
+        months: 6,
+        label: "6 Months · Any 6 Subject Notes",
+        price: 399,
+        actualPrice: 800,
+        subjects: 6,
+        bundle: true
+    },
+    {
+        months: 12,
+        label: "12 Months (1 Year) · Any 6 Subject Notes",
+        price: 599,
+        actualPrice: 1200,
+        subjects: 6,
+        bundle: true
+    }
+];
 
 
+// Existing rental modal mein sirf single-subject plans dikhaye jayenge
+let sstcRentPlans = SSTC_RENT_PLANS.filter(function (plan) {
+    return !plan.bundle;
+});
+
+function calculateSstcSubjectRentalTotal(rentals) {
+    if (!Array.isArray(rentals) || rentals.length === 0) {
+        return 0;
+    }
+
+    const grouped = {};
+
+    rentals.forEach(function (rental) {
+        const months = Number(rental.months);
+
+        if (!grouped[months]) {
+            grouped[months] = 0;
+        }
+
+        grouped[months]++;
+    });
+
+    let total = 0;
+
+    Object.keys(grouped).forEach(function (monthsKey) {
+        const months = Number(monthsKey);
+        const count = grouped[months];
+
+        const bundlePlan = getSstcBundleRentPlan(months);
+        const singlePlan = getSstcSingleRentPlan(months);
+
+        if (bundlePlan && count >= 6) {
+            const bundles = Math.floor(count / 6);
+            const remaining = count % 6;
+
+            total += bundles * Number(bundlePlan.price);
+
+            if (remaining > 0 && singlePlan) {
+                total += remaining * Number(singlePlan.price);
+            }
+
+        } else if (singlePlan) {
+            total += count * Number(singlePlan.price);
+        }
+    });
+
+    return total;
+}
+
+
+function calculateSstcNotesRentalTotal(rentals) {
+    if (!Array.isArray(rentals) || rentals.length === 0) {
+        return 0;
+    }
+
+    const grouped = {};
+
+    rentals.forEach(function (rental) {
+        const months = Number(rental.months);
+
+        if (!grouped[months]) {
+            grouped[months] = 0;
+        }
+
+        grouped[months]++;
+    });
+
+    let total = 0;
+
+    Object.keys(grouped).forEach(function (monthsKey) {
+        const months = Number(monthsKey);
+        const count = grouped[months];
+
+        const bundlePlan = getSstcBundleNotesPlan(months);
+        const singlePlan = getSstcSingleNotesPlan(months);
+
+        if (bundlePlan && count >= 6) {
+            const bundles = Math.floor(count / 6);
+            const remaining = count % 6;
+
+            total += bundles * Number(bundlePlan.price);
+
+            if (remaining > 0 && singlePlan) {
+                total += remaining * Number(singlePlan.price);
+            }
+
+        } else if (singlePlan) {
+            total += count * Number(singlePlan.price);
+        }
+    });
+
+    return total;
+}
 /* =========================================================
    SESSION KEYS
    ========================================================= */
@@ -1901,12 +2074,68 @@ async function callRentalApi(action, params) {
     return result;
 }
 
+function getSstcSingleRentPlan(months) {
+    return SSTC_RENT_PLANS.find(function (plan) {
+        return Number(plan.months) === Number(months) &&
+               !plan.bundle;
+    }) || null;
+}
+
+
+function getSstcBundleRentPlan(months) {
+    return SSTC_RENT_PLANS.find(function (plan) {
+        return Number(plan.months) === Number(months) &&
+               plan.bundle &&
+               Number(plan.subjects) === 6;
+    }) || null;
+}
+
+
+function getSstcSingleNotesPlan(months) {
+    return SSTC_RENT_NOTES_PLANS.find(function (plan) {
+        return Number(plan.months) === Number(months) &&
+               !plan.bundle;
+    }) || null;
+}
+
+
+function getSstcBundleNotesPlan(months) {
+    return SSTC_RENT_NOTES_PLANS.find(function (plan) {
+        return Number(plan.months) === Number(months) &&
+               plan.bundle &&
+               Number(plan.subjects) === 6;
+    }) || null;
+}
+
 function applyRentalsResult(result) {
 
     sstcRentals = Array.isArray(result.rentals) ? result.rentals : [];
 
     if (Array.isArray(result.plans) && result.plans.length) {
-        sstcRentPlans = result.plans;
+        // sstcRentPlans = result.plans;
+       if (result && Array.isArray(result.plans) && result.plans.length) {
+    const serverPlans = result.plans;
+
+    sstcRentPlans = SSTC_RENT_PLANS
+        .filter(function (localPlan) {
+            return !localPlan.bundle;
+        })
+        .map(function (localPlan) {
+            const serverPlan = serverPlans.find(function (p) {
+                return Number(p.months) === Number(localPlan.months);
+            });
+
+            if (serverPlan) {
+                return Object.assign({}, localPlan, serverPlan);
+            }
+
+            return localPlan;
+        });
+} else {
+    sstcRentPlans = SSTC_RENT_PLANS.filter(function (plan) {
+        return !plan.bundle;
+    });
+}
     }
 
     if (typeof result.requiresApproval === "boolean") {
@@ -2385,10 +2614,14 @@ function updatePayButton() {
         return;
     }
 
-    const total = pending.reduce(function (sum, rental) {
-        return sum + (Number(rental.price) || 0);
-    }, 0);
+    // const total = pending.reduce(function (sum, rental) {
+    //     return sum + (Number(rental.price) || 0);
+    // }, 0);
 
+      const total = calculateSstcSubjectRentalTotal(pendingRentals);
+
+
+   
     button.hidden = false;
 
     button.textContent =
@@ -2592,10 +2825,10 @@ function updatePaymentTotal() {
         return sstcPaymentSelected.has(rental.rentalId);
     });
 
-    const total = chosen.reduce(function (sum, rental) {
-        return sum + (Number(rental.price) || 0);
-    }, 0);
-
+    // const total = chosen.reduce(function (sum, rental) {
+    //     return sum + (Number(rental.price) || 0);
+    // }, 0);
+const total = calculateSstcSubjectRentalTotal(chosen);
     getRentEl("paymentTotal").textContent = "₹" + total;
 
     const confirmButton = getRentEl("payConfirmBtn");
