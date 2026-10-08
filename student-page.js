@@ -173,94 +173,136 @@ let sstcRentPlans = SSTC_RENT_PLANS.filter(function (plan) {
     return !plan.bundle;
 });
 
-function calculateSstcSubjectRentalTotal(rentals) {
+
+
+/*
+ * Common calculation: rentals ko months ke hisaab se group karta hai.
+ * Har group me 6 subjects = ek "Any 6 Subjects" bundle, bache hue = per subject price.
+ * kind = "subjects" ya "notes"
+ */
+function sstcComputeRentalBreakdown(rentals, kind) {
+
+    const isNotes = kind === "notes";
+    const getSingle = isNotes ? getSstcSingleNotesPlan : getSstcSingleRentPlan;
+    const getBundle = isNotes ? getSstcBundleNotesPlan : getSstcBundleRentPlan;
+
+    const result = {
+        total: 0,
+        perSubjectTotal: 0,
+        bundles: 0,
+        count: 0,
+        lines: [],
+        hints: []
+    };
+
     if (!Array.isArray(rentals) || rentals.length === 0) {
-        return 0;
+        return result;
     }
 
-    const grouped = {};
+    const groups = {};
 
     rentals.forEach(function (rental) {
-        const months = Number(rental.months);
 
-        if (!grouped[months]) {
-            grouped[months] = 0;
+        const months = Number(rental.months) || 0;
+
+        if (!groups[months]) {
+            groups[months] = [];
         }
 
-        grouped[months]++;
+        groups[months].push(rental);
     });
 
-    let total = 0;
+    Object.keys(groups)
+        .map(Number)
+        .sort(function (a, b) { return a - b; })
+        .forEach(function (months) {
 
-    Object.keys(grouped).forEach(function (monthsKey) {
-        const months = Number(monthsKey);
-        const count = grouped[months];
+            const list = groups[months];
+            const count = list.length;
+            const single = getSingle(months);
+            const bundle = getBundle(months);
 
-        const bundlePlan = getSstcBundleRentPlan(months);
-        const singlePlan = getSstcSingleRentPlan(months);
+            result.count += count;
 
-        if (bundlePlan && count >= 6) {
-            const bundles = Math.floor(count / 6);
-            const remaining = count % 6;
+            /* Plan na mile (unknown months) to rental ka apna price jod do */
+            if (!single) {
 
-            total += bundles * Number(bundlePlan.price);
+                const sum = list.reduce(function (s, r) {
+                    return s + (Number(r.price) || 0);
+                }, 0);
 
-            if (remaining > 0 && singlePlan) {
-                total += remaining * Number(singlePlan.price);
+                result.total += sum;
+                result.perSubjectTotal += sum;
+                result.lines.push(count + " subject(s) × " + months + " months = ₹" + sum);
+                return;
             }
 
-        } else if (singlePlan) {
-            total += count * Number(singlePlan.price);
-        }
-    });
+            const singlePrice = Number(single.price);
+            const size = bundle ? (Number(bundle.subjects) || 6) : 0;
 
-    return total;
+            const bundleCount = bundle ? Math.floor(count / size) : 0;
+            const remaining = bundle ? (count % size) : count;
+
+            result.perSubjectTotal += count * singlePrice;
+
+            if (bundleCount > 0) {
+
+                const bundleSum = bundleCount * Number(bundle.price);
+
+                result.total += bundleSum;
+                result.bundles += bundleCount;
+
+                result.lines.push(
+                    months + " Months · Any " + size + " Subjects plan × " + bundleCount +
+                    " = ₹" + bundleSum
+                );
+            }
+
+            if (remaining > 0) {
+
+                const remainingSum = remaining * singlePrice;
+
+                result.total += remainingSum;
+
+                result.lines.push(
+                    months + " Months · " + remaining + (remaining === 1 ? " subject" : " subjects") +
+                    " × ₹" + singlePrice + " = ₹" + remainingSum
+                );
+
+                if (bundle) {
+
+                    const need = size - remaining;
+
+                    if (remainingSum > Number(bundle.price)) {
+                        result.hints.push(
+                            "💡 " + months + " Months: sirf " + need + " subject aur jodein to Any " + size +
+                            " Subjects plan sirf ₹" + bundle.price + " me lagega (abhi ₹" + remainingSum + " hai)."
+                        );
+                    }
+                    else {
+                        result.hints.push(
+                            "💡 " + months + " Months: " + need + " subject aur jodne par Any " + size +
+                            " Subjects plan (₹" + bundle.price + ") lag jayega."
+                        );
+                    }
+                }
+            }
+        });
+
+    return result;
 }
 
+function calculateSstcSubjectRentalTotal(rentals) {
+    return sstcComputeRentalBreakdown(rentals, "subjects").total;
+}
 
 function calculateSstcNotesRentalTotal(rentals) {
-    if (!Array.isArray(rentals) || rentals.length === 0) {
-        return 0;
-    }
-
-    const grouped = {};
-
-    rentals.forEach(function (rental) {
-        const months = Number(rental.months);
-
-        if (!grouped[months]) {
-            grouped[months] = 0;
-        }
-
-        grouped[months]++;
-    });
-
-    let total = 0;
-
-    Object.keys(grouped).forEach(function (monthsKey) {
-        const months = Number(monthsKey);
-        const count = grouped[months];
-
-        const bundlePlan = getSstcBundleNotesPlan(months);
-        const singlePlan = getSstcSingleNotesPlan(months);
-
-        if (bundlePlan && count >= 6) {
-            const bundles = Math.floor(count / 6);
-            const remaining = count % 6;
-
-            total += bundles * Number(bundlePlan.price);
-
-            if (remaining > 0 && singlePlan) {
-                total += remaining * Number(singlePlan.price);
-            }
-
-        } else if (singlePlan) {
-            total += count * Number(singlePlan.price);
-        }
-    });
-
-    return total;
+    return sstcComputeRentalBreakdown(rentals, "notes").total;
 }
+
+
+
+
 /* =========================================================
    SESSION KEYS
    ========================================================= */
@@ -2389,6 +2431,30 @@ function renderRentModalPlans(subjectName, isRenew) {
     }
 }
 
+function getBundleProgressText(subjectName, months) {
+
+    const bundle = getSstcBundleRentPlan(months);
+
+    if (!bundle) {
+        return "";
+    }
+
+    const size = Number(bundle.subjects) || 6;
+    const key = normalizeSubjectKey(subjectName);
+
+    const same = getPendingRentalsList().filter(function (rental) {
+        return Number(rental.months) === Number(months) &&
+               normalizeSubjectKey(rental.subject) !== key;
+    }).length + 1;
+
+    if (same >= size) {
+        return " 🎁 Any " + size + " Subjects plan lagega: ₹" + bundle.price + " (actual ₹" + bundle.actualPrice + ").";
+    }
+
+    return " 🎁 " + same + "/" + size + " subjects selected for " + months + " months — " +
+        (size - same) + " aur lene par Any " + size + " Subjects plan ₹" + bundle.price + " me milega.";
+}
+
 function selectRentPlan(months) {
 
     const plan = getPlanByMonths(months);
@@ -2418,8 +2484,10 @@ function selectRentPlan(months) {
         plan.label + " for ₹" + plan.price + ". " +
         (sstcRequiresApproval
             ? "Your rental starts after SSTC confirms your payment. " + SSTC_PAYMENT_HELP
-            : "Your rental starts immediately.");
+            : "Your rental starts immediately.") +
+        getBundleProgressText(sstcRentModalSubject, months);
 }
+
 
 /* --- Details screen (pending / active / just requested) --- */
 
@@ -2637,10 +2705,39 @@ function getPendingRentalsList() {
 /* "Pay Now" button dikhana / chhupana + total dikhana */
 function updatePayButton() {
 
-    const button = document.getElementById("payNowBtn");
+    let button = document.getElementById("payNowBtn");
+
+    /* HTML me button na ho to "My Rented Subjects" ke chips ke neeche bana do */
 
     if (!button) {
-        return;
+
+        const chips = document.getElementById("studyChips");
+
+        if (!chips || !chips.parentNode) {
+            return;
+        }
+
+        button = document.createElement("button");
+        button.type = "button";
+        button.id = "payNowBtn";
+        button.hidden = true;
+
+        button.style.cssText = [
+            "margin-top:12px",
+            "padding:11px 18px",
+            "border:0",
+            "border-radius:10px",
+            "background:#16a34a",
+            "color:#ffffff",
+            "font-weight:700",
+            "font-size:14px",
+            "cursor:pointer",
+            "box-shadow:0 4px 12px rgba(22,163,74,.35)"
+        ].join(";");
+
+        button.addEventListener("click", openPaymentModal);
+
+        chips.insertAdjacentElement("afterend", button);
     }
 
     const pending = getPendingRentalsList();
@@ -2659,7 +2756,6 @@ function updatePayButton() {
         "💳 Pay Now · ₹" + total +
         " (" + pending.length + (pending.length === 1 ? " subject" : " subjects") + ")";
 }
-
 
 function buildUpiLink(amount, note) {
 
@@ -2851,17 +2947,82 @@ function renderPaymentList() {
 
 /* Checkbox badalne par total, UPI link, QR sab refresh */
 
+/* Pay window me price details: kaun sa plan laga, kitna bacha, hint */
+
+function renderPaymentBreakdown(breakdown) {
+
+    let box = document.getElementById("sstcPaymentBreakdown");
+
+    if (!box) {
+
+        const anchor = getRentEl("paymentList");
+
+        if (!anchor) {
+            return;
+        }
+
+        box = document.createElement("div");
+        box.id = "sstcPaymentBreakdown";
+
+        box.style.cssText = [
+            "margin:12px 0",
+            "padding:12px 14px",
+            "border-radius:12px",
+            "background:#f0fdf4",
+            "border:1.5px solid #22c55e",
+            "color:#14532d",
+            "font-size:13px",
+            "line-height:1.5",
+            "text-align:left"
+        ].join(";");
+
+        anchor.insertAdjacentElement("afterend", box);
+    }
+
+    if (!breakdown || !breakdown.count) {
+        box.hidden = true;
+        return;
+    }
+
+    box.hidden = false;
+
+    let html = "<strong>🧾 Price Details</strong>" +
+        '<ul style="margin:6px 0 0; padding-left:18px;">';
+
+    breakdown.lines.forEach(function (line) {
+        html += "<li>" + escapeHtml(line) + "</li>";
+    });
+
+    html += "</ul>";
+
+    const saved = breakdown.perSubjectTotal - breakdown.total;
+
+    if (breakdown.bundles > 0 && saved > 0) {
+        html += '<p style="margin:8px 0 0; font-weight:700;">🎉 Any 6 Subjects plan lag gaya! ' +
+            "Aapne ₹" + saved + " bacha liye.</p>";
+    }
+
+    breakdown.hints.forEach(function (hint) {
+        html += '<p style="margin:6px 0 0; color:#92400e;">' + escapeHtml(hint) + "</p>";
+    });
+
+    box.innerHTML = html;
+}
+
+/* Checkbox badalne par total, breakdown, UPI link, QR sab refresh */
+
 function updatePaymentTotal() {
 
     const chosen = getPendingRentalsList().filter(function (rental) {
         return sstcPaymentSelected.has(rental.rentalId);
     });
 
-    // const total = chosen.reduce(function (sum, rental) {
-    //     return sum + (Number(rental.price) || 0);
-    // }, 0);
-const total = calculateSstcSubjectRentalTotal(chosen);
+    const breakdown = sstcComputeRentalBreakdown(chosen, "subjects");
+    const total = breakdown.total;
+
     getRentEl("paymentTotal").textContent = "₹" + total;
+
+    renderPaymentBreakdown(breakdown);
 
     const confirmButton = getRentEl("payConfirmBtn");
 
@@ -2931,7 +3092,6 @@ const total = calculateSstcSubjectRentalTotal(chosen);
         }
     }
 }
-
 function copyUpiId() {
 
     if (!SSTC_UPI_ID) {
