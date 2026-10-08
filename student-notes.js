@@ -22,11 +22,11 @@ const SSTC_NOTES_REQUIRE_RENT = true;
 const SSTC_NOTES_FILES = {};
 
 /* Display ke liye (asli price Code.gs ke NOTES_RENT_PLANS se aata hai) */
-const SSTC_NOTES_DEFAULT_PLANS = [
-    { months: 3, label: "3 Months", price: 49 },
-    { months: 6, label: "6 Months", price: 69 },
-    { months: 12, label: "12 Months (1 Year)", price: 99 }
-];
+/* student-page.js ke SSTC_RENT_NOTES_PLANS se single-subject plans (69 / 99 / 149) */
+
+const SSTC_NOTES_DEFAULT_PLANS = SSTC_RENT_NOTES_PLANS.filter(function (plan) {
+    return !plan.bundle;
+});
 
 const SSTC_NOTES_MEDIUM_KEY = "sstcNotesMedium";
 
@@ -197,13 +197,22 @@ function ntApplyResult(result) {
     ntRentals = Array.isArray(result.rentals) ? result.rentals : [];
 
     if (Array.isArray(result.plans) && result.plans.length) {
-        ntPlans = result.plans;
+
+        /* Bundle plans modal me nahi dikhane - woh total me apne-aap lagte hain */
+        const singles = result.plans.filter(function (plan) {
+            return !plan.bundle;
+        });
+
+        if (singles.length) {
+            ntPlans = singles;
+        }
     }
 
     if (typeof result.requiresApproval === "boolean") {
         ntRequiresApproval = result.requiresApproval;
     }
 }
+
 
 function ntSetStatus(state, detail) {
 
@@ -573,9 +582,7 @@ function ntUpdatePayBtn() {
         return;
     }
 
-    const total = pending.reduce(function (sum, rental) {
-        return sum + (Number(rental.price) || 0);
-    }, 0);
+    const total = calculateSstcNotesRentalTotal(pending);
 
     button.hidden = false;
 
@@ -1224,6 +1231,7 @@ function ntRenderPlans(subjectName, isRenew) {
     const confirm = ntEl("ntRentConfirmBtn");
 
     plansBox.hidden = false;
+      ntEnsureBundleOffer();
     ntEl("ntRentDetails").hidden = true;
     ntEl("ntRentSuccess").hidden = true;
     ntEl("ntRentCancelBtn").hidden = true;
@@ -1290,6 +1298,75 @@ function ntRenderPlans(subjectName, isRenew) {
     ntShowRentError("");
 }
 
+
+function ntEnsureBundleOffer() {
+
+    const plansBox = ntEl("ntRentPlans");
+
+    if (!plansBox) {
+        return;
+    }
+
+    let note = ntEl("ntBundleOffer");
+
+    if (!note) {
+
+        note = document.createElement("div");
+        note.id = "ntBundleOffer";
+
+        note.style.cssText = [
+            "margin-top:10px",
+            "padding:10px 12px",
+            "border-radius:10px",
+            "background:#ecfdf5",
+            "border:1.5px dashed #10b981",
+            "color:#065f46",
+            "font-size:12.5px",
+            "line-height:1.5",
+            "text-align:left"
+        ].join(";");
+
+        plansBox.insertAdjacentElement("afterend", note);
+    }
+
+    const b6 = getSstcBundleNotesPlan(6);
+    const b12 = getSstcBundleNotesPlan(12);
+
+    note.innerHTML =
+        "🎁 <strong>Any 6 Subject Notes Offer:</strong><br>" +
+        "6 Months · ₹" + b6.price + " <s>₹" + b6.actualPrice + "</s><br>" +
+        "12 Months · ₹" + b12.price + " <s>₹" + b12.actualPrice + "</s><br>" +
+        "<small>6 subjects ke notes ek hi duration (6 ya 12 months) me lene par bundle price apne-aap lagegi.</small>";
+
+    note.hidden = false;
+}
+
+function ntBundleProgressText(subjectName, months) {
+
+    const bundle = getSstcBundleNotesPlan(months);
+
+    if (!bundle) {
+        return "";
+    }
+
+    const size = Number(bundle.subjects) || 6;
+    const key = normalizeSubjectKey(subjectName);
+
+    const same = ntPending().filter(function (rental) {
+        return Number(rental.months) === Number(months) &&
+               normalizeSubjectKey(rental.subject) !== key;
+    }).length + 1;
+
+    if (same >= size) {
+        return " 🎁 Any " + size + " Subject Notes plan lagega: ₹" + bundle.price + " (actual ₹" + bundle.actualPrice + ").";
+    }
+
+    return " 🎁 " + same + "/" + size + " notes selected for " + months + " months — " +
+        (size - same) + " aur lene par Any " + size + " Subject Notes plan ₹" + bundle.price + " me milega.";
+}
+
+
+
 function ntSelectPlan(months) {
 
     const plan = ntPlanByMonths(months);
@@ -1313,18 +1390,28 @@ function ntSelectPlan(months) {
     confirm.textContent = "Confirm Rent · ₹" + plan.price;
     confirm.disabled = false;
 
-    setText(
+    // setText(
+    //     "ntRentNote",
+    //     plan.label + " for ₹" + plan.price + ". " +
+    //     (ntRequiresApproval
+    //         ? "Your rental starts after SSTC confirms your payment. " + SSTC_PAYMENT_HELP
+    //         : "Your rental starts immediately.")
+    // );
+       setText(
         "ntRentNote",
         plan.label + " for ₹" + plan.price + ". " +
         (ntRequiresApproval
             ? "Your rental starts after SSTC confirms your payment. " + SSTC_PAYMENT_HELP
-            : "Your rental starts immediately.")
+            : "Your rental starts immediately.") +
+        ntBundleProgressText(ntModalSubject, months)
     );
 }
 
 function ntRenderDetails(rental, status, successText) {
 
     ntEl("ntRentPlans").hidden = true;
+   const offer = ntEl("ntBundleOffer");
+if (offer) { offer.hidden = true; }
     ntEl("ntRentConfirmBtn").hidden = true;
     ntEl("ntRentCancelBtn").hidden = status !== "pending";
 
@@ -1597,17 +1684,80 @@ function ntRenderPayList() {
     });
 }
 
+/* Notes Pay window me price details: kaun sa plan laga, kitna bacha, hint */
+
+function ntRenderPayBreakdown(breakdown) {
+
+    let box = ntEl("ntPayBreakdown");
+
+    if (!box) {
+
+        const anchor = ntEl("ntPayList");
+
+        if (!anchor) {
+            return;
+        }
+
+        box = document.createElement("div");
+        box.id = "ntPayBreakdown";
+
+        box.style.cssText = [
+            "margin:0 0 14px",
+            "padding:12px 14px",
+            "border-radius:12px",
+            "background:#f0fdf4",
+            "border:1.5px solid #22c55e",
+            "color:#14532d",
+            "font-size:13px",
+            "line-height:1.5",
+            "text-align:left"
+        ].join(";");
+
+        anchor.insertAdjacentElement("afterend", box);
+    }
+
+    if (!breakdown || !breakdown.count) {
+        box.hidden = true;
+        return;
+    }
+
+    box.hidden = false;
+
+    let html = "<strong>🧾 Price Details</strong>" +
+        '<ul style="margin:6px 0 0; padding-left:18px;">';
+
+    breakdown.lines.forEach(function (line) {
+        html += "<li>" + escapeHtml(line) + "</li>";
+    });
+
+    html += "</ul>";
+
+    const saved = breakdown.perSubjectTotal - breakdown.total;
+
+    if (breakdown.bundles > 0 && saved > 0) {
+        html += '<p style="margin:8px 0 0; font-weight:700;">🎉 Any 6 Subject Notes plan lag gaya! ' +
+            "Aapne ₹" + saved + " bacha liye.</p>";
+    }
+
+    breakdown.hints.forEach(function (hint) {
+        html += '<p style="margin:6px 0 0; color:#92400e;">' + escapeHtml(hint) + "</p>";
+    });
+
+    box.innerHTML = html;
+}
+
 function ntUpdatePayTotal() {
 
     const chosen = ntPending().filter(function (rental) {
         return ntPaySelected.has(rental.rentalId);
     });
 
-    const total = chosen.reduce(function (sum, rental) {
-        return sum + (Number(rental.price) || 0);
-    }, 0);
+    const breakdown = sstcComputeRentalBreakdown(chosen, "notes");
+    const total = breakdown.total;
 
     setText("ntPayTotal", "₹" + total);
+
+    ntRenderPayBreakdown(breakdown);
 
     ntEl("ntPayConfirm").disabled = chosen.length === 0;
 
@@ -1652,7 +1802,6 @@ function ntUpdatePayTotal() {
             encodeURIComponent(buildUpiLink(total, note));
     }
 }
-
 async function ntClaimPayment() {
 
     const ids = Array.from(ntPaySelected);
