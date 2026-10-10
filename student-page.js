@@ -27,7 +27,7 @@ let sstcSessionEnding = false;   // duplicate "forced logout" na ho isliye guard
 let sstcHeartbeatBusy = false;   // heartbeat overlap na ho
 
 /* --- 45-minute "please logout" reminder state --- */
-const SSTC_LOGOUT_REMINDER_MS = 15 * 1000; //45 * 60 * 1000;   // 45 minute
+const SSTC_LOGOUT_REMINDER_MS = 45 * 60 * 1000;   // 45 minute
 let sstcLogoutReminderTimer = null;
 
 /* --- rent state --- */
@@ -1031,7 +1031,7 @@ function setupSessionEndOnClose() {
    Logout hone tak har 45 min baad baar-baar bajta hai
    ========================================================= */
 
-const SSTC_ALARM_AUTOCLOSE_MS = 10 * 1000; //60 * 1000;   // 60 second me auto band
+const SSTC_ALARM_AUTOCLOSE_MS = 60 * 1000;   // 60 second me auto band
 
 let sstcAlarmAutoCloseTimer = null;
 let sstcAlarmCountdownTimer = null;
