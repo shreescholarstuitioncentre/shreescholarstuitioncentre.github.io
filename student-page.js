@@ -27,7 +27,7 @@ let sstcSessionEnding = false;   // duplicate "forced logout" na ho isliye guard
 let sstcHeartbeatBusy = false;   // heartbeat overlap na ho
 
 /* --- 45-minute "please logout" reminder state --- */
-const SSTC_LOGOUT_REMINDER_MS = 45 * 60 * 1000;   // 45 minute
+const SSTC_LOGOUT_REMINDER_MS = 15 * 1000; //45 * 60 * 1000;   // 45 minute
 let sstcLogoutReminderTimer = null;
 
 /* --- rent state --- */
@@ -1027,105 +1027,273 @@ function setupSessionEndOnClose() {
 
 
 /* =========================================================
-   45-MINUTE LOGOUT REMINDER
+   45-MINUTE ALARM (avatar + sound + 60 sec auto-close)
+   Logout hone tak har 45 min baad baar-baar bajta hai
    ========================================================= */
 
-const SSTC_LOGOUT_REMINDER_MESSAGES = [
-    "📖 Padhna ho gaya? Please Logout zaroor karein! 🌟",
-    "✨ Padhai complete? Doston, Logout karna na bhoolein! 🔒",
-    "🔔 Reminder: Padhne ke baad Surely Logout kar lein! 💫",
-    "🌸 Apna account surakshit rakhein — padhkar Logout karein! 📚"
+const SSTC_ALARM_AUTOCLOSE_MS = 10 * 1000; //60 * 1000;   // 60 second me auto band
+
+let sstcAlarmAutoCloseTimer = null;
+let sstcAlarmCountdownTimer = null;
+let sstcAlarmBeepTimer = null;
+let sstcAudioCtx = null;
+
+const SSTC_ALARM_MESSAGES = [
+    { hi: "उठो, जागो! अगर पढ़ नहीं रहे हो तो Logout कर दो! 📚",
+      en: "Wake up! If you are not studying, please Logout." },
+    { hi: "अरे! पढ़ाई हो गई? तो अपना अकाउंट Logout कर दो! 🔒",
+      en: "Done studying? Please Logout to keep your account safe." },
+    { hi: "सो गए क्या? पढ़ रहे हो तो पढ़ो, नहीं तो Logout करो! 🌟",
+      en: "Fell asleep? Keep reading, or else Logout." }
 ];
 
 function startLogoutReminder() {
+    scheduleNextAlarm();
+}
+
+/* Agla alarm 45 minute baad */
+function scheduleNextAlarm() {
 
     if (sstcLogoutReminderTimer) {
-        clearInterval(sstcLogoutReminderTimer);
+        clearTimeout(sstcLogoutReminderTimer);
     }
 
-    sstcLogoutReminderTimer = setInterval(function () {
+    sstcLogoutReminderTimer = setTimeout(function () {
         showLogoutReminder();
     }, SSTC_LOGOUT_REMINDER_MS);
 }
 
+/* Logout par: alarm + timers + awaaz sab band, agla alarm schedule NAHI hoga */
 function stopLogoutReminder() {
 
     if (sstcLogoutReminderTimer) {
-        clearInterval(sstcLogoutReminderTimer);
+        clearTimeout(sstcLogoutReminderTimer);
         sstcLogoutReminderTimer = null;
     }
+
+    removeAlarmUI();
+}
+
+function removeAlarmUI() {
+
+    if (sstcAlarmAutoCloseTimer) { clearTimeout(sstcAlarmAutoCloseTimer); sstcAlarmAutoCloseTimer = null; }
+    if (sstcAlarmCountdownTimer) { clearInterval(sstcAlarmCountdownTimer); sstcAlarmCountdownTimer = null; }
+    if (sstcAlarmBeepTimer) { clearInterval(sstcAlarmBeepTimer); sstcAlarmBeepTimer = null; }
+
+    try {
+        if (window.speechSynthesis) { window.speechSynthesis.cancel(); }
+    } catch (e) { /* ignore */ }
+
+    const old = document.getElementById("sstcAlarmOverlay");
+    if (old) { old.remove(); }
+}
+
+/* Close (manual ya auto) -> 45 min baad phir alarm */
+function closeLogoutAlarm() {
+
+    removeAlarmUI();
+
+    if (!sstcSessionEnding && !sstcLoggingOut) {
+        scheduleNextAlarm();
+    }
+}
+
+function alarmLogoutNow() {
+    removeAlarmUI();
+    studentLogout();
+}
+
+function injectAlarmStyles() {
+
+    if (document.getElementById("sstcAlarmStyles")) { return; }
+
+    const style = document.createElement("style");
+    style.id = "sstcAlarmStyles";
+
+    style.textContent = `
+        #sstcAlarmOverlay {
+            position:fixed; inset:0; z-index:100000;
+            display:flex; align-items:center; justify-content:center;
+            padding:16px; box-sizing:border-box;
+            background:rgba(15,23,42,.72);
+            animation:sstcFadeIn .3s ease;
+            font-family:Arial,sans-serif;
+        }
+        #sstcAlarmCard {
+            position:relative; width:min(380px,100%);
+            background:linear-gradient(160deg,#7c3aed,#ec4899);
+            color:#fff; text-align:center;
+            border-radius:24px; padding:26px 20px 20px;
+            box-shadow:0 20px 60px rgba(0,0,0,.5);
+            animation:sstcPop .45s cubic-bezier(.2,1.4,.4,1);
+            overflow:hidden;
+        }
+        #sstcAlarmAvatar { position:relative; height:110px; margin-bottom:6px; }
+        #sstcAlarmOwl {
+            display:inline-block; font-size:78px; line-height:110px;
+            animation:sstcBounce .7s ease-in-out infinite;
+        }
+        #sstcAlarmBell {
+            position:absolute; top:0; right:calc(50% - 85px);
+            font-size:38px; transform-origin:top center;
+            animation:sstcRing .35s ease-in-out infinite alternate;
+        }
+        .sstc-zzz {
+            position:absolute; left:calc(50% - 80px); top:30px;
+            font-weight:800; font-size:22px; opacity:0;
+            animation:sstcZzz 2s ease-in infinite;
+        }
+        .sstc-zzz.z2 { animation-delay:.7s; left:calc(50% - 98px); font-size:17px; }
+        #sstcAlarmHi { font-size:20px; font-weight:800; line-height:1.4; margin:6px 0; }
+        #sstcAlarmEn { font-size:13px; opacity:.92; margin:0 0 14px; }
+        #sstcAlarmBtns { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+        #sstcAlarmBtns button {
+            border:0; border-radius:12px; padding:12px 18px;
+            font-size:14px; font-weight:700; cursor:pointer;
+        }
+        #sstcAlarmClose  { background:#ffffff; color:#7c3aed; }
+        #sstcAlarmLogout { background:#111827; color:#ffffff; }
+        #sstcAlarmTimerText { margin-top:12px; font-size:12px; opacity:.9; }
+        #sstcAlarmBar { height:6px; background:rgba(255,255,255,.3); border-radius:6px; margin-top:6px; overflow:hidden; }
+        #sstcAlarmBarFill { height:100%; width:100%; background:#fde047; transition:width 1s linear; }
+
+        @keyframes sstcFadeIn { from{opacity:0} to{opacity:1} }
+        @keyframes sstcPop { from{transform:scale(.6);opacity:0} to{transform:scale(1);opacity:1} }
+        @keyframes sstcBounce { 0%,100%{transform:translateY(0) rotate(-5deg)} 50%{transform:translateY(-14px) rotate(5deg)} }
+        @keyframes sstcRing { from{transform:rotate(-25deg)} to{transform:rotate(25deg)} }
+        @keyframes sstcZzz { 0%{opacity:0;transform:translateY(10px)} 40%{opacity:1} 100%{opacity:0;transform:translateY(-26px)} }
+    `;
+
+    document.head.appendChild(style);
+}
+
+/* Beep awaaz - sirf shuru ke ~5 second (browser allow kare to) */
+function playAlarmBeeps() {
+
+    try {
+
+        const Ctx = window.AudioContext || window.webkitAudioContext;
+        if (!Ctx) { return; }
+
+        if (!sstcAudioCtx) { sstcAudioCtx = new Ctx(); }
+        if (sstcAudioCtx.state === "suspended") { sstcAudioCtx.resume(); }
+
+        let count = 0;
+
+        const beep = function () {
+
+            const osc = sstcAudioCtx.createOscillator();
+            const gain = sstcAudioCtx.createGain();
+
+            osc.type = "sine";
+            osc.frequency.value = (count % 2 === 0) ? 880 : 660;
+            gain.gain.value = 0.15;
+
+            osc.connect(gain);
+            gain.connect(sstcAudioCtx.destination);
+
+            osc.start();
+            osc.stop(sstcAudioCtx.currentTime + 0.25);
+
+            count++;
+
+            if (count >= 8 && sstcAlarmBeepTimer) {
+                clearInterval(sstcAlarmBeepTimer);
+                sstcAlarmBeepTimer = null;
+            }
+        };
+
+        beep();
+        sstcAlarmBeepTimer = setInterval(beep, 600);
+    }
+    catch (e) { /* awaaz na chale to bhi alarm dikhega */ }
+}
+
+/* Hindi me bolkar bhi bataye */
+function speakAlarmHindi(text) {
+
+    try {
+
+        if (!window.speechSynthesis || !window.SpeechSynthesisUtterance) { return; }
+
+        window.speechSynthesis.cancel();
+
+        const speech = new SpeechSynthesisUtterance(text);
+        speech.lang = "hi-IN";
+        speech.rate = 0.95;
+
+        window.speechSynthesis.speak(speech);
+    }
+    catch (e) { /* ignore */ }
 }
 
 function showLogoutReminder() {
 
-    const old = document.querySelector(".sstc-logout-reminder");
+    if (sstcSessionEnding || sstcLoggingOut) { return; }
 
-    if (old) {
-        old.remove();
-    }
+    /* Pehle se alarm khula ho to dusra na bane */
+    if (document.getElementById("sstcAlarmOverlay")) { return; }
 
-    const message =
-        SSTC_LOGOUT_REMINDER_MESSAGES[
-            Math.floor(Math.random() * SSTC_LOGOUT_REMINDER_MESSAGES.length)
-        ];
+    injectAlarmStyles();
 
-    const box = document.createElement("div");
-    box.className = "sstc-logout-reminder";
-    box.setAttribute("role", "status");
-    box.title = "Tap to dismiss";
+    const msg = SSTC_ALARM_MESSAGES[Math.floor(Math.random() * SSTC_ALARM_MESSAGES.length)];
 
-    box.style.cssText = [
-        "position:fixed",
-        "bottom:22px",
-        "right:22px",
-        "max-width:min(320px, calc(100vw - 32px))",
-        "display:flex",
-        "align-items:center",
-        "gap:8px",
-        "background:linear-gradient(135deg,#7c3aed,#ec4899)",
-        "color:#ffffff",
-        "font-family:Arial,sans-serif",
-        "font-weight:600",
-        "font-size:13.5px",
-        "line-height:1.4",
-        "padding:14px 18px",
-        "border-radius:16px",
-        "box-shadow:0 10px 30px rgba(124,58,237,.45)",
-        "z-index:99999",
-        "opacity:0",
-        "transform:translateY(12px)",
-        "transition:opacity .35s ease, transform .35s ease",
-        "cursor:pointer"
-    ].join(";");
+    const overlay = document.createElement("div");
+    overlay.id = "sstcAlarmOverlay";
+    overlay.setAttribute("role", "alertdialog");
+    overlay.setAttribute("aria-live", "assertive");
 
-    box.textContent = message;
+    overlay.innerHTML =
+        '<div id="sstcAlarmCard">' +
+            '<div id="sstcAlarmAvatar">' +
+                '<span class="sstc-zzz">Z</span><span class="sstc-zzz z2">z</span>' +
+                '<span id="sstcAlarmOwl">🦉</span>' +
+                '<span id="sstcAlarmBell">🔔</span>' +
+            '</div>' +
+            '<div id="sstcAlarmHi"></div>' +
+            '<p id="sstcAlarmEn"></p>' +
+            '<div id="sstcAlarmBtns">' +
+                '<button type="button" id="sstcAlarmClose">✅ Close / ठीक है</button>' +
+                '<button type="button" id="sstcAlarmLogout">🔒 Logout करो</button>' +
+            '</div>' +
+            '<div id="sstcAlarmTimerText"></div>' +
+            '<div id="sstcAlarmBar"><div id="sstcAlarmBarFill"></div></div>' +
+        '</div>';
 
-    const dismiss = function () {
+    document.body.appendChild(overlay);
 
-        box.style.opacity = "0";
-        box.style.transform = "translateY(12px)";
+    document.getElementById("sstcAlarmHi").textContent = msg.hi;
+    document.getElementById("sstcAlarmEn").textContent = msg.en;
 
-        setTimeout(function () {
+    document.getElementById("sstcAlarmClose").addEventListener("click", closeLogoutAlarm);
+    document.getElementById("sstcAlarmLogout").addEventListener("click", alarmLogoutNow);
 
-            if (box && box.parentNode) {
-                box.remove();
-            }
+    /* 60 second countdown */
+    let left = Math.round(SSTC_ALARM_AUTOCLOSE_MS / 1000);
+    const total = left;
 
-        }, 300);
-    };
+    const timerText = document.getElementById("sstcAlarmTimerText");
+    const barFill = document.getElementById("sstcAlarmBarFill");
 
-    box.addEventListener("click", dismiss);
+    timerText.textContent = "⏳ " + left + " सेकंड में अपने-आप बंद हो जाएगा";
 
-    document.body.appendChild(box);
+    sstcAlarmCountdownTimer = setInterval(function () {
 
-    requestAnimationFrame(function () {
-        box.style.opacity = "1";
-        box.style.transform = "translateY(0)";
-    });
+        left--;
 
-    setTimeout(dismiss, 8000);
+        if (left < 0) { left = 0; }
+
+        timerText.textContent = "⏳ " + left + " सेकंड में अपने-आप बंद हो जाएगा";
+        barFill.style.width = ((left / total) * 100) + "%";
+
+    }, 1000);
+
+    /* 60 sec me kuch na dabaye to auto close */
+    sstcAlarmAutoCloseTimer = setTimeout(closeLogoutAlarm, SSTC_ALARM_AUTOCLOSE_MS);
+
+    playAlarmBeeps();
+    speakAlarmHindi("उठो, जागो! अगर पढ़ नहीं रहे हो, तो लॉगआउट कर दो।");
 }
-
 
 /* =========================================================
    CREATE LOGIN TIME
