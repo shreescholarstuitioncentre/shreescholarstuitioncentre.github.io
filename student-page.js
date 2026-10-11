@@ -5003,41 +5003,54 @@ function injectSstcTrackerStyles() {
 
     style.textContent = `
         #sstcTimeSection {
-            margin:18px auto; padding:16px;
-            max-width:1100px; box-sizing:border-box;
-            border-radius:16px; background:#ffffff;
-            box-shadow:0 4px 18px rgba(0,0,0,.08);
+            flex:0 0 auto; width:230px; box-sizing:border-box;
+            margin:0 auto; padding:10px 12px;
+            border-radius:18px;
+            background:linear-gradient(135deg,#fff7ed,#fdf2f8);
+            border:2px solid #fbcfe8;
+            box-shadow:0 4px 14px rgba(236,72,153,.15);
             font-family:Arial,sans-serif;
+            display:flex; flex-direction:column; gap:7px;
+            transition:box-shadow .3s, border-color .3s;
         }
-        #sstcTimeSection h2 { margin:0 0 12px; font-size:18px; color:#111827; }
-        .sstc-time-grid {
-            display:grid; gap:14px;
-            grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+        #sstcTimeSection.running {
+            border-color:#34d399;
+            box-shadow:0 0 0 3px rgba(52,211,153,.25), 0 4px 14px rgba(16,185,129,.25);
         }
-        .sstc-time-card {
-            border-radius:14px; padding:14px; text-align:center; color:#fff;
+        .sstc-mini-row { display:flex; align-items:center; gap:9px; }
+        .sstc-mini-ico {
+            flex:0 0 auto; width:32px; height:32px; border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
+            font-size:17px; background:#ffffff;
+            box-shadow:0 2px 6px rgba(0,0,0,.08);
         }
-        .sstc-time-card.session { background:linear-gradient(135deg,#2563eb,#7c3aed); }
-        .sstc-time-card.stopwatch { background:linear-gradient(135deg,#059669,#10b981); }
-        .sstc-time-label { font-size:12px; opacity:.9; letter-spacing:.5px; text-transform:uppercase; }
-        .sstc-time-value {
-            font-size:34px; font-weight:800; margin:6px 0;
-            font-variant-numeric:tabular-nums; letter-spacing:1px;
+        #sstcTimeSection.running .sstc-mini-ico.study { animation:sstcWiggle .8s ease-in-out infinite; }
+        .sstc-mini-info { flex:1 1 auto; min-width:0; line-height:1.15; }
+        .sstc-mini-info small {
+            display:block; font-size:10px; font-weight:700;
+            color:#9d174d; text-transform:uppercase; letter-spacing:.6px;
         }
-        .sstc-time-meta { font-size:12px; opacity:.92; line-height:1.6; }
+        .sstc-mini-info b {
+            display:block; font-size:19px; font-weight:800; color:#1e293b;
+            font-variant-numeric:tabular-nums; letter-spacing:.5px;
+        }
         .sstc-live-dot {
-            display:inline-block; width:8px; height:8px; border-radius:50%;
-            background:#22c55e; margin-right:5px;
+            display:inline-block; width:6px; height:6px; border-radius:50%;
+            background:#22c55e; margin-left:4px; vertical-align:middle;
             animation:sstcLive 1.2s ease-in-out infinite;
         }
-        .sstc-sw-btns { display:flex; gap:8px; justify-content:center; margin-top:8px; }
-        .sstc-sw-btns button {
-            border:0; border-radius:10px; padding:8px 14px;
-            font-size:13px; font-weight:700; cursor:pointer;
-            background:#ffffff; color:#065f46;
+        .sstc-mini-btns { display:flex; gap:5px; }
+        .sstc-mini-btns button {
+            width:28px; height:28px; border:0; border-radius:50%;
+            cursor:pointer; font-size:12px; line-height:1; padding:0;
+            background:#10b981; color:#fff;
+            box-shadow:0 2px 6px rgba(16,185,129,.4);
         }
-        .sstc-sw-btns button.reset { background:rgba(255,255,255,.25); color:#fff; }
+        .sstc-mini-btns button.reset { background:#f472b6; box-shadow:0 2px 6px rgba(244,114,182,.4); }
+        .sstc-mini-btns button:active { transform:scale(.9); }
         @keyframes sstcLive { 0%,100%{opacity:1} 50%{opacity:.25} }
+        @keyframes sstcWiggle { 0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(8deg)} }
+        @media (max-width:700px) { #sstcTimeSection { width:100%; max-width:320px; } }
     `;
 
     document.head.appendChild(style);
@@ -5049,45 +5062,50 @@ function createSstcTrackerSection() {
 
     injectSstcTrackerStyles();
 
-    const section = document.createElement("section");
+    const section = document.createElement("div");
     section.id = "sstcTimeSection";
+    section.title = "Login: " + (sessionStorage.getItem(SSTC_SESSION_LOGIN_TIME) || "-");
 
     section.innerHTML =
-        '<h2>⏱️ Study Time Tracker</h2>' +
-        '<div class="sstc-time-grid">' +
-
-            '<div class="sstc-time-card session">' +
-                '<div class="sstc-time-label"><span class="sstc-live-dot"></span>Session Time (Login → Logout)</div>' +
-                '<div class="sstc-time-value" id="sstcSessionClock">00:00:00</div>' +
-                '<div class="sstc-time-meta">Login: <b id="sstcSessionLoginAt">-</b><br>' +
-                'Status: <b id="sstcSessionState">Live</b></div>' +
+        '<div class="sstc-mini-row">' +
+            '<div class="sstc-mini-ico">🦉</div>' +
+            '<div class="sstc-mini-info">' +
+                '<small>Session<span class="sstc-live-dot"></span> <span id="sstcSessionState">Live</span></small>' +
+                '<b id="sstcSessionClock">00:00:00</b>' +
             '</div>' +
-
-            '<div class="sstc-time-card stopwatch">' +
-                '<div class="sstc-time-label">📚 Study Stopwatch</div>' +
-                '<div class="sstc-time-value" id="sstcSwClock">00:00:00</div>' +
-                '<div class="sstc-sw-btns">' +
-                    '<button type="button" id="sstcSwToggle">▶ Start</button>' +
-                    '<button type="button" id="sstcSwReset" class="reset">↺ Reset</button>' +
-                '</div>' +
+        '</div>' +
+        '<div class="sstc-mini-row">' +
+            '<div class="sstc-mini-ico study">📚</div>' +
+            '<div class="sstc-mini-info">' +
+                '<small>Study Time</small>' +
+                '<b id="sstcSwClock">00:00:00</b>' +
             '</div>' +
-
+            '<div class="sstc-mini-btns">' +
+                '<button type="button" id="sstcSwToggle" title="Start / Pause">▶</button>' +
+                '<button type="button" id="sstcSwReset" class="reset" title="Reset">↺</button>' +
+            '</div>' +
         '</div>';
 
-    const anchor = document.getElementById("chapterSection");
+    const title = document.querySelector(".portal-title");
+    const notesBtn = document.getElementById("sstcNotesBtn");
 
-    if (anchor && anchor.parentNode) {
-        anchor.parentNode.insertBefore(section, anchor);
+    if (title && notesBtn) {
+        /* Beech me: [My E-Book Library]  [Tracker]  [Notes button] */
+        title.insertBefore(section, notesBtn);
     }
     else {
-        const chips = document.getElementById("studyChips");
-        (chips && chips.parentNode ? chips.parentNode : document.body).appendChild(section);
+        const anchor = document.getElementById("chapterSection");
+        if (anchor && anchor.parentNode) {
+            anchor.parentNode.insertBefore(section, anchor);
+        }
+        else {
+            document.body.appendChild(section);
+        }
     }
 
     document.getElementById("sstcSwToggle").addEventListener("click", toggleSstcStopwatch);
     document.getElementById("sstcSwReset").addEventListener("click", resetSstcStopwatch);
 }
-
 /* ---- Stopwatch helpers (timestamp based = accurate, refresh-safe) ---- */
 
 function getSstcSwElapsed() {
@@ -5141,7 +5159,10 @@ function updateSstcTracker() {
     swClock.textContent = formatSstcDuration(getSstcSwElapsed());
 
     if (toggle) {
-        toggle.textContent = isSstcSwRunning() ? "⏸ Pause" : "▶ Start";
+                toggle.textContent = isSstcSwRunning() ? "⏸" : "▶";
+
+        const box = document.getElementById("sstcTimeSection");
+        if (box) { box.classList.toggle("running", isSstcSwRunning()); }
     }
 }
 
