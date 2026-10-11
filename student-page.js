@@ -7,7 +7,7 @@
    + SINGLE-DEVICE LOGIN ENFORCEMENT (heartbeat check,
      auto-logout on another-device login, auto-logout on
      browser/tab close - NO 2-hour time-based auto-logout)
-   + 45-MINUTE "PLEASE LOGOUT AFTER READING" REMINDER TOAST
+   + 30-MINUTE "PLEASE LOGOUT AFTER READING" REMINDER TOAST
    ========================================================= */
 
 
@@ -21,13 +21,13 @@ let sstcLoggingOut = false;
 let sstcZoom = 0;
 
 /* --- session enforcement state --- */
-const SSTC_SESSION_HEARTBEAT_MS = 45 * 1000;               // har 45 second me server check
+const SSTC_SESSION_HEARTBEAT_MS = 30 * 1000;               // har 30 second me server check
 let sstcSessionHeartbeatTimer = null;
 let sstcSessionEnding = false;   // duplicate "forced logout" na ho isliye guard
 let sstcHeartbeatBusy = false;   // heartbeat overlap na ho
 
-/* --- 45-minute "please logout" reminder state --- */
-const SSTC_LOGOUT_REMINDER_MS = 30 * 60 * 1000;   // 45 minute
+/* --- 30-minute "please logout" reminder state --- */
+const SSTC_LOGOUT_REMINDER_MS = 30 * 60 * 1000;   // 30 minute
 let sstcLogoutReminderTimer = null;
 
 /* --- rent state --- */
@@ -1027,8 +1027,8 @@ function setupSessionEndOnClose() {
 
 
 /* =========================================================
-   45-MINUTE ALARM (avatar + sound + 60 sec auto-close)
-   Logout hone tak har 45 min baad baar-baar bajta hai
+   30-MINUTE ALARM (avatar + sound + 60 sec auto-close)
+   Logout hone tak har 30 min baad baar-baar bajta hai
    ========================================================= */
 
 const SSTC_ALARM_AUTOCLOSE_MS = 60 * 1000;   // 60 second me auto band
@@ -1051,7 +1051,7 @@ function startLogoutReminder() {
     scheduleNextAlarm();
 }
 
-/* Agla alarm 45 minute baad */
+/* Agla alarm 30 minute baad */
 function scheduleNextAlarm() {
 
     if (sstcLogoutReminderTimer) {
@@ -1088,7 +1088,7 @@ function removeAlarmUI() {
     if (old) { old.remove(); }
 }
 
-/* Close (manual ya auto) -> 45 min baad phir alarm */
+/* Close (manual ya auto) -> 30 min baad phir alarm */
 function closeLogoutAlarm() {
 
     removeAlarmUI();
@@ -4436,6 +4436,8 @@ function clearStudentSession() {
         sessionStorage.removeItem(SSTC_CURRENT_BOOK);
         sessionStorage.removeItem(SSTC_CURRENT_CHAPTER);
         sessionStorage.removeItem(SSTC_CURRENT_PAGE);
+        sessionStorage.removeItem(SSTC_SW_KEY_ACC);     // NEW
+        sessionStorage.removeItem(SSTC_SW_KEY_START);   // NEW
     }
     catch (error) {
         console.error("SSTC session clear error:", error);
@@ -4501,7 +4503,7 @@ async function studentLogout(event) {
     }
 
     stopLogoutReminder();
-
+   stopSstcTimeTracker();
     /*
        Server ko bata do ki session khatam ho rahi hai - max ~3 second
        wait karte hain redirect se pehle.
@@ -4968,3 +4970,208 @@ window.closePaymentModal = closePaymentModal;
 window.copyUpiId = copyUpiId;
 window.markPaymentSent = markPaymentSent;
 window.openSstcNotes = openSstcNotes;
+
+
+/* =========================================================
+   STUDY TIME TRACKER
+   Session timer (login -> logout) + Study stopwatch
+   ========================================================= */
+
+const SSTC_SW_KEY_ACC = "sstcSwAccMs";       // ab tak jama hua stopwatch time
+const SSTC_SW_KEY_START = "sstcSwStartMs";   // chal raha ho to start timestamp
+
+let sstcTrackerTimer = null;
+
+function formatSstcDuration(ms) {
+
+    const total = Math.max(0, Math.floor(ms / 1000));
+    const h = Math.floor(total / 3600);
+    const m = Math.floor((total % 3600) / 60);
+    const s = total % 60;
+
+    return String(h).padStart(2, "0") + ":" +
+           String(m).padStart(2, "0") + ":" +
+           String(s).padStart(2, "0");
+}
+
+function injectSstcTrackerStyles() {
+
+    if (document.getElementById("sstcTrackerStyles")) { return; }
+
+    const style = document.createElement("style");
+    style.id = "sstcTrackerStyles";
+
+    style.textContent = `
+        #sstcTimeSection {
+            margin:18px auto; padding:16px;
+            max-width:1100px; box-sizing:border-box;
+            border-radius:16px; background:#ffffff;
+            box-shadow:0 4px 18px rgba(0,0,0,.08);
+            font-family:Arial,sans-serif;
+        }
+        #sstcTimeSection h2 { margin:0 0 12px; font-size:18px; color:#111827; }
+        .sstc-time-grid {
+            display:grid; gap:14px;
+            grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+        }
+        .sstc-time-card {
+            border-radius:14px; padding:14px; text-align:center; color:#fff;
+        }
+        .sstc-time-card.session { background:linear-gradient(135deg,#2563eb,#7c3aed); }
+        .sstc-time-card.stopwatch { background:linear-gradient(135deg,#059669,#10b981); }
+        .sstc-time-label { font-size:12px; opacity:.9; letter-spacing:.5px; text-transform:uppercase; }
+        .sstc-time-value {
+            font-size:34px; font-weight:800; margin:6px 0;
+            font-variant-numeric:tabular-nums; letter-spacing:1px;
+        }
+        .sstc-time-meta { font-size:12px; opacity:.92; line-height:1.6; }
+        .sstc-live-dot {
+            display:inline-block; width:8px; height:8px; border-radius:50%;
+            background:#22c55e; margin-right:5px;
+            animation:sstcLive 1.2s ease-in-out infinite;
+        }
+        .sstc-sw-btns { display:flex; gap:8px; justify-content:center; margin-top:8px; }
+        .sstc-sw-btns button {
+            border:0; border-radius:10px; padding:8px 14px;
+            font-size:13px; font-weight:700; cursor:pointer;
+            background:#ffffff; color:#065f46;
+        }
+        .sstc-sw-btns button.reset { background:rgba(255,255,255,.25); color:#fff; }
+        @keyframes sstcLive { 0%,100%{opacity:1} 50%{opacity:.25} }
+    `;
+
+    document.head.appendChild(style);
+}
+
+function createSstcTrackerSection() {
+
+    if (document.getElementById("sstcTimeSection")) { return; }
+
+    injectSstcTrackerStyles();
+
+    const section = document.createElement("section");
+    section.id = "sstcTimeSection";
+
+    section.innerHTML =
+        '<h2>⏱️ Study Time Tracker</h2>' +
+        '<div class="sstc-time-grid">' +
+
+            '<div class="sstc-time-card session">' +
+                '<div class="sstc-time-label"><span class="sstc-live-dot"></span>Session Time (Login → Logout)</div>' +
+                '<div class="sstc-time-value" id="sstcSessionClock">00:00:00</div>' +
+                '<div class="sstc-time-meta">Login: <b id="sstcSessionLoginAt">-</b><br>' +
+                'Status: <b id="sstcSessionState">Live</b></div>' +
+            '</div>' +
+
+            '<div class="sstc-time-card stopwatch">' +
+                '<div class="sstc-time-label">📚 Study Stopwatch</div>' +
+                '<div class="sstc-time-value" id="sstcSwClock">00:00:00</div>' +
+                '<div class="sstc-sw-btns">' +
+                    '<button type="button" id="sstcSwToggle">▶ Start</button>' +
+                    '<button type="button" id="sstcSwReset" class="reset">↺ Reset</button>' +
+                '</div>' +
+            '</div>' +
+
+        '</div>';
+
+    const anchor = document.getElementById("chapterSection");
+
+    if (anchor && anchor.parentNode) {
+        anchor.parentNode.insertBefore(section, anchor);
+    }
+    else {
+        const chips = document.getElementById("studyChips");
+        (chips && chips.parentNode ? chips.parentNode : document.body).appendChild(section);
+    }
+
+    document.getElementById("sstcSwToggle").addEventListener("click", toggleSstcStopwatch);
+    document.getElementById("sstcSwReset").addEventListener("click", resetSstcStopwatch);
+}
+
+/* ---- Stopwatch helpers (timestamp based = accurate, refresh-safe) ---- */
+
+function getSstcSwElapsed() {
+
+    const acc = Number(sessionStorage.getItem(SSTC_SW_KEY_ACC)) || 0;
+    const startedAt = Number(sessionStorage.getItem(SSTC_SW_KEY_START)) || 0;
+
+    return startedAt ? acc + (Date.now() - startedAt) : acc;
+}
+
+function isSstcSwRunning() {
+    return !!Number(sessionStorage.getItem(SSTC_SW_KEY_START));
+}
+
+function toggleSstcStopwatch() {
+
+    if (isSstcSwRunning()) {
+        /* Pause: abhi tak ka time jama kar do */
+        sessionStorage.setItem(SSTC_SW_KEY_ACC, String(getSstcSwElapsed()));
+        sessionStorage.removeItem(SSTC_SW_KEY_START);
+    }
+    else {
+        sessionStorage.setItem(SSTC_SW_KEY_START, String(Date.now()));
+    }
+
+    updateSstcTracker();
+}
+
+function resetSstcStopwatch() {
+
+    sessionStorage.removeItem(SSTC_SW_KEY_ACC);
+    sessionStorage.removeItem(SSTC_SW_KEY_START);
+
+    updateSstcTracker();
+}
+
+/* ---- Live update (har 250ms) ---- */
+
+function updateSstcTracker() {
+
+    const sessionClock = document.getElementById("sstcSessionClock");
+    const swClock = document.getElementById("sstcSwClock");
+    const toggle = document.getElementById("sstcSwToggle");
+
+    if (!sessionClock || !swClock) { return; }
+
+    const startMs = Number(sessionStorage.getItem(SSTC_SESSION_START_MS)) || Date.now();
+
+    sessionClock.textContent = formatSstcDuration(Date.now() - startMs);
+
+    swClock.textContent = formatSstcDuration(getSstcSwElapsed());
+
+    if (toggle) {
+        toggle.textContent = isSstcSwRunning() ? "⏸ Pause" : "▶ Start";
+    }
+}
+
+function initSstcTimeTracker() {
+
+    /* Login nahi hai to kuch mat banao */
+    if (sessionStorage.getItem(SSTC_SESSION_LOGIN) !== "true") { return; }
+
+    createSstcTrackerSection();
+
+    setText("sstcSessionLoginAt", sessionStorage.getItem(SSTC_SESSION_LOGIN_TIME) || "-");
+
+    updateSstcTracker();
+
+    if (sstcTrackerTimer) { clearInterval(sstcTrackerTimer); }
+
+    sstcTrackerTimer = setInterval(updateSstcTracker, 250);
+}
+
+function stopSstcTimeTracker() {
+
+    if (sstcTrackerTimer) {
+        clearInterval(sstcTrackerTimer);
+        sstcTrackerTimer = null;
+    }
+
+    const state = document.getElementById("sstcSessionState");
+
+    if (state) { state.textContent = "Ended"; }
+}
+
+/* Original DOMContentLoaded ke baad chalega (loadLoggedInStudent pehle ho chuka hoga) */
+document.addEventListener("DOMContentLoaded", initSstcTimeTracker);
