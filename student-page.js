@@ -1047,20 +1047,28 @@ const SSTC_ALARM_MESSAGES = [
       en: "Fell asleep? Keep reading, or else Logout." }
 ];
 
+const SSTC_ALARM_NEXT_KEY = "sstcNextAlarmAt";
+
 function startLogoutReminder() {
-    scheduleNextAlarm();
+    scheduleNextAlarm(false);
 }
 
-/* Agla alarm 30 minute baad */
-function scheduleNextAlarm() {
+function scheduleNextAlarm(fresh) {
 
     if (sstcLogoutReminderTimer) {
         clearTimeout(sstcLogoutReminderTimer);
     }
 
+    let dueAt = Number(sessionStorage.getItem(SSTC_ALARM_NEXT_KEY)) || 0;
+
+    if (fresh || !dueAt) {
+        dueAt = Date.now() + SSTC_LOGOUT_REMINDER_MS;
+        sessionStorage.setItem(SSTC_ALARM_NEXT_KEY, String(dueAt));
+    }
+
     sstcLogoutReminderTimer = setTimeout(function () {
         showLogoutReminder();
-    }, SSTC_LOGOUT_REMINDER_MS);
+    }, Math.max(1000, dueAt - Date.now()));
 }
 
 /* Logout par: alarm + timers + awaaz sab band, agla alarm schedule NAHI hoga */
@@ -1094,7 +1102,7 @@ function closeLogoutAlarm() {
     removeAlarmUI();
 
     if (!sstcSessionEnding && !sstcLoggingOut) {
-        scheduleNextAlarm();
+        scheduleNextAlarm(true);
     }
 }
 
@@ -4438,6 +4446,7 @@ function clearStudentSession() {
         sessionStorage.removeItem(SSTC_CURRENT_PAGE);
         sessionStorage.removeItem(SSTC_SW_KEY_ACC);     // NEW
         sessionStorage.removeItem(SSTC_SW_KEY_START);   // NEW
+        sessionStorage.removeItem(SSTC_ALARM_NEXT_KEY);
     }
     catch (error) {
         console.error("SSTC session clear error:", error);
