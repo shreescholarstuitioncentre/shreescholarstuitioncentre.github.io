@@ -21,6 +21,7 @@
     names: { male: "आरव", female: "आन्या" },
     registrationOpens: "2026-10-19", // site par likhi hui date
     homePage: "index.html",
+    registrationClasses: "Class 10 और Class 12", // student-registration.html me jo classes khuli hain, wahi likhein
   };
 
   const SITE = {
@@ -100,7 +101,7 @@
   const INTENTS = [
     { id: "register",
       kw: ["registration", "register", "registar", "regestration", "sign up", "signup", "रजिस्ट्रेशन", "पंजीकरण", "नाम लिखवाना", "naam likhwana"],
-      reply: () => "📝 **रजिस्ट्रेशन** के लिए Student Registration पेज खोलें।\n" + regStatus() + "\nरजिस्ट्रेशन के लिए ज़रूरी जानकारी पहले से तैयार रखें।",
+      reply: () => "📝 **रजिस्ट्रेशन** के लिए Student Registration पेज खोलें।\n• अभी " + CONFIG.registrationClasses + " के लिए खुला है।\n• भरना होगा: नाम, मोबाइल (10 अंक), जेंडर, ईमेल, क्लास, बोर्ड, स्कूल का नाम और जगह।\n• रजिस्ट्रेशन पूरा होते ही **Student ID और Password अपने आप बन जाते हैं** — उन्हें save कर लें।\n" + regStatus(),
       actions: () => [act.page("📝 रजिस्ट्रेशन पेज खोलें", SITE.registerPage), act.go("📅 तारीख / ऑफर देखें", "#offerAccess")] },
 
     { id: "enquiry",
@@ -108,10 +109,16 @@
       reply: () => "❓ **पूछताछ / एडमिशन** के 3 आसान तरीके:\n1️⃣ \"Connect Us\" में बच्चे का नाम, क्लास और मोबाइल भरकर Sir/Ma'am को WhatsApp करें।\n2️⃣ \"Admission Form\" भरें।\n3️⃣ सीधे कॉल करें।\n🎁 Free Demo Class भी उपलब्ध है।",
       actions: () => [act.go("📲 Connect Us फ़ॉर्म", "#leadbox"), act.go("📋 Admission Form", ".contact-section")].concat(callBoth()) },
 
+        { id: "studentid",
+      kw: ["student id kaise", "student id kya", "id kaise milega", "id kaise milegi", "password kaise milega", "password kaise banega", "स्टूडेंट आईडी"],
+      reply: () => "🎫 **Student ID और Password** आपको रजिस्ट्रेशन पूरा होते ही अपने आप मिल जाते हैं — फ़ॉर्म में इन्हें खुद नहीं भरना।\nSuccess बॉक्स में दिखें तो उन्हें **save / screenshot** कर लें, लॉगिन में यही चाहिए होंगे।",
+      actions: () => [act.page("📝 रजिस्ट्रेशन पेज", SITE.registerPage), act.page("🔐 लॉगिन पेज", SITE.accessPage)] },
+
     { id: "login",
-      kw: ["login", "log in", "signin", "sign in", "लॉगिन", "notes", "note", "नोट्स", "ebook", "e book", "e-book", "pdf", "library", "access", "sstc access", "study material", "लाइब्रेरी", "किताब", "पासवर्ड", "password"],
-      reply: () => "🔐 **लॉगिन / नोट्स / E-Book Library** के लिए ऊपर हेडर में बैंगनी बटन **SSTC Access** पर क्लिक करें। वहाँ से अपनी क्लास की लाइब्रेरी, नोट्स और Question Bank खोल सकते हैं।",
-      actions: () => [act.page("🔐 SSTC Access खोलें", SITE.accessPage), act.go("👆 बटन दिखाओ", ".sstc-access")] },
+      kw: ["login", "log in", "signin", "sign in", "लॉगिन", "notes", "note", "नोट्स", "ebook", "e book", "e-book", "pdf", "library", "access", "sstc access", "study material", "लाइब्रेरी", "किताब", "पासवर्ड", "password", "forgot", "bhool", "bhul", "भूल"],
+      reply: () => "🔐 **लॉगिन** के लिए SSTC Access पेज खोलें:\n1️⃣ **Student** टैब चुनें\n2️⃣ अपना Student ID और Password डालें (ये रजिस्ट्रेशन के बाद अपने आप बनते हैं)\n3️⃣ लॉगिन के बाद आपका student dashboard खुलेगा, जहाँ से notes और library मिलती हैं।\n\n🔑 Password भूल गए हों तो “Forgot Password?” दबाएँ, या Sir से संपर्क करें। नए student पहले रजिस्ट्रेशन करें।\n⚠️ अपना Password किसी को न बताएँ — मुझे भी चैट में न लिखें।",
+      actions: () => [act.page("🔐 SSTC Access खोलें", SITE.accessPage), act.page("📝 नया student? Register", SITE.registerPage), act.wa("💬 Sir WhatsApp", SITE.sir.tel)] },
+
 
     { id: "offer",
       kw: ["offer", "plan", "plans", "rent", "question bank", "50%", "discount", "ऑफर", "छूट", "प्लान", "किराया", "kitne ka", "subject plan"],
@@ -488,7 +495,11 @@
   /* ---------- gender / open / close ---------- */
   function greet() {
     const first = matchIntent("hello");
-    addMsg("bot", first.reply(), [], { speak: state.sound });
+    let t = first.reply();
+    const path = location.pathname.toLowerCase();
+    if (/registration/.test(path)) t += "\n\n📝 आप अभी रजिस्ट्रेशन पेज पर हैं — फ़ॉर्म भरने में कुछ अटके तो पूछिए।";
+    else if (/sstc-access/.test(path)) t += "\n\n🔐 आप अभी लॉगिन पेज पर हैं — लॉगिन या पासवर्ड में मदद चाहिए तो पूछिए।";
+    addMsg("bot", t, [], { speak: state.sound });
   }
 
   async function pickGender(gen) {
