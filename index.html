@@ -1,3370 +1,988 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style1.css">
-<title>Shree Scholars Tuition Centre</title>
-	<link rel="manifest" href="./manifest.json">
-<meta name="theme-color" content="#0b1e3c">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Shree Scholars">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shree Scholars Tuition Centre</title>
+  <meta name="theme-color" content="#0b1e3c" />
+  <style>
+    :root{
+      --primary:#d32f2f;
+      --primary-2:#ff5722;
+      --purple:#6c2bd9;
+      --dark:#0d1d2d;
+      --bg:#fffaf2;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --green:#2e7d32;
+      --shadow:0 18px 40px rgba(16,24,40,.12);
+      --line:rgba(17,24,39,.08);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:linear-gradient(180deg,#fff 0%,#fffaf4 100%);
+      color:var(--text);
+      line-height:1.5;
+    }
+
+    a{ text-decoration:none; }
+    img{ display:block; max-width:100%; }
+
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    /* Header */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,0.9);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+      box-shadow:0 4px 20px rgba(17,24,39,0.05);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:74px;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:52px;
+      height:52px;
+      border-radius:14px;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      display:grid;
+      place-items:center;
+      color:#fff;
+      font-weight:700;
+      font-size:22px;
+      box-shadow:0 12px 24px rgba(211,47,47,0.25);
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      min-width:0;
+    }
+
+    .brand-title{
+      margin:0;
+      font-size:clamp(1.1rem,2vw,2rem);
+      color:var(--primary);
+      font-weight:800;
+      letter-spacing:0.2px;
+      white-space:nowrap;
+    }
+
+    .brand-sub{
+      margin:0;
+      color:#666;
+      font-size:0.9rem;
+      font-weight:600;
+      text-align:left;
+    }
+
+    .top-actions{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-shrink:0;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:none;
+      cursor:pointer;
+      transition:0.25s ease;
+      font-weight:700;
+      border-radius:12px;
+      text-decoration:none;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+    }
+
+    .contact-btn{
+      background:linear-gradient(135deg,#fff,#fdf3f3);
+      color:var(--primary);
+      border:1px solid rgba(211,47,47,0.15);
+      padding:12px 18px;
+      font-size:0.95rem;
+      box-shadow:0 8px 18px rgba(17,24,39,0.04);
+    }
+
+    .install-btn{
+      background:linear-gradient(135deg,var(--purple),var(--primary-2));
+      color:#fff;
+      padding:12px 18px;
+      font-size:0.95rem;
+      box-shadow:0 12px 24px rgba(108,43,217,0.22);
+    }
+
+    /* Hero */
+    .hero{
+      padding:28px 0 20px;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(243,196,59,0.15), transparent 18%),
+        radial-gradient(circle at 80% 18%, rgba(124,58,237,0.10), transparent 16%),
+        linear-gradient(135deg,#fdf8f4 0%, #f8fafb 100%);
+    }
+
+    .hero-shell{
+      background:linear-gradient(135deg,#fdfdfd 0%,#fffaf5 100%);
+      border:1px solid rgba(17,24,39,0.04);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:grid;
+      grid-template-columns:1.08fr 1fr;
+      min-height:620px;
+    }
+
+    .left-panel{
+      padding:26px 24px 18px 24px;
+      background:linear-gradient(180deg,#f4f1fd 0%, #fffefb 100%);
+      border-right:1px solid var(--line);
+    }
+
+    .offer-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:linear-gradient(135deg,#fff,#fff1d8);
+      color:var(--primary);
+      border:1px solid rgba(211,47,47,0.15);
+      padding:10px 18px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:0.92rem;
+      margin-bottom:16px;
+      box-shadow:0 8px 18px rgba(211,47,47,0.08);
+    }
+
+    .offer-pill::before{
+      content:"⚡";
+      font-size:1.1rem;
+    }
+
+    .panel-box{
+      background:#ffffff;
+      border:1px solid rgba(17,24,39,0.05);
+      border-radius:26px;
+      box-shadow:0 18px 40px rgba(17,24,39,0.04);
+      padding:18px 18px 16px;
+    }
+
+    .section-tag{
+      display:inline-block;
+      font-size:0.78rem;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      font-weight:800;
+      color:var(--purple);
+      margin-bottom:10px;
+    }
+
+    .small-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:14px;
+    }
+
+    .small-head h3{
+      margin:0;
+      font-size:1.15rem;
+      color:#222;
+    }
+
+    .mini-badge{
+      padding:5px 10px;
+      background:rgba(108,43,217,0.08);
+      border:1px solid rgba(108,43,217,0.1);
+      color:var(--purple);
+      border-radius:999px;
+      font-size:0.72rem;
+      font-weight:700;
+    }
+
+    .plan-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      margin-top:6px;
+    }
+
+    .plan-card{
+      background:linear-gradient(180deg,#fff,#fdfdfd);
+      border:1px solid rgba(17,24,39,0.06);
+      border-radius:16px;
+      padding:12px 12px 10px;
+      box-shadow:0 8px 18px rgba(17,24,39,0.03);
+      min-height:170px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .plan-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      font-size:0.8rem;
+      font-weight:700;
+      color:#4b5563;
+    }
+
+    .plan-type{
+      display:inline-block;
+      padding:4px 8px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#fee2e2,#f3e8ff);
+      color:var(--primary);
+      font-size:0.65rem;
+      font-weight:800;
+      letter-spacing:0.04em;
+      text-transform:uppercase;
+    }
+
+    .price{
+      font-size:1.25rem;
+      font-weight:900;
+      color:var(--green);
+      margin:10px 0 8px;
+    }
+
+    .price small{
+      font-size:0.74rem;
+      color:#667085;
+      font-weight:700;
+    }
+
+    .plan-card ul{
+      list-style:none;
+      padding:0;
+      margin:0 0 12px;
+      color:#555;
+      font-size:0.76rem;
+      display:grid;
+      gap:5px;
+    }
+
+    .plan-card li::before{
+      content:"✓ ";
+      color:var(--primary);
+      font-weight:700;
+    }
+
+    .plan-card .select{
+      width:100%;
+      padding:10px 14px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--purple),var(--primary-2));
+      color:#fff;
+      font-weight:800;
+      font-size:0.82rem;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 8px 18px rgba(108,43,217,0.16);
+    }
+
+    .plan-card.highlight{
+      border:1px solid rgba(108,43,217,0.18);
+      background:linear-gradient(180deg,#fff,#f9f4ff);
+      box-shadow:0 12px 28px rgba(108,43,217,0.07);
+    }
+
+    .panel-note{
+      margin-top:14px;
+      padding-top:12px;
+      border-top:1px solid var(--line);
+      color:#555;
+      font-size:0.8rem;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .panel-note strong{
+      color:var(--primary);
+    }
+
+    .date-box{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,#fff2d9,#ffe0b2);
+      color:#8a4d00;
+      border:1px solid rgba(255,152,0,0.28);
+      border-radius:12px;
+      font-weight:900;
+      padding:12px 18px;
+      width:100%;
+      margin-top:12px;
+      font-size:1.1rem;
+      box-shadow:0 10px 20px rgba(255,152,0,0.08);
+    }
+
+    .register-btn{
+      margin-top:12px;
+      width:100%;
+      padding:14px 18px;
+      border-radius:14px;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      color:white;
+      font-size:1rem;
+      font-weight:800;
+      letter-spacing:0.02em;
+      box-shadow:0 16px 28px rgba(211,47,47,0.18);
+    }
+
+    /* Right panel */
+    .right-panel{
+      position:relative;
+      background:
+        linear-gradient(135deg,#0d1a2c 0%,#143b5d 35%,#0c2a4d 100%);
+      padding:28px 30px 26px;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .right-panel::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.04)),
+        linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+    }
+
+    .visual-wrap{
+      position:relative;
+      width:100%;
+      max-width:560px;
+      z-index:1;
+    }
+
+    .hero-illustration{
+      position:relative;
+      min-height:520px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+    }
+
+    .lamp{
+      position:absolute;
+      top:22px;
+      left:50%;
+      transform:translateX(-50%);
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle,#fffbe8 0%, #f8d77a 35%, rgba(255,196,0,0.5) 100%);
+      box-shadow:
+        0 0 25px rgba(255,194,66,0.85),
+        0 0 60px rgba(255,194,66,0.4);
+      opacity:0.96;
+    }
+
+    .lamp::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:18px;
+      height:18px;
+      transform:translate(-50%,-50%);
+      border-radius:50%;
+      background:#fff5c2;
+      box-shadow:0 0 20px rgba(255,255,255,0.8);
+    }
+
+    .lamp::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      bottom:-28px;
+      width:2px;
+      height:34px;
+      background:#f5c76b;
+      transform:translateX(-50%);
+    }
+
+    .book-stack{
+      position:absolute;
+      bottom:20px;
+      left:50%;
+      transform:translateX(-50%);
+      width:330px;
+      height:200px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      gap:8px;
+    }
+
+    .book{
+      width:62px;
+      height:120px;
+      border-radius:10px 10px 0 0;
+      position:relative;
+      transform:rotate(-2deg);
+      box-shadow:0 14px 24px rgba(17,24,39,0.18);
+      border:1px solid rgba(255,255,255,0.08);
+      overflow:hidden;
+    }
+
+    .book:nth-child(1){ background:linear-gradient(180deg,#f9f1b7,#e3c653); height:118px; }
+    .book:nth-child(2){ background:linear-gradient(180deg,#b8f3c7,#62b875); height:128px; }
+    .book:nth-child(3){ background:linear-gradient(180deg,#c9d9ff,#6f93ff); height:138px; }
+    .book:nth-child(4){ background:linear-gradient(180deg,#ffb8b8,#f56a6a); height:146px; }
+    .book:nth-child(5){ background:linear-gradient(180deg,#f5d1fb,#cf82eb); height:146px; }
+
+    .book::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, rgba(255,255,255,0.28), transparent 35%, rgba(0,0,0,0.04));
+    }
+
+    .students{
+      position:absolute;
+      bottom:80px;
+      width:100%;
+      display:flex;
+      justify-content:center;
+      align-items:flex-end;
+      gap:18px;
+    }
+
+    .student{
+      width:140px;
+      height:200px;
+      background:linear-gradient(180deg,#f0f4ff,#dfe8ff);
+      border-radius:18px 18px 0 0;
+      position:relative;
+      box-shadow:0 18px 32px rgba(10,17,30,0.2);
+      overflow:hidden;
+    }
+
+    .student:nth-child(1){
+      transform:translateY(12px);
+      background:linear-gradient(180deg,#d2f4ff,#a9d5ff);
+    }
+    .student:nth-child(2){
+      width:150px;
+      background:linear-gradient(180deg,#f3ffef,#d5f7d7);
+    }
+    .student:nth-child(3){
+      width:150px;
+      background:linear-gradient(180deg,#ffe7ef,#f7d5e5);
+    }
+
+    .student .head{
+      position:absolute;
+      top:28px;
+      left:50%;
+      transform:translateX(-50%);
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      background:#f6d0b3;
+      box-shadow:inset 0 -8px 0 rgba(0,0,0,0.04);
+    }
+
+    .student .head::before{
+      content:"";
+      position:absolute;
+      width:58px;
+      height:46px;
+      background:#1f2937;
+      border-radius:26px 26px 12px 12px;
+      left:50%;
+      top:-14px;
+      transform:translateX(-50%);
+    }
+
+    .student .body{
+      position:absolute;
+      left:50%;
+      bottom:0;
+      transform:translateX(-50%);
+      width:82%;
+      height:90px;
+      border-radius:18px 18px 0 0;
+      background:linear-gradient(180deg,#6a96ff,#2d4fd7);
+    }
+
+    .student:nth-child(2) .body{
+      background:linear-gradient(180deg,#4ec2a7,#1a9079);
+    }
+    .student:nth-child(3) .body{
+      background:linear-gradient(180deg,#ff9f8d,#d75d53);
+    }
+
+    .student .arm{
+      position:absolute;
+      width:32px;
+      height:76px;
+      background:#f6d0b3;
+      border-radius:18px;
+      top:95px;
+    }
+
+    .student .arm.left{ left:18px; transform:rotate(18deg); }
+    .student .arm.right{ right:18px; transform:rotate(-18deg); }
+
+    .student .book-in-hand{
+      position:absolute;
+      bottom:10px;
+      width:70px;
+      height:76px;
+      background:linear-gradient(180deg,#dfe9ff,#8ab5ff);
+      border-radius:10px;
+      right:12px;
+      box-shadow:0 10px 16px rgba(17,24,39,0.12);
+    }
+
+    .floating-card{
+      position:absolute;
+      background:rgba(255,255,255,0.96);
+      border-radius:18px;
+      box-shadow:0 15px 28px rgba(15,23,42,0.14);
+      padding:14px 16px;
+      z-index:2;
+      border:1px solid rgba(17,24,39,0.04);
+    }
+
+    .floating-card strong{
+      display:block;
+      color:#111827;
+      font-size:0.92rem;
+      margin-bottom:2px;
+    }
+
+    .floating-card span{
+      color:#475569;
+      font-size:0.74rem;
+    }
+
+    .top-card{
+      top:40px;
+      right:18px;
+    }
+
+    .bottom-card{
+      bottom:10px;
+      left:20px;
+    }
+
+    .mini-avatars{
+      display:flex;
+      align-items:center;
+      margin-top:8px;
+    }
+
+    .mini-avatars .avatar{
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      border:2px solid #fff;
+      margin-left:-6px;
+      background:linear-gradient(135deg,#ffe4e6,#f9a8d4);
+    }
+    .mini-avatars .avatar:first-child{ margin-left:0; }
+
+    /* lower strip */
+    .features-strip{
+      padding:18px 0 40px;
+      background:#fff;
+      border-top:1px solid var(--line);
+    }
+
+    .features-inner{
+      display:grid;
+      grid-template-columns:1.2fr 1fr 1fr;
+      gap:18px;
+      align-items:center;
+      background:linear-gradient(135deg,#f8fafc,#fdf8f2);
+      border:1px solid rgba(17,24,39,0.04);
+      border-radius:22px;
+      padding:18px 18px;
+      box-shadow:0 12px 24px rgba(17,24,39,0.03);
+    }
+
+    .feature-title{
+      font-size:clamp(1.3rem,2vw,2.2rem);
+      margin:0;
+      color:var(--text);
+      font-weight:800;
+      line-height:1.15;
+    }
+
+    .feature-sub{
+      color:var(--muted);
+      margin-top:6px;
+      font-size:0.92rem;
+    }
+
+    .feature-box{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      background:#fff;
+      border-radius:16px;
+      padding:12px 14px;
+      border:1px solid rgba(17,24,39,0.04);
+      min-height:74px;
+    }
+
+    .feature-icon{
+      width:44px;
+      height:44px;
+      flex-shrink:0;
+      border-radius:14px;
+      background:linear-gradient(135deg,#f3e8ff,#ffe4e6);
+      display:grid;
+      place-items:center;
+      font-size:1.2rem;
+    }
+
+    .feature-box strong{
+      display:block;
+      font-size:1rem;
+      color:#111827;
+    }
+
+    .feature-box span{
+      color:#6b7280;
+      font-size:0.78rem;
+    }
+
+    .small-note{
+      color:#6b7280;
+      font-size:0.8rem;
+      margin-top:12px;
+    }
+
+    @media (max-width: 980px){
+      .hero-shell{
+        grid-template-columns:1fr;
+      }
+
+      .left-panel{
+        border-right:none;
+        border-bottom:1px solid var(--line);
+      }
+
+      .features-inner{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 640px){
+      .topbar-inner{
+        flex-wrap:wrap;
+        justify-content:center;
+        padding:10px 0;
+      }
+
+      .brand{
+        width:100%;
+        justify-content:center;
+      }
+
+      .brand-title{
+        white-space:normal;
+      }
+
+      .top-actions{
+        width:100%;
+        justify-content:center;
+      }
+
+      .plan-grid{
+        grid-template-columns:1fr;
+      }
+
+      .left-panel{
+        padding:18px 14px 14px;
+      }
+
+      .right-panel{
+        padding:20px 12px 18px;
+      }
+
+      .hero-illustration{
+        min-height:440px;
+      }
+
+      .student{
+        width:110px;
+      }
+
+      .floating-card{
+        transform:scale(0.92);
+      }
+    }
+  </style>
 </head>
-   
-<style>
-	*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:linear-gradient(to bottom right,#fff,#fff8e1);color:#333;line-height:1.6}
-
-.container{max-width:1100px;margin:auto;padding:0 20px}
-
-header{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 8px 20px; /* reduced height */
-  background: rgba(255,255,255,0.9);
-  backdrop-filter: blur(8px);
-
-  box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-}
-
-
-/* BUTTON */
-.start-btn,
-.submit-btn{
-  width:100%;
-  background:linear-gradient(45deg,#d32f2f,#ff5722);
-  color:#fff;
-  padding:15px;
-  border:none;
-  border-radius:15px;
-  font-size:18px;
-  cursor:pointer;
-  margin-top:20px;
-}
-
-
-.premium-gallery{
-  text-align:center;
-  padding:80px 20px;
-}
-
-.premium-gallery h2{
-  font-size:30px;
-  margin-bottom:30px;
-  color:#d32f2f;
-}
-	
-.teacher-highlights{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:15px;
-    margin-top:30px;
-}
-
-.highlight-box{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    background:#fff;
-    padding:14px 22px;
-    border-radius:14px;
-    font-size:16px;
-    font-weight:600;
-    box-shadow:0 6px 20px rgba(0,0,0,0.08);
-    transition:0.3s;
-    cursor:pointer;
-}
-
-.highlight-box:hover{
-    transform:translateY(-5px);
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
-
-.highlight-box span{
-    color:#222;
-}
-
-.sub-text{
-    color:#666;
-    margin-top:10px;
-    font-size:16px;
-}
-
-/* WRAPPER */
-.gallery-wrapper{
-  position:relative;
-  overflow:hidden;
-  max-width:1000px;
-  margin:auto;
-}
-
-/* CONNECT US HEADING PREMIUM OUTLINE */
-.lead-heading{
-  width:100%;
-  text-align:center;
-  margin-bottom:30px;
-
-  padding:25px;
-  border-radius:25px;
-
-  border:3px solid transparent;
-
-  background-image:
-    linear-gradient(#fff,#fff),
-    linear-gradient(45deg,#d32f2f,#ff9800,#6c2bd9);
-
-  background-origin:border-box;
-  background-clip:padding-box,border-box;
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.15),
-    0 0 20px rgba(211,47,47,.25);
-
-  transition:0.4s;
-}
-
-.lead-heading:hover{
-  transform:translateY(-5px) scale(1.01);
-
-  box-shadow:
-    0 15px 40px rgba(0,0,0,.2),
-    0 0 30px rgba(255,152,0,.45);
-}
-
-.lead-heading h2{
-  font-size:38px;
-  color:#d32f2f;
-  margin-bottom:10px;
-}
-
-.lead-heading p{
-  color:#555;
-  font-size:18px;
-}
-	
-/* TRACK */
-.gallery-track{
-  display:flex;
-  transition:0.6s ease;
-}
-
-	.lead-box{
-  display:flex;
-  gap:30px;
-  justify-content:center;
-  flex-wrap:wrap;
-  padding:60px 20px;
-}
-
-.lead-form{
-  flex:1;
-  min-width:300px;
-  max-width:420px;
-
-  background:#fff;
-  padding:25px;
-  border-radius:20px;
-  box-shadow:0 10px 25px rgba(0,0,0,.15);
-
-  text-align:center;
-  transition:0.3s;
-}
-
-.lead-form:hover{
-  transform:translateY(-8px);
-}
-
-/* inputs */
-.lead-form input,
-.lead-form select{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border-radius:10px;
-  border:1px solid #ddd;
-}
-
-
-/* buttons */
-. button{
-  width:100%;
-  background:#25D366;
-  color:#fff;
-  padding:12px;
-  border:none;
-  border-radius:10px;
-  font-weight:bold;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-. button:hover{
-  transform:scale(1.05);
-}
-	.testimonials{
-  text-align:center;
-  padding:70px 20px;
-}
-
-/* =========================
-   VIDEO TESTIMONIALS
-========================= */
-
-.testimonials{
-    padding:70px 20px;
-    background:#f8fbff;
-    text-align:center;
-}
-
-.card h3{
-    font-size:38px;
-    margin-bottom:10px;
-    color:#111;
-}
-
-.sub-text{
-    color:#666;
-    margin-bottom:40px;
-    font-size:16px;
-}
-
-.video-testimonials{
-    display:flex;
-    gap:25px;
-    overflow-x:auto;
-    scroll-behavior:smooth;
-    padding-bottom:10px;
-}
-
-.video-testimonials::-webkit-scrollbar{
-    height:8px;
-}
-
-.video-testimonials::-webkit-scrollbar-thumb{
-    background:#bbb;
-    border-radius:20px;
-}
-
-.video-card{
-    min-width:300px;
-    background:#fff;
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:0 10px 30px rgba(0,0,0,0.12);
-    transition:0.3s;
-    position:relative;
-}
-
-.video-card:hover{
-    transform:translateY(-8px);
-}
-
-.video-card video{
-    width:100%;
-    height:420px;
-    object-fit:cover;
-    display:block;
-    background:#000;
-}
-
-.video-name{
-    padding:15px;
-    font-size:18px;
-    font-weight:600;
-    letter-spacing:1px;
-    background:#fff;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-
-    .video-card{
-        min-width:260px;
-    }
-
-    .video-card video{
-        height:360px;
-    }
-
-    .card h3{
-        font-size:28px;
-    }
-}
-/* GRID */
-.review-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
-  margin-top:30px;
-}
-
-/* CARD */
-.review{
-  background:#fff;
-  padding:25px;
-  border-radius:20px;
-  box-shadow:0 10px 25px rgba(0,0,0,.15);
-  transition:0.3s;
-}
-
-.review:hover{
-  transform:translateY(-10px);
-}
-
-/* IMAGE */
-.review img{
-  width:70px;
-  height:70px;
-  border-radius:50%;
-  object-fit:cover;
-  margin-bottom:10px;
-}
-
-/* NAME */
-.review h4{
-  margin:5px 0;
-}
-
-/* STARS */
-.stars{
-  color:#ff9800;
-  font-size:16px;
-}
-
-/* TEXT */
-.review p{
-  font-size:14px;
-  color:#555;
-}
-
-/* MOBILE */
-@media(max-width:900px){
-  .review-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-
-@media(max-width:500px){
-  .review-grid{
-    grid-template-columns:1fr;
-  }
-}
-
-	
-.progress-box{
-  background:#e8f5e9;
-  padding:20px;
-  border-radius:15px;
-  margin:20px auto;
-  max-width:300px;
-  font-weight:bold;
-}
-	
-
-	.gallery-card{
-  min-width:300px;
-  margin:0 10px;
-  border-radius:20px;
-  overflow:hidden;
-
-   background: radial-gradient(circle at center, #222, #000);
-  box-shadow:0 15px 40px rgba(0,0,0,0.2);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  height:400px; /* fixed frame */
-}
-
-/* IMAGE AUTO ADJUST */
-.gallery-card img{
-  max-width:100%;
-  max-height:100%;
-  width:auto;
-  height:auto;
-
-  object-fit:contain; /* no crop */
-  display:block;
-}
-
-/* ACTIVE CENTER LOOK */
-.gallery-card.active{
-  transform:scale(1);
-  box-shadow:0 20px 60px rgba(0,0,0,0.4);
-}
-
-
-
-/* BUTTON */
-.g-btn{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  background:#d32f2f;
-  color:#fff;
-  border:none;
-  padding:12px 18px;
-  font-size:20px;
-  border-radius:50%;
-  cursor:pointer;
-}
-
-.prev{left:10px;}
-.next{right:10px;}
-
-
-	
-/* logo */
-header img{
-  height: 40px;
-}
-
-/* text */
-.nav-text h1{
-  font-size: 18px;
-}
-.nav-text p{
-  font-size: 12px;
-  color:#555;
-}
-
-/* shrink on scroll */
-header.shrink{
-  padding: 5px 15px;
-  background: rgba(255,255,255,0.95);
-}
-
-header.shrink img{
-  height: 30px;
-}
-
-header.shrink .nav-text h1{
-  font-size: 14px;
-}
-
-
-	/* SECTION BACKGROUND */
-.results{
-  padding:80px 20px;
-  text-align:center;
-  background: linear-gradient(135deg, #f5f7fa, #e4e8ec);
-  position: relative;
-  overflow:hidden;
-}
-
-/* subtle glow / light effect */
-.results::before{
-  content:"";
-  position:absolute;
-  width:400px;
-  height:400px;
-  background: radial-gradient(circle, rgba(255,87,34,0.2), transparent);
-  top:-100px;
-  left:-100px;
-  z-index:0;
-}
-
-/* HEADER BOX */
-.results-header{
-  padding:25px;
-  border-radius:30px; /* round corners */
-
-  /* glass effect */
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(10px);
-  border:1px solid rgba(255,255,255,0.3);
-
-  max-width:700px;
-  margin:0 auto 40px;
-
-  box-shadow:0 10px 30px rgba(0,0,0,0.1);
-
-  position:relative;
-  z-index:1;
-}
-
-	.results-header:hover{
-  transform: translateY(-5px);
-  transition:0.3s;
-}
-
-/* TITLE */
-.results-header h2{
-  color:#d32f2f;
-  font-size:28px;
-  margin-bottom:10px;
-}
-
-/* SUBTITLE */
-.results-header p{
-  color:#666;
-  font-size:16px;
-}
-
-.results-header h2::after{
-  content:"";
-  display:block;
-  width:80px;
-  height:3px;
-  background:#d32f2f;
-  margin:10px auto;
-  border-radius:5px;
-}
-	
-
-/* MOBILE */
-@media(max-width:768px){
-
-  header{
-    padding:6px 12px;
-  }
-
-  .nav-text p{
-    display:none; /* subtitle hide */
-  }
-
-  .nav-text h1{
-    font-size:14px;
-  }
-
-  header img{
-    height:30px;
-  }
-
-  .btn{
-    padding:6px 10px;
-    font-size:12px;
-  }
-}
-
-  /* SECTION */
-.saas-section{
-  padding:70px 20px;
-  text-align:center;
-}
-
-.saas-sub{
-  color:#666;
-  margin-bottom:40px;
-}
-
-/* GRID */
-.saas-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:25px;
-}
-
-/* CARD */
-.saas-card{
-  background:linear-gradient(135deg,#ffffff,#f8f9ff);
-  padding:30px;
-  border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.1);
-  position:relative;
-  transition:0.4s;
-}
-
-.saas-card:hover{
-  transform:translateY(-10px) scale(1.02);
-}
-.book{
-  width:300px;
-  height:420px;
-  margin:auto;
-  position:relative;
-  perspective:2000px;
-}
-
-.page{
-  position:absolute;
-  width:100%;
-  height:100%;
-  transform-origin:left;
-  transform-style:preserve-3d;
-  transition:1s;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,0.3);
-  background:#fff;
-}
-
-.page img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-
-.page.flipped{
-  transform:rotateY(-180deg);
-}
-
-/* proper stacking */
-.page:nth-child(1){z-index:11;}
-.page:nth-child(2){z-index:10;}
-.page:nth-child(3){z-index:9;}
-.page:nth-child(4){z-index:8;}
-.page:nth-child(5){z-index:7;}
-.page:nth-child(6){z-index:6;}
-.page:nth-child(7){z-index:5;}
-.page:nth-child(8){z-index:4;}
-.page:nth-child(9){z-index:3;}
-.page:nth-child(10){z-index:2;}
-.page:nth-child(11){z-index:1;}	
-
-
-
-.page{
-  backface-visibility:hidden;
-}
-.book{
-  width:320px;
-  height:440px;
-  margin:auto;
-  position:relative;
-  perspective:2500px;
-}
-
-/* PAGE */
-.page{
-  position:absolute;
-  width:100%;
-  height:100%;
-  transform-origin:left;
-  transition:1s cubic-bezier(.4,.2,.2,1);
-  transform-style:preserve-3d;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 15px 40px rgba(0,0,0,.4);
-}
-
-/*IMAGE 
-.page img, .page video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-} */
-
-	
-.page img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-background:#000;
-}
-
-	
-	
-	.results{
-  text-align:center;
-  padding:80px 20px;
-}
-
-.result-sub{
-  color:#666;
-  margin-bottom:40px;
-}
-
-
-/* GRID - ONLY 3 CARDS */
-.result-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr); /* 🔥 only 3 cards */
-  gap:30px;
-}
-
-/* RESULT CARDS BIGGER */
-.result-card{
-  background:linear-gradient(135deg,#ffffff,#f8f9ff);
-  padding:25px; /* 🔥 more space */
-  border-radius:25px;
-  box-shadow:0 15px 35px rgba(0,0,0,.2); /* premium shadow */
-  transition:0.4s;
-}
-
-.result-card:hover{
-  transform:translateY(-12px) scale(1.03); /* 🔥 premium hover */
-}
-
-/* IMAGE */
-.img-box{
-  position:relative;
-}
-
-/* IMAGE BIGGER */
-.img-box{
-  height:260px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#f5f5f5; /* premium background */
-	 box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
-  border-radius:20px;
-  overflow:hidden;
-}
-
-.img-box img{
-  max-width:100%;
-  max-height:100%;
-  width:auto;
-  height:auto;
-  object-fit:contain; /* 🔥 full image show */
-  border-radius:15px;
-}
-
-/* BADGE */
-.badge{
-  position:absolute;
-  top:10px;
-  left:50%;
-  transform:translateX(-50%);
-  
-  background:linear-gradient(45deg,#ff5722,#ff9800);
-  color:#fff;
-  padding:6px 14px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold;
-  letter-spacing:1px;
-
-  box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* TEXT BIGGER */
-.result-card h3{
-  font-size:22px;
-  margin-top:12px;
-}
-
-.percent{
-  font-size:30px; /* 🔥 bigger */
-  color:#2e7d32;
-  font-weight:bold;
-}
-
-.division{
-  color:#555;
-  font-size:14px;
-}
-
-/* STATS */
-.stats{
-  display:flex;
-  justify-content:center;
-  gap:50px; /* more spacing */
-  margin-top:60px;
-}
-
-.stats h3{
-  color:#d32f2f;
-  font-size:28px;
-}
-
-
-	@media(max-width:900px){
-  .result-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-
-@media(max-width:500px){
-  .result-grid{
-    grid-template-columns:1fr;
-  }
-}
-
-
-	
-/* CTA */
-.result-cta{
-  margin-top:50px;
-}
-
-.btn-result{
-  display:inline-block;
-  margin-top:10px;
-  background:linear-gradient(45deg,#d32f2f,#ff5722);
-  color:#fff;
-  padding:12px 25px;
-  border-radius:30px;
-  text-decoration:none;
-  transition:0.3s;
-}
-
-.btn-result:hover{
-  transform:scale(1.1);
-}
-
-<!-- =========================
-AI TEST CSS
-========================= -->
-
-.ai-test-section{
-  padding:80px 20px;
-  text-align:center;
-}
-
-.outline-heading{
-  margin-bottom:30px;
-}
-
-.outline-heading h2{
-  font-size:38px;
-  color:#fff;
-
-  -webkit-text-stroke:2px #d32f2f;
-  text-shadow:
-    3px 3px 0 #d32f2f,
-    -1px -1px 0 #d32f2f,
-    1px -1px 0 #d32f2f,
-    -1px 1px 0 #d32f2f;
-}
-
-.outline-heading p{
-  color:#555;
-  font-size:18px;
-}
-
-.ai-test-box{
-  max-width:700px;
-  margin:auto;
-
-  background:#fff;
-  padding:30px;
-  border-radius:25px;
-
-  box-shadow:0 10px 30px rgba(0,0,0,.15);
-}
-
-.ai-test-box select,
-.ai-test-box input{
-  width:100%;
-  padding:14px;
-  margin:12px 0;
-
-  border-radius:12px;
-  border:1px solid #ddd;
-
-  font-size:15px;
-}
-
-.captcha-box{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-
-  margin-top:10px;
-}
-
-#captchaText{
-  background:#222;
-  color:#fff;
-
-  padding:10px 20px;
-  border-radius:10px;
-
-  font-size:22px;
-  letter-spacing:3px;
-  font-weight:bold;
-}
-
-.captcha-box button{
-  background:#d32f2f;
-  color:#fff;
-
-  border:none;
-  padding:10px 15px;
-  border-radius:10px;
-
-  cursor:pointer;
-}
-
-.start-btn{
-  width:100%;
-  margin-top:20px;
-
-  background:linear-gradient(45deg,#d32f2f,#ff5722);
-  color:#fff;
-
-  border:none;
-  padding:15px;
-
-  border-radius:15px;
-  font-size:18px;
-  font-weight:bold;
-
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.start-btn:hover{
-  transform:scale(1.03);
-}
-
-	
-/* VIDEO */
-.video video{
-  autoplay:true;
-}
-
-/* OVERLAY */
-.overlay{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  padding:15px;
-  background:linear-gradient(to top,rgba(0,0,0,.7),transparent);
-  color:#fff;
-  text-align:left;
-}
-
-/* SHADOW REALISTIC */
-.page::after{
-  content:"";
-  position:absolute;
-  top:0;
-  right:0;
-  width:20px;
-  height:100%;
-  background:linear-gradient(to right,rgba(0,0,0,.2),transparent);
-}
-
-/* FLIP */
-.page.flipped{
-  transform:rotateY(-180deg);
-}
-
-
-/* BUTTON */
-.controls button{
-  margin:10px;
-  padding:10px 20px;
-  border:none;
-  background:#d32f2f;
-  color:#fff;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-
-  
-/* PREMIUM CARD */
-.premium{
-  border:2px solid #6c2bd9;
-  box-shadow:0 0 20px rgba(108,43,217,.3);
-}
-
-.badge{
-  position:absolute;
-  top:15px;
-  right:15px;
-  background:#6c2bd9;
-  color:#fff;
-  padding:5px 10px;
-  border-radius:10px;
-  font-size:12px;
-}
-
-/* ICON */
-.icon{
-  font-size:30px;
-  margin-bottom:10px;
-}
-
-/* TEXT */
-.desc{
-  color:#777;
-  margin-bottom:15px;
-}
-
-/* PRICE */
-.price-box{
-  margin:15px 0;
-}
-
-.old{
-  text-decoration:line-through;
-  color:#aaa;
-  display:block;
-}
-
-.new{
-  font-size:22px;
-  font-weight:bold;
-  color:#2e7d32;
-}
-
-/* LIST */
-ul{
-  list-style:none;
-  padding:0;
-  margin:15px 0;
-}
-
-ul li{
-  padding:6px 0;
-  border-bottom:1px solid #eee;
-  font-size:14px;
-}
-
-/* BUTTON */
-.btn-saas{
-  display:inline-block;
-  margin-top:15px;
-  background:#333;
-  color:#fff;
-  padding:12px 22px;
-  border-radius:30px;
-  text-decoration:none;
-  transition:0.3s;
-}
-
-.btn-saas:hover{
-  transform:scale(1.08);
-}
-
-.highlight{
-  background:linear-gradient(45deg,#6c2bd9,#8e44ff);
-}
-
-.contact-section{
-  display:flex;
-  gap:20px;
-  padding:60px 20px;
-  flex-wrap:wrap;
-}
-
-.contact-box{
-  flex:1;
-  min-width:300px;
-  background:#fff;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 5px 20px rgba(0,0,0,.15);
-  text-align:center;
-}
-
-.contact-box iframe{
-  width:100%;
-  height:400px;
-  border:none;
-  border-radius:10px;
-  margin-top:10px;
-}
-
-.btn-map{
-  display:inline-block;
-  margin-top:15px;
-  background:#d32f2f;
-  color:#fff;
-  padding:10px 20px;
-  border-radius:25px;
-  text-decoration:none;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-  .contact-section{
-    flex-direction:column;
-  }
-}
-  
-/* Scroll effect */
-header.scrolled{
-  background: #ffffff;
-  padding: 8px 25px;
-}
-
-/* Logo */
-header img{
-  height: 100px;
-}
-
-/* Center content */
-.nav-text{
-  text-align: center;
-  flex: 1;
-}
-
-.nav-text h1{
-  font-size: 46px;
-  color:#d32f2f;
-}
-
-.nav-text p{
-  font-size: 20px;
-  color:#555;
-}
-
-/* Button */
-header .btn{
-  padding: 8px 15px;
-  font-size: 14px;
-}
-
- body{
-  margin-top: 100px;
-}
-  
-  body {
-  position: relative;
-  background: none;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("background.jpg") no-repeat center center/cover;
-  opacity: 0.6; /* transparency control (0.1 – 0.4 best) */
-  z-index: -1;
-}
-/* MAP SECTION */
-.map-section{
-  padding: 60px 20px;
-  display:flex;
-  justify-content:center;
-}
-
-.map-card{
-  width:100%;
-  max-width:900px;
-  background:white;
-  padding:30px;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.15);
-  animation:fadeInUp 1s ease;
-}
-
-.map-card h2{
-  color:#d32f2f;
-  margin-bottom:10px;
-}
-
-.map-card p{
-  margin-bottom:20px;
-  color:#555;
-}
-
-/* MAP BOX */
-.map-box{
-  overflow:hidden;
-  border-radius:15px;
-  box-shadow:0 5px 20px rgba(0,0,0,.2);
-}
-
-.map-box iframe{
-  width:100%;
-  height:350px;
-  border:none;
-  transition:transform 0.5s;
-}
-
-.map-box:hover iframe{
-  transform:scale(1.05);
-}
-
-/* BUTTONS */
-.map-buttons{
-  margin-top:20px;
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  flex-wrap:wrap;
-}
-
-.btn-map{
-  background:#d32f2f;
-  color:white;
-  padding:12px 20px;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:bold;
-  transition:0.3s;
-  box-shadow:0 4px 10px rgba(0,0,0,.2);
-}
-
-.btn-map:hover{
-  background:#b71c1c;
-  transform:translateY(-3px);
-}
-
-.btn-map.call{
-  background:#25D366;
-}
-
-.btn-map.call:hover{
-  background:#1ebe5d;
-}
-
-
-  .pricing-table{
-  padding:70px 20px;
-  text-align:center;
-}
-
-.subtitle{
-  margin-bottom:30px;
-  color:#555;
-}
-
-/* ROW */
-.pricing-row{
-  display:flex;
-  overflow-x:auto;
-  gap:20px;
-  padding-bottom:10px;
-}
-
-/* COLUMN */
-.pricing-col{
-  min-width:250px;
-  background:#fff;
-  border-radius:15px;
-  padding:20px;
-  box-shadow:0 8px 20px rgba(0,0,0,.1);
-  position:relative;
-  transition:0.3s;
-}
-
-.pricing-col:hover{
-  transform:translateY(-10px);
-}
-
-/* POPULAR */
-.popular{
-  border:2px solid #6c2bd9;
-}
-
-.tag{
-  position:absolute;
-  top:-10px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#6c2bd9;
-  color:#fff;
-  padding:5px 12px;
-  border-radius:20px;
-  font-size:12px;
-}
-
-/* TEXT */
-.desc{
-  color:#777;
-  margin-bottom:10px;
-}
-
-.price{
-  font-size:26px;
-  font-weight:bold;
-}
-
-.price span{
-  font-size:14px;
-}
-
-.old{
-  text-decoration:line-through;
-  color:#999;
-  margin-bottom:10px;
-}
-
-/* BUTTON */
-.btn{
-  display:inline-block;
-  background:#333;
-  color:#fff;
-  padding:10px 18px;
-  border-radius:8px;
-  text-decoration:none;
-  margin:10px 0;
-}
-
-.highlight{
-  background:#6c2bd9;
-}
-
-/* FEATURES */
-ul{
-  list-style:none;
-  padding:0;
-  margin-top:10px;
-}
-
-ul li{
-  padding:5px 0;
-  border-bottom:1px solid #eee;
-  font-size:14px;
-}
-
-
-  
-/* ANIMATION */
-@keyframes fadeInUp{
-  from{
-    opacity:0;
-    transform:translateY(40px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-.whatsapp-btn{
-  position: fixed;
-  right: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #25D366;
-  color: #fff;
-  padding: 10px 15px;
-  border-radius: 30px;
-  font-size: 14px;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,.3);
-  transition: 0.3s;
-}
-
-.whatsapp-btn:hover{
-  background:#1ebe5d;
-  transform: scale(1.05);
-}
-
-/* positioning */
-.w1{
-  bottom: 20px;
-}
-
-.w2{
-  bottom: 70px;
-}
-  
-.slider {
-  position: relative;
-  overflow: hidden;
-  margin-top: 30px;
-}
-
-.slides {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.slides img {
-  width: calc(100% / 3);
-  height: 220px;
-
-  object-fit: contain; /* full image show */
-  
-  /* premium background */
-  background: linear-gradient(135deg,#f8f9fa,#e9ecef);
-
-  border-radius: 15px;
-  padding: 10px;
-
-  /* shadow */
-  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-
-  transition: 0.3s;
-}
-.slides img:hover{
-  transform: scale(1.08);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-}
-
-/* Buttons */
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.prev { left: 10px; }
-.next { right: 10px; }
-
-
-	@media(max-width:768px){
-  .slides img{
-    width: calc(100% / 2); /* mobile = 2 images */
-    height: 200px;
-  }
-}
-
-@media(max-width:480px){
-  .slides img{
-    width: 100%; /* mobile small = 1 image */
-  }
-}
-
-	
-  
-.btn{padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:bold;margin:5px;display:inline-block}
-.primary{background:#d32f2f;color:#fff}
-.outline{border:2px solid #d32f2f;color:#d32f2f}
-
-/* FEATURES */
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:50px 20px}
-/* FEATURES */
-.features{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-  padding:50px 20px;
-}
-
-/* PREMIUM HEADING BOX */
-.card{
-  padding:20px;
-  background:rgba(255,255,255,0.92);
-  border-radius:20px;
-
-  border:3px solid transparent;
-
-  background-image:
-    linear-gradient(#fff,#fff),
-    linear-gradient(45deg,#d32f2f,#ff9800,#6c2bd9);
-
-  background-origin:border-box;
-  background-clip:padding-box,border-box;
-
-  box-shadow:
-    0 8px 25px rgba(0,0,0,.15),
-    0 0 15px rgba(211,47,47,.25);
-
-  text-align:center;
-  transition:.4s;
-}
-
-/* HOVER */
-.card:hover{
-  transform:translateY(-10px) scale(1.03);
-
-  box-shadow:
-    0 15px 35px rgba(0,0,0,.25),
-    0 0 25px rgba(255,152,0,.45);
-}
-
-/* HEADING TEXT */
-.card h3{
-  font-size:28px;
-  color:#d32f2f;
-  margin-bottom:8px;
-}
-
-.card p{
-  color:#555;
-  font-size:16px;
-}
-
-/* COURSES */
-.courses{text-align:center;padding:60px 20px}
-.course-list{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}
-.course-item{padding:12px;border:1px solid #ddd;border-radius:10px;background:#fff}
-
-/* GALLERY */
-.gallery{padding:60px 20px;text-align:center}
-.gallery h2{color:#d32f2f}
-.photos{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:20px}
-.photos img{width:100%;height:160px;border-radius:15px;object-fit:cover;box-shadow:0 4px 10px rgba(0,0,0,.2)}
-
-/* FORM */
-.form-section{padding:60px 20px;text-align:center}
-iframe{width:100%;max-width:700px;height:500px;border:none}
-
-/* MAP */
-.map{padding:60px 20px;text-align:center}
-.map iframe{width:100%;max-width:900px;height:350px;border:none;border-radius:10px}
-
-/* CTA */
-.cta{background:#d32f2f;color:#fff;text-align:center;padding:60px 20px}
-
-footer{text-align:center;padding:20px;color:#777}
-
-/* WhatsApp Button */
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:#fff;
-padding:15px;
-border-radius:50%;
-font-size:20px;
-text-decoration:none;
-box-shadow:0 4px 10px rgba(0,0,0,.3);
-animation:pulse 1.5s infinite
-}
-
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.1)}
-100%{transform:scale(1)}
-}
-
-/* RESPONSIVE */
-@media(max-width:992px){
-.features{grid-template-columns:repeat(2,1fr)}
-.course-list{grid-template-columns:repeat(2,1fr)}
-.photos{grid-template-columns:repeat(2,1fr)}
-}
-
-@media(max-width:600px){
-header h1{font-size:28px}
-header{padding:60px 15px}
-.btn{display:block;width:100%;max-width:250px;margin:10px auto}
-.features{grid-template-columns:1fr}
-.course-list{grid-template-columns:1fr}
-.photos{grid-template-columns:1fr}
-.photos img{height:200px}
-iframe{height:450px}
-.map iframe{height:250px}
-}
-
-
-	/* 🔥 FIREWORK CANVAS */
-#fireworksCanvas{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-  z-index:0;
-}
-
-/* ensure cards above fireworks */
-.results *{
-  position:relative;
-  z-index:1;
-}
-
-
-	.hero-pro{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:100px 20px;
-}
-
-.hero-box{
-  max-width:700px;
-  background:rgba(255,255,255,0.9);
-  backdrop-filter: blur(10px);
-  padding:40px;
-  border-radius:25px;
-  box-shadow:0 15px 40px rgba(0,0,0,.2);
-  animation:fadeInUp 1s ease;
-}
-
-/* TITLE */
-.hero-box h1{
-  font-size:36px;
-  color:#d32f2f;
-}
-
-/* TAGLINE */
-.tagline{
-  font-size:18px;
-  color:#555;
-  margin-bottom:20px;
-}
-
-/* OFFER BOX */
-.offer-highlight{
-  background:linear-gradient(45deg,#ff5722,#ff9800);
-  color:#fff;
-  padding:20px;
-  border-radius:15px;
-  margin:20px 0;
-  box-shadow:0 5px 15px rgba(0,0,0,.2);
-}
-
-/* BUTTONS */
-.hero-buttons{
-  margin-top:20px;
-}
-
-.hero-buttons .btn{
-  margin:8px;
-}
-
-/* URGENCY */
-.urgent{
-  margin-top:15px;
-  color:#d32f2f;
-  font-weight:bold;
-  animation:blink 1s infinite;
-}
-
-	/* =========================
-   HEADER BUTTONS
-========================= */
-
-.header-buttons{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.header-buttons .btn{
-  margin:0;
-  white-space:nowrap;
-}
-
-.sstc-access{
-  background:linear-gradient(45deg,#6c2bd9,#9c4dff);
-  color:#fff;
-  border:2px solid #6c2bd9;
-  box-shadow:0 4px 12px rgba(108,43,217,.25);
-  transition:.3s;
-}
-
-.sstc-access:hover{
-  transform:translateY(-3px) scale(1.03);
-  box-shadow:0 8px 20px rgba(108,43,217,.4);
-}
-
-/* MOBILE HEADER BUTTONS */
-
-@media(max-width:600px){
-
-  .header-buttons{
-    gap:5px;
-  }
-
-  .header-buttons .btn{
-    padding:6px 9px;
-    font-size:11px;
-    margin:0;
-  }
-
-}
-
-	
-/* BLINK EFFECT */
-@keyframes blink{
-  0%{opacity:1}
-  50%{opacity:0.4}
-  100%{opacity:1}
-}
-
-
-/* =====================================================
-   50% OFF SUBJECT PDF RENTAL OFFER
-===================================================== */
-
-/* SSTC Access button glow (attention) */
-.sstc-access.glow{
-  animation:sstcGlow 1.6s infinite;
-}
-
-@keyframes sstcGlow{
-  0%{box-shadow:0 0 0 0 rgba(108,43,217,.7)}
-  70%{box-shadow:0 0 0 14px rgba(108,43,217,0)}
-  100%{box-shadow:0 0 0 0 rgba(108,43,217,0)}
-}
-
-.offer-access{
-  padding:40px 20px 10px;
-  text-align:center;
-}
-
-.offer-access-box{
-  max-width:760px;
-  margin:0 auto;
-  padding:22px 20px 18px;
-  border-radius:22px;
-  background:#fff;
-  border:3px solid transparent;
-  background-image:
-    linear-gradient(#fff,#fff),
-    linear-gradient(45deg,#d32f2f,#ff9800,#6c2bd9);
-  background-origin:border-box;
-  background-clip:padding-box,border-box;
-  box-shadow:0 10px 30px rgba(0,0,0,.15),0 0 18px rgba(211,47,47,.2);
-}
-
-.offer-access-title{
-  display:inline-block;
-  background:linear-gradient(45deg,#d32f2f,#ff5722);
-  color:#fff;
-  font-weight:bold;
-  font-size:18px;
-  padding:8px 20px;
-  border-radius:30px;
-  line-height:1.4;
-}
-
-.offer-access-sub{
-  color:#555;
-  font-size:15px;
-  margin:10px 0 8px;
-}
-
-.offer-access-details{
-  color:#4a1d9e;
-  font-size:14px;
-  margin-bottom:20px;
-}
-
-/* .offer-plans{
-  display:grid;
-  grid-template-columns:repeat(5, minmax(0,1fr));
-  gap:10px;
-  align-items:stretch;
-} */
-.offer-plan-heading{
-  margin:12px 0 14px;
-  color:#4a1d9e;
-  font-size:14px;
-  font-weight:800;
-  letter-spacing:.3px;
-}
-
-.offer-plan-heading span{
-  display:block;
-  margin-top:3px;
-  color:#777;
-  font-size:11px;
-  font-weight:500;
-}
-
-	
-/* ===== 5 PLANS IN ONE ROW ===== */
-.offer-plans{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px;
-}
-
-/* Tablet */
-@media(max-width:900px){
-  .offer-plans{
-    grid-template-columns:repeat(3,1fr);
-  }
-}
-
-/* Mobile */
-@media(max-width:600px){
-  .offer-plans{
-    grid-template-columns:repeat(2,1fr);
-    gap:8px;
-  }
-
-  .offer-plan{
-    padding:16px 4px 12px;
-  }
-}	
-	
-.offer-plans{
-  display:grid;
-  grid-template-columns:repeat(5, minmax(0,1fr));
-  gap:10px;
-  align-items:stretch;
-}
-
-.offer-plan{
-  position:relative;
-  min-width:0;
-  box-sizing:border-box;
-  background:linear-gradient(135deg,#ffffff,#f8f9ff);
-  border:1px solid #e5e5e5;
-  border-radius:16px;
-  padding:14px 6px 12px;
-  box-shadow:0 6px 16px rgba(0,0,0,.10);
-  transition:.3s;
-}
-
-.offer-plan:hover{
-  transform:translateY(-5px);
-}
-
-.offer-plan.best{
-  border:2px solid #6c2bd9;
-  box-shadow:0 0 16px rgba(108,43,217,.25);
-}
-
-.offer-plan .op-tag{
-  position:absolute;
-  top:-9px;
-  left:50%;
-  transform:translateX(-50%);
-
-  background:linear-gradient(45deg,#6c2bd9,#9c4dff);
-  color:#fff;
-
-  font-size:9px;
-  font-weight:700;
-
-  padding:3px 7px;
-  border-radius:12px;
-
-  white-space:nowrap;
-  max-width:90%;
-  overflow:hidden;
-  text-overflow:ellipsis;
-
-  box-shadow:0 3px 8px rgba(108,43,217,.25);
-  z-index:3;
-}
-
-.op-months{
-  font-size:16px;
-  font-weight:bold;
-  color:#222;
-}
-
-.op-old{
-  display:block;
-  color:#666;
-  font-size:15px;
-  margin-top:4px;
-}
-
-.op-new{
-  font-size:28px;
-  font-weight:bold;
-  color:#2e7d32;
-  line-height:1.2;
-}
-
-.op-new small{
-  display:block;
-  font-size:12px;
-  color:#555;
-  font-weight:normal;
-  margin-top:3px;
-}
-
-.op-off{
-  display:inline-block;
-  margin-top:6px;
-  background:#ffeb3b;
-  color:#b71c1c;
-  font-size:12px;
-  font-weight:bold;
-  padding:3px 10px;
-  border-radius:12px;
-}
-
-.offer-price-note{
-  color:#555;
-  font-size:12px;
-  margin-top:12px;
-}
-
-.offer-registration{
-  margin-top:16px;
-  padding:14px 12px;
-  background:#f3ecff;
-  border-radius:14px;
-}
-
-.offer-opening{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:8px;
-  color:#4a1d9e;
-}
-
-.offer-opening-label{
-  font-size:11px;
-  font-weight:bold;
-  letter-spacing:1px;
-  text-transform:uppercase;
-}
-
-.offer-opening time{
-  display:inline-block;
-  max-width:100%;
-  padding:10px 18px;
-  border:2px solid #f5a623;
-  border-radius:14px;
-  background:linear-gradient(135deg,#fff6d5,#ffd38a);
-  color:#922b0b;
-  font-size:clamp(20px,5vw,28px);
-  font-weight:800;
-  line-height:1.3;
-  white-space:nowrap;
-  box-shadow:0 5px 16px rgba(245,166,35,.25);
-}
-
-.offer-register-btn{
-  display:inline-block;
-  margin-top:10px;
-  padding:11px 26px;
-  border-radius:30px;
-  background:linear-gradient(45deg,#6c2bd9,#8b35db);
-  color:#fff;
-  font-size:15px;
-  font-weight:bold;
-  text-decoration:none;
-  box-shadow:0 4px 12px rgba(108,43,217,.25);
-  transition:transform .3s,box-shadow .3s;
-}
-
-.offer-register-btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 8px 20px rgba(108,43,217,.35);
-}
-
-.offer-register-btn:focus-visible{
-  outline:3px solid #d32f2f;
-  outline-offset:4px;
-}
-
-/* Keep the offer visible below the fixed header on phones and tablets. */
-@media(max-width:768px){
-  #mainHeader{padding:8px 12px;gap:8px}
-  #mainHeader img{width:40px;height:40px;object-fit:contain;flex-shrink:0}
-  #mainHeader .nav-text{min-width:0}
-  #mainHeader .nav-text h1{font-size:clamp(14px,3.8vw,18px);line-height:1.3}
-  #mainHeader .nav-text p{display:none}
-  #mainHeader .header-buttons{flex-direction:column;gap:5px;flex-shrink:0}
-  #mainHeader .header-buttons .btn{width:auto;max-width:none;padding:6px 9px;font-size:11px;margin:0}
-  .offer-access{padding-top:20px}
-}
-
-@media(max-width:600px){
-  .offer-access-box{padding:18px 12px 16px}
-  .offer-plans{gap:8px}
-  .offer-plan{padding:16px 4px 12px}
-  .op-months{font-size:13px}
-  .op-new{font-size:24px}
-  .op-old{font-size:13px}
-  .offer-access-title{font-size:17px;padding:8px 12px}
-  .offer-access-sub,.offer-opening{font-size:14px}
-  .offer-access-details{font-size:13px}
-  .offer-plan .op-tag{font-size:10px;padding:3px 6px}
-  .op-off{font-size:10px;padding:3px 6px}
-}
-
-@media(prefers-reduced-motion:reduce){
-  .offer-plan,.offer-register-btn{transition:none}
-  .offer-plan:hover,.offer-register-btn:hover{transform:none}
-}
-
-
-	/* =====================================================
-   📲 SHREE SCHOLARS PWA INSTALL BOX
-===================================================== */
-
-.pwa-install-box{
-  max-width:760px;
-  margin:18px auto 25px;
-  padding:12px 16px;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-
-  background:linear-gradient(135deg,#ffffff,#f7f9ff);
-  border:2px solid #6c2bd9;
-  border-radius:16px;
-
-  box-shadow:
-    0 8px 25px rgba(0,0,0,.12),
-    0 0 18px rgba(108,43,217,.15);
-
-  position:relative;
-  z-index:5;
-}
-
-.pwa-install-left{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  min-width:0;
-}
-
-.pwa-install-icon{
-  width:42px;
-  height:42px;
-  border-radius:11px;
-  object-fit:cover;
-  flex-shrink:0;
-
-  box-shadow:0 4px 10px rgba(0,0,0,.15);
-}
-
-.pwa-install-text{
-  text-align:left;
-}
-
-.pwa-install-text strong{
-  display:block;
-  color:#4a1d9e;
-  font-size:16px;
-  line-height:1.3;
-}
-
-.pwa-install-text span{
-  display:block;
-  color:#666;
-  font-size:12px;
-  margin-top:2px;
-}
-
-.pwa-install-btn{
-  border:none;
-  outline:none;
-
-  background:linear-gradient(45deg,#6c2bd9,#9c4dff);
-  color:#fff;
-
-  padding:9px 16px;
-  border-radius:25px;
-
-  font-size:13px;
-  font-weight:bold;
-
-  cursor:pointer;
-  white-space:nowrap;
-
-  box-shadow:0 5px 15px rgba(108,43,217,.3);
-  transition:.3s;
-}
-
-.pwa-install-btn:hover{
-  transform:translateY(-2px) scale(1.03);
-  box-shadow:0 8px 20px rgba(108,43,217,.4);
-}
-
-.pwa-install-btn:active{
-  transform:scale(.97);
-}
-
-/* hidden initially */
-#pwaInstallBox{
-  display:none;
-}
-
-/* iPhone / unsupported browser message */
-.pwa-help{
-  max-width:760px;
-  margin:8px auto 20px;
-  padding:10px 14px;
-
-  background:#fff8e1;
-  border:1px solid #f5c242;
-  border-radius:12px;
-
-  text-align:center;
-  color:#6d4c00;
-  font-size:12px;
-
-  display:none;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-
-  .pwa-install-box{
-    margin:12px 12px 20px;
-    padding:10px 12px;
-    gap:8px;
-  }
-
-  .pwa-install-icon{
-    width:36px;
-    height:36px;
-  }
-
-  .pwa-install-text strong{
-    font-size:13px;
-  }
-
-  .pwa-install-text span{
-    font-size:10px;
-  }
-
-  .pwa-install-btn{
-    padding:8px 11px;
-    font-size:11px;
-  }
-}
-
-	
-</style>
-	
 <body>
-<header id="mainHeader">
-  
-  <img src="Logo.png" alt="logo">
 
-  <div class="nav-text">
-    <h1>Shree Scholars Tuition Centre</h1>
-    <p>From Foundation to Future</p>
-  </div>
-
-		 <div class="header-buttons">
-		
-		  <a href="#leadbox" class="btn primary">
-		    Contact
-		  </a>
-
-			 <!-- <a href="tuition-access.html" class="btn sstc-access">
-		    SSTC (Tuition)
-		  </a> -->
-		
-		  <a href="sstc-access.html" class="btn sstc-access glow">
-		    SSTC Access
-		  </a>
-		
-		</div>
-</header>
-
-<!-- SUBJECT PDF RENTAL OFFER -->
-<section class="offer-access container" id="offerAccess" aria-labelledby="offerAccessTitle">
-  <div class="offer-access-box">
-
-    <h2 class="offer-access-title" id="offerAccessTitle">🎉 50% OFF on EVERY SUBJECT!</h2>
-    <p class="offer-access-sub">
-📚 Chapterwise Study PDFs • Solved Questions • Answers • Smart Preparation
-</p>
-	  <div class="offer-plan-heading">
-  ✨ Choose Your Subject Ouestion Bank Plan ✨
-  <span>Single Subject se lekar 6-Subject Saver Plans tak</span>
-</div>
-    <p class="offer-access-details">
-🎯 Class 9–12 | Board Preparation | Revision &amp; Exam Practice
-</p>
-
-    <div class="offer-plans">
-
-      <div class="offer-plan">
-        <h3 class="op-months">3 Months</h3>
-        <del class="op-old">₹100</del>
-        <p class="op-new">₹49/- <small>only / subject</small></p>
-        <span class="op-off">50% OFF</span>
-      </div>
-
-      <div class="offer-plan">
-        <h3 class="op-months">6 Months</h3>
-        <del class="op-old">₹140</del>
-        <p class="op-new">₹69/- <small>only / subject</small></p>
-        <span class="op-off">50% OFF</span>
-      </div>
-
-      <div class="offer-plan best">
-        <div class="op-tag">⭐ BEST VALUE ⭐</div>
-        <h3 class="op-months">12 Months</h3>
-        <del class="op-old">₹200</del>
-        <p class="op-new">₹99/- <small>only / subject</small></p>
-        <span class="op-off">50% OFF</span>
-      </div>
-
-		<div class="offer-plan best">
-	        <div class="op-tag">⭐ POCKET FRIENDLY ⭐</div>
-	        <h3 class="op-months">6 Months</h3>
-	        <del class="op-old">₹400</del>
-	        <p class="op-new">₹199/- <small>ANY 6 (SIX) subject</small></p>
-	        <span class="op-off">50% OFF</span>
-	      </div>
-
-		<div class="offer-plan best">
-	        <div class="op-tag">⭐ BEST SAVER ⭐</div>
-	        <h3 class="op-months">12 Months</h3>
-	        <del class="op-old">₹800</del>
-	        <p class="op-new">₹399/- <small>ANY 6 (SIX) subject</small></p>
-	        <span class="op-off">50% OFF</span>
-	      </div>
-		
-    </div>
-
-    <div class="offer-plan-heading">
-  ✨ Choose Your Subject Notes Plan ✨
-		<p class="offer-price-note">Online Subject (Rent) • Har price ek subject ke poore selected plan ka hai.</p>
-	</div>
-
-	<div class="offer-plans">
-
-      <div class="offer-plan">
-        <h3 class="op-months">3 Months</h3>
-        <del class="op-old">₹120</del>
-        <p class="op-new">₹69/- <small>only / subject</small></p>
-        <span class="op-off">50% OFF</span>
-      </div>
-
-      <div class="offer-plan">
-        <h3 class="op-months">6 Months</h3>
-        <del class="op-old">₹200</del>
-        <p class="op-new">₹99/- <small>only / subject</small></p>
-        <span class="op-off">50% OFF</span>
-      </div>
-
-      <div class="offer-plan best">
-        <div class="op-tag">⭐ BEST VALUE ⭐</div>
-        <h3 class="op-months">12 Months</h3>
-        <del class="op-old">₹300</del>
-        <p class="op-new">₹149/- <small>only / subject</small></p>
-        <span class="op-off">50% OFF</span>
-      </div>
-
-		<div class="offer-plan best">
-	        <div class="op-tag">⭐ POCKET FRIENDLY ⭐</div>
-	        <h3 class="op-months">6 Months</h3>
-	        <del class="op-old">₹800</del>
-	        <p class="op-new">₹399/- <small>ANY 6 (SIX) subject</small></p>
-	        <span class="op-off">50% OFF</span>
-	      </div>
-
-		<div class="offer-plan best">
-	        <div class="op-tag">⭐ BEST SAVER ⭐</div>
-	        <h3 class="op-months">12 Months</h3>
-	        <del class="op-old">₹1200</del>
-	        <p class="op-new">₹599/- <small>ANY 6 (SIX) subject</small></p>
-	        <span class="op-off">50% OFF</span>
-	      </div>
-
-    </div>
-	  
-<p class="offer-price-note">Online Subject Notes (Rent) • Har price ek subject ke poore selected plan ka hai.</p>
-
-    <div class="offer-registration">
-      <p class="offer-opening">
-        <span class="offer-opening-label">Mark your calendar · Registration opens</span>
-        <time datetime="2026-10-19">19 October 2026</time>
-      </p>
-      <a href="student-registration.html" class="offer-register-btn">Register Soon <span aria-hidden="true">→</span></a>
-    </div>
-
-  </div>
-</section>
-
-
-	<!-- =====================================================
-     📲 SHREE SCHOLARS APP INSTALL
-===================================================== -->
-
-<div class="pwa-install-box" id="pwaInstallBox">
-
-  <div class="pwa-install-left">
-
-    <img
-      src="Logo.png"
-      class="pwa-install-icon"
-      alt="Shree Scholars App">
-
-    <div class="pwa-install-text">
-      <strong>📲 Install Shree Scholars App</strong>
-      <span>Fast access • App-like experience • Free</span>
-    </div>
-
-  </div>
-
-  <button
-    type="button"
-    class="pwa-install-btn"
-    id="pwaInstallBtn">
-    INSTALL
-  </button>
-
-</div>
-
-<div class="pwa-help" id="pwaHelp">
-  📱 Agar Install option nahi aa raha hai, browser ke
-  <b>⋮ Menu → Add to Home screen</b> option ka use karein.
-</div>
-
-
-	
-<section class="features container">
-<div class="card"><h3>Expert Teachers</h3><p>Highly experienced faculty</p></div>
-<div class="card"><h3>All Subjects</h3><p>Nursery to Class 12</p></div>
-<div class="card"><h3>Top Results</h3><p>Excellent performance</p></div>
-</section>
-
-	<section class="results container">
-<canvas id="fireworksCanvas"></canvas>
-  <h2>🏆 Our Class 10 Board Toppers</h2>
-  <p class="result-sub">Outstanding Results • Proven Excellence • Trusted by Parents</p>
-
-  <div class="result-grid">
-
-    <!-- STUDENT 1 -->
-    <div class="result-card">
-      <div class="img-box">
-		 
-        <img src="t1.jpeg">
-        
-      </div>
-      <h3>Adarsh Dwivedi</h3>
-		 <div class="badge">TOPPER</div>
-		<div>______________________________</div>
-      <p class="percent">80% UP Board</p>
-      <p class="division">1<sup>st</sup> Division (Distinction)</p>
-		<p class="division">Mahatama Gandhi Inter College, Gorakhpur</p>
-    </div>
-
-    <!-- STUDENT 2 -->
-    <div class="result-card">
-      <div class="img-box">
-        <img src="t2.jpeg">
-      </div>
-      <h3>Harsh Verma</h3>
-      <p class="percent">78% UP Board</p>
-      <p class="division">1<sup>st</sup> Division (Distinction)</p>
-		<p class="division">Saraswati Vidya Mandir Inter College, Gorakhpur</p>
-    </div>
-
-    <!-- STUDENT 3 -->
-    <div class="result-card">
-      <div class="img-box">
-        <img src="t3.jpeg">
-      </div>
-      <h3>Tabish</h3>
-      <p class="percent">63% UP Board</p>
-      <p class="division">1<sup>st</sup> Division</p>
-		<p class="division">Mahatama Gandhi Inter College, Gorakhpur</p>
-    </div>
-
-    <!-- STUDENT 4 -->
-    <!-- <div class="result-card">
-      <div class="img-box">
-        <img src="t4.jpg">
-      </div>
-      <h3>Neha Gupta</h3>
-      <p class="percent">90%</p>
-      <p class="division">First Division</p>
-		<p class="division">Mahatama Gandhi Inter College, Gorakhpur</p>
-    </div> -->
-
-  </div>
-
-  <!-- STATS -->
-  <div class="stats">
-    <div><h3>100%</h3><p>Result</p></div>
-    <div><h3>90%+</h3><p>Top Scores</p></div>
-    <div><h3>500+</h3><p>Students Taught</p></div>
-  </div>
-		
-  <!-- CTA -->
-  <div class="result-cta">
-    <h3>🎯 Your Child Can Be Next Topper</h3>
-    <a href="#leadbox" class="btn-result">
-      📞 Enroll Now on WhatsApp
-    </a>
-  </div>
-
-</section>
-
-	<section class="hero-pro" id="home">
-  <div class="hero-box">
-
-    <h1>🎯 Best Tuition in Gorakhpur</h1>
-    <p class="tagline">From Weak to Topper — Proven Results</p>
-
-    <!-- OFFER BOX -->
-    <div class="offer-highlight">
-      <h3>🎁 Free Demo Class Available</h3>
-      <p>🔥 50% Scholarship for First 20 Students</p>
-    </div>
-
-    <!-- BUTTONS -->
-    <div class="hero-buttons">
-      <a href="#leadbox" class="btn primary">
-        📞 Book Free Demo
-      </a>
-
-      <a href="#pricing" class="btn outline">
-        💰 View Fees
-      </a>
-    </div>
-
-    <!-- URGENCY -->
-    <p class="urgent">⚠️ Limited Seats</p>
-
-  </div>
-</section>
-
-	
-<section class="courses container">
-
-	<div class="card"><h3>Courses</h3><p>Nursery to 12 • English & Hindi Medium</p></div>
-	
-<div class="course-list">
-<div class="course-item">Maths</div>
-<div class="course-item">Science</div>
-<div class="course-item">Computer</div>
-<div class="course-item">Hindi</div>
-<div class="course-item">Sanskrit</div>
-<div class="course-item">English</div>
-<div class="course-item">Commerce</div>
-<div class="course-item">Computer Courses</div>
-</div>
-</section>
-
-	<section class="testimonials container">
-
- <div class="card">
-
-    <h3>💬 What We Say</h3>
-
-    <p class="sub-text">
-        Experienced faculty dedicated to helping every student achieve excellent results.
-    </p>
-
-    <div class="teacher-highlights">
-
-        <div class="highlight-box">
-            ⭐
-            <span>4.9 Student Rating</span>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">S</div>
+        <div class="brand-text">
+          <h1 class="brand-title">Shree Scholars Tuition Centre</h1>
+          <p class="brand-sub">From Foundation to Future</p>
         </div>
-
-        <div class="highlight-box">
-            📚
-            <span>All Subjects</span>
-        </div>
-
-        <div class="highlight-box">
-            🏆
-            <span>Top Achievements</span>
-        </div>
-
-        <div class="highlight-box">
-            🎯
-            <span>95% Success Rate</span>
-        </div>
-
-        <div class="highlight-box">
-            👨‍🎓
-            <span>5000+ Students</span>
-        </div>
-
-        <div class="highlight-box">
-            📹
-            <span>Intro Videos</span>
-        </div>
-
-        <div class="highlight-box">
-            📞
-            <span>Contact Support</span>
-        </div>
-
-        <div class="highlight-box">
-            📅
-            <span>Book Demo Class</span>
-        </div>
-
-    </div>
-
-</div>
-
-  <div class="video-testimonials">
-
-    <!-- VIDEO 1 -->
-    <div class="video-card">
-      <video controls poster="thumb1.jpg">
-        <source src="SSTC video1.mp4" type="video/mp4">
-      </video>
-      <!-- <div class="video-name">Rakesh Sharma</div> -->
-    </div>
-
-    <!-- VIDEO 2 -->
-    <div class="video-card">
-      <video controls poster="thumb2.jpg">
-        <source src="SSTC video2.mp4" type="video/mp4">
-      </video>
-      <!-- <div class="video-name">Sunita Verma</div> -->
-    </div>
-
-    <!-- VIDEO 3 -->
-    <div class="video-card">
-      <video controls poster="thumb3.jpg">
-        <source src="video3.mp4" type="video/mp4">
-      </video>
-      <!-- <div class="video-name">Amit Singh</div> -->
-    </div>
-
-    <!-- VIDEO 4 -->
-    <div class="video-card">
-      <video controls poster="thumb4.jpg">
-        <source src="video4.mp4" type="video/mp4">
-      </video>
-      <!-- <div class="video-name">Priya Gupta</div> -->
-    </div>
-
-    <!-- VIDEO 5 -->
-    <div class="video-card">
-      <video controls poster="thumb5.jpg">
-        <source src="video5.mp4" type="video/mp4">
-      </video>
-      <!-- <div class="video-name">Neha Mishra</div> -->
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="lead-box container" id="leadbox">
-
-  <!-- HEADING -->
-  <div class="lead-heading">
-    <h2>📞 Connect Us</h2>
-    <p>New Era to Study • Admissions Open Now</p>
-  </div>
-
-  <!-- TEACHER 1 -->
-  <div class="lead-form">
-    <h2>👨‍🏫 Pritha Srivastava Ma'am</h2>
-    <p>Commerce / Primary Classes</p>
-
-    <input type="text" id="name1" placeholder="Student Name" required>
-
-    <select id="class1">
-      <option>Select Class</option>
-      <option>Nursery / PlayWay</option>
-      <option>LKG</option>
-      <option>UKG</option>
-      <option>Class 1</option>
-      <option>Class 2</option>
-      <option>Class 3</option>
-      <option>Class 4</option>
-      <option>Class 5</option>
-      <option>Class 9 Commerce</option>
-      <option>Class 10 Commerce</option>
-      <option>Class 11 Commerce</option>
-      <option>Class 12 Commerce</option>
-      <option>B.Com.</option>
-      <option>Spoken English</option>
-    </select>
-
-    <input type="number" id="phone1" placeholder="Parent Mobile" required>
-
-    <button onclick="sendToWhatsApp(1)">📲 Contact Ma'am</button>
-  </div>
-
-  <!-- TEACHER 2 -->
-  <div class="lead-form">
-    <h2>👨‍🏫 Alekh Srivastava Sir</h2>
-    <p>Science / Senior Classes</p>
-
-    <input type="text" id="name2" placeholder="Student Name" required>
-
-    <select id="class2">
-      <option>Select Class</option>
-      <option>Class 8</option>
-      <option>Class 9</option>
-      <option>Class 10</option>
-      <option>Class 11 PCM</option>
-      <option>Class 11 PCB</option>
-      <option>Class 12 PCM</option>
-      <option>Class 12 PCB</option>
-      <option>Computer</option>
-      <option>Spoken English</option>
-    </select>
-
-    <input type="number" id="phone2" placeholder="Parent Mobile" required>
-
-    <button onclick="sendToWhatsApp(2)">📲 Contact Sir</button>
-  </div>
-
-</section>
-	
-	
-<section class="gallery container">
-	<div class="card"><h3>🔥 Our Toppers 🔥 </h3><p>Nursery to 12 • English & Hindi Medium</p></div>
-
-<div class="slider">
-  <button class="prev">&#10094;</button>
-
-  <div class="slides" id="slides">
-    <img src="tp7.jpg">
-    <img src="tp1.jpg">
-    <img src="tp9.jpg">
-    <img src="tp2.jpg">
-    <img src="tp3.jpg">
-    <img src="tp4.jpg">
-    <img src="tp5.jpg">
-    <img src="tp6.jpg">    
-    <img src="tp12.jpg">
-    <img src="tp10.jpg">
-    <img src="tp11.jpg">
-    <img src="tp8.jpg">    
-    <img src="tp13.jpg">
-    <img src="tp14.jpg">
-    <img src="tp15.jpg">
-    <img src="tp16.jpg">
-    <img src="tp17.jpg">
-    <img src="tp18.jpg">
-    <img src="tp19.jpg">
-    <img src="tp20.jpg">
-    <img src="tp21.jpg">
-    <img src="tp22.jpg">
-    <img src="tp23.jpg">
-    <img src="tp24.jpg">
-  </div>
-
-  <button class="next">&#10095;</button>
-</div>
-</section>
-	
-
-  <section class="premium-gallery container">
-	  <div class="card"><h3>📸 Memomories of Journey</h3></div>
-
-  <div class="gallery-wrapper">
-
-    <div class="gallery-track" id="galleryTrack">
-
-      <!-- <div class="gallery-card"><img src="Mem1.jpg"></div>
-      <div class="gallery-card"><img src="Mem2.jpg"></div> -->
-      <div class="gallery-card"><img src="Mem3.jpg"></div>
-      <div class="gallery-card"><img src="Mem4.jpg"></div>
-      <div class="gallery-card"><img src="Mem5.jpg"></div>
-      <div class="gallery-card"><img src="Mem.jpg"></div>
-      <div class="gallery-card"><img src="Mem7.jpg"></div>
-      <div class="gallery-card"><img src="Mem8.jpg"></div>
-		<div class="gallery-card"><img src="Mem9.jpg"></div>
-		<div class="gallery-card"><img src="Mem10.jpg"></div>
-		<div class="gallery-card"><img src="Mem11.jpg"></div>
-
-    </div>
-
-    <!-- controls -->
-    <button class="g-btn prev">‹</button>
-    <button class="g-btn next">›</button>
-
-  </div>
-</section>
-
-  
-<section class="contact-section container">
-
-  <!-- LEFT: FORM -->
-  <div class="contact-box">
-    <h2>Admission Form</h2>
-    <p>Fill the form to enroll</p>
-
-    <iframe 
-      src="https://docs.google.com/forms/d/e/1FAIpQLSedAOS3RrMFufn1OALf2aIQR3yp02vhBlTkBEYKB2IlWhuFnQ/viewform?embedded=true"
-      loading="lazy">
-    </iframe>
-  </div>
-
-  <!-- RIGHT: MAP -->
-  <div class="contact-box">
-    <h2>📍 Visit Our Centre</h2>
-    <p>Infront of Govind Ram Haveli, Jata Shankar Chowk, Dilezakpur, Gorakhpur</p>
-
-    <iframe
-      src="https://www.google.com/maps?q=26.760083,83.366028&output=embed" loading="lazy">
-    </iframe>
-
-    <a href="https://www.google.com/maps?q=26.760083,83.366028" target="_blank" class="btn-map">
-      🧭 Get Directions
-    </a>
-  </div>
-
-</section>
-
-<section class="testimonials container">
-
-  <div class="card">
-    <h3>💬 What Parents / Student's Say</h3>
-    <p class="sub-text">Over 1000+ parents trust us</p>
-  </div>
-
-  <div class="video-testimonials">
-
-    <!-- VIDEO 1 -->
-    <div class="video-card">
-      <video controls poster="thumb1.jpg">
-        <source src="video1.mp4" type="video/mp4">
-      </video>
-      <div class="video-name">Rakesh Sharma</div>
-    </div>
-
-    <!-- VIDEO 2 -->
-    <div class="video-card">
-      <video controls poster="thumb2.jpg">
-        <source src="video2.mp4" type="video/mp4">
-      </video>
-      <div class="video-name">Sunita Verma</div>
-    </div>
-
-    <!-- VIDEO 3 -->
-    <div class="video-card">
-      <video controls poster="thumb3.jpg">
-        <source src="video3.mp4" type="video/mp4">
-      </video>
-      <div class="video-name">Amit Singh</div>
-    </div>
-
-    <!-- VIDEO 4 -->
-    <div class="video-card">
-      <video controls poster="thumb4.jpg">
-        <source src="video4.mp4" type="video/mp4">
-      </video>
-      <div class="video-name">Priya Gupta</div>
-    </div>
-
-    <!-- VIDEO 5 -->
-    <div class="video-card">
-      <video controls poster="thumb5.jpg">
-        <source src="video5.mp4" type="video/mp4">
-      </video>
-      <div class="video-name">Neha Mishra</div>
-    </div>
-
-  </div>
-
-</section>
-
-	
-
-  <section class="pricing-table container" id="pricing">
-<div class="card"><h3>💎 Fees Structure</h3><p>Nursery to 12 • English & Hindi Medium</p><p class="subtitle">Quality Education with 50% Scholarship</p></div>
-
-<div class="pricing-row">
-
-  <div class="pricing-col popular">
-    <h3>Nursery – 2</h3>
-    <p class="desc">All Subjects</p>
-    <p class="price">₹500 <span>/month</span></p>
-    <p class="old">₹1000</p>
-    <a href="#leadbox" class="btn highlight">Join Now</a>
-
-    <ul>
-      <li>✔ Basic Foundation</li>
-      <li>✔ Personal Attention</li>
-      <li>✔ Homework Support</li>
-    </ul>
-  </div>
-
-  <div class="pricing-col popular">
-    <h3>Class 3 – 5</h3>
-    <p class="desc">All Subjects</p>
-    <p class="price">₹1000 <span>/month</span></p>
-    <p class="old">₹2000</p>
-    <a href="#leadbox" class="btn highlight">Join Now</a>
-
-    <ul>
-      <li>✔ Strong Concept Building</li>
-      <li>✔ Weekly Tests</li>
-      <li>✔ Doubt Clearing</li>
-    </ul>
-  </div>
-
-  <div class="pricing-col popular">
-    <h3>Class 6 – 8</h3>
-    <p class="desc">All Subjects</p>
-    <p class="price">₹1100 <span>/month</span></p>
-    <p class="old">₹2200</p>
-    <a href="#leadbox" class="btn highlight">Join Now</a>
-
-    <ul>
-      <li>✔ Concept + Practice</li>
-      <li>✔ Exam Preparation</li>
-      <li>✔ Regular Tests</li>
-    </ul>
-  </div>
-
-  <div class="pricing-col popular">
-    <h3>Class 9 – 10</h3>
-    <p class="desc">All Subjects</p>
-    <p class="price">₹1500 <span>/month</span></p>
-    <p class="old">₹3000</p>
-    <a href="#leadbox" class="btn highlight">Join Now</a>
-
-    <ul>
-      <li>✔ Board Preparation</li>
-      <li>✔ All 6 Subjects</li>
-      <li>✔ ₹300 / Subject</li>
-    </ul>
-  </div>
-
-  <div class="pricing-col popular">
-    <h3>Class 11 – 12</h3>
-    <p class="desc">PCM / PCB / Commerce</p>
-    <p class="price">₹1800 <span>/month</span></p>
-    <p class="old">₹3600</p>
-    <a href="#leadbox" class="btn highlight">Join Now</a>
-
-    <ul>
-      <li>✔ Stream-wise Coaching</li>
-      <li>✔ 3 Subjects</li>
-      <li>✔ ₹600 / Subject</li>
-    </ul>
-  </div>
-
-</div>
-
-</section>
-
-   <section class="saas-section container">
-
-	   
-<div class="card"><h3>🚀 Skill & Technology Programs</h3><p class="saas-sub">Upgrade Your Skills with Industry-Level Training</p></div>
-	   
-
-  <div class="saas-grid">
-
-    <!-- CARD 1 -->
-    <div class="saas-card premium">
-      <div class="icon">✨</div>
-      <h3>Basic Skills</h3>
-      <p class="desc">Spoken English & Computer Basics</p>
-
-      <div class="price-box">
-        <span class="old">₹1000</span>
-        <span class="new">₹500 / Month</span>
       </div>
 
-      <ul>
-        <li>✔ Spoken English Training</li>
-        <li>✔ Computer Fundamentals</li>
-        <li>✔ Practical Learning</li>
-        <li>✔ Beginner Friendly</li>
-      </ul>
-
-      <a href="#leadbox" class="btn-saas highlight">Enroll Now</a>
-    </div>
-
-    <!-- CARD 2 -->
-    <div class="saas-card premium">
-      <div class="badge">🔥 Trending</div>
-      <div class="icon">💻</div>
-      <h3>Programming / AI</h3>
-      <p class="desc">Coding, Designing & Artificial Intelligence</p>
-
-      <div class="price-box">
-        <span class="old">₹2400+</span>
-        <span class="new">Starting ₹1199</span>
+      <div class="top-actions">
+        <a href="#contact" class="btn contact-btn">Contact</a>
+        <button id="installBtn" class="btn install-btn" type="button">Install App</button>
       </div>
-
-      <ul>
-        <li>✔ HTML + CSS — ₹999</li>
-        <li>✔ Advanced Excel — ₹999</li>
-        <li>✔ AI Basics — ₹1499</li>
-        <li>✔ CorelDraw — ₹4999</li>
-        <li>✔ Programming — ₹9999</li>
-      </ul>
-
-      <a href="#leadbox" class="btn-saas highlight">Enroll Now</a>
     </div>
+  </header>
 
-  </div>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-shell">
+          <div class="left-panel">
+            <div class="offer-pill">50% OFF on Every Subject!</div>
 
-</section>
+            <div class="panel-box">
+              <div class="small-head">
+                <h3>Question Bank & Notes</h3>
+                <span class="mini-badge">Popular</span>
+              </div>
 
-  
-<section class="cta">
-<h2>Admissions Open Now</h2>
-<p>Location : Infront of Govind Ram Haveli, Jata Shankar Chowk, Dilezakpur, Gorakhpur, Uttar Pradesh - 273001</p>
-</section>
-<a href="#class2" class="whatsapp-btn w1">
-  💬 <span>Chat Sir</span>
-</a>
+              <div class="section-tag">Academic</div>
 
-<a href="#class1" class="whatsapp-btn w2">
-  💬 <span>Chat Ma'am</span>
-</a>
-<footer>
-© 2026 Shree Scholars Tuition Centre
-</footer>
+              <div class="plan-grid">
+                <div class="plan-card">
+                  <div class="plan-top">
+                    <span>3 Months</span>
+                    <span class="plan-type">Basic</span>
+                  </div>
 
-<script>
-window.addEventListener("scroll", function(){
-  document.querySelector("header").classList.toggle("scrolled", window.scrollY > 50);
-});
-</script>
-<script>
-const canvas = document.getElementById("fireworksCanvas");
-const ctx = canvas.getContext("2d");
+                  <div class="price">₹749 <small>/subject</small></div>
 
-function resizeCanvas(){
-  canvas.width = canvas.parentElement.offsetWidth;
-  canvas.height = canvas.parentElement.offsetHeight;
-}
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
+                  <ul>
+                    <li>Chapter-wise PDFs</li>
+                    <li>Solved questions</li>
+                    <li>Revision practice</li>
+                  </ul>
 
-let fireworks = [];
+                  <a href="#register" class="select">Select</a>
+                </div>
 
-function createFirework(){
-  let x = Math.random() * canvas.width;
-  let y = Math.random() * canvas.height * 0.5;
+                <div class="plan-card highlight">
+                  <div class="plan-top">
+                    <span>6 Months</span>
+                    <span class="plan-type">Best</span>
+                  </div>
 
-  for(let i=0;i<60;i++){
-    fireworks.push({
-      x:x,
-      y:y,
-      angle:Math.random()*Math.PI*2,
-      speed:Math.random()*5 + 2,
-      life:100
-    });
-  }
-}
+                  <div class="price">₹799 <small>/subject</small></div>
 
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+                  <ul>
+                    <li>Deep concept notes</li>
+                    <li>Weekly tests</li>
+                    <li>Exam drill</li>
+                  </ul>
 
-  fireworks.forEach((p,i)=>{
-    p.x += Math.cos(p.angle)*p.speed;
-    p.y += Math.sin(p.angle)*p.speed;
-    p.life--;
+                  <a href="#register" class="select">Select</a>
+                </div>
 
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,2,0,Math.PI*2);
-    ctx.fillStyle=`hsl(${Math.random()*360},100%,60%)`;
-    ctx.fill();
+                <div class="plan-card">
+                  <div class="plan-top">
+                    <span>12 Months</span>
+                    <span class="plan-type">Pro</span>
+                  </div>
 
-    if(p.life<=0){
-      fireworks.splice(i,1);
-    }
-  });
+                  <div class="price">₹1,499 <small>/subject</small></div>
 
-  requestAnimationFrame(animate);
-}
+                  <ul>
+                    <li>Full syllabus access</li>
+                    <li>All notes included</li>
+                    <li>Progress support</li>
+                  </ul>
 
-animate();
+                  <a href="#register" class="select">Select</a>
+                </div>
 
-/* auto fireworks */
-setInterval(createFirework, 800);
-</script>
+                <div class="plan-card">
+                  <div class="plan-top">
+                    <span>12 Months</span>
+                    <span class="plan-type">Elite</span>
+                  </div>
+
+                  <div class="price">₹3,399 <small>/subject</small></div>
+
+                  <ul>
+                    <li>All subjects</li>
+                    <li>Mentoring included</li>
+                    <li>Priority support</li>
+                  </ul>
+
+                  <a href="#register" class="select">Select</a>
+                </div>
+              </div>
+
+              <div class="panel-note">
+                <span><strong>Subject-wise notes</strong> for board prep and revision</span>
+              </div>
+
+              <div class="date-box">19 October 2026</div>
+              <button class="register-btn" type="button">Register Now</button>
+            </div>
+          </div>
+
+          <div class="right-panel">
+            <div class="visual-wrap">
+              <div class="hero-illustration">
+                <div class="lamp"></div>
+
+                <div class="students">
+                  <div class="student">
+                    <div class="head"></div>
+                    <div class="arm left"></div>
+                    <div class="arm right"></div>
+                    <div class="body"></div>
+                    <div class="book-in-hand"></div>
+                  </div>
+
+                  <div class="student">
+                    <div class="head"></div>
+                    <div class="arm left"></div>
+                    <div class="arm right"></div>
+                    <div class="body"></div>
+                    <div class="book-in-hand"></div>
+                  </div>
+
+                  <div class="student">
+                    <div class="head"></div>
+                    <div class="arm left"></div>
+                    <div class="arm right"></div>
+                    <div class="body"></div>
+                    <div class="book-in-hand"></div>
+                  </div>
+                </div>
+
+                <div class="book-stack">
+                  <div class="book"></div>
+                  <div class="book"></div>
+                  <div class="book"></div>
+                  <div class="book"></div>
+                  <div class="book"></div>
+                </div>
+              </div>
+
+              <div class="floating-card top-card">
+                <strong>Highly Experienced</strong>
+                <span>Faculty</span>
+                <div class="mini-avatars">
+                  <span class="avatar"></span>
+                  <span class="avatar"></span>
+                  <span class="avatar"></span>
+                  <span class="avatar"></span>
+                </div>
+              </div>
+
+              <div class="floating-card bottom-card">
+                <strong>Small Batches</strong>
+                <span>For Individual Attention</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-strip">
+      <div class="container">
+        <div class="features-inner">
+          <div>
+            <h2 class="feature-title">Quality Learning<br />with Clear Results</h2>
+            <div class="feature-sub">Well-structured notes, guided revision, and expert support for every student.</div>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon">📘</div>
+            <div>
+              <strong>Question Bank</strong>
+              <span>Concept + exam strategy</span>
+            </div>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon">📝</div>
+            <div>
+              <strong>Notes Packs</strong>
+              <span>Short, smart, revision ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <script>
-window.addEventListener("scroll", function(){
-  const header = document.getElementById("mainHeader");
-
-  if(window.scrollY > 50){
-    header.classList.add("shrink");
-  } else {
-    header.classList.remove("shrink");
-  }
-});
-</script>
-
-  
-<script>
-let index = 0;
-const slides = document.getElementById("slides");
-const totalImages = slides.children.length;
-const visible = 3; // number of images visible
-
-function showSlide() {
-  const slideWidth = slides.children[0].offsetWidth;
-  slides.style.transform = `translateX(-${index * slideWidth}px)`;
-}
-
-document.querySelector(".next").onclick = () => {
-  if (index < totalImages - visible) index++;
-  showSlide();
-};
-
-document.querySelector(".prev").onclick = () => {
-  if (index > 0) index--;
-  showSlide();
-};
-
-/* Auto slide */
-setInterval(() => {
-  index = (index + 1) % (totalImages - visible + 1);
-  showSlide();
-}, 3000);
-</script>
-
-  <script>
-let current = 0;
-const pages = document.querySelectorAll(".page");
-const sound = document.getElementById("flipSound");
-
-/* NEXT */
-function nextPage(){
-  if(current < pages.length - 1){
-    pages[current].classList.add("flipped");
-    playSound();
-    current++;
-  }
-}
-
-	  
-
-/* PREV */
-function prevPage(){
-  if(current > 0){
-    current--;
-    pages[current].classList.remove("flipped");
-    playSound();
-  }
-}
-
-/* SOUND */
-function playSound(){
-  sound.currentTime = 0;
-  sound.play();
-}
-
-/* AUTO SLIDE */
-setInterval(()=>{
-  if(current < pages.length){
-    nextPage();
-  } else {
-    pages.forEach(p=>p.classList.remove("flipped"));
-    current = 0;
-  }
-}, 5000);
-
-/* SWIPE SUPPORT */
-let startX = 0;
-
-document.getElementById("book").addEventListener("touchstart",e=>{
-  startX = e.touches[0].clientX;
-});
-
-document.getElementById("book").addEventListener("touchend",e=>{
-  let endX = e.changedTouches[0].clientX;
-
-  if(startX - endX > 50){
-    nextPage();
-  } else if(endX - startX > 50){
-    prevPage();
-  }
-});
-</script>
-
-
-	<script>
-const track = document.getElementById("galleryTrack");
-const cards = document.querySelectorAll(".gallery-card");
-
-let gIndex = 0;
-
-function updateGallery(){
-  const width = cards[0].offsetWidth + 20;
-  track.style.transform = `translateX(-${gIndex * width}px)`;
-
-  cards.forEach(c=>c.classList.remove("active"));
-  if(cards[gIndex]) cards[gIndex].classList.add("active");
-}
-
-document.querySelector(".next").onclick = ()=>{
-  if(gIndex < cards.length - 1){
-    gIndex++;
-    updateGallery();
-  }
-};
-
-document.querySelector(".prev").onclick = ()=>{
-  if(gIndex > 0){
-    gIndex--;
-    updateGallery();
-  }
-};
-
-/* AUTO SLIDE */
-setInterval(()=>{
-  gIndex = (gIndex + 1) % cards.length;
-  updateGallery();
-}, 3000);
-
-updateGallery();
-</script>
-
-	<script>
-
-let generatedCaptcha = "";
-
-/* CAPTCHA */
-function generateCaptcha(){
-
-  const chars =
-  "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-
-  generatedCaptcha = "";
-
-  for(let i=0;i<6;i++){
-
-    generatedCaptcha +=
-    chars[Math.floor(Math.random()*chars.length)];
-
-  }
-
-  document.getElementById("captchaText")
-  .innerText = generatedCaptcha;
-}
-
-generateCaptcha();
-
-
-/* START TEST */
-
-function startTest(){
-
-  let board =
-  document.getElementById("board").value;
-
-  let studentClass =
-  document.getElementById("studentClass").value;
-
-  let subject =
-  document.getElementById("subject").value;
-
-  let medium =
-  document.getElementById("medium").value;
-
-  let chapter =
-  document.getElementById("chapter").value;
-
-  let mobile =
-  document.getElementById("mobile").value;
-
-  let captchaInput =
-  document.getElementById("captchaInput").value;
-
-  /* VALIDATION */
-
-  if(
-    board === "Select Board" ||
-    studentClass === "Select Class" ||
-    subject === "Select Subject" ||
-    medium === "Select Medium" ||
-    chapter === "" ||
-    mobile.length !== 10 ||
-    captchaInput === ""
-  ){
-
-    alert("Please fill valid details");
-    return;
-  }
-
-  /* CAPTCHA */
-
-  if(captchaInput !== generatedCaptcha){
-
-    alert("Wrong Captcha");
-    generateCaptcha();
-    return;
-  }
-
-  /* SAVE */
-
-  localStorage.setItem("board", board);
-  localStorage.setItem("class", studentClass);
-  localStorage.setItem("subject", subject);
-  localStorage.setItem("medium", medium);
-  localStorage.setItem("chapter", chapter);
-
-  /* OPEN TEST PAGE */
-
-  window.location.href = "ai-test.html";
-}
-
-</script>
-
-<script>
-function sendToWhatsApp(teacher){
-
-  let name = document.getElementById("name"+teacher).value;
-  let studentClass = document.getElementById("class"+teacher).value;
-  let phone = document.getElementById("phone"+teacher).value;
-
-  if(name === "" || studentClass === "Select Class" || phone === ""){
-    alert("Please fill all details");
-    return;
-  }
-
-  let message = `Hello, I want admission.
-
-👦 Student Name: ${name}
-📚 Class: ${studentClass}
-📞 Mobile: ${phone}`;
-
-  let number = "";
-
-  if(teacher === 1){
-    number = "919565959697";
-  } else {
-    number = "918953012298";
-  }
-
-  let url = "https://wa.me/" + number + "?text=" + encodeURIComponent(message);
-
-  window.open(url, "_blank");
-}
-</script>
-
-
-	<script>
-
-function playVideo(){
-
-    const video = document.getElementById("testimonialVideo");
-    const btn = document.querySelector(".play-btn");
-
-    if(video.paused){
-        video.play();
-        video.controls = true;
-        btn.style.display = "none";
-    }
-
-}
-
-</script>
-
-	<script>
-if ("serviceWorker" in navigator) {
-    window.addEventListener("load", function () {
-        navigator.serviceWorker.register("./service-worker.js")
-            .then(function (registration) {
-                console.log(
-                    "Shree Scholars PWA Service Worker registered:",
-                    registration.scope
-                );
-            })
-            .catch(function (error) {
-                console.error(
-                    "Shree Scholars PWA Service Worker registration failed:",
-                    error
-                );
-            });
+    const installBtn = document.getElementById('installBtn');
+    let deferredPrompt = null;
+
+    // Show install button only if PWA support exists
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+      installBtn.style.display = 'inline-flex';
     });
-}
-</script>
 
-	<!-- =====================================================
-     📲 PWA INSTALL SYSTEM
-===================================================== -->
-
-<script>
-(function () {
-
-  let deferredPrompt = null;
-
-  const installBox = document.getElementById("pwaInstallBox");
-  const installBtn = document.getElementById("pwaInstallBtn");
-  const pwaHelp = document.getElementById("pwaHelp");
-
-  if (!installBox || !installBtn) {
-    return;
-  }
-
-  /*
-   * Android Chrome / Edge etc.
-   * Browser sends this event when the website
-   * is eligible to be installed.
-   */
-
-  window.addEventListener("beforeinstallprompt", function (event) {
-
-    event.preventDefault();
-
-    deferredPrompt = event;
-
-    installBox.style.display = "flex";
-    pwaHelp.style.display = "none";
-
-  });
-
-
-  /*
-   * INSTALL BUTTON
-   */
-
-  installBtn.addEventListener("click", async function () {
-
-    if (deferredPrompt) {
+    installBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) {
+        alert('App install prompt is not available yet. Please use the browser menu to install this app.');
+        return;
+      }
 
       deferredPrompt.prompt();
-
-      const result = await deferredPrompt.userChoice;
-
-      console.log(
-        "PWA installation result:",
-        result.outcome
-      );
-
+      const choice = await deferredPrompt.userChoice;
+      if (choice.outcome === 'accepted') {
+        console.log('PWA install accepted');
+      }
       deferredPrompt = null;
-
-      installBox.style.display = "none";
-
-      return;
-    }
-
-
-    /*
-     * If browser doesn't support
-     * automatic install prompt.
-     */
-
-    pwaHelp.style.display = "block";
-
-  });
-
-
-  /*
-   * Detect when app has already been installed
-   */
-
-  window.addEventListener("appinstalled", function () {
-
-    console.log(
-      "Shree Scholars App installed successfully."
-    );
-
-    deferredPrompt = null;
-
-    installBox.style.display = "none";
-
-    pwaHelp.style.display = "none";
-
-  });
-
-
-  /*
-   * If website is already running
-   * as installed PWA, don't show install box.
-   */
-
-  const isStandalone =
-    window.matchMedia("(display-mode: standalone)").matches ||
-    window.navigator.standalone === true;
-
-  if (isStandalone) {
-
-    installBox.style.display = "none";
-    pwaHelp.style.display = "none";
-
-  }
-
-})();
-</script>
-	</script>
-
-<script src="sstc-assistant.js" defer></script>
-	
-</body>
+      installBtn.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
