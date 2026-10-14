@@ -105,6 +105,17 @@
                 <span class="sstc-notes-sub">(Notes Ke Liye Yahan Click Kare)</span>
             
             </button>
+        <!-- ✅ NAYA: E-Book QB button -->
+        <button
+            type="button"
+            class="notes-btn sstc-notes-btn"
+            id="sstcEbookBtn"
+            onclick="openSstcEbook()">
+
+            <span class="sstc-notes-title">📚 SSTC E-BOOK QB's</span>
+            <span class="sstc-notes-sub">(Questions E-Book Ke Liye Yahan Click Kare)</span>
+            <span class="sstc-notes-sub">(For Questions E-Book - Click Kare)</span>
+        </button>
     </section>
 
 
@@ -311,9 +322,16 @@
 
         </div>
 
-    </section>
+        </section>   <!-- ye Notes section ka end hai, ise mat chhedo -->
 
+    <!-- ✅ NAYA: E-BOOK WRAPPER START -->
+    <div id="sstcEbookWrap" hidden>
 
+        <div class="sstc-ebook-closebar">
+            <button type="button" class="sstc-ebook-close" onclick="closeSstcEbook()">
+                ✕ Close E-Book QB
+            </button>
+        </div>
 
     <!-- =====================================================
          SUBJECT CAROUSEL
@@ -547,7 +565,7 @@
         </div>
 
     </section>
-
+</div>    <!-- ✅ NAYA: E-BOOK WRAPPER END -->
 
 
     <!-- =====================================================
