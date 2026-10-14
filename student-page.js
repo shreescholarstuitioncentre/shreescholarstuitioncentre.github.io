@@ -5240,3 +5240,37 @@ function stopSstcTimeTracker() {
 
 /* Original DOMContentLoaded ke baad chalega (loadLoggedInStudent pehle ho chuka hoga) */
 document.addEventListener("DOMContentLoaded", initSstcTimeTracker);
+/* =========================================================
+   E-BOOK QB  open / close
+   ========================================================= */
+
+function openSstcEbook() {
+
+    if (!checkStudentSession()) { return; }
+
+    const wrap = document.getElementById("sstcEbookWrap");
+    if (!wrap) { return; }
+
+    /* Agar notes khule hain to unhe band kar do (optional) */
+    if (typeof closeSstcNotes === "function") {
+        try { closeSstcNotes(); } catch (e) { /* ignore */ }
+    }
+
+    wrap.hidden = false;
+    wrap.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function closeSstcEbook() {
+
+    const wrap = document.getElementById("sstcEbookWrap");
+    if (wrap) { wrap.hidden = true; }
+
+    /* Reader reset */
+    destroySstcPdfJsViewer();
+
+    const empty = document.getElementById("viewerEmpty");
+    if (empty) { empty.style.display = "flex"; }
+}
+
+window.openSstcEbook = openSstcEbook;
+window.closeSstcEbook = closeSstcEbook;
