@@ -4343,3 +4343,25 @@ body.sstc-modal-open {
         min-width: 0;
     }
 }
+/* E-Book QB wrapper */
+#sstcEbookWrap[hidden] { display: none !important; }
+
+.sstc-ebook-closebar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.sstc-ebook-close {
+    padding: 9px 18px;
+    border: 0;
+    border-radius: 10px;
+    background: #ef4444;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, .35);
+}
+
+.sstc-ebook-close:hover { background: #dc2626; }
