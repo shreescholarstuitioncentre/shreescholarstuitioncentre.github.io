@@ -14,22 +14,6 @@
 </head>
    
 <style>
-  /* Compact top header */
-.header-inner{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 20px; }
-.brand{ display:flex; align-items:center; gap:12px; }
-.logo{ height:44px; width:auto; display:block; border-radius:6px; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
-.nav-text h1{ font-size:18px; color:#d32f2f; margin:0; font-weight:700; }
-.nav-text p{ font-size:12px; color:#777; margin:0; }
-
-/* header right actions */
-.nav-actions{ display:flex; gap:10px; align-items:center; }
-.btn{ display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px; border:none; cursor:pointer; font-weight:600; text-decoration:none; }
-.contact-btn{ background:transparent; color:#d32f2f; border:1px solid rgba(211,47,47,0.12); }
-.install-btn{ background:linear-gradient(90deg,#6c2bd9,#ff5722); color:#fff; box-shadow:0 8px 20px rgba(108,43,217,0.16); }
-
-/* sticky header smaller on scroll (keep your existing script if any) */
-header{ position:fixed; top:0; left:0; right:0; z-index:999; backdrop-filter:blur(6px); background:rgba(255,255,255,0.86); }
-.container{ max-width:1200px; margin:0 auto; padding:0 20px; }
 	*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:linear-gradient(to bottom right,#fff,#fff8e1);color:#333;line-height:1.6}
 
@@ -2130,6 +2114,163 @@ iframe{height:450px}
 }
 
 	
+
+/* =====================================================
+   SSTC CLEAN PREMIUM POLISH — responsive, compact layout
+   Overrides only: original sections and scripts are preserved.
+===================================================== */
+:root{
+  --sstc-navy:#0b1e3c; --sstc-red:#d32f2f; --sstc-purple:#6c2bd9;
+  --sstc-ink:#202b3c; --sstc-muted:#657187; --sstc-line:#e6eaf1;
+}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{color:var(--sstc-ink);line-height:1.55}
+.container{width:min(100% - 28px,1160px)}
+section{scroll-margin-top:100px}
+img{max-width:100%}
+a,button,input,select,textarea{ -webkit-tap-highlight-color:transparent}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:3px solid #ffb74d;outline-offset:3px
+}
+header#mainHeader{
+  min-height:70px;padding:8px clamp(10px,2vw,24px);gap:12px;
+  background:rgba(255,255,255,.96);border-bottom:1px solid rgba(11,30,60,.08);
+  box-shadow:0 5px 24px rgba(11,30,60,.12)
+}
+#mainHeader>img{width:54px;height:54px;object-fit:contain;flex:0 0 auto}
+#mainHeader .nav-text{min-width:0;text-align:left;flex:1}
+#mainHeader .nav-text h1{font-size:clamp(16px,2vw,25px);line-height:1.15;color:var(--sstc-navy);font-weight:800;letter-spacing:-.4px}
+#mainHeader .nav-text p{font-size:12px;color:var(--sstc-muted);margin-top:3px}
+#mainHeader .header-buttons{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex:0 0 auto}
+#mainHeader .header-buttons .btn{margin:0;display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:800}
+#mainHeader .header-buttons .primary{background:var(--sstc-red);color:#fff}
+#mainHeader .header-buttons .sstc-access{background:linear-gradient(135deg,#5d28c4,#8b5cf6);border:0}
+#mainHeader .sstc-access.glow{animation:none}
+#mainHeader .header-install-wrap{
+  display:none;max-width:none;margin:0;padding:0;border:0;border-radius:0;background:none;
+  box-shadow:none;position:static;z-index:auto;flex:0 0 auto
+}
+#mainHeader .header-install-wrap .pwa-install-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:36px;
+  padding:8px 11px;border-radius:10px;font-size:12px;font-weight:800;
+  background:linear-gradient(135deg,#6c2bd9,#9c4dff);box-shadow:0 4px 12px #6c2bd933
+}
+#mainHeader .header-install-wrap[style*="flex"]{display:flex!important}
+#mainHeader.shrink,#mainHeader.scrolled{padding:6px clamp(10px,2vw,24px)}
+#mainHeader.shrink>img,#mainHeader.scrolled>img{width:46px;height:46px}
+#mainHeader.shrink .nav-text h1,#mainHeader.scrolled .nav-text h1{font-size:clamp(15px,1.8vw,22px)}
+.offer-access{padding-top:24px;padding-bottom:18px}
+.offer-access-box{max-width:980px;padding:clamp(15px,2.2vw,25px);border-width:2px;border-radius:20px}
+.offer-access-title{font-size:clamp(16px,2vw,22px);padding:8px 16px}
+.offer-access-sub{margin:8px 0 5px;font-size:14px}
+.offer-access-details{margin:5px 0 12px;font-size:13px}
+.offer-plan-heading{margin:15px 0 10px;font-size:15px;line-height:1.35}
+.offer-plan-heading span{font-size:12px;line-height:1.4}
+.offer-plans{grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.offer-plan{padding:17px 7px 11px;border-radius:13px;box-shadow:0 4px 13px rgba(11,30,60,.08)}
+.offer-plan:hover{transform:translateY(-3px)}
+.op-months{font-size:14px;line-height:1.3}
+.op-old{font-size:12px;margin-top:4px}
+.op-new{font-size:clamp(19px,2.2vw,25px);line-height:1.2;margin:3px 0}
+.op-new small{font-size:10px;line-height:1.25}
+.op-off{font-size:10px;margin-top:4px;padding:3px 7px}
+.offer-plan .op-tag{font-size:8px;padding:3px 6px;top:-8px}
+.offer-price-note{font-size:12px;line-height:1.45;margin:8px auto 0}
+.offer-registration{margin-top:13px;padding:12px;border-radius:12px}
+.offer-opening{gap:5px}
+.offer-opening-label{font-size:10px}
+.offer-opening time{padding:7px 12px;font-size:clamp(17px,3vw,23px)}
+.offer-register-btn{padding:9px 20px;font-size:13px}
+.card,.review,.result-card,.saas-card,.contact-box,.map-card,.lead-form{
+  box-shadow:0 8px 24px rgba(11,30,60,.09);border-radius:17px
+}
+.card{padding:17px}
+.card h3{font-size:clamp(20px,2vw,25px)}
+.features{gap:14px;padding:28px 14px}
+.result-grid{gap:18px}
+.result-card{padding:17px}
+.img-box{height:230px}
+.results,.premium-gallery,.testimonials,.saas-section,.gallery,.courses,.form-section,.map{
+  padding-top:clamp(35px,5vw,62px);padding-bottom:clamp(35px,5vw,62px)
+}
+.lead-box{padding:30px 14px;gap:18px}
+.lead-form{padding:20px}
+.lead-form input,.lead-form select,.ai-test-box input,.ai-test-box select{
+  min-height:44px;border-color:#dce2ec
+}
+.review-grid{gap:16px}
+.review{padding:19px}
+.review p{line-height:1.65}
+.saas-grid{gap:16px}
+.saas-card{padding:22px}
+.pricing-table{padding:38px 14px}
+.pricing-row{gap:12px}
+.pricing-col{min-width:220px;padding:16px}
+.gallery-card{min-width:min(280px,85vw);height:350px}
+.video-card{border-radius:16px}
+footer{background:#f7f9fc;color:#586579}
+.pwa-help{margin:8px auto 18px}
+
+/* Tablet */
+@media(max-width:900px){
+  #mainHeader .nav-text h1{font-size:clamp(15px,2.5vw,21px)}
+  #mainHeader .header-buttons{gap:5px}
+  #mainHeader .header-buttons .btn{padding:7px 9px;font-size:11px}
+  .offer-plans{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:13px}
+}
+/* Mobile: keep all key header actions in one compact row where possible */
+@media(max-width:600px){
+  html{scroll-padding-top:78px}
+  #mainHeader{min-height:58px;padding:6px 8px;gap:7px}
+  #mainHeader>img{width:36px;height:36px}
+  #mainHeader .nav-text{text-align:left}
+  #mainHeader .nav-text h1{font-size:clamp(12px,3.3vw,16px);letter-spacing:-.25px}
+  #mainHeader .nav-text p{display:none}
+  #mainHeader .header-buttons{gap:4px}
+  #mainHeader .header-buttons .btn{min-height:32px;padding:6px 7px;font-size:10px;border-radius:8px}
+  #mainHeader .header-install-wrap .pwa-install-btn{min-height:32px;padding:6px 7px;font-size:10px;border-radius:8px}
+  #mainHeader .sstc-access{display:none!important}
+  #mainHeader.shrink>img,#mainHeader.scrolled>img{width:32px;height:32px}
+  #mainHeader.shrink .nav-text h1,#mainHeader.scrolled .nav-text h1{font-size:12px}
+  .container{width:min(100% - 20px,1160px);padding-left:0;padding-right:0}
+  .offer-access{padding:15px 10px 10px}
+  .offer-access-box{padding:15px 10px;border-radius:16px}
+  .offer-access-sub{font-size:12px}
+  .offer-access-details{font-size:11px}
+  .offer-plan-heading{font-size:13px;margin:12px 0 8px}
+  .offer-plan-heading span{font-size:10px}
+  .offer-plans{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 8px}
+  .offer-plan{padding:16px 5px 10px}
+  .op-months{font-size:13px}
+  .op-new{font-size:22px}
+  .op-old{font-size:11px}
+  .op-new small{font-size:10px}
+  .offer-plan .op-tag{font-size:8px;max-width:95%}
+  .offer-price-note{font-size:11px}
+  .offer-registration{padding:10px}
+  .features{padding:22px 5px;gap:10px}
+  .features .card{padding:14px}
+  .features .card h3{font-size:20px}
+  .review-grid{grid-template-columns:1fr}
+  .result-grid{grid-template-columns:1fr}
+  .stats{gap:20px;flex-wrap:wrap;margin-top:30px}
+  .lead-box{padding:22px 5px}
+  .lead-form{min-width:0;width:100%}
+  .contact-section{padding:28px 0}
+  .contact-box{min-width:0;padding:15px}
+  .contact-box iframe{height:380px}
+  .gallery-card{height:310px}
+}
+@media(max-width:360px){
+  #mainHeader{gap:5px}
+  #mainHeader>img{width:30px;height:30px}
+  #mainHeader .nav-text h1{font-size:11px}
+  #mainHeader .header-buttons .btn,#mainHeader .header-install-wrap .pwa-install-btn{font-size:9px;padding:5px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
 </style>
 	
 <body>
@@ -2143,19 +2284,16 @@ iframe{height:450px}
   </div>
 
 		 <div class="header-buttons">
-		
-		  <a href="#leadbox" class="btn primary">
-		    Contact
-		  </a>
+		  <a href="#leadbox" class="btn primary">Contact</a>
 
-			 <!-- <a href="tuition-access.html" class="btn sstc-access">
-		    SSTC (Tuition)
-		  </a> -->
-		
-		  <a href="sstc-access.html" class="btn sstc-access glow">
-		    SSTC Access
-		  </a>
-		
+          <!-- App install control stays in the top header beside Contact -->
+          <div class="pwa-install-box header-install-wrap" id="pwaInstallBox">
+            <button type="button" class="pwa-install-btn" id="pwaInstallBtn" aria-label="Install Shree Scholars App">
+              <span aria-hidden="true">📲</span> Install App
+            </button>
+          </div>
+
+		  <a href="sstc-access.html" class="btn sstc-access glow">SSTC Access</a>
 		</div>
 </header>
 
@@ -2168,8 +2306,8 @@ iframe{height:450px}
 📚 Chapterwise Study PDFs • Solved Questions • Answers • Smart Preparation
 </p>
 	  <div class="offer-plan-heading">
-  ✨ Choose Your Subject Ouestion Bank Plan ✨
-  <span>Single Subject se lekar 6-Subject Saver Plans tak</span>
+  ✨ Question Bank Plans ✨
+  <span>Chapterwise PDFs • Solved Questions • Answers • Single subject & 6-subject saver</span>
 </div>
     <p class="offer-access-details">
 🎯 Class 9–12 | Board Preparation | Revision &amp; Exam Practice
@@ -2218,7 +2356,7 @@ iframe{height:450px}
     </div>
 
     <div class="offer-plan-heading">
-  ✨ Choose Your Subject Notes Plan ✨
+  ✨ Notes Plans ✨
 		<p class="offer-price-note">Online Subject (Rent) • Har price ek subject ke poore selected plan ka hai.</p>
 	</div>
 
@@ -2278,35 +2416,7 @@ iframe{height:450px}
 </section>
 
 
-	<!-- =====================================================
-     📲 SHREE SCHOLARS APP INSTALL
-===================================================== -->
-
-<div class="pwa-install-box" id="pwaInstallBox">
-
-  <div class="pwa-install-left">
-
-    <img
-      src="Logo.png"
-      class="pwa-install-icon"
-      alt="Shree Scholars App">
-
-    <div class="pwa-install-text">
-      <strong>📲 Install Shree Scholars App</strong>
-      <span>Fast access • App-like experience • Free</span>
-    </div>
-
-  </div>
-
-  <button
-    type="button"
-    class="pwa-install-btn"
-    id="pwaInstallBtn">
-    INSTALL
-  </button>
-
-</div>
-
+<!-- Install help appears only if the browser cannot show the native install prompt. -->
 <div class="pwa-help" id="pwaHelp">
   📱 Agar Install option nahi aa raha hai, browser ke
   <b>⋮ Menu → Add to Home screen</b> option ka use karein.
@@ -3377,10 +3487,8 @@ if ("serviceWorker" in navigator) {
 
 })();
 </script>
-	</script>
 
 <script src="sstc-assistant.js" defer></script>
 	
-</body>
 </body>
 </html>
