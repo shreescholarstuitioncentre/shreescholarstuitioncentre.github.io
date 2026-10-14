@@ -1040,11 +1040,14 @@ let sstcAudioCtx = null;
 
 const SSTC_ALARM_MESSAGES = [
     { hi: "उठो, जागो! अगर पढ़ नहीं रहे हो तो Logout कर दो! 📚",
-      en: "Wake up! If you are not studying, please Logout." },
+      en: "Wake up! If you are not studying, please Logout.",
+      say: "उठो, जागो! अगर पढ़ नहीं रहे हो, तो लॉगआउट कर दो।" },
     { hi: "अरे! पढ़ाई हो गई? तो अपना अकाउंट Logout कर दो! 🔒",
-      en: "Done studying? Please Logout to keep your account safe." },
+      en: "Done studying? Please Logout to keep your account safe.",
+      say: "अरे! पढ़ाई हो गई? तो अपना अकाउंट लॉगआउट कर दो!" },
     { hi: "सो गए क्या? पढ़ रहे हो तो पढ़ो, नहीं तो Logout करो! 🌟",
-      en: "Fell asleep? Keep reading, or else Logout." }
+      en: "Fell asleep? Keep reading, or else Logout.",
+      say: "सो गए क्या? पढ़ रहे हो तो पढ़ो, नहीं तो लॉगआउट करो!" }
 ];
 
 const SSTC_ALARM_NEXT_KEY = "sstcNextAlarmAt";
@@ -1087,7 +1090,7 @@ function removeAlarmUI() {
     if (sstcAlarmAutoCloseTimer) { clearTimeout(sstcAlarmAutoCloseTimer); sstcAlarmAutoCloseTimer = null; }
     if (sstcAlarmCountdownTimer) { clearInterval(sstcAlarmCountdownTimer); sstcAlarmCountdownTimer = null; }
     if (sstcAlarmBeepTimer) { clearInterval(sstcAlarmBeepTimer); sstcAlarmBeepTimer = null; }
-
+      stopAlarmSpeech();
     try {
         if (window.speechSynthesis) { window.speechSynthesis.cancel(); }
     } catch (e) { /* ignore */ }
@@ -1218,22 +1221,54 @@ function playAlarmBeeps() {
 }
 
 /* Hindi me bolkar bhi bataye */
+const SSTC_ALARM_SPEAK_MS = 30 * 1000;   // dialog kitni der bolta rahe (30 second)
+let sstcAlarmSpeakWatch = null;
+let sstcAlarmSpeakStop = null;
+
+function stopAlarmSpeech() {
+
+    if (sstcAlarmSpeakWatch) { clearInterval(sstcAlarmSpeakWatch); sstcAlarmSpeakWatch = null; }
+    if (sstcAlarmSpeakStop) { clearTimeout(sstcAlarmSpeakStop); sstcAlarmSpeakStop = null; }
+
+    try {
+        if (window.speechSynthesis) { window.speechSynthesis.cancel(); }
+    } catch (e) { /* ignore */ }
+}
+
 function speakAlarmHindi(text) {
 
     try {
 
         if (!window.speechSynthesis || !window.SpeechSynthesisUtterance) { return; }
 
-        window.speechSynthesis.cancel();
+        stopAlarmSpeech();
 
-        const speech = new SpeechSynthesisUtterance(text);
-        speech.lang = "hi-IN";
-        speech.rate = 0.95;
+        const synth = window.speechSynthesis;
 
-        window.speechSynthesis.speak(speech);
+        const sayOnce = function () {
+
+            const speech = new SpeechSynthesisUtterance(text);
+            speech.lang = "hi-IN";
+            speech.rate = 0.95;
+
+            synth.speak(speech);
+        };
+
+        sayOnce();
+
+        sstcAlarmSpeakWatch = setInterval(function () {
+
+            if (!synth.speaking && !synth.pending) {
+                sayOnce();
+            }
+
+        }, 1000);
+
+        sstcAlarmSpeakStop = setTimeout(stopAlarmSpeech, SSTC_ALARM_SPEAK_MS);
     }
     catch (e) { /* ignore */ }
 }
+
 
 function showLogoutReminder() {
 
@@ -1300,7 +1335,7 @@ function showLogoutReminder() {
     sstcAlarmAutoCloseTimer = setTimeout(closeLogoutAlarm, SSTC_ALARM_AUTOCLOSE_MS);
 
     playAlarmBeeps();
-    speakAlarmHindi("उठो, जागो! अगर पढ़ नहीं रहे हो, तो लॉगआउट कर दो।");
+       speakAlarmHindi(msg.say || msg.hi);
 }
 
 /* =========================================================
