@@ -21,6 +21,7 @@
     names: { male: "आरव", female: "आन्या" },
     registrationOpens: "2026-10-19", // site par likhi hui date
     homePage: "index.html",
+    avatarLight: { ambient: 1.6, key: 1.5 }, // avatar bahut chamkila/andhera lage to ye 2 numbers badlein
     registrationClasses: "Class 10 और Class 12", // student-registration.html me jo classes khuli hain, wahi likhein
   };
 
@@ -242,7 +243,17 @@
   background:rgba(255,255,255,.18);transition:.2s}
 .sai-tools button:hover{background:rgba(255,255,255,.32)}
 .sai-tools button.on{background:#ff9800;box-shadow:0 0 0 2px #fff}
-.sai-stage{position:relative;height:210px;flex:0 0 auto;background:radial-gradient(circle at 50% 40%,#f3ecff,#dfe8ff 60%,#c9d6f5)}
+.sai-stage{position:relative;height:210px;flex:0 0 auto;overflow:hidden;
+  background:radial-gradient(circle at 14% 28%,rgba(255,255,255,.95) 0 5%,transparent 5.5%),
+  radial-gradient(circle at 86% 22%,rgba(255,226,140,.85) 0 4.5%,transparent 5%),
+  radial-gradient(circle at 78% 78%,rgba(255,255,255,.8) 0 3.5%,transparent 4%),
+  radial-gradient(circle at 22% 82%,rgba(255,214,102,.7) 0 3%,transparent 3.5%),
+  linear-gradient(165deg,#e3f0ff,#c7defa 55%,#b3cdf3)}
+.sai-stage.g-female{background:radial-gradient(circle at 14% 28%,rgba(255,255,255,.95) 0 5%,transparent 5.5%),
+  radial-gradient(circle at 86% 22%,rgba(255,226,140,.85) 0 4.5%,transparent 5%),
+  radial-gradient(circle at 78% 78%,rgba(255,255,255,.8) 0 3.5%,transparent 4%),
+  radial-gradient(circle at 22% 82%,rgba(255,214,102,.7) 0 3%,transparent 3.5%),
+  linear-gradient(165deg,#ffe9f3,#fbd3e6 55%,#f2bfdc)}
 .sai-stage canvas{width:100%;height:100%;display:block}
 .sai-emoji{position:absolute;inset:0;display:none;align-items:center;justify-content:center;font-size:90px}
 .sai-stage.listening::after{content:"";position:absolute;inset:8px;border-radius:16px;border:3px solid #d32f2f;animation:saiRing 1s infinite}
@@ -364,6 +375,13 @@
     els.choose.querySelectorAll("[data-g]").forEach((b) => (b.onclick = () => pickGender(b.dataset.g)));
     document.addEventListener("keydown", (e) => { if (e.key === "Escape" && state.open) closePanel(); });
     window.addEventListener("resize", resizeStage);
+    window.addEventListener("pointermove", (e) => {
+      if (!state.open) return;
+      const r = els.stage.getBoundingClientRect();
+      const cl = (v) => Math.max(-1, Math.min(1, v));
+      look.tx = cl((e.clientX - (r.left + r.width / 2)) / (window.innerWidth / 2));
+      look.ty = cl((e.clientY - (r.top + r.height / 2)) / (window.innerHeight / 2));
+    }, { passive: true });
     document.addEventListener("visibilitychange", () => { if (document.hidden) stopLoop(); else if (state.open) startLoop(); });
     window.addEventListener("pagehide", stopSpeaking);
     refreshHeader();
@@ -377,6 +395,8 @@
     els.status.textContent = state.listening ? g("सुन रहा हूँ…", "सुन रही हूँ…")
       : state.speaking ? g("बोल रहा हूँ…", "बोल रही हूँ…") : "ऑनलाइन • मदद के लिए तैयार";
     els.stage.classList.toggle("listening", state.listening);
+    els.stage.classList.toggle("g-female", state.gender === "female");
+    if (state.stageReady === "failed") els.emoji.textContent = state.gender === "female" ? "👩‍🏫" : "👨‍🏫";
     els.mic.classList.toggle("on", state.listening);
   }
 
@@ -514,7 +534,7 @@
     if (state.gender === gen) return;
     state.gender = gen; store.set("sstc_ai_gender", gen);
     refreshHeader();
-    await ensureStage(); buildAvatar(gen);
+    await ensureStage(); if (state.stageReady === true) safeBuild(gen);
     stopSpeaking();
     addMsg("bot", "नमस्ते! मैं " + botName() + " हूँ। अब मैं आपकी मदद करूँगा/करूँगी — पूछिए!".replace("करूँगा/करूँगी", g("करूँगा", "करूँगी")), [], { speak: state.sound });
   }
@@ -630,111 +650,303 @@
   }
 
   /* ------------------------------------------------------------------
-     7. 3D AVATAR  (Three.js, koi model-file nahi chahiye)
+     7. 3D ANIME AVATAR  (Three.js + toon shading, koi model-file nahi chahiye)
+        Boy : formal shirt + tie + chashma   |   Girl : saree-style + choti + bindi
   ------------------------------------------------------------------ */
   let T = null, renderer, scene, camera, clock, avatar = null, rig = null, raf = 0;
   let nextBlink = 2, blinkAt = -1, mouthOpen = 0;
+  const look = { x: 0, y: 0, tx: 0, ty: 0 }; // avatar cursor / ungli ki taraf dekhta hai
+
+  const H = { rx: 0.52, ry: 0.56, rz: 0.5 }; // sir ka size (anime jaisa: chhoti nukili thodi)
+  const taper = (yn) => { const t = yn < 0 ? Math.pow(-yn, 1.4) : 0; return [1 - 0.3 * t, 1 - 0.22 * t]; };
+  function faceZ(x, y) { // chehre ki surface par (x,y) ka z
+    const yn = y / H.ry, tp = taper(yn);
+    const xn = x / (H.rx * tp[0]);
+    return H.rz * tp[1] * Math.sqrt(Math.max(1 - xn * xn - yn * yn, 0.01));
+  }
+  function torsoZ(x, y) { // dhad + kandhe ki surface
+    const a = 1 - Math.pow(x / 0.8, 2) - Math.pow((y + 0.95) / 0.9, 2);
+    const t = a > 0 ? 0.46 * Math.sqrt(a) : 0;
+    const b = 1 - Math.pow((x - Math.sign(x) * 0.62) / 0.2, 2) - Math.pow((y + 0.27) / 0.16, 2);
+    const s = b > 0 ? 0.18 * Math.sqrt(b) : 0;
+    return Math.max(t, s, 0.1);
+  }
+
+  function drawEye(x, o, open, mirror) {
+    x.setTransform(1, 0, 0, 1, 0, 0);
+    x.clearRect(0, 0, 256, 256);
+    x.save();
+    if (mirror) { x.translate(256, 0); x.scale(-1, 1); }
+    x.lineCap = "round"; x.lineJoin = "round";
+    // bhaunh
+    x.strokeStyle = o.brow; x.lineWidth = o.girl ? 9 : 16;
+    x.beginPath();
+    if (o.girl) { x.moveTo(50, 56); x.quadraticCurveTo(126, 14, 208, 46); }
+    else { x.moveTo(48, 60); x.quadraticCurveTo(130, 30, 210, 50); }
+    x.stroke();
+    if (open) {
+      x.save();
+      x.beginPath(); x.ellipse(128, 152, 84, 66, 0, 0, Math.PI * 2); x.clip();
+      x.fillStyle = "#fff"; x.fillRect(0, 0, 256, 256);
+      let g = x.createLinearGradient(0, 86, 0, 150);
+      g.addColorStop(0, "rgba(70,40,40,.45)"); g.addColorStop(1, "rgba(70,40,40,0)");
+      x.fillStyle = g; x.fillRect(0, 86, 256, 64);
+      g = x.createLinearGradient(0, 90, 0, 214);
+      g.addColorStop(0, o.iris[0]); g.addColorStop(0.5, o.iris[1]); g.addColorStop(1, o.iris[2]);
+      x.fillStyle = g; x.beginPath(); x.ellipse(128, 152, 50, 62, 0, 0, Math.PI * 2); x.fill();
+      x.fillStyle = "#0c0605"; x.beginPath(); x.ellipse(128, 150, 22, 30, 0, 0, Math.PI * 2); x.fill();
+      x.restore();
+      x.strokeStyle = "#17100e"; x.lineWidth = o.girl ? 15 : 13; // upar ki palak
+      x.beginPath(); x.ellipse(128, 152, 86, 68, 0, Math.PI * 1.03, Math.PI * 1.97); x.stroke();
+      x.lineWidth = o.girl ? 11 : 8; // bahar ka kona
+      x.beginPath(); x.moveTo(206, 126); x.quadraticCurveTo(230, 118, o.girl ? 242 : 234, 100); x.stroke();
+      x.strokeStyle = "rgba(60,35,30,.6)"; x.lineWidth = 4; // neeche ki palak
+      x.beginPath(); x.ellipse(128, 152, 84, 66, 0, Math.PI * 0.12, Math.PI * 0.88); x.stroke();
+    } else {
+      x.strokeStyle = "#17100e"; x.lineWidth = o.girl ? 14 : 12;
+      x.beginPath(); x.moveTo(46, 148); x.quadraticCurveTo(128, 200, 210, 148); x.stroke();
+      x.beginPath(); x.moveTo(206, 150); x.quadraticCurveTo(230, 142, 240, 124); x.stroke();
+    }
+    x.restore();
+    if (open) { // chamak hamesha upar-left se (mirror nahi hoti)
+      x.fillStyle = "#fff";
+      x.beginPath(); x.arc(102, 118, 17, 0, Math.PI * 2); x.fill();
+      x.beginPath(); x.arc(152, 186, 8, 0, Math.PI * 2); x.fill();
+    }
+  }
+
+  function drawMouth(x, shape, o) {
+    x.clearRect(0, 0, 256, 128);
+    x.lineCap = "round";
+    if (shape === 0) { // muskurahat
+      x.strokeStyle = o.lip; x.lineWidth = o.girl ? 11 : 9;
+      x.beginPath(); x.moveTo(80, 50); x.quadraticCurveTo(128, 90, 176, 50); x.stroke();
+      return;
+    }
+    const d = [null, [32, 20], [44, 34], [24, 30]][shape]; // chhota, bada, "o"
+    const cx = 128, cy = 62;
+    x.save();
+    x.beginPath(); x.ellipse(cx, cy, d[0], d[1], 0, 0, Math.PI * 2); x.clip();
+    x.fillStyle = "#4a0e14"; x.fillRect(0, 0, 256, 128);
+    x.fillStyle = "#e8667a"; x.beginPath(); x.ellipse(cx, cy + d[1] * 0.8, d[0] * 0.75, d[1] * 0.5, 0, 0, Math.PI * 2); x.fill();
+    if (shape === 2) { x.fillStyle = "#fff"; x.fillRect(cx - d[0], cy - d[1], d[0] * 2, 10); }
+    x.restore();
+    x.strokeStyle = o.lip; x.lineWidth = 5;
+    x.beginPath(); x.ellipse(cx, cy, d[0], d[1], 0, 0, Math.PI * 2); x.stroke();
+  }
+
+  function disposeObj(o) {
+    o.traverse((n) => {
+      if (n.geometry && n.geometry.dispose) n.geometry.dispose();
+      if (n.material) (Array.isArray(n.material) ? n.material : [n.material]).forEach((m) => {
+        if (m.map && m.map.dispose) m.map.dispose();
+        if (m.gradientMap && m.gradientMap.dispose) m.gradientMap.dispose();
+        if (m.dispose) m.dispose();
+      });
+    });
+  }
+
+  function buildAvatar(gender) {
+    if (!T) return;
+    if (avatar) { scene.remove(avatar); disposeObj(avatar); avatar = null; rig = null; }
+    const f = gender === "female";
+
+    const gmap = new T.DataTexture(new Uint8Array([110, 190, 255]), 3, 1, T.RedFormat);
+    gmap.minFilter = gmap.magFilter = T.NearestFilter; gmap.generateMipmaps = false; gmap.needsUpdate = true;
+    const toon = (c, e) => new T.MeshToonMaterial({ color: c, gradientMap: gmap, emissive: e || 0x000000 });
+    const part = (parent, geo, mat, x, y, z, sx, sy, sz, rx, ry, rz) => {
+      const m = new T.Mesh(geo, mat);
+      m.position.set(x, y, z); m.scale.set(sx || 1, sy || 1, sz || 1); m.rotation.set(rx || 0, ry || 0, rz || 0);
+      parent.add(m); return m;
+    };
+    const outline = (m, k) => { // anime jaisi kaali outline
+      const o = new T.Mesh(m.geometry, new T.MeshBasicMaterial({ color: 0x1a1218, side: T.BackSide }));
+      o.position.copy(m.position); o.rotation.copy(m.rotation); o.scale.copy(m.scale).multiplyScalar(k || 1.05);
+      m.parent.add(o); return o;
+    };
+    const tex = (w, h, fn) => {
+      const c = document.createElement("canvas"); c.width = w; c.height = h;
+      fn(c.getContext("2d"));
+      const t = new T.CanvasTexture(c); t.colorSpace = T.SRGBColorSpace; return t;
+    };
+    const decal = (parent, map, w, h, x, y, lift) => { // chehre par chipka hua sticker
+      const m = new T.Mesh(new T.PlaneGeometry(w, h), new T.MeshBasicMaterial({
+        map, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }));
+      const z = faceZ(x, y) + (lift || 0.004);
+      const nx = x / (H.rx * H.rx), ny = y / (H.ry * H.ry), nz = z / (H.rz * H.rz);
+      const len = Math.hypot(nx, ny, nz);
+      m.rotation.order = "YXZ";
+      m.rotation.y = Math.atan2(nx, nz);
+      m.rotation.x = -Math.asin(ny / len);
+      m.position.set(x, y, z);
+      m.renderOrder = 2;
+      parent.add(m); return m;
+    };
+
+    const skin = toon(f ? 0xf0c09a : 0xe8b28a);
+    const hair = toon(f ? 0x15100e : 0x1b1411, 0x080c16);
+    const gold = toon(0xf2b632, 0x3a2a00);
+    const white = toon(0xffffff);
+    const cloth = toon(f ? 0xb3235a : 0x8fc1ea);
+
+    const root = new T.Group();
+    const head = new T.Group();
+    head.position.set(0, 0.62, 0);
+    root.add(head);
+
+    /* ---- dhad, kandhe, gardan ---- */
+    part(root, new T.SphereGeometry(1, 32, 24), cloth, 0, -0.95, 0, 0.8, 0.9, 0.46);
+    const sareeMat = toon(0x7d1238);
+    [-1, 1].forEach((s) => part(root, new T.SphereGeometry(1, 20, 16), f && s < 0 ? sareeMat : cloth, s * 0.62, -0.27, 0, 0.2, 0.16, 0.18));
+    part(root, new T.CylinderGeometry(0.15, 0.17, 0.42, 20), skin, 0, 0.12, 0);
+
+    /* ---- sir (anime: thodi nukili thodi) ---- */
+    const hg = new T.SphereGeometry(1, 48, 36);
+    const pos = hg.attributes.position;
+    for (let i = 0; i < pos.count; i++) {
+      const yn = pos.getY(i), tp = taper(yn);
+      pos.setXYZ(i, pos.getX(i) * H.rx * tp[0], yn * H.ry, pos.getZ(i) * H.rz * tp[1]);
+    }
+    hg.computeVertexNormals();
+    const face = new T.Mesh(hg, skin);
+    head.add(face);
+    outline(face, 1.045);
+    [-1, 1].forEach((s) => part(head, new T.SphereGeometry(0.09, 16, 12), skin, s * 0.51, -0.02, 0, 0.55, 1.1, 0.8));
+
+    /* ---- chehre ke sticker: aankhein, naak, mooh, gaal ---- */
+    const o = {
+      girl: f,
+      brow: f ? "#1a1210" : "#15100e",
+      iris: f ? ["#2a140c", "#6a3a1c", "#d09a58"] : ["#1d0f08", "#5b3318", "#b9824a"],
+      lip: f ? "#c2335a" : "#8a3a35",
+    };
+    const eyeOpen = [tex(256, 256, (x) => drawEye(x, o, true, true)), tex(256, 256, (x) => drawEye(x, o, true, false))];
+    const eyeClosed = [tex(256, 256, (x) => drawEye(x, o, false, true)), tex(256, 256, (x) => drawEye(x, o, false, false))];
+    const eyes = [decal(head, eyeOpen[0], 0.4, 0.4, -0.22, 0.014), decal(head, eyeOpen[1], 0.4, 0.4, 0.22, 0.014)];
+    const mouthTex = [0, 1, 2, 3].map((s) => tex(256, 128, (x) => drawMouth(x, s, o)));
+    const mouth = decal(head, mouthTex[0], 0.34, 0.17, 0, -0.27);
+    decal(head, tex(128, 128, (x) => {
+      x.strokeStyle = "rgba(150,85,55,.7)"; x.lineWidth = 7; x.lineCap = "round";
+      x.beginPath(); x.moveTo(50, 62); x.quadraticCurveTo(58, 88, 80, 80); x.stroke();
+    }), 0.12, 0.12, 0, -0.12);
+    const blush = tex(64, 64, (x) => {
+      const g = x.createRadialGradient(32, 32, 2, 32, 32, 30);
+      g.addColorStop(0, f ? "rgba(255,105,115,.6)" : "rgba(255,120,110,.35)"); g.addColorStop(1, "rgba(255,105,115,0)");
+      x.fillStyle = g; x.fillRect(0, 0, 64, 64);
+    });
+    [-1, 1].forEach((s) => decal(head, blush, 0.2, 0.12, s * 0.31, -0.16, 0.003));
+
+    /* ---- baal: topi + bangs (dono) ---- */
+    const cap = part(head, new T.SphereGeometry(1, 48, 32, 0, Math.PI * 2, 0, Math.PI * 0.53), hair, 0, 0.02, -0.04, 0.58, 0.61, 0.58, -0.65, 0, 0);
+    outline(cap, 1.04);
+
+    let braid = null;
+    if (!f) {
+      /* ================= BOY: neat teacher look ================= */
+      for (let i = 0; i < 7; i++) { // nukili bangs
+        const a = (i - 3) / 3, x = a * 0.4, y = 0.33 - Math.abs(a) * 0.05;
+        const h = 0.17 + (1 - Math.abs(a)) * 0.04;
+        part(head, new T.ConeGeometry(0.1, h, 6), hair, x, y + 0.03 - h / 2, faceZ(x, y) + 0.035, 1, 1, 0.8, -0.3, 0, Math.PI + (-0.18 + a * 0.38));
+      }
+      [[-0.1, 0.6, -0.1, 0.3], [0.05, 0.64, -0.14, -0.15], [0.2, 0.58, -0.08, -0.5]].forEach((c) =>
+        part(head, new T.ConeGeometry(0.09, 0.3, 6), hair, c[0], c[1], c[2], 1, 1, 1, -0.6, 0, c[3]));
+      [-1, 1].forEach((s) => part(head, new T.ConeGeometry(0.06, 0.2, 6), hair, s * 0.47, 0.08, 0.17, 1, 1, 1, 0, 0, Math.PI + s * 0.1));
+
+      // chashma
+      const frame = toon(0x1f232b);
+      [-0.22, 0.22].forEach((x) => {
+        const z = faceZ(x, -0.02) + 0.05;
+        const r = part(head, new T.TorusGeometry(0.135, 0.013, 8, 32), frame, x, -0.02, z);
+        r.rotation.order = "YXZ"; r.rotation.y = Math.atan2(x / (H.rx * H.rx), z / (H.rz * H.rz));
+      });
+      part(head, new T.BoxGeometry(0.1, 0.014, 0.014), frame, 0, 0.0, faceZ(0, 0) + 0.06);
+      [-1, 1].forEach((s) => part(head, new T.BoxGeometry(0.014, 0.014, 0.36), frame, s * 0.435, 0.0, 0.165, 1, 1, 1, 0, s * 0.43, 0));
+
+      // collar + tie
+      [-1, 1].forEach((s) => part(root, new T.BoxGeometry(0.2, 0.06, 0.03), white, s * 0.1, -0.26, torsoZ(s * 0.1, -0.26) + 0.02, 1, 1, 1, 0, 0, s * -0.6));
+      part(root, new T.SphereGeometry(0.07, 12, 10), toon(0x8b1a2b), 0, -0.3, torsoZ(0, -0.3) + 0.03);
+      part(root, new T.BoxGeometry(0.1, 0.5, 0.025), toon(0x8b1a2b), 0, -0.58, torsoZ(0, -0.45) + 0.02, 1, 1, 1, -0.25, 0, 0);
+    } else {
+      /* ================= GIRL: saree-style teacher ================= */
+      part(head, new T.SphereGeometry(1, 32, 24), hair, 0, -0.28, -0.2, 0.62, 0.9, 0.46); // peeche ke lambe baal
+      for (let i = 0; i < 6; i++) { // side bangs (beech me bindi ke liye jagah)
+        const a = (i - 2.5) / 2.5, x = a * 0.4;
+        if (Math.abs(x) < 0.12) continue;
+        const h = 0.18 + (1 - Math.abs(a)) * 0.04;
+        part(head, new T.ConeGeometry(0.11, h, 6), hair, x, 0.33 + 0.03 - h / 2, faceZ(x, 0.33) + 0.035, 1, 1, 0.8, -0.3, 0, Math.PI + a * 0.5);
+      }
+      [-1, 1].forEach((s) => part(head, new T.CapsuleGeometry(0.07, 0.55, 6, 12), hair, s * 0.5, -0.28, 0.12, 1, 1, 0.9, 0, 0, s * 0.06));
+
+      // bindi + jhumka
+      decal(head, tex(64, 64, (x) => {
+        x.fillStyle = "#d3202a"; x.beginPath(); x.arc(32, 32, 20, 0, Math.PI * 2); x.fill();
+        x.strokeStyle = "#f2b632"; x.lineWidth = 4; x.beginPath(); x.arc(32, 32, 24, 0, Math.PI * 2); x.stroke();
+      }), 0.06, 0.06, 0, 0.18);
+      [-1, 1].forEach((s) => {
+        part(head, new T.SphereGeometry(0.035, 10, 8), gold, s * 0.57, -0.14, 0.06);
+        part(head, new T.ConeGeometry(0.045, 0.1, 10), gold, s * 0.57, -0.22, 0.06, 1, 1, 1, 0, 0, Math.PI);
+      });
+
+      // saree ka pallu (baayein kandhe se tirchha) + sunehri kinara
+      for (let k = 0; k <= 5; k++) {
+        const t = k / 5, x = -0.46 + t * 0.62, y = -0.2 - t * 0.5;
+        part(root, new T.SphereGeometry(1, 16, 12), sareeMat, x, y, torsoZ(x, y) + 0.012, 0.2, 0.17, 0.06, 0, 0, 0.62);
+        part(root, new T.SphereGeometry(1, 12, 10), gold, x + 0.1, y + 0.12, torsoZ(x + 0.1, y + 0.12) + 0.03, 0.035, 0.2, 0.05, 0, 0, 0.9);
+      }
+
+      // choti (braid) + gajra + laal ribbon
+      braid = new T.Group();
+      braid.position.set(0.4, 0.2, 0.06);
+      root.add(braid);
+      for (let k = 0; k < 7; k++) {
+        const r = 0.105 - k * 0.0075, by = -k * 0.125, bz = k * 0.03;
+        part(braid, new T.SphereGeometry(r, 14, 10), hair, Math.sin(k * 1.3) * 0.015, by, bz, 1, 1.2, 1);
+        if (k % 2 === 1) part(braid, new T.SphereGeometry(0.028, 8, 6), white, r * 0.7, by + 0.02, bz + r * 0.8);
+      }
+      const ribbon = toon(0xc81e1e);
+      part(braid, new T.SphereGeometry(0.06, 12, 10), ribbon, 0, -7 * 0.125 + 0.02, 7 * 0.03);
+      [-1, 1].forEach((s) => part(braid, new T.ConeGeometry(0.04, 0.14, 8), ribbon, s * 0.05, -7 * 0.125 - 0.06, 7 * 0.03, 1, 1, 1, 0, 0, Math.PI + s * 0.4));
+    }
+
+    scene.add(root);
+    avatar = root;
+    rig = { root, head, eyes, eyeOpen, eyeClosed, mouth, mouthTex, braid, blinkState: false, mouthShape: 0 };
+  }
+
+  function showEmojiFallback() {
+    state.stageReady = "failed";
+    stopLoop();
+    els.canvas.style.display = "none";
+    els.emoji.style.display = "flex";
+    els.emoji.textContent = state.gender === "female" ? "👩‍🏫" : "👨‍🏫";
+  }
+  function safeBuild(gen) {
+    try { buildAvatar(gen); }
+    catch (e) { console.warn("SSTC avatar: 3D avatar nahi ban paya, emoji dikha rahe hain.", e); showEmojiFallback(); }
+  }
 
   async function ensureStage() {
-    if (state.stageReady === true) { if (!avatar) buildAvatar(state.gender); return true; }
+    if (state.stageReady === true) { if (!avatar) safeBuild(state.gender); return state.stageReady === true; }
     if (state.stageReady === "failed") return false;
     try {
       T = await import(CONFIG.threeUrl);
       renderer = new T.WebGLRenderer({ canvas: els.canvas, alpha: true, antialias: true });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
       scene = new T.Scene();
-      camera = new T.PerspectiveCamera(35, 1, 0.1, 50);
-      camera.position.set(0, 0.1, 4.2); camera.lookAt(0, 0.1, 0);
-      scene.add(new T.AmbientLight(0xffffff, 1.0));
-      const key = new T.DirectionalLight(0xffffff, 1.4); key.position.set(1.5, 2, 3); scene.add(key);
-      const rim = new T.DirectionalLight(0xb9a3ff, 0.6); rim.position.set(-2, 1, -2); scene.add(rim);
+      camera = new T.PerspectiveCamera(30, 1, 0.1, 50);
+      camera.position.set(0, 0.46, 3.3); camera.lookAt(0, 0.44, 0);
+      scene.add(new T.AmbientLight(0xffffff, CONFIG.avatarLight.ambient));
+      const key = new T.DirectionalLight(0xffffff, CONFIG.avatarLight.key); key.position.set(1.5, 2, 3); scene.add(key);
+      const rim = new T.DirectionalLight(0xb9a3ff, 0.8); rim.position.set(-2, 1, -2); scene.add(rim);
       clock = new T.Clock();
       state.stageReady = true;
-      buildAvatar(state.gender);
-      return true;
+      safeBuild(state.gender);
+      return state.stageReady === true;
     } catch (e) {
       console.warn("SSTC avatar: 3D load nahi hua, emoji avatar dikha rahe hain.", e);
-      state.stageReady = "failed";
-      els.canvas.style.display = "none";
-      els.emoji.style.display = "flex";
-      els.emoji.textContent = state.gender === "female" ? "👩‍🏫" : "👨‍🏫";
+      showEmojiFallback();
       return false;
     }
-  }
-
-  function disposeObj(o) {
-    o.traverse((n) => {
-      if (n.geometry) n.geometry.dispose();
-      if (n.material) (Array.isArray(n.material) ? n.material : [n.material]).forEach((m) => m.dispose());
-    });
-  }
-
-  function buildAvatar(gender) {
-    if (!T) return;
-    if (avatar) { scene.remove(avatar); disposeObj(avatar); }
-    const f = gender === "female";
-    const M = (c, o) => new T.MeshLambertMaterial(Object.assign({ color: c }, o || {}));
-    const skin = M(f ? 0xe6b48e : 0xd9a279);
-    const hair = M(0x17100d);
-    const shirt = M(f ? 0x6c2bd9 : 0x0b1e3c);
-    const white = M(0xffffff), dark = M(0x111111);
-    const mouthMat = M(f ? 0x8e1b3a : 0x5a0f12);
-
-    const root = new T.Group();
-    const head = new T.Group();
-    root.add(head);
-    const add = (parent, geo, mat, x, y, z, sx, sy, sz) => {
-      const m = new T.Mesh(geo, mat);
-      m.position.set(x, y, z); m.scale.set(sx || 1, sy || 1, sz || 1);
-      parent.add(m); return m;
-    };
-
-    // body + neck
-    add(root, new T.SphereGeometry(0.8, 32, 24), shirt, 0, -0.98, 0, 1.0, 0.7, 0.6);
-    add(root, new T.CylinderGeometry(0.15, 0.17, 0.45, 20), skin, 0, -0.22, 0);
-    if (!f) add(root, new T.TorusGeometry(0.2, 0.035, 8, 24, Math.PI), white, 0, -0.42, 0.18, 1, 1, 1).rotation.z = Math.PI; // collar
-
-    // head
-    add(head, new T.SphereGeometry(0.55, 40, 32), skin, 0, 0.55, 0, 1, 1.08, 1);
-    add(head, new T.SphereGeometry(0.075, 12, 10), skin, -0.55, 0.52, 0, 0.6, 1.4, 0.8); // ears
-    add(head, new T.SphereGeometry(0.075, 12, 10), skin, 0.55, 0.52, 0, 0.6, 1.4, 0.8);
-    add(head, new T.SphereGeometry(0.052, 12, 10), skin, 0, 0.5, 0.54, 0.9, 1.1, 0.9); // nose
-
-    // hair
-    const cap = add(head, new T.SphereGeometry(0.585, 40, 24, 0, Math.PI * 2, 0, Math.PI * 0.52), hair, 0, 0.57, -0.03);
-    cap.rotation.x = f ? -0.5 : -0.42;
-    if (f) {
-      add(head, new T.SphereGeometry(0.6, 32, 24), hair, 0, -0.1, -0.3, 1.0, 1.3, 0.55);       // long hair (back)
-      add(head, new T.SphereGeometry(0.15, 16, 12), hair, -0.5, 0.35, 0.02, 0.8, 3.0, 1.5);     // side locks
-      add(head, new T.SphereGeometry(0.15, 16, 12), hair, 0.5, 0.35, 0.02, 0.8, 3.0, 1.5);
-    }
-
-    // eyes (blink ke liye alag group)
-    const eyes = [];
-    [-0.2, 0.2].forEach((x) => {
-      const eg = new T.Group(); eg.position.set(x, 0.62, 0); head.add(eg);
-      add(eg, new T.SphereGeometry(0.075, 16, 12), white, 0, 0, 0.49, 1, 1, 0.55);
-      add(eg, new T.SphereGeometry(0.042, 12, 10), dark, 0, 0, 0.52, 1, 1, 0.5);
-      eyes.push(eg);
-      const brow = add(head, new T.BoxGeometry(0.17, 0.022, 0.03), hair, x, 0.745, 0.49, 1, f ? 1 : 1.8, 1);
-      brow.rotation.z = x < 0 ? 0.08 : -0.08;
-      if (f) add(head, new T.BoxGeometry(0.17, 0.012, 0.02), dark, x, 0.695, 0.51);
-    });
-    if (f) { // halka blush
-      const bl = M(0xff8a80, { transparent: true, opacity: 0.4 });
-      add(head, new T.SphereGeometry(0.07, 12, 10), bl, -0.3, 0.42, 0.44, 1, 1, 0.3);
-      add(head, new T.SphereGeometry(0.07, 12, 10), bl, 0.3, 0.42, 0.44, 1, 1, 0.3);
-    }
-
-    // mouth: smile (idle) + open ellipse (bolte waqt)
-    const mouth = add(head, new T.SphereGeometry(0.1, 16, 12), mouthMat, 0, 0.32, 0.5, 1, 0.15, 0.4);
-    const smile = add(head, new T.TorusGeometry(0.09, 0.013, 6, 18, Math.PI), mouthMat, 0, 0.41, 0.54);
-    smile.rotation.z = Math.PI;
-
-    root.position.y = -0.05;
-    scene.add(root);
-    avatar = root;
-    rig = { head, eyes, mouth, smile, root };
   }
 
   function resizeStage() {
@@ -748,25 +960,30 @@
   function tick() {
     raf = requestAnimationFrame(tick);
     if (!rig) return;
-    const t = clock.getElapsedTime();
-    const { head, eyes, mouth, smile, root } = rig;
-    root.position.y = -0.05 + Math.sin(t * 1.4) * 0.012;
-    head.rotation.y = Math.sin(t * 0.6) * 0.12 + (state.speaking ? Math.sin(t * 2.3) * 0.06 : 0);
-    head.rotation.x = Math.sin(t * 0.9) * 0.03 + (state.speaking ? Math.sin(t * 5) * 0.035 : 0);
-    head.rotation.z = state.listening ? 0.13 : Math.sin(t * 0.45) * 0.02;
+    const t = clock.getElapsedTime(), R = rig, sp = state.speaking;
+    look.x += (look.tx - look.x) * 0.06; look.y += (look.ty - look.y) * 0.06;
 
-    if (t > nextBlink) { blinkAt = t; nextBlink = t + 2.5 + Math.random() * 3; }
-    const bp = t - blinkAt;
-    const es = bp >= 0 && bp < 0.15 ? 1 - Math.sin((bp / 0.15) * Math.PI) * 0.92 : 1;
-    eyes.forEach((e) => (e.scale.y = es));
+    R.root.position.y = Math.sin(t * 1.5) * 0.012;
+    R.head.rotation.y = Math.sin(t * 0.6) * 0.08 + look.x * 0.35 + (sp ? Math.sin(t * 2.3) * 0.07 : 0);
+    R.head.rotation.x = Math.sin(t * 0.9) * 0.025 - look.y * 0.2 + (sp ? Math.sin(t * 5.2) * 0.03 : 0);
+    R.head.rotation.z = state.listening ? 0.14 : Math.sin(t * 0.45) * 0.02;
+    if (R.braid) R.braid.rotation.z = Math.sin(t * 1.3) * 0.04 + (sp ? Math.sin(t * 6) * 0.03 : 0);
 
-    const target = state.speaking
-      ? 0.25 + Math.abs(Math.sin(t * 12)) * 0.5 * (0.55 + 0.45 * Math.abs(Math.sin(t * 3.3)))
-      : 0;
-    mouthOpen += (target - mouthOpen) * 0.35;
-    mouth.scale.y = 0.15 + mouthOpen * 1.3;
-    const open = mouthOpen > 0.1;
-    mouth.visible = open; smile.visible = !open;
+    // palak
+    if (t > nextBlink) { blinkAt = t; nextBlink = t + 2.5 + Math.random() * 3.2; }
+    const closed = t - blinkAt >= 0 && t - blinkAt < 0.13;
+    if (closed !== R.blinkState) {
+      R.blinkState = closed;
+      R.eyes.forEach((e, i) => { e.material.map = closed ? R.eyeClosed[i] : R.eyeOpen[i]; });
+    }
+
+    // bolte waqt mooh ki shapes (lip-sync jaisa)
+    const target = sp ? 0.25 + Math.abs(Math.sin(t * 12)) * 0.5 * (0.55 + 0.45 * Math.abs(Math.sin(t * 3.3))) : 0;
+    mouthOpen += (target - mouthOpen) * 0.4;
+    let shape = 0;
+    if (mouthOpen > 0.14) shape = mouthOpen > 0.5 ? 2 : (Math.sin(t * 2.7) > 0.55 ? 3 : 1);
+    if (shape !== R.mouthShape) { R.mouthShape = shape; R.mouth.material.map = R.mouthTex[shape]; }
+
     renderer.render(scene, camera);
   }
   function startLoop() { if (!raf && state.stageReady === true) { clock.start(); tick(); } }
