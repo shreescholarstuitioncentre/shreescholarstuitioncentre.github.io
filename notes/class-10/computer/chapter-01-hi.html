@@ -1,395 +1,1059 @@
 <!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>C में Functions - Class 10 Computer Notes</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C भाषा में फ़ंक्शन (Functions in C)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Courier+Prime:wght@400;700&family=Kalam:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#1a2f7a;--red:#c62828;--green:#1b7a3a;--paper:#fffef7;--line:#cfe3f5}
+:root{--ink:#1b3a8a;--red:#c62828;--green:#2e7d32;--paper:#fffdf5;--line:#c9dcf2;--hl:#fff176;--mono:'Courier Prime','Courier New',monospace}
+html[lang=en]{--hand:'Patrick Hand','Comic Sans MS',cursive;--head:'Caveat','Comic Sans MS',cursive}
+html[lang=hi]{--hand:'Kalam','Noto Sans Devanagari',cursive;--head:'Kalam','Noto Sans Devanagari',cursive}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:#e6dfcf;font-family:'Kalam','Caveat','Comic Sans MS',cursive;color:var(--ink);font-size:20px;line-height:36px}
-.paper{max-width:980px;margin:22px auto;padding:30px 30px 60px 88px;position:relative;border-radius:4px;
-background-color:var(--paper);
-background-image:linear-gradient(90deg,transparent 66px,#e57373 66px,#e57373 68px,transparent 68px),repeating-linear-gradient(transparent 0,transparent 35px,var(--line) 35px,var(--line) 36px);
-box-shadow:0 10px 34px rgba(0,0,0,.28)}
-.paper::before{content:"";position:absolute;left:16px;top:0;bottom:0;width:26px;background:radial-gradient(circle,#e6dfcf 10px,transparent 11px) 0 40px/26px 170px repeat-y}
-.switch{position:sticky;top:8px;float:right;z-index:5;background:#fff176;border:2px solid var(--ink);border-radius:20px 8px 18px 8px;padding:0 16px;font-size:18px;line-height:34px;color:var(--ink);text-decoration:none;transform:rotate(2deg);box-shadow:2px 3px 0 var(--ink)}
-.switch:hover,.switch:focus-visible{background:#ffe082;outline:2px solid var(--red)}
-h1{font-size:44px;line-height:54px;margin:6px 0 0;color:var(--red);font-weight:700}
-h1 small{display:block;font-size:24px;line-height:36px;color:var(--ink);font-weight:400}
-.wave{height:14px;margin:4px 0 14px;background:radial-gradient(circle at 7px -2px,transparent 6px,var(--red) 7px,var(--red) 9px,transparent 10px) 0 0/14px 14px repeat-x}
-h2{display:flex;align-items:center;gap:14px;font-size:30px;line-height:40px;margin:46px 0 10px;scroll-margin-top:50px}
-h2 .num{flex:none;width:46px;height:46px;border:3px solid var(--red);border-radius:52% 48% 55% 45%;color:var(--red);text-align:center;line-height:38px;font-size:26px;font-weight:700;transform:rotate(-6deg)}
-h2 .hl{background:linear-gradient(transparent 55%,#fff176 55%);padding:0 6px}
-h3{font-size:23px;line-height:36px;margin:20px 0 4px;color:var(--green);text-decoration:underline dashed var(--green);text-underline-offset:6px}
-p{margin:8px 0}
-b,.k{color:var(--red);font-weight:700}
-.hl2{background:linear-gradient(transparent 50%,#fff176 50%)}
-.g{color:var(--green);font-weight:700}
-ul.pts{list-style:none;padding-left:6px;margin:8px 0}
-ul.pts li{position:relative;padding-left:30px}
-ul.pts li::before{content:"\27A4";position:absolute;left:0;color:var(--red)}
-ol.idx{columns:2;column-gap:40px;padding-left:28px}
-ol.idx a{color:var(--ink);text-decoration:none;background:linear-gradient(transparent 62%,#bbdefb 62%)}
-ol.idx a:hover{background:linear-gradient(transparent 40%,#fff176 40%)}
-.note{position:relative;margin:24px 6px 18px;padding:12px 18px 10px;line-height:29px;font-size:18px;box-shadow:3px 4px 8px rgba(0,0,0,.2);transform:rotate(-.8deg)}
-.note::before{content:"";position:absolute;top:-12px;left:50%;width:84px;height:22px;margin-left:-42px;background:rgba(255,255,255,.65);border:1px solid rgba(0,0,0,.08);transform:rotate(2deg)}
-.note.y{background:#fff59d}.note.p{background:#f8bbd0;transform:rotate(.7deg)}.note.gr{background:#c8e6c9}.note.bl{background:#bbdefb;transform:rotate(.6deg)}
-.note .tag{display:block;font-weight:700;color:var(--red);font-size:20px}
-.tablewrap{overflow-x:auto;margin:14px 0}
-table{border-collapse:separate;border-spacing:0;border:3px solid var(--ink);border-radius:10px 6px 12px 8px;background:rgba(255,255,255,.7);min-width:100%}
-th,td{padding:4px 12px;font-size:18px;line-height:28px;border-bottom:2px solid #9fb3e0;border-right:2px solid #9fb3e0;text-align:left;vertical-align:top}
-th{background:#ffe9a8;color:var(--red)}
-tr:last-child td{border-bottom:0}th:last-child,td:last-child{border-right:0}
-pre.code{background:#fffde0;border:2px dashed #b59b00;border-radius:8px 14px 8px 12px;padding:10px 16px;margin:12px 0;overflow-x:auto;font-family:'Kalam','Caveat',cursive;font-size:18px;line-height:27px;color:#222;white-space:pre}
-.kw{color:#c2185b;font-weight:700}.cm{color:#2e7d32}.st{color:#e65100}.pp{color:#6a1b9a}.nm{color:#0277bd}
-.output{background:#14201a;color:#b9f6ca;border-radius:8px;padding:6px 16px 8px;margin:8px 0 16px;font-family:'Courier New',monospace;font-size:16px;line-height:26px;border:3px solid #455a64}
-.output span{color:#ffcc80;display:block}
-figure.fig{margin:22px 0;background:#fff;border:3px solid var(--ink);border-radius:14px 8px 16px 10px;padding:10px 10px 6px;box-shadow:4px 5px 0 rgba(26,47,122,.25)}
-figure.fig svg{width:100%;height:auto;display:block}
-figure.fig figcaption{text-align:center;color:var(--red);font-size:18px;line-height:26px;padding:4px 0 6px}
-svg text{font-family:'Kalam','Caveat',cursive;fill:#1a2f7a;font-size:18px}
-svg .sm{font-size:15px}svg .lg{font-size:22px}svg .bd{font-weight:700}
-svg .rd{fill:#c62828}svg .gn{fill:#1b7a3a}svg .wh{fill:#fff}svg .mono{font-family:'Courier New',monospace}
-.fade{opacity:0;animation:fadein .9s forwards}
-@keyframes fadein{to{opacity:1}}
-.draw{stroke-dasharray:400;stroke-dashoffset:400;animation:draw 1.6s forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
-.march{stroke-dasharray:8 6;animation:march 1s linear infinite}
-@keyframes march{to{stroke-dashoffset:-14}}
-details{margin:10px 0;border:2px solid var(--ink);border-radius:10px 6px 12px 8px;background:rgba(255,255,255,.75);padding:2px 14px}
-summary{cursor:pointer;color:var(--red);font-weight:700;line-height:32px;padding:4px 0}
-details[open] summary{border-bottom:2px dashed #9fb3e0;margin-bottom:6px}
-footer{margin-top:50px;text-align:center;color:var(--red);font-size:22px}
-@media(max-width:700px){
-body{font-size:18px}
-.paper{margin:0;padding:18px 14px 46px 50px;border-radius:0;background-image:linear-gradient(90deg,transparent 36px,#e57373 36px,#e57373 38px,transparent 38px),repeating-linear-gradient(transparent 0,transparent 35px,var(--line) 35px,var(--line) 36px)}
-.paper::before{left:4px;width:20px;background-size:20px 170px}
-h1{font-size:32px;line-height:42px}h2{font-size:24px;line-height:32px}ol.idx{columns:1}
-.switch{font-size:16px}
-}
-@media print{.switch{display:none}body{background:#fff}.paper{box-shadow:none;margin:0}}
-
-@keyframes k1{0%{opacity:1}19.900%{opacity:1}20.000%{opacity:0}100%{opacity:0}}
-@keyframes k2{0%{opacity:0}19.900%{opacity:0}20.000%{opacity:1}39.900%{opacity:1}40.000%{opacity:0}100%{opacity:0}}
-@keyframes k3{0%{opacity:0}39.900%{opacity:0}40.000%{opacity:1}59.900%{opacity:1}60.000%{opacity:0}100%{opacity:0}}
-@keyframes k4{0%{opacity:0}59.900%{opacity:0}60.000%{opacity:1}79.900%{opacity:1}80.000%{opacity:0}100%{opacity:0}}
-@keyframes k5{0%{opacity:0}79.900%{opacity:0}80.000%{opacity:1}100%{opacity:1}}
-@keyframes k6{0%{opacity:1}24.900%{opacity:1}25.000%{opacity:0}100%{opacity:0}}
-@keyframes k7{0%{opacity:0}24.900%{opacity:0}25.000%{opacity:1}49.900%{opacity:1}50.000%{opacity:0}100%{opacity:0}}
-@keyframes k8{0%{opacity:0}49.900%{opacity:0}50.000%{opacity:1}74.900%{opacity:1}75.000%{opacity:0}100%{opacity:0}}
-@keyframes k9{0%{opacity:0}74.900%{opacity:0}75.000%{opacity:1}100%{opacity:1}}
-@keyframes k10{0%{opacity:1}8.233%{opacity:1}8.333%{opacity:0}100%{opacity:0}}
-@keyframes k11{0%{opacity:0}8.233%{opacity:0}8.333%{opacity:1}41.567%{opacity:1}41.667%{opacity:0}100%{opacity:0}}
-@keyframes k12{0%{opacity:0}41.567%{opacity:0}41.667%{opacity:1}100%{opacity:1}}
-@keyframes k13{0%{opacity:0}8.233%{opacity:0}8.333%{opacity:1}41.567%{opacity:1}41.667%{opacity:0}100%{opacity:0}}
-@keyframes k14{0%{opacity:0}41.567%{opacity:0}41.667%{opacity:1}100%{opacity:1}}
-@keyframes k15{0%{opacity:0}8.233%{opacity:0}8.333%{opacity:1}100%{opacity:1}}
-@keyframes k16{0%{opacity:1}41.567%{opacity:1}41.667%{opacity:0}100%{opacity:0}}
-@keyframes k17{0%{opacity:0}41.567%{opacity:0}41.667%{opacity:1}74.900%{opacity:1}75.000%{opacity:0}100%{opacity:0}}
-@keyframes k18{0%{opacity:0}74.900%{opacity:0}75.000%{opacity:1}100%{opacity:1}}
-@keyframes k19{0%{opacity:1}83.233%{opacity:1}83.333%{opacity:0}100%{opacity:0}}
-@keyframes k20{0%{opacity:0}16.567%{opacity:0}16.667%{opacity:1}66.567%{opacity:1}66.667%{opacity:0}100%{opacity:0}}
-@keyframes k21{0%{opacity:0}33.233%{opacity:0}33.333%{opacity:1}49.900%{opacity:1}50.000%{opacity:0}100%{opacity:0}}
-@keyframes k22{0%{opacity:1}74.900%{opacity:1}75.000%{opacity:0}100%{opacity:0}}
-@keyframes k23{0%{opacity:0}74.900%{opacity:0}75.000%{opacity:1}83.233%{opacity:1}83.333%{opacity:0}100%{opacity:0}}
-@keyframes k24{0%{opacity:0}16.567%{opacity:0}16.667%{opacity:1}58.233%{opacity:1}58.333%{opacity:0}100%{opacity:0}}
-@keyframes k25{0%{opacity:0}58.233%{opacity:0}58.333%{opacity:1}66.567%{opacity:1}66.667%{opacity:0}100%{opacity:0}}
-@keyframes k26{0%{opacity:0}33.233%{opacity:0}33.333%{opacity:1}41.567%{opacity:1}41.667%{opacity:0}100%{opacity:0}}
-@keyframes k27{0%{opacity:0}41.567%{opacity:0}41.667%{opacity:1}49.900%{opacity:1}50.000%{opacity:0}100%{opacity:0}}
-@keyframes k28{0%{opacity:1}16.567%{opacity:1}16.667%{opacity:0}100%{opacity:0}}
-@keyframes k29{0%{opacity:0}16.567%{opacity:0}16.667%{opacity:1}33.233%{opacity:1}33.333%{opacity:0}100%{opacity:0}}
-@keyframes k30{0%{opacity:0}33.233%{opacity:0}33.333%{opacity:1}41.567%{opacity:1}41.667%{opacity:0}100%{opacity:0}}
-@keyframes k31{0%{opacity:0}41.567%{opacity:0}41.667%{opacity:1}58.233%{opacity:1}58.333%{opacity:0}100%{opacity:0}}
-@keyframes k32{0%{opacity:0}58.233%{opacity:0}58.333%{opacity:1}74.900%{opacity:1}75.000%{opacity:0}100%{opacity:0}}
-@keyframes k33{0%{opacity:0}74.900%{opacity:0}75.000%{opacity:1}83.233%{opacity:1}83.333%{opacity:0}100%{opacity:0}}
-@keyframes k34{0%{opacity:0}83.233%{opacity:0}83.333%{opacity:1}100%{opacity:1}}</style>
-</head>
-<body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1a2f7a"/></marker><marker id="arrowg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1b7a3a"/></marker><marker id="arrowr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c62828"/></marker><marker id="arrowgl" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0L0 5L10 10z" fill="#1b7a3a"/></marker><marker id="arrowrl" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0L0 5L10 10z" fill="#c62828"/></marker></defs></svg>
+body{margin:0;background:#d9cfb8 radial-gradient(circle at 20% 10%,#e6dcc4,#cdbf9f);font-family:var(--hand);color:var(--ink);font-size:20px;line-height:32px}
+.paper{max-width:960px;margin:24px auto 60px;background:var(--paper);position:relative;padding:36px 40px 60px 84px;border-radius:6px;box-shadow:0 8px 30px rgba(60,40,10,.35);
+ background-image:linear-gradient(to right,transparent 62px,#e57373 62px,#e57373 64px,transparent 64px),repeating-linear-gradient(to bottom,transparent 0 31px,var(--line) 31px 32px);background-position:0 0,0 4px}
+.paper:before{content:"";position:absolute;left:18px;top:30px;bottom:30px;width:22px;background:radial-gradient(circle,#8d8470 0 7px,transparent 8px) 0 0/22px 96px repeat-y;opacity:.55}
+h1,h2,h3{font-family:var(--head);margin:0;line-height:1.25}
+h1{font-size:2.9rem;color:var(--red);text-align:center;transform:rotate(-1deg)}
+.sub{text-align:center;font-size:1.25rem;margin:4px 0 14px}
+h2{font-size:2.15rem;margin:56px 0 16px;color:var(--ink);display:inline-block;background:linear-gradient(transparent 58%,var(--hl) 58% 92%,transparent 92%);padding:0 8px;transform:rotate(-.6deg)}
+h3{font-size:1.5rem;color:var(--red);margin:26px 0 8px}
+p{margin:0 0 16px}
+ul,ol{margin:0 0 16px;padding-left:28px}
+li{margin-bottom:6px}
+ul li::marker{content:"✎  ";color:var(--red)}
+b,strong{color:#0d2268}
+.def,.note,.tip,.warn{padding:12px 18px;margin:18px 0;line-height:30px}
+.def{border:3px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;background:#eaf2ff}
+.note{background:#fff59d;box-shadow:3px 4px 8px rgba(0,0,0,.25);transform:rotate(-.7deg);border-radius:2px}
+.tip{border:3px dashed var(--green);border-radius:20px 8px 18px 6px;background:#e8f5e9}
+.warn{border:3px dashed var(--red);border-radius:8px 20px 6px 18px;background:#ffebee}
+.lbl{font-family:var(--head);font-weight:700;font-size:1.2em;margin-right:6px}
+.def .lbl{color:var(--ink)}.tip .lbl{color:var(--green)}.warn .lbl{color:var(--red)}
+pre.code{font-family:var(--mono);font-size:16px;line-height:23px;background:#fbfbf3;border:2px solid #455a64;border-left:8px solid var(--ink);border-radius:4px 14px 4px 14px;padding:14px 18px;margin:14px 0 4px;overflow-x:auto;color:#263238;tab-size:4}
+.c-kw{color:#1565c0;font-weight:700}.c-cm{color:#2e7d32;font-style:italic}.c-st{color:#b71c1c}.c-pp{color:#6a1b9a}.c-nu{color:#e65100}
+.out{font-family:var(--mono);font-size:16px;line-height:23px;background:#212121;color:#b9f6ca;border-radius:6px;padding:10px 16px 10px;margin:0 0 18px;white-space:pre-wrap}
+.out:before{content:attr(data-l);display:block;color:#ffd54f;font-family:var(--hand);font-size:15px;line-height:20px;margin-bottom:4px}
+table{border-collapse:collapse;width:100%;margin:16px 0 22px;background:rgba(255,255,255,.7);font-size:18px;line-height:26px}
+th,td{border:2px solid var(--ink);padding:6px 10px;vertical-align:top;text-align:left}
+th{background:#dbe7ff;font-family:var(--head);font-size:1.15em;color:var(--red)}
+td code,li code,p code{font-family:var(--mono);font-size:.85em;background:#ffecb3;padding:0 5px;border-radius:4px;color:#8d1d1d}
+.tablewrap{overflow-x:auto}
+figure.diagram{margin:22px 0;border:3px solid var(--ink);border-radius:14px 30px 14px 30px;background:#fff;padding:12px 14px 10px;box-shadow:4px 5px 0 rgba(27,58,138,.25)}
+figure.diagram .ft{font-family:var(--head);font-size:1.3rem;color:var(--red);margin-bottom:4px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+figure.diagram svg{width:100%;height:auto;display:block}
+figure.diagram figcaption{font-size:18px;line-height:28px;margin-top:8px;border-top:2px dashed #90a4ae;padding-top:8px}
+button.pp{font-family:var(--hand);font-size:16px;border:2px solid var(--ink);background:#e3f2fd;color:var(--ink);border-radius:20px;padding:0 14px;cursor:pointer;line-height:28px}
+button.pp:hover,button.pp:focus-visible{background:var(--hl);outline:none}
+svg text{font-family:var(--hand);font-size:19px;fill:var(--ink)}svg .t{font-family:var(--hand);font-size:19px;fill:var(--ink)}svg .tb{font-weight:700}svg .tc{font-family:var(--mono);font-size:16px;fill:#263238}
+svg .sm{font-size:15px}svg .xs{font-size:12.5px}svg .big{font-family:var(--head);font-size:30px;font-weight:700;fill:var(--ink)}
+svg .cap{font-family:var(--head);font-size:20px;fill:#0d2268;font-weight:700}
+svg .tr{fill:#c62828}svg .tg{fill:#2e7d32}
+nav.toc{max-width:960px;margin:20px auto 0;background:#fff8e1;border:3px solid var(--ink);border-radius:16px 8px 18px 8px;padding:12px 20px;box-shadow:3px 4px 8px rgba(0,0,0,.25)}
+nav.toc h3{margin:0 0 6px;color:var(--red)}
+nav.toc ol{columns:2;column-gap:30px;margin:0;padding-left:26px;font-size:18px;line-height:28px}
+nav.toc a{color:var(--ink);text-decoration:none;border-bottom:2px dotted var(--ink)}
+nav.toc a:hover{background:var(--hl)}
+details{border:2px solid var(--ink);border-radius:10px 16px 10px 16px;margin:10px 0;background:#fffef7}
+summary{cursor:pointer;padding:6px 14px;font-weight:700;color:#0d2268;list-style:none;line-height:28px}
+summary::-webkit-details-marker{display:none}
+summary:before{content:"❓ "}
+details[open] summary{background:#e3f2fd;border-bottom:2px dashed var(--ink)}
+details .ans{padding:8px 16px 4px;line-height:30px}
+details .ans:before{content:attr(data-l);font-family:var(--head);color:var(--green);font-weight:700;font-size:1.15em;display:block}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 6px}
+.mcq{border:2px solid var(--ink);border-radius:12px;padding:10px 16px;margin:12px 0;background:#fffef7}
+.mcq .q{font-weight:700;color:#0d2268;margin-bottom:4px;line-height:28px}
+.mcq .q pre.code{font-weight:400}
+.opt{display:block;width:100%;text-align:left;font-family:var(--hand);font-size:19px;line-height:26px;margin:5px 0;padding:4px 12px;border:2px solid #90a4ae;border-radius:10px;background:#fff;color:var(--ink);cursor:pointer}
+.opt:hover:not([disabled]){background:#fff9c4;border-color:var(--ink)}
+.opt.ok{background:#c8e6c9;border-color:var(--green);color:#1b5e20}
+.opt.bad{background:#ffcdd2;border-color:var(--red);color:#8e0000}
+.mcq .ex{display:none;margin-top:6px;padding:6px 12px;background:#e8f5e9;border-left:6px solid var(--green);line-height:28px;font-size:18px}
+.mcq.done .ex{display:block}
+.score{position:sticky;top:8px;z-index:5;display:inline-block;background:#fff59d;border:3px solid var(--ink);border-radius:20px;padding:0 18px;box-shadow:2px 3px 6px rgba(0,0,0,.3);margin:6px 0 8px;font-family:var(--head);font-size:1.3rem;line-height:38px}
+.qn{color:var(--red);margin-right:4px}
+.fill-ans,.tf-ans{color:var(--green);font-weight:700}
+.hid{display:none}
+footer{text-align:center;margin-top:50px;font-size:1.15rem}
+@media (max-width:700px){body{font-size:18px}.paper{padding:22px 14px 40px 34px;margin:8px}
+ .paper{background-image:linear-gradient(to right,transparent 24px,#e57373 24px,#e57373 26px,transparent 26px),repeating-linear-gradient(to bottom,transparent 0 31px,var(--line) 31px 32px)}
+ .paper:before{display:none}h1{font-size:2.2rem}h2{font-size:1.7rem}nav.toc ol{columns:1}pre.code{font-size:13.5px}}
+@media print{body{background:#fff}.paper{box-shadow:none;margin:0}nav.toc,.bar,button.pp,.score{display:none}details{display:block}details .ans{display:block}.mcq .ex{display:block}h2{break-after:avoid}figure,pre,table,.mcq{break-inside:avoid}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<filter id="wob" filterUnits="userSpaceOnUse" x="-50" y="-50" width="1000" height="700"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/></filter>
+<marker id="arrB" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1b3a8a"/></marker>
+<marker id="arrR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker>
+<marker id="arrG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker>
+</defs></svg>
+<nav class="toc"><h3>विषय-सूची (क्लिक करके सीधे जाएँ)</h3><ol><li><a href="#s1">1. परिचय: फ़ंक्शन क्या है?</a></li><li><a href="#s2">2. फ़ंक्शन के प्रकार: Library और User-defined</a></li><li><a href="#s3">3. फ़ंक्शन के भाग: Declaration, Definition और Call</a></li><li><a href="#s4">4. फ़ंक्शन कॉल कैसे काम करता है (चरण-दर-चरण)</a></li><li><a href="#s5">5. return स्टेटमेंट और रिटर्न टाइप</a></li><li><a href="#s6">6. आर्गुमेंट और पैरामीटर (Actual और Formal)</a></li><li><a href="#s7">7. फ़ंक्शन की चार श्रेणियाँ</a></li><li><a href="#s8">8. आर्गुमेंट भेजने की विधियाँ: Call by Value और Call by Reference</a></li><li><a href="#s9">9. रिकर्शन (Recursion)</a></li><li><a href="#s10">10. स्कोप, लाइफ़टाइम और स्टोरेज क्लास</a></li><li><a href="#s11">11. फ़ंक्शन को Array भेजना</a></li><li><a href="#s12">12. फ़ंक्शन द्वारा दूसरे फ़ंक्शन को कॉल और महत्वपूर्ण नियम</a></li><li><a href="#s13">13. सामान्य गलतियाँ और त्रुटियाँ</a></li><li><a href="#s14">14. महत्वपूर्ण अंतर (परीक्षा में बार-बार पूछे जाने वाले)</a></li><li><a href="#s15">15. त्वरित दोहराव पत्रक (Quick Revision)</a></li><li><a href="#qa1">अति लघु उत्तरीय प्रश्न (1 अंक)</a></li><li><a href="#qa2">लघु उत्तरीय प्रश्न (2–3 अंक)</a></li><li><a href="#qa3">दीर्घ उत्तरीय प्रश्न (4–5 अंक)</a></li><li><a href="#qa4">प्रोग्रामिंग प्रश्न हल सहित</a></li><li><a href="#mcq">बहुविकल्पीय प्रश्न (MCQs)</a></li><li><a href="#fill">रिक्त स्थान भरिए</a></li><li><a href="#tf">सही या गलत</a></li><li><a href="#outp">आउटपुट पर आधारित प्रश्न</a></li></ol></nav>
 <main class="paper">
+<header><h1>C भाषा में फ़ंक्शन (Functions in C)</h1><p class="sub">कक्षा 10 · कंप्यूटर विज्ञान · अध्याय 1 · हस्तलिखित शैली के पूरे नोट्स, एनिमेटेड चित्रों सहित</p>
+<div class="note"><span class="lbl">ध्यान दें:</span> ये नोट्स कक्षा 10 की कंप्यूटर पुस्तकों में पढ़ाए जाने वाले C भाषा के “फ़ंक्शन” के सामान्य पाठ्यक्रम पर आधारित हैं। नीचे दिए गए प्रश्न <b>बोर्ड परीक्षा के सामान्य पैटर्न पर बनाए गए अभ्यास प्रश्न</b> हैं (ये NCERT, किसी प्रकाशक या UP Board के प्रश्न-पत्र से शब्दशः नहीं लिए गए हैं)। अपने उत्तर की शैली अपनी पाठ्य-पुस्तक और शिक्षक के अनुसार मिला लें।</div></header>
+<section id="s1"><h2>1. परिचय: फ़ंक्शन क्या है?</h2>
+<div class="def"><span class="lbl">परिभाषा:</span> <b>फ़ंक्शन</b> स्टेटमेंट्स का एक नामयुक्त, स्वतंत्र समूह है जिसे <b>एक विशेष कार्य</b> करने के लिए लिखा जाता है। यह तभी चलता है जब इसे <b>कॉल</b> किया जाए, और इसे जितनी बार चाहें कॉल कर सकते हैं।</div>
+<h3>रोज़मर्रा के उदाहरण</h3>
+<ul>
+<li><b>मिक्सर-ग्राइंडर:</b> आप फल डालते हैं (इनपुट), स्विच दबाते हैं (कॉल) और जूस मिलता है (आउटपुट)। हर बार मशीन नहीं बनानी पड़ती।</li>
+<li><b>ATM:</b> कार्ड और PIN अंदर जाते हैं (आर्गुमेंट), नकद बाहर आता है (return value)।</li>
+<li><b>रेसिपी:</b> एक बार लिखी जाती है और बार-बार इस्तेमाल होती है।</li>
+</ul>
+<h3>C प्रोग्राम में फ़ंक्शन</h3>
+<p>C प्रोग्राम <b>फ़ंक्शनों का समूह</b> होता है। हर प्रोग्राम में कम से कम एक फ़ंक्शन <code>main()</code> होता है। प्रोग्राम हमेशा <code>main()</code> से <b>शुरू</b> होता है और वहीं समाप्त होता है। बाकी फ़ंक्शन तभी चलते हैं जब उन्हें <code>main()</code> या किसी अन्य फ़ंक्शन से कॉल किया जाए।</p>
+<h3>फ़ंक्शन की आवश्यकता क्यों? (लाभ)</h3>
+<ol>
+<li><b>मॉड्यूलैरिटी:</b> बड़ी समस्या छोटे भागों में बँट जाती है। हर भाग एक फ़ंक्शन होता है।</li>
+<li><b>पुनः उपयोग (Reusability):</b> एक बार लिखो, कई बार चलाओ। इससे <b>प्रोग्राम का आकार घटता है</b>।</li>
+<li><b>आसान डिबगिंग:</b> त्रुटि हज़ारों लाइनों में नहीं, एक छोटे फ़ंक्शन में खोजनी पड़ती है।</li>
+<li><b>पठनीयता:</b> प्रोग्राम पढ़ना और समझना आसान होता है।</li>
+<li><b>टीम वर्क:</b> अलग-अलग प्रोग्रामर अलग-अलग फ़ंक्शन लिख सकते हैं।</li>
+<li><b>आसान रखरखाव:</b> तर्क बदलना हो तो केवल एक जगह बदलना पड़ता है।</li>
+</ol>
+<div class="tip"><span class="lbl">उदाहरण:</span> मान लीजिए दो संख्याओं में बड़ी संख्या 5 अलग जगहों पर निकालनी है। फ़ंक्शन के बिना वही <code>if-else</code> 5 बार लिखना पड़ेगा। <code>max()</code> फ़ंक्शन बनाकर एक बार लिखें और 5 बार कॉल करें।</div>
+<h3>महत्वपूर्ण शब्द</h3>
+<div class="tablewrap"><table><tr><th>शब्द</th><th>अर्थ</th></tr>
+<tr><td>Function name (फ़ंक्शन का नाम)</td><td>फ़ंक्शन को दिया गया नाम, जैसे <code>add</code></td></tr>
+<tr><td>Function header</td><td>पहली पंक्ति: return type + नाम + पैरामीटर</td></tr>
+<tr><td>Function body</td><td><code>{ }</code> के अंदर लिखे स्टेटमेंट</td></tr>
+<tr><td>Function call</td><td>फ़ंक्शन को चलाने का स्टेटमेंट, जैसे <code>add(5, 3);</code></td></tr>
+<tr><td>Argument (actual parameter)</td><td>कॉल में फ़ंक्शन को दिया गया मान</td></tr>
+<tr><td>Parameter (formal parameter)</td><td>हेडर का वेरिएबल जो आर्गुमेंट का मान लेता है</td></tr>
+<tr><td>Return value</td><td><code>return</code> द्वारा कॉल करने वाले को लौटाया गया मान</td></tr>
+<tr><td>Caller / Called function</td><td>कॉल करने वाला फ़ंक्शन / जिसे कॉल किया गया</td></tr></table></div>
+</section><section id="s2"><h2>2. फ़ंक्शन के प्रकार: Library और User-defined</h2>
+<figure class="diagram"><div class="ft"><span>एनिमेटेड चित्र 7: Library और User-defined फ़ंक्शन</span><button type="button" class="pp">⏸ रोकें</button></div><svg viewBox="0 0 760 420" role="img" aria-label="एनिमेटेड चित्र 7: Library और User-defined फ़ंक्शन" xmlns="http://www.w3.org/2000/svg"><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.0010" calcMode="discrete" dur="10s" repeatCount="indefinite"/><rect x="260" y="15" width="240" height="50" rx="10" fill="#ffe0b2" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="380" y="48" class="tb" text-anchor="middle" >C में फ़ंक्शन</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.1500" calcMode="discrete" dur="10s" repeatCount="indefinite"/><path d="M330,67 L200,112" fill="none" stroke="#1b3a8a" stroke-width="2.6"  marker-end="url(#arrB)" filter="url(#wob)" /><path d="M430,67 L560,112" fill="none" stroke="#1b3a8a" stroke-width="2.6"  marker-end="url(#arrB)" filter="url(#wob)" /><rect x="75" y="115" width="250" height="50" rx="10" fill="#c8e6c9" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="200" y="147" class="tb sm" text-anchor="middle" >Library (बिल्ट-इन)</text><rect x="445" y="115" width="230" height="50" rx="10" fill="#bbdefb" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="560" y="147" class="tb sm" text-anchor="middle" >User-defined</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.3000" calcMode="discrete" dur="10s" repeatCount="indefinite"/><path d="M200,167 L60,218" fill="none" stroke="#1b3a8a" stroke-width="2.6"  marker-end="url(#arrB)" filter="url(#wob)" /><rect x="15" y="220" width="90" height="40" rx="10" fill="#fff" stroke="#2e7d32" stroke-width="2.5" filter="url(#wob)" /><text x="60" y="246" class="tc sm" text-anchor="middle" >stdio.h</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.4500" calcMode="discrete" dur="10s" repeatCount="indefinite"/><text x="60" y="290" class="tc xs" text-anchor="middle" >printf()</text><text x="60" y="314" class="tc xs" text-anchor="middle" >scanf()</text><text x="60" y="345" class="sm tg" text-anchor="middle" >इनपुट/आउटपुट</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.3000" calcMode="discrete" dur="10s" repeatCount="indefinite"/><path d="M200,167 L158,218" fill="none" stroke="#1b3a8a" stroke-width="2.6"  marker-end="url(#arrB)" filter="url(#wob)" /><rect x="113" y="220" width="90" height="40" rx="10" fill="#fff" stroke="#2e7d32" stroke-width="2.5" filter="url(#wob)" /><text x="158" y="246" class="tc sm" text-anchor="middle" >math.h</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.4500" calcMode="discrete" dur="10s" repeatCount="indefinite"/><text x="158" y="290" class="tc xs" text-anchor="middle" >sqrt()</text><text x="158" y="314" class="tc xs" text-anchor="middle" >pow()</text><text x="158" y="345" class="sm tg" text-anchor="middle" >गणित</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.3000" calcMode="discrete" dur="10s" repeatCount="indefinite"/><path d="M200,167 L256,218" fill="none" stroke="#1b3a8a" stroke-width="2.6"  marker-end="url(#arrB)" filter="url(#wob)" /><rect x="211" y="220" width="90" height="40" rx="10" fill="#fff" stroke="#2e7d32" stroke-width="2.5" filter="url(#wob)" /><text x="256" y="246" class="tc sm" text-anchor="middle" >string.h</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.4500" calcMode="discrete" dur="10s" repeatCount="indefinite"/><text x="256" y="290" class="tc xs" text-anchor="middle" >strlen()</text><text x="256" y="314" class="tc xs" text-anchor="middle" >strcpy()</text><text x="256" y="345" class="sm tg" text-anchor="middle" >स्ट्रिंग</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.3000" calcMode="discrete" dur="10s" repeatCount="indefinite"/><path d="M200,167 L354,218" fill="none" stroke="#1b3a8a" stroke-width="2.6"  marker-end="url(#arrB)" filter="url(#wob)" /><rect x="309" y="220" width="90" height="40" rx="10" fill="#fff" stroke="#2e7d32" stroke-width="2.5" filter="url(#wob)" /><text x="354" y="246" class="tc sm" text-anchor="middle" >ctype.h</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.4500" calcMode="discrete" dur="10s" repeatCount="indefinite"/><text x="354" y="290" class="tc xs" text-anchor="middle" >toupper()</text><text x="354" y="314" class="tc xs" text-anchor="middle" >isdigit()</text><text x="354" y="345" class="sm tg" text-anchor="middle" >कैरेक्टर</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.6000" calcMode="discrete" dur="10s" repeatCount="indefinite"/><path d="M560,167 L560,215" fill="none" stroke="#1b3a8a" stroke-width="2.6"  marker-end="url(#arrB)" filter="url(#wob)" /><rect x="445" y="218" width="230" height="150" rx="10" fill="#fff" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="560" y="248" class="sm tb" text-anchor="middle" >आप खुद लिखते हैं</text><text x="560" y="280" class="tc" text-anchor="middle" >add()</text><text x="560" y="308" class="tc" text-anchor="middle" >max()</text><text x="560" y="336" class="tc" text-anchor="middle" >factorial()</text></g><text x="380" y="405" class="cap" text-anchor="middle" >Library = बने-बनाए · User-defined = प्रोग्रामर द्वारा बनाए</text></svg><figcaption><b>व्याख्या:</b> C में फ़ंक्शन दो प्रकार के होते हैं। <b>लाइब्रेरी फ़ंक्शन</b> पहले से लिखे होते हैं और stdio.h या math.h जैसी हेडर फ़ाइलों में रखे होते हैं; हमें केवल हेडर शामिल करके उन्हें इस्तेमाल करना होता है। <b>यूज़र-डिफ़ाइंड फ़ंक्शन</b> वे हैं जिन्हें हम अपनी ज़रूरत के अनुसार खुद लिखते हैं।</figcaption></figure>
+<h3>(अ) Library (बिल्ट-इन / पूर्व-परिभाषित) फ़ंक्शन</h3>
+<p>इन्हें C कंपाइलर बनाने वालों ने पहले से लिखकर <b>हेडर फ़ाइलों</b> में रखा होता है। इन्हें उपयोग करने के लिए प्रोग्राम के शुरू में <code>#include &lt;header-file&gt;</code> लिखते हैं। हमें केवल इन्हें कॉल करना होता है, इनका कोड नहीं लिखना पड़ता।</p>
+<div class="tablewrap"><table><tr><th>हेडर फ़ाइल</th><th>फ़ंक्शन</th><th>उपयोग</th><th>उदाहरण → परिणाम</th></tr>
+<tr><td>stdio.h</td><td>printf(), scanf()</td><td>आउटपुट और इनपुट</td><td><code>printf("Hi");</code> → Hi</td></tr>
+<tr><td>stdio.h</td><td>gets(), puts(), getchar(), putchar()</td><td>स्ट्रिंग/कैरेक्टर पढ़ना या छापना</td><td><code>putchar('A');</code> → A</td></tr>
+<tr><td>math.h</td><td>sqrt(x)</td><td>वर्गमूल</td><td>sqrt(25) → 5.0</td></tr>
+<tr><td>math.h</td><td>pow(x, y)</td><td>x की घात y</td><td>pow(2, 3) → 8.0</td></tr>
+<tr><td>math.h</td><td>fabs(x)</td><td>float का निरपेक्ष मान</td><td>fabs(-5.5) → 5.5</td></tr>
+<tr><td>math.h</td><td>ceil(x), floor(x)</td><td>ऊपर / नीचे पूर्णांकन</td><td>ceil(4.2) → 5.0, floor(4.8) → 4.0</td></tr>
+<tr><td>string.h</td><td>strlen(s)</td><td>स्ट्रिंग की लंबाई</td><td>strlen("India") → 5</td></tr>
+<tr><td>string.h</td><td>strcpy(a, b), strcat(a, b), strcmp(a, b)</td><td>स्ट्रिंग कॉपी, जोड़ना, तुलना</td><td>strcmp("a","a") → 0</td></tr>
+<tr><td>ctype.h</td><td>toupper(c), tolower(c), isdigit(c), isalpha(c)</td><td>कैरेक्टर संबंधी कार्य</td><td>toupper('a') → 'A'</td></tr>
+<tr><td>stdlib.h</td><td>abs(n), rand(), exit(), atoi(s)</td><td>सामान्य उपयोगी कार्य</td><td>abs(-7) → 7</td></tr></table></div>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+<span class="c-pp">#include &lt;math.h&gt;</span>
+<span class="c-pp">#include &lt;string.h&gt;</span>
+<span class="c-pp">#include &lt;ctype.h&gt;</span>
 
-<h1>C में Functions (फ़ंक्शन)<small>Computer Applications | Class 10 | Chapter 1 | हाथ से लिखे Notes</small></h1><div class="wave"></div>
-<h3>Index (विषय सूची)</h3><ol class="idx"><li><a href="#s1">Function क्या है?</a></li><li><a href="#s2">Functions क्यों use करते हैं?</a></li><li><a href="#s3">Functions के प्रकार</a></li><li><a href="#s4">User-defined function के हिस्से</a></li><li><a href="#s5">Actual और Formal parameters</a></li><li><a href="#s6">return statement</a></li><li><a href="#s7">Functions की 4 categories</a></li><li><a href="#s8">Call by value और Call by reference</a></li><li><a href="#s9">Recursion</a></li><li><a href="#s10">Variables का scope</a></li><li><a href="#s11">और example programs</a></li><li><a href="#s12">आम गलतियाँ</a></li><li><a href="#s13">Quick revision</a></li><li><a href="#s14">ज़रूरी प्रश्न और उत्तर</a></li></ol>
-<section id="s1"><h2><span class="num">1</span><span class="hl">Function क्या है?</span></h2><p><b>Function</b> statements का एक नाम वाला, अपने-आप में पूरा block है जो <span class="hl2">एक खास काम</span> करता है। इसे हम एक बार लिखते हैं और program में कहीं से भी, जितनी बार चाहें <b>call</b> (बुला) सकते हैं।</p><p>रोज़ का उदाहरण: <b>मिक्सर-ग्राइंडर</b>। आप फल डालते हैं (input), वह अंदर काम करता है (process) और जूस देता है (output)। हर बार जूस के लिए नया मिक्सर नहीं बनाना पड़ता।</p><p>C program कई functions का समूह होता है। <b>main()</b> पहला function है और हर C program का execution <span class="hl2">हमेशा main() से ही शुरू</span> होता है।</p><figure class="fig"><svg viewBox="0 0 720 250" role="img" aria-label="फ़ंक्शन एक मशीन की तरह">
-<rect x="270" y="55" width="180" height="140" rx="16" fill="#fff7d6" stroke="#1a2f7a" stroke-width="3"/>
-<text x="360" y="84" text-anchor="middle" class="bd lg rd mono">add(a, b)</text>
-<circle cx="326" cy="138" r="27" fill="none" stroke="#1a2f7a" stroke-width="10" stroke-dasharray="9 6"><animateTransform attributeName="transform" type="rotate" from="0 326 138" to="360 326 138" dur="4s" repeatCount="indefinite"/></circle>
-<circle cx="396" cy="156" r="17" fill="none" stroke="#c62828" stroke-width="8" stroke-dasharray="7 5"><animateTransform attributeName="transform" type="rotate" from="360 396 156" to="0 396 156" dur="3s" repeatCount="indefinite"/></circle>
-<line x1="60" y1="125" x2="268" y2="125" stroke="#1a2f7a" stroke-width="3" marker-end="url(#arrow)"/>
-<line x1="452" y1="125" x2="660" y2="125" stroke="#1b7a3a" stroke-width="3" marker-end="url(#arrowg)"/>
-<text x="150" y="40" text-anchor="middle" class="bd">INPUT (arguments)</text>
-<text x="360" y="230" text-anchor="middle" class="bd rd">Function = एक मशीन जो एक ही काम करती है</text>
-<text x="565" y="40" text-anchor="middle" class="bd gn">OUTPUT (return value)</text>
-<g><circle r="17" fill="#bbdefb" stroke="#1a2f7a" stroke-width="2"/><text y="6" text-anchor="middle" class="bd">5</text>
-<animateMotion dur="4s" repeatCount="indefinite" path="M 90 98 L 255 98" keyPoints="0;1;1" keyTimes="0;0.7;1" calcMode="linear"/>
-<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.68;0.72;1" dur="4s" repeatCount="indefinite"/></g>
-<g><circle r="17" fill="#bbdefb" stroke="#1a2f7a" stroke-width="2"/><text y="6" text-anchor="middle" class="bd">3</text>
-<animateMotion dur="4s" repeatCount="indefinite" path="M 90 152 L 255 152" keyPoints="0;1;1" keyTimes="0;0.7;1" calcMode="linear"/>
-<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.68;0.72;1" dur="4s" repeatCount="indefinite"/></g>
-<g><circle r="19" fill="#c8e6c9" stroke="#1b7a3a" stroke-width="2"/><text y="6" text-anchor="middle" class="bd gn">8</text>
-<animateMotion dur="4s" repeatCount="indefinite" path="M 465 125 L 640 125" keyPoints="0;0;1;1" keyTimes="0;0.5;0.95;1" calcMode="linear"/>
-<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.52;0.95;1" dur="4s" repeatCount="indefinite"/></g>
-</svg><figcaption>चित्र 1: Function input लेता है, process करता है और output देता है</figcaption></figure><div class="note y"><span class="tag">याद रखो!</span>Function = Input + Process + Output। कोई function बिना input या बिना output का भी हो सकता है।</div></section>
-<section id="s2"><h2><span class="num">2</span><span class="hl">Functions क्यों use करते हैं?</span></h2><ul class="pts"><li><b>Modularity:</b> बड़े program को छोटे, आसान हिस्सों में बाँटना।</li><li><b>Reusability:</b> एक बार लिखो, कई बार use करो। copy-paste नहीं।</li><li><b>कम code:</b> बार-बार आने वाले statements सिर्फ़ एक बार लिखने पड़ते हैं।</li><li><b>आसान debugging:</b> error पूरे program में नहीं, एक छोटे function में ढूँढनी पड़ती है।</li><li><b>पढ़ने में आसान और teamwork:</b> अलग-अलग programmers अलग-अलग functions लिख सकते हैं।</li></ul></section>
-<section id="s3"><h2><span class="num">3</span><span class="hl">Functions के प्रकार</span></h2><p>C में functions <b>दो प्रकार</b> के होते हैं:</p><figure class="fig"><svg viewBox="0 0 720 290" role="img" aria-label="फ़ंक्शन के प्रकार">
-<g class="fade"><rect x="240" y="10" width="240" height="46" rx="10" fill="#fff7d6" stroke="#1a2f7a" stroke-width="3"/>
-<text x="360" y="41" text-anchor="middle" class="bd lg">C में Functions</text></g>
-<path class="draw" d="M 330 56 L 180 100" stroke="#1a2f7a" stroke-width="3" fill="none" marker-end="url(#arrow)" style="animation-delay:.6s"/>
-<path class="draw" d="M 390 56 L 540 100" stroke="#1a2f7a" stroke-width="3" fill="none" marker-end="url(#arrow)" style="animation-delay:.6s"/>
-<g class="fade" style="animation-delay:1.6s"><rect x="40" y="102" width="280" height="50" rx="10" fill="#bbdefb" stroke="#1a2f7a" stroke-width="3"/>
-<text x="180" y="135" text-anchor="middle" class="bd">Library (Built-in)</text></g>
-<g class="fade" style="animation-delay:1.6s"><rect x="400" y="102" width="280" height="50" rx="10" fill="#c8e6c9" stroke="#1b7a3a" stroke-width="3"/>
-<text x="540" y="135" text-anchor="middle" class="bd">User-defined</text></g>
-<g class="fade" style="animation-delay:2.6s"><text x="50" y="186" class="sm">✔ C में पहले से लिखे हुए</text><text x="50" y="210" class="sm">✔ Header files (.h) में रखे हैं</text><text x="50" y="234" class="sm">✔ बस #include करो और use करो</text><text x="50" y="262" class="sm rd mono">printf() sqrt() strlen()</text></g>
-<g class="fade" style="animation-delay:3.2s"><text x="410" y="186" class="sm">✔ Programmer खुद लिखता है</text><text x="410" y="210" class="sm">✔ अपनी ज़रूरत के हिसाब से</text><text x="410" y="234" class="sm">✔ Declare + define करना ज़रूरी</text><text x="410" y="262" class="sm rd mono">add() area() factorial()</text></g>
-</svg><figcaption>चित्र 2: Library functions और user-defined functions</figcaption></figure><h3>Library functions (built-in)</h3><p>पहले से लिखे हुए और <b>header files</b> में रखे होते हैं। हम <b>#include</b> से header जोड़ते हैं और function सीधे use करते हैं।</p><div class="tablewrap"><table><tr><th>Header file</th><th>Function</th><th>काम</th></tr><tr><td>stdio.h</td><td>printf(), scanf()</td><td>output / input</td></tr><tr><td>math.h</td><td>sqrt(x)</td><td>वर्गमूल: sqrt(25) = 5</td></tr><tr><td>math.h</td><td>pow(x, y)</td><td>x की power y: pow(2,3) = 8</td></tr><tr><td>math.h</td><td>ceil(x), floor(x)</td><td>ceil(4.2) = 5, floor(4.9) = 4</td></tr><tr><td>string.h</td><td>strlen(s)</td><td>string की लंबाई</td></tr><tr><td>string.h</td><td>strcpy(), strcmp(), strcat()</td><td>string copy, compare, जोड़ना</td></tr><tr><td>ctype.h</td><td>toupper(), isdigit()</td><td>toupper('a') से 'A' मिलता है</td></tr><tr><td>stdlib.h</td><td>abs(), rand(), exit()</td><td>absolute value, random number, program रोकना</td></tr></table></div><h3>User-defined functions</h3><p><b>Programmer</b> खुद program की ज़रूरत के हिसाब से लिखता है, जैसे add(), area(), factorial()।</p><div class="tablewrap"><table><tr><th>Library function</th><th>User-defined function</th></tr><tr><td>C में पहले से मौजूद</td><td>Programmer बनाता है</td></tr><tr><td>Header file चाहिए</td><td>Declaration और definition चाहिए</td></tr><tr><td>इसका code बदल नहीं सकते</td><td>जैसा चाहें बदल सकते हैं</td></tr></table></div></section>
-<section id="s4"><h2><span class="num">4</span><span class="hl">User-defined function के हिस्से</span></h2><p>User-defined function के <b>तीन हिस्से</b> होते हैं:</p><div class="tablewrap"><table><tr><th>हिस्सा</th><th>मतलब</th><th>उदाहरण</th></tr><tr><td><b>Declaration</b> (prototype)</td><td>Compiler को नाम, return type और parameters बताता है। अंत में <b>;</b> आता है</td><td>int add(int, int);</td></tr><tr><td><b>Definition</b></td><td>Function का असली code (header + body)। Header के बाद ; नहीं लगता।</td><td>int add(int a, int b){...}</td></tr><tr><td><b>Call</b></td><td>main() या किसी दूसरे function से function को use करना।</td><td>add(x, y);</td></tr></table></div><h3>सामान्य syntax</h3><pre class="code">return_type function_name(parameter_list)
+<span class="c-kw">int</span> main()
 {
-    <span class="cm">// statements (body)</span>
-    <span class="kw">return</span> value;
-}</pre><figure class="fig"><svg viewBox="0 0 720 350" role="img" aria-label="Function की बनावट">
-<text x="14" y="22" class="sm rd bd">Return type</text>
-<text x="130" y="22" class="sm rd bd">Function का नाम</text>
-<text x="262" y="22" class="sm rd bd">Parameters (formal)</text>
-<line x1="60" y1="27" x2="60" y2="42" stroke="#c62828" stroke-width="2" marker-end="url(#arrowr)"/>
-<line x1="165" y1="27" x2="165" y2="42" stroke="#c62828" stroke-width="2" marker-end="url(#arrowr)"/>
-<line x1="330" y1="27" x2="330" y2="42" stroke="#c62828" stroke-width="2" marker-end="url(#arrowr)"/>
-<rect x="30" y="46" width="62" height="40" rx="8" fill="#bbdefb" stroke="#1a2f7a" stroke-width="2.5"/>
-<rect x="30" y="46" width="62" height="40" rx="8" fill="#ffee58" style="opacity:0;animation:k1 10s infinite"/>
-<text x="61" y="74" text-anchor="middle" class="bd mono">int</text>
-<rect x="110" y="46" width="112" height="40" rx="8" fill="#c8e6c9" stroke="#1a2f7a" stroke-width="2.5"/>
-<rect x="110" y="46" width="112" height="40" rx="8" fill="#ffee58" style="opacity:0;animation:k2 10s infinite"/>
-<text x="166" y="74" text-anchor="middle" class="bd mono">add</text>
-<text x="236" y="76" class="lg bd mono">(</text>
-<rect x="256" y="46" width="170" height="40" rx="8" fill="#f8bbd0" stroke="#1a2f7a" stroke-width="2.5"/>
-<rect x="256" y="46" width="170" height="40" rx="8" fill="#ffee58" style="opacity:0;animation:k3 10s infinite"/>
-<text x="341" y="74" text-anchor="middle" class="bd mono">int a, int b</text>
-<text x="438" y="76" class="lg bd mono">)</text>
-<text x="470" y="72" class="sm rd">&#8592; Function header (; नहीं)</text>
-<rect x="30" y="110" width="420" height="150" rx="10" fill="#fffde7" stroke="#1a2f7a" stroke-width="2.5"/>
-<rect x="30" y="110" width="420" height="150" rx="10" fill="#ffee58" style="opacity:0;animation:k4 10s infinite"/>
-<text x="46" y="138" class="mono bd">{</text>
-<text x="70" y="170" class="mono">int sum = a + b;</text>
-<rect x="60" y="188" width="190" height="30" rx="6" fill="#ffee58" style="opacity:0;animation:k5 10s infinite"/>
-<text x="70" y="210" class="mono">return sum;</text>
-<text x="46" y="244" class="mono bd">}</text>
-<line x1="456" y1="165" x2="500" y2="165" stroke="#1b7a3a" stroke-width="2.5" marker-start="url(#arrowgl)"/>
-<text x="508" y="160" class="sm gn bd">Function body</text>
-<text x="508" y="180" class="sm gn">{ } के अंदर</text>
-<line x1="256" y1="204" x2="500" y2="228" stroke="#c62828" stroke-width="2.5" marker-start="url(#arrowrl)"/>
-<text x="508" y="226" class="sm rd bd">return statement</text>
-<text x="508" y="246" class="sm rd">value वापस भेजता है</text>
-<rect x="30" y="285" width="420" height="44" rx="8" fill="none" stroke="#6a1b9a" stroke-width="2.5" stroke-dasharray="8 5"/>
-<text x="46" y="314" class="mono" style="fill:#6a1b9a">int add(int, int);</text>
-<text x="466" y="306" class="sm" style="fill:#6a1b9a">&#8592; Prototype / Declaration</text>
-<text x="466" y="326" class="sm" style="fill:#6a1b9a">वही header + semicolon ;</text>
-</svg><figcaption>चित्र 3: Function की बनावट (highlight को चलते देखो)</figcaption></figure><h3>पूरा program</h3><pre class="code"><span class="pp">#include &lt;stdio.h&gt;</span>
-<span class="kw">int</span> add(<span class="kw">int</span> a, <span class="kw">int</span> b);        <span class="cm">// 1. Declaration (prototype)</span>
+    printf(<span class="c-st">"%.1f\n"</span>, sqrt(<span class="c-nu">25</span>));          <span class="c-cm">// square root</span>
+    printf(<span class="c-st">"%.0f\n"</span>, pow(<span class="c-nu">2</span>, <span class="c-nu">3</span>));         <span class="c-cm">// 2 raised to 3</span>
+    printf(<span class="c-st">"%d\n"</span>, (<span class="c-kw">int</span>)strlen(<span class="c-st">"India"</span>)); <span class="c-cm">// length of string</span>
+    printf(<span class="c-st">"%c\n"</span>, toupper('a'));        <span class="c-cm">// lower to upper</span>
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre>
+<div class="out" data-l="आउटपुट:">5.0
+8
+5
+A</div>
+<h3>(ब) User-defined फ़ंक्शन</h3>
+<p>ये वे फ़ंक्शन हैं जिन्हें प्रोग्रामर किसी विशेष समस्या को हल करने के लिए खुद लिखता है, जैसे <code>add()</code>, <code>max()</code>, <code>factorial()</code>। नाम, पैरामीटर और तर्क प्रोग्रामर तय करता है। इस अध्याय का अधिकांश भाग इन्हीं पर है।</p>
+<div class="note">याद रखें: <code>main()</code> भी एक फ़ंक्शन है, पर उसे प्रोग्रामर नहीं बल्कि ऑपरेटिंग सिस्टम कॉल करता है।</div>
+</section><section id="s3"><h2>3. फ़ंक्शन के भाग: Declaration, Definition और Call</h2>
+<figure class="diagram"><div class="ft"><span>एनिमेटेड चित्र 2: फ़ंक्शन परिभाषा के भाग</span><button type="button" class="pp">⏸ रोकें</button></div><svg viewBox="0 0 760 420" role="img" aria-label="एनिमेटेड चित्र 2: फ़ंक्शन परिभाषा के भाग" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="40" width="90" height="60" rx="10" fill="#ffe0b2" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="65.0" y="79" class="tc tb" text-anchor="middle" >int</text><path d="M65.0,104 L65.0,138" fill="none" stroke="#1b3a8a" stroke-width="2.6"  marker-end="url(#arrB)" filter="url(#wob)" /><text x="65.0" y="162" class="tb sm" text-anchor="middle" >रिटर्न टाइप</text><text x="65.0" y="184" class="sm" text-anchor="middle" >लौटने वाले मान का प्रकार</text><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.0010;0.2500" calcMode="discrete" dur="10s" repeatCount="indefinite"/><rect x="14" y="34" width="102" height="72" rx="12" fill="none" stroke="#e53935" stroke-width="4" filter="url(#wob)"/></g><rect x="125" y="40" width="110" height="60" rx="10" fill="#c8e6c9" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="180.0" y="79" class="tc tb" text-anchor="middle" >add</text><path d="M180.0,104 L180.0,138" fill="none" stroke="#1b3a8a" stroke-width="2.6"  marker-end="url(#arrB)" filter="url(#wob)" /><text x="180.0" y="162" class="tb sm" text-anchor="middle" >फ़ंक्शन का नाम</text><text x="180.0" y="184" class="sm" text-anchor="middle" >कॉल करने के लिए</text><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.2500;0.5000" calcMode="discrete" dur="10s" repeatCount="indefinite"/><rect x="119" y="34" width="122" height="72" rx="12" fill="none" stroke="#e53935" stroke-width="4" filter="url(#wob)"/></g><rect x="250" y="40" width="230" height="60" rx="10" fill="#bbdefb" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="365.0" y="79" class="tc tb" text-anchor="middle" >(int a, int b)</text><path d="M365.0,104 L365.0,138" fill="none" stroke="#1b3a8a" stroke-width="2.6"  marker-end="url(#arrB)" filter="url(#wob)" /><text x="365.0" y="162" class="tb sm" text-anchor="middle" >पैरामीटर</text><text x="365.0" y="184" class="sm" text-anchor="middle" >डेटा टाइप सहित इनपुट</text><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5000;0.7500" calcMode="discrete" dur="10s" repeatCount="indefinite"/><rect x="244" y="34" width="242" height="72" rx="12" fill="none" stroke="#e53935" stroke-width="4" filter="url(#wob)"/></g><rect x="495" y="40" width="130" height="60" rx="10" fill="#e1bee7" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="560.0" y="79" class="tc tb" text-anchor="middle" >{ body }</text><path d="M560.0,104 L560.0,138" fill="none" stroke="#1b3a8a" stroke-width="2.6"  marker-end="url(#arrB)" filter="url(#wob)" /><text x="560.0" y="162" class="tb sm" text-anchor="middle" >बॉडी</text><text x="560.0" y="184" class="sm" text-anchor="middle" >{ } के अंदर स्टेटमेंट</text><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.7500" calcMode="discrete" dur="10s" repeatCount="indefinite"/><rect x="489" y="34" width="142" height="72" rx="12" fill="none" stroke="#e53935" stroke-width="4" filter="url(#wob)"/></g><rect x="80" y="215" width="600" height="130" rx="10" fill="#fff9c4" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="100" y="243" class="tb sm" text-anchor="start" >बॉडी { }</text><text x="110" y="285" class="tc" text-anchor="start" >int s = a + b;</text><text x="330" y="285" class="sm tg" text-anchor="start" >◄ लोकल वेरिएबल</text><text x="110" y="325" class="tc" text-anchor="start" >return s;</text><text x="330" y="325" class="sm tr" text-anchor="start" >◄ return स्टेटमेंट</text><path d="M625,70 C710,70 725,200 682,285" fill="none" stroke="#1b3a8a" stroke-width="2.6" stroke-dasharray="7 6" marker-end="url(#arrB)" filter="url(#wob)" /><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.7500" calcMode="discrete" dur="10s" repeatCount="indefinite"/><rect x="76" y="211" width="608" height="138" rx="12" fill="none" stroke="#e53935" stroke-width="4" filter="url(#wob)"/></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.0010;0.2500" calcMode="discrete" dur="10s" repeatCount="indefinite"/><text x="380" y="392" class="cap" text-anchor="middle" >int = फ़ंक्शन एक पूर्णांक मान लौटाएगा।</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.2500;0.5000" calcMode="discrete" dur="10s" repeatCount="indefinite"/><text x="380" y="392" class="cap" text-anchor="middle" >add = फ़ंक्शन का नाम (identifier के नियम लागू)।</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5000;0.7500" calcMode="discrete" dur="10s" repeatCount="indefinite"/><text x="380" y="392" class="cap" text-anchor="middle" >(int a, int b) = दो पूर्णांक इनपुट (formal parameters)।</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.7500" calcMode="discrete" dur="10s" repeatCount="indefinite"/><text x="380" y="392" class="cap" text-anchor="middle" >{ ... } = बॉडी: असली काम करने वाले स्टेटमेंट।</text></g></svg><figcaption><b>व्याख्या:</b> फ़ंक्शन के हेडर में तीन भाग होते हैं: <b>रिटर्न टाइप</b> (कैसा मान वापस आएगा), <b>फ़ंक्शन का नाम</b> (जिससे उसे कॉल करते हैं) और <b>पैरामीटर सूची</b> (डेटा टाइप सहित इनपुट)। इसके बाद { } में <b>बॉडी</b> आती है। बॉडी में लोकल वेरिएबल परिणाम रख सकता है और <b>return</b> स्टेटमेंट उसे कॉल करने वाले को लौटा देता है। लाल घेरा एक-एक भाग पर घूमता है।</figcaption></figure>
+<p>यूज़र-डिफ़ाइंड फ़ंक्शन उपयोग करने के लिए तीन चीज़ें चाहिए:</p>
+<pre class="code"><span class="c-cm">// Declaration (prototype) - ends with semicolon</span>
+return_type function_name(type param1, type param2);
 
-<span class="kw">int</span> main()
+<span class="c-cm">// Definition</span>
+return_type function_name(type param1, type param2)
 {
-    <span class="kw">int</span> x = <span class="nm">5</span>, y = <span class="nm">3</span>, result;
-    result = add(x, y);       <span class="cm">// 3. Function call (बुलाना)</span>
-    <span class="kw">printf</span>(<span class="st">"Sum = %d"</span>, result);
-    <span class="kw">return</span> <span class="nm">0</span>;
+    <span class="c-cm">// body: statements</span>
+    <span class="c-kw">return</span> value;      <span class="c-cm">// if return_type is not void</span>
 }
 
-<span class="kw">int</span> add(<span class="kw">int</span> a, <span class="kw">int</span> b)         <span class="cm">// 2. Definition (परिभाषा)</span>
+<span class="c-cm">// Call</span>
+variable = function_name(arg1, arg2);</pre>
+<div class="tablewrap"><table><tr><th>भाग</th><th>क्या करता है</th><th>अंत में ;</th></tr>
+<tr><td><b>Declaration (Prototype)</b></td><td>फ़ंक्शन के प्रयोग से <b>पहले</b> कंपाइलर को नाम, return type और पैरामीटर के प्रकार बताता है</td><td>हाँ</td></tr>
+<tr><td><b>Definition</b></td><td>फ़ंक्शन की असली बॉडी (कोड) होती है</td><td>नहीं (हेडर के बाद ; नहीं)</td></tr>
+<tr><td><b>Call</b></td><td>फ़ंक्शन को चलाने के लिए कहता है</td><td>हाँ (यह एक स्टेटमेंट है)</td></tr></table></div>
+<h3>फ़ंक्शन लिखने के नियम</h3>
+<ul>
+<li>फ़ंक्शन का नाम identifier के नियमों से बनता है: अक्षर, अंक और underscore; अंक से शुरू नहीं हो सकता, keyword नहीं हो सकता, और C में बड़े-छोटे अक्षर अलग माने जाते हैं।</li>
+<li><b>Prototype</b> में पैरामीटर के नाम लिखना ज़रूरी नहीं: <code>int add(int, int);</code> सही है।</li>
+<li>यदि फ़ंक्शन <code>main()</code> के <b>ऊपर परिभाषित</b> है तो अलग prototype अनिवार्य नहीं (पर लिखना अच्छी आदत है)।</li>
+<li>कॉल में आर्गुमेंट की संख्या, क्रम और प्रकार परिभाषा के पैरामीटर से मेल खाने चाहिए।</li>
+<li>C में एक फ़ंक्शन के <b>अंदर दूसरा फ़ंक्शन परिभाषित नहीं</b> किया जा सकता।</li>
+</ul>
+<h3>पूरा उदाहरण: दो संख्याओं का जोड़</h3>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> add(<span class="c-kw">int</span> a, <span class="c-kw">int</span> b);       <span class="c-cm">// 1. declaration (prototype)</span>
+
+<span class="c-kw">int</span> main()
 {
-    <span class="kw">int</span> sum = a + b;
-    <span class="kw">return</span> sum;
-}</pre><div class="output"><span>Output:</span>Sum = 8</div><figure class="fig"><svg viewBox="0 0 720 350" role="img" aria-label="Function call में control का flow">
-<rect x="20" y="30" width="250" height="260" rx="12" fill="#e3f2fd" stroke="#1a2f7a" stroke-width="3"/>
-<text x="145" y="58" text-anchor="middle" class="bd rd mono">main()</text>
-<text x="38" y="100" class="sm mono">int x=5, y=3, result;</text>
-<rect x="32" y="116" width="226" height="30" rx="6" fill="#fff59d"/>
-<text x="38" y="138" class="sm mono">result = add(x, y);</text>
-<text x="38" y="240" class="sm mono">printf("%d", result);</text>
-<text x="38" y="266" class="sm gn">return के बाद अगला statement चलता है</text>
-<rect x="440" y="30" width="260" height="260" rx="12" fill="#e8f5e9" stroke="#1b7a3a" stroke-width="3"/>
-<text x="570" y="58" text-anchor="middle" class="bd rd mono">add(int a, int b)</text>
-<text x="458" y="125" class="sm mono">int sum = a + b;</text>
-<text x="458" y="180" class="sm mono">return sum;</text>
-<path d="M 262 132 L 440 105 L 575 130 L 575 176 L 440 220 L 262 236" fill="none" stroke="#c62828" stroke-width="2" stroke-dasharray="6 5"/>
-<circle r="10" fill="#c62828" stroke="#fff" stroke-width="2">
-<animateMotion dur="8s" repeatCount="indefinite" path="M 262 132 L 440 105 L 575 130 L 575 176 L 440 220 L 262 236"/></circle>
-<text x="330" y="100" class="sm rd bd" transform="rotate(-8 330 100)">CALL a=5, b=3</text>
-<text x="330" y="248" class="sm gn bd" transform="rotate(7 330 270)">RETURN 8</text>
-<g style="opacity:0;animation:k6 8s infinite"><text x="360" y="328" text-anchor="middle" class="bd rd">1. add(x, y) call हुआ, control add() में गया</text></g>
-<g style="opacity:0;animation:k7 8s infinite"><text x="360" y="328" text-anchor="middle" class="bd rd">2. मान 5 और 3, a और b में copy हुए</text></g>
-<g style="opacity:0;animation:k8 8s infinite"><text x="360" y="328" text-anchor="middle" class="bd rd">3. Body चली: sum = 5 + 3 = 8</text></g>
-<g style="opacity:0;animation:k9 8s infinite"><text x="360" y="328" text-anchor="middle" class="bd rd">4. return sum, 8 को result में वापस भेजता है</text></g>
-</svg><figcaption>चित्र 4: Function call में control कैसे चलता है</figcaption></figure><div class="note gr"><span class="tag">Prototype क्यों?</span>Compiler ऊपर से नीचे पढ़ता है। अगर main() में add() को call किया गया है और add() बाद में define हुआ है, तो compiler को पहले से add() के बारे में पता होना चाहिए। यही prototype का काम है। अगर function main() के <i>ऊपर</i> define हो तो prototype ज़रूरी नहीं।</div></section>
-<section id="s5"><h2><span class="num">5</span><span class="hl">Actual और Formal parameters</span></h2><div class="tablewrap"><table><tr><th>Actual parameters (arguments)</th><th>Formal parameters</th></tr><tr><td>Function <b>call</b> में लिखे जाते हैं</td><td>Function <b>definition</b> में लिखे जाते हैं</td></tr><tr><td>असली values रखते हैं: x, y या 5, 3 भी</td><td>values की copy पाते हैं: a, b</td></tr><tr><td>constants, variables या expressions हो सकते हैं</td><td>data type के साथ variables ही होने चाहिए</td></tr></table></div><p><span class="mono">add(x, y)</span> में <b>x, y</b> actual parameters हैं। <span class="mono">int add(int a, int b)</span> में <b>a, b</b> formal parameters हैं।</p><div class="note p"><span class="tag">नियम</span>Actual parameters की संख्या, क्रम और data type, formal parameters से मिलने चाहिए।</div></section>
-<section id="s6"><h2><span class="num">6</span><span class="hl">return statement</span></h2><ul class="pts"><li><b>return</b> एक value को call करने वाले function में वापस भेजता है और function को <b>तुरंत खत्म</b> कर देता है।</li><li>एक function सिर्फ़ <b>एक value</b> return कर सकता है।</li><li>Return की गई value, function के <b>return type</b> (int, float, char ...) से मेल खानी चाहिए।</li><li>अगर function कुछ return नहीं करता तो return type <b>void</b> होता है और हम सिर्फ़ <span class="mono">return;</span> लिख सकते हैं या कुछ नहीं।</li><li><b>return</b> के बाद लिखे statements कभी नहीं चलते।</li><li><b>main()</b>, operating system को 0 return करता है, मतलब "program सफलतापूर्वक खत्म हुआ"।</li></ul></section>
-<section id="s7"><h2><span class="num">7</span><span class="hl">Functions की 4 categories</span></h2><p><b>Arguments</b> (input) और <b>return value</b> (output) के आधार पर 4 categories होती हैं:</p><div class="tablewrap"><table><tr><th>Category</th><th>Arguments</th><th>Return value</th><th>Example prototype</th></tr><tr><td>1</td><td>नहीं</td><td>नहीं</td><td>void greet(void);</td></tr><tr><td>2</td><td>हाँ</td><td>नहीं</td><td>void square(int n);</td></tr><tr><td>3</td><td>नहीं</td><td>हाँ</td><td>int getNumber(void);</td></tr><tr><td>4</td><td>हाँ</td><td>हाँ</td><td>int add(int a, int b);</td></tr></table></div><h3>1. बिना arguments, बिना return value</h3><pre class="code"><span class="kw">void</span> greet(<span class="kw">void</span>)
-{
-    <span class="kw">printf</span>(<span class="st">"Hello, Student!"</span>);
+    <span class="c-kw">int</span> x = <span class="c-nu">5</span>, y = <span class="c-nu">3</span>, r;
+    r = add(x, y);           <span class="c-cm">// 2. function call</span>
+    printf(<span class="c-st">"Sum = %d"</span>, r);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
 }
-<span class="cm">// call: greet();</span></pre><div class="output"><span>Output:</span>Hello, Student!</div><h3>2. Arguments के साथ, बिना return value</h3><pre class="code"><span class="kw">void</span> square(<span class="kw">int</span> n)
+
+<span class="c-kw">int</span> add(<span class="c-kw">int</span> a, <span class="c-kw">int</span> b)        <span class="c-cm">// 3. function definition</span>
 {
-    <span class="kw">printf</span>(<span class="st">"Square = %d"</span>, n * n);
+    <span class="c-kw">int</span> s = a + b;
+    <span class="c-kw">return</span> s;
+}</pre>
+<div class="out" data-l="आउटपुट:">Sum = 8</div>
+<h3>पंक्ति-दर-पंक्ति व्याख्या</h3>
+<ol>
+<li><code>int add(int a, int b);</code> prototype: add दो int लेता है और एक int लौटाता है।</li>
+<li><code>r = add(x, y);</code> आर्गुमेंट 5 और 3 के साथ फ़ंक्शन कॉल हुआ। लौटा हुआ मान 8, <code>r</code> में रखा गया।</li>
+<li><code>int add(int a, int b) { ... }</code> परिभाषा: <code>a</code> को 5 और <code>b</code> को 3 मिला।</li>
+<li><code>return s;</code> 8 को कॉल वाली जगह लौटा देता है।</li>
+</ol>
+<div class="warn"><span class="lbl">सावधान:</span> <b>definition</b> के हेडर के बाद semicolon न लगाएँ: <code>int add(int a, int b); { ... }</code> गलत है।</div>
+</section><section id="s4"><h2>4. फ़ंक्शन कॉल कैसे काम करता है (चरण-दर-चरण)</h2>
+<figure class="diagram"><div class="ft"><span>एनिमेटेड चित्र 1: फ़ंक्शन कॉल कैसे काम करता है</span><button type="button" class="pp">⏸ रोकें</button></div><svg viewBox="0 0 760 420" role="img" aria-label="एनिमेटेड चित्र 1: फ़ंक्शन कॉल कैसे काम करता है" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="30" width="280" height="300" rx="10" fill="#e8f1ff" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="160" y="62" class="tb" text-anchor="middle" >main()</text><rect x="30" y="112" width="260" height="34" rx="6" fill="#fff176" opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.0013;0.2250" calcMode="discrete" dur="8s" repeatCount="indefinite"/></rect><text x="40" y="100" class="tc" text-anchor="start" >int x = 5, y = 3, r;</text><text x="40" y="136" class="tc" text-anchor="start" >r = add(x, y);</text><text x="40" y="176" class="tc" text-anchor="start" >printf("%d", r);</text><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.7000" calcMode="discrete" dur="8s" repeatCount="indefinite"/><text x="205" y="136" class="tc tr" text-anchor="start" >→ r = 8</text></g><rect x="460" y="60" width="280" height="210" rx="10" fill="#fff3e0" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="600" y="92" class="tc tb" text-anchor="middle" >int add(int a, int b)</text><rect x="470" y="104" width="260" height="140" rx="6" fill="#fff176" opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.2500;0.4750" calcMode="discrete" dur="8s" repeatCount="indefinite"/></rect><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.2500" calcMode="discrete" dur="8s" repeatCount="indefinite"/><text x="480" y="135" class="tc tg" text-anchor="start" >a = 5 , b = 3</text></g><text x="480" y="172" class="tc" text-anchor="start" >int s = a + b;</text><text x="480" y="210" class="tc" text-anchor="start" >return s;</text><text x="480" y="240" class="tc sm" text-anchor="start" >{ s = 8 }</text><path d="M302,135 L458,135" fill="none" stroke="#1b3a8a" stroke-width="2.6"  marker-end="url(#arrB)" filter="url(#wob)" /><text x="380" y="120" class="sm tb" text-anchor="middle" >कॉल + आर्गुमेंट (5, 3)</text><path d="M458,200 L302,200" fill="none" stroke="#c62828" stroke-width="2.6"  marker-end="url(#arrR)" filter="url(#wob)" /><text x="380" y="228" class="sm tr" text-anchor="middle" >रिटर्न मान 8</text><circle r="9" fill="#1976d2" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M302,135 L458,135" keyPoints="0;1;1" keyTimes="0;0.2;1" calcMode="linear"/><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.0013;0.2375" calcMode="discrete" dur="8s" repeatCount="indefinite"/></circle><circle r="9" fill="#e53935" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M458,200 L302,200" keyPoints="0;0;1;1" keyTimes="0;0.475;0.675;1" calcMode="linear"/><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.4750;0.7125" calcMode="discrete" dur="8s" repeatCount="indefinite"/></circle><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.7500" calcMode="discrete" dur="8s" repeatCount="indefinite"/><rect x="40" y="250" width="140" height="50" rx="10" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2.5" filter="url(#wob)" /><text x="110" y="283" class="tc tb" text-anchor="middle" >Output: 8</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.0013;0.2500" calcMode="discrete" dur="8s" repeatCount="indefinite"/><text x="380" y="385" class="cap" text-anchor="middle" >चरण 1: main() में add(x, y) की कॉल आती है।</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.2500;0.4750" calcMode="discrete" dur="8s" repeatCount="indefinite"/><text x="380" y="385" class="cap" text-anchor="middle" >चरण 2: कंट्रोल add() में जाता है; a = 5, b = 3।</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.4750;0.7000" calcMode="discrete" dur="8s" repeatCount="indefinite"/><text x="380" y="385" class="cap" text-anchor="middle" >चरण 3: add() पूरा होकर 8 लौटाता है।</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.7000" calcMode="discrete" dur="8s" repeatCount="indefinite"/><text x="380" y="385" class="cap" text-anchor="middle" >चरण 4: r = 8, main() आगे चलकर 8 प्रिंट करता है।</text></g></svg><figcaption><b>व्याख्या:</b> नीला बिंदु <b>फ़ंक्शन कॉल</b> है जो आर्गुमेंट 5 और 3 को <code>main()</code> से <code>add()</code> में ले जाता है। <code>add()</code> के अंदर ये मान फ़ॉर्मल पैरामीटर <code>a</code> और <code>b</code> में आ जाते हैं और बॉडी चलती है। लाल बिंदु <b>return</b> है: मान 8 वापस जाकर कॉल <code>add(x, y)</code> की जगह ले लेता है, इसलिए <code>r</code> = 8 हो जाता है। किसी भी चरण को ध्यान से देखने के लिए “रोकें” दबाइए।</figcaption></figure>
+<ol>
+<li>कॉल करने वाले फ़ंक्शन में <b>function call</b> स्टेटमेंट तक प्रोग्राम पहुँचता है।</li>
+<li><b>कंट्रोल</b> बुलाए गए फ़ंक्शन में <b>चला जाता है</b>। आर्गुमेंट के मान formal parameters में कॉपी हो जाते हैं।</li>
+<li><b>फ़ंक्शन की बॉडी</b> के स्टेटमेंट एक-एक करके चलते हैं।</li>
+<li><code>return</code> स्टेटमेंट (या बंद होने वाला ब्रेस) आने पर कंट्रोल <b>वापस</b> कॉल करने वाले के पास जाता है। लौटा हुआ मान कॉल की जगह ले लेता है।</li>
+<li>कॉल करने वाला फ़ंक्शन कॉल के <b>अगले स्टेटमेंट</b> से आगे चलता है।</li>
+</ol>
+<div class="tip"><span class="lbl">सुझाव:</span> जब फ़ंक्शन कोई मान लौटाता है तो उसकी कॉल एक <b>expression</b> होती है। इसलिए <code>r = add(x, y);</code>, <code>printf("%d", add(2, 3));</code> और <code>add(add(1, 2), 3)</code> सब सही हैं।</div>
+</section><section id="s5"><h2>5. return स्टेटमेंट और रिटर्न टाइप</h2>
+<div class="def"><span class="lbl">return:</span> <code>return</code> स्टेटमेंट फ़ंक्शन का निष्पादन तुरंत रोक देता है और कंट्रोल (तथा चाहें तो एक मान) कॉल करने वाले फ़ंक्शन को लौटा देता है।</div>
+<div class="tablewrap"><table><tr><th>Return type</th><th>अर्थ</th><th>उदाहरण</th></tr>
+<tr><td><code>int</code></td><td>पूर्ण संख्या लौटाता है</td><td><code>int add(int a, int b)</code></td></tr>
+<tr><td><code>float</code> / <code>double</code></td><td>दशमलव संख्या लौटाता है</td><td><code>float area(float r)</code></td></tr>
+<tr><td><code>char</code></td><td>कैरेक्टर लौटाता है</td><td><code>char grade(int m)</code></td></tr>
+<tr><td><code>void</code></td><td>कुछ नहीं लौटाता</td><td><code>void greet()</code></td></tr></table></div>
+<h3>महत्वपूर्ण बातें</h3>
+<ul>
+<li><code>return</code> द्वारा फ़ंक्शन <b>केवल एक मान</b> लौटा सकता है।</li>
+<li><code>return</code> के <b>बाद</b> लिखे स्टेटमेंट कभी नहीं चलते।</li>
+<li><code>void</code> फ़ंक्शन जल्दी बाहर निकलने के लिए <code>return;</code> (बिना मान) लिख सकता है, या return बिल्कुल न भी लिखे।</li>
+<li>लौटाया गया मान return type के अनुसार होना चाहिए; नहीं तो वह उसी प्रकार में बदल जाता है (जैसे <code>int</code> फ़ंक्शन से 3.9 लौटाने पर 3 मिलता है)।</li>
+<li>फ़ंक्शन में <b>एक से अधिक</b> <code>return</code> हो सकते हैं (जैसे if-else में), पर एक कॉल में उनमें से केवल एक चलता है।</li>
+<li><code>main()</code> में <code>return 0;</code> ऑपरेटिंग सिस्टम को बताता है कि प्रोग्राम सफलतापूर्वक समाप्त हुआ।</li>
+</ul>
+</section><section id="s6"><h2>6. आर्गुमेंट और पैरामीटर (Actual और Formal)</h2>
+<div class="tablewrap"><table><tr><th>Actual parameters (आर्गुमेंट)</th><th>Formal parameters</th></tr>
+<tr><td>फ़ंक्शन की <b>कॉल</b> में लिखे जाते हैं</td><td>फ़ंक्शन के <b>हेडर (definition)</b> में लिखे जाते हैं</td></tr>
+<tr><td>अचर, वेरिएबल, expression या अन्य फ़ंक्शन कॉल हो सकते हैं</td><td>डेटा टाइप सहित वेरिएबल होने चाहिए</td></tr>
+<tr><td>मान देते हैं</td><td>मान ग्रहण करते हैं</td></tr>
+<tr><td><code>add(x, y)</code>, <code>add(2, 3)</code>, <code>add(x+1, y*2)</code></td><td><code>int add(int a, int b)</code></td></tr>
+<tr><td>कॉल करने वाले फ़ंक्शन में होते हैं</td><td>केवल बुलाए गए फ़ंक्शन के अंदर होते हैं</td></tr></table></div>
+<div class="def"><span class="lbl">मिलान का नियम:</span> आर्गुमेंट की <b>संख्या</b>, <b>क्रम</b> और <b>डेटा टाइप</b> formal parameters से मेल खाने चाहिए।</div>
+<p>उदाहरण: <code>int power(int base, int exp)</code> के लिए <code>power(2, 5)</code> कॉल में base = 2, exp = 5 होता है। <code>power(5, 2)</code> में base = 5, exp = 2 होता है, जिसका उत्तर अलग है। <b>क्रम का महत्व है।</b></p>
+</section><section id="s7"><h2>7. फ़ंक्शन की चार श्रेणियाँ</h2>
+<figure class="diagram"><div class="ft"><span>एनिमेटेड चित्र 5: फ़ंक्शन की चार श्रेणियाँ</span><button type="button" class="pp">⏸ रोकें</button></div><svg viewBox="0 0 760 425" role="img" aria-label="एनिमेटेड चित्र 5: फ़ंक्शन की चार श्रेणियाँ" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="15" width="350" height="190" rx="10" fill="#e3f2fd" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="195" y="47" class="tb" text-anchor="middle" >1. आर्गुमेंट नहीं, रिटर्न नहीं</text><text x="195" y="81" class="tc" text-anchor="middle" >void greet(void)</text><rect x="150" y="115" width="90" height="50" rx="10" fill="#fff" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="195" y="147" class="tc" text-anchor="middle" >fun()</text><path d="M60,140 L148,140" stroke="#9e9e9e" stroke-width="2" stroke-dasharray="4 6" fill="none"/><text x="104" y="133" class="tb tr" text-anchor="middle" >✗</text><path d="M242,140 L330,140" stroke="#9e9e9e" stroke-width="2" stroke-dasharray="4 6" fill="none"/><text x="286" y="133" class="tb tr" text-anchor="middle" >✗</text><text x="195" y="190" class="sm" text-anchor="middle" >केवल काम करता है (जैसे प्रिंट)</text><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.0010;0.2500" calcMode="discrete" dur="10s" repeatCount="indefinite"/><rect x="15" y="10" width="360" height="200" rx="14" fill="none" stroke="#e53935" stroke-width="4" filter="url(#wob)"/></g><rect x="390" y="15" width="350" height="190" rx="10" fill="#e8f5e9" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="565" y="47" class="tb" text-anchor="middle" >2. आर्गुमेंट है, रिटर्न नहीं</text><text x="565" y="81" class="tc" text-anchor="middle" >void square(int n)</text><rect x="520" y="115" width="90" height="50" rx="10" fill="#fff" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="565" y="147" class="tc" text-anchor="middle" >fun()</text><path d="M430,140 L518,140" fill="none" stroke="#1b3a8a" stroke-width="2.6"  marker-end="url(#arrB)" filter="url(#wob)" /><text x="430" y="127" class="sm tg" text-anchor="start" >आर्गुमेंट</text><path d="M612,140 L700,140" stroke="#9e9e9e" stroke-width="2" stroke-dasharray="4 6" fill="none"/><text x="656" y="133" class="tb tr" text-anchor="middle" >✗</text><text x="565" y="190" class="sm" text-anchor="middle" >इनपुट लेता है, अंदर ही प्रिंट करता है</text><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.2510;0.5000" calcMode="discrete" dur="10s" repeatCount="indefinite"/><rect x="385" y="10" width="360" height="200" rx="14" fill="none" stroke="#e53935" stroke-width="4" filter="url(#wob)"/></g><rect x="20" y="225" width="350" height="190" rx="10" fill="#fff3e0" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="195" y="257" class="tb" text-anchor="middle" >3. आर्गुमेंट नहीं, रिटर्न है</text><text x="195" y="291" class="tc" text-anchor="middle" >int readNumber(void)</text><rect x="150" y="325" width="90" height="50" rx="10" fill="#fff" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="195" y="357" class="tc" text-anchor="middle" >fun()</text><path d="M60,350 L148,350" stroke="#9e9e9e" stroke-width="2" stroke-dasharray="4 6" fill="none"/><text x="104" y="343" class="tb tr" text-anchor="middle" >✗</text><path d="M242,350 L330,350" fill="none" stroke="#c62828" stroke-width="2.6"  marker-end="url(#arrR)" filter="url(#wob)" /><text x="330" y="337" class="sm tr" text-anchor="end" >रिटर्न</text><text x="195" y="400" class="sm" text-anchor="middle" >मान बनाकर/पढ़कर लौटाता है</text><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5010;0.7500" calcMode="discrete" dur="10s" repeatCount="indefinite"/><rect x="15" y="220" width="360" height="200" rx="14" fill="none" stroke="#e53935" stroke-width="4" filter="url(#wob)"/></g><rect x="390" y="225" width="350" height="190" rx="10" fill="#f3e5f5" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="565" y="257" class="tb" text-anchor="middle" >4. आर्गुमेंट भी, रिटर्न भी</text><text x="565" y="291" class="tc" text-anchor="middle" >int max(int a, int b)</text><rect x="520" y="325" width="90" height="50" rx="10" fill="#fff" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="565" y="357" class="tc" text-anchor="middle" >fun()</text><path d="M430,350 L518,350" fill="none" stroke="#1b3a8a" stroke-width="2.6"  marker-end="url(#arrB)" filter="url(#wob)" /><text x="430" y="337" class="sm tg" text-anchor="start" >आर्गुमेंट</text><path d="M612,350 L700,350" fill="none" stroke="#c62828" stroke-width="2.6"  marker-end="url(#arrR)" filter="url(#wob)" /><text x="700" y="337" class="sm tr" text-anchor="end" >रिटर्न</text><text x="565" y="400" class="sm" text-anchor="middle" >इनपुट लेता है, परिणाम लौटाता है</text><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.7510" calcMode="discrete" dur="10s" repeatCount="indefinite"/><rect x="385" y="220" width="360" height="200" rx="14" fill="none" stroke="#e53935" stroke-width="4" filter="url(#wob)"/></g></svg><figcaption><b>व्याख्या:</b> फ़ंक्शन इनपुट (आर्गुमेंट) ले भी सकता है और नहीं भी, तथा आउटपुट (return value) दे भी सकता है और नहीं भी। इससे चार संयोजन बनते हैं। लाल घेरा बारी-बारी से हर श्रेणी को दिखाता है; ✗ का अर्थ है कि वह तीर मौजूद नहीं है।</figcaption></figure>
+<h3>श्रेणी 1: आर्गुमेंट नहीं, रिटर्न मान नहीं</h3>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">void</span> greet()                  <span class="c-cm">// no argument, no return value</span>
+{
+    printf(<span class="c-st">"Hello, Student!"</span>);
 }
-<span class="cm">// call: square(4);</span></pre><div class="output"><span>Output:</span>Square = 16</div><h3>3. बिना arguments, return value के साथ</h3><pre class="code"><span class="kw">int</span> getNumber(<span class="kw">void</span>)
+
+<span class="c-kw">int</span> main()
 {
-    <span class="kw">int</span> n;
-    <span class="kw">scanf</span>(<span class="st">"%d"</span>, &amp;n);
-    <span class="kw">return</span> n;
+    greet();
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre>
+<div class="out" data-l="आउटपुट:">Hello, Student!</div>
+<h3>श्रेणी 2: आर्गुमेंट है, रिटर्न मान नहीं</h3>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">void</span> square(<span class="c-kw">int</span> n)            <span class="c-cm">// argument, no return value</span>
+{
+    printf(<span class="c-st">"Square = %d"</span>, n * n);
 }
-<span class="cm">// call: x = getNumber();</span></pre><h3>4. Arguments और return value दोनों (सबसे अच्छा और ज़्यादा use होने वाला)</h3><pre class="code"><span class="kw">float</span> area(<span class="kw">float</span> r)
+
+<span class="c-kw">int</span> main()
 {
-    <span class="kw">return</span> <span class="nm">3.14</span> * r * r;
+    square(<span class="c-nu">4</span>);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre>
+<div class="out" data-l="आउटपुट:">Square = 16</div>
+<h3>श्रेणी 3: आर्गुमेंट नहीं, रिटर्न मान है</h3>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> readNumber()              <span class="c-cm">// no argument, returns a value</span>
+{
+    <span class="c-kw">int</span> n;
+    printf(<span class="c-st">"Enter a number: "</span>);
+    scanf(<span class="c-st">"%d"</span>, &amp;n);
+    <span class="c-kw">return</span> n;
 }
-<span class="cm">// call: a = area(2.0);</span></pre><div class="output"><span>Output:</span>12.56</div><div class="note bl"><span class="tag">Tip</span>Category 4 सबसे अच्छी है क्योंकि function सिर्फ़ calculation करता है और उत्तर का क्या करना है यह main() तय करता है।</div></section>
-<section id="s8"><h2><span class="num">8</span><span class="hl">Call by value और Call by reference</span></h2><p>Function को values भेजने के दो तरीके हैं।</p><h3>(a) Call by value</h3><p>Actual value की <b>copy</b> भेजी जाती है। Formal parameters में किए गए बदलाव original variables पर <b>असर नहीं</b> डालते। C में यही default तरीका है।</p><pre class="code"><span class="pp">#include &lt;stdio.h&gt;</span>
-<span class="kw">void</span> swap(<span class="kw">int</span> a, <span class="kw">int</span> b)      <span class="cm">// a, b सिर्फ़ COPY हैं</span>
+
+<span class="c-kw">int</span> main()
 {
-    <span class="kw">int</span> t = a;
+    <span class="c-kw">int</span> a = readNumber();
+    printf(<span class="c-st">"You entered %d"</span>, a);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre>
+<div class="out" data-l="आउटपुट:">Enter a number: 7
+You entered 7</div>
+<h3>श्रेणी 4: आर्गुमेंट भी है, रिटर्न मान भी है</h3>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> max(<span class="c-kw">int</span> a, <span class="c-kw">int</span> b)         <span class="c-cm">// arguments and return value</span>
+{
+    <span class="c-kw">if</span> (a &gt; b)
+        <span class="c-kw">return</span> a;
+    <span class="c-kw">else</span>
+        <span class="c-kw">return</span> b;
+}
+
+<span class="c-kw">int</span> main()
+{
+    printf(<span class="c-st">"Bigger = %d"</span>, max(<span class="c-nu">4</span>, <span class="c-nu">9</span>));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre>
+<div class="out" data-l="आउटपुट:">Bigger = 9</div>
+<div class="note">श्रेणी 4 सबसे उपयोगी है क्योंकि इसमें <b>गणना</b> (फ़ंक्शन के अंदर) और <b>प्रिंटिंग</b> (कॉल करने वाले में) अलग रहती हैं, इसलिए परिणाम कहीं भी दोबारा इस्तेमाल हो सकता है।</div>
+</section><section id="s8"><h2>8. आर्गुमेंट भेजने की विधियाँ: Call by Value और Call by Reference</h2>
+<figure class="diagram"><div class="ft"><span>एनिमेटेड चित्र 3: Call by Value बनाम Call by Reference</span><button type="button" class="pp">⏸ रोकें</button></div><svg viewBox="0 0 760 470" role="img" aria-label="एनिमेटेड चित्र 3: Call by Value बनाम Call by Reference" xmlns="http://www.w3.org/2000/svg"><text x="175" y="30" class="tb" text-anchor="middle" >Call by Value</text><rect x="10" y="50" width="330" height="125" rx="10" fill="#e8f1ff" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="22" y="75" class="tb sm" text-anchor="start" >main()</text><rect x="30" y="88" width="110" height="58" rx="10" fill="#fff" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="38" y="106" class="sm tb" text-anchor="start" >x</text><text x="150" y="122" class="sm" text-anchor="start" >addr: 1000</text><text x="85" y="135" class="big" text-anchor="middle" >10</text><rect x="10" y="245" width="330" height="150" rx="10" fill="#fff3e0" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="22" y="270" class="tb sm" text-anchor="start" >fun()</text><rect x="30" y="285" width="110" height="58" rx="10" fill="#fff" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="38" y="303" class="sm tb" text-anchor="start" >a</text><text x="150" y="322" class="sm" text-anchor="start" >addr: 2000</text><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.1667;0.5000" calcMode="discrete" dur="9s" repeatCount="indefinite"/><text x="85" y="333" class="big" text-anchor="middle" >10</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.5000" calcMode="discrete" dur="9s" repeatCount="indefinite"/><text x="85" y="333" class="big tr" text-anchor="middle" >20</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.1667" calcMode="discrete" dur="9s" repeatCount="indefinite"/><path d="M140,118 C225,118 225,312 142,312" fill="none" stroke="#c62828" stroke-width="2.6"  marker-end="url(#arrR)" filter="url(#wob)" /></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.1667" calcMode="discrete" dur="9s" repeatCount="indefinite"/><text x="238" y="220" class="sm tr" text-anchor="start" >10 की कॉपी</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.5000" calcMode="discrete" dur="9s" repeatCount="indefinite"/><text x="205" y="380" class="tc tr" text-anchor="middle" >a = 20;</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.5000" calcMode="discrete" dur="9s" repeatCount="indefinite"/><text x="175" y="440" class="cap tr" text-anchor="middle" >x अब भी 10 ✘ (केवल कॉपी बदली)</text></g><text x="575" y="30" class="tb" text-anchor="middle" >Call by Reference</text><rect x="410" y="50" width="330" height="125" rx="10" fill="#e8f1ff" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="422" y="75" class="tb sm" text-anchor="start" >main()</text><rect x="430" y="88" width="110" height="58" rx="10" fill="#fff" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="438" y="106" class="sm tb" text-anchor="start" >x</text><text x="550" y="122" class="sm" text-anchor="start" >addr: 1000</text><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.0011;0.5000" calcMode="discrete" dur="9s" repeatCount="indefinite"/><text x="485" y="135" class="big" text-anchor="middle" >10</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.5000" calcMode="discrete" dur="9s" repeatCount="indefinite"/><text x="485" y="135" class="big tr" text-anchor="middle" >20</text></g><rect x="410" y="245" width="330" height="150" rx="10" fill="#fff3e0" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="422" y="270" class="tb sm" text-anchor="start" >fun()</text><rect x="430" y="285" width="110" height="58" rx="10" fill="#fff" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="438" y="303" class="sm tb" text-anchor="start" >p</text><text x="550" y="322" class="sm" text-anchor="start" >addr: 2000</text><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.1667" calcMode="discrete" dur="9s" repeatCount="indefinite"/><text x="485" y="333" class="big tg" text-anchor="middle" >1000</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.1667" calcMode="discrete" dur="9s" repeatCount="indefinite"/><path d="M485,283 L485,150" fill="none" stroke="#2e7d32" stroke-width="2.6"  marker-end="url(#arrG)" filter="url(#wob)" /></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.1667" calcMode="discrete" dur="9s" repeatCount="indefinite"/><text x="500" y="215" class="sm tg" text-anchor="start" >x की ओर संकेत</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.5000" calcMode="discrete" dur="9s" repeatCount="indefinite"/><text x="605" y="380" class="tc tr" text-anchor="middle" >*p = 20;</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.5000" calcMode="discrete" dur="9s" repeatCount="indefinite"/><text x="575" y="440" class="cap tg" text-anchor="middle" >x बदलकर 20 हुआ ✔ (असली वेरिएबल)</text></g><text x="175" y="418" class="sm" text-anchor="middle" >मान की कॉपी जाती है</text><text x="575" y="418" class="sm" text-anchor="middle" >पता (address) जाता है</text><line x1="380" y1="20" x2="380" y2="460" stroke="#90a4ae" stroke-width="2" stroke-dasharray="6 6"/></svg><figcaption><b>व्याख्या:</b> <b>बाएँ (call by value):</b> x की एक फ़ोटोकॉपी पैरामीटर <code>a</code> में रखी जाती है। <code>a</code> को 20 करने पर असली <code>x</code> नहीं बदलता, वह 10 ही रहता है। <b>दाएँ (call by reference):</b> x का पता (address) 1000 पॉइंटर <code>p</code> में रखा जाता है। <code>*p = 20</code> लिखने पर उस पते पर जाकर असली <code>x</code> बदल जाता है।</figcaption></figure>
+<h3>Call by Value</h3>
+<p>आर्गुमेंट की <b>कॉपी</b> फ़ंक्शन को दी जाती है। फ़ंक्शन कॉपी पर काम करता है, इसलिए मूल वेरिएबल कभी नहीं बदलता। C में यही सामान्य तरीका है।</p>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">void</span> swap(<span class="c-kw">int</span> a, <span class="c-kw">int</span> b)        <span class="c-cm">// a, b are COPIES</span>
+{
+    <span class="c-kw">int</span> t = a;
     a = b;
     b = t;
 }
-<span class="kw">int</span> main()
+
+<span class="c-kw">int</span> main()
 {
-    <span class="kw">int</span> x = <span class="nm">10</span>, y = <span class="nm">20</span>;
+    <span class="c-kw">int</span> x = <span class="c-nu">10</span>, y = <span class="c-nu">20</span>;
     swap(x, y);
-    <span class="kw">printf</span>(<span class="st">"%d %d"</span>, x, y);
-    <span class="kw">return</span> <span class="nm">0</span>;
-}</pre><div class="output"><span>Output:</span>10 20</div><figure class="fig"><svg viewBox="0 0 720 350" role="img" aria-label="Call by value का memory diagram">
-<text x="175" y="26" text-anchor="middle" class="bd">main()</text>
-<text x="545" y="26" text-anchor="middle" class="bd">swap(int a, int b)</text>
-<rect x="30" y="40" width="290" height="220" rx="12" fill="#e3f2fd" stroke="#1a2f7a" stroke-width="3"/>
-<rect x="400" y="40" width="290" height="220" rx="12" fill="#fff3e0" stroke="#e65100" stroke-width="3"/>
-<rect x="70" y="100" width="90" height="70" rx="8" fill="#fff" stroke="#1a2f7a" stroke-width="2.5"/>
-<text x="115" y="94" text-anchor="middle" class="sm bd">x</text>
-<text x="115" y="146" text-anchor="middle" class="lg bd">10</text>
-<text x="115" y="188" text-anchor="middle" class="sm" style="fill:#777">addr 1001</text>
-<rect x="190" y="100" width="90" height="70" rx="8" fill="#fff" stroke="#1a2f7a" stroke-width="2.5"/>
-<text x="235" y="94" text-anchor="middle" class="sm bd">y</text>
-<text x="235" y="146" text-anchor="middle" class="lg bd">20</text>
-<text x="235" y="188" text-anchor="middle" class="sm" style="fill:#777">addr 1002</text>
-<rect x="440" y="100" width="90" height="70" rx="8" fill="#fff" stroke="#e65100" stroke-width="2.5"/>
-<text x="485" y="94" text-anchor="middle" class="sm bd">a</text>
-<text x="485" y="188" text-anchor="middle" class="sm" style="fill:#777">addr 2001</text>
-<g style="opacity:0;animation:k10 12s infinite"><text x="485" y="146" text-anchor="middle" class="lg bd" style="fill:#999">?</text></g>
-<g style="opacity:0;animation:k11 12s infinite"><text x="485" y="146" text-anchor="middle" class="lg bd rd">10</text></g>
-<g style="opacity:0;animation:k12 12s infinite"><text x="485" y="146" text-anchor="middle" class="lg bd rd">20</text></g>
-<rect x="570" y="100" width="90" height="70" rx="8" fill="#fff" stroke="#e65100" stroke-width="2.5"/>
-<text x="615" y="94" text-anchor="middle" class="sm bd">b</text>
-<text x="615" y="188" text-anchor="middle" class="sm" style="fill:#777">addr 2002</text>
-<g style="opacity:0;animation:k10 12s infinite"><text x="615" y="146" text-anchor="middle" class="lg bd" style="fill:#999">?</text></g>
-<g style="opacity:0;animation:k13 12s infinite"><text x="615" y="146" text-anchor="middle" class="lg bd rd">20</text></g>
-<g style="opacity:0;animation:k14 12s infinite"><text x="615" y="146" text-anchor="middle" class="lg bd rd">10</text></g>
-<g style="opacity:0;animation:k15 12s infinite">
-<path d="M 115 98 C 115 55, 485 55, 485 96" fill="none" stroke="#c62828" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#arrowr)"/>
-<path d="M 235 172 C 235 235, 615 235, 615 174" fill="none" stroke="#c62828" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#arrowr)"/>
-<text x="360" y="80" text-anchor="middle" class="sm rd bd">COPY</text>
-<text x="360" y="222" text-anchor="middle" class="sm rd bd">COPY</text></g>
-<g style="opacity:0;animation:k16 12s infinite"><text x="360" y="312" text-anchor="middle" class="bd rd">1. swap(x, y): 10 और 20 की COPY, a और b में गई</text></g>
-<g style="opacity:0;animation:k17 12s infinite"><text x="360" y="312" text-anchor="middle" class="bd rd">2. swap() के अंदर: a और b बदले गए (a=20, b=10)</text></g>
-<g style="opacity:0;animation:k18 12s infinite"><text x="360" y="312" text-anchor="middle" class="bd rd">3. Function खत्म। a, b नष्ट। x और y अभी भी 10, 20 हैं</text></g>
-<text x="360" y="338" text-anchor="middle" class="sm gn bd">Call by value में original x और y कभी नहीं बदलते</text>
-</svg><figcaption>चित्र 5: Call by value में सिर्फ़ copy function तक जाती है</figcaption></figure><h3>(b) Call by reference (जानकारी के लिए)</h3><p>Variable का <b>address</b> (<b>&amp;</b> से) भेजा जाता है और function उसे <b>pointer</b> (<b>*</b> से) में लेता है। इसलिए function original variable को बदल सकता है।</p><pre class="code"><span class="kw">void</span> swap(<span class="kw">int</span> *a, <span class="kw">int</span> *b)    <span class="cm">// a, b में ADDRESS आते हैं</span>
+    printf(<span class="c-st">"x = %d, y = %d"</span>, x, y);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre>
+<div class="out" data-l="आउटपुट:">x = 10, y = 20</div>
+<p>अदला-बदली केवल फ़ंक्शन के अंदर कॉपी <code>a</code> और <code>b</code> पर हुई। <code>x</code> और <code>y</code> नहीं बदले।</p>
+<h3>Call by Reference (पॉइंटर द्वारा)</h3>
+<p>वेरिएबल का <b>पता (address)</b> <code>&amp;</code> द्वारा भेजा जाता है। फ़ंक्शन उसे पॉइंटर में लेता है और <code>*</code> ऑपरेटर से मूल वेरिएबल तक पहुँचता है। इसलिए मूल मान बदल सकता है।</p>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">void</span> swap(<span class="c-kw">int</span> *a, <span class="c-kw">int</span> *b)      <span class="c-cm">// a, b hold ADDRESSES</span>
 {
-    <span class="kw">int</span> t = *a;
+    <span class="c-kw">int</span> t = *a;
     *a = *b;
     *b = t;
 }
-<span class="cm">// call: swap(&amp;x, &amp;y);   -&gt; x = 20, y = 10</span></pre><div class="tablewrap"><table><tr><th>Call by value</th><th>Call by reference</th></tr><tr><td>Value की copy जाती है</td><td>Address जाता है</td></tr><tr><td>Original नहीं बदलता</td><td>Original बदल सकता है</td></tr><tr><td>सामान्य variables</td><td>Pointers (* और &)</td></tr></table></div></section>
-<section id="s9"><h2><span class="num">9</span><span class="hl">Recursion</span></h2><p><b>Recursion</b> वह technique है जिसमें function <span class="hl2">खुद को ही call</span> करता है और बड़ी problem को उसी तरह की छोटी problems में तोड़कर हल करता है।</p><p>हर recursive function में दो चीज़ें ज़रूरी हैं:</p><ul class="pts"><li><b>Base case:</b> वह शर्त जहाँ function खुद को call करना बंद कर देता है।</li><li><b>Recursive case:</b> वह हिस्सा जहाँ function छोटी value के साथ खुद को call करता है।</li></ul><h3>Recursion से factorial</h3><p>n! = n x (n-1)!  और  1! = 1</p><pre class="code"><span class="pp">#include &lt;stdio.h&gt;</span>
-<span class="kw">int</span> fact(<span class="kw">int</span> n)
+
+<span class="c-kw">int</span> main()
 {
-    <span class="kw">if</span> (n &lt;= <span class="nm">1</span>)                   <span class="cm">// base case (रुकने की शर्त)</span>
-        <span class="kw">return</span> <span class="nm">1</span>;
-    <span class="kw">else</span>
-        <span class="kw">return</span> n * fact(n - <span class="nm">1</span>);   <span class="cm">// recursive call (खुद को call)</span>
+    <span class="c-kw">int</span> x = <span class="c-nu">10</span>, y = <span class="c-nu">20</span>;
+    swap(&amp;x, &amp;y);              <span class="c-cm">// send addresses</span>
+    printf(<span class="c-st">"x = %d, y = %d"</span>, x, y);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre>
+<div class="out" data-l="आउटपुट:">x = 20, y = 10</div>
+<div class="tablewrap"><table><tr><th>Call by Value</th><th>Call by Reference</th></tr>
+<tr><td>मान की कॉपी भेजी जाती है</td><td>वेरिएबल का address भेजा जाता है</td></tr>
+<tr><td>मूल वेरिएबल <b>नहीं</b> बदलता</td><td>मूल वेरिएबल <b>बदल सकता है</b></td></tr>
+<tr><td>Formal parameter सामान्य वेरिएबल होते हैं</td><td>Formal parameter पॉइंटर होते हैं</td></tr>
+<tr><td>कॉल: <code>swap(x, y)</code></td><td>कॉल: <code>swap(&amp;x, &amp;y)</code></td></tr>
+<tr><td>कॉपी के लिए अतिरिक्त मेमोरी लगती है</td><td>बड़े डेटा में मेमोरी की बचत</td></tr></table></div>
+<div class="note"><span class="lbl">तकनीकी बात:</span> सख़्ती से देखें तो C में केवल call by value होता है। “Call by reference” में <b>address का मान</b> भेजा जाता है। पुस्तकों में फिर भी यही नाम चलता है।</div>
+<div class="tip"><span class="lbl">चिह्न:</span> <code>&amp;x</code> = x का पता। <code>*p</code> = p में रखे पते पर संग्रहित मान।</div>
+</section><section id="s9"><h2>9. रिकर्शन (Recursion)</h2>
+<div class="def"><span class="lbl">Recursion:</span> जब कोई फ़ंक्शन <b>स्वयं को कॉल</b> करता है, सीधे या परोक्ष रूप से, तो उसे <b>recursive function</b> और इस प्रक्रिया को <b>recursion</b> कहते हैं।</div>
+<p>हर सही recursive फ़ंक्शन के दो भाग होते हैं:</p>
+<ul><li><b>Base case:</b> वह शर्त जहाँ फ़ंक्शन रुक जाता है और स्वयं को दोबारा कॉल नहीं करता।</li>
+<li><b>Recursive case:</b> वह भाग जहाँ फ़ंक्शन <b>छोटी</b> समस्या के साथ स्वयं को कॉल करता है।</li></ul>
+<figure class="diagram"><div class="ft"><span>एनिमेटेड चित्र 4: Call Stack पर रिकर्शन (3 का factorial)</span><button type="button" class="pp">⏸ रोकें</button></div><svg viewBox="0 0 760 480" role="img" aria-label="एनिमेटेड चित्र 4: Call Stack पर रिकर्शन (3 का factorial)" xmlns="http://www.w3.org/2000/svg"><text x="150" y="28" class="tb" text-anchor="middle" >कॉल स्टैक</text><line x1="30" y1="468" x2="270" y2="468" stroke="#1b3a8a" stroke-width="3"/><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.0007" calcMode="discrete" dur="14s" repeatCount="indefinite"/><rect x="40" y="410" width="220" height="52" rx="10" fill="#cfd8dc" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="150" y="442.0" class="tc tb" text-anchor="middle" >main()</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.0714;0.7857" calcMode="discrete" dur="14s" repeatCount="indefinite"/><rect x="40" y="345" width="220" height="58" rx="10" fill="#c8e6c9" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="150" y="380.0" class="tc tb" text-anchor="middle" >fact(3)  n = 3</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.6429;0.7857" calcMode="discrete" dur="14s" repeatCount="indefinite"/><text x="272" y="380.0" class="sm tr" text-anchor="start" >return 3 × 2 = 6</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.2143;0.6429" calcMode="discrete" dur="14s" repeatCount="indefinite"/><rect x="40" y="280" width="220" height="58" rx="10" fill="#bbdefb" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="150" y="315.0" class="tc tb" text-anchor="middle" >fact(2)  n = 2</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5000;0.6429" calcMode="discrete" dur="14s" repeatCount="indefinite"/><text x="272" y="315.0" class="sm tr" text-anchor="start" >return 2 × 1 = 2</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.3571;0.5000" calcMode="discrete" dur="14s" repeatCount="indefinite"/><rect x="40" y="215" width="220" height="58" rx="10" fill="#ffe0b2" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="150" y="250.0" class="tc tb" text-anchor="middle" >fact(1)  n = 1</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.4143;0.5000" calcMode="discrete" dur="14s" repeatCount="indefinite"/><text x="272" y="250.0" class="sm tr" text-anchor="start" >return 1</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.7857" calcMode="discrete" dur="14s" repeatCount="indefinite"/><text x="272" y="440" class="tc tr" text-anchor="start" >r = 6</text></g><text x="40" y="70" class="sm tb" text-anchor="start" >↑ कॉल = push</text><text x="40" y="94" class="sm tr" text-anchor="start" >↓ return = pop</text><rect x="450" y="40" width="300" height="190" rx="10" fill="#fffde7" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="465" y="72" class="tc" text-anchor="start" >int fact(int n)</text><text x="465" y="100" class="tc" text-anchor="start" >{</text><text x="465" y="128" class="tc" text-anchor="start" >  if (n &lt;= 1)</text><text x="465" y="156" class="tc" text-anchor="start" >      return 1;</text><text x="465" y="184" class="tc" text-anchor="start" >  return n * fact(n - 1);</text><text x="465" y="212" class="tc" text-anchor="start" >}</text><rect x="450" y="255" width="300" height="120" rx="10" fill="#fff" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.0714;0.2143" calcMode="discrete" dur="14s" repeatCount="indefinite"/><text x="465" y="295" class="sm tb" text-anchor="start" >fact(3) कॉल हुआ, n = 3।</text><text x="465" y="325" class="sm" text-anchor="start" >पहले fact(2) चाहिए।</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.2143;0.3571" calcMode="discrete" dur="14s" repeatCount="indefinite"/><text x="465" y="295" class="sm tb" text-anchor="start" >fact(2) कॉल हुआ, n = 2।</text><text x="465" y="325" class="sm" text-anchor="start" >पहले fact(1) चाहिए।</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.3571;0.5000" calcMode="discrete" dur="14s" repeatCount="indefinite"/><text x="465" y="295" class="sm tb" text-anchor="start" >fact(1): n &lt;= 1, BASE CASE।</text><text x="465" y="325" class="sm" text-anchor="start" >यह 1 लौटाता है।</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5000;0.6429" calcMode="discrete" dur="14s" repeatCount="indefinite"/><text x="465" y="295" class="sm tb" text-anchor="start" >fact(2) = 2 × 1 = 2।</text><text x="465" y="325" class="sm" text-anchor="start" >2 लौटाकर हट गया।</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.6429;0.7857" calcMode="discrete" dur="14s" repeatCount="indefinite"/><text x="465" y="295" class="sm tb" text-anchor="start" >fact(3) = 3 × 2 = 6।</text><text x="465" y="325" class="sm" text-anchor="start" >6 लौटाकर हट गया।</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.7857" calcMode="discrete" dur="14s" repeatCount="indefinite"/><text x="465" y="295" class="sm tb" text-anchor="start" >main() को 6 मिला।</text><text x="465" y="325" class="sm" text-anchor="start" >स्टैक फिर खाली।</text></g></svg><figcaption><b>व्याख्या:</b> <code>fact()</code> की हर कॉल स्टैक पर अपना नया डिब्बा (stack frame) बनाती है जिसमें उसका अपना <code>n</code> होता है। कॉल एक के ऊपर एक जमती हैं: fact(3) → fact(2) → fact(1)। fact(1) <b>base case</b> पर पहुँचकर 1 लौटाता है। फिर डिब्बे एक-एक करके हटते हैं (pop) और लौटते समय गुणा होता है: 2×1 = 2, फिर 3×2 = 6, और अंत में main() को 6 मिलता है।</figcaption></figure>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> fact(<span class="c-kw">int</span> n)
+{
+    <span class="c-kw">if</span> (n &lt;= <span class="c-nu">1</span>)              <span class="c-cm">// base case</span>
+        <span class="c-kw">return</span> <span class="c-nu">1</span>;
+    <span class="c-kw">return</span> n * fact(n - <span class="c-nu">1</span>);  <span class="c-cm">// recursive case</span>
 }
-<span class="kw">int</span> main()
+
+<span class="c-kw">int</span> main()
 {
-    <span class="kw">printf</span>(<span class="st">"%d"</span>, fact(<span class="nm">3</span>));
-    <span class="kw">return</span> <span class="nm">0</span>;
-}</pre><div class="output"><span>Output:</span>6</div><figure class="fig"><svg viewBox="0 0 720 360" role="img" aria-label="fact(3) का recursion stack">
-<text x="190" y="26" text-anchor="middle" class="bd">CALL STACK (ऊपर = नया call)</text>
-<line x1="40" y1="310" x2="340" y2="310" stroke="#1a2f7a" stroke-width="4"/>
-<g style="opacity:0;animation:k19 12s infinite"><rect x="50" y="250" width="280" height="54" rx="8" fill="#bbdefb" stroke="#1a2f7a" stroke-width="2.5"/>
-<g style="opacity:0;animation:k22 12s infinite"><text x="190" y="284" text-anchor="middle" class="sm mono">fact(3): 3 * fact(2) ...</text></g>
-<g style="opacity:0;animation:k23 12s infinite"><text x="190" y="284" text-anchor="middle" class="sm mono bd gn">fact(3) returns 6</text></g></g>
-<g style="opacity:0;animation:k20 12s infinite"><rect x="50" y="190" width="280" height="54" rx="8" fill="#c8e6c9" stroke="#1a2f7a" stroke-width="2.5"/>
-<g style="opacity:0;animation:k24 12s infinite"><text x="190" y="224" text-anchor="middle" class="sm mono">fact(2): 2 * fact(1) ...</text></g>
-<g style="opacity:0;animation:k25 12s infinite"><text x="190" y="224" text-anchor="middle" class="sm mono bd gn">fact(2) returns 2</text></g></g>
-<g style="opacity:0;animation:k21 12s infinite"><rect x="50" y="130" width="280" height="54" rx="8" fill="#ffe0b2" stroke="#1a2f7a" stroke-width="2.5"/>
-<g style="opacity:0;animation:k26 12s infinite"><text x="190" y="164" text-anchor="middle" class="sm mono">fact(1): n &lt;= 1 BASE CASE</text></g>
-<g style="opacity:0;animation:k27 12s infinite"><text x="190" y="164" text-anchor="middle" class="sm mono bd gn">fact(1) returns 1</text></g></g>
-<line x1="360" y1="300" x2="360" y2="120" stroke="#c62828" stroke-width="2.5" marker-end="url(#arrowr)"/>
-<text x="372" y="250" class="sm rd" transform="rotate(-90 372 250)">stack बढ़ता है</text>
-<g style="opacity:0;animation:k28 12s infinite"><text x="400" y="150" class="bd rd">main() ने call किया</text><text x="400" y="182" class="bd lg">fact(3)</text></g><g style="opacity:0;animation:k29 12s infinite"><text x="400" y="150" class="bd rd">fact(3) ने call किया</text><text x="400" y="182" class="bd lg">fact(2)</text></g><g style="opacity:0;animation:k30 12s infinite"><text x="400" y="150" class="bd rd">fact(2) ने call किया</text><text x="400" y="182" class="bd lg">fact(1)</text></g><g style="opacity:0;animation:k31 12s infinite"><text x="400" y="150" class="bd rd">BASE CASE! fact(1)</text><text x="400" y="182" class="bd lg">return 1, stack खुलना शुरू</text></g><g style="opacity:0;animation:k32 12s infinite"><text x="400" y="150" class="bd rd">fact(2) = 2 x 1</text><text x="400" y="182" class="bd lg">return 2</text></g><g style="opacity:0;animation:k33 12s infinite"><text x="400" y="150" class="bd rd">fact(3) = 3 x 2</text><text x="400" y="182" class="bd lg">return 6, main() को</text></g><g style="opacity:0;animation:k34 12s infinite"><text x="400" y="150" class="bd rd">Output print हुआ:</text><text x="400" y="182" class="bd lg">6</text></g>
-<text x="400" y="330" class="sm gn bd">हर call तब तक रुकता है जब तक ऊपर वाला return न करे</text>
-</svg><figcaption>चित्र 6: Calls stack पर जमा होते हैं, फिर return values वापस आती हैं</figcaption></figure><div class="tablewrap"><table><tr><th>फ़ायदे</th><th>नुकसान</th></tr><tr><td>Code छोटा और साफ़</td><td>ज़्यादा memory (stack) लगती है</td></tr><tr><td>factorial, Fibonacci जैसी problems के लिए स्वाभाविक</td><td>Loops से धीमा</td></tr><tr><td></td><td>Base case न हो तो अनंत calls और stack overflow</td></tr></table></div></section>
-<section id="s10"><h2><span class="num">10</span><span class="hl">Variables का scope</span></h2><p><b>Scope</b> का मतलब है program का वह हिस्सा जहाँ variable को use किया जा सकता है।</p><div class="tablewrap"><table><tr><th>Local variable</th><th>Global variable</th></tr><tr><td>Function के <b>अंदर</b> declare होता है</td><td>सभी functions के <b>बाहर</b> declare होता है</td></tr><tr><td>सिर्फ़ उसी function में use होता है</td><td>हर function में use होता है</td></tr><tr><td>Function शुरू होने पर बनता है, खत्म होने पर नष्ट</td><td>Program खत्म होने तक रहता है</td></tr></table></div><figure class="fig"><svg viewBox="0 0 720 320" role="img" aria-label="Variables का scope">
-<g class="fade"><rect x="20" y="10" width="680" height="296" rx="14" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="3"/>
-<text x="40" y="40" class="bd" style="fill:#6a1b9a">GLOBAL scope: हर function में दिखता है</text>
-<text x="40" y="68" class="mono bd">int g = 100;</text></g>
-<g class="fade" style="animation-delay:1s"><rect x="50" y="100" width="290" height="180" rx="10" fill="#e3f2fd" stroke="#1a2f7a" stroke-width="3"/>
-<text x="195" y="128" text-anchor="middle" class="bd rd mono">main()</text>
-<text x="70" y="170" class="mono">int x = 5;</text>
-<text x="70" y="200" class="sm">(local: सिर्फ़ main में)</text>
-<text x="70" y="240" class="sm gn">+ g भी use कर सकता है</text></g>
-<g class="fade" style="animation-delay:2s"><rect x="380" y="100" width="300" height="180" rx="10" fill="#e8f5e9" stroke="#1b7a3a" stroke-width="3"/>
-<text x="530" y="128" text-anchor="middle" class="bd rd mono">show()</text>
-<text x="400" y="170" class="mono">int y = 9;</text>
-<text x="400" y="200" class="sm">(local: सिर्फ़ show में)</text>
-<text x="400" y="240" class="sm gn">+ g भी use कर सकता है</text></g>
-<g class="fade" style="animation-delay:3s"><line x1="342" y1="190" x2="378" y2="190" stroke="#c62828" stroke-width="4" class="march"/>
-<text x="360" y="160" text-anchor="middle" class="rd bd lg">&#10007;</text>
-<text x="360" y="218" text-anchor="middle" class="sm rd bd">access नहीं</text></g>
-</svg><figcaption>चित्र 7: Local variables निजी हैं, global variables साझा हैं</figcaption></figure><pre class="code"><span class="pp">#include &lt;stdio.h&gt;</span>
-<span class="kw">int</span> g = <span class="nm">100</span>;                <span class="cm">// global variable</span>
-<span class="kw">void</span> show(<span class="kw">void</span>)
+    printf(<span class="c-st">"Factorial of 3 = %d"</span>, fact(<span class="c-nu">3</span>));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre>
+<div class="out" data-l="आउटपुट:">Factorial of 3 = 6</div>
+<p>याद रखें: n! = n × (n−1)! और 0! = 1! = 1।</p>
+<h3>fact(3) की कार्यप्रणाली</h3>
+<div class="tablewrap"><table><tr><th>कॉल</th><th>क्या करता है</th><th>परिणाम</th></tr>
+<tr><td>fact(3)</td><td>3 × fact(2)</td><td>प्रतीक्षा</td></tr><tr><td>fact(2)</td><td>2 × fact(1)</td><td>प्रतीक्षा</td></tr>
+<tr><td>fact(1)</td><td>base case → 1 लौटाता है</td><td>1</td></tr>
+<tr><td>वापस fact(2) में</td><td>2 × 1</td><td>2</td></tr><tr><td>वापस fact(3) में</td><td>3 × 2</td><td>6</td></tr></table></div>
+<h3>रिकर्शन द्वारा फ़िबोनाची श्रेणी</h3>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> fib(<span class="c-kw">int</span> n)
 {
-    <span class="kw">int</span> y = <span class="nm">9</span>;              <span class="cm">// show() का local</span>
-    <span class="kw">printf</span>(<span class="st">"%d %d"</span>, g, y);
+    <span class="c-kw">if</span> (n &lt;= <span class="c-nu">1</span>)
+        <span class="c-kw">return</span> n;                    <span class="c-cm">// fib(0)=0, fib(1)=1</span>
+    <span class="c-kw">return</span> fib(n - <span class="c-nu">1</span>) + fib(n - <span class="c-nu">2</span>);
 }
-<span class="kw">int</span> main()
+
+<span class="c-kw">int</span> main()
 {
-    <span class="kw">int</span> x = <span class="nm">5</span>;              <span class="cm">// main() का local</span>
-    show();
-    <span class="kw">printf</span>(<span class="st">" %d %d"</span>, g, x); <span class="cm">// OK</span>
-    <span class="cm">// printf("%d", y);     // ERROR: y यहाँ नहीं दिखता</span>
-    <span class="kw">return</span> <span class="nm">0</span>;
-}</pre><div class="output"><span>Output:</span>100 9 100 5</div><div class="note y"><span class="tag">याद रखो!</span>दो अलग functions में एक ही variable नाम हो सकता है, क्योंकि हर local variable अलग होता है।</div></section>
-<section id="s11"><h2><span class="num">11</span><span class="hl">और example programs</span></h2><h3>Program 1: function से even या odd जाँचना</h3><pre class="code"><span class="pp">#include &lt;stdio.h&gt;</span>
-<span class="kw">int</span> isEven(<span class="kw">int</span> n)
+    <span class="c-kw">int</span> i;
+    <span class="c-kw">for</span> (i = <span class="c-nu">0</span>; i &lt; <span class="c-nu">7</span>; i++)
+        printf(<span class="c-st">"%d "</span>, fib(i));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre>
+<div class="out" data-l="आउटपुट:">0 1 1 2 3 5 8</div>
+<h3>रिकर्शन द्वारा पहली n प्राकृत संख्याओं का योग</h3>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> sum(<span class="c-kw">int</span> n)
 {
-    <span class="kw">if</span> (n % <span class="nm">2</span> == <span class="nm">0</span>)
-        <span class="kw">return</span> <span class="nm">1</span>;
-    <span class="kw">else</span>
-        <span class="kw">return</span> <span class="nm">0</span>;
+    <span class="c-kw">if</span> (n == <span class="c-nu">0</span>)
+        <span class="c-kw">return</span> <span class="c-nu">0</span>;
+    <span class="c-kw">return</span> n + sum(n - <span class="c-nu">1</span>);
 }
-<span class="kw">int</span> main()
+
+<span class="c-kw">int</span> main()
 {
-    <span class="kw">int</span> num = <span class="nm">7</span>;
-    <span class="kw">if</span> (isEven(num))
-        <span class="kw">printf</span>(<span class="st">"Even"</span>);
-    <span class="kw">else</span>
-        <span class="kw">printf</span>(<span class="st">"Odd"</span>);
-    <span class="kw">return</span> <span class="nm">0</span>;
-}</pre><div class="output"><span>Output:</span>Odd</div><h3>Program 2: दो संख्याओं में बड़ी संख्या</h3><pre class="code"><span class="kw">int</span> largest(<span class="kw">int</span> a, <span class="kw">int</span> b)
+    printf(<span class="c-st">"Sum = %d"</span>, sum(<span class="c-nu">5</span>));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre>
+<div class="out" data-l="आउटपुट:">Sum = 15</div>
+<h3>रिकर्शन द्वारा GCD (HCF) (यूक्लिड की विधि)</h3>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> gcd(<span class="c-kw">int</span> a, <span class="c-kw">int</span> b)
 {
-    <span class="kw">return</span> (a &gt; b) ? a : b;
+    <span class="c-kw">if</span> (b == <span class="c-nu">0</span>)
+        <span class="c-kw">return</span> a;            <span class="c-cm">// base case</span>
+    <span class="c-kw">return</span> gcd(b, a % b);    <span class="c-cm">// recursive case</span>
 }
-<span class="cm">// printf("%d", largest(12, 30));</span></pre><div class="output"><span>Output:</span>30</div></section>
-<section id="s12"><h2><span class="num">12</span><span class="hl">आम गलतियाँ</span></h2><ul class="pts"><li>Prototype के बाद <b>;</b> भूल जाना।</li><li>Definition में function header के बाद <b>;</b> लगा देना।</li><li>गलत संख्या या गलत type के arguments भेजना।</li><li>जिस function को value देनी है उसमें <b>return</b> न लिखना।</li><li>एक function को दूसरे function के <b>अंदर</b> define करना (C में allowed नहीं)।</li><li>Base case के बिना recursion।</li><li>Local variable को उसके function के बाहर use करना।</li><li>Call by value से original variable बदलने की उम्मीद करना।</li></ul></section>
-<section id="s13"><h2><span class="num">13</span><span class="hl">Quick revision</span></h2><div class="note y"><span class="tag">Quick revision</span>Function = एक काम के लिए नाम वाला block।<br>प्रकार: library और user-defined।<br>3 हिस्से: declaration, definition, call।<br>Actual parameters call में, formal parameters definition में।<br>return सिर्फ़ एक value भेजता है और function खत्म करता है।<br>4 categories: (arguments हाँ/नहीं) x (return हाँ/नहीं)।<br>Call by value copy भेजता है; call by reference address भेजता है।<br>Recursion = function का खुद को call करना, base case ज़रूरी।<br>Local variable function के अंदर, global variable सबके बाहर।</div></section>
-<section id="s14"><h2><span class="num">14</span><span class="hl">ज़रूरी प्रश्न और उत्तर</span></h2><details><summary>Q1. Function की परिभाषा लिखो।</summary><p>Function statements का नाम वाला block है जो कोई खास काम करता है और जिसे कई बार call किया जा सकता है।</p></details><details><summary>Q2. Functions के कोई दो फ़ायदे लिखो।</summary><p>Code की reusability, और program modular तथा debug करने में आसान बन जाता है।</p></details><details><summary>Q3. Actual और formal parameters में अंतर लिखो।</summary><p>Actual parameters function call में होते हैं और असली values रखते हैं; formal parameters function definition में होते हैं और उन values की copy पाते हैं।</p></details><details><summary>Q4. Function prototype का क्या उपयोग है?</summary><p>यह function के call होने से पहले compiler को उसका नाम, return type और parameters बताता है।</p></details><details><summary>Q5. Recursion क्या है? Base case क्या है?</summary><p>Recursion यानी function का खुद को call करना। Base case वह शर्त है जो recursive calls को रोकती है।</p></details><details><summary>Q6. void का क्या मतलब है?</summary><p>इसका मतलब है "कुछ नहीं": function कोई value return नहीं करता (या brackets में लिखा हो तो कोई parameter नहीं लेता)।</p></details><details><summary>Q7. Output बताओ।<pre class="code"><span class="kw">int</span> f(<span class="kw">int</span> x)
+
+<span class="c-kw">int</span> main()
 {
-    <span class="kw">return</span> x * <span class="nm">2</span>;
+    printf(<span class="c-st">"GCD = %d"</span>, gcd(<span class="c-nu">48</span>, <span class="c-nu">18</span>));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre>
+<div class="out" data-l="आउटपुट:">GCD = 6</div>
+<h3>लाभ और हानि</h3>
+<div class="tablewrap"><table><tr><th>लाभ</th><th>हानि</th></tr>
+<tr><td>कोड छोटा और साफ़ होता है</td><td>अधिक मेमोरी लगती है (हर कॉल पर stack frame बनता है)</td></tr>
+<tr><td>factorial, Fibonacci, Tower of Hanoi जैसी समस्याओं के लिए स्वाभाविक</td><td>प्रायः लूप से धीमा</td></tr>
+<tr><td>गणितीय परिभाषाएँ आसानी से लिखी जाती हैं</td><td>base case न हो तो कभी नहीं रुकता और <b>stack overflow</b> होता है</td></tr></table></div>
+<h3>Recursion बनाम Iteration</h3>
+<div class="tablewrap"><table><tr><th>Recursion</th><th>Iteration (लूप)</th></tr>
+<tr><td>फ़ंक्शन स्वयं को कॉल करता है</td><td>लूप (for, while) ब्लॉक को दोहराता है</td></tr>
+<tr><td>base case पर रुकता है</td><td>शर्त गलत होने पर रुकता है</td></tr>
+<tr><td>अधिक मेमोरी और समय</td><td>कम मेमोरी और समय</td></tr>
+<tr><td>कोड छोटा</td><td>कोड कभी-कभी लंबा</td></tr></table></div>
+</section><section id="s10"><h2>10. स्कोप, लाइफ़टाइम और स्टोरेज क्लास</h2>
+<figure class="diagram"><div class="ft"><span>एनिमेटेड चित्र 6: Local और Global स्कोप</span><button type="button" class="pp">⏸ रोकें</button></div><svg viewBox="0 0 760 425" role="img" aria-label="एनिमेटेड चित्र 6: Local और Global स्कोप" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="15" width="730" height="395" rx="10" fill="#f1f8e9" stroke="#558b2f" stroke-width="2.5" filter="url(#wob)" /><text x="35" y="45" class="tb sm" text-anchor="start" >GLOBAL क्षेत्र (सभी फ़ंक्शन के बाहर)</text><rect x="250" y="58" width="260" height="44" rx="10" fill="#fff" stroke="#558b2f" stroke-width="2.5" filter="url(#wob)" /><text x="380" y="88" class="tc tb" text-anchor="middle" >int g = 100;</text><rect x="50" y="135" width="300" height="190" rx="10" fill="#e3f2fd" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="200" y="165" class="tb" text-anchor="middle" >main()</text><text x="200" y="205" class="tc" text-anchor="middle" >int a = 5;</text><rect x="410" y="135" width="300" height="190" rx="10" fill="#fff3e0" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="560" y="165" class="tb" text-anchor="middle" >fun()</text><text x="560" y="205" class="tc" text-anchor="middle" >int b = 7;</text><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.1250" calcMode="discrete" dur="8s" repeatCount="indefinite"/><path d="M300,104 L210,133" fill="none" stroke="#2e7d32" stroke-width="2.6"  marker-end="url(#arrG)" filter="url(#wob)" /><path d="M460,104 L550,133" fill="none" stroke="#2e7d32" stroke-width="2.6"  marker-end="url(#arrG)" filter="url(#wob)" /><text x="200" y="255" class="sm tg" text-anchor="middle" >✓ g यहाँ दिखता है</text><text x="560" y="255" class="sm tg" text-anchor="middle" >✓ g यहाँ दिखता है</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.5000" calcMode="discrete" dur="8s" repeatCount="indefinite"/><path d="M352,235 L408,235" fill="none" stroke="#c62828" stroke-width="2.6" stroke-dasharray="7 6" marker-end="url(#arrR)" filter="url(#wob)" /><text x="380" y="222" class="tb tr" text-anchor="middle" >✗</text><text x="200" y="290" class="sm tr" text-anchor="middle" >✗ b यहाँ नहीं दिखता</text><text x="560" y="290" class="sm tr" text-anchor="middle" >✗ a यहाँ नहीं दिखता</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.1250;0.5000" calcMode="discrete" dur="8s" repeatCount="indefinite"/><text x="380" y="372" class="cap" text-anchor="middle" >ग्लोबल वेरिएबल: हर फ़ंक्शन में उपयोग हो सकता है।</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.5000" calcMode="discrete" dur="8s" repeatCount="indefinite"/><text x="380" y="372" class="cap" text-anchor="middle" >लोकल वेरिएबल: केवल अपने फ़ंक्शन में उपयोग होता है।</text></g></svg><figcaption><b>व्याख्या:</b> <b>ग्लोबल</b> वेरिएबल <code>g</code> सभी फ़ंक्शन के बाहर घोषित है, इसलिए <code>main()</code> और <code>fun()</code> दोनों उसे इस्तेमाल कर सकते हैं (हरे तीर)। <b>लोकल</b> वेरिएबल <code>a</code> और <code>b</code> केवल अपने फ़ंक्शन के अंदर रहते हैं, इसलिए <code>fun()</code> को <code>a</code> और <code>main()</code> को <code>b</code> दिखाई नहीं देता (लाल बिंदीदार तीर)।</figcaption></figure>
+<div class="def"><span class="lbl">Scope (क्षेत्र):</span> प्रोग्राम का वह भाग जहाँ वेरिएबल उपयोग हो सकता है। <span class="lbl">Lifetime (जीवनकाल):</span> वह समय जब तक वेरिएबल मेमोरी में रहता है।</div>
+<div class="tablewrap"><table><tr><th>प्रकार</th><th>घोषणा</th><th>Scope</th><th>Lifetime</th></tr>
+<tr><td><b>Local variable</b></td><td>फ़ंक्शन या ब्लॉक के अंदर</td><td>केवल उसी फ़ंक्शन/ब्लॉक में</td><td>फ़ंक्शन शुरू होने पर बनता है, समाप्त होने पर नष्ट</td></tr>
+<tr><td><b>Formal parameter</b></td><td>फ़ंक्शन के हेडर में</td><td>उस फ़ंक्शन के लोकल वेरिएबल जैसा</td><td>लोकल जैसा</td></tr>
+<tr><td><b>Global variable</b></td><td>सभी फ़ंक्शन के बाहर</td><td>पूरा प्रोग्राम (उसके नीचे के सभी फ़ंक्शन)</td><td>पूरे प्रोग्राम के चलने तक</td></tr></table></div>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> g = <span class="c-nu">100</span>;                 <span class="c-cm">// global variable</span>
+
+<span class="c-kw">void</span> fun()
+{
+    <span class="c-kw">int</span> b = <span class="c-nu">7</span>;               <span class="c-cm">// local to fun()</span>
+    printf(<span class="c-st">"%d %d\n"</span>, g, b);
 }
-<span class="cm">// printf("%d", f(f(3)));</span></pre></summary><p>Output 12 है। f(3) = 6, फिर f(6) = 12।</p></details><details><summary>Q8. Call by value वाला swap(), x और y को क्यों नहीं बदलता?</summary><p>क्योंकि a और b सिर्फ़ copies हैं। Function खत्म होते ही वे नष्ट हो जाते हैं, इसलिए x और y वैसे ही रहते हैं।</p></details><h3>Practice programs (खुद try करो)</h3><ul class="pts"><li>Loop से किसी संख्या का factorial निकालने का function लिखो।</li><li>ऐसा function लिखो जो संख्या prime हो तो 1, नहीं तो 0 return करे।</li><li>किसी संख्या के अंकों का योग निकालने का function लिखो।</li><li>Fibonacci series print करने का recursive function लिखो।</li></ul></section>
-<footer>परीक्षा के लिए शुभकामनाएँ! ✎</footer>
+
+<span class="c-kw">int</span> main()
+{
+    <span class="c-kw">int</span> a = <span class="c-nu">5</span>;               <span class="c-cm">// local to main()</span>
+    fun();
+    printf(<span class="c-st">"%d %d\n"</span>, g, a);
+    <span class="c-cm">// printf("%d", b);      // ERROR: b is not visible here</span>
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre>
+<div class="out" data-l="आउटपुट:">100 7
+100 5</div>
+<div class="warn"><span class="lbl">सावधान:</span> यदि लोकल और ग्लोबल वेरिएबल का नाम एक ही हो तो उस फ़ंक्शन में <b>लोकल वाला</b> उपयोग होता है। ग्लोबल वेरिएबल का अधिक उपयोग बुरी आदत है क्योंकि कोई भी फ़ंक्शन उन्हें बदल सकता है।</div>
+<h3>Storage classes</h3>
+<div class="tablewrap"><table><tr><th>Keyword</th><th>कहाँ संग्रहित</th><th>Default मान</th><th>Scope / Lifetime</th></tr>
+<tr><td><code>auto</code></td><td>मेमोरी (stack)</td><td>Garbage</td><td>ब्लॉक में लोकल; ब्लॉक के अंत पर नष्ट। <b>लोकल वेरिएबल का default</b></td></tr>
+<tr><td><code>register</code></td><td>CPU register (अनुरोध)</td><td>Garbage</td><td>ब्लॉक में लोकल; तेज़ पहुँच के लिए</td></tr>
+<tr><td><code>static</code></td><td>मेमोरी (data area)</td><td>0</td><td>स्कोप लोकल, पर <b>कॉल्स के बीच मान बना रहता है</b></td></tr>
+<tr><td><code>extern</code></td><td>मेमोरी (data area)</td><td>0</td><td>ग्लोबल; कहीं और परिभाषित वेरिएबल को उपयोग करने के लिए</td></tr></table></div>
+<h3>Static वेरिएबल का प्रदर्शन</h3>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">void</span> counter()
+{
+    <span class="c-kw">static</span> <span class="c-kw">int</span> c = <span class="c-nu">0</span>;     <span class="c-cm">// created once, remembers value</span>
+    c++;
+    printf(<span class="c-st">"%d "</span>, c);
+}
+
+<span class="c-kw">int</span> main()
+{
+    counter();
+    counter();
+    counter();
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre>
+<div class="out" data-l="आउटपुट:">1 2 3</div>
+<p><code>static</code> वेरिएबल केवल एक बार बनता है और अपना मान याद रखता है। यदि यह सामान्य लोकल वेरिएबल होता तो हर कॉल में 0 से शुरू होता और आउटपुट <code>1 1 1</code> आता।</p>
+</section><section id="s11"><h2>11. फ़ंक्शन को Array भेजना</h2>
+<p>Array भेजने के लिए कॉल में केवल उसका <b>नाम</b> लिखते हैं। Array का नाम उसके <b>पहले तत्व का address</b> होता है, इसलिए फ़ंक्शन <b>मूल array</b> पर काम करता है (कॉपी पर नहीं)। फ़ंक्शन में किए गए बदलाव कॉल करने वाले में भी दिखते हैं। आमतौर पर आकार (size) भी भेजते हैं।</p>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> sum(<span class="c-kw">int</span> arr[], <span class="c-kw">int</span> n)      <span class="c-cm">// array + its size</span>
+{
+    <span class="c-kw">int</span> i, s = <span class="c-nu">0</span>;
+    <span class="c-kw">for</span> (i = <span class="c-nu">0</span>; i &lt; n; i++)
+        s = s + arr[i];
+    <span class="c-kw">return</span> s;
+}
+
+<span class="c-kw">int</span> main()
+{
+    <span class="c-kw">int</span> marks[<span class="c-nu">5</span>] = {<span class="c-nu">1</span>, <span class="c-nu">2</span>, <span class="c-nu">3</span>, <span class="c-nu">4</span>, <span class="c-nu">5</span>};
+    printf(<span class="c-st">"Total = %d"</span>, sum(marks, <span class="c-nu">5</span>));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre>
+<div class="out" data-l="आउटपुट:">Total = 15</div>
+<ul><li>हेडर का रूप: <code>int sum(int arr[], int n)</code> (या <code>int *arr</code>)।</li>
+<li>कॉल का रूप: <code>sum(marks, 5)</code> (ब्रैकेट नहीं)।</li>
+<li>Array के तत्व अलग-अलग भेजें, जैसे <code>show(marks[2])</code>, तो वे <b>value</b> द्वारा जाते हैं।</li></ul>
+</section><section id="s12"><h2>12. फ़ंक्शन द्वारा दूसरे फ़ंक्शन को कॉल और महत्वपूर्ण नियम</h2>
+<p>एक फ़ंक्शन दूसरे फ़ंक्शन को कॉल कर सकता है। इसे <b>function calls की nesting</b> कहते हैं (परिभाषाओं की nesting नहीं)।</p>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> square(<span class="c-kw">int</span> n)
+{
+    <span class="c-kw">return</span> n * n;
+}
+
+<span class="c-kw">int</span> sumOfSquares(<span class="c-kw">int</span> a, <span class="c-kw">int</span> b)
+{
+    <span class="c-kw">return</span> square(a) + square(b);   <span class="c-cm">// function calls function</span>
+}
+
+<span class="c-kw">int</span> main()
+{
+    printf(<span class="c-st">"%d"</span>, sumOfSquares(<span class="c-nu">3</span>, <span class="c-nu">4</span>));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre>
+<div class="out" data-l="आउटपुट:">25</div>
+<p>कार्यप्रणाली: square(3) = 9 और square(4) = 16, इसलिए 9 + 16 = 25।</p>
+<h3>float लौटाने वाला फ़ंक्शन</h3>
+<pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">float</span> area(<span class="c-kw">float</span> r)
+{
+    <span class="c-kw">return</span> <span class="c-nu">3.14</span> * r * r;
+}
+
+<span class="c-kw">int</span> main()
+{
+    printf(<span class="c-st">"Area = %.2f"</span>, area(<span class="c-nu">2</span>));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre>
+<div class="out" data-l="आउटपुट:">Area = 12.56</div>
+<h3>अन्य उपयोगी बातें</h3>
+<ul>
+<li>यदि फ़ंक्शन में <b>कोई पैरामीटर नहीं</b> है तो ब्रैकेट में <code>void</code> लिख सकते हैं: <code>int readNumber(void)</code>। खाली ब्रैकेट भी स्वीकार्य हैं।</li>
+<li><code>main()</code> <b>प्रारंभ बिंदु</b> है। प्रोग्राम में ठीक एक <code>main()</code> होना चाहिए।</li>
+<li>अलग-अलग फ़ंक्शन में <b>एक ही नाम के वेरिएबल</b> हो सकते हैं; वे अलग-अलग वेरिएबल होते हैं।</li>
+<li>एक प्रोग्राम में दो फ़ंक्शन का नाम एक नहीं हो सकता (C में function overloading नहीं है)।</li>
+<li>जिस फ़ंक्शन को मान लौटाना है, वह बिना <code>return</code> के अंत पर पहुँचे तो परिणाम अनिश्चित (garbage) होता है।</li>
+</ul>
+</section><section id="s13"><h2>13. सामान्य गलतियाँ और त्रुटियाँ</h2>
+<div class="tablewrap"><table><tr><th>गलती</th><th>प्रभाव</th><th>सुधार</th></tr>
+<tr><td>फ़ंक्शन को declare/define करने से पहले कॉल करना</td><td>Warning/error: implicit declaration</td><td>main() के ऊपर prototype लिखें</td></tr>
+<tr><td>definition के हेडर के बाद semicolon</td><td>Syntax error</td><td>semicolon हटाएँ</td></tr>
+<tr><td>आर्गुमेंट की संख्या गलत</td><td>Error: too few/too many arguments</td><td>पैरामीटर सूची से मिलाएँ</td></tr>
+<tr><td>non-void फ़ंक्शन में <code>return</code> न होना</td><td>Garbage मान लौटता है</td><td>हर रास्ते पर मान लौटाएँ</td></tr>
+<tr><td>एक फ़ंक्शन के अंदर दूसरा परिभाषित करना</td><td>Compile error</td><td>फ़ंक्शन अलग-अलग परिभाषित करें</td></tr>
+<tr><td>call by reference में <code>&amp;</code> भूल जाना</td><td>गलत आउटपुट/क्रैश</td><td><code>&amp;x</code> भेजें</td></tr>
+<tr><td>लोकल वेरिएबल को उसके फ़ंक्शन के बाहर उपयोग करना</td><td>Error: undeclared identifier</td><td>मान return करें या आर्गुमेंट से भेजें</td></tr>
+<tr><td>base case के बिना recursion</td><td>Stack overflow (कभी समाप्त नहीं)</td><td>रुकने की शर्त जोड़ें</td></tr>
+<tr><td>call by value में कॉल करने वाले का वेरिएबल बदलने की उम्मीद</td><td>मूल मान नहीं बदलता</td><td>पॉइंटर उपयोग करें या मान return करें</td></tr></table></div>
+</section><section id="s14"><h2>14. महत्वपूर्ण अंतर (परीक्षा में बार-बार पूछे जाने वाले)</h2>
+<h3>Library function बनाम User-defined function</h3>
+<div class="tablewrap"><table><tr><th>Library function</th><th>User-defined function</th></tr>
+<tr><td>पहले से लिखे, हेडर फ़ाइलों में उपलब्ध</td><td>प्रोग्रामर द्वारा लिखे जाते हैं</td></tr>
+<tr><td><code>#include</code> चाहिए</td><td>declaration/definition चाहिए</td></tr>
+<tr><td>उपयोगकर्ता बदल नहीं सकता</td><td>आवश्यकतानुसार बदल सकते हैं</td></tr>
+<tr><td>उदाहरण: printf, sqrt, strlen</td><td>उदाहरण: add, max, factorial</td></tr></table></div>
+<h3>Function declaration बनाम Function definition</h3>
+<div class="tablewrap"><table><tr><th>Declaration</th><th>Definition</th></tr>
+<tr><td>कंपाइलर को नाम, return type, पैरामीटर बताता है</td><td>फ़ंक्शन की असली बॉडी देता है</td></tr>
+<tr><td>अंत में semicolon होता है</td><td>हेडर में semicolon नहीं; बॉडी ब्रेस में</td></tr>
+<tr><td>कोड के लिए मेमोरी नहीं बनती</td><td>कोड बनता है</td></tr>
+<tr><td>दोहराया जा सकता है</td><td>केवल एक बार</td></tr></table></div>
+<h3>Local बनाम Global वेरिएबल</h3>
+<div class="tablewrap"><table><tr><th>Local</th><th>Global</th></tr>
+<tr><td>फ़ंक्शन के अंदर घोषित</td><td>सभी फ़ंक्शन के बाहर घोषित</td></tr>
+<tr><td>केवल उसी फ़ंक्शन में दिखता है</td><td>सभी फ़ंक्शन में दिखता है</td></tr>
+<tr><td>Default मान: garbage</td><td>Default मान: 0</td></tr>
+<tr><td>फ़ंक्शन समाप्त होने पर नष्ट</td><td>प्रोग्राम समाप्त होने तक</td></tr></table></div>
+</section><section id="s15"><h2>15. त्वरित दोहराव पत्रक (Quick Revision)</h2>
+<ul>
+<li>फ़ंक्शन = एक कार्य के लिए नामयुक्त कोड-ब्लॉक; नाम से कॉल होता है।</li>
+<li>दो प्रकार: <b>library</b> और <b>user-defined</b>।</li>
+<li>Syntax: <code>return_type name(parameters) { body }</code>।</li>
+<li>तीन भाग: <b>declaration, definition, call</b>।</li>
+<li>Actual parameters कॉल में होते हैं; formal parameters definition में।</li>
+<li><code>return</code> एक मान लौटाता है और फ़ंक्शन समाप्त करता है। <code>void</code> = कोई मान नहीं।</li>
+<li>चार श्रेणियाँ: (arg नहीं, return नहीं), (arg है, return नहीं), (arg नहीं, return है), (arg है, return है)।</li>
+<li>Call by value → कॉपी; call by reference → address (<code>&amp;</code> और <code>*</code>)।</li>
+<li>Recursion = फ़ंक्शन स्वयं को कॉल करे; <b>base case</b> ज़रूरी।</li>
+<li>Local → फ़ंक्शन के अंदर; global → बाहर; <code>static</code> कॉल्स के बीच मान रखता है।</li>
+<li>फ़ंक्शन को array का नाम भेजने पर उसका address जाता है।</li>
+</ul>
+</section>
+<section id="qa1"><h2>अति लघु उत्तरीय प्रश्न (1 अंक)</h2><div class="bar"><button class="pp" data-open="1" data-target="qa1-l">सभी उत्तर खोलें</button><button class="pp" data-open="0" data-target="qa1-l">सभी उत्तर बंद करें</button></div><div id="qa1-l"><details><summary><span class="qn">Q1.</span> फ़ंक्शन की परिभाषा लिखिए।</summary><div class="ans" data-l="उत्तर">फ़ंक्शन स्टेटमेंट्स का नामयुक्त, स्वतंत्र समूह है जो एक विशेष कार्य करता है और कॉल किए जाने पर चलता है।</div></details><details><summary><span class="qn">Q2.</span> C के हर प्रोग्राम में सबसे पहले कौन-सा फ़ंक्शन चलता है?</summary><div class="ans" data-l="उत्तर"><code>main()</code>।</div></details><details><summary><span class="qn">Q3.</span> <code>printf()</code> और <code>scanf()</code> के लिए कौन-सी हेडर फ़ाइल चाहिए?</summary><div class="ans" data-l="उत्तर"><code>stdio.h</code>।</div></details><details><summary><span class="qn">Q4.</span> <code>sqrt()</code> और <code>pow()</code> के लिए कौन-सी हेडर फ़ाइल चाहिए?</summary><div class="ans" data-l="उत्तर"><code>math.h</code>।</div></details><details><summary><span class="qn">Q5.</span> <code>strlen()</code> के लिए कौन-सी हेडर फ़ाइल चाहिए?</summary><div class="ans" data-l="उत्तर"><code>string.h</code>।</div></details><details><summary><span class="qn">Q6.</span> फ़ंक्शन से मान वापस भेजने के लिए कौन-सा keyword प्रयोग होता है?</summary><div class="ans" data-l="उत्तर"><code>return</code>।</div></details><details><summary><span class="qn">Q7.</span> फ़ंक्शन प्रोटोटाइप क्या है?</summary><div class="ans" data-l="उत्तर">यह फ़ंक्शन की घोषणा है जो फ़ंक्शन के उपयोग से पहले कंपाइलर को उसका नाम, return type और पैरामीटर के प्रकार बताती है, जैसे <code>int add(int, int);</code>।</div></details><details><summary><span class="qn">Q8.</span> जो फ़ंक्शन कुछ नहीं लौटाता उसका return type क्या होता है?</summary><div class="ans" data-l="उत्तर"><code>void</code>।</div></details><details><summary><span class="qn">Q9.</span> Actual parameters क्या हैं?</summary><div class="ans" data-l="उत्तर">फ़ंक्शन कॉल में लिखे गए मान या वेरिएबल, जैसे <code>add(x, y)</code> में <code>x</code> और <code>y</code>।</div></details><details><summary><span class="qn">Q10.</span> Formal parameters क्या हैं?</summary><div class="ans" data-l="उत्तर">फ़ंक्शन के हेडर में लिखे वे वेरिएबल जो आर्गुमेंट के मान ग्रहण करते हैं, जैसे <code>int add(int a, int b)</code> में <code>a</code> और <code>b</code>।</div></details><details><summary><span class="qn">Q11.</span> किसी वेरिएबल का address देने वाला ऑपरेटर कौन-सा है?</summary><div class="ans" data-l="उत्तर">Address-of ऑपरेटर <code>&amp;</code>।</div></details><details><summary><span class="qn">Q12.</span> किसी address पर रखा मान देने वाला ऑपरेटर कौन-सा है?</summary><div class="ans" data-l="उत्तर">Dereference (indirection) ऑपरेटर <code>*</code>।</div></details><details><summary><span class="qn">Q13.</span> रिकर्शन क्या है?</summary><div class="ans" data-l="उत्तर">वह प्रक्रिया जिसमें कोई फ़ंक्शन स्वयं को कॉल करता है।</div></details><details><summary><span class="qn">Q14.</span> Base case क्या है?</summary><div class="ans" data-l="उत्तर">recursive फ़ंक्शन की वह शर्त जहाँ वह स्वयं को कॉल करना बंद करके सीधे परिणाम लौटा देता है।</div></details><details><summary><span class="qn">Q15.</span> क्या C फ़ंक्शन <code>return</code> से एक से अधिक मान लौटा सकता है?</summary><div class="ans" data-l="उत्तर">नहीं। एक <code>return</code> स्टेटमेंट केवल एक मान लौटा सकता है।</div></details><details><summary><span class="qn">Q16.</span> क्या C में एक फ़ंक्शन के अंदर दूसरा फ़ंक्शन परिभाषित हो सकता है?</summary><div class="ans" data-l="उत्तर">नहीं। फ़ंक्शन अलग-अलग परिभाषित होते हैं, पर एक फ़ंक्शन दूसरे को <b>कॉल</b> कर सकता है।</div></details><details><summary><span class="qn">Q17.</span> लोकल वेरिएबल की default storage class क्या है?</summary><div class="ans" data-l="उत्तर"><code>auto</code>।</div></details><details><summary><span class="qn">Q18.</span> कौन-सा keyword लोकल वेरिएबल का मान फ़ंक्शन कॉल्स के बीच बनाए रखता है?</summary><div class="ans" data-l="उत्तर"><code>static</code>।</div></details><details><summary><span class="qn">Q19.</span> <code>strlen("Hello")</code> का आउटपुट क्या होगा?</summary><div class="ans" data-l="उत्तर">5।</div></details><details><summary><span class="qn">Q20.</span> <code>toupper('b')</code> का मान क्या है?</summary><div class="ans" data-l="उत्तर"><code>'B'</code>।</div></details><details><summary><span class="qn">Q21.</span> C में फ़ंक्शन के दो प्रकार लिखिए।</summary><div class="ans" data-l="उत्तर">Library (बिल्ट-इन) फ़ंक्शन और user-defined फ़ंक्शन।</div></details><details><summary><span class="qn">Q22.</span> लोकल वेरिएबल का scope क्या होता है?</summary><div class="ans" data-l="उत्तर">केवल वही फ़ंक्शन या ब्लॉक जिसमें वह घोषित है।</div></details><details><summary><span class="qn">Q23.</span> फ़ंक्शन कॉल क्या है?</summary><div class="ans" data-l="उत्तर">वह स्टेटमेंट जो कंट्रोल को फ़ंक्शन में भेजकर उसे चलाता है, जैसे <code>add(5, 3);</code>।</div></details><details><summary><span class="qn">Q24.</span> बिना मान दिए ग्लोबल वेरिएबल का default मान क्या होता है?</summary><div class="ans" data-l="उत्तर">0 (शून्य)। लोकल वेरिएबल में अनिश्चित garbage मान होता है।</div></details></div></section><section id="qa2"><h2>लघु उत्तरीय प्रश्न (2–3 अंक)</h2><div class="bar"><button class="pp" data-open="1" data-target="qa2-l">सभी उत्तर खोलें</button><button class="pp" data-open="0" data-target="qa2-l">सभी उत्तर बंद करें</button></div><div id="qa2-l"><details><summary><span class="qn">Q1.</span> फ़ंक्शन उपयोग करने के कोई चार लाभ लिखिए।</summary><div class="ans" data-l="उत्तर"><ol><li><b>मॉड्यूलैरिटी</b>: बड़ा प्रोग्राम छोटे, सँभालने योग्य भागों में बँट जाता है।</li><li><b>पुनः उपयोग</b>: फ़ंक्शन एक बार लिखकर कई बार कॉल होता है, जिससे प्रोग्राम का आकार घटता है।</li><li><b>आसान डिबगिंग</b>: त्रुटि छोटे फ़ंक्शन में खोजी जाती है।</li><li><b>पठनीयता और रखरखाव</b>: प्रोग्राम पढ़ना और बदलना आसान होता है।</li></ol></div></details><details><summary><span class="qn">Q2.</span> Library functions और user-defined functions में अंतर लिखिए।</summary><div class="ans" data-l="उत्तर"><div class="tablewrap"><table><tr><th>Library function</th><th>User-defined function</th></tr><tr><td>हेडर फ़ाइलों में पहले से उपलब्ध</td><td>प्रोग्रामर द्वारा लिखे जाते हैं</td></tr><tr><td><code>#include</code> चाहिए</td><td>declaration और definition चाहिए</td></tr><tr><td>printf(), sqrt(), strlen()</td><td>add(), max(), factorial()</td></tr></table></div></div></details><details><summary><span class="qn">Q3.</span> Actual और formal parameters में अंतर बताइए।</summary><div class="ans" data-l="उत्तर">Actual parameters फ़ंक्शन की <b>कॉल</b> में लिखे जाते हैं और मान देते हैं (जैसे <code>add(x, y)</code>); formal parameters फ़ंक्शन की <b>definition</b> में लिखे जाते हैं और वे मान ग्रहण करते हैं (जैसे <code>int a, int b</code>)। Actual parameters अचर, वेरिएबल या expression हो सकते हैं; formal parameters डेटा टाइप सहित वेरिएबल ही होते हैं।</div></details><details><summary><span class="qn">Q4.</span> Function declaration और function definition में क्या अंतर है?</summary><div class="ans" data-l="उत्तर"><b>Declaration</b> (prototype) कंपाइलर को केवल फ़ंक्शन का नाम, return type और पैरामीटर के प्रकार बताती है और अंत में semicolon होता है। <b>Definition</b> में हेडर और बॉडी (असली कोड) होती है और हेडर के बाद semicolon नहीं लगता।</div></details><details><summary><span class="qn">Q5.</span> फ़ंक्शन प्रोटोटाइप की आवश्यकता क्यों होती है?</summary><div class="ans" data-l="उत्तर">जब फ़ंक्शन को उसकी definition से पहले कॉल किया जाता है तो कंपाइलर को कॉल जाँचने के लिए उसका return type तथा पैरामीटर की संख्या और प्रकार जानना ज़रूरी होता है। प्रोटोटाइप यह जानकारी देता है। यदि फ़ंक्शन <code>main()</code> के ऊपर परिभाषित हो तो प्रोटोटाइप अनिवार्य नहीं।</div></details><details><summary><span class="qn">Q6.</span> फ़ंक्शन की चार श्रेणियाँ एक-एक उदाहरण सहित समझाइए।</summary><div class="ans" data-l="उत्तर"><ol><li>आर्गुमेंट नहीं, return नहीं: <code>void greet()</code></li><li>आर्गुमेंट है, return नहीं: <code>void square(int n)</code></li><li>आर्गुमेंट नहीं, return है: <code>int readNumber()</code></li><li>आर्गुमेंट भी, return भी: <code>int max(int a, int b)</code></li></ol></div></details><details><summary><span class="qn">Q7.</span> Call by value और call by reference में अंतर लिखिए।</summary><div class="ans" data-l="उत्तर"><b>Call by value</b> में आर्गुमेंट की कॉपी भेजी जाती है, इसलिए मूल वेरिएबल नहीं बदलता। <b>Call by reference</b> में वेरिएबल का address (<code>&amp;</code> और पॉइंटर द्वारा) भेजा जाता है, इसलिए फ़ंक्शन मूल वेरिएबल बदल सकता है। उदाहरण: <code>swap(x, y)</code> बनाम <code>swap(&amp;x, &amp;y)</code>।</div></details><details><summary><span class="qn">Q8.</span> रिकर्शन क्या है? उदाहरण दीजिए।</summary><div class="ans" data-l="उत्तर">रिकर्शन वह प्रक्रिया है जिसमें फ़ंक्शन स्वयं को कॉल करता है। उदाहरण: <code>int fact(int n) { if (n &lt;= 1) return 1; return n * fact(n - 1); }</code>। कॉल रुकें इसके लिए base case ज़रूरी है।</div></details><details><summary><span class="qn">Q9.</span> Local और global वेरिएबल में अंतर लिखिए।</summary><div class="ans" data-l="उत्तर">Local वेरिएबल फ़ंक्शन के अंदर घोषित होता है और केवल वहीं उपयोग हो सकता है; फ़ंक्शन समाप्त होने पर नष्ट हो जाता है। Global वेरिएबल सभी फ़ंक्शन के बाहर घोषित होता है, हर फ़ंक्शन में उपयोग हो सकता है और प्रोग्राम के अंत तक रहता है। Local का default मान garbage और global का 0 होता है।</div></details><details><summary><span class="qn">Q10.</span> Static वेरिएबल क्या है? इसका उपयोग क्यों करते हैं?</summary><div class="ans" data-l="उत्तर">Static वेरिएबल <code>static</code> keyword से घोषित होता है। यह केवल एक बार बनता और initialise होता है तथा <b>फ़ंक्शन कॉल्स के बीच अपना मान बनाए रखता है</b>। इसका उपयोग, उदाहरण के लिए, यह गिनने में होता है कि फ़ंक्शन कितनी बार कॉल हुआ।</div></details><details><summary><span class="qn">Q11.</span> <code>return</code> स्टेटमेंट की भूमिका लिखिए।</summary><div class="ans" data-l="उत्तर">यह फ़ंक्शन को तुरंत समाप्त करके कंट्रोल कॉल करने वाले को लौटा देता है। साथ ही एक मान भी लौटा सकता है। <code>main()</code> में <code>return 0;</code> सफल समापन दर्शाता है।</div></details><details><summary><span class="qn">Q12.</span> फ़ंक्शन को array कैसे भेजी जाती है?</summary><div class="ans" data-l="उत्तर">कॉल में केवल array का नाम लिखते हैं, जैसे <code>sum(marks, 5)</code>। नाम पहले तत्व का address होता है, इसलिए फ़ंक्शन मूल array पर काम करता है। हेडर <code>int sum(int arr[], int n)</code> की तरह लिखा जाता है।</div></details><details><summary><span class="qn">Q13.</span> Recursion में base case क्यों ज़रूरी है?</summary><div class="ans" data-l="उत्तर">base case के बिना फ़ंक्शन अनंत बार स्वयं को कॉल करता रहता है। हर कॉल stack की मेमोरी लेती है, इसलिए मेमोरी समाप्त हो जाती है और प्रोग्राम stack overflow से क्रैश हो जाता है।</div></details><details><summary><span class="qn">Q14.</span> string.h के कोई चार library functions उनके उपयोग सहित लिखिए।</summary><div class="ans" data-l="उत्तर"><code>strlen()</code> – स्ट्रिंग की लंबाई; <code>strcpy()</code> – एक स्ट्रिंग को दूसरी में कॉपी करना; <code>strcat()</code> – दो स्ट्रिंग जोड़ना; <code>strcmp()</code> – दो स्ट्रिंग की तुलना करना।</div></details></div></section><section id="qa3"><h2>दीर्घ उत्तरीय प्रश्न (4–5 अंक)</h2><div class="bar"><button class="pp" data-open="1" data-target="qa3-l">सभी उत्तर खोलें</button><button class="pp" data-open="0" data-target="qa3-l">सभी उत्तर बंद करें</button></div><div id="qa3-l"><details><summary><span class="qn">Q1.</span> फ़ंक्शन को परिभाषित कीजिए। यूज़र-डिफ़ाइंड फ़ंक्शन का syntax, भाग और कार्यप्रणाली उदाहरण सहित समझाइए। (5 अंक)</summary><div class="ans" data-l="उत्तर"><p><b>फ़ंक्शन</b> स्टेटमेंट्स का नामयुक्त समूह है जो एक विशेष कार्य करता है और कॉल करने पर चलता है।</p><p><b>Syntax:</b></p><pre class="code"><span class="c-cm">// Declaration (prototype) - ends with semicolon</span>
+return_type function_name(type param1, type param2);
+
+<span class="c-cm">// Definition</span>
+return_type function_name(type param1, type param2)
+{
+    <span class="c-cm">// body: statements</span>
+    <span class="c-kw">return</span> value;      <span class="c-cm">// if return_type is not void</span>
+}
+
+<span class="c-cm">// Call</span>
+variable = function_name(arg1, arg2);</pre><p><b>तीन भाग:</b> (1) Declaration/prototype, (2) Definition, (3) Call।</p><p><b>उदाहरण:</b></p><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> add(<span class="c-kw">int</span> a, <span class="c-kw">int</span> b);       <span class="c-cm">// 1. declaration (prototype)</span>
+
+<span class="c-kw">int</span> main()
+{
+    <span class="c-kw">int</span> x = <span class="c-nu">5</span>, y = <span class="c-nu">3</span>, r;
+    r = add(x, y);           <span class="c-cm">// 2. function call</span>
+    printf(<span class="c-st">"Sum = %d"</span>, r);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}
+
+<span class="c-kw">int</span> add(<span class="c-kw">int</span> a, <span class="c-kw">int</span> b)        <span class="c-cm">// 3. function definition</span>
+{
+    <span class="c-kw">int</span> s = a + b;
+    <span class="c-kw">return</span> s;
+}</pre><div class="out" data-l="आउटपुट:">Sum = 8</div><p><b>कार्यप्रणाली:</b> <code>add(x, y)</code> कॉल होने पर कंट्रोल फ़ंक्शन में जाता है, 5 और 3 <code>a</code> तथा <code>b</code> में कॉपी होते हैं, योग 8 निकलता है और <code>return s;</code> उसे वापस भेजता है। यह <code>r</code> में रखा जाकर प्रिंट होता है।</p></div></details><details><summary><span class="qn">Q2.</span> C में फ़ंक्शन के प्रकार समझाइए। Library functions और user-defined functions में क्या अंतर है? (5 अंक)</summary><div class="ans" data-l="उत्तर"><p>C में दो प्रकार के फ़ंक्शन होते हैं।</p><p><b>1. Library functions:</b> पहले से परिभाषित फ़ंक्शन जो हेडर फ़ाइलों में रखे होते हैं, जैसे <code>printf()</code>, <code>scanf()</code> (stdio.h), <code>sqrt()</code>, <code>pow()</code> (math.h), <code>strlen()</code>, <code>strcpy()</code> (string.h), <code>toupper()</code> (ctype.h)। हेडर फ़ाइल include करके इन्हें उपयोग करते हैं।</p><p><b>2. User-defined functions:</b> प्रोग्रामर द्वारा लिखे गए, जैसे <code>add()</code>, <code>max()</code>।</p><div class="tablewrap"><table><tr><th>Library</th><th>User-defined</th></tr><tr><td>बने-बनाए</td><td>प्रोग्रामर द्वारा बनाए</td></tr><tr><td>हेडर फ़ाइल चाहिए</td><td>prototype/definition चाहिए</td></tr><tr><td>बदले नहीं जा सकते</td><td>बदले जा सकते हैं</td></tr></table></div></div></details><details><summary><span class="qn">Q3.</span> यूज़र-डिफ़ाइंड फ़ंक्शन की चार श्रेणियाँ प्रोग्राम सहित समझाइए। (5 अंक)</summary><div class="ans" data-l="उत्तर"><p><b>1. आर्गुमेंट नहीं, return नहीं:</b></p><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">void</span> greet()                  <span class="c-cm">// no argument, no return value</span>
+{
+    printf(<span class="c-st">"Hello, Student!"</span>);
+}
+
+<span class="c-kw">int</span> main()
+{
+    greet();
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">Hello, Student!</div><p><b>2. आर्गुमेंट है, return नहीं:</b></p><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">void</span> square(<span class="c-kw">int</span> n)            <span class="c-cm">// argument, no return value</span>
+{
+    printf(<span class="c-st">"Square = %d"</span>, n * n);
+}
+
+<span class="c-kw">int</span> main()
+{
+    square(<span class="c-nu">4</span>);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">Square = 16</div><p><b>3. आर्गुमेंट नहीं, return है:</b></p><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> readNumber()              <span class="c-cm">// no argument, returns a value</span>
+{
+    <span class="c-kw">int</span> n;
+    printf(<span class="c-st">"Enter a number: "</span>);
+    scanf(<span class="c-st">"%d"</span>, &amp;n);
+    <span class="c-kw">return</span> n;
+}
+
+<span class="c-kw">int</span> main()
+{
+    <span class="c-kw">int</span> a = readNumber();
+    printf(<span class="c-st">"You entered %d"</span>, a);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">Enter a number: 7
+You entered 7</div><p><b>4. आर्गुमेंट भी, return भी:</b></p><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> max(<span class="c-kw">int</span> a, <span class="c-kw">int</span> b)         <span class="c-cm">// arguments and return value</span>
+{
+    <span class="c-kw">if</span> (a &gt; b)
+        <span class="c-kw">return</span> a;
+    <span class="c-kw">else</span>
+        <span class="c-kw">return</span> b;
+}
+
+<span class="c-kw">int</span> main()
+{
+    printf(<span class="c-st">"Bigger = %d"</span>, max(<span class="c-nu">4</span>, <span class="c-nu">9</span>));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">Bigger = 9</div></div></details><details><summary><span class="qn">Q4.</span> Call by value और call by reference को उपयुक्त प्रोग्राम सहित समझाइए। (5 अंक)</summary><div class="ans" data-l="उत्तर"><p><b>Call by value:</b> आर्गुमेंट की कॉपी भेजी जाती है; मूल वेरिएबल नहीं बदलता।</p><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">void</span> swap(<span class="c-kw">int</span> a, <span class="c-kw">int</span> b)        <span class="c-cm">// a, b are COPIES</span>
+{
+    <span class="c-kw">int</span> t = a;
+    a = b;
+    b = t;
+}
+
+<span class="c-kw">int</span> main()
+{
+    <span class="c-kw">int</span> x = <span class="c-nu">10</span>, y = <span class="c-nu">20</span>;
+    swap(x, y);
+    printf(<span class="c-st">"x = %d, y = %d"</span>, x, y);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">x = 10, y = 20</div><p><b>Call by reference:</b> <code>&amp;</code> द्वारा address भेजा जाता है; फ़ंक्शन पॉइंटर लेकर मूल वेरिएबल बदल सकता है।</p><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">void</span> swap(<span class="c-kw">int</span> *a, <span class="c-kw">int</span> *b)      <span class="c-cm">// a, b hold ADDRESSES</span>
+{
+    <span class="c-kw">int</span> t = *a;
+    *a = *b;
+    *b = t;
+}
+
+<span class="c-kw">int</span> main()
+{
+    <span class="c-kw">int</span> x = <span class="c-nu">10</span>, y = <span class="c-nu">20</span>;
+    swap(&amp;x, &amp;y);              <span class="c-cm">// send addresses</span>
+    printf(<span class="c-st">"x = %d, y = %d"</span>, x, y);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">x = 20, y = 10</div><p>पहले प्रोग्राम में केवल कॉपी की अदला-बदली हुई, इसलिए <code>x</code> और <code>y</code> क्रमशः 10 और 20 ही रहे। दूसरे प्रोग्राम में addresses पर रखे मानों की अदला-बदली हुई, इसलिए <code>x</code> = 20 और <code>y</code> = 10 हो गया।</p></div></details><details><summary><span class="qn">Q5.</span> रिकर्शन क्या है? किसी संख्या का factorial निकालने का recursive प्रोग्राम लिखकर कार्यप्रणाली समझाइए। (5 अंक)</summary><div class="ans" data-l="उत्तर"><p><b>रिकर्शन</b> अर्थात फ़ंक्शन का स्वयं को कॉल करना। इसमें base case और recursive case होते हैं।</p><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> fact(<span class="c-kw">int</span> n)
+{
+    <span class="c-kw">if</span> (n &lt;= <span class="c-nu">1</span>)              <span class="c-cm">// base case</span>
+        <span class="c-kw">return</span> <span class="c-nu">1</span>;
+    <span class="c-kw">return</span> n * fact(n - <span class="c-nu">1</span>);  <span class="c-cm">// recursive case</span>
+}
+
+<span class="c-kw">int</span> main()
+{
+    printf(<span class="c-st">"Factorial of 3 = %d"</span>, fact(<span class="c-nu">3</span>));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">Factorial of 3 = 6</div><p><b>कार्यप्रणाली:</b> fact(3) = 3 × fact(2); fact(2) = 2 × fact(1); fact(1) base case है और 1 लौटाता है। लौटते समय fact(2) = 2 × 1 = 2, fact(3) = 3 × 2 = 6।</p></div></details><details><summary><span class="qn">Q6.</span> Recursive फ़ंक्शन द्वारा 7 पदों की फ़िबोनाची श्रेणी छापने का प्रोग्राम लिखिए। (5 अंक)</summary><div class="ans" data-l="उत्तर"><p>फ़िबोनाची श्रेणी में हर पद पिछले दो पदों का योग होता है: 0, 1, 1, 2, 3, 5, 8…</p><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> fib(<span class="c-kw">int</span> n)
+{
+    <span class="c-kw">if</span> (n &lt;= <span class="c-nu">1</span>)
+        <span class="c-kw">return</span> n;                    <span class="c-cm">// fib(0)=0, fib(1)=1</span>
+    <span class="c-kw">return</span> fib(n - <span class="c-nu">1</span>) + fib(n - <span class="c-nu">2</span>);
+}
+
+<span class="c-kw">int</span> main()
+{
+    <span class="c-kw">int</span> i;
+    <span class="c-kw">for</span> (i = <span class="c-nu">0</span>; i &lt; <span class="c-nu">7</span>; i++)
+        printf(<span class="c-st">"%d "</span>, fib(i));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">0 1 1 2 3 5 8</div><p>Base case n ≤ 1 है (n लौटाता है)। अन्यथा fib(n) = fib(n−1) + fib(n−2)।</p></div></details><details><summary><span class="qn">Q7.</span> वेरिएबल का scope और lifetime समझाइए। Local और global वेरिएबल का अंतर प्रोग्राम सहित लिखिए। (5 अंक)</summary><div class="ans" data-l="उत्तर"><p><b>Scope</b> प्रोग्राम का वह क्षेत्र है जहाँ वेरिएबल उपयोग हो सकता है; <b>lifetime</b> वह अवधि है जब तक वह मेमोरी में रहता है।</p><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> g = <span class="c-nu">100</span>;                 <span class="c-cm">// global variable</span>
+
+<span class="c-kw">void</span> fun()
+{
+    <span class="c-kw">int</span> b = <span class="c-nu">7</span>;               <span class="c-cm">// local to fun()</span>
+    printf(<span class="c-st">"%d %d\n"</span>, g, b);
+}
+
+<span class="c-kw">int</span> main()
+{
+    <span class="c-kw">int</span> a = <span class="c-nu">5</span>;               <span class="c-cm">// local to main()</span>
+    fun();
+    printf(<span class="c-st">"%d %d\n"</span>, g, a);
+    <span class="c-cm">// printf("%d", b);      // ERROR: b is not visible here</span>
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">100 7
+100 5</div><div class="tablewrap"><table><tr><th>Local</th><th>Global</th></tr><tr><td>फ़ंक्शन के अंदर</td><td>सभी फ़ंक्शन के बाहर</td></tr><tr><td>केवल उसी फ़ंक्शन में दिखता है</td><td>सभी फ़ंक्शन में दिखता है</td></tr><tr><td>Default: garbage</td><td>Default: 0</td></tr><tr><td>फ़ंक्शन के अंत पर नष्ट</td><td>प्रोग्राम के अंत तक</td></tr></table></div></div></details><details><summary><span class="qn">Q8.</span> C में storage classes समझाइए। (5 अंक)</summary><div class="ans" data-l="उत्तर"><p>Storage class बताती है कि वेरिएबल कहाँ संग्रहित होगा, उसका default मान, scope और lifetime क्या होगा।</p><div class="tablewrap"><table><tr><th>Class</th><th>Default</th><th>Scope और जीवन</th></tr><tr><td><code>auto</code></td><td>Garbage</td><td>लोकल; ब्लॉक के साथ समाप्त (लोकल का default)</td></tr><tr><td><code>register</code></td><td>Garbage</td><td>लोकल; तेज़ गति के लिए CPU register का अनुरोध</td></tr><tr><td><code>static</code></td><td>0</td><td>स्कोप लोकल; कॉल्स के बीच मान बना रहता है</td></tr><tr><td><code>extern</code></td><td>0</td><td>ग्लोबल; अन्यत्र परिभाषित वेरिएबल का संदर्भ</td></tr></table></div><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">void</span> counter()
+{
+    <span class="c-kw">static</span> <span class="c-kw">int</span> c = <span class="c-nu">0</span>;     <span class="c-cm">// created once, remembers value</span>
+    c++;
+    printf(<span class="c-st">"%d "</span>, c);
+}
+
+<span class="c-kw">int</span> main()
+{
+    counter();
+    counter();
+    counter();
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">1 2 3</div></div></details><details><summary><span class="qn">Q9.</span> चित्र सहित समझाइए कि फ़ंक्शन कॉल कैसे काम करता है। (5 अंक)</summary><div class="ans" data-l="उत्तर"><figure class="diagram"><div class="ft"><span>एनिमेटेड चित्र 1: फ़ंक्शन कॉल कैसे काम करता है</span><button type="button" class="pp">⏸ रोकें</button></div><svg viewBox="0 0 760 420" role="img" aria-label="एनिमेटेड चित्र 1: फ़ंक्शन कॉल कैसे काम करता है" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="30" width="280" height="300" rx="10" fill="#e8f1ff" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="160" y="62" class="tb" text-anchor="middle" >main()</text><rect x="30" y="112" width="260" height="34" rx="6" fill="#fff176" opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.0013;0.2250" calcMode="discrete" dur="8s" repeatCount="indefinite"/></rect><text x="40" y="100" class="tc" text-anchor="start" >int x = 5, y = 3, r;</text><text x="40" y="136" class="tc" text-anchor="start" >r = add(x, y);</text><text x="40" y="176" class="tc" text-anchor="start" >printf("%d", r);</text><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.7000" calcMode="discrete" dur="8s" repeatCount="indefinite"/><text x="205" y="136" class="tc tr" text-anchor="start" >→ r = 8</text></g><rect x="460" y="60" width="280" height="210" rx="10" fill="#fff3e0" stroke="#1b3a8a" stroke-width="2.5" filter="url(#wob)" /><text x="600" y="92" class="tc tb" text-anchor="middle" >int add(int a, int b)</text><rect x="470" y="104" width="260" height="140" rx="6" fill="#fff176" opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.2500;0.4750" calcMode="discrete" dur="8s" repeatCount="indefinite"/></rect><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.2500" calcMode="discrete" dur="8s" repeatCount="indefinite"/><text x="480" y="135" class="tc tg" text-anchor="start" >a = 5 , b = 3</text></g><text x="480" y="172" class="tc" text-anchor="start" >int s = a + b;</text><text x="480" y="210" class="tc" text-anchor="start" >return s;</text><text x="480" y="240" class="tc sm" text-anchor="start" >{ s = 8 }</text><path d="M302,135 L458,135" fill="none" stroke="#1b3a8a" stroke-width="2.6"  marker-end="url(#arrB)" filter="url(#wob)" /><text x="380" y="120" class="sm tb" text-anchor="middle" >कॉल + आर्गुमेंट (5, 3)</text><path d="M458,200 L302,200" fill="none" stroke="#c62828" stroke-width="2.6"  marker-end="url(#arrR)" filter="url(#wob)" /><text x="380" y="228" class="sm tr" text-anchor="middle" >रिटर्न मान 8</text><circle r="9" fill="#1976d2" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M302,135 L458,135" keyPoints="0;1;1" keyTimes="0;0.2;1" calcMode="linear"/><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.0013;0.2375" calcMode="discrete" dur="8s" repeatCount="indefinite"/></circle><circle r="9" fill="#e53935" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M458,200 L302,200" keyPoints="0;0;1;1" keyTimes="0;0.475;0.675;1" calcMode="linear"/><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.4750;0.7125" calcMode="discrete" dur="8s" repeatCount="indefinite"/></circle><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.7500" calcMode="discrete" dur="8s" repeatCount="indefinite"/><rect x="40" y="250" width="140" height="50" rx="10" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2.5" filter="url(#wob)" /><text x="110" y="283" class="tc tb" text-anchor="middle" >Output: 8</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.0013;0.2500" calcMode="discrete" dur="8s" repeatCount="indefinite"/><text x="380" y="385" class="cap" text-anchor="middle" >चरण 1: main() में add(x, y) की कॉल आती है।</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.2500;0.4750" calcMode="discrete" dur="8s" repeatCount="indefinite"/><text x="380" y="385" class="cap" text-anchor="middle" >चरण 2: कंट्रोल add() में जाता है; a = 5, b = 3।</text></g><g opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.4750;0.7000" calcMode="discrete" dur="8s" repeatCount="indefinite"/><text x="380" y="385" class="cap" text-anchor="middle" >चरण 3: add() पूरा होकर 8 लौटाता है।</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;0.7000" calcMode="discrete" dur="8s" repeatCount="indefinite"/><text x="380" y="385" class="cap" text-anchor="middle" >चरण 4: r = 8, main() आगे चलकर 8 प्रिंट करता है।</text></g></svg><figcaption><b>व्याख्या:</b> नीला बिंदु <b>फ़ंक्शन कॉल</b> है जो आर्गुमेंट 5 और 3 को <code>main()</code> से <code>add()</code> में ले जाता है। <code>add()</code> के अंदर ये मान फ़ॉर्मल पैरामीटर <code>a</code> और <code>b</code> में आ जाते हैं और बॉडी चलती है। लाल बिंदु <b>return</b> है: मान 8 वापस जाकर कॉल <code>add(x, y)</code> की जगह ले लेता है, इसलिए <code>r</code> = 8 हो जाता है। किसी भी चरण को ध्यान से देखने के लिए “रोकें” दबाइए।</figcaption></figure><p>(1) कंट्रोल फ़ंक्शन कॉल तक पहुँचता है। (2) वह फ़ंक्शन में जाता है और आर्गुमेंट formal parameters में कॉपी होते हैं। (3) बॉडी चलती है। (4) <code>return</code> कंट्रोल (और मान) वापस भेजता है। (5) कॉल करने वाला अगले स्टेटमेंट से आगे चलता है।</p></div></details><details><summary><span class="qn">Q10.</span> Recursion और iteration में अंतर लिखिए। Recursion के लाभ और हानि लिखिए। (5 अंक)</summary><div class="ans" data-l="उत्तर"><div class="tablewrap"><table><tr><th>Recursion</th><th>Iteration</th></tr><tr><td>फ़ंक्शन स्वयं को कॉल करता है</td><td>लूप स्टेटमेंट दोहराता है</td></tr><tr><td>base case पर रुकता है</td><td>शर्त गलत होने पर रुकता है</td></tr><tr><td>अधिक मेमोरी (stack)</td><td>कम मेमोरी</td></tr><tr><td>कोड छोटा</td><td>कोड लंबा</td></tr></table></div><p><b>लाभ:</b> छोटा, स्पष्ट कोड; factorial, Fibonacci, Tower of Hanoi के लिए स्वाभाविक। <b>हानि:</b> अधिक मेमोरी और समय; base case न हो तो अनंत कॉल (stack overflow)।</p></div></details></div></section><section id="qa4"><h2>प्रोग्रामिंग प्रश्न हल सहित</h2><p>ये प्रोग्राम प्रैक्टिकल और बोर्ड परीक्षा में सबसे अधिक पूछे जाते हैं। हर एक को टाइप करके चलाइए।</p><div class="bar"><button class="pp" data-open="1" data-target="qa4-l">सभी उत्तर खोलें</button><button class="pp" data-open="0" data-target="qa4-l">सभी उत्तर बंद करें</button></div><div id="qa4-l"><details><summary><span class="qn">Q1.</span> यह जाँचने के लिए फ़ंक्शन लिखिए कि कोई संख्या अभाज्य (prime) है या नहीं।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> isPrime(<span class="c-kw">int</span> n)
+{
+    <span class="c-kw">int</span> i;
+    <span class="c-kw">if</span> (n &lt; <span class="c-nu">2</span>)
+        <span class="c-kw">return</span> <span class="c-nu">0</span>;
+    <span class="c-kw">for</span> (i = <span class="c-nu">2</span>; i * i &lt;= n; i++)
+        <span class="c-kw">if</span> (n % i == <span class="c-nu">0</span>)
+            <span class="c-kw">return</span> <span class="c-nu">0</span>;          <span class="c-cm">// found a divisor</span>
+    <span class="c-kw">return</span> <span class="c-nu">1</span>;
+}
+
+<span class="c-kw">int</span> main()
+{
+    <span class="c-kw">if</span> (isPrime(<span class="c-nu">17</span>))
+        printf(<span class="c-st">"17 is prime"</span>);
+    <span class="c-kw">else</span>
+        printf(<span class="c-st">"17 is not prime"</span>);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">17 is prime</div><p>फ़ंक्शन विभाजक मिलते ही 0 लौटा देता है और कोई विभाजक न मिलने पर 1। हमें केवल तब तक जाँच करनी है जब तक <code>i * i &lt;= n</code>।</p></div></details><details><summary><span class="qn">Q2.</span> तीन संख्याओं में सबसे बड़ी संख्या निकालने का फ़ंक्शन लिखिए।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> largest(<span class="c-kw">int</span> a, <span class="c-kw">int</span> b, <span class="c-kw">int</span> c)
+{
+    <span class="c-kw">if</span> (a &gt;= b &amp;&amp; a &gt;= c)
+        <span class="c-kw">return</span> a;
+    <span class="c-kw">else</span> <span class="c-kw">if</span> (b &gt;= c)
+        <span class="c-kw">return</span> b;
+    <span class="c-kw">else</span>
+        <span class="c-kw">return</span> c;
+}
+
+<span class="c-kw">int</span> main()
+{
+    printf(<span class="c-st">"Largest = %d"</span>, largest(<span class="c-nu">12</span>, <span class="c-nu">45</span>, <span class="c-nu">30</span>));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">Largest = 45</div></div></details><details><summary><span class="qn">Q3.</span> base की घात exp निकालने के लिए फ़ंक्शन <code>power(base, exp)</code> लिखिए।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">long</span> power(<span class="c-kw">int</span> base, <span class="c-kw">int</span> exp)
+{
+    <span class="c-kw">long</span> r = <span class="c-nu">1</span>;
+    <span class="c-kw">int</span> i;
+    <span class="c-kw">for</span> (i = <span class="c-nu">1</span>; i &lt;= exp; i++)
+        r = r * base;
+    <span class="c-kw">return</span> r;
+}
+
+<span class="c-kw">int</span> main()
+{
+    printf(<span class="c-st">"2 ^ 5 = %ld"</span>, power(<span class="c-nu">2</span>, <span class="c-nu">5</span>));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">2 ^ 5 = 32</div></div></details><details><summary><span class="qn">Q4.</span> फ़ंक्शन द्वारा संख्या सम (even) या विषम (odd) जाँचने का प्रोग्राम लिखिए।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> isEven(<span class="c-kw">int</span> n)
+{
+    <span class="c-kw">return</span> (n % <span class="c-nu">2</span> == <span class="c-nu">0</span>);     <span class="c-cm">// gives 1 (true) or 0 (false)</span>
+}
+
+<span class="c-kw">int</span> main()
+{
+    <span class="c-kw">if</span> (isEven(<span class="c-nu">14</span>))
+        printf(<span class="c-st">"Even"</span>);
+    <span class="c-kw">else</span>
+        printf(<span class="c-st">"Odd"</span>);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">Even</div><p>Expression <code>n % 2 == 0</code> सत्य होने पर 1 और असत्य होने पर 0 देता है।</p></div></details><details><summary><span class="qn">Q5.</span> किसी संख्या का पहाड़ा (5 पदों तक) छापने का फ़ंक्शन लिखिए।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">void</span> table(<span class="c-kw">int</span> n)
+{
+    <span class="c-kw">int</span> i;
+    <span class="c-kw">for</span> (i = <span class="c-nu">1</span>; i &lt;= <span class="c-nu">5</span>; i++)
+        printf(<span class="c-st">"%d x %d = %d\n"</span>, n, i, n * i);
+}
+
+<span class="c-kw">int</span> main()
+{
+    table(<span class="c-nu">7</span>);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+7 x 4 = 28
+7 x 5 = 35</div></div></details><details><summary><span class="qn">Q6.</span> Array के तत्वों का योग निकालने का फ़ंक्शन लिखिए।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> sum(<span class="c-kw">int</span> arr[], <span class="c-kw">int</span> n)      <span class="c-cm">// array + its size</span>
+{
+    <span class="c-kw">int</span> i, s = <span class="c-nu">0</span>;
+    <span class="c-kw">for</span> (i = <span class="c-nu">0</span>; i &lt; n; i++)
+        s = s + arr[i];
+    <span class="c-kw">return</span> s;
+}
+
+<span class="c-kw">int</span> main()
+{
+    <span class="c-kw">int</span> marks[<span class="c-nu">5</span>] = {<span class="c-nu">1</span>, <span class="c-nu">2</span>, <span class="c-nu">3</span>, <span class="c-nu">4</span>, <span class="c-nu">5</span>};
+    printf(<span class="c-st">"Total = %d"</span>, sum(marks, <span class="c-nu">5</span>));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">Total = 15</div></div></details><details><summary><span class="qn">Q7.</span> वृत्त का क्षेत्रफल निकालने का फ़ंक्शन लिखिए (3.14 लें)।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">float</span> area(<span class="c-kw">float</span> r)
+{
+    <span class="c-kw">return</span> <span class="c-nu">3.14</span> * r * r;
+}
+
+<span class="c-kw">int</span> main()
+{
+    printf(<span class="c-st">"Area = %.2f"</span>, area(<span class="c-nu">2</span>));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">Area = 12.56</div></div></details><details><summary><span class="qn">Q8.</span> दो संख्याओं का GCD निकालने का recursive फ़ंक्शन लिखिए।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> gcd(<span class="c-kw">int</span> a, <span class="c-kw">int</span> b)
+{
+    <span class="c-kw">if</span> (b == <span class="c-nu">0</span>)
+        <span class="c-kw">return</span> a;            <span class="c-cm">// base case</span>
+    <span class="c-kw">return</span> gcd(b, a % b);    <span class="c-cm">// recursive case</span>
+}
+
+<span class="c-kw">int</span> main()
+{
+    printf(<span class="c-st">"GCD = %d"</span>, gcd(<span class="c-nu">48</span>, <span class="c-nu">18</span>));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">GCD = 6</div><p>gcd(48,18) → gcd(18,12) → gcd(12,6) → gcd(6,0) = 6।</p></div></details><details><summary><span class="qn">Q9.</span> ऐसा प्रोग्राम लिखिए जिसमें एक फ़ंक्शन दूसरे फ़ंक्शन को कॉल करे।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">int</span> square(<span class="c-kw">int</span> n)
+{
+    <span class="c-kw">return</span> n * n;
+}
+
+<span class="c-kw">int</span> sumOfSquares(<span class="c-kw">int</span> a, <span class="c-kw">int</span> b)
+{
+    <span class="c-kw">return</span> square(a) + square(b);   <span class="c-cm">// function calls function</span>
+}
+
+<span class="c-kw">int</span> main()
+{
+    printf(<span class="c-st">"%d"</span>, sumOfSquares(<span class="c-nu">3</span>, <span class="c-nu">4</span>));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">25</div></div></details></div></section>
+<section id="mcq"><h2>बहुविकल्पीय प्रश्न (MCQs)</h2><p>किसी विकल्प पर क्लिक करें। हरा रंग = सही, लाल रंग = गलत, और नीचे संक्षिप्त कारण दिखेगा।</p><div class="score" id="score"></div><div class="bar"><button class="pp" id="mcq-reset" type="button">क्विज़ दोबारा शुरू करें</button><button class="pp" id="mcq-show" type="button">सभी उत्तर दिखाएँ</button></div><div id="mcq-holder"></div></section>
+<section id="fill"><h2>रिक्त स्थान भरिए</h2><p>पहले खुद सोचिए, फिर “उत्तर” पर क्लिक कीजिए।</p><ol><li>फ़ंक्शन को उसके ______ से कॉल किया जाता है। <span class="fill-ans hid"></span><details style="display:inline-block;border:none;background:none;margin:0;vertical-align:top"><summary style="display:inline;padding:0 8px;background:#fff59d;border-radius:8px;font-size:16px">उत्तर</summary><span class="fill-ans"> नाम</span></details></li><li>C प्रोग्राम का प्रारंभ बिंदु ______ फ़ंक्शन है। <span class="fill-ans hid"></span><details style="display:inline-block;border:none;background:none;margin:0;vertical-align:top"><summary style="display:inline;padding:0 8px;background:#fff59d;border-radius:8px;font-size:16px">उत्तर</summary><span class="fill-ans"> main()</span></details></li><li>जो फ़ंक्शन कुछ नहीं लौटाता उसका return type ______ होता है। <span class="fill-ans hid"></span><details style="display:inline-block;border:none;background:none;margin:0;vertical-align:top"><summary style="display:inline;padding:0 8px;background:#fff59d;border-radius:8px;font-size:16px">उत्तर</summary><span class="fill-ans"> void</span></details></li><li><code>strlen()</code> की हेडर फ़ाइल ______ है। <span class="fill-ans hid"></span><details style="display:inline-block;border:none;background:none;margin:0;vertical-align:top"><summary style="display:inline;padding:0 8px;background:#fff59d;border-radius:8px;font-size:16px">उत्तर</summary><span class="fill-ans"> string.h</span></details></li><li>फ़ंक्शन कॉल में लिखे वेरिएबल ______ parameters कहलाते हैं। <span class="fill-ans hid"></span><details style="display:inline-block;border:none;background:none;margin:0;vertical-align:top"><summary style="display:inline;padding:0 8px;background:#fff59d;border-radius:8px;font-size:16px">उत्तर</summary><span class="fill-ans"> actual</span></details></li><li>x का address भेजने के लिए ______ लिखते हैं। <span class="fill-ans hid"></span><details style="display:inline-block;border:none;background:none;margin:0;vertical-align:top"><summary style="display:inline;padding:0 8px;background:#fff59d;border-radius:8px;font-size:16px">उत्तर</summary><span class="fill-ans"> &amp;x</span></details></li><li>Recursive फ़ंक्शन में ______ case होना ज़रूरी है। <span class="fill-ans hid"></span><details style="display:inline-block;border:none;background:none;margin:0;vertical-align:top"><summary style="display:inline;padding:0 8px;background:#fff59d;border-radius:8px;font-size:16px">उत्तर</summary><span class="fill-ans"> base</span></details></li><li>______ वेरिएबल फ़ंक्शन कॉल्स के बीच अपना मान बनाए रखता है। <span class="fill-ans hid"></span><details style="display:inline-block;border:none;background:none;margin:0;vertical-align:top"><summary style="display:inline;padding:0 8px;background:#fff59d;border-radius:8px;font-size:16px">उत्तर</summary><span class="fill-ans"> static</span></details></li><li>सभी फ़ंक्शन के बाहर घोषित वेरिएबल ______ वेरिएबल कहलाता है। <span class="fill-ans hid"></span><details style="display:inline-block;border:none;background:none;margin:0;vertical-align:top"><summary style="display:inline;padding:0 8px;background:#fff59d;border-radius:8px;font-size:16px">उत्तर</summary><span class="fill-ans"> global</span></details></li><li>लोकल वेरिएबल की default storage class ______ है। <span class="fill-ans hid"></span><details style="display:inline-block;border:none;background:none;margin:0;vertical-align:top"><summary style="display:inline;padding:0 8px;background:#fff59d;border-radius:8px;font-size:16px">उत्तर</summary><span class="fill-ans"> auto</span></details></li></ol></section>
+<section id="tf"><h2>सही या गलत</h2><p>पहले सही/गलत बताइए, फिर उत्तर खोलकर कारण पढ़िए।</p><div id="tf-l"><details><summary><span class="qn">Q1.</span> एक C प्रोग्राम में एक से अधिक <code>main()</code> फ़ंक्शन हो सकते हैं।</summary><div class="ans" data-l="उत्तर"><span class="tf-ans">गलत</span> — ठीक एक main() होना चाहिए।</div></details><details><summary><span class="qn">Q2.</span> फ़ंक्शन को कई बार कॉल किया जा सकता है।</summary><div class="ans" data-l="उत्तर"><span class="tf-ans">सही</span> — यही पुनः उपयोग (reusability) का मुख्य लाभ है।</div></details><details><summary><span class="qn">Q3.</span> एक के बाद एक दो return लिखकर फ़ंक्शन दो मान लौटा सकता है।</summary><div class="ans" data-l="उत्तर"><span class="tf-ans">गलत</span> — पहला return फ़ंक्शन को समाप्त कर देता है; केवल एक मान लौटता है।</div></details><details><summary><span class="qn">Q4.</span> फ़ंक्शन के prototype के अंत में semicolon होता है।</summary><div class="ans" data-l="उत्तर"><span class="tf-ans">सही</span> — यह declaration स्टेटमेंट है।</div></details><details><summary><span class="qn">Q5.</span> Call by value में मूल वेरिएबल बदल सकता है।</summary><div class="ans" data-l="उत्तर"><span class="tf-ans">गलत</span> — केवल कॉपी बदलती है।</div></details><details><summary><span class="qn">Q6.</span> लोकल वेरिएबल किसी भी फ़ंक्शन में उपयोग हो सकता है।</summary><div class="ans" data-l="उत्तर"><span class="tf-ans">गलत</span> — वह केवल अपने फ़ंक्शन में दिखता है।</div></details><details><summary><span class="qn">Q7.</span> Recursion में base case ज़रूरी है।</summary><div class="ans" data-l="उत्तर"><span class="tf-ans">सही</span> — नहीं तो कॉल कभी नहीं रुकेंगी।</div></details><details><summary><span class="qn">Q8.</span> main() के अंदर कोई फ़ंक्शन परिभाषित किया जा सकता है।</summary><div class="ans" data-l="उत्तर"><span class="tf-ans">गलत</span> — C में nested function definition की अनुमति नहीं है।</div></details><details><summary><span class="qn">Q9.</span> Library functions हेडर फ़ाइलों में उपलब्ध होते हैं।</summary><div class="ans" data-l="उत्तर"><span class="tf-ans">सही</span> — जैसे math.h और stdio.h।</div></details><details><summary><span class="qn">Q10.</span> Static लोकल वेरिएबल हर कॉल में फिर से बनता है।</summary><div class="ans" data-l="उत्तर"><span class="tf-ans">गलत</span> — यह एक बार बनता है और अपना मान रखता है।</div></details></div></section>
+<section id="outp"><h2>आउटपुट पर आधारित प्रश्न</h2><p>पहले प्रोग्राम को कॉपी में हल कीजिए, फिर आउटपुट और कारण मिलाइए।</p><div id="outp-l"><details><summary><span class="qn">Q1.</span> इस प्रोग्राम का आउटपुट लिखिए।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-kw">int</span> f(<span class="c-kw">int</span> x)
+{
+    <span class="c-kw">return</span> x * <span class="c-nu">2</span>;
+}
+<span class="c-kw">int</span> main()
+{
+    printf(<span class="c-st">"%d"</span>, f(f(<span class="c-nu">3</span>)));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">12</div><p>f(3) = 6, फिर f(6) = 12। Nested कॉल अंदर से बाहर की ओर हल होती हैं।</p></div></details><details><summary><span class="qn">Q2.</span> इस प्रोग्राम का आउटपुट लिखिए।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-kw">void</span> show(<span class="c-kw">int</span> n)
+{
+    <span class="c-kw">if</span> (n == <span class="c-nu">0</span>)
+        <span class="c-kw">return</span>;
+    printf(<span class="c-st">"%d "</span>, n);
+    show(n - <span class="c-nu">1</span>);
+}
+<span class="c-kw">int</span> main()
+{
+    show(<span class="c-nu">3</span>);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">3 2 1</div><p>show(3) 3 छापकर show(2) बुलाता है जो 2 छापता है, फिर show(1) 1 छापता है, फिर show(0) लौट जाता है। आउटपुट 3 2 1 है।</p></div></details><details><summary><span class="qn">Q3.</span> इस प्रोग्राम का आउटपुट लिखिए।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-kw">int</span> x = <span class="c-nu">5</span>;
+<span class="c-kw">void</span> change()
+{
+    x = <span class="c-nu">10</span>;
+}
+<span class="c-kw">int</span> main()
+{
+    change();
+    printf(<span class="c-st">"%d"</span>, x);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">10</div><p>x ग्लोबल वेरिएबल है। change() उसे 10 कर देता है, इसलिए main() 10 छापता है।</p></div></details><details><summary><span class="qn">Q4.</span> इस प्रोग्राम का आउटपुट लिखिए।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-kw">void</span> fun()
+{
+    <span class="c-kw">int</span> c = <span class="c-nu">0</span>;
+    c++;
+    printf(<span class="c-st">"%d "</span>, c);
+}
+<span class="c-kw">int</span> main()
+{
+    fun(); fun(); fun();
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">1 1 1</div><p>c सामान्य लोकल वेरिएबल है और हर कॉल में 0 से शुरू होता है, इसलिए हर कॉल 1 छापती है।</p></div></details><details><summary><span class="qn">Q5.</span> इस प्रोग्राम का आउटपुट लिखिए।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-kw">int</span> sum(<span class="c-kw">int</span> n)
+{
+    <span class="c-kw">if</span> (n == <span class="c-nu">0</span>)
+        <span class="c-kw">return</span> <span class="c-nu">0</span>;
+    <span class="c-kw">return</span> n + sum(n - <span class="c-nu">1</span>);
+}
+<span class="c-kw">int</span> main()
+{
+    printf(<span class="c-st">"%d"</span>, sum(<span class="c-nu">4</span>));
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">10</div><p>sum(4) = 4 + 3 + 2 + 1 + 0 = 10।</p></div></details><details><summary><span class="qn">Q6.</span> इस प्रोग्राम का आउटपुट लिखिए।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-kw">int</span> test(<span class="c-kw">int</span> a)
+{
+    a = a + <span class="c-nu">5</span>;
+    <span class="c-kw">return</span> a;
+}
+<span class="c-kw">int</span> main()
+{
+    <span class="c-kw">int</span> x = <span class="c-nu">2</span>, y;
+    y = test(x);
+    printf(<span class="c-st">"%d %d"</span>, x, y);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">2 7</div><p>फ़ंक्शन केवल अपनी कॉपी a बदलता है (2 + 5 = 7) और उसे लौटाता है। x = 2 ही रहता है; y = 7 हो जाता है।</p></div></details><details><summary><span class="qn">Q7.</span> इस प्रोग्राम का आउटपुट लिखिए।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">void</span> swap(<span class="c-kw">int</span> a, <span class="c-kw">int</span> b)        <span class="c-cm">// a, b are COPIES</span>
+{
+    <span class="c-kw">int</span> t = a;
+    a = b;
+    b = t;
+}
+
+<span class="c-kw">int</span> main()
+{
+    <span class="c-kw">int</span> x = <span class="c-nu">10</span>, y = <span class="c-nu">20</span>;
+    swap(x, y);
+    printf(<span class="c-st">"x = %d, y = %d"</span>, x, y);
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">x = 10, y = 20</div><p>अदला-बदली कॉपी पर होती है, इसलिए x और y नहीं बदलते।</p></div></details><details><summary><span class="qn">Q8.</span> इस प्रोग्राम का आउटपुट लिखिए।</summary><div class="ans" data-l="उत्तर"><pre class="code"><span class="c-pp">#include &lt;stdio.h&gt;</span>
+
+<span class="c-kw">void</span> counter()
+{
+    <span class="c-kw">static</span> <span class="c-kw">int</span> c = <span class="c-nu">0</span>;     <span class="c-cm">// created once, remembers value</span>
+    c++;
+    printf(<span class="c-st">"%d "</span>, c);
+}
+
+<span class="c-kw">int</span> main()
+{
+    counter();
+    counter();
+    counter();
+    <span class="c-kw">return</span> <span class="c-nu">0</span>;
+}</pre><div class="out" data-l="आउटपुट:">1 2 3</div><p>static वेरिएबल अपना मान याद रखता है, इसलिए तीन कॉल 1, 2 और 3 छापती हैं।</p></div></details></div></section>
+<footer>✎ हर प्रोग्राम को कम से कम एक बार कंप्यूटर पर ज़रूर चलाएँ। परीक्षा के लिए शुभकामनाएँ!</footer>
 </main>
-</body>
-</html>
+<script>window.UI={"title": "C भाषा में फ़ंक्शन (Functions in C)", "subtitle": "कक्षा 10 · कंप्यूटर विज्ञान · अध्याय 1 · हस्तलिखित शैली के पूरे नोट्स, एनिमेटेड चित्रों सहित", "note": "<span class=\"lbl\">ध्यान दें:</span> ये नोट्स कक्षा 10 की कंप्यूटर पुस्तकों में पढ़ाए जाने वाले C भाषा के “फ़ंक्शन” के सामान्य पाठ्यक्रम पर आधारित हैं। नीचे दिए गए प्रश्न <b>बोर्ड परीक्षा के सामान्य पैटर्न पर बनाए गए अभ्यास प्रश्न</b> हैं (ये NCERT, किसी प्रकाशक या UP Board के प्रश्न-पत्र से शब्दशः नहीं लिए गए हैं)। अपने उत्तर की शैली अपनी पाठ्य-पुस्तक और शिक्षक के अनुसार मिला लें।", "toc": "विषय-सूची (क्लिक करके सीधे जाएँ)", "output": "आउटपुट:", "pause": "⏸ रोकें", "play": "▶ चलाएँ", "expand": "सभी उत्तर खोलें", "collapse": "सभी उत्तर बंद करें", "ans": "उत्तर", "score": "स्कोर", "attempted": "हल किए", "mcq_title": "बहुविकल्पीय प्रश्न (MCQs)", "mcq_intro": "किसी विकल्प पर क्लिक करें। हरा रंग = सही, लाल रंग = गलत, और नीचे संक्षिप्त कारण दिखेगा।", "reset": "क्विज़ दोबारा शुरू करें", "showall": "सभी उत्तर दिखाएँ", "fill_title": "रिक्त स्थान भरिए", "fill_intro": "पहले खुद सोचिए, फिर “उत्तर” पर क्लिक कीजिए।", "tf_title": "सही या गलत", "tf_intro": "पहले सही/गलत बताइए, फिर उत्तर खोलकर कारण पढ़िए।", "true": "सही", "false": "गलत", "out_title": "आउटपुट पर आधारित प्रश्न", "out_intro": "पहले प्रोग्राम को कॉपी में हल कीजिए, फिर आउटपुट और कारण मिलाइए।", "out_q": "इस प्रोग्राम का आउटपुट लिखिए।", "footer": "✎ हर प्रोग्राम को कम से कम एक बार कंप्यूटर पर ज़रूर चलाएँ। परीक्षा के लिए शुभकामनाएँ!"};window.__MCQ__=[{"q": "C प्रोग्राम का प्रारंभ बिंदु कौन-सा फ़ंक्शन है?", "c": null, "o": ["start()", "main()", "begin()", "run()"], "a": 1, "e": "निष्पादन हमेशा main() से शुरू होता है।"}, {"q": "जो फ़ंक्शन कुछ नहीं लौटाता उसका return type है:", "c": null, "o": ["int", "null", "void", "empty"], "a": 2, "e": "void का अर्थ है कोई मान नहीं लौटता।"}, {"q": "sqrt() किस हेडर फ़ाइल में है?", "c": null, "o": ["stdio.h", "string.h", "math.h", "ctype.h"], "a": 2, "e": "गणितीय फ़ंक्शन math.h में होते हैं।"}, {"q": "इनमें से कौन-सा user-defined फ़ंक्शन है?", "c": null, "o": ["printf()", "strlen()", "main()", "प्रोग्रामर द्वारा लिखा add()"], "a": 3, "e": "प्रोग्रामर द्वारा लिखा add() user-defined है; बाकी library फ़ंक्शन या विशेष main() हैं।"}, {"q": "फ़ंक्शन कॉल में लिखे वेरिएबल कहलाते हैं:", "c": null, "o": ["formal parameters", "actual parameters", "local variables", "global variables"], "a": 1, "e": "कॉल के आर्गुमेंट actual parameters कहलाते हैं।"}, {"q": "फ़ंक्शन definition के हेडर में लिखे वेरिएबल हैं:", "c": null, "o": ["actual parameters", "formal parameters", "arguments", "constants"], "a": 1, "e": "हेडर के जो वेरिएबल मान ग्रहण करते हैं वे formal parameters हैं।"}, {"q": "फ़ंक्शन prototype के अंत में होता है:", "c": null, "o": ["colon", "comma", "semicolon", "कुछ नहीं"], "a": 2, "e": "declaration एक स्टेटमेंट है, इसलिए अंत में semicolon होता है।"}, {"q": "कॉल करने वाले फ़ंक्शन को मान लौटाने के लिए कौन-सा keyword है?", "c": null, "o": ["send", "return", "back", "exit"], "a": 1, "e": "return keyword है।"}, {"q": "return स्टेटमेंट से फ़ंक्शन कितने मान लौटा सकता है?", "c": null, "o": ["केवल एक", "दो", "कोई भी संख्या", "केवल शून्य"], "a": 0, "e": "return केवल एक मान लौटाता है।"}, {"q": "किसी वेरिएबल का address पाने के लिए कौन-सा ऑपरेटर है?", "c": null, "o": ["*", "&", "#", "%"], "a": 1, "e": "&x का अर्थ x का address है।"}, {"q": "Call by value में फ़ंक्शन किस पर काम करता है?", "c": null, "o": ["मूल वेरिएबल पर", "मान की कॉपी पर", "address पर", "global वेरिएबल पर"], "a": 1, "e": "कॉपी भेजी जाती है, इसलिए मूल सुरक्षित रहता है।"}, {"q": "C में call by reference किसे भेजकर किया जाता है?", "c": null, "o": ["मान", "address (पॉइंटर)", "केवल array", "केवल string"], "a": 1, "e": "Address को & से भेजा जाता है और पॉइंटर में लिया जाता है।"}, {"q": "जब फ़ंक्शन स्वयं को कॉल करे तो उसे कहते हैं:", "c": null, "o": ["iteration", "recursion", "nesting", "overloading"], "a": 1, "e": "स्वयं को कॉल करना recursion है।"}, {"q": "Recursive फ़ंक्शन को रोकने के लिए क्या ज़रूरी है?", "c": null, "o": ["लूप", "global वेरिएबल", "base case", "static वेरिएबल"], "a": 2, "e": "Base case recursion को रोकता है।"}, {"q": "लोकल वेरिएबल की default storage class कौन-सी है?", "c": null, "o": ["static", "extern", "register", "auto"], "a": 3, "e": "लोकल वेरिएबल default रूप से auto होते हैं।"}, {"q": "कौन-सा keyword फ़ंक्शन कॉल्स के बीच लोकल वेरिएबल का मान बनाए रखता है?", "c": null, "o": ["auto", "static", "register", "void"], "a": 1, "e": "static वेरिएबल अपना मान याद रखते हैं।"}, {"q": "बिना मान दिए ग्लोबल वेरिएबल का default मान है:", "c": null, "o": ["garbage", "1", "0", "-1"], "a": 2, "e": "Global और static वेरिएबल का default मान 0 होता है।"}, {"q": "निम्न प्रोग्राम का आउटपुट क्या है?", "c": "int f(int x) { return x * 2; }\nprintf(\"%d\", f(f(3)));", "o": ["6", "12", "9", "3"], "a": 1, "e": "f(3) = 6, f(6) = 12।"}, {"q": "strlen(\"Hello\") कितना लौटाता है?", "c": null, "o": ["4", "5", "6", "7"], "a": 1, "e": "स्ट्रिंग में 5 अक्षर हैं (null कैरेक्टर गिना नहीं जाता)।"}, {"q": "इनमें से कौन-सा library फ़ंक्शन नहीं है?", "c": null, "o": ["printf()", "pow()", "strcpy()", "उपयोगकर्ता द्वारा लिखा add()"], "a": 3, "e": "add() उपयोगकर्ता ने लिखा है; यह user-defined है।"}, {"q": "लोकल वेरिएबल का scope होता है:", "c": null, "o": ["पूरा प्रोग्राम", "केवल उसके फ़ंक्शन/ब्लॉक के अंदर", "सभी फ़ाइलें", "केवल main()"], "a": 1, "e": "लोकल वेरिएबल केवल अपने फ़ंक्शन या ब्लॉक में दिखता है।"}, {"q": "इनमें से सही function declaration कौन-सा है?", "c": null, "o": ["int add(int, int);", "add int(int, int);", "int add{int, int};", "function add(int a, int b);"], "a": 0, "e": "return_type name(parameter types); सही रूप है।"}, {"q": "Call by value में actual parameters", "c": null, "o": ["फ़ंक्शन द्वारा बदल दिए जाते हैं", "फ़ंक्शन द्वारा नहीं बदलते", "मिट जाते हैं", "पॉइंटर बन जाते हैं"], "a": 1, "e": "केवल कॉपी बदलती है।"}, {"q": "आउटपुट क्या है?", "c": "int sum(int n) {\n  if (n == 0) return 0;\n  return n + sum(n - 1);\n}\nprintf(\"%d\", sum(4));", "o": ["4", "6", "10", "24"], "a": 2, "e": "4 + 3 + 2 + 1 + 0 = 10।"}, {"q": "toupper() किस हेडर फ़ाइल में है?", "c": null, "o": ["math.h", "ctype.h", "string.h", "stdlib.h"], "a": 1, "e": "कैरेक्टर फ़ंक्शन ctype.h में होते हैं।"}, {"q": "इनमें से किससे stack overflow हो सकता है?", "c": null, "o": ["for लूप", "base case के बिना recursion", "static वेरिएबल", "prototype"], "a": 1, "e": "अंतहीन स्वयं-कॉल stack भर देती हैं।"}, {"q": "फ़ंक्शन को array का नाम भेजने पर क्या जाता है?", "c": null, "o": ["सभी तत्वों की कॉपी", "पहले तत्व का address", "केवल पहला तत्व", "array का आकार"], "a": 1, "e": "Array का नाम उसके पहले तत्व का address होता है।"}, {"q": "एक फ़ंक्शन के अंदर दूसरे फ़ंक्शन की definition:", "c": null, "o": ["C में मान्य है", "C में मान्य नहीं", "केवल main() के लिए मान्य", "void फ़ंक्शन के लिए मान्य"], "a": 1, "e": "C में nested function definition नहीं होती।"}, {"q": "return के बारे में सही कथन कौन-सा है?", "c": null, "o": ["return के बाद का कोड भी चलता है", "return फ़ंक्शन को तुरंत समाप्त करता है", "return दो मान लौटा सकता है", "void फ़ंक्शन में return ज़रूरी है"], "a": 1, "e": "return फ़ंक्शन को तुरंत रोक देता है; उसके बाद के स्टेटमेंट छूट जाते हैं।"}, {"q": "यदि फ़ंक्शन को गलत संख्या में आर्गुमेंट के साथ कॉल किया जाए तो:", "c": null, "o": ["compile-time error आता है", "आउटपुट हमेशा 0 होता है", "अतिरिक्त मान छोड़ दिए जाते हैं", "वह void बन जाता है"], "a": 0, "e": "prototype उपलब्ध हो तो कंपाइलर error देता है।"}];</script>
+<script>
+(function(){
+ var D=window.__MCQ__||[];var holder=document.getElementById('mcq-holder');var total=D.length,right=0,tried=0;
+ var sc=document.getElementById('score');
+ function upd(){sc.textContent=UI.score+': '+right+' / '+total+'   ('+UI.attempted+': '+tried+')';}
+ function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ function render(){
+  holder.innerHTML='';right=0;tried=0;
+  D.forEach(function(m,i){
+   var d=document.createElement('div');d.className='mcq';
+   var q='<div class="q"><span class="qn">Q'+(i+1)+'.</span> '+esc(m.q)+(m.c?'<pre class="code">'+esc(m.c)+'</pre>':'')+'</div>';
+   d.innerHTML=q;
+   m.o.forEach(function(o,j){
+    var b=document.createElement('button');b.className='opt';b.type='button';b.textContent=String.fromCharCode(97+j)+') '+o;
+    b.onclick=function(){
+     if(d.classList.contains('done'))return;d.classList.add('done');tried++;
+     var bs=d.querySelectorAll('.opt');bs.forEach(function(x){x.disabled=true;});
+     bs[m.a].classList.add('ok');
+     if(j===m.a){right++;}else{b.classList.add('bad');}
+     upd();
+    };
+    d.appendChild(b);
+   });
+   var e=document.createElement('div');e.className='ex';e.innerHTML='<b>'+UI.ans+':</b> '+String.fromCharCode(97+m.a)+') '+esc(m.o[m.a])+' — '+esc(m.e);
+   d.appendChild(e);holder.appendChild(d);
+  });
+  upd();
+ }
+ render();
+ document.getElementById('mcq-reset').onclick=render;
+ document.getElementById('mcq-show').onclick=function(){holder.querySelectorAll('.mcq').forEach(function(d,i){d.classList.add('done');var bs=d.querySelectorAll('.opt');bs.forEach(function(x){x.disabled=true;});bs[D[i].a].classList.add('ok');});};
+ document.querySelectorAll('[data-open]').forEach(function(b){b.onclick=function(){var open=b.getAttribute('data-open')==='1';document.querySelectorAll('#'+b.getAttribute('data-target')+' details').forEach(function(x){x.open=open;});};});
+ document.querySelectorAll('figure.diagram').forEach(function(f){
+  var s=f.querySelector('svg'),b=f.querySelector('button.pp');var paused=false;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){s.pauseAnimations();paused=true;b.textContent=UI.play;}
+  b.onclick=function(){if(paused){s.unpauseAnimations();b.textContent=UI.pause;}else{s.pauseAnimations();b.textContent=UI.play;}paused=!paused;};
+ });
+})();
+</script>
+</body></html>

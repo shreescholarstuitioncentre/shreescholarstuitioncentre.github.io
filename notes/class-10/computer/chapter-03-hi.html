@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>अध्याय 3: C – फ़ंक्शन या सबरूटीन</title><link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet"><style>*{box-sizing:border-box}body{margin:0;background:#e9e4d6;font-family:'Kalam','Mangal',cursive;font-size:22px;color:#1d2a5b;line-height:32px}
+.p{max-width:860px;margin:18px auto;padding:20px 24px 40px 80px;background:#fffef7;background-image:linear-gradient(#bcd3ec 1px,transparent 1px);background-size:100% 32px;position:relative;box-shadow:0 3px 14px #0003;border-left:3px solid #e8918f}
+.p:before{content:"";position:absolute;left:46px;top:0;bottom:0;border-left:2px solid #e8918f}
+h1{font-size:40px;margin:0;line-height:48px;color:#c0392b;text-align:center;text-decoration:underline wavy #2e7d32}
+h2{font-size:30px;line-height:40px;margin:32px 0 0;color:#2e7d32;border:2px solid #2e7d32;border-radius:14px 4px 16px 4px;display:inline-block;padding:0 14px;background:#e8f5e9}
+h3{font-size:24px;margin:0;color:#c0392b}
+p,li{margin:0}ul{margin:0;padding-left:26px}.sub{text-align:center;color:#555}
+b{color:#c0392b}mark{background:#fff176}.box{border:2px dashed #1d2a5b;padding:6px 14px;margin:16px 0;border-radius:10px;background:#fffde7aa}
+pre{font:17px/26px 'Courier New',monospace;background:#263238;color:#c5e8b7;padding:10px 14px;border-radius:8px;margin:16px 0;overflow-x:auto;transform:rotate(-.3deg)}
+.fig{border:2px solid #1d2a5b;border-radius:10px;padding:10px;margin:16px 0;background:#fff;text-align:center}
+.cap{font-size:18px;color:#555;line-height:26px}
+.arr{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;align-items:flex-end;margin:10px 0}
+.c{width:54px;height:54px;border:2px solid #1d2a5b;border-radius:6px;position:relative;text-align:center;line-height:50px;transition:.4s;background:#fff}
+.c i{position:absolute;bottom:-26px;left:0;right:0;font:14px/20px monospace;color:#777}.c s{position:absolute;top:-28px;left:0;right:0;text-decoration:none;font-weight:bold;color:#c0392b;line-height:24px}
+.cur{background:#ffe082;transform:translateY(-8px)}.ok{background:#a5d6a7}.dim{opacity:.25}
+.bar{width:46px;background:#64b5f6;border:2px solid #1d2a5b;border-radius:4px 4px 0 0;text-align:center;transition:.4s;padding-top:2px}.bar.cur{background:#ffb74d}.bar.ok{background:#81c784}
+.msg{min-height:34px;color:#c0392b;margin:30px 0 4px}button,input{font:inherit;font-size:19px;padding:0 12px;border:2px solid #1d2a5b;border-radius:8px;background:#fff;color:#1d2a5b}button{cursor:pointer;background:#ffe082}input{width:70px}
+.flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}.n{border:2px solid #1d2a5b;border-radius:8px;padding:2px 12px;background:#e3f2fd}
+.pk{display:inline-block;border:2px solid #c0392b;border-radius:20px;padding:0 10px;font-size:17px;background:#fff;animation:go 2.4s ease-in-out infinite alternate}
+@keyframes go{from{transform:translateX(-14px)}to{transform:translateX(14px)}}
+table{border-collapse:collapse;width:100%;margin:16px 0;background:#fff}td,th{border:2px solid #1d2a5b;padding:0 8px;line-height:30px;font-size:19px}th{background:#c8e6c9}
+@media(max-width:600px){.p{padding-left:56px;font-size:19px}.p:before{left:34px}.c{width:40px}.bar{width:34px}}@media(prefers-reduced-motion:reduce){.pk{animation:none}}</style></head><body><div class="p"><h1>अध्याय 3: C – फ़ंक्शन या सबरूटीन</h1><p class="sub">सर्चिंग और सॉर्टिंग तकनीकें &nbsp;|&nbsp; कंप्यूटर एप्लीकेशन, कक्षा 10</p>
+<h2>1. फ़ंक्शन (सबरूटीन)</h2><div class="box"><b>परिभाषा:</b> <b>फ़ंक्शन</b> कथनों (statements) का एक नाम वाला ब्लॉक है जो कोई एक विशेष कार्य करता है। यह तभी चलता है जब इसे <b>call</b> किया जाए, और इसे बार-बार प्रयोग किया जा सकता है।</div><h3>फ़ंक्शन क्यों?</h3><ul><li>बड़ा प्रोग्राम छोटे भागों में बँट जाता है (<b>मॉड्यूलर</b> प्रोग्रामिंग)।</li><li><b>पुनः उपयोग</b> – एक बार लिखो, कई बार call करो।</li><li>त्रुटि ढूँढना (<b>debug</b>) और समझना आसान।</li><li>समय और मेमोरी की बचत।</li></ul><h3>प्रकार</h3><ul><li><b>लाइब्रेरी (built-in)</b> फ़ंक्शन: printf(), scanf(), sqrt(), strlen()।</li><li><b>यूज़र-डिफ़ाइंड</b> फ़ंक्शन: प्रोग्रामर द्वारा लिखे गए, जैसे add()।</li></ul><h3>सिंटैक्स</h3><p><mark>return_type function_name(parameter list) { body }</mark></p><p><b>प्रोटोटाइप</b> (main से पहले घोषणा): <mark>int add(int, int);</mark></p><pre>int add(int a, int b)      // function header
+{
+    int s = a + b;          // function body
+    return s;               // return value
+}
+int main()
+{
+    int r = add(5, 3);      // function call
+    printf("%d", r);        // output: 8
+    return 0;
+}</pre><div class="fig"><div class="flow"><div class="n">main() – कॉल करने वाला</div><div><span class="pk">वास्तविक पैरामीटर (5, 3)</span><br>━━━━▶</div><div class="n">add() – कॉल किया गया फ़ंक्शन<br><span class="cap">फ़ॉर्मल पैरामीटर (a, b)</span></div></div><div class="flow" style="margin-top:6px"><div class="n">main() – कॉल करने वाला</div><div>◀━━━━<br><span class="pk">लौटाया गया मान 8</span></div><div class="n">return s;</div></div><div class="cap">चित्र 1: फ़ंक्शन call और return (डेटा का प्रवाह)</div></div><p><b>भाग:</b> return type (int), नाम (add), फ़ॉर्मल पैरामीटर (int a, int b), बॉडी, return कथन। <b>Call by value</b>: वास्तविक मान की <b>कॉपी</b> फ़ॉर्मल पैरामीटर में जाती है, इसलिए मूल मान नहीं बदलता।</p>
+<h2>2. सर्चिंग (खोज)</h2><p><b>सर्चिंग</b> का अर्थ है किसी ऐरे (array) में दिए गए तत्व (<b>key</b>) की स्थिति ढूँढना।</p><h3>क. लीनियर (क्रमिक) सर्च</h3><ul><li>key की तुलना पहले से अंतिम तत्व तक एक-एक से करें।</li><li>बराबर मिले तो स्थिति बताएँ और रुक जाएँ, वरना अगले पर जाएँ।</li><li>अंत तक न मिले तो <b>नहीं मिला</b>।</li><li>ऐरे का क्रमबद्ध होना <b>ज़रूरी नहीं</b>। बड़े डेटा में धीमी (n तुलनाएँ)।</li></ul><pre>int linear(int a[], int n, int key)
+{
+    for (int i = 0; i &lt; n; i++)
+        if (a[i] == key) return i;   // found
+    return -1;                       // not found
+}</pre>
+<div class="fig"><div class="arr" id="la"></div><div class="msg" id="lm"></div>खोजा जाने वाला मान: <input id="lk" type="number" value="30"> <button onclick="lin()">▶ शुरू करें</button> <button onclick="reset()">रीसेट</button><div class="cap">चित्र 2: लीनियर सर्च (एनिमेशन)</div></div>
+<h3>ख. बाइनरी सर्च</h3><ul><li>ऐरे <b>क्रमबद्ध (sorted)</b> होना चाहिए।</li><li><b>mid = (low + high) / 2</b> निकालें।</li><li>key == a[mid] → मिल गया।</li><li>key &gt; a[mid] → दायाँ आधा भाग खोजें (low = mid+1)।</li><li>key &lt; a[mid] → बायाँ आधा भाग खोजें (high = mid-1)।</li><li>low &gt; high होने तक दोहराएँ। बहुत तेज़ (लगभग log₂n चरण)।</li></ul><pre>int binary(int a[], int n, int key)
+{
+    int lo = 0, hi = n - 1;
+    while (lo &lt;= hi) {
+        int mid = (lo + hi) / 2;
+        if (a[mid] == key) return mid;
+        else if (key > a[mid]) lo = mid + 1;
+        else hi = mid - 1;
+    }
+    return -1;
+}</pre>
+<div class="fig"><div class="arr" id="ba"></div><div class="msg" id="bm"></div>खोजा जाने वाला मान: <input id="bk" type="number" value="44"> <button onclick="bin()">▶ शुरू करें</button> <button onclick="reset()">रीसेट</button><div class="cap">चित्र 3: बाइनरी सर्च – L = low, M = mid, H = high (एनिमेशन)</div></div>
+<h2>3. सॉर्टिंग (क्रमबद्ध करना)</h2><p><b>सॉर्टिंग</b> का अर्थ है तत्वों को आरोही (ascending) या अवरोही (descending) क्रम में लगाना।</p><h3>क. बबल सॉर्ट</h3><ul><li>दो <b>आसन्न</b> तत्वों की तुलना करें; बायाँ बड़ा हो तो अदला-बदली (swap) करें।</li><li>पहले पास के बाद सबसे बड़ा तत्व अंत में पहुँच जाता है (बुलबुले की तरह)।</li><li>n-1 पास दोहराएँ; हर पास में एक तुलना कम होती है।</li></ul><pre>for (i = 0; i &lt; n-1; i++)
+  for (j = 0; j &lt; n-i-1; j++)
+    if (a[j] > a[j+1]) {
+      t = a[j]; a[j] = a[j+1]; a[j+1] = t;
+    }</pre>
+<div class="fig"><div class="arr" id="sa"></div><div class="msg" id="sm"></div><button onclick="bub()">▶ शुरू करें</button> <button onclick="reset()">रीसेट</button><div class="cap">चित्र 4: बबल सॉर्ट – नारंगी = तुलना, हरा = क्रमबद्ध (एनिमेशन)</div></div>
+<h3>ख. सेलेक्शन सॉर्ट</h3><ul><li>अक्रमबद्ध भाग में <b>सबसे छोटा</b> तत्व ढूँढें।</li><li>उसे उस भाग के पहले तत्व से swap करें।</li><li>बाकी भाग के लिए दोहराएँ। उदाहरण: 29 10 14 → 10 29 14 → 10 14 29।</li></ul><pre>for (i = 0; i &lt; n-1; i++) {
+  min = i;
+  for (j = i+1; j &lt; n; j++)
+    if (a[j] &lt; a[min]) min = j;
+  t = a[i]; a[i] = a[min]; a[min] = t;
+}</pre>
+<h2>4. त्वरित तुलना</h2><table><tr><th>तकनीक</th><th>क्रमबद्ध डेटा चाहिए?</th><th>विधि</th><th>गति</th></tr><tr><td>लीनियर सर्च</td><td>नहीं</td><td>एक-एक करके</td><td>धीमी</td></tr><tr><td>बाइनरी सर्च</td><td>हाँ</td><td>सीमा आधी करके</td><td>तेज़</td></tr><tr><td>बबल सॉर्ट</td><td>–</td><td>पास वाले swap</td><td>धीमी</td></tr><tr><td>सेलेक्शन सॉर्ट</td><td>–</td><td>न्यूनतम चुनकर swap</td><td>धीमी</td></tr></table><h2>5. याद रखें</h2><div class="box"><ul><li>फ़ंक्शन = दोबारा प्रयोग होने वाला नामित ब्लॉक; call करने पर चलता है।</li><li>बाइनरी सर्च केवल sorted ऐरे पर चलती है।</li><li>बबल सॉर्ट पड़ोसियों को swap करता है; सेलेक्शन सॉर्ट न्यूनतम को।</li><li>सर्च का परिणाम: index, या नहीं मिला तो -1।</li></ul></div></div><script>const L={"lc": "a[{i}] = {v} की तुलना key {k} से", "ok": "index {i} पर मिल गया!", "nf": "key नहीं मिला (-1)", "r": "key > {v}: दायाँ भाग", "l": "key < {v}: बायाँ भाग", "bc": "{x} और {y} की तुलना", "sw": "Swap!", "done": "क्रमबद्ध हो गया!"};const $=id=>document.getElementById(id),sl=ms=>new Promise(r=>setTimeout(r,ms)),f=(s,o)=>s.replace(/\{(\w+)\}/g,(_,k)=>o[k]);
+let run=0;
+function cells(id,a){$(id).innerHTML=a.map((v,i)=>`<div class="c" id="${id}${i}"><s></s>${v}<i>[${i}]</i></div>`).join('')}
+const A=[12,45,7,30,22,9,51],B=[5,12,18,25,31,44,52,60],S=[34,12,45,8,27,19];
+function reset(){run++;cells('la',A);cells('ba',B);bars(S);['lm','bm','sm'].forEach(i=>$(i).textContent='')}
+async function lin(){reset();const t=run,k=+$('lk').value;for(let i=0;i<A.length;i++){if(t!=run)return;$('la'+i).classList.add('cur');$('lm').textContent=f(L.lc,{i,v:A[i],k});await sl(900);if(A[i]==k){$('la'+i).className='c ok';$('lm').textContent=f(L.ok,{i});return}$('la'+i).className='c dim'}$('lm').textContent=L.nf}
+async function bin(){reset();const t=run,k=+$('bk').value;let lo=0,hi=B.length-1;while(lo<=hi){if(t!=run)return;const m=(lo+hi)>>1;B.forEach((_,i)=>{const e=$('ba'+i);e.className='c'+(i<lo||i>hi?' dim':'');e.firstChild.textContent=i==lo?'L':''});$('ba'+lo).firstChild.textContent+='';$('ba'+hi).firstChild.textContent+='H';$('ba'+m).firstChild.textContent+='M';$('ba'+m).classList.add('cur');await sl(1300);if(B[m]==k){$('ba'+m).className='c ok';$('bm').textContent=f(L.ok,{i:m});return}if(k>B[m]){$('bm').textContent=f(L.r,{v:B[m]});lo=m+1}else{$('bm').textContent=f(L.l,{v:B[m]});hi=m-1}await sl(1200)}$('bm').textContent=L.nf}
+function bars(a,c={}){$('sa').innerHTML=a.map((v,i)=>`<div class="bar ${c[i]||''}" style="height:${v*5}px">${v}</div>`).join('')}
+async function bub(){reset();const t=run,a=[...S],n=a.length;for(let i=0;i<n-1;i++){for(let j=0;j<n-i-1;j++){if(t!=run)return;bars(a,{[j]:'cur',[j+1]:'cur'});$('sm').textContent=f(L.bc,{x:a[j],y:a[j+1]});await sl(900);if(a[j]>a[j+1]){[a[j],a[j+1]]=[a[j+1],a[j]];bars(a,{[j]:'cur',[j+1]:'cur'});$('sm').textContent=L.sw;await sl(900)}}const d={};for(let q=n-i-1;q<n;q++)d[q]='ok';bars(a,d)}bars(a,Object.fromEntries(a.map((_,i)=>[i,'ok'])));$('sm').textContent=L.done}
+reset();</script></body></html>

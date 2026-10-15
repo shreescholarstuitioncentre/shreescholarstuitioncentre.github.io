@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chapter 5: Pointers and File Handling</title><link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet"><style>*{box-sizing:border-box}body{margin:0;background:#e9e4d6;font-family:'Patrick Hand','Comic Sans MS',cursive;font-size:22px;color:#1d2a5b;line-height:32px}
+.p{max-width:860px;margin:18px auto;padding:20px 24px 40px 80px;background:#fffef7;background-image:linear-gradient(#bcd3ec 1px,transparent 1px);background-size:100% 32px;position:relative;box-shadow:0 3px 14px #0003;border-left:3px solid #e8918f}
+.p:before{content:"";position:absolute;left:46px;top:0;bottom:0;border-left:2px solid #e8918f}
+h1{font-size:40px;margin:0;line-height:48px;color:#c0392b;text-align:center;text-decoration:underline wavy #2e7d32}
+h2{font-size:30px;line-height:40px;margin:32px 0 0;color:#2e7d32;border:2px solid #2e7d32;border-radius:14px 4px 16px 4px;display:inline-block;padding:0 14px;background:#e8f5e9}
+h3{font-size:24px;margin:0;color:#c0392b}
+p,li{margin:0}ul{margin:0;padding-left:26px}.sub{text-align:center;color:#555}
+b{color:#c0392b}mark{background:#fff176}.box{border:2px dashed #1d2a5b;padding:6px 14px;margin:16px 0;border-radius:10px;background:#fffde7aa}
+pre{font:17px/26px 'Courier New',monospace;background:#263238;color:#c5e8b7;padding:10px 14px;border-radius:8px;margin:16px 0;overflow-x:auto;transform:rotate(-.3deg)}
+.fig{border:2px solid #1d2a5b;border-radius:10px;padding:10px;margin:16px 0;background:#fff;text-align:center}
+.cap{font-size:18px;color:#555;line-height:26px}
+.arr{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;align-items:flex-end;margin:10px 0}
+.c{width:54px;height:54px;border:2px solid #1d2a5b;border-radius:6px;position:relative;text-align:center;line-height:50px;transition:.4s;background:#fff}
+.c i{position:absolute;bottom:-26px;left:0;right:0;font:14px/20px monospace;color:#777}.c s{position:absolute;top:-28px;left:0;right:0;text-decoration:none;font-weight:bold;color:#c0392b;line-height:24px}
+.cur{background:#ffe082;transform:translateY(-8px)}.ok{background:#a5d6a7}.dim{opacity:.25}
+.bar{width:46px;background:#64b5f6;border:2px solid #1d2a5b;border-radius:4px 4px 0 0;text-align:center;transition:.4s;padding-top:2px}.bar.cur{background:#ffb74d}.bar.ok{background:#81c784}
+.msg{min-height:34px;color:#c0392b;margin:30px 0 4px}button,input{font:inherit;font-size:19px;padding:0 12px;border:2px solid #1d2a5b;border-radius:8px;background:#fff;color:#1d2a5b}button{cursor:pointer;background:#ffe082}input{width:70px}
+.flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}.n{border:2px solid #1d2a5b;border-radius:8px;padding:2px 12px;background:#e3f2fd}
+.pk{display:inline-block;border:2px solid #c0392b;border-radius:20px;padding:0 10px;font-size:17px;background:#fff;animation:go 2.4s ease-in-out infinite alternate}
+@keyframes go{from{transform:translateX(-14px)}to{transform:translateX(14px)}}
+table{border-collapse:collapse;width:100%;margin:16px 0;background:#fff}td,th{border:2px solid #1d2a5b;padding:0 8px;line-height:30px;font-size:19px}th{background:#c8e6c9}
+@media(max-width:600px){.p{padding-left:56px;font-size:19px}.p:before{left:34px}.c{width:40px}.bar{width:34px}}@media(prefers-reduced-motion:reduce){.pk{animation:none}}.mem{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;margin:10px 0 34px}.mb{width:120px;height:64px;border:2px solid #1d2a5b;border-radius:6px;text-align:center;position:relative;background:#fff;transition:.5s;line-height:26px;padding-top:6px}
+.mb i{position:absolute;bottom:-28px;left:0;right:0;font:14px/20px monospace;color:#777}.mb s{position:absolute;top:-26px;left:0;right:0;text-decoration:none;font-weight:bold;line-height:22px}
+.ar2{font-size:30px;color:#c0392b;opacity:0;transition:.6s}.hl{background:#ffe082;transform:scale(1.08)}
+.cd{font:17px monospace;background:#263238;color:#c5e8b7;padding:2px 12px;border-radius:6px;min-height:30px;margin:8px auto;max-width:520px}.fl{min-height:34px}</style></head><body><div class="p"><h1>Chapter 5: Pointers and File Handling</h1><p class="sub">Computer Applications, Class 10</p>
+<h2>1. Pointers</h2><div class="box"><b>Pointer:</b> a variable that stores the <b>memory address</b> of another variable.</div><p>Every variable lives at an <b>address</b> in memory (like a house number). A pointer holds that address, so it can reach the variable indirectly.</p><ul><li><b>&amp;</b> = <b>address-of</b> operator: &amp;x gives the address of x.</li><li><b>*</b> = <b>dereference</b> (value-at) operator: *p gives the value stored at the address in p.</li><li>Declaration: <mark>int *p;</mark> (pointer to int); <mark>float *q;</mark></li><li>Always initialise a pointer; use <b>NULL</b> if it points to nothing.</li></ul><pre>int x = 10;
+int *p = &amp;x;          // p stores the address of x
+printf("%d", x);      // 10
+printf("%p", &amp;x);     // address of x
+printf("%d", *p);     // 10  (value at address)
+*p = 20;              // x becomes 20</pre>
+<div class="fig"><div class="mem"><div class="mb" id="bp"><s>p (int *)</s>?<i>address 2000</i></div><div class="ar2" id="ar">━━━▶</div><div class="mb" id="bx"><s>x (int)</s>?<i>address 1000</i></div></div><div class="msg" id="mp"></div><button onclick="pt()">▶ Play</button> <button onclick="rp()">Reset</button><div class="cap">Fig 1: Pointer p stores the address of x (animated)</div></div><p>Here <b>p = 1000</b> is the <b>address</b> of x, so <b>*p</b> means the value of x. Changing <b>*p</b> changes <b>x</b>.</p>
+<h2>2. Pointers and Arrays</h2><ul><li>An array name is the <b>address of its first element</b>: a = &amp;a[0].</li><li><b>p++</b> moves the pointer by <b>sizeof(type)</b> (4 bytes for int), not by 1 byte.</li><li><b>*(a+i)</b> is the same as <b>a[i]</b>.</li></ul><pre>int a[3] = {10, 20, 30};
+int *p = a;           // same as &amp;a[0]
+printf("%d", *p);     // 10
+p++;                  // moves 4 bytes (size of int)
+printf("%d", *p);     // 20
+printf("%d", *(a+2)); // 30</pre><h2>3. Call by Reference</h2><p>Passing <b>addresses</b> to a function lets it change the <b>original</b> variables (in call by value only a copy changes).</p><pre>void swap(int *a, int *b) {
+    int t = *a; *a = *b; *b = t;
+}
+int main() {
+    int x = 5, y = 9;
+    swap(&amp;x, &amp;y);     // x = 9, y = 5
+    return 0;
+}</pre>
+<h2>4. File Handling</h2><div class="box"><b>File:</b> a named place on disk to store data <b>permanently</b>. Variables in RAM are lost when the program ends; files are not.</div><ul><li><b>Text file</b>: readable characters (.txt). <b>Binary file</b>: raw bytes (.dat).</li><li>A file is accessed through a <b>file pointer</b>: <mark>FILE *fp;</mark></li><li>Steps: <b>1. Open</b> (fopen) → <b>2. Read/Write</b> → <b>3. Close</b> (fclose).</li><li>fopen returns <b>NULL</b> if the file cannot be opened.</li></ul><pre>#include &lt;stdio.h>
+int main() {
+    FILE *fp;
+    char buf[20];
+    fp = fopen("data.txt", "w");
+    if (fp == NULL) { printf("Error"); return 1; }
+    fprintf(fp, "Hello");
+    fclose(fp);
+
+    fp = fopen("data.txt", "r");
+    fgets(buf, 20, fp);
+    printf("%s", buf);    // Hello
+    fclose(fp);
+    return 0;
+}</pre>
+<div class="fig"><div class="cd" id="cd"></div><div class="flow"><div class="n"><b>Program</b><br>buf = <span id="fb"></span></div><div class="ar2" id="fa" style="font-size:34px">▶</div><div class="n"><b>data.txt</b><br>Status: <span id="fs">-</span><br>Content: <span id="fc"></span></div></div><div class="msg" id="fm"></div><button onclick="fh()">▶ Play</button> <button onclick="rf()">Reset</button><div class="cap">Fig 2: File write and read, step by step (animated)</div></div>
+<h3>File modes (second argument of fopen)</h3><table><tr><th>Mode</th><th>Meaning</th><th>If file missing</th></tr><tr><td>r</td><td>Read only</td><td>Error (NULL)</td></tr><tr><td>w</td><td>Write (erases old content)</td><td>Creates file</td></tr><tr><td>a</td><td>Append at the end</td><td>Creates file</td></tr><tr><td>r+</td><td>Read and write</td><td>Error (NULL)</td></tr><tr><td>w+</td><td>Write and read (erases)</td><td>Creates file</td></tr><tr><td>a+</td><td>Read and append</td><td>Creates file</td></tr></table><h3>Common file functions</h3><table><tr><th>Function</th><th>Use</th></tr><tr><td>fopen() / fclose()</td><td>Open / close a file</td></tr><tr><td>fprintf() / fscanf()</td><td>Write / read formatted data</td></tr><tr><td>fputc() / fgetc()</td><td>Write / read one character</td></tr><tr><td>fputs() / fgets()</td><td>Write / read a string (line)</td></tr><tr><td>feof(fp)</td><td>Non-zero when end of file is reached</td></tr></table>
+<h2>5. Remember</h2><div class="box"><ul><li>&amp; gives address; * gives value at address.</li><li>Pointer holds an address, not a normal value.</li><li>p++ jumps by the size of the data type.</li><li>Always check fopen result for NULL, and always fclose().</li><li>w erases old data; a adds at the end.</li></ul></div></div><script>const L={"p1": "int x = 10;  → x holds 10", "p2": "int *p = &x;  → p holds the address of x (1000)", "p3": "*p = 20;  → value at address 1000 changes, so x = 20", "f0": "Open file for writing; empty file is ready", "f1": "fprintf sends data from program to file", "f2": "fclose saves and closes the file", "f3": "Open the same file for reading", "f4": "fgets copies the file data into buf", "f5": "fclose closes the file", "wr": "open (write)", "rd": "open (read)", "cl": "closed"};const $=id=>document.getElementById(id),sl=ms=>new Promise(r=>setTimeout(r,ms));let tk=0;
+function rp(){tk++;$('bx').firstChild.textContent='?';$('bp').firstChild.textContent='?';$('ar').style.opacity=0;$('mp').textContent='';$('bx').className=$('bp').className='mb'}
+async function pt(){rp();const t=tk;
+let s=async(m,fn)=>{if(t!=tk)return 1;$('mp').textContent=m;fn();await sl(1700)};
+if(await s(L.p1,()=>{$('bx').firstChild.textContent=10;$('bx').className='mb hl'}))return;
+if(await s(L.p2,()=>{$('bx').className='mb';$('bp').firstChild.textContent=1000;$('bp').className='mb hl';$('ar').style.opacity=1}))return;
+await s(L.p3,()=>{$('bp').className='mb';$('bx').firstChild.textContent=20;$('bx').className='mb hl'})}
+function rf(){tk++;$('cd').textContent='';$('fs').textContent='-';$('fc').textContent='';$('fb').textContent='';$('fm').textContent='';$('fa').style.opacity=0}
+async function fh(){rf();const t=tk,C=['fp = fopen("data.txt", "w");','fprintf(fp, "Hello");','fclose(fp);','fp = fopen("data.txt", "r");','fgets(buf, 20, fp);','fclose(fp);'];
+for(let i=0;i<6;i++){if(t!=tk)return;$('cd').textContent=C[i];$('fm').textContent=L['f'+i];
+if(i==0||i==3){$('fs').textContent=i?L.rd:L.wr}
+if(i==1){$('fa').textContent='▶';$('fa').style.opacity=1;for(const ch of 'Hello'){$('fc').textContent+=ch;await sl(350)}}
+if(i==2||i==5){$('fs').textContent=L.cl;$('fa').style.opacity=0}
+if(i==4){$('fa').textContent='◀';$('fa').style.opacity=1;await sl(700);$('fb').textContent='Hello'}
+await sl(1500)}}
+rp();rf();</script></body></html>

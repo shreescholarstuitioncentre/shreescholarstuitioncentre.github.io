@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chapter 3: C – Function or Subroutine</title><link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet"><style>*{box-sizing:border-box}body{margin:0;background:#e9e4d6;font-family:'Patrick Hand','Comic Sans MS',cursive;font-size:22px;color:#1d2a5b;line-height:32px}
+.p{max-width:860px;margin:18px auto;padding:20px 24px 40px 80px;background:#fffef7;background-image:linear-gradient(#bcd3ec 1px,transparent 1px);background-size:100% 32px;position:relative;box-shadow:0 3px 14px #0003;border-left:3px solid #e8918f}
+.p:before{content:"";position:absolute;left:46px;top:0;bottom:0;border-left:2px solid #e8918f}
+h1{font-size:40px;margin:0;line-height:48px;color:#c0392b;text-align:center;text-decoration:underline wavy #2e7d32}
+h2{font-size:30px;line-height:40px;margin:32px 0 0;color:#2e7d32;border:2px solid #2e7d32;border-radius:14px 4px 16px 4px;display:inline-block;padding:0 14px;background:#e8f5e9}
+h3{font-size:24px;margin:0;color:#c0392b}
+p,li{margin:0}ul{margin:0;padding-left:26px}.sub{text-align:center;color:#555}
+b{color:#c0392b}mark{background:#fff176}.box{border:2px dashed #1d2a5b;padding:6px 14px;margin:16px 0;border-radius:10px;background:#fffde7aa}
+pre{font:17px/26px 'Courier New',monospace;background:#263238;color:#c5e8b7;padding:10px 14px;border-radius:8px;margin:16px 0;overflow-x:auto;transform:rotate(-.3deg)}
+.fig{border:2px solid #1d2a5b;border-radius:10px;padding:10px;margin:16px 0;background:#fff;text-align:center}
+.cap{font-size:18px;color:#555;line-height:26px}
+.arr{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;align-items:flex-end;margin:10px 0}
+.c{width:54px;height:54px;border:2px solid #1d2a5b;border-radius:6px;position:relative;text-align:center;line-height:50px;transition:.4s;background:#fff}
+.c i{position:absolute;bottom:-26px;left:0;right:0;font:14px/20px monospace;color:#777}.c s{position:absolute;top:-28px;left:0;right:0;text-decoration:none;font-weight:bold;color:#c0392b;line-height:24px}
+.cur{background:#ffe082;transform:translateY(-8px)}.ok{background:#a5d6a7}.dim{opacity:.25}
+.bar{width:46px;background:#64b5f6;border:2px solid #1d2a5b;border-radius:4px 4px 0 0;text-align:center;transition:.4s;padding-top:2px}.bar.cur{background:#ffb74d}.bar.ok{background:#81c784}
+.msg{min-height:34px;color:#c0392b;margin:30px 0 4px}button,input{font:inherit;font-size:19px;padding:0 12px;border:2px solid #1d2a5b;border-radius:8px;background:#fff;color:#1d2a5b}button{cursor:pointer;background:#ffe082}input{width:70px}
+.flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}.n{border:2px solid #1d2a5b;border-radius:8px;padding:2px 12px;background:#e3f2fd}
+.pk{display:inline-block;border:2px solid #c0392b;border-radius:20px;padding:0 10px;font-size:17px;background:#fff;animation:go 2.4s ease-in-out infinite alternate}
+@keyframes go{from{transform:translateX(-14px)}to{transform:translateX(14px)}}
+table{border-collapse:collapse;width:100%;margin:16px 0;background:#fff}td,th{border:2px solid #1d2a5b;padding:0 8px;line-height:30px;font-size:19px}th{background:#c8e6c9}
+@media(max-width:600px){.p{padding-left:56px;font-size:19px}.p:before{left:34px}.c{width:40px}.bar{width:34px}}@media(prefers-reduced-motion:reduce){.pk{animation:none}}</style></head><body><div class="p"><h1>Chapter 3: C – Function or Subroutine</h1><p class="sub">Searching and Sorting Techniques &nbsp;|&nbsp; Computer Applications, Class 10</p>
+<h2>1. Function (Subroutine)</h2><div class="box"><b>Definition:</b> A <b>function</b> is a named block of statements that performs one specific task. It runs only when it is <b>called</b>, and it can be reused many times.</div><h3>Why use functions?</h3><ul><li>Big program splits into small parts (<b>modular</b> programming).</li><li><b>Reusability</b> – write once, call many times.</li><li>Easy to <b>debug</b> and understand.</li><li>Saves memory and time.</li></ul><h3>Types</h3><ul><li><b>Library (built-in)</b> functions: printf(), scanf(), sqrt(), strlen().</li><li><b>User-defined</b> functions: written by the programmer, e.g. add().</li></ul><h3>Syntax</h3><p><mark>return_type function_name(parameter list) { body }</mark></p><p><b>Prototype</b> (declaration before main): <mark>int add(int, int);</mark></p><pre>int add(int a, int b)      // function header
+{
+    int s = a + b;          // function body
+    return s;               // return value
+}
+int main()
+{
+    int r = add(5, 3);      // function call
+    printf("%d", r);        // output: 8
+    return 0;
+}</pre><div class="fig"><div class="flow"><div class="n">main() – caller</div><div><span class="pk">Actual parameters (5, 3)</span><br>━━━━▶</div><div class="n">add() – called function<br><span class="cap">Formal parameters (a, b)</span></div></div><div class="flow" style="margin-top:6px"><div class="n">main() – caller</div><div>◀━━━━<br><span class="pk">returned value 8</span></div><div class="n">return s;</div></div><div class="cap">Fig 1: Function call and return (data flow)</div></div><p><b>Parts:</b> return type (int), name (add), formal parameters (int a, int b), body, return statement. <b>Call by value</b>: a copy of the actual value goes to the formal parameter, so the original does not change.</p>
+<h2>2. Searching</h2><p><b>Searching</b> means finding the position of a given element (<b>key</b>) in an array.</p><h3>A. Linear (Sequential) Search</h3><ul><li>Compare key with each element from first to last.</li><li>If equal: print position and stop. Otherwise go to next.</li><li>If the end is reached: <b>not found</b>.</li><li>Array need <b>not</b> be sorted. Slow for big data (n comparisons).</li></ul><pre>int linear(int a[], int n, int key)
+{
+    for (int i = 0; i &lt; n; i++)
+        if (a[i] == key) return i;   // found
+    return -1;                       // not found
+}</pre>
+<div class="fig"><div class="arr" id="la"></div><div class="msg" id="lm"></div>Search key: <input id="lk" type="number" value="30"> <button onclick="lin()">▶ Start</button> <button onclick="reset()">Reset</button><div class="cap">Fig 2: Linear search (animated)</div></div>
+<h3>B. Binary Search</h3><ul><li>Array must be <b>sorted</b>.</li><li>Find <b>mid = (low + high) / 2</b>.</li><li>key == a[mid] → found.</li><li>key &gt; a[mid] → search right half (low = mid+1).</li><li>key &lt; a[mid] → search left half (high = mid-1).</li><li>Repeat until low &gt; high. Very fast (about log₂n steps).</li></ul><pre>int binary(int a[], int n, int key)
+{
+    int lo = 0, hi = n - 1;
+    while (lo &lt;= hi) {
+        int mid = (lo + hi) / 2;
+        if (a[mid] == key) return mid;
+        else if (key > a[mid]) lo = mid + 1;
+        else hi = mid - 1;
+    }
+    return -1;
+}</pre>
+<div class="fig"><div class="arr" id="ba"></div><div class="msg" id="bm"></div>Search key: <input id="bk" type="number" value="44"> <button onclick="bin()">▶ Start</button> <button onclick="reset()">Reset</button><div class="cap">Fig 3: Binary search – L = low, M = mid, H = high (animated)</div></div>
+<h2>3. Sorting</h2><p><b>Sorting</b> means arranging elements in ascending or descending order.</p><h3>A. Bubble Sort</h3><ul><li>Compare two <b>adjacent</b> elements; swap if left is greater.</li><li>After pass 1 the largest goes to the last place (like a bubble rising).</li><li>Repeat n-1 passes; each pass needs one comparison less.</li></ul><pre>for (i = 0; i &lt; n-1; i++)
+  for (j = 0; j &lt; n-i-1; j++)
+    if (a[j] > a[j+1]) {
+      t = a[j]; a[j] = a[j+1]; a[j+1] = t;
+    }</pre>
+<div class="fig"><div class="arr" id="sa"></div><div class="msg" id="sm"></div><button onclick="bub()">▶ Start</button> <button onclick="reset()">Reset</button><div class="cap">Fig 4: Bubble sort – orange = comparing, green = sorted (animated)</div></div>
+<h3>B. Selection Sort</h3><ul><li>Find the <b>smallest</b> element in the unsorted part.</li><li>Swap it with the first element of that part.</li><li>Repeat for the rest. Example: 29 10 14 → 10 29 14 → 10 14 29.</li></ul><pre>for (i = 0; i &lt; n-1; i++) {
+  min = i;
+  for (j = i+1; j &lt; n; j++)
+    if (a[j] &lt; a[min]) min = j;
+  t = a[i]; a[i] = a[min]; a[min] = t;
+}</pre>
+<h2>4. Quick Comparison</h2><table><tr><th>Technique</th><th>Needs sorted data?</th><th>Method</th><th>Speed</th></tr><tr><td>Linear search</td><td>No</td><td>One by one</td><td>Slow</td></tr><tr><td>Binary search</td><td>Yes</td><td>Halving the range</td><td>Fast</td></tr><tr><td>Bubble sort</td><td>–</td><td>Swap adjacent</td><td>Slow</td></tr><tr><td>Selection sort</td><td>–</td><td>Pick minimum, swap</td><td>Slow</td></tr></table><h2>5. Remember</h2><div class="box"><ul><li>Function = reusable named block; call it to run it.</li><li>Binary search works only on a sorted array.</li><li>Bubble sort swaps neighbours; selection sort swaps the minimum.</li><li>Return value of search: index, or -1 if not found.</li></ul></div></div><script>const L={"lc": "Compare a[{i}] = {v} with key {k}", "ok": "Found at index {i}!", "nf": "Key not found (-1)", "r": "key > {v}: go right", "l": "key < {v}: go left", "bc": "Compare {x} and {y}", "sw": "Swap!", "done": "Sorted!"};const $=id=>document.getElementById(id),sl=ms=>new Promise(r=>setTimeout(r,ms)),f=(s,o)=>s.replace(/\{(\w+)\}/g,(_,k)=>o[k]);
+let run=0;
+function cells(id,a){$(id).innerHTML=a.map((v,i)=>`<div class="c" id="${id}${i}"><s></s>${v}<i>[${i}]</i></div>`).join('')}
+const A=[12,45,7,30,22,9,51],B=[5,12,18,25,31,44,52,60],S=[34,12,45,8,27,19];
+function reset(){run++;cells('la',A);cells('ba',B);bars(S);['lm','bm','sm'].forEach(i=>$(i).textContent='')}
+async function lin(){reset();const t=run,k=+$('lk').value;for(let i=0;i<A.length;i++){if(t!=run)return;$('la'+i).classList.add('cur');$('lm').textContent=f(L.lc,{i,v:A[i],k});await sl(900);if(A[i]==k){$('la'+i).className='c ok';$('lm').textContent=f(L.ok,{i});return}$('la'+i).className='c dim'}$('lm').textContent=L.nf}
+async function bin(){reset();const t=run,k=+$('bk').value;let lo=0,hi=B.length-1;while(lo<=hi){if(t!=run)return;const m=(lo+hi)>>1;B.forEach((_,i)=>{const e=$('ba'+i);e.className='c'+(i<lo||i>hi?' dim':'');e.firstChild.textContent=i==lo?'L':''});$('ba'+lo).firstChild.textContent+='';$('ba'+hi).firstChild.textContent+='H';$('ba'+m).firstChild.textContent+='M';$('ba'+m).classList.add('cur');await sl(1300);if(B[m]==k){$('ba'+m).className='c ok';$('bm').textContent=f(L.ok,{i:m});return}if(k>B[m]){$('bm').textContent=f(L.r,{v:B[m]});lo=m+1}else{$('bm').textContent=f(L.l,{v:B[m]});hi=m-1}await sl(1200)}$('bm').textContent=L.nf}
+function bars(a,c={}){$('sa').innerHTML=a.map((v,i)=>`<div class="bar ${c[i]||''}" style="height:${v*5}px">${v}</div>`).join('')}
+async function bub(){reset();const t=run,a=[...S],n=a.length;for(let i=0;i<n-1;i++){for(let j=0;j<n-i-1;j++){if(t!=run)return;bars(a,{[j]:'cur',[j+1]:'cur'});$('sm').textContent=f(L.bc,{x:a[j],y:a[j+1]});await sl(900);if(a[j]>a[j+1]){[a[j],a[j+1]]=[a[j+1],a[j]];bars(a,{[j]:'cur',[j+1]:'cur'});$('sm').textContent=L.sw;await sl(900)}}const d={};for(let q=n-i-1;q<n;q++)d[q]='ok';bars(a,d)}bars(a,Object.fromEntries(a.map((_,i)=>[i,'ok'])));$('sm').textContent=L.done}
+reset();</script></body></html>
