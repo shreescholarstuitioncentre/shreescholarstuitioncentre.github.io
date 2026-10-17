@@ -2428,6 +2428,71 @@ footer{background:#f7f9fc;color:#586579}
   }
 }
 
+
+
+/* FINAL FIX: keep logo, title, Contact and SSTC's Login on ONE row on tablet/mobile */
+@media (max-width: 900px){
+  header#mainHeader{
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    align-items:center !important;
+    gap:6px !important;
+    width:100% !important;
+    box-sizing:border-box !important;
+    padding:6px 8px !important;
+    min-height:52px !important;
+  }
+  #mainHeader>img{
+    width:30px !important;height:30px !important;
+    flex:0 0 30px !important;
+  }
+  #mainHeader .nav-text{
+    flex:1 1 auto !important;
+    min-width:0 !important;
+    overflow:hidden !important;
+  }
+  #mainHeader .nav-text h1{
+    font-size:clamp(9px, 2.2vw, 16px) !important;
+    line-height:1.1 !important;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+    margin:0 !important;
+  }
+  #mainHeader .nav-text p{display:none !important}
+  #mainHeader .header-buttons{
+    display:flex !important;
+    flex:0 0 auto !important;
+    flex-direction:row !important;
+    flex-wrap:nowrap !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:4px !important;
+    min-width:0 !important;
+    margin:0 !important;
+  }
+  #mainHeader .header-buttons .btn{
+    display:inline-flex !important;
+    flex:0 0 auto !important;
+    white-space:nowrap !important;
+    width:auto !important;
+    min-height:26px !important;
+    padding:5px 6px !important;
+    margin:0 !important;
+    font-size:clamp(8px, 1.6vw, 10px) !important;
+    line-height:1 !important;
+    border-radius:6px !important;
+  }
+  #mainHeader .header-buttons .sstc-access{display:inline-flex !important;visibility:visible !important;opacity:1 !important}
+}
+@media (max-width:360px){
+  header#mainHeader{gap:4px !important;padding-left:5px !important;padding-right:5px !important}
+  #mainHeader>img{width:25px !important;height:25px !important;flex-basis:25px !important}
+  #mainHeader .header-buttons{gap:3px !important}
+  #mainHeader .header-buttons .btn{padding:4px 5px !important;font-size:8px !important}
+  #mainHeader .nav-text h1{font-size:9px !important}
+}
+
 </style>
 	
 <body>
