@@ -597,22 +597,22 @@ const SSTC_EBOOKS = {
             ]
         },
 
-       "Music": {
-          "description": "Class 10 Music E-Book Library",
-          "image": "subject-images/class-10/music.png",
-          "chapters": [
-              { "number": 1, "title": "Chapter 1: Definition of Technical Terms (Nada, Shruti, Swara, Saptak) / अध्याय 1: पारिभाषिक शब्दों की व्याख्या (नाद, श्रुति, स्वर, सप्तक)", "pdf": "ebooks/class-10/music/chapter-01.pdf" },
-              { "number": 2, "title": "Chapter 2: Raga Architecture: Aroha, Avaroha, Pakad, Vadi, Samvadi / अध्याय 2: राग लक्षण: आरोह, अवरोह, पकड़, वादी, संवादी स्वर", "pdf": "ebooks/class-10/music/chapter-02.pdf" },
-              { "number": 3, "title": "Chapter 3: Study of Ragas: Bhairav, Asavari, Kafi, Bhupali / अध्याय 3: निर्धारित रागों का विस्तृत अध्ययन: भैरव, आसावरी, काफी, भूपाली", "pdf": "ebooks/class-10/music/chapter-03.pdf" },
-              { "number": 4, "title": "Chapter 4: Study of Ragas: Yaman, Bilawal, Khamaj / अध्याय 4: रागों का अध्ययन: यमन, बिलावल, खमाज", "pdf": "ebooks/class-10/music/chapter-04.pdf" },
-              { "number": 5, "title": "Chapter 5: Concepts of Tala & Laya (Vilambit, Madhya, Drut) / अध्याय 5: ताल एवं लय की अवधारणा (विलम्बित, मध्य, द्रुत)", "pdf": "ebooks/class-10/music/chapter-05.pdf" },
-              { "number": 6, "title": "Chapter 6: Study of Talas: Teental, Dadra, Kaharwa, Jhaptal / अध्याय 6: निर्धारित तालों का परिचय: तीनताल, दादरा, कहरवा, झपताल", "pdf": "ebooks/class-10/music/chapter-06.pdf" },
-              { "number": 7, "title": "Chapter 7: Study of Talas: Chartal, Sooltal, Rupak / अध्याय 7: तालों का परिचय: चारताल, शूलताल, रूपक", "pdf": "ebooks/class-10/music/chapter-07.pdf" },
-              { "number": 8, "title": "Chapter 8: Introduction to Indian Notation System (Bhatkhande / Paluskar) / अध्याय 8: भारतीय स्वरलिपि पद्धति का परिचय (भातखण्डे / पलुस्कर)", "pdf": "ebooks/class-10/music/chapter-08.pdf" },
-              { "number": 9, "title": "Chapter 9: Description of Musical Instruments (Tanpura, Tabla, Harmonium, Sitar) / अध्याय 9: प्रमुख वाद्यों का विवरण (तानपुरा, तबला, हारमोनियम, सितार)", "pdf": "ebooks/class-10/music/chapter-09.pdf" },
-              { "number": 10, "title": "Chapter 10: Biographies of Eminent Musicians / Contributors / अध्याय 10: प्रसिद्ध संगीतज्ञों का जीवन परिचय एवं योगदान", "pdf": "ebooks/class-10/music/chapter-10.pdf" }
-          ]
-      },
+      //  "Music": {
+      //     "description": "Class 10 Music E-Book Library",
+      //     "image": "subject-images/class-10/music.png",
+      //     "chapters": [
+      //         { "number": 1, "title": "Chapter 1: Definition of Technical Terms (Nada, Shruti, Swara, Saptak) / अध्याय 1: पारिभाषिक शब्दों की व्याख्या (नाद, श्रुति, स्वर, सप्तक)", "pdf": "ebooks/class-10/music/chapter-01.pdf" },
+      //         { "number": 2, "title": "Chapter 2: Raga Architecture: Aroha, Avaroha, Pakad, Vadi, Samvadi / अध्याय 2: राग लक्षण: आरोह, अवरोह, पकड़, वादी, संवादी स्वर", "pdf": "ebooks/class-10/music/chapter-02.pdf" },
+      //         { "number": 3, "title": "Chapter 3: Study of Ragas: Bhairav, Asavari, Kafi, Bhupali / अध्याय 3: निर्धारित रागों का विस्तृत अध्ययन: भैरव, आसावरी, काफी, भूपाली", "pdf": "ebooks/class-10/music/chapter-03.pdf" },
+      //         { "number": 4, "title": "Chapter 4: Study of Ragas: Yaman, Bilawal, Khamaj / अध्याय 4: रागों का अध्ययन: यमन, बिलावल, खमाज", "pdf": "ebooks/class-10/music/chapter-04.pdf" },
+      //         { "number": 5, "title": "Chapter 5: Concepts of Tala & Laya (Vilambit, Madhya, Drut) / अध्याय 5: ताल एवं लय की अवधारणा (विलम्बित, मध्य, द्रुत)", "pdf": "ebooks/class-10/music/chapter-05.pdf" },
+      //         { "number": 6, "title": "Chapter 6: Study of Talas: Teental, Dadra, Kaharwa, Jhaptal / अध्याय 6: निर्धारित तालों का परिचय: तीनताल, दादरा, कहरवा, झपताल", "pdf": "ebooks/class-10/music/chapter-06.pdf" },
+      //         { "number": 7, "title": "Chapter 7: Study of Talas: Chartal, Sooltal, Rupak / अध्याय 7: तालों का परिचय: चारताल, शूलताल, रूपक", "pdf": "ebooks/class-10/music/chapter-07.pdf" },
+      //         { "number": 8, "title": "Chapter 8: Introduction to Indian Notation System (Bhatkhande / Paluskar) / अध्याय 8: भारतीय स्वरलिपि पद्धति का परिचय (भातखण्डे / पलुस्कर)", "pdf": "ebooks/class-10/music/chapter-08.pdf" },
+      //         { "number": 9, "title": "Chapter 9: Description of Musical Instruments (Tanpura, Tabla, Harmonium, Sitar) / अध्याय 9: प्रमुख वाद्यों का विवरण (तानपुरा, तबला, हारमोनियम, सितार)", "pdf": "ebooks/class-10/music/chapter-09.pdf" },
+      //         { "number": 10, "title": "Chapter 10: Biographies of Eminent Musicians / Contributors / अध्याय 10: प्रसिद्ध संगीतज्ञों का जीवन परिचय एवं योगदान", "pdf": "ebooks/class-10/music/chapter-10.pdf" }
+      //     ]
+      // },
 
        "Commerce": {
              "description": "Class 10 Commerce E-Book Library",
