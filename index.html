@@ -3623,27 +3623,50 @@ if ("serviceWorker" in navigator) {
     return;
   }
 
-  /*
-   * Android Chrome / Edge etc.
-   * Browser sends this event when the website
-   * is eligible to be installed.
-   */
+  /* App already installed ho (standalone) to button mat dikhao */
+  const isStandalone =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true;
 
+  if (isStandalone) {
+    installBox.style.display = "none";
+    pwaHelp.style.display = "none";
+    return;
+  }
+
+  const ua = navigator.userAgent || "";
+  const isIOS =
+    /iphone|ipad|ipod/i.test(ua) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  function showBox() {
+    installBox.style.display = "flex";
+  }
+
+  function showHelp() {
+
+    pwaHelp.innerHTML = isIOS
+      ? "📱 iPhone / iPad: Safari me niche <b>Share ⬆ → Add to Home Screen</b> dabayein."
+      : "📱 Browser ke <b>⋮ Menu → Install app / Add to Home screen</b> option ka use karein.";
+
+    pwaHelp.style.display = "block";
+
+    pwaHelp.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  /* Button hamesha dikhao (jab tak app installed na ho) */
+  showBox();
+
+  /* Android Chrome / Edge: native install prompt */
   window.addEventListener("beforeinstallprompt", function (event) {
 
     event.preventDefault();
 
     deferredPrompt = event;
 
-    installBox.style.display = "flex";
+    showBox();
     pwaHelp.style.display = "none";
-
   });
-
-
-  /*
-   * INSTALL BUTTON
-   */
 
   installBtn.addEventListener("click", async function () {
 
@@ -3653,63 +3676,28 @@ if ("serviceWorker" in navigator) {
 
       const result = await deferredPrompt.userChoice;
 
-      console.log(
-        "PWA installation result:",
-        result.outcome
-      );
+      console.log("PWA installation result:", result.outcome);
 
       deferredPrompt = null;
 
-      installBox.style.display = "none";
+      if (result.outcome === "accepted") {
+        installBox.style.display = "none";
+      }
 
       return;
     }
 
-
-    /*
-     * If browser doesn't support
-     * automatic install prompt.
-     */
-
-    pwaHelp.style.display = "block";
-
+    /* Native prompt available nahi - manual steps dikhao */
+    showHelp();
   });
 
-
-  /*
-   * Detect when app has already been installed
-   */
-
   window.addEventListener("appinstalled", function () {
-
-    console.log(
-      "Shree Scholars App installed successfully."
-    );
 
     deferredPrompt = null;
 
     installBox.style.display = "none";
-
     pwaHelp.style.display = "none";
-
   });
-
-
-  /*
-   * If website is already running
-   * as installed PWA, don't show install box.
-   */
-
-  const isStandalone =
-    window.matchMedia("(display-mode: standalone)").matches ||
-    window.navigator.standalone === true;
-
-  if (isStandalone) {
-
-    installBox.style.display = "none";
-    pwaHelp.style.display = "none";
-
-  }
 
 })();
 </script>
