@@ -454,7 +454,7 @@ const SSTC_EBOOKS = {
                  { "number": 12, "title": "Chapter 12: Swadesh Prem - Ramnaresh Tripathi (Kavya) / अध्याय 12: स्वदेश प्रेम - रामनरेश त्रिपाठी (काव्य)", "pdf": "ebooks/class-10/hindi/chapter-12.pdf" },
                  { "number": 13, "title": "Chapter 13: Bharatmata Ka Mandir Yeh - Maithilisharan Gupt (Kavya) / अध्याय 13: भारतमाता का मन्दिर यह - मैथिलीशरण गुप्त (काव्य)", "pdf": "ebooks/class-10/hindi/chapter-13.pdf" },
                  { "number": 14, "title": "Chapter 14: Himalaya Se - Mahadevi Verma (Kavya) / अध्याय 14: हिमालय से - महादेवी वर्मा (काव्य)", "pdf": "ebooks/class-10/hindi/chapter-14.pdf" },
-                 { "number": 15, "title": "Chapter 15: Swadesh Prem / Nadi - Kedarnath Singh (Kavya) / अध्याय 15: स्वदेश प्रेम / नदी - केदारनाथ सिंह (काव्य)", "pdf": "ebooks/class-10/hindi/chapter-15.pdf" },
+                 { "number": 15, "title": "Chapter 15: Nadi - Kedarnath Singh (Kavya)  / अध्याय 15: नदी - केदारनाथ सिंह (काव्य)", "pdf": "ebooks/class-10/hindi/chapter-15.pdf" },
                  { "number": 16, "title": "Chapter 16: Pushp Ki Abhilasha - Makhanlal Chaturvedi (Kavya) / अध्याय 16: पुष्प की अभिलाषा - माखनलाल चतुर्वेदी (काव्य)", "pdf": "ebooks/class-10/hindi/chapter-16.pdf" },
                  { "number": 17, "title": "Chapter 17: Varanasi (Sanskrit) / अध्याय 17: वाराणसी (अनिवार्य संस्कृत)", "pdf": "ebooks/class-10/hindi/chapter-17.pdf" },
                  { "number": 18, "title": "Chapter 18: Veerah Veeren Poojyate (Sanskrit) / अध्याय 18: वीरः वीरेण पूज्यते (अनिवार्य संस्कृत)", "pdf": "ebooks/class-10/hindi/chapter-18.pdf" },
@@ -465,7 +465,13 @@ const SSTC_EBOOKS = {
                  { "number": 23, "title": "Chapter 23: Hindi Vyakaran - Rasa, Alankar, Chhand / अध्याय 23: हिंदी व्याकरण - रस, अलंकार, छंद", "pdf": "ebooks/class-10/hindi/chapter-23.pdf" },
                  { "number": 24, "title": "Chapter 24: Upasarg, Pratyay, Samas, Tatsam / अध्याय 24: उपसर्ग, प्रत्यय, समास, तत्सम तद्भव", "pdf": "ebooks/class-10/hindi/chapter-24.pdf" },
                  { "number": 25, "title": "Chapter 25: Sanskrit Vyakaran - Sandhi, Shabd Roop, Dhatu Roop / अध्याय 25: संस्कृत व्याकरण - संधि, शब्द रूप, धातु रूप", "pdf": "ebooks/class-10/hindi/chapter-25.pdf" },
-                 { "number": 26, "title": "Chapter 26: Nibandh Aur Patra Lekhan / अध्याय 26: निबंध रचना एवं पत्र लेखन", "pdf": "ebooks/class-10/hindi/chapter-26.pdf" }
+                 { "number": 26, "title": "Chapter 26: Nibandh Aur Patra Lekhan / अध्याय 26: निबंध रचना एवं पत्र लेखन", "pdf": "ebooks/class-10/hindi/chapter-26.pdf" },
+                { "number": 27, "title": "Chapter 27: Anyoktivilash: / अध्याय 27: अन्योक्तिविलासः", "pdf": "ebooks/class-10/hindi/chapter-27.pdf" },
+                { "number": 28, "title": "Chapter 28: Aruni-shwetketu-samvaadah: / अध्याय 28: आरुणि-श्वेतकेतु-संवादः", "pdf": "ebooks/class-10/hindi/chapter-28.pdf" },
+                { "number": 29, "title": "Chapter 29: Chiti - Chandralok me Pratham Baar - Sumitranandan Pant / अध्याय 29: चींटी - चन्द्रलोक में प्रथम बार - सुमित्रानन्दन पन्त", "pdf": "ebooks/class-10/hindi/chapter-29.pdf" },
+                { "number": 30, "title": "Chapter 30: Haldighaati - Shyaamnarayan Pandey  / अध्याय 30: हल्दीघाटी - श्यामनारायण पाण्डेय", "pdf": "ebooks/class-10/hindi/chapter-30.pdf" },
+                { "number": 31, "title": "Chapter 31: Ken kim Vardhate? / अध्याय 31: केन किं वर्धते?", "pdf": "ebooks/class-10/hindi/chapter-31.pdf" },
+                { "number": 32, "title": "Chapter 32: Jhanshi ki Rani ki Samadhi par - Subhadrakumari Chauhan (Kavya) / अध्याय 32: झाँसी की रानी की समाधि परी - सुभद्राकुमारी चौहान (काव्य)"}
              ]
          },
 
