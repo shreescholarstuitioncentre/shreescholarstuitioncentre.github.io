@@ -2271,6 +2271,133 @@ footer{background:#f7f9fc;color:#586579}
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 
+
+
+/* =====================================================
+   SSTC ACCESS VISIBILITY FIX — tablet and mobile
+   Keeps Contact, Install App (when available), and SSTC Access usable.
+===================================================== */
+#mainHeader .header-buttons .sstc-access{
+  display:inline-flex !important;
+  visibility:visible !important;
+  opacity:1 !important;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  white-space:nowrap;
+  position:relative;
+  z-index:1002;
+}
+
+/* Tablet: show header actions in a visible horizontal row */
+@media (min-width:601px) and (max-width:900px){
+  #mainHeader{
+    flex-wrap:wrap;
+    row-gap:7px;
+  }
+  #mainHeader .nav-text{
+    flex:1 1 220px;
+    min-width:0;
+  }
+  #mainHeader .header-buttons{
+    display:flex;
+    flex-direction:row !important;
+    align-items:center;
+    justify-content:flex-end;
+    flex-wrap:wrap;
+    gap:6px;
+    flex:1 1 100%;
+    width:100%;
+  }
+  #mainHeader .header-buttons .btn{
+    display:inline-flex;
+    width:auto;
+    max-width:none;
+    margin:0;
+    font-size:11px;
+    padding:7px 10px;
+  }
+  #mainHeader .header-install-wrap[style*="flex"]{
+    display:flex !important;
+  }
+}
+
+/* Mobile: use a compact second row for all header actions */
+@media (max-width:600px){
+  #mainHeader{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:5px 7px;
+    padding:6px 8px;
+  }
+  #mainHeader>img{
+    width:34px;
+    height:34px;
+    flex:0 0 34px;
+  }
+  #mainHeader .nav-text{
+    flex:1 1 calc(100% - 45px);
+    min-width:0;
+    text-align:left;
+  }
+  #mainHeader .nav-text h1{
+    font-size:clamp(12px,3.5vw,16px);
+    line-height:1.15;
+    overflow-wrap:anywhere;
+  }
+  #mainHeader .nav-text p{display:none}
+  #mainHeader .header-buttons{
+    display:flex;
+    flex-direction:row !important;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:5px;
+    flex:1 1 100%;
+    width:100%;
+    min-width:0;
+  }
+  #mainHeader .header-buttons .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:auto !important;
+    max-width:none;
+    min-height:30px;
+    margin:0 !important;
+    padding:6px 8px;
+    font-size:10px;
+    line-height:1.2;
+    border-radius:8px;
+    white-space:nowrap;
+  }
+  /* Do not hide SSTC Access on phones */
+  #mainHeader .header-buttons .sstc-access{
+    display:inline-flex !important;
+    visibility:visible !important;
+    opacity:1 !important;
+  }
+  #mainHeader .header-install-wrap[style*="flex"]{
+    display:flex !important;
+  }
+  #mainHeader .header-install-wrap .pwa-install-btn{
+    min-height:30px;
+    padding:6px 8px;
+    font-size:10px;
+  }
+  html{scroll-padding-top:100px}
+}
+
+/* Very narrow phones */
+@media (max-width:360px){
+  #mainHeader .header-buttons{gap:4px}
+  #mainHeader .header-buttons .btn{
+    padding:5px 6px;
+    font-size:9px;
+  }
+}
+
 </style>
 	
 <body>
