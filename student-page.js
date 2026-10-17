@@ -20,6 +20,18 @@ let sstcRedirecting = false;
 let sstcLoggingOut = false;
 let sstcZoom = 0;
 
+/* --- PDF toolbar: Print / Download / Fullscreen settings --- */
+const SSTC_ALLOW_PDF_PRINT = true;      // false = Print button hat jayega
+const SSTC_ALLOW_PDF_DOWNLOAD = true;   // false = Download button hat jayega
+const SSTC_PDF_MIN_SCALE = 0.5;
+const SSTC_PDF_MAX_SCALE = 2.5;
+const SSTC_PDF_STEP = 0.1;
+let sstcPdfBaseHeight = 0;
+let sstcPdfRenderId = 0;                // purane render ko cancel karne ke liye
+let sstcAllowPrint = false;             // hamara Print button chalte waqt true
+let sstcPrintBusy = false;
+let sstcPrintCleanup = null;
+
 /* --- session enforcement state --- */
 const SSTC_SESSION_HEARTBEAT_MS = 30 * 1000;               // har 30 second me server check
 let sstcSessionHeartbeatTimer = null;
@@ -3822,6 +3834,22 @@ function injectSstcPdfJsStyles() {
             display:none !important;
         }
 
+        #pdfViewer.sstc-pseudo-fs {
+            position:fixed !important;
+            inset:0 !important;
+            width:100% !important;
+            height:100% !important;
+            max-width:none !important;
+            margin:0 !important;
+            border-radius:0 !important;
+            z-index:99998 !important;
+            background:#525659;
+        }
+
+        body.sstc-pseudo-fs-open {
+            overflow:hidden;
+        }
+
     `;
 
     document.head.appendChild(style);
@@ -3863,6 +3891,8 @@ function createSstcPdfToolbar(viewer) {
 
     viewer.prepend(toolbar);
 
+    sstcAddPdfToolbarExtras(toolbar);
+
     const prev = document.getElementById("sstcPdfPrev");
     const next = document.getElementById("sstcPdfNext");
     const zoomOut = document.getElementById("sstcPdfZoomOut");
@@ -3883,15 +3913,13 @@ function createSstcPdfToolbar(viewer) {
 
     if (zoomOut) {
         zoomOut.onclick = function () {
-            sstcPdfScale = Math.max(0.5, sstcPdfScale - 0.1);
-            renderSstcPdfDocument();
+            sstcPdfZoomBy(-SSTC_PDF_STEP);
         };
     }
 
     if (zoomIn) {
         zoomIn.onclick = function () {
-            sstcPdfScale = Math.min(2.5, sstcPdfScale + 0.1);
-            renderSstcPdfDocument();
+            sstcPdfZoomBy(SSTC_PDF_STEP);
         };
     }
 
@@ -3923,6 +3951,8 @@ function updateSstcPdfToolbar() {
     if (zoom) {
         zoom.textContent = Math.round(sstcPdfScale * 100) + "%";
     }
+
+    setText("zoomLevel", Math.round(sstcPdfScale * 100) + "%");
 
     if (prev) {
         prev.disabled = sstcPdfCurrentPage <= 1;
@@ -3990,6 +4020,7 @@ async function openSstcPdfJs(pdfUrl) {
         const firstPage = await sstcPdfDocument.getPage(1);
         const baseViewport = firstPage.getViewport({ scale: 1 });
         sstcPdfBaseWidth = baseViewport.width;
+        sstcPdfBaseHeight = baseViewport.height;
 
         sstcPdfScale = getSstcPdfInitialScale();
 
@@ -4078,48 +4109,105 @@ async function renderSstcPdfDocument() {
         return;
     }
 
+    const myId = ++sstcPdfRenderId;       // naya render aaya to purana khud ruk jayega
+    const doc = sstcPdfDocument;
+
+    /* Zoom se pehle kaunsa page dikh raha tha - zoom ke baad wahi position rahe */
+
+    let keepIndex = 0;
+    let keepRatio = 0;
+
+    const oldBoxes = pages.querySelectorAll(".sstc-pdf-page");
+
+    for (let i = 0; i < oldBoxes.length; i++) {
+
+        const b = oldBoxes[i];
+
+        if (b.offsetTop + b.offsetHeight > pages.scrollTop) {
+            keepIndex = i;
+            keepRatio = Math.max(0, (pages.scrollTop - b.offsetTop) / (b.offsetHeight || 1));
+            break;
+        }
+    }
+
     pages.innerHTML = "";
 
-    for (let pageNumber = 1; pageNumber <= sstcPdfPages; pageNumber++) {
+    /* Step 1: saare pages ke khaali box (sahi size ke saath) */
+
+    const items = [];
+
+    for (let pageNumber = 1; pageNumber <= doc.numPages; pageNumber++) {
 
         try {
 
-            const page = await sstcPdfDocument.getPage(pageNumber);
+            const page = await doc.getPage(pageNumber);
+
+            if (myId !== sstcPdfRenderId) { return; }
+
             const viewport = page.getViewport({ scale: sstcPdfScale });
 
-            const pageBox = document.createElement("div");
-            pageBox.className = "sstc-pdf-page";
-            pageBox.dataset.page = String(pageNumber);
-            pageBox.style.width = viewport.width + "px";
-            pageBox.style.height = viewport.height + "px";
+            const box = document.createElement("div");
+            box.className = "sstc-pdf-page";
+            box.dataset.page = String(pageNumber);
+            box.style.width = viewport.width + "px";
+            box.style.height = viewport.height + "px";
+
+            pages.appendChild(box);
+
+            items.push({ page: page, viewport: viewport, box: box });
+        }
+        catch (error) {
+            console.error("SSTC PDF page error:", pageNumber, error);
+        }
+    }
+
+    if (items[keepIndex]) {
+        const keep = items[keepIndex].box;
+        pages.scrollTop = keep.offsetTop + keepRatio * keep.offsetHeight;
+    }
+
+    /* Step 2: jo page dikh raha hai wahi pehle draw ho, baaki baad me */
+
+    const order = [];
+
+    for (let i = keepIndex; i < items.length; i++) { order.push(i); }
+    for (let i = 0; i < keepIndex; i++) { order.push(i); }
+
+    for (let k = 0; k < order.length; k++) {
+
+        if (myId !== sstcPdfRenderId) { return; }
+
+        const item = items[order[k]];
+
+        try {
 
             const canvas = document.createElement("canvas");
             const context = canvas.getContext("2d");
 
             const deviceScale = Math.min(window.devicePixelRatio || 1, 2);
 
-            canvas.width = Math.floor(viewport.width * deviceScale);
-            canvas.height = Math.floor(viewport.height * deviceScale);
-            canvas.style.width = viewport.width + "px";
-            canvas.style.height = viewport.height + "px";
+            canvas.width = Math.floor(item.viewport.width * deviceScale);
+            canvas.height = Math.floor(item.viewport.height * deviceScale);
+            canvas.style.width = item.viewport.width + "px";
+            canvas.style.height = item.viewport.height + "px";
 
             context.setTransform(deviceScale, 0, 0, deviceScale, 0, 0);
 
             context.fillStyle = "#ffffff";
-            context.fillRect(0, 0, viewport.width, viewport.height);
+            context.fillRect(0, 0, item.viewport.width, item.viewport.height);
 
-            pageBox.appendChild(canvas);
-            pages.appendChild(pageBox);
+            item.box.appendChild(canvas);
 
-            await page.render({ canvasContext: context, viewport: viewport }).promise;
-
+            await item.page.render({ canvasContext: context, viewport: item.viewport }).promise;
         }
         catch (error) {
-            console.error("SSTC PDF page render error:", pageNumber, error);
+            console.error("SSTC PDF page render error:", error);
         }
     }
 
-    updateSstcPdfToolbar();
+    if (myId === sstcPdfRenderId) {
+        updateSstcPdfToolbar();
+    }
 }
 
 
@@ -4167,10 +4255,377 @@ function fitSstcPdfWidth() {
     const width = pages.clientWidth;
     const available = Math.max(280, width - 30);
 
-    sstcPdfScale = Math.max(0.5, Math.min(2.5, available / sstcPdfBaseWidth));
+    sstcPdfScale = Math.max(SSTC_PDF_MIN_SCALE, Math.min(SSTC_PDF_MAX_SCALE, available / sstcPdfBaseWidth));
 
     renderSstcPdfDocument();
 }
+
+
+/* =========================================================
+   PDF TOOLBAR EXTRAS: ZOOM / PRINT / DOWNLOAD / FULLSCREEN
+   ========================================================= */
+
+function sstcAddPdfToolbarExtras(toolbar) {
+
+    const add = function (id, label, title, handler) {
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.id = id;
+        button.title = title;
+        button.textContent = label;
+        button.onclick = handler;
+
+        toolbar.appendChild(button);
+    };
+
+    if (SSTC_ALLOW_PDF_PRINT) {
+        add("sstcPdfPrint", "🖨 Print", "Print this chapter", sstcPdfPrint);
+    }
+
+    if (SSTC_ALLOW_PDF_DOWNLOAD) {
+        add("sstcPdfDownload", "⬇ Download", "Download this chapter (PDF)", sstcPdfDownload);
+    }
+
+    add("sstcPdfFull", "⛶ Full", "Full screen", toggleFullscreen);
+
+    sstcUpdateFullscreenButton();
+}
+
+/* Zoom (page ke + / - buttons aur toolbar - dono yahi use karte hain) */
+
+function sstcPdfZoomBy(delta) {
+
+    if (!sstcPdfDocument) {
+        return false;
+    }
+
+    const next = Math.max(
+        SSTC_PDF_MIN_SCALE,
+        Math.min(SSTC_PDF_MAX_SCALE, Math.round((sstcPdfScale + delta) * 100) / 100)
+    );
+
+    if (next !== sstcPdfScale) {
+        sstcPdfScale = next;
+        updateSstcPdfToolbar();
+        renderSstcPdfDocument();
+    }
+
+    return true;
+}
+
+/* Pura page screen me (width + height dono fit) */
+
+function sstcPdfFitPage() {
+
+    const pages = getSstcPdfPagesContainer();
+
+    if (!pages || !sstcPdfBaseWidth || !sstcPdfBaseHeight) {
+        return false;
+    }
+
+    const byWidth = Math.max(280, pages.clientWidth - 30) / sstcPdfBaseWidth;
+    const byHeight = Math.max(200, pages.clientHeight - 30) / sstcPdfBaseHeight;
+
+    sstcPdfScale = Math.max(
+        SSTC_PDF_MIN_SCALE,
+        Math.min(SSTC_PDF_MAX_SCALE, Math.min(byWidth, byHeight))
+    );
+
+    updateSstcPdfToolbar();
+    renderSstcPdfDocument();
+
+    return true;
+}
+
+/* ---------- DOWNLOAD ---------- */
+
+function sstcPdfFileName() {
+
+    const clean = function (text) {
+        return String(text || "").replace(/[^\w\-]+/g, "-").replace(/^-+|-+$/g, "");
+    };
+
+    const subject = clean(sessionStorage.getItem(SSTC_CURRENT_BOOK)) || "Chapter";
+    const chapter = clean(sessionStorage.getItem(SSTC_CURRENT_CHAPTER));
+
+    return "SSTC-" + subject + (chapter ? "-Chapter-" + chapter : "") + ".pdf";
+}
+
+async function sstcPdfDownload() {
+
+    if (!sstcPdfDocument || !sstcPdfUrl) {
+        showSstcToast("Pehle koi chapter kholein.", "info");
+        return;
+    }
+
+    const button = document.getElementById("sstcPdfDownload");
+    const oldText = button ? button.textContent : "";
+
+    if (button) {
+        button.disabled = true;
+        button.textContent = "⏳ ...";
+    }
+
+    try {
+
+        const response = await fetch(sstcPdfUrl, { cache: "force-cache" });
+
+        if (!response.ok) {
+            throw new Error("HTTP " + response.status);
+        }
+
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+
+        const link = document.createElement("a");
+        link.href = blobUrl;
+        link.download = sstcPdfFileName();
+        link.style.display = "none";
+
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+        setTimeout(function () {
+            URL.revokeObjectURL(blobUrl);
+        }, 5000);
+
+        showSstcToast("Download shuru ho gaya.", "success");
+    }
+    catch (error) {
+
+        console.error("SSTC PDF download error:", error);
+
+        /* Fallback: PDF naye tab me khol do */
+        window.open(sstcPdfUrl, "_blank");
+    }
+    finally {
+
+        if (button) {
+            button.disabled = false;
+            button.textContent = oldText;
+        }
+    }
+}
+
+/* ---------- PRINT ---------- */
+
+function sstcRestoreViewerVisible() {
+
+    const viewer = document.getElementById("pdfViewer");
+
+    if (viewer) {
+        viewer.classList.remove("viewer-hidden");
+    }
+
+    try { window.focus(); } catch (e) { /* ignore */ }
+}
+
+function sstcCleanupPrintFrame() {
+
+    if (sstcPrintCleanup) {
+        sstcPrintCleanup();
+    }
+}
+
+/*
+ * Har page ko image bana kar chhupe hue iframe me daalta hai aur print karta hai.
+ * (Mobile + desktop dono par chalta hai, kisi PDF plugin ki zarurat nahi.)
+ */
+
+async function sstcPdfPrint() {
+
+    if (!sstcPdfDocument) {
+        showSstcToast("Pehle koi chapter kholein.", "info");
+        return;
+    }
+
+    if (sstcPrintBusy) {
+        return;
+    }
+
+    sstcPrintBusy = true;
+    sstcCleanupPrintFrame();
+
+    const doc = sstcPdfDocument;
+    const button = document.getElementById("sstcPdfPrint");
+    const oldText = button ? button.textContent : "";
+    const urls = [];
+
+    let frame = null;
+
+    try {
+
+        if (button) { button.disabled = true; }
+
+        frame = document.createElement("iframe");
+        frame.setAttribute("aria-hidden", "true");
+        frame.style.cssText = "position:fixed;left:-10000px;top:0;width:800px;height:600px;border:0;";
+
+        document.body.appendChild(frame);
+
+        const win = frame.contentWindow;
+        const d = win.document;
+
+        d.open();
+        d.write(
+            '<!DOCTYPE html><html><head><meta charset="utf-8"><title>SSTC</title>' +
+            '<style>@page{margin:0}html,body{margin:0;padding:0;background:#fff}' +
+            'img{display:block;width:100%;height:auto;page-break-after:always;break-after:page}' +
+            'img:last-child{page-break-after:auto;break-after:auto}</style></head><body></body></html>'
+        );
+        d.close();
+
+        for (let n = 1; n <= doc.numPages; n++) {
+
+            if (button) { button.textContent = "⏳ " + n + "/" + doc.numPages; }
+
+            const page = await doc.getPage(n);
+            const viewport = page.getViewport({ scale: 2 });
+
+            const canvas = document.createElement("canvas");
+            canvas.width = Math.floor(viewport.width);
+            canvas.height = Math.floor(viewport.height);
+
+            const context = canvas.getContext("2d");
+            context.fillStyle = "#ffffff";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            await page.render({ canvasContext: context, viewport: viewport }).promise;
+
+            const blob = await new Promise(function (resolve) {
+                canvas.toBlob(resolve, "image/jpeg", 0.92);
+            });
+
+            canvas.width = 0;
+            canvas.height = 0;
+
+            if (!blob) { continue; }
+
+            const url = URL.createObjectURL(blob);
+            urls.push(url);
+
+            const img = d.createElement("img");
+
+            await new Promise(function (resolve) {
+                img.onload = resolve;
+                img.onerror = resolve;
+                img.src = url;
+                d.body.appendChild(img);
+            });
+        }
+
+        const thisFrame = frame;
+
+        sstcPrintCleanup = function () {
+
+            urls.forEach(function (u) { URL.revokeObjectURL(u); });
+
+            if (thisFrame.parentNode) {
+                thisFrame.remove();
+            }
+
+            sstcPrintCleanup = null;
+            sstcRestoreViewerVisible();
+        };
+
+        win.addEventListener("afterprint", function () {
+            setTimeout(sstcCleanupPrintFrame, 500);
+        });
+
+        sstcAllowPrint = true;
+
+        win.focus();
+        win.print();
+
+        setTimeout(function () {
+            sstcAllowPrint = false;
+        }, 3000);
+
+        sstcRestoreViewerVisible();
+    }
+    catch (error) {
+
+        console.error("SSTC PDF print error:", error);
+
+        showSstcToast("Print nahi ho paya. Dobara try karein.", "info");
+
+        sstcAllowPrint = false;
+
+        if (frame && frame.parentNode) {
+            frame.remove();
+        }
+
+        urls.forEach(function (u) { URL.revokeObjectURL(u); });
+    }
+    finally {
+
+        if (button) {
+            button.disabled = false;
+            button.textContent = oldText;
+        }
+
+        sstcPrintBusy = false;
+    }
+}
+
+/* ---------- FULLSCREEN ---------- */
+
+function sstcIsFullscreen() {
+
+    return !!(
+        document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        document.body.classList.contains("sstc-pseudo-fs-open")
+    );
+}
+
+function sstcUpdateFullscreenButton() {
+
+    const button = document.getElementById("sstcPdfFull");
+
+    if (button) {
+        button.textContent = sstcIsFullscreen() ? "🗗 Exit" : "⛶ Full";
+        button.title = sstcIsFullscreen() ? "Exit full screen" : "Full screen";
+    }
+}
+
+/* iPhone Safari jaise browsers me real fullscreen nahi hota - wahan ye use hota hai */
+
+function sstcSetPseudoFullscreen(on) {
+
+    const viewer = document.getElementById("pdfViewer");
+
+    if (viewer) {
+        viewer.classList.toggle("sstc-pseudo-fs", !!on);
+    }
+
+    document.body.classList.toggle("sstc-pseudo-fs-open", !!on);
+
+    sstcAfterFullscreenChange();
+}
+
+/* Fullscreen me jaane / nikalne ke baad page ko nayi width me fit kar do */
+
+function sstcAfterFullscreenChange() {
+
+    sstcUpdateFullscreenButton();
+
+    if (sstcPdfDocument) {
+        setTimeout(fitSstcPdfWidth, 250);
+    }
+}
+
+document.addEventListener("fullscreenchange", sstcAfterFullscreenChange);
+document.addEventListener("webkitfullscreenchange", sstcAfterFullscreenChange);
+
+document.addEventListener("keydown", function (event) {
+
+    if (event.key === "Escape" && document.body.classList.contains("sstc-pseudo-fs-open")) {
+        sstcSetPseudoFullscreen(false);
+    }
+});
 
 
 /* =========================================================
@@ -4184,6 +4639,10 @@ function destroySstcPdfJsViewer() {
     sstcPdfPages = 0;
     sstcPdfCurrentPage = 1;
     sstcPdfBaseWidth = 0;
+    sstcPdfBaseHeight = 0;
+    sstcPdfRenderId++;
+
+    sstcSetPseudoFullscreen(false);
 
     const viewer = document.getElementById("sstcPdfJsViewer");
 
@@ -4663,6 +5122,7 @@ function pdfLoaded() {
    ========================================================= */
 
 function zoomIn() {
+    if (sstcPdfZoomBy(SSTC_PDF_STEP)) { return; }
     sstcZoom = Math.min(200, sstcZoom + 10);
     applyZoom();
 }
@@ -4673,6 +5133,7 @@ function zoomIn() {
    ========================================================= */
 
 function zoomOut() {
+    if (sstcPdfZoomBy(-SSTC_PDF_STEP)) { return; }
     sstcZoom = Math.max(50, sstcZoom - 10);
     applyZoom();
 }
@@ -4703,6 +5164,8 @@ function applyZoom() {
 
 function fitWidth() {
 
+    if (sstcPdfDocument) { fitSstcPdfWidth(); return; }
+
     sstcZoom = 100;
 
     applyZoom();
@@ -4720,6 +5183,8 @@ function fitWidth() {
    ========================================================= */
 
 function fitPage() {
+
+    if (sstcPdfDocument && sstcPdfFitPage()) { return; }
 
     sstcZoom = 90;
 
@@ -4746,19 +5211,46 @@ function toggleFullscreen() {
         return;
     }
 
-    if (document.fullscreenElement) {
+    /* Pseudo fullscreen (iPhone etc.) chal rahi ho to band karo */
 
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
+    if (document.body.classList.contains("sstc-pseudo-fs-open")) {
+        sstcSetPseudoFullscreen(false);
+        return;
+    }
+
+    /* Real fullscreen chal rahi ho to band karo */
+
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+
+        const exit = document.exitFullscreen || document.webkitExitFullscreen;
+
+        if (exit) {
+            exit.call(document);
         }
 
         return;
     }
 
-    if (viewer.requestFullscreen) {
-        viewer.requestFullscreen().catch(function (error) {
-            console.warn("Fullscreen unavailable:", error);
-        });
+    const request = viewer.requestFullscreen || viewer.webkitRequestFullscreen;
+
+    if (!request) {
+        sstcSetPseudoFullscreen(true);
+        return;
+    }
+
+    try {
+
+        const result = request.call(viewer);
+
+        if (result && result.catch) {
+            result.catch(function (error) {
+                console.warn("Fullscreen unavailable, using fallback:", error);
+                sstcSetPseudoFullscreen(true);
+            });
+        }
+    }
+    catch (error) {
+        sstcSetPseudoFullscreen(true);
     }
 }
 
@@ -4908,6 +5400,7 @@ function setupStudentSecurity() {
     });
 
     window.addEventListener("beforeprint", function () {
+        if (sstcAllowPrint) { return; }
         document.body.classList.add("print-blocked");
         showSecurityMessage("Printing is disabled.");
     });
