@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>साझेदारी खाते (Partnership Accounts) – कक्षा 10 वाणिज्य नोट्स (हिंदी)</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a3a8a;--red:#d62828;--green:#1b7f3b;--paper:#fffdf4;--line:#bcd6ee;--hl:#ffe04d;--pink:#ffc2d1;--mint:#c8f0d0}
+*{box-sizing:border-box}
+body{margin:0;background:#e9e4d6;font-family:'Kalam','Patrick Hand',cursive;color:var(--ink);font-size:19px;line-height:1.7}
+.page{max-width:980px;margin:0 auto;background:var(--paper);background-image:linear-gradient(transparent 33px,var(--line) 34px);background-size:100% 34px;padding:30px 28px 60px 78px;position:relative;box-shadow:0 0 25px rgba(0,0,0,.25)}
+.page:before{content:"";position:absolute;left:58px;top:0;bottom:0;width:3px;background:#ef9a9a;box-shadow:5px 0 0 #ef9a9a55}
+.page:after{content:"";position:absolute;left:14px;top:0;bottom:0;width:22px;background:radial-gradient(circle at 11px 40px,#e9e4d6 0 9px,transparent 10px) 0 0/22px 120px repeat-y}
+h1{font-family:'Kalam','Caveat',cursive;font-size:42px;color:var(--red);margin:0;line-height:1.2;text-align:center;transform:rotate(-1deg)}
+.sub{text-align:center;font-size:1.05em;margin:4px 0 18px}
+.under{display:block;margin:0 auto;width:min(520px,90%);height:16px}
+h2{font-family:'Kalam','Caveat',cursive;font-size:27px;color:#fff;background:var(--ink);display:inline-block;padding:2px 20px;margin:36px 0 10px;border-radius:255px 15px 225px 15px/15px 225px 15px 255px;transform:rotate(-1.2deg);line-height:1.5}
+h3{font-family:'Kalam','Caveat',cursive;color:var(--red);font-size:1.25em;margin:14px 0 2px;text-decoration:underline wavy var(--red) 1px;text-underline-offset:5px}
+p{margin:8px 0}
+.box{border:2.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;padding:12px 22px;margin:14px 0;background:#fffdf4}
+.def{border-color:var(--red);background:#fff4f4}
+.tip{border-color:var(--green);background:#f1fff3}
+.note{background:#fff7a8;border:none;border-radius:4px;box-shadow:3px 4px 8px rgba(0,0,0,.25);transform:rotate(1deg);padding:12px 18px;margin:16px 0;color:#5a3d00}
+.tag{display:inline-block;font-weight:700;color:#fff;background:var(--red);padding:0 12px;border-radius:12px 4px 12px 4px;margin-right:6px;transform:rotate(-2deg)}
+.hl{background:linear-gradient(transparent 45%,var(--hl) 45%,var(--hl) 92%,transparent 92%);padding:0 3px}
+.hlp{background:linear-gradient(transparent 45%,var(--pink) 45%,var(--pink) 92%,transparent 92%);padding:0 3px}
+.hlg{background:linear-gradient(transparent 45%,var(--mint) 45%,var(--mint) 92%,transparent 92%);padding:0 3px}
+.red{color:var(--red);font-weight:700}.grn{color:var(--green);font-weight:700}
+ul,ol{margin:6px 0;padding-left:28px}li{margin:2px 0}
+ul.star{list-style:none;padding-left:6px}ul.star li:before{content:"★ ";color:var(--red)}
+ul.arr{list-style:none;padding-left:6px}ul.arr li:before{content:"➜ ";color:var(--green)}
+table{border-collapse:collapse;width:100%;margin:12px 0;background:#fffef8}
+th,td{border:2px solid var(--ink);padding:4px 10px;vertical-align:top;text-align:left}
+th{background:#dbe7ff;font-family:'Kalam','Caveat',cursive;font-size:1.1em;color:var(--red)}
+td.n,th.n{text-align:right;white-space:nowrap}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fig{border:3px dashed var(--ink);border-radius:18px;padding:10px;margin:18px 0;background:#fffef7;position:relative}
+.fig .cap{font-family:'Kalam','Caveat',cursive;color:var(--red);font-size:1.2em;text-align:center;margin:0 0 4px}
+.svg{width:100%;height:auto;display:block}
+.svg text{font-family:'Kalam','Patrick Hand',cursive;fill:var(--ink)}
+.svg .row{font-size:23px}.svg .b{font-weight:700}.svg .hd{font-size:24px;fill:var(--red);font-weight:700}
+.svg .svt{font-size:27px;font-weight:700;fill:var(--red)}.svg .num{font-size:14px;fill:var(--red);font-weight:700}
+.svg .lbl{font-size:22px}.svg .sm{font-size:19px;fill:var(--green)}.svg .big{font-size:26px;font-weight:700}
+.replay{position:absolute;right:12px;top:10px;font-family:'Kalam','Caveat',cursive;font-size:1em;background:var(--hl);border:2px solid var(--ink);border-radius:20px;padding:0 14px;cursor:pointer;color:var(--ink)}
+.replay:hover{background:#ffd000}
+.fig .a{opacity:0}
+.fig.play .a{animation:pop .7s ease forwards;animation-delay:var(--d,0s)}
+@keyframes pop{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.fig .draw{stroke-dasharray:var(--l,300);stroke-dashoffset:var(--l,300)}
+.fig.play .draw{animation:dr 1.1s ease forwards;animation-delay:var(--d,0s)}
+@keyframes dr{to{stroke-dashoffset:0}}
+.dot{offset-rotate:0deg}
+.fig.play .dot{animation:mv 5s linear 3.5s infinite}
+@keyframes mv{0%{offset-distance:0%;opacity:1}100%{offset-distance:100%;opacity:1}}
+.beam,.pl,.pr{transform-box:view-box}
+.fig.play .beam{animation:bm 3.5s ease-out forwards;animation-delay:var(--d,0s)}
+.fig.play .pl{animation:pl 3.5s ease-out forwards;animation-delay:var(--d,0s)}
+.fig.play .pr{animation:pr 3.5s ease-out forwards;animation-delay:var(--d,0s)}
+@keyframes bm{0%{transform:rotate(-10deg)}30%{transform:rotate(8deg)}60%{transform:rotate(-4deg)}80%{transform:rotate(2deg)}100%{transform:rotate(0)}}
+@keyframes pl{0%{transform:translateY(28px)}30%{transform:translateY(-22px)}60%{transform:translateY(11px)}80%{transform:translateY(-5px)}100%{transform:none}}
+@keyframes pr{0%{transform:translateY(-28px)}30%{transform:translateY(22px)}60%{transform:translateY(-11px)}80%{transform:translateY(5px)}100%{transform:none}}
+.toc{columns:2;column-gap:30px}.toc a{color:var(--ink);text-decoration:none}.toc a:hover{color:var(--red)}
+.foot{text-align:center;color:var(--red);font-family:'Kalam','Caveat',cursive;font-size:1.3em;margin-top:30px}
+@media(max-width:700px){.page{padding:20px 14px 40px 34px}.page:before{left:22px}.page:after{display:none}.two{grid-template-columns:1fr}.toc{columns:1}h1{font-size:28px}h2{font-size:21px}.svg .row{font-size:25px}}
+@media print{body{background:#fff}.page{box-shadow:none}.replay{display:none}.fig .a{opacity:1!important;animation:none!important}.fig .draw{stroke-dashoffset:0!important}}
+.fig .cap{padding:0 125px}@media(max-width:700px){.fig .cap{padding:0 0 26px}}
+.grow{transform-box:fill-box;transform-origin:left center;transform:scaleX(0)}
+.fig.play .grow{animation:gw 1.3s ease forwards;animation-delay:var(--d,0s)}
+@keyframes gw{to{transform:scaleX(1)}}
+.pulse{transform-box:fill-box;transform-origin:center}
+.fig.play .pulse{animation:pu 1.6s ease-in-out 3s infinite}
+@keyframes pu{50%{transform:scale(1.07)}}
+</style></head><body><div class="page">
+<h1>साझेदारी खाते – अध्याय 2</h1>
+<svg class="under" viewBox="0 0 520 16"><path d="M5 10 C90 2 170 14 260 7 S430 3 515 9" stroke="#d62828" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+<p class="sub">कक्षा 10 • वाणिज्य • हाथ से लिखे जैसे नोट्स, एनिमेटेड चित्रों के साथ (हिंदी)</p>
+<div class="box tip"><h3 style="margin-top:0">📒 विषय-सूची</h3><ol class="toc"><li><a href="#s1">अर्थ व परिभाषा</a></li><li><a href="#s2">साझेदारी की विशेषताएँ</a></li><li><a href="#s3">साझेदारी विलेख</a></li><li><a href="#s4">विलेख न हो तो (धारा 13)</a></li><li><a href="#s5">साझेदारों के पूँजी खाते</a></li><li><a href="#s6">पूँजी व आहरण पर ब्याज</a></li><li><a href="#s7">लाभ-हानि विनियोजन खाता</a></li><li><a href="#s8">साझेदार का चालू खाता</a></li><li><a href="#s9">चिट्ठे में प्रस्तुति</a></li><li><a href="#s10">सूत्र व अंतर</a></li><li><a href="#s11">प्रश्न-उत्तर और परीक्षा टिप्स</a></li></ol></div>
+
+<h2 id="s1">1. अर्थ व परिभाषा</h2><div class="box def"><span class="tag">परिभाषा</span><b>भारतीय साझेदारी अधिनियम, 1932 की धारा 4</b> के अनुसार: <span class="hl">"साझेदारी उन व्यक्तियों के बीच का संबंध है जो ऐसे व्यापार के लाभ बाँटने के लिए सहमत हुए हैं जिसे सभी या उनमें से कोई एक सबकी ओर से चलाता है।"</span></div>
+<ul class="star"><li><b>साझेदार (Partners)</b> – साझेदारी बनाने वाले व्यक्ति। <b>फर्म (Firm)</b> – सभी साझेदार मिलकर। <b>फर्म का नाम</b> – जिस नाम से व्यापार चलता है।</li>
+<li>साझेदारी <b>समझौते</b> से बनती है, जन्म से नहीं (जैसे हिंदू अविभाजित परिवार) और न ही कानून से।</li></ul>
+<h2 id="s2">2. साझेदारी की विशेषताएँ</h2><p>नीचे माइंड-मैप से 6 मुख्य विशेषताएँ याद करें:</p>
+<div class="fig" id="fig1"><div class="cap">एनिमेटेड माइंड-मैप – साझेदारी की 6 विशेषताएँ</div><button class="replay">↻ दोबारा चलाएँ</button>
+<svg viewBox="0 0 900 430" class="svg" role="img"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M2 2 L13 8 L2 14" fill="none" stroke="context-stroke" stroke-width="2.5"/></marker></defs>
+<g class="a" style="--d:0s"><g class="pulse"><ellipse cx="450" cy="215" rx="130" ry="48" fill="#fff4f4" stroke="#d62828" stroke-width="4"/><text x="450" y="224" text-anchor="middle" class="big">साझेदारी</text></g></g>
+<path class="draw" style="--l:420;--d:0.6s" d="M450 168 L150 104" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
+<g class="a" style="--d:1.1s"><rect x="25" y="36" width="250" height="68" rx="16" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3"/><text x="150" y="66" text-anchor="middle" class="lbl b">2 – 50 व्यक्ति</text><text x="150" y="92" text-anchor="middle" class="sm">दो या अधिक</text></g>
+<path class="draw" style="--l:420;--d:1.2s" d="M450 168 L450 104" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
+<g class="a" style="--d:1.7s"><rect x="325" y="36" width="250" height="68" rx="16" fill="#ffe9a8" stroke="#1a3a8a" stroke-width="3"/><text x="450" y="66" text-anchor="middle" class="lbl b">समझौता</text><text x="450" y="92" text-anchor="middle" class="sm">मौखिक / लिखित विलेख</text></g>
+<path class="draw" style="--l:420;--d:1.8s" d="M450 168 L750 104" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
+<g class="a" style="--d:2.3s"><rect x="625" y="36" width="250" height="68" rx="16" fill="#c8f0d0" stroke="#1a3a8a" stroke-width="3"/><text x="750" y="66" text-anchor="middle" class="lbl b">लाभ बाँटना</text><text x="750" y="92" text-anchor="middle" class="sm">तय अनुपात में</text></g>
+<path class="draw" style="--l:420;--d:2.4s" d="M450 262 L150 326" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
+<g class="a" style="--d:2.9s"><rect x="25" y="326" width="250" height="68" rx="16" fill="#ffc2d1" stroke="#1a3a8a" stroke-width="3"/><text x="150" y="356" text-anchor="middle" class="lbl b">असीमित दायित्व</text><text x="150" y="382" text-anchor="middle" class="sm">निजी संपत्ति दाँव पर</text></g>
+<path class="draw" style="--l:420;--d:3.0s" d="M450 262 L450 326" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
+<g class="a" style="--d:3.5s"><rect x="325" y="326" width="250" height="68" rx="16" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3"/><text x="450" y="356" text-anchor="middle" class="lbl b">पारस्परिक एजेंसी</text><text x="450" y="382" text-anchor="middle" class="sm">एजेंट + प्रधान</text></g>
+<path class="draw" style="--l:420;--d:3.6s" d="M450 262 L750 326" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
+<g class="a" style="--d:4.1s"><rect x="625" y="326" width="250" height="68" rx="16" fill="#ffe9a8" stroke="#1a3a8a" stroke-width="3"/><text x="750" y="356" text-anchor="middle" class="lbl b">वैध व्यापार</text><text x="750" y="382" text-anchor="middle" class="sm">केवल कानूनी</text></g>
+</svg></div>
+<h3>🔍 व्याख्या</h3><ol>
+<li><b>दो या अधिक व्यक्ति</b> – न्यूनतम <b>2</b>; अधिकतम <b>50</b> (बैंकिंग व्यापार में 10)।</li>
+<li><b>समझौता</b> – मौखिक या लिखित (लिखित <i>साझेदारी विलेख</i> सबसे अच्छा)।</li>
+<li><b>लाभ बाँटना</b> – साझेदार तय अनुपात में लाभ <i>और</i> हानि बाँटते हैं।</li>
+<li><b>असीमित दायित्व</b> – फर्म के ऋणों के लिए साझेदार व्यक्तिगत रूप से (संयुक्त व पृथक) ज़िम्मेदार।</li>
+<li><b>पारस्परिक एजेंसी</b> – हर साझेदार <i>एजेंट</i> भी है और <i>प्रधान</i> भी; एक का कार्य सब पर बाध्यकारी।</li>
+<li><b>वैध व्यापार</b> – फर्म का व्यापार कानूनी होना चाहिए।</li></ol>
+<div class="note">अतिरिक्त बिंदु: फर्म <b>अलग कानूनी व्यक्ति नहीं</b> है – साझेदारों से अलग उसका अस्तित्व नहीं।</div>
+<h2 id="s3">3. साझेदारी विलेख (Partnership Deed)</h2><div class="box def"><span class="tag">अर्थ</span>साझेदारों के बीच <span class="hl">लिखित समझौता</span> जिसमें साझेदारी की शर्तें लिखी होती हैं।</div>
+<h3>सामान्य विषय-वस्तु</h3><ul class="arr"><li>फर्म व साझेदारों के नाम-पते; व्यापार की प्रकृति</li><li>प्रत्येक साझेदार की पूँजी</li><li><b>लाभ बाँटने का अनुपात</b></li><li>पूँजी, आहरण व ऋण पर ब्याज</li>
+<li>साझेदारों को वेतन / कमीशन</li><li>साझेदार के प्रवेश, अवकाश, मृत्यु के नियम</li><li>समापन पर खातों का निपटारा; मध्यस्थता</li></ul>
+<div class="note">विलेख किसी बात पर <b>मौन</b> हो तो साझेदारी अधिनियम (धारा 13) के नियम लागू होते हैं।</div>
+<h2 id="s4">4. विलेख न हो तो – धारा 13 के नियम</h2><table><tr><th>मद</th><th>विलेख मौन हो तो नियम</th></tr>
+<tr><td>लाभ बाँटने का अनुपात</td><td><b>बराबर</b> (पूँजी चाहे जितनी हो)</td></tr>
+<tr><td>पूँजी पर ब्याज</td><td><b>नहीं मिलेगा</b></td></tr>
+<tr><td>आहरण पर ब्याज</td><td><b>नहीं लगेगा</b></td></tr>
+<tr><td>साझेदार को वेतन / कमीशन</td><td><b>नहीं मिलेगा</b></td></tr>
+<tr><td>साझेदार के ऋण पर ब्याज</td><td><b>6% वार्षिक</b></td></tr></table>
+<div class="note">याद रखने की ट्रिक: <b>सिर्फ़ ऋण पर ब्याज (6%)</b>। बाकी सब शून्य, और लाभ बराबर।</div>
+<h2 id="s5">5. साझेदारों के पूँजी खाते</h2><p>साझेदारों की पूँजी दो तरीकों से रखी जाती है:</p>
+<table><tr><th>आधार</th><th>स्थिर पूँजी विधि</th><th>अस्थिर पूँजी विधि</th></tr>
+<tr><td>पूँजी शेष</td><td><b>स्थिर</b> रहता है (केवल नई पूँजी लाने/निकालने पर बदलता)</td><td><b>हर वर्ष</b> बदलता है</td></tr>
+<tr><td>खाते</td><td><b>दो</b>: पूँजी खाता + चालू खाता</td><td><b>एक</b>: केवल पूँजी खाता</td></tr>
+<tr><td>लाभ, वेतन, ब्याज, आहरण किसमें लिखे जाते हैं</td><td><span class="red">चालू खाते में</span></td><td><span class="red">पूँजी खाते में</span></td></tr>
+<tr><td>पूँजी खाते का शेष</td><td>हमेशा <b>क्रेडिट</b></td><td>प्रायः क्रेडिट (डेबिट भी हो सकता है)</td></tr>
+<tr><td>चालू खाते का शेष</td><td>क्रेडिट या डेबिट</td><td>लागू नहीं</td></tr></table>
+<div class="note">⭐ प्रश्न में न बताया हो तो: <i>चालू खाता</i> का उल्लेख हो तो <b>स्थिर पूँजी</b> मानें; वरना <b>अस्थिर पूँजी</b>।</div>
+<h2 id="s6">6. पूँजी व आहरण पर ब्याज</h2><div class="two"><div class="box def"><h3 style="margin-top:0">पूँजी पर ब्याज</h3><p>साझेदारों को पैसा लगाने का पुरस्कार। यह फर्म का <b>खर्च</b> जैसा है, पर लाभ में से <b>विनियोजित</b> होता है।</p><b>= पूँजी × दर/100 × समय</b><br><small>केवल तभी मिलता है जब लाभ पर्याप्त हो और विलेख अनुमति दे।</small></div>
+<div class="box def"><h3 style="margin-top:0">आहरण पर ब्याज</h3><p>निजी उपयोग के लिए निकाली राशि पर लगाया जाता है – फर्म का <b>लाभ</b>।</p><b>= आहरण × दर/100 × समय</b></div></div>
+<h3>आहरण की अवधि (जब तिथि न दी हो)</h3>
+<table><tr><th>आहरण कब</th><th>समय (माह)</th></tr>
+<tr><td>वर्ष के प्रारंभ में</td><td>12</td></tr><tr><td>वर्ष के मध्य में</td><td>6</td></tr><tr><td>वर्ष के अंत में</td><td>0</td></tr>
+<tr><td>हर माह के <b>प्रारंभ</b> में समान राशि</td><td>6½ (6.5)</td></tr><tr><td>हर माह के <b>अंत</b> में समान राशि</td><td>5½ (5.5)</td></tr>
+<tr><td>हर <b>तिमाही</b> के प्रारंभ / अंत में समान राशि</td><td>7½ / 4½</td></tr>
+<tr><td>एक राशि की तिथि/अवधि न दी हो</td><td>6 (औसत)</td></tr></table>
+<div class="fig" id="fig2"><div class="cap">एनिमेटेड समय-रेखा – आहरण फर्म से कितने समय बाहर रहा</div><button class="replay">↻ दोबारा चलाएँ</button>
+<svg viewBox="0 0 900 340" class="svg" role="img">
+ <path class="draw" style="--l:780;--d:0s" d="M60 70 H840" stroke="#1a3a8a" stroke-width="5" fill="none"/>
+ <path class="a" style="--d:.3s" d="M60 64 V76" stroke="#1a3a8a" stroke-width="2"/><text x="92" y="100" text-anchor="middle" class="sm a" style="--d:.5s;fill:#1a3a8a;font-size:16px">अप्रै</text><path class="a" style="--d:.3s" d="M125 64 V76" stroke="#1a3a8a" stroke-width="2"/><text x="157" y="100" text-anchor="middle" class="sm a" style="--d:.5s;fill:#1a3a8a;font-size:16px">मई</text><path class="a" style="--d:.3s" d="M190 64 V76" stroke="#1a3a8a" stroke-width="2"/><text x="222" y="100" text-anchor="middle" class="sm a" style="--d:.5s;fill:#1a3a8a;font-size:16px">जून</text><path class="a" style="--d:.3s" d="M255 64 V76" stroke="#1a3a8a" stroke-width="2"/><text x="287" y="100" text-anchor="middle" class="sm a" style="--d:.5s;fill:#1a3a8a;font-size:16px">जुला</text><path class="a" style="--d:.3s" d="M320 64 V76" stroke="#1a3a8a" stroke-width="2"/><text x="352" y="100" text-anchor="middle" class="sm a" style="--d:.5s;fill:#1a3a8a;font-size:16px">अग</text><path class="a" style="--d:.3s" d="M385 64 V76" stroke="#1a3a8a" stroke-width="2"/><text x="417" y="100" text-anchor="middle" class="sm a" style="--d:.5s;fill:#1a3a8a;font-size:16px">सित</text><path class="a" style="--d:.3s" d="M450 64 V76" stroke="#1a3a8a" stroke-width="2"/><text x="482" y="100" text-anchor="middle" class="sm a" style="--d:.5s;fill:#1a3a8a;font-size:16px">अक्टू</text><path class="a" style="--d:.3s" d="M515 64 V76" stroke="#1a3a8a" stroke-width="2"/><text x="547" y="100" text-anchor="middle" class="sm a" style="--d:.5s;fill:#1a3a8a;font-size:16px">नव</text><path class="a" style="--d:.3s" d="M580 64 V76" stroke="#1a3a8a" stroke-width="2"/><text x="612" y="100" text-anchor="middle" class="sm a" style="--d:.5s;fill:#1a3a8a;font-size:16px">दिस</text><path class="a" style="--d:.3s" d="M645 64 V76" stroke="#1a3a8a" stroke-width="2"/><text x="677" y="100" text-anchor="middle" class="sm a" style="--d:.5s;fill:#1a3a8a;font-size:16px">जन</text><path class="a" style="--d:.3s" d="M710 64 V76" stroke="#1a3a8a" stroke-width="2"/><text x="742" y="100" text-anchor="middle" class="sm a" style="--d:.5s;fill:#1a3a8a;font-size:16px">फर</text><path class="a" style="--d:.3s" d="M775 64 V76" stroke="#1a3a8a" stroke-width="2"/><text x="807" y="100" text-anchor="middle" class="sm a" style="--d:.5s;fill:#1a3a8a;font-size:16px">मार्च</text><path class="a" style="--d:.3s" d="M840 64 V76" stroke="#1a3a8a" stroke-width="2"/>
+ <g class="a" style="--d:.8s"><path d="M60 20 V62" stroke="#d62828" stroke-width="3" marker-end="url(#ah)"/><text x="60" y="14" text-anchor="start" class="lbl b">वर्ष का प्रारंभ</text></g>
+ <g class="a" style="--d:1.2s"><path d="M450 20 V62" stroke="#d62828" stroke-width="3" marker-end="url(#ah)"/><text x="450" y="14" text-anchor="middle" class="lbl b">मध्य</text></g>
+ <g class="a" style="--d:1.6s"><path d="M840 20 V62" stroke="#d62828" stroke-width="3" marker-end="url(#ah)"/><text x="840" y="14" text-anchor="end" class="lbl b">वर्ष का अंत</text></g>
+ <defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M2 2 L13 8 L2 14" fill="none" stroke="context-stroke" stroke-width="2.5"/></marker></defs>
+ <rect class="grow" style="--d:2s" x="60" y="140" width="780" height="34" rx="8" fill="#c8f0d0" stroke="#1b7f3b" stroke-width="2.5"/>
+ <text x="450" y="164" text-anchor="middle" class="lbl b a" style="--d:3s">प्रारंभ में निकाला → 12 माह का ब्याज</text>
+ <rect class="grow" style="--d:3.3s" x="450" y="195" width="390" height="34" rx="8" fill="#ffe9a8" stroke="#1a3a8a" stroke-width="2.5"/>
+ <text x="645" y="219" text-anchor="middle" class="lbl b a" style="--d:4.3s">मध्य में निकाला → 6 माह</text>
+ <g class="a" style="--d:4.6s"><circle class="pulse" cx="840" cy="268" r="11" fill="#ffc2d1" stroke="#d62828" stroke-width="3"/></g>
+ <text x="810" y="274" text-anchor="end" class="lbl b a" style="--d:4.8s">अंत में निकाला → 0 माह</text>
+ <text x="450" y="328" text-anchor="middle" class="lbl a" style="--d:5.2s;fill:#d62828">पैसा जितना लंबा बाहर, उतना ज़्यादा ब्याज</text>
+</svg></div>
+<h3>🔍 व्याख्या</h3><ul class="arr"><li>12 खानों वाली पट्टी वित्तीय वर्ष (अप्रैल → मार्च) है।</li>
+<li>हरी पट्टी = <b>पूरे वर्ष</b> का ब्याज; पीली = <b>आधे वर्ष</b> का; गुलाबी बिंदु = समय शून्य, इसलिए <b>ब्याज नहीं</b>।</li></ul>
+<div class="note"><b>उदाहरण:</b> A ने वर्ष के मध्य में ₹20,000 निकाले, दर 6% → 20,000 × 6/100 × 6/12 = <b>₹600</b>।</div>
+<h2 id="s7">7. लाभ-हानि विनियोजन खाता</h2><div class="box def"><span class="tag">अर्थ</span>लाभ-हानि खाते के बाद बनने वाला खाता, जो दिखाता है कि ब्याज, वेतन, कमीशन के बाद <span class="hl">शुद्ध लाभ साझेदारों में कैसे <b>विनियोजित</b> (बाँटा) होता है</span>।</div>
+<div class="two"><div class="box"><h3 style="margin-top:0">डेबिट पक्ष (Dr)</h3><ul class="arr"><li>पूँजी पर ब्याज</li><li>साझेदार का वेतन</li><li>साझेदार का कमीशन</li><li>संचय में हस्तांतरण (यदि हो)</li><li>प्रत्येक साझेदार को <b>लाभ का हिस्सा</b> (→ पूँजी/चालू खाता)</li></ul></div>
+<div class="box"><h3 style="margin-top:0">क्रेडिट पक्ष (Cr)</h3><ul class="arr"><li><b>शुद्ध लाभ</b> (लाभ-हानि खाते से)</li><li>आहरण पर ब्याज</li></ul></div></div>
+<div class="box def"><span class="tag">सूत्र</span><br><b>वितरण योग्य लाभ = शुद्ध लाभ – पूँजी पर ब्याज – वेतन – कमीशन + आहरण पर ब्याज</b></div>
+<h3>हल किया हुआ उदाहरण (सभी चित्रों में यही)</h3>
+<p>A और B साझेदार हैं (अनुपात <b>3 : 2</b>)। पूँजी: A ₹1,00,000, B ₹60,000। पूँजी पर ब्याज 10% वार्षिक; A को वेतन ₹12,000 वार्षिक; आहरण (वर्ष के मध्य में): A ₹20,000, B ₹10,000; आहरण पर ब्याज 6% वार्षिक; शुद्ध लाभ ₹1,00,000।</p>
+<ul class="star"><li>पूँजी पर ब्याज: A = 10,000; B = 6,000</li><li>आहरण पर ब्याज: A = 600; B = 300</li></ul>
+<div class="fig" id="fig3"><div class="cap">एनिमेटेड फ़्लो – शुद्ध लाभ से साझेदारों के हिस्सों तक</div><button class="replay">↻ दोबारा चलाएँ</button>
+<svg viewBox="0 0 900 470" class="svg" role="img"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M2 2 L13 8 L2 14" fill="none" stroke="context-stroke" stroke-width="2.5"/></marker></defs>
+ <g class="a" style="--d:0s"><rect x="150" y="10" width="600" height="58" rx="14" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3"/><text x="450" y="48" text-anchor="middle" class="lbl b">शुद्ध लाभ (लाभ-हानि खाते से) ₹1,00,000</text></g>
+ <path class="draw" style="--l:50;--d:.6s" d="M450 70 V104" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
+ <g class="a" style="--d:1s"><rect x="150" y="108" width="600" height="58" rx="14" fill="#ffc2d1" stroke="#d62828" stroke-width="3"/><text x="450" y="135" text-anchor="middle" class="lbl b">(–) पूँजी पर ब्याज + वेतन + कमीशन</text><text x="450" y="157" text-anchor="middle" class="sm" style="fill:#d62828">10,000 + 6,000 + 12,000 = 28,000</text></g>
+ <path class="draw" style="--l:50;--d:1.6s" d="M450 168 V202" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
+ <g class="a" style="--d:2s"><rect x="150" y="206" width="600" height="58" rx="14" fill="#c8f0d0" stroke="#1b7f3b" stroke-width="3"/><text x="450" y="233" text-anchor="middle" class="lbl b">(+) आहरण पर ब्याज</text><text x="450" y="255" text-anchor="middle" class="sm">600 + 300 = 900</text></g>
+ <path class="draw" style="--l:50;--d:2.6s" d="M450 266 V300" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
+ <g class="a" style="--d:3s"><g class="pulse"><rect x="150" y="304" width="600" height="58" rx="14" fill="#ffe9a8" stroke="#1a3a8a" stroke-width="3.5"/><text x="450" y="341" text-anchor="middle" class="lbl b">वितरण योग्य लाभ = ₹72,900</text></g></g>
+ <path class="draw" style="--l:260;--d:3.6s" d="M450 364 V384 H250 V408" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
+ <path class="draw" style="--l:260;--d:3.7s" d="M450 384 H650 V408" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
+ <g class="a" style="--d:4.3s"><rect x="110" y="412" width="280" height="48" rx="14" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3"/><text x="250" y="443" text-anchor="middle" class="lbl b">A का हिस्सा 3/5 = ₹43,740</text></g>
+ <g class="a" style="--d:4.7s"><rect x="510" y="412" width="280" height="48" rx="14" fill="#ffc2d1" stroke="#d62828" stroke-width="3"/><text x="650" y="443" text-anchor="middle" class="lbl b">B का हिस्सा 2/5 = ₹29,160</text></g>
+</svg></div>
+<h3>🔍 व्याख्या</h3><ul class="arr"><li><span class="red">गुलाबी डिब्बा</span> = बाँटने से पहले साझेदारों को <b>दी गई</b> राशियाँ (वितरण योग्य लाभ घटाती हैं)।</li><li><span class="grn">हरा डिब्बा</span> = साझेदारों से <b>वसूली</b> गई राशियाँ (वितरण योग्य लाभ बढ़ाती हैं)।</li>
+<li><b>पीला डिब्बा</b> = जो बचा – लाभ अनुपात में बँटता है।</li></ul>
+<p>अब यही बात खाते के रूप में देखें:</p>
+<div class="fig" id="fig4"><div class="cap">एनिमेटेड लाभ-हानि विनियोजन खाता</div><button class="replay">↻ दोबारा चलाएँ</button><svg viewBox="0 0 900 360" class="svg" role="img" aria-label="31 मार्च को समाप्त वर्ष का A व B का लाभ-हानि विनियोजन खाता">
+<text x="450" y="30" text-anchor="middle" class="svt a" style="--d:0s">31 मार्च को समाप्त वर्ष का A व B का लाभ-हानि विनियोजन खाता</text>
+<path class="draw" style="--l:900;--d:.2s" d="M0 52 H900" stroke="#1a3a8a" stroke-width="3" fill="none"/>
+<path class="draw" style="--l:360;--d:.3s" d="M450 52 V340" stroke="#1a3a8a" stroke-width="3" fill="none"/>
+<text x="10" y="80" class="hd a" style="--d:.4s">Dr (डेबिट)</text><text x="430" y="80" text-anchor="end" class="hd a" style="--d:.4s">राशि (₹)</text>
+<text x="470" y="80" class="hd a" style="--d:.4s">Cr (क्रेडिट)</text><text x="890" y="80" text-anchor="end" class="hd a" style="--d:.4s">राशि (₹)</text>
+<g class="a" style="--d:0.70s"><circle cx="20" cy="110" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="20" y="115" text-anchor="middle" class="num">1</text><text x="38" y="117" class="row">To पूँजी ब्याज – A</text><text x="430" y="117" text-anchor="end" class="row">10,000</text></g>
+<g class="a" style="--d:1.25s"><circle cx="20" cy="150" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="20" y="155" text-anchor="middle" class="num">2</text><text x="38" y="157" class="row">To पूँजी ब्याज – B</text><text x="430" y="157" text-anchor="end" class="row">6,000</text></g>
+<g class="a" style="--d:1.80s"><circle cx="20" cy="190" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="20" y="195" text-anchor="middle" class="num">3</text><text x="38" y="197" class="row">To वेतन – A</text><text x="430" y="197" text-anchor="end" class="row">12,000</text></g>
+<g class="a" style="--d:2.35s"><rect x="2" y="213" width="438" height="34" rx="10" fill="#ffe04d" opacity=".75" transform="rotate(-.4 200 230)"/><circle cx="20" cy="230" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="20" y="235" text-anchor="middle" class="num">4</text><text x="38" y="237" class="row">To A का चालू खाता</text><text x="430" y="237" text-anchor="end" class="row">43,740</text></g>
+<g class="a" style="--d:2.90s"><rect x="2" y="253" width="438" height="34" rx="10" fill="#ffe04d" opacity=".75" transform="rotate(-.4 200 270)"/><circle cx="20" cy="270" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="20" y="275" text-anchor="middle" class="num">5</text><text x="38" y="277" class="row">To B का चालू खाता</text><text x="430" y="277" text-anchor="end" class="row">29,160</text></g>
+<g class="a" style="--d:0.95s"><circle cx="480" cy="110" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="480" y="115" text-anchor="middle" class="num">6</text><text x="498" y="117" class="row">By शुद्ध लाभ b/d</text><text x="890" y="117" text-anchor="end" class="row">100,000</text></g>
+<g class="a" style="--d:1.50s"><circle cx="480" cy="150" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="480" y="155" text-anchor="middle" class="num">7</text><text x="498" y="157" class="row">By आहरण ब्याज – A</text><text x="890" y="157" text-anchor="end" class="row">600</text></g>
+<g class="a" style="--d:2.05s"><circle cx="480" cy="190" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="480" y="195" text-anchor="middle" class="num">8</text><text x="498" y="197" class="row">By आहरण ब्याज – B</text><text x="890" y="197" text-anchor="end" class="row">300</text></g>
+<g class="a" style="--d:4.05s">
+<path d="M0 298 H430 M460 298 H890" stroke="#1a3a8a" stroke-width="2.5"/>
+<text x="38" y="328" class="row b">योग</text><text x="430" y="328" text-anchor="end" class="row b">100,900</text>
+<text x="498" y="328" class="row b">योग</text><text x="890" y="328" text-anchor="end" class="row b">100,900</text>
+<path d="M0 338 H430 M0 344 H430 M460 338 H890 M460 344 H890" stroke="#1a3a8a" stroke-width="2.5"/></g>
+</svg></div>
+<h3>🔍 लेबल की व्याख्या</h3><ol>
+<li><b>पूँजी पर ब्याज – A</b> = 1,00,000 × 10% = 10,000।</li><li><b>पूँजी पर ब्याज – B</b> = 60,000 × 10% = 6,000।</li><li><b>A को वेतन</b> – 12,000 वार्षिक।</li>
+<li><b>A का चालू खाता</b> – A का लाभ-हिस्सा 43,740 (हाइलाइट)।</li><li><b>B का चालू खाता</b> – B का लाभ-हिस्सा 29,160।</li>
+<li><b>शुद्ध लाभ</b> – लाभ-हानि खाते से लाया।</li><li><b>आहरण पर ब्याज – A</b> = 600।</li><li><b>आहरण पर ब्याज – B</b> = 300।</li></ol>
+<div class="note">जाँच: Dr 10,000 + 6,000 + 12,000 + 43,740 + 29,160 = <b>1,00,900</b> = Cr 1,00,000 + 600 + 300 ✔</div>
+<div class="fig" id="fig5"><div class="cap">एनिमेटेड लाभ-बँटवारा पट्टी (3 : 2)</div><button class="replay">↻ दोबारा चलाएँ</button>
+<svg viewBox="0 0 900 230" class="svg" role="img">
+ <text x="450" y="30" text-anchor="middle" class="svt a" style="--d:0s">वितरण योग्य लाभ ₹72,900, अनुपात 3 : 2</text>
+ <rect class="grow" style="--d:.6s" x="50" y="70" width="480" height="70" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3"/>
+ <rect class="grow" style="--d:1.9s" x="530" y="70" width="320" height="70" fill="#ffc2d1" stroke="#d62828" stroke-width="3"/>
+ <text x="290" y="114" text-anchor="middle" class="big a" style="--d:1.9s">A = 3/5</text>
+ <text x="690" y="114" text-anchor="middle" class="big a" style="--d:3.2s">B = 2/5</text>
+ <text x="290" y="170" text-anchor="middle" class="lbl a" style="--d:2.2s">₹43,740</text>
+ <text x="690" y="170" text-anchor="middle" class="lbl a" style="--d:3.5s">₹29,160</text>
+ <text x="450" y="205" text-anchor="middle" class="lbl a" style="--d:4s;fill:#d62828">हिस्सा = वितरण योग्य लाभ × साझेदार का अनुपात</text>
+</svg></div>
+<h3>🔍 व्याख्या</h3><p>पट्टी में 5 बराबर भाग हैं: A को <b>3 भाग</b> (72,900 × 3/5 = 43,740) और B को <b>2 भाग</b> (72,900 × 2/5 = 29,160)।</p>
+<div class="box tip"><span class="tag">याद रखें</span><ul class="arr"><li>ब्याज, वेतन, कमीशन तभी दिए जाते हैं जब विलेख में लिखा हो – ये हानि पैदा/बढ़ा नहीं सकते (जब तक विलेख में न हो)।</li>
+<li>पूँजी पर ब्याज → विनियोजन खाते के <b>Dr</b> में; आहरण पर ब्याज → <b>Cr</b> में।</li><li>साझेदार का वेतन/कमीशन <b>विनियोजन</b> है – इसे लाभ-हानि खाते में न लिखें (जब तक प्रश्न "charge" करने को न कहे)।</li></ul></div>
+<h2 id="s8">8. साझेदार का चालू खाता</h2><div class="box def"><span class="tag">अर्थ</span>स्थिर पूँजी विधि में चालू खाता <span class="hl">वर्ष के सभी परिवर्तन</span> – आहरण, ब्याज, वेतन, लाभ का हिस्सा – दर्ज करता है।</div>
+<div class="two"><div class="box"><h3 style="margin-top:0">डेबिट पक्ष (Dr)</h3><ul class="arr"><li>प्रारंभिक शेष (यदि डेबिट)</li><li>आहरण</li><li>आहरण पर ब्याज</li><li>हानि का हिस्सा</li></ul></div>
+<div class="box"><h3 style="margin-top:0">क्रेडिट पक्ष (Cr)</h3><ul class="arr"><li>प्रारंभिक शेष (यदि क्रेडिट)</li><li>पूँजी पर ब्याज</li><li>वेतन / कमीशन</li><li>लाभ का हिस्सा</li></ul></div></div>
+<p><b>उदाहरण:</b> A के चालू खाते का प्रारंभिक शेष ₹5,000 (Cr)। विनियोजन खाते के आँकड़े लें; A का आहरण ₹20,000।</p>
+<div class="fig" id="fig6"><div class="cap">एनिमेटेड A का चालू खाता</div><button class="replay">↻ दोबारा चलाएँ</button><svg viewBox="0 0 900 320" class="svg" role="img" aria-label="A का चालू खाता">
+<text x="450" y="30" text-anchor="middle" class="svt a" style="--d:0s">A का चालू खाता</text>
+<path class="draw" style="--l:900;--d:.2s" d="M0 52 H900" stroke="#1a3a8a" stroke-width="3" fill="none"/>
+<path class="draw" style="--l:320;--d:.3s" d="M450 52 V300" stroke="#1a3a8a" stroke-width="3" fill="none"/>
+<text x="10" y="80" class="hd a" style="--d:.4s">Dr (डेबिट)</text><text x="430" y="80" text-anchor="end" class="hd a" style="--d:.4s">राशि (₹)</text>
+<text x="470" y="80" class="hd a" style="--d:.4s">Cr (क्रेडिट)</text><text x="890" y="80" text-anchor="end" class="hd a" style="--d:.4s">राशि (₹)</text>
+<g class="a" style="--d:0.70s"><circle cx="20" cy="110" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="20" y="115" text-anchor="middle" class="num">1</text><text x="38" y="117" class="row">To आहरण</text><text x="430" y="117" text-anchor="end" class="row">20,000</text></g>
+<g class="a" style="--d:1.25s"><circle cx="20" cy="150" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="20" y="155" text-anchor="middle" class="num">2</text><text x="38" y="157" class="row">To आहरण पर ब्याज</text><text x="430" y="157" text-anchor="end" class="row">600</text></g>
+<g class="a" style="--d:1.80s"><rect x="2" y="173" width="438" height="34" rx="10" fill="#ffe04d" opacity=".75" transform="rotate(-.4 200 190)"/><circle cx="20" cy="190" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="20" y="195" text-anchor="middle" class="num">3</text><text x="38" y="197" class="row">To शेष c/d</text><text x="430" y="197" text-anchor="end" class="row">50,140</text></g>
+<g class="a" style="--d:0.95s"><circle cx="480" cy="110" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="480" y="115" text-anchor="middle" class="num">4</text><text x="498" y="117" class="row">By शेष b/d</text><text x="890" y="117" text-anchor="end" class="row">5,000</text></g>
+<g class="a" style="--d:1.50s"><circle cx="480" cy="150" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="480" y="155" text-anchor="middle" class="num">5</text><text x="498" y="157" class="row">By पूँजी पर ब्याज</text><text x="890" y="157" text-anchor="end" class="row">10,000</text></g>
+<g class="a" style="--d:2.05s"><circle cx="480" cy="190" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="480" y="195" text-anchor="middle" class="num">6</text><text x="498" y="197" class="row">By वेतन</text><text x="890" y="197" text-anchor="end" class="row">12,000</text></g>
+<g class="a" style="--d:2.60s"><circle cx="480" cy="230" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="480" y="235" text-anchor="middle" class="num">7</text><text x="498" y="237" class="row">By लाभ का हिस्सा</text><text x="890" y="237" text-anchor="end" class="row">43,740</text></g>
+<g class="a" style="--d:3.50s">
+<path d="M0 258 H430 M460 258 H890" stroke="#1a3a8a" stroke-width="2.5"/>
+<text x="38" y="288" class="row b">योग</text><text x="430" y="288" text-anchor="end" class="row b">70,740</text>
+<text x="498" y="288" class="row b">योग</text><text x="890" y="288" text-anchor="end" class="row b">70,740</text>
+<path d="M0 298 H430 M0 304 H430 M460 298 H890 M460 304 H890" stroke="#1a3a8a" stroke-width="2.5"/></g>
+</svg></div>
+<h3>🔍 लेबल की व्याख्या</h3><ol>
+<li><b>आहरण</b> – A द्वारा निकाली नकदी (A का दावा घटाती है)।</li><li><b>आहरण पर ब्याज</b> – A पर लगा = 600।</li><li><b>शेष आगे ले गए</b> – 50,140 (Cr) – चिट्ठे में दिखेगा।</li>
+<li><b>प्रारंभिक शेष</b> – 5,000।</li><li><b>पूँजी पर ब्याज</b> – 10,000 A के क्रेडिट में।</li><li><b>वेतन</b> – 12,000 A के क्रेडिट में।</li><li><b>लाभ का हिस्सा</b> – 43,740 विनियोजन खाते से।</li></ol>
+<div class="note">जाँच: Cr 5,000 + 10,000 + 12,000 + 43,740 = 70,740। Dr 20,000 + 600 = 20,600। 70,740 – 20,600 = <b>50,140</b> ✔</div>
+<h2 id="s9">9. चिट्ठे में प्रस्तुति</h2><table><tr><th>दायित्व</th><th>स्थिर विधि</th><th>अस्थिर विधि</th></tr>
+<tr><td>साझेदारों का पूँजी खाता</td><td>A 1,00,000; B 60,000 (अलग-अलग)</td><td>सभी समायोजन के बाद अंतिम शेष</td></tr>
+<tr><td>साझेदारों का चालू खाता</td><td>A 50,140 (Cr) आदि – अलग से</td><td>—</td></tr></table>
+<div class="note">साझेदार के चालू खाते का <b>डेबिट</b> शेष <b>संपत्ति पक्ष</b> में दिखाते हैं।</div>
+<h2 id="s10">10. सूत्र व अंतर</h2><div class="box tip"><ul class="star"><li><b>पूँजी पर ब्याज</b> = पूँजी × दर × समय / 100</li><li><b>आहरण पर ब्याज</b> = आहरण × दर × समय / 100</li>
+<li><b>वितरण योग्य लाभ</b> = शुद्ध लाभ – पूँजी पर ब्याज – वेतन – कमीशन + आहरण पर ब्याज</li><li><b>साझेदार का हिस्सा</b> = वितरण योग्य लाभ × साझेदार का अनुपात</li>
+<li><b>चालू खाते का अंतिम शेष</b> = प्रारंभिक ± पूँजी पर ब्याज + वेतन + लाभ का हिस्सा – आहरण – आहरण पर ब्याज</li></ul></div>
+<table><tr><th>आधार</th><th>लाभ-हानि खाता</th><th>विनियोजन खाता</th></tr><tr><td>उद्देश्य</td><td>फर्म का शुद्ध लाभ</td><td>शुद्ध लाभ का साझेदारों में वितरण</td></tr>
+<tr><td>मदें</td><td>व्यापारिक खर्च व आय</td><td>ब्याज, वेतन, कमीशन, लाभ का हिस्सा</td></tr><tr><td>क्रम</td><td>पहले बनता है</td><td>लाभ-हानि खाते के बाद</td></tr></table>
+<h2 id="s11">11. प्रश्न-उत्तर और परीक्षा टिप्स</h2><div class="box"><b>प्र.1 साझेदारी की परिभाषा दीजिए।</b><br>उ: उन व्यक्तियों का संबंध जो ऐसे व्यापार का लाभ बाँटने को सहमत हैं जो सभी या कोई एक सबकी ओर से चलाए (धारा 4)।</div>
+<div class="box"><b>प्र.2 साझेदारों की अधिकतम संख्या क्या है?</b><br>उ: 50 (बैंकिंग व्यापार में 10)।</div>
+<div class="box"><b>प्र.3 पारस्परिक एजेंसी क्या है?</b><br>उ: हर साझेदार फर्म व अन्य साझेदारों का एजेंट होता है; एक का कार्य सब पर बाध्यकारी।</div>
+<div class="box"><b>प्र.4 विलेख न हो तो लाभ कैसे बँटेगा?</b><br>उ: बराबर-बराबर, पूँजी चाहे जितनी हो।</div>
+<div class="box"><b>प्र.5 आहरण पर ब्याज विनियोजन खाते के क्रेडिट में क्यों?</b><br>उ: यह फर्म की आय/लाभ है जो साझेदारों से वसूल की जाती है।</div>
+<h3>✅ परीक्षा टिप्स</h3><ul class="star"><li>पहले लाभ अनुपात लिखें; बँटवारे से <b>पहले</b> ब्याज निकालें।</li><li>पूँजी व आहरण पर ब्याज की कार्य-टिप्पणी दिखाएँ।</li><li>हर खाते के दोनों पक्ष मिलाएँ।</li><li>ध्यान से पढ़ें: ब्याज <i>प्रारंभिक</i> पूँजी पर है या <i>अंतिम</i> पूँजी पर?</li></ul>
+<h3>⚠️ आम गलतियाँ</h3><ul class="arr"><li>साझेदार का वेतन लाभ-हानि खाते में लिख देना।</li><li>विलेख मौन होने पर भी पूँजी पर ब्याज देना।</li><li>आहरण पर ब्याज जोड़ना भूल जाना।</li><li>चालू खाते का डेबिट शेष दायित्व पक्ष में दिखाना।</li></ul>
+<p class="foot">✿ शुभकामनाएँ! रोज़ 2 विनियोजन प्रश्न हल करें ✿</p>
+</div>
+<script>
+(function(){
+ var figs=[].slice.call(document.querySelectorAll('.fig'));
+ function play(f){f.classList.remove('play');void f.offsetWidth;f.classList.add('play');}
+ if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){play(e.target);io.unobserve(e.target);}})},{threshold:.25});
+  figs.forEach(function(f){io.observe(f)});
+ } else figs.forEach(play);
+ figs.forEach(function(f){f.querySelector('.replay').addEventListener('click',function(){play(f)})});
+})();
+</script></body></html>
