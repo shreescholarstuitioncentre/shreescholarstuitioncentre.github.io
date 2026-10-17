@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>वाराणसी (संस्कृत) – कक्षा 10 – हस्तलिखित नोट्स</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Yatra+One&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fbfaf1; --line:#cfe0ee; --margin:#e57373;
+  --ink:#1b3a8f; --ink2:#0d2461; --red:#c62828; --green:#2e7d32; --orange:#e65100; --purple:#6a1b9a;
+  --hl-y:#fff59d; --hl-p:#f8bbd0; --hl-g:#c8e6c9; --hl-b:#bbdefb;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#e8e4d4;font-family:'Kalam','Noto Sans Devanagari','Mangal',cursive;color:var(--ink);font-size:19px;line-height:32px}
+.notebook{max-width:980px;margin:0 auto;background:var(--paper);
+  background-image:repeating-linear-gradient(transparent 0,transparent 31px,var(--line) 31px,var(--line) 32px);
+  border-left:3px double var(--margin);padding:20px 22px 60px 64px;position:relative;box-shadow:0 0 25px rgba(0,0,0,.25)}
+.notebook::before{content:"";position:absolute;left:14px;top:60px;bottom:60px;width:22px;
+  background:radial-gradient(circle at 11px 11px,#8d8d8d 0,#8d8d8d 7px,transparent 8px) 0 0/22px 120px repeat-y}
+h1,h2,h3{font-family:'Yatra One','Kalam',cursive;font-weight:400;margin:0}
+h1{font-size:38px;line-height:48px;color:var(--red);text-align:center;margin-top:10px}
+h2{font-size:28px;line-height:40px;color:var(--ink2);margin:42px 0 12px;border-bottom:3px wavy var(--red);padding-bottom:2px;display:inline-block}
+h3{font-size:22px;line-height:32px;color:var(--purple);margin:20px 0 4px}
+p{margin:0 0 10px}
+.sub{text-align:center;color:var(--green);font-size:21px;font-weight:700}
+.nav{position:sticky;top:0;z-index:20;background:#fffde7;border-bottom:2px dashed var(--red);padding:6px 10px;display:flex;flex-wrap:wrap;gap:4px 14px;font-size:16px;line-height:24px;margin:0 -22px 0 -64px;padding-left:64px}
+.nav a{color:var(--ink2);text-decoration:none;font-weight:700}
+.nav a:hover{color:var(--red);text-decoration:underline wavy}
+.nav button{font-family:inherit;background:var(--red);color:#fff;border:0;border-radius:6px;padding:0 10px;cursor:pointer}
+mark{padding:0 4px;border-radius:3px}
+.y{background:var(--hl-y)} .p{background:var(--hl-p)} .g{background:var(--hl-g)} .b{background:var(--hl-b)}
+.r{color:var(--red);font-weight:700} .gr{color:var(--green);font-weight:700} .o{color:var(--orange);font-weight:700}
+.box{border:2.5px dashed var(--ink);border-radius:14px 6px 16px 8px;padding:10px 16px;margin:14px 0;background:rgba(255,255,255,.55)}
+.box.red{border-color:var(--red)} .box.green{border-color:var(--green)} .box.orange{border-color:var(--orange)}
+.sticky{background:#fff176;box-shadow:3px 4px 8px rgba(0,0,0,.25);padding:10px 14px;margin:16px 0;transform:rotate(-1deg);border-radius:2px;position:relative;color:#3e2723}
+.sticky.pink{background:#f8bbd0;transform:rotate(1deg)} .sticky.blue{background:#b3e5fc}
+.sticky::before{content:"";position:absolute;top:-10px;left:40%;width:70px;height:20px;background:rgba(255,255,255,.6);transform:rotate(3deg);box-shadow:0 0 3px rgba(0,0,0,.2)}
+.sans{font-family:'Yatra One','Kalam',serif;font-size:23px;line-height:36px;color:var(--ink2);background:linear-gradient(90deg,rgba(255,245,157,.6),rgba(255,245,157,0));padding:4px 10px;border-left:5px solid var(--red);margin:8px 0}
+.tag{display:inline-block;background:var(--ink);color:#fff;border-radius:4px;padding:0 10px;font-size:16px;line-height:24px;margin-right:6px;transform:rotate(-1.5deg)}
+.tag.r2{background:var(--red)} .tag.g2{background:var(--green)} .tag.o2{background:var(--orange)} .tag.p2{background:var(--purple)}
+table{border-collapse:collapse;width:100%;margin:10px 0 14px;background:rgba(255,255,255,.6);font-size:17px;line-height:26px}
+th,td{border:2px solid var(--ink);padding:3px 8px;text-align:left;vertical-align:top}
+th{background:var(--hl-b);color:var(--ink2)}
+.scroll{overflow-x:auto}
+ul,ol{margin:4px 0 10px;padding-left:26px} li{margin-bottom:2px}
+.anu{counter-reset:none}
+.card{border:3px solid var(--ink);border-radius:18px 8px 20px 10px;padding:6px 18px 12px;margin:24px 0;background:rgba(255,255,255,.5);position:relative}
+.card>.num{position:absolute;top:-18px;left:18px;background:var(--red);color:#fff;font-family:'Yatra One';padding:0 14px;border-radius:20px;line-height:32px;transform:rotate(-2deg)}
+figure{margin:20px 0;border:3px solid var(--ink2);border-radius:12px;background:#fffef7;padding:8px;box-shadow:4px 5px 0 rgba(27,58,143,.25)}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:17px;line-height:26px;padding:8px 8px 2px;color:var(--ink2)}
+svg text{font-family:'Kalam','Noto Sans Devanagari',cursive}
+details{border:2px solid var(--green);border-radius:10px;margin:6px 0 14px;background:rgba(232,245,233,.7)}
+details summary{cursor:pointer;padding:2px 12px;font-weight:700;color:var(--green);list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"✎ ";}
+details>div{padding:4px 16px 8px;color:var(--ink2)}
+.qa{margin:10px 0}
+.qa .q{font-weight:700;color:var(--ink2)}
+.mcq{border:2px dashed var(--ink);border-radius:10px;padding:6px 12px;margin:10px 0;background:rgba(255,255,255,.6)}
+.mcq .opts{display:grid;grid-template-columns:1fr 1fr;gap:2px 14px}
+.mcq button.opt{font-family:inherit;font-size:18px;text-align:left;border:2px solid transparent;background:transparent;color:var(--ink);cursor:pointer;border-radius:8px;padding:0 6px;line-height:30px}
+.mcq button.opt:hover{background:var(--hl-b)}
+.mcq button.opt.ok{background:var(--hl-g);border-color:var(--green)} .mcq button.opt.bad{background:var(--hl-p);border-color:var(--red)}
+.mcq .ex{display:none;color:var(--green);font-size:17px;line-height:26px}
+.mcq.done .ex{display:block}
+.score{position:sticky;bottom:8px;background:#fff59d;border:2px solid var(--red);border-radius:30px;padding:0 18px;display:inline-block;font-weight:700;color:var(--red);box-shadow:0 3px 8px rgba(0,0,0,.3)}
+.timeline{border-left:4px dotted var(--red);margin:14px 0 14px 14px;padding-left:20px}
+.timeline .t{position:relative;margin-bottom:8px;opacity:0;animation:slidein .7s ease forwards}
+.timeline .t::before{content:"";position:absolute;left:-31px;top:8px;width:16px;height:16px;border-radius:50%;background:var(--red);border:3px solid #fff;box-shadow:0 0 0 2px var(--red)}
+.timeline .t:nth-child(1){animation-delay:.1s}.timeline .t:nth-child(2){animation-delay:.5s}.timeline .t:nth-child(3){animation-delay:.9s}.timeline .t:nth-child(4){animation-delay:1.3s}.timeline .t:nth-child(5){animation-delay:1.7s}.timeline .t:nth-child(6){animation-delay:2.1s}
+@keyframes slidein{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:none}}
+/* SVG animations */
+.flow{stroke-dasharray:14 12;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-26}}
+.wave1{animation:wave 4s ease-in-out infinite alternate}
+.wave2{animation:wave 5s ease-in-out infinite alternate-reverse}
+@keyframes wave{from{transform:translateX(-18px)}to{transform:translateX(18px)}}
+.cloud{animation:cloud 30s linear infinite}
+@keyframes cloud{from{transform:translateX(-120px)}to{transform:translateX(780px)}}
+.flame{transform-box:fill-box;transform-origin:50% 100%;animation:flick .35s ease-in-out infinite alternate}
+@keyframes flick{from{transform:scale(1,1) rotate(-3deg)}to{transform:scale(.85,1.2) rotate(3deg)}}
+.flag{transform-box:fill-box;transform-origin:0 50%;animation:flag .8s ease-in-out infinite alternate}
+@keyframes flag{from{transform:skewY(-8deg) scaleX(1)}to{transform:skewY(8deg) scaleX(.85)}}
+.bob{animation:bob 3s ease-in-out infinite alternate}
+@keyframes bob{from{transform:translateY(-3px) rotate(-1.5deg)}to{transform:translateY(3px) rotate(1.5deg)}}
+.diya{animation:diya 9s linear infinite}
+@keyframes diya{from{transform:translateX(0)}to{transform:translateX(-330px)}}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.spin{transform-box:fill-box;transform-origin:center;animation:spin 24s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sun{animation:sun 14s ease-in-out infinite alternate}
+@keyframes sun{from{transform:translate(0,0)}to{transform:translate(120px,95px)}}
+.glow{animation:glow 3s ease-in-out infinite alternate}
+@keyframes glow{from{opacity:.35}to{opacity:.85}}
+.hint{font-size:15px;color:#777;line-height:22px}
+@media (max-width:700px){
+  body{font-size:17px}.notebook{padding:14px 12px 40px 30px}.nav{margin:0 -12px 0 -30px;padding-left:30px}
+  .mcq .opts{grid-template-columns:1fr} h1{font-size:28px;line-height:38px} .notebook::before{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.timeline .t{opacity:1}}
+@media print{body{background:#fff}.nav,.score,.noprint{display:none}.notebook{box-shadow:none}details{display:block}details>div{display:block}.mcq .ex{display:block}}
+</style>
+</head>
+<body>
+<div class="notebook">
+
+<div class="nav" id="top">
+  <a href="#parichay">परिचय</a><a href="#naam">नाम-कथा</a><a href="#paath">पाठ-अनुच्छेद</a><a href="#chitra">चित्र</a><a href="#tathya">तथ्य</a><a href="#ati">अति लघु</a><a href="#laghu">लघु</a><a href="#deergh">दीर्घ</a><a href="#mcq">MCQ</a><a href="#vyakaran">व्याकरण</a><a href="#anuvad">अनुवाद-अभ्यास</a><a href="#tips">टिप्स</a>
+  <button class="noprint" onclick="window.print()">🖨 प्रिंट</button>
+</div>
+
+<h1>🕉 पाठ 17 : वाराणसी 🕉</h1>
+<div class="sub">अनिवार्य संस्कृत • कक्षा 10 • पूर्ण हस्तलिखित नोट्स</div>
+<div class="sub" style="font-size:17px;color:var(--orange)">(संस्कृत पाठ + शब्दार्थ + सन्दर्भ + अनुवाद + व्याख्या + एनिमेटेड चित्र + प्रश्नोत्तर + MCQ)</div>
+
+<div class="sticky pink">
+  <b>📌 ज़रूरी सूचना:</b> ये नोट्स "वाराणसी" पाठ के विषय-वस्तु (काशी, गंगा-घाट, विश्वनाथ, सारनाथ, शिक्षा, संस्कृति) पर आधारित हैं। संस्कृत अनुच्छेद सरल भाषा में पाठ के भावों के अनुसार लिखे गए हैं। अपनी पाठ्य-पुस्तक के शब्द अलग हों तो अपनी पुस्तक के वाक्य को <u>मुख्य</u> मानकर, इन नोट्स से शब्दार्थ-अनुवाद की विधि सीखें। प्रश्न परीक्षा-पैटर्न (UP Board / NCERT / प्रकाशन-शैली) पर बनाए गए हैं — किसी प्रकाशन से हू-ब-हू नहीं हैं।
+</div>
+
+<!-- ========== परिचय ========== -->
+<h2 id="parichay">1️⃣ पाठ-परिचय (Introduction)</h2>
+<div class="box">
+  <p><span class="tag">पाठ का नाम</span> वाराणसी (गद्य-पाठ)</p>
+  <p><span class="tag r2">विषय</span> उत्तर प्रदेश की प्राचीन व पवित्र नगरी <mark class="y">वाराणसी / काशी</mark> का परिचय</p>
+  <p><span class="tag g2">मुख्य विचार</span> वाराणसी धर्म, ज्ञान, कला और संस्कृति का केन्द्र है।</p>
+  <p><span class="tag o2">भाषा</span> सरल, छोटे वाक्य; वर्तमान काल (लट्) की प्रधानता।</p>
+  <p><span class="tag p2">शैली</span> वर्णनात्मक (Descriptive)</p>
+</div>
+
+<h3>📖 पाठ का सार (सरल शब्दों में)</h3>
+<p>वाराणसी गंगा के किनारे बसी भारत की सबसे पुरानी नगरी है। इसे <b>काशी</b> और <b>बनारस</b> भी कहते हैं। वरणा और असी नदियों के बीच होने से इसका नाम "वाराणसी" पड़ा। यहाँ <mark class="p">काशी विश्वनाथ मन्दिर</mark> है जो बारह ज्योतिर्लिंगों में से एक है। गंगा के किनारे अनेक घाट हैं, जहाँ शाम को भव्य गंगा-आरती होती है। वाराणसी विद्या की नगरी है — यहाँ काशी हिन्दू विश्वविद्यालय व सम्पूर्णानन्द संस्कृत विश्वविद्यालय हैं। तुलसीदास, कबीर, रविदास जैसे सन्तों-कवियों से यह नगरी जुड़ी है। पास में <mark class="g">सारनाथ</mark> है जहाँ बुद्ध ने पहला उपदेश दिया। यहाँ की बनारसी साड़ी और लकड़ी के खिलौने जगत्-प्रसिद्ध हैं।</p>
+
+<h3>🔑 मुख्य शब्द (Keywords)</h3>
+<p><mark class="y">काशी</mark> <mark class="p">वाराणसी</mark> <mark class="g">गङ्गा</mark> <mark class="b">घट्ट</mark> <mark class="y">आरती</mark> <mark class="p">विश्वनाथ</mark> <mark class="g">सारनाथ</mark> <mark class="b">विद्या</mark> <mark class="y">शाटिका</mark></p>
+
+<!-- ========== नाम-कथा ========== -->
+<h2 id="naam">2️⃣ वाराणसी के नाम – कहानी</h2>
+<table>
+<tr><th>नाम</th><th>अर्थ / कारण</th></tr>
+<tr><td><b>काशी</b></td><td>"काश्" धातु = चमकना, प्रकाशित होना → <i>प्रकाश (ज्ञान) से चमकने वाली नगरी</i></td></tr>
+<tr><td><b>वाराणसी</b></td><td>वरणा + असी नदियों के बीच स्थित → <i>वरणा + असी = वाराणसी</i></td></tr>
+<tr><td><b>बनारस</b></td><td>"वाराणसी" का बोलचाल का रूप (उर्दू/फ़ारसी प्रभाव से "बनारस")</td></tr>
+<tr><td><b>अविमुक्त</b></td><td>जिसे शिव कभी नहीं छोड़ते (मान्यता)</td></tr>
+<tr><td><b>आनन्दकानन</b></td><td>आनन्द का वन — पुराणों में प्रयुक्त नाम</td></tr>
+</table>
+<div class="sticky blue">🧠 <b>याद रखने की ट्रिक:</b> <b>"का-वा-ब"</b> = <u>का</u>शी – <u>वा</u>राणसी – <u>ब</u>नारस । तीनों एक ही नगर!</div>
+
+<!-- ========== पाठ अनुच्छेद ========== -->
+<h2 id="paath">3️⃣ अनुच्छेद-वार पाठ, शब्दार्थ, सन्दर्भ, अनुवाद व व्याख्या</h2>
+<div class="box orange">
+<p><b>✍ परीक्षा में "सन्दर्भ" ऐसे लिखें:</b><br>
+<span class="r">सन्दर्भ :</span> प्रस्तुत गद्यांश हमारी पाठ्य-पुस्तक <b>'संस्कृत' (अनिवार्य संस्कृत)</b> के <b>'वाराणसी'</b> नामक पाठ से अवतरित है।<br>
+<span class="r">अनुवाद / व्याख्या :</span> (हिन्दी अनुवाद लिखकर, भाव 2–3 पंक्तियों में समझाएँ)</p>
+</div>
+
+<!-- अनुच्छेद 1 -->
+<div class="card"><span class="num">अनुच्छेद 1 – परिचय</span>
+<div class="sans">वाराणसी भारतस्य प्राचीनतमा नगरी अस्ति। इयं गङ्गायाः तटे स्थिता अस्ति। इयं नगरी काशी, बनारस इति नामभिः अपि प्रसिद्धा अस्ति।</div>
+<div class="scroll"><table><tr><th>संस्कृत शब्द</th><th>हिन्दी अर्थ</th><th>व्याकरण</th></tr>
+<tr><td>प्राचीनतमा</td><td>सबसे पुरानी</td><td>प्राचीन + तमप् (अतिशय) → स्त्रीलिंग</td></tr>
+<tr><td>नगरी</td><td>शहर</td><td>ई-कारान्त स्त्रीलिंग, प्रथमा एकवचन</td></tr>
+<tr><td>गङ्गायाः</td><td>गंगा का</td><td>षष्ठी एकवचन</td></tr>
+<tr><td>तटे</td><td>किनारे पर</td><td>सप्तमी एकवचन (तट, पुँल्लिंग/नपुंसक)</td></tr>
+<tr><td>स्थिता</td><td>स्थित है</td><td>स्था + क्त → स्त्रीलिंग</td></tr>
+<tr><td>नामभिः</td><td>नामों से</td><td>नामन् शब्द, तृतीया बहुवचन</td></tr></table></div>
+<p><span class="r">सन्दर्भ :</span> प्रस्तुत गद्यांश 'वाराणसी' पाठ से लिया गया है। इसमें वाराणसी नगरी का आरम्भिक परिचय दिया गया है।</p>
+<p><span class="gr">अनुवाद :</span> वाराणसी भारत की सबसे प्राचीन नगरी है। यह गंगा के तट पर स्थित है। यह नगरी काशी और बनारस नामों से भी प्रसिद्ध है।</p>
+<p><span class="o">व्याख्या / भाव :</span> लेखक बताता है कि वाराणसी केवल एक शहर नहीं, भारत की सबसे पुरानी जीवित सभ्यता का केन्द्र है। गंगा-तट इसकी पहचान है और अलग-अलग नाम इसकी लोकप्रियता दर्शाते हैं।</p>
+<div class="sticky">⭐ <b>याद रखें:</b> "इयम्" = यह (स्त्रीलिंग)। "अस्ति" = है (एकवचन)।</div>
+</div>
+
+<!-- अनुच्छेद 2 -->
+<div class="card"><span class="num">अनुच्छेद 2 – नाम का कारण</span>
+<div class="sans">वरणा-असी इति अनयोः नद्योः मध्ये स्थितत्वात् इयं नगरी वाराणसी इति नाम्ना ख्याता।</div>
+<div class="scroll"><table><tr><th>शब्द</th><th>अर्थ</th><th>व्याकरण / सन्धि</th></tr>
+<tr><td>इत्यनयोः (यहाँ: इति अनयोः)</td><td>ऐसी इन दोनों का</td><td>इति + अनयोः = इत्यनयोः (यण् सन्धि)</td></tr>
+<tr><td>नद्योः</td><td>दो नदियों का</td><td>नदी, षष्ठी/सप्तमी द्विवचन</td></tr>
+<tr><td>मध्ये</td><td>बीच में</td><td>"मध्य" शब्द, सप्तमी एकवचन</td></tr>
+<tr><td>स्थितत्वात्</td><td>स्थित होने के कारण</td><td>स्थित + त्व (भाव) + पञ्चमी (हेतु)</td></tr>
+<tr><td>नाम्ना</td><td>नाम से</td><td>नामन्, तृतीया एकवचन</td></tr>
+<tr><td>ख्याता</td><td>प्रसिद्ध</td><td>ख्या + क्त (स्त्री.)</td></tr></table></div>
+<p><span class="r">सन्दर्भ :</span> पूर्ववत् — इस अंश में "वाराणसी" नाम पड़ने का कारण बताया गया है।</p>
+<p><span class="gr">अनुवाद :</span> वरणा और असी — इन दोनों नदियों के बीच स्थित होने के कारण यह नगरी "वाराणसी" नाम से प्रसिद्ध हुई।</p>
+<p><span class="o">व्याख्या / भाव :</span> नगर का नाम उसकी भौगोलिक स्थिति से बना है। वरणा गंगा में उत्तर की ओर तथा असी दक्षिण की ओर मिलती है। <mark class="y">वरणा + असी → वाराणसी</mark>।</p>
+<div class="sticky blue">💡 <b>हेतु-अर्थ में पञ्चमी:</b> "स्थितत्वात्" – कारण बताने के लिए पञ्चमी (त्वात्/तः)। जैसे: <i>अध्ययनात् ज्ञानं भवति।</i></div>
+</div>
+
+<!-- अनुच्छेद 3 -->
+<div class="card"><span class="num">अनुच्छेद 3 – काशी विश्वनाथ</span>
+<div class="sans">काश्यां भगवतः विश्वनाथस्य मन्दिरम् अस्ति। द्वादशज्योतिर्लिङ्गेषु अन्यतमम् इदं मन्दिरम्। दूरदूरात् भक्ताः दर्शनार्थम् आगच्छन्ति।</div>
+<div class="scroll"><table><tr><th>शब्द</th><th>अर्थ</th><th>व्याकरण / सन्धि</th></tr>
+<tr><td>काश्याम्</td><td>काशी में</td><td>काशी, सप्तमी एकवचन</td></tr>
+<tr><td>भगवतः</td><td>भगवान् का</td><td>भगवत्, षष्ठी एकवचन</td></tr>
+<tr><td>द्वादशज्योतिर्लिङ्गेषु</td><td>बारह ज्योतिर्लिंगों में</td><td>द्विगु समास; सप्तमी बहुवचन</td></tr>
+<tr><td>अन्यतमम्</td><td>बहुतों में से एक</td><td>अन्य + तमप्</td></tr>
+<tr><td>दूरदूरात्</td><td>दूर-दूर से</td><td>पञ्चमी एकवचन</td></tr>
+<tr><td>दर्शनार्थम्</td><td>दर्शन के लिए</td><td>दर्शन + अर्थम् (दीर्घ सन्धि)</td></tr>
+<tr><td>आगच्छन्ति</td><td>आते हैं</td><td>आ + गम् → लट् प्र.पु. बहुवचन</td></tr></table></div>
+<p><span class="r">सन्दर्भ :</span> प्रस्तुत अंश 'वाराणसी' पाठ से है; इसमें काशी विश्वनाथ मन्दिर का महत्त्व बताया गया है।</p>
+<p><span class="gr">अनुवाद :</span> काशी में भगवान् विश्वनाथ का मन्दिर है। यह मन्दिर बारह ज्योतिर्लिंगों में से एक है। दूर-दूर से भक्त दर्शन के लिए आते हैं।</p>
+<p><span class="o">व्याख्या / भाव :</span> विश्वनाथ (विश्व के स्वामी = शिव) का यह मन्दिर करोड़ों हिन्दुओं की श्रद्धा का केन्द्र है। दूर-दूर से आना भक्तों की आस्था और काशी की प्रसिद्धि को दर्शाता है।</p>
+</div>
+
+<!-- अनुच्छेद 4 -->
+<div class="card"><span class="num">अनुच्छेद 4 – घाट और गंगा-आरती</span>
+<div class="sans">गङ्गायाः तटे बहवः घट्टाः सन्ति। दशाश्वमेधघट्टः, अस्सीघट्टः, मणिकर्णिकाघट्टः इत्यादयः प्रसिद्धाः। सायंकाले गङ्गा-आरती भवति; जनाः तां द्रष्टुं सम्मिलन्ति।</div>
+<div class="scroll"><table><tr><th>शब्द</th><th>अर्थ</th><th>व्याकरण</th></tr>
+<tr><td>बहवः</td><td>बहुत से</td><td>बहु, प्रथमा बहुवचन (पुँ.)</td></tr>
+<tr><td>घट्टाः</td><td>घाट</td><td>पुँल्लिंग प्रथमा बहुवचन</td></tr>
+<tr><td>इत्यादयः</td><td>इत्यादि, आदि</td><td>आदि शब्द, प्रथमा बहुवचन</td></tr>
+<tr><td>सायंकाले</td><td>शाम के समय</td><td>सायम् + काले → अनुस्वार सन्धि</td></tr>
+<tr><td>भवति</td><td>होती है</td><td>भू → लट् प्र.पु. एकवचन</td></tr>
+<tr><td>द्रष्टुम्</td><td>देखने के लिए</td><td>दृश् + तुमुन्</td></tr>
+<tr><td>सम्मिलन्ति</td><td>इकट्ठे होते हैं</td><td>सम् + मिल्</td></tr></table></div>
+<p><span class="r">सन्दर्भ :</span> प्रस्तुत गद्यांश में वाराणसी के घाटों और गंगा-आरती का वर्णन है।</p>
+<p><span class="gr">अनुवाद :</span> गंगा के किनारे बहुत से घाट हैं। दशाश्वमेध घाट, अस्सी घाट, मणिकर्णिका घाट आदि प्रसिद्ध हैं। सायंकाल गंगा-आरती होती है; लोग उसे देखने के लिए इकट्ठे होते हैं।</p>
+<p><span class="o">व्याख्या / भाव :</span> घाट वाराणसी के जीवन की धड़कन हैं — स्नान, पूजा, संगीत और संस्कृति सब यहीं। दीपों, घण्टों और मन्त्रों से सजी आरती वातावरण को दिव्य बना देती है।</p>
+<div class="sticky pink">🪔 <b>तथ्य:</b> आरती का सबसे प्रसिद्ध स्थान <b>दशाश्वमेध घाट</b>; मणिकर्णिका = प्रमुख श्मशान घाट; अस्सी = असी नदी के संगम के पास।</div>
+</div>
+
+<!-- अनुच्छेद 5 -->
+<div class="card"><span class="num">अनुच्छेद 5 – विद्या की नगरी</span>
+<div class="sans">वाराणसी विद्यायाः नगरी अपि अस्ति। अत्र काशीहिन्दूविश्वविद्यालयः, सम्पूर्णानन्दसंस्कृतविश्वविद्यालयः च सन्ति। प्राचीनकालतः अत्र संस्कृतस्य अध्ययनं भवति।</div>
+<div class="scroll"><table><tr><th>शब्द</th><th>अर्थ</th><th>व्याकरण</th></tr>
+<tr><td>विद्यायाः</td><td>विद्या की</td><td>षष्ठी एकवचन</td></tr>
+<tr><td>अपि</td><td>भी</td><td>अव्यय</td></tr>
+<tr><td>अत्र</td><td>यहाँ</td><td>अव्यय</td></tr>
+<tr><td>सन्ति</td><td>हैं (बहुवचन)</td><td>अस् → लट् प्र.पु. बहुवचन</td></tr>
+<tr><td>प्राचीनकालतः</td><td>प्राचीन काल से</td><td>तसिल् प्रत्यय (पञ्चमी अर्थ)</td></tr>
+<tr><td>अध्ययनम्</td><td>पढ़ाई</td><td>नपुंसकलिंग</td></tr></table></div>
+<p><span class="r">सन्दर्भ :</span> प्रस्तुत अंश में वाराणसी को ज्ञान-विद्या का केन्द्र बताया गया है।</p>
+<p><span class="gr">अनुवाद :</span> वाराणसी विद्या की नगरी भी है। यहाँ काशी हिन्दू विश्वविद्यालय और सम्पूर्णानन्द संस्कृत विश्वविद्यालय हैं। प्राचीन काल से यहाँ संस्कृत का अध्ययन होता है।</p>
+<p><span class="o">व्याख्या / भाव :</span> काशी में सदियों से गुरुकुल, पाठशालाएँ और विद्वत् परिषदें रही हैं। BHU (1916, महामना मदनमोहन मालवीय) और सम्पूर्णानन्द संस्कृत विश्वविद्यालय इस परम्परा के आधुनिक रूप हैं।</p>
+</div>
+
+<!-- अनुच्छेद 6 -->
+<div class="card"><span class="num">अनुच्छेद 6 – महान् विभूतियाँ</span>
+<div class="sans">महाकविः तुलसीदासः अत्र रामचरितमानसम् अरचयत्। सन्तः कबीरदासः रविदासः च अत्र निवसन्ति स्म। उस्ताद-बिस्मिल्लाखानः शहनाईवादकः अत्र निवसन् जगति प्रसिद्धः अभवत्।</div>
+<div class="scroll"><table><tr><th>शब्द</th><th>अर्थ</th><th>व्याकरण</th></tr>
+<tr><td>अरचयत्</td><td>रचना की</td><td>रच् → लङ् प्र.पु. एकवचन (भूतकाल)</td></tr>
+<tr><td>निवसन्ति स्म</td><td>रहते थे</td><td>लट् + स्म = भूतकाल का अर्थ</td></tr>
+<tr><td>निवसन्</td><td>रहते हुए</td><td>नि + वस् + शतृ</td></tr>
+<tr><td>जगति</td><td>संसार में</td><td>जगत्, सप्तमी एकवचन</td></tr>
+<tr><td>अभवत्</td><td>हुए / हो गए</td><td>भू → लङ् प्र.पु. एकवचन</td></tr></table></div>
+<p><span class="r">सन्दर्भ :</span> इस गद्यांश में वाराणसी से जुड़े महान् कवियों, सन्तों व कलाकारों का उल्लेख है।</p>
+<p><span class="gr">अनुवाद :</span> महाकवि तुलसीदास ने (परम्परा के अनुसार) यहाँ रामचरितमानस की रचना की। सन्त कबीरदास और रविदास यहाँ रहते थे। शहनाई-वादक उस्ताद बिस्मिल्लाखान यहाँ रहते हुए संसार में प्रसिद्ध हुए।</p>
+<p><span class="o">व्याख्या / भाव :</span> वाराणसी साहित्य, भक्ति और संगीत की भूमि है। अन्य नाम: भारतेन्दु हरिश्चन्द्र, जयशंकर प्रसाद (बनारस के साहित्यकार)।</p>
+<div class="sticky blue">⚠ <b>"स्म" का नियम:</b> लट् लकार + स्म = भूतकाल। <i>सः गच्छति स्म</i> = वह जाता था।</div>
+</div>
+
+<!-- अनुच्छेद 7 -->
+<div class="card"><span class="num">अनुच्छेद 7 – सारनाथ</span>
+<div class="sans">वाराणस्याः समीपे सारनाथः अस्ति। अत्र भगवान् बुद्धः प्रथमम् उपदेशम् अददात्। इदं स्थानं बौद्धानां महत् तीर्थम् अस्ति।</div>
+<div class="scroll"><table><tr><th>शब्द</th><th>अर्थ</th><th>व्याकरण</th></tr>
+<tr><td>वाराणस्याः</td><td>वाराणसी के</td><td>षष्ठी एकवचन</td></tr>
+<tr><td>समीपे</td><td>पास में</td><td>सप्तमी एकवचन</td></tr>
+<tr><td>प्रथमम्</td><td>पहली बार</td><td>अव्यय रूप</td></tr>
+<tr><td>उपदेशम्</td><td>उपदेश को</td><td>द्वितीया एकवचन</td></tr>
+<tr><td>अददात्</td><td>दिया</td><td>दा → लङ् प्र.पु. एकवचन</td></tr>
+<tr><td>बौद्धानाम्</td><td>बौद्धों का</td><td>षष्ठी बहुवचन</td></tr>
+<tr><td>तीर्थम्</td><td>पवित्र स्थान</td><td>नपुंसकलिंग</td></tr></table></div>
+<p><span class="r">सन्दर्भ :</span> इस अंश में वाराणसी के निकट सारनाथ के महत्त्व का वर्णन है।</p>
+<p><span class="gr">अनुवाद :</span> वाराणसी के पास सारनाथ है। यहाँ भगवान् बुद्ध ने पहली बार उपदेश दिया। यह स्थान बौद्धों का महान् तीर्थ है।</p>
+<p><span class="o">व्याख्या / भाव :</span> बुद्ध ने ज्ञान-प्राप्ति (बोधगया) के बाद सारनाथ में पाँच शिष्यों को प्रथम उपदेश (<b>धर्मचक्र-प्रवर्तन</b>) दिया। यहाँ का <b>अशोक-स्तम्भ (सिंह-शीर्ष)</b> भारत का राष्ट्रीय चिह्न है; <b>धमेख स्तूप</b> प्रसिद्ध है।</p>
+</div>
+
+<!-- अनुच्छेद 8 -->
+<div class="card"><span class="num">अनुच्छेद 8 – कला व शिल्प</span>
+<div class="sans">वाराणस्याः रेशमशाटिकाः काष्ठनिर्मितानि क्रीडनकानि च जगति प्रसिद्धानि सन्ति। अत्रत्यं सङ्गीतं नृत्यं च जनान् आकर्षतः।</div>
+<div class="scroll"><table><tr><th>शब्द</th><th>अर्थ</th><th>व्याकरण</th></tr>
+<tr><td>रेशमशाटिकाः</td><td>रेशमी साड़ियाँ</td><td>षष्ठी तत्पुरुष; प्र. बहु.</td></tr>
+<tr><td>काष्ठनिर्मितानि</td><td>लकड़ी से बने</td><td>तृतीया तत्पुरुष</td></tr>
+<tr><td>क्रीडनकानि</td><td>खिलौने</td><td>नपुं. प्रथमा बहुवचन</td></tr>
+<tr><td>अत्रत्यम्</td><td>यहाँ का</td><td>अत्र + त्यप्</td></tr>
+<tr><td>आकर्षतः</td><td>खींचते हैं (दो)</td><td>आ + कृष् → लट् द्विवचन</td></tr></table></div>
+<p><span class="r">सन्दर्भ :</span> इस अंश में वाराणसी के शिल्प और कलाओं का उल्लेख है।</p>
+<p><span class="gr">अनुवाद :</span> वाराणसी की रेशमी साड़ियाँ और लकड़ी के बने खिलौने संसार में प्रसिद्ध हैं। यहाँ का संगीत और नृत्य लोगों को आकर्षित करते हैं।</p>
+<p class="hint">(नोट: "सङ्गीतं नृत्यं च" दो कर्ता होने से "आकर्षतः" द्विवचन।)</p>
+</div>
+
+<!-- अनुच्छेद 9 -->
+<div class="card"><span class="num">अनुच्छेद 9 – उपसंहार</span>
+<div class="sans">अतः वाराणसी धर्मस्य, ज्ञानस्य, कलायाः, संस्कृतेः च केन्द्रम् अस्ति। जनाः वदन्ति — "काशी मोक्षदायिनी" इति। इयं नगरी सर्वेषां भारतीयानां गौरवम् अस्ति।</div>
+<div class="scroll"><table><tr><th>शब्द</th><th>अर्थ</th><th>व्याकरण</th></tr>
+<tr><td>अतः</td><td>इसलिए</td><td>अव्यय</td></tr>
+<tr><td>धर्मस्य</td><td>धर्म का</td><td>षष्ठी एकवचन</td></tr>
+<tr><td>केन्द्रम्</td><td>केन्द्र</td><td>नपुंसकलिंग</td></tr>
+<tr><td>मोक्षदायिनी</td><td>मोक्ष देने वाली</td><td>मोक्ष + दायिन् → स्त्रीलिंग</td></tr>
+<tr><td>सर्वेषाम्</td><td>सभी का</td><td>षष्ठी बहुवचन</td></tr>
+<tr><td>गौरवम्</td><td>गौरव / गर्व</td><td>नपुंसकलिंग</td></tr></table></div>
+<p><span class="r">सन्दर्भ :</span> यह पाठ का अन्तिम (उपसंहार) अंश है।</p>
+<p><span class="gr">अनुवाद :</span> इसलिए वाराणसी धर्म, ज्ञान, कला और संस्कृति का केन्द्र है। लोग कहते हैं — "काशी मोक्ष देने वाली है।" यह नगरी सभी भारतीयों का गौरव है।</p>
+<p><span class="o">शिक्षा / सन्देश :</span> हमें अपनी प्राचीन विरासत पर गर्व करना और उसकी स्वच्छता व संरक्षण में सहयोग देना चाहिए।</p>
+</div>
+
+<!-- ========== चित्र ========== -->
+<h2 id="chitra">4️⃣ एनिमेटेड चित्र (लेबल सहित)</h2>
+<p class="hint">👉 सभी चित्र अपने-आप चलते हैं। कॉपी में बनाते समय लेबल ज़रूर लिखें।</p>
+
+<!-- चित्र 1: नक्शा -->
+<figure>
+<svg viewBox="0 0 700 430" role="img" aria-label="वाराणसी का नक्शा">
+  <rect width="700" height="430" fill="#fffef7"/>
+  <path id="city" d="M336,40 C 395,150 390,300 305,398 C 230,398 150,386 100,378 C 95,260 100,150 100,60 C 190,50 270,45 336,40 Z" fill="#ffcc80" opacity=".6" class="glow"/>
+  <path d="M60,58 C 150,42 250,50 336,40" stroke="#4fc3f7" stroke-width="7" fill="none" class="flow"/>
+  <path d="M70,386 C 150,392 230,398 305,398" stroke="#4fc3f7" stroke-width="6" fill="none" class="flow"/>
+  <path id="gpath" d="M300,400 C 470,300 470,120 330,20" stroke="#0288d1" stroke-width="22" fill="none" opacity=".85"/>
+  <path d="M300,400 C 470,300 470,120 330,20" stroke="#e1f5fe" stroke-width="5" fill="none" class="flow"/>
+  <g>
+    <path d="M-12,0 L12,0 L8,8 L-8,8 Z" fill="#8d4b00"/><path d="M0,0 L0,-16" stroke="#333" stroke-width="2"/><path d="M0,-16 L10,-4 L0,-4Z" fill="#c62828"/>
+    <animateMotion dur="14s" repeatCount="indefinite" rotate="auto"><mpath href="#gpath"/></animateMotion>
+  </g>
+  <!-- compass -->
+  <g transform="translate(640,70)"><circle r="26" fill="#fff" stroke="#1b3a8f" stroke-width="2"/><path d="M0,-22 L6,0 L-6,0Z" fill="#c62828"/><text y="-30" text-anchor="middle" font-size="16" fill="#c62828">उत्तर</text></g>
+  <!-- city text -->
+  <text x="190" y="215" font-size="30" fill="#c62828" text-anchor="middle" class="pulse">काशी / वाराणसी</text>
+  <text x="190" y="240" font-size="16" fill="#1b3a8f" text-anchor="middle">(गंगा के पश्चिमी तट पर)</text>
+  <!-- places -->
+  <g font-size="15" fill="#1b3a8f">
+    <circle cx="260" cy="130" r="6" fill="#6a1b9a"/><text x="140" y="135">राजघाट / दशाश्वमेध</text>
+    <circle cx="130" cy="300" r="6" fill="#2e7d32"/><text x="143" y="318">BHU</text>
+    <circle cx="300" cy="360" r="6" fill="#e65100"/><text x="215" y="355">अस्सी घाट</text>
+    <circle cx="300" cy="230" r="6" fill="#c62828"/><text x="212" y="270">विश्वनाथ मन्दिर</text>
+  </g>
+  <text x="170" y="34" font-size="17" fill="#0277bd">वरणा नदी →</text>
+  <text x="70" y="418" font-size="17" fill="#0277bd">असी नदी →</text>
+  <text x="470" y="250" font-size="22" fill="#01579b" transform="rotate(-70 470 250)">पवित्र गङ्गा (अर्धचन्द्राकार)</text>
+  <!-- Sarnath -->
+  <circle cx="580" cy="180" r="9" fill="#2e7d32" class="pulse"/><text x="520" y="160" font-size="17" fill="#2e7d32">सारनाथ</text><text x="500" y="205" font-size="14" fill="#2e7d32">(लगभग 10 कि.मी., उत्तर-पूर्व)</text>
+  <text x="520" y="368" font-size="15" fill="#8d4b00">⛵ नाव चलती हुई</text>
+</svg>
+<figcaption><b>चित्र 1 – वाराणसी की भौगोलिक स्थिति:</b> उत्तर में <b>वरणा</b> और दक्षिण में <b>असी</b> नदी के बीच, गंगा के अर्धचन्द्राकार मोड़ पर बसी नगरी। इसी कारण <mark class="y">वरणा + असी = वाराणसी</mark>। (नारंगी भाग = नगर क्षेत्र)</figcaption>
+</figure>
+
+<!-- चित्र 2: घाट दृश्य -->
+<figure>
+<svg viewBox="0 0 700 420" role="img" aria-label="गंगा घाट का दृश्य">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffcc80"/><stop offset="1" stop-color="#fff3e0"/></linearGradient>
+    <linearGradient id="riv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4fc3f7"/><stop offset="1" stop-color="#0277bd"/></linearGradient>
+  </defs>
+  <rect width="700" height="420" fill="url(#sky)"/>
+  <g class="sun"><circle cx="420" cy="70" r="34" fill="#ff7043"/><circle cx="420" cy="70" r="46" fill="#ff7043" opacity=".25"/></g>
+  <g class="cloud"><ellipse cx="0" cy="55" rx="40" ry="14" fill="#fff" opacity=".85"/><ellipse cx="25" cy="48" rx="26" ry="12" fill="#fff" opacity=".85"/></g>
+  <g class="cloud" style="animation-duration:45s;animation-delay:-18s"><ellipse cx="0" cy="105" rx="34" ry="12" fill="#fff" opacity=".7"/></g>
+  <!-- river -->
+  <rect y="250" width="700" height="170" fill="url(#riv)"/>
+  <g stroke="#e1f5fe" stroke-width="3" fill="none" opacity=".8">
+    <path class="wave1" d="M200,285 q20,-10 40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0"/>
+    <path class="wave2" d="M180,330 q20,-10 40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0"/>
+    <path class="wave1" d="M200,380 q20,-10 40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0"/>
+  </g>
+  <!-- ghat steps -->
+  <g fill="#bcaaa4" stroke="#6d4c41" stroke-width="2">
+    <rect x="0" y="236" width="200" height="22"/><rect x="0" y="258" width="170" height="22"/><rect x="0" y="280" width="140" height="22"/><rect x="0" y="302" width="110" height="30"/>
+  </g>
+  <!-- temple -->
+  <g>
+    <rect x="30" y="150" width="110" height="86" fill="#ffe0b2" stroke="#6d4c41" stroke-width="3"/>
+    <path d="M40,150 L85,60 L130,150Z" fill="#ef6c00" stroke="#6d4c41" stroke-width="3"/>
+    <rect x="72" y="185" width="26" height="51" rx="13" fill="#6d4c41"/>
+    <path d="M85,60 L85,36" stroke="#333" stroke-width="3"/>
+    <path class="flag" d="M85,36 L118,45 L85,54Z" fill="#c62828"/>
+  </g>
+  <!-- boat -->
+  <g class="bob"><g>
+    <path d="M300,262 L400,262 L384,284 L316,284Z" fill="#8d4b00" stroke="#4e342e" stroke-width="2"/>
+    <circle cx="335" cy="250" r="8" fill="#f06292"/><rect x="329" y="256" width="12" height="8" fill="#f06292"/>
+    <circle cx="365" cy="250" r="8" fill="#7e57c2"/><rect x="359" y="256" width="12" height="8" fill="#7e57c2"/>
+    <animateTransform attributeName="transform" type="translate" values="0,0;60,0;0,0" dur="12s" repeatCount="indefinite"/>
+  </g></g>
+  <!-- aarti plate -->
+  <g transform="translate(205,185)">
+    <rect x="0" y="40" width="22" height="50" fill="#e65100"/><circle cx="11" cy="30" r="9" fill="#ffcc80"/>
+    <ellipse cx="11" cy="14" rx="24" ry="6" fill="#ffd54f" stroke="#e65100" stroke-width="2"/>
+    <g class="flame"><path d="M-8,10 q4,-16 0,-18 q10,6 0,18" fill="#ff5722"/></g>
+    <g class="flame" style="animation-delay:.1s"><path d="M7,10 q4,-16 0,-18 q10,6 0,18" fill="#ff5722"/></g>
+    <g class="flame" style="animation-delay:.2s"><path d="M22,10 q4,-16 0,-18 q10,6 0,18" fill="#ff5722"/></g>
+    <g class="flame" style="animation-delay:.3s"><path d="M35,10 q4,-16 0,-18 q10,6 0,18" fill="#ff5722"/></g>
+  </g>
+  <!-- diyas floating -->
+  <g class="diya">
+    <g transform="translate(690,345)"><ellipse rx="12" ry="5" fill="#bf360c"/><g class="flame"><path d="M-3,-4 q3,-12 0,-14 q8,5 0,14" fill="#ffca28"/></g></g>
+    <g transform="translate(790,365)"><ellipse rx="12" ry="5" fill="#bf360c"/><g class="flame" style="animation-delay:.15s"><path d="M-3,-4 q3,-12 0,-14 q8,5 0,14" fill="#ffca28"/></g></g>
+    <g transform="translate(890,335)"><ellipse rx="12" ry="5" fill="#bf360c"/><g class="flame" style="animation-delay:.25s"><path d="M-3,-4 q3,-12 0,-14 q8,5 0,14" fill="#ffca28"/></g></g>
+  </g>
+  <!-- labels -->
+  <g font-size="16" fill="#1b3a8f" stroke="#c62828" stroke-width="1.5">
+    <g stroke="none"><text x="150" y="50" fill="#c62828">शिखर-युक्त मन्दिर</text><text x="190" y="20" fill="#c62828">ध्वज (पताका)</text></g>
+    <path d="M150,54 L110,90 M190,20 L120,40" fill="none"/>
+    <g stroke="none"><text x="225" y="125">गङ्गा-आरती (दीप-थाल)</text><text x="400" y="120" fill="#bf360c">उगता/ढलता सूर्य</text><text x="300" y="235">नाव (नौका) + यात्री</text><text x="40" y="355" fill="#fff">पत्थर की सीढ़ियाँ</text><text x="40" y="372" fill="#fff">(घाट)</text><text x="520" y="310" fill="#fff">गङ्गा की लहरें</text><text x="470" y="400" fill="#fff8e1">तैरते दीपक (दीपदान)</text></g>
+    <path d="M225,128 L222,170 M300,240 L330,252" fill="none"/>
+  </g>
+</svg>
+<figcaption><b>चित्र 2 – गंगा-घाट और सायं-आरती:</b> सूर्य धीरे-धीरे ढल रहा है, ध्वज हवा में लहरा रहा है, आरती की लौ काँप रही है, नाव चल रही है और दीप बहते जा रहे हैं। <i>("सायंकाले गङ्गा-आरती भवति" – अनुच्छेद 4)</i></figcaption>
+</figure>
+
+<!-- चित्र 3: नाम-निर्माण -->
+<figure>
+<svg viewBox="0 0 700 270" role="img" aria-label="वरणा और असी से वाराणसी">
+  <rect width="700" height="270" fill="#fffef7"/>
+  <g>
+    <g><circle cx="140" cy="120" r="62" fill="#81d4fa" stroke="#0277bd" stroke-width="3"/><text x="140" y="128" text-anchor="middle" font-size="26" fill="#01579b">वरणा</text>
+      <animateTransform attributeName="transform" type="translate" values="0,0;0,0;170,0;170,0;0,0" keyTimes="0;.15;.5;.9;1" dur="8s" repeatCount="indefinite"/></g>
+    <g><circle cx="560" cy="120" r="62" fill="#a5d6a7" stroke="#2e7d32" stroke-width="3"/><text x="560" y="128" text-anchor="middle" font-size="26" fill="#1b5e20">असी</text>
+      <animateTransform attributeName="transform" type="translate" values="0,0;0,0;-170,0;-170,0;0,0" keyTimes="0;.15;.5;.9;1" dur="8s" repeatCount="indefinite"/></g>
+    <g opacity="0"><circle cx="350" cy="120" r="80" fill="#ffcc80" stroke="#e65100" stroke-width="4"/><text x="350" y="130" text-anchor="middle" font-size="32" fill="#c62828">वाराणसी</text>
+      <animate attributeName="opacity" values="0;0;0;1;1;0" keyTimes="0;.4;.5;.55;.9;1" dur="8s" repeatCount="indefinite"/></g>
+  </g>
+  <text x="350" y="40" text-anchor="middle" font-size="22" fill="#1b3a8f">वरणा + असी = वाराणसी</text>
+  <text x="140" y="215" text-anchor="middle" font-size="16" fill="#0277bd">उत्तर की नदी</text>
+  <text x="560" y="215" text-anchor="middle" font-size="16" fill="#2e7d32">दक्षिण की नदी</text>
+  <text x="350" y="250" text-anchor="middle" font-size="17" fill="#c62828">(दीर्घ सन्धि: वरणा + असी → वरणासी → वाराणसी)</text>
+</svg>
+<figcaption><b>चित्र 3 – नाम की उत्पत्ति:</b> दोनों नदियाँ पास आकर मिलती हैं तो नगर का नाम "वाराणसी" बनता है।</figcaption>
+</figure>
+
+<!-- चित्र 4: सारनाथ -->
+<figure>
+<svg viewBox="0 0 700 360" role="img" aria-label="सारनाथ धर्मचक्र">
+  <rect width="700" height="360" fill="#fffef7"/>
+  <g transform="translate(180,170)">
+    <g class="spin" id="wheel"><circle r="110" fill="none" stroke="#1565c0" stroke-width="8"/><circle r="100" fill="none" stroke="#1565c0" stroke-width="2"/><circle r="14" fill="#1565c0"/></g>
+  </g>
+  <text x="180" y="318" text-anchor="middle" font-size="19" fill="#1565c0">धर्मचक्र (24 अरे)</text>
+  <!-- stupa -->
+  <g transform="translate(480,0)">
+    <rect x="-90" y="270" width="180" height="26" fill="#a1887f" stroke="#4e342e" stroke-width="2"/>
+    <path d="M-80,270 L-80,190 Q0,100 80,190 L80,270Z" fill="#d7b98e" stroke="#4e342e" stroke-width="3"/>
+    <path d="M-80,190 L80,190" stroke="#4e342e" stroke-width="2"/>
+    <circle cx="0" cy="236" r="16" fill="#8d6e63"/>
+    <path d="M0,120 L0,90" stroke="#4e342e" stroke-width="3"/><rect x="-12" y="82" width="24" height="8" fill="#ffb300"/>
+    <circle cx="0" cy="150" r="9" fill="#fff59d" class="glow"/>
+  </g>
+  <text x="480" y="326" text-anchor="middle" font-size="19" fill="#4e342e">धमेख स्तूप</text>
+  <text x="350" y="34" text-anchor="middle" font-size="23" fill="#c62828">सारनाथ – जहाँ बुद्ध ने पहला उपदेश दिया</text>
+  <text x="350" y="62" text-anchor="middle" font-size="16" fill="#2e7d32">(धर्मचक्र-प्रवर्तन)</text>
+</svg>
+<figcaption><b>चित्र 4 – सारनाथ:</b> घूमता हुआ <b>धर्मचक्र</b> (अशोक-चक्र जैसा, 24 अरे) और <b>धमेख स्तूप</b>। सारनाथ का सिंह-शीर्ष भारत का राष्ट्रीय चिह्न है।</figcaption>
+</figure>
+
+<!-- चित्र 5: हब -->
+<figure>
+<svg viewBox="0 0 700 460" role="img" aria-label="वाराणसी की विशेषताएँ">
+  <rect width="700" height="460" fill="#fffef7"/>
+  <g stroke="#1b3a8f" stroke-width="2.5" stroke-dasharray="6 5" class="flow">
+    <line x1="350" y1="230" x2="350" y2="70"/><line x1="350" y1="230" x2="130" y2="130"/><line x1="350" y1="230" x2="570" y2="130"/>
+    <line x1="350" y1="230" x2="130" y2="340"/><line x1="350" y1="230" x2="570" y2="340"/><line x1="350" y1="230" x2="350" y2="400"/>
+  </g>
+  <g class="pulse"><circle cx="350" cy="230" r="62" fill="#ffcc80" stroke="#e65100" stroke-width="4"/><text x="350" y="238" text-anchor="middle" font-size="26" fill="#c62828">वाराणसी</text></g>
+  <g font-size="16" text-anchor="middle" fill="#1b3a8f">
+    <g class="pulse"><circle cx="350" cy="62" r="40" fill="#e1f5fe" stroke="#0288d1" stroke-width="3"/><text x="350" y="58">गङ्गा</text><text x="350" y="76">घाट-आरती</text></g>
+    <g class="pulse" style="animation-delay:.4s"><circle cx="125" cy="125" r="44" fill="#f8bbd0" stroke="#c2185b" stroke-width="3"/><text x="125" y="120">विश्वनाथ</text><text x="125" y="138">मन्दिर</text></g>
+    <g class="pulse" style="animation-delay:.8s"><circle cx="575" cy="125" r="44" fill="#c8e6c9" stroke="#2e7d32" stroke-width="3"/><text x="575" y="120">सारनाथ</text><text x="575" y="138">(बौद्ध तीर्थ)</text></g>
+    <g class="pulse" style="animation-delay:1.2s"><circle cx="125" cy="345" r="44" fill="#fff59d" stroke="#f9a825" stroke-width="3"/><text x="125" y="340">विद्या</text><text x="125" y="358">BHU, संस्कृत वि.वि.</text></g>
+    <g class="pulse" style="animation-delay:1.6s"><circle cx="575" cy="345" r="44" fill="#d1c4e9" stroke="#6a1b9a" stroke-width="3"/><text x="575" y="340">साहित्य व</text><text x="575" y="358">सन्त-कवि</text></g>
+    <g class="pulse" style="animation-delay:2s"><circle cx="350" cy="405" r="40" fill="#ffe0b2" stroke="#e65100" stroke-width="3"/><text x="350" y="400">साड़ी व</text><text x="350" y="418">शिल्प</text></g>
+  </g>
+</svg>
+<figcaption><b>चित्र 5 – वाराणसी की छह विशेषताएँ (Mind-map):</b> पाठ के सभी मुख्य बिन्दु एक नज़र में।</figcaption>
+</figure>
+
+<h3>⏳ वाराणसी – कुछ ऐतिहासिक पड़ाव (Timeline)</h3>
+<div class="timeline">
+  <div class="t"><b>प्राचीन काल</b> – काशी का उल्लेख पुराणों-महाकाव्यों में; विद्या का केन्द्र।</div>
+  <div class="t"><b>ईसा पूर्व छठी शताब्दी</b> – बुद्ध का सारनाथ में प्रथम उपदेश।</div>
+  <div class="t"><b>मध्यकाल</b> – कबीर, रविदास जैसे सन्त; तुलसीदास की भक्ति-रचनाएँ।</div>
+  <div class="t"><b>1791 ई.</b> – राजकीय संस्कृत कॉलेज की स्थापना (आज का सम्पूर्णानन्द संस्कृत विश्वविद्यालय)।</div>
+  <div class="t"><b>1916 ई.</b> – महामना मदनमोहन मालवीय द्वारा काशी हिन्दू विश्वविद्यालय की स्थापना।</div>
+  <div class="t"><b>आधुनिक काल</b> – काशी-विश्वनाथ धाम का विस्तार, घाटों का सौन्दर्यीकरण।</div>
+</div>
+
+<!-- ========== तथ्य ========== -->
+<h2 id="tathya">5️⃣ त्वरित तथ्य-सारणी (Quick Revision)</h2>
+<div class="scroll"><table>
+<tr><th>विषय</th><th>तथ्य</th></tr>
+<tr><td>स्थान</td><td>उत्तर प्रदेश, गंगा का पश्चिमी तट</td></tr>
+<tr><td>नदियाँ</td><td>वरणा (उत्तर), असी (दक्षिण), गंगा</td></tr>
+<tr><td>अन्य नाम</td><td>काशी, बनारस, अविमुक्त, आनन्दकानन</td></tr>
+<tr><td>प्रमुख मन्दिर</td><td>काशी विश्वनाथ (ज्योतिर्लिंग), संकटमोचन, दुर्गा मन्दिर</td></tr>
+<tr><td>प्रमुख घाट</td><td>दशाश्वमेध, अस्सी, मणिकर्णिका, पञ्चगङ्गा</td></tr>
+<tr><td>विश्वविद्यालय</td><td>BHU (1916), सम्पूर्णानन्द संस्कृत वि.वि., महात्मा गाँधी काशी विद्यापीठ</td></tr>
+<tr><td>सन्त/कवि</td><td>कबीर, रविदास, तुलसीदास (परम्परा), भारतेन्दु, जयशंकर प्रसाद</td></tr>
+<tr><td>निकट तीर्थ</td><td>सारनाथ (बुद्ध का प्रथम उपदेश)</td></tr>
+<tr><td>उद्योग/शिल्प</td><td>बनारसी रेशमी साड़ी, लकड़ी के खिलौने, ज़री-काम</td></tr>
+<tr><td>कलाएँ</td><td>शहनाई, ठुमरी, कथक का बनारस घराना</td></tr>
+<tr><td>विशेष मान्यता</td><td>"काशी मोक्षदायिनी"</td></tr>
+</table></div>
+
+<!-- ========== प्रश्नोत्तर ========== -->
+<h2 id="ati">6️⃣ अति लघु उत्तरीय प्रश्न (संस्कृत में एक पद/वाक्य)</h2>
+<p class="hint">👉 "एकपदेन उत्तरत" – प्रश्न पर क्लिक नहीं, "उत्तर देखें" पर क्लिक करें।</p>
+<div id="ati-box"></div>
+
+<h2 id="laghu">7️⃣ लघु उत्तरीय प्रश्न (हिन्दी में, 40–60 शब्द)</h2>
+<div id="laghu-box"></div>
+
+<h2 id="deergh">8️⃣ दीर्घ उत्तरीय प्रश्न (विस्तृत उत्तर)</h2>
+<div id="deergh-box"></div>
+
+<h2 id="mcq">9️⃣ बहुविकल्पीय प्रश्न (MCQ) – खुद जाँचें</h2>
+<p class="hint">विकल्प पर टैप कीजिए: हरा = सही ✔, गुलाबी = गलत ✘</p>
+<div id="mcq-box"></div>
+<div style="text-align:center"><div class="score" id="score">अंक: 0 / 0</div> <button class="noprint" onclick="resetMCQ()" style="font-family:inherit;font-size:16px;border:2px solid var(--ink);background:#fff;border-radius:8px;cursor:pointer">🔄 दोबारा</button></div>
+
+<h2>🔟 रिक्त स्थान भरिए</h2>
+<div id="blank-box"></div>
+
+<h2>1️⃣1️⃣ सत्य / असत्य (सही-गलत)</h2>
+<div id="tf-box"></div>
+
+<h2>1️⃣2️⃣ मिलान कीजिए</h2>
+<div class="scroll"><table>
+<tr><th>स्तम्भ 'क'</th><th>स्तम्भ 'ख'</th></tr>
+<tr><td>1. विश्वनाथ मन्दिर</td><td>(क) बुद्ध का प्रथम उपदेश</td></tr>
+<tr><td>2. सारनाथ</td><td>(ख) ज्योतिर्लिंग</td></tr>
+<tr><td>3. दशाश्वमेध</td><td>(ग) संस्कृत विश्वविद्यालय</td></tr>
+<tr><td>4. सम्पूर्णानन्द</td><td>(घ) गंगा-आरती</td></tr>
+<tr><td>5. बनारसी</td><td>(ङ) रेशमी साड़ी</td></tr>
+</table></div>
+<details><summary>उत्तर देखें</summary><div>1–(ख), 2–(क), 3–(घ), 4–(ग), 5–(ङ)</div></details>
+
+<!-- ========== व्याकरण ========== -->
+<h2 id="vyakaran">1️⃣3️⃣ व्याकरण-अभ्यास</h2>
+<h3>(क) सन्धि-विच्छेद / सन्धि कीजिए</h3>
+<div class="scroll"><table>
+<tr><th>पद</th><th>सन्धि-विच्छेद</th><th>सन्धि का नाम</th></tr>
+<tr><td>दर्शनार्थम्</td><td>दर्शन + अर्थम्</td><td>दीर्घ</td></tr>
+<tr><td>वरणासी</td><td>वरणा + असी</td><td>दीर्घ</td></tr>
+<tr><td>इत्यनयोः</td><td>इति + अनयोः</td><td>यण्</td></tr>
+<tr><td>विद्यालयः</td><td>विद्या + आलयः</td><td>दीर्घ</td></tr>
+<tr><td>सायंकाले</td><td>सायम् + काले</td><td>अनुस्वार (म् → ं)</td></tr>
+<tr><td>नास्ति</td><td>न + अस्ति</td><td>दीर्घ</td></tr>
+<tr><td>गङ्गोदकम्</td><td>गङ्गा + उदकम्</td><td>गुण</td></tr>
+<tr><td>तच्च</td><td>तत् + च</td><td>श्चुत्व (व्यञ्जन)</td></tr>
+</table></div>
+
+<h3>(ख) कारक पहचानिए</h3>
+<div class="scroll"><table>
+<tr><th>वाक्य</th><th>रेखांकित पद</th><th>कारक / विभक्ति</th></tr>
+<tr><td>इयं नगरी <u>गङ्गायाः तटे</u> स्थिता।</td><td>तटे</td><td>अधिकरण – सप्तमी</td></tr>
+<tr><td><u>भक्ताः</u> दर्शनार्थम् आगच्छन्ति।</td><td>भक्ताः</td><td>कर्ता – प्रथमा</td></tr>
+<tr><td>बुद्धः <u>उपदेशम्</u> अददात्।</td><td>उपदेशम्</td><td>कर्म – द्वितीया</td></tr>
+<tr><td><u>नगर्याः</u> नाम वाराणसी।</td><td>नगर्याः</td><td>सम्बन्ध – षष्ठी</td></tr>
+<tr><td>सः <u>नाम्ना</u> प्रसिद्धः।</td><td>नाम्ना</td><td>करण – तृतीया</td></tr>
+</table></div>
+
+<h3>(ग) धातु-रूप (लट् लकार, प्रथम पुरुष)</h3>
+<div class="scroll"><table>
+<tr><th>धातु</th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th><th>अर्थ</th></tr>
+<tr><td>गम् (गच्छ्)</td><td>गच्छति</td><td>गच्छतः</td><td>गच्छन्ति</td><td>जाता है</td></tr>
+<tr><td>भू</td><td>भवति</td><td>भवतः</td><td>भवन्ति</td><td>होता है</td></tr>
+<tr><td>वस् (वस्)</td><td>वसति</td><td>वसतः</td><td>वसन्ति</td><td>रहता है</td></tr>
+<tr><td>अस्</td><td>अस्ति</td><td>स्तः</td><td>सन्ति</td><td>है</td></tr>
+<tr><td>दृश् (पश्य्)</td><td>पश्यति</td><td>पश्यतः</td><td>पश्यन्ति</td><td>देखता है</td></tr>
+<tr><td>पठ्</td><td>पठति</td><td>पठतः</td><td>पठन्ति</td><td>पढ़ता है</td></tr>
+</table></div>
+
+<h3>(घ) शब्द-रूप (नदी — ईकारान्त स्त्रीलिंग)</h3>
+<div class="scroll"><table>
+<tr><th>विभक्ति</th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th></tr>
+<tr><td>प्रथमा</td><td>नदी</td><td>नद्यौ</td><td>नद्यः</td></tr>
+<tr><td>द्वितीया</td><td>नदीम्</td><td>नद्यौ</td><td>नदीः</td></tr>
+<tr><td>तृतीया</td><td>नद्या</td><td>नदीभ्याम्</td><td>नदीभिः</td></tr>
+<tr><td>चतुर्थी</td><td>नद्यै</td><td>नदीभ्याम्</td><td>नदीभ्यः</td></tr>
+<tr><td>पञ्चमी</td><td>नद्याः</td><td>नदीभ्याम्</td><td>नदीभ्यः</td></tr>
+<tr><td>षष्ठी</td><td>नद्याः</td><td>नद्योः</td><td>नदीनाम्</td></tr>
+<tr><td>सप्तमी</td><td>नद्याम्</td><td>नद्योः</td><td>नदीषु</td></tr>
+<tr><td>सम्बोधन</td><td>हे नदि!</td><td>हे नद्यौ!</td><td>हे नद्यः!</td></tr>
+</table></div>
+
+<h3>(ङ) पर्यायवाची / विलोम</h3>
+<div class="scroll"><table>
+<tr><th>शब्द</th><th>पर्याय</th><th>विलोम</th></tr>
+<tr><td>नगरी</td><td>पुरी, नगरम्</td><td>ग्रामः</td></tr>
+<tr><td>तटः</td><td>कूलम्, तीरम्</td><td>—</td></tr>
+<tr><td>प्राचीनम्</td><td>पुरातनम्</td><td>नवीनम् / अर्वाचीनम्</td></tr>
+<tr><td>प्रसिद्धः</td><td>विख्यातः</td><td>अप्रसिद्धः</td></tr>
+<tr><td>समीपे</td><td>निकटे</td><td>दूरे</td></tr>
+<tr><td>प्रातः</td><td>—</td><td>सायम्</td></tr>
+</table></div>
+
+<h2 id="anuvad">1️⃣4️⃣ अनुवाद-अभ्यास</h2>
+<h3>(क) हिन्दी से संस्कृत</h3>
+<div id="hs-box"></div>
+<h3>(ख) संस्कृत से हिन्दी</h3>
+<div id="sh-box"></div>
+
+<h3>(ग) "वाराणसी" पर संस्कृत में 10 वाक्य (निबन्ध)</h3>
+<div class="box green">
+<div class="sans" style="font-size:20px;line-height:34px">
+१. वाराणसी उत्तरप्रदेशे स्थिता अस्ति।<br>
+२. इयं गङ्गायाः तटे वसति।<br>
+३. अस्याः अपरं नाम काशी अस्ति।<br>
+४. अत्र विश्वनाथस्य मन्दिरम् अस्ति।<br>
+५. बहवः घट्टाः गङ्गायाः तटे सन्ति।<br>
+६. सायंकाले गङ्गा-आरती भवति।<br>
+७. अत्र विश्वविद्यालयाः सन्ति।<br>
+८. सारनाथः वाराणस्याः समीपे अस्ति।<br>
+९. इयं नगरी साटिकानां कृते प्रसिद्धा।<br>
+१०. वाराणसी अस्माकं गौरवम् अस्ति।
+</div>
+<p><span class="gr">हिन्दी भाव :</span> १. वाराणसी उत्तर प्रदेश में है। २. यह गंगा के तट पर बसी है। ३. इसका दूसरा नाम काशी है। ४. यहाँ विश्वनाथ का मन्दिर है। ५. गंगा के तट पर बहुत घाट हैं। ६. शाम को गंगा-आरती होती है। ७. यहाँ विश्वविद्यालय हैं। ८. सारनाथ वाराणसी के पास है। ९. यह नगरी साड़ियों के लिए प्रसिद्ध है। १०. वाराणसी हमारा गौरव है।</p>
+</div>
+
+<h2 id="tips">1️⃣5️⃣ परीक्षा-टिप्स ✨</h2>
+<div class="sticky">
+<ol>
+<li>सन्दर्भ में हमेशा पाठ का नाम और पुस्तक का नाम लिखें।</li>
+<li>अनुवाद में <b>शब्द-क्रम</b> हिन्दी के अनुसार रखें (कर्ता → कर्म → क्रिया)।</li>
+<li>संस्कृत वाक्यों में <b>वचन व लिंग</b> का मेल जाँचें (इयं नगरी – स्त्री.)।</li>
+<li>प्रश्न का उत्तर संस्कृत में माँगा जाए तो <b>पूर्ण वाक्य</b> में लिखें।</li>
+<li>सन्धि व कारक में <b>नियम का नाम</b> अवश्य लिखें।</li>
+<li>चित्र में <b>लेबल</b> लगाएँ: गंगा, घाट, मन्दिर, नाव, आरती, सूर्य।</li>
+<li>रोज़ 10 शब्द-अर्थ याद करें; रविवार को सब दोहराएँ।</li>
+</ol>
+</div>
+
+<p style="text-align:center;color:var(--red);font-size:22px;margin-top:30px">✨ शुभमस्तु! सफलता आपकी प्रतीक्षा में है ✨</p>
+<p style="text-align:center" class="noprint"><a href="#top" style="color:var(--ink2)">⬆ ऊपर जाएँ</a></p>
+</div>
+
+<script>
+/* ---------- DATA ---------- */
+const ATI=[
+["वाराणसी कस्याः नद्याः तटे स्थिता अस्ति?","वाराणसी किस नदी के तट पर है?","गङ्गायाः तटे वाराणसी स्थिता अस्ति।"],
+["वाराणस्याः अपरं नाम किम्?","वाराणसी का दूसरा नाम क्या है?","वाराणस्याः अपरं नाम काशी (बनारस अपि) अस्ति।"],
+["वाराणसी कयोः नद्योः मध्ये स्थिता?","वाराणसी किन दो नदियों के बीच है?","वरणा-असी नद्योः मध्ये।"],
+["काश्यां कस्य मन्दिरम् अस्ति?","काशी में किसका मन्दिर है?","भगवतः विश्वनाथस्य मन्दिरम् अस्ति।"],
+["विश्वनाथमन्दिरं कतिषु ज्योतिर्लिङ्गेषु अन्यतमम्?","विश्वनाथ मन्दिर कितने ज्योतिर्लिंगों में से एक है?","द्वादशज्योतिर्लिङ्गेषु (बारह)।"],
+["गङ्गा-आरती कदा भवति?","गंगा-आरती कब होती है?","सायंकाले गङ्गा-आरती भवति।"],
+["सारनाथे कः प्रथमम् उपदेशम् अददात्?","सारनाथ में पहला उपदेश किसने दिया?","भगवान् बुद्धः।"],
+["काशीहिन्दूविश्वविद्यालयस्य संस्थापकः कः?","BHU के संस्थापक कौन?","महामना मदनमोहनमालवीयः।"],
+["रामचरितमानसस्य रचयिता कः?","रामचरितमानस के रचयिता कौन?","महाकविः तुलसीदासः।"],
+["वाराणस्याः प्रसिद्धा शाटिका का?","वाराणसी की प्रसिद्ध साड़ी कौन-सी?","बनारसी (रेशमी) शाटिका।"],
+["वाराणसी कस्मिन् प्रदेशे अस्ति?","वाराणसी किस प्रदेश में है?","उत्तरप्रदेशे।"],
+["दशाश्वमेधः कः?","दशाश्वमेध क्या है?","गङ्गायाः प्रसिद्धः घट्टः (घाट)।"],
+["शहनाईवादकः कः प्रसिद्धः?","प्रसिद्ध शहनाई वादक कौन?","उस्ताद बिस्मिल्लाखानः।"],
+["'काशी' शब्दस्य कः अर्थः?","'काशी' का अर्थ?","प्रकाशमाना (ज्ञान से चमकने वाली) नगरी।"],
+["सम्पूर्णानन्दसंस्कृतविश्वविद्यालयः कुत्र अस्ति?","सम्पूर्णानन्द संस्कृत वि.वि. कहाँ है?","वाराणस्याम् अस्ति।"],
+["भक्ताः किमर्थम् आगच्छन्ति?","भक्त किसलिए आते हैं?","दर्शनार्थम् (दर्शन हेतु)।"],
+["प्रसिद्धः श्मशानघट्टः कः?","प्रसिद्ध श्मशान घाट कौन-सा?","मणिकर्णिकाघट्टः।"],
+["सारनाथः कस्य तीर्थम्?","सारनाथ किसका तीर्थ है?","बौद्धानां तीर्थम्।"]
+];
+const LAGHU=[
+["वाराणसी नाम क्यों पड़ा?","वाराणसी उत्तर में बहने वाली वरणा और दक्षिण में मिलने वाली असी नदी के बीच स्थित है। इन दोनों नदियों के नाम (वरणा + असी) से नगर का नाम 'वाराणसी' पड़ा। बोलचाल में इसे बनारस कहते हैं और प्राचीन नाम काशी है।"],
+["काशी के अन्य नाम व अर्थ लिखिए।","काशी, बनारस, अविमुक्त और आनन्दकानन इसके नाम हैं। 'काशी' का अर्थ है प्रकाशित/चमकने वाली नगरी — अर्थात् ज्ञान और भक्ति के प्रकाश से जगमगाती नगरी।"],
+["काशी विश्वनाथ मन्दिर का महत्त्व बताइए।","यह मन्दिर भगवान् शिव (विश्वनाथ = विश्व के स्वामी) को समर्पित है और बारह ज्योतिर्लिंगों में से एक है। देश-विदेश से लाखों भक्त दर्शन को आते हैं। इसे मोक्षदायी माना जाता है।"],
+["गंगा-आरती का वर्णन कीजिए।","सायंकाल दशाश्वमेध घाट पर पुरोहित दीपों, शंख-घण्टों और मन्त्रोच्चार के साथ गंगा की आरती करते हैं। हजारों लोग तट और नावों पर बैठकर इस दिव्य दृश्य को देखते हैं। यह वाराणसी की पहचान है।"],
+["सारनाथ का महत्त्व बताइए।","सारनाथ वाराणसी के निकट है। यहाँ गौतम बुद्ध ने पाँच शिष्यों को पहला उपदेश (धर्मचक्र-प्रवर्तन) दिया। यहाँ धमेख स्तूप और अशोक का सिंह-स्तम्भ (राष्ट्रीय चिह्न) है।"],
+["वाराणसी को विद्या की नगरी क्यों कहते हैं?","प्राचीन काल से यहाँ संस्कृत, दर्शन, व्याकरण, संगीत आदि की शिक्षा होती रही है। आज यहाँ BHU और सम्पूर्णानन्द संस्कृत विश्वविद्यालय जैसी संस्थाएँ हैं, इसलिए इसे विद्या की नगरी कहते हैं।"],
+["वाराणसी के प्रसिद्ध शिल्प/उद्योग कौन-से हैं?","वाराणसी की रेशमी बनारसी साड़ियाँ (ज़री-काम), लकड़ी के रंग-बिरंगे खिलौने और हस्तशिल्प विश्व-प्रसिद्ध हैं। संगीत (शहनाई, ठुमरी) और नृत्य (कथक) की परम्परा भी यहाँ मजबूत है।"],
+["वाराणसी से जुड़े महापुरुषों के नाम लिखिए।","कबीरदास, रविदास, तुलसीदास (परम्परा), भारतेन्दु हरिश्चन्द्र, जयशंकर प्रसाद, महामना मदनमोहन मालवीय और उस्ताद बिस्मिल्लाखान आदि वाराणसी से जुड़े हैं।"]
+];
+const DEERGH=[
+["'वाराणसी' पाठ का सार अपने शब्दों में लिखिए।","वाराणसी भारत की सबसे प्राचीन नगरियों में से एक है जो गंगा के पश्चिमी तट पर स्थित है। इसे काशी तथा बनारस भी कहते हैं। वरणा और असी नदियों के बीच होने से इसका नाम वाराणसी हुआ। यहाँ भगवान् विश्वनाथ का भव्य मन्दिर है, जो बारह ज्योतिर्लिंगों में गिना जाता है। गंगा के किनारे अनेक घाट हैं — दशाश्वमेध, अस्सी, मणिकर्णिका आदि — जहाँ सायंकाल सुन्दर गंगा-आरती होती है। वाराणसी विद्या का भी केन्द्र है; यहाँ BHU और संस्कृत विश्वविद्यालय हैं। तुलसीदास, कबीर, रविदास आदि सन्तों-कवियों की स्मृतियाँ इससे जुड़ी हैं। निकट ही सारनाथ है जहाँ बुद्ध ने पहला उपदेश दिया। बनारसी साड़ी, लकड़ी के खिलौने और संगीत इसकी कला-सम्पदा हैं। अतः वाराणसी धर्म, ज्ञान, कला और संस्कृति का अनुपम संगम है।"],
+["वाराणसी की सांस्कृतिक विशेषताओं का वर्णन कीजिए।","<b>1. धार्मिक:</b> विश्वनाथ मन्दिर, गंगा-स्नान, मान्यता 'काशी मोक्षदायिनी'।<br><b>2. शैक्षिक:</b> संस्कृत अध्ययन की प्राचीन परम्परा; BHU, सम्पूर्णानन्द संस्कृत वि.वि.।<br><b>3. साहित्यिक:</b> कबीर, तुलसी, भारतेन्दु, प्रसाद।<br><b>4. कला-संगीत:</b> शहनाई, ठुमरी, कथक का बनारस घराना।<br><b>5. शिल्प:</b> बनारसी साड़ी, खिलौने।<br><b>6. बौद्ध धरोहर:</b> सारनाथ।<br>इन सभी विशेषताओं के कारण वाराणसी को भारत की सांस्कृतिक राजधानी कहा जाता है।"],
+["वाराणसी के घाटों व गंगा-आरती का विस्तार से वर्णन कीजिए।","गंगा के तट पर लगभग 80 से अधिक घाट हैं जिनकी सीढ़ियाँ जल तक जाती हैं। <b>दशाश्वमेध घाट</b> पर प्रतिदिन सायं आरती होती है; <b>अस्सी घाट</b> असी के संगम के पास तथा सुबह की गंगा-आरती और संगीत के लिए जाना जाता है; <b>मणिकर्णिका</b> प्रमुख श्मशान घाट है। आरती में पुरोहित पंक्तिबद्ध होकर बड़े दीपों से गंगा को आरती करते हैं, घण्टा-शंख बजते हैं। श्रद्धालु दीप प्रवाहित करते हैं, जो जल पर तैरकर अत्यन्त मनोहर दृश्य बनाते हैं।"],
+["अनुच्छेद 3 का सन्दर्भ सहित हिन्दी अनुवाद लिखिए (काश्यां भगवतः...)।","<span class='r'>सन्दर्भ :</span> प्रस्तुत गद्यांश हमारी पाठ्य-पुस्तक 'संस्कृत' के 'वाराणसी' पाठ से लिया गया है।<br><span class='gr'>अनुवाद :</span> काशी में भगवान् विश्वनाथ का मन्दिर है। यह मन्दिर बारह ज्योतिर्लिंगों में से एक है। दूर-दूर से भक्त दर्शन के लिए आते हैं।<br><span class='o'>भाव :</span> काशी विश्वनाथ मन्दिर श्रद्धा का महान् केन्द्र है, इसलिए दूर-दूर से भक्त आते हैं।"],
+["वाराणसी एक शैक्षिक केन्द्र है – सिद्ध कीजिए।","प्राचीन काल से काशी में गुरुकुल, पाठशालाएँ और विद्वत्-सभाएँ रही हैं। 1791 में संस्कृत कॉलेज (आज का सम्पूर्णानन्द संस्कृत वि.वि.) तथा 1916 में BHU की स्थापना हुई। यहाँ संस्कृत, दर्शन, वेद, संगीत, विज्ञान, चिकित्सा आदि की शिक्षा मिलती है। देश-विदेश से विद्यार्थी आते हैं। अतः वाराणसी सच में 'विद्या की नगरी' है।"],
+["सारनाथ पर 8–10 पंक्तियों में टिप्पणी लिखिए।","सारनाथ वाराणसी से लगभग 10 कि.मी. दूर है। ज्ञान-प्राप्ति के बाद बुद्ध ने यहाँ पाँच शिष्यों को प्रथम उपदेश दिया, जिसे धर्मचक्र-प्रवर्तन कहते हैं। यहाँ अशोक ने स्तम्भ बनवाया, जिसका सिंह-शीर्ष भारत का राष्ट्रीय चिह्न है और धर्मचक्र तिरंगे में है। धमेख स्तूप, मूलगन्ध कुटी विहार और संग्रहालय प्रसिद्ध हैं। यह बौद्धों का प्रमुख तीर्थ है।"]
+];
+const MCQ=[
+["वाराणसी किस नदी के तट पर है?",["यमुना","गङ्गा","सरयू","गोमती"],1,"वाराणसी गंगा के पश्चिमी तट पर है।"],
+["वाराणसी का दूसरा नाम क्या है?",["काशी","अयोध्या","मथुरा","प्रयाग"],0,"काशी = वाराणसी।"],
+["'वाराणसी' नाम किन नदियों के कारण पड़ा?",["गङ्गा-यमुना","वरणा-असी","सरयू-घाघरा","गण्डक-कोसी"],1,"वरणा + असी = वाराणसी।"],
+["विश्वनाथ मन्दिर किसे समर्पित है?",["विष्णु","ब्रह्मा","शिव","हनुमान"],2,"विश्वनाथ = शिव।"],
+["काशी विश्वनाथ किसमें से एक है?",["चार धाम","ज्योतिर्लिङ्ग","शक्तिपीठ","सप्तपुरी-नदी"],1,"बारह ज्योतिर्लिंगों में से एक।"],
+["गङ्गा-आरती कब होती है?",["प्रातः","मध्याह्ने","सायंकाले","रात्रौ"],2,"सायंकाले = शाम को।"],
+["सारनाथ में किसने प्रथम उपदेश दिया?",["महावीर","बुद्ध","शङ्कराचार्य","कबीर"],1,"भगवान् बुद्ध।"],
+["BHU के संस्थापक कौन थे?",["डॉ. राजेन्द्र प्रसाद","महात्मा गाँधी","मदनमोहन मालवीय","जवाहरलाल नेहरू"],2,"1916 में मालवीय जी।"],
+["रामचरितमानस के रचयिता कौन?",["कबीर","सूरदास","तुलसीदास","रविदास"],2,"महाकवि तुलसीदास।"],
+["'घट्टाः' का अर्थ क्या है?",["घड़े","घाट","खेत","घर"],1,"घट्ट = घाट।"],
+["'प्राचीनतमा' में प्रत्यय कौन-सा है?",["तरप्","तमप्","मतुप्","क्त्वा"],1,"प्राचीन + तमप् (सर्वाधिक)।"],
+["'स्थिता' किस धातु से बना है?",["स्था","स्था + क्त्वा","स्तु","सृ"],0,"स्था + क्त (स्त्रीलिंग)।"],
+["'आगच्छन्ति' का वचन बताइए।",["एकवचन","द्विवचन","बहुवचन","कोई नहीं"],2,"-न्ति = बहुवचन।"],
+["'सन्ति' का अर्थ क्या है?",["है","हैं (अनेक)","था","होगा"],1,"अस् धातु लट् बहुवचन।"],
+["'दर्शनार्थम्' का सन्धि-विच्छेद क्या है?",["दर्शन + आर्थम्","दर्शन + अर्थम्","दर्शना + अर्थम्","दर्श + नार्थम्"],1,"दीर्घ सन्धि।"],
+["'इत्यनयोः' में कौन-सी सन्धि है?",["दीर्घ","गुण","यण्","वृद्धि"],2,"इ + अ → य् + अ (यण्)।"],
+["'सायंकाले' का अर्थ क्या है?",["सुबह","दोपहर","शाम को","रात को"],2,"सायम् = शाम।"],
+["'द्रष्टुम्' में कौन-सा प्रत्यय है?",["क्त","तुमुन्","ल्यप्","शतृ"],1,"दृश् + तुमुन् = देखने के लिए।"],
+["'अददात्' किस लकार का रूप है?",["लट्","लृट्","लङ्","लोट्"],2,"दा धातु लङ् (भूतकाल)।"],
+["'निवसन्ति स्म' का अर्थ क्या है?",["रहते हैं","रहेंगे","रहते थे","रहें"],2,"लट् + स्म = भूतकाल।"],
+["'नगरी' शब्द किस लिंग का है?",["पुँल्लिंग","स्त्रीलिंग","नपुंसकलिंग","तीनों"],1,"ई-कारान्त स्त्रीलिंग।"],
+["बनारसी साड़ी किससे बनती है?",["सूत","रेशम (ज़री)","ऊन","जूट"],1,"रेशमी ज़री-काम।"],
+["सारनाथ किसका तीर्थ है?",["जैनों का","सिखों का","बौद्धों का","पारसियों का"],2,"बौद्धों का प्रमुख तीर्थ।"],
+["'मोक्षदायिनी' का अर्थ क्या है?",["धन देने वाली","मोक्ष देने वाली","विद्या देने वाली","अन्न देने वाली"],1,"मोक्ष + दायिनी।"],
+["'गौरवम्' का अर्थ है —",["लज्जा","गर्व","भय","क्रोध"],1,"गौरव = गर्व/सम्मान।"],
+["'समीपे' का विलोम शब्द है —",["निकटे","दूरे","अत्र","तत्र"],1,"समीप ↔ दूर।"],
+["'नद्योः' किस विभक्ति-वचन का रूप है?",["प्रथमा द्विवचन","षष्ठी/सप्तमी द्विवचन","तृतीया बहुवचन","पञ्चमी एकवचन"],1,"नदी: षष्ठी-सप्तमी द्विवचन = नद्योः।"],
+["'अत्र' का अर्थ है —",["वहाँ","कहाँ","यहाँ","कब"],2,"अत्र = यहाँ।"],
+["शहनाई-वादक बिस्मिल्लाखान किस नगर से जुड़े हैं?",["लखनऊ","वाराणसी","आगरा","कानपुर"],1,"वाराणसी (बनारस)।"],
+["दशाश्वमेध घाट किसके लिए प्रसिद्ध है?",["श्मशान","गंगा-आरती","बाज़ार","नौका-दौड़"],1,"प्रसिद्ध गंगा-आरती।"],
+["'अपि' अव्यय का अर्थ है —",["नहीं","भी","तब","क्योंकि"],1,"अपि = भी।"],
+["वाराणसी किस प्रदेश में है?",["बिहार","मध्य प्रदेश","उत्तर प्रदेश","उत्तराखण्ड"],2,"उत्तर प्रदेश।"]
+];
+const BLANK=[
+["वाराणसी ________ तटे स्थिता अस्ति।","गङ्गायाः"],
+["इयं नगरी ________ इति नाम्ना अपि प्रसिद्धा।","काशी"],
+["सायंकाले ________ भवति।","गङ्गा-आरती"],
+["भक्ताः ________ आगच्छन्ति।","दर्शनार्थम्"],
+["सारनाथे ________ उपदेशम् अददात्।","बुद्धः"],
+["वाराणसी ________ नगरी अपि अस्ति। (विद्या)","विद्यायाः"],
+["अत्र बहवः ________ सन्ति। (घाट)","घट्टाः"],
+["काशी ________ इति कथ्यते।","मोक्षदायिनी"],
+["वरणा + असी = ________","वाराणसी"],
+["तुलसीदासः ________ अरचयत्।","रामचरितमानसम्"]
+];
+const TF=[
+["वाराणसी यमुना के तट पर है।",false,"गंगा के तट पर।"],
+["काशी वाराणसी का ही नाम है।",true,""],
+["विश्वनाथ मन्दिर ज्योतिर्लिंगों में से एक है।",true,""],
+["गंगा-आरती प्रातः ही होती है।",false,"पाठ में सायंकाल आरती का उल्लेख।"],
+["सारनाथ बौद्धों का तीर्थ है।",true,""],
+["BHU की स्थापना 1916 में हुई।",true,""],
+["तुलसीदास शहनाई-वादक थे।",false,"तुलसीदास कवि; शहनाई – बिस्मिल्लाखान।"],
+["वाराणसी में अनेक घाट हैं।",true,""],
+["'सन्ति' एकवचन है।",false,"बहुवचन है।"],
+["'अददात्' भूतकाल का रूप है।",true,"लङ् लकार।"]
+];
+const HS=[
+["वाराणसी गंगा के तट पर है।","वाराणसी गङ्गायाः तटे अस्ति।"],
+["यहाँ बहुत घाट हैं।","अत्र बहवः घट्टाः सन्ति।"],
+["भक्त दर्शन के लिए आते हैं।","भक्ताः दर्शनार्थम् आगच्छन्ति।"],
+["बुद्ध ने उपदेश दिया।","बुद्धः उपदेशम् अददात्।"],
+["तुलसीदास कवि थे।","तुलसीदासः कविः आसीत्।"],
+["शाम को आरती होती है।","सायंकाले आरती भवति।"],
+["मैं काशी जाता हूँ।","अहं काशीं गच्छामि।"],
+["वाराणसी विद्या की नगरी है।","वाराणसी विद्यायाः नगरी अस्ति।"]
+];
+const SH=[
+["अत्र विश्वविद्यालयः अस्ति।","यहाँ विश्वविद्यालय है।"],
+["गङ्गायाः तटे मन्दिरम् अस्ति।","गंगा के तट पर मन्दिर है।"],
+["जनाः आरतीं पश्यन्ति।","लोग आरती देखते हैं।"],
+["सारनाथः समीपे अस्ति।","सारनाथ पास में है।"],
+["छात्राः संस्कृतं पठन्ति।","छात्र संस्कृत पढ़ते हैं।"]
+];
+
+/* ---------- RENDER ---------- */
+function det(sum,html){return `<details><summary>${sum}</summary><div>${html}</div></details>`}
+document.getElementById('ati-box').innerHTML=ATI.map((x,i)=>`<div class="qa"><div class="q">प्र.${i+1}. ${x[0]}<br><span style="color:#555;font-weight:400">(${x[1]})</span></div>${det('उत्तर देखें','<b>उ.</b> '+x[2])}</div>`).join('');
+document.getElementById('laghu-box').innerHTML=LAGHU.map((x,i)=>`<div class="qa"><div class="q">प्र.${i+1}. ${x[0]}</div>${det('उत्तर देखें','<b>उ.</b> '+x[1])}</div>`).join('');
+document.getElementById('deergh-box').innerHTML=DEERGH.map((x,i)=>`<div class="qa"><div class="q">प्र.${i+1}. ${x[0]}</div>${det('विस्तृत उत्तर देखें','<b>उ.</b> '+x[1])}</div>`).join('');
+document.getElementById('blank-box').innerHTML=BLANK.map((x,i)=>`<div class="qa">${i+1}. ${x[0]} ${det('उत्तर',x[1])}</div>`).join('');
+document.getElementById('tf-box').innerHTML=TF.map((x,i)=>`<div class="qa">${i+1}. ${x[0]} ${det('उत्तर',(x[1]?'<span class="gr">सत्य ✔</span>':'<span class="r">असत्य ✘</span>')+(x[2]?' — '+x[2]:''))}</div>`).join('');
+document.getElementById('hs-box').innerHTML=HS.map((x,i)=>`<div class="qa">${i+1}. ${x[0]} ${det('संस्कृत',x[1])}</div>`).join('');
+document.getElementById('sh-box').innerHTML=SH.map((x,i)=>`<div class="qa">${i+1}. ${x[0]} ${det('हिन्दी',x[1])}</div>`).join('');
+
+let right=0,total=0;
+function renderMCQ(){
+  right=0;total=0;updScore();
+  document.getElementById('mcq-box').innerHTML=MCQ.map((m,i)=>`<div class="mcq" id="m${i}"><b>प्र.${i+1}. ${m[0]}</b><div class="opts">${m[1].map((o,j)=>`<button class="opt" onclick="pick(${i},${j})">(${'कखगघ'[j]}) ${o}</button>`).join('')}</div><div class="ex">✔ सही उत्तर: (${'कखगघ'[m[2]]}) ${m[1][m[2]]} — ${m[3]}</div></div>`).join('');
+}
+function pick(i,j){
+  const box=document.getElementById('m'+i); if(box.classList.contains('done'))return;
+  box.classList.add('done'); total++;
+  const btns=box.querySelectorAll('.opt'); const c=MCQ[i][2];
+  btns[c].classList.add('ok'); if(j===c){right++}else{btns[j].classList.add('bad')}
+  updScore();
+}
+function updScore(){document.getElementById('score').textContent='अंक: '+right+' / '+total+'  (कुल '+MCQ.length+')'}
+function resetMCQ(){renderMCQ()}
+renderMCQ();
+
+/* धर्मचक्र के 24 अरे */
+(function(){
+  const g=document.getElementById('wheel'); if(!g)return;
+  const NS='http://www.w3.org/2000/svg';
+  for(let i=0;i<24;i++){
+    const l=document.createElementNS(NS,'line');
+    l.setAttribute('x1',0);l.setAttribute('y1',-14);l.setAttribute('x2',0);l.setAttribute('y2',-100);
+    l.setAttribute('stroke','#1565c0');l.setAttribute('stroke-width',2.5);
+    l.setAttribute('transform','rotate('+(i*15)+')');
+    g.appendChild(l);
+  }
+})();
+</script>
+</body>
+</html>
