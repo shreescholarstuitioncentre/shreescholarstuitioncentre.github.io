@@ -591,7 +591,7 @@ const SSTC_EBOOKS = {
                 { number: 5, title: "Chapter 5: Pointers and File Handling", pdf: "ebooks/class-10/computer/chapter-05.pdf" },
                 { number: 6, title: "Chapter 6: Introduction to Artificial Intelligence (AI) and Types and Applications of AI", pdf: "ebooks/class-10/computer/chapter-06.pdf" },
                 { number: 7, title: "Chapter 7: Drone / UAV Technology", pdf: "ebooks/class-10/computer/chapter-07.pdf" },
-                { number: 8, title: "Chapter 8: E-Commerce and E-Governance", pdf: "ebooks/class-10/computer/chapter-08.pdf" },
+                { number: 8, title: "Chapter 8: E- and E-Governance", pdf: "ebooks/class-10/computer/chapter-08.pdf" },
                { number: 9, title: "Chapter 9: Cyber Crimes and Security", pdf: "ebooks/class-10/computer/chapter-09.pdf" },
                { number: 10, title: "Chapter 10: Programs Based on C Language", pdf: "ebooks/class-10/computer/chapter-10.pdf" }
             ]
@@ -638,7 +638,7 @@ const SSTC_EBOOKS = {
                  { "number": 18, "title": "Chapter 15: State Bank of India (Banking) / अध्याय 15: भारतीय स्टेट बैंक (अधिकोषण तत्त्व)", "pdf": "ebooks/class-10/commerce/chapter-18.pdf" },
                  // { "number": 20, "title": "Chapter 19: Indigenous Bankers / अध्याय 19: देशी बैंकर या साहूकार (अधिकोषण तत्त्व)", "pdf": "ebooks/class-10/commerce/chapter-19.pdf" },
                  { "number": 19, "title": "Chapter 16: Indigenous Bankers & Meaning and Scope of Economics (Economics) / अध्याय 16: देशी बैंकर या साहूकार (अधिकोषण तत्त्व) & अर्थशास्त्र का अर्थ एवं क्षेत्र (अर्थशास्त्र)", "pdf": "ebooks/class-10/commerce/chapter-20.pdf" },
-                 { "number": 21, "title": "Chapter 21: Factors of Production: Land, Labor, Capital & Organization and Enterprise (Economics) &Consumer's Surplus (Economics) / अध्याय 21: उत्पादन के साधन: भूमि, श्रम, पूँजी (अर्थशास्त्र) & संगठन एवं साहस (अर्थशास्त्र) & उपभोक्ता की बचत (अर्थशास्त्र)", "pdf": "ebooks/class-10/commerce/chapter-21.pdf" }
+                 { "number": 21, "title": "Chapter 21: Factors of Production: Land, Labor, Capital & Organization and Enterprise (Economics) & Consumer's Surplus (Economics) / अध्याय 21: उत्पादन के साधन: भूमि, श्रम, पूँजी (अर्थशास्त्र) & संगठन एवं साहस (अर्थशास्त्र) & उपभोक्ता की बचत (अर्थशास्त्र)", "pdf": "ebooks/class-10/commerce/chapter-21.pdf" }
                  // { "number": 22, "title": "Chapter 22: Organization and Enterprise (Economics) / अध्याय 22: संगठन एवं साहस (अर्थशास्त्र)", "pdf": "ebooks/class-10/commerce/chapter-22.pdf" },
                  // { "number": 23, "title": "Chapter 23: Consumer's Surplus (Economics) / अध्याय 23: उपभोक्ता की बचत (अर्थशास्त्र)", "pdf": "ebooks/class-10/commerce/chapter-23.pdf" }
              ]
