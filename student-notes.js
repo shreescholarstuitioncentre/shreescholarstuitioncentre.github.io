@@ -859,6 +859,7 @@ async function ntOpenChapter(index) {
     const frame = ntEl("ntFrame");
 
     viewer.hidden = false;
+       ntBuildToolbar();
 
     setText("ntViewerTitle", titleText);
     setText(
@@ -921,8 +922,6 @@ function sstcNotesStep(direction) {
     ntOpenChapter(next);
 }
 
-/* Print / Download PDF  (Download = print window me "Save as PDF") */
-
 function sstcNotesPrint(isDownload) {
 
     const frame = ntEl("ntFrame");
@@ -949,20 +948,31 @@ function sstcNotesPrint(isDownload) {
             showSstcToast("Print window me Destination: “Save as PDF” chuniye.", "info");
         }
 
+        /* Print hamesha 100% size par ho - zoom abhi hata do, print ke baad wapas lagao */
+        ntApplyZoom(1);
+
+        frame.contentWindow.addEventListener("afterprint", function () {
+            ntApplyZoom(ntZoom);
+        }, { once: true });
+
         frame.contentWindow.focus();
 
         setTimeout(function () {
             frame.contentWindow.print();
+            setTimeout(function () {
+                ntApplyZoom(ntZoom);
+            }, 400);
         }, isDownload ? 900 : 0);
     }
     catch (error) {
 
         console.error("SSTC notes print error:", error);
 
+        ntApplyZoom(ntZoom);
+
         showSstcToast("Print nahi ho paya. Dobara try kijiye.", "info");
     }
 }
-
 function sstcNotesFullscreen() {
 
     const wrap = document.querySelector("#ntViewer .nt-frame-wrap");
@@ -984,6 +994,171 @@ function sstcNotesFullscreen() {
     }
 }
 
+/* =========================================================
+   ZOOM + TOOLBAR (Print / Download / Zoom / Fullscreen)
+   Toolbar .nt-frame-wrap ke andar hai, isliye normal aur
+   fullscreen dono me dikhta aur chalta hai
+   ========================================================= */
+
+const SSTC_ZOOM_MIN = 0.5;
+const SSTC_ZOOM_MAX = 3;
+const SSTC_ZOOM_STEP = 0.1;
+
+let ntZoom = 1;
+const ntZoomNative = ("zoom" in document.documentElement.style);
+
+function ntApplyZoom(level) {
+
+    const frame = ntEl("ntFrame");
+
+    if (!frame) {
+        return;
+    }
+
+    let doc = null;
+
+    try {
+        doc = frame.contentDocument;
+    }
+    catch (error) {
+        return;
+    }
+
+    if (!doc || !doc.documentElement || !doc.body) {
+        return;
+    }
+
+    if (ntZoomNative) {
+
+        doc.documentElement.style.zoom = level === 1 ? "" : String(level);
+    }
+    else {
+
+        /* Purane browsers ke liye fallback */
+        doc.body.style.transformOrigin = "0 0";
+        doc.body.style.transform = level === 1 ? "" : "scale(" + level + ")";
+        doc.body.style.width = level === 1 ? "" : (100 / level) + "%";
+    }
+}
+
+function ntUpdateZoomLabel() {
+
+    const label = ntEl("ntZoomLabel");
+    const minus = ntEl("ntZoomOut");
+    const plus = ntEl("ntZoomIn");
+
+    if (label) {
+        label.textContent = Math.round(ntZoom * 100) + "%";
+    }
+
+    if (minus) {
+        minus.disabled = ntZoom <= SSTC_ZOOM_MIN + 0.001;
+    }
+
+    if (plus) {
+        plus.disabled = ntZoom >= SSTC_ZOOM_MAX - 0.001;
+    }
+}
+
+function sstcNotesZoom(direction) {
+
+    if (!ntFrameOK) {
+        showSstcToast("Pehle koi chapter kholiye.", "info");
+        return;
+    }
+
+    if (direction === 0) {
+        ntZoom = 1;
+    }
+    else {
+        ntZoom = Math.round((ntZoom + direction * SSTC_ZOOM_STEP) * 100) / 100;
+        ntZoom = Math.min(SSTC_ZOOM_MAX, Math.max(SSTC_ZOOM_MIN, ntZoom));
+    }
+
+    ntApplyZoom(ntZoom);
+    ntUpdateZoomLabel();
+}
+
+function ntBuildToolbar() {
+
+    if (ntEl("ntToolbar")) {
+        return;
+    }
+
+    const wrap = document.querySelector("#ntViewer .nt-frame-wrap") || ntEl("ntViewer");
+    const frame = ntEl("ntFrame");
+
+    if (!wrap) {
+        return;
+    }
+
+    /* Style (ek hi baar) */
+    if (!ntEl("ntToolbarStyle")) {
+
+        const style = document.createElement("style");
+        style.id = "ntToolbarStyle";
+
+        style.textContent =
+            "#ntViewer .nt-frame-wrap{position:relative;}" +
+            "#ntViewer .nt-frame-wrap:fullscreen{background:#fff;}" +
+            "#ntViewer .nt-frame-wrap:-webkit-full-screen{background:#fff;}" +
+            "#ntViewer .nt-frame-wrap:fullscreen #ntFrame{width:100%;height:100%;}" +
+            "#ntViewer .nt-frame-wrap:-webkit-full-screen #ntFrame{width:100%;height:100%;}" +
+            "#ntToolbar{position:absolute;right:16px;bottom:16px;z-index:50;display:flex;align-items:center;" +
+            "gap:4px;padding:6px 8px;border-radius:12px;background:rgba(6,78,72,.92);" +
+            "box-shadow:0 6px 20px rgba(0,0,0,.28);}" +
+            "#ntToolbar button{border:0;background:rgba(255,255,255,.14);color:#fff;font-size:14px;" +
+            "font-weight:700;min-width:36px;height:36px;padding:0 10px;border-radius:8px;cursor:pointer;" +
+            "font-family:inherit;line-height:1;}" +
+            "#ntToolbar button:hover:not(:disabled){background:rgba(255,255,255,.28);}" +
+            "#ntToolbar button:disabled{opacity:.4;cursor:not-allowed;}" +
+            "#ntToolbar .nt-tb-label{min-width:48px;text-align:center;color:#fff;font-size:13px;" +
+            "font-weight:700;cursor:pointer;}" +
+            "#ntToolbar .nt-tb-sep{width:1px;height:22px;background:rgba(255,255,255,.3);margin:0 4px;}" +
+            "@media (max-width:600px){#ntToolbar{right:8px;bottom:8px;padding:4px 6px;}" +
+            "#ntToolbar button{min-width:32px;height:32px;padding:0 6px;font-size:13px;}}";
+
+        document.head.appendChild(style);
+    }
+
+    const bar = document.createElement("div");
+    bar.id = "ntToolbar";
+    bar.setAttribute("role", "toolbar");
+    bar.setAttribute("aria-label", "Notes tools");
+
+    bar.innerHTML =
+        '<button type="button" id="ntTbPrint" title="Print">🖨</button>' +
+        '<button type="button" id="ntTbDownload" title="Download PDF">⬇ PDF</button>' +
+        '<span class="nt-tb-sep"></span>' +
+        '<button type="button" id="ntZoomOut" title="Zoom out">−</button>' +
+        '<button type="button" id="ntZoomLabel" class="nt-tb-label" title="Reset zoom">100%</button>' +
+        '<button type="button" id="ntZoomIn" title="Zoom in">+</button>' +
+        '<span class="nt-tb-sep"></span>' +
+        '<button type="button" id="ntTbFull" title="Fullscreen">⛶</button>';
+
+    wrap.appendChild(bar);
+
+    ntEl("ntTbPrint").addEventListener("click", function () { sstcNotesPrint(false); });
+    ntEl("ntTbDownload").addEventListener("click", function () { sstcNotesPrint(true); });
+    ntEl("ntZoomOut").addEventListener("click", function () { sstcNotesZoom(-1); });
+    ntEl("ntZoomIn").addEventListener("click", function () { sstcNotesZoom(1); });
+    ntEl("ntZoomLabel").addEventListener("click", function () { sstcNotesZoom(0); });
+    ntEl("ntTbFull").addEventListener("click", sstcNotesFullscreen);
+
+    /* Naya chapter load hone par bhi same zoom lage */
+    if (frame) {
+
+        frame.addEventListener("load", function () {
+            ntApplyZoom(ntZoom);
+        });
+    }
+
+    ntUpdateZoomLabel();
+}
+
+window.sstcNotesZoom = sstcNotesZoom;
+
+
 function closeSstcNotesViewer() {
 
     const viewer = ntEl("ntViewer");
@@ -991,6 +1166,8 @@ function closeSstcNotesViewer() {
 
     ntChapterIdx = -1;
     ntFrameOK = false;
+       ntZoom = 1;
+    ntUpdateZoomLabel();
 
     if (frame) {
         frame.removeAttribute("srcdoc");
