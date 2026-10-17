@@ -1,12 +1,10 @@
-const CACHE_NAME = "shree-scholars-pwa-v1";
+const CACHE_NAME = "shree-scholars-pwa-v2";
 
 const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.json",
   "./Logo.png",
-  "./banner.png",
-  "./background.jpg",
   "./icons/icon-192.png",
   "./icons/icon-512.png"
 ];
@@ -14,7 +12,16 @@ const APP_SHELL = [
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(APP_SHELL))
+      .then(cache =>
+        /* Ek file missing ho to bhi baaki cache ho jaye, install fail na ho */
+        Promise.all(
+          APP_SHELL.map(url =>
+            cache.add(url).catch(error => {
+              console.warn("SW cache skip:", url, error);
+            })
+          )
+        )
+      )
       .then(() => self.skipWaiting())
   );
 });
@@ -36,6 +43,13 @@ self.addEventListener("fetch", event => {
     return;
   }
 
+  /* Sirf apni site ki requests handle karo (Google Forms, Maps, API waghera nahi) */
+  const url = new URL(event.request.url);
+
+  if (url.origin !== self.location.origin) {
+    return;
+  }
+
   event.respondWith(
     fetch(event.request)
       .then(response => {
@@ -49,6 +63,10 @@ self.addEventListener("fetch", event => {
 
         return response;
       })
-      .catch(() => caches.match(event.request))
+      .catch(() =>
+        caches.match(event.request).then(cached =>
+          cached || (event.request.mode === "navigate" ? caches.match("./index.html") : undefined)
+        )
+      )
   );
 });
