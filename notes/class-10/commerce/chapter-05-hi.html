@@ -1,302 +1,37 @@
-<!DOCTYPE html>
-<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>विनिमय-विपत्र, प्रतिज्ञा-पत्र व हुण्डी – कक्षा 10 वाणिज्य नोट्स (हिंदी)</title>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
-<style>
-:root{--ink:#1a3a8a;--red:#d62828;--green:#1b7f3b;--paper:#fffdf4;--line:#bcd6ee;--hl:#ffe04d;--pink:#ffc2d1;--mint:#c8f0d0}
-*{box-sizing:border-box}
-body{margin:0;background:#e9e4d6;font-family:'Kalam','Patrick Hand',cursive;color:var(--ink);font-size:19px;line-height:1.7}
-.page{max-width:980px;margin:0 auto;background:var(--paper);background-image:linear-gradient(transparent 33px,var(--line) 34px);background-size:100% 34px;padding:30px 28px 60px 78px;position:relative;box-shadow:0 0 25px rgba(0,0,0,.25)}
-.page:before{content:"";position:absolute;left:58px;top:0;bottom:0;width:3px;background:#ef9a9a;box-shadow:5px 0 0 #ef9a9a55}
-.page:after{content:"";position:absolute;left:14px;top:0;bottom:0;width:22px;background:radial-gradient(circle at 11px 40px,#e9e4d6 0 9px,transparent 10px) 0 0/22px 120px repeat-y}
-h1{font-family:'Kalam','Caveat',cursive;font-size:36px;color:var(--red);margin:0;line-height:1.2;text-align:center;transform:rotate(-1deg)}
-.sub{text-align:center;font-size:1.05em;margin:4px 0 18px}
-.under{display:block;margin:0 auto;width:min(520px,90%);height:16px}
-h2{font-family:'Kalam','Caveat',cursive;font-size:25px;color:#fff;background:var(--ink);display:inline-block;padding:2px 20px;margin:36px 0 10px;border-radius:255px 15px 225px 15px/15px 225px 15px 255px;transform:rotate(-1.2deg);line-height:1.5}
-h3{font-family:'Kalam','Caveat',cursive;color:var(--red);font-size:1.25em;margin:14px 0 2px;text-decoration:underline wavy var(--red) 1px;text-underline-offset:5px}
-p{margin:8px 0}
-.box{border:2.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;padding:12px 22px;margin:14px 0;background:#fffdf4}
-.def{border-color:var(--red);background:#fff4f4}
-.tip{border-color:var(--green);background:#f1fff3}
-.note{background:#fff7a8;border:none;border-radius:4px;box-shadow:3px 4px 8px rgba(0,0,0,.25);transform:rotate(1deg);padding:12px 18px;margin:16px 0;color:#5a3d00}
-.tag{display:inline-block;font-weight:700;color:#fff;background:var(--red);padding:0 12px;border-radius:12px 4px 12px 4px;margin-right:6px;transform:rotate(-2deg)}
-.hl{background:linear-gradient(transparent 45%,var(--hl) 45%,var(--hl) 92%,transparent 92%);padding:0 3px}
-.hlp{background:linear-gradient(transparent 45%,var(--pink) 45%,var(--pink) 92%,transparent 92%);padding:0 3px}
-.hlg{background:linear-gradient(transparent 45%,var(--mint) 45%,var(--mint) 92%,transparent 92%);padding:0 3px}
-.red{color:var(--red);font-weight:700}.grn{color:var(--green);font-weight:700}
-ul,ol{margin:6px 0;padding-left:28px}li{margin:2px 0}
-ul.star{list-style:none;padding-left:6px}ul.star li:before{content:"★ ";color:var(--red)}
-ul.arr{list-style:none;padding-left:6px}ul.arr li:before{content:"➜ ";color:var(--green)}
-table{border-collapse:collapse;width:100%;margin:12px 0;background:#fffef8}
-th,td{border:2px solid var(--ink);padding:4px 10px;vertical-align:top;text-align:left}
-th{background:#dbe7ff;font-family:'Kalam','Caveat',cursive;font-size:1.1em;color:var(--red)}
-td.n,th.n{text-align:right;white-space:nowrap}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.fig{border:3px dashed var(--ink);border-radius:18px;padding:10px;margin:18px 0;background:#fffef7;position:relative}
-.fig .cap{font-family:'Kalam','Caveat',cursive;color:var(--red);font-size:1.2em;text-align:center;margin:0 0 4px}
-.svg{width:100%;height:auto;display:block}
-.svg text{font-family:'Kalam','Patrick Hand',cursive;fill:var(--ink)}
-.svg .row{font-size:23px}.svg .b{font-weight:700}.svg .hd{font-size:24px;fill:var(--red);font-weight:700}
-.svg .svt{font-size:27px;font-weight:700;fill:var(--red)}.svg .num{font-size:14px;fill:var(--red);font-weight:700}
-.svg .lbl{font-size:22px}.svg .sm{font-size:19px;fill:var(--green)}.svg .big{font-size:26px;font-weight:700}
-.replay{position:absolute;right:12px;top:10px;font-family:'Kalam','Caveat',cursive;font-size:1em;background:var(--hl);border:2px solid var(--ink);border-radius:20px;padding:0 14px;cursor:pointer;color:var(--ink)}
-.replay:hover{background:#ffd000}
-.fig .a{opacity:0}
-.fig.play .a{animation:pop .7s ease forwards;animation-delay:var(--d,0s)}
-@keyframes pop{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.fig .draw{stroke-dasharray:var(--l,300);stroke-dashoffset:var(--l,300)}
-.fig.play .draw{animation:dr 1.1s ease forwards;animation-delay:var(--d,0s)}
-@keyframes dr{to{stroke-dashoffset:0}}
-.dot{offset-rotate:0deg}
-.fig.play .dot{animation:mv 5s linear 3.5s infinite}
-@keyframes mv{0%{offset-distance:0%;opacity:1}100%{offset-distance:100%;opacity:1}}
-.beam,.pl,.pr{transform-box:view-box}
-.fig.play .beam{animation:bm 3.5s ease-out forwards;animation-delay:var(--d,0s)}
-.fig.play .pl{animation:pl 3.5s ease-out forwards;animation-delay:var(--d,0s)}
-.fig.play .pr{animation:pr 3.5s ease-out forwards;animation-delay:var(--d,0s)}
-@keyframes bm{0%{transform:rotate(-10deg)}30%{transform:rotate(8deg)}60%{transform:rotate(-4deg)}80%{transform:rotate(2deg)}100%{transform:rotate(0)}}
-@keyframes pl{0%{transform:translateY(28px)}30%{transform:translateY(-22px)}60%{transform:translateY(11px)}80%{transform:translateY(-5px)}100%{transform:none}}
-@keyframes pr{0%{transform:translateY(-28px)}30%{transform:translateY(22px)}60%{transform:translateY(-11px)}80%{transform:translateY(5px)}100%{transform:none}}
-.toc{columns:2;column-gap:30px}.toc a{color:var(--ink);text-decoration:none}.toc a:hover{color:var(--red)}
-.foot{text-align:center;color:var(--red);font-family:'Kalam','Caveat',cursive;font-size:1.3em;margin-top:30px}
-@media(max-width:700px){.page{padding:20px 14px 40px 34px}.page:before{left:22px}.page:after{display:none}.two{grid-template-columns:1fr}.toc{columns:1}h1{font-size:25px}h2{font-size:20px}.svg .row{font-size:25px}}
-@media print{body{background:#fff}.page{box-shadow:none}.replay{display:none}.fig .a{opacity:1!important;animation:none!important}.fig .draw{stroke-dashoffset:0!important}}
-.fig .cap{padding:0 125px}@media(max-width:700px){.fig .cap{padding:0 0 26px}}
-.grow{transform-box:fill-box;transform-origin:left center;transform:scaleX(0)}
-.fig.play .grow{animation:gw 1.3s ease forwards;animation-delay:var(--d,0s)}
-@keyframes gw{to{transform:scaleX(1)}}
-.pulse{transform-box:fill-box;transform-origin:center}
-.fig.play .pulse{animation:pu 1.6s ease-in-out 3s infinite}
-@keyframes pu{50%{transform:scale(1.07)}}
-.svg .rw{font-size:20px}
-.mvd{offset-path:path('M110 118 H720');offset-rotate:0deg}
-.fig.play .mvd{animation:mvq 6s ease-in-out 3s infinite}
-@keyframes mvq{0%{offset-distance:0%}85%,100%{offset-distance:100%}}
-</style></head><body><div class="page">
-<h1>विनिमय-विपत्र, प्रतिज्ञा-पत्र व हुण्डी – अध्याय 5</h1>
-<svg class="under" viewBox="0 0 520 16"><path d="M5 10 C90 2 170 14 260 7 S430 3 515 9" stroke="#d62828" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
-<p class="sub">कक्षा 10 • वाणिज्य • हाथ से लिखे जैसे नोट्स, एनिमेटेड चित्रों के साथ (हिंदी)</p>
-<div class="box tip"><h3 style="margin-top:0">📒 विषय-सूची</h3><ol class="toc"><li><a href="#s1">विनिमय-साध्य लिखत</a></li><li><a href="#s2">प्रतिज्ञा-पत्र</a></li><li><a href="#s3">विनिमय-विपत्र (बिल)</a></li><li><a href="#s4">प्रतिज्ञा-पत्र बनाम विनिमय-विपत्र</a></li><li><a href="#s5">महत्त्वपूर्ण शब्द (देय तिथि, अनुग्रह दिवस, बट्टा…)</a></li><li><a href="#s6">धारक क्या कर सकता है?</a></li><li><a href="#s7">लेखांकन प्रविष्टियाँ</a></li><li><a href="#s8">हुण्डी</a></li><li><a href="#s9">अंतर, सूत्र व आम गलतियाँ</a></li><li><a href="#s10">प्रश्न-उत्तर और परीक्षा टिप्स</a></li></ol></div>
-<h2 id="s1">1. विनिमय-साध्य लिखत (Negotiable Instruments)</h2><div class="box def"><span class="tag">अर्थ</span><span class="hl">विनिमय-साध्य लिखत</span> वह लिखित दस्तावेज़ है जो धन पाने का अधिकार देता है और जिसे <b>सुपुर्दगी</b> (वाहक) या <b>पृष्ठांकन व सुपुर्दगी</b> (आदेशानुसार) से एक व्यक्ति से दूसरे को <b>स्वतंत्र रूप से हस्तांतरित</b> किया जा सकता है – <i>परक्राम्य लिखत अधिनियम, 1881</i>।</div>
-<h3>विशेषताएँ</h3><ul class="star"><li><b>स्वतंत्र हस्तांतरण</b> – केवल सुपुर्दगी या पृष्ठांकन से स्वामित्व बदल जाता है।</li><li><b>यथाविधि धारक</b> को <span class="hl">अच्छा हक</span> मिलता है, चाहे पिछले धारक का हक दोषपूर्ण रहा हो।</li>
-<li>धारक <b>अपने नाम से मुक़दमा</b> कर सकता है।</li><li><b>अनुमान</b> – माना जाता है कि यह वैध प्रतिफल के लिए बना है।</li><li>हमेशा <b>लिखित</b> और <b>निश्चित धनराशि</b> के लिए।</li></ul>
-<p>मुख्य प्रकार: <b>प्रतिज्ञा-पत्र</b> (धारा 4), <b>विनिमय-विपत्र / बिल</b> (धारा 5) और <b>चेक</b> (धारा 6)। <b>हुण्डी</b> भारत का पारंपरिक लिखत है।</p>
-<div class="fig" id="fig1"><div class="cap">एनिमेटेड माइंड-मैप – विनिमय-साध्य लिखत</div><button class="replay">↻ दोबारा चलाएँ</button><svg viewBox="0 0 900 430" class="svg" role="img"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M2 2 L13 8 L2 14" fill="none" stroke="context-stroke" stroke-width="2.5"/></marker></defs><g class="a" style="--d:0s"><g class="pulse"><ellipse cx="450" cy="215" rx="130" ry="48" fill="#fff4f4" stroke="#d62828" stroke-width="4"/><text x="450" y="224" text-anchor="middle" class="big" style="font-size:20px">विनिमय-साध्य लिखत</text></g></g>
-<path class="draw" style="--l:420;--d:0.6s" d="M450 168 L150 104" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
-<g class="a" style="--d:1.1s"><rect x="25" y="36" width="250" height="68" rx="16" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3"/><text x="150" y="66" text-anchor="middle" class="lbl b">प्रतिज्ञा-पत्र</text><text x="150" y="92" text-anchor="middle" class="sm">धारा 4 – भुगतान का वचन</text></g>
-<path class="draw" style="--l:420;--d:1.2s" d="M450 168 L450 104" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
-<g class="a" style="--d:1.7s"><rect x="325" y="36" width="250" height="68" rx="16" fill="#ffe9a8" stroke="#1a3a8a" stroke-width="3"/><text x="450" y="66" text-anchor="middle" class="lbl b">विनिमय-विपत्र</text><text x="450" y="92" text-anchor="middle" class="sm">धारा 5 – भुगतान का आदेश</text></g>
-<path class="draw" style="--l:420;--d:1.8s" d="M450 168 L750 104" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
-<g class="a" style="--d:2.3s"><rect x="625" y="36" width="250" height="68" rx="16" fill="#c8f0d0" stroke="#1a3a8a" stroke-width="3"/><text x="750" y="66" text-anchor="middle" class="lbl b">चेक</text><text x="750" y="92" text-anchor="middle" class="sm">धारा 6 – बैंक पर</text></g>
-<path class="draw" style="--l:420;--d:2.4s" d="M450 262 L150 326" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
-<g class="a" style="--d:2.9s"><rect x="25" y="326" width="250" height="68" rx="16" fill="#ffc2d1" stroke="#1a3a8a" stroke-width="3"/><text x="150" y="356" text-anchor="middle" class="lbl b">हुण्डी</text><text x="150" y="382" text-anchor="middle" class="sm">देशी लिखत</text></g>
-<path class="draw" style="--l:420;--d:3.0s" d="M450 262 L450 326" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
-<g class="a" style="--d:3.5s"><rect x="325" y="326" width="250" height="68" rx="16" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3"/><text x="450" y="356" text-anchor="middle" class="lbl b">स्वतंत्र हस्तांतरण</text><text x="450" y="382" text-anchor="middle" class="sm">सुपुर्दगी / पृष्ठांकन</text></g>
-<path class="draw" style="--l:420;--d:3.6s" d="M450 262 L750 326" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
-<g class="a" style="--d:4.1s"><rect x="625" y="326" width="250" height="68" rx="16" fill="#ffe9a8" stroke="#1a3a8a" stroke-width="3"/><text x="750" y="356" text-anchor="middle" class="lbl b">यथाविधि धारक</text><text x="750" y="382" text-anchor="middle" class="sm">अच्छा हक पाता है</text></g></svg></div>
-<h3>🔍 व्याख्या</h3><ul class="arr"><li><b>ऊपरी पंक्ति व नीचे दायाँ</b> डिब्बे लिखत हैं; <b>नीचे बायें</b> के डिब्बे दो मुख्य विशेषताएँ हैं।</li><li>ये केवल धन का वचन या आदेश देते हैं – माल या सेवा का नहीं।</li></ul>
-<h2 id="s2">2. प्रतिज्ञा-पत्र (Promissory Note)</h2><div class="box def"><span class="tag">परिभाषा (धारा 4)</span>प्रतिज्ञा-पत्र वह <span class="hl">लिखित लिखत (बैंक नोट या करेंसी नोट नहीं) है जिसमें लेखक के हस्ताक्षर सहित बिना शर्त वचन होता है कि वह किसी निश्चित व्यक्ति को, या उसके आदेशानुसार, या वाहक को निश्चित धनराशि देगा।</span></div>
-<table><tr><th>पक्षकार</th><th>कौन?</th></tr><tr><td><b>लेखक / निर्माता (Maker)</b></td><td><b>देनदार</b> जो भुगतान का वचन देता है और हस्ताक्षर करता है</td></tr><tr><td><b>प्राप्तकर्ता (Payee)</b></td><td><b>लेनदार</b> जिसे राशि दी जानी है</td></tr></table>
-<h3>आवश्यक तत्त्व</h3><ul class="star"><li><b>लिखित</b>; <b>बिना शर्त वचन</b> ("मैं भुगतान करने का वचन देता हूँ")</li><li><b>लेखक</b> के हस्ताक्षर; <b>निश्चित राशि</b>; <b>निश्चित प्राप्तकर्ता</b></li><li>उचित <b>स्टाम्प</b>; माँग पर या निश्चित समय पर देय</li><li><b>माँग पर वाहक</b> को देय नहीं हो सकता</li><li><b>स्वीकृति</b> की आवश्यकता नहीं – केवल दो पक्षकार</li></ul>
-<div class="fig" id="fig2"><div class="cap">एनिमेटेड, लेबल सहित प्रतिज्ञा-पत्र</div><button class="replay">↻ दोबारा चलाएँ</button><svg viewBox="0 0 900 430" class="svg" role="img">
-<g class="a" style="--d:0s"><rect x="30" y="15" width="590" height="400" rx="8" fill="#fffef2" stroke="#1a3a8a" stroke-width="3"/><path d="M45 75 H605" stroke="#bcd6ee" stroke-width="1.5"/><path d="M45 115 H605" stroke="#bcd6ee" stroke-width="1.5"/><path d="M45 155 H605" stroke="#bcd6ee" stroke-width="1.5"/><path d="M45 195 H605" stroke="#bcd6ee" stroke-width="1.5"/><path d="M45 235 H605" stroke="#bcd6ee" stroke-width="1.5"/><path d="M45 275 H605" stroke="#bcd6ee" stroke-width="1.5"/><path d="M45 315 H605" stroke="#bcd6ee" stroke-width="1.5"/><path d="M45 355 H605" stroke="#bcd6ee" stroke-width="1.5"/><path d="M45 395 H605" stroke="#bcd6ee" stroke-width="1.5"/></g>
-<g class="a" style="--d:.6s"><rect x="505" y="32" width="90" height="62" rx="4" fill="#ffe9e9" stroke="#d62828" stroke-width="2.5" stroke-dasharray="7 4"/><text x="550" y="60" text-anchor="middle" class="sm" style="fill:#d62828;font-size:16px">स्टाम्प</text><text x="550" y="82" text-anchor="middle" class="rw b" style="fill:#d62828">₹ 1</text><circle cx="505" cy="32" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="505" y="37" text-anchor="middle" class="num">1</text></g>
-<g class="a" style="--d:1.0s"><circle cx="46" cy="108" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="46" y="113" text-anchor="middle" class="num">2</text><text x="70" y="115" text-anchor="start" class="lbl" style="font-size:21px;font-weight:400;fill:#1a3a8a">मुंबई, 1 जनवरी 2025</text></g>
-<g class="a" style="--d:1.7s"><circle cx="46" cy="163" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="46" y="168" text-anchor="middle" class="num">3</text><text x="70" y="170" text-anchor="start" class="lbl" style="font-size:19px;font-weight:400;fill:#1a3a8a">तीन माह बाद मैं वचन देता हूँ कि भुगतान करूँगा</text></g>
-<g class="a" style="--d:2.4s"><circle cx="46" cy="213" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="46" y="218" text-anchor="middle" class="num">4</text><text x="70" y="220" text-anchor="start" class="lbl" style="font-size:22px;font-weight:700;fill:#1a3a8a">श्री राम कुमार या उनके आदेशानुसार</text></g>
-<g class="a" style="--d:3.1s"><circle cx="46" cy="263" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="46" y="268" text-anchor="middle" class="num">5</text><text x="70" y="270" text-anchor="start" class="lbl" style="font-size:21px;font-weight:400;fill:#1a3a8a">रुपये दस हज़ार मात्र (₹10,000)</text></g>
-<g class="a" style="--d:3.8s"><text x="70" y="315" text-anchor="start" class="lbl" style="font-size:21px;font-weight:400;fill:#1a3a8a">प्राप्त मूल्य के बदले।</text></g>
-<g class="a" style="--d:4.5s"><circle cx="60" cy="378" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="60" y="383" text-anchor="middle" class="num">6</text><text x="600" y="385" text-anchor="end" class="lbl" style="font-size:24px;font-weight:700;fill:#d62828">श्याम लाल (लेखक)</text></g>
-<g class="a" style="--d:0.8s"><circle cx="660" cy="48" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="660" y="53" text-anchor="middle" class="num">1</text><text x="682" y="52" class="lbl b" style="font-size:18px">राजस्व स्टाम्प</text><text x="682" y="73" class="sm" style="font-size:15px;fill:#1b7f3b">कानूनन आवश्यक</text></g>
-<g class="a" style="--d:1.5s"><circle cx="660" cy="108" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="660" y="113" text-anchor="middle" class="num">2</text><text x="682" y="112" class="lbl b" style="font-size:18px">स्थान व तिथि</text><text x="682" y="133" class="sm" style="font-size:15px;fill:#1b7f3b">कहाँ व कब बना</text></g>
-<g class="a" style="--d:2.2s"><circle cx="660" cy="168" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="660" y="173" text-anchor="middle" class="num">3</text><text x="682" y="172" class="lbl b" style="font-size:18px">बिना शर्त वचन</text><text x="682" y="193" class="sm" style="font-size:15px;fill:#1b7f3b">'भुगतान का वचन' + समय</text></g>
-<g class="a" style="--d:2.9s"><circle cx="660" cy="228" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="660" y="233" text-anchor="middle" class="num">4</text><text x="682" y="232" class="lbl b" style="font-size:18px">प्राप्तकर्ता</text><text x="682" y="253" class="sm" style="font-size:15px;fill:#1b7f3b">राम – जिसे देना है</text></g>
-<g class="a" style="--d:3.6s"><circle cx="660" cy="288" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="660" y="293" text-anchor="middle" class="num">5</text><text x="682" y="292" class="lbl b" style="font-size:18px">निश्चित राशि</text><text x="682" y="313" class="sm" style="font-size:15px;fill:#1b7f3b">अंकों व शब्दों में</text></g>
-<g class="a" style="--d:4.3s"><circle cx="660" cy="348" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="660" y="353" text-anchor="middle" class="num">6</text><text x="682" y="352" class="lbl b" style="font-size:18px">लेखक के हस्ताक्षर</text><text x="682" y="373" class="sm" style="font-size:15px;fill:#1b7f3b">श्याम – देनदार</text></g>
-</svg></div>
-<h3>🔍 लेबल की व्याख्या</h3><ol><li><b>स्टाम्प</b> – प्रतिज्ञा-पत्र पर उचित स्टाम्प ज़रूरी।</li><li><b>स्थान व तिथि</b> – कब बना यह दर्शाते हैं।</li><li><b>वचन</b> – "भुगतान करूँगा" – स्पष्ट, बिना शर्त, समय (3 माह) सहित।</li>
-<li><b>प्राप्तकर्ता</b> – श्री राम कुमार, लेनदार।</li><li><b>राशि</b> – निश्चित ₹10,000।</li><li><b>हस्ताक्षर</b> – श्याम लाल, लेखक (देनदार) के।</li></ol>
-<h2 id="s3">3. विनिमय-विपत्र / बिल (Bill of Exchange)</h2><div class="box def"><span class="tag">परिभाषा (धारा 5)</span>विनिमय-विपत्र वह <span class="hl">लिखित लिखत है जिसमें लेखक के हस्ताक्षर सहित बिना शर्त आदेश होता है कि किसी निश्चित व्यक्ति को निश्चित धनराशि किसी निश्चित व्यक्ति को, या उसके आदेशानुसार, या वाहक को दी जाए।</span></div>
-<table><tr><th>पक्षकार</th><th>कौन?</th></tr><tr><td><b>आहर्ता (Drawer)</b></td><td><b>लेनदार</b> जो बिल लिखता (आहरित करता) है और भुगतान का आदेश देता है</td></tr>
-<tr><td><b>आहरित (Drawee)</b></td><td><b>देनदार</b> जिस पर बिल लिखा गया; "स्वीकृत" लिखकर हस्ताक्षर करने पर <b>स्वीकर्ता (Acceptor)</b> बनता है</td></tr><tr><td><b>प्राप्तकर्ता (Payee)</b></td><td>जिसे धन मिलेगा (प्रायः स्वयं आहर्ता)</td></tr></table>
-<h3>आवश्यक तत्त्व</h3><ul class="star"><li><b>लिखित</b>; <b>बिना शर्त आदेश</b> ("भुगतान करें…")</li><li><b>आहर्ता</b> के हस्ताक्षर; <b>निश्चित राशि</b>; <b>निश्चित पक्षकार</b></li><li>आहरित द्वारा <b>स्वीकृति</b> आवश्यक (मियादी बिल में)</li><li>उचित <b>स्टाम्प</b>; <b>तीन पक्षकार</b> (आहर्ता = प्राप्तकर्ता हो तो दो)</li></ul>
-<div class="fig" id="fig3"><div class="cap">एनिमेटेड, लेबल सहित विनिमय-विपत्र</div><button class="replay">↻ दोबारा चलाएँ</button><svg viewBox="0 0 900 430" class="svg" role="img">
-<g class="a" style="--d:0s"><rect x="30" y="15" width="590" height="400" rx="8" fill="#fffef2" stroke="#1a3a8a" stroke-width="3"/><path d="M45 75 H605" stroke="#bcd6ee" stroke-width="1.5"/><path d="M45 115 H605" stroke="#bcd6ee" stroke-width="1.5"/><path d="M45 155 H605" stroke="#bcd6ee" stroke-width="1.5"/><path d="M45 195 H605" stroke="#bcd6ee" stroke-width="1.5"/><path d="M45 235 H605" stroke="#bcd6ee" stroke-width="1.5"/><path d="M45 275 H605" stroke="#bcd6ee" stroke-width="1.5"/><path d="M45 315 H605" stroke="#bcd6ee" stroke-width="1.5"/><path d="M45 355 H605" stroke="#bcd6ee" stroke-width="1.5"/><path d="M45 395 H605" stroke="#bcd6ee" stroke-width="1.5"/></g>
-<g class="a" style="--d:.6s"><rect x="505" y="32" width="90" height="62" rx="4" fill="#ffe9e9" stroke="#d62828" stroke-width="2.5" stroke-dasharray="7 4"/><text x="550" y="60" text-anchor="middle" class="sm" style="fill:#d62828;font-size:16px">स्टाम्प</text><text x="550" y="82" text-anchor="middle" class="rw b" style="fill:#d62828">₹ 1</text><circle cx="505" cy="32" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="505" y="37" text-anchor="middle" class="num">1</text></g>
-<g class="a" style="--d:1.0s"><circle cx="46" cy="91" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="46" y="96" text-anchor="middle" class="num">2</text><text x="70" y="98" text-anchor="start" class="lbl" style="font-size:21px;font-weight:400;fill:#1a3a8a">मुंबई, 1 जनवरी 2025</text></g>
-<g class="a" style="--d:1.7s"><circle cx="46" cy="131" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="46" y="136" text-anchor="middle" class="num">3</text><text x="70" y="138" text-anchor="start" class="lbl" style="font-size:21px;font-weight:700;fill:#1a3a8a">सेवा में, श्री श्याम लाल, दिल्ली</text></g>
-<g class="a" style="--d:2.4s"><circle cx="46" cy="181" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="46" y="186" text-anchor="middle" class="num">4</text><text x="70" y="188" text-anchor="start" class="lbl" style="font-size:20px;font-weight:400;fill:#1a3a8a">तीन माह बाद मुझे या मेरे आदेशानुसार</text></g>
-<g class="a" style="--d:3.1s"><circle cx="46" cy="221" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="46" y="226" text-anchor="middle" class="num">5</text><text x="70" y="228" text-anchor="start" class="lbl" style="font-size:21px;font-weight:400;fill:#1a3a8a">₹10,000 का भुगतान करें</text></g>
-<g class="a" style="--d:3.8s"><text x="70" y="268" text-anchor="start" class="lbl" style="font-size:21px;font-weight:400;fill:#1a3a8a">प्राप्त मूल्य के बदले।</text></g>
-<g class="a" style="--d:4.5s"><circle cx="60" cy="318" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="60" y="323" text-anchor="middle" class="num">6</text><text x="600" y="325" text-anchor="end" class="lbl" style="font-size:23px;font-weight:700;fill:#d62828">राम कुमार (आहर्ता)</text></g>
-<g class="a" style="--d:5.2s"><rect x="90" y="352" width="330" height="46" rx="8" fill="#fff4f4" stroke="#d62828" stroke-width="3" transform="rotate(-2 255 375)"/><text x="255" y="382" text-anchor="middle" class="rw b" style="fill:#d62828;font-size:18px">स्वीकृत – श्याम लाल, 5 जन. 2025</text><circle cx="90" cy="352" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="90" y="357" text-anchor="middle" class="num">7</text></g>
-<g class="a" style="--d:0.8s"><circle cx="660" cy="48" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="660" y="53" text-anchor="middle" class="num">1</text><text x="682" y="52" class="lbl b" style="font-size:18px">राजस्व स्टाम्प</text><text x="682" y="73" class="sm" style="font-size:15px;fill:#1b7f3b">कानूनन आवश्यक</text></g>
-<g class="a" style="--d:1.5s"><circle cx="660" cy="104" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="660" y="109" text-anchor="middle" class="num">2</text><text x="682" y="108" class="lbl b" style="font-size:18px">स्थान व तिथि</text><text x="682" y="129" class="sm" style="font-size:15px;fill:#1b7f3b">कब आहरित हुआ</text></g>
-<g class="a" style="--d:2.2s"><circle cx="660" cy="160" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="660" y="165" text-anchor="middle" class="num">3</text><text x="682" y="164" class="lbl b" style="font-size:18px">आहरित</text><text x="682" y="185" class="sm" style="font-size:15px;fill:#1b7f3b">श्याम – जिसे आदेश</text></g>
-<g class="a" style="--d:2.9s"><circle cx="660" cy="216" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="660" y="221" text-anchor="middle" class="num">4</text><text x="682" y="220" class="lbl b" style="font-size:18px">बिना शर्त आदेश</text><text x="682" y="241" class="sm" style="font-size:15px;fill:#1b7f3b">'भुगतान करें' + समय</text></g>
-<g class="a" style="--d:3.6s"><circle cx="660" cy="272" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="660" y="277" text-anchor="middle" class="num">5</text><text x="682" y="276" class="lbl b" style="font-size:18px">निश्चित राशि व प्राप्तकर्ता</text><text x="682" y="297" class="sm" style="font-size:15px;fill:#1b7f3b">₹10,000 – राम को</text></g>
-<g class="a" style="--d:4.3s"><circle cx="660" cy="328" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="660" y="333" text-anchor="middle" class="num">6</text><text x="682" y="332" class="lbl b" style="font-size:18px">आहर्ता के हस्ताक्षर</text><text x="682" y="353" class="sm" style="font-size:15px;fill:#1b7f3b">राम – लेनदार</text></g>
-<g class="a" style="--d:5.0s"><circle cx="660" cy="384" r="13" fill="#fff" stroke="#d62828" stroke-width="2"/><text x="660" y="389" text-anchor="middle" class="num">7</text><text x="682" y="388" class="lbl b" style="font-size:18px">स्वीकृति</text><text x="682" y="409" class="sm" style="font-size:15px;fill:#1b7f3b">आहरित हस्ताक्षर करता है</text></g>
-</svg></div>
-<h3>🔍 व्याख्या</h3><ol><li>राम ने श्याम को माल उधार बेचा।</li><li>राम ने 3 माह बाद भुगतान के आदेश वाला बिल <b>आहरित</b> किया।</li><li>श्याम ने <b>स्वीकार</b> (हस्ताक्षर) कर लौटाया – अब वह <b>स्वीकर्ता</b> है।</li>
-<li>देय तिथि पर श्याम राम को भुगतान करता है (नीचे की हरी रेखा)।</li></ol>
-<p>प्रतीक्षा की जगह राम बिल को बैंक से <b>भुना</b> सकता है या अपने किसी लेनदार को <b>पृष्ठांकित</b> कर सकता है (लाल तीर)।</p>
-<div class="note">प्रकार: <b>व्यापारिक बिल</b> (माल बिक्री पर) / <b>आधार / सहायतार्थ बिल</b> (धन जुटाने हेतु); <b>देशी</b> / <b>विदेशी</b>; <b>तिथि के बाद</b> / <b>दर्शन पर</b>।</div>
-<div class="fig" id="fig4"><div class="cap">एनिमेटेड – विनिमय-विपत्र कैसे काम करता है</div><button class="replay">↻ दोबारा चलाएँ</button><svg viewBox="0 0 900 430" class="svg" role="img"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M2 2 L13 8 L2 14" fill="none" stroke="context-stroke" stroke-width="2.5"/></marker></defs>
- <g class="a" style="--d:0s"><rect x="20" y="30" width="240" height="120" rx="14" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3"/><text x="140" y="68" text-anchor="middle" class="lbl b">आहर्ता (राम)</text><text x="140" y="96" text-anchor="middle" class="sm">लेनदार / विक्रेता</text><text x="140" y="126" text-anchor="middle" class="sm" style="fill:#d62828">बिल लिखता है</text></g>
- <g class="a" style="--d:.5s"><rect x="640" y="30" width="240" height="120" rx="14" fill="#ffe9a8" stroke="#1a3a8a" stroke-width="3"/><text x="760" y="68" text-anchor="middle" class="lbl b">आहरित (श्याम)</text><text x="760" y="96" text-anchor="middle" class="sm">देनदार / क्रेता</text><text x="760" y="126" text-anchor="middle" class="sm" style="fill:#d62828">स्वीकर्ता बनता है</text></g>
- <text x="450" y="60" text-anchor="middle" class="sm a" style="--d:1.2s;fill:#1a3a8a">① माल उधार बेचा</text>
- <path class="draw" style="--l:380;--d:1.0s" d="M264 70 H636" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
- <text x="450" y="98" text-anchor="middle" class="sm a" style="--d:2.2s;fill:#1a3a8a">② बिल: '3 माह में ₹10,000 दें'</text>
- <path class="draw" style="--l:380;--d:2s" d="M264 106 H636" stroke="#d62828" stroke-width="3" fill="none" marker-end="url(#ah)"/>
- <text x="450" y="140" text-anchor="middle" class="sm a" style="--d:3.2s;fill:#1b7f3b">③ स्वीकृत बिल वापस</text>
- <path class="draw" style="--l:380;--d:3s" d="M636 146 H264" stroke="#1b7f3b" stroke-width="3" fill="none" marker-end="url(#ah)"/>
- <path class="draw" style="--l:900;--d:4s" d="M760 154 V215 H140 V156" stroke="#1b7f3b" stroke-width="3.5" fill="none" marker-end="url(#ah)"/>
- <g class="a" style="--d:4.8s"><rect x="230" y="195" width="440" height="40" rx="12" fill="#c8f0d0" stroke="#1b7f3b" stroke-width="2.5"/><text x="450" y="222" text-anchor="middle" class="rw b" style="fill:#1b7f3b">④ देय तिथि: श्याम ₹10,000 देता है</text></g>
- <text x="50" y="270" class="sm a" style="--d:5.4s;fill:#d62828;font-size:18px">देय तिथि से पहले राम कर सकता है:</text>
- <path class="draw" style="--l:600;--d:5.6s" d="M60 276 V330 H236" stroke="#d62828" stroke-width="3" fill="none" marker-end="url(#ah)"/>
- <path class="draw" style="--l:600;--d:6s" d="M60 330 V400 H516" stroke="#d62828" stroke-width="3" fill="none" marker-end="url(#ah)"/>
- <g class="a" style="--d:6.2s"><rect x="240" y="300" width="260" height="60" rx="14" fill="#ffe9a8" stroke="#1a3a8a" stroke-width="3"/><text x="370" y="326" text-anchor="middle" class="rw b">बैंक</text><text x="370" y="350" text-anchor="middle" class="sm" style="font-size:16px">बिल भुनाया → अभी नकद</text></g>
- <g class="a" style="--d:6.8s"><rect x="520" y="372" width="260" height="52" rx="14" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3"/><text x="650" y="396" text-anchor="middle" class="rw b">लेनदार</text><text x="650" y="416" text-anchor="middle" class="sm" style="font-size:16px">बिल पृष्ठांकित किया</text></g>
-</svg></div>
-
-<h2 id="s4">4. प्रतिज्ञा-पत्र बनाम विनिमय-विपत्र</h2><table><tr><th>आधार</th><th>प्रतिज्ञा-पत्र</th><th>विनिमय-विपत्र</th></tr>
-<tr><td>प्रकृति</td><td>भुगतान का <b>वचन</b></td><td>भुगतान का <b>आदेश</b></td></tr><tr><td>पक्षकार</td><td>2 (लेखक, प्राप्तकर्ता)</td><td>3 (आहर्ता, आहरित, प्राप्तकर्ता)</td></tr>
-<tr><td>कौन लिखता है</td><td>देनदार (लेखक)</td><td>लेनदार (आहर्ता)</td></tr><tr><td>स्वीकृति</td><td>आवश्यक नहीं</td><td><b>आवश्यक</b></td></tr>
-<tr><td>लेखक/आहर्ता का दायित्व</td><td>लेखक का <b>प्राथमिक</b> दायित्व</td><td>आहर्ता का <b>द्वितीयक</b> दायित्व (आहरित के स्वीकार करने तक)</td></tr>
-<tr><td>माँग पर वाहक को देय</td><td>नहीं हो सकता</td><td>हो सकता है (माँग पर)</td></tr><tr><td>प्रतियाँ</td><td>एक</td><td>सेट में हो सकती हैं (विदेशी बिल)</td></tr></table>
-<h2 id="s5">5. महत्त्वपूर्ण शब्द</h2><table><tr><th>शब्द</th><th>अर्थ</th></tr>
-<tr><td><b>आहरण (Drawing)</b></td><td>आहर्ता द्वारा बिल लिखना</td></tr><tr><td><b>स्वीकृति (Acceptance)</b></td><td>आहरित के हस्ताक्षर + "स्वीकृत" शब्द – वह भुगतान को सहमत है</td></tr>
-<tr><td><b>अवधि (Term / Usance)</b></td><td>वह समय जिसके बाद बिल देय है (जैसे 3 माह)</td></tr><tr><td><b>परिपक्वता तिथि</b></td><td>जिस दिन अवधि समाप्त होती है</td></tr>
-<tr><td><b>अनुग्रह दिवस (Days of grace)</b></td><td>भुगतान हेतु मिलने वाले <b>3 अतिरिक्त दिन</b> (माँग/दर्शन पर देय बिल पर नहीं)</td></tr><tr><td><b>देय तिथि (Due date)</b></td><td>परिपक्वता तिथि + 3 अनुग्रह दिन</td></tr>
-<tr><td><b>पृष्ठांकन (Endorsement)</b></td><td>बिल के पीछे हस्ताक्षर कर उसे दूसरे को हस्तांतरित करना; पृष्ठांकक → पृष्ठांकिती</td></tr>
-<tr><td><b>बिल भुनाना (Discounting)</b></td><td>देय तिथि से पहले बिल बैंक को बेचना; बैंक <b>बट्टा</b> काटता है</td></tr>
-<tr><td><b>अनादर (Dishonour)</b></td><td>देय तिथि पर आहरित/लेखक द्वारा भुगतान (या स्वीकृति) से इनकार</td></tr><tr><td><b>नोटिंग (Noting)</b></td><td>नोटरी पब्लिक द्वारा अनादर का अभिलेख; शुल्क = <b>नोटिंग प्रभार</b></td></tr>
-<tr><td><b>बिल का निर्मोचन (Retirement)</b></td><td>स्वीकर्ता द्वारा देय तिथि से <b>पहले</b> भुगतान, प्रायः <b>छूट</b> सहित</td></tr><tr><td><b>नवीनीकरण (Renewal)</b></td><td>पुराना बिल रद्द कर नया बिल (ब्याज सहित) बनाना, जब आहरित भुगतान न कर सके</td></tr></table>
-<div class="note">अवकाश नियम: यदि देय तिथि <b>सार्वजनिक अवकाश</b> हो तो बिल <b>पिछले कार्य-दिवस</b> पर देय होता है (धारा 25)।</div>
-<div class="fig" id="fig5"><div class="cap">एनिमेटेड समय-रेखा – देय तिथि कैसे ज्ञात करें</div><button class="replay">↻ दोबारा चलाएँ</button><svg viewBox="0 0 900 330" class="svg" role="img"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M2 2 L13 8 L2 14" fill="none" stroke="context-stroke" stroke-width="2.5"/></marker></defs>
- <path class="draw" style="--l:720;--d:0s" d="M80 118 H850" stroke="#1a3a8a" stroke-width="5" fill="none"/>
- <g class="a" style="--d:.5s"><circle cx="110" cy="118" r="12" fill="#fff" stroke="#1a3a8a" stroke-width="4"/><text x="110" y="82" text-anchor="middle" class="lbl b">बिल की तिथि</text><text x="110" y="162" text-anchor="middle" class="rw b" style="fill:#1a3a8a">1 जनवरी</text></g>
- <g class="a" style="--d:2.2s"><circle cx="480" cy="118" r="12" fill="#ffe9a8" stroke="#1a3a8a" stroke-width="4"/><text x="480" y="82" text-anchor="middle" class="lbl b">परिपक्वता तिथि</text><text x="480" y="162" text-anchor="middle" class="rw b" style="fill:#1a3a8a">1 अप्रैल</text></g>
- <g class="a" style="--d:3.6s"><circle cx="720" cy="118" r="12" fill="#ffc2d1" stroke="#d62828" stroke-width="4"/><text x="720" y="82" text-anchor="middle" class="lbl b" style="fill:#d62828">देय तिथि</text><text x="720" y="162" text-anchor="middle" class="rw b" style="fill:#d62828">4 अप्रैल</text></g>
- <path class="draw" style="--l:370;--d:.9s" d="M110 205 H480" stroke="#1a3a8a" stroke-width="3.5" fill="none"/><path d="M110 195 V215 M480 195 V215" stroke="#1a3a8a" stroke-width="3.5"/>
- <text x="295" y="235" text-anchor="middle" class="lbl b a" style="--d:1.6s;fill:#1a3a8a">3 माह (अवधि)</text>
- <path class="draw" style="--l:240;--d:2.8s" d="M480 205 H720" stroke="#d62828" stroke-width="3.5" fill="none"/><path d="M480 195 V215 M720 195 V215" stroke="#d62828" stroke-width="3.5"/>
- <text x="600" y="235" text-anchor="middle" class="lbl b a" style="--d:3.3s;fill:#d62828">+ 3 अनुग्रह दिन</text>
- <text x="450" y="290" text-anchor="middle" class="big a" style="--d:4.2s;fill:#1b7f3b;font-size:23px">देय तिथि = बिल की तिथि + अवधि + 3 अनुग्रह दिन</text>
- <text x="450" y="318" text-anchor="middle" class="sm a" style="--d:4.6s;fill:#d62828">माह में हो तो कैलेंडर माह गिनें; दिनों में हो तो वास्तविक दिन गिनें</text>
- <g class="a" style="--d:3s"><g class="mvd"><circle r="9" fill="#d62828"/></g></g>
-</svg></div>
-<h3>🔍 व्याख्या</h3><ul class="arr"><li><b>नीली पट्टी</b> – बिल की तिथि से 3 माह की अवधि (1 जन. → 1 अप्रै.)।</li><li><b>लाल पट्टी</b> – 3 अनुग्रह दिन, इसलिए बिल <b>4 अप्रैल</b> को देय है।</li></ul>
-<div class="note"><b>उदाहरण (अवधि दिनों में):</b> बिल 10 जनवरी 2025 का, <b>60 दिन</b> के लिए। जनवरी में शेष दिन = 21, फरवरी = 28 → 49; मार्च के 11 दिन जोड़ें = 60 → परिपक्वता तिथि <b>11 मार्च</b>; 3 दिन जोड़ें → देय तिथि <b>14 मार्च 2025</b>।</div>
-<h2 id="s6">6. स्वीकृत बिल से धारक क्या कर सकता है?</h2><p>स्वीकृति के बाद आहर्ता (धारक) के पास <b>4 विकल्प</b> हैं:</p>
-<div class="fig" id="fig6"><div class="cap">एनिमेटेड – बिल के धारक के 4 विकल्प</div><button class="replay">↻ दोबारा चलाएँ</button><svg viewBox="0 0 900 380" class="svg" role="img"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M2 2 L13 8 L2 14" fill="none" stroke="context-stroke" stroke-width="2.5"/></marker></defs>
- <g class="a" style="--d:0s"><rect x="230" y="10" width="440" height="56" rx="14" fill="#c8f0d0" stroke="#1b7f3b" stroke-width="3.5"/><text x="450" y="46" text-anchor="middle" class="lbl b">स्वीकृत बिल (₹10,000)</text></g>
- <path class="draw" style="--l:460;--d:0.6s" d="M450 68 V92 H120 V120" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
-<g class="a" style="--d:1.1s"><rect x="15" y="124" width="210" height="64" rx="14" fill="#c8f0d0" stroke="#1a3a8a" stroke-width="3"/><text x="120" y="150" text-anchor="middle" class="rw b" style="font-size:18px">1. देय तिथि तक</text><text x="120" y="173" text-anchor="middle" class="rw b" style="font-size:18px">रखे रहना</text></g>
-<g class="a" style="--d:1.6s"><text x="120" y="222" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-size:17px">बिल रखें और देय</text></g>
-<g class="a" style="--d:1.9s"><text x="120" y="252" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-size:17px">तिथि पर पूरे ₹10,000</text></g>
-<g class="a" style="--d:2.2s"><text x="120" y="282" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-size:17px">वसूल करें</text></g>
-<path class="draw" style="--l:460;--d:1.7s" d="M450 68 V92 H340 V120" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
-<g class="a" style="--d:2.2s"><rect x="235" y="124" width="210" height="64" rx="14" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3"/><text x="340" y="150" text-anchor="middle" class="rw b" style="font-size:18px">2. लेनदार को</text><text x="340" y="173" text-anchor="middle" class="rw b" style="font-size:18px">पृष्ठांकन</text></g>
-<g class="a" style="--d:2.7s"><text x="340" y="222" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-size:17px">बिल देकर उसका ऋण</text></g>
-<g class="a" style="--d:3.0s"><text x="340" y="252" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-size:17px">चुकाएँ; वह आहरित</text></g>
-<g class="a" style="--d:3.3s"><text x="340" y="282" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-size:17px">से वसूल करे</text></g>
-<path class="draw" style="--l:460;--d:2.8s" d="M450 68 V92 H560 V120" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
-<g class="a" style="--d:3.3s"><rect x="455" y="124" width="210" height="64" rx="14" fill="#ffe9a8" stroke="#1a3a8a" stroke-width="3"/><text x="560" y="150" text-anchor="middle" class="rw b" style="font-size:18px">3. बैंक से</text><text x="560" y="173" text-anchor="middle" class="rw b" style="font-size:18px">भुनाना</text></g>
-<g class="a" style="--d:3.8s"><text x="560" y="222" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-size:17px">अभी नकद (₹9,700);</text></g>
-<g class="a" style="--d:4.1s"><text x="560" y="252" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-size:17px">बैंक ₹300 बट्टा</text></g>
-<g class="a" style="--d:4.4s"><text x="560" y="282" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-size:17px">काटता है</text></g>
-<path class="draw" style="--l:460;--d:3.9s" d="M450 68 V92 H780 V120" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
-<g class="a" style="--d:4.4s"><rect x="675" y="124" width="210" height="64" rx="14" fill="#ffc2d1" stroke="#1a3a8a" stroke-width="3"/><text x="780" y="150" text-anchor="middle" class="rw b" style="font-size:18px">4. आहरित द्वारा</text><text x="780" y="173" text-anchor="middle" class="rw b" style="font-size:18px">अनादर</text></g>
-<g class="a" style="--d:4.9s"><text x="780" y="222" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-size:17px">आहरित भुगतान न करे;</text></g>
-<g class="a" style="--d:5.2s"><text x="780" y="252" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-size:17px">नोटिंग; आहर्ता आहरित</text></g>
-<g class="a" style="--d:5.5s"><text x="780" y="282" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-size:17px">से वसूल करे</text></g>
-</svg></div>
-<h3>🔍 व्याख्या</h3><ol><li><b>रखना</b> – कोई हानि नहीं; पूरी राशि बाद में मिलती है।</li><li><b>पृष्ठांकन</b> – नकद नहीं, पर एक ऋण चुक जाता है।</li><li><b>भुनाना</b> – नकद जल्दी, पर बट्टा आहर्ता की <b>हानि</b> है। बट्टा = राशि × दर × समय ÷ 100 → 10,000 × 12% × 3/12 = <b>₹300</b>।</li>
-<li><b>अनादर</b> – धारक आहरित से बिल राशि व नोटिंग प्रभार माँग सकता है।</li></ol>
-<h2 id="s7">7. लेखांकन प्रविष्टियाँ</h2><p><b>आँकड़े:</b> राम ने श्याम को ₹10,000 का माल उधार बेचा; 3 माह का बिल आहरित किया; श्याम ने स्वीकार किया। बट्टा दर 12% वार्षिक; नोटिंग प्रभार ₹50।</p>
-<table><tr><th>घटना</th><th>राम की बहियों में (आहर्ता – धारक)</th><th>श्याम की बहियों में (आहरित – स्वीकर्ता)</th></tr>
-<tr><td>1. माल उधार बिका / खरीदा</td><td>Shyam A/c Dr 10,000<br>&nbsp;To Sales A/c 10,000</td><td>Purchases A/c Dr 10,000<br>&nbsp;To Ram A/c 10,000</td></tr>
-<tr><td>2. बिल स्वीकृत</td><td>Bills Receivable A/c Dr 10,000<br>&nbsp;To Shyam A/c 10,000</td><td>Ram A/c Dr 10,000<br>&nbsp;To Bills Payable A/c 10,000</td></tr>
-<tr><td>3. रखा रहा; देय तिथि पर भुगतान</td><td>Bank A/c Dr 10,000<br>&nbsp;To Bills Receivable A/c 10,000</td><td>Bills Payable A/c Dr 10,000<br>&nbsp;To Bank A/c 10,000</td></tr>
-<tr><td>4. मोहन को पृष्ठांकित (भुगतान में)</td><td>Mohan A/c Dr 10,000<br>&nbsp;To Bills Receivable A/c 10,000</td><td>कोई प्रविष्टि नहीं</td></tr>
-<tr><td>5. बैंक से भुनाया</td><td>Bank A/c Dr 9,700<br>Discount A/c Dr 300<br>&nbsp;To Bills Receivable A/c 10,000</td><td>कोई प्रविष्टि नहीं (देय तिथि पर बैंक को भुगतान, जैसे 3)</td></tr>
-<tr><td>6. रखा बिल अनादरित (नोटिंग ₹50)</td><td>Shyam A/c Dr 10,050<br>&nbsp;To Bills Receivable A/c 10,000<br>&nbsp;To Bank A/c 50</td><td>Bills Payable A/c Dr 10,000<br>Noting Charges A/c Dr 50<br>&nbsp;To Ram A/c 10,050</td></tr>
-<tr><td>7. भुनाया बिल अनादरित</td><td>Shyam A/c Dr 10,050<br>&nbsp;To Bank A/c 10,050</td><td>जैसे 6</td></tr>
-<tr><td>8. 1 माह पहले निर्मोचन (छूट ₹100)</td><td>Bank A/c Dr 9,900<br>Discount (Rebate) A/c Dr 100<br>&nbsp;To Bills Receivable A/c 10,000</td><td>Bills Payable A/c Dr 10,000<br>&nbsp;To Bank A/c 9,900<br>&nbsp;To Discount Received A/c 100</td></tr></table>
-<div class="note">याद रखें: <b>प्राप्य बिल (Bills Receivable)</b> एक <b>संपत्ति</b> है (पैसे मिलेंगे); <b>देय बिल (Bills Payable)</b> एक <b>दायित्व</b> है (पैसे देने हैं)। अब खाताबही के खाते देखें (स्थिति 5: भुनाया बिल)।</div>
-<div class="fig" id="fig7"><div class="cap">एनिमेटेड प्राप्य बिल खाता (राम की बहियाँ)</div><button class="replay">↻ दोबारा चलाएँ</button><svg viewBox="0 0 900 240" class="svg" role="img" aria-label="प्राप्य बिल खाता">
-<text x="450" y="30" text-anchor="middle" class="svt a" style="--d:0s">प्राप्य बिल खाता</text>
-<path class="draw" style="--l:900;--d:.2s" d="M0 52 H900" stroke="#1a3a8a" stroke-width="3" fill="none"/>
-<path class="draw" style="--l:240;--d:.3s" d="M450 52 V220" stroke="#1a3a8a" stroke-width="3" fill="none"/>
-<text x="10" y="80" class="hd a" style="--d:.4s">Dr (डेबिट)</text><text x="430" y="80" text-anchor="end" class="hd a" style="--d:.4s">राशि (₹)</text>
-<text x="470" y="80" class="hd a" style="--d:.4s">Cr (क्रेडिट)</text><text x="890" y="80" text-anchor="end" class="hd a" style="--d:.4s">राशि (₹)</text>
-<g class="a" style="--d:0.70s"><rect x="2" y="93" width="438" height="34" rx="10" fill="#ffe04d" opacity=".75" transform="rotate(-.4 200 110)"/><circle cx="20" cy="110" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="20" y="115" text-anchor="middle" class="num">1</text><text x="38" y="117" class="row">To श्याम खाता</text><text x="430" y="117" text-anchor="end" class="row">10,000</text></g>
-<g class="a" style="--d:0.95s"><circle cx="480" cy="110" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="480" y="115" text-anchor="middle" class="num">2</text><text x="498" y="117" class="row">By बैंक खाता</text><text x="890" y="117" text-anchor="end" class="row">9,700</text></g>
-<g class="a" style="--d:1.50s"><rect x="462" y="133" width="438" height="34" rx="10" fill="#ffe04d" opacity=".75" transform="rotate(-.4 660 150)"/><circle cx="480" cy="150" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="480" y="155" text-anchor="middle" class="num">3</text><text x="498" y="157" class="row">By बट्टा खाता</text><text x="890" y="157" text-anchor="end" class="row">300</text></g>
-<g class="a" style="--d:2.40s">
-<path d="M0 178 H430 M460 178 H890" stroke="#1a3a8a" stroke-width="2.5"/>
-<text x="38" y="208" class="row b">योग</text><text x="430" y="208" text-anchor="end" class="row b">10,000</text>
-<text x="498" y="208" class="row b">योग</text><text x="890" y="208" text-anchor="end" class="row b">10,000</text>
-<path d="M0 218 H430 M0 224 H430 M460 218 H890 M460 224 H890" stroke="#1a3a8a" stroke-width="2.5"/></g>
-</svg></div>
-<div class="fig" id="fig8"><div class="cap">एनिमेटेड देय बिल खाता (श्याम की बहियाँ)</div><button class="replay">↻ दोबारा चलाएँ</button><svg viewBox="0 0 900 200" class="svg" role="img" aria-label="देय बिल खाता">
-<text x="450" y="30" text-anchor="middle" class="svt a" style="--d:0s">देय बिल खाता</text>
-<path class="draw" style="--l:900;--d:.2s" d="M0 52 H900" stroke="#1a3a8a" stroke-width="3" fill="none"/>
-<path class="draw" style="--l:200;--d:.3s" d="M450 52 V180" stroke="#1a3a8a" stroke-width="3" fill="none"/>
-<text x="10" y="80" class="hd a" style="--d:.4s">Dr (डेबिट)</text><text x="430" y="80" text-anchor="end" class="hd a" style="--d:.4s">राशि (₹)</text>
-<text x="470" y="80" class="hd a" style="--d:.4s">Cr (क्रेडिट)</text><text x="890" y="80" text-anchor="end" class="hd a" style="--d:.4s">राशि (₹)</text>
-<g class="a" style="--d:0.70s"><rect x="2" y="93" width="438" height="34" rx="10" fill="#ffe04d" opacity=".75" transform="rotate(-.4 200 110)"/><circle cx="20" cy="110" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="20" y="115" text-anchor="middle" class="num">1</text><text x="38" y="117" class="row">To बैंक खाता</text><text x="430" y="117" text-anchor="end" class="row">10,000</text></g>
-<g class="a" style="--d:0.95s"><rect x="462" y="93" width="438" height="34" rx="10" fill="#ffe04d" opacity=".75" transform="rotate(-.4 660 110)"/><circle cx="480" cy="110" r="11" fill="none" stroke="#d62828" stroke-width="2"/><text x="480" y="115" text-anchor="middle" class="num">2</text><text x="498" y="117" class="row">By राम खाता</text><text x="890" y="117" text-anchor="end" class="row">10,000</text></g>
-<g class="a" style="--d:1.85s">
-<path d="M0 138 H430 M460 138 H890" stroke="#1a3a8a" stroke-width="2.5"/>
-<text x="38" y="168" class="row b">योग</text><text x="430" y="168" text-anchor="end" class="row b">10,000</text>
-<text x="498" y="168" class="row b">योग</text><text x="890" y="168" text-anchor="end" class="row b">10,000</text>
-<path d="M0 178 H430 M0 184 H430 M460 178 H890 M460 184 H890" stroke="#1a3a8a" stroke-width="2.5"/></g>
-</svg></div>
-<h3>🔍 लेबल की व्याख्या</h3><ol><li><b>To श्याम खाता</b> – राम को स्वीकृत बिल मिला; संपत्ति बनी।</li><li><b>By बैंक खाता</b> – भुनाने पर बैंक ने ₹9,700 दिए।</li><li><b>By बट्टा खाता</b> – बैंक का ₹300 बट्टा (राम की हानि)।</li>
-<li><b>To बैंक खाता</b> – श्याम देय तिथि पर ₹10,000 देता है।</li><li><b>By राम खाता</b> – श्याम के स्वीकार करने पर बना दायित्व।</li></ol>
-<div class="note">बिल निपट जाने पर दोनों खाते शून्य शेष से बंद होते हैं।</div>
-<h2 id="s8">8. हुण्डी (Hundi)</h2><div class="box def"><span class="tag">अर्थ</span><span class="hl">हुण्डी</span> भारत का <b>देशी (पारंपरिक) विनिमय-साध्य लिखत</b> है, जो स्थानीय भाषा में लिखी जाती है और व्यापारी सदियों से लंबी दूरी पर धन सुरक्षित भेजने में प्रयोग करते आए हैं – यह आधुनिक विनिमय-विपत्र की पूर्वज है।</div>
-<p>हुण्डी पर <b>स्थानीय रीति-रिवाज</b> लागू होते हैं; पक्षकार सहमत हों तभी परक्राम्य लिखत अधिनियम लागू होता है। फिर भी हुण्डी पृष्ठांकन से <b>हस्तांतरणीय</b> है।</p>
-<table><tr><th>प्रकार</th><th>अर्थ</th></tr><tr><td><b>दर्शनी</b> (Darshani) हुण्डी</td><td><b>दिखाते ही</b> (माँग पर) देय</td></tr><tr><td><b>मुद्दती</b> (Muddati) हुण्डी</td><td><b>निश्चित अवधि</b> बाद देय</td></tr>
-<tr><td><b>धनी-जोग</b></td><td><b>किसी भी धारक / वाहक</b> को देय</td></tr><tr><td><b>शाह-जोग</b></td><td>केवल <b>किसी प्रतिष्ठित व्यक्ति (शाह)</b>, जाने-माने व्यापारी को देय</td></tr>
-<tr><td><b>फरमान-जोग</b></td><td>नामित व्यक्ति के <b>आदेशानुसार</b> देय</td></tr><tr><td><b>जोखमी</b> हुण्डी</td><td>मार्ग में माल पर बनी; माल <b>सुरक्षित पहुँचने पर ही</b> देय (समुद्री जोखिम की हुण्डी)</td></tr></table>
-<div class="fig" id="fig9"><div class="cap">एनिमेटेड माइंड-मैप – हुण्डी के प्रकार</div><button class="replay">↻ दोबारा चलाएँ</button><svg viewBox="0 0 900 430" class="svg" role="img"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M2 2 L13 8 L2 14" fill="none" stroke="context-stroke" stroke-width="2.5"/></marker></defs><g class="a" style="--d:0s"><g class="pulse"><ellipse cx="450" cy="215" rx="130" ry="48" fill="#fff4f4" stroke="#d62828" stroke-width="4"/><text x="450" y="224" text-anchor="middle" class="big" style="font-size:26px">हुण्डी</text></g></g>
-<path class="draw" style="--l:420;--d:0.6s" d="M450 168 L150 104" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
-<g class="a" style="--d:1.1s"><rect x="25" y="36" width="250" height="68" rx="16" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3"/><text x="150" y="66" text-anchor="middle" class="lbl b">दर्शनी</text><text x="150" y="92" text-anchor="middle" class="sm">दिखाते ही देय</text></g>
-<path class="draw" style="--l:420;--d:1.2s" d="M450 168 L450 104" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
-<g class="a" style="--d:1.7s"><rect x="325" y="36" width="250" height="68" rx="16" fill="#ffe9a8" stroke="#1a3a8a" stroke-width="3"/><text x="450" y="66" text-anchor="middle" class="lbl b">मुद्दती</text><text x="450" y="92" text-anchor="middle" class="sm">समय बाद देय</text></g>
-<path class="draw" style="--l:420;--d:1.8s" d="M450 168 L750 104" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
-<g class="a" style="--d:2.3s"><rect x="625" y="36" width="250" height="68" rx="16" fill="#c8f0d0" stroke="#1a3a8a" stroke-width="3"/><text x="750" y="66" text-anchor="middle" class="lbl b">धनी-जोग</text><text x="750" y="92" text-anchor="middle" class="sm">वाहक को देय</text></g>
-<path class="draw" style="--l:420;--d:2.4s" d="M450 262 L150 326" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
-<g class="a" style="--d:2.9s"><rect x="25" y="326" width="250" height="68" rx="16" fill="#ffc2d1" stroke="#1a3a8a" stroke-width="3"/><text x="150" y="356" text-anchor="middle" class="lbl b">शाह-जोग</text><text x="150" y="382" text-anchor="middle" class="sm">शाह (जाने-माने) को</text></g>
-<path class="draw" style="--l:420;--d:3.0s" d="M450 262 L450 326" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
-<g class="a" style="--d:3.5s"><rect x="325" y="326" width="250" height="68" rx="16" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3"/><text x="450" y="356" text-anchor="middle" class="lbl b">फरमान-जोग</text><text x="450" y="382" text-anchor="middle" class="sm">नामित के आदेश पर</text></g>
-<path class="draw" style="--l:420;--d:3.6s" d="M450 262 L750 326" stroke="#1a3a8a" stroke-width="2.5" fill="none" />
-<g class="a" style="--d:4.1s"><rect x="625" y="326" width="250" height="68" rx="16" fill="#ffe9a8" stroke="#1a3a8a" stroke-width="3"/><text x="750" y="356" text-anchor="middle" class="lbl b">जोखमी</text><text x="750" y="382" text-anchor="middle" class="sm">मार्ग में माल का जोखिम</text></g></svg></div>
-<h3>🔍 व्याख्या</h3><ul class="arr"><li><b>ऊपरी पंक्ति</b> – <b>समय</b> (दर्शनी, मुद्दती) और <b>प्राप्तकर्ता</b> (धनी-जोग) के आधार पर प्रकार।</li><li><b>नीचली पंक्ति</b> – <b>प्राप्तकर्ता</b> (शाह-जोग, फरमान-जोग) और <b>जोखिम</b> (जोखमी) के आधार पर।</li></ul>
-<h2 id="s9">9. अंतर, सूत्र व आम गलतियाँ</h2><table><tr><th>आधार</th><th>विनिमय-विपत्र</th><th>चेक</th></tr><tr><td>किस पर लिखा जाता है</td><td>किसी भी व्यक्ति पर</td><td>केवल बैंकर पर</td></tr><tr><td>स्वीकृति</td><td>आवश्यक (मियादी बिल में)</td><td>आवश्यक नहीं</td></tr>
-<tr><td>अनुग्रह दिवस</td><td>3 दिन</td><td>नहीं (माँग पर देय)</td></tr><tr><td>स्टाम्प</td><td>आवश्यक</td><td>आवश्यक नहीं</td></tr><tr><td>रेखांकन (Crossing)</td><td>संभव नहीं</td><td>संभव</td></tr></table>
-<div class="box tip"><ul class="star"><li><b>देय तिथि</b> = बिल की तिथि + अवधि + 3 दिन</li><li><b>बट्टा</b> = बिल राशि × दर × अवशेष समय ÷ 100</li><li><b>बैंक से नकद</b> = बिल राशि – बट्टा</li><li><b>अनादरित बिल</b>: आहरित का खाता <b>बिल राशि + नोटिंग प्रभार</b> से डेबिट होता है</li></ul></div>
-<h3>⚠️ आम गलतियाँ</h3><ul class="arr"><li>देय तिथि निकालते समय <b>3 अनुग्रह दिन</b> भूल जाना।</li><li><b>प्राप्य बिल</b> (संपत्ति) और <b>देय बिल</b> (दायित्व) को मिला देना।</li><li>बिल भुनाने या पृष्ठांकन पर Bills Receivable को क्रेडिट की जगह डेबिट करना।</li><li>बट्टा <b>पूरे वर्ष</b> पर निकालना, अवशेष अवधि पर नहीं।</li><li>बिल भुनाने पर आहरित की बहियों में प्रविष्टि करना।</li></ul>
-<h2 id="s10">10. प्रश्न-उत्तर और परीक्षा टिप्स</h2><div class="box"><b>प्र.1 विनिमय-साध्य लिखत क्या है?</b><br>उ: लिखित दस्तावेज़ जो धन का अधिकार देता है और सुपुर्दगी या पृष्ठांकन से स्वतंत्र रूप से हस्तांतरित हो सकता है।</div>
-<div class="box"><b>प्र.2 प्रतिज्ञा-पत्र की परिभाषा दीजिए।</b><br>उ: लेखक द्वारा किसी निश्चित व्यक्ति/आदेश/वाहक को निश्चित राशि देने का लिखित बिना शर्त वचन (धारा 4)।</div>
-<div class="box"><b>प्र.3 विनिमय-विपत्र के पक्षकार बताइए।</b><br>उ: आहर्ता, आहरित (स्वीकर्ता) और प्राप्तकर्ता।</div>
-<div class="box"><b>प्र.4 अनुग्रह दिवस क्या हैं?</b><br>उ: परिपक्वता तिथि के बाद मियादी बिल के भुगतान हेतु मिलने वाले तीन अतिरिक्त दिन।</div>
-<div class="box"><b>प्र.5 हुण्डी क्या है?</b><br>उ: स्थानीय भाषा में लिखा धन हस्तांतरण का पारंपरिक भारतीय लिखत।</div>
-<h3>✅ परीक्षा टिप्स</h3><ul class="star"><li>परिभाषा में मुख्य शब्द लिखें: <b>बिना शर्त, लिखित, हस्ताक्षर, निश्चित राशि</b>।</li><li>बिल का चित्र बनाकर पक्षकारों पर लेबल लगाएँ।</li><li><b>देय तिथि</b> ध्यान से निकालें; गणना दिखाएँ।</li><li>प्रविष्टियों में विवरण (narration) लिखें और देखें कि <b>किसकी बहियाँ</b> पूछी हैं।</li></ul>
-<p class="foot">✿ शुभकामनाएँ! रोज़ 2 बिल की प्रविष्टियाँ हल करें ✿</p>
-</div>
-<script>
-(function(){
- var figs=[].slice.call(document.querySelectorAll('.fig'));
- function play(f){f.classList.remove('play');void f.offsetWidth;f.classList.add('play');}
- if('IntersectionObserver' in window){
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){play(e.target);io.unobserve(e.target);}})},{threshold:.25});
-  figs.forEach(function(f){io.observe(f)});
- } else figs.forEach(play);
- figs.forEach(function(f){f.querySelector('.replay').addEventListener('click',function(){play(f)})});
-})();
-</script></body></html>
+<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>कॉमर्स कक्षा 10 नोट्स (हिन्दी)</title><link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet"><style>*{box-sizing:border-box}body{margin:0;background:#d8d0bd;font-family:'Kalam','Comic Sans MS',cursive;color:#1b2a6b;font-size:20px}
+.sheet{max-width:820px;margin:14px auto;padding:10px 22px 20px 56px;background:#fffef4 repeating-linear-gradient(transparent 0 31px,#cfe3f2 31px 32px);border-left:3px solid #e8777a;box-shadow:0 3px 12px #0004;line-height:32px;animation:f .8s both}
+@keyframes f{from{opacity:0;transform:translateY(14px)}}
+h1{text-align:center;color:#c0392b;font-size:30px;margin:6px 0;line-height:40px}h2{color:#c0392b;font-size:25px;margin:6px 0;line-height:36px;text-decoration:underline wavy #2e86c1;text-underline-offset:6px}
+h3{color:#0b7a3b;font-size:21px;margin:8px 0 0}.pg{text-align:right;font-size:15px;color:#888}
+.box{border:2px dashed #2e86c1;background:#e8f4fd99;padding:0 12px;border-radius:10px;margin:8px 0}.fm{border:2px solid #c0392b;background:#fff3cd;padding:0 12px;border-radius:10px;text-align:center;margin:8px 0;color:#c0392b}
+.nt{color:#c0392b}b{color:#0b7a3b}ul{margin:0;padding-left:22px}li{line-height:32px}
+table{border-collapse:collapse;width:100%;line-height:26px;font-size:18px;background:#fffef4cc}td,th{border:2px solid #1b2a6b;padding:3px 7px}th{background:#ffe8a3}
+svg{width:100%;height:auto;background:#fffdf0;border:2px solid #1b2a6b;border-radius:10px;margin:6px 0}svg text{font-family:inherit;fill:#1b2a6b}
+.bar{transform-box:fill-box;transform-origin:bottom;animation:g 1.4s both}@keyframes g{from{transform:scaleY(0)}}
+.ar{stroke-dasharray:300;animation:d 1.2s both}@keyframes d{from{stroke-dashoffset:300}}.lb{animation:f 1s both}
+.tip{background:#d5f5e3;border-left:5px solid #0b7a3b;padding:0 10px;margin:8px 0}</style></head><body><div class="sheet"><h1>✏️ कॉमर्स कक्षा 10 – बहीखाता नोट्स</h1><h1 style="font-size:22px">ह्रास + विनिमय-विपत्र, प्रतिज्ञा-पत्र व हुण्डी</h1><div class="box"><b>5 भाग:</b> ① ह्रास की मूल बातें ② विधियाँ (सरल रेखा व ह्रासमान शेष) ③ विनिमय-विपत्र ④ प्रतिज्ञा-पत्र व हुण्डी ⑤ त्वरित पुनरावृत्ति</div></div>
+<div class="sheet"><div class="pg">भाग 1</div><h2>① ह्रास – मूल बातें</h2><div class="box"><b>अर्थ:</b> उपयोग, समय या अप्रचलन के कारण स्थायी सम्पत्ति के मूल्य में होने वाली स्थायी व क्रमिक कमी।</div>
+<h3>कारण</h3><ul><li>टूट-फूट (उपयोग से)</li><li>समय बीतना (पट्टा, पेटेन्ट)</li><li>अप्रचलन (नई तकनीक)</li><li>दुर्घटना व क्षय (खान, कुआँ)</li></ul>
+<h3>उद्देश्य</h3><ul><li><b>सही लाभ</b> ज्ञात करना (लागत को जीवन भर में बाँटना)</li><li>चिट्ठे में सम्पत्ति का <b>सही मूल्य</b></li><li>सम्पत्ति <b>बदलने</b> के लिए कोष</li><li>कर में बचत</li></ul>
+<div class="tip">ह्रास एक <b>अरोकड़ व्यय</b> है: नकद बाहर नहीं जाता, पर लाभ घटता है।</div>
+<h3>जर्नल प्रविष्टियाँ</h3><ul><li>ह्रास खाता <b>Dr.</b> To सम्पत्ति खाता</li><li>लाभ-हानि खाता <b>Dr.</b> To ह्रास खाता</li></ul></div>
+<div class="sheet"><div class="pg">भाग 2</div><h2>② ह्रास की विधियाँ</h2>
+<div class="box"><b>A) सरल रेखा / स्थायी किस्त विधि</b> – हर वर्ष समान राशि।</div><div class="fm">वार्षिक ह्रास = (लागत – अवशेष मूल्य) ÷ आयु (वर्ष)</div>
+<div class="box"><b>B) ह्रासमान शेष / पुस्तक मूल्य विधि</b> – घटते पुस्तक मूल्य पर निश्चित %।</div><div class="fm">ह्रास = प्रारम्भिक पुस्तक मूल्य × दर %</div>
+<h3>उदाहरण: मशीन ₹1,00,000, अवशेष ₹10,000, आयु 5 वर्ष</h3><ul><li>सरल रेखा = (1,00,000 – 10,000) ÷ 5 = हर साल <b>₹18,000</b></li><li>ह्रासमान शेष @20%: वर्ष1 = 20,000; वर्ष2 = 80,000×20% = 16,000; वर्ष3 = 64,000×20% = 12,800</li></ul>
+<h3>🎞 एनिमेटेड चित्र: सरल रेखा बनाम ह्रासमान शेष</h3><svg viewBox="0 0 600 210"><text x="150" y="22" text-anchor="middle" font-size="17" fill="#c0392b">सरल रेखा – बराबर</text><text x="450" y="22" text-anchor="middle" font-size="17">ह्रासमान – घटता</text><line x1="300" y1="30" x2="300" y2="190" stroke="#999" stroke-dasharray="5"/><rect class="bar" x="50" y="75" width="50" height="90" fill="#e67e22" stroke="#1b2a6b" style="animation-delay:0.0s"/><text x="75" y="68" text-anchor="middle" font-size="13">18,000</text><text x="75" y="185" text-anchor="middle" font-size="14">व1</text><rect class="bar" x="130" y="75" width="50" height="90" fill="#e67e22" stroke="#1b2a6b" style="animation-delay:0.3s"/><text x="155" y="68" text-anchor="middle" font-size="13">18,000</text><text x="155" y="185" text-anchor="middle" font-size="14">व2</text><rect class="bar" x="210" y="75" width="50" height="90" fill="#e67e22" stroke="#1b2a6b" style="animation-delay:0.6s"/><text x="235" y="68" text-anchor="middle" font-size="13">18,000</text><text x="235" y="185" text-anchor="middle" font-size="14">व3</text><rect class="bar" x="350" y="65" width="50" height="100" fill="#2e86c1" stroke="#1b2a6b" style="animation-delay:0.8999999999999999s"/><text x="375" y="58" text-anchor="middle" font-size="13">20,000</text><text x="375" y="185" text-anchor="middle" font-size="14">व1</text><rect class="bar" x="430" y="85" width="50" height="80" fill="#2e86c1" stroke="#1b2a6b" style="animation-delay:1.2s"/><text x="455" y="78" text-anchor="middle" font-size="13">16,000</text><text x="455" y="185" text-anchor="middle" font-size="14">व2</text><rect class="bar" x="510" y="101" width="50" height="64" fill="#2e86c1" stroke="#1b2a6b" style="animation-delay:1.5s"/><text x="535" y="94" text-anchor="middle" font-size="13">12,800</text><text x="535" y="185" text-anchor="middle" font-size="14">व3</text></svg>
+<div class="tip"><b>लेबल:</b> नारंगी = सरल रेखा (बराबर), नीला = ह्रासमान शेष (घटता)। <b>व्याख्या:</b> इस विधि में शुरू में ह्रास अधिक और बाद में कम होता है, जबकि मरम्मत खर्च बढ़ता है, इसलिए कुल भार संतुलित रहता है। सम्पत्ति का मूल्य कभी शून्य नहीं होता।</div></div>
+<div class="sheet"><div class="pg">भाग 3</div><h2>③ विनिमय-विपत्र (बिल ऑफ एक्सचेंज)</h2><div class="box"><b>परिभाषा (धारा 5, परक्राम्य लिखत अधिनियम 1881):</b> लिखित, <b>बिना शर्त आदेश</b>, जिस पर लेखक (देनदार को आदेश देने वाले) के हस्ताक्षर हों, कि अमुक व्यक्ति अमुक राशि अमुक व्यक्ति या धारक को माँगने पर या निश्चित समय पर दे।</div>
+<h3>विशेषताएँ</h3><ul><li>लिखित व लेखक द्वारा हस्ताक्षरित</li><li>भुगतान का बिना शर्त आदेश</li><li>निश्चित राशि व समय</li><li>आदाता की <b>स्वीकृति आवश्यक</b></li><li>रेवेन्यू स्टाम्प लगता है</li></ul>
+<h3>3 पक्षकार</h3><ul><li><b>लेखक</b> – विक्रेता/लेनदार जो बिल लिखता है</li><li><b>आदाता (ड्रॉई)</b> – क्रेता/देनदार जिसे भुगतान करना है</li><li><b>प्राप्तकर्ता (पेयी)</b> – जिसे रुपया मिलेगा (प्रायः लेखक स्वयं)</li></ul>
+<h3>🎞 एनिमेटेड चित्र: बिल का जीवन-चक्र</h3><svg viewBox="0 0 600 220"><defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#c0392b"/></marker></defs><circle cx="70" cy="120" r="42" fill="#fadbd8" stroke="#1b2a6b" stroke-width="2"/><text x="70" y="125" text-anchor="middle" font-size="16">लेखक</text><circle cx="300" cy="120" r="42" fill="#d6eaf8" stroke="#1b2a6b" stroke-width="2"/><text x="300" y="125" text-anchor="middle" font-size="16">आदाता</text><circle cx="530" cy="120" r="42" fill="#d5f5e3" stroke="#1b2a6b" stroke-width="2"/><text x="530" y="125" text-anchor="middle" font-size="16">प्राप्तकर्ता</text><line class="ar" x1="112" y1="85" x2="258" y2="85" stroke="#c0392b" stroke-width="3" marker-end="url(#a)" style="animation-delay:0s"/><text class="lb" x="185.0" y="79" text-anchor="middle" font-size="14" style="animation-delay:0.6s">1 बिल लिखा</text><line class="ar" x1="258" y1="150" x2="112" y2="150" stroke="#0b7a3b" stroke-width="3" marker-end="url(#a)" style="animation-delay:1.5s"/><text class="lb" x="185.0" y="144" text-anchor="middle" font-size="14" style="animation-delay:2.1s">2 स्वीकृति</text><line class="ar" x1="342" y1="120" x2="488" y2="120" stroke="#2e86c1" stroke-width="3" marker-end="url(#a)" style="animation-delay:3s"/><text class="lb" x="415.0" y="114" text-anchor="middle" font-size="14" style="animation-delay:3.6s">3 भुगतान</text><text x="300" y="205" text-anchor="middle" font-size="15" fill="#c0392b">(प्राप्तकर्ता प्रायः लेखक ही होता है)</text></svg>
+<div class="tip"><b>व्याख्या:</b> ① विक्रेता क्रेता पर बिल लिखता है। ② क्रेता हस्ताक्षर कर स्वीकार करता है – अब कानूनी दायित्व बन गया। ③ देय तिथि पर भुगतान।</div>
+<h3>महत्त्वपूर्ण शब्द</h3><ul><li><b>देय तिथि</b> = अवधि + <b>3 दिन अनुग्रह काल</b>। जैसे 5 जन., 2 माह → 5 मार्च + 3 = <b>8 मार्च</b></li><li><b>पृष्ठांकन:</b> हस्तान्तरण हेतु पीछे हस्ताक्षर</li><li><b>बट्टे पर भुनाना:</b> देय तिथि से पहले बैंक से नकद लेना (बैंक बट्टा काटता है)</li><li><b>अनादर:</b> देय तिथि पर भुगतान से इनकार</li><li><b>नोटिंग:</b> नोटरी द्वारा अनादर का लेखन</li><li><b>नवीनीकरण:</b> पुराना बिल रद्द, नया बिल</li><li><b>बिल का निवृत्तन:</b> समय से पहले भुगतान (छूट मिलती है)</li></ul></div>
+<div class="sheet"><div class="pg">भाग 4</div><h2>④ प्रतिज्ञा-पत्र व हुण्डी</h2><div class="box"><b>प्रतिज्ञा-पत्र (धारा 4):</b> लिखित, <b>बिना शर्त वचन</b>, जिसमें लेखक हस्ताक्षर कर निश्चित राशि किसी व्यक्ति या धारक को देने का वादा करता है। बैंक नोट/करेंसी नोट प्रतिज्ञा-पत्र नहीं हैं।</div>
+<h3>2 पक्षकार:</h3><ul><li><b>लेखक</b> (देनदार) · <b>प्राप्तकर्ता</b> (लेनदार)</li></ul>
+<h3>🎞 एनिमेटेड चित्र: प्रतिज्ञा-पत्र</h3><svg viewBox="0 0 600 190"><defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#c0392b"/></marker></defs><circle cx="90" cy="95" r="42" fill="#fadbd8" stroke="#1b2a6b" stroke-width="2"/><text x="90" y="100" text-anchor="middle" font-size="16">लेखक</text><circle cx="510" cy="95" r="42" fill="#d5f5e3" stroke="#1b2a6b" stroke-width="2"/><text x="510" y="100" text-anchor="middle" font-size="16">प्राप्तकर्ता</text><line class="ar" x1="135" y1="70" x2="465" y2="70" stroke="#c0392b" stroke-width="3" marker-end="url(#a)" style="animation-delay:0s"/><text class="lb" x="300.0" y="64" text-anchor="middle" font-size="14" style="animation-delay:0.6s">वचन (नोट)</text><line class="ar" x1="465" y1="125" x2="135" y2="125" stroke="#0b7a3b" stroke-width="3" marker-end="url(#a)" style="animation-delay:1.5s"/><text class="lb" x="300.0" y="119" text-anchor="middle" font-size="14" style="animation-delay:2.1s">देय तिथि पर रुपया</text></svg>
+<div class="tip"><b>व्याख्या:</b> वादा देनदार स्वयं लिखता है, इसलिए स्वीकृति की जरूरत नहीं। देय तिथि पर लेनदार को रुपया मिलता है।</div>
+<div class="box"><b>हुण्डी:</b> व्यापारियों द्वारा स्थानीय भाषा में लिखा जाने वाला भारत का परम्परागत साख-पत्र।<br><b>दर्शनी हुण्डी</b> – देखते ही (माँग पर) देय। <b>मुद्दती हुण्डी</b> – निश्चित अवधि बाद देय।</div>
+<h3>बिल बनाम प्रतिज्ञा-पत्र</h3><table><tr><th>आधार</th><th>विनिमय-विपत्र</th><th>प्रतिज्ञा-पत्र</th></tr><tr><td>प्रकृति</td><td>भुगतान का आदेश</td><td>भुगतान का वचन</td></tr><tr><td>पक्षकार</td><td>3</td><td>2</td></tr><tr><td>स्वीकृति</td><td>आवश्यक</td><td>अनावश्यक</td></tr><tr><td>लिखने वाला</td><td>लेनदार</td><td>देनदार</td></tr><tr><td>दायित्व</td><td>आदाता (स्वीकृति के बाद)</td><td>लेखक, प्राथमिक</td></tr></table></div>
+<div class="sheet"><div class="pg">भाग 5</div><h2>⑤ त्वरित पुनरावृत्ति ⭐</h2><div class="fm">सरल रेखा = (लागत – अवशेष) ÷ आयु &nbsp;|&nbsp; ह्रासमान = पुस्तक मूल्य × दर% &nbsp;|&nbsp; देय तिथि = अवधि + 3 दिन</div>
+<ul><li>ह्रास = अरोकड़ व्यय, लाभ घटाता है।</li><li>सरल रेखा: हर साल बराबर; ह्रासमान शेष: हर साल घटता।</li><li>बिल = आदेश (3 पक्ष, स्वीकृति); प्रतिज्ञा-पत्र = वचन (2 पक्ष)।</li><li>हुण्डी = देशी लिखत: दर्शनी / मुद्दती।</li><li>अनादर → नोटिंग; जल्दी नकद → बट्टे पर भुनाना।</li></ul><div class="tip">✔ अभ्यास: हर उदाहरण की जर्नल प्रविष्टि एक बार जरूर लिखें। शुभकामनाएँ! 🍀</div></div></body></html>

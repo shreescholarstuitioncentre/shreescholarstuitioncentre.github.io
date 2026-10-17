@@ -1,258 +1,33 @@
-<!DOCTYPE html>
-<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>बैंक समाधान विवरण – कक्षा 10 वाणिज्य नोट्स (हिंदी)</title>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
-<style>
-:root{--ink:#1a3a8a;--red:#d62828;--green:#1b7f3b;--paper:#fffdf4;--line:#bcd6ee;--hl:#ffe04d;--pink:#ffc2d1;--mint:#c8f0d0}
-*{box-sizing:border-box}
-body{margin:0;background:#e9e4d6;font-family:'Kalam','Patrick Hand',cursive;color:var(--ink);font-size:19px;line-height:1.7}
-.page{max-width:980px;margin:0 auto;background:var(--paper);background-image:linear-gradient(transparent 33px,var(--line) 34px);background-size:100% 34px;padding:30px 28px 60px 78px;position:relative;box-shadow:0 0 25px rgba(0,0,0,.25)}
-.page:before{content:"";position:absolute;left:58px;top:0;bottom:0;width:3px;background:#ef9a9a;box-shadow:5px 0 0 #ef9a9a55}
-.page:after{content:"";position:absolute;left:14px;top:0;bottom:0;width:22px;background:radial-gradient(circle at 11px 40px,#e9e4d6 0 9px,transparent 10px) 0 0/22px 120px repeat-y}
-h1{font-family:'Kalam','Caveat',cursive;font-size:40px;color:var(--red);margin:0;line-height:1.2;text-align:center;transform:rotate(-1deg)}
-.sub{text-align:center;font-size:1.05em;margin:4px 0 18px}
-.under{display:block;margin:0 auto;width:min(520px,90%);height:16px}
-h2{font-family:'Kalam','Caveat',cursive;font-size:26px;color:#fff;background:var(--ink);display:inline-block;padding:2px 20px;margin:36px 0 10px;border-radius:255px 15px 225px 15px/15px 225px 15px 255px;transform:rotate(-1.2deg);line-height:1.5}
-h3{font-family:'Kalam','Caveat',cursive;color:var(--red);font-size:1.25em;margin:14px 0 2px;text-decoration:underline wavy var(--red) 1px;text-underline-offset:5px}
-p{margin:8px 0}
-.box{border:2.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;padding:12px 22px;margin:14px 0;background:#fffdf4}
-.def{border-color:var(--red);background:#fff4f4}
-.tip{border-color:var(--green);background:#f1fff3}
-.note{background:#fff7a8;border:none;border-radius:4px;box-shadow:3px 4px 8px rgba(0,0,0,.25);transform:rotate(1deg);padding:12px 18px;margin:16px 0;color:#5a3d00}
-.tag{display:inline-block;font-weight:700;color:#fff;background:var(--red);padding:0 12px;border-radius:12px 4px 12px 4px;margin-right:6px;transform:rotate(-2deg)}
-.hl{background:linear-gradient(transparent 45%,var(--hl) 45%,var(--hl) 92%,transparent 92%);padding:0 3px}
-.hlp{background:linear-gradient(transparent 45%,var(--pink) 45%,var(--pink) 92%,transparent 92%);padding:0 3px}
-.hlg{background:linear-gradient(transparent 45%,var(--mint) 45%,var(--mint) 92%,transparent 92%);padding:0 3px}
-.red{color:var(--red);font-weight:700}.grn{color:var(--green);font-weight:700}
-ul,ol{margin:6px 0;padding-left:28px}li{margin:2px 0}
-ul.star{list-style:none;padding-left:6px}ul.star li:before{content:"★ ";color:var(--red)}
-ul.arr{list-style:none;padding-left:6px}ul.arr li:before{content:"➜ ";color:var(--green)}
-table{border-collapse:collapse;width:100%;margin:12px 0;background:#fffef8}
-th,td{border:2px solid var(--ink);padding:4px 10px;vertical-align:top;text-align:left}
-th{background:#dbe7ff;font-family:'Kalam','Caveat',cursive;font-size:1.1em;color:var(--red)}
-td.n,th.n{text-align:right;white-space:nowrap}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.fig{border:3px dashed var(--ink);border-radius:18px;padding:10px;margin:18px 0;background:#fffef7;position:relative}
-.fig .cap{font-family:'Kalam','Caveat',cursive;color:var(--red);font-size:1.2em;text-align:center;margin:0 0 4px}
-.svg{width:100%;height:auto;display:block}
-.svg text{font-family:'Kalam','Patrick Hand',cursive;fill:var(--ink)}
-.svg .row{font-size:23px}.svg .b{font-weight:700}.svg .hd{font-size:24px;fill:var(--red);font-weight:700}
-.svg .svt{font-size:27px;font-weight:700;fill:var(--red)}.svg .num{font-size:14px;fill:var(--red);font-weight:700}
-.svg .lbl{font-size:22px}.svg .sm{font-size:19px;fill:var(--green)}.svg .big{font-size:26px;font-weight:700}
-.replay{position:absolute;right:12px;top:10px;font-family:'Kalam','Caveat',cursive;font-size:1em;background:var(--hl);border:2px solid var(--ink);border-radius:20px;padding:0 14px;cursor:pointer;color:var(--ink)}
-.replay:hover{background:#ffd000}
-.fig .a{opacity:0}
-.fig.play .a{animation:pop .7s ease forwards;animation-delay:var(--d,0s)}
-@keyframes pop{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.fig .draw{stroke-dasharray:var(--l,300);stroke-dashoffset:var(--l,300)}
-.fig.play .draw{animation:dr 1.1s ease forwards;animation-delay:var(--d,0s)}
-@keyframes dr{to{stroke-dashoffset:0}}
-.dot{offset-rotate:0deg}
-.fig.play .dot{animation:mv 5s linear 3.5s infinite}
-@keyframes mv{0%{offset-distance:0%;opacity:1}100%{offset-distance:100%;opacity:1}}
-.beam,.pl,.pr{transform-box:view-box}
-.fig.play .beam{animation:bm 3.5s ease-out forwards;animation-delay:var(--d,0s)}
-.fig.play .pl{animation:pl 3.5s ease-out forwards;animation-delay:var(--d,0s)}
-.fig.play .pr{animation:pr 3.5s ease-out forwards;animation-delay:var(--d,0s)}
-@keyframes bm{0%{transform:rotate(-10deg)}30%{transform:rotate(8deg)}60%{transform:rotate(-4deg)}80%{transform:rotate(2deg)}100%{transform:rotate(0)}}
-@keyframes pl{0%{transform:translateY(28px)}30%{transform:translateY(-22px)}60%{transform:translateY(11px)}80%{transform:translateY(-5px)}100%{transform:none}}
-@keyframes pr{0%{transform:translateY(-28px)}30%{transform:translateY(22px)}60%{transform:translateY(-11px)}80%{transform:translateY(5px)}100%{transform:none}}
-.toc{columns:2;column-gap:30px}.toc a{color:var(--ink);text-decoration:none}.toc a:hover{color:var(--red)}
-.foot{text-align:center;color:var(--red);font-family:'Kalam','Caveat',cursive;font-size:1.3em;margin-top:30px}
-@media(max-width:700px){.page{padding:20px 14px 40px 34px}.page:before{left:22px}.page:after{display:none}.two{grid-template-columns:1fr}.toc{columns:1}h1{font-size:27px}h2{font-size:21px}.svg .row{font-size:25px}}
-@media print{body{background:#fff}.page{box-shadow:none}.replay{display:none}.fig .a{opacity:1!important;animation:none!important}.fig .draw{stroke-dashoffset:0!important}}
-.fig .cap{padding:0 125px}@media(max-width:700px){.fig .cap{padding:0 0 26px}}
-.grow{transform-box:fill-box;transform-origin:left center;transform:scaleX(0)}
-.fig.play .grow{animation:gw 1.3s ease forwards;animation-delay:var(--d,0s)}
-@keyframes gw{to{transform:scaleX(1)}}
-.pulse{transform-box:fill-box;transform-origin:center}
-.fig.play .pulse{animation:pu 1.6s ease-in-out 3s infinite}
-@keyframes pu{50%{transform:scale(1.07)}}
-.chq{offset-path:path('M130 120 H790');offset-rotate:0deg}
-.fig.play .chq{animation:mvc 6s ease-in-out 2.5s infinite}
-@keyframes mvc{0%{offset-distance:0%}85%,100%{offset-distance:100%}}
-.svg .rw{font-size:20px}
-</style></head><body><div class="page">
-<h1>बैंक समाधान विवरण – अध्याय 3</h1>
-<svg class="under" viewBox="0 0 520 16"><path d="M5 10 C90 2 170 14 260 7 S430 3 515 9" stroke="#d62828" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
-<p class="sub">कक्षा 10 • वाणिज्य • हाथ से लिखे जैसे नोट्स, एनिमेटेड चित्रों के साथ (हिंदी)</p>
-<div class="box tip"><h3 style="margin-top:0">📒 विषय-सूची</h3><ol class="toc"><li><a href="#s1">BRS का अर्थ</a></li><li><a href="#s2">रोकड़ बही बनाम पास बुक</a></li><li><a href="#s3">शेष में अंतर क्यों?</a></li><li><a href="#s4">उद्देश्य व महत्त्व</a></li><li><a href="#s5">चेक के समय का अंतर</a></li><li><a href="#s6">जोड़ें या घटाएँ? – नियम</a></li><li><a href="#s7">BRS बनाने के चरण</a></li><li><a href="#s8">प्रारूप व हल उदाहरण</a></li><li><a href="#s9">अधिविकर्ष की स्थिति</a></li><li><a href="#s10">सूत्र, ट्रिक व आम गलतियाँ</a></li><li><a href="#s11">प्रश्न-उत्तर और परीक्षा टिप्स</a></li></ol></div>
-
-<h2 id="s1">1. बैंक समाधान विवरण (BRS) का अर्थ</h2><div class="box def"><span class="tag">परिभाषा</span><span class="hl">बैंक समाधान विवरण</span> वह विवरण है जो किसी निश्चित तिथि पर <b>रोकड़ बही (बैंक स्तंभ) के शेष</b> और <b>पास बुक (बैंक विवरण) के शेष</b> के बीच <span class="hlp">अंतर के कारण ज्ञात</span> करने और समायोजन के बाद दोनों का मिलान दिखाने के लिए बनाया जाता है।</div>
-<ul class="star"><li><b>रोकड़ बही</b> = बैंक लेन-देन का हमारा अपना रिकॉर्ड।</li><li><b>पास बुक</b> = बैंक द्वारा रखा गया हमारे खाते का रिकॉर्ड।</li>
-<li>दोनों में लेन-देन वही होते हैं, पर <b>अलग-अलग समय</b> पर या कुछ <b>अतिरिक्त मदों</b> के साथ दर्ज होते हैं – इसलिए शेष अलग दिखते हैं।</li></ul>
-<div class="note">📌 BRS केवल एक <b>विवरण</b> है, खाताबही का खाता नहीं। यह अपने-आप बहियों को नहीं बदलता।</div>
-<div class="fig" id="fig1"><div class="cap">एनिमेटेड – दो बहियाँ, दो शेष, एक BRS</div><button class="replay">↻ दोबारा चलाएँ</button>
-<svg viewBox="0 0 900 400" class="svg" role="img"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M2 2 L13 8 L2 14" fill="none" stroke="context-stroke" stroke-width="2.5"/></marker></defs>
- <g class="a" style="--d:0s"><rect x="30" y="20" width="300" height="190" rx="10" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3.5"/>
-  <text x="180" y="55" text-anchor="middle" class="lbl b">रोकड़ बही</text><text x="180" y="82" text-anchor="middle" class="sm">(बैंक स्तंभ) – हमारा रिकॉर्ड</text>
-  <path d="M55 105 H155 M55 130 H155 M55 155 H155 M205 105 H305 M205 130 H305 M205 155 H305" stroke="#1a3a8a" stroke-width="1.6" opacity=".5"/><text x="180" y="195" text-anchor="middle" class="lbl">शेष ₹25,000</text></g>
- <g class="a" style="--d:.8s"><rect x="570" y="20" width="300" height="190" rx="10" fill="#c8f0d0" stroke="#1b7f3b" stroke-width="3.5"/>
-  <text x="720" y="55" text-anchor="middle" class="lbl b">पास बुक</text><text x="720" y="82" text-anchor="middle" class="sm">बैंक का रिकॉर्ड</text>
-  <path d="M595 105 H695 M595 130 H695 M595 155 H695 M745 105 H845 M745 130 H845 M745 155 H845" stroke="#1b7f3b" stroke-width="1.6" opacity=".5"/><text x="720" y="195" text-anchor="middle" class="lbl">शेष ₹25,300</text></g>
- <path class="draw" style="--l:240;--d:1.6s" d="M335 115 H565" stroke="#d62828" stroke-width="3.5" fill="none" marker-end="url(#ah)"/>
- <path class="draw" style="--l:240;--d:1.6s" d="M565 150 H335" stroke="#d62828" stroke-width="3.5" fill="none" marker-end="url(#ah)"/>
- <text x="450" y="98" text-anchor="middle" class="sm a" style="--d:2s;fill:#d62828">वही लेन-देन, अलग समय</text>
- <g class="a" style="--d:2.4s"><rect x="80" y="235" width="200" height="50" rx="12" fill="#fff" stroke="#1a3a8a" stroke-width="3"/><text x="180" y="268" text-anchor="middle" class="big">₹25,000</text></g>
- <g class="a" style="--d:2.8s"><rect x="620" y="235" width="200" height="50" rx="12" fill="#fff" stroke="#1b7f3b" stroke-width="3"/><text x="720" y="268" text-anchor="middle" class="big">₹25,300</text></g>
- <text x="450" y="270" text-anchor="middle" class="big a" style="--d:3.2s;fill:#d62828">≠</text>
- <path class="draw" style="--l:200;--d:3.6s" d="M180 288 V318 H380" stroke="#d62828" stroke-width="3" fill="none" marker-end="url(#ah)"/>
- <path class="draw" style="--l:200;--d:3.6s" d="M720 288 V318 H520" stroke="#d62828" stroke-width="3" fill="none" marker-end="url(#ah)"/>
- <g class="a" style="--d:4.2s"><g class="pulse"><rect x="380" y="298" width="140" height="42" rx="12" fill="#ffe9a8" stroke="#d62828" stroke-width="3.5"/><text x="450" y="327" text-anchor="middle" class="lbl b">BRS</text></g></g>
- <text x="450" y="378" text-anchor="middle" class="lbl a" style="--d:4.8s;fill:#d62828">BRS ₹300 के अंतर को समझाता है</text>
-</svg></div>
-<h3>🔍 व्याख्या</h3><ul class="arr"><li><b>बायीं बही</b> – फर्म की रोकड़ बही में ₹25,000 है।</li><li><b>दायीं बही</b> – उसी खाते के लिए बैंक की पास बुक में ₹25,300 है।</li>
-<li><b>लाल तीर</b> – वही लेन-देन दोनों में लिखे जाते हैं, पर एक ही दिन नहीं।</li><li><b>BRS</b> – वह पुल जो बताता है कि 25,000 ≠ 25,300 क्यों।</li></ul>
-
-<h2 id="s2">2. रोकड़ बही बनाम पास बुक</h2><table><tr><th>आधार</th><th>रोकड़ बही (बैंक स्तंभ)</th><th>पास बुक</th></tr>
-<tr><td>कौन बनाता है</td><td>व्यापारी (ग्राहक)</td><td>बैंक</td></tr>
-<tr><td>क्या दिखाती है</td><td>बैंक लेन-देन का व्यापारी का दृष्टिकोण</td><td>ग्राहक के खाते का बैंक का दृष्टिकोण</td></tr>
-<tr><td>जमा लिखी जाती है</td><td><b>डेबिट</b> पक्ष में</td><td><b>क्रेडिट</b> पक्ष में</td></tr>
-<tr><td>निकासी लिखी जाती है</td><td><b>क्रेडिट</b> पक्ष में</td><td><b>डेबिट</b> पक्ष में</td></tr>
-<tr><td>अनुकूल शेष</td><td><b>डेबिट</b> शेष</td><td><b>क्रेडिट</b> शेष</td></tr>
-<tr><td>अधिविकर्ष</td><td><b>क्रेडिट</b> शेष</td><td><b>डेबिट</b> शेष</td></tr></table>
-<div class="note">⭐ उल्टा क्यों? बैंक के लिए हमारी जमा <b>दायित्व</b> है (उसे हमें लौटाना है) → क्रेडिट। हमारे लिए यह <b>संपत्ति</b> है → डेबिट।</div>
-<h2 id="s3">3. दोनों शेष में अंतर क्यों होता है?</h2><p>कारण <b>3 समूहों</b> में आते हैं:</p>
-<div class="fig" id="fig2"><div class="cap">एनिमेटेड वृक्ष – अंतर के कारण</div><button class="replay">↻ दोबारा चलाएँ</button>
-<svg viewBox="0 0 900 340" class="svg" role="img"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M2 2 L13 8 L2 14" fill="none" stroke="context-stroke" stroke-width="2.5"/></marker></defs>
- <g class="a" style="--d:0s"><rect x="300" y="10" width="300" height="52" rx="14" fill="#ffc2d1" stroke="#d62828" stroke-width="3.5"/><text x="450" y="45" text-anchor="middle" class="lbl b">अंतर के कारण</text></g>
- <path class="draw" style="--l:380;--d:0.6s" d="M450 64 V90 H150 V108" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
-<g class="a" style="--d:1.1s"><rect x="15" y="112" width="270" height="52" rx="14" fill="#ffe9a8" stroke="#1a3a8a" stroke-width="3"/><text x="150" y="145" text-anchor="middle" class="lbl b">समय का अंतर</text></g>
-<g class="a" style="--d:1.60s"><text x="22" y="200" class="sm" style="fill:#1a3a8a;font-size:19px">• चेक जारी, प्रस्तुत नहीं</text></g>
-<g class="a" style="--d:1.95s"><text x="22" y="234" class="sm" style="fill:#1a3a8a;font-size:19px">• चेक जमा, वसूल नहीं</text></g>
-<path class="draw" style="--l:380;--d:1.6s" d="M450 64 V90 H450 V108" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
-<g class="a" style="--d:2.1s"><rect x="315" y="112" width="270" height="52" rx="14" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3"/><text x="450" y="145" text-anchor="middle" class="lbl b">केवल पास बुक में</text></g>
-<g class="a" style="--d:2.60s"><text x="322" y="200" class="sm" style="fill:#1a3a8a;font-size:19px">• ब्याज / लाभांश जमा</text></g>
-<g class="a" style="--d:2.95s"><text x="322" y="234" class="sm" style="fill:#1a3a8a;font-size:19px">• बैंक प्रभार डेबिट</text></g>
-<g class="a" style="--d:3.30s"><text x="322" y="268" class="sm" style="fill:#1a3a8a;font-size:19px">• सीधी जमा / भुगतान</text></g>
-<g class="a" style="--d:3.65s"><text x="322" y="302" class="sm" style="fill:#1a3a8a;font-size:19px">• चेक अनादरित</text></g>
-<path class="draw" style="--l:380;--d:2.6s" d="M450 64 V90 H750 V108" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
-<g class="a" style="--d:3.1s"><rect x="615" y="112" width="270" height="52" rx="14" fill="#c8f0d0" stroke="#1a3a8a" stroke-width="3"/><text x="750" y="145" text-anchor="middle" class="lbl b">त्रुटियाँ</text></g>
-<g class="a" style="--d:3.60s"><text x="622" y="200" class="sm" style="fill:#1a3a8a;font-size:19px">• रोकड़ बही में गलत राशि</text></g>
-<g class="a" style="--d:3.95s"><text x="622" y="234" class="sm" style="fill:#1a3a8a;font-size:19px">• गलत पक्ष में प्रविष्टि</text></g>
-<g class="a" style="--d:4.30s"><text x="622" y="268" class="sm" style="fill:#1a3a8a;font-size:19px">• बैंक की अपनी गलती</text></g>
-</svg></div>
-<h3>🔍 व्याख्या</h3><ul class="arr"><li><b>समय का अंतर</b> – व्यापारी ने प्रविष्टि कर दी, बैंक ने अभी नहीं की (चेक वसूल होने में दिन लगते हैं)।</li>
-<li><b>केवल पास बुक में</b> – बैंक ने कुछ किया और हमें बाद में पता चला (ब्याज, प्रभार, स्थायी निर्देश से भुगतान, ग्राहकों की सीधी जमा, जमा किया चेक अनादरित)।</li>
-<li><b>त्रुटियाँ</b> – व्यापारी या बैंक की। व्यापारी की त्रुटि रोकड़ बही में सुधारी जाती है; बैंक की त्रुटि बैंक को सूचित करके।</li></ul>
-
-<h2 id="s4">4. उद्देश्य व महत्त्व</h2><ul class="star"><li>रोकड़ बही या पास बुक की <b>त्रुटियाँ व धोखाधड़ी पकड़ना</b>।</li><li><b>सही बैंक शेष</b> (वास्तविक नकद स्थिति) जानना।</li><li><b>अवसूल चेक</b> पहचानकर आगे की कार्यवाही करना।</li>
-<li><b>अलेखित मदें</b> – ब्याज, प्रभार, सीधी जमा – रोकड़ बही में चढ़ाना।</li><li>कर्मचारियों द्वारा पैसे के <b>दुरुपयोग को रोकना</b> (नियमित जाँच)।</li><li>खाते के <b>अधिक निकासी</b> (overdraw) के जोखिम को कम करना।</li></ul>
-<h2 id="s5">5. चेक के समय का अंतर (सबसे आम कारण)</h2><p>चेक लिखने के दिन ही बैंक उसका भुगतान नहीं करता। फर्म द्वारा <b>जारी किए चेक</b> का सफ़र देखें:</p>
-<div class="fig" id="fig3"><div class="cap">एनिमेटेड – फर्म द्वारा जारी चेक का सफ़र</div><button class="replay">↻ दोबारा चलाएँ</button>
-<svg viewBox="0 0 900 310" class="svg" role="img"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M2 2 L13 8 L2 14" fill="none" stroke="context-stroke" stroke-width="2.5"/></marker></defs>
- <path class="draw" style="--l:780;--d:0s" d="M60 120 H850" stroke="#1a3a8a" stroke-width="5" fill="none"/>
- <g class="a" style="--d:0.3s"><circle cx="130" cy="120" r="12" fill="#fff" stroke="#1a3a8a" stroke-width="4"/><text x="130" y="88" text-anchor="middle" class="lbl b">दिन 1</text><text x="130" y="160" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-size:18px">चेक लिखा</text></g>
-<g class="a" style="--d:0.9s"><circle cx="360" cy="120" r="12" fill="#fff" stroke="#1a3a8a" stroke-width="4"/><text x="360" y="88" text-anchor="middle" class="lbl b">दिन 3</text><text x="360" y="160" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-size:18px">पार्टी को मिला</text></g>
-<g class="a" style="--d:1.5s"><circle cx="590" cy="120" r="12" fill="#fff" stroke="#1a3a8a" stroke-width="4"/><text x="590" y="88" text-anchor="middle" class="lbl b">दिन 5</text><text x="590" y="160" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-size:18px">पार्टी ने जमा किया</text></g>
-<g class="a" style="--d:2.1s"><circle cx="790" cy="120" r="12" fill="#fff" stroke="#1a3a8a" stroke-width="4"/><text x="790" y="88" text-anchor="middle" class="lbl b">दिन 8</text><text x="790" y="160" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-size:18px">बैंक ने भुगतान किया</text></g>
-<g class="a" style="--d:.3s"><text x="130" y="182" text-anchor="middle" class="sm" style="font-size:17px">रोकड़ बही क्रेडिट ✔</text></g>
-<g class="a" style="--d:2s"><text x="790" y="182" text-anchor="middle" class="sm" style="font-size:17px">पास बुक डेबिट ✔</text></g>
- <g class="a" style="--d:3s"><path d="M475 50 V190" stroke="#d62828" stroke-width="3.5" stroke-dasharray="9 7"/><text x="475" y="42" text-anchor="middle" class="lbl b" style="fill:#d62828">31 मार्च</text></g>
- <path class="draw" style="--l:700;--d:3.4s" d="M130 215 H790" stroke="#1b7f3b" stroke-width="3" fill="none"/>
- <path d="M130 205 V225 M790 205 V225" stroke="#1b7f3b" stroke-width="3"/>
- <text x="460" y="250" text-anchor="middle" class="lbl b a" style="--d:3.8s;fill:#1b7f3b">अंतर = जारी चेक जो प्रस्तुत नहीं हुआ</text>
- <text x="460" y="282" text-anchor="middle" class="sm a" style="--d:4.2s;fill:#d62828;font-size:20px">31 मार्च को: रोकड़ बही घट चुकी, पास बुक नहीं → जोड़ें (रोकड़ बही विधि)</text>
- <g class="a" style="--d:.5s"><g class="chq"><rect x="-48" y="-17" width="96" height="34" rx="6" fill="#fff7a8" stroke="#1a3a8a" stroke-width="2.5"/><text x="0" y="6" text-anchor="middle" class="sm" style="fill:#1a3a8a;font-weight:700">₹3,000</text></g></g>
-</svg></div>
-<h3>🔍 व्याख्या</h3><ol><li><b>दिन 1</b> – फर्म चेक लिखकर तुरंत रोकड़ बही क्रेडिट करती है (शेष घटता है)।</li><li><b>दिन 3</b> – पार्टी को चेक मिलता है।</li><li><b>दिन 5</b> – पार्टी अपने बैंक में जमा करती है।</li>
-<li><b>दिन 8</b> – हमारा बैंक भुगतान कर पास बुक डेबिट करता है (शेष घटता है)।</li></ol>
-<p>यदि शेष की तिथि (लाल बिंदीदार रेखा) दिन 1 और दिन 8 के बीच पड़े, तो <b>रोकड़ बही का शेष पास बुक से कम</b> दिखता है। फर्म द्वारा <b>जमा किए</b> चेक, जो बैंक ने अभी वसूल नहीं किए, में इसका उल्टा होता है।</p>
-<div class="box tip"><span class="tag">याद रखें</span>जारी चेक, प्रस्तुत नहीं = <b>"हमने दिया, बैंक ने अभी नहीं दिया"</b>। जमा चेक, वसूल नहीं = <b>"हमें मिला, बैंक ने अभी जमा नहीं किया"</b>।</div>
-
-<h2 id="s6">6. जोड़ें या घटाएँ? – नियम</h2><p>मूल विचार: <span class="hl">एक शेष से शुरू करें और दूसरे तक पहुँचें।</span></p>
-<h3>क. रोकड़ बही के शेष (अनुकूल / डेबिट) से शुरू → पास बुक का शेष</h3>
-<div class="fig" id="fig4"><div class="cap">एनिमेटेड – रोकड़ बही से शुरू करने पर जोड़ें (+) या घटाएँ (−)</div><button class="replay">↻ दोबारा चलाएँ</button>
-<svg viewBox="0 0 900 420" class="svg" role="img"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M2 2 L13 8 L2 14" fill="none" stroke="context-stroke" stroke-width="2.5"/></marker></defs>
- <g class="a" style="--d:0s"><rect x="150" y="8" width="600" height="46" rx="12" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3"/><text x="450" y="39" text-anchor="middle" class="lbl b">रोकड़ बही का शेष (डेबिट / अनुकूल)</text></g>
- <path class="draw" style="--l:60;--d:.5s" d="M300 56 V84" stroke="#1b7f3b" stroke-width="3" fill="none" marker-end="url(#ah)"/>
- <path class="draw" style="--l:60;--d:.5s" d="M600 56 V84" stroke="#d62828" stroke-width="3" fill="none" marker-end="url(#ah)"/>
- <g class="a" style="--d:.9s"><rect x="20" y="88" width="420" height="40" rx="12" fill="#c8f0d0" stroke="#1b7f3b" stroke-width="3"/><text x="230" y="116" text-anchor="middle" class="lbl b" style="fill:#1b7f3b">जोड़ें (+)</text></g>
- <g class="a" style="--d:1.2s"><rect x="460" y="88" width="420" height="40" rx="12" fill="#ffc2d1" stroke="#d62828" stroke-width="3"/><text x="670" y="116" text-anchor="middle" class="lbl b" style="fill:#d62828">घटाएँ (−)</text></g>
- <g class="a" style="--d:1.7s"><rect x="20" y="140" width="420" height="46" rx="10" fill="#f1fff3" stroke="#1b7f3b" stroke-width="2.5"/><circle cx="48" cy="163" r="13" fill="#1b7f3b"/><text x="48" y="171" text-anchor="middle" class="lbl b" style="fill:#fff">+</text><text x="72" y="170" class="rw">चेक जारी, प्रस्तुत नहीं</text></g>
-<g class="a" style="--d:2.2s"><rect x="20" y="196" width="420" height="46" rx="10" fill="#f1fff3" stroke="#1b7f3b" stroke-width="2.5"/><circle cx="48" cy="219" r="13" fill="#1b7f3b"/><text x="48" y="227" text-anchor="middle" class="lbl b" style="fill:#fff">+</text><text x="72" y="226" class="rw">बैंक द्वारा ब्याज / लाभांश जमा</text></g>
-<g class="a" style="--d:2.7s"><rect x="20" y="252" width="420" height="46" rx="10" fill="#f1fff3" stroke="#1b7f3b" stroke-width="2.5"/><circle cx="48" cy="275" r="13" fill="#1b7f3b"/><text x="48" y="283" text-anchor="middle" class="lbl b" style="fill:#fff">+</text><text x="72" y="282" class="rw">ग्राहक की सीधी जमा</text></g>
-<g class="a" style="--d:1.9s"><rect x="460" y="140" width="420" height="46" rx="10" fill="#fff4f4" stroke="#d62828" stroke-width="2.5"/><circle cx="488" cy="163" r="13" fill="#d62828"/><text x="488" y="171" text-anchor="middle" class="lbl b" style="fill:#fff">−</text><text x="512" y="170" class="rw">चेक जमा, वसूल नहीं</text></g>
-<g class="a" style="--d:2.4s"><rect x="460" y="196" width="420" height="46" rx="10" fill="#fff4f4" stroke="#d62828" stroke-width="2.5"/><circle cx="488" cy="219" r="13" fill="#d62828"/><text x="488" y="227" text-anchor="middle" class="lbl b" style="fill:#fff">−</text><text x="512" y="226" class="rw">बैंक प्रभार डेबिट</text></g>
-<g class="a" style="--d:2.9s"><rect x="460" y="252" width="420" height="46" rx="10" fill="#fff4f4" stroke="#d62828" stroke-width="2.5"/><circle cx="488" cy="275" r="13" fill="#d62828"/><text x="488" y="283" text-anchor="middle" class="lbl b" style="fill:#fff">−</text><text x="512" y="282" class="rw">बैंक द्वारा सीधा भुगतान</text></g>
-<g class="a" style="--d:3.4s"><rect x="460" y="308" width="420" height="46" rx="10" fill="#fff4f4" stroke="#d62828" stroke-width="2.5"/><circle cx="488" cy="331" r="13" fill="#d62828"/><text x="488" y="339" text-anchor="middle" class="lbl b" style="fill:#fff">−</text><text x="512" y="338" class="rw">जमा चेक अनादरित</text></g>
- <g class="a" style="--d:5s"><rect x="150" y="368" width="600" height="46" rx="12" fill="#ffe9a8" stroke="#1a3a8a" stroke-width="3.5"/><text x="450" y="399" text-anchor="middle" class="lbl b">= पास बुक का शेष</text></g>
-</svg></div>
-<h3>ख. पास बुक के शेष (क्रेडिट / अनुकूल) से शुरू → रोकड़ बही का शेष</h3>
-<p>ऊपर के चित्र के <b>हर चिह्न को उल्टा</b> कर दें:</p>
-<table><tr><th>मद</th><th>रोकड़ बही शेष से</th><th>पास बुक शेष से</th></tr>
-<tr><td>चेक जारी, प्रस्तुत नहीं</td><td class="grn">+ जोड़ें</td><td class="red">– घटाएँ</td></tr>
-<tr><td>चेक जमा, वसूल नहीं</td><td class="red">– घटाएँ</td><td class="grn">+ जोड़ें</td></tr>
-<tr><td>बैंक द्वारा ब्याज / लाभांश जमा</td><td class="grn">+ जोड़ें</td><td class="red">– घटाएँ</td></tr>
-<tr><td>ग्राहक की सीधी जमा</td><td class="grn">+ जोड़ें</td><td class="red">– घटाएँ</td></tr>
-<tr><td>बैंक प्रभार</td><td class="red">– घटाएँ</td><td class="grn">+ जोड़ें</td></tr>
-<tr><td>बैंक द्वारा सीधा भुगतान</td><td class="red">– घटाएँ</td><td class="grn">+ जोड़ें</td></tr>
-<tr><td>चेक अनादरित</td><td class="red">– घटाएँ</td><td class="grn">+ जोड़ें</td></tr></table>
-<div class="note">अधिविकर्ष (प्रतिकूल) शेष हो? <b>फिर से उल्टा करें</b> – खंड 9 देखें।</div>
-<div class="box tip"><span class="tag">ट्रिक</span>पूछें: <i>"क्या बैंक ने हमारा शेष रोकड़ बही से पहले ही बड़ा कर दिया है?"</i> हाँ (ब्याज, जमा, हमारे जारी अवसूल चेक) → रोकड़ बही से पास बुक की ओर जाते समय <b>जोड़ें</b>।</div>
-
-<h2 id="s7">7. BRS बनाने के चरण</h2><p>हर प्रश्न में ये 5 चरण अपनाएँ:</p>
-<div class="fig" id="fig5"><div class="cap">एनिमेटेड – BRS हल करने के 5 चरण</div><button class="replay">↻ दोबारा चलाएँ</button>
-<svg viewBox="0 0 900 180" class="svg" role="img"><defs><marker id="ah" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M2 2 L13 8 L2 14" fill="none" stroke="context-stroke" stroke-width="2.5"/></marker></defs>
- <g class="a" style="--d:0.3s"><rect x="10" y="30" width="160" height="130" rx="14" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3"/><circle cx="90" cy="30" r="16" fill="#d62828"/><text x="90" y="36" text-anchor="middle" class="lbl b" style="fill:#fff;font-size:20px">1</text><text x="90" y="72" text-anchor="middle" class="lbl" style="font-size:19px">शुरुआती शेष</text><text x="90" y="98" text-anchor="middle" class="lbl" style="font-size:19px">लें (रोकड़ बही</text><text x="90" y="124" text-anchor="middle" class="lbl" style="font-size:19px">या पास बुक)</text><text x="90" y="150" text-anchor="middle" class="lbl" style="font-size:19px"></text></g>
-<path class="draw" style="--l:30;--d:0.8s" d="M170 90 H188" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
-<g class="a" style="--d:1.1s"><rect x="190" y="30" width="160" height="130" rx="14" fill="#ffe9a8" stroke="#1a3a8a" stroke-width="3"/><circle cx="270" cy="30" r="16" fill="#d62828"/><text x="270" y="36" text-anchor="middle" class="lbl b" style="fill:#fff;font-size:20px">2</text><text x="270" y="72" text-anchor="middle" class="lbl" style="font-size:19px">हर अंतर</text><text x="270" y="98" text-anchor="middle" class="lbl" style="font-size:19px">पहचानें (दोनों</text><text x="270" y="124" text-anchor="middle" class="lbl" style="font-size:19px">बहियाँ मिलाएँ)</text><text x="270" y="150" text-anchor="middle" class="lbl" style="font-size:19px"></text></g>
-<path class="draw" style="--l:30;--d:1.6s" d="M350 90 H368" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
-<g class="a" style="--d:1.9s"><rect x="370" y="30" width="160" height="130" rx="14" fill="#c8f0d0" stroke="#1a3a8a" stroke-width="3"/><circle cx="450" cy="30" r="16" fill="#d62828"/><text x="450" y="36" text-anchor="middle" class="lbl b" style="fill:#fff;font-size:20px">3</text><text x="450" y="72" text-anchor="middle" class="lbl" style="font-size:19px">जोड़ें या</text><text x="450" y="98" text-anchor="middle" class="lbl" style="font-size:19px">घटाएँ तय करें</text><text x="450" y="124" text-anchor="middle" class="lbl" style="font-size:19px">(नियम से)</text><text x="450" y="150" text-anchor="middle" class="lbl" style="font-size:19px"></text></g>
-<path class="draw" style="--l:30;--d:2.4s" d="M530 90 H548" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
-<g class="a" style="--d:2.7s"><rect x="550" y="30" width="160" height="130" rx="14" fill="#ffc2d1" stroke="#1a3a8a" stroke-width="3"/><circle cx="630" cy="30" r="16" fill="#d62828"/><text x="630" y="36" text-anchor="middle" class="lbl b" style="fill:#fff;font-size:20px">4</text><text x="630" y="72" text-anchor="middle" class="lbl" style="font-size:19px">दूसरे शेष की</text><text x="630" y="98" text-anchor="middle" class="lbl" style="font-size:19px">गणना करें</text><text x="630" y="124" text-anchor="middle" class="lbl" style="font-size:19px"></text><text x="630" y="150" text-anchor="middle" class="lbl" style="font-size:19px"></text></g>
-<path class="draw" style="--l:30;--d:3.2s" d="M710 90 H728" stroke="#1a3a8a" stroke-width="3" fill="none" marker-end="url(#ah)"/>
-<g class="a" style="--d:3.5s"><rect x="730" y="30" width="160" height="130" rx="14" fill="#dbe7ff" stroke="#1a3a8a" stroke-width="3"/><circle cx="810" cy="30" r="16" fill="#d62828"/><text x="810" y="36" text-anchor="middle" class="lbl b" style="fill:#fff;font-size:20px">5</text><text x="810" y="72" text-anchor="middle" class="lbl" style="font-size:19px">जाँचें कि</text><text x="810" y="98" text-anchor="middle" class="lbl" style="font-size:19px">दूसरी बही से</text><text x="810" y="124" text-anchor="middle" class="lbl" style="font-size:19px">मिलता है ✔</text><text x="810" y="150" text-anchor="middle" class="lbl" style="font-size:19px"></text></g>
-</svg></div>
-<h3>🔍 व्याख्या</h3><ol><li><b>शुरुआती शेष</b> – प्रश्न बताता है कौन-सा; यह भी देखें कि अनुकूल है या अधिविकर्ष।</li><li><b>अंतर पहचानें</b> – दोनों बहियों में समान प्रविष्टियों पर टिक लगाएँ; बिना टिक वाली मदें अंतर हैं।</li>
-<li><b>जोड़ें / घटाएँ</b> – खंड 6 की तालिका लगाएँ।</li><li><b>गणना</b> – उत्तर <i>दूसरी</i> बही का शेष है।</li><li><b>जाँच</b> – समय हो तो उल्टी विधि से मिलाएँ।</li></ol>
-
-<h2 id="s8">8. प्रारूप व हल उदाहरण</h2><div class="box def"><span class="tag">प्रारूप</span><b>______ का ______ को बैंक समाधान विवरण</b><br>विवरण | राशि (₹) | राशि (₹)</div>
-<h3>प्रश्न</h3>
-<p>31 मार्च को रोकड़ बही में बैंक शेष <b>₹25,000 (डेबिट)</b> है। पास बुक का शेष ज्ञात कीजिए, यदि:</p>
-<ul class="star"><li>जारी किए पर प्रस्तुत न हुए चेक: ₹3,000</li><li>जमा किए पर वसूल न हुए चेक: ₹5,000</li><li>केवल बैंक द्वारा डेबिट प्रभार: ₹200</li><li>केवल बैंक द्वारा जमा ब्याज: ₹500</li><li>ग्राहक की सीधी जमा (रोकड़ बही में नहीं): ₹2,000</li></ul>
-<div class="fig" id="fig6"><div class="cap">एनिमेटेड BRS (रोकड़ बही से शुरू)</div><button class="replay">↻ दोबारा चलाएँ</button><svg viewBox="0 0 900 498" class="svg" role="img">
-<text x="450" y="28" text-anchor="middle" class="svt a" style="--d:0s">31 मार्च का बैंक समाधान विवरण</text>
-<path class="draw" style="--l:900;--d:.2s" d="M0 46 H900" stroke="#1a3a8a" stroke-width="3" fill="none"/>
-<text x="10" y="76" class="hd a" style="--d:.4s">विवरण</text><text x="700" y="76" text-anchor="end" class="hd a" style="--d:.4s">राशि (₹)</text><text x="890" y="76" text-anchor="end" class="hd a" style="--d:.4s">चालू योग</text>
-<g class="a" style="--d:0.8s"><rect x="2" y="91" width="896" height="38" rx="10" fill="#dbe7ff" opacity=".8"/><circle cx="22" cy="110" r="12" fill="none" stroke="#d62828" stroke-width="2"/><text x="22" y="115" text-anchor="middle" class="num">1</text><text x="46" y="118" class="rw b" style="font-weight:700">रोकड़ बही का शेष (डेबिट)</text><text x="700" y="118" text-anchor="end" class="row" style="fill:#1a3a8a;font-weight:700">25,000</text><text x="890" y="118" text-anchor="end" class="row b">25,000</text></g>
-<g class="a" style="--d:1.5s"><circle cx="22" cy="154" r="12" fill="none" stroke="#d62828" stroke-width="2"/><text x="22" y="159" text-anchor="middle" class="num">2</text><text x="46" y="162" class="rw b" style="font-weight:400">जोड़ें: जारी चेक, प्रस्तुत नहीं</text><text x="700" y="162" text-anchor="end" class="row" style="fill:#1b7f3b;font-weight:700">+ 3,000</text><text x="890" y="162" text-anchor="end" class="row b">28,000</text></g>
-<g class="a" style="--d:2.2s"><circle cx="22" cy="198" r="12" fill="none" stroke="#d62828" stroke-width="2"/><text x="22" y="203" text-anchor="middle" class="num">3</text><text x="46" y="206" class="rw b" style="font-weight:400">घटाएँ: जमा चेक, वसूल नहीं</text><text x="700" y="206" text-anchor="end" class="row" style="fill:#d62828;font-weight:700">− 5,000</text><text x="890" y="206" text-anchor="end" class="row b">23,000</text></g>
-<g class="a" style="--d:2.9s"><circle cx="22" cy="242" r="12" fill="none" stroke="#d62828" stroke-width="2"/><text x="22" y="247" text-anchor="middle" class="num">4</text><text x="46" y="250" class="rw b" style="font-weight:400">घटाएँ: बैंक प्रभार (केवल बैंक)</text><text x="700" y="250" text-anchor="end" class="row" style="fill:#d62828;font-weight:700">− 200</text><text x="890" y="250" text-anchor="end" class="row b">22,800</text></g>
-<g class="a" style="--d:3.6s"><circle cx="22" cy="286" r="12" fill="none" stroke="#d62828" stroke-width="2"/><text x="22" y="291" text-anchor="middle" class="num">5</text><text x="46" y="294" class="rw b" style="font-weight:400">जोड़ें: जमा ब्याज (केवल बैंक)</text><text x="700" y="294" text-anchor="end" class="row" style="fill:#1b7f3b;font-weight:700">+ 500</text><text x="890" y="294" text-anchor="end" class="row b">23,300</text></g>
-<g class="a" style="--d:4.3s"><circle cx="22" cy="330" r="12" fill="none" stroke="#d62828" stroke-width="2"/><text x="22" y="335" text-anchor="middle" class="num">6</text><text x="46" y="338" class="rw b" style="font-weight:400">जोड़ें: ग्राहक की सीधी जमा</text><text x="700" y="338" text-anchor="end" class="row" style="fill:#1b7f3b;font-weight:700">+ 2,000</text><text x="890" y="338" text-anchor="end" class="row b">25,300</text></g>
-<g class="a" style="--d:5.0s"><rect x="2" y="355" width="896" height="38" rx="10" fill="#ffe04d" opacity=".75"/><circle cx="22" cy="374" r="12" fill="none" stroke="#d62828" stroke-width="2"/><text x="22" y="379" text-anchor="middle" class="num">7</text><text x="46" y="382" class="rw b" style="font-weight:700">पास बुक का शेष</text><text x="700" y="382" text-anchor="end" class="row" style="fill:#1a3a8a;font-weight:700">25,300</text><text x="890" y="382" text-anchor="end" class="row b">25,300</text></g>
-<g class="a" style="--d:5.7s"><path d="M0 400 H900" stroke="#1a3a8a" stroke-width="2.5"/><path d="M600 408 H900 M600 414 H900" stroke="#1a3a8a" stroke-width="2.5"/><text x="450" y="452" text-anchor="middle" class="lbl b" style="fill:#d62828">जाँच: पास बुक शेष = ₹25,300 ✔</text></g>
-</svg></div>
-<h3>🔍 लेबल की व्याख्या</h3><ol>
-<li><b>शुरुआती शेष</b> – रोकड़ बही में ₹25,000 डेबिट।</li><li><b>+3,000</b> – हमने रोकड़ बही घटा दी, बैंक ने नहीं → पास बुक अधिक।</li><li><b>–5,000</b> – हमने रोकड़ बही बढ़ा दी, बैंक ने जमा नहीं किया → पास बुक कम।</li>
-<li><b>–200</b> – बैंक ने प्रभार लगाया; रोकड़ बही को पता नहीं।</li><li><b>+500</b> – बैंक ने ब्याज दिया; रोकड़ बही को पता नहीं।</li><li><b>+2,000</b> – ग्राहक ने सीधे बैंक में पैसे जमा किए।</li><li><b>परिणाम</b> – पास बुक शेष ₹25,300।</li></ol>
-<div class="note">उल्टी जाँच: 25,300 + 5,000 + 200 – 3,000 – 500 – 2,000 = <b>25,000</b> ✔</div>
-<div class="box tip"><span class="tag">BRS के बाद</span>जो मदें <b>केवल पास बुक में</b> थीं (बैंक प्रभार, ब्याज, सीधी जमा) उन्हें अब रोकड़ बही को अद्यतन करने हेतु <b>रोकड़ बही में चढ़ाएँ</b> (समायोजित रोकड़ बही शेष: 25,000 – 200 + 500 + 2,000 = 27,300)। समय की मदों (अवसूल चेक) की <b>कोई प्रविष्टि नहीं</b> होती।</div>
-<h2 id="s9">9. अधिविकर्ष की स्थिति (प्रतिकूल शेष)</h2><div class="box def"><span class="tag">याद रखें</span>अधिविकर्ष = बैंक ने हमें उधार दिया → शेष रोकड़ बही में <b>क्रेडिट</b> और पास बुक में <b>डेबिट</b> होता है। अनुकूल शेष की तुलना में सभी चिह्न <span class="red">उल्टे</span> हो जाते हैं।</div>
-<table><tr><th>रोकड़ बही के अधिविकर्ष से शुरू</th><th>व्यवहार</th></tr>
-<tr><td>चेक जारी, प्रस्तुत नहीं</td><td class="red">– घटाएँ</td></tr><tr><td>चेक जमा, वसूल नहीं</td><td class="grn">+ जोड़ें</td></tr>
-<tr><td>ब्याज / लाभांश / सीधी जमा</td><td class="red">– घटाएँ</td></tr><tr><td>बैंक प्रभार / सीधा भुगतान / अनादर</td><td class="grn">+ जोड़ें</td></tr></table>
-<p><b>छोटा उदाहरण:</b> रोकड़ बही का अधिविकर्ष ₹10,000; जारी चेक प्रस्तुत नहीं ₹2,000; जमा चेक वसूल नहीं ₹3,000।<br>पास बुक का अधिविकर्ष = 10,000 – 2,000 + 3,000 = <b>₹11,000</b>।</p>
-<h2 id="s10">10. सूत्र, ट्रिक व आम गलतियाँ</h2><div class="box tip"><ul class="star"><li><b>पास बुक शेष (रोकड़ बही से)</b> = रोकड़ बही शेष + जारी चेक प्रस्तुत नहीं + ब्याज/सीधी जमा – जमा चेक वसूल नहीं – प्रभार/सीधे भुगतान</li>
-<li><b>रोकड़ बही शेष (पास बुक से)</b> = सभी चिह्न उल्टे</li><li>समय की मदें → <b>रोकड़ बही में प्रविष्टि नहीं</b>; केवल-बैंक मदें → <b>रोकड़ बही में प्रविष्टि</b></li></ul></div>
-<h3>⚠️ आम गलतियाँ</h3><ul class="arr"><li>यह भूल जाना कि रोकड़ बही और पास बुक <b>एक-दूसरे का प्रतिबिंब</b> हैं (Dr ↔ Cr)।</li><li>शुरुआती शेष <b>अधिविकर्ष</b> है या नहीं, यह न देखना।</li><li>रोकड़ बही से चलते समय बैंक प्रभार जोड़ देना।</li><li>"जारी" और "जमा" चेक को आपस में मिला देना।</li><li>उन मदों को भी समायोजित करना जो दोनों बहियों में सही दर्ज हैं।</li></ul>
-<h2 id="s11">11. प्रश्न-उत्तर और परीक्षा टिप्स</h2><div class="box"><b>प्र.1 BRS क्या है?</b><br>उ: वह विवरण जो किसी तिथि पर रोकड़ बही (बैंक स्तंभ) और पास बुक के शेष का मिलान करता है।</div>
-<div class="box"><b>प्र.2 BRS की आवश्यकता क्यों?</b><br>उ: अंतर के कारण जानने, त्रुटियाँ पकड़ने और सही बैंक शेष जानने के लिए।</div>
-<div class="box"><b>प्र.3 क्या BRS खाताबही का भाग है?</b><br>उ: नहीं – यह केवल एक विवरण है जो बहियों के बाहर बनता है।</div>
-<div class="box"><b>प्र.4 जमा किया चेक अनादरित हो गया। रोकड़ बही विधि में क्या असर?</b><br>उ: बैंक ने हमारा खाता डेबिट कर दिया; रोकड़ बही में जमा अब भी दिख रही है → रोकड़ बही शेष में से <b>घटाएँ</b>।</div>
-<div class="box"><b>प्र.5 रोकड़ बही का डेबिट शेष पास बुक में क्रेडिट क्यों?</b><br>उ: क्योंकि हमारी संपत्ति बैंक का दायित्व है।</div>
-<h3>✅ परीक्षा टिप्स</h3><ul class="star"><li>शीर्षक लिखें: <i>"... को BRS"</i>।</li><li>स्पष्ट लिखें: अनुकूल शेष या अधिविकर्ष।</li><li>हर मद के साथ <b>जोड़ें / घटाएँ</b> लिखें।</li><li>हमेशा उल्टी विधि से जाँच करें।</li><li>जो मदें दोनों बहियों में दर्ज हैं, उन्हें समायोजित न करें।</li></ul>
-<p class="foot">✿ शुभकामनाएँ! रोज़ 2 BRS प्रश्न हल करें ✿</p>
-</div>
-<script>
-(function(){
- var figs=[].slice.call(document.querySelectorAll('.fig'));
- function play(f){f.classList.remove('play');void f.offsetWidth;f.classList.add('play');}
- if('IntersectionObserver' in window){
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){play(e.target);io.unobserve(e.target);}})},{threshold:.25});
-  figs.forEach(function(f){io.observe(f)});
- } else figs.forEach(play);
- figs.forEach(function(f){f.querySelector('.replay').addEventListener('click',function(){play(f)})});
-})();
-</script></body></html>
+<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>साझेदारी खाते व BRS नोट्स</title><link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet"><style>*{box-sizing:border-box}body{margin:0;background:#d8d0bd;font-family:'Kalam','Comic Sans MS',cursive;color:#1b2a6b;font-size:20px}
+.sheet{max-width:820px;margin:14px auto;padding:10px 22px 20px 56px;background:#fffef4 repeating-linear-gradient(transparent 0 31px,#cfe3f2 31px 32px);border-left:3px solid #e8777a;box-shadow:0 3px 12px #0004;line-height:32px;animation:f .8s both}
+@keyframes f{from{opacity:0;transform:translateY(14px)}}
+h1{text-align:center;color:#c0392b;font-size:30px;margin:6px 0;line-height:40px}h2{color:#c0392b;font-size:25px;margin:6px 0;line-height:36px;text-decoration:underline wavy #2e86c1;text-underline-offset:6px}
+h3{color:#0b7a3b;font-size:21px;margin:8px 0 0}.pg{text-align:right;font-size:15px;color:#888}
+.box{border:2px dashed #2e86c1;background:#e8f4fd99;padding:0 12px;border-radius:10px;margin:8px 0}.fm{border:2px solid #c0392b;background:#fff3cd;padding:0 12px;border-radius:10px;text-align:center;margin:8px 0;color:#c0392b}
+.nt{color:#c0392b}b{color:#0b7a3b}ul{margin:0;padding-left:22px}li{line-height:32px}
+table{border-collapse:collapse;width:100%;line-height:26px;font-size:18px;background:#fffef4cc}td,th{border:2px solid #1b2a6b;padding:3px 7px}th{background:#ffe8a3}
+svg{width:100%;height:auto;background:#fffdf0;border:2px solid #1b2a6b;border-radius:10px;margin:6px 0}svg text{font-family:inherit;fill:#1b2a6b}
+.bar{transform-box:fill-box;transform-origin:bottom;animation:g 1.4s both}@keyframes g{from{transform:scaleY(0)}}
+.ar{stroke-dasharray:300;animation:d 1.2s both}@keyframes d{from{stroke-dashoffset:300}}.lb{animation:f 1s both}
+.tip{background:#d5f5e3;border-left:5px solid #0b7a3b;padding:0 10px;margin:8px 0}@keyframes tl{from{transform:rotate(-9deg)}}.bm{transform-origin:300px 150px;animation:tl 3s ease-in-out 1s both}</style></head><body><div class="sheet"><h1>✏️ कॉमर्स कक्षा 10 – बहीखाता नोट्स</h1><h1 style="font-size:22px">साझेदारी खाते + बैंक समाधान विवरण</h1><div class="box"><b>3 भाग:</b> ① साझेदारी की मूल बातें ② लाभ-हानि विनियोजन खाता ③ बैंक समाधान विवरण (BRS)</div></div>
+<div class="sheet"><div class="pg">भाग 1</div><h2>① साझेदारी – मूल बातें</h2><div class="box"><b>परिभाषा (भारतीय साझेदारी अधिनियम 1932, धारा 4):</b> उन व्यक्तियों का आपसी सम्बन्ध जो सबके लिए या सबकी ओर से किसी एक द्वारा चलाए गए व्यापार का लाभ बाँटने पर सहमत हों।</div>
+<h3>विशेषताएँ</h3><ul><li>कम से कम 2 साझेदार (अधिकतम 50)</li><li>लिखित/मौखिक समझौता – <b>साझेदारी विलेख</b></li><li>लाभ-हानि निश्चित अनुपात में</li><li>असीमित दायित्व · आपसी प्रतिनिधित्व</li></ul>
+<h3>साझेदारी विलेख में होता है</h3><ul><li>नाम, पूँजी, लाभ अनुपात</li><li>पूँजी व आहरण पर ब्याज</li><li>साझेदार को वेतन/कमीशन</li><li>विलेख मौन हो तो <b>धारा 13</b>: बराबर बँटवारा, <b>कोई</b> वेतन नहीं, पूँजी पर ब्याज <b>नहीं</b>, साझेदार के ऋण पर 6% ब्याज</li></ul>
+<h3>पूँजी खाते</h3><ul><li><b>स्थिर:</b> पूँजी वही रहती है; लाभ, आहरण <b>चालू खाते</b> में</li><li><b>परिवर्तनशील:</b> सब समायोजन पूँजी खाते में</li></ul></div>
+<div class="sheet"><div class="pg">भाग 2</div><h2>② लाभ-हानि विनियोजन खाता</h2><div class="box">यह खाता लाभ-हानि खाते के <b>बाद</b> शुद्ध लाभ को साझेदारों में <b>बाँटने</b> के लिए बनता है।</div>
+<div class="fm">पूँजी पर ब्याज = पूँजी × दर% × समय &nbsp;|&nbsp; आहरण पर ब्याज = आहरण × दर% × समय</div>
+<ul><li>पूँजी पर ब्याज → <b>खर्च</b> (डेबिट, लाभ घटाता है)</li><li>साझेदार का वेतन/कमीशन → <b>खर्च</b> (डेबिट)</li><li>आहरण पर ब्याज → <b>आय</b> (क्रेडिट, लाभ बढ़ाता है)</li><li>शेष लाभ → <b>लाभ अनुपात</b> में बँटता है</li></ul>
+<h3>उदाहरण</h3><div class="box">शुद्ध लाभ ₹1,00,000। पूँजी: A ₹2,00,000, B ₹1,00,000। अनुपात 3:2। पूँजी पर ब्याज 5%। B का वेतन ₹10,000।</div>
+<ul><li>ब्याज: A 10,000 + B 5,000 = 15,000</li><li>वेतन: B = 10,000</li><li>बाँटने योग्य लाभ = 1,00,000 – 15,000 – 10,000 = <b>75,000</b></li><li>A = 75,000×3/5 = <b>45,000</b>; B = 75,000×2/5 = <b>30,000</b></li></ul>
+<h3>🎞 एनिमेटेड चित्र: लाभ का विनियोजन</h3><svg viewBox="0 0 600 280"><defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#c0392b"/></marker></defs><g class="lb" style="animation-delay:0.0s"><rect x="150" y="8" width="300" height="34" rx="8" fill="#d6eaf8" stroke="#1b2a6b" stroke-width="2"/><text x="300.0" y="30.0" text-anchor="middle" font-size="15">शुद्ध लाभ</text></g><line class="ar" x1="300" y1="44" x2="300" y2="62" stroke="#c0392b" stroke-width="3" marker-end="url(#a)" style="animation-delay:0.6s"/><g class="lb" style="animation-delay:1.2s"><rect x="150" y="64" width="300" height="34" rx="8" fill="#fadbd8" stroke="#1b2a6b" stroke-width="2"/><text x="300.0" y="86.0" text-anchor="middle" font-size="15">– पूँजी पर ब्याज (+ आहरण पर)</text></g><line class="ar" x1="300" y1="100" x2="300" y2="118" stroke="#c0392b" stroke-width="3" marker-end="url(#a)" style="animation-delay:1.7999999999999998s"/><g class="lb" style="animation-delay:2.4s"><rect x="150" y="120" width="300" height="34" rx="8" fill="#fdebd0" stroke="#1b2a6b" stroke-width="2"/><text x="300.0" y="142.0" text-anchor="middle" font-size="15">– वेतन / कमीशन</text></g><line class="ar" x1="300" y1="156" x2="300" y2="174" stroke="#c0392b" stroke-width="3" marker-end="url(#a)" style="animation-delay:3.0s"/><g class="lb" style="animation-delay:3.5999999999999996s"><rect x="150" y="176" width="300" height="34" rx="8" fill="#fff3cd" stroke="#1b2a6b" stroke-width="2"/><text x="300.0" y="198.0" text-anchor="middle" font-size="15">= बाँटने योग्य लाभ</text></g><line class="ar" x1="220" y1="214" x2="220" y2="232" stroke="#c0392b" stroke-width="3" marker-end="url(#a)" style="animation-delay:4.2s"/><line class="ar" x1="380" y1="214" x2="380" y2="232" stroke="#c0392b" stroke-width="3" marker-end="url(#a)" style="animation-delay:4.2s"/><g class="lb" style="animation-delay:4.8s"><rect x="130" y="236" width="180" height="34" rx="8" fill="#d5f5e3" stroke="#1b2a6b" stroke-width="2"/><text x="220.0" y="258.0" text-anchor="middle" font-size="15">साझेदार A</text></g><g class="lb" style="animation-delay:4.8s"><rect x="330" y="236" width="160" height="34" rx="8" fill="#d5f5e3" stroke="#1b2a6b" stroke-width="2"/><text x="410.0" y="258.0" text-anchor="middle" font-size="15">साझेदार B</text></g></svg>
+<div class="tip"><b>व्याख्या:</b> शुद्ध लाभ झरने की तरह नीचे बहता है। पहले खर्च घटते हैं, फिर बचा हुआ बाँटने योग्य लाभ साझेदारों में बँटता है।</div>
+<div class="tip">जर्नल: लाभ-हानि विनियोजन खाता <b>Dr.</b> To साझेदारों का पूँजी/चालू खाता</div></div>
+<div class="sheet"><div class="pg">भाग 3</div><h2>③ बैंक समाधान विवरण</h2><div class="box"><b>अर्थ:</b> वह विवरण जो <b>रोकड़ बही</b> और <b>पास बुक</b> के बैंक शेष में अन्तर के कारण खोजने और उन्हें मिलाने के लिए बनता है।</div>
+<h3>क्यों बनाते हैं?</h3><ul><li>भूल व धोखाधड़ी पकड़ना</li><li>अलिखित मदों की जानकारी</li><li>सही बैंक शेष जानना</li></ul>
+<h3>अन्तर के कारण</h3><ul><li>चेक जारी, पर <b>प्रस्तुत नहीं</b> हुआ</li><li>चेक जमा, पर <b>वसूल नहीं</b> हुआ</li><li>बैंक द्वारा सीधे शुल्क / ब्याज / लाभांश</li><li>चेक का अनादर</li><li>लेखे में गलती</li></ul>
+<h3>🎞 एनिमेटेड चित्र: तराजू का सन्तुलन</h3><svg viewBox="0 0 600 250"><polygon points="300,150 270,215 330,215" fill="#e67e22" stroke="#1b2a6b" stroke-width="2"/><g class="bm"><line x1="70" y1="150" x2="530" y2="150" stroke="#1b2a6b" stroke-width="6"/><rect x="40" y="95" width="170" height="50" rx="8" fill="#fadbd8" stroke="#1b2a6b" stroke-width="2"/><text x="125" y="117" text-anchor="middle" font-size="15">रोकड़ बही</text><text x="125" y="136" text-anchor="middle" font-size="15">₹10,000</text><rect x="390" y="95" width="170" height="50" rx="8" fill="#d6eaf8" stroke="#1b2a6b" stroke-width="2"/><text x="475" y="117" text-anchor="middle" font-size="15">पास बुक</text><text x="475" y="136" text-anchor="middle" font-size="15">₹9,100</text></g><text class="lb" x="300" y="238" text-anchor="middle" font-size="16" fill="#0b7a3b" style="animation-delay:4s;fill:#0b7a3b">BRS के बाद सन्तुलित ✔</text><text x="300" y="30" text-anchor="middle" font-size="15" class="lb" style="animation-delay:.3s">शुरू में असमान</text></svg>
+<div class="tip"><b>व्याख्या:</b> शुरू में दोनों शेष असमान हैं (तराजू झुका)। मिलान की मदें जोड़ने-घटाने पर दोनों बराबर हो जाते हैं – तराजू सन्तुलित।</div>
+<h3>नियम (रोकड़ बही के डेबिट शेष से शुरू करने पर)</h3><table><tr><th>जोड़ें</th><th>घटाएँ</th></tr><tr><td>जारी चेक, प्रस्तुत नहीं</td><td>जमा चेक, वसूल नहीं</td></tr><tr><td>बैंक द्वारा सीधा जमा / ब्याज / लाभांश</td><td>बैंक शुल्क, सीधा भुगतान</td></tr><tr><td></td><td>अनादरित चेक</td></tr></table><div class="nt">पास बुक शेष से शुरू करें → उल्टा करें।</div>
+<h3>उदाहरण</h3><div class="box">रोकड़ बही शेष ₹10,000; जारी चेक प्रस्तुत नहीं 2,000; जमा चेक वसूल नहीं 3,000; बैंक शुल्क 100; ब्याज जमा 200।</div>
+<div class="fm">10,000 + 2,000 + 200 – 3,000 – 100 = <b>₹9,100</b> (पास बुक शेष)</div>
+<div class="tip">याद रखें: बैंक खाता <b>अधिविकर्ष</b> (क्रेडिट शेष) हो तो नियम उलट जाते हैं। ✔ शुभकामनाएँ! 🍀</div></div></body></html>
