@@ -86,6 +86,16 @@ function ntPad(n) {
     return Number(n) < 10 ? "0" + Number(n) : String(n);
 }
 
+/* Notes cards ki image: subject-images -> notes-images */
+function ntImageFor(subject) {
+
+    if (!subject || !subject.image) {
+        return "Logo.png";
+    }
+
+    return String(subject.image).replace(/^subject-images\//, "notes-images/");
+}
+
 /* notes/class-10/science/chapter-01-en.html (ya ...-hi.html) */
 function ntFileFor(subjectName, subject, chapter, medium) {
 
@@ -396,16 +406,17 @@ function ntRenderSubjects(library) {
         imgWrap.className = "nt-subject-img";
 
         const img = document.createElement("img");
-        img.src = subject.image || "Logo.png";
+        img.src = ntImageFor(subject);
         img.alt = subjectName + " Notes";
         img.draggable = false;
         img.loading = "lazy";
 
         img.onerror = function () {
             this.onerror = null;
-            this.src = "Logo.png";
+            /* notes image na mile to E-Book wali image, wo bhi na mile to logo */
+            this.src = subject.image || "Logo.png";
         };
-
+       
         imgWrap.appendChild(img);
 
         const body = document.createElement("div");
