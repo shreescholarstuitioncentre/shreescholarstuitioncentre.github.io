@@ -851,16 +851,112 @@ footer{
   font-weight:800;
 
 }
-/* Login page: height lock hatao */
-html, body { height: auto; min-height: 100%; overflow-x: hidden; }
-.access-page { min-height: auto; height: auto; overflow: visible; }
 
-/* Koi bhi fixed popup/modal mobile par screen se bada na ho */
-@media (max-width: 768px) {
-  body > div[style*="position: fixed"],
-  body > div[style*="position:fixed"] {
-    max-height: 100dvh;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch;
-  }
+/* =========================================================
+   MOBILE / TABLET FIX: login button poora dikhe
+   (file ke sabse END me rakhein)
+   ========================================================= */
+
+html,
+body {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;      /* kisi script ka scroll-lock hatao */
+    position: static !important;
+}
+
+.access-page {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+}
+
+.access-container,
+.login-card,
+.login-form,
+.login-form.active-form {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+.login-button {
+    display: block !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* TABLET + MOBILE */
+@media (max-width: 1024px) {
+
+    /* neeche badi jagah: floating chat buttons ke peeche button na chhupe */
+    .access-page {
+        padding: 24px 12px 230px !important;
+    }
+
+    .login-card {
+        padding: 22px 18px !important;
+    }
+}
+
+/* MOBILE: sab kuch chhota karo taaki button pehli screen me aa jaye */
+@media (max-width: 600px) {
+
+    header {
+        position: static !important;   /* sticky header jagah na ghere */
+    }
+
+    .access-page {
+        padding: 14px 10px 240px !important;
+    }
+
+    .access-heading {
+        margin-bottom: 12px !important;
+    }
+
+    .access-icon {
+        width: 52px !important;
+        height: 52px !important;
+        font-size: 24px !important;
+        margin-bottom: 8px !important;
+    }
+
+    .access-heading h2 {
+        font-size: 24px !important;
+    }
+
+    .access-heading p {
+        font-size: 14px !important;
+    }
+
+    .login-tabs {
+        margin-bottom: 14px !important;
+    }
+
+    .login-form h3 {
+        font-size: 20px !important;
+    }
+
+    .form-subtitle {
+        margin: 4px 0 12px !important;
+    }
+
+    .login-form label {
+        margin: 8px 0 5px !important;
+    }
+
+    .input-box input {
+        padding: 10px 5px !important;
+    }
+
+    .login-options {
+        margin: 10px 0 !important;
+    }
+
+    .login-button {
+        padding: 13px !important;
+        margin-bottom: 6px !important;
+    }
 }
