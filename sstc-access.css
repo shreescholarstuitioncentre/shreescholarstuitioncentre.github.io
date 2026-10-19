@@ -851,3 +851,16 @@ footer{
   font-weight:800;
 
 }
+/* Login page: height lock hatao */
+html, body { height: auto; min-height: 100%; overflow-x: hidden; }
+.access-page { min-height: auto; height: auto; overflow: visible; }
+
+/* Koi bhi fixed popup/modal mobile par screen se bada na ho */
+@media (max-width: 768px) {
+  body > div[style*="position: fixed"],
+  body > div[style*="position:fixed"] {
+    max-height: 100dvh;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+}
