@@ -18,7 +18,73 @@
 body{background:linear-gradient(to bottom right,#fff,#fff8e1);color:#333;line-height:1.6}
 
 .container{max-width:1100px;margin:auto;padding:0 20px}
+/* =========================================================
+   HEADER FIX: 768px aur usse neeche SSTC Login button na kate
+   ========================================================= */
+@media (max-width: 768px) {
 
+    header {
+        display: flex !important;
+        flex-wrap: wrap !important;       /* jagah na ho to neeche line me aa jaye */
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 6px !important;
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 6px 8px !important;
+        overflow: visible !important;     /* button clip na ho */
+        box-sizing: border-box !important;
+    }
+
+    /* tagline / lamba text chhupao taaki buttons ko jagah mile */
+    header p,
+    header .nav-text p {
+        display: none !important;
+    }
+
+    header h1,
+    header .nav-text h1 {
+        font-size: 13px !important;
+        line-height: 1.2 !important;
+    }
+
+    /* header ke saare buttons/links chhote aur wrap hone layak */
+    header a,
+    header button {
+        font-size: 11px !important;
+        padding: 6px 9px !important;
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* buttons ka group: jagah kam ho to nayi line me jaye */
+    header > div:last-child {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: flex-end !important;
+        gap: 5px !important;
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* chhote phone: logo + naam upar, buttons neeche poori width me */
+    header > div:last-child {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    header img {
+        height: 38px !important;
+    }
+}
+
+/* Page ko side me kaatne wala overflow hatao, lekin header na kate */
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
 header{
   position: fixed;
   top: 0;
