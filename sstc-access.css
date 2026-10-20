@@ -960,3 +960,39 @@ body {
         margin-bottom: 6px !important;
     }
 }
+/* =========================================================
+   MOBILE ONLY FIX (phone): login button hamesha dikhe
+   ========================================================= */
+@media (max-width: 600px) {
+
+    html, body {
+        height: auto !important;
+        min-height: 100dvh !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* phone me neeche kaafi jagah, taaki button chat buttons ke upar scroll ho sake */
+    .access-page {
+        display: block !important;
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 12px 10px 320px !important;
+        overflow: visible !important;
+    }
+
+    .login-card {
+        margin-bottom: 40px !important;
+    }
+
+    .login-button {
+        scroll-margin-bottom: 260px;
+    }
+
+    /* header chhota */
+    header {
+        position: static !important;
+        min-height: 56px !important;
+    }
+}
