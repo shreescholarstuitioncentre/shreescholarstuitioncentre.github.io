@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /student-page.html
+
+Sitemap: https://shreescholarstuitioncentre.github.io/sitemap.xml
