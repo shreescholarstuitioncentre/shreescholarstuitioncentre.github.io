@@ -18,73 +18,7 @@
 body{background:linear-gradient(to bottom right,#fff,#fff8e1);color:#333;line-height:1.6}
 
 .container{max-width:1100px;margin:auto;padding:0 20px}
-/* =========================================================
-   HEADER FIX: 768px aur usse neeche SSTC Login button na kate
-   ========================================================= */
-@media (max-width: 768px) {
-
-    header {
-        display: flex !important;
-        flex-wrap: wrap !important;       /* jagah na ho to neeche line me aa jaye */
-        align-items: center !important;
-        justify-content: space-between !important;
-        gap: 6px !important;
-        height: auto !important;
-        min-height: 0 !important;
-        padding: 6px 8px !important;
-        overflow: visible !important;     /* button clip na ho */
-        box-sizing: border-box !important;
-    }
-
-    /* tagline / lamba text chhupao taaki buttons ko jagah mile */
-    header p,
-    header .nav-text p {
-        display: none !important;
-    }
-
-    header h1,
-    header .nav-text h1 {
-        font-size: 13px !important;
-        line-height: 1.2 !important;
-    }
-
-    /* header ke saare buttons/links chhote aur wrap hone layak */
-    header a,
-    header button {
-        font-size: 11px !important;
-        padding: 6px 9px !important;
-        white-space: nowrap !important;
-        flex-shrink: 0 !important;
-    }
-
-    /* buttons ka group: jagah kam ho to nayi line me jaye */
-    header > div:last-child {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        justify-content: flex-end !important;
-        gap: 5px !important;
-        max-width: 100% !important;
-    }
-}
-
-@media (max-width: 480px) {
-
-    /* chhote phone: logo + naam upar, buttons neeche poori width me */
-    header > div:last-child {
-        width: 100% !important;
-        justify-content: center !important;
-    }
-
-    header img {
-        height: 38px !important;
-    }
-}
-
-/* Page ko side me kaatne wala overflow hatao, lekin header na kate */
-html, body {
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-}
+	
 header{
   position: fixed;
   top: 0;
@@ -2565,7 +2499,136 @@ footer{background:#f7f9fc;color:#586579}
   #mainHeader .header-buttons .btn{padding:4px 5px !important;font-size:8px !important}
   #mainHeader .nav-text h1{font-size:9px !important}
 }
+/* =========================================================
+   SSTC HEADER - FINAL SINGLE FIX (hamesha sabse last me rakhein)
+   Desktop: ek row | Tablet: ek row | Phone: 2 row (buttons neeche)
+   ========================================================= */
 
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+html body header#mainHeader {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    display: flex !important;
+    flex-wrap: wrap !important;          /* jagah kam ho to buttons neeche aayenge, kategi nahi */
+    align-items: center !important;
+    gap: 6px 8px !important;
+    padding: 6px 10px !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+}
+
+html body header#mainHeader > img {
+    width: 36px !important;
+    height: 36px !important;
+    flex: 0 0 36px !important;
+    object-fit: contain !important;
+}
+
+html body header#mainHeader .nav-text {
+    flex: 1 1 120px !important;
+    min-width: 0 !important;
+    text-align: left !important;
+}
+
+html body header#mainHeader .nav-text h1 {
+    margin: 0 !important;
+    font-size: clamp(12px, 3.4vw, 18px) !important;
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+html body header#mainHeader .nav-text p {
+    display: none !important;
+}
+
+html body header#mainHeader .header-buttons {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 6px !important;
+    flex: 0 1 auto !important;
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+}
+
+html body header#mainHeader .header-buttons .btn,
+html body header#mainHeader .header-buttons .pwa-install-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: none !important;
+    min-height: 32px !important;
+    margin: 0 !important;
+    padding: 7px 10px !important;
+    font-size: 12px !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+    border-radius: 8px !important;
+}
+
+/* Install App ka wrapper header ke andar chhota rahe */
+html body header#mainHeader .header-install-wrap {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+}
+
+/* SSTC's Login hamesha dikhe */
+html body header#mainHeader .header-buttons .sstc-access {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* PHONE (600px aur neeche): logo + naam upar, 3 buttons neeche poori row me */
+@media (max-width: 600px) {
+
+    html body header#mainHeader .header-buttons {
+        flex: 1 1 100% !important;
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    html body header#mainHeader .header-buttons .btn,
+    html body header#mainHeader .header-buttons .pwa-install-btn {
+        padding: 6px 9px !important;
+        font-size: 11px !important;
+        min-height: 30px !important;
+    }
+}
+
+/* Bahut chhote phone (360px aur neeche) */
+@media (max-width: 360px) {
+
+    html body header#mainHeader .header-buttons {
+        gap: 4px !important;
+    }
+
+    html body header#mainHeader .header-buttons .btn,
+    html body header#mainHeader .header-buttons .pwa-install-btn {
+        padding: 5px 7px !important;
+        font-size: 10px !important;
+    }
+}
+	
 </style>
 	
 <body>
