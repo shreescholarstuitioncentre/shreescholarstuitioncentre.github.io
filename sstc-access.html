@@ -6,7 +6,16 @@
 
   <title>SSTC Access | Shree Scholars Tuition Centre</title>
 
-  <link rel="stylesheet" href="sstc-access.css?v=2">
+  <link rel="stylesheet" href="sstc-access.css?v=2"><script>
+  var SSTC_VERSION = "2026-10-20";   // sirf yahan badlein, jab bhi CSS/JS update karein
+
+  (function () {
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "sstc-access.css?v=" + SSTC_VERSION;
+    document.head.appendChild(link);
+  })();
+</script>
 </head>
 
 <body>
@@ -426,6 +435,34 @@
 
   <script src="admin-login-snippet.js"></script>
   <script src="sstc-assistant.js" defer></script>
+  <script>
+(function () {
+  function fixBottomSpace() {
+    if (window.innerWidth > 600) return;
 
+    var maxH = 0;
+    document.querySelectorAll('body *').forEach(function (el) {
+      var s = getComputedStyle(el);
+      if (s.position !== 'fixed') return;
+      var r = el.getBoundingClientRect();
+      /* sirf screen ke neeche wale fixed elements */
+      if (r.height > 0 && r.top > window.innerHeight * 0.4 && r.bottom >= window.innerHeight - 5) {
+        maxH = Math.max(maxH, window.innerHeight - r.top);
+      }
+    });
+
+    var page = document.querySelector('.access-page');
+    if (page) {
+      page.style.setProperty('padding-bottom', (maxH + 60) + 'px', 'important');
+    }
+  }
+
+  window.addEventListener('load', function () {
+    setTimeout(fixBottomSpace, 800);
+    setTimeout(fixBottomSpace, 2500);   // widget der se load ho to bhi
+  });
+  window.addEventListener('resize', fixBottomSpace);
+})();
+</script>
 </body>
 </html>
