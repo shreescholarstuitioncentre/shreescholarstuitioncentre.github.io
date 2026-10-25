@@ -4727,3 +4727,14 @@ body.sstc-modal-open {
 @media (max-width: 700px) {
     .fr-frame-wrap { height: 500px; }
 }
+.fr-frame-wrap.fr-pseudo-fs {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    height: 100% !important;
+}
+
+.fr-card-text strong { display: block; font-size: 14px; color: #0b3b22; line-height: 1.35; }
+.fr-card-text small  { display: block; margin-top: 3px; font-size: 11px; color: #64748b; }
+
+.fr-empty[hidden] { display: none !important; }
