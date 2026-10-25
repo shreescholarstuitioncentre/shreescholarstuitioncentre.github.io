@@ -11,7 +11,6 @@
     <title>SSTC | Student E-Book Portal</title>
 
     <link rel="stylesheet" href="student-page.css?v=3">
-    <link rel="stylesheet" href="student-page.css?v=5">
 
     <!-- ✅ NAYA: SSTC Notes section ka CSS -->
     <link rel="stylesheet" href="student-notes.css?v=1">
@@ -117,19 +116,6 @@
             <span class="sstc-notes-sub">(Questions E-Book Ke Liye Yahan Click Kare)</span>
             <span class="sstc-notes-sub">(For Questions E-Book - Click Kare)</span>
         </button>
-                <!-- ✅ NAYA: SSTC FREE'S button -->
-        <button
-            type="button"
-            class="notes-btn sstc-notes-btn sstc-free-btn"
-            id="sstcFreeBtn"
-            aria-expanded="false"
-            aria-controls="sstcFreeSection"
-            onclick="toggleSstcFree()">
-
-            <span class="sstc-notes-title">🎁 SSTC FREE'S</span>
-            <span class="sstc-notes-sub">(Free Chapters Ke Liye Yahan Click Kare)</span>
-            <span class="sstc-notes-sub">(For Free Chapters - Click Here)</span>
-        </button>
     </section>
 
 
@@ -138,75 +124,80 @@
          STUDENT PROFILE
     ====================================================== -->
 
-        <!-- =====================================================
-         STUDENT PROFILE (COMPACT + STYLISH)
-    ====================================================== -->
+    <section class="profile-card">
 
-    <section class="profile-card sstc-pf">
-
-        <!-- Left: ID card style identity -->
-        <div class="sstc-pf-id">
+        <div class="profile-main">
 
             <div class="student-avatar" id="studentAvatar">S</div>
 
-            <div class="sstc-pf-name">
+            <div class="student-main-info">
+
                 <h2 id="studentName">Student Name</h2>
-                <div class="sstc-pf-tags">
-                    <span class="sstc-pf-tag">🎓 Class <b id="studentClass">--</b></span>
-                    <span id="studentStatus" class="student-status">● Active</span>
-                </div>
-                <div class="sstc-pf-sid">
-                    <small>STUDENT ID</small>
-                    <strong id="studentId">--</strong>
-                </div>
+
+                <p id="studentClass">Class --</p>
+
+                <span id="studentStatus" class="student-status">● Active</span>
+
             </div>
 
         </div>
 
-        <!-- Right: compact chips -->
-        <div class="sstc-pf-grid">
+        <div class="profile-details">
 
-            <div class="sstc-pf-chip">
-                <i>📱</i>
-                <div><span>Mobile</span><strong id="studentMobile">--</strong></div>
+            <div class="detail-item">
+                <span>Student ID</span>
+                <strong id="studentId">--</strong>
             </div>
 
-            <div class="sstc-pf-chip">
-                <i>✉️</i>
-                <div><span>Email</span><strong id="studentEmail">--</strong></div>
+            <div class="detail-item">
+                <span>Mobile Number</span>
+                <strong id="studentMobile">--</strong>
             </div>
 
-            <div class="sstc-pf-chip">
-                <i>👤</i>
-                <div><span>Gender</span><strong id="studentGender">--</strong></div>
+            <div class="detail-item">
+                <span>Gender</span>
+                <strong id="studentGender">--</strong>
             </div>
 
-            <div class="sstc-pf-chip">
-                <i>🏛️</i>
-                <div><span>Board</span><strong id="studentBoard">--</strong></div>
+            <div class="detail-item">
+                <span>Email ID</span>
+                <strong id="studentEmail">--</strong>
             </div>
 
-            <div class="sstc-pf-chip">
-                <i>🏫</i>
-                <div><span>School</span><strong><span id="studentSchool" style="display:inline;font-size:inherit;color:inherit;margin:0;">--</span>, <span id="studentSchoolPlace" style="display:inline;font-size:inherit;color:inherit;margin:0;">--</span></strong></div>
+            <div class="detail-item">
+                <span>Class</span>
+                <strong id="studentClassDetail">--</strong>
             </div>
 
-            <div class="sstc-pf-chip">
-                <i>📅</i>
-                <div><span>Registered</span><strong id="registrationDate">--</strong></div>
+            <div class="detail-item">
+                <span>Board</span>
+                <strong id="studentBoard">--</strong>
             </div>
 
-            <div class="sstc-pf-chip">
-                <i>🕒</i>
-                <div><span>Login Time</span><strong id="loginTime">--</strong></div>
+            <div class="detail-item">
+                <span>School Name</span>
+                <strong id="studentSchool">--</strong>
             </div>
 
-            <!-- hidden: purane JS ids ke liye (class detail) -->
-            <span id="studentClassDetail" hidden></span>
+            <div class="detail-item">
+                <span>School Place</span>
+                <strong id="studentSchoolPlace">--</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Registration Date</span>
+                <strong id="registrationDate">--</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Login Time</span>
+                <strong id="loginTime">--</strong>
+            </div>
 
         </div>
 
     </section>
+
 
 
     <!-- =====================================================
@@ -619,39 +610,26 @@
 
 
 
-       <!-- =====================================================
-         ✅ NAYA: SSTC FREE'S SECTION (bina subject, direct chapters)
+    <!-- =====================================================
+         PURCHASE INFORMATION
     ====================================================== -->
 
-    <section class="fr-section" id="sstcFreeSection" hidden>
+    <section class="purchase-info">
 
-        <div class="fr-head">
-            <div>
-                <span class="fr-tag">🎁 SSTC FREE'S</span>
-                <h2>Free Chapters</h2>
-                <p>Ye chapters bilkul free hain. Chapter par click karke yahin padhiye.</p>
-            </div>
+        <div class="purchase-info-icon">🛒</div>
 
-            <button type="button" class="fr-close" onclick="closeSstcFree()">✕ Close</button>
-        </div>
+        <div>
 
-        <div class="fr-list" id="frList">
-            <!-- JS creates free chapter cards -->
-        </div>
+            <h3>Want More Subjects?</h3>
 
-        <div class="fr-viewer" id="frViewer" hidden>
-
-            <div class="fr-bar">
-                <strong id="frViewerTitle">Free Chapter</strong>
-                <div class="fr-bar-actions">
-                    <button type="button" onclick="sstcFreeFullscreen()" title="Fullscreen">⛶</button>
-                    <button type="button" onclick="closeSstcFreeViewer()" title="Close">✕</button>
-                </div>
-            </div>
-
-            <div class="fr-frame-wrap">
-                <iframe id="frFrame" class="fr-frame" title="SSTC Free Chapter" src="about:blank"></iframe>
-            </div>
+            <p>
+                <strong>Rent</strong> any subject for
+                <strong>3 months (₹49)</strong>,
+                <strong>6 months (₹69)</strong> or
+                <strong>12 months (₹99)</strong>. Tap
+                “Rent This Subject” on a subject card above.
+                Contact SSTC administration to complete the payment.
+            </p>
 
         </div>
 
@@ -840,11 +818,7 @@
 ========================================================= -->
 
 <script src="student-page.js?v=3"></script>
-<script src="student-page.js?v=5"></script>
-<script src="student-notes.js?v=1"></script>
-<script src="student-free.js?v=1"></script>
-<script src="sstc-assistant.js" defer></script>
-    
+
 <!-- ✅ NAYA: SSTC Notes section ka JS (student-page.js ke BAAD hi rakhein) -->
 <script src="student-notes.js?v=1"></script>
     <script src="sstc-assistant.js" defer></script>
