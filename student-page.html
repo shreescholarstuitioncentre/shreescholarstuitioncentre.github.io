@@ -10,10 +10,18 @@
 
     <title>SSTC | Student E-Book Portal</title>
 
+    <!-- ✅ NAYA: fonts (Sora = headings, Nunito Sans = text). Na chale to Arial fallback lag jata hai -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="student-page.css?v=3">
 
-    <!-- ✅ NAYA: SSTC Notes section ka CSS -->
+    <!-- SSTC Notes section ka CSS -->
     <link rel="stylesheet" href="student-notes.css?v=1">
+
+    <!-- ✅ NAYA: naya look + ID-card profile + SSTC FREE (hamesha sabse last me) -->
+    <link rel="stylesheet" href="student-free.css?v=1">
 
 </head>
 
@@ -76,7 +84,9 @@
 
 
     <!-- =====================================================
-         PAGE TITLE  (+ SSTC Notes button)
+         PAGE TITLE  (+ 3 buttons: NOTES / E-BOOK QB / FREE)
+         NOTE: Time tracker JS isi section ke andar, Notes button
+         se pehle insert hota hai - isliye ye structure na badlein.
     ====================================================== -->
 
     <section class="portal-title">
@@ -91,21 +101,22 @@
 
         </div>
 
-        <!-- ✅ BADLA: ab ye same page par Notes section kholta / band karta hai -->
-       <button
-                type="button"
-                class="notes-btn sstc-notes-btn"
-                id="sstcNotesBtn"
-                aria-expanded="false"
-                aria-controls="sstcNotesSection"
-                onclick="toggleSstcNotes()">
-            
-                <span class="sstc-notes-title">📝 SSTC NOTES</span>
-                <span class="sstc-notes-sub">(For Notes - Click Here)</span>
-                <span class="sstc-notes-sub">(Notes Ke Liye Yahan Click Kare)</span>
-            
-            </button>
-        <!-- ✅ NAYA: E-Book QB button -->
+        <!-- Notes button -->
+        <button
+            type="button"
+            class="notes-btn sstc-notes-btn"
+            id="sstcNotesBtn"
+            aria-expanded="false"
+            aria-controls="sstcNotesSection"
+            onclick="toggleSstcNotes()">
+
+            <span class="sstc-notes-title">📝 SSTC NOTES</span>
+            <span class="sstc-notes-sub">(For Notes - Click Here)</span>
+            <span class="sstc-notes-sub">(Notes Ke Liye Yahan Click Kare)</span>
+
+        </button>
+
+        <!-- E-Book QB button -->
         <button
             type="button"
             class="notes-btn sstc-notes-btn"
@@ -115,84 +126,107 @@
             <span class="sstc-notes-title">📚 SSTC E-BOOK QB's</span>
             <span class="sstc-notes-sub">(Questions E-Book Ke Liye Yahan Click Kare)</span>
             <span class="sstc-notes-sub">(For Questions E-Book - Click Kare)</span>
+
         </button>
+
+        <!-- ✅ NAYA: SSTC FREE button -->
+        <button
+            type="button"
+            class="notes-btn sstc-notes-btn"
+            id="sstcFreeBtn"
+            aria-expanded="false"
+            aria-controls="sstcFreeSection"
+            onclick="toggleSstcFree()">
+
+            <span class="sstc-notes-title">🎁 SSTC FREE'S</span>
+            <span class="sstc-notes-sub">(Free Material - Click Here)</span>
+            <span class="sstc-notes-sub">(Free Material Ke Liye Yahan Click Kare)</span>
+
+        </button>
+
     </section>
 
 
 
     <!-- =====================================================
-         STUDENT PROFILE
+         ✅ NAYA: STUDENT PROFILE  ·  compact "ID card"
+         (saari id="..." wahi hain jo student-page.js bharta hai)
     ====================================================== -->
 
-    <section class="profile-card">
+    <section class="sp-card" aria-label="Student profile">
 
-        <div class="profile-main">
+        <!-- Left: pehchaan -->
+        <div class="sp-side">
 
-            <div class="student-avatar" id="studentAvatar">S</div>
+            <div class="sp-avatar" id="studentAvatar">S</div>
 
-            <div class="student-main-info">
+            <div class="sp-who">
 
-                <h2 id="studentName">Student Name</h2>
+                <h2 class="sp-name" id="studentName">Student Name</h2>
 
-                <p id="studentClass">Class --</p>
-
-                <span id="studentStatus" class="student-status">● Active</span>
+                <div class="sp-tags">
+                    <span class="sp-class" id="studentClass">--</span>
+                    <span id="studentStatus" class="student-status">Active</span>
+                </div>
 
             </div>
 
         </div>
 
-        <div class="profile-details">
+        <!-- Right: details -->
+        <div class="sp-body">
 
-            <div class="detail-item">
-                <span>Student ID</span>
-                <strong id="studentId">--</strong>
+            <div class="sp-idrow">
+
+                <div class="sp-idtag">
+                    <small>STUDENT ID</small>
+                    <strong id="studentId">--</strong>
+                </div>
+
+                <div class="sp-login">
+                    Login: <strong id="loginTime">--</strong>
+                </div>
+
             </div>
 
-            <div class="detail-item">
-                <span>Mobile Number</span>
-                <strong id="studentMobile">--</strong>
-            </div>
+            <dl class="sp-grid">
 
-            <div class="detail-item">
-                <span>Gender</span>
-                <strong id="studentGender">--</strong>
-            </div>
+                <div class="sp-item">
+                    <dt>Mobile</dt>
+                    <dd id="studentMobile">--</dd>
+                </div>
 
-            <div class="detail-item">
-                <span>Email ID</span>
-                <strong id="studentEmail">--</strong>
-            </div>
+                <div class="sp-item">
+                    <dt>Gender</dt>
+                    <dd id="studentGender">--</dd>
+                </div>
 
-            <div class="detail-item">
-                <span>Class</span>
-                <strong id="studentClassDetail">--</strong>
-            </div>
+                <div class="sp-item">
+                    <dt>Board</dt>
+                    <dd id="studentBoard">--</dd>
+                </div>
 
-            <div class="detail-item">
-                <span>Board</span>
-                <strong id="studentBoard">--</strong>
-            </div>
+                <div class="sp-item">
+                    <dt>Registered</dt>
+                    <dd id="registrationDate">--</dd>
+                </div>
 
-            <div class="detail-item">
-                <span>School Name</span>
-                <strong id="studentSchool">--</strong>
-            </div>
+                <div class="sp-item wide">
+                    <dt>Email</dt>
+                    <dd id="studentEmail">--</dd>
+                </div>
 
-            <div class="detail-item">
-                <span>School Place</span>
-                <strong id="studentSchoolPlace">--</strong>
-            </div>
+                <div class="sp-item">
+                    <dt>School</dt>
+                    <dd id="studentSchool">--</dd>
+                </div>
 
-            <div class="detail-item">
-                <span>Registration Date</span>
-                <strong id="registrationDate">--</strong>
-            </div>
+                <div class="sp-item">
+                    <dt>Place</dt>
+                    <dd id="studentSchoolPlace">--</dd>
+                </div>
 
-            <div class="detail-item">
-                <span>Login Time</span>
-                <strong id="loginTime">--</strong>
-            </div>
+            </dl>
 
         </div>
 
@@ -201,7 +235,7 @@
 
 
     <!-- =====================================================
-         ✅ NAYA: SSTC NOTES SECTION (isi page par khulta hai)
+         SSTC NOTES SECTION (isi page par khulta hai)
          1) Subject card  2) Chapter  3) Notes viewer
          Toggle: English Medium / Hindi Medium
     ====================================================== -->
@@ -324,7 +358,7 @@
 
         </section>   <!-- ye Notes section ka end hai, ise mat chhedo -->
 
-    <!-- ✅ NAYA: E-BOOK WRAPPER START -->
+    <!-- E-BOOK WRAPPER START -->
     <div id="sstcEbookWrap" hidden>
 
         <div class="sstc-ebook-closebar">
@@ -565,7 +599,7 @@
         </div>
 
     </section>
-</div>    <!-- ✅ NAYA: E-BOOK WRAPPER END -->
+</div>    <!-- E-BOOK WRAPPER END -->
 
 
     <!-- =====================================================
@@ -611,25 +645,79 @@
 
 
     <!-- =====================================================
-         PURCHASE INFORMATION
+         ✅ NAYA: SSTC FREE SECTION
+         ("Want More Subjects?" ki jagah)
+         Subject ke bina seedhe chapters. Har chapter ek HTML
+         file se linked hai (list student-free.js me hai).
+         Button dabane par khulta hai, dobara dabane par band.
     ====================================================== -->
 
-    <section class="purchase-info">
+    <section class="fr-section" id="sstcFreeSection" hidden>
 
-        <div class="purchase-info-icon">🛒</div>
+        <div class="fr-head">
 
-        <div>
+            <div>
 
-            <h3>Want More Subjects?</h3>
+                <span class="fr-tag">🎁 SSTC FREE</span>
 
-            <p>
-                <strong>Rent</strong> any subject for
-                <strong>3 months (₹49)</strong>,
-                <strong>6 months (₹69)</strong> or
-                <strong>12 months (₹99)</strong>. Tap
-                “Rent This Subject” on a subject card above.
-                Contact SSTC administration to complete the payment.
-            </p>
+                <h2>Free Study Material</h2>
+
+                <p>
+                    Koi bhi chapter chuniye aur use yahin padhiye -
+                    iske liye subject rent karne ki zarurat nahi hai.
+                </p>
+
+            </div>
+
+            <button type="button" class="fr-close" onclick="closeSstcFree()">
+                ✕ Close Free
+            </button>
+
+        </div>
+
+        <div class="fr-list" id="frList">
+            <!-- JS creates free chapter cards -->
+        </div>
+
+        <p class="fr-empty" id="frEmpty" hidden>
+            Free chapters jaldi hi yahan aayenge.
+        </p>
+
+        <!-- Viewer -->
+
+        <div class="fr-viewer" id="frViewer" hidden>
+
+            <div class="fr-bar">
+
+                <div class="fr-bar-title">
+                    <strong id="frViewerTitle">Chapter</strong>
+                    <small id="frViewerMeta"></small>
+                </div>
+
+                <div class="fr-bar-actions">
+
+                    <button type="button" id="frPrev" onclick="sstcFreeStep(-1)" title="Previous chapter">◀ Prev</button>
+
+                    <button type="button" id="frNext" onclick="sstcFreeStep(1)" title="Next chapter">Next ▶</button>
+
+                    <button type="button" onclick="sstcFreeFullscreen()" title="Fullscreen">⛶ Full</button>
+
+                    <button type="button" onclick="closeSstcFreeViewer()" title="Close chapter">✕</button>
+
+                </div>
+
+            </div>
+
+            <div class="fr-frame-wrap" id="frFrameWrap">
+
+                <iframe
+                    id="frFrame"
+                    class="fr-frame"
+                    title="SSTC Free Chapter"
+                    src="about:blank">
+                </iframe>
+
+            </div>
 
         </div>
 
@@ -819,9 +907,13 @@
 
 <script src="student-page.js?v=3"></script>
 
-<!-- ✅ NAYA: SSTC Notes section ka JS (student-page.js ke BAAD hi rakhein) -->
+<!-- SSTC Notes section ka JS (student-page.js ke BAAD hi rakhein) -->
 <script src="student-notes.js?v=1"></script>
-    <script src="sstc-assistant.js" defer></script>
+
+<!-- ✅ NAYA: SSTC FREE ka JS (student-page.js ke BAAD hi rakhein) -->
+<script src="student-free.js?v=1"></script>
+
+<script src="sstc-assistant.js" defer></script>
 
 </body>
 
