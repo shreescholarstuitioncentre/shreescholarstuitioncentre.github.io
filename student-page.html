@@ -81,43 +81,59 @@
 
     <section class="portal-title">
 
-        <div>
+    <div class="pt-left">
 
+        <!-- Student Portal badge + Session timer ek hi line me -->
+        <div class="pt-top">
             <span class="portal-badge">🎓 STUDENT PORTAL</span>
-
-            <h2>SSTC E-Book Question Banks & Notes</h2>
-
-            <p>Access your purchased and rented e-books securely.</p>
-
+            <div id="sstcTrackerSlot"></div>
         </div>
 
-        <!-- ✅ BADLA: ab ye same page par Notes section kholta / band karta hai -->
-       <button
-                type="button"
-                class="notes-btn sstc-notes-btn"
-                id="sstcNotesBtn"
-                aria-expanded="false"
-                aria-controls="sstcNotesSection"
-                onclick="toggleSstcNotes()">
-            
-                <span class="sstc-notes-title">📝 SSTC NOTES</span>
-                <span class="sstc-notes-sub">(For Notes - Click Here)</span>
-                <span class="sstc-notes-sub">(Notes Ke Liye Yahan Click Kare)</span>
-            
-            </button>
-        <!-- ✅ NAYA: E-Book QB button -->
-        <button
-            type="button"
-            class="notes-btn sstc-notes-btn"
-            id="sstcEbookBtn"
-            onclick="openSstcEbook()">
+        <h2>SSTC E-Book Question Banks & Notes</h2>
 
-            <span class="sstc-notes-title">📚 SSTC E-BOOK QB's</span>
-            <span class="sstc-notes-sub">(Questions E-Book Ke Liye Yahan Click Kare)</span>
-            <span class="sstc-notes-sub">(For Questions E-Book - Click Kare)</span>
-        </button>
-    </section>
+        <p>Access your purchased and rented e-books securely.</p>
 
+    </div>
+
+    <!-- ✅ NAYA: SSTC FREE'S button (Notes se pehle) -->
+    <button
+        type="button"
+        class="notes-btn sstc-notes-btn sstc-free-btn"
+        id="sstcFreeBtn"
+        onclick="openSstcFree()">
+
+        <span class="sstc-notes-title">🎁 SSTC FREE'S</span>
+        <span class="sstc-notes-sub">(Free Chapters - Click Here)</span>
+        <span class="sstc-notes-sub">(Free Ke Liye Yahan Click Kare)</span>
+
+    </button>
+
+    <button
+        type="button"
+        class="notes-btn sstc-notes-btn"
+        id="sstcNotesBtn"
+        aria-expanded="false"
+        aria-controls="sstcNotesSection"
+        onclick="toggleSstcNotes()">
+
+        <span class="sstc-notes-title">📝 SSTC NOTES</span>
+        <span class="sstc-notes-sub">(For Notes - Click Here)</span>
+        <span class="sstc-notes-sub">(Notes Ke Liye Yahan Click Kare)</span>
+
+    </button>
+
+    <button
+        type="button"
+        class="notes-btn sstc-notes-btn"
+        id="sstcEbookBtn"
+        onclick="openSstcEbook()">
+
+        <span class="sstc-notes-title">📚 SSTC E-BOOK QB's</span>
+        <span class="sstc-notes-sub">(Questions E-Book Ke Liye Yahan Click Kare)</span>
+        <span class="sstc-notes-sub">(For Questions E-Book - Click Kare)</span>
+    </button>
+
+</section>
 
 
     <section class="profile-card pf2">
