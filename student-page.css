@@ -4907,3 +4907,220 @@ body.sstc-modal-open {
     color: #ffffff;
     box-shadow: 0 2px 8px rgba(22, 163, 74, .35);
 }
+/* =========================================================
+   SSTC PROFILE CARD v3  (compact ID strip + expand)
+   ========================================================= */
+
+.profile-card.pf3 {
+    position: relative;
+    margin-bottom: 18px;
+    padding: 0;
+    border: 1px solid #dbe6f5;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(240,246,255,.98));
+    box-shadow: 0 6px 20px rgba(30, 70, 120, .09);
+    overflow: hidden;
+    transition: box-shadow .25s ease, border-color .25s ease;
+}
+
+/* left side ki rangeen patti */
+.profile-card.pf3::before {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; left: 0;
+    width: 5px;
+    background: linear-gradient(180deg, #2563eb, #7c3aed, #ec4899);
+}
+
+.profile-card.pf3.open {
+    border-color: #9fc4ff;
+    box-shadow: 0 10px 28px rgba(37, 99, 235, .16);
+}
+
+/* ---------- Patli strip (hamesha dikhti hai) ---------- */
+
+.pf3-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 16px 9px 20px;
+    border: 0;
+    background: transparent;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.pf3-bar:hover { background: rgba(37, 99, 235, .04); }
+
+.pf3-bar:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: -3px;
+}
+
+.pf3-avatar {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    font-size: 18px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, .32);
+}
+
+.pf3-mini {
+    flex: 1;
+    min-width: 0;
+}
+
+.pf3-mini h2 {
+    font-size: 15px;
+    line-height: 1.2;
+    color: #062957;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pf3-mini p {
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 11.5px;
+    color: #617895;
+}
+
+.pf3-mini p i { font-style: normal; opacity: .5; }
+
+.pf3-mini-id {
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #eef4ff, #f6f0ff);
+    border: 1px solid #bcd3ff;
+    color: #1d4ed8;
+    font-weight: 700;
+    letter-spacing: .3px;
+}
+
+.pf3-mini-id b { font-weight: 800; }
+
+.pf3-bar .student-status {
+    margin: 0;
+    padding: 3px 10px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    background: #e8f9ef;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.pf3-bar .student-status.status-inactive { background: #fdecec; }
+
+.pf3-hint {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.pf3-arrow {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #eaf2ff;
+    color: #2563eb;
+    font-size: 15px;
+    transition: transform .3s ease, background .2s ease;
+}
+
+.profile-card.pf3.open .pf3-arrow {
+    transform: rotate(180deg);
+    background: #2563eb;
+    color: #ffffff;
+}
+
+/* ---------- Khulne wali details (smooth animation) ---------- */
+
+.pf3-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .35s ease;
+}
+
+.profile-card.pf3.open .pf3-body { grid-template-rows: 1fr; }
+
+.pf3-body-inner { overflow: hidden; min-height: 0; }
+
+.pf3-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    padding: 10px 16px 14px 20px;
+    border-top: 1px dashed #cfdcee;
+}
+
+.pf3-chip {
+    min-width: 0;
+    padding: 7px 10px;
+    border: 1px solid #e1eaf6;
+    border-radius: 10px;
+    background: #ffffff;
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.pf3-chip:hover {
+    transform: translateY(-2px);
+    border-color: #9fc4ff;
+    box-shadow: 0 6px 14px rgba(37, 99, 235, .12);
+}
+
+.pf3-chip span {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    text-transform: uppercase;
+    color: #7a8ca5;
+}
+
+.pf3-chip strong {
+    display: block;
+    font-size: 12px;
+    line-height: 1.3;
+    color: #092b59;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pf3-wide { grid-column: span 2; }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1000px) {
+    .pf3-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 700px) {
+    .pf3-grid { grid-template-columns: repeat(2, 1fr); }
+    .pf3-hint { display: none; }          /* mobile par sirf arrow */
+    .pf3-bar { gap: 9px; padding: 8px 12px 8px 16px; }
+}
+
+@media (max-width: 420px) {
+    .pf3-bar .student-status { display: none; }   /* bahut chhoti screen par status chhupa, details me nahi hai to neeche dekhein */
+    .pf3-chip strong { white-space: normal; word-break: break-word; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pf3-body, .pf3-arrow { transition: none; }
+}
