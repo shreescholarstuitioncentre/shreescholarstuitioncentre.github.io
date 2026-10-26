@@ -4850,3 +4850,33 @@ body.sstc-modal-open {
     .fr-head { flex-direction: column; }
     .fr-frame-wrap { height: 480px; }
 }
+/* ---------- Free's: Subject (nested) list ---------- */
+.fr-subject {
+    border: 1px solid #b9efd1;
+    border-radius: 14px;
+    background: #fff;
+    overflow: hidden;
+}
+.fr-subject-head {
+    width: 100%;
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 14px;
+    border: 0; background: #f0fdf4;
+    text-align: left; cursor: pointer;
+}
+.fr-subject-title { flex: 1; font-size: 15px; font-weight: 800; color: #14532d; }
+.fr-subject-count { font-size: 12px; color: #15803d; font-weight: 700; }
+.fr-subject-arrow { font-size: 12px; color: #15803d; transition: transform .2s; }
+.fr-subject.open .fr-subject-arrow { transform: rotate(90deg); }
+
+.fr-subject-body {
+    display: none;
+    flex-direction: column; gap: 8px;
+    padding: 10px 12px 12px 26px;
+    border-top: 1px dashed #b9efd1;
+}
+.fr-subject.open .fr-subject-body { display: flex; }
+
+/* Zoom */
+.fr-zoom-level { min-width: 44px; text-align: center; font-size: 12px; font-weight: 700; color: #fff; align-self: center; }
+.fr-frame-wrap { overflow: auto; position: relative; }
