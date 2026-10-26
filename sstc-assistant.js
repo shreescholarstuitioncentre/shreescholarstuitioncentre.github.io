@@ -1,10 +1,11 @@
 /* =====================================================================
    SSTC AI Assistant  |  Shree Scholars Tuition Centre
-   - 3D digital avatar (Male / Female choice)
-   - Chat box + microphone (voice) + voice replies
+   - HD anime avatar (Aarav / Anya) — आपकी बनाई हुई इमेज से
+   - Chat box + microphone (voice) + voice replies + lip-sync मुँह
    - Guides students: registration, enquiry, login, notes, fees, contact...
    Install: add  <script src="sstc-assistant.js" defer></script>
             just before </body> on every page.
+   Files needed:  avatars/aarav.webp  और  avatars/anya.webp
    ===================================================================== */
 (function () {
   "use strict";
@@ -17,11 +18,17 @@
     // Optional: Cloudflare Worker URL (worker.js). Khali chhodne par sirf
     // site-guide (rule-based) jawab milenge, jo free hain aur sahi links dete hain.
     aiEndpoint: "",
-    threeUrl: "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
     names: { male: "आरव", female: "आन्या" },
     registrationOpens: "2026-10-19", // site par likhi hui date
     homePage: "index.html",
     registrationClasses: "Class 10 और Class 12", // student-registration.html me jo classes khuli hain, wahi likhein
+
+    // Avatar images. mouth = मुँह की जगह (इमेज की चौड़ाई/ऊँचाई का %), w = खुले मुँह की चौड़ाई (%)
+    // अगर मुँह थोड़ा ऊपर-नीचे/दाएँ-बाएँ लगे तो सिर्फ x, y बदलें।
+    avatars: {
+      male:   { img: "avatars/aarav.webp", mouth: { x: 57.5, y: 62.7, w: 5.2 } },
+      female: { img: "avatars/anya.webp",  mouth: { x: 61.3, y: 64.8, w: 4.6 } },
+    },
   };
 
   const SITE = {
@@ -55,7 +62,7 @@
     gender: store.get("sstc_ai_gender", ""),
     sound: store.get("sstc_ai_sound", "1") === "1",
     open: false, speaking: false, listening: false, busy: false,
-    history: [], stageReady: false,
+    history: [],
   };
   const g = (m, f) => (state.gender === "female" ? f : m);
   const botName = () => CONFIG.names[state.gender || "male"];
@@ -109,7 +116,7 @@
       reply: () => "❓ **पूछताछ / एडमिशन** के 3 आसान तरीके:\n1️⃣ \"Connect Us\" में बच्चे का नाम, क्लास और मोबाइल भरकर Sir/Ma'am को WhatsApp करें।\n2️⃣ \"Admission Form\" भरें।\n3️⃣ सीधे कॉल करें।\n🎁 Free Demo Class भी उपलब्ध है।",
       actions: () => [act.go("📲 Connect Us फ़ॉर्म", "#leadbox"), act.go("📋 Admission Form", ".contact-section")].concat(callBoth()) },
 
-        { id: "studentid",
+    { id: "studentid",
       kw: ["student id kaise", "student id kya", "id kaise milega", "id kaise milegi", "password kaise milega", "password kaise banega", "स्टूडेंट आईडी"],
       reply: () => "🎫 **Student ID और Password** आपको रजिस्ट्रेशन पूरा होते ही अपने आप मिल जाते हैं — फ़ॉर्म में इन्हें खुद नहीं भरना।\nSuccess बॉक्स में दिखें तो उन्हें **save / screenshot** कर लें, लॉगिन में यही चाहिए होंगे।",
       actions: () => [act.page("📝 रजिस्ट्रेशन पेज", SITE.registerPage), act.page("🔐 लॉगिन पेज", SITE.accessPage)] },
@@ -118,7 +125,6 @@
       kw: ["login", "log in", "signin", "sign in", "लॉगिन", "notes", "note", "नोट्स", "ebook", "e book", "e-book", "pdf", "library", "access", "sstc access", "study material", "लाइब्रेरी", "किताब", "पासवर्ड", "password", "forgot", "bhool", "bhul", "भूल"],
       reply: () => "🔐 **लॉगिन** के लिए SSTC Access पेज खोलें:\n1️⃣ **Student** टैब चुनें\n2️⃣ अपना Student ID और Password डालें (ये रजिस्ट्रेशन के बाद अपने आप बनते हैं)\n3️⃣ लॉगिन के बाद आपका student dashboard खुलेगा, जहाँ से notes और library मिलती हैं।\n\n🔑 Password भूल गए हों तो “Forgot Password?” दबाएँ, या Sir से संपर्क करें। नए student पहले रजिस्ट्रेशन करें।\n⚠️ अपना Password किसी को न बताएँ — मुझे भी चैट में न लिखें।",
       actions: () => [act.page("🔐 SSTC Access खोलें", SITE.accessPage), act.page("📝 नया student? Register", SITE.registerPage), act.wa("💬 Sir WhatsApp", SITE.sir.tel)] },
-
 
     { id: "offer",
       kw: ["offer", "plan", "plans", "rent", "question bank", "50%", "discount", "ऑफर", "छूट", "प्लान", "किराया", "kitne ka", "subject plan"],
@@ -229,7 +235,7 @@
   border-radius:14px 14px 14px 4px;box-shadow:0 8px 24px rgba(0,0,0,.2);display:none;cursor:pointer;border:1px solid #eee}
 .sai-teaser.show{display:block;animation:saiUp .4s ease}
 @keyframes saiUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.sai-panel{position:absolute;left:0;bottom:0;width:380px;max-width:calc(100vw - 24px);height:620px;max-height:calc(100vh - 28px);
+.sai-panel{position:absolute;left:0;bottom:0;width:380px;max-width:calc(100vw - 24px);height:640px;max-height:calc(100vh - 28px);
   background:#fff;border-radius:20px;box-shadow:0 18px 50px rgba(0,0,0,.35);display:flex;flex-direction:column;overflow:hidden;
   animation:saiUp .3s ease}
 .sai-panel[hidden]{display:none}
@@ -242,11 +248,34 @@
   background:rgba(255,255,255,.18);transition:.2s}
 .sai-tools button:hover{background:rgba(255,255,255,.32)}
 .sai-tools button.on{background:#ff9800;box-shadow:0 0 0 2px #fff}
-.sai-stage{position:relative;height:210px;flex:0 0 auto;background:radial-gradient(circle at 50% 40%,#f3ecff,#dfe8ff 60%,#c9d6f5)}
-.sai-stage canvas{width:100%;height:100%;display:block}
+
+/* ---- avatar stage ---- */
+.sai-stage{position:relative;height:250px;flex:0 0 auto;overflow:hidden;background:linear-gradient(160deg,#2a1b52,#0b1e3c)}
+.sai-bg{position:absolute;inset:-24px;background-size:cover;background-position:center;filter:blur(20px) brightness(.75) saturate(1.2);transition:background-image .3s}
+.sai-av{position:absolute;left:50%;top:0;height:100%;aspect-ratio:1/1;transform:translateX(-50%);
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent);
+  mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent)}
+.sai-av-in{position:absolute;inset:0;transform-origin:50% 100%;will-change:transform}
+.sai-av img{width:100%;height:100%;display:block;object-fit:cover;opacity:0;transition:opacity .35s}
+.sai-av img.ready{opacity:1}
+.sai-mouth{position:absolute;aspect-ratio:1.5/1;border-radius:50%;opacity:0;pointer-events:none;
+  transform:translate(-50%,-50%) scale(1,.2);
+  background:radial-gradient(ellipse at 50% 78%,#e57582 0 26%,#6b0f1c 30%,#3a050c 100%);
+  box-shadow:0 0 0 1px rgba(60,5,10,.45)}
 .sai-emoji{position:absolute;inset:0;display:none;align-items:center;justify-content:center;font-size:90px}
-.sai-stage.listening::after{content:"";position:absolute;inset:8px;border-radius:16px;border:3px solid #d32f2f;animation:saiRing 1s infinite}
+.sai-load{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;opacity:.85;pointer-events:none}
+.sai-load.hide{display:none}
+.sai-eq{position:absolute;right:12px;bottom:12px;display:flex;gap:3px;align-items:flex-end;height:22px;padding:5px 7px;
+  background:rgba(0,0,0,.45);border-radius:12px;opacity:0;transition:opacity .25s}
+.sai-eq i{width:3px;height:100%;background:#ffb74d;border-radius:2px;transform-origin:50% 100%;transform:scaleY(.25);animation:saiEq .7s ease-in-out infinite;animation-play-state:paused}
+.sai-eq i:nth-child(2){animation-delay:.12s}.sai-eq i:nth-child(3){animation-delay:.24s}
+.sai-eq i:nth-child(4){animation-delay:.36s}.sai-eq i:nth-child(5){animation-delay:.18s}
+@keyframes saiEq{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
+.sai-stage.speaking .sai-eq{opacity:1}
+.sai-stage.speaking .sai-eq i{animation-play-state:running}
+.sai-stage.listening::after{content:"";position:absolute;inset:8px;border-radius:16px;border:3px solid #d32f2f;animation:saiRing 1s infinite;pointer-events:none}
 @keyframes saiRing{0%{opacity:1}50%{opacity:.25}100%{opacity:1}}
+
 .sai-msgs{flex:1;overflow-y:auto;padding:12px;background:#f7f8fc;display:flex;flex-direction:column;gap:10px}
 .sai-b{max-width:88%;padding:9px 12px;border-radius:14px;font-size:14px;word-wrap:break-word;animation:saiUp .25s ease}
 .sai-b.bot{align-self:flex-start;background:#fff;color:#222;border:1px solid #e6e6ee;border-bottom-left-radius:4px}
@@ -273,20 +302,21 @@
 .sai-choose.show{display:flex}
 .sai-choose h3{font-size:19px}.sai-choose p{font-size:13px;opacity:.9}
 .sai-pick{display:flex;gap:14px;margin-top:6px}
-.sai-pick button{width:140px;padding:16px 8px;border-radius:18px;border:2px solid rgba(255,255,255,.4);background:rgba(255,255,255,.1);
+.sai-pick button{width:150px;padding:14px 8px;border-radius:18px;border:2px solid rgba(255,255,255,.4);background:rgba(255,255,255,.1);
   color:#fff;cursor:pointer;font-size:14px;transition:.25s}
 .sai-pick button:hover{transform:translateY(-5px);background:#fff;color:#4a1d9e}
-.sai-pick b{display:block;font-size:44px;margin-bottom:6px}
+.sai-pick img{display:block;width:100px;height:100px;margin:0 auto 8px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.7);background:#2a1b52}
 .sai-close2{background:none;border:none;color:#fff;opacity:.75;cursor:pointer;font-size:13px;text-decoration:underline;margin-top:6px}
 .sai-hl{outline:4px solid #ff9800!important;outline-offset:6px;border-radius:14px;animation:saiHl 1s ease 3}
 @keyframes saiHl{0%,100%{outline-color:#ff9800}50%{outline-color:#d32f2f}}
 @media(max-width:600px){
   #sai-root{left:10px;bottom:10px}
-  .sai-panel{position:fixed;left:8px;right:8px;bottom:8px;width:auto;height:88vh;max-height:none;max-width:none}
-  .sai-stage{height:170px}
+  .sai-panel{position:fixed;left:8px;right:8px;bottom:8px;width:auto;height:90vh;max-height:none;max-width:none}
+  .sai-stage{height:210px}
   .sai-fab b{font-size:13px}
 }
-@media(prefers-reduced-motion:reduce){.sai-fab,#sai-mic.on{animation:none}}
+@media(max-height:620px){.sai-stage{height:150px}}
+@media(prefers-reduced-motion:reduce){.sai-fab,#sai-mic.on,.sai-eq i{animation:none}}
 `;
 
   /* ------------------------------------------------------------------
@@ -298,6 +328,7 @@
     st.textContent = CSS;
     document.head.appendChild(st);
 
+    const A = CONFIG.avatars;
     const root = mk(`
 <div id="sai-root">
   <div class="sai-teaser" id="sai-teaser">नमस्ते! 👋 रजिस्ट्रेशन, नोट्स या फीस के बारे में पूछिए — मैं मदद करूँगा/करूँगी।</div>
@@ -312,7 +343,18 @@
         <button id="sai-x" title="बंद करें" aria-label="बंद करें">✕</button>
       </div>
     </header>
-    <div class="sai-stage" id="sai-stage"><canvas id="sai-canvas"></canvas><div class="sai-emoji" id="sai-emoji"></div></div>
+    <div class="sai-stage" id="sai-stage">
+      <div class="sai-bg" id="sai-bg"></div>
+      <div class="sai-av" id="sai-av">
+        <div class="sai-av-in" id="sai-avin">
+          <img id="sai-img" alt="SSTC AI Assistant" decoding="async">
+          <div class="sai-mouth" id="sai-mouth"></div>
+        </div>
+      </div>
+      <div class="sai-load" id="sai-load">लोड हो रहा है…</div>
+      <div class="sai-eq" id="sai-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="sai-emoji" id="sai-emoji"></div>
+    </div>
     <div class="sai-msgs" id="sai-msgs" aria-live="polite"></div>
     <div class="sai-chips" id="sai-chips"></div>
     <div class="sai-input">
@@ -324,8 +366,8 @@
       <h3>अपना AI असिस्टेंट चुनें</h3>
       <p>आप किसके साथ बात करना चाहेंगे?</p>
       <div class="sai-pick">
-        <button data-g="male"><b>👨‍🏫</b>Male<br><small>${CONFIG.names.male}</small></button>
-        <button data-g="female"><b>👩‍🏫</b>Female<br><small>${CONFIG.names.female}</small></button>
+        <button data-g="male"><img src="${esc(A.male.img)}" alt="" loading="lazy">${CONFIG.names.male}<br><small>Male</small></button>
+        <button data-g="female"><img src="${esc(A.female.img)}" alt="" loading="lazy">${CONFIG.names.female}<br><small>Female</small></button>
       </div>
       <button class="sai-close2" id="sai-close2">अभी नहीं</button>
     </div>
@@ -335,7 +377,8 @@
 
     els = {
       root, fab: $("#sai-fab"), panel: $("#sai-panel"), teaser: $("#sai-teaser"), name: $("#sai-name"),
-      status: $("#sai-status"), stage: $("#sai-stage"), canvas: $("#sai-canvas"), emoji: $("#sai-emoji"),
+      status: $("#sai-status"), stage: $("#sai-stage"), bg: $("#sai-bg"), av: $("#sai-av"), avin: $("#sai-avin"),
+      img: $("#sai-img"), mouth: $("#sai-mouth"), load: $("#sai-load"), emoji: $("#sai-emoji"),
       msgs: $("#sai-msgs"), chips: $("#sai-chips"), input: $("#sai-in"), mic: $("#sai-mic"),
       snd: $("#sai-snd"), gm: $("#sai-gm"), gf: $("#sai-gf"), choose: $("#sai-choose"),
     };
@@ -363,7 +406,6 @@
     els.gf.onclick = () => switchGender("female");
     els.choose.querySelectorAll("[data-g]").forEach((b) => (b.onclick = () => pickGender(b.dataset.g)));
     document.addEventListener("keydown", (e) => { if (e.key === "Escape" && state.open) closePanel(); });
-    window.addEventListener("resize", resizeStage);
     document.addEventListener("visibilitychange", () => { if (document.hidden) stopLoop(); else if (state.open) startLoop(); });
     window.addEventListener("pagehide", stopSpeaking);
     refreshHeader();
@@ -377,6 +419,7 @@
     els.status.textContent = state.listening ? g("सुन रहा हूँ…", "सुन रही हूँ…")
       : state.speaking ? g("बोल रहा हूँ…", "बोल रही हूँ…") : "ऑनलाइन • मदद के लिए तैयार";
     els.stage.classList.toggle("listening", state.listening);
+    els.stage.classList.toggle("speaking", state.speaking);
     els.mic.classList.toggle("on", state.listening);
   }
 
@@ -506,27 +549,27 @@
     state.gender = gen; store.set("sstc_ai_gender", gen);
     els.choose.classList.remove("show");
     refreshHeader();
-    await ensureStage(); resizeStage(); startLoop();
+    setAvatar(gen); startLoop();
     if (!state.history.length) greet();
   }
 
-  async function switchGender(gen) {
+  function switchGender(gen) {
     if (state.gender === gen) return;
     state.gender = gen; store.set("sstc_ai_gender", gen);
     refreshHeader();
-    await ensureStage(); buildAvatar(gen);
+    setAvatar(gen);
     stopSpeaking();
-    addMsg("bot", "नमस्ते! मैं " + botName() + " हूँ। अब मैं आपकी मदद करूँगा/करूँगी — पूछिए!".replace("करूँगा/करूँगी", g("करूँगा", "करूँगी")), [], { speak: state.sound });
+    addMsg("bot", ("नमस्ते! मैं " + botName() + " हूँ। अब मैं आपकी मदद करूँगा/करूँगी — पूछिए!").replace("करूँगा/करूँगी", g("करूँगा", "करूँगी")), [], { speak: state.sound });
   }
 
-  async function openPanel() {
+  function openPanel() {
     state.open = true;
     els.teaser.classList.remove("show");
     sess.set("sstc_ai_teaser", "1");
     els.fab.style.display = "none";
     els.panel.hidden = false;
     if (!state.gender) { els.choose.classList.add("show"); return; }
-    await ensureStage(); resizeStage(); startLoop();
+    setAvatar(state.gender); startLoop();
     if (!state.history.length) greet();
     scrollDown();
     setTimeout(() => els.input.focus({ preventScroll: true }), 150);
@@ -630,146 +673,73 @@
   }
 
   /* ------------------------------------------------------------------
-     7. 3D AVATAR  (Three.js, koi model-file nahi chahiye)
+     7. ANIME AVATAR  (image + साँस लेना + बोलते समय मुँह हिलना)
+        Three.js / 3D ki zarurat nahi — halka aur tez.
   ------------------------------------------------------------------ */
-  let T = null, renderer, scene, camera, clock, avatar = null, rig = null, raf = 0;
-  let nextBlink = 2, blinkAt = -1, mouthOpen = 0;
+  let raf = 0, mouthOpen = 0, shownGender = "";
+  const reduceMotion = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
 
-  async function ensureStage() {
-    if (state.stageReady === true) { if (!avatar) buildAvatar(state.gender); return true; }
-    if (state.stageReady === "failed") return false;
-    try {
-      T = await import(CONFIG.threeUrl);
-      renderer = new T.WebGLRenderer({ canvas: els.canvas, alpha: true, antialias: true });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-      scene = new T.Scene();
-      camera = new T.PerspectiveCamera(35, 1, 0.1, 50);
-      camera.position.set(0, 0.1, 4.2); camera.lookAt(0, 0.1, 0);
-      scene.add(new T.AmbientLight(0xffffff, 1.0));
-      const key = new T.DirectionalLight(0xffffff, 1.4); key.position.set(1.5, 2, 3); scene.add(key);
-      const rim = new T.DirectionalLight(0xb9a3ff, 0.6); rim.position.set(-2, 1, -2); scene.add(rim);
-      clock = new T.Clock();
-      state.stageReady = true;
-      buildAvatar(state.gender);
-      return true;
-    } catch (e) {
-      console.warn("SSTC avatar: 3D load nahi hua, emoji avatar dikha rahe hain.", e);
-      state.stageReady = "failed";
-      els.canvas.style.display = "none";
-      els.emoji.style.display = "flex";
-      els.emoji.textContent = state.gender === "female" ? "👩‍🏫" : "👨‍🏫";
-      return false;
-    }
-  }
+  function setAvatar(gen) {
+    const a = CONFIG.avatars[gen] || CONFIG.avatars.male;
+    if (shownGender === gen && els.img.classList.contains("ready")) return;
+    shownGender = gen;
 
-  function disposeObj(o) {
-    o.traverse((n) => {
-      if (n.geometry) n.geometry.dispose();
-      if (n.material) (Array.isArray(n.material) ? n.material : [n.material]).forEach((m) => m.dispose());
-    });
-  }
+    // मुँह की जगह
+    els.mouth.style.left = a.mouth.x + "%";
+    els.mouth.style.top = a.mouth.y + "%";
+    els.mouth.style.width = a.mouth.w + "%";
 
-  function buildAvatar(gender) {
-    if (!T) return;
-    if (avatar) { scene.remove(avatar); disposeObj(avatar); }
-    const f = gender === "female";
-    const M = (c, o) => new T.MeshLambertMaterial(Object.assign({ color: c }, o || {}));
-    const skin = M(f ? 0xe6b48e : 0xd9a279);
-    const hair = M(0x17100d);
-    const shirt = M(f ? 0x6c2bd9 : 0x0b1e3c);
-    const white = M(0xffffff), dark = M(0x111111);
-    const mouthMat = M(f ? 0x8e1b3a : 0x5a0f12);
-
-    const root = new T.Group();
-    const head = new T.Group();
-    root.add(head);
-    const add = (parent, geo, mat, x, y, z, sx, sy, sz) => {
-      const m = new T.Mesh(geo, mat);
-      m.position.set(x, y, z); m.scale.set(sx || 1, sy || 1, sz || 1);
-      parent.add(m); return m;
+    els.emoji.style.display = "none";
+    els.av.style.display = "";
+    els.load.classList.remove("hide");
+    els.img.classList.remove("ready");
+    els.img.onload = () => {
+      els.img.classList.add("ready");
+      els.load.classList.add("hide");
+      els.bg.style.backgroundImage = "url('" + a.img + "')";
     };
-
-    // body + neck
-    add(root, new T.SphereGeometry(0.8, 32, 24), shirt, 0, -0.98, 0, 1.0, 0.7, 0.6);
-    add(root, new T.CylinderGeometry(0.15, 0.17, 0.45, 20), skin, 0, -0.22, 0);
-    if (!f) add(root, new T.TorusGeometry(0.2, 0.035, 8, 24, Math.PI), white, 0, -0.42, 0.18, 1, 1, 1).rotation.z = Math.PI; // collar
-
-    // head
-    add(head, new T.SphereGeometry(0.55, 40, 32), skin, 0, 0.55, 0, 1, 1.08, 1);
-    add(head, new T.SphereGeometry(0.075, 12, 10), skin, -0.55, 0.52, 0, 0.6, 1.4, 0.8); // ears
-    add(head, new T.SphereGeometry(0.075, 12, 10), skin, 0.55, 0.52, 0, 0.6, 1.4, 0.8);
-    add(head, new T.SphereGeometry(0.052, 12, 10), skin, 0, 0.5, 0.54, 0.9, 1.1, 0.9); // nose
-
-    // hair
-    const cap = add(head, new T.SphereGeometry(0.585, 40, 24, 0, Math.PI * 2, 0, Math.PI * 0.52), hair, 0, 0.57, -0.03);
-    cap.rotation.x = f ? -0.5 : -0.42;
-    if (f) {
-      add(head, new T.SphereGeometry(0.6, 32, 24), hair, 0, -0.1, -0.3, 1.0, 1.3, 0.55);       // long hair (back)
-      add(head, new T.SphereGeometry(0.15, 16, 12), hair, -0.5, 0.35, 0.02, 0.8, 3.0, 1.5);     // side locks
-      add(head, new T.SphereGeometry(0.15, 16, 12), hair, 0.5, 0.35, 0.02, 0.8, 3.0, 1.5);
-    }
-
-    // eyes (blink ke liye alag group)
-    const eyes = [];
-    [-0.2, 0.2].forEach((x) => {
-      const eg = new T.Group(); eg.position.set(x, 0.62, 0); head.add(eg);
-      add(eg, new T.SphereGeometry(0.075, 16, 12), white, 0, 0, 0.49, 1, 1, 0.55);
-      add(eg, new T.SphereGeometry(0.042, 12, 10), dark, 0, 0, 0.52, 1, 1, 0.5);
-      eyes.push(eg);
-      const brow = add(head, new T.BoxGeometry(0.17, 0.022, 0.03), hair, x, 0.745, 0.49, 1, f ? 1 : 1.8, 1);
-      brow.rotation.z = x < 0 ? 0.08 : -0.08;
-      if (f) add(head, new T.BoxGeometry(0.17, 0.012, 0.02), dark, x, 0.695, 0.51);
-    });
-    if (f) { // halka blush
-      const bl = M(0xff8a80, { transparent: true, opacity: 0.4 });
-      add(head, new T.SphereGeometry(0.07, 12, 10), bl, -0.3, 0.42, 0.44, 1, 1, 0.3);
-      add(head, new T.SphereGeometry(0.07, 12, 10), bl, 0.3, 0.42, 0.44, 1, 1, 0.3);
-    }
-
-    // mouth: smile (idle) + open ellipse (bolte waqt)
-    const mouth = add(head, new T.SphereGeometry(0.1, 16, 12), mouthMat, 0, 0.32, 0.5, 1, 0.15, 0.4);
-    const smile = add(head, new T.TorusGeometry(0.09, 0.013, 6, 18, Math.PI), mouthMat, 0, 0.41, 0.54);
-    smile.rotation.z = Math.PI;
-
-    root.position.y = -0.05;
-    scene.add(root);
-    avatar = root;
-    rig = { head, eyes, mouth, smile, root };
+    els.img.onerror = () => { // image na mile to emoji dikhao
+      els.load.classList.add("hide");
+      els.av.style.display = "none";
+      els.emoji.style.display = "flex";
+      els.emoji.textContent = gen === "female" ? "👩‍🏫" : "👨‍🏫";
+      console.warn("SSTC avatar: image load nahi hui ->", a.img);
+    };
+    els.img.src = a.img;
   }
 
-  function resizeStage() {
-    if (!renderer || !els.canvas) return;
-    const w = els.canvas.clientWidth, h = els.canvas.clientHeight;
-    if (!w || !h) return;
-    renderer.setSize(w, h, false);
-    camera.aspect = w / h; camera.updateProjectionMatrix();
-  }
-
-  function tick() {
+  function tick(ms) {
     raf = requestAnimationFrame(tick);
-    if (!rig) return;
-    const t = clock.getElapsedTime();
-    const { head, eyes, mouth, smile, root } = rig;
-    root.position.y = -0.05 + Math.sin(t * 1.4) * 0.012;
-    head.rotation.y = Math.sin(t * 0.6) * 0.12 + (state.speaking ? Math.sin(t * 2.3) * 0.06 : 0);
-    head.rotation.x = Math.sin(t * 0.9) * 0.03 + (state.speaking ? Math.sin(t * 5) * 0.035 : 0);
-    head.rotation.z = state.listening ? 0.13 : Math.sin(t * 0.45) * 0.02;
+    const t = ms / 1000;
 
-    if (t > nextBlink) { blinkAt = t; nextBlink = t + 2.5 + Math.random() * 3; }
-    const bp = t - blinkAt;
-    const es = bp >= 0 && bp < 0.15 ? 1 - Math.sin((bp / 0.15) * Math.PI) * 0.92 : 1;
-    eyes.forEach((e) => (e.scale.y = es));
+    // साँस लेना + हल्का हिलना (सिर/कंधे)
+    let ty = 0, sc = 1, rot = 0;
+    if (!reduceMotion) {
+      ty = Math.sin(t * 1.5) * 1.6;
+      sc = 1.02 + Math.sin(t * 1.5) * 0.004;
+      rot = Math.sin(t * 0.55) * 0.5;
+      if (state.speaking) {
+        ty += Math.sin(t * 6) * 0.9;
+        rot += Math.sin(t * 2.3) * 0.7;
+        sc += 0.006;
+      }
+      if (state.listening) rot += 2;
+    }
+    els.avin.style.transform = "translateY(" + ty.toFixed(2) + "px) rotate(" + rot.toFixed(2) + "deg) scale(" + sc.toFixed(4) + ")";
 
+    // lip-sync (बोलते समय मुँह खुलता-बंद होता है)
     const target = state.speaking
       ? 0.25 + Math.abs(Math.sin(t * 12)) * 0.5 * (0.55 + 0.45 * Math.abs(Math.sin(t * 3.3)))
       : 0;
     mouthOpen += (target - mouthOpen) * 0.35;
-    mouth.scale.y = 0.15 + mouthOpen * 1.3;
-    const open = mouthOpen > 0.1;
-    mouth.visible = open; smile.visible = !open;
-    renderer.render(scene, camera);
+    const show = mouthOpen > 0.08;
+    els.mouth.style.opacity = show ? "1" : "0";
+    if (show) {
+      const sy = 0.2 + mouthOpen * 1.5, sx = 0.85 + mouthOpen * 0.3;
+      els.mouth.style.transform = "translate(-50%,-50%) scale(" + sx.toFixed(3) + "," + sy.toFixed(3) + ")";
+    }
   }
-  function startLoop() { if (!raf && state.stageReady === true) { clock.start(); tick(); } }
+  function startLoop() { if (!raf) raf = requestAnimationFrame(tick); }
   function stopLoop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
 
   /* ------------------------------------------------------------------
