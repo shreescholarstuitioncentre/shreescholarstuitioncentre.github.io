@@ -350,7 +350,11 @@
         <div class="fr-viewer" id="frViewer" hidden>
             <div class="fr-bar">
                 <strong id="frViewerTitle">Free Chapter</strong>
-                <div class="fr-bar-actions">
+                  <div class="fr-bar-actions">
+                    <button type="button" onclick="sstcFreeZoom(-0.1)" title="Zoom Out">−</button>
+                    <span id="frZoomLevel" class="fr-zoom-level">100%</span>
+                    <button type="button" onclick="sstcFreeZoom(0.1)" title="Zoom In">+</button>
+                    <button type="button" onclick="sstcFreeZoom(0)" title="Reset Zoom">↺</button>
                     <button type="button" onclick="sstcFreeFullscreen()" title="Fullscreen">⛶</button>
                     <button type="button" onclick="closeSstcFreeViewer()" title="Close">✕</button>
                 </div>
