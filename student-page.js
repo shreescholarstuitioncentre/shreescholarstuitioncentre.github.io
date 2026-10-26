@@ -5966,7 +5966,7 @@ function openSstcFree() {
     if (ebook) { ebook.hidden = true; }
 
     renderSstcFreeList();
-
+    setSstcFreeMedium(sstcFreeMedium);
     section.hidden = false;
     section.scrollIntoView({ behavior: "smooth", block: "start" });
 }
