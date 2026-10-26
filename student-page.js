@@ -5785,28 +5785,80 @@ window.closeSstcEbook = closeSstcEbook;
    ========================================================= */
 
 /* Yahan subject aur unke free chapters add / hatao. file = HTML file ka path */
-const SSTC_FREE_CHAPTERS = [
-    {
-        subject: "Subject 1",
-        chapters: [
-            { title: "Chapter 1", file: "free/subject-1/chapter-01.html" },
-            { title: "Chapter 2", file: "free/subject-1/chapter-02.html" }
-        ]
-    },
-    {
-        subject: "Subject 2",
-        chapters: [
-            { title: "Chapter 1", file: "free/subject-2/chapter-01.html" },
-            { title: "Chapter 2", file: "free/subject-2/chapter-02.html" }
-        ]
-    },
-    {
-        subject: "Subject 3",
-        chapters: [
-            { title: "Chapter 1", file: "free/subject-3/chapter-01.html" }
-        ]
+/* Class ke hisaab se free chapters. Key = class number ("10", "12") */
+/* Class ke hisaab se free chapters. en = English file, hi = Hindi file */
+const SSTC_FREE_CHAPTERS_BY_CLASS = {
+
+    "10": [
+        {
+            subject: "Maths",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-10/maths/chapter-01-en.html", hi: "free/class-10/maths/chapter-01-hi.html" },
+                { title: "Chapter 2", en: "free/class-10/maths/chapter-02-en.html", hi: "free/class-10/maths/chapter-02-hi.html" }
+            ]
+        },
+        {
+            subject: "Science",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-10/science/chapter-01-en.html", hi: "free/class-10/science/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "English",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-10/english/chapter-01-en.html", hi: "free/class-10/english/chapter-01-hi.html" }
+            ]
+        }
+    ],
+
+    "12": [
+        {
+            subject: "Maths",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-12/maths/chapter-01-en.html", hi: "free/class-12/maths/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "Science",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-12/science/chapter-01-en.html", hi: "free/class-12/science/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "English",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-12/english/chapter-01-en.html", hi: "free/class-12/english/chapter-01-hi.html" }
+            ]
+        }
+    ]
+};
+
+let sstcFreeMedium = "en";     // "en" ya "hi"
+let sstcFreeOpen = null;       // abhi khula chapter { s, c }
+
+function setSstcFreeMedium(medium) {
+
+    sstcFreeMedium = (medium === "hi") ? "hi" : "en";
+
+    document.querySelectorAll(".fr-medium button").forEach(function (btn) {
+        btn.classList.toggle("active", btn.getAttribute("data-medium") === sstcFreeMedium);
+    });
+
+    /* Chapter khula ho to usi chapter ko nayi language me kholo */
+    if (sstcFreeOpen) {
+        openSstcFreeChapter(sstcFreeOpen.s, sstcFreeOpen.c);
     }
-];
+}
+
+/* Student ki class ke free subjects (class na mile to khaali list) */
+function getSstcFreeChapters() {
+
+    const classNumber = normalizeStudentClass(
+        getStudentValue(["className", "Class", "class", "studentClass"], "")
+    );
+
+    return SSTC_FREE_CHAPTERS_BY_CLASS[classNumber] || [];
+}
 
 let sstcFreeZoomValue = 1;
 
@@ -5816,9 +5868,21 @@ function renderSstcFreeList() {
 
     if (!list) { return; }
 
-    list.innerHTML = "";
+       list.innerHTML = "";
 
-    SSTC_FREE_CHAPTERS.forEach(function (sub, sIndex) {
+    const freeData = getSstcFreeChapters();
+
+    if (freeData.length === 0) {
+
+        const empty = document.createElement("div");
+        empty.className = "chapter-empty";
+        empty.innerHTML = "<div>🎁</div><h3>Free chapters abhi available nahi hain</h3><p>Aapki class ke free chapters jaldi add honge.</p>";
+
+        list.appendChild(empty);
+        return;
+    }
+
+    freeData.forEach(function (sub, sIndex) {
 
         const box = document.createElement("div");
         box.className = "fr-subject";
@@ -5917,7 +5981,7 @@ function closeSstcFree() {
 
 function openSstcFreeChapter(sIndex, cIndex) {
 
-    const sub = SSTC_FREE_CHAPTERS[sIndex];
+    const sub = getSstcFreeChapters()[sIndex];
     const item = sub && sub.chapters[cIndex];
 
     if (!item) { return; }
@@ -5927,12 +5991,15 @@ function openSstcFreeChapter(sIndex, cIndex) {
 
     if (!viewer || !frame) { return; }
 
-    document.getElementById("frViewerTitle").textContent = sub.subject + " • " + item.title;
+    sstcFreeOpen = { s: sIndex, c: cIndex };
+
+    document.getElementById("frViewerTitle").textContent =
+        sub.subject + " • " + item.title + " (" + (sstcFreeMedium === "hi" ? "Hindi" : "English") + ")";
 
     sstcFreeZoomValue = 1;
     applySstcFreeZoom();
 
-    frame.src = item.file;
+    frame.src = sstcFreeMedium === "hi" ? item.hi : item.en;
     viewer.hidden = false;
 
     document.querySelectorAll(".fr-item").forEach(function (el) {
@@ -5942,6 +6009,7 @@ function openSstcFreeChapter(sIndex, cIndex) {
     viewer.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+
 function closeSstcFreeViewer() {
 
     const viewer = document.getElementById("frViewer");
@@ -5949,7 +6017,7 @@ function closeSstcFreeViewer() {
 
     if (frame) { frame.src = "about:blank"; }
     if (viewer) { viewer.hidden = true; }
-
+       sstcFreeOpen = null;
     document.querySelectorAll(".fr-item.active").forEach(function (el) {
         el.classList.remove("active");
     });
@@ -6000,3 +6068,4 @@ window.openSstcFreeChapter = openSstcFreeChapter;
 window.closeSstcFreeViewer = closeSstcFreeViewer;
 window.sstcFreeFullscreen = sstcFreeFullscreen;
 window.sstcFreeZoom = sstcFreeZoom;
+window.setSstcFreeMedium = setSstcFreeMedium;
