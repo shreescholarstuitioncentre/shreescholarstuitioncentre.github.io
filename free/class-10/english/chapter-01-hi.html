@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>अंग्रेज़ी रिवीज़न चार्ट</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600&family=Mukta:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f5fa;--card:#fff;--ink:#13203a;--mut:#58647c;--line:#d9e0ec;--acc:#e8590c;
+--noun:#2f9e44;--pron:#e8590c;--adj:#7048e8;--verb:#1971c2;--adv:#d6336c;--prep:#0c8599;--conj:#f08c00;--int:#c2255c;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="dark"]{--bg:#0e1522;--card:#172233;--ink:#e8eef8;--mut:#9aa7bf;--line:#2a374d}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1522;--card:#172233;--ink:#e8eef8;--mut:#9aa7bf;--line:#2a374d}}
+html{scroll-behavior:smooth;scroll-padding-top:calc(64px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.7 Hind,"Noto Sans Devanagari","Segoe UI",sans-serif}
+h1,h2,h3,button,nav a,th{font-family:Mukta,Hind,"Noto Sans Devanagari",sans-serif}
+header{padding:48px 20px 28px;max-width:1000px;margin:auto}
+h1{font-size:clamp(34px,7vw,60px);line-height:1.15;margin:0 0 12px;font-weight:800}
+header p{color:var(--mut);max-width:60ch;margin:0}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+nav div{display:flex;gap:6px;overflow-x:auto;padding:10px 16px;max-width:1000px;margin:auto}
+nav a{white-space:nowrap;text-decoration:none;color:var(--ink);padding:4px 12px;border-radius:99px;border:1px solid var(--line);font-size:15px;font-weight:600}
+nav a:hover,nav a:focus-visible{background:var(--ink);color:var(--bg)}
+main{max-width:1000px;margin:auto;padding:0 16px 80px}
+section{background:var(--card);border:1px solid var(--line);border-left:8px solid var(--c);border-radius:10px;padding:24px;margin:28px 0}
+section h2{margin:0 0 6px;font-size:30px;color:var(--c)}
+.sub{color:var(--mut);margin:0 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.box{border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.box b{font-family:Mukta,Hind,sans-serif;font-size:19px}
+.box small{display:block;color:var(--mut);font-size:16px;line-height:1.5}
+button{font:600 15px Mukta,Hind,sans-serif;border:1.5px solid var(--c,var(--ink));background:transparent;color:var(--ink);padding:6px 14px;border-radius:8px;cursor:pointer}
+button:hover{background:var(--c,var(--ink));color:#fff}
+button:focus-visible,a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+button.on{background:var(--c,var(--ink));color:#fff}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.stage{background:var(--bg);border-radius:8px;padding:18px;min-height:90px}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left}
+th{background:var(--bg)}
+.scroll{overflow-x:auto}
+.w{display:inline-block;padding:0 8px;margin:3px 2px;border-radius:6px;font-size:22px;transition:background .4s,color .4s,transform .4s;direction:ltr}
+.w.on{color:#fff;transform:translateY(-6px) scale(1.08)}
+.w.on[data-p=noun]{background:var(--noun)}.w.on[data-p=pron]{background:var(--pron)}.w.on[data-p=adj]{background:var(--adj)}.w.on[data-p=verb]{background:var(--verb)}
+.w.on[data-p=adv]{background:var(--adv)}.w.on[data-p=prep]{background:var(--prep)}.w.on[data-p=conj]{background:var(--conj)}.w.on[data-p=int]{background:var(--int)}
+.pos button{border-color:var(--k);--c:var(--k)}
+#pdef{margin:10px 0 0;color:var(--mut);min-height:3em}
+#art{font-size:34px;font-family:Mukta,sans-serif;font-weight:800;min-height:56px}
+#art span{display:inline-block;animation:pop .5s}
+@keyframes pop{0%{transform:scale(.3) rotate(-8deg);opacity:0}70%{transform:scale(1.15)}100%{transform:none;opacity:1}}
+.tl{position:relative;height:110px;margin:10px 0}
+.tl .ln{position:absolute;left:0;right:0;top:46px;height:4px;background:var(--line);border-radius:2px}
+.tl .now{position:absolute;left:50%;top:14px;width:3px;height:68px;background:var(--ink);opacity:.5}
+.tl .lab{position:absolute;top:84px;font:600 15px Mukta,sans-serif;color:var(--mut)}
+.bar,.dash,.tick{position:absolute;transition:left .8s cubic-bezier(.3,.7,.2,1),width .8s cubic-bezier(.3,.7,.2,1),opacity .5s}
+.bar{top:38px;height:20px;border-radius:10px;background:var(--verb)}
+.dash{top:47px;border-top:3px dashed var(--adv);height:0}
+.tick{top:30px;width:4px;height:36px;background:var(--adv);border-radius:2px}
+.tg{display:grid;grid-template-columns:70px repeat(4,1fr);gap:6px;font-size:14px}
+.tg button{padding:6px 2px}
+.tg i{font:600 14px Mukta,sans-serif;align-self:center;color:var(--mut);font-style:normal;text-align:center}
+#form{font:800 21px Mukta,sans-serif;margin:6px 0 0;direction:ltr;text-align:left}
+#ex{direction:ltr;text-align:left;font-size:21px}
+.flow{display:flex;flex-wrap:wrap;gap:8px;font-size:22px;direction:ltr}
+.chip{padding:6px 14px;border-radius:8px;color:#fff;font-weight:600}
+.chip.S{background:var(--noun)}.chip.V{background:var(--verb)}.chip.O{background:var(--adv)}.chip.B{background:var(--mut)}
+#ds{font-size:22px;min-height:68px;direction:ltr;text-align:left}
+#ds mark{background:#ffd43b;color:#1b1b1b;padding:0 4px;border-radius:4px;animation:hl 1.2s}
+@keyframes hl{from{background:#ff6b6b;transform:scale(1.2)}to{background:#ffd43b;transform:none}}
+.dots{display:flex;gap:6px;margin-top:10px}.dots i{width:30px;height:6px;border-radius:3px;background:var(--line);transition:background .4s}.dots i.on{background:var(--c)}
+.letter{background:#fffef8;color:#222;border:1px solid var(--line);border-radius:6px;padding:18px;max-width:520px;font-size:16px;margin-top:10px;display:flex;flex-direction:column;gap:8px}
+.letter div{opacity:0;transform:translateX(-20px);transition:all .6s;border:1.5px dashed #bbb;border-radius:4px;padding:4px 9px}
+.letter div.show{opacity:1;transform:none}
+.letter .r{align-self:flex-end;text-align:right}.letter .c{align-self:center}
+.letter em{color:#666;font-size:14px;font-style:normal}
+.en{direction:ltr;unicode-bidi:isolate}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style>
+  /* वॉटरमार्क की सेटिंग */
+  .sstc-watermark {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-size: 10vw; /* स्क्रीन के हिसाब से ऑटो-साइज़ */
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.04); /* बहुत हल्का रंग ताकि टेक्स्ट पढ़ने में दिक्कत न हो */
+    z-index: 9999; /* सबसे ऊपर रखने के लिए */
+    pointer-events: none; /* इसके पीछे के बटन या टेक्स्ट पर क्लिक हो सके */
+    user-select: none; /* इसे कोई कॉपी न कर पाए */
+  }
+
+  /* प्रिंट करते समय हर पेज पर दिखने के लिए */
+  @media print {
+    .sstc-watermark {
+      position: fixed;
+      color: rgba(0, 0, 0, 0.05) !important;
+      -webkit-print-color-adjust: exact; /* ब्राउज़र को हल्का रंग प्रिंट करने के लिए मजबूर करता है */
+      print-color-adjust: exact;
+    }
+  }
+</style>
+
+<!-- वॉटरमार्क का टेक्स्ट -->
+<div class="sstc-watermark">SSTC</div>
+</head>
+<body><div class="sstc-watermark">SSTC</div>
+<nav><div>
+<a href="#pos">Parts of Speech</a><a href="#art-s">Articles</a><a href="#sent">वाक्य</a><a href="#tense">Tenses</a><a href="#voice">Voice</a><a href="#speech">Narration</a><a href="#punc">विराम चिह्न</a><a href="#lit">साहित्य</a><a href="#letter-s">पत्र लेखन</a>
+</div></nav>
+<header>
+<h1>अंग्रेज़ी रिवीज़न चार्ट</h1>
+<p>व्याकरण, लेखन के प्रारूप और साहित्य, एक ही पेज पर। बटन दबाइए और हर नियम को चलते हुए देखिए।</p>
+</header>
+<main>
+
+<section id="pos" style="--c:var(--noun)">
+<h2>Parts of Speech (शब्द-भेद)</h2>
+<p class="sub">कोई शब्द-भेद चुनिए। वाक्य में उसी के शब्द एक-एक करके रंगीन हो जाएँगे।</p>
+<div class="row pos" id="posb"></div>
+<div class="stage" id="sentence"></div>
+<p id="pdef"></p>
+</section>
+
+<section id="art-s" style="--c:var(--prep)">
+<h2>Articles (उपपद)</h2>
+<p class="sub"><b class="en">a</b> व्यंजन की ध्वनि से पहले, <b class="en">an</b> स्वर की ध्वनि से पहले, और <b class="en">the</b> किसी खास या अकेली चीज़ के लिए आता है।</p>
+<div class="row" id="artb"></div>
+<div class="stage"><div id="art" class="en">शब्द चुनिए</div><div id="artwhy" class="sub" style="margin:6px 0 0"></div></div>
+</section>
+
+<section id="sent" style="--c:var(--conj)">
+<h2>वाक्य और उनके प्रकार</h2>
+<p class="sub">शब्दों का वह समूह जिसका पूरा अर्थ निकले, वाक्य कहलाता है। अंग्रेज़ी वाक्य Capital letter से शुरू होता है और full stop, प्रश्नचिह्न या विस्मयादिबोधक चिह्न पर खत्म होता है।</p>
+<div class="grid">
+<div class="box"><b>Assertive (विधानवाचक)</b><small>तथ्य या राय बताता है।</small><span class="en">She plays tennis<span class="pm">.</span></span></div>
+<div class="box"><b>Interrogative (प्रश्नवाचक)</b><small>प्रश्न पूछता है।</small><span class="en">Where do you live<span class="pm">?</span></span></div>
+<div class="box"><b>Imperative (आज्ञावाचक)</b><small>आदेश, अनुरोध या सलाह।</small><span class="en">Please open the door<span class="pm">.</span></span></div>
+<div class="box"><b>Exclamatory (विस्मयादिबोधक)</b><small>तीव्र भावना।</small><span class="en">What a beautiful day<span class="pm">!</span></span></div>
+<div class="box"><b>Optative (इच्छावाचक)</b><small>इच्छा या आशीर्वाद।</small><span class="en">May you succeed<span class="pm">!</span></span></div>
+</div>
+<h3>Pronoun के रूप (कर्ता, कर्म, अधिकार)</h3>
+<div class="scroll"><table class="en"><tr><th>Person</th><th>Subject</th><th>Object</th><th>Possessive</th></tr>
+<tr><td>First (उत्तम पुरुष)</td><td>I / we</td><td>me / us</td><td>my, mine / our, ours</td></tr>
+<tr><td>Second (मध्यम पुरुष)</td><td>you</td><td>you</td><td>your, yours</td></tr>
+<tr><td>Third (अन्य पुरुष)</td><td>he, she, it / they</td><td>him, her, it / them</td><td>his, her(s), its / their(s)</td></tr></table></div>
+</section>
+
+<section id="tense" style="--c:var(--verb)">
+<h2>Tenses (काल)</h2>
+<p class="sub">बारह काल, एक टाइमलाइन। कोई काल चुनिए और देखिए कि क्रिया समय की रेखा पर कहाँ खिसकती है। गुलाबी निशान वह क्षण है जहाँ से क्रिया को नापा जाता है।</p>
+<div class="tg" id="tg"></div>
+<div class="stage" style="margin-top:14px">
+<div class="tl"><div class="ln"></div><div class="now"></div><div class="bar" id="bar"></div><div class="dash" id="dash"></div><div class="tick" id="tick"></div>
+<span class="lab" style="left:2%">भूतकाल</span><span class="lab" style="left:calc(50% - 14px)">अब</span><span class="lab" style="right:2%">भविष्य</span></div>
+<div id="form"></div><div id="ex"></div><div id="use" class="sub" style="margin:4px 0 0"></div>
+</div>
+</section>
+
+<section id="voice" style="--c:var(--adv)">
+<h2>Voice (वाच्य): Active से Passive</h2>
+<p class="sub">Passive में कर्म (object) वाक्य के आगे आ जाता है और क्रिया बनती है <b class="en">be + V3</b>।</p>
+<div class="row" id="vt"></div>
+<div class="stage"><div class="flow" id="flow"></div></div>
+<div class="row"><button id="vbtn" style="--c:var(--adv)">वाच्य बदलिए</button></div>
+<div class="scroll"><table><tr><th>काल</th><th>Passive का ढाँचा</th></tr>
+<tr><td>Simple Present</td><td class="en">is / am / are + V3</td></tr><tr><td>Present Continuous</td><td class="en">is / am / are being + V3</td></tr>
+<tr><td>Present Perfect</td><td class="en">has / have been + V3</td></tr><tr><td>Simple Past</td><td class="en">was / were + V3</td></tr>
+<tr><td>Past Continuous</td><td class="en">was / were being + V3</td></tr><tr><td>Past Perfect</td><td class="en">had been + V3</td></tr>
+<tr><td>Simple Future</td><td class="en">will be + V3</td></tr><tr><td>Future Perfect</td><td class="en">will have been + V3</td></tr></table></div>
+</section>
+
+<section id="speech" style="--c:var(--pron)">
+<h2>Direct और Indirect Speech (कथन)</h2>
+<p class="sub">Play दबाइए। वाक्य एक-एक बदलाव के साथ बदलता जाएगा।</p>
+<div class="row" id="dsx"></div>
+<div class="stage"><div id="dslab" class="sub" style="margin:0 0 6px"></div><div id="ds"></div><div class="dots" id="dots"></div></div>
+<div class="row"><button id="dsplay" style="--c:var(--pron)">चलाइए</button><button id="dsnext" style="--c:var(--pron)">अगला चरण</button></div>
+<div class="grid" style="margin-top:12px">
+<div class="box"><b>काल में बदलाव</b><small class="en">Present simple → Past simple</small><small class="en">Present continuous → Past continuous</small><small class="en">Present perfect → Past perfect</small><small class="en">Simple past → Past perfect</small><small class="en">will → would, can → could</small></div>
+<div class="box"><b>शब्दों में बदलाव</b><small class="en">now → then</small><small class="en">today → that day</small><small class="en">tomorrow → the next day</small><small class="en">yesterday → the previous day</small><small class="en">here → there, this → that</small></div>
+</div>
+</section>
+
+<section id="punc" style="--c:var(--int)">
+<h2>Punctuation (विराम चिह्न)</h2>
+<div class="grid">
+<div class="box"><b>Full stop ( . )</b><small>कथन के अंत में।</small><span class="en">He is a doctor.</span></div>
+<div class="box"><b>Comma ( , )</b><small>सूची के शब्द अलग करने और छोटे ठहराव के लिए।</small><span class="en">I bought milk, eggs and bread.</span></div>
+<div class="box"><b>Question mark ( ? )</b><small>प्रश्न के अंत में।</small><span class="en">Who are you?</span></div>
+<div class="box"><b>Exclamation mark ( ! )</b><small>तीव्र भावना दिखाने के लिए।</small><span class="en">Hurrah! We won!</span></div>
+<div class="box"><b>Apostrophe ( ’ )</b><small>अधिकार या छूटा हुआ अक्षर दिखाने के लिए।</small><span class="en">Ravi’s book; don’t.</span></div>
+<div class="box"><b>Colon ( : )</b><small>सूची या स्पष्टीकरण से पहले।</small><span class="en">You need three things: pen, paper, ink.</span></div>
+<div class="box"><b>Semicolon ( ; )</b><small>दो संबंधित वाक्यों को जोड़ता है।</small><span class="en">It rained; we stayed home.</span></div>
+<div class="box"><b>Quotation marks ( “ ” )</b><small>बोले गए शब्दों को घेरते हैं।</small><span class="en">He said, “Come in.”</span></div>
+<div class="box"><b>Hyphen ( - )</b><small>शब्दों को जोड़ता है।</small><span class="en">Well-known, mother-in-law.</span></div>
+</div>
+</section>
+
+<section id="lit" style="--c:var(--adj)">
+<h2>साहित्य: कविताओं के संक्षिप्त नोट्स</h2>
+<p class="sub">अक्सर पूछी जाने वाली कविताओं का एक पंक्ति में भाव।</p>
+<div class="grid">
+<div class="box"><b class="en">Dust of Snow</b><small>रॉबर्ट फ्रॉस्ट। प्रकृति का एक छोटा-सा पल उदास मन को हल्का कर देता है।</small></div>
+<div class="box"><b class="en">Fire and Ice</b><small>रॉबर्ट फ्रॉस्ट। दुनिया का अंत इच्छा (आग) या घृणा (बर्फ़) से हो सकता है।</small></div>
+<div class="box"><b class="en">A Tiger in the Zoo</b><small>लेस्ली नॉरिस। पिंजरे के बाघ और उसके जंगल के जीवन की तुलना।</small></div>
+<div class="box"><b class="en">The Ball Poem</b><small>जॉन बेरीमन। एक बच्चा हानि और ज़िम्मेदारी का मतलब सीखता है।</small></div>
+<div class="box"><b class="en">Amanda!</b><small>रॉबिन क्लाइन। लगातार टोका-टाकी के बीच बच्ची की आज़ादी की चाह।</small></div>
+<div class="box"><b class="en">The Trees</b><small>एड्रिएन रिच। पेड़ घर से निकलकर आज़ादी की ओर बढ़ते हैं।</small></div>
+<div class="box"><b class="en">Fog</b><small>कार्ल सैंडबर्ग। कोहरे की तुलना चुपचाप चलने वाली बिल्ली से।</small></div>
+<div class="box"><b class="en">For Anne Gregory</b><small>डब्ल्यू. बी. येट्स। क्या प्यार रूप के लिए हो या इंसान के लिए?</small></div>
+</div>
+</section>
+
+<section id="letter-s" style="--c:var(--prep)">
+<h2>औपचारिक पत्र और प्रार्थना-पत्र का प्रारूप</h2>
+<p class="sub">पत्र का ढाँचा एक-एक खंड करके बनाइए।</p>
+<div class="row"><button id="lb" style="--c:var(--prep)">पत्र बनाइए</button><button id="lr" style="--c:var(--prep)">रीसेट</button></div>
+<div class="letter" id="letter">
+<div class="r">प्रेषक का पता<br><em>मकान नंबर, गली, शहर, पिन कोड</em></div>
+<div class="r">दिनांक<br><em>12 मार्च 2026</em></div>
+<div>प्राप्तकर्ता का पद और पता<br><em>प्रधानाचार्य, ABC स्कूल, शहर</em></div>
+<div><b>विषय:</b> … के लिए अनुरोध <em>(एक पंक्ति, सीधी बात)</em></div>
+<div>संबोधन <em class="en">Sir / Madam,</em></div>
+<div>मुख्य भाग <em>अनुच्छेद 1: उद्देश्य। अनुच्छेद 2: विवरण और कारण। अनुच्छेद 3: अनुरोध और धन्यवाद।</em></div>
+<div class="c">अभिवादन <em class="en">Yours faithfully / Yours sincerely,</em></div>
+<div class="c">हस्ताक्षर और नाम</div>
+</div>
+</section>
+</main>
+
+<script>
+const $=s=>document.querySelector(s);
+/* Parts of speech */
+const P={noun:["Noun (संज्ञा)","व्यक्ति, स्थान, वस्तु या भाव का नाम: Ram, Delhi, book।"],pron:["Pronoun (सर्वनाम)","संज्ञा की जगह आता है: he, she, it, they।"],adj:["Adjective (विशेषण)","संज्ञा की विशेषता बताता है: beautiful, tall, fresh।"],verb:["Verb (क्रिया)","काम या अवस्था दिखाती है: run, eat, is।"],adv:["Adverb (क्रिया-विशेषण)","क्रिया, विशेषण या दूसरे adverb की विशेषता बताता है: quickly, very।"],prep:["Preposition (संबंधबोधक)","संज्ञा का दूसरे शब्द से संबंध दिखाता है: in, on, at, under।"],conj:["Conjunction (समुच्चयबोधक)","शब्दों या वाक्यों को जोड़ता है: and, but, or।"],int:["Interjection (विस्मयादिबोधक)","अचानक उठी भावना दिखाता है: Wow! Alas! Hurrah!"]};
+const S=[["Wow!","int"],["The"],["clever","adj"],["boy","noun"],["quickly","adv"],["ran","verb"],["to","prep"],["the"],["market","noun"],["and","conj"],["he","pron"],["bought","verb"],["fresh","adj"],["mangoes","noun"]];
+$("#sentence").innerHTML=S.map(w=>`<span class="w" data-p="${w[1]||""}">${w[0]}</span>`).join(" ");
+$("#posb").innerHTML=Object.keys(P).map(k=>`<button data-k="${k}" style="--k:var(--${k})">${P[k][0]}</button>`).join("");
+function showPos(k){document.querySelectorAll("#posb button").forEach(b=>b.classList.toggle("on",b.dataset.k===k));
+let i=0;document.querySelectorAll(".w").forEach(w=>{const m=w.dataset.p===k;setTimeout(()=>w.classList.toggle("on",m),m?(i++)*180:0)});
+$("#pdef").textContent=P[k][1]}
+$("#posb").onclick=e=>{if(e.target.dataset.k)showPos(e.target.dataset.k)};
+showPos("noun");
+/* Articles */
+const A=[["apple","an","यह स्वर की ध्वनि से शुरू होता है।"],["book","a","यह व्यंजन की ध्वनि से शुरू होता है।"],["hour","an","h मौन है, इसलिए शब्द स्वर की ध्वनि से शुरू होता है।"],["university","a","शुरुआत ‘यू’ ध्वनि से होती है, जो व्यंजन ध्वनि है।"],["sun","the","सूर्य एक ही है, इसलिए ‘the’ लगता है।"],["honest man","an","यहाँ भी h मौन है, इसलिए ‘an’।"]];
+$("#artb").innerHTML=A.map((a,i)=>`<button class="en" data-i="${i}" style="--c:var(--prep)">${a[0]}</button>`).join("");
+$("#artb").onclick=e=>{const a=A[e.target.dataset.i];if(!a)return;$("#art").innerHTML=`<span style="color:var(--prep)">${a[1]}</span> <span style="animation-delay:.15s">${a[0]}</span>`;$("#artwhy").textContent=a[2]};
+/* End marks */
+document.querySelectorAll(".pm").forEach((m,i)=>{m.style.cssText="display:inline-block;font-weight:800;color:var(--conj);font-size:26px";m.animate([{transform:"scale(0)"},{transform:"scale(1.6)"},{transform:"scale(1)"}],{duration:900,delay:i*200,fill:"backwards"})});
+/* Tenses */
+const T=[["Present Simple","Subject + V1 (s/es)","She sings a song.","आदतें, तथ्य, रोज़ के काम।",[49,51]],
+["Present Continuous","is / am / are + V-ing","She is singing a song.","अभी हो रहा काम।",[43,58]],
+["Present Perfect","has / have + V3","She has sung a song.","पूरा हो चुका काम, जिसका असर अभी है।",[20,22,50]],
+["Present Perfect Continuous","has / have been + V-ing","She has been singing for an hour.","पहले शुरू हुआ और अब भी जारी।",[20,50,50]],
+["Past Simple","V2","She sang a song.","अतीत में पूरा हुआ काम।",[20,22]],
+["Past Continuous","was / were + V-ing","She was singing a song.","अतीत के किसी समय चल रहा काम।",[12,30]],
+["Past Perfect","had + V3","She had sung a song before I came.","अतीत की दो घटनाओं में पहले हुई घटना।",[8,10,32]],
+["Past Perfect Continuous","had been + V-ing","She had been singing for an hour.","अतीत के एक क्षण तक चलता रहा काम।",[6,32,32]],
+["Future Simple","will / shall + V1","She will sing a song.","आगे होने वाला काम।",[78,80]],
+["Future Continuous","will be + V-ing","She will be singing a song.","भविष्य के किसी समय चलता हुआ काम।",[70,88]],
+["Future Perfect","will have + V3","She will have sung a song by noon.","भविष्य के एक क्षण से पहले पूरा हो चुका काम।",[58,60,84]],
+["Future Perfect Continuous","will have been + V-ing","She will have been singing for an hour.","भविष्य के एक क्षण तक चलता रहने वाला काम।",[56,84,84]]];
+const ty=["सामान्य","अपूर्ण","पूर्ण","पूर्ण अपूर्ण"];let g='<i></i>'+ty.map(t=>`<i>${t}</i>`).join("");
+[["वर्तमान",0],["भूत",4],["भविष्य",8]].forEach(([r,o])=>{g+=`<i>${r}</i>`;ty.forEach((t,ci)=>g+=`<button data-i="${o+ci}" style="--c:var(--verb)">${t}</button>`)});
+$("#tg").innerHTML=g;
+function setT(i){const t=T[i],[s,e,r]=t[4];document.querySelectorAll("#tg button").forEach(b=>b.classList.toggle("on",+b.dataset.i===i));
+const b=$("#bar");b.style.left=s+"%";b.style.width=Math.max(e-s,2)+"%";
+const d=$("#dash"),k=$("#tick");if(r&&r>e){d.style.left=e+"%";d.style.width=(r-e)+"%";d.style.opacity=1;k.style.left=r+"%";k.style.opacity=1}else if(r){d.style.opacity=0;k.style.left=r+"%";k.style.opacity=1}else{d.style.opacity=0;k.style.opacity=0}
+$("#form").textContent=t[0]+": "+t[1];$("#ex").textContent=t[2];$("#use").textContent=t[3]}
+$("#tg").onclick=e=>{if(e.target.dataset.i)setT(+e.target.dataset.i)};setT(0);
+/* Voice */
+const verbs={"वर्तमान":["writes","is written"],"भूत":["wrote","was written"],"भविष्य":["will write","will be written"]};
+let vt="वर्तमान",passive=false;const fl=$("#flow"),ch={};
+["S","V","O","B"].forEach(k=>{const d=document.createElement("div");d.className="chip "+k;ch[k]=d;fl.appendChild(d)});
+$("#vt").innerHTML=Object.keys(verbs).map(k=>`<button data-k="${k}" style="--c:var(--adv)">${k}</button>`).join("");
+function paint(){ch.S.textContent="Ravi";ch.V.textContent=verbs[vt][+passive];ch.O.textContent=passive?"A letter":"a letter";ch.B.textContent="by";
+document.querySelectorAll("#vt button").forEach(b=>b.classList.toggle("on",b.dataset.k===vt))}
+function flip(){const kids=[...fl.children],first=new Map(kids.map(e=>[e,e.getBoundingClientRect()])),wasHidden=ch.B.style.display==="none";
+paint();(passive?["O","V","B","S"]:["S","V","O"]).forEach(k=>fl.appendChild(ch[k]));ch.B.style.display=passive?"":"none";
+kids.forEach(e=>{if(e.style.display==="none")return;const a=first.get(e),b=e.getBoundingClientRect();
+if(e===ch.B&&wasHidden){e.animate([{opacity:0,transform:"scale(.4)"},{opacity:1,transform:"none"}],{duration:700});return}
+e.animate([{transform:`translate(${a.left-b.left}px,${a.top-b.top}px)`},{transform:"none"}],{duration:800,easing:"cubic-bezier(.3,.7,.2,1)"})})}
+$("#vbtn").onclick=()=>{passive=!passive;flip()};
+$("#vt").onclick=e=>{if(e.target.dataset.k){vt=e.target.dataset.k;paint()}};
+ch.B.style.display="none";paint();
+/* Direct / indirect */
+const D=[{n:"कथन (Statement)",st:[["Direct speech","He said, “I am playing cricket now.”"],["comma और उद्धरण चिह्न हटाइए, ‘that’ जोड़िए","He said <mark>that</mark> I am playing cricket now."],["Pronoun बदलिए","He said that <mark>he</mark> am playing cricket now."],["Tense को एक कदम पीछे ले जाइए","He said that he <mark>was</mark> playing cricket now."],["समय सूचक शब्द बदलिए","He said that he was playing cricket <mark>then</mark>."]]},
+{n:"श्रोता के साथ",st:[["Direct speech","She said to me, “I will call you tomorrow.”"],["said to को told करिए, ‘that’ जोड़िए","She <mark>told</mark> me <mark>that</mark> I will call you tomorrow."],["Pronouns बदलिए","She told me that <mark>she</mark> will call <mark>me</mark> tomorrow."],["Tense को एक कदम पीछे ले जाइए","She told me that she <mark>would</mark> call me tomorrow."],["समय सूचक शब्द बदलिए","She told me that she would call me <mark>the next day</mark>."]]},
+{n:"प्रश्न (Question)",st:[["Direct speech","He said to her, “Where do you live?”"],["said to को asked करिए, प्रश्नचिह्न हटाइए","He <mark>asked</mark> her where do you live."],["वाक्य को सीधा क्रम दीजिए और pronoun बदलिए","He asked her where <mark>she</mark> lived <mark>(do हट गया)</mark>."],["Tense को एक कदम पीछे ले जाइए","He asked her where she <mark>lived</mark>."]]}];
+let di=0,ds=0,tm=null;
+$("#dsx").innerHTML=D.map((d,i)=>`<button data-i="${i}" style="--c:var(--pron)">${d.n}</button>`).join("");
+function dsShow(){const s=D[di].st[ds];$("#dslab").textContent=s[0];$("#ds").innerHTML=s[1];
+$("#dots").innerHTML=D[di].st.map((_,i)=>`<i class="${i<=ds?"on":""}" style="--c:var(--pron)"></i>`).join("");
+document.querySelectorAll("#dsx button").forEach((b,i)=>b.classList.toggle("on",i===di))}
+function stop(){clearInterval(tm);tm=null;$("#dsplay").textContent="चलाइए"}
+function nxt(){ds=(ds+1)%D[di].st.length;dsShow();if(ds===D[di].st.length-1)stop()}
+$("#dsx").onclick=e=>{if(e.target.dataset.i){stop();di=+e.target.dataset.i;ds=0;dsShow()}};
+$("#dsnext").onclick=()=>{stop();nxt()};
+$("#dsplay").onclick=()=>{if(tm)return stop();ds=0;dsShow();$("#dsplay").textContent="रोकिए";tm=setInterval(nxt,1900)};
+dsShow();
+/* Letter */
+const L=[...document.querySelectorAll("#letter div")];let lt=[];
+$("#lb").onclick=()=>{$("#lr").click();L.forEach((d,i)=>lt.push(setTimeout(()=>d.classList.add("show"),i*500)))};
+$("#lr").onclick=()=>{lt.forEach(clearTimeout);lt=[];L.forEach(d=>d.classList.remove("show"))};
+</script>
+</body>
+</html>
