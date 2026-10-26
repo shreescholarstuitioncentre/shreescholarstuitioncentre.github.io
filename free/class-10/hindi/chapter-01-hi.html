@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>टॉपर्स रिवीजन चार्ट · हिन्दी कक्षा 10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf6ec;--surface:#fffdf8;--ink:#2b221d;--muted:#6f6258;--line:#e6dccb;
+  --red:#c8102e;--gold:#f2b01e;--teal:#0f8b8d;--shadow:0 6px 24px rgba(60,40,20,.08);
+  --hero1:#fbd24a;--hero2:#f6a81c;
+  --f-body:'Noto Sans Devanagari','Nirmala UI','Mangal',system-ui,sans-serif;
+  --f-head:'Noto Serif Devanagari','Noto Sans Devanagari','Mangal',serif;
+}
+:root[data-theme="dark"]{
+  --bg:#16110e;--surface:#211a16;--ink:#f3eadf;--muted:#b3a597;--line:#3a2f28;
+  --red:#ff7487;--gold:#f5c04a;--teal:#3cc4c6;--shadow:0 6px 24px rgba(0,0,0,.4);
+  --hero1:#4a3410;--hero2:#2a1d0c;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#16110e;--surface:#211a16;--ink:#f3eadf;--muted:#b3a597;--line:#3a2f28;
+    --red:#ff7487;--gold:#f5c04a;--teal:#3cc4c6;--shadow:0 6px 24px rgba(0,0,0,.4);
+    --hero1:#4a3410;--hero2:#2a1d0c;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.75;font-size:16px;-webkit-text-size-adjust:100%}
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--hero1),var(--hero2));padding:56px 16px 64px;text-align:center}
+.hero h1{font-family:var(--f-head);font-weight:800;color:var(--red);font-size:clamp(2.2rem,8vw,4.6rem);line-height:1.2;margin:0;position:relative;z-index:2;letter-spacing:.5px}
+.hero h1 span{display:inline-block;animation:drop .8s cubic-bezier(.2,.9,.3,1.2) both}
+.hero h1 span:nth-child(2){animation-delay:.12s}.hero h1 span:nth-child(3){animation-delay:.24s}
+.hero p{position:relative;z-index:2;margin:.6rem auto 0;max-width:36rem;font-weight:500;font-size:1.05rem;color:var(--ink)}
+.hero .badge{display:inline-block;margin-top:1rem;background:var(--surface);color:var(--ink);border-radius:99px;padding:.25rem 1rem;font-weight:600;box-shadow:var(--shadow);position:relative;z-index:2}
+.float{position:absolute;font-family:var(--f-head);font-weight:800;color:var(--red);opacity:.13;animation:floaty 9s ease-in-out infinite;user-select:none;z-index:1}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-18px) rotate(6deg)}}
+@keyframes drop{from{opacity:0;transform:translateY(-30px) scale(.9)}to{opacity:1;transform:none}}
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;gap:.25rem;overflow-x:auto;padding:.4rem 12px;max-width:1100px;margin:auto;scrollbar-width:none;align-items:center}
+.nav-in::-webkit-scrollbar{display:none}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--ink);padding:.3rem .8rem;border-radius:99px;font-size:.92rem;font-weight:500;border:1px solid transparent;transition:.2s}
+.nav a:hover{background:color-mix(in srgb,var(--gold) 25%,transparent)}
+.nav a.on{background:var(--red);color:#fff}
+.theme{margin-left:auto;flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:.25rem .8rem;cursor:pointer;font:inherit;font-size:.85rem}
+.progress{position:absolute;left:0;bottom:-1px;height:3px;width:0;background:var(--red);transition:width .1s}
+/* ---------- layout ---------- */
+main{max-width:1100px;margin:0 auto;padding:0 16px 60px}
+section.sec{margin-top:56px;--acc:var(--red)}
+.s-gadya{--acc:#d9507a}.s-lekhak{--acc:#d98a1c}.s-padya{--acc:#1f7fc4}.s-kavi{--acc:#0f9b8e}.s-kavya{--acc:#e07a1f}.s-vyakaran{--acc:#7b4fc9}
+:root[data-theme="dark"] .s-gadya{--acc:#ff7aa2}:root[data-theme="dark"] .s-lekhak{--acc:#f3b04a}:root[data-theme="dark"] .s-padya{--acc:#5ab0f0}:root[data-theme="dark"] .s-kavi{--acc:#3cd0c0}:root[data-theme="dark"] .s-kavya{--acc:#ffa04d}:root[data-theme="dark"] .s-vyakaran{--acc:#b496ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .s-gadya{--acc:#ff7aa2}:root:not([data-theme="light"]) .s-lekhak{--acc:#f3b04a}:root:not([data-theme="light"]) .s-padya{--acc:#5ab0f0}:root:not([data-theme="light"]) .s-kavi{--acc:#3cd0c0}:root:not([data-theme="light"]) .s-kavya{--acc:#ffa04d}:root:not([data-theme="light"]) .s-vyakaran{--acc:#b496ff}}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.sec-head .no{flex:none;width:52px;height:52px;border-radius:16px;background:var(--acc);color:#fff;display:grid;place-items:center;font-family:var(--f-head);font-weight:800;font-size:1.5rem;box-shadow:var(--shadow)}
+.sec-head h2{margin:0;font-family:var(--f-head);font-weight:800;font-size:clamp(1.5rem,5vw,2.2rem);line-height:1.3}
+.sec-head .rule{flex:1;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--acc),transparent);transform-origin:left;transform:scaleX(0);transition:transform 1s .2s}
+.sec-head.in .rule{transform:scaleX(1)}
+h3{font-family:var(--f-head);font-size:1.35rem;margin:30px 0 8px;border-left:5px solid var(--acc);padding-left:10px}
+h4{font-size:1.05rem;margin:22px 0 8px;color:var(--ink)}
+h5{font-size:.95rem;margin:18px 0 6px;color:var(--acc);font-style:normal}
+p{margin:.5rem 0}
+.sub{margin:-6px 0 18px;color:var(--muted)}
+.guess{color:var(--muted);font-style:italic;font-size:.88em}
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+/* ---------- tables ---------- */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow);margin:10px 0 18px}
+table{border-collapse:collapse;width:100%;min-width:480px}
+th,td{padding:.5rem .8rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+thead th{background:color-mix(in srgb,var(--acc) 18%,var(--surface));font-weight:700;position:sticky;top:0;white-space:nowrap}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--acc) 5%,transparent)}
+tbody tr:hover{background:color-mix(in srgb,var(--acc) 14%,transparent)}
+tbody tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600}
+.reveal.in tbody tr{animation:rowin .5s both;animation-delay:calc(var(--r,0)*45ms)}
+@keyframes rowin{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+td .fill{color:var(--muted);font-weight:400;opacity:.45}
+tr.hide{display:none}
+/* filter chips */
+.filter{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 6px}
+.filter button{font:inherit;font-size:.88rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:.2rem .85rem;cursor:pointer;transition:.2s}
+.filter button:hover{border-color:var(--acc)}
+.filter button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+/* ---------- cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;margin:12px 0 22px}
+.card{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--acc);border-radius:16px;padding:14px 16px 12px;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px)!important;box-shadow:0 12px 30px rgba(0,0,0,.14)}
+.card h4{margin:0 0 8px;font-family:var(--f-head);font-size:1.15rem;color:var(--acc)}
+.card dl{margin:0;display:grid;grid-template-columns:7.2rem 1fr;gap:3px 10px;font-size:.93rem;line-height:1.6}
+.card dt{color:var(--muted);font-weight:600}
+.card dd{margin:0}
+.card dl>*{border-bottom:1px dashed var(--line);padding-bottom:2px}
+.note{display:flex;gap:10px;background:color-mix(in srgb,var(--gold) 20%,var(--surface));border:1px solid color-mix(in srgb,var(--gold) 60%,var(--line));border-radius:12px;padding:.6rem .9rem;margin:10px 0;font-size:.92rem}
+.note .ni{flex:none;width:22px;height:22px;border-radius:50%;background:var(--gold);color:#000;display:grid;place-items:center;font-weight:800;font-size:.8rem;margin-top:3px}
+/* ---------- viz frame ---------- */
+.vizbox{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow);margin:14px 0 22px;position:relative}
+.vizbox>.vt{font-weight:700;color:var(--acc);margin:0 0 10px;font-size:.95rem;letter-spacing:.2px}
+.hint{font-size:.85rem;color:var(--muted)}
+/* ---------- era diagram ---------- */
+.era-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;margin:12px 0 22px}
+.era-root{grid-column:1/-1;justify-self:center;text-align:center;background:var(--acc);color:#fff;border-radius:16px;padding:.5rem 1.6rem;box-shadow:var(--shadow);transform:scale(.6);opacity:0;transition:.6s cubic-bezier(.2,.9,.3,1.3)}
+.era-root b{display:block;font-family:var(--f-head);font-size:1.3rem}.era-root small{opacity:.9}
+.era-grid.in .era-root{transform:none;opacity:1}
+.era{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px;position:relative}
+.era-head{text-align:center;margin-bottom:6px}.era-head b{display:block;font-family:var(--f-head);font-size:1.15rem;color:var(--acc)}.era-head small{color:var(--muted)}
+.era-line{height:3px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:10px}
+.era-line span{display:block;height:100%;width:100%;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform 1.4s .5s}
+.era-grid.in .era-line span{transform:none}
+.era.e2 .era-line span{transition-delay:1.1s}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.chip{background:color-mix(in srgb,var(--acc) 14%,var(--surface));border:1px solid color-mix(in srgb,var(--acc) 40%,var(--line));border-radius:99px;padding:.1rem .75rem;font-size:.9rem;opacity:0;transform:scale(.4)}
+.era-grid.in .chip{animation:pop .5s cubic-bezier(.2,.9,.3,1.4) forwards;animation-delay:calc(.9s + var(--i)*70ms)}
+.era-grid.in .e2 .chip{animation-delay:calc(1.5s + var(--i)*70ms)}
+@keyframes pop{to{opacity:1;transform:none}}
+/* ---------- tree ---------- */
+.treewrap{overflow-x:auto;padding:6px 0 10px;margin:12px 0 22px;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.tree{width:max-content;min-width:100%;padding:14px 10px 6px;display:flex;justify-content:center}
+.tree ul{display:flex;justify-content:center;padding:20px 0 0;margin:0;position:relative}
+.tree>ul{padding-top:0}
+.tree li{list-style:none;position:relative;padding:20px 4px 0;text-align:center}
+.tree>ul>li{padding-top:0}
+.tree li::before,.tree li::after{content:'';position:absolute;top:0;right:50%;width:50%;height:20px;border-top:2px solid var(--acc);opacity:0;transition:opacity .5s calc(var(--lvl)*.55s + .15s)}
+.tree li::after{right:auto;left:50%;border-left:2px solid var(--acc)}
+.tree>ul>li::before,.tree>ul>li::after{display:none}
+.tree li:only-child::before,.tree li:only-child::after{display:none}
+.tree li:only-child{padding-top:20px}
+.tree li:first-child::before,.tree li:last-child::after{border:0}
+.tree li:last-child::before{border-right:2px solid var(--acc);border-radius:0 10px 0 0}
+.tree li:first-child::after{border-radius:10px 0 0 0}
+.tree ul ul::before{content:'';position:absolute;top:0;left:50%;border-left:2px solid var(--acc);height:20px;opacity:0;transition:opacity .5s calc(var(--lvl)*.55s + .1s)}
+.tree.in li::before,.tree.in li::after,.tree.in ul ul::before{opacity:1}
+.tree .node{display:inline-block;max-width:160px;min-width:88px;padding:.4rem .7rem;border-radius:14px;background:color-mix(in srgb,var(--acc) 12%,var(--surface));border:2px solid var(--acc);line-height:1.35;opacity:0;transform:scale(.6) translateY(10px);transition:opacity .5s calc(var(--lvl)*.55s + .3s),transform .6s cubic-bezier(.2,.9,.3,1.4) calc(var(--lvl)*.55s + .3s),background .2s,box-shadow .2s}
+.tree.in .node{opacity:1;transform:none}
+.tree .node b{display:block;font-size:.98rem}
+.tree .node small{display:block;font-size:.72rem;color:var(--muted);margin-top:2px;line-height:1.35}
+.tree .n0{background:var(--acc);color:#fff}.tree .n0 small{color:#fff;opacity:.9}
+.tree .node.leaf{cursor:pointer}
+.tree .node.leaf:hover,.tree .node.leaf.sel{background:var(--acc);color:#fff;box-shadow:0 0 0 5px color-mix(in srgb,var(--acc) 30%,transparent)}
+.tree .node.leaf:hover small,.tree .node.leaf.sel small{color:#fff}
+.tree-foot{font-size:.8rem;color:var(--muted);margin:-14px 4px 18px}
+.defpanel{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--acc);border-radius:14px;padding:6px 16px 12px;margin:-8px 0 20px;min-height:84px;box-shadow:var(--shadow)}
+.defpanel h4{margin:10px 0 4px;color:var(--acc);font-family:var(--f-head)}
+.defpanel.flash{animation:flash .6s}
+@keyframes flash{from{background:color-mix(in srgb,var(--acc) 25%,var(--surface))}}
+/* ---------- lifespan ---------- */
+.life{position:relative;margin-top:6px}
+.lrow{display:grid;grid-template-columns:11.5rem 1fr;gap:8px;align-items:center;margin:5px 0;font-size:.88rem}
+.lrow .lb{text-align:right;line-height:1.3}
+.ltrack{position:relative;height:24px;background:color-mix(in srgb,var(--line) 55%,transparent);border-radius:8px;overflow:hidden}
+.lbar{position:absolute;top:0;bottom:0;border-radius:8px;width:0;display:flex;align-items:center;justify-content:center;font-size:.72rem;color:#fff;font-weight:600;white-space:nowrap;transition:width 1.3s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--k)*70ms);overflow:hidden}
+.lbar.k{background:linear-gradient(90deg,#e07a1f,#c8102e)}.lbar.l{background:linear-gradient(90deg,#0f8b8d,#1f7fc4)}
+.lbar.open{background:linear-gradient(90deg,#e07a1f,#c8102e 60%,transparent)}
+.in .lbar{width:var(--w)}
+.axis{display:grid;grid-template-columns:11.5rem 1fr;gap:8px;margin-bottom:2px}
+.axis .ax{position:relative;height:18px;font-size:.72rem;color:var(--muted)}
+.axis .ax span{position:absolute;transform:translateX(-50%)}
+.gridlines{position:absolute;inset:0 0 0 calc(11.5rem + 8px);pointer-events:none}
+.gridlines i{position:absolute;top:0;bottom:0;border-left:1px dashed color-mix(in srgb,var(--line) 90%,transparent)}
+.legend{display:flex;gap:16px;font-size:.84rem;margin-top:10px;flex-wrap:wrap}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:5px}
+.legend .k{background:linear-gradient(90deg,#e07a1f,#c8102e)}.legend .l{background:linear-gradient(90deg,#0f8b8d,#1f7fc4)}
+@media(max-width:640px){
+  .lrow,.axis{grid-template-columns:1fr}.lrow .lb{text-align:left}.axis>span{display:none}.gridlines{inset:0}
+  .era-grid{grid-template-columns:1fr}
+}
+/* ---------- matra ---------- */
+.matra-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin:12px 0 22px}
+.mcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:6px 16px 14px;box-shadow:var(--shadow)}
+.mcard h4{color:var(--acc);font-family:var(--f-head);font-size:1.15rem}.mcard h4 small{display:block;color:var(--muted);font-weight:400;font-size:.8rem}
+.mrow{display:grid;grid-template-columns:6.2rem 1fr;gap:8px;align-items:center;margin:8px 0}
+.ml{font-size:.82rem;color:var(--muted)}
+.mbar{position:relative;display:flex;height:34px;background:color-mix(in srgb,var(--line) 55%,transparent);border-radius:9px}
+.mbar i{display:grid;place-items:center;font-style:normal;font-weight:700;color:#fff;height:100%;width:0;border-radius:9px;transition:width 1.1s cubic-bezier(.2,.8,.2,1) var(--d,0s);overflow:hidden}
+.mbar.odd i{background:#1f7fc4}.mbar.even i{background:#e07a1f}
+.in .mbar i{width:var(--w)}
+.rola .mbar i.s1{background:#0f9b8e;border-radius:9px 0 0 9px}.rola .mbar i.s2{background:#c8102e;border-radius:0 9px 9px 0}
+.rola .mbar i.s2{transition-delay:calc(var(--d) + .9s)}
+.yati{position:absolute;left:45.8%;top:-16px;bottom:-7px;border-left:3px dashed var(--ink);padding-left:5px;color:var(--ink);opacity:0;text-decoration:none;font-size:.72rem;white-space:nowrap;transition:opacity .4s 1.1s}
+.in .yati{opacity:1}
+.mnote{font-size:.86rem;color:var(--muted);margin:10px 0 0}
+.total{font-family:var(--f-head);font-size:1.6rem;margin-top:12px;text-align:center;opacity:0;transform:scale(.7);transition:.6s 2.2s}
+.in .total{opacity:1;transform:none}
+.total b{color:var(--acc)}
+/* ---------- samas ---------- */
+.samas{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:16px;margin:12px 0 20px;--acc:#7b4fc9}
+.scard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:6px 16px 16px;box-shadow:var(--shadow)}
+.scard h4{color:var(--acc);font-family:var(--f-head);font-size:1.15rem;margin-top:14px}
+.sdiag{position:relative;padding:34px 0 8px}
+.boxes{display:flex;align-items:center;gap:6px;justify-content:center}
+.sb{flex:1;text-align:center;font-size:.85rem;padding:.55rem .3rem;border-radius:12px;border:2px solid var(--line);background:color-mix(in srgb,var(--line) 40%,var(--surface));line-height:1.3}
+.plus{font-weight:800;color:var(--muted)}
+.stag{margin:4px 0 6px;text-align:center;font-weight:700;color:var(--acc);font-size:.9rem}
+.sdef{font-size:.88rem;color:var(--muted);margin:0}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 transparent;border-color:var(--line);transform:none}50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--acc) 30%,transparent);border-color:var(--acc);background:color-mix(in srgb,var(--acc) 18%,var(--surface));transform:translateY(-4px)}}
+.in .dv .sb{animation:glow 2.4s ease-in-out infinite}
+.in .dg .sb.pre{animation:glow 3s ease-in-out infinite}.in .dg .sb.post{animation:glow 3s 1.5s ease-in-out infinite}
+.in .km .sb.post{animation:glow 2.4s ease-in-out infinite}.km .sb.pre{opacity:.6}
+.bh .sb{opacity:.55}
+.other{position:absolute;top:0;left:50%;transform:translateX(-50%);padding:.2rem .8rem;border-radius:99px;border:2px solid var(--line);font-size:.82rem;font-weight:600;white-space:nowrap}
+.in .bh .other{animation:glow 2.4s ease-in-out infinite}
+.arrows{position:absolute;top:28px;left:0;right:0;display:flex;justify-content:space-around;padding:0 20%;pointer-events:none}
+.arrows span{width:2px;height:18px;background:var(--acc);opacity:.0;transform-origin:bottom}
+.in .arrows span{animation:arrow 2.4s ease-in-out infinite}
+@keyframes arrow{0%,100%{opacity:.1;transform:scaleY(.3)}50%{opacity:1;transform:scaleY(1)}}
+/* ---------- upsarg demo ---------- */
+.ud-wrap{text-align:center}
+.ud{position:relative;height:84px;display:flex;justify-content:center;align-items:center;font-family:var(--f-head);font-weight:800;font-size:2.4rem}
+.ud .up,.ud .rt{display:inline-block;padding:.05rem .6rem;border-radius:12px}
+.ud .up{background:var(--acc);color:#fff;animation:upin 3.2s both}
+.ud .rt{background:color-mix(in srgb,var(--acc) 15%,var(--surface));border:2px solid var(--acc);animation:rtin 3.2s both}
+.ud .wd{position:absolute;inset:0;display:grid;place-items:center;color:var(--acc);animation:wdin 3.2s both}
+@keyframes upin{0%{opacity:0;transform:translateX(-90px)}18%{opacity:1;transform:translateX(-8px)}45%{opacity:1;transform:translateX(-8px)}58%{opacity:1;transform:translateX(12px)}64%,100%{opacity:0;transform:translateX(12px)}}
+@keyframes rtin{0%{opacity:0;transform:translateX(90px)}18%{opacity:1;transform:translateX(8px)}45%{opacity:1;transform:translateX(8px)}58%{opacity:1;transform:translateX(-12px)}64%,100%{opacity:0;transform:translateX(-12px)}}
+@keyframes wdin{0%,58%{opacity:0;transform:scale(.5)}72%{opacity:1;transform:scale(1.18)}85%,100%{opacity:1;transform:scale(1)}}
+.um{margin:0;color:var(--muted);font-size:.9rem;min-height:1.6em}
+/* ---------- flip ---------- */
+.fbar{display:flex;gap:10px;align-items:center;margin:8px 0 12px;flex-wrap:wrap}
+.btn{font:inherit;font-size:.9rem;border:0;background:var(--acc);color:#fff;border-radius:99px;padding:.3rem 1.1rem;cursor:pointer;font-weight:600}
+.flipgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;margin-bottom:20px}
+.flip{perspective:700px;background:none;border:0;padding:0;height:84px;cursor:pointer;font:inherit;color:inherit}
+.flip.reveal{transition:opacity .5s calc(var(--i)*25ms),transform .5s calc(var(--i)*25ms)}
+.fi{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,.9,.3,1)}
+.flip.on .fi{transform:rotateY(180deg)}
+@media(hover:hover){.flip:hover .fi{transform:rotateY(180deg)}.flip.on:hover .fi{transform:none}}
+.ff,.fb{position:absolute;inset:0;display:grid;place-content:center;text-align:center;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;font-weight:700;font-size:1.15rem;line-height:1.2;border:2px solid var(--acc);box-shadow:var(--shadow)}
+.ff{background:color-mix(in srgb,var(--acc) 12%,var(--surface))}
+.fb{background:var(--acc);color:#fff;transform:rotateY(180deg)}
+.ff small,.fb small{display:block;font-size:.68rem;font-weight:400;opacity:.8;margin-top:3px}
+/* ---------- paryay ---------- */
+.pygrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin-bottom:20px}
+.py{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.6rem .9rem;box-shadow:var(--shadow)}
+.py b{display:block;color:var(--acc);font-family:var(--f-head);font-size:1.05rem}
+.py span{display:flex;flex-wrap:wrap;gap:4px 6px;margin-top:4px}
+.py i{font-style:normal;font-size:.86rem;background:color-mix(in srgb,var(--acc) 12%,var(--surface));border-radius:99px;padding:0 .6rem;opacity:0;transform:translateY(6px)}
+.py.in i{animation:pop2 .4s forwards;animation-delay:calc(var(--i)*40ms + .1s)}
+@keyframes pop2{to{opacity:1;transform:none}}
+.py.in i:nth-child(2){animation-delay:.2s}.py.in i:nth-child(3){animation-delay:.3s}.py.in i:nth-child(4){animation-delay:.4s}.py.in i:nth-child(5){animation-delay:.5s}.py.in i:nth-child(6){animation-delay:.6s}.py.in i:nth-child(7){animation-delay:.7s}
+/* sanskrit col highlight */
+table.sk td:not(:first-child),table.sk th:not(:first-child){text-align:center}
+.sk-wrap{display:block}
+.sk-wrap .tw{margin-top:6px}
+footer{max-width:1100px;margin:0 auto;padding:30px 16px 60px;color:var(--muted);font-size:.88rem;text-align:center;border-top:1px solid var(--line)}
+.toTop{position:fixed;right:16px;bottom:16px;width:44px;height:44px;border-radius:50%;border:0;background:var(--red);color:#fff;font-size:1.2rem;cursor:pointer;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.3s}
+.toTop.show{opacity:1;pointer-events:auto}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal,.chip,.node,.py i,.era-root,.total{opacity:1!important;transform:none!important}
+  .lbar{width:var(--w)!important}.mbar i{width:var(--w)!important}.yati,.tree li::before,.tree li::after,.tree ul ul::before{opacity:1!important}
+  .era-line span,.sec-head .rule{transform:none!important}
+}
+</style>
+<style>
+  /* वॉटरमार्क की सेटिंग */
+  .sstc-watermark {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-size: 10vw; /* स्क्रीन के हिसाब से ऑटो-साइज़ */
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.04); /* बहुत हल्का रंग ताकि टेक्स्ट पढ़ने में दिक्कत न हो */
+    z-index: 9999; /* सबसे ऊपर रखने के लिए */
+    pointer-events: none; /* इसके पीछे के बटन या टेक्स्ट पर क्लिक हो सके */
+    user-select: none; /* इसे कोई कॉपी न कर पाए */
+  }
+
+  /* प्रिंट करते समय हर पेज पर दिखने के लिए */
+  @media print {
+    .sstc-watermark {
+      position: fixed;
+      color: rgba(0, 0, 0, 0.05) !important;
+      -webkit-print-color-adjust: exact; /* ब्राउज़र को हल्का रंग प्रिंट करने के लिए मजबूर करता है */
+      print-color-adjust: exact;
+    }
+  }
+</style>
+
+<!-- वॉटरमार्क का टेक्स्ट -->
+<div class="sstc-watermark">SSTC</div>
+
+
+</head>
+<body>
+<div class="sstc-watermark">SSTC</div>
+<header class="hero">
+  <span class="float" style="left:6%;top:18%;font-size:4rem">अ</span>
+  <span class="float" style="left:18%;top:62%;font-size:3rem;animation-delay:1s">क</span>
+  <span class="float" style="left:80%;top:14%;font-size:3.4rem;animation-delay:2s">ह</span>
+  <span class="float" style="left:90%;top:60%;font-size:4.2rem;animation-delay:3s">स</span>
+  <span class="float" style="left:48%;top:78%;font-size:3rem;animation-delay:4s">म</span>
+  <h1><span>टॉपर्स</span> <span>रिवीजन</span> <span>चार्ट</span></h1>
+  <p>गद्य–पद्य का इतिहास · लेखक व कवि परिचय · काव्य सौन्दर्य · व्याकरण — एनिमेटेड रेखाचित्रों के साथ</p>
+  <span class="badge">हिन्दी · कक्षा 10</span>
+</header>
+
+<nav class="nav" aria-label="अनुभाग">
+  <div class="nav-in">
+    <a href="#gadya">गद्य साहित्य</a><a href="#lekhak">लेखक परिचय</a><a href="#padya">पद्य साहित्य</a><a href="#kavi">कवि परिचय</a><a href="#kavya">काव्य सौन्दर्य</a><a href="#vyakaran">हिन्दी व्याकरण</a><a href="#sanskrit">संस्कृत व्याकरण</a>
+    <button class="theme" id="themeBtn" type="button">🌓 थीम</button>
+  </div>
+  <div class="progress" id="prog"></div>
+</nav>
+
+<main>
+
+<!-- ============ गद्य ============ -->
+<section class="sec s-gadya" id="gadya">
+  <div class="sec-head reveal"><span class="no">१</span><h2>गद्य साहित्य का इतिहास</h2><span class="rule"></span></div>
+  <p class="sub reveal">शुक्ल युग (1918–1938) और शुक्लोत्तर युग (1938 से वर्तमान) की प्रमुख विधाएँ, लेखक एवं रचनाएँ।</p>
+  
+<div class="era-grid reveal viz" id="gadyaViz">
+  <div class="era-root"><b>गद्य साहित्य</b><small>दो प्रमुख युग</small></div>
+  <div class="era e1">
+    <div class="era-head"><b>शुक्ल युग</b><small>1918 – 1938</small></div>
+    <div class="era-line"><span></span></div>
+    <div class="chips"><span class="chip" style="--i:0">निबन्ध</span><span class="chip" style="--i:1">आलोचना</span><span class="chip" style="--i:2">कहानी</span><span class="chip" style="--i:3">उपन्यास</span><span class="chip" style="--i:4">नाटक</span><span class="chip" style="--i:5">एकांकी</span><span class="chip" style="--i:6">जीवनी</span><span class="chip" style="--i:7">आत्मकथा</span><span class="chip" style="--i:8">संस्मरण</span><span class="chip" style="--i:9">रेखाचित्र</span><span class="chip" style="--i:10">यात्रा-वृत्तान्त</span></div>
+  </div>
+  <div class="era e2">
+    <div class="era-head"><b>शुक्लोत्तर युग</b><small>1938 ई. से वर्तमान तक</small></div>
+    <div class="era-line"><span></span></div>
+    <div class="chips"><span class="chip" style="--i:0">निबन्ध</span><span class="chip" style="--i:1">आलोचना</span><span class="chip" style="--i:2">कहानी (नई कहानी)</span><span class="chip" style="--i:3">उपन्यास</span><span class="chip" style="--i:4">नाटक</span><span class="chip" style="--i:5">एकांकी</span><span class="chip" style="--i:6">संस्मरण</span><span class="chip" style="--i:7">रेखाचित्र</span><span class="chip" style="--i:8">आत्मकथा</span><span class="chip" style="--i:9">जीवनी</span><span class="chip" style="--i:10">यात्रा-वृत्तान्त</span><span class="chip" style="--i:11">रिपोर्ताज</span></div>
+  </div>
+</div>
+  <div class="filter reveal" id="gFilter" aria-label="विधा के अनुसार छाँटें"></div>
+  <p class="hint">ऊपर से कोई विधा चुनें — दोनों तालिकाओं में केवल वही पंक्तियाँ दिखेंगी।</p>
+  <h3 class="reveal">गद्य साहित्य का इतिहास</h3>
+<h4 class="reveal">शुक्ल युग (1918-1938) : प्रमुख गद्य-विधाएँ, लेखक एवं उनकी रचनाएँ</h4>
+<div class="tw reveal"><table class="gadya"><thead><tr><th>विधा</th><th>लेखक</th><th>प्रमुख रचनाएँ</th></tr></thead><tbody><tr style="--r:0"><td>निबन्ध</td><td>रामचन्द्र शुक्ल</td><td>चिन्तामणि (भाग 1 एवं 4), विचार-वीथि</td></tr><tr style="--r:1"><td></td><td>पदुमलाल पुन्नालाल बख्शी</td><td>पंचपात्र, कुछ और कुछ</td></tr><tr style="--r:2"><td></td><td>माखनलाल चतुर्वेदी</td><td>साहित्य देवता, अमीर इरादे : गरीब इरादे</td></tr><tr style="--r:3"><td>आलोचना</td><td>रामचन्द्र शुक्ल</td><td>हिन्दी साहित्य का इतिहास, तुलसीदास, सूरदास</td></tr><tr style="--r:4"><td></td><td>नन्ददुलारे वाजपेयी</td><td>हिन्दी साहित्य : बीसवीं शताब्दी, आधुनिक साहित्य</td></tr><tr style="--r:5"><td>कहानी</td><td>मुंशी प्रेमचन्द</td><td>पूस की रात, कफन, ईदगाह, बड़े घर की बेटी</td></tr><tr style="--r:6"><td></td><td>जयशंकर प्रसाद</td><td>आकाशदीप, पुरस्कार, ममता</td></tr><tr style="--r:7"><td></td><td>सुदर्शन</td><td>हार की जीत, तीर्थयात्रा</td></tr><tr style="--r:8"><td>उपन्यास</td><td>मुंशी प्रेमचन्द</td><td>गोदान, गबन, निर्मला, कर्मभूमि</td></tr><tr style="--r:9"><td></td><td>जयशंकर प्रसाद</td><td>कंकाल, तितली, इरावती</td></tr><tr style="--r:10"><td></td><td>वृन्दावनलाल वर्मा</td><td>गढ़कुण्डार, विराटा की पद्मिनी</td></tr><tr style="--r:11"><td></td><td>चतुरसेन शास्त्री</td><td>वैशाली की नगरवधू, सोमनाथ</td></tr><tr style="--r:12"><td>नाटक</td><td>जयशंकर प्रसाद</td><td>स्कन्दगुप्त, चन्द्रगुप्त, ध्रुवस्वामिनी, अजातशत्रु</td></tr><tr style="--r:13"><td></td><td>लक्ष्मीनारायण मिश्र</td><td>सिन्दूर की होली, संन्यासी</td></tr><tr style="--r:14"><td>एकांकी</td><td>रामकुमार वर्मा</td><td>पृथ्वीराज की आँखें, रेशमी टाई</td></tr><tr style="--r:14"><td></td><td>भुवनेश्वर</td><td>कारवाँ, श्यामा : एक वैवाहिक विडम्बना</td></tr><tr style="--r:14"><td>जीवनी</td><td>राहुल सांकृत्यायन</td><td>मेरी जीवन यात्रा</td></tr><tr style="--r:14"><td>आत्मकथा</td><td>श्यामसुन्दर दास</td><td>मेरी आत्मकहानी</td></tr><tr style="--r:14"><td>संस्मरण</td><td>महादेवी वर्मा</td><td>अतीत के चलचित्र, स्मृति की रेखाएँ</td></tr><tr style="--r:14"><td>रेखाचित्र</td><td>रामवृक्ष बेनीपुरी</td><td>माटी की मूरतें</td></tr><tr style="--r:14"><td>यात्रा-वृत्तान्त</td><td>राहुल सांकृत्यायन</td><td>तिब्बत में सवा वर्ष, मेरी यूरोप यात्रा, दार्जिलिंग परिचय</td></tr><tr style="--r:14"><td></td><td>सेठ गोविन्द दास</td><td>सुदूर दक्षिण पूर्व, पृथ्वी-परिक्रमा</td></tr></tbody></table></div>
+<h4 class="reveal">शुक्लोत्तर युग (1938 ई. से वर्तमान तक) : प्रमुख गद्य-विधाएँ, लेखक एवं उनकी रचनाएँ</h4>
+<div class="tw reveal"><table class="gadya"><thead><tr><th>विधा</th><th>लेखक</th><th>प्रमुख रचनाएँ</th></tr></thead><tbody><tr style="--r:0"><td>निबन्ध</td><td>हजारीप्रसाद द्विवेदी</td><td>अशोक के फूल, कुटज, कल्पलता</td></tr><tr style="--r:1"><td></td><td>विद्यानिवास मिश्र</td><td>छितवन की छाँह, मेरे राम का मुकुट भीग रहा है</td></tr><tr style="--r:2"><td></td><td>कुबेरनाथ राय</td><td>प्रिय नीलकण्ठी, रस आखेटक</td></tr><tr style="--r:3"><td>आलोचना</td><td>रामविलास शर्मा</td><td>आस्था और सौन्दर्य, भारतेन्दु युग</td></tr><tr style="--r:4"><td></td><td>नामवर सिंह</td><td>कविता के नए प्रतिमान, दूसरी परम्परा की खोज</td></tr><tr style="--r:5"><td></td><td>नगेन्द्र</td><td>रस-सिद्धान्त, भारतीय काव्यशास्त्र की भूमिका</td></tr><tr style="--r:6"><td>कहानी (नई कहानी)</td><td>मोहन राकेश</td><td>मलबे का मालिक, एक और जिन्दगी</td></tr><tr style="--r:7"><td></td><td>कमलेश्वर</td><td>राजा निरबंसिया, दिल्ली में एक मौत</td></tr><tr style="--r:8"><td></td><td>राजेन्द्र यादव</td><td>जहाँ लक्ष्मी कैद है, टूटना</td></tr><tr style="--r:9"><td></td><td>निर्मल वर्मा</td><td>परिन्दे, लन्दन की एक रात</td></tr><tr style="--r:10"><td>उपन्यास</td><td>फणीश्वरनाथ रेणु</td><td>मैला आँचल, परती परिकथा</td></tr><tr style="--r:11"><td></td><td>अमृतलाल नागर</td><td>बूँद और समुद्र, मानस का हंस</td></tr><tr style="--r:12"><td></td><td>यशपाल</td><td>झूठा सच, दिव्या</td></tr><tr style="--r:13"><td></td><td>श्रीलाल शुक्ल</td><td>राग दरबारी, मकान</td></tr><tr style="--r:14"><td></td><td>धर्मवीर भारती</td><td>गुनाहों का देवता, सूरज का सातवाँ घोड़ा</td></tr><tr style="--r:14"><td>नाटक</td><td>मोहन राकेश</td><td>आषाढ़ का एक दिन, आधे-अधूरे</td></tr><tr style="--r:14"><td></td><td>धर्मवीर भारती</td><td>अन्धा युग</td></tr><tr style="--r:14"><td></td><td>जगदीशचन्द्र माथुर</td><td>कोणार्क, पहला राजा</td></tr><tr style="--r:14"><td>एकांकी</td><td>उपेन्द्रनाथ अश्क</td><td>अधिकार का रक्षक, तौलिए</td></tr><tr style="--r:14"><td></td><td>विष्णु प्रभाकर</td><td>इंसान और अन्य एकांकी</td></tr><tr style="--r:14"><td>संस्मरण</td><td>महादेवी वर्मा</td><td>स्मृति की रेखाएँ, अतीत के चलचित्र</td></tr><tr style="--r:14"><td>रेखाचित्र</td><td>कन्हैयालाल मिश्र प्रभाकर</td><td>भूले हुए चेहरे, जिन्दगी मुसकराई</td></tr><tr style="--r:14"><td>आत्मकथा</td><td>हरिवंश राय बच्चन</td><td>क्या भूलूँ क्या याद करूँ</td></tr><tr style="--r:14"><td></td><td>यशपाल</td><td>सिंहावलोकन</td></tr><tr style="--r:14"><td>जीवनी</td><td>विष्णु प्रभाकर</td><td>आवारा मसीहा</td></tr><tr style="--r:14"><td></td><td>रामविलास शर्मा</td><td>निराला की साहित्य साधना</td></tr><tr style="--r:14"><td>यात्रा-वृत्तान्त</td><td>राहुल सांकृत्यायन</td><td>किन्नर देश में, मेरी यूरोप यात्रा</td></tr><tr style="--r:14"><td></td><td>अज्ञेय</td><td>अरे यायावर रहेगा याद</td></tr><tr style="--r:14"><td>रिपोर्ताज</td><td>रांगेय राघव</td><td>तूफानों के बीच</td></tr><tr style="--r:14"><td></td><td>प्रकाशचन्द्र गुप्त</td><td>बंगाल का अकाल</td></tr></tbody></table></div>
+</section>
+
+<!-- ============ लेखक ============ -->
+<section class="sec s-lekhak" id="lekhak">
+  <div class="sec-head reveal"><span class="no">२</span><h2>लेखकों का जीवन परिचय</h2><span class="rule"></span></div>
+  <div class="vizbox reveal viz" id="lifeW">
+    <p class="vt">लेखक एवं कवि — जीवनकाल (जन्म से मृत्यु तक)</p>
+    <div id="lifeMod" class="life"></div>
+    <div class="legend"><span><i class="l"></i>लेखक</span><span><i class="k"></i>कवि</span></div>
+    <p class="vt" style="margin-top:22px">मध्यकालीन कवि — जीवनकाल</p>
+    <div id="lifeMed" class="life"></div>
+    <p class="hint" style="margin:10px 0 0">अशोक वाजपेयी का जन्म-वर्ष 1941 है; चार्ट में मृत्यु-वर्ष नहीं दिया गया, इसलिए पट्टी खुली रखी है।</p>
+  </div>
+  <div class="cards">
+<article class="card reveal"><h4>आचार्य रामचन्द्र शुक्ल</h4><dl><dt>नाम</dt><dd>आचार्य रामचन्द्र शुक्ल</dd><dt>जन्म</dt><dd>1884 ई.</dd><dt>जन्म स्थान</dt><dd>बस्ती जिले (उ.प्र.) का अगोना ग्राम</dd><dt>पिता का नाम</dt><dd>चन्द्रबली शुक्ल</dd><dt>शिक्षा</dt><dd>एफ.ए. (इण्टरमीडिएट)</dd><dt>आजीविका</dt><dd>अध्यापन, लेखन</dd><dt>मृत्यु</dt><dd>वर्ष 1941</dd><dt>लेखन-विधा</dt><dd>आलोचना, निबन्ध, नाटक, काव्य, इतिहास, पत्रिका सम्पादन आदि।</dd><dt>भाषा</dt><dd>शुद्ध साहित्यिक, सरल एवं व्यावहारिक खड़ी बोली</dd><dt>शैली</dt><dd>वर्णनात्मक, विवेचनात्मक, व्याख्यात्मक, आलोचनात्मक, भावात्मक तथा हास्य-व्यंग्यात्मक।</dd></dl></article>
+<article class="card reveal"><h4>जयशंकर प्रसाद</h4><dl><dt>नाम</dt><dd>जयशंकर प्रसाद</dd><dt>जन्म</dt><dd>1889 ई.</dd><dt>जन्म स्थान</dt><dd>काशी</dd><dt>मृत्यु</dt><dd>काशी, वर्ष 1937</dd><dt>पिता का नाम</dt><dd>देवीप्रसाद</dd><dt>शिक्षा</dt><dd>अंग्रेजी, फारसी, उर्दू, हिन्दी व संस्कृत का स्वाध्याय</dd><dt>लेखन-विधा</dt><dd>काव्य, कहानी, उपन्यास, नाटक, निबन्ध</dd><dt>साहित्य में पहचान</dt><dd>छायावादी काव्यधारा के प्रवर्तक, अनुवादक, आलोचक, सम्पादक</dd><dt>भाषा</dt><dd>साहित्यिक एवं संस्कृतनिष्ठ खड़ीबोली</dd><dt>शैली</dt><dd>विचारात्मक, अनुसन्धानात्मक, इतिवृत्तात्मक, भावात्मक एवं चित्रात्मक।</dd></dl></article>
+<article class="card reveal"><h4>डॉ. राजेन्द्र प्रसाद</h4><dl><dt>नाम</dt><dd>डॉ. राजेन्द्र प्रसाद</dd><dt>जन्म</dt><dd>1884 ई.</dd><dt>जन्म स्थान</dt><dd>बिहार राज्य के सारण जिले के जीरादेई नामक ग्राम में</dd><dt>पिता का नाम</dt><dd>महादेव सहाय</dd><dt>शिक्षा</dt><dd>एम.ए. और एल.एल. बी.</dd><dt>आजीविका</dt><dd>अध्यापन कार्य, वकालत, सम्पादन कार्य और राजनीति</dd><dt>मृत्यु</dt><dd>वर्ष 1963</dd><dt>लेखन-विधा</dt><dd>पत्रिका एवं भाषण</dd><dt>साहित्य में स्थान</dt><dd>वर्ष 1962 में भारत की सर्वोच्च उपाधि भारत रत्न से अलंकृत</dd><dt>भाषा</dt><dd>सरल, सुबोध, स्वाभाविक और व्यावहारिक</dd><dt>शैली</dt><dd>साहित्यिक, भाषण, भावात्मक, विवेचनात्मक तथा आत्मकथात्मक</dd></dl></article>
+<article class="card reveal"><h4>रामधारी सिंह 'दिनकर'</h4><dl><dt>नाम</dt><dd>रामधारी सिंह 'दिनकर'</dd><dt>जन्म</dt><dd>वर्ष 1908</dd><dt>जन्म स्थान</dt><dd>बिहार के बेगुसराय जिले के 'सिमरिया-घाट' नामक ग्राम में</dd><dt>पिता</dt><dd>श्री रविसिंह</dd><dt>माता</dt><dd>श्रीमती मनरूप देवी</dd><dt>शिक्षा</dt><dd>बी.ए. (ऑनर्स)</dd><dt>आजीविका</dt><dd>लेखन, हिन्दी-विभागाध्यक्ष, प्रधानाचार्य</dd><dt>मृत्यु</dt><dd>वर्ष 1974</dd><dt>लेखन-विधा</dt><dd>निबन्ध, संस्कृति-ग्रन्थ, आलोचना, काव्य-ग्रन्थ</dd><dt>भाषा</dt><dd>संस्कृतनिष्ठ, प्रांजल, प्रौढ़ तथा सुबोध</dd><dt>शैली</dt><dd>भावात्मक, समीक्षात्मक तथा सूक्तिपरक</dd></dl></article>
+<article class="card reveal"><h4>जयप्रकाश भारती</h4><dl><dt>नाम</dt><dd>जयप्रकाश भारती</dd><dt>जन्म</dt><dd>2 जनवरी, 1936</dd><dt>जन्म स्थान</dt><dd>उत्तर प्रदेश के मेरठ नगर में</dd><dt>पिता का नाम</dt><dd>श्री रघुनाथ सहाय</dd><dt>शिक्षा</dt><dd>बी. एससी.</dd><dt>आजीविका</dt><dd>सम्पादक</dd><dt>मृत्यु</dt><dd>5 फरवरी, 2005</dd><dt>लेखन-विधा</dt><dd>पत्रिका एवं पुस्तक तथा बाल-साहित्य</dd><dt>साहित्य में स्थान</dt><dd>हिन्दी-साहित्य के जगत में बाल-साहित्य व वैज्ञानिक लेखों के लिए प्रसिद्ध</dd><dt>भाषा</dt><dd>सरल एवं सहज</dd><dt>शैली</dt><dd>वर्णनात्मक, चित्रात्मक एवं भावात्मक</dd></dl></article>
+<article class="card reveal"><h4>डॉ. भगवतशरण उपाध्याय</h4><dl><dt>नाम</dt><dd>डॉ. भगवतशरण उपाध्याय</dd><dt>जन्म</dt><dd>वर्ष 1910</dd><dt>जन्म स्थान</dt><dd>बलिया जिले के उजियारीपुर गाँव में</dd><dt>शिक्षा</dt><dd>एम. ए.</dd><dt>आजीविका</dt><dd>प्रोफेसर एवं साहित्य सृजन</dd><dt>मृत्यु</dt><dd>वर्ष 1982, मॉरीशस</dd><dt>लेखन-विधा</dt><dd>आलोचना, यात्रा-साहित्य, पुरातत्त्व, संस्मरण एवं रेखाचित्र</dd><dt>भाषा</dt><dd>शुद्ध, परिष्कृत और परिमार्जित</dd><dt>शैली</dt><dd>विवेचनात्मक, वर्णनात्मक, भावात्मक शैली</dd></dl></article>
+<article class="card reveal"><h4>पुदुमलाल पुन्नालाल बख्शी</h4><dl><dt>नाम</dt><dd>पुदुमलाल पुन्नालाल बख्शी</dd><dt>जन्म</dt><dd>1894 ई.</dd><dt>जन्म स्थान</dt><dd>खैरागढ़</dd><dt>शिक्षा</dt><dd>बी. ए. उत्तीर्ण</dd><dt>मृत्यु</dt><dd>वर्ष 1971</dd><dt>लेखन-विधा</dt><dd>काव्य, कहानी, आलोचना, निबन्ध</dd><dt>साहित्य में स्थान</dt><dd>द्विवेदी युग के सुप्रसिद्ध रचनाकार</dd><dt>भाषा</dt><dd>आदर्श, प्रवाहमयी शुद्ध साहित्यिक खड़ी बोली</dd><dt>शैली</dt><dd>भावात्मक, विचारात्मक, व्याख्यात्मक</dd></dl></article>
+</div>
+</section>
+
+<!-- ============ पद्य ============ -->
+<section class="sec s-padya" id="padya">
+  <div class="sec-head reveal"><span class="no">३</span><h2>पद्य साहित्य का इतिहास</h2><span class="rule"></span></div>
+  <h3 class="reveal">आधुनिक काल — एक नज़र में</h3>
+  <div class="treewrap reveal"><div class="tree viz" id="modernTree"><ul><li style="--lvl:0;--i:1"><div class="node n0"><b>आधुनिक काल</b><small>पद्य साहित्य की चार प्रमुख धाराएँ</small></div><ul><li style="--lvl:1;--i:2"><div class="node n1"><b>भारतेन्दु युग</b><small>भारतेन्दु हरिश्चन्द्र · प्रेमघन · प्रतापनारायण मिश्र · अम्बिकादत्त व्यास</small></div></li><li style="--lvl:1;--i:3"><div class="node n1"><b>द्विवेदी युग</b><small>महावीर प्रसाद द्विवेदी · मैथिलीशरण गुप्त · हरिऔध · रामनरेश त्रिपाठी · श्रीधर पाठक</small></div></li><li style="--lvl:1;--i:4"><div class="node n1"><b>छायावाद</b><small>चार स्तम्भ: प्रसाद · पन्त · निराला · महादेवी वर्मा</small></div></li><li style="--lvl:1;--i:5"><div class="node n1"><b>छायावादोत्तर युग</b><small>प्रगतिवाद, प्रयोगवाद, नई कविता आदि</small></div><ul><li style="--lvl:2;--i:6"><div class="node n2"><b>प्रगतिवाद</b><small>दिनकर · नागार्जुन · केदारनाथ अग्रवाल · त्रिलोचन</small></div></li><li style="--lvl:2;--i:7"><div class="node n2"><b>प्रयोगवाद एवं नई कविता</b><small>अज्ञेय* · मुक्तिबोध* · धर्मवीर भारती* · कुँवर नारायण* · रघुवीर सहाय*</small></div></li><li style="--lvl:2;--i:8"><div class="node n2"><b>गीतिकाव्य</b><small>बच्चन* · नीरज* · नरेन्द्र शर्मा*</small></div></li></ul></li></ul></li></ul></div></div>
+  <p class="tree-foot">* स्कैन में फीके/मिटे हिस्से के नाम रचनाओं के आधार पर अनुमानित हैं।</p>
+  <h3 class="reveal">पद्य साहित्य का इतिहास</h3>
+<h4 class="reveal">रीतिकाल के प्रमुख कवि एवं उनकी रचनाएँ</h4>
+<div class="tw reveal"><table class=""><thead><tr><th>कवि</th><th>प्रमुख रचनाएँ</th></tr></thead><tbody><tr style="--r:0"><td>केशवदास</td><td>रसिकप्रिया, कविप्रिया, रामचन्द्रिका, वीरसिंहदेव चरित</td></tr><tr style="--r:1"><td>चिन्तामणि त्रिपाठी</td><td>कविकुलकल्पतरु, काव्यविवेक, काव्यप्रकाश</td></tr><tr style="--r:2"><td>बिहारीलाल</td><td>बिहारी सतसई</td></tr><tr style="--r:3"><td>मतिराम</td><td>रसराज, ललित-ललाम, मतिराम सतसई, अलंकार पंचाशिका</td></tr><tr style="--r:4"><td>भूषण</td><td>शिवराज भूषण, शिवाबावनी, छत्रसाल दशक</td></tr><tr style="--r:5"><td>देव</td><td>भावविलास, रसविलास, भवानीविलास, कुशलविलास, अष्टयाम</td></tr><tr style="--r:6"><td>भिखारीदास</td><td>काव्यनिर्णय, शृंगारनिर्णय, रससारांश, छन्दार्णव पिंगल</td></tr><tr style="--r:7"><td>पद्माकर</td><td>जगद्विनोद, पद्माभरण, हिम्मत बहादुर विरुदावली, गंगालहरी</td></tr><tr style="--r:8"><td>घनानन्द</td><td>सुजानसागर, वियोगबेलि, प्रेमपत्रिका, घनानन्द कवित्त</td></tr><tr style="--r:9"><td>रसखान</td><td>प्रेमवाटिका, सुजान रसखान</td></tr><tr style="--r:10"><td>आलम</td><td>आलमकेलि, माधवानल कामकन्दला</td></tr><tr style="--r:11"><td>बोधा</td><td>विरहवारीश, इश्कनामा</td></tr><tr style="--r:12"><td>ठाकुर</td><td>ठाकुर ठसक, ठाकुर के कवित्त</td></tr><tr style="--r:13"><td>कुलपति मिश्र</td><td>रस रहस्य, द्रोणपर्व</td></tr><tr style="--r:14"><td>सोमनाथ</td><td>रसपीयूषनिधि, सुजानविलास</td></tr><tr style="--r:14"><td>जसवन्त सिंह</td><td>भाषा भूषण</td></tr><tr style="--r:14"><td>बेनी प्रवीन</td><td>नवरस तरंग, शृंगार भूषण</td></tr></tbody></table></div>
+<h4 class="reveal">आधुनिक काल : प्रमुख कवि एवं उनकी रचनाएँ</h4>
+<p class="reveal">आधुनिक काल को सामान्यतः चार प्रमुख धाराओं में विभाजित किया जाता है—भारतेन्दु युग, द्विवेदी युग, छायावाद, छायावादोत्तर युग (प्रगतिवाद, प्रयोगवाद, नई कविता आदि)।</p>
+<h4 class="reveal">भारतेन्दु युग के कवि एवं रचनाएँ</h4>
+<div class="tw reveal"><table class=""><thead><tr><th>कवि</th><th>प्रमुख रचनाएँ</th></tr></thead><tbody><tr style="--r:0"><td>भारतेन्दु हरिश्चन्द्र</td><td>भारत-दुर्दशा, अँधेर नगरी, वैदिकी हिंसा हिंसा न भवति</td></tr><tr style="--r:1"><td>बदरीनारायण चौधरी प्रेमघन</td><td>प्रेमघन सर्वस्व, मयंक महिमा</td></tr><tr style="--r:2"><td>प्रतापनारायण मिश्र</td><td>प्रेमपुष्पावली, मन की लहर</td></tr><tr style="--r:3"><td>अम्बिकादत्त व्यास</td><td>पावस पचासा, हो-हो दोरी</td></tr></tbody></table></div>
+<h4 class="reveal">द्विवेदी युग के कवि एवं रचनाएँ</h4>
+<div class="tw reveal"><table class=""><thead><tr><th>कवि</th><th>प्रमुख रचनाएँ</th></tr></thead><tbody><tr style="--r:0"><td>महावीर प्रसाद द्विवेदी</td><td>काव्य-मंजूषा, सुमन</td></tr><tr style="--r:1"><td>मैथिलीशरण गुप्त</td><td>भारत-भारती, साकेत, यशोधरा</td></tr><tr style="--r:2"><td>अयोध्यासिंह उपाध्याय हरिऔध</td><td>प्रियप्रवास, वैदेही वनवास</td></tr><tr style="--r:3"><td>रामनरेश त्रिपाठी</td><td>मानसी, मिलन, पथिक</td></tr><tr style="--r:4"><td>श्रीधर पाठक</td><td>काश्मीर सुषमा, देहरादून</td></tr></tbody></table></div>
+<h4 class="reveal">छायावाद के चार स्तम्भ एवं रचनाएँ</h4>
+<div class="tw reveal"><table class=""><thead><tr><th>कवि</th><th>प्रमुख रचनाएँ</th></tr></thead><tbody><tr style="--r:0"><td>जयशंकर प्रसाद</td><td>कामायनी, आँसू, झरना, लहर</td></tr><tr style="--r:1"><td>सुमित्रानन्दन पन्त</td><td>पल्लव, ग्राम्या, वीणा</td></tr><tr style="--r:2"><td>सूर्यकान्त त्रिपाठी निराला</td><td>परिमल, अनामिका, गीतिका</td></tr><tr style="--r:3"><td>महादेवी वर्मा</td><td>नीहार, रश्मि, नीरजा,</td></tr></tbody></table></div>
+<h4 class="reveal">छायावादोत्तर युग के कवि एवं रचनाएँ</h4>
+<h5 class="reveal">प्रगतिवाद काव्यधारा</h5>
+<div class="tw reveal"><table class=""><thead><tr><th>कवि</th><th>प्रमुख रचनाएँ</th></tr></thead><tbody><tr style="--r:0"><td>रामधारी सिंह दिनकर</td><td>रश्मिरथी, उर्वशी, कुरुक्षेत्र</td></tr><tr style="--r:1"><td>नागार्जुन</td><td>युगधारा, सतरंगे पंखों वाली, प्यासी पथराई आँखें</td></tr><tr style="--r:2"><td>केदारनाथ अग्रवाल</td><td>युग की गंगा, फूल नहीं रंग बोलते हैं</td></tr><tr style="--r:3"><td>त्रिलोचन</td><td>धरती, ताप के ताए हुए दिन</td></tr></tbody></table></div>
+<h5 class="reveal">प्रयोगवाद एवं नई कविता</h5>
+<aside class="note reveal"><span class="ni">!</span><div>इस हिस्से में स्कैन पर कागज़ का धब्बा/फीकापन है, कवियों के नाम मिट गए हैं। जो दिखता है वही लिखा है; [ ] में दिए नाम केवल रचनाओं के आधार पर <strong>अनुमान</strong> हैं, चार्ट में स्पष्ट छपे नहीं दिखते।</div></aside>
+<div class="tw reveal"><table class=""><thead><tr><th>कवि</th><th>प्रमुख रचनाएँ</th></tr></thead><tbody><tr style="--r:0"><td><span class="guess">[अस्पष्ट — अनुमान: अज्ञेय]</span></td><td>हरी घास पर क्षण भर, आँगन के पार द्वार, इत्यलम्</td></tr><tr style="--r:1"><td>…(मिटा हुआ)…बोध <span class="guess">[अनुमान: गजानन माधव मुक्तिबोध]</span></td><td>चाँद का मुँह टेढ़ा है, भूरी-भूरी खाक धूल</td></tr><tr style="--r:2"><td>…(मिटा हुआ)…ती <span class="guess">[अनुमान: धर्मवीर भारती]</span></td><td>कनुप्रिया, सात गीत वर्ष</td></tr><tr style="--r:3"><td><span class="guess">[अस्पष्ट — अनुमान: कुँवर नारायण]</span></td><td>आत्मजयी, परिवेश : हम-तुम</td></tr><tr style="--r:4"><td><span class="guess">[अस्पष्ट — अनुमान: रघुवीर सहाय]</span></td><td>आत्महत्या के विरुद्ध, हँसो हँसो जल्दी हँसो</td></tr></tbody></table></div>
+<h5 class="reveal">गीतिकाव्य के प्रमुख कवि</h5>
+<div class="tw reveal"><table class=""><thead><tr><th>कवि</th><th>प्रमुख रचनाएँ</th></tr></thead><tbody><tr style="--r:0"><td>हारव…न (बीच का हिस्सा मिटा हुआ) <span class="guess">[अनुमान: हरिवंशराय बच्चन]</span></td><td>मधुशाला, मधुबाला, मधुकलश</td></tr><tr style="--r:1"><td>गोपाल…रज (बीच का हिस्सा मिटा हुआ) <span class="guess">[अनुमान: गोपालदास नीरज]</span></td><td>संघर्ष, प्राणगीत, कारवाँ गुजर गया</td></tr><tr style="--r:2"><td>नरेन्द्र …(आगे का नाम मिटा हुआ) <span class="guess">[अनुमान: नरेन्द्र शर्मा]</span></td><td>प्रभात फेरी, प्रवासी के गीत</td></tr></tbody></table></div>
+</section>
+
+<!-- ============ कवि ============ -->
+<section class="sec s-kavi" id="kavi">
+  <div class="sec-head reveal"><span class="no">४</span><h2>कवियों का जीवन परिचय</h2><span class="rule"></span></div>
+  <div class="cards">
+<article class="card reveal"><h4>सूरदास</h4><dl><dt>नाम</dt><dd>सूरदास</dd><dt>जन्म</dt><dd>1478 ई.</dd><dt>जन्म स्थान</dt><dd>रुनकता ग्राम</dd><dt>मृत्यु</dt><dd>1583 ई.</dd><dt>पिता का नाम</dt><dd>पण्डित रामदास</dd><dt>गुरु</dt><dd>आचार्य वल्लभाचार्य</dd><dt>भक्ति</dt><dd>कृष्णभक्ति</dd><dt>ब्रह्म का रूप</dt><dd>सगुण</dd><dt>निवास स्थान</dt><dd>श्रीनाथ मन्दिर</dd><dt>काव्य कृतियाँ</dt><dd>सूरसागर, सूरसारावली, साहित्य-लहरी</dd></dl></article>
+<article class="card reveal"><h4>गोस्वामी तुलसीदास</h4><dl><dt>नाम</dt><dd>गोस्वामी तुलसीदास</dd><dt>जन्म</dt><dd>1532 ई.</dd><dt>जन्म स्थान</dt><dd>राजापुर गाँव</dd><dt>मृत्यु</dt><dd>1623 ई.</dd><dt>पिता का नाम</dt><dd>आत्माराम दुबे</dd><dt>पत्नी का नाम</dt><dd>रत्नावली</dd><dt>शिक्षा</dt><dd>सन्त बाबा नरहरिदास ने भक्ति, वेद-वेदांग, दर्शन, इतिहास, पुराण आदि की शिक्षा दी।</dd><dt>भक्ति</dt><dd>रामभक्ति</dd></dl></article>
+<article class="card reveal"><h4>रसखान</h4><dl><dt>नाम</dt><dd>रसखान</dd><dt>मूल नाम</dt><dd>सैयद इब्राहिम</dd><dt>जन्म</dt><dd>1533 ई.</dd><dt>जन्म-स्थान</dt><dd>दिल्ली</dd><dt>मृत्यु</dt><dd>1628 ई.</dd><dt>गुरु</dt><dd>गोस्वामी विट्ठलनाथ जी</dd><dt>उपलब्धि</dt><dd>'रसखान' संज्ञा की उपाधि</dd><dt>कृतियाँ</dt><dd>'सुजान रसखान' एवं 'प्रेमवाटिका'</dd><dt>भाषा</dt><dd>ब्रज</dd></dl></article>
+<article class="card reveal"><h4>बिहारी लाल</h4><dl><dt>नाम</dt><dd>बिहारी लाल</dd><dt>जन्म</dt><dd>1595 ई.</dd><dt>जन्म स्थान</dt><dd>बसुआ गोविन्दपुर गाँव</dd><dt>मृत्यु</dt><dd>1663 ई.</dd><dt>पिता का नाम</dt><dd>पं. केशवराय चौबे</dd><dt>शिक्षा</dt><dd>ग्वालियर में (काव्यशास्त्र की शिक्षा)</dd><dt>आश्रय</dt><dd>राजा जयसिंह के आश्रित कवि</dd><dt>शैली</dt><dd>मुक्तक (समास शैली)</dd></dl></article>
+<article class="card reveal"><h4>रामनरेश त्रिपाठी</h4><dl><dt>नाम</dt><dd>रामनरेश त्रिपाठी</dd><dt>जन्म</dt><dd>1889 ई. (कुछ विद्वानों के अनुसार 1881 ई.)</dd><dt>पिता का नाम</dt><dd>पं. रामदत्त त्रिपाठी</dd><dt>मृत्यु</dt><dd>वर्ष 1962</dd><dt>शिक्षा</dt><dd>कोइरीपुर गाँव (नवीं तक) संस्कृत, बांग्ला, गुजराती, हिन्दी भाषा का ज्ञान</dd><dt>कृतियाँ</dt><dd>पथिक, मिलन (खण्डकाव्य), वीरांगना, लक्ष्मी (उपन्यास), जयन्त (नाटक), स्वप्नों के चित्र (कहानी-संग्रह)</dd></dl></article>
+<article class="card reveal"><h4>श्यामनारायण पाण्डेय</h4><dl><dt>नाम</dt><dd>श्यामनारायण पाण्डेय</dd><dt>जन्म</dt><dd>वर्ष 1907</dd><dt>जन्म स्थान</dt><dd>डुमराँव गाँव, उत्तर प्रदेश</dd><dt>मृत्यु स्थान</dt><dd>डुमराँव (वर्ष 1991)</dd><dt>कृतियाँ</dt><dd>'हल्दी घाटी', 'जौहर', 'तुमुल', 'रूपान्तर', 'आरती' तथा 'जय हनुमान' आदि।</dd></dl></article>
+<article class="card reveal"><h4>मैथिलीशरण गुप्त</h4><dl><dt>नाम</dt><dd>मैथिलीशरण गुप्त</dd><dt>जन्म</dt><dd>1886 ई.</dd><dt>जन्म स्थान</dt><dd>झाँसी, चिरगाँव</dd><dt>पिता का नाम</dt><dd>सेठ रामचरण गुप्त</dd><dt>मृत्यु</dt><dd>वर्ष 1964</dd><dt>गुरु</dt><dd>महावीर प्रसाद द्विवेदी</dd><dt>कृतियाँ</dt><dd>भारत-भारती, साकेत, यशोधरा, पंचवटी, द्वापर, जयद्रथ वध आदि</dd></dl></article>
+<article class="card reveal"><h4>सुभद्रा कुमारी चौहान</h4><dl><dt>नाम</dt><dd>सुभद्रा कुमारी चौहान</dd><dt>जन्म</dt><dd>वर्ष 1904</dd><dt>जन्म स्थान</dt><dd>इलाहाबाद (उत्तर प्रदेश)</dd><dt>निधन</dt><dd>वर्ष 1948</dd><dt>पिता का नाम</dt><dd>रामनाथ सिंह</dd><dt>शिक्षा</dt><dd>क्रॉस्थवेट गर्ल्स कॉलेज की छात्रा, देश सेवा में लग जाने के कारण शिक्षा अधूरी</dd><dt>कृतियाँ</dt><dd>मुकुल, त्रिधारा, बिखरे मोती इत्यादि।</dd><dt>उपलब्धि</dt><dd>'मुकुल' काव्य-संग्रह पर सेकसरिया सम्मान से सम्मानित</dd></dl></article>
+<article class="card reveal"><h4>अशोक वाजपेयी</h4><dl><dt>नाम</dt><dd>अशोक वाजपेयी</dd><dt>जन्म</dt><dd>16 जनवरी, 1941</dd><dt>शिक्षा</dt><dd>बी.ए. तथा अंग्रेजी में एम.ए.</dd><dt>कृतियाँ</dt><dd>काव्य संग्रह-आविन्यो, उम्मीद का दूसरा नाम, चीख, जबर जोत, दुःख चिट्ठीरसा है, एक खिड़की, युवा जंगल, पहला चुम्बन आदि।</dd><dt>उपलब्धि</dt><dd>साहित्य अकादमी पुरस्कार, दयावती कवि शेखर सम्मान और कबीर सम्मान आदि से सम्मानित।</dd></dl></article>
+<article class="card reveal"><h4>महादेवी वर्मा</h4><dl><dt>नाम</dt><dd>महादेवी वर्मा</dd><dt>जन्म</dt><dd>वर्ष 1907</dd><dt>जन्म स्थान</dt><dd>फर्रुखाबाद</dd><dt>निधन</dt><dd>11 सितम्बर, 1987</dd><dt>माता का नाम</dt><dd>श्रीमती हेमरानी</dd><dt>उच्च शिक्षा</dt><dd>प्रयाग</dd><dt>कृतियाँ</dt><dd>नीहार, रश्मि, नीरजा, सान्ध्यगीत, दीपशिखा</dd><dt>उपलब्धि</dt><dd>महिला विद्यापीठ की प्राचार्य, पद्मभूषण पुरस्कार, सेकसरिया तथा मंगला प्रसाद पुरस्कार, भारत-भारती पुरस्कार तथा भारतीय ज्ञानपीठ पुरस्कार आदि।</dd></dl></article>
+<article class="card reveal"><h4>सुमित्रानन्दन पन्त</h4><dl><dt>नाम</dt><dd>सुमित्रानन्दन पन्त (मूल नाम गुसाईं दत्त)</dd><dt>जन्म</dt><dd>20 मई, 1900</dd><dt>मृत्यु</dt><dd>28 दिसम्बर, 1977</dd><dt>पिता का नाम</dt><dd>पण्डित गंगादत्त</dd><dt>शिक्षा</dt><dd>कौसानी गाँव, उच्च शिक्षा बनारस और इलाहाबाद</dd><dt>भाषा ज्ञान</dt><dd>संस्कृत, अंग्रेजी, बांग्ला और हिन्दी</dd><dt>उपलब्धि</dt><dd>वर्ष 1950 में ऑल इण्डिया रेडियो के परामर्शदाता, साहित्य अकादमी पुरस्कार, सोवियत लैण्ड नेहरू पुरस्कार, ज्ञानपीठ पुरस्कार, पद्मभूषण उपाधि</dd><dt>शैली</dt><dd>गीतात्मक</dd></dl></article>
+<article class="card reveal"><h4>माखनलाल चतुर्वेदी</h4><dl><dt>नाम</dt><dd>माखनलाल चतुर्वेदी</dd><dt>जन्म</dt><dd>1889 ई.</dd><dt>जन्म स्थान</dt><dd>मध्य प्रदेश, बावई</dd><dt>मृत्यु</dt><dd>30 जनवरी, 1968</dd><dt>पिता का नाम</dt><dd>पं. नन्दलाल चतुर्वेदी</dd><dt>शिक्षा</dt><dd>प्राथमिक शिक्षा के बाद घर पर ही अंग्रेजी, संस्कृत, बांग्ला, गुजराती भाषा का अध्ययन</dd><dt>कृतियाँ</dt><dd>युगचरण, समर्पण, हिमकिरीटनी इत्यादि।</dd><dt>उपलब्धि</dt><dd>हिन्दी साहित्य सम्मेलन के अध्यक्ष, पद्म विभूषण की उपाधि।</dd></dl></article>
+<article class="card reveal"><h4>केदारनाथ सिंह</h4><dl><dt>नाम</dt><dd>केदारनाथ सिंह</dd><dt>जन्म</dt><dd>वर्ष 1934</dd><dt>जन्म स्थान</dt><dd>चकिया गाँव, बलिया जिला (उत्तर प्रदेश)</dd><dt>निधन</dt><dd>वर्ष 2018</dd><dt>शिक्षा</dt><dd>हिन्दी एम.ए., पीएच. डी.</dd><dt>कृतियाँ</dt><dd>'अभी बिल्कुल अभी', 'जमीन पक रही है', 'यहाँ से देखो', 'अकाल में सारस', 'बाघ', 'तॉलस्तॉय और साइकिल'।</dd><dt>उपलब्धियाँ</dt><dd>साहित्य अकादमी पुरस्कार, मैथिलीशरण गुप्त सम्मान, कुमारन आशातन पुरस्कार, दिनकर पुरस्कार, जीवन-भारती सम्मान, व्यास सम्मान, ज्ञानपीठ पुरस्कार।</dd></dl></article>
+</div>
+</section>
+
+<!-- ============ काव्य सौन्दर्य ============ -->
+<section class="sec s-kavya" id="kavya">
+  <div class="sec-head reveal"><span class="no">५</span><h2>काव्य सौन्दर्य तत्त्व</h2><span class="rule"></span></div>
+  <p class="sub reveal">रस, अलंकार और छन्द — किसी भी बिन्दु (गोले) पर क्लिक करके परिभाषा देखें।</p>
+  <div class="treewrap reveal"><div class="tree viz" id="kavyaTree"><ul><li style="--lvl:0;--i:9"><div class="node n0"><b>काव्य सौन्दर्य तत्त्व</b><small>किसी पर क्लिक करें</small></div><ul><li style="--lvl:1;--i:10"><div class="node n1"><b>रस</b><small>स्थायी भाव का जागना</small></div><ul><li style="--lvl:2;--i:11"><div class="node n2 leaf" data-key="हास्य रस" role="button" tabindex="0"><b>हास्य रस</b></div></li><li style="--lvl:2;--i:12"><div class="node n2 leaf" data-key="करुण रस" role="button" tabindex="0"><b>करुण रस</b></div></li></ul></li><li style="--lvl:1;--i:13"><div class="node n1"><b>अलंकार</b><small>शब्द / अर्थ की शोभा</small></div><ul><li style="--lvl:2;--i:14"><div class="node n2 leaf" data-key="उपमा अलंकार" role="button" tabindex="0"><b>उपमा</b></div></li><li style="--lvl:2;--i:15"><div class="node n2 leaf" data-key="रूपक अलंकार" role="button" tabindex="0"><b>रूपक</b></div></li><li style="--lvl:2;--i:16"><div class="node n2 leaf" data-key="उत्प्रेक्षा अलंकार" role="button" tabindex="0"><b>उत्प्रेक्षा</b></div></li></ul></li><li style="--lvl:1;--i:17"><div class="node n1 leaf" data-key="__छन्द" role="button" tabindex="0"><b>छन्द</b><small>वर्ण और मात्रा के आधार पर</small></div><ul><li style="--lvl:2;--i:18"><div class="node n2"><b>वर्णिक छन्द</b></div></li><li style="--lvl:2;--i:19"><div class="node n2"><b>मात्रिक छन्द</b></div><ul><li style="--lvl:3;--i:20"><div class="node n3 leaf" data-key="सोरठा छन्द" role="button" tabindex="0"><b>सोरठा</b><small>अर्द्धसम</small></div></li><li style="--lvl:3;--i:21"><div class="node n3 leaf" data-key="रोला छन्द" role="button" tabindex="0"><b>रोला</b><small>सम</small></div></li></ul></li></ul></li></ul></li></ul></div></div>
+  <div class="defpanel" id="defPanel" aria-live="polite"><h4>परिभाषा</h4><p class="hint">ऊपर रेखाचित्र में से कोई रस, अलंकार या छन्द चुनिए।</p></div>
+  <h3 class="reveal">छन्द — मात्राओं का एनिमेशन</h3>
+  
+<div class="matra-grid reveal viz" id="matraViz">
+  <div class="mcard">
+    <h4>सोरठा छन्द <small>अर्द्धसम मात्रिक — दोहे का उल्टा रूप</small></h4>
+    <div class="mrow" style="--w:84.6%;--d:0s"><span class="ml">चरण 1 (विषम)</span><span class="mbar odd"><i>11</i></span></div>
+    <div class="mrow" style="--w:100%;--d:.35s"><span class="ml">चरण 2 (सम)</span><span class="mbar even"><i>13</i></span></div>
+    <div class="mrow" style="--w:84.6%;--d:.7s"><span class="ml">चरण 3 (विषम)</span><span class="mbar odd"><i>11</i></span></div>
+    <div class="mrow" style="--w:100%;--d:1.05s"><span class="ml">चरण 4 (सम)</span><span class="mbar even"><i>13</i></span></div>
+    <p class="mnote">पहले–तीसरे चरण में 11-11 और दूसरे–चौथे चरण में 13-13 मात्राएँ।</p>
+  </div>
+  <div class="mcard">
+    <h4>रोला छन्द <small>सम मात्रिक</small></h4>
+    <div class="mrow rola" style="--d:.2s"><span class="ml">प्रत्येक चरण</span><span class="mbar"><i class="s1" style="--w:45.8%">11</i><u class="yati">यति</u><i class="s2" style="--w:54.2%">13</i></span></div>
+    <p class="mnote">प्रत्येक चरण में 24 मात्राएँ; ग्यारह और तेरह मात्राओं पर यति।</p>
+    <div class="total"><b>11</b> + <b>13</b> = <b>24</b></div>
+  </div>
+</div>
+</section>
+
+<!-- ============ व्याकरण ============ -->
+<section class="sec s-vyakaran" id="vyakaran">
+  <div class="sec-head reveal"><span class="no">६</span><h2>हिन्दी व्याकरण</h2><span class="rule"></span></div>
+
+  <h3 class="reveal">उपसर्ग</h3>
+  <div class="vizbox reveal viz" id="upViz" style="--acc:#7b4fc9">
+    <p class="vt">उपसर्ग + मूल शब्द = नया शब्द (तालिका के शब्दों से)</p>
+    <div class="ud-wrap"><div class="ud" id="ud"></div><p class="um" id="um"></p></div>
+  </div>
+  <h5 class="reveal">संस्कृत एवं हिन्दी के उपसर्ग</h5>
+<div class="tw reveal"><table class="upsarg"><thead><tr><th>उपसर्ग</th><th>अर्थ</th><th>नवीन शब्द</th></tr></thead><tbody><tr style="--r:0"><td>अ</td><td>निषेध, विरोध</td><td>अविश्वास, अदृश्य, अलिखित, अहिंसा, असुविधा, अनाथ, अज्ञान</td></tr><tr style="--r:1"><td>अन्</td><td>अभाव, निषेध</td><td>अनादि, अनर्थ, अनाचार, अनपेक्षित, अनुपस्थित, अनन्त, अनभिज्ञ</td></tr><tr style="--r:2"><td>अधि</td><td>प्रधान, ऊपर,</td><td>अधिकार, अधिपति, अधिकरण, अध्यादेश, अधिगुण, अधिग्रहण, अध्यक्ष</td></tr><tr style="--r:3"><td>अप</td><td>दूर, बुरा, विरोध,</td><td>अपकार, अपवाद, अपकीर्ति, अपमान, अपयश, अपशब्द, अपमानित, अपव्यय, अपहरण, अपकर्ष</td></tr><tr style="--r:4"><td>अनु</td><td>प्रत्येक, पीछे,</td><td>अनुकरण, अनुरूप, अनुचर, अनुभव, अनुग्रह, अनुयायी, अनुगामी, अनुशासन</td></tr><tr style="--r:5"><td>उप</td><td>समान, निकट</td><td>उपनाम, उपवन, उपमान, उपकार, उपदेश, उपमन्त्री, उपहार, उपयोग, उपस्थित, उपयुक्त, उपवेद</td></tr><tr style="--r:6"><td>सह</td><td>साथ</td><td>सहमति, सहचर, सहगायन, सहपाठी, सहकारी, सहयोग, सहगान, सहयात्री, सहकर्मी, सहधर्मिणी</td></tr><tr style="--r:7"><td>निर्</td><td>निषेध, रहित,</td><td>निर्दोष, निर्धन, निर्गुण, निर्जन, निरभिमान, निर्जल, निराकरण, निर्मम, निरपराध, निर्भय, निर्वाह</td></tr><tr style="--r:8"><td>अभि</td><td>सम्मुख,</td><td>अभिमुख, अभिसार, अभिराम, अभिनव, अभ्यागत, अभ्युदय, अभिलाषा, अभिप्राय, अभिवादन</td></tr><tr style="--r:9"><td>परि</td><td>पूर्ण, चारों ओर,</td><td>परिताप, परिजन, परिग्रह, परिवेष्टित, परिकल्पना, पर्यावरण, परिणाम, परिवर्तन, परिपूर्ण</td></tr><tr style="--r:10"><td>सु</td><td>अधिक, अच्छा,</td><td>सुरक्षा, सुपथ, सुमुखि, सुयश, सुकवि, सुभाषित, सुशिक्षित, सुदेश, सुकेश, सुनन्द, सुवास, सुमार्ग</td></tr><tr style="--r:11"><td>आ</td><td>सीमा, ओर</td><td>आलेख, आदान, आमरण, आजन्म, आकाश, आजीवन, आक्रमण, आरम्भ</td></tr><tr style="--r:12"><td>अति</td><td>अधिक</td><td>अत्यधिक, अत्यल्प, अत्याचार, अतिचार, अत्यन्त, अतिरिक्त, अतिबल</td></tr><tr style="--r:13"><td>अव</td><td>नीचे, बाहर, हीन</td><td>अवमान, अवनमन, अवसान, अवरोह, अवगुण, अवधान, अवनति</td></tr><tr style="--r:14"><td>वि</td><td>भिन्न, अभाव</td><td>विदेश, विभाग, विहाग, विश्वास, विभेद, विहित, विदेह, विजय</td></tr><tr style="--r:14"><td>प्र</td><td>ऊपर, आगे</td><td>प्रहार, प्रचार, प्रबल, प्रमुख, प्रभाव, प्रस्थान, प्रमाण</td></tr><tr style="--r:14"><td>कु</td><td>हीन, बुरा</td><td>कुपुत्र, कुकर्म, कुमार्ग, कुचाल, कुपात्र, कुमति</td></tr></tbody></table></div>
+
+  <h3 class="reveal">तद्भव–तत्सम शब्द</h3>
+  <div class="fbar reveal" style="--acc:#7b4fc9"><button class="btn" id="flipAll" type="button">सब पलटें ↻</button><span class="hint">कार्ड पर क्लिक/टच करें या माउस ले जाएँ — तत्सम से तद्भव दिखेगा।</span></div>
+  <div style="--acc:#7b4fc9"><div class="flipgrid"><button class="flip reveal" style="--i:0" aria-label="अमावस्या का तद्भव"><span class="fi"><span class="ff">अमावस्या<small>तत्सम</small></span><span class="fb">अमावस<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:1" aria-label="अक्षि का तद्भव"><span class="fi"><span class="ff">अक्षि<small>तत्सम</small></span><span class="fb">आँख<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:2" aria-label="अंगुष्ठ का तद्भव"><span class="fi"><span class="ff">अंगुष्ठ<small>तत्सम</small></span><span class="fb">अँगूठा<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:3" aria-label="अन्न का तद्भव"><span class="fi"><span class="ff">अन्न<small>तत्सम</small></span><span class="fb">अनाज<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:4" aria-label="अग्नि का तद्भव"><span class="fi"><span class="ff">अग्नि<small>तत्सम</small></span><span class="fb">आग<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:5" aria-label="इक्षु का तद्भव"><span class="fi"><span class="ff">इक्षु<small>तत्सम</small></span><span class="fb">ईख<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:6" aria-label="उज्ज्वल का तद्भव"><span class="fi"><span class="ff">उज्ज्वल<small>तत्सम</small></span><span class="fb">उजला<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:7" aria-label="धूम्र का तद्भव"><span class="fi"><span class="ff">धूम्र<small>तत्सम</small></span><span class="fb">धुआँ<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:8" aria-label="कर्म का तद्भव"><span class="fi"><span class="ff">कर्म<small>तत्सम</small></span><span class="fb">काम<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:9" aria-label="धनका का तद्भव"><span class="fi"><span class="ff">धनका<small>तत्सम</small></span><span class="fb">धनिया<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:10" aria-label="नव का तद्भव"><span class="fi"><span class="ff">नव<small>तत्सम</small></span><span class="fb">नया<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:11" aria-label="धान्य का तद्भव"><span class="fi"><span class="ff">धान्य<small>तत्सम</small></span><span class="fb">धान<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:12" aria-label="अद्य का तद्भव"><span class="fi"><span class="ff">अद्य<small>तत्सम</small></span><span class="fb">आज<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:13" aria-label="धूलि का तद्भव"><span class="fi"><span class="ff">धूलि<small>तत्सम</small></span><span class="fb">धूल<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:14" aria-label="अश्रु का तद्भव"><span class="fi"><span class="ff">अश्रु<small>तत्सम</small></span><span class="fb">आँसू<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:15" aria-label="ध्वनि का तद्भव"><span class="fi"><span class="ff">ध्वनि<small>तत्सम</small></span><span class="fb">धुनि<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:16" aria-label="उलूक का तद्भव"><span class="fi"><span class="ff">उलूक<small>तत्सम</small></span><span class="fb">उल्लू<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:17" aria-label="नृत्य का तद्भव"><span class="fi"><span class="ff">नृत्य<small>तत्सम</small></span><span class="fb">नाच<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:18" aria-label="वर्ष का तद्भव"><span class="fi"><span class="ff">वर्ष<small>तत्सम</small></span><span class="fb">बरस<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:19" aria-label="निष्ठुर का तद्भव"><span class="fi"><span class="ff">निष्ठुर<small>तत्सम</small></span><span class="fb">निठुर<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:20" aria-label="शिर का तद्भव"><span class="fi"><span class="ff">शिर<small>तत्सम</small></span><span class="fb">सिर<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:21" aria-label="नासिका का तद्भव"><span class="fi"><span class="ff">नासिका<small>तत्सम</small></span><span class="fb">नाक<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:22" aria-label="मक्षिका का तद्भव"><span class="fi"><span class="ff">मक्षिका<small>तत्सम</small></span><span class="fb">मक्खी<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:23" aria-label="पर्यङ्क का तद्भव"><span class="fi"><span class="ff">पर्यङ्क<small>तत्सम</small></span><span class="fb">पलंग<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:24" aria-label="कुक्कुर का तद्भव"><span class="fi"><span class="ff">कुक्कुर<small>तत्सम</small></span><span class="fb">कुत्ता<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:25" aria-label="पृष्ठ का तद्भव"><span class="fi"><span class="ff">पृष्ठ<small>तत्सम</small></span><span class="fb">पीठ<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:26" aria-label="हस्ती का तद्भव"><span class="fi"><span class="ff">हस्ती<small>तत्सम</small></span><span class="fb">हाथी<small>तद्भव</small></span></span></button><button class="flip reveal" style="--i:27" aria-label="पुष्कर का तद्भव"><span class="fi"><span class="ff">पुष्कर<small>तत्सम</small></span><span class="fb">पोखर<small>तद्भव</small></span></span></button></div></div>
+
+  <h3 class="reveal">समास</h3>
+  <p class="sub reveal">चमकता हुआ पद ही प्रधान है — देखिए किस समास में कौन-सा पद प्रधान होता है।</p>
+  <div class="samas viz" id="samasViz"><article class="scard dv reveal">
+  <h4>द्वन्द्व समास</h4>
+  <div class="sdiag"><div class="boxes"><div class="sb pre">पूर्व पद</div><div class="plus">+</div><div class="sb post">उत्तर पद</div></div></div>
+  <p class="stag">दोनों पद प्रधान</p>
+  <p class="sdef">जिस समास में दोनों पद प्रधान होते हैं एवं विग्रह करते समय समुच्चयबोधक अव्ययों; जैसे–'तथा' या 'और' का लोप हो जाता है, उसे द्वन्द्व समास कहते हैं। इसमें दोनों पदों को मिलाते समय मध्य में योजक चिह्न लगाए जाते हैं।</p>
+</article><article class="scard dg reveal">
+  <h4>द्विगु समास</h4>
+  <div class="sdiag"><div class="boxes"><div class="sb pre">संख्यावाची विशेषण</div><div class="plus">+</div><div class="sb post">विशेष्य</div></div></div>
+  <p class="stag">समूह / समाहार का बोध</p>
+  <p class="sdef">जिस समस्तपद का पूर्व पद संख्यावाची विशेषण हो और उत्तर पद उस संख्या का विशेष्य तथा दोनों पदों से समूह या समाहार का बोध होता हो, उसे द्विगु समास कहते हैं।</p>
+</article><article class="scard km reveal">
+  <h4>कर्मधारय समास</h4>
+  <div class="sdiag"><div class="boxes"><div class="sb pre">विशेषण / उपमान</div><div class="plus">+</div><div class="sb post">विशेष्य / उपमेय</div></div></div>
+  <p class="stag">उत्तर पद प्रधान</p>
+  <p class="sdef">जिस समस्त पद में पूर्व पद और उत्तर पद में विशेषण-विशेष्य या उपमेय-उपमान का सम्बन्ध हो, वह 'कर्मधारय समास' कहलाता है। इसमें उत्तर पद प्रधान होने के साथ-साथ विशेष्य अर्थात् उपमेय होता है, जबकि पूर्व पद विशेषण अर्थात् उपमान होता है।</p>
+</article><article class="scard bh reveal">
+  <h4>बहुव्रीहि समास</h4>
+  <div class="sdiag"><div class="other">अन्य / नवीन पद</div><div class="arrows"><span></span><span></span></div><div class="boxes"><div class="sb pre">पूर्व पद</div><div class="plus">+</div><div class="sb post">उत्तर पद</div></div></div>
+  <p class="stag">अन्य पद प्रधान</p>
+  <p class="sdef">जिस समास में दोनों पदों के मिलाने पर विशेष अर्थ देने वाला नवीन या अन्य पद प्रधान होता है, उसे 'बहुव्रीहि समास' कहते हैं;</p>
+</article></div>
+
+  <h3 class="reveal">पर्यायवाची शब्द</h3>
+  <div style="--acc:#7b4fc9"><div class="pygrid"><div class="py reveal" style="--i:0"><b>अपमान</b><span><i>अनादर</i><i>उपेक्षा</i><i>तिरस्कार</i><i>निरादर</i></span></div><div class="py reveal" style="--i:1"><b>आकाशगंगा</b><span><i>मन्दाकिनी</i><i>नभोनदी</i><i>नभगंगा</i></span></div><div class="py reveal" style="--i:2"><b>आशीर्वाद</b><span><i>आशीष</i><i>मंगलकामना</i><i>आशीर्वचन</i></span></div><div class="py reveal" style="--i:3"><b>आभूषण</b><span><i>गहना</i><i>भूषण</i><i>अलंकार</i><i>जेवर</i></span></div><div class="py reveal" style="--i:4"><b>इन्द्रधनुष</b><span><i>शक्रचाप</i><i>सप्तकर्ण</i><i>धनु</i><i>इन्द्रधनु</i></span></div><div class="py reveal" style="--i:5"><b>शिव</b><span><i>महादेव</i><i>शंकर</i><i>गंगाधर</i><i>त्रिपुरारि</i></span></div><div class="py reveal" style="--i:6"><b>चतुर</b><span><i>विज्ञ</i><i>निपुण</i><i>कुशल</i><i>दक्ष</i><i>प्रवीण</i><i>योग्य</i></span></div><div class="py reveal" style="--i:7"><b>सुर</b><span><i>देव</i><i>अमर</i><i>देवता</i><i>आदित्य</i><i>अमर्त्य</i></span></div><div class="py reveal" style="--i:0"><b>कपड़ा</b><span><i>परिधान</i><i>वस्त्र</i><i>वसन</i><i>चीर</i></span></div><div class="py reveal" style="--i:1"><b>लक्ष्मी</b><span><i>रमा</i><i>लोकमाता</i><i>विष्णुप्रिय</i><i>श्री</i></span></div><div class="py reveal" style="--i:2"><b>आकाश</b><span><i>नभ</i><i>गगन</i><i>आसमान</i><i>अम्बर</i><i>व्योम</i></span></div><div class="py reveal" style="--i:3"><b>आँख</b><span><i>दृग</i><i>लोचन</i><i>नयन</i><i>अक्षि</i><i>चक्षु</i><i>नेत्र</i></span></div><div class="py reveal" style="--i:4"><b>दिवस</b><span><i>वासर</i><i>वार</i><i>दिवा</i><i>दिन</i></span></div><div class="py reveal" style="--i:5"><b>पक्षी</b><span><i>खग</i><i>विहग</i><i>नभचर</i><i>विहंगम</i><i>पतंग</i></span></div><div class="py reveal" style="--i:6"><b>हवा</b><span><i>पवन</i><i>वायु</i><i>वात</i><i>मारुत</i><i>समीर</i><i>अनिल</i></span></div><div class="py reveal" style="--i:7"><b>अश्व</b><span><i>हय</i><i>घोटक</i><i>तुरंग</i><i>घोड़ा</i><i>रविसुत</i></span></div><div class="py reveal" style="--i:0"><b>कामदेव</b><span><i>मदन</i><i>मार</i><i>स्मर</i><i>मनसिज</i><i>अनंग</i><i>मन्मथ</i></span></div><div class="py reveal" style="--i:1"><b>तालाब</b><span><i>तड़ाग</i><i>सर</i><i>जलाशय</i><i>कासार</i><i>ताल</i></span></div><div class="py reveal" style="--i:2"><b>तीर</b><span><i>बाण</i><i>शर</i><i>तोमर</i><i>विशिख</i><i>शिलीमुख</i></span></div><div class="py reveal" style="--i:3"><b>नारी</b><span><i>महिला</i><i>औरत</i><i>स्त्री</i><i>रमणी</i><i>वनिता</i></span></div><div class="py reveal" style="--i:4"><b>पण्डित</b><span><i>विद्वान</i><i>प्राज्ञ</i><i>बुद्धिमान</i><i>धीमान</i><i>वीर</i><i>सुधी</i></span></div><div class="py reveal" style="--i:5"><b>संसार</b><span><i>विश्व</i><i>दुनिया</i><i>जग</i><i>जगत</i><i>इहलोक</i></span></div><div class="py reveal" style="--i:6"><b>हिरण</b><span><i>मृग</i><i>सारंग</i><i>हरिण</i><i>सुरभी</i><i>कुरंग</i></span></div><div class="py reveal" style="--i:7"><b>बिजली</b><span><i>तड़ित</i><i>चपला</i><i>दामिनी</i><i>घनप्रिया</i><i>इन्द्रवज्र</i></span></div><div class="py reveal" style="--i:0"><b>वानर</b><span><i>बन्दर</i><i>कपि</i><i>मर्कट</i><i>कीश</i><i>शाखामृग</i><i>हरि</i></span></div><div class="py reveal" style="--i:1"><b>जननी</b><span><i>माता</i><i>मातृ</i><i>माँ</i><i>मैया</i><i>महतारी</i><i>धात्री</i></span></div></div></div>
+</section>
+
+<section class="sec s-vyakaran" id="sanskrit">
+  <div class="sec-head reveal"><span class="no">७</span><h2>संस्कृत व्याकरण</h2><span class="rule"></span></div>
+  <div class="sk-wrap"><h4 class="reveal">सर्वनाम (तद्, युष्मद्)</h4>
+<h4 class="reveal">तद् (वह) सर्वनाम के रूप</h4>
+<h4 class="reveal">तद् (वह) पुल्लिंग</h4>
+<div class="tw reveal"><table class="sk"><thead><tr><th>विभक्ति</th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th></tr></thead><tbody><tr style="--r:0"><td>प्रथमा</td><td>सः</td><td>तौ</td><td>ते</td></tr><tr style="--r:1"><td>द्वितीया</td><td>तम्</td><td>तौ</td><td>तान्</td></tr><tr style="--r:2"><td>तृतीया</td><td>तेन</td><td>ताभ्याम्</td><td>तैः</td></tr><tr style="--r:3"><td>चतुर्थी</td><td>तस्मै</td><td>ताभ्याम्</td><td>तेभ्यः</td></tr><tr style="--r:4"><td>पंचमी</td><td>तस्मात्</td><td>ताभ्याम्</td><td>तेभ्यः</td></tr><tr style="--r:5"><td>षष्ठी</td><td>तस्य</td><td>तयोः</td><td>तेषाम्</td></tr><tr style="--r:6"><td>सप्तमी</td><td>तस्मिन्</td><td>तयोः</td><td>तेषु</td></tr></tbody></table></div>
+<h4 class="reveal">तद् (वह) स्त्रीलिंग</h4>
+<div class="tw reveal"><table class="sk"><thead><tr><th>विभक्ति</th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th></tr></thead><tbody><tr style="--r:0"><td>प्रथमा</td><td>सा</td><td>ते</td><td>ताः</td></tr><tr style="--r:1"><td>द्वितीया</td><td>ताम्</td><td>ते</td><td>ताः</td></tr><tr style="--r:2"><td>तृतीया</td><td>तया</td><td>ताभ्याम्</td><td>ताभिः</td></tr><tr style="--r:3"><td>चतुर्थी</td><td>तस्यै</td><td>ताभ्याम्</td><td>ताभ्यः</td></tr><tr style="--r:4"><td>पंचमी</td><td>तस्याः</td><td>ताभ्याम्</td><td>ताभ्यः</td></tr><tr style="--r:5"><td>षष्ठी</td><td>तस्याः</td><td>तयोः</td><td>तासाम्</td></tr><tr style="--r:6"><td>सप्तमी</td><td>तस्याम्</td><td>तयोः</td><td>तासु</td></tr></tbody></table></div>
+<h4 class="reveal">तद् (वह) नपुंसकलिंग</h4>
+<div class="tw reveal"><table class="sk"><thead><tr><th>विभक्ति</th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th></tr></thead><tbody><tr style="--r:0"><td>प्रथमा</td><td>तत्</td><td>ते</td><td>तानि</td></tr><tr style="--r:1"><td>द्वितीया</td><td>तत्</td><td>ते</td><td>तानि</td></tr><tr style="--r:2"><td>तृतीया</td><td>तेन</td><td>ताभ्याम्</td><td>तैः</td></tr><tr style="--r:3"><td>चतुर्थी</td><td>तस्मै</td><td>ताभ्याम्</td><td>तेभ्यः</td></tr><tr style="--r:4"><td>पंचमी</td><td>तस्मात्</td><td>ताभ्याम्</td><td>तेभ्यः</td></tr><tr style="--r:5"><td>षष्ठी</td><td>तस्य</td><td>तयोः</td><td>तेषाम्</td></tr><tr style="--r:6"><td>सप्तमी</td><td>तस्मिन्</td><td>तयोः</td><td>तेषु</td></tr></tbody></table></div>
+<h4 class="reveal">युष्मद् (तुम) शब्द के रूप</h4>
+<div class="tw reveal"><table class="sk"><thead><tr><th>विभक्ति</th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th></tr></thead><tbody><tr style="--r:0"><td>प्रथमा</td><td>त्वम्</td><td>युवाम्</td><td>यूयम्</td></tr><tr style="--r:1"><td>द्वितीया</td><td>त्वाम्, त्वा</td><td>युवाम्, वाम्</td><td>युष्मान्, वः</td></tr><tr style="--r:2"><td>तृतीया</td><td>त्वया</td><td>युवाभ्याम्</td><td>युष्माभिः</td></tr><tr style="--r:3"><td>चतुर्थी</td><td>तुभ्यम्, ते</td><td>युवाभ्याम्</td><td>युष्मभ्यम्, वः</td></tr><tr style="--r:4"><td>पंचमी</td><td>त्वत्</td><td>युवाभ्याम्</td><td>युष्मत्</td></tr><tr style="--r:5"><td>षष्ठी</td><td>तव, ते</td><td>युवयोः, वाम्</td><td>युष्माकम्, वः</td></tr><tr style="--r:6"><td>सप्तमी</td><td>त्वयि</td><td>युवयोः</td><td>युष्मासु</td></tr></tbody></table></div></div>
+</section>
+
+</main>
+
+<footer>स्रोत: टॉपर्स रिवीजन चार्ट (हिन्दी कक्षा 10, P001) — स्कैन किए गए चार्ट से पुनः टंकित। जहाँ स्कैन फीका था, वहाँ अनुमानित नाम अलग से चिह्नित हैं।</footer>
+<button class="toTop" id="toTop" type="button" aria-label="ऊपर जाएँ">↑</button>
+
+<script id="data" type="application/json">{"demo": [{"p": "अ", "m": "निषेध, विरोध", "r": "विश्वास", "w": "अविश्वास"}, {"p": "अ", "m": "निषेध, विरोध", "r": "दृश्य", "w": "अदृश्य"}, {"p": "अधि", "m": "प्रधान, ऊपर", "r": "कार", "w": "अधिकार"}, {"p": "अधि", "m": "प्रधान, ऊपर", "r": "पति", "w": "अधिपति"}, {"p": "अप", "m": "दूर, बुरा, विरोध", "r": "कार", "w": "अपकार"}, {"p": "अप", "m": "दूर, बुरा, विरोध", "r": "वाद", "w": "अपवाद"}, {"p": "अनु", "m": "प्रत्येक, पीछे", "r": "करण", "w": "अनुकरण"}, {"p": "अनु", "m": "प्रत्येक, पीछे", "r": "रूप", "w": "अनुरूप"}, {"p": "उप", "m": "समान, निकट", "r": "नाम", "w": "उपनाम"}, {"p": "उप", "m": "समान, निकट", "r": "वन", "w": "उपवन"}, {"p": "सह", "m": "साथ", "r": "मति", "w": "सहमति"}, {"p": "सह", "m": "साथ", "r": "चर", "w": "सहचर"}, {"p": "निर्", "m": "निषेध, रहित", "r": "दोष", "w": "निर्दोष"}, {"p": "निर्", "m": "निषेध, रहित", "r": "धन", "w": "निर्धन"}, {"p": "अभि", "m": "सम्मुख", "r": "मुख", "w": "अभिमुख"}, {"p": "अभि", "m": "सम्मुख", "r": "सार", "w": "अभिसार"}, {"p": "परि", "m": "पूर्ण, चारों ओर", "r": "ताप", "w": "परिताप"}, {"p": "परि", "m": "पूर्ण, चारों ओर", "r": "जन", "w": "परिजन"}, {"p": "सु", "m": "अधिक, अच्छा", "r": "रक्षा", "w": "सुरक्षा"}, {"p": "सु", "m": "अधिक, अच्छा", "r": "पथ", "w": "सुपथ"}, {"p": "आ", "m": "सीमा, ओर", "r": "लेख", "w": "आलेख"}, {"p": "आ", "m": "सीमा, ओर", "r": "दान", "w": "आदान"}, {"p": "अति", "m": "अधिक", "r": "चार", "w": "अतिचार"}, {"p": "अति", "m": "अधिक", "r": "रिक्त", "w": "अतिरिक्त"}, {"p": "अव", "m": "नीचे, बाहर, हीन", "r": "मान", "w": "अवमान"}, {"p": "अव", "m": "नीचे, बाहर, हीन", "r": "नमन", "w": "अवनमन"}, {"p": "वि", "m": "भिन्न, अभाव", "r": "देश", "w": "विदेश"}, {"p": "वि", "m": "भिन्न, अभाव", "r": "भाग", "w": "विभाग"}, {"p": "प्र", "m": "ऊपर, आगे", "r": "हार", "w": "प्रहार"}, {"p": "प्र", "m": "ऊपर, आगे", "r": "चार", "w": "प्रचार"}, {"p": "कु", "m": "हीन, बुरा", "r": "पुत्र", "w": "कुपुत्र"}, {"p": "कु", "m": "हीन, बुरा", "r": "कर्म", "w": "कुकर्म"}], "med": [["सूरदास", 1478, 1583], ["तुलसीदास", 1532, 1623], ["रसखान", 1533, 1628], ["बिहारी लाल", 1595, 1663]], "mod": [["आचार्य रामचन्द्र शुक्ल", 1884, 1941, "l"], ["डॉ. राजेन्द्र प्रसाद", 1884, 1963, "l"], ["मैथिलीशरण गुप्त", 1886, 1964, "k"], ["जयशंकर प्रसाद", 1889, 1937, "l"], ["रामनरेश त्रिपाठी", 1889, 1962, "k"], ["माखनलाल चतुर्वेदी", 1889, 1968, "k"], ["पदुमलाल पुन्नालाल बख्शी", 1894, 1971, "l"], ["सुमित्रानन्दन पन्त", 1900, 1977, "k"], ["सुभद्रा कुमारी चौहान", 1904, 1948, "k"], ["महादेवी वर्मा", 1907, 1987, "k"], ["श्यामनारायण पाण्डेय", 1907, 1991, "k"], ["रामधारी सिंह दिनकर", 1908, 1974, "l"], ["डॉ. भगवतशरण उपाध्याय", 1910, 1982, "l"], ["केदारनाथ सिंह", 1934, 2018, "k"], ["जयप्रकाश भारती", 1936, 2005, "l"], ["अशोक वाजपेयी", 1941, null, "k"]], "kdefs": {"हास्य रस": "<h4>हास्य रस<\/h4><p>किसी पदार्थ या व्यक्ति की विकृत आकृति, वेशभूषा, चेष्टा आदि को देखकर हृदय में जो विनोद का भाव जाग्रत होता है, उसे हास कहा जाता है। यही हास जब विभाव, अनुभाव तथा संचारी भावों से पुष्ट हो जाता है, तो उसे 'हास्य रस' कहते हैं।<\/p>", "करुण रस": "<h4>करुण रस<\/h4><p>जब प्रिय व्यक्ति या मनचाही वस्तु के नष्ट होने या उसका कोई अनिष्ट होने पर हृदय शोक से भर जाए, तब 'करुण रस' जाग्रत होता है। इसमें विभाव, अनुभाव व संचारी भावों के मेल से शोक स्थायी भाव का जन्म होता है।<\/p>", "उपमा अलंकार": "<h4>उपमा अलंकार<\/h4><p>जब किसी वस्तु का वर्णन करने के लिए उससे अधिक प्रसिद्ध वस्तु से गुण, धर्म आदि के आधार पर उसकी समानता की जाती है, तब 'उपमा अलंकार' होता है। अन्य शब्दों में, जहाँ पर उपमेय की उपमान से किसी समान धर्म के आधार पर तुलना की जाए, वहाँ उपमा अलंकार होता है। उपमा अलंकार के चार अंग होते हैं<\/p><p>(i) उपमेय जिसकी उपमा दी जाए। (ii) उपमान जिससे उपमा दी जाए। (iii) समान धर्म उपमेय—उपमान की एकसमान विशेषता। (iv) वाचक शब्द समानता प्रकट करने वाले शब्द; जैसे—सा, सम आदि।<\/p>", "रूपक अलंकार": "<h4>रूपक अलंकार<\/h4><p>जब उपमेय और उपमान में भेद होते हुए भी दोनों में अभिन्नता प्रकट की जाए और उपमेय को उपमान के रूप में दिखाया जाए, तो रूपक अलंकार होता है।<\/p>", "उत्प्रेक्षा अलंकार": "<h4>उत्प्रेक्षा अलंकार<\/h4><p>जब उपमान से भिन्नता जानते हुए भी उपमेय में उपमान की सम्भावना व्यक्त की जाती है, तब 'उत्प्रेक्षा अलंकार' होता है। इसमें प्रायः मनु, मानो, मनौ, मनहुँ, जनु, जानो, जैसे वाचक शब्दों का प्रयोग किया जाता है।<\/p>", "सोरठा छन्द": "<h4>सोरठा छन्द<\/h4><p>दोहे का उल्टा रूप 'सोरठा' कहलाता है। यह एक अर्द्धसम मात्रिक छन्द है अर्थात् इसके पहले और तीसरे तथा दूसरे और चौथे चरणों में मात्राओं की संख्या समान रहती है। इसके विषम (पहले और तीसरे) चरणों में 11-11 और सम (दूसरे और चौथे) चरणों में 13-13 मात्राएँ होती हैं। तुक विषम चरणों में ही होता है तथा सम चरणों के अन्त में जगण (ISI) का निषेध होता है।<\/p>", "रोला छन्द": "<h4>रोला छन्द<\/h4><p>रोला एक सम मात्रिक छन्द है अर्थात् इसके प्रत्येक चरण में मात्राओं की संख्या समान रहती है। इसके प्रत्येक चरण में 24 मात्राएँ होती हैं तथा ग्यारह और तेरह मात्राओं पर यति होती है।<\/p>", "__छन्द": "<h4>छन्द<\/h4><p>वर्ण और मात्रा के आधार पर छन्द के दो भेद होते हैं 1. वर्णिक छन्द  2. मात्रिक छन्द<\/p>"}}</script>
+<script>
+(function(){
+var D = JSON.parse(document.getElementById('data').textContent);
+var $ = function(s,r){return (r||document).querySelector(s)}, $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+
+/* ---- reveal on scroll ---- */
+var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12, rootMargin:'0px 0px -6% 0px'}) : null;
+$$('.reveal,.viz,.tree').forEach(function(el){ io ? io.observe(el) : el.classList.add('in'); });
+
+/* ---- lifespan chart ---- */
+function life(el, rows, a, b, ticks){
+  var span=b-a, h='<div class="axis"><span></span><div class="ax">'+ticks.map(function(t){return '<span style="left:'+((t-a)/span*100)+'%">'+t+'</span>'}).join('')+'</div></div>';
+  h+='<div class="gridlines">'+ticks.map(function(t){return '<i style="left:'+((t-a)/span*100)+'%"></i>'}).join('')+'</div>';
+  rows.forEach(function(r,k){
+    var s=r[1], e=r[2], open=(e==null); if(open) e=b;
+    var left=(s-a)/span*100, w=(e-s)/span*100, cls=(r[3]||'k')+(open?' open':'');
+    var txt=s+(open?' –':' – '+e);
+    h+='<div class="lrow"><div class="lb">'+r[0]+'</div><div class="ltrack"><div class="lbar '+cls+'" style="left:'+left+'%;--w:'+w+'%;--k:'+k+'">'+txt+'</div></div></div>';
+  });
+  el.innerHTML=h;
+}
+life($('#lifeMod'), D.mod, 1880, 2025, [1880,1900,1920,1940,1960,1980,2000,2020]);
+life($('#lifeMed'), D.med.map(function(r){return [r[0],r[1],r[2],'k']}), 1470, 1670, [1480,1520,1560,1600,1640]);
+
+/* ---- gadya filter ---- */
+(function(){
+  var cur='', set=[], seen={};
+  $$('table.gadya').forEach(function(t){
+    cur='';
+    $$('tbody tr',t).forEach(function(tr){
+      var c=tr.cells[0]; var v=c.textContent.trim();
+      if(v){ cur=v; if(!seen[v]){seen[v]=1;set.push(v);} } else { c.innerHTML='<span class="fill">'+cur+'</span>'; }
+      tr.dataset.v=cur;
+    });
+  });
+  var bar=$('#gFilter'); if(!bar) return;
+  var btns=['सभी'].concat(set);
+  bar.innerHTML=btns.map(function(v,i){return '<button type="button" class="'+(i?'':'on')+'" data-v="'+(i?v:'')+'">'+v+'</button>'}).join('');
+  bar.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    $$('button',bar).forEach(function(x){x.classList.toggle('on',x===b)});
+    var v=b.dataset.v;
+    $$('table.gadya tbody tr').forEach(function(tr){ tr.classList.toggle('hide', !!v && tr.dataset.v!==v); });
+  });
+})();
+
+/* ---- kavya tree -> definitions ---- */
+(function(){
+  var panel=$('#defPanel'), tree=$('#kavyaTree'); if(!tree) return;
+  function show(k){
+    var h=D.kdefs[k]; if(!h) return;
+    panel.innerHTML=h; panel.classList.remove('flash'); void panel.offsetWidth; panel.classList.add('flash');
+    $$('.node.leaf',tree).forEach(function(n){n.classList.toggle('sel', n.dataset.key===k)});
+  }
+  tree.addEventListener('click',function(e){ var n=e.target.closest('.node.leaf'); if(n) show(n.dataset.key); });
+  tree.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ var n=e.target.closest('.node.leaf'); if(n){e.preventDefault();show(n.dataset.key);} } });
+})();
+
+/* ---- upsarg demo ---- */
+(function(){
+  var box=$('#ud'), um=$('#um'), i=0, d=D.demo; if(!box||!d.length) return;
+  function step(){
+    var x=d[i%d.length]; i++;
+    box.innerHTML='<span class="up">'+x.p+'</span><span class="rt">'+x.r+'</span><span class="wd">'+x.w+'</span>';
+    um.textContent='उपसर्ग “'+x.p+'” का अर्थ: '+x.m;
+  }
+  step(); setInterval(step,3400);
+})();
+
+/* ---- flip cards ---- */
+(function(){
+  var cards=$$('.flip');
+  cards.forEach(function(c){ c.addEventListener('click',function(){ c.classList.toggle('on'); }); });
+  var all=false, btn=$('#flipAll'); if(!btn) return;
+  btn.addEventListener('click',function(){
+    all=!all;
+    cards.forEach(function(c,k){ setTimeout(function(){ c.classList.toggle('on',all); }, k*35); });
+  });
+})();
+
+/* ---- nav: scrollspy, progress, top, theme ---- */
+var links=$$('.nav a'), secs=links.map(function(a){return $(a.getAttribute('href'))});
+function onScroll(){
+  var y=window.scrollY, h=document.documentElement.scrollHeight-innerHeight;
+  $('#prog').style.width=(h>0?y/h*100:0)+'%';
+  $('#toTop').classList.toggle('show', y>600);
+  var cur=0; secs.forEach(function(s,k){ if(s && s.getBoundingClientRect().top<140) cur=k; });
+  links.forEach(function(a,k){ a.classList.toggle('on',k===cur && y>300); });
+  var on=links[cur]; if(on && y>300 && on.scrollIntoView){ var p=on.parentNode; p.scrollLeft=on.offsetLeft-p.clientWidth/2+on.clientWidth/2; }
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#toTop').addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
+$('#themeBtn').addEventListener('click',function(){
+  var r=document.documentElement, dark=(r.dataset.theme==='dark')||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);
+  r.dataset.theme=dark?'light':'dark';
+});
+})();
+</script>
+</body>
+</html>
