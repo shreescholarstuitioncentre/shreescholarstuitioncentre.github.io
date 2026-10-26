@@ -333,6 +333,35 @@
 
         </section>   <!-- ye Notes section ka end hai, ise mat chhedo -->
 
+        <!-- SSTC FREE'S SECTION -->
+    <section class="fr-section" id="sstcFreeSection" hidden>
+
+        <div class="fr-head">
+            <div>
+                <span class="fr-tag">🎁 SSTC FREE'S</span>
+                <h2>Free Chapters</h2>
+                <p>Ye chapters bilkul free hain. Chapter chuniye aur yahin padhiye.</p>
+            </div>
+            <button type="button" class="fr-close" onclick="closeSstcFree()">✕ Close Free's</button>
+        </div>
+
+        <div class="fr-list" id="frList"></div>
+
+        <div class="fr-viewer" id="frViewer" hidden>
+            <div class="fr-bar">
+                <strong id="frViewerTitle">Free Chapter</strong>
+                <div class="fr-bar-actions">
+                    <button type="button" onclick="sstcFreeFullscreen()" title="Fullscreen">⛶</button>
+                    <button type="button" onclick="closeSstcFreeViewer()" title="Close">✕</button>
+                </div>
+            </div>
+            <div class="fr-frame-wrap">
+                <iframe id="frFrame" class="fr-frame" title="SSTC Free Chapter" src="about:blank"></iframe>
+            </div>
+        </div>
+
+    </section>
+
     <!-- ✅ NAYA: E-BOOK WRAPPER START -->
     <div id="sstcEbookWrap" hidden>
 
@@ -600,14 +629,6 @@
         </div>
 
         <div class="summary-card">
-            <div class="summary-icon">🛒</div>
-            <div>
-                <span>Purchased</span>
-                <strong id="purchasedBooks">0</strong>
-            </div>
-        </div>
-
-        <div class="summary-card">
             <div class="summary-icon">📖</div>
             <div>
                 <span>Subjects</span>
@@ -616,34 +637,6 @@
         </div>
 
     </section>
-
-
-
-    <!-- =====================================================
-         PURCHASE INFORMATION
-    ====================================================== -->
-
-    <section class="purchase-info">
-
-        <div class="purchase-info-icon">🛒</div>
-
-        <div>
-
-            <h3>Want More Subjects?</h3>
-
-            <p>
-                <strong>Rent</strong> any subject for
-                <strong>3 months (₹49)</strong>,
-                <strong>6 months (₹69)</strong> or
-                <strong>12 months (₹99)</strong>. Tap
-                “Rent This Subject” on a subject card above.
-                Contact SSTC administration to complete the payment.
-            </p>
-
-        </div>
-
-    </section>
-
 
 </main>
 
