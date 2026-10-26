@@ -1,7 +1,7 @@
 /* =========================================================
    SSTC STUDENT PORTAL
    LIVE STUDENT DATA
-   SESSION + PROFILE + E-BOOK LIBRARY + PDF READER
+   SESSION + PROFILE + LIBRARY + PDF READER
    + RENT SUBJECTS (3 / 6 / 12 months -> saved in Google Sheet)
    + PAY NOW (UPI payment + payment claim + admin email)
    + SINGLE-DEVICE LOGIN ENFORCEMENT (heartbeat check,
