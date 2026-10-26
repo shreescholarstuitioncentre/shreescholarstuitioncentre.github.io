@@ -5805,8 +5805,8 @@ const SSTC_FREE_CHAPTERS_BY_CLASS = {
        {
             subject: "Social Science",
             chapters: [
-                { title: "SSTC Social Science One Page Revision", en: "free/class-10/social-science/chapter-01-en.html", hi: "free/class-10/science/chapter-01-hi.html" },
-               { title: "SSTC Social Science Map Works", en: "free/class-10/social-science/chapter-02-en.html", hi: "free/class-10/science/chapter-02-hi.html" }
+                { title: "SSTC Social Science One Page Revision", en: "free/class-10/social-science/chapter-01-en.html", hi: "free/class-10/social-science/chapter-01-hi.html" },
+               { title: "SSTC Social Science Map Works", en: "free/class-10/social-science/chapter-02-en.html", hi: "free/class-10/social-science/chapter-02-hi.html" }
             ]
         },
         {
