@@ -4769,3 +4769,84 @@ body.sstc-modal-open {
         min-width: 0;
     }
 }
+/* Purchased card hatne ke baad 3 cards (sirf desktop) */
+@media (min-width: 1001px) {
+    .summary-section { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* =========================================================
+   SSTC FREE'S SECTION
+   ========================================================= */
+.fr-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: rgba(255,255,255,.96);
+    border: 1px solid #b9efd1;
+    border-top: 4px solid #16a34a;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(22,163,74,.10);
+}
+.fr-section[hidden], .fr-viewer[hidden] { display: none !important; }
+
+.fr-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+.fr-tag { color: #15803d; font-size: 11px; font-weight: 800; letter-spacing: .8px; }
+.fr-head h2 { margin-top: 4px; font-size: 22px; color: #05285b; }
+.fr-head p { margin-top: 4px; color: #657b98; font-size: 13px; }
+
+.fr-close {
+    padding: 9px 16px; border: 0; border-radius: 10px;
+    background: #ef4444; color: #fff; font-weight: 700;
+    font-size: 13px; cursor: pointer; white-space: nowrap;
+}
+
+.fr-list { display: flex; flex-direction: column; gap: 10px; }
+
+.fr-item {
+    width: 100%;
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid #e2e8f0; border-radius: 14px;
+    background: #fff; text-align: left; cursor: pointer;
+    transition: border-color .2s, transform .2s;
+}
+.fr-item:hover { border-color: #86efac; transform: translateX(4px); }
+.fr-item.active { border-color: #16a34a; background: #f0fdf4; }
+.fr-item-no {
+    width: 36px; height: 36px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 10px; background: #dcfce7; color: #15803d; font-weight: 800;
+}
+.fr-item-info { flex: 1; min-width: 0; }
+.fr-item-info h3 { font-size: 15px; color: #172033; line-height: 1.35; }
+.fr-item-info p { font-size: 12px; color: #64748b; margin-top: 2px; }
+.fr-item-open {
+    padding: 7px 12px; border-radius: 9px;
+    background: #16a34a; color: #fff; font-size: 12px; font-weight: 700; white-space: nowrap;
+}
+
+.fr-viewer {
+    margin-top: 16px;
+    border: 1px solid #dbe6f5; border-radius: 14px; overflow: hidden;
+}
+.fr-bar {
+    display: flex; justify-content: space-between; align-items: center; gap: 10px;
+    padding: 9px 12px; background: #0f172a; color: #fff; font-size: 13px;
+}
+.fr-bar-actions { display: flex; gap: 6px; }
+.fr-bar-actions button {
+    min-width: 34px; height: 30px; border: 0; border-radius: 7px;
+    background: #fff; color: #111827; font-weight: 700; cursor: pointer;
+}
+.fr-frame-wrap { height: 600px; background: #fff; }
+.fr-frame { width: 100%; height: 100%; border: 0; background: #fff; }
+
+@media (max-width: 700px) {
+    .fr-head { flex-direction: column; }
+    .fr-frame-wrap { height: 480px; }
+}
