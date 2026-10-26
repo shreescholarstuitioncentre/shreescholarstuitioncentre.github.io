@@ -5546,58 +5546,62 @@ function injectSstcTrackerStyles() {
 
     style.textContent = `
         #sstcTimeSection {
-            flex:0 0 auto; width:230px; box-sizing:border-box;
-            margin:0 auto; padding:10px 12px;
-            border-radius:18px;
+            display:inline-flex; align-items:center; flex-wrap:wrap;
+            gap:10px; box-sizing:border-box;
+            padding:5px 12px; border-radius:999px;
             background:linear-gradient(135deg,#fff7ed,#fdf2f8);
-            border:2px solid #fbcfe8;
-            box-shadow:0 4px 14px rgba(236,72,153,.15);
+            border:1.5px solid #fbcfe8;
+            box-shadow:0 3px 10px rgba(236,72,153,.13);
             font-family:Arial,sans-serif;
-            display:flex; flex-direction:column; gap:7px;
             transition:box-shadow .3s, border-color .3s;
         }
         #sstcTimeSection.running {
             border-color:#34d399;
-            box-shadow:0 0 0 3px rgba(52,211,153,.25), 0 4px 14px rgba(16,185,129,.25);
+            box-shadow:0 0 0 3px rgba(52,211,153,.22), 0 3px 10px rgba(16,185,129,.22);
         }
-        .sstc-mini-row { display:flex; align-items:center; gap:9px; }
+        .sstc-mini-row { display:flex; align-items:center; gap:7px; }
+        .sstc-mini-sep { width:1px; height:24px; background:#f3c4dc; }
         .sstc-mini-ico {
-            flex:0 0 auto; width:32px; height:32px; border-radius:50%;
+            flex:0 0 auto; width:24px; height:24px; border-radius:50%;
             display:flex; align-items:center; justify-content:center;
-            font-size:17px; background:#ffffff;
-            box-shadow:0 2px 6px rgba(0,0,0,.08);
+            font-size:13px; background:#ffffff;
+            box-shadow:0 2px 5px rgba(0,0,0,.08);
         }
         #sstcTimeSection.running .sstc-mini-ico.study { animation:sstcWiggle .8s ease-in-out infinite; }
-        .sstc-mini-info { flex:1 1 auto; min-width:0; line-height:1.15; }
+        .sstc-mini-info { line-height:1.1; }
         .sstc-mini-info small {
-            display:block; font-size:10px; font-weight:700;
-            color:#9d174d; text-transform:uppercase; letter-spacing:.6px;
+            display:block; font-size:8.5px; font-weight:700;
+            color:#9d174d; text-transform:uppercase; letter-spacing:.5px;
         }
         .sstc-mini-info b {
-            display:block; font-size:19px; font-weight:800; color:#1e293b;
-            font-variant-numeric:tabular-nums; letter-spacing:.5px;
+            display:block; font-size:14px; font-weight:800; color:#1e293b;
+            font-variant-numeric:tabular-nums; letter-spacing:.4px;
         }
         .sstc-live-dot {
-            display:inline-block; width:6px; height:6px; border-radius:50%;
-            background:#22c55e; margin-left:4px; vertical-align:middle;
+            display:inline-block; width:5px; height:5px; border-radius:50%;
+            background:#22c55e; margin:0 3px 0 4px; vertical-align:middle;
             animation:sstcLive 1.2s ease-in-out infinite;
         }
-        .sstc-mini-btns { display:flex; gap:5px; }
+        .sstc-mini-btns { display:flex; gap:4px; }
         .sstc-mini-btns button {
-            width:28px; height:28px; border:0; border-radius:50%;
-            cursor:pointer; font-size:12px; line-height:1; padding:0;
+            width:22px; height:22px; border:0; border-radius:50%;
+            cursor:pointer; font-size:10px; line-height:1; padding:0;
             background:#10b981; color:#fff;
-            box-shadow:0 2px 6px rgba(16,185,129,.4);
+            box-shadow:0 2px 5px rgba(16,185,129,.4);
         }
-        .sstc-mini-btns button.reset { background:#f472b6; box-shadow:0 2px 6px rgba(244,114,182,.4); }
+        .sstc-mini-btns button.reset { background:#f472b6; box-shadow:0 2px 5px rgba(244,114,182,.4); }
         .sstc-mini-btns button:active { transform:scale(.9); }
         @keyframes sstcLive { 0%,100%{opacity:1} 50%{opacity:.25} }
         @keyframes sstcWiggle { 0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(8deg)} }
-        @media (max-width:700px) { #sstcTimeSection { width:100%; max-width:320px; } }
+        @media (max-width:520px) {
+            #sstcTimeSection { border-radius:16px; width:100%; justify-content:center; }
+            .sstc-mini-sep { display:none; }
+        }
     `;
 
     document.head.appendChild(style);
 }
+
 
 function createSstcTrackerSection() {
 
@@ -5613,10 +5617,11 @@ function createSstcTrackerSection() {
         '<div class="sstc-mini-row">' +
             '<div class="sstc-mini-ico">🦉</div>' +
             '<div class="sstc-mini-info">' +
-                '<small>Session<span class="sstc-live-dot"></span> <span id="sstcSessionState">Live</span></small>' +
+                '<small>Session<span class="sstc-live-dot"></span><span id="sstcSessionState">Live</span></small>' +
                 '<b id="sstcSessionClock">00:00:00</b>' +
             '</div>' +
         '</div>' +
+        '<div class="sstc-mini-sep"></div>' +
         '<div class="sstc-mini-row">' +
             '<div class="sstc-mini-ico study">📚</div>' +
             '<div class="sstc-mini-info">' +
@@ -5629,12 +5634,11 @@ function createSstcTrackerSection() {
             '</div>' +
         '</div>';
 
-    const title = document.querySelector(".portal-title");
-    const notesBtn = document.getElementById("sstcNotesBtn");
+    /* Student Portal badge ke saath ek line me */
+    const slot = document.getElementById("sstcTrackerSlot");
 
-    if (title && notesBtn) {
-        /* Beech me: [My E-Book Library]  [Tracker]  [Notes button] */
-        title.insertBefore(section, notesBtn);
+    if (slot) {
+        slot.appendChild(section);
     }
     else {
         const anchor = document.getElementById("chapterSection");
@@ -5773,3 +5777,20 @@ function closeSstcEbook() {
 
 window.openSstcEbook = openSstcEbook;
 window.closeSstcEbook = closeSstcEbook;
+
+
+/* =========================================================
+   SSTC FREE'S button
+   ========================================================= */
+
+function openSstcFree() {
+
+    if (!checkStudentSession()) { return; }
+
+    /* Abhi: E-Book section kholta hai (har subject ka Chapter 1 free hai) */
+    openSstcEbook();
+
+    showSstcToast("Har subject ka Chapter 1 FREE hai. Subject chuniye aur padhiye.", "success");
+}
+
+window.openSstcFree = openSstcFree;
