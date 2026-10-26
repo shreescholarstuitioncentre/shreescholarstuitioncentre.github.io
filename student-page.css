@@ -4880,3 +4880,30 @@ body.sstc-modal-open {
 /* Zoom */
 .fr-zoom-level { min-width: 44px; text-align: center; font-size: 12px; font-weight: 700; color: #fff; align-self: center; }
 .fr-frame-wrap { overflow: auto; position: relative; }
+/* Free's: English / Hindi medium toggle */
+.fr-medium {
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    margin-bottom: 14px;
+    border-radius: 12px;
+    background: #eef3fa;
+}
+
+.fr-medium button {
+    padding: 9px 18px;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: #3b5b82;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.fr-medium button.active {
+    background: #16a34a;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(22, 163, 74, .35);
+}
