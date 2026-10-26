@@ -10,10 +10,51 @@
 
     <title>SSTC | Student E-Book Portal</title>
 
-    <link rel="stylesheet" href="student-page.css?v=7">
+    <script>
+    /*
+     * AUTO VERSION (file badalne par hi naya version)
+     * Har file ka server "Last-Modified" time version ban jata hai.
+     * File GitHub par update hui -> version badla -> browser nayi file lega.
+     * File nahi badli -> version wahi -> browser cache se turant load karega.
+     */
+    (function () {
 
-    <!-- ✅ NAYA: SSTC Notes section ka CSS -->
-    <link rel="stylesheet" href="student-notes.css?v=1">
+        function sstcVersion(path) {
+
+            try {
+
+                var xhr = new XMLHttpRequest();
+
+                xhr.open("HEAD", path, false);
+                xhr.setRequestHeader("Cache-Control", "no-cache");
+                xhr.send();
+
+                if (xhr.status >= 200 && xhr.status < 300) {
+
+                    var modified = Date.parse(xhr.getResponseHeader("Last-Modified"));
+
+                    if (!isNaN(modified)) {
+                        return modified;
+                    }
+                }
+            }
+            catch (error) {
+                /* neeche fallback chalega */
+            }
+
+            /* Fallback: har 10 minute me version badlega */
+            return Math.floor(Date.now() / 600000);
+        }
+
+        window.SSTC_ASSET = function (path) {
+            return path + "?v=" + sstcVersion(path);
+        };
+
+    })();
+
+    document.write('<link rel="stylesheet" href="' + SSTC_ASSET("student-page.css") + '">');
+    document.write('<link rel="stylesheet" href="' + SSTC_ASSET("student-notes.css") + '">');
+    </script>
 
 </head>
 
@@ -345,15 +386,15 @@
             <button type="button" class="fr-close" onclick="closeSstcFree()">✕ Close Free's</button>
         </div>
 
-<div class="fr-medium" role="group" aria-label="Free chapters medium">
-    <button type="button" class="active" data-medium="en" onclick="setSstcFreeMedium('en')">
-        English Medium
-    </button>
-    <button type="button" data-medium="hi" onclick="setSstcFreeMedium('hi')">
-        Hindi Medium
-    </button>
-</div>
-        
+        <div class="fr-medium" role="group" aria-label="Free chapters medium">
+            <button type="button" class="active" data-medium="en" onclick="setSstcFreeMedium('en')">
+                English Medium
+            </button>
+            <button type="button" data-medium="hi" onclick="setSstcFreeMedium('hi')">
+                Hindi Medium
+            </button>
+        </div>
+
         <div class="fr-list" id="frList"></div>
 
         <div class="fr-viewer" id="frViewer" hidden>
@@ -829,14 +870,14 @@
 
 
 <!-- =========================================================
-     JS
+     JS  (order important hai: student-page.js pehle)
 ========================================================= -->
 
-<script src="student-page.js?v=3"></script>
-
-<!-- ✅ NAYA: SSTC Notes section ka JS (student-page.js ke BAAD hi rakhein) -->
-<script src="student-notes.js?v=1"></script>
-    <script src="sstc-assistant.js" defer></script>
+<script>
+    document.write('<script src="' + SSTC_ASSET("student-page.js") + '"><\/script>');
+    document.write('<script src="' + SSTC_ASSET("student-notes.js") + '"><\/script>');
+    document.write('<script src="' + SSTC_ASSET("sstc-assistant.js") + '"><\/script>');
+</script>
 
 </body>
 
