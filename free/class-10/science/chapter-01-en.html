@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Class 10 Science Revision Chart</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root{--bg:#f7f5ee;--card:#fff;--ink:#16213a;--mut:#56607a;--line:#d9d5c6;--c:#e0452f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10162a;--card:#1a2340;--ink:#eef0f7;--mut:#a4adc7;--line:#2c3760;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10162a;--card:#1a2340;--ink:#eef0f7;--mut:#a4adc7;--line:#2c3760;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Atkinson Hyperlegible",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Trebuchet MS",sans-serif;margin:0;line-height:1.1}
+header{padding:36px 18px 18px;max-width:1100px;margin:auto}
+h1{font-size:clamp(2rem,6vw,3.6rem);font-weight:800}
+h1 span{color:var(--c)}
+header p{color:var(--mut);margin:.6em 0 0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:8px 14px}
+nav button{flex:none;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:.85rem;padding:5px 12px;border-radius:99px;cursor:pointer}
+nav button[aria-pressed=true]{background:var(--c);border-color:var(--c);color:#fff}
+nav button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+main{max-width:1100px;margin:auto;padding:18px}
+h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;color:var(--c);margin-bottom:14px}
+.grid{columns:300px;column-gap:14px}
+.card{break-inside:avoid;background:var(--card);border:1.5px solid var(--line);border-left:6px solid var(--c);border-radius:10px;padding:12px 14px;margin:0 0 14px}
+.card h3{font-size:1.05rem;margin-bottom:6px}
+.card p{margin:.35em 0}.card ul{margin:.3em 0;padding-left:1.1em}
+.card em{color:var(--mut)}
+.eq{font-family:"Trebuchet MS",sans-serif;background:color-mix(in srgb,var(--c) 10%,transparent);padding:4px 8px;border-radius:6px;display:block;margin:.4em 0;overflow-x:auto}
+svg{width:100%;height:auto;display:block;margin-top:8px;background:color-mix(in srgb,var(--c) 7%,transparent);border-radius:8px}
+svg text{fill:var(--ink);font:11px "Atkinson Hyperlegible",sans-serif}
+.s{stroke:var(--ink);fill:none;stroke-width:1.6}
+.f{stroke:var(--c);fill:none;stroke-width:2.4;stroke-dasharray:7 6;animation:d 1s linear infinite}
+.r{animation-direction:reverse}
+@keyframes d{to{stroke-dashoffset:-13}}
+.p{animation:p 2.4s ease-in-out infinite}@keyframes p{50%{opacity:.25}}
+footer{text-align:center;color:var(--mut);padding:20px;font-size:.9rem}
+@media(prefers-reduced-motion:reduce){.f,.p{animation:none}}
+</style></head><body>
+<header><h1>Class 10 Science <span>Revision Chart</span></h1><p>Avtar Topper’s Revision Chart · P121, Avtar 10th Science. Pick a chapter; diagrams are animated.</p></header>
+<nav id="nav" aria-label="Chapters"></nav>
+<main id="main"></main>
+<footer>Avtar 10th Science · P121</footer>
+<script>
+var A='<defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="currentColor"/></marker></defs>';
+var D={
+exo:'<svg viewBox="0 0 300 130" aria-label="Exothermic releases heat, endothermic absorbs heat"><circle class="s" cx="75" cy="62" r="26"/><circle class="s" cx="225" cy="62" r="26"/><text x="48" y="66">Exothermic</text><text x="196" y="66">Endothermic</text><text x="45" y="122">Releases heat</text><text x="198" y="122">Absorbs heat</text><g fill="#e0452f"><circle r="4"><animateMotion dur="1.6s" repeatCount="indefinite" path="M75,36 L75,6"/></circle><circle r="4"><animateMotion dur="1.6s" repeatCount="indefinite" path="M101,62 L132,62"/></circle><circle r="4"><animateMotion dur="1.6s" repeatCount="indefinite" path="M49,62 L18,62"/></circle><circle r="4"><animateMotion dur="1.6s" repeatCount="indefinite" path="M225,6 L225,36"/></circle><circle r="4"><animateMotion dur="1.6s" repeatCount="indefinite" path="M282,62 L251,62"/></circle><circle r="4"><animateMotion dur="1.6s" repeatCount="indefinite" path="M168,62 L199,62"/></circle></g></svg>',
+dig:'<svg viewBox="0 0 300 150" aria-label="Food moving through the alimentary canal"><path class="s" id="g" d="M40,20 H150 V50 H80 V80 H220 V110 H110 V132"/><circle r="5" fill="#e0452f"><animateMotion dur="6s" repeatCount="indefinite"><mpath href="#g"/></animateMotion></circle><text x="4" y="24">Mouth</text><text x="156" y="38">Oesophagus</text><text x="30" y="68">Stomach</text><text x="226" y="98">Small intestine</text><text x="118" y="146">Large intestine → Anus</text></svg>',
+food:'<svg viewBox="0 0 300 170" aria-label="Energy flow up the food chain"><g class="s"><rect x="90" y="4" width="120" height="24"/><rect x="90" y="40" width="120" height="24"/><rect x="90" y="76" width="120" height="24"/><rect x="90" y="112" width="120" height="24"/><rect x="90" y="146" width="120" height="22"/></g><text x="112" y="21">Top carnivores</text><text x="124" y="57">Carnivores</text><text x="124" y="93">Herbivores</text><text x="126" y="129">Producers</text><text x="132" y="162">Sunlight</text><path class="f" d="M150,146V28" marker-end="url(#a)" style="color:#e0452f"/><text x="222" y="90">only 10% energy</text><text x="222" y="104">passes on</text></svg>',
+refl:'<svg viewBox="0 0 300 150" aria-label="Law of reflection"><line class="s" x1="20" y1="120" x2="280" y2="120"/><line class="s" stroke-dasharray="4" x1="150" y1="120" x2="150" y2="15"/><path class="f" d="M50,30L150,120"/><path class="f" d="M150,120L250,30"/><text x="154" y="14">Normal</text><text x="48" y="24">Incident ray</text><text x="200" y="24">Reflected ray</text><text x="128" y="105">i</text><text x="166" y="105">r</text><text x="120" y="140">∠i = ∠r</text></svg>',
+lens:'<svg viewBox="0 0 300 140" aria-label="Convex lens focusing parallel rays"><line class="s" x1="10" y1="70" x2="290" y2="70"/><path class="s" d="M120,15Q138,70 120,125Q102,70 120,15Z"/><g class="f"><path d="M10,40H120L220,70"/><path d="M10,70H120L220,70"/><path d="M10,100H120L220,70"/></g><circle cx="220" cy="70" r="3.5" fill="#e0452f"/><text x="212" y="90">F</text><text x="10" y="132">Object at ∞ → real, inverted image at focus</text></svg>',
+prism:'<svg viewBox="0 0 300 140" aria-label="Dispersion of white light by a prism"><path class="s" d="M130,20L90,110H170Z"/><path class="f" style="stroke:var(--ink)" d="M20,80L118,68"/><g stroke-width="3" fill="none" class="p"><path stroke="#e0382d" d="M142,66L280,92"/><path stroke="#f59a23" d="M142,66L280,80"/><path stroke="#e8c91a" d="M142,66L280,68"/><path stroke="#2fa84f" d="M142,66L280,56"/><path stroke="#2b7fd6" d="M142,66L280,44"/><path stroke="#6a3fc4" d="M142,66L280,32"/></g><text x="20" y="62">White light</text><text x="200" y="118">Red bends least, violet most</text></svg>',
+ohm:'<svg viewBox="0 0 300 140" aria-label="V against I is a straight line"><path class="s" d="M40,10V120H280"/><path class="s" style="stroke:#e0452f;stroke-width:2.6" id="o" d="M40,120L260,25"/><circle r="5" fill="#e0452f"><animateMotion dur="3s" repeatCount="indefinite" keyPoints="0;1;0" keyTimes="0;.5;1" calcMode="linear"><mpath href="#o"/></animateMotion></circle><text x="14" y="16">V</text><text x="272" y="134">I</text><text x="150" y="108">V ∝ I, V = RI</text></svg>',
+thumb:'<svg viewBox="0 0 300 140" aria-label="Right hand thumb rule"><line class="s" x1="150" y1="10" x2="150" y2="130"/><ellipse class="s" cx="150" cy="70" rx="70" ry="20" stroke-dasharray="4"/><circle r="5" fill="#e0452f"><animateMotion dur="3s" repeatCount="indefinite" path="M220,70A70,20 0 1 1 80,70A70,20 0 1 1 220,70"/></circle><path class="s" d="M150,40V16" marker-end="url(#a)"/><text x="158" y="30">Current</text><text x="228" y="102">Magnetic field</text></svg>'};
+D.exo=A+D.exo;D.food=D.food.replace('<g class="s">',A+'<g class="s">');D.thumb=D.thumb.replace('<line',A+'<line');
+var C=[
+{n:'Chemical Reactions',c:'#e0452f',k:[
+['Balanced Chemical Equations','The reactions in which the total number of atoms of each element are equal on both sides of the equation are called balanced chemical equations.'],
+['1. Combination Reactions','Two or more reactants react together to give a single product.<span class="eq">A + B → AB</span>Burning of coal: <span class="eq">C(s) + O₂(g) → CO₂(g)</span><em>Carbon + Oxygen → Carbon dioxide</em>'],
+['2. Decomposition Reactions','A single reactant breaks down into two or more simpler products.<span class="eq">AB → A + B</span><b>Thermal decomposition:</b> heat is used to decompose the substance. Heating of zinc carbonate is an example.<span class="eq">ZnCO₃(s) –Heat→ ZnO(s) + CO₂(g)</span>'],
+['3. Exothermic Reactions','Reactions accompanied by the evolution of heat.<span class="eq">C₆H₁₂O₆(aq) + 6O₂(aq) → 6CO₂(aq) + 6H₂O(l) + Energy</span><b>Endothermic Reactions:</b> reactions which take place by the absorption of heat, e.g. photosynthesis.<span class="eq">6CO₂(aq) + 12H₂O(l) –Sunlight/Chlorophyll→ C₆H₁₂O₆ + 6O₂ + 6H₂O</span>','exo'],
+['4. Displacement Reactions','One element displaces the other from its compound.<span class="eq">A–B + C → A–C + B</span>'],
+['5. Double Displacement Reaction','<span class="eq">AB + CD → AD + CB</span>e.g. <span class="eq">Na₂SO₄ + BaCl₂ → BaSO₄ + 2NaCl</span><em>Sodium sulphate + Barium chloride → Barium sulphate + Sodium chloride</em>']]},
+{n:'Acids, Bases and Salts',c:'#8a3fc4',k:[
+['Acids','Substances with sour taste that turn blue litmus red. In water they furnish H⁺ ions.'],
+['Bases','Substances with bitter taste that turn red litmus blue. They furnish OH⁻ ions in aqueous solution.'],
+['Salts','Products of the neutralisation reaction between acids and bases.'],
+['Common Properties of Acids and Bases','<ul><li>In water, all acids give H⁺ ion and all bases give OH⁻ ion.</li><li>Both conduct electricity in their aqueous solution.</li></ul>'],
+['Water of Crystallisation','Some salts in their dry state have a fixed number of water molecules associated with them. These are hydrated salts, e.g. washing soda (Na₂CO₃·10H₂O), blue vitriol (CuSO₄·5H₂O).'],
+['pH Scale','Measures hydrogen ion concentration, from 0 (very acidic) to 14 (very alkaline).<b>Importance of pH in everyday life</b><ul><li>Plants and animals are pH sensitive; plant growth depends on the soil.</li><li>Digestion: the stomach produces HCl.</li><li>Tooth enamel decay begins when mouth pH falls below 5.5.</li><li>Warning sign on containers of concentrated acids and bases shows their corrosive nature.</li></ul>'],
+['Effect of Dilution on an Acid or Base','Mixing an acid or base with water is dilution, and the reaction is highly exothermic. The solutions dissociate into ions that conduct charge, so aqueous solutions of both acids and bases conduct electricity.'],
+['Indicators','Substances that change their colour or odour when added to an acid or an alkaline solution.']]},
+{n:'Metals and Non-Metals',c:'#d98a0b',k:[
+['Metals','Electropositive; they tend to form positive ions by losing electron(s), e.g. Cu, Fe, Au, Na.<br><b>Reactivity series</b> (decreasing):<span class="eq">K &gt; Na &gt; Ca &gt; Mg &gt; Al &gt; Zn &gt; Fe &gt; Pb &gt; H &gt; Cu &gt; Hg &gt; Ag &gt; Au</span>'],
+['Non-metals','Electronegative; they tend to form anions by gaining electron(s), e.g. iodine (I₂), sulphur (S), hydrogen (H₂).'],
+['Chemical Properties','<ul><li><b>Reaction with oxygen:</b> non-metal oxides are generally acidic (P₂O₅, SO₂, CO₂) or neutral (CO, H₂O).</li><li>Acidic oxides + Water → Acids: <span class="eq">CO₂ + H₂O → H₂CO₃ (carbonic acid)</span></li><li>Non-metals do not displace H₂ from acids because they are electron acceptors and cannot supply electrons to hydrogen.</li></ul>'],
+['Alloy','Homogeneous mixture of two or more metals, or a metal and a non-metal. An alloy of a metal with Hg is called amalgam.'],
+['Metal Extraction','<b>Metallurgy:</b> extraction of metals from their ores.<br><b>Minerals:</b> elements or compounds occurring naturally in the earth’s crust.<br><b>Ores and gangue:</b> minerals from which metal is extracted profitably are ores; the impurities with them are gangue.'],
+['Aqua-regia','Mixture of concentrated HCl and concentrated HNO₃ in the ratio 3:1. Gold and platinum dissolve in it.'],
+['Galvanisation','Coating iron and steel objects with a thin layer of zinc.'],
+['Ionic or Electrovalent Bond','Bond formed by the complete transfer of an electron from a metal atom to a non-metal atom.']]},
+{n:'Carbon and its Compounds',c:'#2a7d4f',k:[
+['Fuels and Flame','Fuels provide heat and light when burnt; fossil fuels come from fossils, e.g. coal, petroleum. A flame is the region where combustion of gases takes place.<ul><li><b>Blue (non-luminous):</b> oxygen sufficient or in excess.</li><li><b>Yellow (luminous):</b> its colour is due to unburnt carbon particles.</li></ul>'],
+['Allotropes','<b>Diamond:</b> hardest rigid 3D network, non-conductor, used as precious stones and abrasive.<br><b>Graphite:</b> opaque, hexagonal planar layers, good conductor; used for pencil lead and electrodes.<br><b>Fullerene:</b> first known was C-60, carbon atoms arranged like a football.'],
+['Covalent Compounds','Contain covalent bonds; low melting and boiling points; generally poor conductors of electricity.'],
+['Hydrocarbons','Compounds of carbon and hydrogen only.<br><b>Saturated:</b> only single bonds between carbon atoms; general formula CₙH₂ₙ₊₂.<br><b>Unsaturated:</b> at least one multiple bond between two carbon atoms.'],
+['Combustion','Reaction in which CO₂ and H₂O are obtained by burning organic compounds. Saturated hydrocarbons burn with a blue flame due to complete combustion.'],
+['Soaps','<ul><li>Sodium or potassium salts of long chain fatty acids (RCOONa), R = C₁₅H₃₁, C₁₇H₃₅.</li><li>Made by alkaline hydrolysis of fats and oils (saponification).</li><li>Remove dirt and oil by micelle formation.</li><li>Form scum with hard water.</li></ul>'],
+['Detergents','<ul><li>Ammonium or sulphonate salts of long chain carboxylic acid.</li><li>No scum with hard water.</li><li>Also called soapless soap.</li></ul>'],
+['Versatile Nature of Carbon','<b>Catenation:</b> self-linking tendency in straight chains or rings.<br><b>Tetravalency:</b> valency four, so it bonds with four other atoms.<br><b>Multiple bonds:</b> shares more than one electron pair with C or atoms like O, N, S.']]},
+{n:'Life Processes',c:'#1b8a8a',k:[
+['Nutrition','Process by which an organism obtains nutrients from food and uses them for energy, to maintain living structures and perform basic life functions.'],
+['Human Digestive System','Digestion is a catabolic process. The alimentary canal is a long tube (7-8 m) where digestion is completed, helped by digestive glands (salivary glands, liver, pancreas).','dig'],
+['Respiration','Food is oxidised to release energy; O₂ is required from outside the body.<br><b>Aerobic:</b> with oxygen, releases a large amount of energy.<br><b>Anaerobic:</b> without oxygen, releases a small amount of energy.'],
+['Transportation in Human Beings','Fluid called blood is pumped by the heart through blood vessels. Blood transports nutrients, salts, oxygen…'],
+['Transportation in Plants','Water and minerals go from root to leaves, and stored food from leaves to other parts, through two conducting tissues: xylem and phloem.'],
+['Excretion in Human Beings','Nitrogenous wastes such as urea are removed as urine through the kidney.'],
+['Excretion in Plants','Plants excrete various waste products, e.g. resin.'],
+['Artificial Kidney','Device that removes nitrogenous waste from blood through dialysis, in case of kidney failure.']]},
+{n:'Control and Coordination',c:'#c2327a',k:[
+['Coordination','Working together of various organs in a systematic, controlled and efficient way to respond to stimuli. Humans use the nervous system and hormones; plants use electrical-chemical means and change cell shape by changing water content.'],
+['Nervous System','System of neurons, nerves and nervous organs that links, coordinates and controls activities of organs.<br><b>Neuron:</b> structural and functional unit; a nerve has a cell body, axon, dendrites and nerve endings.'],
+['Brain','<b>Forebrain:</b> main thinking part; controls hearing, sight, smell, hunger (cerebrum).<br><b>Midbrain:</b> controls involuntary actions.<br><b>Hindbrain:</b> pons, medulla, cerebellum; maintains posture and equilibrium. Also: hypothalamus, pituitary gland, spinal cord.'],
+['Tropic Movements','Movement towards or away from the stimulus: phototropism, geotropism, hydrotropism, chemotropism.'],
+['Nastic Movements','Movement irrespective of stimulus direction: photonasty, thigmonasty, thermonasty, nyctinasty.'],
+['Animal Hormones','Transfer information; secreted by endocrine glands; also called chemical messengers.'],
+['Plant Hormones','Chemical substances produced naturally in plants that regulate growth, development and responses: auxin, gibberellins, cytokinins, abscisic acid.']]},
+{n:'How do Organisms Reproduce?',c:'#e07a1f',k:[
+['In Flowering Plants','<b>Stamen</b> (male, produces pollen): anther, filament. <b>Carpel/pistil</b> (female, produces egg): stigma, style, ovary, ovule. Also petal, sepal, thalamus, pedicel.'],
+['Asexual Reproduction','Offspring from a single parent, without formation and fusion of gametes.'],
+['Fission','Splitting of a unicellular organism into two or more daughter cells.<ul><li><b>Binary:</b> <em>Amoeba, Euglena</em></li><li><b>Multiple:</b> <em>Plasmodium</em></li></ul>'],
+['Fragmentation','A multicellular organism breaks into small pieces and each grows into a new individual, e.g. <em>Spirogyra</em>.'],
+['Sexual Reproduction','Development of a new individual through formation and fusion of gametes, e.g. human, dogs, cats, frogs.'],
+['Menstruation','Cycle begins at puberty (11-13 years); the first is <b>menarche</b>. Permanent stoppage is <b>menopause</b>, between 45-50 years.'],
+['Reproductive Systems','<b>Male:</b> testis, scrotum, vas deferens, seminal vesicle, prostate gland, urethra, penis.<br><b>Female:</b> ovary, oviduct (funnel), uterus, cervix, vagina.'],
+['Birth Control','Barrier, hormonal, chemical and surgical methods.<ul><li><b>Barrier:</b> condom, diaphragm; Intra Uterine Device (IUD)</li><li><b>Hormonal:</b> oral contraceptive pills</li><li><b>Chemical:</b> spermicide</li><li><b>Surgical:</b> vasectomy, tubectomy</li></ul>'],
+['STDs','Transmitted by sexual contact, e.g. AIDS, syphilis.<ul><li><b>Gonorrhoea:</b> <em>Neisseria gonorrhoea</em></li><li><b>Syphilis:</b> <em>Treponema pallidum</em></li><li><b>AIDS-HIV:</b> Human Immunodeficiency Virus</li></ul>']]},
+{n:'Heredity',c:'#3a57c4',k:[
+['Traits','Features (similarities or differences) of an individual.<br><b>Acquired:</b> non-genetic, non-heritable, e.g. language, intelligence.<br><b>Inherited:</b> genetic, inheritable, e.g. height, skin and eye colour.'],
+['Variation','Difference in traits shown by individuals of a species during reproduction.<br><b>Environmental:</b> diet, chemicals, radiation, pollution.<br><b>Genetic:</b> arise from mutation, meiosis and sexual reproduction.'],
+['Mendelism','Factors (genes) are the carriers of traits.<ul><li>Law of dominance</li><li>Law of segregation</li><li>Law of independent assortment</li></ul>'],
+['Mutation','Sudden inheritable change in gene or chromosome.'],
+['Meiosis','Reductional division required for gamete formation.'],
+['Sexual Reproduction','Fusion of two gametes, the reason for variation in offspring.'],
+['Sex-determination','Mechanism by which the sex of a newborn is determined; sex also affects inheritance of some traits. In humans it is decided by the sex chromosome of the father (X or Y).<span class="eq">Father X or Y + Mother X → XX = Female, XY = Male</span>']]},
+{n:'Human Eye and Colourful World',c:'#0f8fbf',k:[
+['Refraction through a Prism','Different colours travel through glass at different speeds. The angle between the incident and emergent ray is the <b>angle of deviation</b>.<br>PQ incident ray, QM refracted ray, MR emergent ray; ∠A angle of prism, ∠i incidence, ∠r refraction, ∠e emergence, ∠D deviation.'],
+['Dispersion of Light','<ul><li>Splitting of white light into its constituent colours.</li><li>Red deviates least, violet most.</li><li>Rainbow formation.</li></ul>','prism'],
+['Myopia','Sees nearby objects but not distant ones.<br><b>Causes:</b> excessive curvature of eye lens; elongated eyeball.<br><b>Remedy:</b> concave lens.'],
+['Hypermetropia','Sees distant objects but not nearby ones.<br><b>Cause:</b> focal length of eye lens becomes large.<br><b>Remedy:</b> convex lens.'],
+['Presbyopia','Both myopia and hypermetropia, due to reduced power of accommodation.<br><b>Causes:</b> weak ciliary muscles; hardening or loss of elasticity.<br><b>Remedy:</b> bifocal lens.'],
+['Atmospheric Refraction','Bending of light through the earth’s atmosphere: twinkling of stars, planets do not twinkle, advance sunrise and delayed sunset.'],
+['Scattering of Light','Deviation of light randomly in all directions when it falls on suspended particles: Tyndall effect, blue sky.'],
+['Structure of Eye','Iris, pupil, cornea, retina, optic nerve.']]},
+{n:'Electricity and Magnetic Effects',c:'#c9a100',k:[
+['Potential Difference','Work done in moving a unit charge between two points. V = W/q, 1 V = 1 J/C. Scalar; measured by voltmeter. 1 mV = 10⁻³ V, 1 μV = 10⁻⁶ V, 1 kV = 10³ V, 1 MV = 10⁶ V.'],
+['Electric Charge','Quantity of matter that experiences a force near other charged matter. Negative if it gains electrons, positive if it loses electrons.'],
+['Electric Circuit','A closed, continuous path for current. Parts: cell/battery, bulb, switch/key, fuse, wire, ammeter, voltmeter, rheostat.'],
+['Ohm’s Law','Current through a conductor is directly proportional to the potential difference across its ends, at constant temperature.','ohm'],
+['Right Hand Thumb Rule','Gives the direction of the magnetic field of a straight current-carrying wire: if you wind a cork screw in the direction of current, its rotation shows the direction of the magnetic lines.','thumb'],
+['AC Current','Magnitude changes with time and direction reverses periodically; obtained from AC generators.'],
+['DC Current','Magnitude constant or variable but direction stays the same; obtained from a battery.'],
+['Electromagnet','Soft iron makes a temporary magnet. Works on the magnetic effect of current; used in electric bell, telephone.'],
+['Resistivity','Resistance of a conductor of unit length and cross-sectional area. Depends on the substance and temperature. SI unit: ohm-metre.']]},
+{n:'Light: Refraction and Reflection',c:'#5a6be0',k:[
+['Mirror','A smooth reflecting surface polished on one side.<span class="eq">1/f = 1/v + 1/u</span>'],
+['Lens','Transparent glass that concentrates or disperses light by refraction.<span class="eq">1/f = 1/v − 1/u</span>'],
+['Reflection','Light bounces back in the same medium from a smooth surface.<br><b>Laws:</b> (i) incident ray, reflected ray and normal lie in the same plane at the point of incidence; (ii) ∠i = ∠r.','refl'],
+['Convex Lens','Converging lens. f = +ve, m = −ve or +ve.<br>Object at ∞: real, inverted, at focus, extremely diminished.<br>Object beyond 2F: real, inverted, between F and 2F, diminished.','lens'],
+['Concave Lens','Diverging lens. f = −ve, m = +ve.<br>Object at infinity: image at focus, virtual, erect, point sized.'],
+['Convex Mirror','Reflecting surface curved outward (diverging). f = +ve, m = +ve.<br>Object beyond C: image between F and P, diminished, virtual and erect.'],
+['Concave Mirror','Reflecting surface curved inward (converging). f = −ve, m = −ve or +ve.<br>Object beyond C: real, inverted, between C and F, diminished.'],
+['Power of Lens','Reciprocal of focal length in metres: P = 1/f. SI unit dioptre (D). Convex lens P = +ve; concave lens P = −ve.']]},
+{n:'Our Environment',c:'#4c9a2a',k:[
+['Ecosystem','Introduced by Tansley in 1935. All interacting organisms in an area together with the non-living components of the environment.'],
+['Food Chain','Linear sequence of organisms through which energy is transferred as food.'],
+['Energy Flow','Food and energy pass from one trophic level to the next. Only 10% of energy is available to the next level.','food'],
+['Food Web','Network of various inter-linked food chains.'],
+['Trophic Level','Steps in a food chain: producers occupy the first level, primary consumers the second, and so on.'],
+['Ozone Depletion','Ozone (O₃) forms from O₂ –UV→ O + O, then O + O₂ → O₃. It shields the earth’s surface from the Sun’s UV rays.'],
+['Garbage Management','Household waste is garbage. Dispose of it scientifically by segregating into biodegradable and non-biodegradable waste. Methods include recycling.'],
+['Biological Magnification','Progressive increase in the concentration of toxicant at each successive trophic level, e.g. pesticides like DDT.'],
+['Biodegradable Substances','Broken down into simple harmless forms by microorganisms; pollute when present in huge quantities.'],
+['Non-biodegradable Substances','Cannot be broken down into simpler forms by microorganisms.']]}];
+var nav=document.getElementById('nav'),main=document.getElementById('main');
+function show(i){
+ var ch=C[i];document.documentElement.style.setProperty('--c',ch.c);
+ main.innerHTML='<h2>'+ch.n+'</h2><div class="grid">'+ch.k.map(function(k){return '<section class="card"><h3>'+k[0]+'</h3><p>'+k[1]+'</p>'+(k[2]?D[k[2]]:'')+'</section>'}).join('')+'</div>';
+ [].forEach.call(nav.children,function(b,j){b.setAttribute('aria-pressed',j==i)});
+ try{history.replaceState(null,'','#'+i)}catch(e){}
+ window.scrollTo(0,0);
+}
+C.forEach(function(ch,i){var b=document.createElement('button');b.textContent=ch.n;b.onclick=function(){show(i)};nav.appendChild(b)});
+var h=parseInt((location.hash||'').slice(1));show(h>=0&&h<C.length?h:0);
+</script></body></html>
