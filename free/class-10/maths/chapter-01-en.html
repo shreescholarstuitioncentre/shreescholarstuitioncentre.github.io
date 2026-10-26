@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Class 10 Maths Revision Chart</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--tx:#1d2433;--mu:#5b6478;--fm:#eef2ff;--ln:#1d2433}
+@media(prefers-color-scheme:dark){:root{--bg:#12151c;--card:#1b2029;--tx:#e8ebf2;--mu:#9aa3b5;--fm:#262d3d;--ln:#e8ebf2}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,sans-serif}
+header{padding:22px 16px;text-align:center;background:linear-gradient(90deg,#f5a623,#e8452c);color:#fff}
+header h1{margin:0;font-size:clamp(20px,4vw,32px)}header p{margin:4px 0 0;opacity:.9}
+main{max-width:1250px;margin:auto;padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+section{background:var(--card);border-radius:14px;padding:14px 16px;border-top:5px solid var(--a);box-shadow:0 1px 4px #0002}
+h2{margin:0 0 6px;font-size:18px;color:var(--a)}h3{margin:10px 0 2px;font-size:14px}
+p{margin:4px 0}.f{background:var(--fm);border-radius:6px;padding:3px 8px;display:block;font-family:Cambria,serif;margin:4px 0}
+svg{width:100%;max-height:150px;background:var(--fm);border-radius:10px;margin:4px 0}
+svg *{vector-effect:non-scaling-stroke}.l{stroke:var(--ln);fill:none;stroke-width:2}.t{fill:var(--tx);font-size:11px}
+.r{stroke:#e8452c;fill:none;stroke-width:2.5}.b{stroke:#2a7de1;fill:none;stroke-width:2.5}.s{fill:var(--a);opacity:.85}
+.dr{stroke-dasharray:100;animation:dr 4s infinite}.fi{animation:fi 4s infinite}
+.bar{transform-box:fill-box;transform-origin:bottom;animation:gr 3.5s infinite}
+.sc{transform-box:fill-box;transform-origin:bottom left;animation:sc 4s ease-in-out infinite;fill:#2a7de155;stroke:#2a7de1;stroke-width:2}
+@keyframes dr{0%{stroke-dashoffset:100}40%,90%{stroke-dashoffset:0}100%{stroke-dashoffset:100}}
+@keyframes fi{0%,20%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}
+@keyframes gr{0%{transform:scaleY(0)}30%,90%{transform:scaleY(1)}100%{transform:scaleY(0)}}
+@keyframes sc{0%,15%{scale:1}50%,85%{scale:2.2}100%{scale:1}}
+.die{display:flex;gap:6px}.die span{flex:1;text-align:center;padding:8px 0;border-radius:8px;background:var(--fm);font-weight:700;transition:.3s}
+.die .on{background:var(--a);color:#fff;transform:scale(1.15)}.cap{font-size:12px;color:var(--mu)}
+table{border-collapse:collapse;width:100%;font-size:13px}td,th{border:1px solid var(--mu);padding:3px 5px;text-align:center}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body>
+<header><h1>Class 10 Mathematics: Toppers' Revision Chart</h1><p>12 chapters · key definitions, formulas and animated diagrams</p></header>
+<main>
+
+<section style="--a:#16a085"><h2>1. Real Numbers</h2>
+<svg viewBox="0 0 200 110"><g class="l"><path pathLength="100" class="dr" d="M100 22L60 52M100 22L140 52M60 52L35 82M60 52L85 82"/></g>
+<g class="t fi" text-anchor="middle"><text x="100" y="18">12</text><text x="60" y="56">6</text><text x="140" y="56">2</text><text x="35" y="95">3</text><text x="85" y="95">2</text></g></svg>
+<p class="cap">Factor tree of 12 = 2 × 2 × 3</p>
+<h3>HCF and LCM relation</h3><span class="f">HCF(a,b) × LCM(a,b) = a × b</span><p>e.g. HCF = 2, LCM = 4 → product of numbers = 8.</p>
+<h3>Fundamental Theorem of Arithmetic</h3><p>Every composite number can be written as a product of primes, and this factorisation is unique apart from the order of the prime factors. e.g. 230 = 2 × 5 × 23.</p>
+<h3>HCF / LCM</h3><p><b>HCF:</b> product of common prime factors with smallest power (HCF(2,4)=2). <b>LCM:</b> product of all prime factors with greatest power (LCM(4,2)=4).</p>
+<h3>Rational / Irrational</h3><p><b>Rational:</b> can be written as p/q, p and q co-prime integers, q ≠ 0. <b>Irrational:</b> cannot, e.g. √2, √5, 0.101101110…</p>
+<h3>Theorems</h3><p>1. If prime P divides a², then P divides a (a positive integer). 2. √2 is irrational.</p>
+<p><b>Coprime integers:</b> pair with HCF 1, e.g. (1,3). <b>Prime factorisation method:</b> express numbers as a product of primes.</p></section>
+
+<section style="--a:#8e44ad"><h2>2. Polynomials</h2>
+<svg viewBox="0 0 200 110"><path class="l" d="M10 90H190M40 10V105"/><path pathLength="100" class="r dr" d="M15 20L100 105"/><circle cx="73" cy="90" r="4" fill="#e8452c"><animate attributeName="r" values="3;9;3" dur="1.5s" repeatCount="indefinite"/></circle><text class="t" x="80" y="82">zero: x = 3</text></svg>
+<p class="cap">p(x) = –x + 3 cuts the x-axis at its zero.</p>
+<p>A polynomial in x has the form <span class="f">p(x) = aₙxⁿ + aₙ₋₁xⁿ⁻¹ + … + a₁x + a₀</span>where n is a non-negative integer and a₀…aₙ are constants (coefficients).</p>
+<h3>Types</h3><p><b>Linear</b> (degree 1): ax + b, a ≠ 0, e.g. 5x + 4.<br><b>Quadratic</b> (degree 2): ax² + bx + c, a ≠ 0, e.g. 5x² + 8x + 3.<br><b>Cubic</b> (degree 3): ax³ + bx² + cx + d, a ≠ 0, e.g. 5x³ + x² + 25x + 5.</p>
+<p><b>Degree:</b> highest power of x. e.g. y² – 5y + 7 has degree 2.</p>
+<p><b>Zero:</b> k is a zero of p(x) if p(k) = 0. e.g. p(x) = –x + 3 → p(3) = 0, so 3 is a zero.</p>
+<p><b>Value at a point:</b> put x = α in p(x) to get p(α).</p>
+<h3>Forming a quadratic from zeroes α, β</h3><span class="f">x² – (α + β)x + αβ</span></section>
+
+<section style="--a:#e84393"><h2>3. Pair of Linear Equations in Two Variables</h2>
+<svg viewBox="0 0 300 100"><g class="b"><path pathLength="100" class="dr" d="M10 20L80 85"/></g><g class="r"><path pathLength="100" class="dr" d="M10 85L80 20"/></g>
+<g class="b"><path pathLength="100" class="dr" d="M110 85L180 20"/></g><path class="r" d="M110 85L180 20"><animateTransform attributeName="transform" type="translate" values="0 -25;0 0;0 -25" dur="4s" repeatCount="indefinite"/></path>
+<g class="b"><path pathLength="100" class="dr" d="M215 85L285 20"/></g><g class="r"><path pathLength="100" class="dr" d="M215 65L285 0"/></g>
+<text class="t" x="12" y="98">intersecting</text><text class="t" x="118" y="98">coincident</text><text class="t" x="228" y="98">parallel</text></svg>
+<p>General form: <span class="f">a₁x + b₁y + c₁ = 0 and a₂x + b₂y + c₂ = 0</span></p>
+<table><tr><th>Ratios</th><th>Lines</th><th>Solution</th><th>System</th></tr>
+<tr><td>a₁/a₂ ≠ b₁/b₂</td><td>intersecting</td><td>exactly one</td><td>consistent</td></tr>
+<tr><td>a₁/a₂ = b₁/b₂ = c₁/c₂</td><td>coincident</td><td>infinitely many</td><td>consistent (dependent)</td></tr>
+<tr><td>a₁/a₂ = b₁/b₂ ≠ c₁/c₂</td><td>parallel</td><td>none</td><td>inconsistent</td></tr></table>
+<p>e.g. x = 2, y = 3 solves 2x + 3y – 13 = 0 and 4x – 5y + 7 = 0.</p>
+<h3>Substitution method</h3><p>Express one variable in terms of the other from one equation, substitute in the other. Solve x + y = 3, x + 2y = 5: x = 3 – y → 3 – y + 2y = 5 → y = 2, x = 1.</p>
+<h3>Elimination method</h3><p>Make the coefficients of one variable equal, then subtract. Solve x + 2y = 6, x + y = 5: multiply second by 2 → 2x + 2y = 10; subtract first → x = 4; then y = 1.</p></section>
+
+<section style="--a:#e67e22"><h2>4. Quadratic Equations</h2>
+<svg viewBox="0 0 200 120"><path class="l" d="M10 70H190"/><g><path class="b" d="M40 30Q100 150 160 30"/><animateTransform attributeName="transform" type="translate" values="0 0;0 -30;0 -60;0 -30;0 0" dur="6s" repeatCount="indefinite"/></g><text class="t" x="8" y="114">Parabola rises: D &gt; 0 → D = 0 → D &lt; 0</text></svg>
+<p>Standard form: <span class="f">ax² + bx + c = 0, a ≠ 0</span>e.g. 3x² + 5x + 2 = 0.</p>
+<h3>Roots</h3><p>1. To check a value α: put x = α; if P(α) = 0 it is a root.<br>2. To find an unknown constant: substitute the given root and simplify.</p>
+<h3>Factorisation</h3><p>Find ac, split it as p × q with p + q = b, rewrite bx = px + qx, factorise the LHS into two linear factors and equate each to zero.</p>
+<h3>Quadratic formula</h3><span class="f">x = (–b ± √(b² – 4ac)) / 2a = (–b ± √D) / 2a</span><p>D = b² – 4ac is the discriminant.</p>
+<h3>Nature of roots</h3><p><b>D = 0:</b> two equal real roots, x = –b/2a.<br><b>D &gt; 0:</b> two distinct real roots.<br><b>D &lt; 0:</b> √D is not real, so no real roots.</p>
+<p>To test if an equation is quadratic, simplify it and compare with ax² + bx + c = 0, a ≠ 0.</p></section>
+
+<section style="--a:#27ae60"><h2>5. Arithmetic Progression (AP)</h2>
+<svg viewBox="0 0 200 100"><g class="s"><rect class="bar" x="15" y="70" width="25" height="25"/><rect class="bar" style="animation-delay:.2s" x="50" y="55" width="25" height="40"/><rect class="bar" style="animation-delay:.4s" x="85" y="40" width="25" height="55"/><rect class="bar" style="animation-delay:.6s" x="120" y="25" width="25" height="70"/><rect class="bar" style="animation-delay:.8s" x="155" y="10" width="25" height="85"/></g></svg>
+<p class="cap">Each term grows by the same common difference d.</p>
+<p><b>Sequence:</b> numbers in a definite order by a rule, e.g. 2, 4, 6, 8…<br><b>AP:</b> each term is the previous term plus a fixed number, e.g. 3, 8, 13, 18, 23… (add 5).</p>
+<p>Common difference: <span class="f">d = a₂ – a₁ = a₃ – a₂ = a₄ – a₃ = …</span>Terms: a₁ = a, a₂ = a + d, a₃ = a + 2d …</p>
+<h3>nth term</h3><span class="f">aₙ = a + (n – 1)d  (last term l = aₙ)</span>
+<h3>nth term from the end</h3><span class="f">l – (n – 1)d</span>
+<h3>Sum of first n terms</h3><span class="f">Sₙ = (n/2)[2a + (n – 1)d] = (n/2)(a + aₙ) = (n/2)(a + l)</span></section>
+
+<section style="--a:#2980b9"><h2>6. Triangles</h2>
+<svg viewBox="0 0 200 110"><polygon class="sc" points="20,100 55,100 37,70"/><text class="t" x="120" y="20">similar: same angles,</text><text class="t" x="120" y="34">sides in same ratio</text></svg>
+<svg viewBox="0 0 200 110"><polygon class="l" points="100,10 20,100 180,100"/><line class="r" x1="73" y1="40" x2="127" y2="40"><animate attributeName="x1" values="73;38;73" dur="4s" repeatCount="indefinite"/><animate attributeName="x2" values="127;162;127" dur="4s" repeatCount="indefinite"/><animate attributeName="y1" values="40;80;40" dur="4s" repeatCount="indefinite"/><animate attributeName="y2" values="40;80;40" dur="4s" repeatCount="indefinite"/></line><text class="t" x="96" y="8">A</text><text class="t" x="8" y="104">B</text><text class="t" x="184" y="104">C</text></svg>
+<p class="cap">DE ∥ BC slides but AD/DB = AE/EC always holds.</p>
+<p><b>Similar triangles:</b> corresponding angles are equal or corresponding sides are in the same ratio.</p>
+<h3>Basic Proportionality Theorem (Thales)</h3><p>In ΔABC, if DE ∥ BC meets AB at D and AC at E:</p><span class="f">AD/DB = AE/EC</span>
+<h3>Similarity criteria</h3><p><b>AAA:</b> ∠A = ∠D, ∠B = ∠E, ∠C = ∠F ⇒ AB/DE = AC/DF = BC/EF and ΔABC ~ ΔDEF.</p><p><b>SSS:</b> AB/DE = BC/EF = CA/FD ⇒ corresponding angles equal, ΔABC ~ ΔDEF.</p><p><b>SAS:</b> AB/DE = AC/DF and ∠A = ∠D ⇒ ΔABC ~ ΔDEF.</p></section>
+
+<section style="--a:#d35400"><h2>7. Coordinate Geometry</h2>
+<svg viewBox="0 0 200 110"><path class="l" d="M20 90L180 30"/><circle cx="20" cy="90" r="4" fill="#2a7de1"/><circle cx="180" cy="30" r="4" fill="#2a7de1"/><text class="t" x="8" y="104">A(x₁,y₁)</text><text class="t" x="140" y="20">B(x₂,y₂)</text>
+<g><circle r="5" fill="#e8452c"/><text class="t" x="-8" y="-9">P</text><animateMotion path="M20 90L180 30" dur="5s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;0" keyTimes="0;.5;1"/></g></svg>
+<p class="cap">P divides AB internally in the ratio m₁ : m₂.</p>
+<h3>Distance formula</h3><span class="f">PQ = √[(x₂ – x₁)² + (y₂ – y₁)²]</span><p>i.e. √[(difference of abscissas)² + (difference of ordinates)²].</p>
+<h3>Problems on distance</h3><p><b>Collinearity:</b> find AB, BC, CA; if the sum of the two shorter lengths equals the longest (AB + BC = AC), the points are collinear.<br><b>Equidistant point X:</b> take AX = BX and simplify.</p>
+<h3>Section formula (internal division)</h3><p>AP : BP = m₁ : m₂, then</p><span class="f">P = ( (m₁x₂ + m₂x₁)/(m₁ + m₂) , (m₁y₂ + m₂y₁)/(m₁ + m₂) )</span>
+<h3>Problems on section formula</h3><p><b>I. Collinearity:</b> assume C divides AB in k : 1, write C's coordinates and equate to the given ones; same k from both ⇒ collinear.<br><b>II. Section ratio/point:</b> when an axis divides a segment, use the formula to find the ratio and point.<br><b>III. Unknown vertex:</b> use the figure's properties (parallelogram, triangle, circle) with the section formula.</p></section>
+
+<section style="--a:#c0392b"><h2>8. Introduction to Trigonometry</h2>
+<svg viewBox="0 0 200 110"><g class="l"><line x1="20" y1="100" x2="170" y2="30"><animate attributeName="y2" values="30;75;30" dur="4s" repeatCount="indefinite"/></line><line x1="20" y1="100" x2="170" y2="100"/><line class="r" x1="170" y1="100" x2="170" y2="30"><animate attributeName="y2" values="30;75;30" dur="4s" repeatCount="indefinite"/></line></g><text class="t" x="10" y="94">A</text><text class="t" x="172" y="108">B</text><text class="t" x="95" y="44">Hypotenuse</text><text class="t" x="95" y="108">Base</text><text class="t" x="130" y="20">Perpendicular grows with A</text></svg>
+<p>Study of the relationships between the sides and angles of a right triangle.</p>
+<span class="f">sin A = Perp/Hyp = BC/AC · cos A = Base/Hyp = AB/AC<br>tan A = Perp/Base = BC/AB · cot A = Base/Perp = AB/BC<br>sec A = Hyp/Base = AC/AB · cosec A = Hyp/Perp = AC/BC</span>
+<h3>Identities</h3><span class="f">sin²A + cos²A = 1 · 1 + tan²A = sec²A · 1 + cot²A = cosec²A</span><p>In terms of sin A: cos A = √(1 – sin²A), tan A = sin A/√(1 – sin²A), sec A = 1/√(1 – sin²A).</p>
+<table><tr><th>∠A</th><th>0°</th><th>30°</th><th>45°</th><th>60°</th><th>90°</th></tr><tr><td>sin</td><td>0</td><td>1/2</td><td>1/√2</td><td>√3/2</td><td>1</td></tr><tr><td>cos</td><td>1</td><td>√3/2</td><td>1/√2</td><td>1/2</td><td>0</td></tr><tr><td>tan</td><td>0</td><td>1/√3</td><td>1</td><td>√3</td><td>∞</td></tr><tr><td>cot</td><td>∞</td><td>√3</td><td>1</td><td>1/√3</td><td>0</td></tr><tr><td>sec</td><td>1</td><td>2/√3</td><td>√2</td><td>2</td><td>∞</td></tr><tr><td>cosec</td><td>∞</td><td>2</td><td>√2</td><td>2/√3</td><td>1</td></tr></table>
+<svg viewBox="0 0 200 110"><line class="l" stroke-dasharray="4" x1="30" y1="55" x2="185" y2="55"/><line class="r" x1="30" y1="55" x2="175" y2="12"><animate attributeName="y2" values="12;98;12" dur="6s" repeatCount="indefinite"/></line><circle cx="30" cy="55" r="4" fill="#2a7de1"/><text class="t" x="8" y="50">Eye O</text><text class="t" x="120" y="50">horizontal</text><text class="t" x="60" y="108">Sight line moves from elevation (up) to depression (down)</text></svg>
+<p><b>Angle of elevation:</b> angle of the line of sight with the horizontal when the object is above it (we raise our head).<br><b>Angle of depression:</b> same angle when the object is below the horizontal level (we lower our head).</p></section>
+
+<section style="--a:#16a085"><h2>9. Circles</h2>
+<svg viewBox="0 0 200 120"><circle class="l" cx="100" cy="60" r="40"/><circle cx="100" cy="60" r="2.5" fill="currentColor"/><g><line class="b" x1="100" y1="60" x2="100" y2="100"/><line class="r" x1="60" y1="100" x2="140" y2="100"/><circle cx="100" cy="100" r="4" fill="#e8452c"/><animateTransform attributeName="transform" type="rotate" from="0 100 60" to="360 100 60" dur="9s" repeatCount="indefinite"/></g><text class="t" x="104" y="58">O</text></svg>
+<p class="cap">Tangent (red) stays perpendicular to the radius (blue) at the point of contact.</p>
+<p><b>Tangent:</b> a line that touches the circle at only one point, the point of contact.</p>
+<p><b>Length of tangent:</b> the segment of the tangent between the external point and the point of contact.</p>
+<h3>Number of tangents from a point P</h3><p>(i) P outside: two tangents. (ii) P on the circle: exactly one. (iii) P inside: none.</p>
+<h3>Theorem</h3><p>The tangent at any point of a circle is perpendicular to the radius through the point of contact: OP ⊥ AB.</p></section>
+
+<section style="--a:#2c3e91"><h2>10. Areas Related to Circles</h2>
+<svg viewBox="0 0 200 120"><circle class="l" cx="100" cy="60" r="45"/><path fill="#e8452c66" stroke="#e8452c" stroke-width="2" d="M100 60L145 60A45 45 0 0 1 134.5 88.9Z"><animate attributeName="d" dur="6s" repeatCount="indefinite" values="M100 60L145 60A45 45 0 0 1 134.5 88.9Z;M100 60L145 60A45 45 0 0 1 77.5 99Z;M100 60L145 60A45 45 0 0 1 55.7 67.8Z;M100 60L145 60A45 45 0 0 1 77.5 99Z;M100 60L145 60A45 45 0 0 1 134.5 88.9Z"/></path><text class="t" x="6" y="14">Sector grows with angle θ</text></svg>
+<p><b>Segment:</b> region bounded by a chord and its arc (minor segment holds the minor arc, major segment the major arc).<br><b>Sector:</b> region enclosed by two radii and the arc (minor sector / major sector).</p>
+<span class="f">Area of sector = (θ/360°) × πr²<br>Length of arc l = (θ/360°) × 2πr<br>Area of sector in terms of arc = ½ lr</span>
+<h3>Area of segment</h3><p>= Area of corresponding sector – area of the triangle formed by the chord and radii.</p>
+<p>Area of major segment = πr² – area of minor segment.<br>Area of major sector = πr² – area of minor sector.</p></section>
+
+<section style="--a:#f39c12"><h2>11. Statistics</h2>
+<svg viewBox="0 0 200 100"><g class="s"><rect class="bar" x="15" y="70" width="30" height="25"/><rect class="bar" style="animation-delay:.2s" x="50" y="45" width="30" height="50"/><rect class="bar" style="animation-delay:.4s;fill:#e8452c" x="85" y="15" width="30" height="80"/><rect class="bar" style="animation-delay:.6s" x="120" y="40" width="30" height="55"/><rect class="bar" style="animation-delay:.8s" x="155" y="65" width="30" height="30"/></g><text class="t" x="82" y="12">modal class</text></svg>
+<h3>Mean</h3><p>Sum of all observations divided by the number of observations.</p><span class="f">x̄ = (x₁ + x₂ + … + xₙ)/n = Σxᵢ/n<br>With frequencies: x̄ = Σfᵢxᵢ / Σfᵢ</span>
+<h3>Assumed mean method</h3><p>For large xᵢ, fᵢ choose assumed mean a, dᵢ = xᵢ – a:</p><span class="f">x̄ = a + Σfᵢdᵢ / Σfᵢ</span>
+<h3>Step deviation method</h3><p>When every dᵢ is a multiple of class size h, uᵢ = dᵢ/h = (xᵢ – a)/h:</p><span class="f">x̄ = a + (Σfᵢuᵢ / Σfᵢ) × h</span>
+<h3>Mode of grouped data</h3><p>First find the class with the maximum frequency (modal class).</p><span class="f">Mode = l + [(f₁ – f₀) / (2f₁ – f₀ – f₂)] × h</span><p>l = lower limit of modal class, h = class size, f₁ = frequency of modal class, f₀ = frequency of the preceding class, f₂ = frequency of the succeeding class.</p></section>
+
+<section style="--a:#9b59b6"><h2>12. Probability</h2>
+<div class="die" id="d"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div>
+<p class="cap" id="dc">Rolling a die…</p>
+<h3>Experiments</h3><p><b>Random:</b> repeated under identical conditions it does not give the same outcome every time; each trial gives one of several possible outcomes.<br><b>Deterministic:</b> repeated under identical conditions it always gives the same outcome.</p>
+<p><b>Event (E):</b> collection of some outcomes, e.g. an odd number on a die = {1, 3, 5}.<br><b>Elementary event:</b> only one outcome, e.g. Head (H) or Tail (T).<br><b>Occurrence:</b> E occurs if the trial's outcome favours E (rolling 4 means "even number" occurred).<br><b>Complement Ē:</b> occurs if and only if E does not. E = {2, 4, 6} ⇒ Ē = {1, 3, 5}.</p>
+<h3>Experimental approach</h3><span class="f">P(E) = Number of trials in which the event happened / Total number of trials</span>
+<h3>Theoretical approach</h3><p>It has limits, as repeating the experiment is not possible in every situation.</p></section>
+</main>
+<script>
+const s=[...document.querySelectorAll('#d span')],c=document.getElementById('dc');
+setInterval(()=>{const n=Math.floor(Math.random()*6);s.forEach((e,i)=>e.classList.toggle('on',i==n));c.textContent='Outcome '+(n+1)+(n%2==0?': in E (odd)':': in Ē (even)')},1000);
+</script>
+<p class="cap" style="text-align:center;padding:10px">Based on AVTAR Mathematics Class 10th revision chart.</p>
+</body></html>
