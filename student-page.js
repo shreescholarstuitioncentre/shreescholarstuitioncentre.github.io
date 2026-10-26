@@ -5760,6 +5760,7 @@ function openSstcEbook() {
     }
 
     wrap.hidden = false;
+       if (typeof closeSstcFree === "function") { closeSstcFree(); }
     wrap.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
@@ -5780,17 +5781,142 @@ window.closeSstcEbook = closeSstcEbook;
 
 
 /* =========================================================
-   SSTC FREE'S button
+   SSTC FREE'S  (free HTML chapters + viewer)
    ========================================================= */
+
+/* Yahan free chapters add / hatao. file = HTML file ka path */
+const SSTC_FREE_CHAPTERS = [
+    { title: "Free Chapter 1", subject: "Science",     file: "free/free-chapter-01.html" },
+    { title: "Free Chapter 2", subject: "Mathematics", file: "free/free-chapter-02.html" },
+    { title: "Free Chapter 3", subject: "English",     file: "free/free-chapter-03.html" }
+];
+
+function renderSstcFreeList() {
+
+    const list = document.getElementById("frList");
+
+    if (!list) { return; }
+
+    list.innerHTML = "";
+
+    SSTC_FREE_CHAPTERS.forEach(function (item, index) {
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "fr-item";
+        btn.setAttribute("data-free", String(index));
+
+        const no = document.createElement("div");
+        no.className = "fr-item-no";
+        no.textContent = String(index + 1);
+
+        const info = document.createElement("div");
+        info.className = "fr-item-info";
+
+        const h = document.createElement("h3");
+        h.textContent = item.title;
+
+        const p = document.createElement("p");
+        p.textContent = item.subject + " • FREE";
+
+        info.appendChild(h);
+        info.appendChild(p);
+
+        const open = document.createElement("span");
+        open.className = "fr-item-open";
+        open.textContent = "Open →";
+
+        btn.appendChild(no);
+        btn.appendChild(info);
+        btn.appendChild(open);
+
+        btn.addEventListener("click", function () {
+            openSstcFreeChapter(index);
+        });
+
+        list.appendChild(btn);
+    });
+}
 
 function openSstcFree() {
 
     if (!checkStudentSession()) { return; }
 
-    /* Abhi: E-Book section kholta hai (har subject ka Chapter 1 free hai) */
-    openSstcEbook();
+    const section = document.getElementById("sstcFreeSection");
 
-    showSstcToast("Har subject ka Chapter 1 FREE hai. Subject chuniye aur padhiye.", "success");
+    if (!section) { return; }
+
+    /* Notes aur E-Book QB band kar do */
+    if (typeof closeSstcNotes === "function") {
+        try { closeSstcNotes(); } catch (e) { /* ignore */ }
+    }
+
+    const ebook = document.getElementById("sstcEbookWrap");
+    if (ebook) { ebook.hidden = true; }
+
+    renderSstcFreeList();
+
+    section.hidden = false;
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function closeSstcFree() {
+
+    closeSstcFreeViewer();
+
+    const section = document.getElementById("sstcFreeSection");
+    if (section) { section.hidden = true; }
+}
+
+function openSstcFreeChapter(index) {
+
+    const item = SSTC_FREE_CHAPTERS[index];
+
+    if (!item) { return; }
+
+    const viewer = document.getElementById("frViewer");
+    const frame = document.getElementById("frFrame");
+
+    if (!viewer || !frame) { return; }
+
+    document.getElementById("frViewerTitle").textContent = item.title + " • " + item.subject;
+
+    frame.src = item.file;
+    viewer.hidden = false;
+
+    document.querySelectorAll(".fr-item").forEach(function (el) {
+        el.classList.toggle("active", el.getAttribute("data-free") === String(index));
+    });
+
+    viewer.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function closeSstcFreeViewer() {
+
+    const viewer = document.getElementById("frViewer");
+    const frame = document.getElementById("frFrame");
+
+    if (frame) { frame.src = "about:blank"; }
+    if (viewer) { viewer.hidden = true; }
+
+    document.querySelectorAll(".fr-item.active").forEach(function (el) {
+        el.classList.remove("active");
+    });
+}
+
+function sstcFreeFullscreen() {
+
+    const wrap = document.querySelector("#frViewer .fr-frame-wrap");
+
+    if (!wrap) { return; }
+
+    const req = wrap.requestFullscreen || wrap.webkitRequestFullscreen;
+
+    if (req) { req.call(wrap); }
 }
 
 window.openSstcFree = openSstcFree;
+window.closeSstcFree = closeSstcFree;
+window.openSstcFreeChapter = openSstcFreeChapter;
+window.closeSstcFreeViewer = closeSstcFreeViewer;
+window.sstcFreeFullscreen = sstcFreeFullscreen;
