@@ -5784,12 +5784,31 @@ window.closeSstcEbook = closeSstcEbook;
    SSTC FREE'S  (free HTML chapters + viewer)
    ========================================================= */
 
-/* Yahan free chapters add / hatao. file = HTML file ka path */
+/* Yahan subject aur unke free chapters add / hatao. file = HTML file ka path */
 const SSTC_FREE_CHAPTERS = [
-    { title: "Free Chapter 1", subject: "Science",     file: "free/free-chapter-01.html" },
-    { title: "Free Chapter 2", subject: "Mathematics", file: "free/free-chapter-02.html" },
-    { title: "Free Chapter 3", subject: "English",     file: "free/free-chapter-03.html" }
+    {
+        subject: "Subject 1",
+        chapters: [
+            { title: "Chapter 1", file: "free/subject-1/chapter-01.html" },
+            { title: "Chapter 2", file: "free/subject-1/chapter-02.html" }
+        ]
+    },
+    {
+        subject: "Subject 2",
+        chapters: [
+            { title: "Chapter 1", file: "free/subject-2/chapter-01.html" },
+            { title: "Chapter 2", file: "free/subject-2/chapter-02.html" }
+        ]
+    },
+    {
+        subject: "Subject 3",
+        chapters: [
+            { title: "Chapter 1", file: "free/subject-3/chapter-01.html" }
+        ]
+    }
 ];
+
+let sstcFreeZoomValue = 1;
 
 function renderSstcFreeList() {
 
@@ -5799,66 +5818,101 @@ function renderSstcFreeList() {
 
     list.innerHTML = "";
 
-    SSTC_FREE_CHAPTERS.forEach(function (item, index) {
+    SSTC_FREE_CHAPTERS.forEach(function (sub, sIndex) {
 
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "fr-item";
-        btn.setAttribute("data-free", String(index));
+        const box = document.createElement("div");
+        box.className = "fr-subject";
 
-        const no = document.createElement("div");
-        no.className = "fr-item-no";
-        no.textContent = String(index + 1);
+        const head = document.createElement("button");
+        head.type = "button";
+        head.className = "fr-subject-head";
+        head.innerHTML =
+            '<span class="fr-subject-arrow">▶</span>' +
+            '<span class="fr-subject-title"></span>' +
+            '<span class="fr-subject-count"></span>';
 
-        const info = document.createElement("div");
-        info.className = "fr-item-info";
+        head.querySelector(".fr-subject-title").textContent = "📘 " + sub.subject;
+        head.querySelector(".fr-subject-count").textContent = sub.chapters.length + " Chapters";
 
-        const h = document.createElement("h3");
-        h.textContent = item.title;
-
-        const p = document.createElement("p");
-        p.textContent = item.subject + " • FREE";
-
-        info.appendChild(h);
-        info.appendChild(p);
-
-        const open = document.createElement("span");
-        open.className = "fr-item-open";
-        open.textContent = "Open →";
-
-        btn.appendChild(no);
-        btn.appendChild(info);
-        btn.appendChild(open);
-
-        btn.addEventListener("click", function () {
-            openSstcFreeChapter(index);
+        head.addEventListener("click", function () {
+            box.classList.toggle("open");
         });
 
-        list.appendChild(btn);
+        const body = document.createElement("div");
+        body.className = "fr-subject-body";
+
+        sub.chapters.forEach(function (ch, cIndex) {
+
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "fr-item";
+            btn.setAttribute("data-free", sIndex + "-" + cIndex);
+
+            const no = document.createElement("div");
+            no.className = "fr-item-no";
+            no.textContent = String(cIndex + 1);
+
+            const info = document.createElement("div");
+            info.className = "fr-item-info";
+
+            const h = document.createElement("h3");
+            h.textContent = ch.title;
+
+            const p = document.createElement("p");
+            p.textContent = sub.subject + " • FREE";
+
+            info.appendChild(h);
+            info.appendChild(p);
+
+            const open = document.createElement("span");
+            open.className = "fr-item-open";
+            open.textContent = "Open →";
+
+            btn.appendChild(no);
+            btn.appendChild(info);
+            btn.appendChild(open);
+
+            btn.addEventListener("click", function () {
+                openSstcFreeChapter(sIndex, cIndex);
+            });
+
+            body.appendChild(btn);
+        });
+
+        box.appendChild(head);
+        box.appendChild(body);
+        list.appendChild(box);
     });
 }
 
-function openSstcFree() {
 
-    if (!checkStudentSession()) { return; }
+function openSstcFreeChapter(sIndex, cIndex) {
 
-    const section = document.getElementById("sstcFreeSection");
+    const sub = SSTC_FREE_CHAPTERS[sIndex];
+    const item = sub && sub.chapters[cIndex];
 
-    if (!section) { return; }
+    if (!item) { return; }
 
-    /* Notes aur E-Book QB band kar do */
-    if (typeof closeSstcNotes === "function") {
-        try { closeSstcNotes(); } catch (e) { /* ignore */ }
-    }
+    const viewer = document.getElementById("frViewer");
+    const frame = document.getElementById("frFrame");
 
-    const ebook = document.getElementById("sstcEbookWrap");
-    if (ebook) { ebook.hidden = true; }
+    if (!viewer || !frame) { return; }
 
-    renderSstcFreeList();
+    document.getElementById("frViewerTitle").textContent = sub.subject + " • " + item.title;
 
-    section.hidden = false;
-    section.scrollIntoView({ behavior: "smooth", block: "start" });
+    sstcFreeZoomValue = 1;
+    applySstcFreeZoom();
+
+    frame.src = item.file;
+    viewer.hidden = false;
+
+    document.querySelectorAll(".fr-item").forEach(function (el) {
+        el.classList.toggle("active", el.getAttribute("data-free") === sIndex + "-" + cIndex);
+    });
+
+    viewer.scrollIntoView({ behavior: "smooth", block: "start" });
 }
+
 
 function closeSstcFree() {
 
@@ -5904,6 +5958,34 @@ function closeSstcFreeViewer() {
     });
 }
 
+function applySstcFreeZoom() {
+
+    const frame = document.getElementById("frFrame");
+    const label = document.getElementById("frZoomLevel");
+
+    if (frame) {
+        frame.style.transform = "scale(" + sstcFreeZoomValue + ")";
+        frame.style.transformOrigin = "top left";
+        frame.style.width = (100 / sstcFreeZoomValue) + "%";
+        frame.style.height = (100 / sstcFreeZoomValue) + "%";
+    }
+
+    if (label) { label.textContent = Math.round(sstcFreeZoomValue * 100) + "%"; }
+}
+
+/* delta = +0.1 / -0.1, 0 = reset */
+function sstcFreeZoom(delta) {
+
+    if (delta === 0) {
+        sstcFreeZoomValue = 1;
+    }
+    else {
+        sstcFreeZoomValue = Math.max(0.5, Math.min(2.5, Math.round((sstcFreeZoomValue + delta) * 10) / 10));
+    }
+
+    applySstcFreeZoom();
+}
+
 function sstcFreeFullscreen() {
 
     const wrap = document.querySelector("#frViewer .fr-frame-wrap");
@@ -5920,3 +6002,4 @@ window.closeSstcFree = closeSstcFree;
 window.openSstcFreeChapter = openSstcFreeChapter;
 window.closeSstcFreeViewer = closeSstcFreeViewer;
 window.sstcFreeFullscreen = sstcFreeFullscreen;
+window.sstcFreeZoom = sstcFreeZoom;
