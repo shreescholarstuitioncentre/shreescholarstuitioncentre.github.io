@@ -5793,22 +5793,34 @@ const SSTC_FREE_CHAPTERS_BY_CLASS = {
         {
             subject: "Maths",
             chapters: [
-                { title: "Chapter 1", en: "free/class-10/maths/chapter-01-en.html", hi: "free/class-10/maths/chapter-01-hi.html" },
-                { title: "Chapter 2", en: "free/class-10/maths/chapter-02-en.html", hi: "free/class-10/maths/chapter-02-hi.html" }
+                { title: "SSTC Mathematics One Page Revision", en: "free/class-10/maths/chapter-01-en.html", hi: "free/class-10/maths/chapter-01-hi.html" }
             ]
         },
         {
             subject: "Science",
             chapters: [
-                { title: "Chapter 1", en: "free/class-10/science/chapter-01-en.html", hi: "free/class-10/science/chapter-01-hi.html" }
+                { title: "SSTC Science One Page Revision", en: "free/class-10/science/chapter-01-en.html", hi: "free/class-10/science/chapter-01-hi.html" }
+            ]
+        },
+       {
+            subject: "Social Science",
+            chapters: [
+                { title: "SSTC Social Science One Page Revision", en: "free/class-10/social-science/chapter-01-en.html", hi: "free/class-10/science/chapter-01-hi.html" },
+               { title: "SSTC Social Science Map Works", en: "free/class-10/social-science/chapter-02-en.html", hi: "free/class-10/science/chapter-02-hi.html" }
             ]
         },
         {
             subject: "English",
             chapters: [
-                { title: "Chapter 1", en: "free/class-10/english/chapter-01-en.html", hi: "free/class-10/english/chapter-01-hi.html" }
+                { title: "SSTC English One Page Revision", en: "free/class-10/english/chapter-01-en.html", hi: "free/class-10/english/chapter-01-hi.html" }
             ]
-        }
+        },
+       {
+            subject: "Hindi",
+            chapters: [
+                { title: "SSTC Hindi One Page Revision", en: "free/class-10/hindi/chapter-01-en.html", hi: "free/class-10/science/chapter-01-hi.html" }
+            ]
+        },
     ],
 
     "12": [
