@@ -6081,3 +6081,26 @@ window.closeSstcFreeViewer = closeSstcFreeViewer;
 window.sstcFreeFullscreen = sstcFreeFullscreen;
 window.sstcFreeZoom = sstcFreeZoom;
 window.setSstcFreeMedium = setSstcFreeMedium;
+/* =========================================================
+   PROFILE CARD: click par minimize / expand
+   ========================================================= */
+
+function toggleStudentProfile(forceOpen) {
+
+    const card = document.getElementById("sstcProfileCard");
+    const bar = document.getElementById("pf3Toggle");
+    const hint = document.getElementById("pf3Hint");
+
+    if (!card) { return; }
+
+    const open = (typeof forceOpen === "boolean")
+        ? forceOpen
+        : !card.classList.contains("open");
+
+    card.classList.toggle("open", open);
+
+    if (bar) { bar.setAttribute("aria-expanded", open ? "true" : "false"); }
+    if (hint) { hint.textContent = open ? "Hide" : "Details"; }
+}
+
+window.toggleStudentProfile = toggleStudentProfile;
