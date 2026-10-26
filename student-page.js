@@ -5885,6 +5885,35 @@ function renderSstcFreeList() {
     });
 }
 
+function openSstcFree() {
+
+    if (!checkStudentSession()) { return; }
+
+    const section = document.getElementById("sstcFreeSection");
+
+    if (!section) { return; }
+
+    /* Notes aur E-Book QB band kar do */
+    if (typeof closeSstcNotes === "function") {
+        try { closeSstcNotes(); } catch (e) { /* ignore */ }
+    }
+
+    const ebook = document.getElementById("sstcEbookWrap");
+    if (ebook) { ebook.hidden = true; }
+
+    renderSstcFreeList();
+
+    section.hidden = false;
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function closeSstcFree() {
+
+    closeSstcFreeViewer();
+
+    const section = document.getElementById("sstcFreeSection");
+    if (section) { section.hidden = true; }
+}
 
 function openSstcFreeChapter(sIndex, cIndex) {
 
@@ -5908,38 +5937,6 @@ function openSstcFreeChapter(sIndex, cIndex) {
 
     document.querySelectorAll(".fr-item").forEach(function (el) {
         el.classList.toggle("active", el.getAttribute("data-free") === sIndex + "-" + cIndex);
-    });
-
-    viewer.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-
-function closeSstcFree() {
-
-    closeSstcFreeViewer();
-
-    const section = document.getElementById("sstcFreeSection");
-    if (section) { section.hidden = true; }
-}
-
-function openSstcFreeChapter(index) {
-
-    const item = SSTC_FREE_CHAPTERS[index];
-
-    if (!item) { return; }
-
-    const viewer = document.getElementById("frViewer");
-    const frame = document.getElementById("frFrame");
-
-    if (!viewer || !frame) { return; }
-
-    document.getElementById("frViewerTitle").textContent = item.title + " • " + item.subject;
-
-    frame.src = item.file;
-    viewer.hidden = false;
-
-    document.querySelectorAll(".fr-item").forEach(function (el) {
-        el.classList.toggle("active", el.getAttribute("data-free") === String(index));
     });
 
     viewer.scrollIntoView({ behavior: "smooth", block: "start" });
