@@ -6,6 +6,37 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}/* =========================================================
+   PORTAL TITLE: badge + timer ek line, FREE'S button
+   ========================================================= */
+
+.portal-title .pt-left {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.portal-title .pt-top {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* SSTC FREE'S button (green) */
+.notes-btn.sstc-notes-btn.sstc-free-btn {
+    min-width: 200px;
+    background: linear-gradient(135deg, #16a34a, #15803d);
+    box-shadow: 0 6px 18px rgba(22, 163, 74, .4);
+}
+
+.notes-btn.sstc-notes-btn.sstc-free-btn:hover {
+    box-shadow: 0 10px 24px rgba(22, 163, 74, .5);
+}
+
+@media (max-width: 600px) {
+    .notes-btn.sstc-notes-btn.sstc-free-btn {
+        min-width: 0;
+    }
 }
 
 html {
@@ -4705,4 +4736,36 @@ body.sstc-modal-open {
 @media (max-width: 420px) {
     .pf2-wide { grid-column: span 2; }
     .pf2-chip strong { white-space: normal; word-break: break-word; }
+}
+/* =========================================================
+   PORTAL TITLE: badge + timer ek line, FREE'S button
+   ========================================================= */
+
+.portal-title .pt-left {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.portal-title .pt-top {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* SSTC FREE'S button (green) */
+.notes-btn.sstc-notes-btn.sstc-free-btn {
+    min-width: 200px;
+    background: linear-gradient(135deg, #16a34a, #15803d);
+    box-shadow: 0 6px 18px rgba(22, 163, 74, .4);
+}
+
+.notes-btn.sstc-notes-btn.sstc-free-btn:hover {
+    box-shadow: 0 10px 24px rgba(22, 163, 74, .5);
+}
+
+@media (max-width: 600px) {
+    .notes-btn.sstc-notes-btn.sstc-free-btn {
+        min-width: 0;
+    }
 }
