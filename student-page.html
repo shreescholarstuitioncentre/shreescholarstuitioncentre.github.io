@@ -176,79 +176,89 @@
 
 </section>
 
+<section class="profile-card pf3" id="sstcProfileCard">
 
-    <section class="profile-card pf2">
+    <!-- Hamesha dikhne wali patli strip (click = open / close) -->
+    <button type="button"
+            class="pf3-bar"
+            id="pf3Toggle"
+            aria-expanded="false"
+            aria-controls="pf3Body"
+            onclick="toggleStudentProfile()">
 
-    <!-- Left: avatar + naam + status -->
-    <div class="pf2-id">
+        <div class="student-avatar pf3-avatar" id="studentAvatar">S</div>
 
-        <div class="student-avatar pf2-avatar" id="studentAvatar">S</div>
-
-        <div class="pf2-name">
+        <div class="pf3-mini">
             <h2 id="studentName">Student Name</h2>
-            <p id="studentClass">Class --</p>
-            <span id="studentStatus" class="student-status">● Active</span>
+            <p>
+                <span id="studentClass">Class --</span>
+                <i>•</i>
+                <span class="pf3-mini-id">🪪 <b id="studentId">--</b></span>
+            </p>
         </div>
 
-    </div>
+        <span id="studentStatus" class="student-status">● Active</span>
 
-    <!-- Right: compact chips grid (IDs same as before) -->
-    <div class="pf2-grid">
+        <span class="pf3-hint" id="pf3Hint">Details</span>
+        <span class="pf3-arrow" aria-hidden="true">▾</span>
 
-        <div class="pf2-chip pf2-chip-id">
-            <span>🪪 Student ID</span>
-            <strong id="studentId">--</strong>
+    </button>
+
+    <!-- Click par khulne wali poori details -->
+    <div class="pf3-body" id="pf3Body">
+        <div class="pf3-body-inner">
+            <div class="pf3-grid">
+
+                <div class="pf3-chip">
+                    <span>📱 Mobile</span>
+                    <strong id="studentMobile">--</strong>
+                </div>
+
+                <div class="pf3-chip">
+                    <span>⚧ Gender</span>
+                    <strong id="studentGender">--</strong>
+                </div>
+
+                <div class="pf3-chip">
+                    <span>🎓 Class</span>
+                    <strong id="studentClassDetail">--</strong>
+                </div>
+
+                <div class="pf3-chip">
+                    <span>📋 Board</span>
+                    <strong id="studentBoard">--</strong>
+                </div>
+
+                <div class="pf3-chip pf3-wide">
+                    <span>✉️ Email</span>
+                    <strong id="studentEmail">--</strong>
+                </div>
+
+                <div class="pf3-chip pf3-wide">
+                    <span>🏫 School</span>
+                    <strong id="studentSchool">--</strong>
+                </div>
+
+                <div class="pf3-chip">
+                    <span>📍 Place</span>
+                    <strong id="studentSchoolPlace">--</strong>
+                </div>
+
+                <div class="pf3-chip">
+                    <span>📅 Registered</span>
+                    <strong id="registrationDate">--</strong>
+                </div>
+
+                <div class="pf3-chip pf3-wide">
+                    <span>🕒 Login Time</span>
+                    <strong id="loginTime">--</strong>
+                </div>
+
+            </div>
         </div>
-
-        <div class="pf2-chip">
-            <span>📱 Mobile</span>
-            <strong id="studentMobile">--</strong>
-        </div>
-
-        <div class="pf2-chip">
-            <span>⚧ Gender</span>
-            <strong id="studentGender">--</strong>
-        </div>
-
-        <div class="pf2-chip pf2-wide">
-            <span>✉️ Email</span>
-            <strong id="studentEmail">--</strong>
-        </div>
-
-        <div class="pf2-chip">
-            <span>🎓 Class</span>
-            <strong id="studentClassDetail">--</strong>
-        </div>
-
-        <div class="pf2-chip">
-            <span>📋 Board</span>
-            <strong id="studentBoard">--</strong>
-        </div>
-
-        <div class="pf2-chip pf2-wide">
-            <span>🏫 School</span>
-            <strong id="studentSchool">--</strong>
-        </div>
-
-        <div class="pf2-chip">
-            <span>📍 Place</span>
-            <strong id="studentSchoolPlace">--</strong>
-        </div>
-
-        <div class="pf2-chip">
-            <span>📅 Registered</span>
-            <strong id="registrationDate">--</strong>
-        </div>
-
-        <div class="pf2-chip">
-            <span>🕒 Login Time</span>
-            <strong id="loginTime">--</strong>
-        </div>
-
     </div>
 
 </section>
-
 
     <!-- =====================================================
          ✅ NAYA: SSTC NOTES SECTION (isi page par khulta hai)
