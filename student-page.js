@@ -392,6 +392,418 @@ function getPdfUrl(pdfPath) {
    ========================================================= */
 
 const SSTC_EBOOKS = {
+    /* =====================  CLASS 8  ===================== */
+    "8": {
+
+        "Science": {
+            "description": "Class 8 Science E-Book Library",
+            "image": "subject-images/class-8/science.png",
+            "chapters": [
+                { "number": 1, "title": "Chapter 1: Crop Production and Management / अध्याय 1: फसल उत्पादन एवं प्रबंध", "pdf": "ebooks/class-8/science/chapter-01.pdf" },
+                { "number": 2, "title": "Chapter 2: Microorganisms: Friend and Foe / अध्याय 2: सूक्ष्मजीव: मित्र एवं शत्रु", "pdf": "ebooks/class-8/science/chapter-02.pdf" },
+                { "number": 3, "title": "Chapter 3: Synthetic Fibres and Plastics / अध्याय 3: संश्लेषित रेशे और प्लास्टिक", "pdf": "ebooks/class-8/science/chapter-03.pdf" },
+                { "number": 4, "title": "Chapter 4: Materials: Metals and Non-Metals / अध्याय 4: पदार्थ: धातु और अधातु", "pdf": "ebooks/class-8/science/chapter-04.pdf" },
+                { "number": 5, "title": "Chapter 5: Coal and Petroleum / अध्याय 5: कोयला और पेट्रोलियम", "pdf": "ebooks/class-8/science/chapter-05.pdf" },
+                { "number": 6, "title": "Chapter 6: Combustion and Flame / अध्याय 6: दहन और ज्वाला", "pdf": "ebooks/class-8/science/chapter-06.pdf" },
+                { "number": 7, "title": "Chapter 7: Conservation of Plants and Animals / अध्याय 7: पौधों एवं जंतुओं का संरक्षण", "pdf": "ebooks/class-8/science/chapter-07.pdf" },
+                { "number": 8, "title": "Chapter 8: Cell – Structure and Functions / अध्याय 8: कोशिका – संरचना एवं प्रकार्य", "pdf": "ebooks/class-8/science/chapter-08.pdf" },
+                { "number": 9, "title": "Chapter 9: Reproduction in Animals / अध्याय 9: जंतुओं में जनन", "pdf": "ebooks/class-8/science/chapter-09.pdf" },
+                { "number": 10, "title": "Chapter 10: Reaching the Age of Adolescence / अध्याय 10: किशोरावस्था की ओर", "pdf": "ebooks/class-8/science/chapter-10.pdf" },
+                { "number": 11, "title": "Chapter 11: Force and Pressure / अध्याय 11: बल तथा दाब", "pdf": "ebooks/class-8/science/chapter-11.pdf" },
+                { "number": 12, "title": "Chapter 12: Friction / अध्याय 12: घर्षण", "pdf": "ebooks/class-8/science/chapter-12.pdf" },
+                { "number": 13, "title": "Chapter 13: Sound / अध्याय 13: ध्वनि", "pdf": "ebooks/class-8/science/chapter-13.pdf" },
+                { "number": 14, "title": "Chapter 14: Chemical Effects of Electric Current / अध्याय 14: विद्युत धारा के रासायनिक प्रभाव", "pdf": "ebooks/class-8/science/chapter-14.pdf" },
+                { "number": 15, "title": "Chapter 15: Some Natural Phenomena / अध्याय 15: कुछ प्राकृतिक परिघटनाएँ", "pdf": "ebooks/class-8/science/chapter-15.pdf" },
+                { "number": 16, "title": "Chapter 16: Light / अध्याय 16: प्रकाश", "pdf": "ebooks/class-8/science/chapter-16.pdf" },
+                { "number": 17, "title": "Chapter 17: Stars and the Solar System / अध्याय 17: तारे एवं सौर परिवार", "pdf": "ebooks/class-8/science/chapter-17.pdf" },
+                { "number": 18, "title": "Chapter 18: Pollution of Air and Water / अध्याय 18: वायु तथा जल का प्रदूषण", "pdf": "ebooks/class-8/science/chapter-18.pdf" }
+            ]
+        },
+
+        "Social Science": {
+            "description": "Class 8 Social Science E-Book Library",
+            "image": "subject-images/class-8/socialscience.png",
+            "chapters": [
+                { "number": 1, "title": "Chapter 1: How, When and Where / अध्याय 1: कब, कहाँ और कैसे", "pdf": "ebooks/class-8/social-science/chapter-01.pdf" },
+                { "number": 2, "title": "Chapter 2: From Trade to Territory / अध्याय 2: व्यापार से साम्राज्य तक", "pdf": "ebooks/class-8/social-science/chapter-02.pdf" },
+                { "number": 3, "title": "Chapter 3: Ruling the Countryside / अध्याय 3: ग्रामीण क्षेत्र पर शासन", "pdf": "ebooks/class-8/social-science/chapter-03.pdf" },
+                { "number": 4, "title": "Chapter 4: Tribals, Dikus and the Vision of a Golden Age / अध्याय 4: जनजातीय, दीकू और एक स्वर्ण युग की कल्पना", "pdf": "ebooks/class-8/social-science/chapter-04.pdf" },
+                { "number": 5, "title": "Chapter 5: When People Rebel (1857) / अध्याय 5: जब जनता बग़ावत करती है (1857)", "pdf": "ebooks/class-8/social-science/chapter-05.pdf" },
+                { "number": 6, "title": "Chapter 6: Weavers, Iron Smelters and Factory Owners / अध्याय 6: बुनकर, लोहा बनाने वाले और फैक्ट्री मालिक", "pdf": "ebooks/class-8/social-science/chapter-06.pdf" },
+                { "number": 7, "title": "Chapter 7: Civilising the Native / अध्याय 7: देशी जनता को सभ्य बनाना", "pdf": "ebooks/class-8/social-science/chapter-07.pdf" },
+                { "number": 8, "title": "Chapter 8: Women, Caste and Reform / अध्याय 8: महिलाएँ, जाति एवं सुधार", "pdf": "ebooks/class-8/social-science/chapter-08.pdf" },
+                { "number": 9, "title": "Chapter 9: The Making of the National Movement / अध्याय 9: राष्ट्रीय आंदोलन का संघटन", "pdf": "ebooks/class-8/social-science/chapter-09.pdf" },
+                { "number": 10, "title": "Chapter 10: India After Independence / अध्याय 10: स्वतंत्रता के बाद भारत", "pdf": "ebooks/class-8/social-science/chapter-10.pdf" },
+                { "number": 11, "title": "Chapter 11: Resources / अध्याय 11: संसाधन", "pdf": "ebooks/class-8/social-science/chapter-11.pdf" },
+                { "number": 12, "title": "Chapter 12: Land, Soil, Water, Natural Vegetation and Wildlife / अध्याय 12: भूमि, मृदा, जल, प्राकृतिक वनस्पति और वन्य जीव", "pdf": "ebooks/class-8/social-science/chapter-12.pdf" },
+                { "number": 13, "title": "Chapter 13: Mineral and Power Resources / अध्याय 13: खनिज और शक्ति संसाधन", "pdf": "ebooks/class-8/social-science/chapter-13.pdf" },
+                { "number": 14, "title": "Chapter 14: Agriculture / अध्याय 14: कृषि", "pdf": "ebooks/class-8/social-science/chapter-14.pdf" },
+                { "number": 15, "title": "Chapter 15: Industries / अध्याय 15: उद्योग", "pdf": "ebooks/class-8/social-science/chapter-15.pdf" },
+                { "number": 16, "title": "Chapter 16: Human Resources / अध्याय 16: मानव संसाधन", "pdf": "ebooks/class-8/social-science/chapter-16.pdf" },
+                { "number": 17, "title": "Chapter 17: The Indian Constitution / अध्याय 17: भारतीय संविधान", "pdf": "ebooks/class-8/social-science/chapter-17.pdf" },
+                { "number": 18, "title": "Chapter 18: Understanding Secularism / अध्याय 18: धर्मनिरपेक्षता की समझ", "pdf": "ebooks/class-8/social-science/chapter-18.pdf" },
+                { "number": 19, "title": "Chapter 19: Why Do We Need a Parliament? / अध्याय 19: हमें संसद क्यों चाहिए?", "pdf": "ebooks/class-8/social-science/chapter-19.pdf" },
+                { "number": 20, "title": "Chapter 20: Understanding Laws / अध्याय 20: कानूनों की समझ", "pdf": "ebooks/class-8/social-science/chapter-20.pdf" },
+                { "number": 21, "title": "Chapter 21: Judiciary / अध्याय 21: न्यायपालिका", "pdf": "ebooks/class-8/social-science/chapter-21.pdf" },
+                { "number": 22, "title": "Chapter 22: Understanding Our Criminal Justice System / अध्याय 22: हमारी आपराधिक न्याय प्रणाली को समझना", "pdf": "ebooks/class-8/social-science/chapter-22.pdf" },
+                { "number": 23, "title": "Chapter 23: Understanding Marginalisation / अध्याय 23: हाशियाकरण की समझ", "pdf": "ebooks/class-8/social-science/chapter-23.pdf" },
+                { "number": 24, "title": "Chapter 24: Confronting Marginalisation / अध्याय 24: हाशियाकरण से निपटना", "pdf": "ebooks/class-8/social-science/chapter-24.pdf" },
+                { "number": 25, "title": "Chapter 25: Public Facilities / अध्याय 25: जन सुविधाएँ", "pdf": "ebooks/class-8/social-science/chapter-25.pdf" },
+                { "number": 26, "title": "Chapter 26: Law and Social Justice / अध्याय 26: कानून और सामाजिक न्याय", "pdf": "ebooks/class-8/social-science/chapter-26.pdf" }
+            ]
+        },
+
+        "Mathematics": {
+            "description": "Class 8 Mathematics E-Book Library",
+            "image": "subject-images/class-8/maths.png",
+            "chapters": [
+                { "number": 1, "title": "Chapter 1: Rational Numbers / अध्याय 1: परिमेय संख्याएँ", "pdf": "ebooks/class-8/mathematics/chapter-01.pdf" },
+                { "number": 2, "title": "Chapter 2: Linear Equations in One Variable / अध्याय 2: एक चर वाले रैखिक समीकरण", "pdf": "ebooks/class-8/mathematics/chapter-02.pdf" },
+                { "number": 3, "title": "Chapter 3: Understanding Quadrilaterals / अध्याय 3: चतुर्भुजों को समझना", "pdf": "ebooks/class-8/mathematics/chapter-03.pdf" },
+                { "number": 4, "title": "Chapter 4: Practical Geometry / अध्याय 4: प्रायोगिक ज्यामिति", "pdf": "ebooks/class-8/mathematics/chapter-04.pdf" },
+                { "number": 5, "title": "Chapter 5: Data Handling / अध्याय 5: आँकड़ों का प्रबंधन", "pdf": "ebooks/class-8/mathematics/chapter-05.pdf" },
+                { "number": 6, "title": "Chapter 6: Squares and Square Roots / अध्याय 6: वर्ग और वर्गमूल", "pdf": "ebooks/class-8/mathematics/chapter-06.pdf" },
+                { "number": 7, "title": "Chapter 7: Cubes and Cube Roots / अध्याय 7: घन और घनमूल", "pdf": "ebooks/class-8/mathematics/chapter-07.pdf" },
+                { "number": 8, "title": "Chapter 8: Comparing Quantities / अध्याय 8: राशियों की तुलना", "pdf": "ebooks/class-8/mathematics/chapter-08.pdf" },
+                { "number": 9, "title": "Chapter 9: Algebraic Expressions and Identities / अध्याय 9: बीजीय व्यंजक एवं सर्वसमिकाएँ", "pdf": "ebooks/class-8/mathematics/chapter-09.pdf" },
+                { "number": 10, "title": "Chapter 10: Visualising Solid Shapes / अध्याय 10: ठोस आकारों का चित्रण", "pdf": "ebooks/class-8/mathematics/chapter-10.pdf" },
+                { "number": 11, "title": "Chapter 11: Mensuration / अध्याय 11: क्षेत्रमिति", "pdf": "ebooks/class-8/mathematics/chapter-11.pdf" },
+                { "number": 12, "title": "Chapter 12: Exponents and Powers / अध्याय 12: घात और घातांक", "pdf": "ebooks/class-8/mathematics/chapter-12.pdf" },
+                { "number": 13, "title": "Chapter 13: Direct and Inverse Proportions / अध्याय 13: सीधा और प्रतिलोम अनुपात", "pdf": "ebooks/class-8/mathematics/chapter-13.pdf" },
+                { "number": 14, "title": "Chapter 14: Factorisation / अध्याय 14: गुणनखंडन", "pdf": "ebooks/class-8/mathematics/chapter-14.pdf" },
+                { "number": 15, "title": "Chapter 15: Introduction to Graphs / अध्याय 15: आलेख से परिचय", "pdf": "ebooks/class-8/mathematics/chapter-15.pdf" },
+                { "number": 16, "title": "Chapter 16: Playing with Numbers / अध्याय 16: संख्याओं के साथ खेलना", "pdf": "ebooks/class-8/mathematics/chapter-16.pdf" }
+            ]
+        },
+
+        "Hindi": {
+            "description": "Class 8 Hindi E-Book Library",
+            "image": "subject-images/class-8/hindi.png",
+            "chapters": [
+                { "number": 1, "title": "अध्याय 1: लाख की चूड़ियाँ", "pdf": "ebooks/class-8/hindi/chapter-01.pdf" },
+                { "number": 2, "title": "अध्याय 2: बस की यात्रा", "pdf": "ebooks/class-8/hindi/chapter-02.pdf" },
+                { "number": 3, "title": "अध्याय 3: दीवानों की हस्ती", "pdf": "ebooks/class-8/hindi/chapter-03.pdf" },
+                { "number": 4, "title": "अध्याय 4: भगवान के डाकिए", "pdf": "ebooks/class-8/hindi/chapter-04.pdf" },
+                { "number": 5, "title": "अध्याय 5: क्या निराश हुआ जाए", "pdf": "ebooks/class-8/hindi/chapter-05.pdf" },
+                { "number": 6, "title": "अध्याय 6: यह सबसे कठिन समय नहीं", "pdf": "ebooks/class-8/hindi/chapter-06.pdf" },
+                { "number": 7, "title": "अध्याय 7: कबीर की साखियाँ", "pdf": "ebooks/class-8/hindi/chapter-07.pdf" },
+                { "number": 8, "title": "अध्याय 8: सुदामा चरित", "pdf": "ebooks/class-8/hindi/chapter-08.pdf" },
+                { "number": 9, "title": "अध्याय 9: जहाँ पहिया है", "pdf": "ebooks/class-8/hindi/chapter-09.pdf" },
+                { "number": 10, "title": "अध्याय 10: अकबरी लोटा", "pdf": "ebooks/class-8/hindi/chapter-10.pdf" },
+                { "number": 11, "title": "अध्याय 11: सूरदास के पद", "pdf": "ebooks/class-8/hindi/chapter-11.pdf" },
+                { "number": 12, "title": "अध्याय 12: पानी की कहानी", "pdf": "ebooks/class-8/hindi/chapter-12.pdf" },
+                { "number": 13, "title": "अध्याय 13: बाज और साँप", "pdf": "ebooks/class-8/hindi/chapter-13.pdf" }
+            ]
+        },
+
+        "English": {
+            "description": "Class 8 English E-Book Library",
+            "image": "subject-images/class-8/english.png",
+            "chapters": [
+                { "number": 1, "title": "Prose 1: The Best Christmas Present in the World", "pdf": "ebooks/class-8/english/chapter-01.pdf" },
+                { "number": 2, "title": "Prose 2: The Tsunami", "pdf": "ebooks/class-8/english/chapter-02.pdf" },
+                { "number": 3, "title": "Prose 3: Glimpses of the Past", "pdf": "ebooks/class-8/english/chapter-03.pdf" },
+                { "number": 4, "title": "Prose 4: Bepin Choudhury's Lapse of Memory", "pdf": "ebooks/class-8/english/chapter-04.pdf" },
+                { "number": 5, "title": "Prose 5: The Summit Within", "pdf": "ebooks/class-8/english/chapter-05.pdf" },
+                { "number": 6, "title": "Prose 6: This is Jody's Fawn", "pdf": "ebooks/class-8/english/chapter-06.pdf" },
+                { "number": 7, "title": "Prose 7: A Visit to Cambridge", "pdf": "ebooks/class-8/english/chapter-07.pdf" },
+                { "number": 8, "title": "Prose 8: A Short Monsoon Diary", "pdf": "ebooks/class-8/english/chapter-08.pdf" },
+                { "number": 9, "title": "Prose 9: The Great Stone Face – I", "pdf": "ebooks/class-8/english/chapter-09.pdf" },
+                { "number": 10, "title": "Prose 10: The Great Stone Face – II", "pdf": "ebooks/class-8/english/chapter-10.pdf" },
+                { "number": 11, "title": "Poem 1: The Ant and the Cricket", "pdf": "ebooks/class-8/english/chapter-11.pdf" },
+                { "number": 12, "title": "Poem 2: Geography Lesson", "pdf": "ebooks/class-8/english/chapter-12.pdf" },
+                { "number": 13, "title": "Poem 3: Macavity: The Mystery Cat", "pdf": "ebooks/class-8/english/chapter-13.pdf" },
+                { "number": 14, "title": "Poem 4: The Last Bargain", "pdf": "ebooks/class-8/english/chapter-14.pdf" },
+                { "number": 15, "title": "Poem 5: The School Boy", "pdf": "ebooks/class-8/english/chapter-15.pdf" },
+                { "number": 16, "title": "Poem 6: The Duck and the Kangaroo", "pdf": "ebooks/class-8/english/chapter-16.pdf" },
+                { "number": 17, "title": "Poem 7: When I Set Out for Lyonnesse", "pdf": "ebooks/class-8/english/chapter-17.pdf" },
+                { "number": 18, "title": "Poem 8: On the Grasshopper and Cricket", "pdf": "ebooks/class-8/english/chapter-18.pdf" },
+                { "number": 19, "title": "Supplementary 1: How the Camel Got His Hump", "pdf": "ebooks/class-8/english/chapter-19.pdf" },
+                { "number": 20, "title": "Supplementary 2: Children at Work", "pdf": "ebooks/class-8/english/chapter-20.pdf" },
+                { "number": 21, "title": "Supplementary 3: The Selfish Giant", "pdf": "ebooks/class-8/english/chapter-21.pdf" },
+                { "number": 22, "title": "Supplementary 4: The Treasure Within", "pdf": "ebooks/class-8/english/chapter-22.pdf" },
+                { "number": 23, "title": "Supplementary 5: Princess September", "pdf": "ebooks/class-8/english/chapter-23.pdf" },
+                { "number": 24, "title": "Supplementary 6: The Fight", "pdf": "ebooks/class-8/english/chapter-24.pdf" },
+                { "number": 25, "title": "Supplementary 7: The Open Window", "pdf": "ebooks/class-8/english/chapter-25.pdf" },
+                { "number": 26, "title": "Supplementary 8: Jalebis", "pdf": "ebooks/class-8/english/chapter-26.pdf" },
+                { "number": 27, "title": "Supplementary 9: The Comet – I", "pdf": "ebooks/class-8/english/chapter-27.pdf" },
+                { "number": 28, "title": "Supplementary 10: The Comet – II", "pdf": "ebooks/class-8/english/chapter-28.pdf" }
+            ]
+        },
+
+        "GK": {
+            "description": "Class 8 General Knowledge E-Book Library",
+            "image": "subject-images/class-8/gk.png",
+            "chapters": [
+                { "number": 1, "title": "Chapter 1: India – General Knowledge / अध्याय 1: भारत – सामान्य ज्ञान", "pdf": "ebooks/class-8/gk/chapter-01.pdf" },
+                { "number": 2, "title": "Chapter 2: World Geography / अध्याय 2: विश्व भूगोल", "pdf": "ebooks/class-8/gk/chapter-02.pdf" },
+                { "number": 3, "title": "Chapter 3: Indian History Basics / अध्याय 3: भारतीय इतिहास की मूल बातें", "pdf": "ebooks/class-8/gk/chapter-03.pdf" },
+                { "number": 4, "title": "Chapter 4: Constitution and Government / अध्याय 4: संविधान एवं सरकार", "pdf": "ebooks/class-8/gk/chapter-04.pdf" },
+                { "number": 5, "title": "Chapter 5: Science and Inventions / अध्याय 5: विज्ञान एवं आविष्कार", "pdf": "ebooks/class-8/gk/chapter-05.pdf" },
+                { "number": 6, "title": "Chapter 6: Sports and Games / अध्याय 6: खेल-कूद", "pdf": "ebooks/class-8/gk/chapter-06.pdf" },
+                { "number": 7, "title": "Chapter 7: Awards and Honours / अध्याय 7: पुरस्कार एवं सम्मान", "pdf": "ebooks/class-8/gk/chapter-07.pdf" },
+                { "number": 8, "title": "Chapter 8: Books and Authors / अध्याय 8: पुस्तकें एवं लेखक", "pdf": "ebooks/class-8/gk/chapter-08.pdf" },
+                { "number": 9, "title": "Chapter 9: Important Days / अध्याय 9: महत्वपूर्ण दिवस", "pdf": "ebooks/class-8/gk/chapter-09.pdf" },
+                { "number": 10, "title": "Chapter 10: Current Affairs / अध्याय 10: समसामयिकी", "pdf": "ebooks/class-8/gk/chapter-10.pdf" }
+            ]
+        },
+
+        "Computer": {
+            "description": "Class 8 Computer E-Book Library",
+            "image": "subject-images/class-8/computer.png",
+            "chapters": [
+                { "number": 1, "title": "Chapter 1: Computer Hardware and Software", "pdf": "ebooks/class-8/computer/chapter-01.pdf" },
+                { "number": 2, "title": "Chapter 2: Operating System", "pdf": "ebooks/class-8/computer/chapter-02.pdf" },
+                { "number": 3, "title": "Chapter 3: MS Word", "pdf": "ebooks/class-8/computer/chapter-03.pdf" },
+                { "number": 4, "title": "Chapter 4: MS Excel", "pdf": "ebooks/class-8/computer/chapter-04.pdf" },
+                { "number": 5, "title": "Chapter 5: MS PowerPoint", "pdf": "ebooks/class-8/computer/chapter-05.pdf" },
+                { "number": 6, "title": "Chapter 6: Internet and Email", "pdf": "ebooks/class-8/computer/chapter-06.pdf" },
+                { "number": 7, "title": "Chapter 7: Introduction to HTML", "pdf": "ebooks/class-8/computer/chapter-07.pdf" },
+                { "number": 8, "title": "Chapter 8: Cyber Safety and Security", "pdf": "ebooks/class-8/computer/chapter-08.pdf" },
+                { "number": 9, "title": "Chapter 9: Programming Basics (Scratch)", "pdf": "ebooks/class-8/computer/chapter-09.pdf" }
+            ]
+        },
+
+        "Sanskrit": {
+            "description": "Class 8 Sanskrit E-Book Library",
+            "image": "subject-images/class-8/sanskrit.png",
+            "chapters": [
+                { "number": 1, "title": "अध्याय 1: सुभाषितानि", "pdf": "ebooks/class-8/sanskrit/chapter-01.pdf" },
+                { "number": 2, "title": "अध्याय 2: बिलस्य वाणी न कदापि मे श्रुता", "pdf": "ebooks/class-8/sanskrit/chapter-02.pdf" },
+                { "number": 3, "title": "अध्याय 3: डिजिभारतम्", "pdf": "ebooks/class-8/sanskrit/chapter-03.pdf" },
+                { "number": 4, "title": "अध्याय 4: सदैव पुरतो निधेहि चरणम्", "pdf": "ebooks/class-8/sanskrit/chapter-04.pdf" },
+                { "number": 5, "title": "अध्याय 5: कण्टकेनैव कण्टकम्", "pdf": "ebooks/class-8/sanskrit/chapter-05.pdf" },
+                { "number": 6, "title": "अध्याय 6: गृहं शून्यं सुतां विना", "pdf": "ebooks/class-8/sanskrit/chapter-06.pdf" },
+                { "number": 7, "title": "अध्याय 7: भारतजनताऽहम्", "pdf": "ebooks/class-8/sanskrit/chapter-07.pdf" },
+                { "number": 8, "title": "अध्याय 8: संसारसागरस्य नायकाः", "pdf": "ebooks/class-8/sanskrit/chapter-08.pdf" },
+                { "number": 9, "title": "अध्याय 9: सप्तभगिन्यः", "pdf": "ebooks/class-8/sanskrit/chapter-09.pdf" },
+                { "number": 10, "title": "अध्याय 10: अशोकवनिका", "pdf": "ebooks/class-8/sanskrit/chapter-10.pdf" },
+                { "number": 11, "title": "अध्याय 11: सावित्री बाई फुले", "pdf": "ebooks/class-8/sanskrit/chapter-11.pdf" },
+                { "number": 12, "title": "अध्याय 12: कः रक्षति कः रक्षितः", "pdf": "ebooks/class-8/sanskrit/chapter-12.pdf" },
+                { "number": 13, "title": "अध्याय 13: हिमालयः", "pdf": "ebooks/class-8/sanskrit/chapter-13.pdf" },
+                { "number": 14, "title": "अध्याय 14: आर्यभटः", "pdf": "ebooks/class-8/sanskrit/chapter-14.pdf" }
+            ]
+        }
+
+    },
+
+    /* =====================  CLASS 9  ===================== */
+    "9": {
+
+        "Science": {
+            "description": "Class 9 Science E-Book Library",
+            "image": "subject-images/class-9/science.png",
+            "chapters": [
+                { "number": 1, "title": "Chapter 1: Matter in Our Surroundings / अध्याय 1: हमारे आस-पास के पदार्थ", "pdf": "ebooks/class-9/science/chapter-01.pdf" },
+                { "number": 2, "title": "Chapter 2: Is Matter Around Us Pure? / अध्याय 2: क्या हमारे आस-पास के पदार्थ शुद्ध हैं?", "pdf": "ebooks/class-9/science/chapter-02.pdf" },
+                { "number": 3, "title": "Chapter 3: Atoms and Molecules / अध्याय 3: परमाणु एवं अणु", "pdf": "ebooks/class-9/science/chapter-03.pdf" },
+                { "number": 4, "title": "Chapter 4: Structure of the Atom / अध्याय 4: परमाणु की संरचना", "pdf": "ebooks/class-9/science/chapter-04.pdf" },
+                { "number": 5, "title": "Chapter 5: The Fundamental Unit of Life / अध्याय 5: जीवन की मौलिक इकाई", "pdf": "ebooks/class-9/science/chapter-05.pdf" },
+                { "number": 6, "title": "Chapter 6: Tissues / अध्याय 6: ऊतक", "pdf": "ebooks/class-9/science/chapter-06.pdf" },
+                { "number": 7, "title": "Chapter 7: Motion / अध्याय 7: गति", "pdf": "ebooks/class-9/science/chapter-07.pdf" },
+                { "number": 8, "title": "Chapter 8: Force and Laws of Motion / अध्याय 8: बल तथा गति के नियम", "pdf": "ebooks/class-9/science/chapter-08.pdf" },
+                { "number": 9, "title": "Chapter 9: Gravitation / अध्याय 9: गुरुत्वाकर्षण", "pdf": "ebooks/class-9/science/chapter-09.pdf" },
+                { "number": 10, "title": "Chapter 10: Work and Energy / अध्याय 10: कार्य तथा ऊर्जा", "pdf": "ebooks/class-9/science/chapter-10.pdf" },
+                { "number": 11, "title": "Chapter 11: Sound / अध्याय 11: ध्वनि", "pdf": "ebooks/class-9/science/chapter-11.pdf" },
+                { "number": 12, "title": "Chapter 12: Improvement in Food Resources / अध्याय 12: खाद्य संसाधनों में सुधार", "pdf": "ebooks/class-9/science/chapter-12.pdf" }
+            ]
+        },
+
+        "Mathematics": {
+            "description": "Class 9 Mathematics E-Book Library",
+            "image": "subject-images/class-9/maths.png",
+            "chapters": [
+                { "number": 1, "title": "Chapter 1: Number Systems / अध्याय 1: संख्या पद्धति", "pdf": "ebooks/class-9/mathematics/chapter-01.pdf" },
+                { "number": 2, "title": "Chapter 2: Polynomials / अध्याय 2: बहुपद", "pdf": "ebooks/class-9/mathematics/chapter-02.pdf" },
+                { "number": 3, "title": "Chapter 3: Coordinate Geometry / अध्याय 3: निर्देशांक ज्यामिति", "pdf": "ebooks/class-9/mathematics/chapter-03.pdf" },
+                { "number": 4, "title": "Chapter 4: Linear Equations in Two Variables / अध्याय 4: दो चरों वाले रैखिक समीकरण", "pdf": "ebooks/class-9/mathematics/chapter-04.pdf" },
+                { "number": 5, "title": "Chapter 5: Introduction to Euclid's Geometry / अध्याय 5: यूक्लिड की ज्यामिति का परिचय", "pdf": "ebooks/class-9/mathematics/chapter-05.pdf" },
+                { "number": 6, "title": "Chapter 6: Lines and Angles / अध्याय 6: रेखाएँ और कोण", "pdf": "ebooks/class-9/mathematics/chapter-06.pdf" },
+                { "number": 7, "title": "Chapter 7: Triangles / अध्याय 7: त्रिभुज", "pdf": "ebooks/class-9/mathematics/chapter-07.pdf" },
+                { "number": 8, "title": "Chapter 8: Quadrilaterals / अध्याय 8: चतुर्भुज", "pdf": "ebooks/class-9/mathematics/chapter-08.pdf" },
+                { "number": 9, "title": "Chapter 9: Circles / अध्याय 9: वृत्त", "pdf": "ebooks/class-9/mathematics/chapter-09.pdf" },
+                { "number": 10, "title": "Chapter 10: Heron's Formula / अध्याय 10: हीरोन का सूत्र", "pdf": "ebooks/class-9/mathematics/chapter-10.pdf" },
+                { "number": 11, "title": "Chapter 11: Surface Areas and Volumes / अध्याय 11: पृष्ठीय क्षेत्रफल और आयतन", "pdf": "ebooks/class-9/mathematics/chapter-11.pdf" },
+                { "number": 12, "title": "Chapter 12: Statistics / अध्याय 12: सांख्यिकी", "pdf": "ebooks/class-9/mathematics/chapter-12.pdf" },
+                { "number": 13, "title": "Chapter 13: Probability / अध्याय 13: प्रायिकता", "pdf": "ebooks/class-9/mathematics/chapter-13.pdf" }
+            ]
+        },
+
+        "English": {
+            "description": "Class 9 English E-Book Library",
+            "image": "subject-images/class-9/english.png",
+            "chapters": [
+                { "number": 1, "title": "Prose 1: The Fun They Had", "pdf": "ebooks/class-9/english/chapter-01.pdf" },
+                { "number": 2, "title": "Prose 2: The Sound of Music", "pdf": "ebooks/class-9/english/chapter-02.pdf" },
+                { "number": 3, "title": "Prose 3: The Little Girl", "pdf": "ebooks/class-9/english/chapter-03.pdf" },
+                { "number": 4, "title": "Prose 4: A Truly Beautiful Mind", "pdf": "ebooks/class-9/english/chapter-04.pdf" },
+                { "number": 5, "title": "Prose 5: The Snake and the Mirror", "pdf": "ebooks/class-9/english/chapter-05.pdf" },
+                { "number": 6, "title": "Prose 6: My Childhood", "pdf": "ebooks/class-9/english/chapter-06.pdf" },
+                { "number": 7, "title": "Prose 7: Packing", "pdf": "ebooks/class-9/english/chapter-07.pdf" },
+                { "number": 8, "title": "Prose 8: Reach for the Top", "pdf": "ebooks/class-9/english/chapter-08.pdf" },
+                { "number": 9, "title": "Prose 9: The Bond of Love", "pdf": "ebooks/class-9/english/chapter-09.pdf" },
+                { "number": 10, "title": "Prose 10: Kathmandu", "pdf": "ebooks/class-9/english/chapter-10.pdf" },
+                { "number": 11, "title": "Prose 11: If I Were You", "pdf": "ebooks/class-9/english/chapter-11.pdf" },
+                { "number": 12, "title": "Poem 1: The Road Not Taken", "pdf": "ebooks/class-9/english/chapter-12.pdf" },
+                { "number": 13, "title": "Poem 2: Wind", "pdf": "ebooks/class-9/english/chapter-13.pdf" },
+                { "number": 14, "title": "Poem 3: Rain on the Roof", "pdf": "ebooks/class-9/english/chapter-14.pdf" },
+                { "number": 15, "title": "Poem 4: The Lake Isle of Innisfree", "pdf": "ebooks/class-9/english/chapter-15.pdf" },
+                { "number": 16, "title": "Poem 5: A Legend of the Northland", "pdf": "ebooks/class-9/english/chapter-16.pdf" },
+                { "number": 17, "title": "Poem 6: No Men Are Foreign", "pdf": "ebooks/class-9/english/chapter-17.pdf" },
+                { "number": 18, "title": "Poem 7: The Duck and the Kangaroo", "pdf": "ebooks/class-9/english/chapter-18.pdf" },
+                { "number": 19, "title": "Poem 8: On Killing a Tree", "pdf": "ebooks/class-9/english/chapter-19.pdf" },
+                { "number": 20, "title": "Poem 9: The Snake Trying", "pdf": "ebooks/class-9/english/chapter-20.pdf" },
+                { "number": 21, "title": "Poem 10: A Slumber Did My Spirit Seal", "pdf": "ebooks/class-9/english/chapter-21.pdf" },
+                { "number": 22, "title": "Supplementary 1: The Lost Child", "pdf": "ebooks/class-9/english/chapter-22.pdf" },
+                { "number": 23, "title": "Supplementary 2: The Adventures of Toto", "pdf": "ebooks/class-9/english/chapter-23.pdf" },
+                { "number": 24, "title": "Supplementary 3: Iswaran the Storyteller", "pdf": "ebooks/class-9/english/chapter-24.pdf" },
+                { "number": 25, "title": "Supplementary 4: In the Kingdom of Fools", "pdf": "ebooks/class-9/english/chapter-25.pdf" },
+                { "number": 26, "title": "Supplementary 5: The Happy Prince", "pdf": "ebooks/class-9/english/chapter-26.pdf" },
+                { "number": 27, "title": "Supplementary 6: Weathering the Storm in Ersama", "pdf": "ebooks/class-9/english/chapter-27.pdf" },
+                { "number": 28, "title": "Supplementary 7: The Last Leaf", "pdf": "ebooks/class-9/english/chapter-28.pdf" },
+                { "number": 29, "title": "Supplementary 8: A House Is Not a Home", "pdf": "ebooks/class-9/english/chapter-29.pdf" },
+                { "number": 30, "title": "Supplementary 9: The Accidental Tourist", "pdf": "ebooks/class-9/english/chapter-30.pdf" },
+                { "number": 31, "title": "Supplementary 10: The Beggar", "pdf": "ebooks/class-9/english/chapter-31.pdf" }
+            ]
+        },
+
+        "Hindi": {
+            "description": "Class 9 Hindi E-Book Library",
+            "image": "subject-images/class-9/hindi.png",
+            "chapters": [
+                { "number": 1, "title": "क्षितिज (गद्य) 1: दो बैलों की कथा", "pdf": "ebooks/class-9/hindi/chapter-01.pdf" },
+                { "number": 2, "title": "क्षितिज (गद्य) 2: ल्हासा की ओर", "pdf": "ebooks/class-9/hindi/chapter-02.pdf" },
+                { "number": 3, "title": "क्षितिज (गद्य) 3: उपभोक्तावाद की संस्कृति", "pdf": "ebooks/class-9/hindi/chapter-03.pdf" },
+                { "number": 4, "title": "क्षितिज (गद्य) 4: साँवले सपनों की याद", "pdf": "ebooks/class-9/hindi/chapter-04.pdf" },
+                { "number": 5, "title": "क्षितिज (गद्य) 5: नाना साहब की पुत्री देवी मैना को भस्म कर दिया गया", "pdf": "ebooks/class-9/hindi/chapter-05.pdf" },
+                { "number": 6, "title": "क्षितिज (गद्य) 6: प्रेमचंद के फटे जूते", "pdf": "ebooks/class-9/hindi/chapter-06.pdf" },
+                { "number": 7, "title": "क्षितिज (गद्य) 7: मेरे बचपन के दिन", "pdf": "ebooks/class-9/hindi/chapter-07.pdf" },
+                { "number": 8, "title": "क्षितिज (गद्य) 8: एक कुत्ता और एक मैना", "pdf": "ebooks/class-9/hindi/chapter-08.pdf" },
+                { "number": 9, "title": "क्षितिज (काव्य) 1: साखियाँ एवं सबद", "pdf": "ebooks/class-9/hindi/chapter-09.pdf" },
+                { "number": 10, "title": "क्षितिज (काव्य) 2: वाख", "pdf": "ebooks/class-9/hindi/chapter-10.pdf" },
+                { "number": 11, "title": "क्षितिज (काव्य) 3: सवैये", "pdf": "ebooks/class-9/hindi/chapter-11.pdf" },
+                { "number": 12, "title": "क्षितिज (काव्य) 4: कैदी और कोकिला", "pdf": "ebooks/class-9/hindi/chapter-12.pdf" },
+                { "number": 13, "title": "क्षितिज (काव्य) 5: ग्राम श्री", "pdf": "ebooks/class-9/hindi/chapter-13.pdf" },
+                { "number": 14, "title": "क्षितिज (काव्य) 6: चंद्र गहना से लौटती बेर", "pdf": "ebooks/class-9/hindi/chapter-14.pdf" },
+                { "number": 15, "title": "क्षितिज (काव्य) 7: मेघ आए", "pdf": "ebooks/class-9/hindi/chapter-15.pdf" },
+                { "number": 16, "title": "क्षितिज (काव्य) 8: यमराज की दिशा", "pdf": "ebooks/class-9/hindi/chapter-16.pdf" },
+                { "number": 17, "title": "क्षितिज (काव्य) 9: बच्चे काम पर जा रहे हैं", "pdf": "ebooks/class-9/hindi/chapter-17.pdf" },
+                { "number": 18, "title": "कृतिका 1: इस जल प्रलय में", "pdf": "ebooks/class-9/hindi/chapter-18.pdf" },
+                { "number": 19, "title": "कृतिका 2: मेरे संग की औरतें", "pdf": "ebooks/class-9/hindi/chapter-19.pdf" },
+                { "number": 20, "title": "कृतिका 3: रीढ़ की हड्डी", "pdf": "ebooks/class-9/hindi/chapter-20.pdf" },
+                { "number": 21, "title": "कृतिका 4: माटी वाली", "pdf": "ebooks/class-9/hindi/chapter-21.pdf" },
+                { "number": 22, "title": "कृतिका 5: किस तरह आखिरकार मैं हिंदी में आया", "pdf": "ebooks/class-9/hindi/chapter-22.pdf" }
+            ]
+        },
+
+        "Social Science": {
+            "description": "Class 9 Social Science E-Book Library",
+            "image": "subject-images/class-9/socialscience.png",
+            "chapters": [
+                { "number": 1, "title": "History 1: The French Revolution / इतिहास 1: फ्रांसीसी क्रांति", "pdf": "ebooks/class-9/social-science/chapter-01.pdf" },
+                { "number": 2, "title": "History 2: Socialism in Europe and the Russian Revolution / इतिहास 2: यूरोप में समाजवाद और रूसी क्रांति", "pdf": "ebooks/class-9/social-science/chapter-02.pdf" },
+                { "number": 3, "title": "History 3: Nazism and the Rise of Hitler / इतिहास 3: नात्सीवाद और हिटलर का उदय", "pdf": "ebooks/class-9/social-science/chapter-03.pdf" },
+                { "number": 4, "title": "History 4: Forest Society and Colonialism / इतिहास 4: वन्य समाज और उपनिवेशवाद", "pdf": "ebooks/class-9/social-science/chapter-04.pdf" },
+                { "number": 5, "title": "History 5: Pastoralists in the Modern World / इतिहास 5: आधुनिक विश्व में चरवाहे", "pdf": "ebooks/class-9/social-science/chapter-05.pdf" },
+                { "number": 6, "title": "Geography 1: India – Size and Location / भूगोल 1: भारत – आकार और स्थिति", "pdf": "ebooks/class-9/social-science/chapter-06.pdf" },
+                { "number": 7, "title": "Geography 2: Physical Features of India / भूगोल 2: भारत का भौतिक स्वरूप", "pdf": "ebooks/class-9/social-science/chapter-07.pdf" },
+                { "number": 8, "title": "Geography 3: Drainage / भूगोल 3: अपवाह", "pdf": "ebooks/class-9/social-science/chapter-08.pdf" },
+                { "number": 9, "title": "Geography 4: Climate / भूगोल 4: जलवायु", "pdf": "ebooks/class-9/social-science/chapter-09.pdf" },
+                { "number": 10, "title": "Geography 5: Natural Vegetation and Wildlife / भूगोल 5: प्राकृतिक वनस्पति और वन्य जीवन", "pdf": "ebooks/class-9/social-science/chapter-10.pdf" },
+                { "number": 11, "title": "Geography 6: Population / भूगोल 6: जनसंख्या", "pdf": "ebooks/class-9/social-science/chapter-11.pdf" },
+                { "number": 12, "title": "Civics 1: What Is Democracy? Why Democracy? / नागरिक शास्त्र 1: लोकतंत्र क्या? लोकतंत्र क्यों?", "pdf": "ebooks/class-9/social-science/chapter-12.pdf" },
+                { "number": 13, "title": "Civics 2: Constitutional Design / नागरिक शास्त्र 2: संविधान निर्माण", "pdf": "ebooks/class-9/social-science/chapter-13.pdf" },
+                { "number": 14, "title": "Civics 3: Electoral Politics / नागरिक शास्त्र 3: चुनावी राजनीति", "pdf": "ebooks/class-9/social-science/chapter-14.pdf" },
+                { "number": 15, "title": "Civics 4: Working of Institutions / नागरिक शास्त्र 4: संस्थाओं का कामकाज", "pdf": "ebooks/class-9/social-science/chapter-15.pdf" },
+                { "number": 16, "title": "Civics 5: Democratic Rights / नागरिक शास्त्र 5: लोकतांत्रिक अधिकार", "pdf": "ebooks/class-9/social-science/chapter-16.pdf" },
+                { "number": 17, "title": "Economics 1: The Story of Village Palampur / अर्थशास्त्र 1: पालमपुर गाँव की कहानी", "pdf": "ebooks/class-9/social-science/chapter-17.pdf" },
+                { "number": 18, "title": "Economics 2: People as Resource / अर्थशास्त्र 2: संसाधन के रूप में लोग", "pdf": "ebooks/class-9/social-science/chapter-18.pdf" },
+                { "number": 19, "title": "Economics 3: Poverty as a Challenge / अर्थशास्त्र 3: निर्धनता: एक चुनौती", "pdf": "ebooks/class-9/social-science/chapter-19.pdf" },
+                { "number": 20, "title": "Economics 4: Food Security in India / अर्थशास्त्र 4: भारत में खाद्य सुरक्षा", "pdf": "ebooks/class-9/social-science/chapter-20.pdf" }
+            ]
+        },
+
+        "Home Science": {
+            "description": "Class 9 Home Science E-Book Library",
+            "image": "subject-images/class-9/homescience.png",
+            "chapters": [
+                { "number": 1, "title": "अध्याय 1: गृह विज्ञान के तत्त्व और क्षेत्र", "pdf": "ebooks/class-9/home-science/chapter-01.pdf" },
+                { "number": 2, "title": "अध्याय 2: गृह-व्यवस्था : परिवार के सन्दर्भ में", "pdf": "ebooks/class-9/home-science/chapter-02.pdf" },
+                { "number": 3, "title": "अध्याय 3: कार्य-व्यवस्था", "pdf": "ebooks/class-9/home-science/chapter-03.pdf" },
+                { "number": 4, "title": "अध्याय 4: अर्थव्यवस्था : परिवार की मूलभूत आवश्यकताएँ", "pdf": "ebooks/class-9/home-science/chapter-04.pdf" },
+                { "number": 5, "title": "अध्याय 5: स्वास्थ्य का अर्थ एवं परिभाषा तथा व्यक्तिगत स्वास्थ्य की देख-रेख और रक्षा", "pdf": "ebooks/class-9/home-science/chapter-05.pdf" },
+                { "number": 6, "title": "अध्याय 6: स्थानीय स्वास्थ्य संस्थाएँ एवं सेवाएँ", "pdf": "ebooks/class-9/home-science/chapter-06.pdf" },
+                { "number": 7, "title": "अध्याय 7: पर्यावरण-प्रदूषण का जनजीवन पर प्रभाव", "pdf": "ebooks/class-9/home-science/chapter-07.pdf" },
+                { "number": 8, "title": "अध्याय 8: वायु : शुद्ध वायु का महत्त्व एवं संवातन", "pdf": "ebooks/class-9/home-science/chapter-08.pdf" },
+                { "number": 9, "title": "अध्याय 9: अशुद्ध वायु से होने वाले रोग", "pdf": "ebooks/class-9/home-science/chapter-09.pdf" },
+                { "number": 10, "title": "अध्याय 10: कपड़े के तन्तु : प्रकार एवं दैनिक जीवन में इनका प्रयोग", "pdf": "ebooks/class-9/home-science/chapter-10.pdf" },
+                { "number": 11, "title": "अध्याय 11: व्यक्तिगत सज्जा : उचित वेशभूषा", "pdf": "ebooks/class-9/home-science/chapter-11.pdf" },
+                { "number": 12, "title": "अध्याय 12: भोजन का पाचन एवं सम्बन्धित शरीर-क्रिया विज्ञान", "pdf": "ebooks/class-9/home-science/chapter-12.pdf" },
+                { "number": 13, "title": "अध्याय 13: खाद्य पदार्थों का संगठन, वर्गीकरण और उनके कार्य", "pdf": "ebooks/class-9/home-science/chapter-13.pdf" },
+                { "number": 14, "title": "अध्याय 14: सन्तुलित आहार", "pdf": "ebooks/class-9/home-science/chapter-14.pdf" },
+                { "number": 15, "title": "अध्याय 15: प्राथमिक चिकित्सा के प्रमुख सिद्धान्त", "pdf": "ebooks/class-9/home-science/chapter-15.pdf" },
+                { "number": 16, "title": "अध्याय 16: सामान्य घरेलू दुर्घटनाएँ और उनसे बचाव", "pdf": "ebooks/class-9/home-science/chapter-16.pdf" },
+                { "number": 17, "title": "अध्याय 17: सामान्य घरेलू देशज औषधियाँ तथा सामान्य विषों के प्रतिकारक पदार्थ", "pdf": "ebooks/class-9/home-science/chapter-17.pdf" },
+                { "number": 18, "title": "अध्याय 18: तिकोनी और लम्बी पट्टियाँ तथा उनका प्रयोग", "pdf": "ebooks/class-9/home-science/chapter-18.pdf" },
+                { "number": 19, "title": "अध्याय 19: गृह-परिचर्या और गृह-परिचारिका", "pdf": "ebooks/class-9/home-science/chapter-19.pdf" },
+                { "number": 20, "title": "अध्याय 20: रोगी का कमरा एवं उसकी व्यवस्था", "pdf": "ebooks/class-9/home-science/chapter-20.pdf" },
+                { "number": 21, "title": "अध्याय 21: रोगी का बिस्तर", "pdf": "ebooks/class-9/home-science/chapter-21.pdf" }
+            ]
+        },
+
+        "Computer": {
+            "description": "Class 9 Computer E-Book Library",
+            "image": "subject-images/class-9/computer.png",
+            "chapters": [
+                { "number": 1, "title": "Chapter 1: Number System and Conversion", "pdf": "ebooks/class-9/computer/chapter-01.pdf" },
+                { "number": 2, "title": "Chapter 2: Binary Arithmetic", "pdf": "ebooks/class-9/computer/chapter-02.pdf" },
+                { "number": 3, "title": "Chapter 3: Introduction to Computer", "pdf": "ebooks/class-9/computer/chapter-03.pdf" },
+                { "number": 4, "title": "Chapter 4: Computer Fundamentals", "pdf": "ebooks/class-9/computer/chapter-04.pdf" },
+                { "number": 5, "title": "Chapter 5: Input and Output Devices", "pdf": "ebooks/class-9/computer/chapter-05.pdf" },
+                { "number": 6, "title": "Chapter 6: Computer Memory", "pdf": "ebooks/class-9/computer/chapter-06.pdf" },
+                { "number": 7, "title": "Chapter 7: Computer Software", "pdf": "ebooks/class-9/computer/chapter-07.pdf" },
+                { "number": 8, "title": "Chapter 8: Operating System", "pdf": "ebooks/class-9/computer/chapter-08.pdf" },
+                { "number": 9, "title": "Chapter 9: Introduction to Internet", "pdf": "ebooks/class-9/computer/chapter-09.pdf" },
+                { "number": 10, "title": "Chapter 10: Computer Virus and Security", "pdf": "ebooks/class-9/computer/chapter-10.pdf" }
+            ]
+        },
+
+        "Chitrakala": {
+            "description": "Class 9 Chitrakala E-Book Library",
+            "image": "subject-images/class-9/chitrakala.png",
+            "chapters": [
+                { "number": 1, "title": "अध्याय 1: चित्रकला का परिचय", "pdf": "ebooks/class-9/chitrakala/chapter-01.pdf" },
+                { "number": 2, "title": "अध्याय 2: कला के मूल तत्व", "pdf": "ebooks/class-9/chitrakala/chapter-02.pdf" },
+                { "number": 3, "title": "अध्याय 3: रेखा एवं रेखांकन", "pdf": "ebooks/class-9/chitrakala/chapter-03.pdf" },
+                { "number": 4, "title": "अध्याय 4: रंग एवं रंग संयोजन", "pdf": "ebooks/class-9/chitrakala/chapter-04.pdf" },
+                { "number": 5, "title": "अध्याय 5: प्राथमिक एवं द्वितीयक रंग", "pdf": "ebooks/class-9/chitrakala/chapter-05.pdf" },
+                { "number": 6, "title": "अध्याय 6: भारतीय चित्रकला का इतिहास", "pdf": "ebooks/class-9/chitrakala/chapter-06.pdf" },
+                { "number": 7, "title": "अध्याय 7: प्राकृतिक दृश्य चित्रण", "pdf": "ebooks/class-9/chitrakala/chapter-07.pdf" },
+                { "number": 8, "title": "अध्याय 8: स्थिर वस्तु चित्रण", "pdf": "ebooks/class-9/chitrakala/chapter-08.pdf" },
+                { "number": 9, "title": "अध्याय 9: स्मृति चित्रण", "pdf": "ebooks/class-9/chitrakala/chapter-09.pdf" },
+                { "number": 10, "title": "अध्याय 10: आलेखन एवं अलंकरण", "pdf": "ebooks/class-9/chitrakala/chapter-10.pdf" }
+            ]
+        },
+
+        "Commerce": {
+            "description": "Class 9 Commerce E-Book Library",
+            "image": "subject-images/class-9/commerce.png",
+            "chapters": [
+                { "number": 1, "title": "Chapter 1: Introduction to Commerce / अध्याय 1: वाणिज्य का परिचय", "pdf": "ebooks/class-9/commerce/chapter-01.pdf" },
+                { "number": 2, "title": "Chapter 2: Trade and Its Types / अध्याय 2: व्यापार एवं उसके प्रकार", "pdf": "ebooks/class-9/commerce/chapter-02.pdf" },
+                { "number": 3, "title": "Chapter 3: Business and Its Objectives / अध्याय 3: व्यवसाय एवं उसके उद्देश्य", "pdf": "ebooks/class-9/commerce/chapter-03.pdf" },
+                { "number": 4, "title": "Chapter 4: Industry and Commerce / अध्याय 4: उद्योग एवं वाणिज्य", "pdf": "ebooks/class-9/commerce/chapter-04.pdf" },
+                { "number": 5, "title": "Chapter 5: Forms of Business Organisation / अध्याय 5: व्यावसायिक संगठन के स्वरूप", "pdf": "ebooks/class-9/commerce/chapter-05.pdf" },
+                { "number": 6, "title": "Chapter 6: Banking / अध्याय 6: बैंकिंग", "pdf": "ebooks/class-9/commerce/chapter-06.pdf" },
+                { "number": 7, "title": "Chapter 7: Insurance / अध्याय 7: बीमा", "pdf": "ebooks/class-9/commerce/chapter-07.pdf" },
+                { "number": 8, "title": "Chapter 8: Transport and Communication / अध्याय 8: परिवहन एवं संचार", "pdf": "ebooks/class-9/commerce/chapter-08.pdf" },
+                { "number": 9, "title": "Chapter 9: Warehousing / अध्याय 9: भंडारण", "pdf": "ebooks/class-9/commerce/chapter-09.pdf" },
+                { "number": 10, "title": "Chapter 10: Advertising / अध्याय 10: विज्ञापन", "pdf": "ebooks/class-9/commerce/chapter-10.pdf" },
+                { "number": 11, "title": "Chapter 11: Consumer Awareness / अध्याय 11: उपभोक्ता जागरूकता", "pdf": "ebooks/class-9/commerce/chapter-11.pdf" }
+            ]
+        }
+
+    },
 
     "10": {
 
@@ -652,6 +1064,185 @@ const SSTC_EBOOKS = {
 
     },
 
+    /* =====================  CLASS 11  ===================== */
+    "11": {
+
+        "Physics": {
+            "description": "Class 11 Physics E-Book Library",
+            "image": "subject-images/class-11/physics.png",
+            "chapters": [
+                { "number": 1, "title": "Chapter 1: Physical World / अध्याय 1: भौतिक जगत", "pdf": "ebooks/class-11/physics/chapter-01.pdf" },
+                { "number": 2, "title": "Chapter 2: Units and Measurements / अध्याय 2: मात्रक एवं मापन", "pdf": "ebooks/class-11/physics/chapter-02.pdf" },
+                { "number": 3, "title": "Chapter 3: Motion in a Straight Line / अध्याय 3: सरल रेखा में गति", "pdf": "ebooks/class-11/physics/chapter-03.pdf" },
+                { "number": 4, "title": "Chapter 4: Motion in a Plane / अध्याय 4: समतल में गति", "pdf": "ebooks/class-11/physics/chapter-04.pdf" },
+                { "number": 5, "title": "Chapter 5: Laws of Motion / अध्याय 5: गति के नियम", "pdf": "ebooks/class-11/physics/chapter-05.pdf" },
+                { "number": 6, "title": "Chapter 6: Work, Energy and Power / अध्याय 6: कार्य, ऊर्जा और शक्ति", "pdf": "ebooks/class-11/physics/chapter-06.pdf" },
+                { "number": 7, "title": "Chapter 7: System of Particles and Rotational Motion / अध्याय 7: कणों के निकाय तथा घूर्णी गति", "pdf": "ebooks/class-11/physics/chapter-07.pdf" },
+                { "number": 8, "title": "Chapter 8: Gravitation / अध्याय 8: गुरुत्वाकर्षण", "pdf": "ebooks/class-11/physics/chapter-08.pdf" },
+                { "number": 9, "title": "Chapter 9: Mechanical Properties of Solids / अध्याय 9: ठोसों के यांत्रिक गुण", "pdf": "ebooks/class-11/physics/chapter-09.pdf" },
+                { "number": 10, "title": "Chapter 10: Mechanical Properties of Fluids / अध्याय 10: तरलों के यांत्रिक गुण", "pdf": "ebooks/class-11/physics/chapter-10.pdf" },
+                { "number": 11, "title": "Chapter 11: Thermal Properties of Matter / अध्याय 11: पदार्थ के तापीय गुण", "pdf": "ebooks/class-11/physics/chapter-11.pdf" },
+                { "number": 12, "title": "Chapter 12: Thermodynamics / अध्याय 12: ऊष्मागतिकी", "pdf": "ebooks/class-11/physics/chapter-12.pdf" },
+                { "number": 13, "title": "Chapter 13: Kinetic Theory / अध्याय 13: अणुगति सिद्धांत", "pdf": "ebooks/class-11/physics/chapter-13.pdf" },
+                { "number": 14, "title": "Chapter 14: Oscillations / अध्याय 14: दोलन", "pdf": "ebooks/class-11/physics/chapter-14.pdf" },
+                { "number": 15, "title": "Chapter 15: Waves / अध्याय 15: तरंगें", "pdf": "ebooks/class-11/physics/chapter-15.pdf" }
+            ]
+        },
+
+        "Chemistry": {
+            "description": "Class 11 Chemistry E-Book Library",
+            "image": "subject-images/class-11/chemistry.png",
+            "chapters": [
+                { "number": 1, "title": "Chapter 1: Some Basic Concepts of Chemistry / अध्याय 1: रसायन विज्ञान की कुछ मूल अवधारणाएँ", "pdf": "ebooks/class-11/chemistry/chapter-01.pdf" },
+                { "number": 2, "title": "Chapter 2: Structure of Atom / अध्याय 2: परमाणु की संरचना", "pdf": "ebooks/class-11/chemistry/chapter-02.pdf" },
+                { "number": 3, "title": "Chapter 3: Classification of Elements and Periodicity / अध्याय 3: तत्वों का वर्गीकरण एवं गुणधर्मों में आवर्तिता", "pdf": "ebooks/class-11/chemistry/chapter-03.pdf" },
+                { "number": 4, "title": "Chapter 4: Chemical Bonding and Molecular Structure / अध्याय 4: रासायनिक आबंधन तथा आण्विक संरचना", "pdf": "ebooks/class-11/chemistry/chapter-04.pdf" },
+                { "number": 5, "title": "Chapter 5: States of Matter / अध्याय 5: पदार्थ की अवस्थाएँ", "pdf": "ebooks/class-11/chemistry/chapter-05.pdf" },
+                { "number": 6, "title": "Chapter 6: Thermodynamics / अध्याय 6: ऊष्मागतिकी", "pdf": "ebooks/class-11/chemistry/chapter-06.pdf" },
+                { "number": 7, "title": "Chapter 7: Equilibrium / अध्याय 7: साम्यावस्था", "pdf": "ebooks/class-11/chemistry/chapter-07.pdf" },
+                { "number": 8, "title": "Chapter 8: Redox Reactions / अध्याय 8: अपचयोपचय अभिक्रियाएँ", "pdf": "ebooks/class-11/chemistry/chapter-08.pdf" },
+                { "number": 9, "title": "Chapter 9: Hydrogen / अध्याय 9: हाइड्रोजन", "pdf": "ebooks/class-11/chemistry/chapter-09.pdf" },
+                { "number": 10, "title": "Chapter 10: s-Block Elements / अध्याय 10: s-ब्लॉक तत्व", "pdf": "ebooks/class-11/chemistry/chapter-10.pdf" },
+                { "number": 11, "title": "Chapter 11: Organic Chemistry – Basic Principles and Techniques / अध्याय 11: कार्बनिक रसायन – कुछ आधारभूत सिद्धांत तथा तकनीकें", "pdf": "ebooks/class-11/chemistry/chapter-11.pdf" },
+                { "number": 12, "title": "Chapter 12: Hydrocarbons / अध्याय 12: हाइड्रोकार्बन", "pdf": "ebooks/class-11/chemistry/chapter-12.pdf" },
+                { "number": 13, "title": "Chapter 13: Environmental Chemistry / अध्याय 13: पर्यावरणीय रसायन", "pdf": "ebooks/class-11/chemistry/chapter-13.pdf" }
+            ]
+        },
+
+        "Mathematics": {
+            "description": "Class 11 Mathematics E-Book Library",
+            "image": "subject-images/class-11/maths.png",
+            "chapters": [
+                { "number": 1, "title": "Chapter 1: Sets / अध्याय 1: समुच्चय", "pdf": "ebooks/class-11/mathematics/chapter-01.pdf" },
+                { "number": 2, "title": "Chapter 2: Relations and Functions / अध्याय 2: संबंध एवं फलन", "pdf": "ebooks/class-11/mathematics/chapter-02.pdf" },
+                { "number": 3, "title": "Chapter 3: Trigonometric Functions / अध्याय 3: त्रिकोणमितीय फलन", "pdf": "ebooks/class-11/mathematics/chapter-03.pdf" },
+                { "number": 4, "title": "Chapter 4: Complex Numbers and Quadratic Equations / अध्याय 4: सम्मिश्र संख्याएँ एवं द्विघात समीकरण", "pdf": "ebooks/class-11/mathematics/chapter-04.pdf" },
+                { "number": 5, "title": "Chapter 5: Linear Inequalities / अध्याय 5: रैखिक असमिकाएँ", "pdf": "ebooks/class-11/mathematics/chapter-05.pdf" },
+                { "number": 6, "title": "Chapter 6: Permutations and Combinations / अध्याय 6: क्रमचय और संचय", "pdf": "ebooks/class-11/mathematics/chapter-06.pdf" },
+                { "number": 7, "title": "Chapter 7: Binomial Theorem / अध्याय 7: द्विपद प्रमेय", "pdf": "ebooks/class-11/mathematics/chapter-07.pdf" },
+                { "number": 8, "title": "Chapter 8: Sequences and Series / अध्याय 8: अनुक्रम तथा श्रेणी", "pdf": "ebooks/class-11/mathematics/chapter-08.pdf" },
+                { "number": 9, "title": "Chapter 9: Straight Lines / अध्याय 9: सरल रेखाएँ", "pdf": "ebooks/class-11/mathematics/chapter-09.pdf" },
+                { "number": 10, "title": "Chapter 10: Conic Sections / अध्याय 10: शंकु परिच्छेद", "pdf": "ebooks/class-11/mathematics/chapter-10.pdf" },
+                { "number": 11, "title": "Chapter 11: Introduction to Three Dimensional Geometry / अध्याय 11: त्रिविमीय ज्यामिति का परिचय", "pdf": "ebooks/class-11/mathematics/chapter-11.pdf" },
+                { "number": 12, "title": "Chapter 12: Limits and Derivatives / अध्याय 12: सीमा और अवकलज", "pdf": "ebooks/class-11/mathematics/chapter-12.pdf" },
+                { "number": 13, "title": "Chapter 13: Statistics / अध्याय 13: सांख्यिकी", "pdf": "ebooks/class-11/mathematics/chapter-13.pdf" },
+                { "number": 14, "title": "Chapter 14: Probability / अध्याय 14: प्रायिकता", "pdf": "ebooks/class-11/mathematics/chapter-14.pdf" }
+            ]
+        },
+
+        "English": {
+            "description": "Class 11 English E-Book Library",
+            "image": "subject-images/class-11/english.png",
+            "chapters": [
+                { "number": 1, "title": "Hornbill 1: The Portrait of a Lady", "pdf": "ebooks/class-11/english/chapter-01.pdf" },
+                { "number": 2, "title": "Hornbill 2: We're Not Afraid to Die... If We Can All Be Together", "pdf": "ebooks/class-11/english/chapter-02.pdf" },
+                { "number": 3, "title": "Hornbill 3: Discovering Tut: the Saga Continues", "pdf": "ebooks/class-11/english/chapter-03.pdf" },
+                { "number": 4, "title": "Hornbill 4: Landscape of the Soul", "pdf": "ebooks/class-11/english/chapter-04.pdf" },
+                { "number": 5, "title": "Hornbill 5: The Ailing Planet: the Green Movement's Role", "pdf": "ebooks/class-11/english/chapter-05.pdf" },
+                { "number": 6, "title": "Hornbill 6: The Browning Version", "pdf": "ebooks/class-11/english/chapter-06.pdf" },
+                { "number": 7, "title": "Hornbill 7: The Adventure", "pdf": "ebooks/class-11/english/chapter-07.pdf" },
+                { "number": 8, "title": "Hornbill 8: Silk Road", "pdf": "ebooks/class-11/english/chapter-08.pdf" },
+                { "number": 9, "title": "Poem 1: A Photograph", "pdf": "ebooks/class-11/english/chapter-09.pdf" },
+                { "number": 10, "title": "Poem 2: The Laburnum Top", "pdf": "ebooks/class-11/english/chapter-10.pdf" },
+                { "number": 11, "title": "Poem 3: The Voice of the Rain", "pdf": "ebooks/class-11/english/chapter-11.pdf" },
+                { "number": 12, "title": "Poem 4: Childhood", "pdf": "ebooks/class-11/english/chapter-12.pdf" },
+                { "number": 13, "title": "Poem 5: Father to Son", "pdf": "ebooks/class-11/english/chapter-13.pdf" },
+                { "number": 14, "title": "Snapshots 1: The Summer of the Beautiful White Horse", "pdf": "ebooks/class-11/english/chapter-14.pdf" },
+                { "number": 15, "title": "Snapshots 2: The Address", "pdf": "ebooks/class-11/english/chapter-15.pdf" },
+                { "number": 16, "title": "Snapshots 3: Ranga's Marriage", "pdf": "ebooks/class-11/english/chapter-16.pdf" },
+                { "number": 17, "title": "Snapshots 4: Albert Einstein at School", "pdf": "ebooks/class-11/english/chapter-17.pdf" },
+                { "number": 18, "title": "Snapshots 5: Mother's Day", "pdf": "ebooks/class-11/english/chapter-18.pdf" },
+                { "number": 19, "title": "Snapshots 6: The Ghat of the Only World", "pdf": "ebooks/class-11/english/chapter-19.pdf" },
+                { "number": 20, "title": "Snapshots 7: Birth", "pdf": "ebooks/class-11/english/chapter-20.pdf" },
+                { "number": 21, "title": "Snapshots 8: The Tale of Melon City", "pdf": "ebooks/class-11/english/chapter-21.pdf" }
+            ]
+        },
+
+        "Hindi": {
+            "description": "Class 11 Hindi E-Book Library",
+            "image": "subject-images/class-11/hindi.png",
+            "chapters": [
+                { "number": 1, "title": "आरोह (गद्य) 1: नमक का दारोगा", "pdf": "ebooks/class-11/hindi/chapter-01.pdf" },
+                { "number": 2, "title": "आरोह (गद्य) 2: मियाँ नसीरुद्दीन", "pdf": "ebooks/class-11/hindi/chapter-02.pdf" },
+                { "number": 3, "title": "आरोह (गद्य) 3: अपू के साथ ढाई साल", "pdf": "ebooks/class-11/hindi/chapter-03.pdf" },
+                { "number": 4, "title": "आरोह (गद्य) 4: विदाई-संभाषण", "pdf": "ebooks/class-11/hindi/chapter-04.pdf" },
+                { "number": 5, "title": "आरोह (गद्य) 5: गलता लोहा", "pdf": "ebooks/class-11/hindi/chapter-05.pdf" },
+                { "number": 6, "title": "आरोह (गद्य) 6: स्पीति में बारिश", "pdf": "ebooks/class-11/hindi/chapter-06.pdf" },
+                { "number": 7, "title": "आरोह (गद्य) 7: रजनी", "pdf": "ebooks/class-11/hindi/chapter-07.pdf" },
+                { "number": 8, "title": "आरोह (गद्य) 8: जामुन का पेड़", "pdf": "ebooks/class-11/hindi/chapter-08.pdf" },
+                { "number": 9, "title": "आरोह (गद्य) 9: भारत माता", "pdf": "ebooks/class-11/hindi/chapter-09.pdf" },
+                { "number": 10, "title": "आरोह (काव्य) 1: कबीर – हम तौ एक एक करि जाना", "pdf": "ebooks/class-11/hindi/chapter-10.pdf" },
+                { "number": 11, "title": "आरोह (काव्य) 2: मीरा – मेरे तो गिरिधर गोपाल", "pdf": "ebooks/class-11/hindi/chapter-11.pdf" },
+                { "number": 12, "title": "आरोह (काव्य) 3: पथिक", "pdf": "ebooks/class-11/hindi/chapter-12.pdf" },
+                { "number": 13, "title": "आरोह (काव्य) 4: वे आँखें", "pdf": "ebooks/class-11/hindi/chapter-13.pdf" },
+                { "number": 14, "title": "आरोह (काव्य) 5: घर की याद", "pdf": "ebooks/class-11/hindi/chapter-14.pdf" },
+                { "number": 15, "title": "आरोह (काव्य) 6: चंपा काले-काले अच्छर नहीं चीन्हती", "pdf": "ebooks/class-11/hindi/chapter-15.pdf" },
+                { "number": 16, "title": "आरोह (काव्य) 7: गजल", "pdf": "ebooks/class-11/hindi/chapter-16.pdf" },
+                { "number": 17, "title": "आरोह (काव्य) 8: हे भूख! मत मचल", "pdf": "ebooks/class-11/hindi/chapter-17.pdf" },
+                { "number": 18, "title": "आरोह (काव्य) 9: सबसे खतरनाक", "pdf": "ebooks/class-11/hindi/chapter-18.pdf" },
+                { "number": 19, "title": "आरोह (काव्य) 10: आओ मिलकर बचाएँ", "pdf": "ebooks/class-11/hindi/chapter-19.pdf" },
+                { "number": 20, "title": "वितान 1: भारतीय गायिकाओं में बेजोड़ लता मंगेशकर", "pdf": "ebooks/class-11/hindi/chapter-20.pdf" },
+                { "number": 21, "title": "वितान 2: राजस्थान की रजत बूँदें", "pdf": "ebooks/class-11/hindi/chapter-21.pdf" },
+                { "number": 22, "title": "वितान 3: आलो-आँधारि", "pdf": "ebooks/class-11/hindi/chapter-22.pdf" }
+            ]
+        },
+
+        "Accountancy": {
+            "description": "Class 11 Accountancy E-Book Library",
+            "image": "subject-images/class-11/accountancy.png",
+            "chapters": [
+                { "number": 1, "title": "Chapter 1: Introduction to Accounting / अध्याय 1: लेखाशास्त्र का परिचय", "pdf": "ebooks/class-11/accountancy/chapter-01.pdf" },
+                { "number": 2, "title": "Chapter 2: Theory Base of Accounting / अध्याय 2: लेखांकन के सैद्धांतिक आधार", "pdf": "ebooks/class-11/accountancy/chapter-02.pdf" },
+                { "number": 3, "title": "Chapter 3: Recording of Transactions – I / अध्याय 3: लेन-देनों का अभिलेखन – I", "pdf": "ebooks/class-11/accountancy/chapter-03.pdf" },
+                { "number": 4, "title": "Chapter 4: Recording of Transactions – II / अध्याय 4: लेन-देनों का अभिलेखन – II", "pdf": "ebooks/class-11/accountancy/chapter-04.pdf" },
+                { "number": 5, "title": "Chapter 5: Bank Reconciliation Statement / अध्याय 5: बैंक समाधान विवरण", "pdf": "ebooks/class-11/accountancy/chapter-05.pdf" },
+                { "number": 6, "title": "Chapter 6: Trial Balance and Rectification of Errors / अध्याय 6: तलपट एवं अशुद्धियों का शोधन", "pdf": "ebooks/class-11/accountancy/chapter-06.pdf" },
+                { "number": 7, "title": "Chapter 7: Depreciation, Provisions and Reserves / अध्याय 7: ह्रास, प्रावधान तथा संचिति", "pdf": "ebooks/class-11/accountancy/chapter-07.pdf" },
+                { "number": 8, "title": "Chapter 8: Bills of Exchange / अध्याय 8: विनिमय बिल", "pdf": "ebooks/class-11/accountancy/chapter-08.pdf" },
+                { "number": 9, "title": "Chapter 9: Financial Statements – I / अध्याय 9: वित्तीय विवरण – I", "pdf": "ebooks/class-11/accountancy/chapter-09.pdf" },
+                { "number": 10, "title": "Chapter 10: Financial Statements – II / अध्याय 10: वित्तीय विवरण – II", "pdf": "ebooks/class-11/accountancy/chapter-10.pdf" }
+            ]
+        },
+
+        "Business Studies": {
+            "description": "Class 11 Business Studies E-Book Library",
+            "image": "subject-images/class-11/businessstudies.png",
+            "chapters": [
+                { "number": 1, "title": "Chapter 1: Nature and Purpose of Business / अध्याय 1: व्यवसाय की प्रकृति एवं उद्देश्य", "pdf": "ebooks/class-11/business-studies/chapter-01.pdf" },
+                { "number": 2, "title": "Chapter 2: Forms of Business Organisation / अध्याय 2: व्यावसायिक संगठन के स्वरूप", "pdf": "ebooks/class-11/business-studies/chapter-02.pdf" },
+                { "number": 3, "title": "Chapter 3: Private, Public and Global Enterprises / अध्याय 3: निजी, सार्वजनिक एवं भूमंडलीय उपक्रम", "pdf": "ebooks/class-11/business-studies/chapter-03.pdf" },
+                { "number": 4, "title": "Chapter 4: Business Services / अध्याय 4: व्यावसायिक सेवाएँ", "pdf": "ebooks/class-11/business-studies/chapter-04.pdf" },
+                { "number": 5, "title": "Chapter 5: Emerging Modes of Business / अध्याय 5: व्यवसाय के उदीयमान स्वरूप", "pdf": "ebooks/class-11/business-studies/chapter-05.pdf" },
+                { "number": 6, "title": "Chapter 6: Social Responsibilities of Business / अध्याय 6: व्यवसाय के सामाजिक उत्तरदायित्व", "pdf": "ebooks/class-11/business-studies/chapter-06.pdf" },
+                { "number": 7, "title": "Chapter 7: Formation of a Company / अध्याय 7: कंपनी का निर्माण", "pdf": "ebooks/class-11/business-studies/chapter-07.pdf" },
+                { "number": 8, "title": "Chapter 8: Sources of Business Finance / अध्याय 8: व्यावसायिक वित्त के स्रोत", "pdf": "ebooks/class-11/business-studies/chapter-08.pdf" },
+                { "number": 9, "title": "Chapter 9: Small Business / अध्याय 9: लघु व्यवसाय", "pdf": "ebooks/class-11/business-studies/chapter-09.pdf" },
+                { "number": 10, "title": "Chapter 10: Internal Trade / अध्याय 10: आंतरिक व्यापार", "pdf": "ebooks/class-11/business-studies/chapter-10.pdf" },
+                { "number": 11, "title": "Chapter 11: International Business / अध्याय 11: अंतर्राष्ट्रीय व्यापार", "pdf": "ebooks/class-11/business-studies/chapter-11.pdf" }
+            ]
+        },
+
+        "Economics": {
+            "description": "Class 11 Economics E-Book Library",
+            "image": "subject-images/class-11/economics.png",
+            "chapters": [
+                { "number": 1, "title": "Statistics 1: Introduction / सांख्यिकी 1: परिचय", "pdf": "ebooks/class-11/economics/chapter-01.pdf" },
+                { "number": 2, "title": "Statistics 2: Collection of Data / सांख्यिकी 2: आँकड़ों का संग्रह", "pdf": "ebooks/class-11/economics/chapter-02.pdf" },
+                { "number": 3, "title": "Statistics 3: Organisation of Data / सांख्यिकी 3: आँकड़ों का संगठन", "pdf": "ebooks/class-11/economics/chapter-03.pdf" },
+                { "number": 4, "title": "Statistics 4: Presentation of Data / सांख्यिकी 4: आँकड़ों का प्रस्तुतीकरण", "pdf": "ebooks/class-11/economics/chapter-04.pdf" },
+                { "number": 5, "title": "Statistics 5: Measures of Central Tendency / सांख्यिकी 5: केंद्रीय प्रवृत्ति की माप", "pdf": "ebooks/class-11/economics/chapter-05.pdf" },
+                { "number": 6, "title": "Statistics 6: Correlation / सांख्यिकी 6: सहसंबंध", "pdf": "ebooks/class-11/economics/chapter-06.pdf" },
+                { "number": 7, "title": "Statistics 7: Index Numbers / सांख्यिकी 7: सूचकांक", "pdf": "ebooks/class-11/economics/chapter-07.pdf" },
+                { "number": 8, "title": "Statistics 8: Use of Statistical Tools / सांख्यिकी 8: सांख्यिकीय औजारों का उपयोग", "pdf": "ebooks/class-11/economics/chapter-08.pdf" },
+                { "number": 9, "title": "Microeconomics 1: Introduction / सूक्ष्म अर्थशास्त्र 1: परिचय", "pdf": "ebooks/class-11/economics/chapter-09.pdf" },
+                { "number": 10, "title": "Microeconomics 2: Consumer's Equilibrium and Demand / सूक्ष्म अर्थशास्त्र 2: उपभोक्ता का संतुलन और माँग", "pdf": "ebooks/class-11/economics/chapter-10.pdf" },
+                { "number": 11, "title": "Microeconomics 3: Producer Behaviour and Supply / सूक्ष्म अर्थशास्त्र 3: उत्पादक व्यवहार तथा पूर्ति", "pdf": "ebooks/class-11/economics/chapter-11.pdf" },
+                { "number": 12, "title": "Microeconomics 4: Forms of Market and Price Determination / सूक्ष्म अर्थशास्त्र 4: बाज़ार के रूप और कीमत निर्धारण", "pdf": "ebooks/class-11/economics/chapter-12.pdf" }
+            ]
+        }
+
+    },
+
     "12": {
 
     "English": {
@@ -761,6 +1352,103 @@ const SSTC_EBOOKS = {
             { "number": 11, "title": "Chapter 11: Organisms and Populations / अध्याय 11: जीव और समष्टियाँ", "pdf": "ebooks/class-12/biology/chapter-11.pdf" },
             { "number": 12, "title": "Chapter 12: Ecosystem / अध्याय 12: पारितंत्र", "pdf": "ebooks/class-12/biology/chapter-12.pdf" },
             { "number": 13, "title": "Chapter 13: Biodiversity and Conservation / अध्याय 13: जैव विविधता एवं संरक्षण", "pdf": "ebooks/class-12/biology/chapter-13.pdf" }
+        ]
+    },
+
+    "Hindi": {
+        "description": "Class 12 Hindi E-Book Library",
+        "image": "subject-images/class-12/hindi.png",
+        "chapters": [
+            { "number": 1, "title": "आरोह (काव्य) 1: आत्मपरिचय", "pdf": "ebooks/class-12/hindi/chapter-01.pdf" },
+            { "number": 2, "title": "आरोह (काव्य) 2: एक गीत", "pdf": "ebooks/class-12/hindi/chapter-02.pdf" },
+            { "number": 3, "title": "आरोह (काव्य) 3: पतंग", "pdf": "ebooks/class-12/hindi/chapter-03.pdf" },
+            { "number": 4, "title": "आरोह (काव्य) 4: कविता के बहाने", "pdf": "ebooks/class-12/hindi/chapter-04.pdf" },
+            { "number": 5, "title": "आरोह (काव्य) 5: बात सीधी थी पर", "pdf": "ebooks/class-12/hindi/chapter-05.pdf" },
+            { "number": 6, "title": "आरोह (काव्य) 6: कैमरे में बंद अपाहिज", "pdf": "ebooks/class-12/hindi/chapter-06.pdf" },
+            { "number": 7, "title": "आरोह (काव्य) 7: सहर्ष स्वीकारा है", "pdf": "ebooks/class-12/hindi/chapter-07.pdf" },
+            { "number": 8, "title": "आरोह (काव्य) 8: उषा", "pdf": "ebooks/class-12/hindi/chapter-08.pdf" },
+            { "number": 9, "title": "आरोह (काव्य) 9: बादल राग", "pdf": "ebooks/class-12/hindi/chapter-09.pdf" },
+            { "number": 10, "title": "आरोह (काव्य) 10: कवितावली (उत्तर कांड से)", "pdf": "ebooks/class-12/hindi/chapter-10.pdf" },
+            { "number": 11, "title": "आरोह (काव्य) 11: लक्ष्मण-मूर्छा और राम का विलाप", "pdf": "ebooks/class-12/hindi/chapter-11.pdf" },
+            { "number": 12, "title": "आरोह (काव्य) 12: रुबाइयाँ", "pdf": "ebooks/class-12/hindi/chapter-12.pdf" },
+            { "number": 13, "title": "आरोह (काव्य) 13: छोटा मेरा खेत", "pdf": "ebooks/class-12/hindi/chapter-13.pdf" },
+            { "number": 14, "title": "आरोह (काव्य) 14: बगुलों के पंख", "pdf": "ebooks/class-12/hindi/chapter-14.pdf" },
+            { "number": 15, "title": "आरोह (गद्य) 1: भक्तिन", "pdf": "ebooks/class-12/hindi/chapter-15.pdf" },
+            { "number": 16, "title": "आरोह (गद्य) 2: बाजार दर्शन", "pdf": "ebooks/class-12/hindi/chapter-16.pdf" },
+            { "number": 17, "title": "आरोह (गद्य) 3: काले मेघा पानी दे", "pdf": "ebooks/class-12/hindi/chapter-17.pdf" },
+            { "number": 18, "title": "आरोह (गद्य) 4: पहलवान की ढोलक", "pdf": "ebooks/class-12/hindi/chapter-18.pdf" },
+            { "number": 19, "title": "आरोह (गद्य) 5: चार्ली चैप्लिन यानी हम सब", "pdf": "ebooks/class-12/hindi/chapter-19.pdf" },
+            { "number": 20, "title": "आरोह (गद्य) 6: नमक", "pdf": "ebooks/class-12/hindi/chapter-20.pdf" },
+            { "number": 21, "title": "आरोह (गद्य) 7: शिरीष के फूल", "pdf": "ebooks/class-12/hindi/chapter-21.pdf" },
+            { "number": 22, "title": "आरोह (गद्य) 8: श्रम-विभाजन और जाति-प्रथा", "pdf": "ebooks/class-12/hindi/chapter-22.pdf" },
+            { "number": 23, "title": "आरोह (गद्य) 9: मेरी कल्पना का आदर्श समाज", "pdf": "ebooks/class-12/hindi/chapter-23.pdf" },
+            { "number": 24, "title": "वितान 1: सिल्वर वैडिंग", "pdf": "ebooks/class-12/hindi/chapter-24.pdf" },
+            { "number": 25, "title": "वितान 2: जूझ", "pdf": "ebooks/class-12/hindi/chapter-25.pdf" },
+            { "number": 26, "title": "वितान 3: अतीत में दबे पाँव", "pdf": "ebooks/class-12/hindi/chapter-26.pdf" },
+            { "number": 27, "title": "वितान 4: डायरी के पन्ने", "pdf": "ebooks/class-12/hindi/chapter-27.pdf" },
+            { "number": 28, "title": "अभिव्यक्ति और माध्यम 1: विभिन्न माध्यमों के लिए लेखन", "pdf": "ebooks/class-12/hindi/chapter-28.pdf" },
+            { "number": 29, "title": "अभिव्यक्ति और माध्यम 2: पत्रकारीय लेखन के विभिन्न रूप और लेखन प्रक्रिया", "pdf": "ebooks/class-12/hindi/chapter-29.pdf" },
+            { "number": 30, "title": "अभिव्यक्ति और माध्यम 3: विशेष लेखन – स्वरूप और प्रकार", "pdf": "ebooks/class-12/hindi/chapter-30.pdf" },
+            { "number": 31, "title": "अभिव्यक्ति और माध्यम 4: कैसे बनता है रेडियो नाटक", "pdf": "ebooks/class-12/hindi/chapter-31.pdf" },
+            { "number": 32, "title": "अभिव्यक्ति और माध्यम 5: नए और अप्रत्याशित विषयों पर लेखन", "pdf": "ebooks/class-12/hindi/chapter-32.pdf" }
+        ]
+    },
+
+    "Accountancy": {
+        "description": "Class 12 Accountancy E-Book Library",
+        "image": "subject-images/class-12/accountancy.png",
+        "chapters": [
+            { "number": 1, "title": "Chapter 1: Accounting for Partnership Firms – Fundamentals / अध्याय 1: साझेदारी फर्म का लेखांकन – मूलभूत अवधारणाएँ", "pdf": "ebooks/class-12/accountancy/chapter-01.pdf" },
+            { "number": 2, "title": "Chapter 2: Goodwill: Nature and Valuation / अध्याय 2: ख्याति: प्रकृति तथा मूल्यांकन", "pdf": "ebooks/class-12/accountancy/chapter-02.pdf" },
+            { "number": 3, "title": "Chapter 3: Change in Profit-Sharing Ratio Among Existing Partners / अध्याय 3: वर्तमान साझेदारों के बीच लाभ विभाजन अनुपात में परिवर्तन", "pdf": "ebooks/class-12/accountancy/chapter-03.pdf" },
+            { "number": 4, "title": "Chapter 4: Admission of a Partner / अध्याय 4: साझेदार का प्रवेश", "pdf": "ebooks/class-12/accountancy/chapter-04.pdf" },
+            { "number": 5, "title": "Chapter 5: Retirement and Death of a Partner / अध्याय 5: साझेदार की सेवानिवृत्ति तथा मृत्यु", "pdf": "ebooks/class-12/accountancy/chapter-05.pdf" },
+            { "number": 6, "title": "Chapter 6: Dissolution of a Partnership Firm / अध्याय 6: साझेदारी फर्म का विघटन", "pdf": "ebooks/class-12/accountancy/chapter-06.pdf" },
+            { "number": 7, "title": "Chapter 7: Accounting for Share Capital / अध्याय 7: अंश पूँजी का लेखांकन", "pdf": "ebooks/class-12/accountancy/chapter-07.pdf" },
+            { "number": 8, "title": "Chapter 8: Issue and Redemption of Debentures / अध्याय 8: ऋणपत्रों का निर्गमन तथा मोचन", "pdf": "ebooks/class-12/accountancy/chapter-08.pdf" },
+            { "number": 9, "title": "Chapter 9: Financial Statements of a Company / अध्याय 9: कंपनी के वित्तीय विवरण", "pdf": "ebooks/class-12/accountancy/chapter-09.pdf" },
+            { "number": 10, "title": "Chapter 10: Analysis of Financial Statements / अध्याय 10: वित्तीय विवरणों का विश्लेषण", "pdf": "ebooks/class-12/accountancy/chapter-10.pdf" },
+            { "number": 11, "title": "Chapter 11: Accounting Ratios / अध्याय 11: लेखांकन अनुपात", "pdf": "ebooks/class-12/accountancy/chapter-11.pdf" },
+            { "number": 12, "title": "Chapter 12: Cash Flow Statement / अध्याय 12: रोकड़ प्रवाह विवरण", "pdf": "ebooks/class-12/accountancy/chapter-12.pdf" }
+        ]
+    },
+
+    "Business Studies": {
+        "description": "Class 12 Business Studies E-Book Library",
+        "image": "subject-images/class-12/businessstudies.png",
+        "chapters": [
+            { "number": 1, "title": "Chapter 1: Nature and Significance of Management / अध्याय 1: प्रबंध की प्रकृति एवं महत्त्व", "pdf": "ebooks/class-12/business-studies/chapter-01.pdf" },
+            { "number": 2, "title": "Chapter 2: Principles of Management / अध्याय 2: प्रबंध के सिद्धांत", "pdf": "ebooks/class-12/business-studies/chapter-02.pdf" },
+            { "number": 3, "title": "Chapter 3: Business Environment / अध्याय 3: व्यावसायिक पर्यावरण", "pdf": "ebooks/class-12/business-studies/chapter-03.pdf" },
+            { "number": 4, "title": "Chapter 4: Planning / अध्याय 4: नियोजन", "pdf": "ebooks/class-12/business-studies/chapter-04.pdf" },
+            { "number": 5, "title": "Chapter 5: Organising / अध्याय 5: संगठन", "pdf": "ebooks/class-12/business-studies/chapter-05.pdf" },
+            { "number": 6, "title": "Chapter 6: Staffing / अध्याय 6: नियुक्तिकरण", "pdf": "ebooks/class-12/business-studies/chapter-06.pdf" },
+            { "number": 7, "title": "Chapter 7: Directing / अध्याय 7: निदेशन", "pdf": "ebooks/class-12/business-studies/chapter-07.pdf" },
+            { "number": 8, "title": "Chapter 8: Controlling / अध्याय 8: नियंत्रण", "pdf": "ebooks/class-12/business-studies/chapter-08.pdf" },
+            { "number": 9, "title": "Chapter 9: Financial Management / अध्याय 9: वित्तीय प्रबंध", "pdf": "ebooks/class-12/business-studies/chapter-09.pdf" },
+            { "number": 10, "title": "Chapter 10: Financial Markets / अध्याय 10: वित्तीय बाज़ार", "pdf": "ebooks/class-12/business-studies/chapter-10.pdf" },
+            { "number": 11, "title": "Chapter 11: Marketing Management / अध्याय 11: विपणन प्रबंध", "pdf": "ebooks/class-12/business-studies/chapter-11.pdf" },
+            { "number": 12, "title": "Chapter 12: Consumer Protection / अध्याय 12: उपभोक्ता संरक्षण", "pdf": "ebooks/class-12/business-studies/chapter-12.pdf" }
+        ]
+    },
+
+    "Economics": {
+        "description": "Class 12 Economics E-Book Library",
+        "image": "subject-images/class-12/economics.png",
+        "chapters": [
+            { "number": 1, "title": "Chapter 1: National Income and Related Aggregates / अध्याय 1: राष्ट्रीय आय तथा संबंधित समुच्चय", "pdf": "ebooks/class-12/economics/chapter-01.pdf" },
+            { "number": 2, "title": "Chapter 2: Money and Banking / अध्याय 2: मुद्रा और बैंकिंग", "pdf": "ebooks/class-12/economics/chapter-02.pdf" },
+            { "number": 3, "title": "Chapter 3: Determination of Income and Employment / अध्याय 3: आय और रोज़गार का निर्धारण", "pdf": "ebooks/class-12/economics/chapter-03.pdf" },
+            { "number": 4, "title": "Chapter 4: Government Budget and the Economy / अध्याय 4: सरकारी बजट तथा अर्थव्यवस्था", "pdf": "ebooks/class-12/economics/chapter-04.pdf" },
+            { "number": 5, "title": "Chapter 5: Balance of Payments / अध्याय 5: भुगतान संतुलन", "pdf": "ebooks/class-12/economics/chapter-05.pdf" },
+            { "number": 6, "title": "Chapter 6: Indian Economy on the Eve of Independence / अध्याय 6: स्वतंत्रता की पूर्व संध्या पर भारतीय अर्थव्यवस्था", "pdf": "ebooks/class-12/economics/chapter-06.pdf" },
+            { "number": 7, "title": "Chapter 7: Indian Economy (1950–1990) / अध्याय 7: भारतीय अर्थव्यवस्था (1950–1990)", "pdf": "ebooks/class-12/economics/chapter-07.pdf" },
+            { "number": 8, "title": "Chapter 8: Liberalisation, Privatisation and Globalisation: An Appraisal / अध्याय 8: उदारीकरण, निजीकरण और वैश्वीकरण: एक समीक्षा", "pdf": "ebooks/class-12/economics/chapter-08.pdf" },
+            { "number": 9, "title": "Chapter 9: Human Capital Formation in India / अध्याय 9: भारत में मानव पूँजी निर्माण", "pdf": "ebooks/class-12/economics/chapter-09.pdf" },
+            { "number": 10, "title": "Chapter 10: Rural Development / अध्याय 10: ग्रामीण विकास", "pdf": "ebooks/class-12/economics/chapter-10.pdf" },
+            { "number": 11, "title": "Chapter 11: Employment: Growth, Informalisation and Other Issues / अध्याय 11: रोज़गार: संवृद्धि, अनौपचारीकरण एवं अन्य मुद्दे", "pdf": "ebooks/class-12/economics/chapter-11.pdf" },
+            { "number": 12, "title": "Chapter 12: Environment and Sustainable Development / अध्याय 12: पर्यावरण तथा सतत विकास", "pdf": "ebooks/class-12/economics/chapter-12.pdf" },
+            { "number": 13, "title": "Chapter 13: Comparative Development Experiences of India and its Neighbours / अध्याय 13: भारत और उसके पड़ोसी देशों के तुलनात्मक विकास अनुभव", "pdf": "ebooks/class-12/economics/chapter-13.pdf" }
         ]
     }
 
