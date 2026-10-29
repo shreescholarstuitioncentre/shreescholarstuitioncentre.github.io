@@ -1,0 +1,58 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Class 9 Computer – Number System and Conversion (English Notes)</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--bg:#fbf7ea;--ink:#1d2b53;--red:#c0392b;--line:#bcd3e8;--box:#fff8c9;--grn:#1e7a4a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c2233;--ink:#e8ecf7;--red:#ff8a7a;--line:#33405e;--box:#3a3720;--grn:#7ddc9f}}
+:root[data-theme="dark"]{--bg:#1c2233;--ink:#e8ecf7;--red:#ff8a7a;--line:#33405e;--box:#3a3720;--grn:#7ddc9f}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:22px/32px 'Caveat',cursive;background-image:linear-gradient(var(--line) 1px,transparent 1px);background-size:100% 32px}
+main{max-width:820px;margin:auto;padding:16px 18px 60px 46px;border-left:3px solid var(--red)}
+h1{font-size:40px;line-height:44px;margin:10px 0;color:var(--red);text-decoration:underline wavy var(--ink)}
+h2{font-size:30px;margin:34px 0 8px;color:var(--red)}h3{font-size:24px;margin:16px 0 0;color:var(--grn)}
+p,li{margin:0 0 8px}.box{background:var(--box);border:2px dashed var(--ink);padding:6px 14px;margin:12px 0;border-radius:8px;transform:rotate(-.4deg)}
+table{border-collapse:collapse;width:100%;margin:10px 0;overflow-x:auto;display:block}td,th{border:2px solid var(--ink);padding:2px 10px;text-align:center}th{color:var(--red)}
+.s{opacity:0;animation:f .7s forwards}@keyframes f{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.s{animation:none;opacity:1}}
+.dv{display:inline-block;border-bottom:3px solid var(--ink);border-left:3px solid var(--ink);padding:0 10px;margin:4px 0}
+.ans{color:var(--grn)}.ar{font-size:30px;color:var(--red)}
+details{margin:6px 0}summary{cursor:pointer;color:var(--ink);font-weight:700}
+button{font:inherit;background:var(--box);border:2px solid var(--ink);color:var(--ink);border-radius:8px;padding:0 12px;cursor:pointer}
+</style></head><body><main>
+<h1>Number System &amp; Conversion</h1><p>Class 9 · Computer Science · UP Board (notes in the style of Avtaar / Rajeev / Vidya / Sumita Arora)</p>
+<h2>1. What is a Number System?</h2>
+<p>A <b>number system</b> is a way of writing numbers using a fixed set of digits/symbols. The count of digits is called the <b>base (radix)</b>. Computers store everything as electrical ON/OFF signals, so they use <b>binary</b>.</p>
+<table><tr><th>System</th><th>Base</th><th>Digits</th><th>Example</th></tr>
+<tr><td>Decimal</td><td>10</td><td>0–9</td><td>(45)<sub>10</sub></td></tr><tr><td>Binary</td><td>2</td><td>0, 1</td><td>(1011)<sub>2</sub></td></tr>
+<tr><td>Octal</td><td>8</td><td>0–7</td><td>(157)<sub>8</sub></td></tr><tr><td>Hexadecimal</td><td>16</td><td>0–9, A–F</td><td>(2AF)<sub>16</sub></td></tr></table>
+<div class="box"><b>Remember:</b> A=10, B=11, C=12, D=13, E=14, F=15. &nbsp; 1 nibble = 4 bits, 1 byte = 8 bits. MSB = leftmost bit, LSB = rightmost bit.</div>
+<h2>2. Positional Value</h2><p>Each digit has a <b>place value = digit × base<sup>position</sup></b> (position starts from 0 at the right). Example: (345)<sub>10</sub> = 3×10² + 4×10¹ + 5×10⁰ = 300+40+5.</p>
+<h2>3. Decimal → Binary (Division method)</h2>
+<p>Rule: divide by 2 again and again, write remainders, read them <b>bottom to top</b>.</p>
+<h3>Animated diagram: (25)<sub>10</sub> → ( ? )<sub>2</sub></h3>
+<div class="box"><div class="s" style="animation-delay:0.0s"><span class="dv">2 | 25</span> &nbsp; <b>1 ↑</b></div><div class="s" style="animation-delay:0.8s"><span class="dv">2 | 12</span> &nbsp; <b>0</b></div><div class="s" style="animation-delay:1.6s"><span class="dv">2 | 6</span> &nbsp; <b>0</b></div><div class="s" style="animation-delay:2.4000000000000004s"><span class="dv">2 | 3</span> &nbsp; <b>1</b></div><div class="s" style="animation-delay:3.2s"><span class="dv">2 | 1</span> &nbsp; <b>1</b></div><div class="s" style="animation-delay:4.0s"><span class="dv">&nbsp;&nbsp;&nbsp;&nbsp;0</span> &nbsp; <b></b></div><p class="s ar" style="animation-delay:5.2s">Read remainders upward: <b class="ans">11001</b> ⇒ (25)<sub>10</sub> = (11001)<sub>2</sub></p></div>
+<h2>4. Binary → Decimal</h2><p>Multiply each bit by 2<sup>position</sup> and add. Weights: 128 64 32 16 8 4 2 1.</p>
+<h2>5. Decimal → Octal / Hexadecimal</h2>
+<p>Same method, divide by 8 or 16.</p>
+<div class="box"><b>(156)<sub>10</sub> → octal</b><div class="s" style="animation-delay:0.0s"><span class="dv">8 | 156</span> &nbsp; <b>4</b></div><div class="s" style="animation-delay:0.8s"><span class="dv">8 | 19</span> &nbsp; <b>3</b></div><div class="s" style="animation-delay:1.6s"><span class="dv">8 | 2</span> &nbsp; <b>2</b></div><div class="s" style="animation-delay:2.4000000000000004s"><span class="dv">&nbsp;&nbsp;&nbsp;&nbsp;0</span> &nbsp; <b></b></div><p class="s" style="animation-delay:3.4s">Read upward: <b class="ans">234</b></p></div>
+<div class="box"><b>(255)<sub>10</sub> → hex</b><div class="s" style="animation-delay:0.0s"><span class="dv">16 | 255</span> &nbsp; <b>15 = F</b></div><div class="s" style="animation-delay:0.8s"><span class="dv">16 | 15</span> &nbsp; <b>15 = F</b></div><div class="s" style="animation-delay:1.6s"><span class="dv">&nbsp;&nbsp;&nbsp;&nbsp;0</span> &nbsp; <b></b></div><p class="s" style="animation-delay:2.6s">Read upward: <b class="ans">FF</b></p></div>
+<h2>6. Binary ⇄ Octal ⇄ Hex (Shortcut)</h2>
+<p>Binary → Octal: group bits in <b>3s</b> from the right. Binary → Hex: group in <b>4s</b>. For the reverse, write 3-bit (octal) or 4-bit (hex) code for each digit.</p>
+<table><tr><th>Dec</th><th>Bin</th><th>Oct</th><th>Hex</th></tr><tr><td>8</td><td>1000</td><td>10</td><td>8</td></tr><tr><td>10</td><td>1010</td><td>12</td><td>A</td></tr><tr><td>15</td><td>1111</td><td>17</td><td>F</td></tr></table>
+<h2>7. Solved Examples (step by step)</h2>
+<h3>Easy 1: Convert (1011)<sub>2</sub> to decimal</h3><p><b>Solution:</b> 1×2³ + 0×2² + 1×2¹ + 1×2⁰ = 8 + 0 + 2 + 1 = <b class="ans">11</b>.</p>
+<h3>Easy 2: Convert (13)<sub>10</sub> to binary</h3><p>13÷2=6 r1; 6÷2=3 r0; 3÷2=1 r1; 1÷2=0 r1. Upward: <b class="ans">1101</b>.</p>
+<h3>Intermediate 1: Convert (234)<sub>8</sub> to decimal</h3><p>2×8² + 3×8¹ + 4×8⁰ = 128 + 24 + 4 = <b class="ans">156</b>.</p>
+<h3>Intermediate 2: Convert (1101101)<sub>2</sub> to octal</h3><p>Group in 3s from right: 001 | 101 | 101 → 1, 5, 5 ⇒ <b class="ans">(155)<sub>8</sub></b>. Check: 64+40+5 = 109 ✓.</p>
+<h3>Hard 1: Convert (2AF)<sub>16</sub> to decimal</h3><p>2×16² + 10×16¹ + 15×16⁰ = 512 + 160 + 15 = <b class="ans">687</b>.</p>
+<h3>Hard 2: Convert (1101101)<sub>2</sub> to hexadecimal</h3><p>Group in 4s: 0110 | 1101 → 6, D ⇒ <b class="ans">(6D)<sub>16</sub></b> (=96+13=109 ✓).</p>
+<h3>Hard 3: Convert (0.625)<sub>10</sub> to binary</h3><p>Multiply fraction by 2: 0.625×2=1.25 → 1; 0.25×2=0.5 → 0; 0.5×2=1.0 → 1. Read downward: <b class="ans">(0.101)<sub>2</sub></b>.</p>
+<h2>8. Short Q &amp; A (tap to see answer)</h2>
+<details><summary>Q1. What is a number system?</summary><p class="ans">A method of representing numbers using a set of digits/symbols.</p></details><details><summary>Q2. What is the base of binary?</summary><p class="ans">2</p></details><details><summary>Q3. Digits used in octal?</summary><p class="ans">0 to 7</p></details><details><summary>Q4. Digits used in hexadecimal?</summary><p class="ans">0–9 and A–F (16 symbols).</p></details><details><summary>Q5. Full form of bit?</summary><p class="ans">Binary digit.</p></details><details><summary>Q6. 1 byte = ? bits</summary><p class="ans">8 bits</p></details><details><summary>Q7. What is MSB?</summary><p class="ans">Most Significant Bit – leftmost bit.</p></details><details><summary>Q8. Decimal value of hex F?</summary><p class="ans">15</p></details><details><summary>Q9. Binary of decimal 8?</summary><p class="ans">1000</p></details><details><summary>Q10. What is radix?</summary><p class="ans">Another name for base.</p></details>
+<h2>9. Long Q &amp; A</h2>
+<details><summary>Q1. Why do computers use the binary system?</summary><p>Electronic circuits have two stable states (ON/OFF, high/low voltage) which map to 1 and 0. This is simple, cheap, fast and less prone to error than a 10-level circuit.</p></details>
+<details><summary>Q2. Explain the steps to convert decimal to binary.</summary><p>(1) Divide the number by 2. (2) Write the remainder. (3) Divide the quotient again by 2. (4) Repeat until quotient is 0. (5) Read remainders from bottom to top.</p></details>
+<details><summary>Q3. Differentiate between bit, nibble and byte.</summary><p>Bit = one binary digit (0/1). Nibble = 4 bits. Byte = 8 bits (stores one character).</p></details>
+<h2>10. MCQs</h2>
+<details><summary>Q1. Base of hexadecimal is</summary><p>a) 8 b) 10 c) 16 d) 2</p><p class="ans">Answer: c) 16</p></details><details><summary>Q2. (101)₂ equals decimal</summary><p>a) 3 b) 5 c) 7 d) 9</p><p class="ans">Answer: b) 5</p></details><details><summary>Q3. Which digit is NOT in octal?</summary><p>a) 7 b) 0 c) 8 d) 5</p><p class="ans">Answer: c) 8</p></details><details><summary>Q4. Hex 'B' equals</summary><p>a) 10 b) 11 c) 12 d) 13</p><p class="ans">Answer: b) 11</p></details><details><summary>Q5. 4 bits make a</summary><p>a) byte b) word c) nibble d) bit</p><p class="ans">Answer: c) nibble</p></details><details><summary>Q6. (10)₁₀ in binary</summary><p>a) 1010 b) 1001 c) 1100 d) 1000</p><p class="ans">Answer: a) 1010</p></details>
+<div class="box"><b>Note:</b> This is a starter set (about 20 Q&amp;A and 7 examples). Ask me for "Part 2" and I will add more questions, hard numericals and extra animated diagrams.</div>
+</main></body></html>

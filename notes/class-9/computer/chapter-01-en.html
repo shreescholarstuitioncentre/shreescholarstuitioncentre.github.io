@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Class 9 Computer – Ch.1 Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet"><style>
+:root{--bg:#fbf8ef;--ink:#1d2a4d;--line:#c9d4ee;--red:#c0392b;--grn:#1e7a4f;--hl:#fff3a8;--card:#fffdf6}
+@media(prefers-color-scheme:dark){:root{--bg:#1b1f2a;--ink:#e8ecf8;--line:#39425e;--red:#ff8a7a;--grn:#6fd6a2;--hl:#5a5320;--card:#232838}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:20px/1.75 'Kalam','Segoe Print','Comic Sans MS',cursive;
+background-image:repeating-linear-gradient(transparent 0 34px,var(--line) 34px 35px);background-attachment:local}
+main{max-width:860px;margin:auto;padding:20px 18px 60px 46px;border-left:3px solid var(--red)}
+h1{font-size:2em;margin:.2em 0;text-decoration:underline wavy var(--red)}
+h2{font-size:1.45em;margin:1.4em 0 .3em;border-bottom:2px dashed var(--ink)}
+h3{margin:.8em 0 .1em;color:var(--red)}
+mark{background:var(--hl);color:inherit;padding:0 4px}
+.box{border:2px solid var(--ink);border-radius:10px 4px 12px 5px;padding:8px 14px;background:var(--card);margin:12px 0}
+.k{border-color:var(--grn)}
+table{border-collapse:collapse;width:100%;font-size:.85em;background:var(--card);display:block;overflow-x:auto}
+td,th{border:1.5px solid var(--ink);padding:4px 8px;vertical-align:top}
+th{background:var(--hl)}
+svg{width:100%;height:auto;background:var(--card);border:2px solid var(--ink);border-radius:8px}
+details{border:1.5px solid var(--line);border-radius:6px;margin:6px 0;padding:4px 10px;background:var(--card)}
+summary{cursor:pointer;font-weight:700}
+.ans{color:var(--grn)}
+@media(prefers-reduced-motion:reduce){svg animate,svg animateMotion{display:none}}
+@media(max-width:600px){body{font-size:17px}main{padding-left:22px}}
+</style></head><body><main><h1>Introduction &amp; Development of Computer</h1><p>Class 9 · Computer Science · UP Board (NCERT/Rajeev/Arihant style)</p>
+<h2>1. What is a Computer?</h2><p>A <mark>computer</mark> is an electronic device that works under a set of instructions (program). It takes <b>input</b>, <b>processes</b> it, <b>stores</b> it and gives <b>output</b> – the IPO cycle.</p>
+<div class="box k"><b>Data → Process → Information</b><br>Marks of 3 subjects (data) → add and divide (process) → average = 78% (information).</div>
+<h2>2. Characteristics</h2><table><tr><th>Feature</th><th>Meaning</th></tr><tr><td>Speed</td><td>Does millions of operations per second.</td></tr><tr><td>Accuracy</td><td>Errors come only from wrong input (GIGO – Garbage In, Garbage Out).</td></tr><tr><td>Diligence</td><td>Never gets tired or bored.</td></tr><tr><td>Storage</td><td>Stores huge data permanently.</td></tr><tr><td>Versatility</td><td>Can do many kinds of work: typing, games, banking.</td></tr></table>
+<p><b>Limitations:</b> no intelligence of its own (IQ zero), cannot decide or feel; depends on instructions.</p>
+<h2>3. Block Diagram (animated)</h2><svg viewBox="0 0 720 300" role="img" aria-label="Block diagram of a computer" font-family="Kalam,Segoe Print,cursive" font-size="15" fill="currentColor">
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#c0392b"/></marker></defs>
+<g fill="none" stroke="currentColor" stroke-width="2.2">
+<rect x="10" y="95" width="110" height="70" rx="8"/><rect x="250" y="40" width="220" height="180" rx="10" stroke-dasharray="6 3"/>
+<rect x="270" y="75" width="85" height="45" rx="5"/><rect x="365" y="75" width="85" height="45" rx="5"/><rect x="305" y="150" width="110" height="45" rx="5"/>
+<rect x="600" y="95" width="110" height="70" rx="8"/><rect x="290" y="245" width="140" height="45" rx="8"/></g>
+<g stroke="#c0392b" stroke-width="2.5" fill="none" marker-end="url(#a)"><path id="p1" d="M122 130H248"/><path id="p2" d="M472 130H598"/><path id="p3" d="M360 222V243"/></g>
+<g text-anchor="middle"><text x="65" y="125">INPUT</text><text x="65" y="148" font-size="12">keyboard, mouse</text>
+<text x="360" y="30" font-weight="700">CPU</text><text x="312" y="103">Control Unit</text><text x="407" y="103">ALU</text><text x="360" y="178">Memory Unit</text>
+<text x="655" y="125">OUTPUT</text><text x="655" y="148" font-size="12">monitor, printer</text><text x="360" y="273">Secondary Storage</text>
+<text x="185" y="118" font-size="12" fill="#c0392b">data</text><text x="535" y="118" font-size="12" fill="#c0392b">result</text></g>
+<g fill="#1e7a4f"><circle r="6"><animateMotion dur="2.5s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle>
+<circle r="6"><animateMotion dur="2.5s" begin="1.2s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></circle>
+<circle r="5"><animateMotion dur="1.6s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion></circle></g></svg>
+<p>Green dots show data moving: Input → CPU → Output, and CPU ↔ Storage.</p>
+<ul><li><b>Control Unit:</b> directs and coordinates all parts.</li><li><b>ALU:</b> arithmetic + logic.</li><li><b>Memory Unit:</b> RAM (temporary), ROM (permanent), registers.</li></ul>
+<h2>4. Generations</h2><table><tr><th>Gen</th><th>Period</th><th>Technology</th><th>Example</th></tr><tr><td>1st</td><td>1940–56</td><td>Vacuum tube</td><td>ENIAC, UNIVAC</td></tr><tr><td>2nd</td><td>1956–63</td><td>Transistor</td><td>IBM 1401</td></tr><tr><td>3rd</td><td>1964–71</td><td>Integrated Circuit</td><td>IBM 360</td></tr><tr><td>4th</td><td>1971–now</td><td>Microprocessor</td><td>PCs, laptops</td></tr><tr><td>5th</td><td>Now–future</td><td>AI, ULSI</td><td>Robots, AI assistants</td></tr></table>
+<h2>5. Types of Computers</h2><p><b>By size:</b> Super (PARAM), Mainframe, Mini, Micro (PC). <b>By work:</b> Analog, Digital, Hybrid.</p>
+<h2>6. Pioneers</h2><p>Pascal – Pascaline · Babbage – Father of Computer · Ada Lovelace – first programmer · Hollerith – punched card · John von Neumann – stored program concept.</p>
+<h2>7. Worked Examples</h2>
+<div class="box"><b>Example 1 (Easy): Convert bytes.</b> Find bits in 3 bytes.<br>Step 1: 1 byte = 8 bits. Step 2: 3 × 8 = <b>24 bits</b>.</div>
+<div class="box"><b>Example 2 (Medium): Find KB in 4096 bytes.</b><br>Step 1: 1 KB = 1024 bytes. Step 2: 4096 ÷ 1024 = <b>4 KB</b>.</div>
+<div class="box"><b>Example 3 (Hard): A file is 2 MB. How many bytes?</b><br>1 MB = 1024 KB; 1 KB = 1024 B. So 2 × 1024 × 1024 = <b>2,097,152 bytes</b>.</div>
+<h2>8. Short Questions</h2><details><summary>What is a computer?</summary><p class='ans'>An electronic machine that accepts data (input), processes it by following instructions, stores it, and gives results (output) at high speed and accuracy.</p></details><details><summary>Full form of COMPUTER?</summary><p class='ans'>Commonly Operated Machine Particularly Used for Trade, Education and Research.</p></details><details><summary>What is data? What is information?</summary><p class='ans'>Data = raw facts and figures (e.g., 45, 'Ravi'). Information = processed, meaningful data (e.g., 'Ravi scored 45 marks').</p></details><details><summary>Name four characteristics of a computer.</summary><p class='ans'>Speed, accuracy, diligence (no tiredness), storage capacity, versatility.</p></details><details><summary>Who is the 'Father of Computer'?</summary><p class='ans'>Charles Babbage (Analytical Engine, 1837).</p></details><details><summary>Who was the first programmer?</summary><p class='ans'>Ada Lovelace, who wrote a program for Babbage's Analytical Engine.</p></details><details><summary>What is the CPU? Name its parts.</summary><p class='ans'>Central Processing Unit – the brain of the computer. Parts: Control Unit (CU), Arithmetic Logic Unit (ALU), Memory/Registers.</p></details><details><summary>What is ALU?</summary><p class='ans'>Performs arithmetic (+ − × ÷) and logical (<, >, =, AND, OR, NOT) operations.</p></details><details><summary>Difference between hardware and software?</summary><p class='ans'>Hardware = physical parts you can touch (mouse, RAM). Software = programs/instructions (MS Word, Windows).</p></details><details><summary>Which device was used in the 1st generation?</summary><p class='ans'>Vacuum tubes (e.g., ENIAC, UNIVAC).</p></details>
+<h2>9. Long Questions</h2><details><summary>Explain the generations of computers.</summary><p class='ans'><b>1st (1940–56):</b> vacuum tubes; large, hot, costly; machine language. <b>2nd (1956–63):</b> transistors; smaller, faster; assembly &amp; high-level languages (FORTRAN, COBOL). <b>3rd (1964–71):</b> Integrated Circuits (IC); keyboard &amp; monitor; operating systems. <b>4th (1971–present):</b> microprocessor (VLSI); personal computers, GUI, networks. <b>5th (present &amp; future):</b> Artificial Intelligence, ULSI, voice recognition, quantum ideas.</p></details><details><summary>Describe the block diagram of a computer.</summary><p class='ans'>Input unit sends data to the CPU. The Control Unit directs all operations, the ALU calculates, the Memory Unit holds data and instructions temporarily. Results go to the Output unit; permanent data goes to secondary storage (HDD, SSD).</p></details><details><summary>Write the history of computing devices in order.</summary><p class='ans'>Abacus (c. 3000 BC) → Napier's Bones (1617) → Pascaline by Blaise Pascal (1642) → Leibniz's calculator (1671) → Jacquard loom cards (1801) → Babbage's Difference &amp; Analytical Engine (1822/1837) → Hollerith tabulator (1890) → Mark-I (1944) → ENIAC (1946).</p></details>
+<h2>10. MCQs</h2><details><summary>1. Brain of the computer is: <br><small>A) RAM B) CPU C) Monitor D) Mouse</small></summary><p class='ans'>Answer: CPU</p></details><details><summary>2. ENIAC belongs to which generation? <br><small>A) First B) Second C) Third D) Fourth</small></summary><p class='ans'>Answer: First</p></details><details><summary>3. Transistors were used in: <br><small>A) 1st B) 2nd C) 3rd D) 5th</small></summary><p class='ans'>Answer: Second generation</p></details><details><summary>4. IC was invented by: <br><small>A) Babbage B) Pascal C) Jack Kilby D) Lovelace</small></summary><p class='ans'>Answer: Jack Kilby</p></details><details><summary>5. 1 Byte = <br><small>A) 2 B) 4 C) 8 D) 16</small></summary><p class='ans'>Answer: 8 bits</p></details><details><summary>6. Which is an output device? <br><small>A) Scanner B) Mouse C) Printer D) Mic</small></summary><p class='ans'>Answer: Printer</p></details><details><summary>7. AI is the feature of: <br><small>A) 2nd B) 3rd C) 4th D) 5th</small></summary><p class='ans'>Answer: Fifth generation</p></details><details><summary>8. Abacus is a ___ device. <br><small>A) Electronic B) Mechanical C) Printing D) Storage</small></summary><p class='ans'>Answer: Counting/calculating</p></details></main></body></html>

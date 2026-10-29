@@ -1,0 +1,57 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>कक्षा 9 कंप्यूटर – संख्या पद्धति एवं रूपांतरण (हिंदी नोट्स)</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet"><style>
+:root{--bg:#fbf7ea;--ink:#1d2b53;--red:#c0392b;--line:#bcd3e8;--box:#fff8c9;--grn:#1e7a4a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c2233;--ink:#e8ecf7;--red:#ff8a7a;--line:#33405e;--box:#3a3720;--grn:#7ddc9f}}
+:root[data-theme="dark"]{--bg:#1c2233;--ink:#e8ecf7;--red:#ff8a7a;--line:#33405e;--box:#3a3720;--grn:#7ddc9f}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:22px/32px 'Kalam',cursive;background-image:linear-gradient(var(--line) 1px,transparent 1px);background-size:100% 32px}
+main{max-width:820px;margin:auto;padding:16px 18px 60px 46px;border-left:3px solid var(--red)}
+h1{font-size:40px;line-height:44px;margin:10px 0;color:var(--red);text-decoration:underline wavy var(--ink)}
+h2{font-size:30px;margin:34px 0 8px;color:var(--red)}h3{font-size:24px;margin:16px 0 0;color:var(--grn)}
+p,li{margin:0 0 8px}.box{background:var(--box);border:2px dashed var(--ink);padding:6px 14px;margin:12px 0;border-radius:8px;transform:rotate(-.4deg)}
+table{border-collapse:collapse;width:100%;margin:10px 0;overflow-x:auto;display:block}td,th{border:2px solid var(--ink);padding:2px 10px;text-align:center}th{color:var(--red)}
+.s{opacity:0;animation:f .7s forwards}@keyframes f{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.s{animation:none;opacity:1}}
+.dv{display:inline-block;border-bottom:3px solid var(--ink);border-left:3px solid var(--ink);padding:0 10px;margin:4px 0}
+.ans{color:var(--grn)}.ar{font-size:30px;color:var(--red)}
+details{margin:6px 0}summary{cursor:pointer;color:var(--ink);font-weight:700}
+button{font:inherit;background:var(--box);border:2px solid var(--ink);color:var(--ink);border-radius:8px;padding:0 12px;cursor:pointer}
+</style></head><body><main>
+<h1>संख्या पद्धति एवं रूपांतरण</h1><p>कक्षा 9 · कंप्यूटर · यूपी बोर्ड (अवतार / राजीव / विद्या / सुमिता अरोड़ा शैली)</p>
+<h2>1. संख्या पद्धति क्या है?</h2>
+<p><b>संख्या पद्धति</b> अंकों/चिह्नों के निश्चित समूह से संख्याएँ लिखने की विधि है। अंकों की कुल संख्या को <b>आधार (Base/Radix)</b> कहते हैं। कंप्यूटर बिजली के ON/OFF संकेतों पर काम करता है, इसलिए वह <b>बाइनरी</b> का उपयोग करता है।</p>
+<table><tr><th>पद्धति</th><th>आधार</th><th>अंक</th><th>उदाहरण</th></tr>
+<tr><td>दशमलव</td><td>10</td><td>0–9</td><td>(45)<sub>10</sub></td></tr><tr><td>बाइनरी</td><td>2</td><td>0, 1</td><td>(1011)<sub>2</sub></td></tr>
+<tr><td>ऑक्टल</td><td>8</td><td>0–7</td><td>(157)<sub>8</sub></td></tr><tr><td>हेक्साडेसिमल</td><td>16</td><td>0–9, A–F</td><td>(2AF)<sub>16</sub></td></tr></table>
+<div class="box"><b>याद रखें:</b> A=10, B=11, C=12, D=13, E=14, F=15। &nbsp; 1 निबल = 4 बिट, 1 बाइट = 8 बिट। MSB = बायाँ बिट, LSB = दायाँ बिट।</div>
+<h2>2. स्थानीय मान</h2><p>अंक का मान = <b>अंक × आधार<sup>स्थिति</sup></b> (दाएँ से स्थिति 0 से शुरू)। उदाहरण: (345)<sub>10</sub> = 3×10² + 4×10¹ + 5×10⁰ = 300+40+5।</p>
+<h2>3. दशमलव → बाइनरी (भाग विधि)</h2>
+<p>नियम: बार-बार 2 से भाग दें, शेषफल लिखें, फिर <b>नीचे से ऊपर</b> पढ़ें।</p>
+<h3>एनिमेटेड चित्र: (25)<sub>10</sub> → ( ? )<sub>2</sub></h3>
+<div class="box"><div class="s" style="animation-delay:0.0s"><span class="dv">2 | 25</span> &nbsp; <b>1 ↑</b></div><div class="s" style="animation-delay:0.8s"><span class="dv">2 | 12</span> &nbsp; <b>0</b></div><div class="s" style="animation-delay:1.6s"><span class="dv">2 | 6</span> &nbsp; <b>0</b></div><div class="s" style="animation-delay:2.4000000000000004s"><span class="dv">2 | 3</span> &nbsp; <b>1</b></div><div class="s" style="animation-delay:3.2s"><span class="dv">2 | 1</span> &nbsp; <b>1</b></div><div class="s" style="animation-delay:4.0s"><span class="dv">&nbsp;&nbsp;&nbsp;&nbsp;0</span> &nbsp; <b></b></div><p class="s ar" style="animation-delay:5.2s">शेषफल ऊपर की ओर पढ़ें: <b class="ans">11001</b> ⇒ (25)<sub>10</sub> = (11001)<sub>2</sub></p></div>
+<h2>4. बाइनरी → दशमलव</h2><p>हर बिट को 2<sup>स्थिति</sup> से गुणा करके जोड़ें। भार: 128 64 32 16 8 4 2 1।</p>
+<h2>5. दशमलव → ऑक्टल / हेक्साडेसिमल</h2><p>यही विधि, बस 8 या 16 से भाग दें।</p>
+<div class="box"><b>(156)<sub>10</sub> → ऑक्टल</b><div class="s" style="animation-delay:0.0s"><span class="dv">8 | 156</span> &nbsp; <b>4</b></div><div class="s" style="animation-delay:0.8s"><span class="dv">8 | 19</span> &nbsp; <b>3</b></div><div class="s" style="animation-delay:1.6s"><span class="dv">8 | 2</span> &nbsp; <b>2</b></div><div class="s" style="animation-delay:2.4000000000000004s"><span class="dv">&nbsp;&nbsp;&nbsp;&nbsp;0</span> &nbsp; <b></b></div><p class="s" style="animation-delay:3.4s">ऊपर की ओर पढ़ें: <b class="ans">234</b></p></div>
+<div class="box"><b>(255)<sub>10</sub> → हेक्स</b><div class="s" style="animation-delay:0.0s"><span class="dv">16 | 255</span> &nbsp; <b>15 = F</b></div><div class="s" style="animation-delay:0.8s"><span class="dv">16 | 15</span> &nbsp; <b>15 = F</b></div><div class="s" style="animation-delay:1.6s"><span class="dv">&nbsp;&nbsp;&nbsp;&nbsp;0</span> &nbsp; <b></b></div><p class="s" style="animation-delay:2.6s">ऊपर की ओर पढ़ें: <b class="ans">FF</b></p></div>
+<h2>6. बाइनरी ⇄ ऑक्टल ⇄ हेक्स (शॉर्टकट)</h2>
+<p>बाइनरी → ऑक्टल: दाएँ से <b>3-3 बिट</b> के समूह बनाएँ। बाइनरी → हेक्स: <b>4-4 बिट</b> के समूह। उल्टा करने के लिए हर अंक का 3 या 4 बिट कोड लिखें।</p>
+<table><tr><th>दशमलव</th><th>बाइनरी</th><th>ऑक्टल</th><th>हेक्स</th></tr><tr><td>8</td><td>1000</td><td>10</td><td>8</td></tr><tr><td>10</td><td>1010</td><td>12</td><td>A</td></tr><tr><td>15</td><td>1111</td><td>17</td><td>F</td></tr></table>
+<h2>7. हल किए गए उदाहरण (चरण दर चरण)</h2>
+<h3>आसान 1: (1011)<sub>2</sub> को दशमलव में बदलें</h3><p><b>हल:</b> 1×2³ + 0×2² + 1×2¹ + 1×2⁰ = 8+0+2+1 = <b class="ans">11</b>।</p>
+<h3>आसान 2: (13)<sub>10</sub> को बाइनरी में बदलें</h3><p>13÷2=6 शेष1; 6÷2=3 शेष0; 3÷2=1 शेष1; 1÷2=0 शेष1। ऊपर की ओर: <b class="ans">1101</b>।</p>
+<h3>मध्यम 1: (234)<sub>8</sub> को दशमलव में बदलें</h3><p>2×8² + 3×8¹ + 4×8⁰ = 128+24+4 = <b class="ans">156</b>।</p>
+<h3>मध्यम 2: (1101101)<sub>2</sub> को ऑक्टल में बदलें</h3><p>दाएँ से 3-3 के समूह: 001 | 101 | 101 → 1, 5, 5 ⇒ <b class="ans">(155)<sub>8</sub></b>। जाँच: 64+40+5 = 109 ✓।</p>
+<h3>कठिन 1: (2AF)<sub>16</sub> को दशमलव में बदलें</h3><p>2×16² + 10×16¹ + 15×16⁰ = 512+160+15 = <b class="ans">687</b>।</p>
+<h3>कठिन 2: (1101101)<sub>2</sub> को हेक्स में बदलें</h3><p>4-4 के समूह: 0110 | 1101 → 6, D ⇒ <b class="ans">(6D)<sub>16</sub></b> (=96+13=109 ✓)।</p>
+<h3>कठिन 3: (0.625)<sub>10</sub> को बाइनरी में बदलें</h3><p>भिन्न को 2 से गुणा: 0.625×2=1.25 → 1; 0.25×2=0.5 → 0; 0.5×2=1.0 → 1। नीचे की ओर पढ़ें: <b class="ans">(0.101)<sub>2</sub></b>।</p>
+<h2>8. लघु प्रश्नोत्तर (उत्तर देखने के लिए टैप करें)</h2>
+<details><summary>प्र1. संख्या पद्धति क्या है?</summary><p class="ans">अंकों/चिह्नों से संख्या दर्शाने की विधि।</p></details><details><summary>प्र2. बाइनरी का आधार?</summary><p class="ans">2</p></details><details><summary>प्र3. ऑक्टल में कौन-से अंक होते हैं?</summary><p class="ans">0 से 7</p></details><details><summary>प्र4. हेक्साडेसिमल के अंक?</summary><p class="ans">0–9 और A–F (16 चिह्न)।</p></details><details><summary>प्र5. बिट का पूरा नाम?</summary><p class="ans">Binary digit</p></details><details><summary>प्र6. 1 बाइट = कितने बिट?</summary><p class="ans">8 बिट</p></details><details><summary>प्र7. MSB क्या है?</summary><p class="ans">सबसे बायाँ (सबसे महत्वपूर्ण) बिट।</p></details><details><summary>प्र8. हेक्स F का दशमलव मान?</summary><p class="ans">15</p></details><details><summary>प्र9. दशमलव 8 का बाइनरी?</summary><p class="ans">1000</p></details><details><summary>प्र10. रेडिक्स क्या है?</summary><p class="ans">आधार (Base) का दूसरा नाम।</p></details>
+<h2>9. दीर्घ प्रश्नोत्तर</h2>
+<details><summary>प्र1. कंप्यूटर बाइनरी पद्धति क्यों उपयोग करता है?</summary><p>इलेक्ट्रॉनिक सर्किट की दो स्थितियाँ (ON/OFF) होती हैं जो 1 और 0 से दर्शाई जाती हैं। यह सरल, सस्ता, तेज़ और त्रुटि-रहित है।</p></details>
+<details><summary>प्र2. दशमलव से बाइनरी में बदलने के चरण लिखिए।</summary><p>(1) संख्या को 2 से भाग दें। (2) शेषफल लिखें। (3) भागफल को फिर 2 से भाग दें। (4) भागफल 0 होने तक दोहराएँ। (5) शेषफल नीचे से ऊपर पढ़ें।</p></details>
+<details><summary>प्र3. बिट, निबल और बाइट में अंतर बताइए।</summary><p>बिट = एक बाइनरी अंक (0/1)। निबल = 4 बिट। बाइट = 8 बिट (एक अक्षर संग्रह करता है)।</p></details>
+<h2>10. बहुविकल्पीय प्रश्न (MCQ)</h2>
+<details><summary>प्र1. हेक्साडेसिमल का आधार है</summary><p>a) 8 b) 10 c) 16 d) 2</p><p class="ans">उत्तर: c) 16</p></details><details><summary>प्र2. (101)₂ का दशमलव मान</summary><p>a) 3 b) 5 c) 7 d) 9</p><p class="ans">उत्तर: b) 5</p></details><details><summary>प्र3. ऑक्टल में कौन-सा अंक नहीं होता?</summary><p>a) 7 b) 0 c) 8 d) 5</p><p class="ans">उत्तर: c) 8</p></details><details><summary>प्र4. हेक्स 'B' बराबर है</summary><p>a) 10 b) 11 c) 12 d) 13</p><p class="ans">उत्तर: b) 11</p></details><details><summary>प्र5. 4 बिट मिलकर बनाते हैं</summary><p>a) बाइट b) वर्ड c) निबल d) बिट</p><p class="ans">उत्तर: c) निबल</p></details><details><summary>प्र6. (10)₁₀ का बाइनरी</summary><p>a) 1010 b) 1001 c) 1100 d) 1000</p><p class="ans">उत्तर: a) 1010</p></details>
+<div class="box"><b>नोट:</b> यह शुरुआती सेट है (लगभग 20 प्रश्नोत्तर और 7 उदाहरण)। "भाग 2" बोलें तो मैं और प्रश्न, कठिन न्यूमेरिकल और एनिमेटेड चित्र जोड़ दूँगा।</div>
+</main></body></html>
