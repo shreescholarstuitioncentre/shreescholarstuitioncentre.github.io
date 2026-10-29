@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>गृह-परिचर्या और गृह-परिचारिका - कक्षा 9 गृह विज्ञान नोट्स</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#e9e4d4;font-family:'Kalam','Caveat','Comic Sans MS',cursive;color:#1b2a6b;font-size:21px}
+.top{background:#1b2a6b;color:#fff;padding:6px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;box-shadow:0 2px 6px #0004}
+.top b{font-size:1.1em}.top button{font-family:inherit;font-size:.9em;border:2px solid #fff;background:#fff2;color:#fff;border-radius:8px;padding:2px 10px;cursor:pointer}
+.top .sp{flex:1}
+nav{background:#fffbe6;border:2px dashed #b08900;border-radius:12px;margin:14px auto;max-width:980px;padding:10px 16px}
+nav a{display:inline-block;margin:2px 8px 2px 0;color:#b71c1c;text-decoration:none;border-bottom:2px wavy #e57373}
+.page{max-width:980px;margin:14px auto 40px;background:#fffef7;padding:20px 26px 40px 70px;position:relative;box-shadow:0 4px 18px #0003;border-radius:6px;
+background-image:repeating-linear-gradient(transparent,transparent 33px,#bcd3ea 33px,#bcd3ea 34px);background-position:0 8px}
+.page:before{content:"";position:absolute;left:52px;top:0;bottom:0;width:4px;border-left:2px solid #e57373;border-right:2px solid #e57373}
+.page:after{content:"";position:absolute;left:12px;top:40px;bottom:40px;width:18px;background:radial-gradient(circle,#888 0 6px,transparent 7px) 0 0/18px 120px repeat-y}
+h1{font-size:2em;text-align:center;color:#0d1b8c;margin:6px 0;line-height:1.3}
+.sub{text-align:center;color:#555;margin-bottom:10px}
+h2{font-size:1.5em;color:#fff;background:#3949ab;display:inline-block;padding:0 16px;border-radius:4px 20px 20px 4px;margin:30px 0 8px;line-height:1.6;transform:rotate(-.6deg);box-shadow:3px 3px 0 #1a237e55}
+h3{font-size:1.2em;color:#b71c1c;margin:16px 0 0;line-height:1.7;border-bottom:2px solid #ef9a9a;display:inline-block}
+p,li{line-height:34px;margin:0}
+ul,ol{margin:0 0 0 4px;padding-left:26px}
+li::marker{color:#e65100;font-weight:bold}
+.hl{background:linear-gradient(transparent 52%,#fff176 52%)}
+.red{color:#c62828;font-weight:bold}.grn{color:#2e7d32;font-weight:bold}
+.box{border:2.5px dashed #5c6bc0;border-radius:14px;padding:6px 16px 8px;margin:14px 0;background:#e8eaf666}
+.box.imp{border-color:#d32f2f;background:#ffebee88}.box.tip{border-color:#2e7d32;background:#e8f5e988}.box.def{border-color:#f9a825;background:#fff8e1aa}
+.box .t{font-weight:bold;display:block;color:#b71c1c}
+table{border-collapse:collapse;width:100%;margin:12px 0;background:#fffde7cc}
+th,td{border:2px solid #5c6bc0;padding:2px 10px;line-height:30px;vertical-align:top;text-align:left}
+th{background:#c5cae9}
+figure{margin:20px 0;border:3px solid #5c6bc0;border-radius:12px;background:#fff;padding:8px;text-align:center;position:relative}
+figure svg{width:100%;height:auto;max-height:520px}
+figcaption{font-weight:bold;color:#0d1b8c;line-height:28px;margin-top:4px}
+figure button{position:absolute;right:8px;top:8px;font-family:inherit;border:2px solid #3949ab;background:#e8eaf6;border-radius:8px;cursor:pointer;color:#1a237e}
+.fade{opacity:0;animation:fi .9s ease forwards}
+@keyframes fi{to{opacity:1}}
+.draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:dr 3.2s ease forwards}
+@keyframes dr{to{stroke-dashoffset:0}}
+.lt{font:15px Kalam,'Caveat',cursive;fill:#1a237e;font-weight:700}.ct{font:16px Kalam,'Caveat',cursive;fill:#2e7d32;font-weight:700}
+.cap{font:16px Kalam,'Caveat',cursive;fill:#b71c1c;font-weight:700}.sm{font:12px Kalam,'Caveat',sans-serif;fill:#333}.nt{font:14px Kalam,'Caveat',cursive;fill:#1a237e;font-weight:700}
+.lead{stroke:#c0392b;stroke-width:1.5}.dot{fill:#c0392b}.wall{fill:#fffdf5;stroke:#333;stroke-width:5}.win{fill:#81d4fa;stroke:#0277bd;stroke-width:2}
+.flow{stroke:#f9a825;stroke-width:3;stroke-dasharray:6 6;animation:fl 1s linear infinite}@keyframes fl{to{stroke-dashoffset:-24}}
+.item{fill:#fff;stroke:#333;stroke-width:2}.pillow{fill:#e3f2fd;stroke:#333;stroke-width:2}.sheet{fill:#bbdefb88;stroke:#333}.lamp{fill:#fff59d;stroke:#f9a825;stroke-width:2}
+.gap{stroke:#fffef7;stroke-width:7}.swing{fill:none;stroke:#777;stroke-dasharray:4 4;stroke-width:1.5}
+.glass{fill:#f1f8ff;stroke:#37474f;stroke-width:3}.pinch{fill:#37474f;stroke:#37474f;stroke-width:2}.frame{fill:#6d4c41}.lay{stroke:#333;stroke-width:1.5}
+.skin{fill:#f6c9a2;stroke:#8d5524;stroke-width:2}.finger{animation:tap 1s ease-in-out infinite}@keyframes tap{50%{transform:translateY(5px)}}
+.artery{stroke:#d32f2f;stroke-width:3;stroke-dasharray:8 6;animation:fl 1.2s linear infinite}.beat{fill:#d32f2f;animation:bt 1s ease-in-out infinite;transform-origin:326px 160px}
+@keyframes bt{50%{transform:scale(1.9);opacity:.45}}.wave{fill:none;stroke:#d32f2f;stroke-width:3}
+.cover{fill:#fff3e0;stroke:#ef6c00;stroke-width:2;stroke-dasharray:7 5}.rubber{fill:#e57373;stroke:#7f0000;stroke-width:2.5}.rib{stroke:#b71c1c;stroke-width:2;opacity:.5}
+.water{fill:#4fc3f7aa}.steam{fill:none;stroke:#78909c;stroke-width:3;stroke-linecap:round;animation:st 2.4s ease-in-out infinite;opacity:.0}@keyframes st{0%{opacity:0;transform:translateY(12px)}50%{opacity:.9}100%{opacity:0;transform:translateY(-14px)}}
+.towel{fill:#c5cae9aa;stroke:#3949ab;stroke-width:2.5}.branch{stroke:#3949ab;stroke-width:3}.node{fill:#fff8e1;stroke:#f9a825;stroke-width:3}.core{fill:#c8e6c9;stroke:#2e7d32;stroke-width:4}
+.grid{stroke:#cfd8dc;stroke-width:1}.norm{stroke:#2e7d32;stroke-width:2;stroke-dasharray:8 6}.line{fill:none;stroke:#d32f2f;stroke-width:4}
+.lvl{display:inline-block;border-radius:12px;padding:0 12px;color:#fff;font-weight:bold;margin-right:6px}.easy{background:#2e7d32}.med{background:#ef6c00}.hard{background:#c62828}
+.ex{border:2.5px solid #5c6bc0;border-radius:14px;margin:16px 0;padding:8px 16px 10px;background:#ffffffcc}.ex .l{display:block;margin-top:4px}.ex ol{margin-top:2px}
+.qa{margin:12px 0;border-left:5px solid #e57373;padding-left:12px}.q{font-weight:bold;color:#0d1b8c;counter-increment:qn;line-height:32px}.q:before{content:"Q" counter(qn) ". ";color:#c62828}
+.a{color:#1b5e20;line-height:32px;margin-top:2px}.lab{background:#c8e6c9;border-radius:6px;padding:0 8px;margin-right:6px;font-weight:bold}
+.sec{counter-reset:qn}.opts{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;margin:2px 0 2px 20px}.opts span{line-height:30px}
+.ans{color:#1b5e20;margin-left:20px;line-height:30px}.hideans .a,.hideans .ans{display:none}
+.mcq .q:before{content:"MCQ " counter(qn) ". "}
+.foot{text-align:center;color:#666;margin-top:30px}
+@media(max-width:700px){.page{padding:14px 12px 30px 40px}.page:before{left:30px}.page:after{display:none}.opts{grid-template-columns:1fr}h1{font-size:1.5em}}
+@media print{.top,nav,figure button{display:none}body{background:#fff}.page{box-shadow:none;margin:0}.fade,.draw{opacity:1;animation:none;stroke-dashoffset:0}}
+</style></head><body>
+<div class="top"><b>📒 गृह-परिचर्या और गृह-परिचारिका - कक्षा 9 गृह विज्ञान नोट्स</b><span class="sp"></span><button onclick="document.body.classList.toggle('hideans')">उत्तर छिपाएँ/दिखाएँ</button></div>
+<div class="page">
+<h1>गृह-परिचर्या और गृह-परिचारिका</h1>
+<p class="sub">कक्षा 9 • गृह विज्ञान • अध्याय 19 • UP Board पाठ्यक्रम के अनुसार • विस्तृत हाथ से लिखे जैसे नोट्स</p>
+<div class="box def"><span class="t">📌 पुस्तक-संदर्भ पर टिप्पणी</span>ये नोट्स UP Board कक्षा 9 के पाठ्यक्रम और अवतार, राजीव, विद्या, सुमित्रा अरोड़ा आदि पुस्तकों में पूछे जाने वाले प्रश्न-प्रकारों के अनुरूप स्वयं तैयार किए गए हैं (किसी पुस्तक की नक़ल नहीं)। परीक्षा से पहले अपनी पाठ्यपुस्तक से मिलान ज़रूर कर लें।</div>
+
+<nav><b>📑 विषय-सूची:</b>
+<a href="#s1">1.परिचय</a><a href="#s2">2.आवश्यकता व महत्व</a><a href="#s3">3.गृह-परिचारिका</a><a href="#s4">4.रोगी का कमरा</a><a href="#s5">5.पलंग व बिस्तर</a><a href="#s6">6.रोगी की स्थिति व शय्या-व्रण</a><a href="#s7">7.रोगी का आहार</a><a href="#s8">8.तापमान-नाड़ी-श्वसन</a><a href="#s9">9.दवा देना</a><a href="#s10">10.सेंक, ठंडक, भाप</a><a href="#s11">11.स्वच्छता व स्पंज स्नान</a><a href="#s12">12.संक्रमण से बचाव</a><a href="#s13">13.रिकॉर्ड व आपात स्थिति</a><a href="#s14">14.परिचारिका की किट</a><a href="#s15">15.सारांश व ट्रिक्स</a><a href="#s16">16.हल किए उदाहरण</a><a href="#s17">17.प्रश्नोत्तर (100+)</a></nav>
+
+<h2 id="s1">1. परिचय</h2>
+<div class="box def"><span class="t">परिभाषा</span><b>गृह-परिचर्या</b> = रोगी की देखभाल उसके अपने <span class="hl">घर पर ही</span> डॉक्टर के निर्देश के अनुसार करना, ताकि वह शीघ्र स्वस्थ हो जाए।<br><b>गृह-परिचारिका</b> = वह महिला/सदस्य जो घर में रोगी की सेवा-देखभाल करती है। (अकसर घर की गृहिणी, माँ, बहन या बेटी।)</div>
+<p>जब कोई सदस्य बीमार होता है तो उसे औषधि के साथ-साथ <span class="red">सही देखभाल</span> की भी ज़रूरत होती है। अच्छी परिचर्या से रोग जल्दी ठीक होता है, कष्ट घटता है और रोग दूसरों में नहीं फैलता।</p>
+<p>परिचर्या के तीन मुख्य भाग: <b>(1)</b> रोगी का शारीरिक आराम, <b>(2)</b> डॉक्टर के निर्देशानुसार दवा-पथ्य, <b>(3)</b> रोगी का मानसिक सुख व सहानुभूति।</p>
+<div class="box tip"><span class="t">याद रखें</span>गृह-परिचर्या डॉक्टर का <u>विकल्प नहीं</u>, उसकी <u>सहायक</u> है। गंभीर रोग में तुरंत डॉक्टर/अस्पताल।</div>
+
+<h2 id="s2">2. गृह-परिचर्या की आवश्यकता व महत्व</h2>
+<ul>
+<li>सभी परिवार अस्पताल का ख़र्च नहीं उठा सकते; साधारण रोग घर पर ठीक हो जाते हैं।</li>
+<li>अस्पताल से छुट्टी के बाद <b>स्वास्थ्य-लाभ (convalescence)</b> की अवस्था में घर पर देखभाल चाहिए।</li>
+<li>बुज़ुर्गों, गर्भवती महिलाओं, छोटे बच्चों व लंबे रोगों (मधुमेह, दमा, बी.पी.) में रोज़ की देखभाल घर में ही होती है।</li>
+<li>अपने लोगों के बीच रोगी का <span class="hl">मनोबल</span> ऊँचा रहता है, वह जल्दी स्वस्थ होता है।</li>
+<li>अस्पताल में भीड़ से हुए संक्रमण का ख़तरा कम; घर में पथ्य-आहार अपनी पसंद-अनुसार बनता है।</li>
+<li>आपात्काल में, डॉक्टर के आने तक, प्राथमिक देखभाल से जान बचाई जा सकती है।</li>
+<li>समय, धन और यात्रा की बचत; परिवार में सेवा-भाव व प्रेम बढ़ता है।</li>
+</ul>
+<table><tr><th>गृह-परिचारिका</th><th>अस्पताल की नर्स</th></tr>
+<tr><td>अपने परिवार की सदस्य; भावनात्मक लगाव</td><td>प्रशिक्षित वेतनभोगी कर्मचारी</td></tr>
+<tr><td>सीमित साधनों में देखभाल (घरेलू चीज़ें)</td><td>आधुनिक उपकरण व साधन उपलब्ध</td></tr>
+<tr><td>एक या दो रोगी</td><td>कई रोगी एक साथ</td></tr>
+<tr><td>साधारण प्रशिक्षण/अनुभव</td><td>विधिवत डिप्लोमा/डिग्री</td></tr></table>
+
+<h2 id="s3">3. गृह-परिचारिका</h2>
+<figure><button onclick="rep(this)">↻ फिर चलाएँ</button><div class="fg"><svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="350" y1="200" x2="350" y2="60" class="branch draw" style="animation-delay:0.0s"/><line x1="350" y1="200" x2="570" y2="135" class="branch draw" style="animation-delay:0.5s"/><line x1="350" y1="200" x2="570" y2="275" class="branch draw" style="animation-delay:1.0s"/><line x1="350" y1="200" x2="350" y2="345" class="branch draw" style="animation-delay:1.5s"/><line x1="350" y1="200" x2="130" y2="275" class="branch draw" style="animation-delay:2.0s"/><line x1="350" y1="200" x2="130" y2="135" class="branch draw" style="animation-delay:2.5s"/><g class="fade" style="animation-delay:0.6s"><ellipse cx="350" cy="60" rx="112" ry="30" class="node"/><text x="350" y="65" text-anchor="middle" class="nt">शारीरिक: स्वस्थ, फुर्तीली, स्वच्छ</text></g><g class="fade" style="animation-delay:1.1s"><ellipse cx="570" cy="135" rx="112" ry="30" class="node"/><text x="570" y="140" text-anchor="middle" class="nt">मानसिक: धैर्य, सहानुभूति</text></g><g class="fade" style="animation-delay:1.6s"><ellipse cx="570" cy="275" rx="112" ry="30" class="node"/><text x="570" y="280" text-anchor="middle" class="nt">नैतिक: ईमानदार, गोपनीयता</text></g><g class="fade" style="animation-delay:2.1s"><ellipse cx="350" cy="345" rx="112" ry="30" class="node"/><text x="350" y="350" text-anchor="middle" class="nt">कुशलता: प्रशिक्षण व ज्ञान</text></g><g class="fade" style="animation-delay:2.6s"><ellipse cx="130" cy="275" rx="112" ry="30" class="node"/><text x="130" y="280" text-anchor="middle" class="nt">अनुशासन: डॉक्टर के निर्देश</text></g><g class="fade" style="animation-delay:3.1s"><ellipse cx="130" cy="135" rx="112" ry="30" class="node"/><text x="130" y="140" text-anchor="middle" class="nt">व्यवहार: हँसमुख, शांत</text></g><g class="fade" style="animation-delay:.2s"><circle cx="350" cy="200" r="52" class="core"/><text x="350" y="195" text-anchor="middle" class="nt">आदर्श</text><text x="350" y="214" text-anchor="middle" class="nt">गृह-परिचारिका</text></g></svg></div><figcaption>चित्र 7: आदर्श गृह-परिचारिका के गुण</figcaption></figure>
+<h3>(क) आदर्श गृह-परिचारिका के गुण</h3>
+<ol>
+<li><b>शारीरिक गुण:</b> स्वस्थ, मज़बूत, फुर्तीली; आँख-कान ठीक; हाथ कोमल; चाल हल्की (धीमे पाँव); साफ़-सुथरी, छोटे कटे नाखून; सादे, धुले कपड़े।</li>
+<li><b>मानसिक गुण:</b> धैर्य, सहनशीलता, सहानुभूति, शांत स्वभाव, तेज़ स्मरणशक्ति, अच्छी निरीक्षण-शक्ति, उचित निर्णय लेने की क्षमता, हँसमुख चेहरा।</li>
+<li><b>नैतिक गुण:</b> ईमानदारी, विश्वसनीयता, रोगी के रहस्यों की <span class="hl">गोपनीयता</span>, सेवा-भावना, निःस्वार्थता, समय की पाबंदी।</li>
+<li><b>व्यावसायिक गुण:</b> परिचर्या का ज्ञान व अभ्यास (तापमान, नाड़ी, पट्टी, दवा), रोग-निरोध, प्राथमिक उपचार, आहार-ज्ञान।</li>
+<li><b>अनुशासन:</b> डॉक्टर की हर आज्ञा का सही पालन; अपनी मर्ज़ी से दवा न बदलना।</li>
+</ol>
+<h3>(ख) गृह-परिचारिका के कर्तव्य</h3>
+<ul>
+<li>रोगी का कमरा साफ़, हवादार व शांत रखना; पलंग-बिस्तर ठीक करना।</li>
+<li>डॉक्टर के निर्देशानुसार <b>समय पर सही मात्रा में दवा</b> देना।</li>
+<li>पथ्य-आहार बनाना, खिलाना; पानी की मात्रा का ध्यान।</li>
+<li>तापमान, नाड़ी, श्वसन, मल-मूत्र, नींद आदि का <b>चार्ट</b> बनाना।</li>
+<li>रोगी की सफ़ाई: मुँह, बाल, नाखून, कपड़े, स्पंज स्नान।</li>
+<li>संक्रमण से बचाव: हाथ धोना, बर्तन-कपड़े अलग/उबालना, मल-मूत्र का सही निपटान।</li>
+<li>रोगी का मन बहलाना; आगंतुकों को सीमित करना; बुरी ख़बर न सुनाना।</li>
+<li>असामान्य लक्षण (बेहोशी, तेज़ बुखार, साँस की तकलीफ़) पर तुरंत डॉक्टर को बुलाना।</li>
+<li>अपने स्वास्थ्य की रक्षा: पर्याप्त आराम, पौष्टिक भोजन, हाथ धोना।</li>
+</ul>
+
+<h2 id="s4">4. रोगी का कमरा</h2>
+<figure><button onclick="rep(this)">↻ फिर चलाएँ</button><div class="fg"><svg viewBox="0 0 760 410" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="170" y="70" width="400" height="280" class="wall draw"/><rect x="300" y="64" width="100" height="12" class="win"/><line x1="320" y1="84" x2="320" y2="128" class="flow"/><line x1="350" y1="84" x2="350" y2="128" class="flow"/><line x1="380" y1="84" x2="380" y2="128" class="flow"/><g class="fade" style="animation-delay:.6s"><rect x="210" y="130" width="110" height="170" rx="6" class="item"/><rect x="222" y="138" width="86" height="30" rx="8" class="pillow"/><rect x="214" y="175" width="102" height="120" rx="4" class="sheet"/><rect x="335" y="140" width="40" height="40" class="item"/><circle cx="355" cy="160" r="9" class="lamp"/><rect x="340" y="255" width="40" height="40" rx="5" class="item"/><rect x="490" y="76" width="75" height="75" class="item"/><circle cx="527" cy="113" r="14" class="item"/><circle cx="530" cy="325" r="13" class="item"/><text x="530" y="330" text-anchor="middle" class="sm">U</text></g><line x1="570" y1="250" x2="570" y2="310" class="gap"/><path d="M510,250 A60,60 0 0 0 570,310" class="swing"/><line x1="570" y1="250" x2="510" y2="250" class="item"/><g class="fade" style="animation-delay:1s"><line x1="260" y1="70" x2="350" y2="38" class="lead"/><circle cx="260" cy="70" r="3.5" class="dot"/><text x="350" y="33" text-anchor="middle" class="lt">खिड़की - हवा व रोशनी</text></g><g class="fade" style="animation-delay:1.4s"><line x1="215" y1="215" x2="160" y2="215" class="lead"/><circle cx="215" cy="215" r="3.5" class="dot"/><text x="160" y="210" text-anchor="end" class="lt">रोगी का पलंग</text></g><g class="fade" style="animation-delay:1.7s"><line x1="222" y1="150" x2="160" y2="150" class="lead"/><circle cx="222" cy="150" r="3.5" class="dot"/><text x="160" y="145" text-anchor="end" class="lt">तकिया</text></g><g class="fade" style="animation-delay:2s"><line x1="375" y1="165" x2="590" y2="190" class="lead"/><circle cx="375" cy="165" r="3.5" class="dot"/><text x="590" y="185" text-anchor="start" class="lt">साइड टेबल + दवा</text></g><g class="fade" style="animation-delay:2.3s"><line x1="380" y1="270" x2="590" y2="235" class="lead"/><circle cx="380" cy="270" r="3.5" class="dot"/><text x="590" y="230" text-anchor="start" class="lt">परिचारिका की कुर्सी</text></g><g class="fade" style="animation-delay:2.6s"><line x1="570" y1="285" x2="590" y2="292" class="lead"/><circle cx="570" cy="285" r="3.5" class="dot"/><text x="590" y="287" text-anchor="start" class="lt">दरवाज़ा</text></g><g class="fade" style="animation-delay:2.9s"><line x1="543" y1="325" x2="590" y2="340" class="lead"/><circle cx="543" cy="325" r="3.5" class="dot"/><text x="590" y="335" text-anchor="start" class="lt">ढक्कन वाला कूड़ेदान</text></g><g class="fade" style="animation-delay:3.2s"><line x1="565" y1="110" x2="590" y2="118" class="lead"/><circle cx="565" cy="110" r="3.5" class="dot"/><text x="590" y="113" text-anchor="start" class="lt">संलग्न शौचालय</text></g><text x="370" y="392" text-anchor="middle" class="cap fade" style="animation-delay:3.5s">शांत, हवादार, रोशन और साफ़ कमरा</text></svg></div><figcaption>चित्र 1: आदर्श रोगी-कक्ष (ऊपर से दृश्य)</figcaption></figure>
+<h3>कमरे की विशेषताएँ</h3>
+<table><tr><th>बिंदु</th><th>कैसा हो और क्यों</th></tr>
+<tr><td>स्थान</td><td>घर का शांत भाग; शोर, रसोई की गंध व धुएँ से दूर; शौचालय पास में।</td></tr>
+<tr><td>हवा (संवातन)</td><td>खिड़कियाँ/रोशनदान; ताज़ी हवा बहे पर रोगी पर <u>सीधा झोंका</u> न लगे।</td></tr>
+<tr><td>प्रकाश</td><td>पर्याप्त धूप-रोशनी (कीटाणु मरते हैं); आँखों पर सीधी तेज़ रोशनी नहीं; रात में धीमी लैम्प।</td></tr>
+<tr><td>तापमान</td><td>न बहुत ठंडा न गर्म; मौसमानुसार पंखा/हीटर, रोगी को आराम मिले।</td></tr>
+<tr><td>दीवार-फ़र्श</td><td>हल्के रंग की दीवार; चिकना फ़र्श जो धोया-पोंछा जा सके; गीले कपड़े से सफ़ाई (धूल न उड़े)।</td></tr>
+<tr><td>फ़र्नीचर</td><td>कम: पलंग, मेज़, कुर्सी, अलमारी, ढक्कनदार कूड़ेदान। अनावश्यक सामान, भारी पर्दे, क़ालीन हटाएँ।</td></tr>
+<tr><td>शांति</td><td>तेज़ आवाज़, भीड़, बहस नहीं। चप्पल की आवाज़, बर्तन की खनक कम।</td></tr>
+<tr><td>सजावट</td><td>साफ़-सुथरी; चित्र/फूलदान (रात में ताज़े फूल नहीं); मन को प्रसन्न रखे।</td></tr>
+<tr><td>सुविधा</td><td>पीने का पानी, गिलास, घंटी, टॉर्च, बेडपैन, तौलिया पास में।</td></tr></table>
+<div class="box imp"><span class="t">⚠ क्यों गीले कपड़े से सफ़ाई?</span>सूखे झाड़न से धूल हवा में उड़कर साँस/घाव में जाकर संक्रमण फैलाती है।</div>
+
+<h2 id="s5">5. रोगी का पलंग व बिस्तर लगाना</h2>
+<h3>आदर्श पलंग</h3>
+<ul>
+<li>लोहे/लकड़ी का, मध्यम ऊँचाई का (परिचारिका को झुकना न पड़े), चौड़ाई लगभग 3 फुट, लंबाई लगभग 6 फुट; दोनों ओर से पहुँच।</li>
+<li>गद्दा समतल, न बहुत नरम, न बहुत कठोर; धुलने/धूप दिखाने योग्य।</li>
+<li>चादरें सूती, सफ़ेद, बिना सिलवट; तकिये 2-3 (पीठ टेकने के लिए भी)।</li>
+<li>पलंग दीवार से कुछ हटकर, खिड़की की सीधी हवा से बचा हुआ।</li>
+</ul>
+<figure><button onclick="rep(this)">↻ फिर चलाएँ</button><div class="fg"><svg viewBox="0 150 760 242" xmlns="http://www.w3.org/2000/svg" role="img"><g class="fade"><rect x="90" y="300" width="14" height="48" class="frame"/><rect x="496" y="300" width="14" height="48" class="frame"/><rect x="90" y="296" width="420" height="8" class="frame"/></g><rect x="100" y="260" width="400" height="36" rx="2" fill="#c5d6a8" class="lay fade" style="animation-delay:0.6s"/><rect x="100" y="252" width="400" height="8" rx="2" fill="#4a90a4" class="lay fade" style="animation-delay:1.4s"/><rect x="100" y="244" width="400" height="8" rx="2" fill="#ffffff" class="lay fade" style="animation-delay:2.2s"/><rect x="210" y="236" width="180" height="8" rx="2" fill="#ffe0b2" class="lay fade" style="animation-delay:3.0s"/><rect x="100" y="224" width="400" height="12" rx="2" fill="#ffffff" class="lay fade" style="animation-delay:3.8s"/><rect x="100" y="206" width="400" height="18" rx="2" fill="#ef9a9a" class="lay fade" style="animation-delay:4.6s"/><ellipse cx="140" cy="232" rx="42" ry="17" class="pillow fade" style="animation-delay:5.4s"/><g class="fade" style="animation-delay:5.4s"><line x1="130" y1="225" x2="30" y2="190" class="lead"/><circle cx="130" cy="225" r="3.5" class="dot"/><text x="30" y="185" text-anchor="start" class="lt">तकिया</text></g><g class="fade" style="animation-delay:4.6s"><line x1="480" y1="214" x2="530" y2="178" class="lead"/><circle cx="480" cy="214" r="3.5" class="dot"/><text x="530" y="173" text-anchor="start" class="lt">कंबल / रज़ाई</text></g><g class="fade" style="animation-delay:3.8s"><line x1="500" y1="230" x2="530" y2="212" class="lead"/><circle cx="500" cy="230" r="3.5" class="dot"/><text x="530" y="207" text-anchor="start" class="lt">ऊपर की चादर</text></g><g class="fade" style="animation-delay:3.0s"><line x1="380" y1="240" x2="530" y2="246" class="lead"/><circle cx="380" cy="240" r="3.5" class="dot"/><text x="530" y="241" text-anchor="start" class="lt">ड्रॉ-शीट (बीच में)</text></g><g class="fade" style="animation-delay:2.2s"><line x1="500" y1="248" x2="530" y2="282" class="lead"/><circle cx="500" cy="248" r="3.5" class="dot"/><text x="530" y="277" text-anchor="start" class="lt">नीचे की चादर</text></g><g class="fade" style="animation-delay:1.4s"><line x1="500" y1="256" x2="530" y2="318" class="lead"/><circle cx="500" cy="256" r="3.5" class="dot"/><text x="530" y="313" text-anchor="start" class="lt">मैकिन्तोश (रबर की चादर)</text></g><g class="fade" style="animation-delay:0.6s"><line x1="500" y1="280" x2="530" y2="352" class="lead"/><circle cx="500" cy="280" r="3.5" class="dot"/><text x="530" y="347" text-anchor="start" class="lt">गद्दा</text></g><text x="300" y="378" text-anchor="middle" class="cap fade" style="animation-delay:5.8s">नीचे से ऊपर परतें बिछाने का क्रम</text></svg></div><figcaption>चित्र 3: रोगी के पलंग की परतें</figcaption></figure>
+<h3>बिस्तर की परतें (नीचे से ऊपर)</h3>
+<ol><li><b>गद्दा</b></li><li><b>मैकिन्तोश (रबर/प्लास्टिक की चादर)</b> - गद्दे को भीगने/गंदा होने से बचाती है।</li><li><b>नीचे की चादर</b> - चारों कोने मोड़कर (मिटर्ड कॉर्नर) कसकर दबाएँ।</li><li><b>ड्रॉ-शीट (खींचने वाली चादर)</b> - रोगी के कंधे से घुटने तक बीच में, छोटी चादर; गंदी होने पर आसानी से बदल जाती है।</li><li><b>ऊपर की चादर</b> व <b>कंबल/रज़ाई</b></li><li><b>तकिया</b> (खुली ओर बाहर की ओर)</li></ol>
+<h3>पलंग बिछाने के प्रकार</h3>
+<table><tr><th>प्रकार</th><th>कब/कैसे</th></tr>
+<tr><td><b>1. खाली (तैयार/बंद) पलंग</b></td><td>रोगी के आने से पहले; सभी परतें लगाकर ऊपर की चादर-कंबल पूरे पलंग पर सीधे ढके; धूल से बचाव हेतु ऊपर चादर।</td></tr>
+<tr><td><b>2. खुला पलंग</b></td><td>रोगी आने वाला हो; ऊपर की चादर-कंबल पैताने की ओर तह करके मोड़ देते हैं ताकि रोगी तुरंत लेट सके।</td></tr>
+<tr><td><b>3. रोगी सहित पलंग (occupied bed)</b></td><td>रोगी लेटा हो और चादर बदलनी हो; रोगी को हिलाए बिना करवट दिलाकर बारी-बारी से आधा-आधा बदलते हैं।</td></tr></table>
+<h3>रोगी के लेटे रहते चादर बदलने के चरण</h3>
+<ol>
+<li>सब सामान (साफ़ चादर, ड्रॉ-शीट, तकिये के खोल, तौलिया, कपड़े की टोकरी) पास रखें; रोगी को बताएँ।</li>
+<li>ऊपर की चादर छोड़कर कंबल ढककर रखें; रोगी को एक करवट कराएँ और तकिया सहारे में लगाएँ।</li>
+<li>गंदी नीचे की चादर को बीच तक लपेटकर रोगी की पीठ के पास कर दें; साफ़ चादर आधी बिछाकर बाकी आधी <span class="hl">लपेटकर</span> पास में रखें।</li>
+<li>रोगी को साफ़ हिस्से पर लिटाकर दूसरी करवट कराएँ; गंदी चादर निकालें, साफ़ चादर खींचकर कसकर लगाएँ।</li>
+<li>मैकिन्तोश व ड्रॉ-शीट इसी तरह बदलें; रोगी को सीधा करें; ऊपर की साफ़ चादर डालकर गंदी चादर ख़ींच लें।</li>
+<li>तकिये के खोल बदलें; रोगी को आराम की स्थिति में लिटाएँ। गंदी चादर बंद टोकरी में डालें (हवा में न झाड़ें)।</li>
+</ol>
+<div class="box tip"><span class="t">ध्यान रखें</span>चादर में सलवट, ब्रेड-क्रंब, बटन, मोटी सिलाई न हो - इनसे पीठ में घाव (शय्या-व्रण) बन सकता है। चादर कभी हवा में न झटकें।</div>
+
+<h2 id="s6">6. रोगी की स्थिति व शय्या-व्रण (Bed Sore)</h2>
+<h3>रोगी को लिटाने/बैठाने की स्थितियाँ</h3>
+<table><tr><th>स्थिति</th><th>उपयोग</th></tr>
+<tr><td>पीठ के बल (चित्त)</td><td>आम आराम, परीक्षण के लिए; सिर के नीचे पतला तकिया।</td></tr>
+<tr><td>करवट</td><td>पीठ के घाव से बचाव; उल्टी/बेहोशी में साँस की नली बचाने हेतु।</td></tr>
+<tr><td>अर्ध-बैठी (फाउलर)</td><td>साँस की तकलीफ़, दमा, हृदय रोग; पीठ के पीछे 2-3 तकिये।</td></tr>
+<tr><td>पेट के बल</td><td>पीठ की मालिश/घाव की ड्रेसिंग (डॉक्टर के निर्देश से)।</td></tr></table>
+<div class="box def"><span class="t">शय्या-व्रण (Bed Sore)</span>लंबे समय तक एक ही स्थिति में लेटे रोगी की हड्डी वाली जगहों (कमर के नीचे त्रिकास्थि, एड़ी, कोहनी, कंधे, सिर का पिछला भाग) की त्वचा पर दबाव से रक्त-संचार रुकने से बने <b>घाव/लाल निशान</b>।</div>
+<p><b>कारण:</b> लगातार दबाव, नमी, सलवटदार गंदी चादर, पौष्टिक आहार की कमी, त्वचा की गंदगी।</p>
+<p><b>बचाव:</b></p>
+<ul>
+<li>हर <span class="red">2 घंटे</span> में रोगी की करवट बदलें।</li>
+<li>दबाव वाली जगहों पर साबुन-पानी से सफ़ाई, सुखाकर स्प्रिट/पाउडर लगाकर हल्की मालिश।</li>
+<li>हवा वाला रिंग-तकिया/मुलायम पैडिंग; चादर सूखी, चिकनी, बिना सलवट।</li>
+<li>पौष्टिक आहार (प्रोटीन, विटामिन) व पर्याप्त पानी।</li>
+<li>घाव बन जाए तो डॉक्टर को दिखाएँ; घाव पर दबाव न डालें।</li>
+</ul>
+
+<h2 id="s7">7. रोगी का आहार (पथ्य)</h2>
+<div class="box def"><span class="t">पथ्य-आहार</span>रोगी की बीमारी, उम्र, पाचन-शक्ति व डॉक्टर की सलाह के अनुसार दिया जाने वाला <b>सुपाच्य, पौष्टिक व रुचिकर</b> भोजन।</div>
+<h3>आहार के प्रकार</h3>
+<table><tr><th>प्रकार</th><th>उदाहरण</th><th>कब</th></tr>
+<tr><td><b>तरल आहार</b></td><td>पानी, नारियल पानी, फलों का रस, दाल का पानी, छाछ, ORS, दूध, सूप</td><td>तेज़ बुखार, दस्त-उल्टी, ऑपरेशन के बाद आरंभ में</td></tr>
+<tr><td><b>अर्ध-तरल/मुलायम</b></td><td>दलिया, खिचड़ी, सूजी की खीर, मसले आलू-केला, दही-चावल, कस्टर्ड</td><td>बुखार उतरने पर, पाचन कमज़ोर हो तो</td></tr>
+<tr><td><b>हल्का ठोस</b></td><td>उबली सब्ज़ी, दाल-चावल, रोटी (नरम), पनीर</td><td>स्वास्थ्य-लाभ की अवस्था</td></tr>
+<tr><td><b>सामान्य/पूर्ण आहार</b></td><td>घर का पूरा संतुलित भोजन</td><td>पूर्ण स्वस्थ होने पर</td></tr></table>
+<h3>आहार देने के सिद्धांत</h3>
+<ol>
+<li>डॉक्टर की सलाह व रोग के अनुसार आहार।</li>
+<li>सुपाच्य, कम घी-मसाला-तला हुआ।</li>
+<li>थोड़ा-थोड़ा, <b>कई बार</b> (हर 2-3 घंटे); ज़बरदस्ती नहीं।</li>
+<li>ताज़ा, साफ़-सुथरा, गुनगुना/ताप-अनुसार गर्म परोसें।</li>
+<li>साफ़ बर्तन व ट्रे; कपड़ा/नैपकिन; सुंदर परोसना, भूख जगाए।</li>
+<li>रोगी की पसंद-नापसंद का ध्यान; एक ही चीज़ बार-बार नहीं।</li>
+<li>नियमित समय पर; आराम के समय या नींद में न जगाएँ।</li>
+<li>पर्याप्त उबला/छना हुआ पानी।</li>
+</ol>
+<h3>रोग अनुसार पथ्य</h3>
+<table><tr><th>रोग</th><th>पथ्य</th><th>अपथ्य</th></tr>
+<tr><td>बुखार</td><td>तरल, ग्लूकोज़, नींबू पानी</td><td>तला, भारी भोजन</td></tr>
+<tr><td>दस्त/हैज़ा</td><td>ORS, चावल का माँड़, दही-चावल</td><td>दूध (अधिक), कच्चा फल-सब्ज़ी</td></tr>
+<tr><td>पीलिया</td><td>गन्ने का रस, ग्लूकोज़, उबली सब्ज़ी</td><td>घी-तेल, तला</td></tr>
+<tr><td>मधुमेह</td><td>रेशेदार भोजन, करेला, हरी सब्ज़ी</td><td>चीनी, मिठाई</td></tr>
+<tr><td>उच्च रक्तचाप</td><td>कम नमक, फल-सब्ज़ी</td><td>अचार, नमकीन</td></tr>
+<tr><td>टाइफ़ाइड</td><td>तरल/मुलायम, ग्लूकोज़</td><td>रेशेदार, कठोर भोजन</td></tr></table>
+<h3>रोगी को खिलाने की विधि</h3>
+<ul>
+<li>हाथ धोएँ; रोगी का मुँह-हाथ पोंछें; सहारे से <span class="hl">बैठाएँ</span> (ठसका न लगे)।</li>
+<li>सीने पर नैपकिन; भोजन को छोटे चम्मच से धीरे-धीरे खिलाएँ, निगलने का समय दें।</li>
+<li>लेटे रोगी को <b>सिपर/नली वाला कप</b> से पानी-सूप दें।</li>
+<li>खाने के बाद मुँह धुलवाएँ, बर्तन तुरंत साफ़/उबालें; बचा भोजन रोगी के कमरे में न रखें।</li>
+</ul>
+
+<h2 id="s8">8. रोगी का निरीक्षण: तापमान, नाड़ी, श्वसन</h2>
+<p>रोग का हाल जानने के लिए तीन मुख्य जीवन-चिह्न (Vital signs): <b>तापमान, नाड़ी, श्वसन</b> (+ रक्तचाप)।</p>
+<h3>(अ) शारीरिक तापमान</h3>
+<figure><button onclick="rep(this)">↻ फिर चलाएँ</button><div class="fg"><svg viewBox="0 0 700 305" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="105" y="133" width="490" height="34" rx="17" class="glass"/><circle cx="90" cy="150" r="26" class="glass"/><circle cx="90" cy="150" r="20" fill="#d32f2f"/><rect x="100" y="145" width="0" height="10" fill="#d32f2f"><animate attributeName="width" from="0" to="213" dur="4s" fill="freeze"/></rect><line x1="200.0" y1="133" x2="200.0" y2="123" stroke="#333" stroke-width="1"/><text x="200.0" y="116" text-anchor="middle" class="sm">94</text><line x1="205.1" y1="133" x2="205.1" y2="128" stroke="#333" stroke-width="1"/><line x1="210.3" y1="133" x2="210.3" y2="128" stroke="#333" stroke-width="1"/><line x1="215.4" y1="133" x2="215.4" y2="128" stroke="#333" stroke-width="1"/><line x1="220.6" y1="133" x2="220.6" y2="128" stroke="#333" stroke-width="1"/><line x1="225.7" y1="133" x2="225.7" y2="123" stroke="#333" stroke-width="1"/><text x="225.7" y="116" text-anchor="middle" class="sm">95</text><line x1="230.9" y1="133" x2="230.9" y2="128" stroke="#333" stroke-width="1"/><line x1="236.0" y1="133" x2="236.0" y2="128" stroke="#333" stroke-width="1"/><line x1="241.1" y1="133" x2="241.1" y2="128" stroke="#333" stroke-width="1"/><line x1="246.3" y1="133" x2="246.3" y2="128" stroke="#333" stroke-width="1"/><line x1="251.4" y1="133" x2="251.4" y2="123" stroke="#333" stroke-width="1"/><text x="251.4" y="116" text-anchor="middle" class="sm">96</text><line x1="256.6" y1="133" x2="256.6" y2="128" stroke="#333" stroke-width="1"/><line x1="261.7" y1="133" x2="261.7" y2="128" stroke="#333" stroke-width="1"/><line x1="266.9" y1="133" x2="266.9" y2="128" stroke="#333" stroke-width="1"/><line x1="272.0" y1="133" x2="272.0" y2="128" stroke="#333" stroke-width="1"/><line x1="277.1" y1="133" x2="277.1" y2="123" stroke="#333" stroke-width="1"/><text x="277.1" y="116" text-anchor="middle" class="sm">97</text><line x1="282.3" y1="133" x2="282.3" y2="128" stroke="#333" stroke-width="1"/><line x1="287.4" y1="133" x2="287.4" y2="128" stroke="#333" stroke-width="1"/><line x1="292.6" y1="133" x2="292.6" y2="128" stroke="#333" stroke-width="1"/><line x1="297.7" y1="133" x2="297.7" y2="128" stroke="#333" stroke-width="1"/><line x1="302.9" y1="133" x2="302.9" y2="123" stroke="#333" stroke-width="1"/><text x="302.9" y="116" text-anchor="middle" class="sm">98</text><line x1="308.0" y1="133" x2="308.0" y2="128" stroke="#333" stroke-width="1"/><line x1="313.1" y1="133" x2="313.1" y2="128" stroke="#333" stroke-width="1"/><line x1="318.3" y1="133" x2="318.3" y2="128" stroke="#333" stroke-width="1"/><line x1="323.4" y1="133" x2="323.4" y2="128" stroke="#333" stroke-width="1"/><line x1="328.6" y1="133" x2="328.6" y2="123" stroke="#333" stroke-width="1"/><text x="328.6" y="116" text-anchor="middle" class="sm">99</text><line x1="333.7" y1="133" x2="333.7" y2="128" stroke="#333" stroke-width="1"/><line x1="338.9" y1="133" x2="338.9" y2="128" stroke="#333" stroke-width="1"/><line x1="344.0" y1="133" x2="344.0" y2="128" stroke="#333" stroke-width="1"/><line x1="349.1" y1="133" x2="349.1" y2="128" stroke="#333" stroke-width="1"/><line x1="354.3" y1="133" x2="354.3" y2="123" stroke="#333" stroke-width="1"/><text x="354.3" y="116" text-anchor="middle" class="sm">100</text><line x1="359.4" y1="133" x2="359.4" y2="128" stroke="#333" stroke-width="1"/><line x1="364.6" y1="133" x2="364.6" y2="128" stroke="#333" stroke-width="1"/><line x1="369.7" y1="133" x2="369.7" y2="128" stroke="#333" stroke-width="1"/><line x1="374.9" y1="133" x2="374.9" y2="128" stroke="#333" stroke-width="1"/><line x1="380.0" y1="133" x2="380.0" y2="123" stroke="#333" stroke-width="1"/><text x="380.0" y="116" text-anchor="middle" class="sm">101</text><line x1="385.1" y1="133" x2="385.1" y2="128" stroke="#333" stroke-width="1"/><line x1="390.3" y1="133" x2="390.3" y2="128" stroke="#333" stroke-width="1"/><line x1="395.4" y1="133" x2="395.4" y2="128" stroke="#333" stroke-width="1"/><line x1="400.6" y1="133" x2="400.6" y2="128" stroke="#333" stroke-width="1"/><line x1="405.7" y1="133" x2="405.7" y2="123" stroke="#333" stroke-width="1"/><text x="405.7" y="116" text-anchor="middle" class="sm">102</text><line x1="410.9" y1="133" x2="410.9" y2="128" stroke="#333" stroke-width="1"/><line x1="416.0" y1="133" x2="416.0" y2="128" stroke="#333" stroke-width="1"/><line x1="421.1" y1="133" x2="421.1" y2="128" stroke="#333" stroke-width="1"/><line x1="426.3" y1="133" x2="426.3" y2="128" stroke="#333" stroke-width="1"/><line x1="431.4" y1="133" x2="431.4" y2="123" stroke="#333" stroke-width="1"/><text x="431.4" y="116" text-anchor="middle" class="sm">103</text><line x1="436.6" y1="133" x2="436.6" y2="128" stroke="#333" stroke-width="1"/><line x1="441.7" y1="133" x2="441.7" y2="128" stroke="#333" stroke-width="1"/><line x1="446.9" y1="133" x2="446.9" y2="128" stroke="#333" stroke-width="1"/><line x1="452.0" y1="133" x2="452.0" y2="128" stroke="#333" stroke-width="1"/><line x1="457.1" y1="133" x2="457.1" y2="123" stroke="#333" stroke-width="1"/><text x="457.1" y="116" text-anchor="middle" class="sm">104</text><line x1="462.3" y1="133" x2="462.3" y2="128" stroke="#333" stroke-width="1"/><line x1="467.4" y1="133" x2="467.4" y2="128" stroke="#333" stroke-width="1"/><line x1="472.6" y1="133" x2="472.6" y2="128" stroke="#333" stroke-width="1"/><line x1="477.7" y1="133" x2="477.7" y2="128" stroke="#333" stroke-width="1"/><line x1="482.9" y1="133" x2="482.9" y2="123" stroke="#333" stroke-width="1"/><text x="482.9" y="116" text-anchor="middle" class="sm">105</text><line x1="488.0" y1="133" x2="488.0" y2="128" stroke="#333" stroke-width="1"/><line x1="493.1" y1="133" x2="493.1" y2="128" stroke="#333" stroke-width="1"/><line x1="498.3" y1="133" x2="498.3" y2="128" stroke="#333" stroke-width="1"/><line x1="503.4" y1="133" x2="503.4" y2="128" stroke="#333" stroke-width="1"/><line x1="508.6" y1="133" x2="508.6" y2="123" stroke="#333" stroke-width="1"/><text x="508.6" y="116" text-anchor="middle" class="sm">106</text><line x1="513.7" y1="133" x2="513.7" y2="128" stroke="#333" stroke-width="1"/><line x1="518.9" y1="133" x2="518.9" y2="128" stroke="#333" stroke-width="1"/><line x1="524.0" y1="133" x2="524.0" y2="128" stroke="#333" stroke-width="1"/><line x1="529.1" y1="133" x2="529.1" y2="128" stroke="#333" stroke-width="1"/><line x1="534.3" y1="133" x2="534.3" y2="123" stroke="#333" stroke-width="1"/><text x="534.3" y="116" text-anchor="middle" class="sm">107</text><line x1="539.4" y1="133" x2="539.4" y2="128" stroke="#333" stroke-width="1"/><line x1="544.6" y1="133" x2="544.6" y2="128" stroke="#333" stroke-width="1"/><line x1="549.7" y1="133" x2="549.7" y2="128" stroke="#333" stroke-width="1"/><line x1="554.9" y1="133" x2="554.9" y2="128" stroke="#333" stroke-width="1"/><line x1="560.0" y1="133" x2="560.0" y2="123" stroke="#333" stroke-width="1"/><text x="560.0" y="116" text-anchor="middle" class="sm">108</text><path d="M128,134 Q140,150 152,134" class="pinch"/><path d="M128,166 Q140,150 152,166" class="pinch"/><polygon points="313,168 305,184 321,184" fill="#2e7d32" class="fade" style="animation-delay:4s"/><text x="313.1428571428573" y="206" text-anchor="middle" class="ct fade" style="animation-delay:4.2s">सामान्य 98.4°F (37°C)</text><g class="fade" style="animation-delay:1s"><line x1="90" y1="178" x2="70" y2="240" class="lead"/><circle cx="90" cy="178" r="3.5" class="dot"/><text x="70" y="235" text-anchor="middle" class="lt">बल्ब (पारा भरा)</text></g><g class="fade" style="animation-delay:1.5s"><line x1="140" y1="166" x2="200" y2="262" class="lead"/><circle cx="140" cy="166" r="3.5" class="dot"/><text x="200" y="257" text-anchor="middle" class="lt">संकीर्णन - पारा नीचे नहीं गिरता</text></g><g class="fade" style="animation-delay:2s"><line x1="540" y1="167" x2="530" y2="240" class="lead"/><circle cx="540" cy="167" r="3.5" class="dot"/><text x="530" y="235" text-anchor="middle" class="lt">काँच की नली</text></g><g class="fade" style="animation-delay:2.5s"><line x1="580" y1="124" x2="600" y2="70" class="lead"/><circle cx="580" cy="124" r="3.5" class="dot"/><text x="600" y="65" text-anchor="middle" class="lt">°F पैमाना (94-108)</text></g><text x="350" y="292" text-anchor="middle" class="cap fade" style="animation-delay:4.5s">प्रयोग से पहले पारे को 95°F से नीचे झटक लें</text></svg></div><figcaption>चित्र 2: क्लीनिकल थर्मामीटर</figcaption></figure>
+<div class="box imp"><span class="t">सामान्य तापमान</span><b>98.4°F या 37°C</b> (मुँह में)। बगल में लगभग 1°F कम (97.4°F), गुदा में लगभग 1°F अधिक (99.4°F)।</div>
+<p><b>सूत्र:</b> °C = (°F - 32) × 5/9 &nbsp;&nbsp;|&nbsp;&nbsp; °F = (°C × 9/5) + 32</p>
+<table><tr><th>अवस्था</th><th>तापमान (लगभग)</th></tr>
+<tr><td>सामान्य</td><td>98.4°F</td></tr><tr><td>हल्का बुखार</td><td>99 - 100.4°F</td></tr><tr><td>मध्यम बुखार</td><td>101 - 102°F</td></tr><tr><td>तेज़ बुखार</td><td>103°F या अधिक</td></tr><tr><td>अति-ताप</td><td>105-106°F से ऊपर - आपातकाल</td></tr></table>
+<h3>थर्मामीटर (क्लीनिकल) की बनावट</h3>
+<p>काँच की नली, एक सिरे पर <b>बल्ब</b> जिसमें पारा, नली में <b>संकीर्णन (कसी जगह)</b> जो पारे को शरीर से हटाने पर नीचे गिरने से रोकता है, पैमाना 94°F-108°F (या 35°C-42°C), सामान्य बिंदु पर तीर/लाल चिह्न।</p>
+<h3>तापमान लेने की विधि</h3>
+<ol>
+<li>थर्मामीटर को <b>ठंडे</b> साबुन-पानी/स्प्रिट रुई से साफ़ करें (गर्म पानी से नहीं, वरना टूट सकता है)।</li>
+<li>कसकर पकड़कर झटकें जब तक पारा <span class="red">95°F से नीचे</span> न आ जाए।</li>
+<li>रोगी को आराम से बैठाएँ/लिटाएँ; 15 मिनट पहले गर्म/ठंडा पेय या व्यायाम न हो।</li>
+<li><b>मुँह में:</b> जीभ के नीचे, होंठ बंद, 2-3 मिनट (थर्मामीटर को दाँतों से न काटें)।</li>
+<li><b>बगल में:</b> सूखी बगल में बल्ब बीच में रखकर हाथ शरीर से सटा दें, 5 मिनट; बच्चों, बेहोश, दौरे वाले रोगी में बगल से लें।</li>
+<li>आँख की सीध में पारे के सिरे की रीडिंग पढ़ें; चार्ट में समय सहित लिखें।</li>
+<li>उपयोग के बाद साफ़ करके, झटककर केस में रखें।</li>
+</ol>
+<div class="box imp"><span class="t">सावधानी</span>उबलते पानी में न डालें; गर्म जगह/धूप में न रखें; टूटे थर्मामीटर का पारा नंगे हाथ न छुएँ, मुँह में न जाने दें (ज़हरीला)। हर रोगी के लिए अलग या स्प्रिट से कीटाणुरहित।</div>
+<h3>(ब) नाड़ी (Pulse)</h3>
+<figure><button onclick="rep(this)">↻ फिर चलाएँ</button><div class="fg"><svg viewBox="0 0 720 315" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="50" y="150" width="300" height="70" rx="32" class="skin"/><ellipse cx="415" cy="185" rx="65" ry="42" class="skin"/><rect x="295" y="105" width="17" height="52" rx="8" class="skin finger"/><rect x="317" y="105" width="17" height="52" rx="8" class="skin finger"/><rect x="339" y="105" width="17" height="52" rx="8" class="skin finger"/><line x1="90" y1="160" x2="360" y2="160" class="artery"/><circle cx="326" cy="160" r="8" class="beat"/><path d="M490,190 L520,190 L530,170 L540,190 L555,190 L562,215 L575,110 L588,230 L598,190 L640,190 L650,175 L660,190 L690,190" class="wave draw"/><g class="fade" style="animation-delay:1s"><line x1="326" y1="108" x2="310" y2="52" class="lead"/><circle cx="326" cy="108" r="3.5" class="dot"/><text x="310" y="47" text-anchor="middle" class="lt">तीन उँगलियाँ (अँगूठा नहीं)</text></g><g class="fade" style="animation-delay:1.6s"><line x1="200" y1="160" x2="160" y2="262" class="lead"/><circle cx="200" cy="160" r="3.5" class="dot"/><text x="160" y="257" text-anchor="middle" class="lt">रेडियल धमनी</text></g><g class="fade" style="animation-delay:2.2s"><line x1="70" y1="200" x2="70" y2="250" class="lead"/><circle cx="70" cy="200" r="3.5" class="dot"/><text x="70" y="245" text-anchor="start" class="lt">कलाई के पास अँगूठे की ओर</text></g><text x="590" y="262" text-anchor="middle" class="ct fade" style="animation-delay:2.6s">72 धड़कन / मिनट (वयस्क)</text><text x="350" y="300" text-anchor="middle" class="cap fade" style="animation-delay:3s">घड़ी देखकर 1 मिनट गिनें - लय, गति व ताकत नोट करें</text></svg></div><figcaption>चित्र 4: कलाई पर नाड़ी देखना</figcaption></figure>
+<p>हृदय की धड़कन से रक्त-वाहिनियों में उठने वाली लहर। कलाई में अँगूठे की ओर <b>रेडियल धमनी</b> पर <span class="hl">तीन उँगलियाँ</span> (तर्जनी, मध्यमा, अनामिका) रखकर गिनते हैं - अँगूठा नहीं, क्योंकि उसमें अपनी नाड़ी होती है।</p>
+<table><tr><th>आयु</th><th>सामान्य नाड़ी / मिनट</th></tr>
+<tr><td>नवजात</td><td>120-140</td></tr><tr><td>बच्चे (1-10 वर्ष)</td><td>80-100</td></tr><tr><td>वयस्क</td><td><b>72</b> (60-80)</td></tr><tr><td>वृद्ध</td><td>60-70</td></tr></table>
+<ul><li>बुखार में प्रत्येक 1°F वृद्धि पर नाड़ी लगभग 10 धड़कन बढ़ जाती है; महिलाओं में पुरुषों से थोड़ी अधिक।</li>
+<li>रोगी को लिटाकर/बैठाकर, डर/परिश्रम के बाद नहीं; पूरे <b>1 मिनट</b> गिनें, गति के साथ <u>लय</u> व <u>ताकत</u> भी देखें।</li></ul>
+<h3>(स) श्वसन (Respiration)</h3>
+<p>एक श्वास-क्रिया = अंदर लेना + बाहर छोड़ना। छाती/पेट के उठने-गिरने से गिनें; रोगी को पता न चले, वरना गति बदल जाती है (नाड़ी देखने का बहाना करते हुए गिनें)।</p>
+<table><tr><th>आयु</th><th>श्वसन / मिनट</th></tr><tr><td>नवजात</td><td>40-45</td></tr><tr><td>बच्चे</td><td>20-30</td></tr><tr><td>वयस्क</td><td><b>16-20</b> (औसत 18)</td></tr></table>
+<div class="box tip"><span class="t">अनुपात</span>नाड़ी : श्वसन = <b>4 : 1</b> (72 : 18)। निमोनिया में श्वसन की गति ज़्यादा बढ़ती है और अनुपात बिगड़ता है।</div>
+<h3>(द) रक्तचाप (Blood Pressure)</h3>
+<p>स्फिग्मोमैनोमीटर (BP मशीन) से। सामान्य <b>120/80 mm Hg</b> (ऊपर का: संकुचन, नीचे का: शिथिलन)। रोगी शांत बैठा हो, बाँह हृदय के स्तर पर।</p>
+<figure><button onclick="rep(this)">↻ फिर चलाएँ</button><div class="fg"><svg viewBox="0 0 720 365" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="80" y1="300" x2="670" y2="300" class="grid"/><text x="70" y="305" text-anchor="end" class="sm">97</text><line x1="80" y1="263" x2="670" y2="263" class="grid"/><text x="70" y="268" text-anchor="end" class="sm">98</text><line x1="80" y1="226" x2="670" y2="226" class="grid"/><text x="70" y="231" text-anchor="end" class="sm">99</text><line x1="80" y1="189" x2="670" y2="189" class="grid"/><text x="70" y="194" text-anchor="end" class="sm">100</text><line x1="80" y1="151" x2="670" y2="151" class="grid"/><text x="70" y="156" text-anchor="end" class="sm">101</text><line x1="80" y1="114" x2="670" y2="114" class="grid"/><text x="70" y="119" text-anchor="end" class="sm">102</text><line x1="80" y1="77" x2="670" y2="77" class="grid"/><text x="70" y="82" text-anchor="end" class="sm">103</text><line x1="80" y1="40" x2="670" y2="40" class="grid"/><text x="70" y="45" text-anchor="end" class="sm">104</text><line x1="80" y1="40" x2="80" y2="300" stroke="#333" stroke-width="2"/><line x1="80" y1="300" x2="670" y2="300" stroke="#333" stroke-width="2"/><text x="90" y="322" text-anchor="middle" class="sm">दिन 1</text><text x="185" y="322" text-anchor="middle" class="sm">दिन 2</text><text x="280" y="322" text-anchor="middle" class="sm">दिन 3</text><text x="375" y="322" text-anchor="middle" class="sm">दिन 4</text><text x="470" y="322" text-anchor="middle" class="sm">दिन 5</text><text x="565" y="322" text-anchor="middle" class="sm">दिन 6</text><text x="660" y="322" text-anchor="middle" class="sm">दिन 7</text><line x1="80" y1="248" x2="670" y2="248" class="norm"/><text x="672" y="244" text-anchor="end" class="sm" fill="#2e7d32">सामान्य 98.4°F</text><polyline points="90,218.3 185,173.7 280,114.3 375,77.1 470,144.0 565,203.4 660,248.0" class="line draw"/><g class="fade" style="animation-delay:0.3s"><circle cx="90" cy="218.3" r="5" class="dot"/><text x="90" y="208" text-anchor="middle" class="sm">99.2</text></g><g class="fade" style="animation-delay:0.7s"><circle cx="185" cy="173.7" r="5" class="dot"/><text x="185" y="164" text-anchor="middle" class="sm">100.4</text></g><g class="fade" style="animation-delay:1.1s"><circle cx="280" cy="114.3" r="5" class="dot"/><text x="280" y="104" text-anchor="middle" class="sm">102</text></g><g class="fade" style="animation-delay:1.5000000000000002s"><circle cx="375" cy="77.1" r="5" class="dot"/><text x="375" y="67" text-anchor="middle" class="sm">103</text></g><g class="fade" style="animation-delay:1.9000000000000001s"><circle cx="470" cy="144.0" r="5" class="dot"/><text x="470" y="134" text-anchor="middle" class="sm">101.2</text></g><g class="fade" style="animation-delay:2.3s"><circle cx="565" cy="203.4" r="5" class="dot"/><text x="565" y="193" text-anchor="middle" class="sm">99.6</text></g><g class="fade" style="animation-delay:2.7s"><circle cx="660" cy="248.0" r="5" class="dot"/><text x="660" y="238" text-anchor="middle" class="sm">98.4</text></g><g class="fade" style="animation-delay:3.5s"><line x1="383" y1="77.14285714285714" x2="470" y2="38" class="lead"/><circle cx="383" cy="77.14285714285714" r="3.5" class="dot"/><text x="470" y="33" text-anchor="middle" class="lt">सबसे तेज़ बुखार 103°F (दिन 4)</text></g><text x="375" y="352" text-anchor="middle" class="cap fade" style="animation-delay:4s">तापमान-चार्ट: रोज़ एक ही समय पर तापमान लिखें</text></svg></div><figcaption>चित्र 8: तापमान-चार्ट का नमूना</figcaption></figure>
+<p><b>चार्ट पढ़ना:</b> बुखार धीरे-धीरे चढ़ना, फिर उतरना (टाइफ़ाइड जैसी स्थिति) - इसे डॉक्टर को दिखाने के लिए सँभालकर रखें।</p>
+
+<h2 id="s9">9. दवा देना</h2>
+<h3>सावधानियाँ</h3>
+<ol>
+<li><span class="red">डॉक्टर की पर्ची/लेबल पढ़ें</span>: नाम, मात्रा, समय, कैसे (खाने से पहले/बाद), अवधि।</li>
+<li>एक्सपायरी तारीख़ देखें; ख़राब रंग/गंध वाली दवा न दें; पुरानी पर्ची की दवा बिना पूछे नहीं।</li>
+<li>हाथ धोएँ; मात्रा नापने के लिए नापने का गिलास/चम्मच (1 चम्मच = 5 ml, 1 बड़ा चम्मच = 15 ml)।</li>
+<li>तरल दवा <b>हिलाकर</b> दें; लेबल वाली ओर हाथ रखकर उड़ेलें।</li>
+<li>दवा देते समय रोगी को पानी, बैठी स्थिति; दवा निगलने तक पास रहें।</li>
+<li>समय पर दें; एक बार छूटने पर दुगुनी न दें - डॉक्टर से पूछें।</li>
+<li>दवा बच्चों की पहुँच से दूर, ठंडी-सूखी जगह, लेबल सहित, <u>ज़हर</u> वाली अलग रखें।</li>
+<li>दवा का असर/एलर्जी (दाने, उल्टी) हो तो रोककर डॉक्टर को बताएँ।</li>
+<li>दवा के नाम चार्ट में लिखें; स्वयं डॉक्टर न बनें।</li>
+</ol>
+<table><tr><th>शब्द</th><th>अर्थ</th></tr><tr><td>दिन में 3 बार</td><td>लगभग 8-8 घंटे पर</td></tr><tr><td>खाली पेट</td><td>खाने से 1 घंटा पहले</td></tr><tr><td>भोजन के बाद</td><td>खाने के तुरंत/आधे घंटे बाद</td></tr><tr><td>सोते समय</td><td>रात को सोने से पहले</td></tr></table>
+<p><b>बाहरी दवा:</b> मरहम/लोशन साफ़ त्वचा पर; आँख-कान-नाक की बूँदें: सिर तिरछा करके, ड्रॉपर को त्वचा से छुए बिना बूँद डालें।</p>
+
+<h2 id="s10">10. सेंक, ठंडक व भाप</h2>
+<h3>(अ) गर्म सेंक</h3>
+<figure><button onclick="rep(this)">↻ फिर चलाएँ</button><div class="fg"><svg viewBox="0 0 720 350" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="185" y="112" width="230" height="224" rx="46" class="cover"/><rect x="200" y="125" width="200" height="200" rx="40" class="rubber"/><line x1="214" y1="150" x2="386" y2="150" class="rib"/><line x1="214" y1="172" x2="386" y2="172" class="rib"/><line x1="214" y1="194" x2="386" y2="194" class="rib"/><line x1="214" y1="216" x2="386" y2="216" class="rib"/><line x1="214" y1="238" x2="386" y2="238" class="rib"/><line x1="214" y1="260" x2="386" y2="260" class="rib"/><line x1="214" y1="282" x2="386" y2="282" class="rib"/><line x1="214" y1="304" x2="386" y2="304" class="rib"/><rect x="205" y="215" width="190" height="105" rx="34" class="water"><animate attributeName="y" values="218;213;218" dur="2s" repeatCount="indefinite"/></rect><rect x="272" y="92" width="56" height="36" class="rubber"/><rect x="264" y="68" width="72" height="26" rx="5" fill="#9e9e9e" stroke="#333"/><circle cx="300" cy="81" r="7" fill="none" stroke="#333" stroke-width="2"/><path d="M270,60 q8,-14 0,-26 q-8,-14 0,-26" class="steam"/><path d="M300,60 q8,-14 0,-26 q-8,-14 0,-26" class="steam"/><path d="M330,60 q8,-14 0,-26 q-8,-14 0,-26" class="steam"/><g class="fade" style="animation-delay:1s"><line x1="336" y1="81" x2="450" y2="70" class="lead"/><circle cx="336" cy="81" r="3.5" class="dot"/><text x="450" y="65" text-anchor="start" class="lt">डाट (स्टॉपर) - कसकर बंद</text></g><g class="fade" style="animation-delay:1.5s"><line x1="328" y1="110" x2="450" y2="118" class="lead"/><circle cx="328" cy="110" r="3.5" class="dot"/><text x="450" y="113" text-anchor="start" class="lt">गर्दन</text></g><g class="fade" style="animation-delay:2s"><line x1="398" y1="230" x2="450" y2="236" class="lead"/><circle cx="398" cy="230" r="3.5" class="dot"/><text x="450" y="231" text-anchor="start" class="lt">रबर की थैली</text></g><g class="fade" style="animation-delay:2.5s"><line x1="300" y1="275" x2="450" y2="296" class="lead"/><circle cx="300" cy="275" r="3.5" class="dot"/><text x="450" y="291" text-anchor="start" class="lt">सहने योग्य गर्म पानी (आधी भरें)</text></g><g class="fade" style="animation-delay:3s"><line x1="300" y1="180" x2="40" y2="160" class="lead"/><circle cx="300" cy="180" r="3.5" class="dot"/><text x="40" y="155" text-anchor="start" class="lt">ऊपर हवा निकालकर दबाएँ</text></g><g class="fade" style="animation-delay:3.5s"><line x1="187" y1="270" x2="40" y2="300" class="lead"/><circle cx="187" cy="270" r="3.5" class="dot"/><text x="40" y="295" text-anchor="start" class="lt">सूती कपड़े का कवर</text></g></svg></div><figcaption>चित्र 5: गर्म पानी की रबर की थैली</figcaption></figure>
+<p><b>उपयोग:</b> दर्द, सूजन के बाद की अकड़न, पेट-दर्द, ज़ुकाम, जोड़ों का दर्द, शरीर गर्म करना।</p>
+<p><b>गर्म पानी की बोतल/थैली की विधि:</b></p>
+<ol>
+<li>थैली की जाँच करें (रिसाव तो नहीं)।</li>
+<li>पानी सहने योग्य गर्म (उबलता नहीं), <b>आधी</b> थैली भरें।</li>
+<li>थैली को दबाकर <span class="hl">हवा निकालें</span>, डाट कसकर बंद करें, उलटाकर रिसाव देखें।</li>
+<li>सूती कवर/तौलिये में लपेटकर, त्वचा पर सीधे नहीं, रखें; बीच-बीच में त्वचा देखें कि जली तो नहीं।</li>
+<li>ठंडा होने पर बदलें; बेहोश/संवेदनहीन रोगी, शिशु, मधुमेह में अत्यंत सावधानी।</li>
+</ol>
+<p><b>सूखा सेंक:</b> गर्म रेत/नमक की पोटली, गर्म कपड़ा। <b>गीला सेंक (फोमेंटेशन):</b> फ़्लालेन/कपड़ा गर्म पानी में भिगोकर निचोड़ें, त्वचा पर रखकर ऊपर सूखा कपड़ा, 10-15 मिनट।</p>
+<h3>(ब) ठंडा सेंक</h3>
+<ul><li><b>बर्फ़ की थैली:</b> आधी भरी, हवा निकालकर कपड़े में लपेटकर सिर, चोट की सूजन, नकसीर, उल्टी में।</li>
+<li><b>ठंडी पट्टी:</b> माथे पर भीगा कपड़ा, 5-5 मिनट में बदलें - बुखार, सिरदर्द में।</li>
+<li><b>ठंडा स्पंज:</b> तापमान 102-103°F से ऊपर हो तो गुनगुने/सामान्य पानी से शरीर पोंछना; तापमान ~100°F आने पर रोक दें।</li></ul>
+<h3>(स) भाप लेना (Steam Inhalation)</h3>
+<figure><button onclick="rep(this)">↻ फिर चलाएँ</button><div class="fg"><svg viewBox="0 0 720 395" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="150" y="330" width="320" height="14" fill="#8d6e63"/><rect x="170" y="344" width="14" height="40" fill="#8d6e63"/><rect x="436" y="344" width="14" height="40" fill="#8d6e63"/><path d="M250,300 L390,300 Q385,335 320,335 Q255,335 250,300 Z" fill="#cfd8dc" stroke="#333" stroke-width="2"/><ellipse cx="320" cy="300" rx="70" ry="8" fill="#90caf9" stroke="#333"/><circle cx="320" cy="170" r="38" class="skin"/><circle cx="305" cy="168" r="3" fill="#333"/><circle cx="335" cy="168" r="3" fill="#333"/><path d="M308,190 q12,8 24,0" fill="none" stroke="#333" stroke-width="2"/><path d="M290,290 q10,-16 0,-32 q-10,-16 0,-32" class="steam"/><path d="M320,290 q10,-16 0,-32 q-10,-16 0,-32" class="steam"/><path d="M350,290 q10,-16 0,-32 q-10,-16 0,-32" class="steam"/><path d="M320,95 L190,325 L450,325 Z" class="towel"/><g class="fade" style="animation-delay:1s"><line x1="235" y1="235" x2="60" y2="200" class="lead"/><circle cx="235" cy="235" r="3.5" class="dot"/><text x="60" y="195" text-anchor="start" class="lt">तौलिया - भाप रोकता है</text></g><g class="fade" style="animation-delay:1.6s"><line x1="358" y1="160" x2="520" y2="130" class="lead"/><circle cx="358" cy="160" r="3.5" class="dot"/><text x="520" y="125" text-anchor="start" class="lt">रोगी का चेहरा (आँखें बंद)</text></g><g class="fade" style="animation-delay:2.2s"><line x1="345" y1="245" x2="520" y2="230" class="lead"/><circle cx="345" cy="245" r="3.5" class="dot"/><text x="520" y="225" text-anchor="start" class="lt">भाप (अजवाइन/नीलगिरी तेल)</text></g><g class="fade" style="animation-delay:2.8s"><line x1="385" y1="312" x2="520" y2="320" class="lead"/><circle cx="385" cy="312" r="3.5" class="dot"/><text x="520" y="315" text-anchor="start" class="lt">गर्म पानी का बर्तन</text></g><g class="fade" style="animation-delay:3.2s"><line x1="450" y1="337" x2="520" y2="365" class="lead"/><circle cx="450" cy="337" r="3.5" class="dot"/><text x="520" y="360" text-anchor="start" class="lt">मज़बूत स्थिर मेज़</text></g><text x="320" y="30" text-anchor="middle" class="cap fade" style="animation-delay:3.6s">5-10 मिनट, बर्तन गिरने/जलने से सावधान</text></svg></div><figcaption>चित्र 6: भाप लेने की विधि</figcaption></figure>
+<p>ज़ुकाम, बंद नाक, खाँसी, गले की ख़राश में। बर्तन में खौलता पानी + अजवाइन/नीलगिरी/विक्स; रोगी स्थिर मेज़ पर रखे बर्तन के ऊपर झुके, सिर पर तौलिया; 5-10 मिनट; भाप से आँखें बचाएँ, बर्तन पलटने का ख़तरा न हो; बच्चों में निगरानी।</p>
+
+<h2 id="s11">11. रोगी की स्वच्छता व स्पंज स्नान</h2>
+<ul>
+<li><b>मुँह की सफ़ाई:</b> रोज़ ब्रश/कुल्ला; बेहोश/बहुत कमज़ोर रोगी में नींबू-ग्लिसरीन/हल्के नमक वाले पानी में रुई भिगोकर जीभ-होंठ साफ़।</li>
+<li><b>बाल:</b> रोज़ कंघी; साफ़ व बँधे; जुओं से बचाव।</li><li><b>नाखून, आँख, कान:</b> कटे हुए साफ़ नाखून; आँखें साफ़ पानी से।</li>
+<li><b>कपड़े:</b> ढीले, सूती, साफ़; पसीने/मल-मूत्र से गंदे हों तो तुरंत बदलें।</li></ul>
+<h3>स्पंज स्नान (Sponge Bath) - बिस्तर पर स्नान</h3>
+<p>जब रोगी नहा नहीं सकता (बुखार, कमज़ोरी, ऑपरेशन)। <b>सामान:</b> गुनगुना पानी, साबुन, छोटा तौलिया, स्पंज/वॉश-क्लॉथ, साफ़ कपड़े, चादर।</p>
+<ol>
+<li>कमरा हवा-रहित और गर्म; दरवाज़ा-खिड़की बंद/पर्दा।</li>
+<li>रोगी को चादर से ढकें; सिर्फ़ <b>एक अंग</b> खोलें।</li>
+<li>क्रम: चेहरा → गर्दन-कान → बाँहें → छाती → पेट → पीठ (करवट पर) → पैर।</li>
+<li>हर अंग को साबुन-पानी से धोकर, <b>अच्छे से पोंछकर</b> ढकें; पीठ पर हल्की मालिश व पाउडर।</li>
+<li>साफ़ कपड़े पहनाएँ, चादर बदलें; सारा सामान साफ़ करके रखें।</li></ol>
+
+<h2 id="s12">12. संक्रमण से बचाव</h2>
+<div class="box def"><span class="t">संक्रामक रोग</span>जीवाणु/विषाणु से होने वाले रोग (हैज़ा, टाइफ़ाइड, चेचक, खसरा, क्षय आदि) जो एक रोगी से दूसरों में फैल जाते हैं।</div>
+<h3>संक्रामक रोगी की देखभाल</h3>
+<ul>
+<li><b>पृथक्करण (Isolation):</b> रोगी को अलग, हवादार कमरे में रखें; बच्चे-बूढ़े न जाएँ।</li>
+<li>रोगी के बर्तन, तौलिये, कपड़े <u>अलग</u>; उबालकर/कीटाणुनाशी में धोकर धूप में सुखाएँ।</li>
+<li>परिचारिका एप्रन/मास्क पहने; <b>साबुन से हाथ धोए</b> (हर काम के बाद); नाखून काटे रखे।</li>
+<li>थूक, उल्टी, मल-मूत्र को <b>चूना/ब्लीचिंग पाउडर/फिनाइल</b> डालकर गहरे गड्ढे में दबाएँ या शौचालय में फ़्लश; पट्टियाँ जलाएँ।</li>
+<li>मक्खी-मच्छर रोकें; खाना ढका रहे; पानी उबालकर पिएँ।</li>
+<li>रोग ख़त्म होने पर कमरे की धूनी/सफ़ेदी, बिस्तर धूप में; गद्दा/तकिये धूप या फ़ॉर्मलिन से शोधित।</li></ul>
+<table><tr><th>विधि</th><th>उदाहरण</th></tr>
+<tr><td>भौतिक</td><td>उबालना (लगभग 20 मिनट), धूप, भाप, आग में जलाना</td></tr>
+<tr><td>रासायनिक</td><td>फिनाइल, डेटॉल, कार्बोलिक एसिड, ब्लीचिंग पाउडर, चूना, स्प्रिट, फ़ॉर्मलिन</td></tr></table>
+<p><b>शब्दावली:</b> <i>संक्रमण</i> = रोगाणुओं का शरीर में प्रवेश; <i>निसंक्रमण (Disinfection)</i> = रोगाणुओं को नष्ट करना (निर्जीव वस्तुओं पर); <i>प्रतिरोधी/एंटीसेप्टिक</i> = जीवित ऊतकों पर रोगाणु रोकने वाला पदार्थ (डेटॉल, स्प्रिट); <i>निर्जीवाणुकरण (Sterilization)</i> = सभी जीवाणुओं का पूर्ण नाश।</p>
+<h3>मल-मूत्र का निपटान</h3>
+<p>बिस्तर पर रोगी के लिए <b>बेडपैन</b> (मल हेतु) व <b>यूरिनल</b> (मूत्र हेतु) का प्रयोग; प्रयोग के बाद ढककर शौचालय में डालें, कीटाणुनाशी से साफ़ करें, धूप में सुखाएँ। मल-मूत्र का रंग, मात्रा चार्ट में लिखें।</p>
+
+<h2 id="s13">13. रिकॉर्ड व आपात स्थिति</h2>
+<p><b>रोगी का चार्ट</b>: तिथि-समय, तापमान, नाड़ी, श्वसन, दवा, आहार-पानी, मल-मूत्र, नींद, विशेष लक्षण। इससे डॉक्टर को रोग की प्रगति समझ आती है; गलती भी कम होती है।</p>
+<div class="box imp"><span class="t">🚨 इन स्थितियों में तुरंत डॉक्टर बुलाएँ</span>बेहोशी या दौरे; 103-104°F से अधिक बुखार; साँस लेने में कठिनाई/नीला पड़ना; तेज़ खून बहना; तेज़ पेट-दर्द या लगातार उल्टी/दस्त; सीने में दर्द; ज़हर खाना; नाड़ी बहुत धीमी या बहुत तेज़।</div>
+<h3>रोगी का मनोरंजन व आगंतुक</h3>
+<ul><li>पुस्तकें, पत्रिकाएँ, रेडियो/संगीत, हल्की बातचीत, बच्चों की मुलाकात; सकारात्मक बातें।</li>
+<li>मिलने वाले कम, कम समय के लिए; संक्रामक रोग में बिल्कुल नहीं; शोर न करें।</li></ul>
+
+<h2 id="s14">14. गृह-परिचारिका की किट (प्राथमिक सामग्री)</h2>
+<p>क्लीनिकल थर्मामीटर, रुई, पट्टी, गॉज़, चिपकने वाला टेप, डेटॉल/स्प्रिट, मरहम, कैंची, चिमटी, सेफ़्टी पिन, ORS पैकेट, गर्म पानी की बोतल, बर्फ़ की थैली, नापने का गिलास/चम्मच, ड्रॉपर, टॉर्च, बेडपैन-यूरिनल, तौलिये, एप्रन-मास्क, डॉक्टर का फ़ोन नंबर, डॉक्टर द्वारा बताई दवाएँ।</p>
+
+<h2 id="s15">15. सारांश व याद रखने की ट्रिक्स</h2>
+<div class="box tip"><span class="t">📝 एक नज़र में</span>
+<ul><li>सामान्य तापमान 98.4°F = 37°C; नाड़ी 72; श्वसन 18 (16-20); BP 120/80।</li>
+<li>नाड़ी : श्वसन = 4 : 1।</li><li>1 चम्मच = 5 ml; 1 बड़ा चम्मच = 15 ml।</li>
+<li>हर 2 घंटे में करवट - शय्या-व्रण से बचाव।</li><li>थर्मामीटर झटककर 95°F से नीचे; ठंडे पानी से धोएँ।</li>
+<li>बोतल में आधा पानी, हवा निकालें, कवर चढ़ाएँ।</li></ul></div>
+<div class="box def"><span class="t">🎯 ट्रिक: परिचारिका के गुण याद करें "शा-मा-नै-कु-अ"</span>शारीरिक, मानसिक, नैतिक, कुशलता, अनुशासन।</div>
+<div class="box def"><span class="t">🎯 ट्रिक: कक्ष की ज़रूरतें "ह-रो-शां-सा"</span>हवा, रोशनी, शांति, सफ़ाई।</div>
+
+<h2 id="s16">16. हल किए गए उदाहरण (चरण-दर-चरण)</h2>
+<p>नोट: यह विषय गणना-प्रधान नहीं, इसलिए यहाँ <b>दिया है / ज्ञात करना / हल</b> के रूप में परिचर्या की गणनाएँ व केस-स्टडी दी गई हैं।</p>
+<div class="sec ex">
+<div class="ex"><span class="lvl easy">सरल स्तर</span><b>उदाहरण 1: °F से °C</b><span class="l"><span class="red">दिया है:</span> रोगी का तापमान 98.6°F</span><span class="l"><span class="red">ज्ञात करना:</span> °C में तापमान</span><span class="l"><span class="red">हल:</span></span><ol><li>सूत्र: °C = (°F − 32) × 5/9</li><li>98.6 − 32 = 66.6</li><li>66.6 × 5 = 333</li><li>333 ÷ 9 = 37.0</li></ol><span class="l"><span class="grn">उत्तर:</span> 37°C (सामान्य)</span></div>
+<div class="ex"><span class="lvl easy">सरल स्तर</span><b>उदाहरण 2: तेज़ बुखार का रूपांतरण</b><span class="l"><span class="red">दिया है:</span> तापमान 104°F</span><span class="l"><span class="red">ज्ञात करना:</span> °C में मान</span><span class="l"><span class="red">हल:</span></span><ol><li>104 − 32 = 72</li><li>72 × 5 = 360</li><li>360 ÷ 9 = 40</li></ol><span class="l"><span class="grn">उत्तर:</span> 40°C (तेज़ बुखार)</span></div>
+<div class="ex"><span class="lvl easy">सरल स्तर</span><b>उदाहरण 3: °C से °F</b><span class="l"><span class="red">दिया है:</span> तापमान 37°C</span><span class="l"><span class="red">ज्ञात करना:</span> °F में मान</span><span class="l"><span class="red">हल:</span></span><ol><li>सूत्र: °F = (°C × 9/5) + 32</li><li>37 × 9 = 333</li><li>333 ÷ 5 = 66.6</li><li>66.6 + 32 = 98.6</li></ol><span class="l"><span class="grn">उत्तर:</span> 98.6°F</span></div>
+<div class="ex"><span class="lvl easy">सरल स्तर</span><b>उदाहरण 4: नाड़ी की दर</b><span class="l"><span class="red">दिया है:</span> 15 सेकंड में 18 धड़कन</span><span class="l"><span class="red">ज्ञात करना:</span> प्रति मिनट नाड़ी</span><span class="l"><span class="red">हल:</span></span><ol><li>1 मिनट = 60 सेकंड = 4 × 15 सेकंड</li><li>दर = 18 × 4 = 72</li></ol><span class="l"><span class="grn">उत्तर:</span> 72 धड़कन/मिनट (सामान्य)</span></div>
+<div class="ex"><span class="lvl easy">सरल स्तर</span><b>उदाहरण 5: श्वसन की दर</b><span class="l"><span class="red">दिया है:</span> 30 सेकंड में 9 श्वास</span><span class="l"><span class="red">ज्ञात करना:</span> प्रति मिनट श्वसन</span><span class="l"><span class="red">हल:</span></span><ol><li>1 मिनट = 2 × 30 सेकंड</li><li>9 × 2 = 18</li></ol><span class="l"><span class="grn">उत्तर:</span> 18/मिनट (सामान्य)</span></div>
+<div class="ex"><span class="lvl easy">सरल स्तर</span><b>उदाहरण 6: दवा की कुल मात्रा</b><span class="l"><span class="red">दिया है:</span> दवा 2 चम्मच, दिन में 3 बार, 5 दिन; 1 चम्मच = 5 ml</span><span class="l"><span class="red">ज्ञात करना:</span> कुल दवा</span><span class="l"><span class="red">हल:</span></span><ol><li>एक मात्रा = 2 × 5 = 10 ml</li><li>एक दिन = 10 × 3 = 30 ml</li><li>5 दिन = 30 × 5 = 150 ml</li></ol><span class="l"><span class="grn">उत्तर:</span> 150 ml</span></div>
+<div class="ex"><span class="lvl med">मध्यम स्तर</span><b>उदाहरण 7: बुखार का स्तर</b><span class="l"><span class="red">दिया है:</span> रोगी का तापमान 101.6°F, सामान्य 98.4°F</span><span class="l"><span class="red">ज्ञात करना:</span> (क) °C में मान, (ख) सामान्य से अधिक कितना</span><span class="l"><span class="red">हल:</span></span><ol><li>(क) 101.6 − 32 = 69.6</li><li>69.6 × 5 = 348</li><li>348 ÷ 9 = 38.67 ≈ 38.7°C</li><li>(ख) 101.6 − 98.4 = 3.2°F</li></ol><span class="l"><span class="grn">उत्तर:</span> 38.7°C; सामान्य से 3.2°F अधिक (मध्यम बुखार)</span></div>
+<div class="ex"><span class="lvl med">मध्यम स्तर</span><b>उदाहरण 8: बुखार में नाड़ी का अनुमान</b><span class="l"><span class="red">दिया है:</span> तापमान 102.4°F, सामान्य 98.4°F, सामान्य नाड़ी 72; प्रति 1°F पर लगभग 10 धड़कन वृद्धि</span><span class="l"><span class="red">ज्ञात करना:</span> अनुमानित नाड़ी</span><span class="l"><span class="red">हल:</span></span><ol><li>तापमान वृद्धि = 102.4 − 98.4 = 4°F</li><li>नाड़ी वृद्धि = 4 × 10 = 40</li><li>नाड़ी = 72 + 40 = 112</li></ol><span class="l"><span class="grn">उत्तर:</span> लगभग 112 धड़कन/मिनट</span></div>
+<div class="ex"><span class="lvl med">मध्यम स्तर</span><b>उदाहरण 9: नाड़ी-श्वसन अनुपात</b><span class="l"><span class="red">दिया है:</span> वयस्क रोगी की नाड़ी 80/मिनट; सामान्य अनुपात 4:1</span><span class="l"><span class="red">ज्ञात करना:</span> अपेक्षित श्वसन दर</span><span class="l"><span class="red">हल:</span></span><ol><li>नाड़ी : श्वसन = 4 : 1</li><li>श्वसन = 80 ÷ 4 = 20</li></ol><span class="l"><span class="grn">उत्तर:</span> 20/मिनट (सामान्य सीमा 16-20 में)</span></div>
+<div class="ex"><span class="lvl med">मध्यम स्तर</span><b>उदाहरण 10: दवा का समय-सारणी</b><span class="l"><span class="red">दिया है:</span> गोली हर 8 घंटे पर, पहली खुराक सुबह 6 बजे</span><span class="l"><span class="red">ज्ञात करना:</span> खुराक का समय</span><span class="l"><span class="red">हल:</span></span><ol><li>6 am + 8 घंटे = 2 pm</li><li>2 pm + 8 घंटे = 10 pm</li><li>10 pm + 8 घंटे = 6 am (अगले दिन)</li></ol><span class="l"><span class="grn">उत्तर:</span> 6 am, 2 pm, 10 pm</span></div>
+<div class="ex"><span class="lvl med">मध्यम स्तर</span><b>उदाहरण 11: करवट बदलने की गिनती</b><span class="l"><span class="red">दिया है:</span> रोगी रात 8 बजे लिटाया, हर 2 घंटे में करवट, सुबह 6 बजे तक</span><span class="l"><span class="red">ज्ञात करना:</span> कितनी बार करवट बदलनी होगी</span><span class="l"><span class="red">हल:</span></span><ol><li>8 pm से 6 am = 10 घंटे</li><li>10 ÷ 2 = 5</li><li>समय: 10 pm, 12 am, 2 am, 4 am, 6 am</li></ol><span class="l"><span class="grn">उत्तर:</span> 5 बार</span></div>
+<div class="ex"><span class="lvl med">मध्यम स्तर</span><b>उदाहरण 12: ORS की मात्रा</b><span class="l"><span class="red">दिया है:</span> बच्चे को हर पतले दस्त के बाद 200 ml ORS (डॉक्टर की सलाह), 5 दस्त हुए; 1 ORS पैकेट = 1 लीटर घोल</span><span class="l"><span class="red">ज्ञात करना:</span> कुल ORS, कितने पैकेट</span><span class="l"><span class="red">हल:</span></span><ol><li>कुल = 5 × 200 = 1000 ml</li><li>1000 ml = 1 लीटर</li><li>पैकेट = 1</li></ol><span class="l"><span class="grn">उत्तर:</span> 1 लीटर; 1 पैकेट</span></div>
+<div class="ex"><span class="lvl med">मध्यम स्तर</span><b>उदाहरण 13: मुँह व बगल का तापमान</b><span class="l"><span class="red">दिया है:</span> मुँह से तापमान 99.8°F; बगल में लगभग कितना होगा?</span><span class="l"><span class="red">ज्ञात करना:</span> बगल का तापमान</span><span class="l"><span class="red">हल:</span></span><ol><li>बगल का तापमान मुँह से लगभग 1°F कम</li><li>99.8 − 1 = 98.8</li></ol><span class="l"><span class="grn">उत्तर:</span> लगभग 98.8°F</span></div>
+<div class="ex"><span class="lvl med">मध्यम स्तर</span><b>उदाहरण 14: गर्म थैली का पानी</b><span class="l"><span class="red">दिया है:</span> थैली की क्षमता 2 लीटर, आधी भरनी है; 250 ml के गिलास से कितने गिलास?</span><span class="l"><span class="red">ज्ञात करना:</span> गिलासों की संख्या</span><span class="l"><span class="red">हल:</span></span><ol><li>आधी = 2 ÷ 2 = 1 लीटर = 1000 ml</li><li>1000 ÷ 250 = 4</li></ol><span class="l"><span class="grn">उत्तर:</span> 4 गिलास</span></div>
+<div class="ex"><span class="lvl hard">कठिन स्तर</span><b>उदाहरण 15: 7 दिन का औसत तापमान (चित्र 8)</b><span class="l"><span class="red">दिया है:</span> तापमान: 99.2, 100.4, 102, 103, 101.2, 99.6, 98.4 (°F)</span><span class="l"><span class="red">ज्ञात करना:</span> औसत तापमान, °C में, व कैसा बुखार</span><span class="l"><span class="red">हल:</span></span><ol><li>कुल = 99.2+100.4 = 199.6</li><li>199.6+102 = 301.6</li><li>301.6+103 = 404.6</li><li>404.6+101.2 = 505.8</li><li>505.8+99.6 = 605.4</li><li>605.4+98.4 = 703.8</li><li>औसत = 703.8 ÷ 7 = 100.54°F</li><li>°C = (100.54 − 32) × 5/9 = 68.54 × 5/9 = 38.08</li><li>बुखार दिन-4 पर चरम (103°F), फिर क्रमशः उतरा</li></ol><span class="l"><span class="grn">उत्तर:</span> औसत ≈ 100.5°F ≈ 38.1°C; चरम 103°F दिन-4; दिन-7 पर सामान्य</span></div>
+<div class="ex"><span class="lvl hard">कठिन स्तर</span><b>उदाहरण 16: सिरप कितने दिन चलेगा</b><span class="l"><span class="red">दिया है:</span> बोतल 100 ml; मात्रा 2.5 ml (½ चम्मच) दिन में 3 बार</span><span class="l"><span class="red">ज्ञात करना:</span> कितने दिन चलेगी</span><span class="l"><span class="red">हल:</span></span><ol><li>एक दिन = 2.5 × 3 = 7.5 ml</li><li>दिन = 100 ÷ 7.5 = 13.33</li><li>13 दिन में 13 × 7.5 = 97.5 ml</li><li>शेष = 100 − 97.5 = 2.5 ml = 1 और खुराक</li></ol><span class="l"><span class="grn">उत्तर:</span> 13 पूरे दिन (+1 अतिरिक्त खुराक)</span></div>
+<div class="ex"><span class="lvl hard">कठिन स्तर</span><b>उदाहरण 17: घरेलू ORS घोल</b><span class="l"><span class="red">दिया है:</span> 1 लीटर पानी में 6 चम्मच (समतल) चीनी व ½ चम्मच नमक; 1 चम्मच = 5 g (चीनी)</span><span class="l"><span class="red">ज्ञात करना:</span> 500 ml घोल हेतु सामग्री, 1 लीटर में चीनी ग्राम में</span><span class="l"><span class="red">हल:</span></span><ol><li>500 ml = 1 लीटर का आधा</li><li>चीनी = 6 ÷ 2 = 3 चम्मच</li><li>नमक = ½ ÷ 2 = ¼ चम्मच</li><li>1 लीटर में चीनी = 6 × 5 = 30 g</li></ol><span class="l"><span class="grn">उत्तर:</span> 3 चम्मच चीनी + ¼ चम्मच नमक; 30 g चीनी/लीटर</span></div>
+<div class="ex"><span class="lvl hard">कठिन स्तर</span><b>उदाहरण 18: केस-स्टडी: तापमान 104°F</b><span class="l"><span class="red">दिया है:</span> रोगी का तापमान 104°F; डॉक्टर तक पहुँचने में 1 घंटा</span><span class="l"><span class="red">ज्ञात करना:</span> परिचारिका के कदम</span><span class="l"><span class="red">हल:</span></span><ol><li>°C = (104 − 32) × 5/9 = 40°C (तेज़)</li><li>कमरा हवादार, ऊपर के भारी कपड़े हटाएँ</li><li>माथे पर ठंडी पट्टी, गुनगुने पानी से स्पंज</li><li>हर 10-15 मिनट में तापमान, ~100°F पर स्पंज बंद</li><li>पानी/ORS पिलाएँ, चार्ट बनाएँ</li><li>डॉक्टर को तुरंत फ़ोन व स्थिति बताएँ</li></ol><span class="l"><span class="grn">उत्तर:</span> ठंडे स्पंज + तरल + चार्ट + तुरंत डॉक्टर</span></div>
+<div class="ex"><span class="lvl hard">कठिन स्तर</span><b>उदाहरण 19: नाड़ी-श्वसन विश्लेषण</b><span class="l"><span class="red">दिया है:</span> रोगी की नाड़ी 96, श्वसन 24 (वयस्क)</span><span class="l"><span class="red">ज्ञात करना:</span> अनुपात व निष्कर्ष</span><span class="l"><span class="red">हल:</span></span><ol><li>अनुपात = 96 : 24 = 4 : 1 (सामान्य)</li><li>परंतु नाड़ी (60-80) व श्वसन (16-20) दोनों सामान्य से अधिक</li><li>संभव कारण: बुखार/संक्रमण/चिंता/परिश्रम</li></ol><span class="l"><span class="grn">उत्तर:</span> अनुपात सामान्य, पर दोनों दर अधिक - तापमान लें व डॉक्टर को बताएँ</span></div>
+<div class="ex"><span class="lvl hard">कठिन स्तर</span><b>उदाहरण 20: केस-स्टडी: बच्चे को दस्त</b><span class="l"><span class="red">दिया है:</span> 5 वर्ष का बच्चा, दस्त, कमज़ोरी, मुँह सूखा</span><span class="l"><span class="red">ज्ञात करना:</span> परिचर्या-योजना</span><span class="l"><span class="red">हल:</span></span><ol><li>निर्जलीकरण का ख़तरा: ORS हर दस्त के बाद चम्मच-चम्मच करके</li><li>सुपाच्य: दही-चावल, खिचड़ी, केला, चावल का माँड़</li><li>उबला/छना पानी, खाने से पहले हाथ धोना</li><li>मल-मूत्र का साफ़ निपटान, बच्चे के कपड़े-बर्तन अलग उबालना</li><li>चार्ट: दस्त की संख्या, पेशाब, तापमान</li><li>लक्षण न घटें/खून दिखे/बेहोशी - तुरंत डॉक्टर</li></ol><span class="l"><span class="grn">उत्तर:</span> ORS + सुपाच्य आहार + स्वच्छता + चार्ट + ज़रूरत पर डॉक्टर</span></div>
+</div>
+
+<h2 id="s17">17. प्रश्नोत्तर (100+)</h2>
+<h3>भाग A: अति लघु उत्तरीय प्रश्न (25)</h3>
+<div class="sec vsa">
+<div class="qa"><div class="q">गृह-परिचर्या किसे कहते हैं?</div><div class="a"><span class="lab">उत्तर:</span>रोगी की देखभाल उसके घर पर ही डॉक्टर के निर्देशानुसार करना गृह-परिचर्या कहलाता है।</div></div>
+<div class="qa"><div class="q">गृह-परिचारिका कौन होती है?</div><div class="a"><span class="lab">उत्तर:</span>घर में रोगी की देखभाल करने वाली महिला/सदस्य, जैसे माँ, बहन, पत्नी या बेटी।</div></div>
+<div class="qa"><div class="q">सामान्य शारीरिक तापमान कितना होता है?</div><div class="a"><span class="lab">उत्तर:</span>98.4°F अथवा 37°C (मुँह में)।</div></div>
+<div class="qa"><div class="q">वयस्क की सामान्य नाड़ी गति कितनी होती है?</div><div class="a"><span class="lab">उत्तर:</span>लगभग 72 प्रति मिनट (60-80)।</div></div>
+<div class="qa"><div class="q">वयस्क में श्वसन की सामान्य दर कितनी है?</div><div class="a"><span class="lab">उत्तर:</span>16-20 प्रति मिनट, औसत 18।</div></div>
+<div class="qa"><div class="q">सामान्य रक्तचाप कितना होता है?</div><div class="a"><span class="lab">उत्तर:</span>120/80 mm Hg।</div></div>
+<div class="qa"><div class="q">थर्मामीटर में कौन-सा द्रव भरा होता है?</div><div class="a"><span class="lab">उत्तर:</span>पारा (Mercury)।</div></div>
+<div class="qa"><div class="q">नाड़ी किस धमनी पर देखी जाती है?</div><div class="a"><span class="lab">उत्तर:</span>कलाई पर अँगूठे की ओर की रेडियल धमनी पर।</div></div>
+<div class="qa"><div class="q">मैकिन्तोश क्या है?</div><div class="a"><span class="lab">उत्तर:</span>गद्दे के ऊपर बिछाई जाने वाली रबर/प्लास्टिक की चादर जो गद्दे को भीगने से बचाती है।</div></div>
+<div class="qa"><div class="q">ड्रॉ-शीट किसलिए प्रयोग करते हैं?</div><div class="a"><span class="lab">उत्तर:</span>रोगी के नीचे कंधे से घुटने तक बिछी छोटी चादर, ताकि गंदी होने पर पूरा बिस्तर बदले बिना इसे बदल सकें।</div></div>
+<div class="qa"><div class="q">शय्या-व्रण (Bed Sore) क्या है?</div><div class="a"><span class="lab">उत्तर:</span>लंबे समय तक एक ही स्थिति में लेटने से हड्डी वाली जगहों की त्वचा पर बने घाव।</div></div>
+<div class="qa"><div class="q">स्पंज स्नान किसे कराया जाता है?</div><div class="a"><span class="lab">उत्तर:</span>उस रोगी को जो बुखार, कमज़ोरी या ऑपरेशन के कारण नहा नहीं सकता।</div></div>
+<div class="qa"><div class="q">रोगी के कमरे की दीवारों का रंग कैसा होना चाहिए?</div><div class="a"><span class="lab">उत्तर:</span>हल्का (सफ़ेद, हल्का नीला/हरा)।</div></div>
+<div class="qa"><div class="q">तरल आहार के दो उदाहरण बताइए।</div><div class="a"><span class="lab">उत्तर:</span>नारियल पानी, फलों का रस (दाल का पानी/सूप)।</div></div>
+<div class="qa"><div class="q">ORS का पूरा नाम क्या है?</div><div class="a"><span class="lab">उत्तर:</span>Oral Rehydration Solution (मुख-पुनर्जलीकरण घोल)।</div></div>
+<div class="qa"><div class="q">गर्म सेंक का एक लाभ बताइए।</div><div class="a"><span class="lab">उत्तर:</span>दर्द व अकड़न में आराम मिलता है।</div></div>
+<div class="qa"><div class="q">बर्फ़ की थैली का प्रयोग कब होता है?</div><div class="a"><span class="lab">उत्तर:</span>सिर-दर्द, तेज़ बुखार, नकसीर या चोट की सूजन में।</div></div>
+<div class="qa"><div class="q">दो कीटाणुनाशक पदार्थों के नाम लिखिए।</div><div class="a"><span class="lab">उत्तर:</span>फिनाइल, डेटॉल (ब्लीचिंग पाउडर, चूना)।</div></div>
+<div class="qa"><div class="q">बेडपैन का क्या उपयोग है?</div><div class="a"><span class="lab">उत्तर:</span>बिस्तर पर पड़े रोगी के मल त्यागने के लिए।</div></div>
+<div class="qa"><div class="q">रोगी का चार्ट क्यों रखा जाता है?</div><div class="a"><span class="lab">उत्तर:</span>रोग की प्रगति जानने व डॉक्टर को सही जानकारी देने के लिए।</div></div>
+<div class="qa"><div class="q">1 चम्मच दवा कितने ml के बराबर होती है?</div><div class="a"><span class="lab">उत्तर:</span>5 ml।</div></div>
+<div class="qa"><div class="q">आदर्श गृह-परिचारिका के दो गुण बताइए।</div><div class="a"><span class="lab">उत्तर:</span>धैर्य व सहानुभूति (ईमानदारी, स्वच्छता)।</div></div>
+<div class="qa"><div class="q">भाप लेना किस रोग में लाभदायक है?</div><div class="a"><span class="lab">उत्तर:</span>ज़ुकाम, बंद नाक व खाँसी में।</div></div>
+<div class="qa"><div class="q">पृथक्करण (Isolation) क्या है?</div><div class="a"><span class="lab">उत्तर:</span>संक्रामक रोगी को स्वस्थ लोगों से अलग रखना ताकि रोग न फैले।</div></div>
+<div class="qa"><div class="q">थर्मामीटर को प्रयोग से पहले किस मान से नीचे झटकते हैं?</div><div class="a"><span class="lab">उत्तर:</span>95°F से नीचे।</div></div>
+</div>
+<h3>भाग B: लघु उत्तरीय प्रश्न (20)</h3>
+<div class="sec sa">
+<div class="qa"><div class="q">गृह-परिचर्या का महत्व बताइए।</div><div class="a"><span class="lab">उत्तर:</span>(1) अस्पताल के ख़र्च की बचत, (2) अपनों के बीच रोगी का मनोबल ऊँचा, (3) अस्पताल से लौटकर स्वास्थ्य-लाभ में सहायता, (4) साधारण रोगों का घर पर उपचार, (5) आपात में प्राथमिक सहायता, (6) परिवार में सेवा-भाव व प्रेम में वृद्धि।</div></div>
+<div class="qa"><div class="q">आदर्श गृह-परिचारिका के गुण लिखिए।</div><div class="a"><span class="lab">उत्तर:</span>शारीरिक: स्वस्थ, फुर्तीली, स्वच्छ; मानसिक: धैर्यवान, सहानुभूतिपूर्ण, शांत; नैतिक: ईमानदार, विश्वसनीय, गोपनीयता रखने वाली; व्यावसायिक: परिचर्या का ज्ञान व अभ्यास; अनुशासित: डॉक्टर के आदेश का पालन।</div></div>
+<div class="qa"><div class="q">रोगी के कमरे की विशेषताएँ बताइए।</div><div class="a"><span class="lab">उत्तर:</span>शांत स्थान, पर्याप्त हवा-प्रकाश, आरामदायक तापमान, हल्के रंग की दीवार व चिकना फ़र्श, कम फ़र्नीचर, पास में शौचालय, ढक्कनदार कूड़ेदान, साफ़ व मनोहर वातावरण।</div></div>
+<div class="qa"><div class="q">पलंग बिछाते समय क्या सावधानियाँ रखनी चाहिए?</div><div class="a"><span class="lab">उत्तर:</span>चादर सलवट-रहित व कसकर लगाएँ; मैकिन्तोश व ड्रॉ-शीट ठीक रखें; चादर हवा में न झाड़ें; साफ़-सूखी चादरें; तकिये पर्याप्त; पलंग सही ऊँचाई का।</div></div>
+<div class="qa"><div class="q">शय्या-व्रण से बचाव के उपाय लिखिए।</div><div class="a"><span class="lab">उत्तर:</span>हर 2 घंटे में करवट, दबाव वाली जगहों की सफ़ाई-मालिश, सूखा-बिना सलवट बिस्तर, रिंग-तकिया, पौष्टिक आहार व पानी, घाव बनने पर डॉक्टर को दिखाना।</div></div>
+<div class="qa"><div class="q">रोगी के आहार के सिद्धांत बताइए।</div><div class="a"><span class="lab">उत्तर:</span>डॉक्टर की सलाह; सुपाच्य व पौष्टिक; थोड़ा-थोड़ा कई बार; ताज़ा, साफ़ व आकर्षक; रोगी की पसंद का ध्यान; नियमित समय; पर्याप्त उबला पानी।</div></div>
+<div class="qa"><div class="q">थर्मामीटर प्रयोग करते समय क्या सावधानियाँ रखें?</div><div class="a"><span class="lab">उत्तर:</span>ठंडे पानी/स्प्रिट से साफ़ करें, 95°F से नीचे झटकें, मुँह में जीभ के नीचे 2-3 मिनट, बच्चे/बेहोश में बगल में, गर्म पानी में न डालें, दाँत से न काटें, टूट जाए तो पारे को न छुएँ।</div></div>
+<div class="qa"><div class="q">नाड़ी देखने की विधि समझाइए।</div><div class="a"><span class="lab">उत्तर:</span>रोगी को आराम से बैठाकर/लिटाकर कलाई पर अँगूठे की ओर तीन उँगलियाँ रेडियल धमनी पर रखें, घड़ी में 1 मिनट गिनें, लय व ताकत भी देखें, चार्ट में लिखें।</div></div>
+<div class="qa"><div class="q">दवा देने की सावधानियाँ लिखिए।</div><div class="a"><span class="lab">उत्तर:</span>लेबल पढ़ें, एक्सपायरी देखें, सही मात्रा नापकर, समय पर दें, तरल दवा हिलाएँ, हाथ धोएँ, दवा बच्चों से दूर रखें, बिना डॉक्टर की सलाह दवा न बदलें।</div></div>
+<div class="qa"><div class="q">गर्म पानी की थैली से सेंक की विधि बताइए।</div><div class="a"><span class="lab">उत्तर:</span>थैली जाँचें, सहने योग्य गर्म पानी आधी भरें, हवा निकालकर डाट कसें, कवर चढ़ाकर लगाएँ, त्वचा पर नज़र रखें, ठंडी होने पर पानी बदलें।</div></div>
+<div class="qa"><div class="q">बर्फ़ की थैली/ठंडी पट्टी की विधि बताइए।</div><div class="a"><span class="lab">उत्तर:</span>थैली में बर्फ़ के छोटे टुकड़े आधे तक, हवा निकालकर डाट बंद, कपड़े में लपेटकर माथे/चोट पर रखें; ठंडी पट्टी में कपड़ा भिगोकर माथे पर रखें व बार-बार बदलें।</div></div>
+<div class="qa"><div class="q">भाप लेने की विधि लिखिए।</div><div class="a"><span class="lab">उत्तर:</span>बर्तन में गर्म पानी (अजवाइन/नीलगिरी), मेज़ पर स्थिर रखें, रोगी झुककर सिर पर तौलिया ओढ़े, 5-10 मिनट भाप लें, आँख-चेहरा जलने से बचाएँ।</div></div>
+<div class="qa"><div class="q">स्पंज स्नान की विधि लिखिए।</div><div class="a"><span class="lab">उत्तर:</span>गुनगुना पानी, रोगी को चादर से ढकें, एक-एक अंग खोलकर साबुन से धोएँ, पोंछें व ढकें; क्रम: चेहरा, गर्दन, बाँहें, छाती, पेट, पीठ, पैर; पीठ की मालिश, साफ़ कपड़े।</div></div>
+<div class="qa"><div class="q">संक्रामक रोगी की देखभाल कैसे करेंगे?</div><div class="a"><span class="lab">उत्तर:</span>अलग कमरा, अलग बर्तन-कपड़े, हाथ धोना, कपड़े उबालना, मल-मूत्र का कीटाणुनाशी से निपटान, मक्खी-मच्छर से बचाव, आगंतुक वर्जित, रोग के बाद कमरे का शोधन।</div></div>
+<div class="qa"><div class="q">रोगी के मनोरंजन के साधन लिखिए।</div><div class="a"><span class="lab">उत्तर:</span>किताबें-पत्रिकाएँ, रेडियो/संगीत, हल्की बातचीत, परिवार-बच्चों से मिलना, खिड़की से बाहर देखना; इनसे मन बहलता है और रोग का ध्यान हटता है।</div></div>
+<div class="qa"><div class="q">आगंतुकों के संबंध में नियम लिखिए।</div><div class="a"><span class="lab">उत्तर:</span>कम लोग, कम समय के लिए; संक्रामक रोग में निषेध; शोर व बहस नहीं; बुरी ख़बर न दें; उचित समय पर।</div></div>
+<div class="qa"><div class="q">गृह-परिचारिका व अस्पताल की नर्स में अंतर बताइए।</div><div class="a"><span class="lab">उत्तर:</span>गृह-परिचारिका घर की सदस्य, सीमित साधन, भावनात्मक लगाव; नर्स प्रशिक्षित वेतनभोगी, आधुनिक उपकरण, कई रोगी। (तालिका अनुभाग 2 देखें)</div></div>
+<div class="qa"><div class="q">मल-मूत्र का निपटान कैसे करें?</div><div class="a"><span class="lab">उत्तर:</span>बेडपैन/यूरिनल का प्रयोग, ढककर शौचालय में डालें, कीटाणुनाशी (फिनाइल/चूना) से साफ़ करें, धूप में सुखाएँ, संक्रामक रोग में गहरे गड्ढे में दबाएँ।</div></div>
+<div class="qa"><div class="q">रोगी का चार्ट क्या है और इसमें क्या लिखते हैं?</div><div class="a"><span class="lab">उत्तर:</span>रोगी की स्थिति का दैनिक लेखा; तिथि-समय, तापमान, नाड़ी, श्वसन, दवा, आहार, मल-मूत्र, नींद, विशेष लक्षण।</div></div>
+<div class="qa"><div class="q">किन स्थितियों में तुरंत डॉक्टर बुलाना चाहिए?</div><div class="a"><span class="lab">उत्तर:</span>बेहोशी, दौरे, बहुत तेज़ बुखार, साँस की तकलीफ़, तेज़ रक्तस्राव, तेज़ दर्द, लगातार उल्टी-दस्त, ज़हर खाना।</div></div>
+</div>
+<h3>भाग C: दीर्घ उत्तरीय प्रश्न (12)</h3>
+<div class="sec la">
+<div class="qa"><div class="q">गृह-परिचारिका के कर्तव्य विस्तार से लिखिए।</div><div class="a"><span class="lab">उत्तर:</span>(1) कमरा व बिस्तर साफ़-हवादार रखना। (2) डॉक्टर के निर्देशानुसार समय पर सही दवा देना। (3) पथ्य-आहार बनाना व खिलाना। (4) तापमान-नाड़ी-श्वसन का निरीक्षण व चार्ट। (5) रोगी की व्यक्तिगत सफ़ाई, स्पंज स्नान, कपड़े बदलना। (6) शय्या-व्रण से बचाव हेतु करवट बदलना। (7) संक्रमण से बचाव: हाथ धोना, अलग बर्तन-कपड़े, मल-मूत्र का सही निपटान। (8) मनोबल बढ़ाना, मनोरंजन, आगंतुक-नियंत्रण। (9) आपात में डॉक्टर बुलाना व प्राथमिक उपचार। (10) अपने स्वास्थ्य का ध्यान रखना।</div></div>
+<div class="qa"><div class="q">आदर्श रोगी-कक्ष का वर्णन कीजिए (चित्र सहित)।</div><div class="a"><span class="lab">उत्तर:</span>कक्ष घर के शांत भाग में, खिड़की-रोशनदान से हवा व धूप, शौचालय निकट। दीवार हल्के रंग की, फ़र्श चिकना व धुलने योग्य। फ़र्नीचर: पलंग, मेज़, कुर्सी, अलमारी, ढक्कनदार कूड़ेदान। पास में पानी, गिलास, घंटी, टॉर्च, बेडपैन। सफ़ाई गीले कपड़े से, शोर-भीड़ वर्जित, चित्र/सजावट मनोहर। (चित्र 1 बनाएँ।)</div></div>
+<div class="qa"><div class="q">पलंग बिछाने के प्रकार व विधि लिखिए।</div><div class="a"><span class="lab">उत्तर:</span>तीन प्रकार: (1) खाली/बंद पलंग - रोगी आने से पहले, पूरा ढका; (2) खुला पलंग - ऊपर की चादर तह करके मोड़ी, रोगी तुरंत लेटे; (3) रोगी सहित पलंग - लेटे रोगी की करवट बदलाकर आधा-आधा चादर बदलना। परतें: गद्दा, मैकिन्तोश, नीचे की चादर, ड्रॉ-शीट, ऊपर की चादर, कंबल, तकिया।</div></div>
+<div class="qa"><div class="q">रोगी के आहार का वर्णन कीजिए।</div><div class="a"><span class="lab">उत्तर:</span>परिभाषा, प्रकार (तरल, अर्ध-तरल, हल्का ठोस, पूर्ण), सिद्धांत (सुपाच्य, थोड़ा-थोड़ा, ताज़ा, पसंद), रोग अनुसार पथ्य (बुखार-तरल, दस्त-ORS, पीलिया-गन्ना रस, मधुमेह-बिना चीनी), खिलाने की विधि (बैठाकर, नैपकिन, सिपर), सावधानियाँ।</div></div>
+<div class="qa"><div class="q">तापमान, नाड़ी व श्वसन का वर्णन कीजिए।</div><div class="a"><span class="lab">उत्तर:</span>तापमान: 98.4°F, थर्मामीटर, विधि (मुँह/बगल), सावधानी। नाड़ी: 72, रेडियल धमनी, तीन उँगलियाँ, 1 मिनट। श्वसन: 18, छाती के उठने-गिरने से, रोगी को बिना बताए। अनुपात 4:1; चार्ट में लेखन; बुखार से नाड़ी-श्वसन बढ़ते हैं।</div></div>
+<div class="qa"><div class="q">दवा देने की विधि व सावधानियाँ विस्तार से लिखिए।</div><div class="a"><span class="lab">उत्तर:</span>लेबल, मात्रा नापने के पात्र (1 चम्मच = 5 ml), हिलाना, एक्सपायरी, समय का पालन, हाथ धोना, बच्चों से दूर रखना, एलर्जी पर रोकना, खुराक चार्ट में नोट; बूँदों/मरहम का सही प्रयोग।</div></div>
+<div class="qa"><div class="q">सेंक के प्रकार लिखिए व गर्म सेंक की विधि समझाइए।</div><div class="a"><span class="lab">उत्तर:</span>प्रकार: सूखा (रेत/नमक पोटली, गर्म बोतल), गीला (फोमेंटेशन), भाप, ठंडा (बर्फ़ थैली, पट्टी, स्पंज)। गर्म बोतल: जाँच, आधा पानी, हवा निकालना, कवर, त्वचा-जाँच। उपयोग: दर्द, अकड़न, ज़ुकाम।</div></div>
+<div class="qa"><div class="q">संक्रामक रोगी की देखभाल व निसंक्रमण की विधियाँ लिखिए।</div><div class="a"><span class="lab">उत्तर:</span>पृथक्करण, अलग बर्तन-कपड़े, परिचारिका के एप्रन-मास्क व हाथ धोना, कपड़े उबालना, मल-मूत्र/थूक का रासायनिक निपटान, मक्खी-मच्छर रोकना। निसंक्रमण: उबालना, धूप, भाप, जलाना; फिनाइल, डेटॉल, चूना, ब्लीचिंग पाउडर, फ़ॉर्मलिन।</div></div>
+<div class="qa"><div class="q">शय्या-व्रण के कारण, लक्षण व बचाव लिखिए।</div><div class="a"><span class="lab">उत्तर:</span>कारण: लगातार दबाव, नमी, सलवटदार बिस्तर, कुपोषण। लक्षण: त्वचा लाल, फिर छाले-घाव। बचाव: 2 घंटे में करवट, सफ़ाई-मालिश, रिंग-तकिया, सूखा बिस्तर, पौष्टिक आहार, डॉक्टर को दिखाना।</div></div>
+<div class="qa"><div class="q">स्पंज स्नान की आवश्यकता व विधि लिखिए।</div><div class="a"><span class="lab">उत्तर:</span>बुखार, कमज़ोरी, ऑपरेशन में जब रोगी नहा न सके; इससे शरीर साफ़, पसीना ख़त्म, रक्त-संचार, ताज़गी। सामान, चरण (चादर से ढककर अंग-अंग धोना, पोंछना, पीठ की मालिश, कपड़े बदलना)।</div></div>
+<div class="qa"><div class="q">गृह-परिचर्या की आवश्यकता व महत्व पर निबंध लिखिए।</div><div class="a"><span class="lab">उत्तर:</span>रोग मनुष्य के जीवन का अंग है; अस्पताल सब को सुलभ नहीं; घर पर देखभाल सस्ती, सुविधाजनक, भावनात्मक; स्वास्थ्य-लाभ, बुज़ुर्ग-बच्चे, लंबे रोग; परिचारिका के प्रशिक्षण से रोगी शीघ्र स्वस्थ, संक्रमण नियंत्रित; इसलिए प्रत्येक गृहिणी को परिचर्या का ज्ञान ज़रूरी।</div></div>
+<div class="qa"><div class="q">गृह-परिचारिका की किट में क्या-क्या रखना चाहिए?</div><div class="a"><span class="lab">उत्तर:</span>थर्मामीटर, रुई-पट्टी-गॉज़, डेटॉल/स्प्रिट, मरहम, कैंची-चिमटी, सेफ़्टी पिन, ORS, गर्म बोतल, बर्फ़ थैली, नापने का गिलास, ड्रॉपर, टॉर्च, बेडपैन, तौलिये, मास्क-एप्रन, डॉक्टर का नंबर।</div></div>
+</div>
+<h3>भाग D: बहुविकल्पीय प्रश्न (41)</h3>
+<div class="sec mcq">
+<div class="qa"><div class="q">सामान्य शारीरिक तापमान है</div><div class="opts"><span>(a) 96.4°F</span><span>(b) 98.4°F</span><span>(c) 100.4°F</span><span>(d) 102°F</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> 98.4°F = 37°C सामान्य है।</div></div>
+<div class="qa"><div class="q">वयस्क की सामान्य नाड़ी गति</div><div class="opts"><span>(a) 40</span><span>(b) 60</span><span>(c) 72</span><span>(d) 120</span></div><div class="ans"><span class="lab">सही उत्तर: (c)</span> औसतन 72/मिनट (60-80)।</div></div>
+<div class="qa"><div class="q">वयस्क की श्वसन-दर (प्रति मिनट)</div><div class="opts"><span>(a) 8</span><span>(b) 18</span><span>(c) 40</span><span>(d) 60</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> 16-20, औसत 18।</div></div>
+<div class="qa"><div class="q">सामान्य रक्तचाप</div><div class="opts"><span>(a) 80/120</span><span>(b) 120/80</span><span>(c) 140/90</span><span>(d) 200/100</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> ऊपर 120 व नीचे 80 mm Hg।</div></div>
+<div class="qa"><div class="q">थर्मामीटर में भरा रहता है</div><div class="opts"><span>(a) जल</span><span>(b) पारा</span><span>(c) तेल</span><span>(d) स्प्रिट</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> पारा, क्योंकि वह समान रूप से फैलता है।</div></div>
+<div class="qa"><div class="q">थर्मामीटर को झटककर पारा नीचे लाते हैं</div><div class="opts"><span>(a) 90°F</span><span>(b) 95°F से नीचे</span><span>(c) 98.4°F</span><span>(d) 100°F</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> ताकि नए तापमान का सही माप आए।</div></div>
+<div class="qa"><div class="q">थर्मामीटर साफ़ करें</div><div class="opts"><span>(a) गर्म पानी से</span><span>(b) उबालकर</span><span>(c) ठंडे पानी/स्प्रिट से</span><span>(d) धूप में</span></div><div class="ans"><span class="lab">सही उत्तर: (c)</span> गर्म पानी से टूट सकता है।</div></div>
+<div class="qa"><div class="q">नाड़ी गिनने में प्रयोग होती हैं</div><div class="opts"><span>(a) 2 उँगलियाँ</span><span>(b) 3 उँगलियाँ</span><span>(c) अँगूठा</span><span>(d) पूरा हाथ</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> अँगूठे की अपनी नाड़ी होती है।</div></div>
+<div class="qa"><div class="q">नाड़ी : श्वसन का सामान्य अनुपात</div><div class="opts"><span>(a) 2:1</span><span>(b) 3:1</span><span>(c) 4:1</span><span>(d) 6:1</span></div><div class="ans"><span class="lab">सही उत्तर: (c)</span> 72 : 18 = 4 : 1।</div></div>
+<div class="qa"><div class="q">बुखार में प्रति 1°F पर नाड़ी लगभग बढ़ती है</div><div class="opts"><span>(a) 2</span><span>(b) 5</span><span>(c) 10</span><span>(d) 20</span></div><div class="ans"><span class="lab">सही उत्तर: (c)</span> लगभग 10 धड़कन।</div></div>
+<div class="qa"><div class="q">शय्या-व्रण से बचने के लिए रोगी की करवट बदलें</div><div class="opts"><span>(a) हर 2 घंटे</span><span>(b) हर 8 घंटे</span><span>(c) हर 12 घंटे</span><span>(d) कभी नहीं</span></div><div class="ans"><span class="lab">सही उत्तर: (a)</span> दबाव कम होने से रक्त-संचार बना रहता है।</div></div>
+<div class="qa"><div class="q">रोगी के कमरे में फ़र्श होना चाहिए</div><div class="opts"><span>(a) खुरदरा</span><span>(b) चिकना व साफ़</span><span>(c) क़ालीन</span><span>(d) मिट्टी का</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> आसान सफ़ाई।</div></div>
+<div class="qa"><div class="q">रोगी का कमरा हो</div><div class="opts"><span>(a) शोर वाला</span><span>(b) रसोई से सटा</span><span>(c) शांत व हवादार</span><span>(d) अंधेरा</span></div><div class="ans"><span class="lab">सही उत्तर: (c)</span> शांति व हवा-रोशनी ज़रूरी।</div></div>
+<div class="qa"><div class="q">मैकिन्तोश किसकी चादर है</div><div class="opts"><span>(a) ऊन</span><span>(b) रबर</span><span>(c) रेशम</span><span>(d) जूट</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> गद्दे को नमी से बचाती है।</div></div>
+<div class="qa"><div class="q">1 चम्मच =</div><div class="opts"><span>(a) 1 ml</span><span>(b) 5 ml</span><span>(c) 15 ml</span><span>(d) 50 ml</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> 1 चाय का चम्मच = 5 ml।</div></div>
+<div class="qa"><div class="q">तरल आहार है</div><div class="opts"><span>(a) दलिया</span><span>(b) रोटी</span><span>(c) नारियल पानी</span><span>(d) पूरी</span></div><div class="ans"><span class="lab">सही उत्तर: (c)</span> पानी जैसा सुपाच्य।</div></div>
+<div class="qa"><div class="q">दस्त में दिया जाता है</div><div class="opts"><span>(a) चाय</span><span>(b) ORS</span><span>(c) अचार</span><span>(d) पकौड़ा</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> पानी व लवण की कमी पूरी करता है।</div></div>
+<div class="qa"><div class="q">पीलिया में उपयुक्त पेय</div><div class="opts"><span>(a) घी</span><span>(b) गन्ने का रस</span><span>(c) तला</span><span>(d) अचार</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> ग्लूकोज़ व वसा-रहित।</div></div>
+<div class="qa"><div class="q">मधुमेह के रोगी को कम देना चाहिए</div><div class="opts"><span>(a) सब्ज़ी</span><span>(b) चीनी</span><span>(c) पानी</span><span>(d) दाल</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> शर्करा से रक्त शर्करा बढ़ती है।</div></div>
+<div class="qa"><div class="q">उच्च रक्तचाप में कम लें</div><div class="opts"><span>(a) नमक</span><span>(b) फल</span><span>(c) दूध</span><span>(d) पानी</span></div><div class="ans"><span class="lab">सही उत्तर: (a)</span> नमक से बी.पी. बढ़ता है।</div></div>
+<div class="qa"><div class="q">बुखार तेज़ होने पर माथे पर लगाएँ</div><div class="opts"><span>(a) गर्म पट्टी</span><span>(b) ठंडी पट्टी</span><span>(c) मरहम</span><span>(d) कुछ नहीं</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> गर्मी घटती है।</div></div>
+<div class="qa"><div class="q">गर्म बोतल में पानी भरें</div><div class="opts"><span>(a) पूरा</span><span>(b) आधा</span><span>(c) चौथाई</span><span>(d) बिल्कुल नहीं</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> हवा निकालने व शरीर पर ढलने के लिए।</div></div>
+<div class="qa"><div class="q">भाप लेना लाभकारी है</div><div class="opts"><span>(a) टायफ़ाइड में</span><span>(b) ज़ुकाम में</span><span>(c) चोट में</span><span>(d) दस्त में</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> नाक खुलती है।</div></div>
+<div class="qa"><div class="q">स्पंज स्नान में जल होना चाहिए</div><div class="opts"><span>(a) ठंडा बर्फ़ीला</span><span>(b) उबलता</span><span>(c) गुनगुना</span><span>(d) नमकीन</span></div><div class="ans"><span class="lab">सही उत्तर: (c)</span> आराम व सुरक्षा।</div></div>
+<div class="qa"><div class="q">संक्रामक रोगी को रखें</div><div class="opts"><span>(a) सबके साथ</span><span>(b) अलग कमरे में</span><span>(c) रसोई में</span><span>(d) बाहर</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> पृथक्करण से रोग नहीं फैलता।</div></div>
+<div class="qa"><div class="q">निसंक्रमण (कीटाणुनाशी) है</div><div class="opts"><span>(a) चीनी</span><span>(b) फिनाइल</span><span>(c) नमक</span><span>(d) घी</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> फिनाइल/डेटॉल/ब्लीचिंग पाउडर।</div></div>
+<div class="qa"><div class="q">कपड़े उबालने का लगभग समय</div><div class="opts"><span>(a) 1 मिनट</span><span>(b) 5 मिनट</span><span>(c) 20 मिनट</span><span>(d) 2 घंटे</span></div><div class="ans"><span class="lab">सही उत्तर: (c)</span> कीटाणु नष्ट होते हैं।</div></div>
+<div class="qa"><div class="q">बेडपैन का उपयोग</div><div class="opts"><span>(a) खाना</span><span>(b) मल</span><span>(c) दवा</span><span>(d) पानी</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> बिस्तर पर रोगी के मल हेतु।</div></div>
+<div class="qa"><div class="q">कमरे की सफ़ाई करें</div><div class="opts"><span>(a) सूखे झाड़न से</span><span>(b) गीले कपड़े से</span><span>(c) झाड़ू से</span><span>(d) पंखे से</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> धूल उड़ती नहीं।</div></div>
+<div class="qa"><div class="q">एक आदर्श गृह-परिचारिका का गुण नहीं</div><div class="opts"><span>(a) धैर्य</span><span>(b) ईमानदारी</span><span>(c) क्रोध</span><span>(d) स्वच्छता</span></div><div class="ans"><span class="lab">सही उत्तर: (c)</span> क्रोध रोगी को कष्ट देता है।</div></div>
+<div class="qa"><div class="q">रोगी का चार्ट लिखना चाहिए</div><div class="opts"><span>(a) कभी नहीं</span><span>(b) नियमित</span><span>(c) साल में एक बार</span><span>(d) केवल रात में</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> नियमितता से रोग की प्रगति दिखती है।</div></div>
+<div class="qa"><div class="q">दवा देने से पहले देखें</div><div class="opts"><span>(a) रंग</span><span>(b) लेबल व एक्सपायरी</span><span>(c) बोतल का आकार</span><span>(d) कीमत</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> ग़लत/पुरानी दवा से हानि।</div></div>
+<div class="qa"><div class="q">बगल का तापमान मुँह से</div><div class="opts"><span>(a) 1°F अधिक</span><span>(b) 1°F कम</span><span>(c) बराबर</span><span>(d) दोगुना</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> लगभग 97.4°F।</div></div>
+<div class="qa"><div class="q">बच्चे का तापमान लेना चाहिए</div><div class="opts"><span>(a) मुँह में</span><span>(b) बगल में</span><span>(c) कान में</span><span>(d) नहीं लेना</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> मुँह में थर्मामीटर काटने का ख़तरा।</div></div>
+<div class="qa"><div class="q">रोगी को भोजन देना चाहिए</div><div class="opts"><span>(a) लेटकर</span><span>(b) सहारे से बैठाकर</span><span>(c) खड़ा करके</span><span>(d) जबरन</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> ठसका लगने से बचाव।</div></div>
+<div class="qa"><div class="q">डॉक्टर तुरंत बुलाएँ जब</div><div class="opts"><span>(a) हल्की छींक</span><span>(b) बेहोशी</span><span>(c) भूख</span><span>(d) हल्की खाँसी</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> बेहोशी आपात है।</div></div>
+<div class="qa"><div class="q">बर्फ़ की थैली का प्रयोग</div><div class="opts"><span>(a) सूजन व नकसीर में</span><span>(b) दर्द में सेंक</span><span>(c) ज़ुकाम</span><span>(d) जोड़ों में अकड़न</span></div><div class="ans"><span class="lab">सही उत्तर: (a)</span> ठंड से रक्त-वाहिनियाँ सिकुड़ती हैं।</div></div>
+<div class="qa"><div class="q">°C =</div><div class="opts"><span>(a) (°F − 32) × 5/9</span><span>(b) (°F + 32) × 9/5</span><span>(c) °F × 5/9</span><span>(d) °F − 32</span></div><div class="ans"><span class="lab">सही उत्तर: (a)</span> मानक रूपांतरण सूत्र।</div></div>
+<div class="qa"><div class="q">ड्रॉ-शीट बिछती है</div><div class="opts"><span>(a) सिर पर</span><span>(b) कंधे से घुटने तक</span><span>(c) पैरों में</span><span>(d) दीवार पर</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> शरीर के नीचे के भाग में।</div></div>
+<div class="qa"><div class="q">ऊपर की चादर तह करके रखे पलंग को कहते हैं</div><div class="opts"><span>(a) बंद पलंग</span><span>(b) खुला पलंग</span><span>(c) रोगी सहित पलंग</span><span>(d) झूला</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> रोगी तुरंत लेट सके।</div></div>
+<div class="qa"><div class="q">टूटे थर्मामीटर का पारा</div><div class="opts"><span>(a) हाथ से उठाएँ</span><span>(b) ज़हरीला, न छुएँ</span><span>(c) पी लें</span><span>(d) फेंक दें नाली में</span></div><div class="ans"><span class="lab">सही उत्तर: (b)</span> पारा विषैला है।</div></div>
+</div>
+<h3>भाग E: रिक्त स्थान (10)</h3>
+<div class="sec fib">
+<div class="qa"><div class="q">सामान्य तापमान ___ °F होता है।</div><div class="a"><span class="lab">उत्तर:</span>98.4</div></div>
+<div class="qa"><div class="q">वयस्क की नाड़ी ___ प्रति मिनट होती है।</div><div class="a"><span class="lab">उत्तर:</span>72</div></div>
+<div class="qa"><div class="q">थर्मामीटर को ___ °F से नीचे झटकते हैं।</div><div class="a"><span class="lab">उत्तर:</span>95</div></div>
+<div class="qa"><div class="q">बिस्तर पर बने घावों को ___ कहते हैं।</div><div class="a"><span class="lab">उत्तर:</span>शय्या-व्रण (Bed Sore)</div></div>
+<div class="qa"><div class="q">गद्दे को भीगने से ___ बचाती है।</div><div class="a"><span class="lab">उत्तर:</span>मैकिन्तोश (रबर की चादर)</div></div>
+<div class="qa"><div class="q">रोगी को ___ में थर्मामीटर से तापमान लेते हैं - मुँह या बगल।</div><div class="a"><span class="lab">उत्तर:</span>मुँह या बगल</div></div>
+<div class="qa"><div class="q">1 चम्मच = ___ ml।</div><div class="a"><span class="lab">उत्तर:</span>5</div></div>
+<div class="qa"><div class="q">संक्रामक रोगी को ___ में रखना चाहिए।</div><div class="a"><span class="lab">उत्तर:</span>अलग कमरे (पृथक्करण)</div></div>
+<div class="qa"><div class="q">नाड़ी ___ धमनी पर देखते हैं।</div><div class="a"><span class="lab">उत्तर:</span>रेडियल</div></div>
+<div class="qa"><div class="q">रोगी के कमरे की सफ़ाई ___ कपड़े से करते हैं।</div><div class="a"><span class="lab">उत्तर:</span>गीले</div></div>
+</div>
+<h3>भाग F: सत्य/असत्य (10)</h3>
+<div class="sec tf">
+<div class="qa"><div class="q">गृह-परिचारिका डॉक्टर की जगह ले सकती है।</div><div class="a"><span class="lab">सत्य/असत्य</span>असत्य - वह सहायक है, विकल्प नहीं।</div></div>
+<div class="qa"><div class="q">रोगी के कमरे में हवा-रोशनी होनी चाहिए।</div><div class="a"><span class="lab">सत्य/असत्य</span>सत्य - कीटाणु मरते हैं, हवा शुद्ध रहती है।</div></div>
+<div class="qa"><div class="q">थर्मामीटर को गर्म पानी में धोना चाहिए।</div><div class="a"><span class="lab">सत्य/असत्य</span>असत्य - ठंडे पानी/स्प्रिट से, गर्म में टूट सकता है।</div></div>
+<div class="qa"><div class="q">नाड़ी देखते समय अँगूठे का प्रयोग करें।</div><div class="a"><span class="lab">सत्य/असत्य</span>असत्य - तीन उँगलियाँ (तर्जनी, मध्यमा, अनामिका)।</div></div>
+<div class="qa"><div class="q">दवा देने से पहले लेबल पढ़ना ज़रूरी है।</div><div class="a"><span class="lab">सत्य/असत्य</span>सत्य - ग़लत दवा/मात्रा से हानि।</div></div>
+<div class="qa"><div class="q">संक्रामक रोगी के बर्तन सबके साथ धोएँ।</div><div class="a"><span class="lab">सत्य/असत्य</span>असत्य - अलग रखकर उबालें।</div></div>
+<div class="qa"><div class="q">गर्म बोतल में पूरा पानी भरना चाहिए।</div><div class="a"><span class="lab">सत्य/असत्य</span>असत्य - आधी भरें व हवा निकालें।</div></div>
+<div class="qa"><div class="q">शय्या-व्रण से बचने हेतु करवट बदलते रहें।</div><div class="a"><span class="lab">सत्य/असत्य</span>सत्य - हर 2 घंटे में।</div></div>
+<div class="qa"><div class="q">रोगी को बुरी ख़बर तुरंत बता दें।</div><div class="a"><span class="lab">सत्य/असत्य</span>असत्य - इससे मनोबल गिरता है।</div></div>
+<div class="qa"><div class="q">सामान्य रक्तचाप 120/80 है।</div><div class="a"><span class="lab">सत्य/असत्य</span>सत्य।</div></div>
+</div>
+<h3>भाग G: मिलान करें</h3>
+<table><tr><th>स्तंभ A</th><th>स्तंभ B (सही उत्तर)</th></tr>
+<tr><td>1. तापमान</td><td>98.4°F</td></tr><tr><td>2. नाड़ी</td><td>72/मिनट</td></tr><tr><td>3. श्वसन</td><td>16-20/मिनट</td></tr><tr><td>4. रक्तचाप</td><td>120/80 mm Hg</td></tr><tr><td>5. मैकिन्तोश</td><td>रबर की चादर</td></tr><tr><td>6. ORS</td><td>दस्त में जल-लवण पूर्ति</td></tr></table>
+<p class="foot">✍ कुल: 25 + 20 + 12 + 41 + 10 + 10 + 6 = 124 प्रश्न • 20 हल किए उदाहरण • 8 एनिमेटेड चित्र।</p>
+
+</div>
+<script>function rep(b){var d=b.parentNode.querySelector('.fg');d.innerHTML=d.innerHTML;}</script>
+</body></html>
