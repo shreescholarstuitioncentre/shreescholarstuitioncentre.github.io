@@ -730,29 +730,29 @@ const SSTC_EBOOKS = {
         "Home Science": {
             "description": "Class 9 Home Science E-Book Library",
             "image": "subject-images/class-9/homescience.png",
-            "chapters": [
-                { "number": 1, "title": "अध्याय 1: गृह विज्ञान के तत्त्व और क्षेत्र", "pdf": "ebooks/class-9/home-science/chapter-01.pdf" },
-                { "number": 2, "title": "अध्याय 2: गृह-व्यवस्था : परिवार के सन्दर्भ में", "pdf": "ebooks/class-9/home-science/chapter-02.pdf" },
-                { "number": 3, "title": "अध्याय 3: कार्य-व्यवस्था", "pdf": "ebooks/class-9/home-science/chapter-03.pdf" },
-                { "number": 4, "title": "अध्याय 4: अर्थव्यवस्था : परिवार की मूलभूत आवश्यकताएँ", "pdf": "ebooks/class-9/home-science/chapter-04.pdf" },
-                { "number": 5, "title": "अध्याय 5: स्वास्थ्य का अर्थ एवं परिभाषा तथा व्यक्तिगत स्वास्थ्य की देख-रेख और रक्षा", "pdf": "ebooks/class-9/home-science/chapter-05.pdf" },
-                { "number": 6, "title": "अध्याय 6: स्थानीय स्वास्थ्य संस्थाएँ एवं सेवाएँ", "pdf": "ebooks/class-9/home-science/chapter-06.pdf" },
-                { "number": 7, "title": "अध्याय 7: पर्यावरण-प्रदूषण का जनजीवन पर प्रभाव", "pdf": "ebooks/class-9/home-science/chapter-07.pdf" },
-                { "number": 8, "title": "अध्याय 8: वायु : शुद्ध वायु का महत्त्व एवं संवातन", "pdf": "ebooks/class-9/home-science/chapter-08.pdf" },
-                { "number": 9, "title": "अध्याय 9: अशुद्ध वायु से होने वाले रोग", "pdf": "ebooks/class-9/home-science/chapter-09.pdf" },
-                { "number": 10, "title": "अध्याय 10: कपड़े के तन्तु : प्रकार एवं दैनिक जीवन में इनका प्रयोग", "pdf": "ebooks/class-9/home-science/chapter-10.pdf" },
-                { "number": 11, "title": "अध्याय 11: व्यक्तिगत सज्जा : उचित वेशभूषा", "pdf": "ebooks/class-9/home-science/chapter-11.pdf" },
-                { "number": 12, "title": "अध्याय 12: भोजन का पाचन एवं सम्बन्धित शरीर-क्रिया विज्ञान", "pdf": "ebooks/class-9/home-science/chapter-12.pdf" },
-                { "number": 13, "title": "अध्याय 13: खाद्य पदार्थों का संगठन, वर्गीकरण और उनके कार्य", "pdf": "ebooks/class-9/home-science/chapter-13.pdf" },
-                { "number": 14, "title": "अध्याय 14: सन्तुलित आहार", "pdf": "ebooks/class-9/home-science/chapter-14.pdf" },
-                { "number": 15, "title": "अध्याय 15: प्राथमिक चिकित्सा के प्रमुख सिद्धान्त", "pdf": "ebooks/class-9/home-science/chapter-15.pdf" },
-                { "number": 16, "title": "अध्याय 16: सामान्य घरेलू दुर्घटनाएँ और उनसे बचाव", "pdf": "ebooks/class-9/home-science/chapter-16.pdf" },
-                { "number": 17, "title": "अध्याय 17: सामान्य घरेलू देशज औषधियाँ तथा सामान्य विषों के प्रतिकारक पदार्थ", "pdf": "ebooks/class-9/home-science/chapter-17.pdf" },
-                { "number": 18, "title": "अध्याय 18: तिकोनी और लम्बी पट्टियाँ तथा उनका प्रयोग", "pdf": "ebooks/class-9/home-science/chapter-18.pdf" },
-                { "number": 19, "title": "अध्याय 19: गृह-परिचर्या और गृह-परिचारिका", "pdf": "ebooks/class-9/home-science/chapter-19.pdf" },
-                { "number": 20, "title": "अध्याय 20: रोगी का कमरा एवं उसकी व्यवस्था", "pdf": "ebooks/class-9/home-science/chapter-20.pdf" },
-                { "number": 21, "title": "अध्याय 21: रोगी का बिस्तर", "pdf": "ebooks/class-9/home-science/chapter-21.pdf" }
-            ]
+             "chapters": [
+                 { "number": 1, "title": "Chapter 1: Elements and Scope of Home Science / अध्याय 1: गृह विज्ञान के तत्त्व और क्षेत्र", "pdf": "ebooks/class-9/home-science/chapter-01.pdf" },
+                 { "number": 2, "title": "Chapter 2: Home Management: In the Context of Family / अध्याय 2: गृह-व्यवस्था : परिवार के सन्दर्भ में", "pdf": "ebooks/class-9/home-science/chapter-02.pdf" },
+                 { "number": 3, "title": "Chapter 3: Work Management / अध्याय 3: कार्य-व्यवस्था", "pdf": "ebooks/class-9/home-science/chapter-03.pdf" },
+                 { "number": 4, "title": "Chapter 4: Economy: Basic Needs of the Family / अध्याय 4: अर्थव्यवस्था : परिवार की मूलभूत आवश्यकताएँ", "pdf": "ebooks/class-9/home-science/chapter-04.pdf" },
+                 { "number": 5, "title": "Chapter 5: Meaning and Definition of Health and Personal Health Care and Protection / अध्याय 5: स्वास्थ्य का अर्थ एवं परिभाषा तथा व्यक्तिगत स्वास्थ्य की देख-रेख और रक्षा", "pdf": "ebooks/class-9/home-science/chapter-05.pdf" },
+                 { "number": 6, "title": "Chapter 6: Local Health Organizations and Services / अध्याय 6: स्थानीय स्वास्थ्य संस्थाएँ एवं सेवाएँ", "pdf": "ebooks/class-9/home-science/chapter-06.pdf" },
+                 { "number": 7, "title": "Chapter 7: Impact of Environmental Pollution on Public Life / अध्याय 7: पर्यावरण-प्रदूषण का जनजीवन पर प्रभाव", "pdf": "ebooks/class-9/home-science/chapter-07.pdf" },
+                 { "number": 8, "title": "Chapter 8: Air: Importance of Pure Air and Ventilation / अध्याय 8: वायु : शुद्ध वायु का महत्त्व एवं संवातन", "pdf": "ebooks/class-9/home-science/chapter-08.pdf" },
+                 { "number": 9, "title": "Chapter 9: Diseases Caused by Impure Air / अध्याय 9: अशुद्ध वायु से होने वाले रोग", "pdf": "ebooks/class-9/home-science/chapter-09.pdf" },
+                 { "number": 10, "title": "Chapter 10: Clothing Fibres: Types and Their Use in Daily Life / अध्याय 10: कपड़े के तन्तु : प्रकार एवं दैनिक जीवन में इनका प्रयोग", "pdf": "ebooks/class-9/home-science/chapter-10.pdf" },
+                 { "number": 11, "title": "Chapter 11: Personal Grooming: Appropriate Attire / अध्याय 11: व्यक्तिगत सज्जा : उचित वेशभूषा", "pdf": "ebooks/class-9/home-science/chapter-11.pdf" },
+                 { "number": 12, "title": "Chapter 12: Digestion of Food and Related Anatomy / अध्याय 12: भोजन का पाचन एवं सम्बन्धित शरीर-क्रिया विज्ञान", "pdf": "ebooks/class-9/home-science/chapter-12.pdf" },
+                 { "number": 13, "title": "Chapter 13: Composition, Classification and Functions of Food / अध्याय 13: खाद्य पदार्थों का संगठन, वर्गीकरण और उनके कार्य", "pdf": "ebooks/class-9/home-science/chapter-13.pdf" },
+                 { "number": 14, "title": "Chapter 14: Balanced Diet / अध्याय 14: सन्तुलित आहार", "pdf": "ebooks/class-9/home-science/chapter-14.pdf" },
+                 { "number": 15, "title": "Chapter 15: Principles of First Aid / अध्याय 15: प्राथमिक चिकित्सा के प्रमुख सिद्धान्त", "pdf": "ebooks/class-9/home-science/chapter-15.pdf" },
+                 { "number": 16, "title": "Chapter 16: Common Household Accidents and Their Prevention / अध्याय 16: सामान्य घरेलू दुर्घटनाएँ और उनसे बचाव", "pdf": "ebooks/class-9/home-science/chapter-16.pdf" },
+                 { "number": 17, "title": "Chapter 17: Common Domestic Indigenous Medicines and Antidotes for Common Poisons / अध्याय 17: सामान्य घरेलू देशज औषधियाँ तथा सामान्य विषों के प्रतिकारक पदार्थ", "pdf": "ebooks/class-9/home-science/chapter-17.pdf" },
+                 { "number": 18, "title": "Chapter 18: Triangular and Roller Bandages and Their Use / अध्याय 18: तिकोनी और लम्बी पट्टियाँ तथा उनका प्रयोग", "pdf": "ebooks/class-9/home-science/chapter-18.pdf" },
+                 { "number": 19, "title": "Chapter 19: Home Nursing and Home Nurse / अध्याय 19: गृह-परिचर्या और गृह-परिचारिका", "pdf": "ebooks/class-9/home-science/chapter-19.pdf" },
+                 { "number": 20, "title": "Chapter 20: Patient's Room and Its Management / अध्याय 20: रोगी का कमरा एवं उसकी व्यवस्था", "pdf": "ebooks/class-9/home-science/chapter-20.pdf" },
+                 { "number": 21, "title": "Chapter 21: Patient's Bed / अध्याय 21: रोगी का बिस्तर", "pdf": "ebooks/class-9/home-science/chapter-21.pdf" }
+             ]
         },
 
         "Computer": {
