@@ -758,18 +758,24 @@ const SSTC_EBOOKS = {
         "Computer": {
             "description": "Class 9 Computer E-Book Library",
             "image": "subject-images/class-9/computer.png",
-            "chapters": [
-                { "number": 1, "title": "Chapter 1: Number System and Conversion", "pdf": "ebooks/class-9/computer/chapter-01.pdf" },
-                { "number": 2, "title": "Chapter 2: Binary Arithmetic", "pdf": "ebooks/class-9/computer/chapter-02.pdf" },
-                { "number": 3, "title": "Chapter 3: Introduction to Computer", "pdf": "ebooks/class-9/computer/chapter-03.pdf" },
-                { "number": 4, "title": "Chapter 4: Computer Fundamentals", "pdf": "ebooks/class-9/computer/chapter-04.pdf" },
-                { "number": 5, "title": "Chapter 5: Input and Output Devices", "pdf": "ebooks/class-9/computer/chapter-05.pdf" },
-                { "number": 6, "title": "Chapter 6: Computer Memory", "pdf": "ebooks/class-9/computer/chapter-06.pdf" },
-                { "number": 7, "title": "Chapter 7: Computer Software", "pdf": "ebooks/class-9/computer/chapter-07.pdf" },
-                { "number": 8, "title": "Chapter 8: Operating System", "pdf": "ebooks/class-9/computer/chapter-08.pdf" },
-                { "number": 9, "title": "Chapter 9: Introduction to Internet", "pdf": "ebooks/class-9/computer/chapter-09.pdf" },
-                { "number": 10, "title": "Chapter 10: Computer Virus and Security", "pdf": "ebooks/class-9/computer/chapter-10.pdf" }
-            ]
+             "chapters": [
+                 { "number": 1, "title": "Chapter 1: Introduction & Development of Computer / अध्याय 1: कंप्यूटर का परिचय और विकास", "pdf": "ebooks/class-9/computer/chapter-01.pdf" },
+                 { "number": 2, "title": "Chapter 2: Computer Fundamentals, Parts & Types / अध्याय 2: कंप्यूटर के मूल तत्व, भाग और प्रकार", "pdf": "ebooks/class-9/computer/chapter-02.pdf" },
+                 { "number": 3, "title": "Chapter 3: Input/Output Devices, Hardware & Software / अध्याय 3: इनपुट/आउटपुट डिवाइस, हार्डवेयर और सॉफ्टवेयर", "pdf": "ebooks/class-9/computer/chapter-03.pdf" },
+                 { "number": 4, "title": "Chapter 4: Number System and Conversion / अध्याय 4: संख्या प्रणाली और रूपांतरण", "pdf": "ebooks/class-9/computer/chapter-04.pdf" },
+                 { "number": 5, "title": "Chapter 5: Binary Arithmetic / अध्याय 5: बाइनरी अंकगणित", "pdf": "ebooks/class-9/computer/chapter-05.pdf" },
+                 { "number": 6, "title": "Chapter 6: Introduction to Computer / अध्याय 6: कंप्यूटर का परिचय", "pdf": "ebooks/class-9/computer/chapter-06.pdf" },
+                 { "number": 7, "title": "Chapter 7: Computer Fundamentals / अध्याय 7: कंप्यूटर के मूल तत्व", "pdf": "ebooks/class-9/computer/chapter-07.pdf" },
+                 { "number": 8, "title": "Chapter 8: Input and Output Devices / अध्याय 8: इनपुट और आउटपुट डिवाइस", "pdf": "ebooks/class-9/computer/chapter-08.pdf" },
+                 { "number": 9, "title": "Chapter 9: Computer Memory / अध्याय 9: कंप्यूटर मेमोरी", "pdf": "ebooks/class-9/computer/chapter-09.pdf" },
+                 { "number": 10, "title": "Chapter 10: Computer Software / अध्याय 10: कंप्यूटर सॉफ्टवेयर", "pdf": "ebooks/class-9/computer/chapter-10.pdf" },
+                 { "number": 11, "title": "Chapter 11: Operating System / अध्याय 11: ऑपरेटिंग सिस्टम", "pdf": "ebooks/class-9/computer/chapter-11.pdf" },
+                 { "number": 12, "title": "Chapter 12: Introduction to Internet / अध्याय 12: इंटरनेट का परिचय", "pdf": "ebooks/class-9/computer/chapter-12.pdf" },
+                 { "number": 13, "title": "Chapter 13: Computer Virus and Security / अध्याय 13: कंप्यूटर वायरस और सुरक्षा", "pdf": "ebooks/class-9/computer/chapter-13.pdf" },
+                 { "number": 14, "title": "Chapter 14: Computer Network / अध्याय 14: कंप्यूटर नेटवर्क", "pdf": "ebooks/class-9/computer/chapter-14.pdf" },
+                 { "number": 15, "title": "Chapter 15: Computer Flowcharts and Algorithms / अध्याय 15: कंप्यूटर फ्लोचार्ट और एल्गोरिदम", "pdf": "ebooks/class-9/computer/chapter-15.pdf" },
+                 { "number": 16, "title": "Chapter 16: Introduction to Programming Techniques / अध्याय 16: प्रोग्रामिंग तकनीकों का परिचय", "pdf": "ebooks/class-9/computer/chapter-16.pdf" }
+             ]
         },
 
         "Chitrakala": {
