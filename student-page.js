@@ -797,22 +797,39 @@ const SSTC_EBOOKS = {
         },
 
         "Commerce": {
-            "description": "Class 9 Commerce E-Book Library",
-            "image": "subject-images/class-9/commerce.png",
-            "chapters": [
-                { "number": 1, "title": "Chapter 1: Introduction to Commerce / अध्याय 1: वाणिज्य का परिचय", "pdf": "ebooks/class-9/commerce/chapter-01.pdf" },
-                { "number": 2, "title": "Chapter 2: Trade and Its Types / अध्याय 2: व्यापार एवं उसके प्रकार", "pdf": "ebooks/class-9/commerce/chapter-02.pdf" },
-                { "number": 3, "title": "Chapter 3: Business and Its Objectives / अध्याय 3: व्यवसाय एवं उसके उद्देश्य", "pdf": "ebooks/class-9/commerce/chapter-03.pdf" },
-                { "number": 4, "title": "Chapter 4: Industry and Commerce / अध्याय 4: उद्योग एवं वाणिज्य", "pdf": "ebooks/class-9/commerce/chapter-04.pdf" },
-                { "number": 5, "title": "Chapter 5: Forms of Business Organisation / अध्याय 5: व्यावसायिक संगठन के स्वरूप", "pdf": "ebooks/class-9/commerce/chapter-05.pdf" },
-                { "number": 6, "title": "Chapter 6: Banking / अध्याय 6: बैंकिंग", "pdf": "ebooks/class-9/commerce/chapter-06.pdf" },
-                { "number": 7, "title": "Chapter 7: Insurance / अध्याय 7: बीमा", "pdf": "ebooks/class-9/commerce/chapter-07.pdf" },
-                { "number": 8, "title": "Chapter 8: Transport and Communication / अध्याय 8: परिवहन एवं संचार", "pdf": "ebooks/class-9/commerce/chapter-08.pdf" },
-                { "number": 9, "title": "Chapter 9: Warehousing / अध्याय 9: भंडारण", "pdf": "ebooks/class-9/commerce/chapter-09.pdf" },
-                { "number": 10, "title": "Chapter 10: Advertising / अध्याय 10: विज्ञापन", "pdf": "ebooks/class-9/commerce/chapter-10.pdf" },
-                { "number": 11, "title": "Chapter 11: Consumer Awareness / अध्याय 11: उपभोक्ता जागरूकता", "pdf": "ebooks/class-9/commerce/chapter-11.pdf" }
-            ]
-        }
+    "description": "Class 9 Commerce E-Book Library",
+    "image": "subject-images/class-9/commerce.png",
+    "chapters": [
+        { "number": 1, "title": "Chapter 1: Double Entry System / अध्याय 1: दोहरा लेखा प्रणाली", "pdf": "ebooks/class-9/commerce/chapter-01.pdf" },
+        { "number": 2, "title": "Chapter 2: Office / अध्याय 2: कार्यालय", "pdf": "ebooks/class-9/commerce/chapter-02.pdf" },
+        { "number": 3, "title": "Chapter 3: Journal / अध्याय 3: रोजनामचा (जर्नल)", "pdf": "ebooks/class-9/commerce/chapter-03.pdf" },
+        { "number": 4, "title": "Chapter 4: Book Keeping / अध्याय 4: बहीखाता", "pdf": "ebooks/class-9/commerce/chapter-04.pdf" },
+        { "number": 5, "title": "Chapter 5: Ledger / अध्याय 5: खाता-बही (लेजर)", "pdf": "ebooks/class-9/commerce/chapter-05.pdf" },
+        { "number": 6, "title": "Chapter 6: Cash Book / अध्याय 6: रोकड़ बही", "pdf": "ebooks/class-9/commerce/chapter-06.pdf" },
+        { "number": 7, "title": "Chapter 7: Trial Balance / अध्याय 7: तलपट (कच्चा चिट्ठा)", "pdf": "ebooks/class-9/commerce/chapter-07.pdf" },
+        { "number": 8, "title": "Chapter 8: Indian System of Book Keeping / अध्याय 8: भारतीय बहीखाता प्रणाली", "pdf": "ebooks/class-9/commerce/chapter-08.pdf" },
+        { "number": 9, "title": "Chapter 9: Business / अध्याय 9: व्यवसाय", "pdf": "ebooks/class-9/commerce/chapter-09.pdf" },
+        { "number": 10, "title": "Chapter 10: Correspondence / अध्याय 10: पत्राचार", "pdf": "ebooks/class-9/commerce/chapter-10.pdf" },
+        { "number": 11, "title": "Chapter 11: Copying / अध्याय 11: प्रतिलिपि लेखन", "pdf": "ebooks/class-9/commerce/chapter-11.pdf" },
+        { "number": 12, "title": "Chapter 12: Commercial Correspondence / अध्याय 12: व्यापारिक पत्राचार", "pdf": "ebooks/class-9/commerce/chapter-12.pdf" },
+        { "number": 13, "title": "Chapter 13: Constituents of Money / अध्याय 13: मुद्रा के घटक", "pdf": "ebooks/class-9/commerce/chapter-13.pdf" },
+        { "number": 14, "title": "Chapter 14: Barter System / अध्याय 14: वस्तु विनिमय प्रणाली", "pdf": "ebooks/class-9/commerce/chapter-14.pdf" },
+        { "number": 15, "title": "Chapter 15: Origin and Growth of Money / अध्याय 15: मुद्रा की उत्पत्ति एवं विकास", "pdf": "ebooks/class-9/commerce/chapter-15.pdf" },
+        { "number": 16, "title": "Chapter 16: Meaning, Functions, Importance and Evils of Money / अध्याय 16: मुद्रा का अर्थ, कार्य, महत्त्व एवं दोष", "pdf": "ebooks/class-9/commerce/chapter-16.pdf" },
+        { "number": 17, "title": "Chapter 17: Classification of Money: Metallic and Paper Money / अध्याय 17: मुद्रा का वर्गीकरण: धात्विक एवं कागजी मुद्रा", "pdf": "ebooks/class-9/commerce/chapter-17.pdf" },
+        { "number": 18, "title": "Chapter 18: Qualities of a Good Money Material / अध्याय 18: अच्छी मुद्रा सामग्री के गुण", "pdf": "ebooks/class-9/commerce/chapter-18.pdf" },
+        { "number": 19, "title": "Chapter 19: Principles and Methods of Note Issue / अध्याय 19: नोट निर्गमन के सिद्धांत एवं प्रणालियाँ", "pdf": "ebooks/class-9/commerce/chapter-19.pdf" },
+        { "number": 20, "title": "Chapter 20: Present Currency System in India / अध्याय 20: भारत की वर्तमान मुद्रा प्रणाली", "pdf": "ebooks/class-9/commerce/chapter-20.pdf" },
+        { "number": 21, "title": "Chapter 21: Introduction and Definition of Economics / अध्याय 21: अर्थशास्त्र का परिचय एवं परिभाषा", "pdf": "ebooks/class-9/commerce/chapter-21.pdf" },
+        { "number": 22, "title": "Chapter 22: Scope of Economics / अध्याय 22: अर्थशास्त्र का क्षेत्र", "pdf": "ebooks/class-9/commerce/chapter-22.pdf" },
+        { "number": 23, "title": "Chapter 23: Enquiry Order / अध्याय 23: पूछताछ आदेश", "pdf": "ebooks/class-9/commerce/chapter-23.pdf" },
+        { "number": 24, "title": "Chapter 24: Importance of Economics / अध्याय 24: अर्थशास्त्र का महत्त्व", "pdf": "ebooks/class-9/commerce/chapter-24.pdf" },
+        { "number": 25, "title": "Chapter 25: Terminology Relating to Economics / अध्याय 25: अर्थशास्त्र संबंधी शब्दावली", "pdf": "ebooks/class-9/commerce/chapter-25.pdf" },
+        { "number": 26, "title": "Chapter 26: Consumption: Meaning, Types and Importance / अध्याय 26: उपभोग: अर्थ, प्रकार एवं महत्त्व", "pdf": "ebooks/class-9/commerce/chapter-26.pdf" },
+        { "number": 27, "title": "Chapter 27: Classification and Characteristics of Human Needs / अध्याय 27: मानवीय आवश्यकताओं का वर्गीकरण एवं विशेषताएँ", "pdf": "ebooks/class-9/commerce/chapter-27.pdf" },
+        { "number": 28, "title": "Chapter 28: Project Work / अध्याय 28: परियोजना कार्य", "pdf": "ebooks/class-9/commerce/chapter-28.pdf" }
+    ]
+}
 
     },
 
