@@ -327,7 +327,8 @@ const SSTC_SESSION_START_MS = "sstcSessionStartMs";
 const SSTC_CURRENT_BOOK = "sstcCurrentBook";
 const SSTC_CURRENT_CHAPTER = "sstcCurrentChapter";
 const SSTC_CURRENT_PAGE = "sstcCurrentPage";
-
+const SSTC_SW_KEY_ACC = "sstcSwAccMs";
+const SSTC_SW_KEY_START = "sstcSwStartMs";
 
 /* =========================================================
    GITHUB PAGES BASE URL
@@ -612,7 +613,7 @@ const SSTC_EBOOKS = {
         "Mathematics": {
             "description": "Class 9 Mathematics E-Book Library",
             "image": "subject-images/class-9/maths.png",
-            [
+             "chapters": [
                  {"number": 1,"title": "Chapter 1: Number Systems / अध्याय 1: संख्या पद्धति","pdf": "ebooks/class-9/mathematics/chapter-01.pdf"},
                  {"number": 2,"title": "Chapter 2: Exponents / अध्याय 2: घातांक","pdf": "ebooks/class-9/mathematics/chapter-14.pdf"},
                  {"number": 3,"title": "Chapter 3: Rationalisation / अध्याय 3: हर का परिमेयकरण","pdf": "ebooks/class-9/mathematics/chapter-15.pdf"},
@@ -893,7 +894,7 @@ const SSTC_EBOOKS = {
                 { "number": 29, "title": "Chapter 29: Chiti - Chandralok me Pratham Baar - Sumitranandan Pant / अध्याय 29: चींटी - चन्द्रलोक में प्रथम बार - सुमित्रानन्दन पन्त", "pdf": "ebooks/class-10/hindi/chapter-29.pdf" },
                 { "number": 30, "title": "Chapter 30: Haldighaati - Shyaamnarayan Pandey  / अध्याय 30: हल्दीघाटी - श्यामनारायण पाण्डेय", "pdf": "ebooks/class-10/hindi/chapter-30.pdf" },
                 { "number": 31, "title": "Chapter 31: Ken kim Vardhate? / अध्याय 31: केन किं वर्धते?", "pdf": "ebooks/class-10/hindi/chapter-31.pdf" },
-                { "number": 32, "title": "Chapter 32: Jhanshi ki Rani ki Samadhi par - Subhadrakumari Chauhan (Kavya) / अध्याय 32: झाँसी की रानी की समाधि परी - सुभद्राकुमारी चौहान (काव्य)"}
+                { "number": 32, "title": "Chapter 32: Jhanshi ki Rani ki Samadhi par - Subhadrakumari Chauhan (Kavya) / अध्याय 32: झाँसी की रानी की समाधि परी - सुभद्राकुमारी चौहान (काव्य)", "pdf": "ebooks/class-10/hindi/chapter-32.pdf" }
              ]
          },
 
@@ -6218,8 +6219,8 @@ window.openSstcNotes = openSstcNotes;
    Session timer (login -> logout) + Study stopwatch
    ========================================================= */
 
-const SSTC_SW_KEY_ACC = "sstcSwAccMs";       // ab tak jama hua stopwatch time
-const SSTC_SW_KEY_START = "sstcSwStartMs";   // chal raha ho to start timestamp
+// const SSTC_SW_KEY_ACC = "sstcSwAccMs";       // ab tak jama hua stopwatch time
+// const SSTC_SW_KEY_START = "sstcSwStartMs";   // chal raha ho to start timestamp
 
 let sstcTrackerTimer = null;
 
