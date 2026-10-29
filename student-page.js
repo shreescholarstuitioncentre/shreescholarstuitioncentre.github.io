@@ -612,21 +612,25 @@ const SSTC_EBOOKS = {
         "Mathematics": {
             "description": "Class 9 Mathematics E-Book Library",
             "image": "subject-images/class-9/maths.png",
-            "chapters": [
-                { "number": 1, "title": "Chapter 1: Number Systems / अध्याय 1: संख्या पद्धति", "pdf": "ebooks/class-9/mathematics/chapter-01.pdf" },
-                { "number": 2, "title": "Chapter 2: Polynomials / अध्याय 2: बहुपद", "pdf": "ebooks/class-9/mathematics/chapter-02.pdf" },
-                { "number": 3, "title": "Chapter 3: Coordinate Geometry / अध्याय 3: निर्देशांक ज्यामिति", "pdf": "ebooks/class-9/mathematics/chapter-03.pdf" },
-                { "number": 4, "title": "Chapter 4: Linear Equations in Two Variables / अध्याय 4: दो चरों वाले रैखिक समीकरण", "pdf": "ebooks/class-9/mathematics/chapter-04.pdf" },
-                { "number": 5, "title": "Chapter 5: Introduction to Euclid's Geometry / अध्याय 5: यूक्लिड की ज्यामिति का परिचय", "pdf": "ebooks/class-9/mathematics/chapter-05.pdf" },
-                { "number": 6, "title": "Chapter 6: Lines and Angles / अध्याय 6: रेखाएँ और कोण", "pdf": "ebooks/class-9/mathematics/chapter-06.pdf" },
-                { "number": 7, "title": "Chapter 7: Triangles / अध्याय 7: त्रिभुज", "pdf": "ebooks/class-9/mathematics/chapter-07.pdf" },
-                { "number": 8, "title": "Chapter 8: Quadrilaterals / अध्याय 8: चतुर्भुज", "pdf": "ebooks/class-9/mathematics/chapter-08.pdf" },
-                { "number": 9, "title": "Chapter 9: Circles / अध्याय 9: वृत्त", "pdf": "ebooks/class-9/mathematics/chapter-09.pdf" },
-                { "number": 10, "title": "Chapter 10: Heron's Formula / अध्याय 10: हीरोन का सूत्र", "pdf": "ebooks/class-9/mathematics/chapter-10.pdf" },
-                { "number": 11, "title": "Chapter 11: Surface Areas and Volumes / अध्याय 11: पृष्ठीय क्षेत्रफल और आयतन", "pdf": "ebooks/class-9/mathematics/chapter-11.pdf" },
-                { "number": 12, "title": "Chapter 12: Statistics / अध्याय 12: सांख्यिकी", "pdf": "ebooks/class-9/mathematics/chapter-12.pdf" },
-                { "number": 13, "title": "Chapter 13: Probability / अध्याय 13: प्रायिकता", "pdf": "ebooks/class-9/mathematics/chapter-13.pdf" }
-            ]
+            [
+                 {"number": 1,"title": "Chapter 1: Number Systems / अध्याय 1: संख्या पद्धति","pdf": "ebooks/class-9/mathematics/chapter-01.pdf"},
+                 {"number": 2,"title": "Chapter 2: Exponents / अध्याय 2: घातांक","pdf": "ebooks/class-9/mathematics/chapter-14.pdf"},
+                 {"number": 3,"title": "Chapter 3: Rationalisation / अध्याय 3: हर का परिमेयकरण","pdf": "ebooks/class-9/mathematics/chapter-15.pdf"},
+                 {"number": 4,"title": "Chapter 4: Algebraic Identities / अध्याय 4: बीजीय सर्वसमिकाएँ","pdf": "ebooks/class-9/mathematics/chapter-16.pdf"},
+                 {"number": 5,"title": "Chapter 5: Polynomials / अध्याय 5: बहुपद","pdf": "ebooks/class-9/mathematics/chapter-02.pdf"},
+                 {"number": 6,"title": "Chapter 6: Remainder and Factor Theorem / अध्याय 6: शेषफल और गुणनखंड प्रमेय","pdf": "ebooks/class-9/mathematics/chapter-17.pdf"},
+                 {"number": 7,"title": "Chapter 7: Coordinate Geometry / अध्याय 7: निर्देशांक ज्यामिति","pdf": "ebooks/class-9/mathematics/chapter-03.pdf"},
+                 {"number": 8,"title": "Chapter 8: Linear Equations in Two Variables / अध्याय 8: दो चरों वाले रैखिक समीकरण","pdf": "ebooks/class-9/mathematics/chapter-04.pdf"},
+                 {"number": 9,"title": "Chapter 9: Introduction to Euclid's Geometry / अध्याय 9: यूक्लिड की ज्यामिति का परिचय","pdf": "ebooks/class-9/mathematics/chapter-05.pdf"},
+                 {"number": 10,"title": "Chapter 10: Lines and Angles / अध्याय 10: रेखाएँ और कोण","pdf": "ebooks/class-9/mathematics/chapter-06.pdf"},
+                 {"number": 11,"title": "Chapter 11: Triangles / अध्याय 11: त्रिभुज","pdf": "ebooks/class-9/mathematics/chapter-07.pdf"},
+                 {"number": 12,"title": "Chapter 12: Quadrilaterals / अध्याय 12: चतुर्भुज","pdf": "ebooks/class-9/mathematics/chapter-08.pdf"},
+                 {"number": 13,"title": "Chapter 13: Circles / अध्याय 13: वृत्त","pdf": "ebooks/class-9/mathematics/chapter-09.pdf"},
+                 {"number": 14,"title": "Chapter 14: Surface Areas and Volumes / अध्याय 14: पृष्ठीय क्षेत्रफल और आयतन","pdf": "ebooks/class-9/mathematics/chapter-11.pdf"},
+                 {"number": 15,"title": "Chapter 15: Statistics / अध्याय 15: सांख्यिकी","pdf": "ebooks/class-9/mathematics/chapter-12.pdf"},
+                 {"number": 16,"title": "Chapter 16: Probability / अध्याय 16: प्रायिकता","pdf": "ebooks/class-9/mathematics/chapter-13.pdf"},
+                 {"number": 17,"title": "Chapter 17: Heron's Formula / अध्याय 17: हीरोन का सूत्र","pdf": "ebooks/class-9/mathematics/chapter-10.pdf"}
+               ]
         },
 
         "English": {
