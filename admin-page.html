@@ -1,109 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <script>
-          if (sessionStorage.getItem('sstcAdmin') !== 'true') {
-            window.location.href = 'admin-login.html'; // apne login page ka sahi file name likhna
-          }
-        </script>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSTC Admin Dashboard</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+  <!-- Login check: bina login ke andar nahi aane dega -->
+  <script>
+    if (sessionStorage.getItem('sstcAdmin') !== 'true') {
+      window.location.replace('sstc-access.html');
+    }
+  </script>
 
-    <meta http-equiv="Content-Security-Policy"
-          content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self' https://script.google.com;">
-
-    <title>
-        SSTC Admin Dashboard | Shree Scholars Tuition Centre
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="admin-page.css"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
-
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff8ec;
+      color: #1d2130;
+    }
+    header {
+      background: #fff;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+      gap: 10px;
+    }
+    header h1 { margin: 0; font-size: 1.2rem; color: #d62828; }
+    header small { color: #5f6c7b; }
+    .btn {
+      background: #d62828;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: .9rem;
+    }
+    main { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
+    .welcome {
+      background: #fff;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      margin-bottom: 20px;
+    }
+    .welcome h2 { margin: 0 0 6px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+    .card h3 { margin: 0 0 6px; }
+    .card p { margin: 0; color: #5f6c7b; font-size: .92rem; }
+  </style>
 </head>
-
-
 <body>
 
+  <header>
+    <div>
+      <h1>Shree Scholars Tuition Centre</h1>
+      <small>Admin Dashboard</small>
+    </div>
+    <div>
+      <a href="index.html" class="btn">🏠 Home</a>
+      <button class="btn" onclick="adminLogout()">Logout</button>
+    </div>
+  </header>
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+  <main>
+    <div class="welcome">
+      <h2>Welcome, Admin 👋</h2>
+      <p>Login successful. Yahan se tum apna admin kaam manage kar sakte ho.</p>
+    </div>
 
-<header class="site-header">
+    <div class="grid">
+      <div class="card"><h3>👨‍🎓 Students</h3><p>Student list aur details (jald add hoga)</p></div>
+      <div class="card"><h3>📚 Notes Rentals</h3><p>Notes rent ka record (jald add hoga)</p></div>
+      <div class="card"><h3>🕒 Sessions</h3><p>Sessions ka record (jald add hoga)</p></div>
+    </div>
+  </main>
 
-    <a
-        class="brand"
-        href="index.html"
-    >
-
-        <img
-            src="Logo.png"
-            alt="SSTC Logo"
-            onerror="this.style.display='none'"
-        >
-
-        <div class="brand-text">
-
-            <h1>
-                Shree Scholars Tuition Centre
-            </h1>
-
-            <span>
-                From Foundation to Future
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <nav class="header-actions">
-
-        <a
-            class="nav-btn home-btn"
-            href="index.html"
-        >
-            🏠 Home
-        </a>
-
-
-        <a
-            class="nav-btn contact-btn"
-            href="index.html#contact"
-        >
-            📞 Contact
-        </a>
-
-    </nav>
-
-</header>
-
-
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
-<main class="admin-main">
+  <script>
+    function adminLogout() {
+      sessionStorage.removeItem('sstcAdmin');
+      window.location.href = 'sstc-access.html';
+    }
+  </script>
+</body>
+</html>
