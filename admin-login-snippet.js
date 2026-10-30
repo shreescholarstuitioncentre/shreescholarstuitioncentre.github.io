@@ -1,11 +1,11 @@
 /* =========================================================
    SSTC ADMIN ACCESS
-   Static hosting compatibility mode.
-   Admin authentication is disabled until a secure backend
-   or protected environment is configured.
+   Login Google Apps Script (Admin sheet) se verify hota hai.
    ========================================================= */
 
-const SSTC_ADMIN_ACCESS_DISABLED = true;
+// ====== YAHAN APNA APPS SCRIPT WEB APP URL DAALO ======
+const SSTC_ADMIN_API_URL = "https://script.google.com/macros/s/AKfycbzSPSlkswNdmRtJkZ0Uq3Et5hAPIBorvbgVoQvZD4e0Ed36TwPzk7bh-xSAWmdFpmqynw/exec";
+// ======================================================
 
 function togglePassword(inputId, button) {
     const input = document.getElementById(inputId);
@@ -24,35 +24,46 @@ function togglePassword(inputId, button) {
     }
 }
 
-function adminLoginSubmit(event) {
+async function adminLoginSubmit(event) {
     event.preventDefault();
 
     const adminIdElement = document.getElementById("adminId");
     const adminPasswordElement = document.getElementById("adminPassword");
-    const message = document.getElementById("adminMessage");
+    const submitButton = event.target.querySelector(".admin-login-button");
 
     const adminId = adminIdElement ? adminIdElement.value.trim() : "";
     const adminPassword = adminPasswordElement ? adminPasswordElement.value : "";
-
-    if (message) {
-        message.textContent = "";
-        message.className = "login-message";
-    }
 
     if (!adminId || !adminPassword) {
         showAdminMessage("Please enter Admin ID and Password.", "error");
         return;
     }
 
-    if (SSTC_ADMIN_ACCESS_DISABLED) {
-        showAdminMessage(
-            "Admin access is disabled on this static host. Please configure a secure backend before enabling admin login.",
-            "error"
-        );
-        return;
-    }
+    if (submitButton) submitButton.disabled = true;
+    showAdminMessage("Signing in...", "success");
 
-    showAdminMessage("Invalid Admin ID or Password.", "error");
+    try {
+        const response = await fetch(SSTC_ADMIN_API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify({ username: adminId, password: adminPassword })
+        });
+
+        const data = await response.json();
+
+        if (!data.success) {
+            showAdminMessage(data.message || "Invalid Admin ID or Password.", "error");
+            if (submitButton) submitButton.disabled = false;
+            return;
+        }
+
+        sessionStorage.setItem("sstcAdmin", "true");
+        showAdminMessage("Login successful. Redirecting...", "success");
+        window.location.href = "admin-page.html";
+    } catch (error) {
+        showAdminMessage("Unable to connect to server. Check the Apps Script URL and deployment.", "error");
+        if (submitButton) submitButton.disabled = false;
+    }
 }
 
 function showAdminMessage(text, type) {
