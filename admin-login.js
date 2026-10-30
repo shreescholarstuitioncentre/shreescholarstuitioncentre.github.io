@@ -1,4 +1,7 @@
-const API_BASE = window.SSTC_BACKEND_URL || 'http://localhost:4000';
+// ====== YAHAN APNA APPS SCRIPT WEB APP URL DAALO ======
+const API_URL = 'https://script.google.com/macros/s/YAHAN_APNA_ID/exec';
+// ======================================================
+
 const form = document.getElementById('loginForm');
 const messageBox = document.getElementById('message');
 
@@ -21,25 +24,25 @@ form.addEventListener('submit', async (event) => {
   try {
     showMessage('Signing in...', 'success');
 
-    const response = await fetch(`${API_BASE}/api/login`, {
+    const response = await fetch(API_URL, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'text/plain;charset=utf-8'
       },
-      credentials: 'include',
       body: JSON.stringify({ username, password })
     });
 
     const data = await response.json();
 
-    if (!response.ok || !data.success) {
+    if (!data.success) {
       showMessage(data.message || 'Login failed.', 'error');
       return;
     }
 
+    sessionStorage.setItem('sstcAdmin', 'true');
     showMessage('Login successful. Redirecting...', 'success');
     window.location.href = 'admin-page.html';
   } catch (error) {
-    showMessage('Unable to connect to backend. Check backend URL and server status.', 'error');
+    showMessage('Unable to connect to server. Check the Apps Script URL and deployment.', 'error');
   }
 });
