@@ -2,7 +2,11 @@
 <html lang="en">
 
 <head>
-
+    <script>
+          if (sessionStorage.getItem('sstcAdmin') !== 'true') {
+            window.location.href = 'admin-login.html'; // apne login page ka sahi file name likhna
+          }
+        </script>
     <meta charset="UTF-8">
 
     <meta
