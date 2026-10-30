@@ -1,72 +1,51 @@
-const CACHE_NAME = "shree-scholars-pwa-v2";
-
+const CACHE_NAME = "shree-scholars-pwa-safe-v1";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./Logo.png",
-  "./icons/icon-192.png",
-  "./icons/icon-512.png"
+  "./Logo.png"
 ];
 
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache =>
-        /* Ek file missing ho to bhi baaki cache ho jaye, install fail na ho */
-        Promise.all(
-          APP_SHELL.map(url =>
-            cache.add(url).catch(error => {
-              console.warn("SW cache skip:", url, error);
-            })
-          )
-        )
-      )
+      .then(cache => Promise.all(
+        APP_SHELL.map(url => cache.add(url).catch(() => undefined))
+      ))
       .then(() => self.skipWaiting())
   );
 });
 
 self.addEventListener("activate", event => {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
-        keys
-          .filter(key => key !== CACHE_NAME)
-          .map(key => caches.delete(key))
-      )
-    ).then(() => self.clients.claim())
+    caches.keys().then(keys => Promise.all(
+      keys.filter(key => key !== CACHE_NAME)
+        .map(key => caches.delete(key))
+    )).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener("fetch", event => {
-  if (event.request.method !== "GET") {
-    return;
-  }
+  if (event.request.method !== "GET") return;
 
-  /* Sirf apni site ki requests handle karo (Google Forms, Maps, API waghera nahi) */
   const url = new URL(event.request.url);
+  const isAdminRequest = /admin-page\.html|admin/i.test(url.pathname);
 
-  if (url.origin !== self.location.origin) {
+  if (url.origin !== self.location.origin || isAdminRequest) {
     return;
   }
 
   event.respondWith(
-    fetch(event.request)
-      .then(response => {
-        if (response && response.status === 200) {
-          const responseClone = response.clone();
-
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, responseClone);
-          });
-        }
-
-        return response;
-      })
-      .catch(() =>
-        caches.match(event.request).then(cached =>
-          cached || (event.request.mode === "navigate" ? caches.match("./index.html") : undefined)
-        )
+    caches.match(event.request)
+      .then(cached => cached || fetch(event.request)
+        .then(response => {
+          if (response && response.status === 200) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match("./index.html"))
       )
   );
 });
