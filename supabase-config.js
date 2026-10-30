@@ -1,18 +1,11 @@
 /* =========================================================
-   SSTC SUPABASE CONFIGURATION
+   SSTC SUPABASE DISABLED
+   This site is hosted on static GitHub Pages and does not have
+   a secure backend configured for Supabase. Keep it disabled.
    ========================================================= */
 
-const SUPABASE_URL =
-    "PASTE_YOUR_SUPABASE_PROJECT_URL_HERE";
+window.SSTC_SUPABASE_DISABLED = true;
 
-const SUPABASE_PUBLISHABLE_KEY =
-    "PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE";
-
-
-/* ================= SUPABASE CLIENT ================= */
-
-const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-    );
+if (window.location.hostname === "localhost") {
+    console.warn("Supabase is disabled for local development until a secure backend is configured.");
+}
