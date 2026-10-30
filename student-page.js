@@ -1099,22 +1099,22 @@ const SSTC_EBOOKS = {
             "description": "Class 11 Physics E-Book Library",
             "image": "subject-images/class-11/physics.png",
             "chapters": [
-                { "number": 1, "title": "Chapter 1: Physical World / अध्याय 1: भौतिक जगत", "pdf": "ebooks/class-11/physics/chapter-01.pdf" },
-                { "number": 2, "title": "Chapter 2: Units and Measurements / अध्याय 2: मात्रक एवं मापन", "pdf": "ebooks/class-11/physics/chapter-02.pdf" },
-                { "number": 3, "title": "Chapter 3: Motion in a Straight Line / अध्याय 3: सरल रेखा में गति", "pdf": "ebooks/class-11/physics/chapter-03.pdf" },
-                { "number": 4, "title": "Chapter 4: Motion in a Plane / अध्याय 4: समतल में गति", "pdf": "ebooks/class-11/physics/chapter-04.pdf" },
-                { "number": 5, "title": "Chapter 5: Laws of Motion / अध्याय 5: गति के नियम", "pdf": "ebooks/class-11/physics/chapter-05.pdf" },
-                { "number": 6, "title": "Chapter 6: Work, Energy and Power / अध्याय 6: कार्य, ऊर्जा और शक्ति", "pdf": "ebooks/class-11/physics/chapter-06.pdf" },
-                { "number": 7, "title": "Chapter 7: System of Particles and Rotational Motion / अध्याय 7: कणों के निकाय तथा घूर्णी गति", "pdf": "ebooks/class-11/physics/chapter-07.pdf" },
-                { "number": 8, "title": "Chapter 8: Gravitation / अध्याय 8: गुरुत्वाकर्षण", "pdf": "ebooks/class-11/physics/chapter-08.pdf" },
-                { "number": 9, "title": "Chapter 9: Mechanical Properties of Solids / अध्याय 9: ठोसों के यांत्रिक गुण", "pdf": "ebooks/class-11/physics/chapter-09.pdf" },
-                { "number": 10, "title": "Chapter 10: Mechanical Properties of Fluids / अध्याय 10: तरलों के यांत्रिक गुण", "pdf": "ebooks/class-11/physics/chapter-10.pdf" },
-                { "number": 11, "title": "Chapter 11: Thermal Properties of Matter / अध्याय 11: पदार्थ के तापीय गुण", "pdf": "ebooks/class-11/physics/chapter-11.pdf" },
-                { "number": 12, "title": "Chapter 12: Thermodynamics / अध्याय 12: ऊष्मागतिकी", "pdf": "ebooks/class-11/physics/chapter-12.pdf" },
-                { "number": 13, "title": "Chapter 13: Kinetic Theory / अध्याय 13: अणुगति सिद्धांत", "pdf": "ebooks/class-11/physics/chapter-13.pdf" },
-                { "number": 14, "title": "Chapter 14: Oscillations / अध्याय 14: दोलन", "pdf": "ebooks/class-11/physics/chapter-14.pdf" },
-                { "number": 15, "title": "Chapter 15: Waves / अध्याय 15: तरंगें", "pdf": "ebooks/class-11/physics/chapter-15.pdf" }
-            ]
+                  { "number": 1, "title": "Chapter 1: Physical World / अध्याय 1: भौतिक जगत", "pdf_english": "ebooks/class-11/physics/Physics_Ch1_Physical_World_English.pdf", "pdf_hindi": "ebooks/class-11/physics/Physics_Ch1_Physical_World_Hindi.pdf" },
+                  { "number": 2, "title": "Chapter 2: Units and Measurements / अध्याय 2: मात्रक एवं मापन", "pdf_english": "ebooks/class-11/physics/Physics_Ch2_Units_Measurements_English.pdf", "pdf_hindi": "ebooks/class-11/physics/Physics_Ch2_Units_Measurements_Hindi.pdf" },
+                  { "number": 3, "title": "Chapter 3: Motion in a Straight Line / अध्याय 3: सरल रेखा में गति", "pdf_english": "ebooks/class-11/physics/Physics_Ch3_Motion_Straight_Line_English.pdf", "pdf_hindi": "ebooks/class-11/physics/Physics_Ch3_Motion_Straight_Line_Hindi.pdf" },
+                  { "number": 4, "title": "Chapter 4: Motion in a Plane / अध्याय 4: समतल में गति", "pdf_english": "ebooks/class-11/physics/Physics_Ch4_Motion_in_a_Plane_English.pdf", "pdf_hindi": "ebooks/class-11/physics/Physics_Ch4_Motion_in_a_Plane_Hindi.pdf" },
+                  { "number": 5, "title": "Chapter 5: Laws of Motion / अध्याय 5: गति के नियम", "pdf_english": "ebooks/class-11/physics/Physics_Ch5_Laws_of_Motion_English.pdf", "pdf_hindi": "ebooks/class-11/physics/Physics_Ch5_Laws_of_Motion_Hindi.pdf" },
+                  { "number": 6, "title": "Chapter 6: Work, Energy and Power / अध्याय 6: कार्य, ऊर्जा और शक्ति", "pdf_english": "ebooks/class-11/physics/Physics_Ch6_Work_Energy_Power_English.pdf", "pdf_hindi": "ebooks/class-11/physics/Physics_Ch6_Work_Energy_Power_Hindi.pdf" },
+                  { "number": 7, "title": "Chapter 7: System of Particles and Rotational Motion / अध्याय 7: कणों के निकाय तथा घूर्णी गति", "pdf_english": "ebooks/class-11/physics/Physics_Ch7_Rotational_Motion_English.pdf", "pdf_hindi": "ebooks/class-11/physics/Physics_Ch7_Rotational_Motion_Hindi.pdf" },
+                  { "number": 8, "title": "Chapter 8: Gravitation / अध्याय 8: गुरुत्वाकर्षण", "pdf_english": "ebooks/class-11/physics/Physics_Ch8_Gravitation_English.pdf", "pdf_hindi": "ebooks/class-11/physics/Physics_Ch8_Gravitation_Hindi.pdf" },
+                  { "number": 9, "title": "Chapter 9: Mechanical Properties of Solids / अध्याय 9: ठोसों के यांत्रिक गुण", "pdf_english": "ebooks/class-11/physics/Physics_Ch9_Mechanical_Properties_of_Solids_English.pdf", "pdf_hindi": "ebooks/class-11/physics/Physics_Ch9_Mechanical_Properties_of_Solids_Hindi.pdf" },
+                  { "number": 10, "title": "Chapter 10: Mechanical Properties of Fluids / अध्याय 10: तरलों के यांत्रिक गुण", "pdf_english": "ebooks/class-11/physics/Physics_Ch10_Mechanical_Properties_of_Fluids_English.pdf", "pdf_hindi": "ebooks/class-11/physics/Physics_Ch10_Mechanical_Properties_of_Fluids_Hindi.pdf" },
+                  { "number": 11, "title": "Chapter 11: Thermal Properties of Matter / अध्याय 11: पदार्थ के तापीय गुण", "pdf_english": "ebooks/class-11/physics/Physics_Ch11_Thermal_Properties_of_Matter_English.pdf", "pdf_hindi": "ebooks/class-11/physics/Physics_Ch11_Thermal_Properties_of_Matter_Hindi.pdf" },
+                  { "number": 12, "title": "Chapter 12: Thermodynamics / अध्याय 12: ऊष्मागतिकी", "pdf_english": "ebooks/class-11/physics/Physics_Ch12_Thermodynamics_English.pdf", "pdf_hindi": "ebooks/class-11/physics/Physics_Ch12_Thermodynamics_Hindi.pdf" },
+                  { "number": 13, "title": "Chapter 13: Kinetic Theory / अध्याय 13: अणुगति सिद्धांत", "pdf_english": "ebooks/class-11/physics/Physics_Ch13_Kinetic_Theory_of_Gases_English.pdf", "pdf_hindi": "ebooks/class-11/physics/Physics_Ch13_Kinetic_Theory_of_Gases_Hindi.pdf" },
+                  { "number": 14, "title": "Chapter 14: Oscillations / अध्याय 14: दोलन", "pdf_english": "ebooks/class-11/physics/Physics_Ch14_Oscillations_English.pdf", "pdf_hindi": "ebooks/class-11/physics/Physics_Ch14_Oscillations_Hindi.pdf" },
+                  { "number": 15, "title": "Chapter 15: Waves / अध्याय 15: तरंगें", "pdf_english": "ebooks/class-11/physics/Wave_Motion_Notes_English.pdf", "pdf_hindi": "ebooks/class-11/physics/Wave_Motion_Notes_Hindi.pdf" }
+                ]
         },
 
         "Chemistry": {
@@ -1141,21 +1141,27 @@ const SSTC_EBOOKS = {
             "description": "Class 11 Mathematics E-Book Library",
             "image": "subject-images/class-11/maths.png",
             "chapters": [
-                { "number": 1, "title": "Chapter 1: Sets / अध्याय 1: समुच्चय", "pdf": "ebooks/class-11/mathematics/chapter-01.pdf" },
-                { "number": 2, "title": "Chapter 2: Relations and Functions / अध्याय 2: संबंध एवं फलन", "pdf": "ebooks/class-11/mathematics/chapter-02.pdf" },
-                { "number": 3, "title": "Chapter 3: Trigonometric Functions / अध्याय 3: त्रिकोणमितीय फलन", "pdf": "ebooks/class-11/mathematics/chapter-03.pdf" },
-                { "number": 4, "title": "Chapter 4: Complex Numbers and Quadratic Equations / अध्याय 4: सम्मिश्र संख्याएँ एवं द्विघात समीकरण", "pdf": "ebooks/class-11/mathematics/chapter-04.pdf" },
-                { "number": 5, "title": "Chapter 5: Linear Inequalities / अध्याय 5: रैखिक असमिकाएँ", "pdf": "ebooks/class-11/mathematics/chapter-05.pdf" },
-                { "number": 6, "title": "Chapter 6: Permutations and Combinations / अध्याय 6: क्रमचय और संचय", "pdf": "ebooks/class-11/mathematics/chapter-06.pdf" },
-                { "number": 7, "title": "Chapter 7: Binomial Theorem / अध्याय 7: द्विपद प्रमेय", "pdf": "ebooks/class-11/mathematics/chapter-07.pdf" },
-                { "number": 8, "title": "Chapter 8: Sequences and Series / अध्याय 8: अनुक्रम तथा श्रेणी", "pdf": "ebooks/class-11/mathematics/chapter-08.pdf" },
-                { "number": 9, "title": "Chapter 9: Straight Lines / अध्याय 9: सरल रेखाएँ", "pdf": "ebooks/class-11/mathematics/chapter-09.pdf" },
-                { "number": 10, "title": "Chapter 10: Conic Sections / अध्याय 10: शंकु परिच्छेद", "pdf": "ebooks/class-11/mathematics/chapter-10.pdf" },
-                { "number": 11, "title": "Chapter 11: Introduction to Three Dimensional Geometry / अध्याय 11: त्रिविमीय ज्यामिति का परिचय", "pdf": "ebooks/class-11/mathematics/chapter-11.pdf" },
-                { "number": 12, "title": "Chapter 12: Limits and Derivatives / अध्याय 12: सीमा और अवकलज", "pdf": "ebooks/class-11/mathematics/chapter-12.pdf" },
-                { "number": 13, "title": "Chapter 13: Statistics / अध्याय 13: सांख्यिकी", "pdf": "ebooks/class-11/mathematics/chapter-13.pdf" },
-                { "number": 14, "title": "Chapter 14: Probability / अध्याय 14: प्रायिकता", "pdf": "ebooks/class-11/mathematics/chapter-14.pdf" }
-            ]
+               { "number": 1, "title": "Chapter 1: Sets / अध्याय 1: समुच्चय", "pdf_english": "ebooks/class-11/mathematics/Sets_Notes_English.pdf", "pdf_hindi": "ebooks/class-11/mathematics/Sets_Notes_Hindi.pdf" },
+               { "number": 2, "title": "Chapter 2: Relations and Functions / अध्याय 2: संबंध एवं फलन", "pdf_english": "ebooks/class-11/mathematics/Relations_Functions_English.pdf", "pdf_hindi": "ebooks/class-11/mathematics/Relations_Functions_Hindi.pdf" },
+               { "number": 3, "title": "Chapter 3: Trigonometric Functions / अध्याय 3: त्रिकोणमितीय फलन", "pdf_english": "ebooks/class-11/mathematics/Trigonometric_Functions_English.pdf", "pdf_hindi": "ebooks/class-11/mathematics/Trigonometric_Functions_Hindi.pdf" },
+               { "number": 4, "title": "Chapter 4: Complex Numbers and Quadratic Equations / अध्याय 4: सम्मिश्र संख्याएँ एवं द्विघात समीकरण", "pdf_english": "ebooks/class-11/mathematics/Complex_Numbers_English.pdf", "pdf_hindi": "ebooks/class-11/mathematics/Complex_Numbers_Hindi.pdf" },
+               { "number": 5, "title": "Chapter 5: Linear Inequalities / अध्याय 5: रैखिक असमिकाएँ", "pdf_english": "ebooks/class-11/mathematics/Linear_Inequalities_English.pdf", "pdf_hindi": "ebooks/class-11/mathematics/Linear_Inequalities_Hindi.pdf" },
+               { "number": 6, "title": "Chapter 6: Permutations and Combinations / अध्याय 6: क्रमचय और संचय", "pdf_english": "ebooks/class-11/mathematics/Permutations_&_Combinations_-_English_Notes.pdf", "pdf_hindi": "ebooks/class-11/mathematics/क्रमचय_एवं_संचय_-_हिंदी_नोट्स.pdf" },
+               { "number": 7, "title": "Chapter 7: Binomial Theorem / अध्याय 7: द्विपद प्रमेय", "pdf_english": "ebooks/class-11/mathematics/Binomial_Theorem_-_English_Notes.pdf", "pdf_hindi": "ebooks/class-11/mathematics/द्विपद_प्रमेय_-_हिंदी_नोट्स.pdf" },
+               { "number": 8, "title": "Chapter 8: Sequences and Series / अध्याय 8: अनुक्रम तथा श्रेणी", "pdf_english": "ebooks/class-11/mathematics/Sequences_&_Series_-_English_Notes.pdf", "pdf_hindi": "ebooks/class-11/mathematics/अनुक्रम_एवं_श्रेणी_-_हिंदी_नोट्स.pdf" },
+               { "number": 9, "title": "Chapter 9: Straight Lines / अध्याय 9: सरल रेखाएँ", "pdf_english": "ebooks/class-11/mathematics/Straight_Lines_-_English_Notes.pdf", "pdf_hindi": "ebooks/class-11/mathematics/सरल_रेखाएँ_-_हिंदी_नोट्स.pdf" },
+               { "number": 10, "title": "Chapter 10: Cartesian Coordinates / अध्याय 10: कार्तीय निर्देशांक", "pdf_english": "ebooks/class-11/mathematics/Cartesian_Coordinates_-_English_Notes.pdf", "pdf_hindi": "ebooks/class-11/mathematics/कार्तीय_निर्देशांक_-_हिंदी_नोट्स.pdf" },
+               { "number": 11, "title": "Chapter 11: Circle / अध्याय 11: वृत्त", "pdf_english": "ebooks/class-11/mathematics/Circle_-_English_Notes.pdf", "pdf_hindi": "ebooks/class-11/mathematics/वृत्त_-_हिंदी_नोट्स.pdf" },
+               { "number": 12, "title": "Chapter 12: Parabola / अध्याय 12: परवलय", "pdf_english": "ebooks/class-11/mathematics/Parabola_-_English_Notes.pdf", "pdf_hindi": "ebooks/class-11/mathematics/परवलय_-_हिंदी_नोट्स.pdf" },
+               { "number": 13, "title": "Chapter 13: Ellipse / अध्याय 13: दीर्घवृत्त", "pdf_english": "ebooks/class-11/mathematics/Ellipse_-_English_Notes.pdf", "pdf_hindi": "ebooks/class-11/mathematics/दीर्घवृत्त_-_हिंदी_नोट्स.pdf" },
+               { "number": 14, "title": "Chapter 14: Hyperbola / अध्याय 14: अतिपरवलय", "pdf_english": "ebooks/class-11/mathematics/hyperbola_en.pdf", "pdf_hindi": "ebooks/class-11/mathematics/hyperbola_hi.pdf" },
+               { "number": 15, "title": "Chapter 15: Introduction to Three Dimensional Geometry / अध्याय 15: त्रिविमीय ज्यामिति का परिचय", "pdf_english": "ebooks/class-11/mathematics/3D_Geometry_Notes_English.pdf", "pdf_hindi": "ebooks/class-11/mathematics/3D_Geometry_Notes_Hindi.pdf" },
+               { "number": 16, "title": "Chapter 16: Limits / अध्याय 16: सीमा", "pdf_english": "ebooks/class-11/mathematics/Limits_Notes_English.pdf", "pdf_hindi": "ebooks/class-11/mathematics/Limits_Notes_Hindi.pdf" },
+               { "number": 17, "title": "Chapter 17: Derivatives / अध्याय 17: अवकलज", "pdf_english": "ebooks/class-11/mathematics/Differentiation_Notes_English.pdf", "pdf_hindi": "ebooks/class-11/mathematics/Differentiation_Notes_Hindi.pdf" },
+               { "number": 18, "title": "Chapter 18: Statistics / अध्याय 18: सांख्यिकी", "pdf_english": "ebooks/class-11/mathematics/Dispersion_Notes_English.pdf", "pdf_hindi": "ebooks/class-11/mathematics/Dispersion_Notes_Hindi.pdf" },
+               { "number": 19, "title": "Chapter 19: Probability / अध्याय 19: प्रायिकता", "pdf_english": "ebooks/class-11/mathematics/Probability_Notes_English.pdf", "pdf_hindi": "ebooks/class-11/mathematics/Probability_Notes_Hindi.pdf" },
+               { "number": 20, "title": "Chapter 20: Sine and Cosine Formulae / अध्याय 20: ज्या और कोज्या सूत्र", "pdf_english": "ebooks/class-11/mathematics/Sine_Cosine_Formulae_English.pdf", "pdf_hindi": "ebooks/class-11/mathematics/Sine_Cosine_Formulae_Hindi.pdf" }
+             ]
         },
 
         "English": {
