@@ -1120,21 +1120,28 @@ const SSTC_EBOOKS = {
         "Chemistry": {
             "description": "Class 11 Chemistry E-Book Library",
             "image": "subject-images/class-11/chemistry.png",
-            "chapters": [
-                { "number": 1, "title": "Chapter 1: Some Basic Concepts of Chemistry / अध्याय 1: रसायन विज्ञान की कुछ मूल अवधारणाएँ", "pdf": "ebooks/class-11/chemistry/chapter-01.pdf" },
-                { "number": 2, "title": "Chapter 2: Structure of Atom / अध्याय 2: परमाणु की संरचना", "pdf": "ebooks/class-11/chemistry/chapter-02.pdf" },
-                { "number": 3, "title": "Chapter 3: Classification of Elements and Periodicity / अध्याय 3: तत्वों का वर्गीकरण एवं गुणधर्मों में आवर्तिता", "pdf": "ebooks/class-11/chemistry/chapter-03.pdf" },
-                { "number": 4, "title": "Chapter 4: Chemical Bonding and Molecular Structure / अध्याय 4: रासायनिक आबंधन तथा आण्विक संरचना", "pdf": "ebooks/class-11/chemistry/chapter-04.pdf" },
-                { "number": 5, "title": "Chapter 5: States of Matter / अध्याय 5: पदार्थ की अवस्थाएँ", "pdf": "ebooks/class-11/chemistry/chapter-05.pdf" },
-                { "number": 6, "title": "Chapter 6: Thermodynamics / अध्याय 6: ऊष्मागतिकी", "pdf": "ebooks/class-11/chemistry/chapter-06.pdf" },
-                { "number": 7, "title": "Chapter 7: Equilibrium / अध्याय 7: साम्यावस्था", "pdf": "ebooks/class-11/chemistry/chapter-07.pdf" },
-                { "number": 8, "title": "Chapter 8: Redox Reactions / अध्याय 8: अपचयोपचय अभिक्रियाएँ", "pdf": "ebooks/class-11/chemistry/chapter-08.pdf" },
-                { "number": 9, "title": "Chapter 9: Hydrogen / अध्याय 9: हाइड्रोजन", "pdf": "ebooks/class-11/chemistry/chapter-09.pdf" },
-                { "number": 10, "title": "Chapter 10: s-Block Elements / अध्याय 10: s-ब्लॉक तत्व", "pdf": "ebooks/class-11/chemistry/chapter-10.pdf" },
-                { "number": 11, "title": "Chapter 11: Organic Chemistry – Basic Principles and Techniques / अध्याय 11: कार्बनिक रसायन – कुछ आधारभूत सिद्धांत तथा तकनीकें", "pdf": "ebooks/class-11/chemistry/chapter-11.pdf" },
-                { "number": 12, "title": "Chapter 12: Hydrocarbons / अध्याय 12: हाइड्रोकार्बन", "pdf": "ebooks/class-11/chemistry/chapter-12.pdf" },
-                { "number": 13, "title": "Chapter 13: Environmental Chemistry / अध्याय 13: पर्यावरणीय रसायन", "pdf": "ebooks/class-11/chemistry/chapter-13.pdf" }
-            ]
+                        "chapters": [
+                  { "number": 1, "title": "Chapter 1: Some Basic Concepts of Chemistry / अध्याय 1: रसायन विज्ञान की कुछ मूल अवधारणाएँ", "pdf": "ebooks/class-11/chemistry/chapter-01.pdf" },
+                  { "number": 2, "title": "Chapter 2: Structure of Atom / अध्याय 2: परमाणु की संरचना", "pdf": "ebooks/class-11/chemistry/chapter-02.pdf" },
+                  { "number": 3, "title": "Chapter 3: Classification of Elements / अध्याय 3: तत्वों का वर्गीकरण", "pdf": "ebooks/class-11/chemistry/chapter-03.pdf" },
+                  { "number": 4, "title": "Chapter 4: Periodicity in Properties / अध्याय 4: गुणधर्मों में आवर्तिता", "pdf": "ebooks/class-11/chemistry/chapter-04.pdf" },
+                  { "number": 5, "title": "Chapter 5: Chemical Bonding / अध्याय 5: रासायनिक आबंधन", "pdf": "ebooks/class-11/chemistry/chapter-05.pdf" },
+                  { "number": 6, "title": "Chapter 6: Molecular Structure / अध्याय 6: आण्विक संरचना", "pdf": "ebooks/class-11/chemistry/chapter-06.pdf" },
+                  { "number": 7, "title": "Chapter 7: States of Matter / अध्याय 7: पदार्थ की अवस्थाएँ", "pdf": "ebooks/class-11/chemistry/chapter-07.pdf" },
+                  { "number": 8, "title": "Chapter 8: Thermodynamics / अध्याय 8: ऊष्मागतिकी", "pdf": "ebooks/class-11/chemistry/chapter-08.pdf" },
+                  { "number": 9, "title": "Chapter 9: Chemical Equilibrium / अध्याय 9: रासायनिक साम्यावस्था", "pdf": "ebooks/class-11/chemistry/chapter-09.pdf" },
+                  { "number": 10, "title": "Chapter 10: Ionic Equilibrium / अध्याय 10: आयनिक साम्यावस्था", "pdf": "ebooks/class-11/chemistry/chapter-10.pdf" },
+                  { "number": 11, "title": "Chapter 11: Redox Reactions / अध्याय 11: अपचयोपचय अभिक्रियाएँ", "pdf": "ebooks/class-11/chemistry/chapter-11.pdf" },
+                  { "number": 12, "title": "Chapter 12: Hydrogen / अध्याय 12: हाइड्रोजन", "pdf": "ebooks/class-11/chemistry/chapter-12.pdf" },
+                  { "number": 13, "title": "Chapter 13: s-Block Elements / अध्याय 13: s-ब्लॉक तत्व", "pdf": "ebooks/class-11/chemistry/chapter-13.pdf" },
+                  { "number": 14, "title": "Chapter 14: p-Block Elements / अध्याय 14: p-ब्लॉक तत्व", "pdf": "ebooks/class-11/chemistry/chapter-14.pdf" },
+                  { "number": 15, "title": "Chapter 15: Organic Chemistry – Basic Principles / अध्याय 15: कार्बनिक रसायन – कुछ आधारभूत सिद्धांत", "pdf": "ebooks/class-11/chemistry/chapter-15.pdf" },
+                  { "number": 16, "title": "Chapter 16: Organic Chemistry – Techniques / अध्याय 16: कार्बनिक रसायन – कुछ तकनीकें", "pdf": "ebooks/class-11/chemistry/chapter-16.pdf" },
+                  { "number": 17, "title": "Chapter 17: Aliphatic Hydrocarbons / अध्याय 17: एलिफैटिक हाइड्रोकार्बन", "pdf": "ebooks/class-11/chemistry/chapter-17.pdf" },
+                  { "number": 18, "title": "Chapter 18: Aromatic Hydrocarbons / अध्याय 18: एरोमैटिक हाइड्रोकार्बन", "pdf": "ebooks/class-11/chemistry/chapter-18.pdf" },
+                  { "number": 19, "title": "Chapter 19: Environmental Chemistry / अध्याय 19: पर्यावरणीय रसायन", "pdf": "ebooks/class-11/chemistry/chapter-19.pdf" },
+                  { "number": 20, "title": "Extra: Important Chemistry Formulas / अतिरिक्त: महत्वपूर्ण रसायन विज्ञान सूत्र", "pdf": "ebooks/class-11/chemistry/chapter-20.pdf" }
+                ]
         },
 
         "Mathematics": {
