@@ -144,3 +144,59 @@ footer{padding:24px 16px calc(24px + env(safe-area-inset-bottom))}
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .reveal{opacity:1}
 }
+
+/* =====================================================
+   v2 — BOLD LOOK: glass + hard shadows + glow + 3D tilt
+===================================================== */
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(60% 50% at 10% 0%,rgba(211,47,47,.14),transparent 70%),
+             radial-gradient(55% 45% at 100% 20%,rgba(108,43,217,.16),transparent 70%),
+             radial-gradient(50% 40% at 50% 100%,rgba(255,152,0,.16),transparent 70%)}
+
+/* Glass cards + coloured layered shadow */
+.result-card,.saas-card,.pricing-col,.lead-form,.contact-box,.map-card,.video-card,.ai-test-box{
+  background:rgba(255,255,255,.8);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);
+  border:1px solid rgba(255,255,255,.85);
+  box-shadow:inset 0 1px 0 #fff,0 22px 44px -14px rgba(108,43,217,.28),0 10px 18px -8px rgba(211,47,47,.14)}
+.result-card:hover,.saas-card:hover,.pricing-col:hover,.lead-form:hover{box-shadow:inset 0 1px 0 #fff,0 34px 60px -16px rgba(108,43,217,.4),0 14px 24px -8px rgba(255,152,0,.3)}
+
+/* Sticker-style hard shadows (plans, courses, chips) */
+.offer-plan{border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);transition:transform .2s,box-shadow .2s}
+.offer-plan:hover{transform:translate(-3px,-3px);box-shadow:7px 7px 0 var(--ink)}
+.offer-plan.best{border-color:var(--vio);box-shadow:4px 4px 0 var(--vio)}
+.offer-plan.best:hover{box-shadow:7px 7px 0 var(--vio)}
+.course-item{border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);color:var(--ink);transition:transform .2s,box-shadow .2s}
+.course-item:nth-child(4n+1){background:#ffe3e3}.course-item:nth-child(4n+2){background:#fff1c9}
+.course-item:nth-child(4n+3){background:#e6dcff}.course-item:nth-child(4n+4){background:#d7f5e3}
+.course-item:hover{transform:translate(-3px,-3px);box-shadow:7px 7px 0 var(--ink);background:var(--ink);color:#fff}
+.highlight-box{border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);background:#fff}
+.highlight-box:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--vio)}
+.btn.primary,.btn.highlight,.btn-saas,.btn-result,.btn-map,.offer-register-btn{border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.btn.primary:hover,.btn.highlight:hover,.btn-saas:hover,.btn-result:hover,.btn-map:hover,.offer-register-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn:active,.btn-saas:active,.btn-result:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+
+/* Gradient text + glow numbers */
+.percent,.stats h3,.op-new,.price,.new{background:linear-gradient(90deg,#1b8a3a,#00a99d);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.stats h3{background-image:linear-gradient(90deg,var(--red),var(--vio))}
+.op-new small,.price span{-webkit-text-fill-color:#555;color:#555}
+.badge,.tag,.op-tag{box-shadow:0 0 0 3px #fff,0 6px 14px rgba(108,43,217,.35)}
+
+/* Hero dotted grid + floating icons */
+.hero-box{position:relative;overflow:hidden}
+.hero-box::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(rgba(255,255,255,.14) 1.2px,transparent 1.4px) 0 0/18px 18px}
+.hero-box>*{position:relative}
+.hero-box h1{text-shadow:0 4px 24px rgba(255,152,0,.45)}
+.icon{display:inline-block;animation:float 3.2s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px) rotate(-4deg)}}
+
+/* 3D tilt (JS .tilting lagata hai) */
+.tilting{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-8px)!important}
+
+/* Scroll progress (Bootstrap .progress) + back-to-top */
+#sstcProgress{position:fixed;top:0;left:0;right:0;height:4px;z-index:1100;border-radius:0;background:transparent}
+#sstcProgress .progress-bar{background:linear-gradient(90deg,var(--red),var(--saf),var(--vio));transition:none}
+#toTop{position:fixed;left:14px;bottom:calc(76px + env(safe-area-inset-bottom));z-index:900;width:44px;height:44px;border-radius:50%;
+  border:2px solid var(--ink);background:#fff;color:var(--ink);font-size:20px;box-shadow:3px 3px 0 var(--ink);
+  opacity:0;pointer-events:none;transform:translateY(12px);transition:.3s}
+#toTop.show{opacity:1;pointer-events:auto;transform:none}
+@media(max-width:600px){.offer-plan,.course-item{box-shadow:3px 3px 0 var(--ink)}}
