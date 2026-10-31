@@ -6794,14 +6794,26 @@ function sstcFreeZoom(delta) {
 
 function sstcFreeFullscreen() {
 
-    const wrap = document.querySelector("#frViewer .fr-frame-wrap");
+    /* Fullscreen me ho to bahar aao */
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
 
-    if (!wrap) { return; }
+        const exit = document.exitFullscreen || document.webkitExitFullscreen;
 
-    const req = wrap.requestFullscreen || wrap.webkitRequestFullscreen;
+        if (exit) { exit.call(document); }
 
-    if (req) { req.call(wrap); }
+        return;
+    }
+
+    const stage = document.querySelector("#frViewer .fr-stage");
+
+    if (!stage) { return; }
+
+    const req = stage.requestFullscreen || stage.webkitRequestFullscreen;
+
+    if (req) { req.call(stage); }
 }
+
+
 
 window.openSstcFree = openSstcFree;
 window.closeSstcFree = closeSstcFree;
