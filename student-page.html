@@ -410,20 +410,45 @@
         <div class="fr-viewer" id="frViewer" hidden>
             <div class="fr-bar">
                 <strong id="frViewerTitle">Free Chapter</strong>
-                  <div class="fr-bar-actions">
-                    <button type="button" onclick="sstcFreeZoom(-0.1)" title="Zoom Out">−</button>
-                    <span id="frZoomLevel" class="fr-zoom-level">100%</span>
-                    <button type="button" onclick="sstcFreeZoom(0.1)" title="Zoom In">+</button>
-                    <button type="button" onclick="sstcFreeZoom(0)" title="Reset Zoom">↺</button>
-                    <button type="button" onclick="sstcFreeFullscreen()" title="Fullscreen">⛶</button>
+                  <        <style>
+            #sstcFreeSection .fr-frame-wrap{position:relative;}
+            #sstcFreeSection .fr-frame-wrap:fullscreen{background:#fff;}
+            #sstcFreeSection .fr-frame-wrap:-webkit-full-screen{background:#fff;}
+            #frToolbar{position:absolute;right:24px;bottom:16px;z-index:50;display:flex;align-items:center;
+                gap:4px;padding:6px 8px;border-radius:12px;background:rgba(6,78,72,.92);
+                box-shadow:0 6px 20px rgba(0,0,0,.28);}
+            #frToolbar button{border:0;background:rgba(255,255,255,.14);color:#fff;font-size:14px;
+                font-weight:700;min-width:36px;height:36px;padding:0 10px;border-radius:8px;cursor:pointer;
+                font-family:inherit;line-height:1;}
+            #frToolbar button:hover{background:rgba(255,255,255,.28);}
+            #frToolbar .fr-zoom-level{min-width:48px;text-align:center;color:#fff;font-size:13px;font-weight:700;}
+            #frToolbar .fr-tb-sep{width:1px;height:22px;background:rgba(255,255,255,.3);margin:0 4px;}
+            @media (max-width:600px){
+                #frToolbar{right:12px;bottom:8px;padding:4px 6px;}
+                #frToolbar button{min-width:32px;height:32px;padding:0 6px;font-size:13px;}
+            }
+        </style>
+
+        <div class="fr-viewer" id="frViewer" hidden>
+            <div class="fr-bar">
+                <strong id="frViewerTitle">Free Chapter</strong>
+                <div class="fr-bar-actions">
                     <button type="button" onclick="closeSstcFreeViewer()" title="Close">✕</button>
                 </div>
             </div>
             <div class="fr-frame-wrap">
                 <iframe id="frFrame" class="fr-frame" title="SSTC Free Chapter" src="about:blank"></iframe>
+
+                <div id="frToolbar" role="toolbar" aria-label="Free chapter tools">
+                    <button type="button" onclick="sstcFreeZoom(-0.1)" title="Zoom Out">−</button>
+                    <span id="frZoomLevel" class="fr-zoom-level">100%</span>
+                    <button type="button" onclick="sstcFreeZoom(0.1)" title="Zoom In">+</button>
+                    <button type="button" onclick="sstcFreeZoom(0)" title="Reset Zoom">↺</button>
+                    <span class="fr-tb-sep"></span>
+                    <button type="button" onclick="sstcFreeFullscreen()" title="Fullscreen">⛶</button>
+                </div>
             </div>
         </div>
-
     </section>
 
     <!-- ✅ NAYA: E-BOOK WRAPPER START -->
@@ -889,7 +914,7 @@
     document.write('<script src="' + SSTC_ASSET("sstc-assistant.js") + '"><\/script>');
 </script>
 <script src="student-free.js"></script>
-<script src="student-free-toolbar.js"></script>
+
 </body>
 
 </html>
