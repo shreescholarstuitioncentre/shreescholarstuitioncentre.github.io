@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Physics Class 12 – Optics – Chapter 14: Reflection of Light at Spherical Mirrors</title><style>
+:root{--bg:#fbf8ee;--ink:#1d2a4a;--red:#c0392b;--grn:#1e7a4d;--line:#9db4d6;--box:#fff7c9}
+@media(prefers-color-scheme:dark){:root{--bg:#1b1f2a;--ink:#e8ecf5;--red:#ff8a7a;--grn:#6fd6a0;--line:#3a4a68;--box:#3a3720}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Kalam','Segoe Print',cursive;font-size:19px;line-height:1.9;
+background-image:repeating-linear-gradient(transparent 0 35px,var(--line) 35px 36px)}
+main{max-width:860px;margin:auto;padding:24px 18px 60px 46px;border-left:3px solid var(--red)}
+h1{font-size:2.1em;text-align:center;margin:.2em 0;color:var(--red)}h2{font-size:1.5em;margin:1.3em 0 .3em;border-bottom:3px wavy var(--grn);display:inline-block}
+.box{background:var(--box);border:2px dashed var(--red);border-radius:10px;padding:6px 16px;margin:10px 0}
+table{border-collapse:collapse;width:100%;background:var(--bg)}td,th{border:2px solid var(--ink);padding:2px 8px;text-align:center}
+details{margin:6px 0;border-left:4px solid var(--grn);padding-left:10px}summary{cursor:pointer;font-weight:700}
+.sol{background:var(--box);padding:4px 14px;border-radius:8px}svg{width:100%;height:auto;background:var(--bg);border:2px solid var(--ink);border-radius:8px}
+.r{fill:none;stroke-width:2.5;stroke-dasharray:1;stroke-dashoffset:1;animation:d 2s linear forwards}
+@keyframes d{to{stroke-dashoffset:0}}@media(prefers-reduced-motion:reduce){.r{animation:none;stroke-dashoffset:0}}
+button{font:inherit;padding:2px 14px;border:2px solid var(--ink);border-radius:8px;background:var(--box);color:var(--ink);cursor:pointer}
+svg text{font-family:inherit;font-size:15px;fill:var(--ink)}
+</style><link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet"></head><body><main><h1>Physics Class 12 – Optics – Chapter 14: Reflection of Light at Spherical Mirrors</h1>
+<div class="box"><b>Key formulas:</b> 1/v + 1/u = 1/f &nbsp;|&nbsp; f = R/2 &nbsp;|&nbsp; m = h′/h = −v/u</div>
+<h2>1. Spherical Mirror</h2>
+<p>A part cut from a hollow sphere, with one surface polished, is a spherical mirror. If the <b>inner</b> surface reflects it is a <b>concave</b> (converging) mirror; if the <b>outer</b> surface reflects it is a <b>convex</b> (diverging) mirror.</p>
+<h2>2. Important Terms</h2>
+<p><b>Pole (P):</b> centre of the mirror. <b>Centre of curvature (C):</b> centre of the sphere of which the mirror is a part. <b>Radius of curvature (R):</b> distance PC. <b>Principal axis:</b> line through P and C. <b>Principal focus (F):</b> point where rays parallel to the axis meet (or appear to meet) after reflection. <b>Focal length (f):</b> distance PF. <b>Aperture:</b> width of the reflecting surface.</p>
+<h2>3. Relation between R and f</h2>
+<div class="sol">For a small aperture: a parallel ray strikes at M, CM is the normal, ∠i = ∠r = θ. In triangle FMC, ∠FCM = θ and ∠FMC = θ, so FC = FM ≈ FP. Hence PC = PF + FC = 2PF, i.e. <b>R = 2f</b> or <b>f = R/2</b>.</div>
+<h2>4. Sign Convention (Cartesian)</h2>
+<p>All distances are measured from the pole P. Distances along the direction of incident light are <b>positive</b>; against it, <b>negative</b>. Heights above the axis are positive, below are negative. Concave: f and R negative. Convex: f and R positive. The object is in front, so u is always negative.</p>
+<h2>5. Mirror Formula</h2>
+<div class="box">1/v + 1/u = 1/f</div>
+<p>u = object distance, v = image distance, f = focal length. (Positive v = behind the mirror, virtual image; negative v = in front, real image.)</p>
+<h2>6. Magnification</h2>
+<p>m = image height / object height = h′/h = −v/u. Negative m → real, inverted; positive m → virtual, erect. |m| &gt; 1 enlarged, |m| &lt; 1 diminished, |m| = 1 same size.</p>
+<h2>7. Ray Diagram (animated below)</h2><svg id="dg" viewBox="0 0 700 300" role="img" aria-label="Concave mirror ray diagram">
+<line x1="20" y1="150" x2="680" y2="150" stroke="currentColor"/>
+<path d="M585 30Q615 150 585 270" fill="none" stroke="#2c6fbb" stroke-width="5"/>
+<g stroke="currentColor"><path d="M600 262l20 14M600 240l20 14M600 218l20 14M600 196l20 14M600 174l20 14" opacity=".4"/></g>
+<line x1="150" y1="150" x2="150" y2="100" stroke="#1e7a4d" stroke-width="4"/><text x="120" y="92">Object</text>
+<line x1="375" y1="150" x2="375" y2="175" stroke="#c0392b" stroke-width="4"/><text x="352" y="198">Image</text>
+<text x="596" y="170">P</text><text x="446" y="172">F</text><text x="296" y="172">C</text>
+<path class="r" pathLength="1" d="M150 100H600L375 175" stroke="#c0392b"/>
+<path class="r" pathLength="1" style="animation-delay:2s" d="M150 100L600 250L375 175" stroke="#2c6fbb"/>
+<text x="30" y="285">Object beyond C → image between C and F: real, inverted, diminished</text></svg>
+<p><button onclick="var d=document.getElementById('dg').cloneNode(true);document.getElementById('dg').replaceWith(d)">▶ Replay</button></p>
+<p><b>Rules:</b> (1) A ray parallel to the axis passes through F after reflection. (2) A ray through F becomes parallel to the axis. (3) A ray through C retraces its path. (4) A ray at P reflects at an equal angle.</p>
+<table><tr><th>Object position</th><th>Image position</th><th>Nature</th><th>Size</th></tr>
+<tr><td>Infinity</td><td>At F</td><td>Real, inverted</td><td>Point</td></tr><tr><td>Beyond C</td><td>Between F and C</td><td>Real, inverted</td><td>Diminished</td></tr><tr><td>At C</td><td>At C</td><td>Real, inverted</td><td>Same</td></tr><tr><td>Between C and F</td><td>Beyond C</td><td>Real, inverted</td><td>Enlarged</td></tr><tr><td>At F</td><td>Infinity</td><td>Real, inverted</td><td>Highly enlarged</td></tr><tr><td>Between P and F</td><td>Behind mirror</td><td>Virtual, erect</td><td>Enlarged</td></tr></table>
+<p><b>Convex mirror:</b> wherever the object is, the image is always virtual, erect, diminished and lies between P and F behind the mirror. Uses: vehicle side mirrors, road bends.</p>
+<h2>8. Solved Numericals (step by step)</h2>
+<details><summary>Q1 (Easy): Concave mirror f = 15 cm, object at 30 cm. Find v and m.</summary><div class="sol">Given: f = −15, u = −30. 1/v = 1/f − 1/u = −1/15 + 1/30 = −1/30 ⇒ v = −30 cm (in front, real). m = −v/u = −(−30)/(−30) = −1 (inverted, same size).</div></details>
+<details><summary>Q2 (Easy): If R = 40 cm, find f.</summary><div class="sol">f = R/2 = 20 cm (−20 cm for a concave mirror).</div></details>
+<details><summary>Q3 (Medium): Convex mirror f = 20 cm, object at 30 cm. Find the image.</summary><div class="sol">f = +20, u = −30. 1/v = 1/20 + 1/30 = 5/60 ⇒ v = +12 cm (behind, virtual). m = −12/(−30) = +0.4 (erect, diminished).</div></details>
+<details><summary>Q4 (Hard): A concave mirror forms a real image 3 times the object; object at 10 cm. Find f.</summary><div class="sol">m = −3 = −v/u ⇒ v = 3u = −30. 1/f = 1/v + 1/u = −1/30 − 1/10 = −4/30 ⇒ f = −7.5 cm.</div></details>
+<h2>9. Important Questions &amp; Answers</h2>
+<details><summary>Which mirror is used for shaving? Why?</summary><div class="sol">Concave, because with the face between P and F it gives an enlarged, erect, virtual image.</div></details>
+<details><summary>Why are convex mirrors used in vehicles?</summary><div class="sol">They always give an erect, diminished image and a wide field of view, showing more of the road behind.</div></details>
+<details><summary>Derive the mirror formula briefly.</summary><div class="sol">From similar triangles A′B′F and MPF: A′B′/PM = (v−f)/f. Since PM = AB, −v/u = (v−f)/f. Simplifying gives 1/v + 1/u = 1/f.</div></details>
+<details><summary>MCQ: Focal length of a plane mirror? (a) 0 (b) infinity (c) R (d) R/2</summary><div class="sol">Answer: (b) infinity, since R = ∞.</div></details>
+<details><summary>MCQ: If m = +2, the image is? (a) real inverted (b) virtual erect enlarged (c) virtual diminished (d) real erect</summary><div class="sol">Answer: (b).</div></details>
+</main></body></html>

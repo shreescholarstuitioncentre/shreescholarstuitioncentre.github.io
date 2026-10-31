@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>कक्षा 12 भौतिकी – अध्याय 12 प्रत्यावर्ती धारा</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;padding:14px;background:#fffdf5 repeating-linear-gradient(transparent 0 33px,#cfe3f5 33px 34px);font:400 19px/34px Kalam,'Noto Sans Devanagari',cursive;color:#1b2a6b}
+.w{max-width:900px;margin:auto}
+h1{text-align:center;color:#c0392b;font-size:32px;line-height:44px;border-bottom:3px wavy #c0392b;margin:6px 0}
+h2{display:inline-block;background:linear-gradient(transparent 55%,#fff176 55%);color:#b71c1c;font-size:25px;margin:20px 0 2px}
+p,ul{margin:2px 0}ul{padding-left:26px}
+.b{border:2px dashed #2e7d32;border-radius:12px;background:#f1fff1;padding:4px 14px;margin:6px 0}
+.f{border:2px solid #6a1b9a;border-radius:12px;background:#f8ecff;padding:4px 14px;margin:6px 0;text-align:center;overflow-x:auto}
+svg{width:100%;background:#fff;border:2px solid #1b2a6b;border-radius:10px;margin:6px 0}
+svg text{font:700 14px Kalam,sans-serif;fill:#1b2a6b}
+details{border:2px solid #90a4ae;border-radius:10px;margin:5px 0;background:#fffffa;padding:2px 10px}
+summary{cursor:pointer;color:#c62828;font-weight:700}
+</style></head><body><div class="w">
+<h1>कक्षा 12 भौतिकी – इकाई 4<br>अध्याय 12: प्रत्यावर्ती धारा</h1>
+
+<h2>1. AC वोल्टता और धारा</h2>
+<div class="b"><p>प्रत्यावर्ती धारा का परिमाण लगातार बदलता रहता है और दिशा नियमित अंतराल पर उलटती है। भारत में घरेलू AC: 50 Hz, 220 V (rms)।</p></div>
+<div class="f"><b>V = V₀ sin ωt &nbsp;|&nbsp; I = I₀ sin(ωt ± φ) &nbsp;|&nbsp; ω = 2πf = 2π/T</b></div>
+<p>V₀, I₀ शिखर मान (आयाम) हैं, f आवृत्ति है, T आवर्तकाल है, और φ, V तथा I के बीच कलांतर है।</p>
+
+<h2>2. आरेख: घूमता हुआ फेज़र और ज्या तरंग (एनिमेटेड)</h2>
+<svg viewBox="0 0 600 200">
+<circle cx="90" cy="100" r="60" fill="none" stroke="#90a4ae" stroke-width="2"/>
+<line x1="20" y1="100" x2="160" y2="100" stroke="#000"/><line x1="90" y1="30" x2="90" y2="170" stroke="#000"/>
+<line x1="90" y1="100" x2="150" y2="100" stroke="#c62828" stroke-width="4"><animateTransform attributeName="transform" type="rotate" values="0 90 100;-360 90 100" dur="4s" repeatCount="indefinite"/></line>
+<text x="20" y="20">V₀ लंबाई का फेज़र ω से घूमता है</text><text x="152" y="95">V₀</text>
+<line x1="200" y1="100" x2="580" y2="100" stroke="#000"/><line x1="200" y1="20" x2="200" y2="180" stroke="#000"/>
+<path id="sw" d="M200 100 C260 10 320 10 380 100 S 500 190 560 100" fill="none" stroke="#1565c0" stroke-width="3"/>
+<circle r="6" fill="#c62828"><animateMotion dur="4s" repeatCount="indefinite"><mpath href="#sw"/></animateMotion></circle>
+<text x="210" y="40">ऊर्ध्वाधर अक्ष पर प्रक्षेप = V₀ sin ωt</text><text x="385" y="125">T</text><text x="560" y="118">t</text><text x="160" y="25">+V₀</text><text x="160" y="190">−V₀</text>
+</svg>
+
+<h2>3. शिखर, RMS और औसत मान</h2>
+<div class="b"><ul>
+<li><b>शिखर मान:</b> अधिकतम मान I₀, V₀।</li>
+<li><b>औसत मान:</b> पूरे चक्र में यह शून्य होता है। अर्ध‑चक्र में I<sub>av</sub> = 2I₀/π = 0.637 I₀।</li>
+<li><b>RMS मान:</b> वह नियत DC मान जो किसी प्रतिरोधक में उतनी ही ऊष्मा उत्पन्न करे। I<sub>rms</sub> = I₀/√2 = 0.707 I₀।</li>
+<li><i>व्युत्पत्ति:</i> एक चक्र में I₀² sin²ωt का माध्य = I₀²/2, क्योंकि ⟨sin²⟩ = ½। अतः I<sub>rms</sub> = √(I₀²/2) = I₀/√2।</li>
+<li>AC मीटर rms मान दिखाते हैं। रूप गुणांक = rms/औसत = 1.11।</li></ul></div>
+<div class="f"><b>I<sub>rms</sub> = 0.707 I₀ &nbsp;|&nbsp; V<sub>rms</sub> = 0.707 V₀ &nbsp;|&nbsp; V₀ = 220√2 ≈ 311 V</b></div>
+
+<h2>4. प्रतिरोधक में AC</h2>
+<div class="b"><p>V = V₀ sin ωt, अतः I = (V₀/R) sin ωt। <b>धारा और वोल्टता समान कला में हैं</b> (φ = 0)। I₀ = V₀/R। औसत शक्ति = V<sub>rms</sub>I<sub>rms</sub> = I²<sub>rms</sub>R, और यह पूरी ऊष्मा के रूप में व्यय होती है।</p></div>
+
+<h2>5. प्रेरक में AC</h2>
+<div class="b"><p>प्रेरित emf L dI/dt परिवर्तन का विरोध करता है। हल करने पर I = I₀ sin(ωt − π/2), जहाँ I₀ = V₀/ωL।</p>
+<ul><li><b>धारा वोल्टता से 90° पीछे रहती है।</b></li><li>प्रेरणिक प्रतिघात <b>X<sub>L</sub> = ωL = 2πfL</b> (ओम)। यह आवृत्ति बढ़ने पर बढ़ता है। DC (f = 0) के लिए X<sub>L</sub> = 0।</li>
+<li>एक चक्र में औसत शक्ति = 0। ऊर्जा चुंबकीय क्षेत्र में संचित होकर वापस लौट जाती है।</li></ul></div>
+
+<h2>6. संधारित्र में AC</h2>
+<div class="b"><p>q = CV₀ sin ωt, अतः I = dq/dt = CωV₀ cos ωt = I₀ sin(ωt + π/2), जहाँ I₀ = V₀ωC।</p>
+<ul><li><b>धारा वोल्टता से 90° आगे रहती है।</b></li><li>धारितीय प्रतिघात <b>X<sub>C</sub> = 1/ωC = 1/(2πfC)</b>। यह आवृत्ति बढ़ने पर घटता है। DC के लिए X<sub>C</sub> → ∞ (DC को रोकता है)।</li>
+<li>एक चक्र में औसत शक्ति = 0।</li></ul></div>
+<p>याद रखने की युक्ति: <b>CIVIL</b> – संधारित्र (C) में I, V से आगे; प्रेरक (L) में V, I से आगे।</p>
+
+<h2>7. श्रेणी LCR परिपथ, फेज़र आरेख, प्रतिबाधा</h2>
+<svg viewBox="0 0 400 220">
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#000"/></marker></defs>
+<line x1="40" y1="110" x2="260" y2="110" stroke="#2e7d32" stroke-width="4" marker-end="url(#a)"/><text x="268" y="115">V<tspan font-size="11">R</tspan> (I के अनुदिश)</text>
+<line x1="40" y1="110" x2="40" y2="20" stroke="#c62828" stroke-width="4" marker-end="url(#a)"/><text x="48" y="30">V<tspan font-size="11">L</tspan> (90° आगे)</text>
+<line x1="40" y1="110" x2="40" y2="190" stroke="#1565c0" stroke-width="4" marker-end="url(#a)"/><text x="48" y="190">V<tspan font-size="11">C</tspan> (90° पीछे)</text>
+<line x1="40" y1="110" x2="240" y2="55" stroke="#6a1b9a" stroke-width="4" marker-end="url(#a)"><animate attributeName="stroke-opacity" values="1;.3;1" dur="2s" repeatCount="indefinite"/></line>
+<text x="250" y="48">V (परिणामी)</text><text x="110" y="95">φ</text>
+</svg>
+<div class="f"><b>V² = V<sub>R</sub>² + (V<sub>L</sub> − V<sub>C</sub>)² &nbsp;⇒&nbsp; Z = √[R² + (X<sub>L</sub> − X<sub>C</sub>)²]</b><br><b>tan φ = (X<sub>L</sub> − X<sub>C</sub>)/R &nbsp;|&nbsp; I₀ = V₀/Z</b></div>
+<ul><li>X<sub>L</sub> &gt; X<sub>C</sub>: प्रेरकीय, धारा पीछे। X<sub>C</sub> &gt; X<sub>L</sub>: धारितीय, धारा आगे। X<sub>L</sub> = X<sub>C</sub>: प्रतिरोधी, φ = 0।</li>
+<li>कलांतर φ, वोल्टता और धारा के बीच का कोण है। प्रतिबाधा Z कुल अवरोध (ओम) है।</li></ul>
+
+<h2>8. अनुनाद और Q‑गुणांक</h2>
+<svg viewBox="0 0 400 220">
+<line x1="30" y1="190" x2="380" y2="190" stroke="#000"/><line x1="30" y1="20" x2="30" y2="190" stroke="#000"/>
+<path id="rc" d="M40 185 C120 183 160 170 180 100 C190 50 195 25 200 25 C205 25 210 50 220 100 C240 170 280 183 360 185" fill="none" stroke="#c62828" stroke-width="3"/>
+<path d="M40 180 C100 170 150 140 200 110 C250 140 300 170 360 180" fill="none" stroke="#1565c0" stroke-width="3" stroke-dasharray="6 4"/>
+<circle r="6" fill="#2e7d32"><animateMotion dur="5s" repeatCount="indefinite"><mpath href="#rc"/></animateMotion></circle>
+<text x="190" y="205">f₀</text><text x="370" y="205">f</text><text x="10" y="15">I</text><text x="215" y="30">I<tspan font-size="11">max</tspan> = V/R</text><text x="250" y="80">उच्च Q: तीक्ष्ण</text><text x="260" y="140">निम्न Q: चपटा</text>
+</svg>
+<div class="b"><ul>
+<li><b>अनुनाद</b> तब होता है जब X<sub>L</sub> = X<sub>C</sub>। तब Z = R (न्यूनतम), धारा अधिकतम और φ = 0।</li>
+<li>ω₀L = 1/ω₀C से <b>ω₀ = 1/√(LC)</b>, f₀ = 1/(2π√LC)।</li>
+<li><b>Q‑गुणांक</b> अनुनाद की तीक्ष्णता मापता है: <b>Q = ω₀L/R = 1/(ω₀CR) = (1/R)√(L/C) = ω₀/(2Δω)</b>, जहाँ 2Δω बैंडविड्थ है। R कम तो Q अधिक और ट्यूनिंग तीक्ष्ण (रेडियो ट्यूनिंग)।</li>
+<li>अनुनाद पर V<sub>L</sub> = V<sub>C</sub> = Q·V, अतः L और C पर वोल्टता स्रोत वोल्टता से अधिक हो सकती है।</li></ul></div>
+
+<h2>9. शक्ति, शक्ति गुणांक, वाटहीन धारा</h2>
+<div class="f"><b>P<sub>av</sub> = V<sub>rms</sub> I<sub>rms</sub> cos φ &nbsp;|&nbsp; शक्ति गुणांक cos φ = R/Z</b></div>
+<ul><li>शुद्ध प्रतिरोधक या अनुनाद पर शक्ति गुणांक 1 होता है। शुद्ध L या शुद्ध C के लिए यह 0 होता है।</li>
+<li><b>वाटहीन (निष्क्रिय) धारा</b> वह घटक I<sub>rms</sub> sin φ है जो वोल्टता से 90° की कला‑भिन्नता पर होता है और कोई शक्ति व्यय नहीं करता।</li>
+<li>कम शक्ति गुणांक का अर्थ है उतनी ही शक्ति के लिए अधिक धारा, यानी लाइन में अधिक हानि। उद्योग संधारित्र लगाकर इसे सुधारते हैं।</li></ul>
+
+<h2>10. LC दोलन</h2>
+<div class="b"><p>आवेशित संधारित्र L से होकर विसर्जित होता है। ऊर्जा विद्युत क्षेत्र (q²/2C) और चुंबकीय क्षेत्र (½LI²) के बीच बदलती रहती है। प्रतिरोध न हो तो कुल ऊर्जा नियत रहती है।</p></div>
+<div class="f"><b>d²q/dt² + q/LC = 0 &nbsp;⇒&nbsp; q = q₀ cos ωt, &nbsp; ω = 1/√(LC)</b></div>
+<p>यह द्रव्यमान‑स्प्रिंग निकाय के समान है (L ↔ m, 1/C ↔ k)। प्रतिरोध होने पर दोलन अवमंदित हो जाते हैं।</p>
+
+<h2>11. AC जनित्र (डायनेमो)</h2>
+<div class="b"><ul>
+<li><b>सिद्धांत:</b> विद्युत‑चुंबकीय प्रेरण।</li>
+<li><b>भाग:</b> आर्मेचर (N फेरों की कुंडली), प्रबल क्षेत्र चुंबक, सर्पी वलय, ब्रश।</li>
+<li><b>कार्यविधि:</b> कुंडली क्षेत्र B में कोणीय चाल ω से घूमती है, इसलिए फ्लक्स Φ = NBA cos ωt बदलता है और ε = −dΦ/dt।</li></ul></div>
+<div class="f"><b>ε = NBAω sin ωt &nbsp;|&nbsp; ε₀ = NBAω</b></div>
+
+<h2>12. हल किए गए आंकिक प्रश्न (चरण दर चरण)</h2>
+<details><summary>सरल 1. घरेलू आपूर्ति 220 V rms है। शिखर वोल्टता ज्ञात कीजिए।</summary><p>V₀ = √2 × V<sub>rms</sub> = 1.414 × 220 ≈ 311 V।</p></details>
+<details><summary>सरल 2. 50 Hz पर 0.1 H प्रेरक का X<sub>L</sub> ज्ञात कीजिए।</summary><p>X<sub>L</sub> = 2πfL = 2 × 3.14 × 50 × 0.1 = 31.4 Ω।</p></details>
+<details><summary>मध्यम 3. 100 μF का संधारित्र 220 V, 50 Hz से जोड़ा गया है। rms धारा ज्ञात कीजिए।</summary><p>X<sub>C</sub> = 1/(2π × 50 × 100×10⁻⁶) = 31.8 Ω। I = 220/31.8 ≈ 6.9 A।</p></details>
+<details><summary>मध्यम 4. L = 1 mH, C = 1 μF के लिए अनुनादी आवृत्ति ज्ञात कीजिए।</summary><p>f₀ = 1/(2π√(10⁻³ × 10⁻⁶)) = 1/(2π × 3.16×10⁻⁵) ≈ 5030 Hz (ω₀ ≈ 31623 rad/s)।</p></details>
+<details><summary>कठिन 5. L = 5 H, C = 80 μF, R = 40 Ω। ω₀ और Q ज्ञात कीजिए। स्रोत 200 V का हो तो अनुनाद पर धारा ज्ञात कीजिए।</summary><p>ω₀ = 1/√(5 × 80×10⁻⁶) = 1/√(4×10⁻⁴) = 50 rad/s। Q = ω₀L/R = 50 × 5/40 = 6.25। अनुनाद पर Z = R, अतः I = 200/40 = 5 A।</p></details>
+<details><summary>कठिन 6. R = 30 Ω, X<sub>L</sub> = 70 Ω, X<sub>C</sub> = 30 Ω, V = 220 V। Z, I, शक्ति गुणांक, शक्ति और वाटहीन धारा ज्ञात कीजिए।</summary><p>Z = √(30² + 40²) = 50 Ω। I = 220/50 = 4.4 A। cos φ = 30/50 = 0.6। P = 220 × 4.4 × 0.6 = 580.8 W (जाँच: I²R = 19.36 × 30 = 580.8 ✓)। sin φ = 40/50 = 0.8, अतः वाटहीन धारा = 4.4 × 0.8 = 3.52 A।</p></details>
+
+<h2>13. प्रश्नोत्तर</h2>
+<details><summary>प्र.1 (लघु). AC का rms मान परिभाषित कीजिए।</summary><p>वह नियत DC मान जो किसी प्रतिरोधक में उतने ही समय में उतनी ही ऊष्मा उत्पन्न करे। I<sub>rms</sub> = I₀/√2।</p></details>
+<details><summary>प्र.2 (लघु). संधारित्र DC को क्यों रोकता है पर AC को क्यों गुज़रने देता है?</summary><p>DC के लिए ω = 0 होने से X<sub>C</sub> = 1/ωC अनंत होता है। AC में आवेशन और विसर्जन चलता रहता है, इसलिए धारा बहती है।</p></details>
+<details><summary>प्र.3 (लघु). वाटहीन धारा क्या है?</summary><p>धारा का वह घटक I<sub>rms</sub> sin φ, जो वोल्टता से 90° कला‑भिन्न होने के कारण कोई नेट कार्य नहीं करता।</p></details>
+<details><summary>प्र.4 (लघु). शुद्ध L या C में औसत शक्ति शून्य क्यों होती है?</summary><p>धारा और वोल्टता में 90° का अंतर होता है, अतः cos φ = 0। ऊर्जा हर चौथाई चक्र में संचित होकर वापस लौट जाती है।</p></details>
+<details><summary>प्र.5 (दीर्घ). फेज़र की सहायता से श्रेणी LCR परिपथ की प्रतिबाधा व्युत्पन्न कीजिए।</summary><p>खंड 7 देखें: V² = V_R² + (V_L − V_C)², जिससे Z = √[R² + (X_L − X_C)²]।</p></details>
+<details><summary>प्र.6 (दीर्घ). अनुनाद क्या है? अनुनादी आवृत्ति व्युत्पन्न कीजिए और Q परिभाषित कीजिए।</summary><p>खंड 8 देखें।</p></details>
+<details><summary>प्र.7 (दीर्घ). AC जनित्र का सिद्धांत, संरचना और कार्यविधि समझाइए।</summary><p>खंड 11 देखें।</p></details>
+<details><summary>प्र.8 (MCQ). शुद्ध प्रेरक में धारा: (a) V से 90° आगे (b) V से 90° पीछे (c) समान कला में (d) 45° आगे</summary><p><b>(b)</b> 90° पीछे।</p></details>
+<details><summary>प्र.9 (MCQ). LCR में अनुनाद पर शक्ति गुणांक है: (a) 0 (b) 0.5 (c) 1 (d) ∞</summary><p><b>(c) 1</b>, क्योंकि Z = R।</p></details>
+<details><summary>प्र.10 (MCQ). पूर्ण चक्र में AC का औसत मान है: (a) I₀ (b) I₀/√2 (c) 2I₀/π (d) शून्य</summary><p><b>(d) शून्य।</b></p></details>
+</div></body></html>

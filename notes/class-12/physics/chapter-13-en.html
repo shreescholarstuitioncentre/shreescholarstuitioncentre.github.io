@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Class 12 Physics – Ch 13 Electromagnetic Waves</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;padding:14px;background:#fffdf5 repeating-linear-gradient(transparent 0 31px,#cfe3f5 31px 32px);font:500 23px/32px Caveat,'Comic Sans MS',cursive;color:#1b2a6b}
+.w{max-width:900px;margin:auto}
+h1{text-align:center;color:#c0392b;font-size:38px;border-bottom:3px wavy #c0392b;margin:6px 0}
+h2{display:inline-block;background:linear-gradient(transparent 55%,#fff176 55%);color:#b71c1c;font-size:30px;margin:20px 0 2px}
+p,ul{margin:2px 0}ul{padding-left:26px}
+.b{border:2px dashed #2e7d32;border-radius:12px;background:#f1fff1;padding:4px 14px;margin:6px 0}
+.f{border:2px solid #6a1b9a;border-radius:12px;background:#f8ecff;padding:4px 14px;margin:6px 0;text-align:center;overflow-x:auto}
+.t{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:20px;line-height:25px;background:#fffffa}
+td,th{border:2px solid #1b2a6b;padding:3px 6px;text-align:left}th{background:#ffe082}
+svg{width:100%;background:#fff;border:2px solid #1b2a6b;border-radius:10px;margin:6px 0}
+svg text{font:700 15px Caveat,cursive;fill:#1b2a6b}
+details{border:2px solid #90a4ae;border-radius:10px;margin:5px 0;background:#fffffa;padding:2px 10px}
+summary{cursor:pointer;color:#c62828;font-weight:700}
+</style></head><body><div class="w">
+<h1>Class 12 Physics – Unit 5<br>Ch 13: Electromagnetic Waves</h1>
+
+<h2>1. Displacement Current</h2>
+<div class="b"><p><b>Problem with Ampere’s law.</b> Ampere’s law says ∮B·dl = μ₀I. While a capacitor charges, current I flows in the wires, but no charge crosses the gap between the plates. Take loop C around the wire. A flat surface cutting the wire gives I, but a bulging surface passing between the plates gives 0. Both surfaces have the same boundary, so the law is inconsistent.</p>
+<p><b>Maxwell’s fix.</b> A changing electric field between the plates acts like a current. This is the <b>displacement current</b>:</p></div>
+<div class="f"><b>I<sub>d</sub> = ε₀ dΦ<sub>E</sub>/dt &nbsp;|&nbsp; ∮B·dl = μ₀(I + I<sub>d</sub>) = μ₀I + μ₀ε₀ dΦ<sub>E</sub>/dt</b></div>
+<div class="b"><p><i>Check:</i> between the plates, Φ<sub>E</sub> = EA = (q/ε₀A)·A = q/ε₀. So I<sub>d</sub> = ε₀ d(q/ε₀)/dt = dq/dt = I. The displacement current in the gap equals the conduction current in the wire, so the total current is continuous.</p>
+<ul><li>It is not a flow of charge. It arises from a changing electric flux.</li><li>It exists in vacuum too, and it produces a magnetic field like a normal current.</li></ul></div>
+<svg viewBox="0 0 500 200">
+<line x1="30" y1="100" x2="190" y2="100" stroke="#000" stroke-width="3"/><line x1="310" y1="100" x2="470" y2="100" stroke="#000" stroke-width="3"/>
+<rect x="190" y="40" width="8" height="120" fill="#c62828"/><rect x="302" y="40" width="8" height="120" fill="#1565c0"/>
+<line x1="198" y1="60" x2="302" y2="60" stroke="#6a1b9a" stroke-width="3" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="28" to="0" dur="1s" repeatCount="indefinite"/></line>
+<line x1="198" y1="100" x2="302" y2="100" stroke="#6a1b9a" stroke-width="3" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="28" to="0" dur="1s" repeatCount="indefinite"/></line>
+<line x1="198" y1="140" x2="302" y2="140" stroke="#6a1b9a" stroke-width="3" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="28" to="0" dur="1s" repeatCount="indefinite"/></line>
+<circle cx="30" cy="100" r="5" fill="#c62828"><animate attributeName="cx" from="30" to="190" dur="2s" repeatCount="indefinite"/></circle>
+<circle cx="310" cy="100" r="5" fill="#c62828"><animate attributeName="cx" from="310" to="470" dur="2s" repeatCount="indefinite"/></circle>
+<text x="60" y="85">I (conduction)</text><text x="200" y="30">changing E gives I<tspan font-size="11">d</tspan></text><text x="190" y="180">+q</text><text x="300" y="180">−q</text><text x="350" y="85">I (conduction)</text>
+</svg>
+
+<h2>2. Electromagnetic Waves</h2>
+<div class="b"><ul>
+<li>A changing E produces B (displacement current), and a changing B produces E (Faraday). These two sustain each other and travel as an <b>electromagnetic wave</b>.</li>
+<li><b>Source:</b> accelerated (oscillating) charges, e.g. current in an antenna.</li>
+<li>They need <b>no medium</b> and travel in vacuum at <b>c = 1/√(μ₀ε₀) = 3×10⁸ m/s</b>.</li></ul></div>
+<div class="f"><b>E = E₀ sin(kx − ωt) &nbsp;|&nbsp; B = B₀ sin(kx − ωt) &nbsp;|&nbsp; E₀/B₀ = E/B = c</b><br><b>c = fλ &nbsp;|&nbsp; k = 2π/λ &nbsp;|&nbsp; ω = 2πf &nbsp;|&nbsp; in a medium v = 1/√(με) = c/n</b></div>
+<svg viewBox="0 0 480 200">
+<defs><clipPath id="c"><rect x="40" y="0" width="400" height="200"/></clipPath><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#000"/></marker></defs>
+<line x1="40" y1="100" x2="450" y2="100" stroke="#000" marker-end="url(#a)"/>
+<g clip-path="url(#c)"><g><animateTransform attributeName="transform" type="translate" from="0 0" to="100 0" dur="2.5s" repeatCount="indefinite"/>
+<path transform="translate(-60 0)" d="M0 100q25-100 50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0" fill="none" stroke="#c62828" stroke-width="3"/>
+<path transform="translate(-60 0)" d="M0 100q25-60 50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0" fill="none" stroke="#1565c0" stroke-width="3" stroke-dasharray="7 4"/></g></g>
+<text x="10" y="45">E (red, vertical)</text><text x="10" y="170">B (blue, ⟂ E and ⟂ c)</text><text x="400" y="90">c →</text><text x="60" y="195">Wave travels along x. E, B and direction are mutually perpendicular.</text>
+</svg>
+
+<h2>3. Characteristics and Transverse Nature</h2>
+<div class="b"><ul>
+<li>E and B oscillate in phase, at right angles to each other and to the direction of travel. So EM waves are <b>transverse</b>.</li>
+<li>Transverse nature is proved by <b>polarization</b>: light passes through a polaroid only in one orientation. Longitudinal waves cannot be polarized.</li>
+<li>Not deflected by electric or magnetic fields (uncharged).</li>
+<li>Energy is shared equally: u<sub>E</sub> = ½ε₀E² = u<sub>B</sub> = B²/2μ₀. Intensity I = ½ε₀E₀²c.</li>
+<li>They carry momentum p = U/c and exert radiation pressure: P = I/c (absorbed), 2I/c (reflected).</li>
+<li>Direction of travel is along E × B.</li></ul></div>
+
+<h2>4. Electromagnetic Spectrum</h2>
+<div class="t"><table>
+<tr><th>Wave</th><th>Wavelength</th><th>Source</th><th>Uses</th></tr>
+<tr><td>Radio</td><td>&gt; 0.1 m</td><td>Oscillating circuits, antennas</td><td>Radio, TV, mobile communication</td></tr>
+<tr><td>Microwave</td><td>1 mm – 0.1 m</td><td>Klystron, magnetron</td><td>Radar, microwave oven, satellite links</td></tr>
+<tr><td>Infrared</td><td>700 nm – 1 mm</td><td>Hot bodies, vibrating molecules</td><td>Remote controls, night vision, physiotherapy</td></tr>
+<tr><td>Visible</td><td>400 – 700 nm</td><td>Hot filaments, atoms</td><td>Vision, photography, optical fibre</td></tr>
+<tr><td>Ultraviolet</td><td>1 – 400 nm</td><td>Sun, UV lamps, arcs</td><td>Sterilization, LASIK, forged-note detection</td></tr>
+<tr><td>X‑rays</td><td>10⁻¹ – 10 nm</td><td>X‑ray tube (fast electrons hitting metal)</td><td>Medical imaging, airport security, crystallography</td></tr>
+<tr><td>Gamma</td><td>&lt; 10⁻³ nm</td><td>Radioactive nuclei</td><td>Cancer therapy, sterilizing equipment</td></tr></table></div>
+<p>Order of increasing frequency: radio &lt; microwave &lt; IR &lt; visible &lt; UV &lt; X‑ray &lt; γ. All travel at speed c in vacuum. Only frequency, wavelength, energy (E = hf) and uses differ.</p>
+
+<h2>5. Solved Numericals</h2>
+<details><summary>Easy 1. Find c from μ₀ = 4π×10⁻⁷ and ε₀ = 8.85×10⁻¹².</summary><p>μ₀ε₀ = 4π×10⁻⁷ × 8.85×10⁻¹² = 1.112×10⁻¹⁷. √ = 3.335×10⁻⁹. c = 1/(3.335×10⁻⁹) = 3×10⁸ m/s.</p></details>
+<details><summary>Easy 2. Wavelength of 3 GHz microwaves?</summary><p>λ = c/f = 3×10⁸/3×10⁹ = 0.1 m.</p></details>
+<details><summary>Intermediate 3. E₀ = 60 V/m. Find B₀.</summary><p>B₀ = E₀/c = 60/(3×10⁸) = 2×10⁻⁷ T.</p></details>
+<details><summary>Intermediate 4. A capacitor of 2 μF has dV/dt = 10 V/s. Find the displacement current.</summary><p>I<sub>d</sub> = I = C dV/dt = 2×10⁻⁶ × 10 = 2×10⁻⁵ A = 20 μA.</p></details>
+<details><summary>Hard 5. Sunlight intensity at Earth is 1400 W/m². Find E₀ and B₀.</summary><p>I = ½ε₀cE₀² ⇒ E₀ = √(2I/ε₀c) = √(2800/(8.85×10⁻¹²×3×10⁸)) = √(1.055×10⁶) ≈ 1.03×10³ V/m. B₀ = E₀/c ≈ 3.4×10⁻⁶ T.</p></details>
+<details><summary>Hard 6. Radiation pressure of this sunlight on a perfectly absorbing surface, and on a perfect reflector?</summary><p>Absorbing: P = I/c = 1400/(3×10⁸) = 4.7×10⁻⁶ N/m². Reflecting: 2I/c = 9.3×10⁻⁶ N/m².</p></details>
+
+<h2>6. Q &amp; A</h2>
+<details><summary>Q1 (Short). What is displacement current?</summary><p>The current I<sub>d</sub> = ε₀ dΦ<sub>E</sub>/dt due to a changing electric flux. It is not due to moving charge.</p></details>
+<details><summary>Q2 (Short). Why did Maxwell add it?</summary><p>To make Ampere’s law consistent for charging capacitors and to make current continuous.</p></details>
+<details><summary>Q3 (Short). Which waves are produced by accelerated charges?</summary><p>All EM waves.</p></details>
+<details><summary>Q4 (Short). Why are EM waves not deflected by fields?</summary><p>They carry no charge.</p></details>
+<details><summary>Q5 (Short). Name the rays used for (a) sterilizing water (b) satellite TV (c) bone fractures.</summary><p>(a) ultraviolet (b) microwave/radio (c) X‑rays.</p></details>
+<details><summary>Q6 (Short). Why do microwave ovens heat food?</summary><p>Microwave frequency matches the natural frequency of water molecules, so they absorb energy resonantly and heat up.</p></details>
+<details><summary>Q7 (Long). Explain displacement current and write the modified Ampere–Maxwell law.</summary><p>See section 1.</p></details>
+<details><summary>Q8 (Long). Describe the electromagnetic spectrum with sources and uses.</summary><p>See section 4.</p></details>
+<details><summary>Q9 (MCQ). Speed of EM waves in vacuum: (a) 1/√(μ₀ε₀) (b) √(μ₀ε₀) (c) μ₀ε₀ (d) depends on frequency</summary><p><b>(a)</b>.</p></details>
+<details><summary>Q10 (MCQ). Which has the highest frequency? (a) X‑ray (b) UV (c) γ‑ray (d) IR</summary><p><b>(c) γ‑ray.</b></p></details>
+<details><summary>Q11 (MCQ). In an EM wave, E and B are: (a) parallel (b) perpendicular (c) 45° (d) opposite</summary><p><b>(b)</b> perpendicular to each other and to the direction of travel.</p></details>
+</div></body></html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>कक्षा 12 भौतिकी – अध्याय 13 विद्युत चुंबकीय तरंगें</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;padding:14px;background:#fffdf5 repeating-linear-gradient(transparent 0 31px,#cfe3f5 31px 32px);font:400 20px/32px Kalam,'Noto Sans Devanagari',cursive;color:#1b2a6b}
+.w{max-width:900px;margin:auto}
+h1{text-align:center;color:#c0392b;font-size:32px;line-height:44px;border-bottom:3px wavy #c0392b;margin:6px 0}
+h2{display:inline-block;background:linear-gradient(transparent 55%,#fff176 55%);color:#b71c1c;font-size:26px;margin:20px 0 2px}
+p,ul{margin:2px 0}ul{padding-left:26px}
+.b{border:2px dashed #2e7d32;border-radius:12px;background:#f1fff1;padding:4px 14px;margin:6px 0}
+.f{border:2px solid #6a1b9a;border-radius:12px;background:#f8ecff;padding:4px 14px;margin:6px 0;text-align:center;overflow-x:auto}
+.t{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:17px;line-height:25px;background:#fffffa}
+td,th{border:2px solid #1b2a6b;padding:3px 6px;text-align:left}th{background:#ffe082}
+svg{width:100%;background:#fff;border:2px solid #1b2a6b;border-radius:10px;margin:6px 0}
+svg text{font:700 14px Kalam,cursive;fill:#1b2a6b}
+details{border:2px solid #90a4ae;border-radius:10px;margin:5px 0;background:#fffffa;padding:2px 10px}
+summary{cursor:pointer;color:#c62828;font-weight:700}
+</style></head><body><div class="w">
+<h1>कक्षा 12 भौतिकी – इकाई 5<br>अध्याय 13: विद्युत चुंबकीय तरंगें</h1>
+
+<h2>1. विस्थापन धारा</h2>
+<div class="b"><p><b>एम्पीयर नियम की समस्या।</b> एम्पीयर का नियम कहता है ∮B·dl = μ₀I। जब संधारित्र आवेशित होता है, तो तारों में धारा I बहती है, पर प्लेटों के बीच के अंतराल से कोई आवेश नहीं गुजरता। तार के चारों ओर लूप C लें। तार को काटने वाला समतल पृष्ठ I देता है, लेकिन प्लेटों के बीच से गुजरने वाला उभरा हुआ पृष्ठ 0 देता है। दोनों पृष्ठों की सीमा एक ही है, इसलिए नियम असंगत है।</p>
+<p><b>मैक्सवेल का समाधान।</b> प्लेटों के बीच परिवर्ती विद्युत क्षेत्र धारा की तरह कार्य करता है। इसे <b>विस्थापन धारा</b> कहते हैं:</p></div>
+<div class="f"><b>I<sub>d</sub> = ε₀ dΦ<sub>E</sub>/dt &nbsp;|&nbsp; ∮B·dl = μ₀(I + I<sub>d</sub>) = μ₀I + μ₀ε₀ dΦ<sub>E</sub>/dt</b></div>
+<div class="b"><p><i>जाँच:</i> प्लेटों के बीच Φ<sub>E</sub> = EA = (q/ε₀A)·A = q/ε₀। अतः I<sub>d</sub> = ε₀ d(q/ε₀)/dt = dq/dt = I। अंतराल में विस्थापन धारा तार में चालन धारा के बराबर होती है, इसलिए कुल धारा सतत रहती है।</p>
+<ul><li>यह आवेश का प्रवाह नहीं है। यह परिवर्ती विद्युत फ्लक्स से उत्पन्न होती है।</li><li>यह निर्वात में भी होती है और सामान्य धारा की तरह चुंबकीय क्षेत्र उत्पन्न करती है।</li></ul></div>
+<svg viewBox="0 0 500 200">
+<line x1="30" y1="100" x2="190" y2="100" stroke="#000" stroke-width="3"/><line x1="310" y1="100" x2="470" y2="100" stroke="#000" stroke-width="3"/>
+<rect x="190" y="40" width="8" height="120" fill="#c62828"/><rect x="302" y="40" width="8" height="120" fill="#1565c0"/>
+<line x1="198" y1="60" x2="302" y2="60" stroke="#6a1b9a" stroke-width="3" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="28" to="0" dur="1s" repeatCount="indefinite"/></line>
+<line x1="198" y1="100" x2="302" y2="100" stroke="#6a1b9a" stroke-width="3" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="28" to="0" dur="1s" repeatCount="indefinite"/></line>
+<line x1="198" y1="140" x2="302" y2="140" stroke="#6a1b9a" stroke-width="3" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" from="28" to="0" dur="1s" repeatCount="indefinite"/></line>
+<circle cx="30" cy="100" r="5" fill="#c62828"><animate attributeName="cx" from="30" to="190" dur="2s" repeatCount="indefinite"/></circle>
+<circle cx="310" cy="100" r="5" fill="#c62828"><animate attributeName="cx" from="310" to="470" dur="2s" repeatCount="indefinite"/></circle>
+<text x="40" y="85">I (चालन)</text><text x="170" y="30">परिवर्ती E से I<tspan font-size="11">d</tspan></text><text x="190" y="180">+q</text><text x="300" y="180">−q</text><text x="370" y="85">I (चालन)</text>
+</svg>
+
+<h2>2. विद्युत चुंबकीय तरंगें</h2>
+<div class="b"><ul>
+<li>परिवर्ती E, B उत्पन्न करता है (विस्थापन धारा), और परिवर्ती B, E उत्पन्न करता है (फैराडे)। ये दोनों एक-दूसरे को बनाए रखते हैं और <b>विद्युत चुंबकीय तरंग</b> के रूप में चलते हैं।</li>
+<li><b>स्रोत:</b> त्वरित (दोलनशील) आवेश, जैसे एंटीना में धारा।</li>
+<li>इन्हें <b>किसी माध्यम की आवश्यकता नहीं</b> होती और ये निर्वात में <b>c = 1/√(μ₀ε₀) = 3×10⁸ m/s</b> की चाल से चलती हैं।</li></ul></div>
+<div class="f"><b>E = E₀ sin(kx − ωt) &nbsp;|&nbsp; B = B₀ sin(kx − ωt) &nbsp;|&nbsp; E₀/B₀ = E/B = c</b><br><b>c = fλ &nbsp;|&nbsp; k = 2π/λ &nbsp;|&nbsp; ω = 2πf &nbsp;|&nbsp; माध्यम में v = 1/√(με) = c/n</b></div>
+<svg viewBox="0 0 480 200">
+<defs><clipPath id="c"><rect x="40" y="0" width="400" height="200"/></clipPath><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#000"/></marker></defs>
+<line x1="40" y1="100" x2="450" y2="100" stroke="#000" marker-end="url(#a)"/>
+<g clip-path="url(#c)"><g><animateTransform attributeName="transform" type="translate" from="0 0" to="100 0" dur="2.5s" repeatCount="indefinite"/>
+<path transform="translate(-60 0)" d="M0 100q25-100 50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0" fill="none" stroke="#c62828" stroke-width="3"/>
+<path transform="translate(-60 0)" d="M0 100q25-60 50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0" fill="none" stroke="#1565c0" stroke-width="3" stroke-dasharray="7 4"/></g></g>
+<text x="10" y="45">E (लाल, ऊर्ध्वाधर)</text><text x="10" y="170">B (नीला, E व c दोनों के लंबवत)</text><text x="400" y="90">c →</text><text x="40" y="195">तरंग x-अक्ष के अनुदिश चलती है। E, B और गति की दिशा परस्पर लंबवत हैं।</text>
+</svg>
+
+<h2>3. अभिलक्षण और अनुप्रस्थ प्रकृति</h2>
+<div class="b"><ul>
+<li>E और B समान कला में दोलन करते हैं, एक-दूसरे के तथा गति की दिशा के लंबवत। इसलिए विद्युत चुंबकीय तरंगें <b>अनुप्रस्थ</b> होती हैं।</li>
+<li>अनुप्रस्थ प्रकृति <b>ध्रुवण</b> से सिद्ध होती है: प्रकाश पोलेरॉइड से केवल एक ही दिशा में गुजरता है। अनुदैर्ध्य तरंगों का ध्रुवण नहीं हो सकता।</li>
+<li>ये विद्युत या चुंबकीय क्षेत्र में विक्षेपित नहीं होतीं (अनावेशित)।</li>
+<li>ऊर्जा बराबर बँटी होती है: u<sub>E</sub> = ½ε₀E² = u<sub>B</sub> = B²/2μ₀। तीव्रता I = ½ε₀E₀²c।</li>
+<li>ये संवेग p = U/c ले जाती हैं और विकिरण दाब डालती हैं: P = I/c (अवशोषित), 2I/c (परावर्तित)।</li>
+<li>गति की दिशा E × B के अनुदिश होती है।</li></ul></div>
+
+<h2>4. विद्युत चुंबकीय स्पेक्ट्रम</h2>
+<div class="t"><table>
+<tr><th>तरंग</th><th>तरंगदैर्ध्य</th><th>स्रोत</th><th>उपयोग</th></tr>
+<tr><td>रेडियो तरंगें</td><td>&gt; 0.1 m</td><td>दोलित्र परिपथ, एंटीना</td><td>रेडियो, टीवी, मोबाइल संचार</td></tr>
+<tr><td>सूक्ष्म तरंगें</td><td>1 mm – 0.1 m</td><td>क्लाइस्ट्रॉन, मैग्नेट्रॉन</td><td>रडार, माइक्रोवेव ओवन, उपग्रह संचार</td></tr>
+<tr><td>अवरक्त</td><td>700 nm – 1 mm</td><td>गर्म वस्तुएँ, कंपित अणु</td><td>रिमोट कंट्रोल, नाइट विजन, फिजियोथेरेपी</td></tr>
+<tr><td>दृश्य प्रकाश</td><td>400 – 700 nm</td><td>गर्म तंतु, परमाणु</td><td>देखना, फोटोग्राफी, प्रकाशीय तंतु</td></tr>
+<tr><td>पराबैंगनी</td><td>1 – 400 nm</td><td>सूर्य, UV लैंप, आर्क</td><td>जीवाणुनाशन, LASIK, जाली नोट की पहचान</td></tr>
+<tr><td>X‑किरणें</td><td>10⁻¹ – 10 nm</td><td>X‑किरण नलिका (तेज इलेक्ट्रॉन का धातु से टकराना)</td><td>चिकित्सीय इमेजिंग, हवाई अड्डा सुरक्षा, क्रिस्टल विज्ञान</td></tr>
+<tr><td>गामा किरणें</td><td>&lt; 10⁻³ nm</td><td>रेडियोधर्मी नाभिक</td><td>कैंसर चिकित्सा, उपकरणों का जीवाणुनाशन</td></tr></table></div>
+<p>बढ़ती आवृत्ति का क्रम: रेडियो &lt; सूक्ष्म तरंग &lt; अवरक्त &lt; दृश्य &lt; पराबैंगनी &lt; X‑किरण &lt; γ। सभी निर्वात में चाल c से चलती हैं। केवल आवृत्ति, तरंगदैर्ध्य, ऊर्जा (E = hf) और उपयोग भिन्न होते हैं।</p>
+
+<h2>5. हल किए गए संख्यात्मक प्रश्न</h2>
+<details><summary>सरल 1. μ₀ = 4π×10⁻⁷ और ε₀ = 8.85×10⁻¹² से c ज्ञात कीजिए।</summary><p>μ₀ε₀ = 4π×10⁻⁷ × 8.85×10⁻¹² = 1.112×10⁻¹⁷। √ = 3.335×10⁻⁹। c = 1/(3.335×10⁻⁹) = 3×10⁸ m/s।</p></details>
+<details><summary>सरल 2. 3 GHz की सूक्ष्म तरंगों की तरंगदैर्ध्य क्या है?</summary><p>λ = c/f = 3×10⁸/3×10⁹ = 0.1 m।</p></details>
+<details><summary>मध्यम 3. E₀ = 60 V/m है। B₀ ज्ञात कीजिए।</summary><p>B₀ = E₀/c = 60/(3×10⁸) = 2×10⁻⁷ T।</p></details>
+<details><summary>मध्यम 4. 2 μF के संधारित्र में dV/dt = 10 V/s है। विस्थापन धारा ज्ञात कीजिए।</summary><p>I<sub>d</sub> = I = C dV/dt = 2×10⁻⁶ × 10 = 2×10⁻⁵ A = 20 μA।</p></details>
+<details><summary>कठिन 5. पृथ्वी पर सूर्य के प्रकाश की तीव्रता 1400 W/m² है। E₀ और B₀ ज्ञात कीजिए।</summary><p>I = ½ε₀cE₀² ⇒ E₀ = √(2I/ε₀c) = √(2800/(8.85×10⁻¹²×3×10⁸)) = √(1.055×10⁶) ≈ 1.03×10³ V/m। B₀ = E₀/c ≈ 3.4×10⁻⁶ T।</p></details>
+<details><summary>कठिन 6. इस सूर्य प्रकाश का पूर्ण अवशोषक पृष्ठ पर तथा पूर्ण परावर्तक पर विकिरण दाब कितना होगा?</summary><p>अवशोषक: P = I/c = 1400/(3×10⁸) = 4.7×10⁻⁶ N/m²। परावर्तक: 2I/c = 9.3×10⁻⁶ N/m²।</p></details>
+
+<h2>6. प्रश्न एवं उत्तर</h2>
+<details><summary>प्र1 (लघु). विस्थापन धारा क्या है?</summary><p>परिवर्ती विद्युत फ्लक्स के कारण उत्पन्न धारा I<sub>d</sub> = ε₀ dΦ<sub>E</sub>/dt। यह गतिमान आवेश के कारण नहीं होती।</p></details>
+<details><summary>प्र2 (लघु). मैक्सवेल ने इसे क्यों जोड़ा?</summary><p>आवेशित होते संधारित्र के लिए एम्पीयर नियम को संगत बनाने और धारा को सतत बनाने के लिए।</p></details>
+<details><summary>प्र3 (लघु). कौन-सी तरंगें त्वरित आवेशों से उत्पन्न होती हैं?</summary><p>सभी विद्युत चुंबकीय तरंगें।</p></details>
+<details><summary>प्र4 (लघु). विद्युत चुंबकीय तरंगें क्षेत्रों में विक्षेपित क्यों नहीं होतीं?</summary><p>क्योंकि इन पर कोई आवेश नहीं होता।</p></details>
+<details><summary>प्र5 (लघु). (a) पानी का जीवाणुनाशन (b) उपग्रह टीवी (c) हड्डी के फ्रैक्चर के लिए प्रयुक्त किरणों के नाम लिखिए।</summary><p>(a) पराबैंगनी (b) सूक्ष्म तरंग/रेडियो (c) X‑किरणें।</p></details>
+<details><summary>प्र6 (लघु). माइक्रोवेव ओवन भोजन को गर्म क्यों करता है?</summary><p>सूक्ष्म तरंगों की आवृत्ति जल अणुओं की प्राकृतिक आवृत्ति से मेल खाती है, इसलिए अणु अनुनाद द्वारा ऊर्जा अवशोषित करके गर्म हो जाते हैं।</p></details>
+<details><summary>प्र7 (दीर्घ). विस्थापन धारा समझाइए और संशोधित एम्पीयर–मैक्सवेल नियम लिखिए।</summary><p>खंड 1 देखें।</p></details>
+<details><summary>प्र8 (दीर्घ). विद्युत चुंबकीय स्पेक्ट्रम का स्रोतों और उपयोगों सहित वर्णन कीजिए।</summary><p>खंड 4 देखें।</p></details>
+<details><summary>प्र9 (MCQ). निर्वात में विद्युत चुंबकीय तरंगों की चाल: (a) 1/√(μ₀ε₀) (b) √(μ₀ε₀) (c) μ₀ε₀ (d) आवृत्ति पर निर्भर</summary><p><b>(a)</b>।</p></details>
+<details><summary>प्र10 (MCQ). किसकी आवृत्ति सबसे अधिक है? (a) X‑किरण (b) पराबैंगनी (c) γ‑किरण (d) अवरक्त</summary><p><b>(c) γ‑किरण।</b></p></details>
+<details><summary>प्र11 (MCQ). विद्युत चुंबकीय तरंग में E और B: (a) समानांतर (b) लंबवत (c) 45° पर (d) विपरीत</summary><p><b>(b)</b> एक-दूसरे के तथा गति की दिशा के लंबवत।</p></details>
+</div></body></html>

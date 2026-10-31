@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Class 12 Physics – Ch 12 Alternating Current</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;padding:14px;background:#fffdf5 repeating-linear-gradient(transparent 0 31px,#cfe3f5 31px 32px);font:500 23px/32px Caveat,'Comic Sans MS',cursive;color:#1b2a6b}
+.w{max-width:900px;margin:auto}
+h1{text-align:center;color:#c0392b;font-size:38px;border-bottom:3px wavy #c0392b;margin:6px 0}
+h2{display:inline-block;background:linear-gradient(transparent 55%,#fff176 55%);color:#b71c1c;font-size:30px;margin:20px 0 2px}
+p,ul{margin:2px 0}ul{padding-left:26px}
+.b{border:2px dashed #2e7d32;border-radius:12px;background:#f1fff1;padding:4px 14px;margin:6px 0}
+.f{border:2px solid #6a1b9a;border-radius:12px;background:#f8ecff;padding:4px 14px;margin:6px 0;text-align:center}
+table{border-collapse:collapse;width:100%;font-size:21px;line-height:26px;background:#fffffa}
+td,th{border:2px solid #1b2a6b;padding:3px 6px;text-align:left}th{background:#ffe082}
+svg{width:100%;background:#fff;border:2px solid #1b2a6b;border-radius:10px;margin:6px 0}
+svg text{font:700 15px Caveat,cursive;fill:#1b2a6b}
+details{border:2px solid #90a4ae;border-radius:10px;margin:5px 0;background:#fffffa;padding:2px 10px}
+summary{cursor:pointer;color:#c62828;font-weight:700}
+</style></head><body><div class="w">
+<h1>Class 12 Physics – Unit 4<br>Ch 12: Alternating Current</h1>
+
+<h2>1. AC Voltage and Current</h2>
+<div class="b"><p>An alternating current changes its magnitude continuously and reverses direction periodically. Mains AC in India: 50 Hz, 220 V (rms).</p></div>
+<div class="f"><b>V = V₀ sin ωt &nbsp;|&nbsp; I = I₀ sin(ωt ± φ) &nbsp;|&nbsp; ω = 2πf = 2π/T</b></div>
+<p>V₀, I₀ are peak values (amplitudes), f is frequency, T is time period, φ is phase difference between V and I.</p>
+
+<h2>2. Diagram: Rotating phasor and sine wave (animated)</h2>
+<svg viewBox="0 0 600 200">
+<circle cx="90" cy="100" r="60" fill="none" stroke="#90a4ae" stroke-width="2"/>
+<line x1="20" y1="100" x2="160" y2="100" stroke="#000"/><line x1="90" y1="30" x2="90" y2="170" stroke="#000"/>
+<line x1="90" y1="100" x2="150" y2="100" stroke="#c62828" stroke-width="4"><animateTransform attributeName="transform" type="rotate" values="0 90 100;-360 90 100" dur="4s" repeatCount="indefinite"/></line>
+<text x="30" y="20">Phasor of length V₀ rotates with ω</text><text x="152" y="95">V₀</text>
+<line x1="200" y1="100" x2="580" y2="100" stroke="#000"/><line x1="200" y1="20" x2="200" y2="180" stroke="#000"/>
+<path id="sw" d="M200 100 C260 10 320 10 380 100 S 500 190 560 100" fill="none" stroke="#1565c0" stroke-width="3"/>
+<circle r="6" fill="#c62828"><animateMotion dur="4s" repeatCount="indefinite"><mpath href="#sw"/></animateMotion></circle>
+<text x="210" y="25">Projection on vertical axis = V₀ sin ωt</text><text x="385" y="125">T</text><text x="560" y="118">t</text><text x="165" y="15">+V₀</text><text x="165" y="190">−V₀</text>
+</svg>
+
+<h2>3. Peak, RMS and Average Values</h2>
+<div class="b"><ul>
+<li><b>Peak value:</b> maximum value I₀, V₀.</li>
+<li><b>Average value:</b> over a full cycle it is zero. Over a half cycle, I<sub>av</sub> = 2I₀/π = 0.637 I₀.</li>
+<li><b>RMS value:</b> the steady DC value that produces the same heat in a resistor. I<sub>rms</sub> = I₀/√2 = 0.707 I₀.</li>
+<li><i>Derivation:</i> mean of I₀² sin²ωt over a cycle = I₀²/2, since ⟨sin²⟩ = ½. So I<sub>rms</sub> = √(I₀²/2) = I₀/√2.</li>
+<li>AC meters read rms values. Form factor = rms/average = 1.11.</li></ul></div>
+<div class="f"><b>I<sub>rms</sub> = 0.707 I₀ &nbsp;|&nbsp; V<sub>rms</sub> = 0.707 V₀ &nbsp;|&nbsp; V₀ = 220√2 ≈ 311 V</b></div>
+
+<h2>4. AC through a Resistor</h2>
+<div class="b"><p>V = V₀ sin ωt, so I = (V₀/R) sin ωt. <b>Current and voltage are in phase</b> (φ = 0). I₀ = V₀/R. Average power = V<sub>rms</sub>I<sub>rms</sub> = I²<sub>rms</sub>R, and it is all dissipated as heat.</p></div>
+
+<h2>5. AC through an Inductor</h2>
+<div class="b"><p>The induced emf L dI/dt opposes the change. Solving gives I = I₀ sin(ωt − π/2), with I₀ = V₀/ωL.</p>
+<ul><li><b>Current lags voltage by 90°.</b></li><li>Inductive reactance <b>X<sub>L</sub> = ωL = 2πfL</b> (ohm). It grows with frequency. For DC (f = 0), X<sub>L</sub> = 0.</li>
+<li>Average power over a cycle = 0. Energy is stored in the magnetic field and returned.</li></ul></div>
+
+<h2>6. AC through a Capacitor</h2>
+<div class="b"><p>q = CV₀ sin ωt, so I = dq/dt = CωV₀ cos ωt = I₀ sin(ωt + π/2), with I₀ = V₀ωC.</p>
+<ul><li><b>Current leads voltage by 90°.</b></li><li>Capacitive reactance <b>X<sub>C</sub> = 1/ωC = 1/(2πfC)</b>. It falls with frequency. For DC, X<sub>C</sub> → ∞ (blocks DC).</li>
+<li>Average power over a cycle = 0.</li></ul></div>
+<p>Memory trick: <b>CIVIL</b> – in a Capacitor I leads V; in an inductor (L) V leads I.</p>
+
+<h2>7. Series LCR Circuit, Phasor Diagram, Impedance</h2>
+<svg viewBox="0 0 400 220">
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#000"/></marker></defs>
+<line x1="40" y1="110" x2="300" y2="110" stroke="#2e7d32" stroke-width="4" marker-end="url(#a)"/><text x="305" y="115">V<tspan font-size="11">R</tspan> (along I)</text>
+<line x1="40" y1="110" x2="40" y2="20" stroke="#c62828" stroke-width="4" marker-end="url(#a)"/><text x="48" y="30">V<tspan font-size="11">L</tspan> (leads by 90°)</text>
+<line x1="40" y1="110" x2="40" y2="190" stroke="#1565c0" stroke-width="4" marker-end="url(#a)"/><text x="48" y="190">V<tspan font-size="11">C</tspan> (lags by 90°)</text>
+<line x1="40" y1="110" x2="240" y2="55" stroke="#6a1b9a" stroke-width="4" marker-end="url(#a)"><animate attributeName="stroke-opacity" values="1;.3;1" dur="2s" repeatCount="indefinite"/></line>
+<text x="250" y="48">V (resultant)</text><text x="110" y="95">φ</text>
+</svg>
+<div class="f"><b>V² = V<sub>R</sub>² + (V<sub>L</sub> − V<sub>C</sub>)² &nbsp;⇒&nbsp; Z = √[R² + (X<sub>L</sub> − X<sub>C</sub>)²]</b><br><b>tan φ = (X<sub>L</sub> − X<sub>C</sub>)/R &nbsp;|&nbsp; I₀ = V₀/Z</b></div>
+<ul><li>X<sub>L</sub> &gt; X<sub>C</sub>: inductive, current lags. X<sub>C</sub> &gt; X<sub>L</sub>: capacitive, current leads. X<sub>L</sub> = X<sub>C</sub>: resistive, φ = 0.</li>
+<li>Phase difference φ is the angle between voltage and current. Impedance Z is the total opposition (ohm).</li></ul>
+
+<h2>8. Resonance and Q-Factor</h2>
+<svg viewBox="0 0 400 220">
+<line x1="30" y1="190" x2="380" y2="190" stroke="#000"/><line x1="30" y1="20" x2="30" y2="190" stroke="#000"/>
+<path id="rc" d="M40 185 C120 183 160 170 180 100 C190 50 195 25 200 25 C205 25 210 50 220 100 C240 170 280 183 360 185" fill="none" stroke="#c62828" stroke-width="3"/>
+<path d="M40 180 C100 170 150 140 200 110 C250 140 300 170 360 180" fill="none" stroke="#1565c0" stroke-width="3" stroke-dasharray="6 4"/>
+<circle r="6" fill="#2e7d32"><animateMotion dur="5s" repeatCount="indefinite"><mpath href="#rc"/></animateMotion></circle>
+<text x="190" y="205">f₀</text><text x="370" y="205">f</text><text x="10" y="15">I</text><text x="215" y="30">I<tspan font-size="11">max</tspan> = V/R</text><text x="250" y="80">High Q: sharp</text><text x="260" y="140">Low Q: flat</text>
+</svg>
+<div class="b"><ul>
+<li><b>Resonance</b> occurs when X<sub>L</sub> = X<sub>C</sub>. Then Z = R (minimum), current is maximum and φ = 0.</li>
+<li>ω₀L = 1/ω₀C gives <b>ω₀ = 1/√(LC)</b>, f₀ = 1/(2π√LC).</li>
+<li><b>Q-factor</b> measures sharpness of resonance: <b>Q = ω₀L/R = 1/(ω₀CR) = (1/R)√(L/C) = ω₀/(2Δω)</b> where 2Δω is the bandwidth. A smaller R gives a larger Q and sharper tuning (radio tuning).</li>
+<li>At resonance V<sub>L</sub> = V<sub>C</sub> = Q·V, so voltages across L and C can exceed the source voltage.</li></ul></div>
+
+<h2>9. Power, Power Factor, Wattless Current</h2>
+<div class="f"><b>P<sub>av</sub> = V<sub>rms</sub> I<sub>rms</sub> cos φ &nbsp;|&nbsp; Power factor cos φ = R/Z</b></div>
+<ul><li>Power factor is 1 for a pure resistor or at resonance. It is 0 for a pure L or pure C.</li>
+<li><b>Wattless (idle) current</b> is the component I<sub>rms</sub> sin φ, which is 90° out of phase with voltage and consumes no power.</li>
+<li>A low power factor means more current for the same power, so more line loss. Industry improves it with capacitors.</li></ul>
+
+<h2>10. LC Oscillations</h2>
+<div class="b"><p>A charged capacitor discharges through L. Energy swaps between the electric field (q²/2C) and the magnetic field (½LI²). Without resistance, total energy stays constant.</p></div>
+<div class="f"><b>d²q/dt² + q/LC = 0 &nbsp;⇒&nbsp; q = q₀ cos ωt, &nbsp; ω = 1/√(LC)</b></div>
+<p>This is analogous to a mass-spring system (L ↔ m, 1/C ↔ k). With resistance the oscillations are damped.</p>
+
+<h2>11. AC Generator (Dynamo)</h2>
+<div class="b"><ul>
+<li><b>Principle:</b> electromagnetic induction.</li>
+<li><b>Parts:</b> armature (coil of N turns), strong field magnet, slip rings, brushes.</li>
+<li><b>Working:</b> the coil rotates at angular speed ω in field B, so flux Φ = NBA cos ωt changes and ε = −dΦ/dt.</li></ul></div>
+<div class="f"><b>ε = NBAω sin ωt &nbsp;|&nbsp; ε₀ = NBAω</b></div>
+
+<h2>12. Solved Numericals (step by step)</h2>
+<details><summary>Easy 1. Mains is 220 V rms. Find the peak voltage.</summary><p>V₀ = √2 × V<sub>rms</sub> = 1.414 × 220 ≈ 311 V.</p></details>
+<details><summary>Easy 2. Find X<sub>L</sub> of a 0.1 H inductor at 50 Hz.</summary><p>X<sub>L</sub> = 2πfL = 2 × 3.14 × 50 × 0.1 = 31.4 Ω.</p></details>
+<details><summary>Intermediate 3. A 100 μF capacitor is connected to 220 V, 50 Hz. Find the rms current.</summary><p>X<sub>C</sub> = 1/(2π × 50 × 100×10⁻⁶) = 31.8 Ω. I = 220/31.8 ≈ 6.9 A.</p></details>
+<details><summary>Intermediate 4. Find resonant frequency for L = 1 mH, C = 1 μF.</summary><p>f₀ = 1/(2π√(10⁻³ × 10⁻⁶)) = 1/(2π × 3.16×10⁻⁵) ≈ 5030 Hz (ω₀ ≈ 31623 rad/s).</p></details>
+<details><summary>Hard 5. L = 5 H, C = 80 μF, R = 40 Ω. Find ω₀ and Q. If the source is 200 V, find current at resonance.</summary><p>ω₀ = 1/√(5 × 80×10⁻⁶) = 1/√(4×10⁻⁴) = 50 rad/s. Q = ω₀L/R = 50 × 5/40 = 6.25. At resonance Z = R, so I = 200/40 = 5 A.</p></details>
+<details><summary>Hard 6. R = 30 Ω, X<sub>L</sub> = 70 Ω, X<sub>C</sub> = 30 Ω, V = 220 V. Find Z, I, power factor, power and wattless current.</summary><p>Z = √(30² + 40²) = 50 Ω. I = 220/50 = 4.4 A. cos φ = 30/50 = 0.6. P = 220 × 4.4 × 0.6 = 580.8 W (check I²R = 19.36 × 30 = 580.8 ✓). sin φ = 40/50 = 0.8, so wattless current = 4.4 × 0.8 = 3.52 A.</p></details>
+
+<h2>13. Q &amp; A</h2>
+<details><summary>Q1 (Short). Define rms value of AC.</summary><p>The value of steady DC that produces the same heat in a resistor in the same time. I<sub>rms</sub> = I₀/√2.</p></details>
+<details><summary>Q2 (Short). Why does a capacitor block DC but pass AC?</summary><p>For DC, X<sub>C</sub> = 1/ωC is infinite since ω = 0. For AC, charging and discharging continue, so current flows.</p></details>
+<details><summary>Q3 (Short). What is wattless current?</summary><p>The current component I<sub>rms</sub> sin φ, which does no net work because it is 90° out of phase with the voltage.</p></details>
+<details><summary>Q4 (Short). Why is the average power zero for pure L or C?</summary><p>Current and voltage are 90° apart, so cos φ = 0. Energy is stored and returned each quarter cycle.</p></details>
+<details><summary>Q5 (Long). Derive the impedance of a series LCR circuit using phasors.</summary><p>See section 7: V² = V_R² + (V_L − V_C)², giving Z = √[R² + (X_L − X_C)²].</p></details>
+<details><summary>Q6 (Long). What is resonance? Derive the resonant frequency and define Q.</summary><p>See section 8.</p></details>
+<details><summary>Q7 (Long). Explain principle, construction and working of an AC generator.</summary><p>See section 11.</p></details>
+<details><summary>Q8 (MCQ). In a pure inductor, current: (a) leads V by 90° (b) lags V by 90° (c) is in phase (d) leads by 45°</summary><p><b>(b)</b> lags by 90°.</p></details>
+<details><summary>Q9 (MCQ). At resonance in LCR, the power factor is: (a) 0 (b) 0.5 (c) 1 (d) ∞</summary><p><b>(c) 1</b>, since Z = R.</p></details>
+<details><summary>Q10 (MCQ). The average value of AC over a full cycle is: (a) I₀ (b) I₀/√2 (c) 2I₀/π (d) zero</summary><p><b>(d) zero.</b></p></details>
+</div></body></html>

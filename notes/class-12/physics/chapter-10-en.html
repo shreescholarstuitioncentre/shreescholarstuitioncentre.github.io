@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Class 12 Physics – Ch 10 Magnetic Properties of Matter</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;padding:14px;background:#fffdf5 repeating-linear-gradient(transparent 0 31px,#cfe3f5 31px 32px);font:500 23px/32px Caveat,'Comic Sans MS',cursive;color:#1b2a6b}
+.w{max-width:900px;margin:auto}
+h1{text-align:center;color:#c0392b;font-size:38px;border-bottom:3px wavy #c0392b;margin:6px 0}
+h2{display:inline-block;background:linear-gradient(transparent 55%,#fff176 55%);color:#b71c1c;font-size:30px;margin:20px 0 2px}
+h3{color:#00695c;margin:8px 0 0;font-size:25px}
+p,ul{margin:2px 0}ul{padding-left:26px}
+.b{border:2px dashed #2e7d32;border-radius:12px;background:#f1fff1;padding:4px 14px;margin:6px 0}
+.f{border:2px solid #6a1b9a;border-radius:12px;background:#f8ecff;padding:4px 14px;margin:6px 0;text-align:center}
+.s{border-left:5px solid #ef6c00;background:#fff3e0;padding:2px 12px;margin:6px 0}
+table{border-collapse:collapse;width:100%;font-size:21px;line-height:26px;background:#fffffa}
+td,th{border:2px solid #1b2a6b;padding:3px 6px;text-align:left}th{background:#ffe082}
+svg{width:100%;background:#fff;border:2px solid #1b2a6b;border-radius:10px;margin:6px 0}
+svg text{font:700 15px Caveat,cursive;fill:#1b2a6b}
+.fl{fill:none;stroke:#1565c0;stroke-width:2;stroke-dasharray:7 5;animation:d 1.2s linear infinite}
+@keyframes d{to{stroke-dashoffset:-24}}
+details{border:2px solid #90a4ae;border-radius:10px;margin:5px 0;background:#fffffa;padding:2px 10px}
+summary{cursor:pointer;color:#c62828;font-weight:700}
+</style></head><body><div class="w">
+<h1>Class 12 Physics – Unit 3<br>Ch 10: Magnetic Properties of Matter</h1>
+
+<h2>1. Basic Terms</h2>
+<div class="b"><ul>
+<li><b>Magnetic intensity (H)</b> = magnetising field applied from outside. For a solenoid, H = nI (unit A/m).</li>
+<li><b>Magnetisation (I or M)</b> = magnetic moment per unit volume, I = m/V (unit A/m). It tells how strongly the material gets magnetised.</li>
+<li><b>Magnetic induction (B)</b> = total field inside the material.</li>
+<li><b>Permeability (μ)</b> = B/H. For vacuum μ₀ = 4π×10⁻⁷ T·m/A.</li>
+<li><b>Relative permeability (μr)</b> = μ/μ₀. It has no unit.</li>
+<li><b>Susceptibility (χ)</b> = I/H. It has no unit and shows how easily a material is magnetised.</li>
+</ul></div>
+<div class="f"><b>B = μ₀(H + I) &nbsp;|&nbsp; μr = 1 + χ &nbsp;|&nbsp; μ = μ₀(1 + χ) &nbsp;|&nbsp; B = μ₀μr H</b></div>
+<p><i>Proof of μr = 1 + χ:</i> B = μ₀(H+I). Divide by μ₀H: B/(μ₀H) = 1 + I/H. The left side is μr and I/H is χ, so μr = 1 + χ. ∎</p>
+
+<h2>2. Diagram: Field lines in the three types of materials</h2>
+<svg viewBox="0 0 600 170">
+<g><rect x="70" y="40" width="50" height="90" fill="#cfd8dc" stroke="#37474f"/>
+<path class="fl" d="M0 70 C60 70 60 25 95 25 C130 25 130 70 190 70"/><path class="fl" d="M0 100 C60 100 60 145 95 145 C130 145 130 100 190 100"/><path class="fl" d="M0 12 H190"/><path class="fl" d="M0 158 H190"/>
+<text x="25" y="167">DIAMAGNETIC: lines pushed out, χ &lt; 0</text></g>
+<g transform="translate(205,0)"><rect x="70" y="40" width="50" height="90" fill="#ffe0b2" stroke="#37474f"/>
+<path class="fl" d="M0 40 C50 40 60 70 70 78 H120 C130 70 140 40 190 40"/><path class="fl" d="M0 130 C50 130 60 100 70 92 H120 C130 100 140 130 190 130"/><path class="fl" d="M0 85 H190"/><path class="fl" d="M0 12 H190"/>
+<text x="10" y="167">PARAMAGNETIC: lines slightly drawn in</text></g>
+<g transform="translate(410,0)"><rect x="70" y="40" width="50" height="90" fill="#ef9a9a" stroke="#37474f"/>
+<path class="fl" d="M0 15 C45 15 60 70 70 78 H120 C130 70 145 15 190 15"/><path class="fl" d="M0 155 C45 155 60 100 70 92 H120 C130 100 145 155 190 155"/><path class="fl" d="M0 85 H190"/><path class="fl" d="M0 40 C50 40 62 74 70 81 H120 C128 74 140 40 190 40"/>
+<text x="5" y="167">FERROMAGNETIC: lines strongly concentrated</text></g>
+</svg>
+
+<h2>3. Diamagnetic Materials</h2>
+<div class="b"><ul>
+<li>Atoms have <b>no permanent magnetic moment</b> because the moments of orbiting and spinning electrons cancel in pairs.</li>
+<li>In an external field, by Lenz's law, an induced moment appears <b>opposite</b> to the field. So the material is weakly <b>repelled</b> and moves from the stronger to the weaker field region.</li>
+<li>χ is small and negative (about −10⁻⁵) and μr is slightly less than 1.</li>
+<li>χ is <b>independent of temperature</b>.</li>
+<li>Examples: Bi, Cu, Ag, Au, Zn, Pb, water, NaCl, diamond, N₂, H₂.</li>
+<li>A rod suspended freely sets itself <b>perpendicular</b> to the field.</li>
+<li><b>Superconductors</b> are perfect diamagnets (χ = −1, B = 0 inside). This is the Meissner effect.</li>
+</ul></div>
+
+<h2>4. Paramagnetic Materials</h2>
+<div class="b"><ul>
+<li>Atoms have <b>permanent dipole moments</b> but they point randomly, so the net moment is zero without a field.</li>
+<li>In a field, the dipoles partly align along the field. Thermal motion opposes this alignment. The material is weakly <b>attracted</b>.</li>
+<li>χ is small and positive (10⁻⁵ to 10⁻³) and μr is slightly greater than 1.</li>
+<li>χ <b>decreases as temperature rises</b>.</li>
+<li>Examples: Al, Na, Pt, Mn, Cr, CuCl₂, liquid and gaseous O₂.</li>
+<li>A freely suspended rod sets itself <b>parallel</b> to the field.</li>
+</ul></div>
+
+<h2>5. Curie's Law</h2>
+<div class="f"><b>χ = C/T &nbsp; (or I = C·B/T)</b><br>C = Curie constant (in kelvin), T = absolute temperature</div>
+<ul><li>It holds for paramagnets in a weak field and at high temperature.</li>
+<li>Reason: a higher T gives stronger random thermal motion, so alignment is lower and χ is smaller. Doubling T halves χ.</li>
+<li>For ferromagnets above the Curie temperature, <b>Curie–Weiss law</b>: χ = C/(T − Tc).</li>
+<li>At very low T with a strong field, magnetisation <b>saturates</b> and Curie's law fails.</li></ul>
+
+<h2>6. Ferromagnetic Materials</h2>
+<div class="b"><ul>
+<li>Examples: Fe, Co, Ni, Gd, Alnico, and Fe₃O₄ (ferrite, nearly).</li>
+<li>χ is very large and positive (10²–10⁵). They are strongly attracted by magnets.</li>
+<li><b>Domain theory:</b> a material is divided into small regions called domains (about 10⁻⁶ m size), each fully magnetised. Without a field, domains point in random directions, so the net moment is zero. In a field, domains aligned with it <b>grow</b> (wall motion) and others <b>rotate</b> toward it. At saturation all are aligned.</li>
+<li><b>Curie temperature (Tc):</b> above Tc the domains break up and the material becomes paramagnetic. Fe: 1043 K, Co: 1388 K, Ni: 627 K.</li>
+</ul></div>
+<table><tr><th>Property</th><th>Dia</th><th>Para</th><th>Ferro</th></tr>
+<tr><td>χ</td><td>small, negative</td><td>small, positive</td><td>large, positive</td></tr>
+<tr><td>μr</td><td>&lt; 1</td><td>slightly &gt; 1</td><td>&gt;&gt; 1</td></tr>
+<tr><td>In field</td><td>repelled</td><td>weakly attracted</td><td>strongly attracted</td></tr>
+<tr><td>Temperature</td><td>independent</td><td>χ ∝ 1/T</td><td>becomes para above Tc</td></tr></table>
+
+<h2>7. Hysteresis Curve (B–H loop)</h2>
+<p>Hysteresis means B lags behind H. The point travels along the path: O → S (saturation) → Br (retentivity) → Hc (coercivity) → S′ → −Br → +Hc → S.</p>
+<svg viewBox="0 0 400 220">
+<line x1="20" y1="110" x2="380" y2="110" stroke="#000"/><line x1="200" y1="10" x2="200" y2="210" stroke="#000"/>
+<text x="360" y="104">H</text><text x="206" y="20">B</text>
+<path d="M200 110 C230 70 270 55 290 50" fill="none" stroke="#2e7d32" stroke-width="2" stroke-dasharray="4 3"/>
+<path id="lp" d="M290 50 C250 55 210 70 200 75 C190 95 175 110 170 110 C150 120 120 160 110 170 C150 165 190 150 200 145 C210 125 225 110 230 110 C250 100 275 58 290 50" fill="none" stroke="#c62828" stroke-width="3"/>
+<circle r="6" fill="#1565c0"><animateMotion dur="6s" repeatCount="indefinite"><mpath href="#lp"/></animateMotion></circle>
+<text x="293" y="48">S (saturation)</text><text x="205" y="70">Br retentivity</text><text x="120" y="104">−Hc</text><text x="232" y="126">+Hc coercivity</text><text x="40" y="172">S′</text><text x="205" y="162">−Br</text><text x="240" y="90">O→S virgin curve</text>
+</svg>
+<ul><li><b>Retentivity:</b> B left in the material when H = 0.</li><li><b>Coercivity:</b> reverse H needed to bring B to zero.</li>
+<li><b>Loop area</b> = energy lost as heat per unit volume per cycle (J/m³).</li>
+<li><b>Soft iron:</b> narrow loop, low retentivity, low coercivity, small loss. Used in electromagnets, transformer cores, motors.</li>
+<li><b>Steel:</b> wide loop, high retentivity, high coercivity. Used for permanent magnets.</li></ul>
+
+<h2>8. Electromagnets and Permanent Magnets</h2>
+<div class="s"><b>Electromagnet:</b> a soft-iron core inside a solenoid. Strength ∝ nI, and the core multiplies the field by μr. It can be switched on/off and its strength varied. Uses: cranes, electric bells, relays, MRI.</div>
+<div class="s"><b>Permanent magnet:</b> made from material with <b>high retentivity and high coercivity</b>, such as steel, alnico, cobalt steel, ticonal, nipermag. It keeps its magnetism for a long time. Uses: compass, loudspeaker, galvanometer, dynamo.</div>
+
+<h2>9. Solved Numericals (step by step)</h2>
+<details><summary>Easy 1. A solenoid has 1000 turns/m and carries 2 A. Find H.</summary><p><b>Given:</b> n = 1000 m⁻¹, I = 2 A. <b>Formula:</b> H = nI. <b>Solution:</b> H = 1000 × 2 = 2000 A/m.</p></details>
+<details><summary>Easy 2. A material has μ = 4π×10⁻⁴ T·m/A. Find μr and χ.</summary><p>μr = μ/μ₀ = (4π×10⁻⁴)/(4π×10⁻⁷) = 1000. χ = μr − 1 = 999.</p></details>
+<details><summary>Intermediate 3. Al has χ = 2.3×10⁻⁵ at 300 K. Find χ at 200 K.</summary><p>Curie's law: χ ∝ 1/T. χ₂ = χ₁ × T₁/T₂ = 2.3×10⁻⁵ × 300/200 = 3.45×10⁻⁵.</p></details>
+<details><summary>Intermediate 4. Iron core (μr = 1000) in a solenoid with n = 1000 m⁻¹, I = 2 A. Find B.</summary><p>H = nI = 2000 A/m. B = μ₀μr H = 4π×10⁻⁷ × 1000 × 2000 = 2.51 T.</p></details>
+<details><summary>Hard 5. Al has χ = 2.3×10⁻⁵ at 300 K. At what temperature is χ = 6.9×10⁻⁵?</summary><p>χ₁T₁ = χ₂T₂. T₂ = (2.3×10⁻⁵ × 300)/(6.9×10⁻⁵) = 100 K.</p></details>
+<details><summary>Hard 6. B–H loop area = 250 J/m³ per cycle. Core volume = 0.02 m³, 50 Hz. Find hysteresis loss per hour.</summary><p>Energy per cycle = 250 × 0.02 = 5 J. Per second: 5 × 50 = 250 W. Per hour: 250 × 3600 = 9×10⁵ J.</p></details>
+
+<h2>10. Q &amp; A</h2>
+<details><summary>Q1 (Short). Why are diamagnetic substances repelled by a magnet?</summary><p>An induced magnetic moment opposite to the applied field appears (Lenz's law), so the material is pushed toward the weaker field.</p></details>
+<details><summary>Q2 (Short). State Curie's law.</summary><p>Susceptibility of a paramagnet is inversely proportional to absolute temperature: χ = C/T.</p></details>
+<details><summary>Q3 (Short). What is Curie temperature?</summary><p>The temperature above which a ferromagnet becomes paramagnetic because its domains are destroyed.</p></details>
+<details><summary>Q4 (Short). Why is soft iron used for transformer cores?</summary><p>It has low retentivity and coercivity, so a small hysteresis loop and small energy loss.</p></details>
+<details><summary>Q5 (Long). Explain domain theory of ferromagnetism.</summary><p>Ferromagnets contain domains, each fully magnetised. With no field their moments cancel. A field makes favourably aligned domains grow and others rotate. At saturation all point along the field. Heating above Tc breaks domains, giving paramagnetism.</p></details>
+<details><summary>Q6 (Long). Draw and explain the hysteresis loop; define retentivity and coercivity.</summary><p>See section 7. Retentivity is B at H = 0. Coercivity is reverse H needed to make B zero. Loop area is energy loss per cycle per unit volume.</p></details>
+<details><summary>Q7 (Long). Distinguish dia, para and ferromagnetic substances.</summary><p>Refer to the table in section 6.</p></details>
+<details><summary>Q8 (MCQ). Which has the largest χ? (a) Cu (b) Al (c) Fe (d) Bi</summary><p><b>(c) Fe.</b> Iron is ferromagnetic with a very large χ.</p></details>
+<details><summary>Q9 (MCQ). The unit of magnetisation is: (a) T (b) A/m (c) Wb (d) A·m²</summary><p><b>(b) A/m.</b> It is magnetic moment per unit volume.</p></details>
+<details><summary>Q10 (MCQ). Which material's χ is independent of temperature? (a) para (b) dia (c) ferro (d) all</summary><p><b>(b) diamagnetic.</b></p></details>
+</div></body></html>
