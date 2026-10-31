@@ -1,0 +1,138 @@
+/* sstc-enhance.js — Bootstrap bundle ke BAAD load karein (defer) */
+(function () {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const header = $('#mainHeader');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 1) Fixed header ki height ke hisaab se page offset (har device par sahi) */
+  function fitHeader() {
+    const h = header.offsetHeight;
+    document.documentElement.style.setProperty('--hdr', h + 'px');
+    document.body.style.marginTop = h + 'px';
+  }
+  new ResizeObserver(fitHeader).observe(header);
+  addEventListener('load', fitHeader);
+
+  /* 2) Section IDs + Bootstrap Offcanvas menu */
+  const ids = [['.results', 'results'], ['.courses', 'courses'], ['.gallery', 'toppers'],
+               ['.premium-gallery', 'memories'], ['.contact-section', 'visit'], ['.saas-section', 'skills']];
+  ids.forEach(([s, id]) => { const el = $(s); if (el && !el.id) el.id = id; });
+
+  const links = [
+    ['🎉', 'Offers & Plans', '#offerAccess'], ['🏆', 'Board Toppers', '#results'],
+    ['🎯', 'Free Demo', '#home'], ['📚', 'Courses', '#courses'],
+    ['📞', 'Contact / Admission', '#leadbox'], ['🔥', 'Our Toppers', '#toppers'],
+    ['📸', 'Memories', '#memories'], ['📍', 'Visit Our Centre', '#visit'],
+    ['💎', 'Fees Structure', '#pricing'], ['🚀', 'Skill Programs', '#skills'],
+    ['🔐', 'SSTC Access', 'sstc-access.html'], ['📝', 'Student Registration', 'student-registration.html']
+  ];
+  const menuBtn = document.createElement('button');
+  menuBtn.className = 'sstc-menu-btn';
+  menuBtn.type = 'button';
+  menuBtn.setAttribute('aria-label', 'Menu');
+  menuBtn.setAttribute('data-bs-toggle', 'offcanvas');
+  menuBtn.setAttribute('data-bs-target', '#sstcMenu');
+  menuBtn.textContent = '☰';
+  header.insertBefore(menuBtn, $('.header-buttons', header));
+
+  document.body.insertAdjacentHTML('beforeend', `
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="sstcMenu" aria-labelledby="sstcMenuLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="sstcMenuLabel">Shree Scholars</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <div class="list-group list-group-flush">
+        ${links.map(l => `<a class="list-group-item list-group-item-action" href="${l[2]}">${l[0]} ${l[1]}</a>`).join('')}
+        <button type="button" class="list-group-item list-group-item-action" id="menuInstall">📲 Install App</button>
+      </div>
+    </div>
+  </div>`);
+  const menuEl = $('#sstcMenu');
+  menuEl.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (a) bootstrap.Offcanvas.getInstance(menuEl).hide();
+  });
+  $('#menuInstall').addEventListener('click', () => {
+    bootstrap.Offcanvas.getInstance(menuEl).hide();
+    $('#pwaInstallBtn') && $('#pwaInstallBtn').click();
+    const help = $('#pwaHelp');
+    if (help && getComputedStyle(help).display !== 'none') help.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  /* 3) Sliders: swipe (scroll-snap) + prev/next buttons + autoplay */
+  function slider(track, prev, next) {
+    if (!track) return;
+    const step = () => { const c = track.firstElementChild; return c ? c.getBoundingClientRect().width + (parseFloat(getComputedStyle(track).columnGap) || 0) : track.clientWidth; };
+    const atEnd = () => track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    const go = d => {
+      if (d > 0 && atEnd()) track.scrollTo({ left: 0, behavior: 'smooth' });
+      else if (d < 0 && track.scrollLeft <= 4) track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+      else track.scrollBy({ left: d * step(), behavior: 'smooth' });
+    };
+    prev && prev.addEventListener('click', () => go(-1));
+    next && next.addEventListener('click', () => go(1));
+    let paused = false;
+    ['mouseenter', 'touchstart', 'focusin'].forEach(e => track.addEventListener(e, () => paused = true, { passive: true }));
+    ['mouseleave', 'touchend', 'focusout'].forEach(e => track.addEventListener(e, () => setTimeout(() => paused = false, 2500), { passive: true }));
+    if (!reduce) setInterval(() => { if (!paused && !document.hidden) go(1); }, 3200);
+  }
+  slider($('#slides'), $('.slider .prev'), $('.slider .next'));
+  slider($('#galleryTrack'), $('.g-btn.prev'), $('.g-btn.next'));
+  slider($('.pricing-row'));
+
+  /* 4) Bootstrap Modal lightbox: photo par tap = bada view */
+  document.body.insertAdjacentHTML('beforeend', `
+  <div class="modal fade sstc-lightbox" id="sstcLightbox" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl"><div class="modal-content">
+      <img alt="">
+    </div></div>
+  </div>`);
+  const lb = $('#sstcLightbox');
+  document.addEventListener('click', e => {
+    const img = e.target.closest('.slides img, .gallery-card img, .result-card .img-box img');
+    if (!img) return;
+    $('img', lb).src = img.currentSrc || img.src;
+    bootstrap.Modal.getOrCreateInstance(lb).show();
+  });
+  lb.addEventListener('click', () => bootstrap.Modal.getInstance(lb).hide());
+
+  /* 5) Scroll reveal */
+  const targets = $$('.offer-access-box, .pwa-install-box, .features .card, .result-card, .stats, .hero-box, .course-item, .card, .lead-form, .lead-heading, .contact-box, .pricing-col, .saas-card, .video-card, .gallery-wrapper, .slider');
+  if ('IntersectionObserver' in window && !reduce) {
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    }), { threshold: .12, rootMargin: '0px 0px -5% 0px' });
+    targets.forEach((t, i) => { t.classList.add('reveal'); t.style.animationDelay = (i % 4) * 70 + 'ms'; io.observe(t); });
+  }
+
+  /* 6) Result stats counter (100% / 90%+ / 500+) */
+  $$('.stats h3').forEach(h => {
+    const m = h.textContent.match(/^(\d+)(.*)$/);
+    if (!m || reduce) return;
+    const end = +m[1], tail = m[2]; let done = false;
+    new IntersectionObserver((es, ob) => {
+      if (!es[0].isIntersecting || done) return;
+      done = true; ob.disconnect();
+      const t0 = performance.now();
+      (function tick(t) {
+        const p = Math.min((t - t0) / 1200, 1);
+        h.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + tail;
+        if (p < 1) requestAnimationFrame(tick);
+      })(t0);
+    }).observe(h);
+  });
+
+  /* 7) Bootstrap Toast: app install hone par */
+  addEventListener('appinstalled', () => {
+    document.body.insertAdjacentHTML('beforeend', `
+    <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index:2000">
+      <div class="toast align-items-center text-bg-success border-0" role="alert" id="sstcToast">
+        <div class="d-flex"><div class="toast-body">✅ Shree Scholars App install ho gaya!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div>
+      </div>
+    </div>`);
+    bootstrap.Toast.getOrCreateInstance($('#sstcToast'), { delay: 4000 }).show();
+  });
+})();
