@@ -5124,3 +5124,57 @@ body.sstc-modal-open {
 @media (prefers-reduced-motion: reduce) {
     .pf3-body, .pf3-arrow { transition: none; }
 }
+/* =========================================================
+   FREE VIEWER: neeche floating zoom toolbar
+   ========================================================= */
+.fr-stage { position: relative; }
+
+.fr-stage:fullscreen { background: #fff; }
+.fr-stage:-webkit-full-screen { background: #fff; }
+.fr-stage:fullscreen .fr-frame-wrap { height: 100vh; }
+.fr-stage:-webkit-full-screen .fr-frame-wrap { height: 100vh; }
+
+.fr-toolbar {
+    position: absolute;
+    right: 24px;
+    bottom: 16px;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 8px;
+    border-radius: 12px;
+    background: rgba(6, 78, 72, .92);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .28);
+}
+
+.fr-toolbar button {
+    border: 0;
+    background: rgba(255, 255, 255, .14);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    line-height: 1;
+}
+
+.fr-toolbar button:hover { background: rgba(255, 255, 255, .28); }
+
+.fr-toolbar .fr-zoom-level { min-width: 48px; font-size: 13px; }
+
+.fr-tb-sep {
+    width: 1px;
+    height: 22px;
+    background: rgba(255, 255, 255, .3);
+    margin: 0 4px;
+}
+
+@media (max-width: 600px) {
+    .fr-toolbar { right: 12px; bottom: 8px; padding: 4px 6px; }
+    .fr-toolbar button { min-width: 32px; height: 32px; padding: 0 6px; font-size: 13px; }
+}
