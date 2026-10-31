@@ -1304,7 +1304,7 @@ const SSTC_EBOOKS = {
             { "number": 11, "title": "Poem 3: Keeping Quiet / कविता 3: कीपिंग क्वाइट", "pdf": "ebooks/class-12/english/chapter-11.pdf" },
             { "number": 12, "title": "Poem 4: A Thing of Beauty / कविता 4: ए थिंग ऑफ ब्यूटी", "pdf": "ebooks/class-12/english/chapter-12.pdf" },
             { "number": 13, "title": "Poem 5: A Roadside Stand / कविता 5: ए रोडसाइड स्टैंड", "pdf": "ebooks/class-12/english/chapter-13.pdf" },
-            { "number": 14, "title": "Poem 6: Aunt Jennifer's Tigers / कविता 6: आंट जेनिफर्स टाइगर्स", "pdf": "ebooks/class-12/english/chapter-14.pdf" },
+            { "number": 14, "title": "Poem 6: Aunt Jennifer's Tigers / कविता 6: आंट जेनिफर्स टाइगर्स", "pdf": "ebooks/class-12/english/chapter-14.pdf" },           
 
             { "number": 15, "title": "Supplementary 1: The Third Level / पूरक पाठ 1: द थर्ड लेवल", "pdf": "ebooks/class-12/english/chapter-15.pdf" },
             { "number": 16, "title": "Supplementary 2: The Tiger King / पूरक पाठ 2: द टाइगर किंग", "pdf": "ebooks/class-12/english/chapter-16.pdf" },
@@ -1313,8 +1313,11 @@ const SSTC_EBOOKS = {
             { "number": 19, "title": "Supplementary 5: On the Face of It / पूरक पाठ 5: ऑन द फेस ऑफ इट", "pdf": "ebooks/class-12/english/chapter-19.pdf" },
             { "number": 20, "title": "Supplementary 6: Memories of Childhood / पूरक पाठ 6: मेमोरीज ऑफ चाइल्डहुड", "pdf": "ebooks/class-12/english/chapter-20.pdf" },
 
-            { "number": 21, "title": "Writing Skills: Notice, Invitation, Letter & Report / लेखन कौशल", "pdf": "ebooks/class-12/english/chapter-21.pdf" },
-            { "number": 22, "title": "Reading Skills: Unseen Passages / पठन कौशल: अपठित गद्यांश", "pdf": "ebooks/class-12/english/chapter-22.pdf" }
+           { "number": 21, "title": "Poem 7: Evans Tries an O-Level  / कविता 7: इवांस O-लेवल की परीक्षा देता है", "pdf": "ebooks/class-12/english/chapter-21.pdf" },
+           { "number": 22, "title": "Chapter 9: Should Wizard Hit Mommy? / अध्याय 9: क्या जादूगर को मम्मी को मारना चाहिए?", "pdf": "ebooks/class-12/english/chapter-22.pdf" },
+
+            { "number": 23, "title": "Writing Skills: Notice, Invitation, Letter & Report / लेखन कौशल", "pdf": "ebooks/class-12/english/chapter-23.pdf" },
+            { "number": 24, "title": "Reading Skills: Unseen Passages / पठन कौशल: अपठित गद्यांश", "pdf": "ebooks/class-12/english/chapter-24.pdf" }
         ]
     },
 
