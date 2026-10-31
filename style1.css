@@ -1,1 +1,146 @@
+/* =====================================================
+   style1.css — SSTC design upgrade layer
+   NOTE: index.html me ise inline <style> ke BAAD load karein
+   (taaki ye purani CSS ko override kare). Koi content hide nahi hota.
+===================================================== */
+:root{
+  --ink:#0b1e3c; --ink2:#1c2f66; --red:#d32f2f; --saf:#ff9800; --vio:#6c2bd9;
+  --paper:#fffaf0; --ease:cubic-bezier(.2,.7,.2,1); --hdr:90px;
+  --shadow:0 2px 4px rgba(11,30,60,.06),0 14px 34px rgba(11,30,60,.12);
+}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hdr) + 10px);-webkit-text-size-adjust:100%}
+*,*::before,*::after{font-family:'Nunito','Segoe UI',Arial,sans-serif}
+h1,h2,h3,.op-months,.op-new,.percent,.price,.new,.stats h3{font-family:'Baloo 2','Nunito',sans-serif}
+body{overflow-x:hidden;color:#26324a}
+img,video{max-width:100%}
+:focus-visible{outline:3px solid var(--vio);outline-offset:3px}
 
+/* ---------- HEADER ---------- */
+#mainHeader{display:flex;align-items:center;gap:10px;padding:8px clamp(10px,3vw,28px);
+  background:rgba(255,255,255,.84);backdrop-filter:saturate(1.5) blur(14px);-webkit-backdrop-filter:saturate(1.5) blur(14px);
+  border-bottom:3px solid transparent;border-image:linear-gradient(90deg,var(--red),var(--saf),var(--vio)) 1;
+  box-shadow:0 8px 26px rgba(11,30,60,.1)}
+#mainHeader img{height:clamp(44px,7vw,84px);width:auto;object-fit:contain;flex-shrink:0;transition:height .3s}
+#mainHeader.shrink img,#mainHeader.scrolled img{height:42px}
+#mainHeader .nav-text{flex:1;min-width:0;text-align:center}
+#mainHeader .nav-text h1{font-size:clamp(14px,3.2vw,40px);line-height:1.15;margin:0;color:var(--red);overflow-wrap:anywhere;transition:font-size .3s}
+#mainHeader .nav-text p{display:block;margin:0;font-size:clamp(10px,1.5vw,18px);color:#55607a}
+#mainHeader.shrink .nav-text h1,#mainHeader.scrolled .nav-text h1{font-size:clamp(13px,2.2vw,24px)}
+#mainHeader .header-buttons{flex-shrink:0}
+.sstc-menu-btn{border:0;background:var(--ink);color:#fff;width:42px;height:42px;border-radius:12px;font-size:20px;line-height:1;flex-shrink:0;
+  box-shadow:0 6px 16px rgba(11,30,60,.3);transition:transform .25s var(--ease)}
+.sstc-menu-btn:hover{transform:scale(1.07)}
+
+/* ---------- BUTTONS (Bootstrap .btn ke upar) ---------- */
+.btn{border-radius:999px;font-weight:700;border:0;transition:transform .25s var(--ease),box-shadow .25s}
+.btn.primary{background:linear-gradient(135deg,var(--red),#ff5722);color:#fff;box-shadow:0 8px 20px rgba(211,47,47,.3)}
+.btn.outline{border:2px solid #fff;color:#fff;background:transparent}
+.btn.highlight{background:linear-gradient(135deg,var(--vio),#9c4dff);color:#fff}
+.btn:hover,.btn-saas:hover,.btn-map:hover,.btn-result:hover,.offer-register-btn:hover,.whatsapp-btn:hover{color:#fff}
+.btn:hover{transform:translateY(-3px)}
+.btn.outline:hover{background:#fff;color:var(--ink)}
+.btn-saas,.btn-result{background:linear-gradient(135deg,var(--ink),var(--ink2));box-shadow:0 8px 20px rgba(11,30,60,.25)}
+.lead-form button{width:100%;margin-top:6px;padding:13px;border:0;border-radius:14px;font-weight:800;color:#fff;cursor:pointer;
+  background:linear-gradient(135deg,#25D366,#128c4a);box-shadow:0 8px 20px rgba(37,211,102,.35);transition:transform .25s var(--ease)}
+.lead-form button:hover{transform:translateY(-3px)}
+
+/* ---------- SECTION HEADING CARDS ---------- */
+.card{background-image:none;background-color:#fff;border:0;border-radius:22px;position:relative;overflow:hidden;box-shadow:var(--shadow);margin-bottom:26px}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--red),var(--saf),var(--vio));background-size:200% 100%;animation:slide 6s linear infinite}
+.card h3{color:var(--ink);font-size:clamp(24px,4.5vw,36px);line-height:1.2}
+.card p{color:#55607a}
+@keyframes slide{to{background-position:200% 0}}
+
+/* ---------- HERO (page ka sabse yaadgaar hissa) ---------- */
+.hero-pro{position:relative;overflow:hidden;isolation:isolate;padding:clamp(60px,10vw,110px) 16px}
+.hero-pro::before,.hero-pro::after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(60px);opacity:.55;animation:drift 14s ease-in-out infinite alternate}
+.hero-pro::before{width:340px;height:340px;background:var(--red);top:-80px;left:-60px}
+.hero-pro::after{width:380px;height:380px;background:var(--vio);bottom:-110px;right:-70px;animation-delay:-6s}
+@keyframes drift{to{transform:translate(70px,50px) scale(1.2)}}
+.hero-box{width:100%;color:#fff;background:linear-gradient(160deg,var(--ink),var(--ink2));border:1px solid rgba(255,255,255,.15);box-shadow:0 30px 70px rgba(11,30,60,.45)}
+.hero-box h1{font-size:clamp(28px,6vw,46px);color:#fff;line-height:1.15}
+.hero-box .tagline{color:#ffd9a0;font-weight:700}
+.hero-box .urgent{color:#ffb4a8}
+.offer-highlight{background:linear-gradient(135deg,#ff5722,var(--saf));border-radius:18px}
+
+/* ---------- OFFER / PLANS ---------- */
+.offer-access-box{box-shadow:var(--shadow),0 0 0 6px rgba(108,43,217,.06)}
+.offer-plans{grid-template-columns:repeat(auto-fit,minmax(128px,1fr))}
+.offer-plan{border-radius:18px;background:#fff}
+.offer-plan.best{background:linear-gradient(180deg,#faf5ff,#fff)}
+.op-off{position:relative;overflow:hidden}
+.op-off::after,.btn-result::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.7),transparent);animation:shine 3s infinite}
+.btn-result{position:relative;overflow:hidden}
+@keyframes shine{to{left:130%}}
+
+/* ---------- GRIDS: har screen par adjust ---------- */
+.features{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.features .card{margin:0}
+.course-list{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+.course-item{border:0;border-radius:16px;font-weight:700;color:var(--ink);box-shadow:var(--shadow);transition:transform .25s var(--ease),background .25s,color .25s}
+.course-item:hover{transform:translateY(-4px);background:var(--ink);color:#fff}
+.result-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.result-card,.saas-card,.pricing-col,.lead-form,.contact-box,.map-card,.video-card{border-radius:22px;box-shadow:var(--shadow)}
+.stats{flex-wrap:wrap;gap:18px 40px}
+.highlight-box{border-radius:999px;font-size:15px}
+.saas-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.lead-box{align-items:flex-start}
+.lead-form{min-width:min(100%,280px)}
+.lead-form input,.lead-form select{border-radius:12px;border:1.5px solid #d7dcea;padding:13px;background:#fff;font-size:16px}
+.lead-form input:focus,.lead-form select:focus{border-color:var(--vio);box-shadow:0 0 0 4px rgba(108,43,217,.15);outline:0}
+.lead-heading{flex:1 1 100%}
+.contact-box iframe{max-width:100%}
+.cta{background:linear-gradient(135deg,var(--ink),var(--ink2))}
+footer{padding:24px 16px calc(24px + env(safe-area-inset-bottom))}
+
+/* ---------- SLIDERS / SCROLL-SNAP (touch swipe + buttons) ---------- */
+.slider .slides,.gallery-track,.video-testimonials,.pricing-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain;transform:none!important}
+.slider .slides::-webkit-scrollbar,.gallery-track::-webkit-scrollbar,.video-testimonials::-webkit-scrollbar,.pricing-row::-webkit-scrollbar{display:none}
+.slider .slides{gap:12px;padding:6px}
+.slides img{flex:0 0 calc((100% - 24px)/3);width:auto;scroll-snap-align:start;border-radius:18px}
+.gallery-track{gap:14px;padding:6px 4px 14px}
+.gallery-card{flex:0 0 min(86%,360px);min-width:0;margin:0;scroll-snap-align:center;border-radius:22px}
+.video-testimonials{gap:18px;padding:6px 4px 14px}
+.video-card{flex:0 0 min(78vw,300px);min-width:0;scroll-snap-align:start}
+.pricing-row{gap:18px;padding:16px 4px 18px}
+.pricing-col{flex:1 0 235px;scroll-snap-align:start}
+.pricing-col.popular{border:0;box-shadow:var(--shadow),inset 0 0 0 2px var(--vio)}
+.slider .prev,.slider .next,.g-btn{width:44px;height:44px;display:grid;place-items:center;padding:0;z-index:5;
+  background:rgba(11,30,60,.82);color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.3);transition:transform .2s}
+.slider .prev:hover,.slider .next:hover,.g-btn:hover{transform:translateY(-50%) scale(1.1)}
+@media(max-width:768px){.slides img{flex-basis:calc((100% - 12px)/2)}}
+@media(max-width:480px){.slides img{flex-basis:100%}}
+
+/* ---------- FLOATING CHAT BUTTONS + APP INSTALL ---------- */
+.whatsapp-btn{right:16px;font-weight:800;z-index:900;animation:pulse 2.4s infinite}
+.w1{bottom:calc(16px + env(safe-area-inset-bottom))}
+.w2{bottom:calc(66px + env(safe-area-inset-bottom))}
+.pwa-install-box{background:linear-gradient(135deg,#fff,#f3ecff);border-radius:20px}
+.pwa-install-btn{animation:pulse 2s infinite}
+
+/* ---------- SCROLL REVEAL (JS .reveal lagata hai) ---------- */
+.reveal{opacity:0}
+.reveal.in{opacity:1;animation:rise .7s var(--ease) backwards}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}}
+
+/* ---------- BOOTSTRAP COMPONENTS (menu / lightbox) ---------- */
+.offcanvas{max-width:86vw}
+.offcanvas .list-group-item{font-weight:700;padding:14px 18px;border:0;border-bottom:1px solid #eef0f6}
+.offcanvas .list-group-item:active,.offcanvas .list-group-item:hover{background:#f3ecff}
+.offcanvas-header{background:linear-gradient(135deg,var(--ink),var(--ink2));color:#fff}
+.offcanvas-header .btn-close{filter:invert(1)}
+.sstc-lightbox .modal-content{background:transparent;border:0}
+.sstc-lightbox img{max-width:100%;max-height:82vh;object-fit:contain;border-radius:16px;background:#000;margin:auto;display:block}
+.slides img,.gallery-card img,.result-card .img-box img{cursor:zoom-in}
+
+/* ---------- SMALL SCREENS ---------- */
+@media(max-width:600px){
+  .hero-box{padding:28px 18px}
+  .offer-register-btn{display:inline-block}
+  .video-card video{height:min(62vh,380px)}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1}
+}
