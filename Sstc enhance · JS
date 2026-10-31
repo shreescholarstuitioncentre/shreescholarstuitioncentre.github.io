@@ -136,3 +136,30 @@
     bootstrap.Toast.getOrCreateInstance($('#sstcToast'), { delay: 4000 }).show();
   });
 })();
+
+/* ---------- v2: progress bar, back-to-top, 3D tilt ---------- */
+(function () {
+  document.body.insertAdjacentHTML('beforeend',
+    '<div class="progress" id="sstcProgress"><div class="progress-bar" role="progressbar" style="width:0%"></div></div>' +
+    '<button type="button" id="toTop" aria-label="Upar jao">↑</button>');
+  const bar = document.querySelector('#sstcProgress .progress-bar');
+  const top = document.getElementById('toTop');
+  addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    bar.style.width = (h > 0 ? scrollY / h * 100 : 0) + '%';
+    top.classList.toggle('show', scrollY > 600);
+  }, { passive: true });
+  top.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
+
+  if (matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.result-card,.saas-card,.pricing-col,.lead-form').forEach(el => {
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--ry', ((e.clientX - r.left) / r.width - .5) * 8 + 'deg');
+        el.style.setProperty('--rx', (.5 - (e.clientY - r.top) / r.height) * 8 + 'deg');
+        el.classList.add('tilting');
+      });
+      el.addEventListener('pointerleave', () => el.classList.remove('tilting'));
+    });
+  }
+})();
