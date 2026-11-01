@@ -676,29 +676,123 @@ const SSTC_EBOOKS = {
             "description": "Class 9 Hindi E-Book Library",
             "image": "subject-images/class-9/hindi.png",
             "chapters": [
-                { "number": 1, "title": "क्षितिज (गद्य) 1: दो बैलों की कथा", "pdf": "ebooks/class-9/hindi/chapter-01.pdf" },
-                { "number": 2, "title": "क्षितिज (गद्य) 2: ल्हासा की ओर", "pdf": "ebooks/class-9/hindi/chapter-02.pdf" },
-                { "number": 3, "title": "क्षितिज (गद्य) 3: उपभोक्तावाद की संस्कृति", "pdf": "ebooks/class-9/hindi/chapter-03.pdf" },
-                { "number": 4, "title": "क्षितिज (गद्य) 4: साँवले सपनों की याद", "pdf": "ebooks/class-9/hindi/chapter-04.pdf" },
-                { "number": 5, "title": "क्षितिज (गद्य) 5: नाना साहब की पुत्री देवी मैना को भस्म कर दिया गया", "pdf": "ebooks/class-9/hindi/chapter-05.pdf" },
-                { "number": 6, "title": "क्षितिज (गद्य) 6: प्रेमचंद के फटे जूते", "pdf": "ebooks/class-9/hindi/chapter-06.pdf" },
-                { "number": 7, "title": "क्षितिज (गद्य) 7: मेरे बचपन के दिन", "pdf": "ebooks/class-9/hindi/chapter-07.pdf" },
-                { "number": 8, "title": "क्षितिज (गद्य) 8: एक कुत्ता और एक मैना", "pdf": "ebooks/class-9/hindi/chapter-08.pdf" },
-                { "number": 9, "title": "क्षितिज (काव्य) 1: साखियाँ एवं सबद", "pdf": "ebooks/class-9/hindi/chapter-09.pdf" },
-                { "number": 10, "title": "क्षितिज (काव्य) 2: वाख", "pdf": "ebooks/class-9/hindi/chapter-10.pdf" },
-                { "number": 11, "title": "क्षितिज (काव्य) 3: सवैये", "pdf": "ebooks/class-9/hindi/chapter-11.pdf" },
-                { "number": 12, "title": "क्षितिज (काव्य) 4: कैदी और कोकिला", "pdf": "ebooks/class-9/hindi/chapter-12.pdf" },
-                { "number": 13, "title": "क्षितिज (काव्य) 5: ग्राम श्री", "pdf": "ebooks/class-9/hindi/chapter-13.pdf" },
-                { "number": 14, "title": "क्षितिज (काव्य) 6: चंद्र गहना से लौटती बेर", "pdf": "ebooks/class-9/hindi/chapter-14.pdf" },
-                { "number": 15, "title": "क्षितिज (काव्य) 7: मेघ आए", "pdf": "ebooks/class-9/hindi/chapter-15.pdf" },
-                { "number": 16, "title": "क्षितिज (काव्य) 8: यमराज की दिशा", "pdf": "ebooks/class-9/hindi/chapter-16.pdf" },
-                { "number": 17, "title": "क्षितिज (काव्य) 9: बच्चे काम पर जा रहे हैं", "pdf": "ebooks/class-9/hindi/chapter-17.pdf" },
-                { "number": 18, "title": "कृतिका 1: इस जल प्रलय में", "pdf": "ebooks/class-9/hindi/chapter-18.pdf" },
-                { "number": 19, "title": "कृतिका 2: मेरे संग की औरतें", "pdf": "ebooks/class-9/hindi/chapter-19.pdf" },
-                { "number": 20, "title": "कृतिका 3: रीढ़ की हड्डी", "pdf": "ebooks/class-9/hindi/chapter-20.pdf" },
-                { "number": 21, "title": "कृतिका 4: माटी वाली", "pdf": "ebooks/class-9/hindi/chapter-21.pdf" },
-                { "number": 22, "title": "कृतिका 5: किस तरह आखिरकार मैं हिंदी में आया", "pdf": "ebooks/class-9/hindi/chapter-22.pdf" }
-            ]
+                       // ==============================
+                       // हिंदी साहित्य का इतिहास
+                       // ==============================
+               
+                       { "number": 1, "title": "गद्य साहित्य का इतिहास", "pdf": "ebooks/class-9/hindi/chapter-01.pdf" },
+                       { "number": 2, "title": "काव्य साहित्य का इतिहास", "pdf": "ebooks/class-9/hindi/chapter-02.pdf" },
+               
+                       // ==============================
+                       // गद्य खंड
+                       // ==============================
+               
+                       { "number": 3, "title": "गद्य खंड 1: बात", "pdf": "ebooks/class-9/hindi/chapter-03.pdf" },
+                       { "number": 4, "title": "गद्य खंड 2: मंत्र", "pdf": "ebooks/class-9/hindi/chapter-04.pdf" },
+                       { "number": 5, "title": "गद्य खंड 3: गुरु नानकदेव", "pdf": "ebooks/class-9/hindi/chapter-05.pdf" },
+                       { "number": 6, "title": "गद्य खंड 4: गिल्लू", "pdf": "ebooks/class-9/hindi/chapter-06.pdf" },
+                       { "number": 7, "title": "गद्य खंड 5: स्मृति", "pdf": "ebooks/class-9/hindi/chapter-07.pdf" },
+                       { "number": 8, "title": "गद्य खंड 6: निष्ठामूर्ति कस्तूरबा", "pdf": "ebooks/class-9/hindi/chapter-08.pdf" },
+                       { "number": 9, "title": "गद्य खंड 7: ठेले पर हिमालय", "pdf": "ebooks/class-9/hindi/chapter-09.pdf" },
+               
+                       // ==============================
+                       // काव्य खंड
+                       // ==============================
+               
+                       { "number": 10, "title": "काव्य खंड 1: साखी", "pdf": "ebooks/class-9/hindi/chapter-10.pdf" },
+                       { "number": 11, "title": "काव्य खंड 2: पदावली", "pdf": "ebooks/class-9/hindi/chapter-11.pdf" },
+                       { "number": 12, "title": "काव्य खंड 3: दोहा", "pdf": "ebooks/class-9/hindi/chapter-12.pdf" },
+                       { "number": 13, "title": "काव्य खंड 4: प्रेम-माधुरी", "pdf": "ebooks/class-9/hindi/chapter-13.pdf" },
+                       { "number": 14, "title": "काव्य खंड 5: पंचवटी", "pdf": "ebooks/class-9/hindi/chapter-14.pdf" },
+                       { "number": 15, "title": "काव्य खंड 6: पुनर्मिलन", "pdf": "ebooks/class-9/hindi/chapter-15.pdf" },
+                       { "number": 16, "title": "काव्य खंड 7: दान", "pdf": "ebooks/class-9/hindi/chapter-16.pdf" },
+                       { "number": 17, "title": "काव्य खंड 8: उन्हें प्रणाम", "pdf": "ebooks/class-9/hindi/chapter-17.pdf" },
+                       { "number": 18, "title": "काव्य खंड 9: पथ की पहचान", "pdf": "ebooks/class-9/hindi/chapter-18.pdf" },
+                       { "number": 19, "title": "काव्य खंड 10: बादल को घिरते देखा है", "pdf": "ebooks/class-9/hindi/chapter-19.pdf" },
+                       { "number": 20, "title": "काव्य खंड 11: अच्छा होता, सितार-संगीत की रात", "pdf": "ebooks/class-9/hindi/chapter-20.pdf" },
+               
+                       // ==============================
+                       // संस्कृत खंड
+                       // ==============================
+               
+                       { "number": 21, "title": "संस्कृत खंड 1: वन्दना", "pdf": "ebooks/class-9/hindi/chapter-21.pdf" },
+                       { "number": 22, "title": "संस्कृत खंड 2: सदाचारः", "pdf": "ebooks/class-9/hindi/chapter-22.pdf" },
+                       { "number": 23, "title": "संस्कृत खंड 3: पुरुषोत्तमः रामः", "pdf": "ebooks/class-9/hindi/chapter-23.pdf" },
+                       { "number": 24, "title": "संस्कृत खंड 4: सिद्धिमन्त्रः", "pdf": "ebooks/class-9/hindi/chapter-24.pdf" },
+                       { "number": 25, "title": "संस्कृत खंड 5: सुभाषितानि", "pdf": "ebooks/class-9/hindi/chapter-25.pdf" },
+                       { "number": 26, "title": "संस्कृत खंड 6: परमहंसः रामकृष्णः", "pdf": "ebooks/class-9/hindi/chapter-26.pdf" },
+                       { "number": 27, "title": "संस्कृत खंड 7: कृष्णः गोपालनन्दनः", "pdf": "ebooks/class-9/hindi/chapter-27.pdf" },
+               
+                       // ==============================
+                       // एकांकी खंड
+                       // ==============================
+               
+                       { "number": 28, "title": "एकांकी खंड 1: दीपदान", "pdf": "ebooks/class-9/hindi/chapter-28.pdf" },
+                       { "number": 29, "title": "एकांकी खंड 2: नए मेहमान", "pdf": "ebooks/class-9/hindi/chapter-29.pdf" },
+                       { "number": 30, "title": "एकांकी खंड 3: व्यवहार", "pdf": "ebooks/class-9/hindi/chapter-30.pdf" },
+                       { "number": 31, "title": "एकांकी खंड 4: लक्ष्मी का स्वागत", "pdf": "ebooks/class-9/hindi/chapter-31.pdf" },
+                       { "number": 32, "title": "एकांकी खंड 5: सीमा-रेखा", "pdf": "ebooks/class-9/hindi/chapter-32.pdf" },
+               
+                       // ==============================
+                       // काव्य सौन्दर्य के तत्त्व
+                       // ==============================
+               
+                       { "number": 33, "title": "काव्य सौन्दर्य: रस", "pdf": "ebooks/class-9/hindi/chapter-33.pdf" },
+                       { "number": 34, "title": "काव्य सौन्दर्य: छन्द", "pdf": "ebooks/class-9/hindi/chapter-34.pdf" },
+                       { "number": 35, "title": "काव्य सौन्दर्य: अलंकार", "pdf": "ebooks/class-9/hindi/chapter-35.pdf" },
+               
+                       // ==============================
+                       // हिन्दी व्याकरण तथा शब्द रचना
+                       // ==============================
+               
+                       { "number": 36, "title": "हिन्दी व्याकरण: वर्तनी तथा विराम-चिह्न", "pdf": "ebooks/class-9/hindi/chapter-36.pdf" },
+                       { "number": 37, "title": "हिन्दी व्याकरण: शब्द रचना", "pdf": "ebooks/class-9/hindi/chapter-37.pdf" },
+                       { "number": 38, "title": "हिन्दी व्याकरण: समास", "pdf": "ebooks/class-9/hindi/chapter-38.pdf" },
+                       { "number": 39, "title": "हिन्दी व्याकरण: मुहावरे एवं लोकोक्तियाँ", "pdf": "ebooks/class-9/hindi/chapter-39.pdf" },
+               
+                       // ==============================
+                       // संस्कृत व्याकरण
+                       // ==============================
+               
+                       { "number": 40, "title": "संस्कृत व्याकरण: सन्धि", "pdf": "ebooks/class-9/hindi/chapter-40.pdf" },
+                       { "number": 41, "title": "संस्कृत व्याकरण: शब्द रूप", "pdf": "ebooks/class-9/hindi/chapter-41.pdf" },
+                       { "number": 42, "title": "संस्कृत व्याकरण: धातु रूप", "pdf": "ebooks/class-9/hindi/chapter-42.pdf" },
+                       { "number": 43, "title": "संस्कृत व्याकरण: हिन्दी-संस्कृत अनुवाद", "pdf": "ebooks/class-9/hindi/chapter-43.pdf" },
+               
+                       // ==============================
+                       // पत्र लेखन
+                       // ==============================
+               
+                       { "number": 44, "title": "पत्र लेखन: प्रार्थना पत्र", "pdf": "ebooks/class-9/hindi/chapter-44.pdf" },
+               
+                       // ==============================
+                       // पुराने NCERT Chapters
+                       // ==============================
+               
+                       // { "number": 45, "title": "क्षितिज (गद्य) 1: दो बैलों की कथा", "pdf": "ebooks/class-9/hindi/chapter-45.pdf" },
+                       // { "number": 46, "title": "क्षितिज (गद्य) 2: ल्हासा की ओर", "pdf": "ebooks/class-9/hindi/chapter-46.pdf" },
+                       // { "number": 47, "title": "क्षितिज (गद्य) 3: उपभोक्तावाद की संस्कृति", "pdf": "ebooks/class-9/hindi/chapter-47.pdf" },
+                       // { "number": 48, "title": "क्षितिज (गद्य) 4: साँवले सपनों की याद", "pdf": "ebooks/class-9/hindi/chapter-48.pdf" },
+                       // { "number": 49, "title": "क्षितिज (गद्य) 5: नाना साहब की पुत्री देवी मैना को भस्म कर दिया गया", "pdf": "ebooks/class-9/hindi/chapter-49.pdf" },
+                       // { "number": 50, "title": "क्षितिज (गद्य) 6: प्रेमचंद के फटे जूते", "pdf": "ebooks/class-9/hindi/chapter-50.pdf" },
+                       // { "number": 51, "title": "क्षितिज (गद्य) 7: मेरे बचपन के दिन", "pdf": "ebooks/class-9/hindi/chapter-51.pdf" },
+                       // { "number": 52, "title": "क्षितिज (गद्य) 8: एक कुत्ता और एक मैना", "pdf": "ebooks/class-9/hindi/chapter-52.pdf" },
+                       // { "number": 53, "title": "क्षितिज (काव्य) 1: साखियाँ एवं सबद", "pdf": "ebooks/class-9/hindi/chapter-53.pdf" },
+                       // { "number": 54, "title": "क्षितिज (काव्य) 2: वाख", "pdf": "ebooks/class-9/hindi/chapter-54.pdf" },
+                       // { "number": 55, "title": "क्षितिज (काव्य) 3: सवैये", "pdf": "ebooks/class-9/hindi/chapter-55.pdf" },
+                       // { "number": 56, "title": "क्षितिज (काव्य) 4: कैदी और कोकिला", "pdf": "ebooks/class-9/hindi/chapter-56.pdf" },
+                       // { "number": 57, "title": "क्षितिज (काव्य) 5: ग्राम श्री", "pdf": "ebooks/class-9/hindi/chapter-57.pdf" },
+                       // { "number": 58, "title": "क्षितिज (काव्य) 6: चंद्र गहना से लौटती बेर", "pdf": "ebooks/class-9/hindi/chapter-58.pdf" },
+                       // { "number": 59, "title": "क्षितिज (काव्य) 7: मेघ आए", "pdf": "ebooks/class-9/hindi/chapter-59.pdf" },
+                       // { "number": 60, "title": "क्षितिज (काव्य) 8: यमराज की दिशा", "pdf": "ebooks/class-9/hindi/chapter-60.pdf" },
+                       // { "number": 61, "title": "क्षितिज (काव्य) 9: बच्चे काम पर जा रहे हैं", "pdf": "ebooks/class-9/hindi/chapter-61.pdf" },
+                       // { "number": 62, "title": "कृतिका 1: इस जल प्रलय में", "pdf": "ebooks/class-9/hindi/chapter-62.pdf" },
+                       // { "number": 63, "title": "कृतिका 2: मेरे संग की औरतें", "pdf": "ebooks/class-9/hindi/chapter-63.pdf" },
+                       // { "number": 64, "title": "कृतिका 3: रीढ़ की हड्डी", "pdf": "ebooks/class-9/hindi/chapter-64.pdf" },
+                       // { "number": 65, "title": "कृतिका 4: माटी वाली", "pdf": "ebooks/class-9/hindi/chapter-65.pdf" },
+                       // { "number": 66, "title": "कृतिका 5: किस तरह आखिरकार मैं हिंदी में आया", "pdf": "ebooks/class-9/hindi/chapter-66.pdf" }
+               
+                   ]
         },
 
         "Social Science": {
