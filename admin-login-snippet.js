@@ -3,9 +3,7 @@
    Login Google Apps Script (Admin sheet) se verify hota hai.
    ========================================================= */
 
-// ====== YAHAN APNA APPS SCRIPT WEB APP URL DAALO ======
 const SSTC_ADMIN_API_URL = "https://script.google.com/macros/s/AKfycbzSPSlkswNdmRtJkZ0Uq3Et5hAPIBorvbgVoQvZD4e0Ed36TwPzk7bh-xSAWmdFpmqynw/exec";
-// ======================================================
 
 function togglePassword(inputId, button) {
     const input = document.getElementById(inputId);
@@ -46,18 +44,28 @@ async function adminLoginSubmit(event) {
         const response = await fetch(SSTC_ADMIN_API_URL, {
             method: "POST",
             headers: { "Content-Type": "text/plain;charset=utf-8" },
-            body: JSON.stringify({ username: adminId, password: adminPassword })
+            body: JSON.stringify({
+                action: "adminLogin",
+                username: adminId,
+                password: adminPassword
+            })
         });
 
         const data = await response.json();
 
-        if (!data.success) {
+        if (!data.success || !data.token) {
+            sessionStorage.removeItem("sstcAdmin");
+            sessionStorage.removeItem("sstcAdminToken");
             showAdminMessage(data.message || "Invalid Admin ID or Password.", "error");
+            if (adminPasswordElement) adminPasswordElement.value = "";
             if (submitButton) submitButton.disabled = false;
             return;
         }
 
         sessionStorage.setItem("sstcAdmin", "true");
+        sessionStorage.setItem("sstcAdminToken", data.token);
+
+        if (adminPasswordElement) adminPasswordElement.value = "";
         showAdminMessage("Login successful. Redirecting...", "success");
         window.location.href = "admin-page.html";
     } catch (error) {
