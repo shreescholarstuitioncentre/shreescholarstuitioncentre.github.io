@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>हिन्दी व्याकरण · कक्षा 9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf6ec;--surface:#fffdf8;--ink:#2b221d;--muted:#6f6258;--line:#e6dccb;
+  --red:#c8102e;--gold:#f2b01e;--teal:#0f8b8d;--shadow:0 6px 24px rgba(60,40,20,.08);
+  --hero1:#fbd24a;--hero2:#f6a81c;
+  --f-body:'Noto Sans Devanagari','Nirmala UI','Mangal',system-ui,sans-serif;
+  --f-head:'Noto Serif Devanagari','Noto Sans Devanagari','Mangal',serif;
+}
+:root[data-theme="dark"]{
+  --bg:#16110e;--surface:#211a16;--ink:#f3eadf;--muted:#b3a597;--line:#3a2f28;
+  --red:#ff7487;--gold:#f5c04a;--teal:#3cc4c6;--shadow:0 6px 24px rgba(0,0,0,.4);
+  --hero1:#4a3410;--hero2:#2a1d0c;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#16110e;--surface:#211a16;--ink:#f3eadf;--muted:#b3a597;--line:#3a2f28;
+    --red:#ff7487;--gold:#f5c04a;--teal:#3cc4c6;--shadow:0 6px 24px rgba(0,0,0,.4);
+    --hero1:#4a3410;--hero2:#2a1d0c;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.75;font-size:16px;-webkit-text-size-adjust:100%}
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--hero1),var(--hero2));padding:56px 16px 64px;text-align:center}
+.hero h1{font-family:var(--f-head);font-weight:800;color:var(--red);font-size:clamp(2.2rem,8vw,4.6rem);line-height:1.2;margin:0;position:relative;z-index:2;letter-spacing:.5px}
+.hero h1 span{display:inline-block;animation:drop .8s cubic-bezier(.2,.9,.3,1.2) both}
+.hero h1 span:nth-child(2){animation-delay:.12s}.hero h1 span:nth-child(3){animation-delay:.24s}
+.hero p{position:relative;z-index:2;margin:.6rem auto 0;max-width:36rem;font-weight:500;font-size:1.05rem;color:var(--ink)}
+.hero .badge{display:inline-block;margin-top:1rem;background:var(--surface);color:var(--ink);border-radius:99px;padding:.25rem 1rem;font-weight:600;box-shadow:var(--shadow);position:relative;z-index:2}
+.float{position:absolute;font-family:var(--f-head);font-weight:800;color:var(--red);opacity:.13;animation:floaty 9s ease-in-out infinite;user-select:none;z-index:1}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-18px) rotate(6deg)}}
+@keyframes drop{from{opacity:0;transform:translateY(-30px) scale(.9)}to{opacity:1;transform:none}}
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;gap:.25rem;overflow-x:auto;padding:.4rem 12px;max-width:1100px;margin:auto;scrollbar-width:none;align-items:center}
+.nav-in::-webkit-scrollbar{display:none}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--ink);padding:.3rem .8rem;border-radius:99px;font-size:.92rem;font-weight:500;border:1px solid transparent;transition:.2s}
+.nav a:hover{background:color-mix(in srgb,var(--gold) 25%,transparent)}
+.nav a.on{background:var(--red);color:#fff}
+.theme{margin-left:auto;flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:.25rem .8rem;cursor:pointer;font:inherit;font-size:.85rem}
+.progress{position:absolute;left:0;bottom:-1px;height:3px;width:0;background:var(--red);transition:width .1s}
+/* ---------- layout ---------- */
+main{max-width:1100px;margin:0 auto;padding:0 16px 60px}
+section.sec{margin-top:56px;--acc:var(--red)}
+.s-gadya{--acc:#d9507a}.s-lekhak{--acc:#d98a1c}.s-padya{--acc:#1f7fc4}.s-kavi{--acc:#0f9b8e}.s-kavya{--acc:#e07a1f}.s-vyakaran{--acc:#7b4fc9}
+:root[data-theme="dark"] .s-gadya{--acc:#ff7aa2}:root[data-theme="dark"] .s-lekhak{--acc:#f3b04a}:root[data-theme="dark"] .s-padya{--acc:#5ab0f0}:root[data-theme="dark"] .s-kavi{--acc:#3cd0c0}:root[data-theme="dark"] .s-kavya{--acc:#ffa04d}:root[data-theme="dark"] .s-vyakaran{--acc:#b496ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .s-gadya{--acc:#ff7aa2}:root:not([data-theme="light"]) .s-lekhak{--acc:#f3b04a}:root:not([data-theme="light"]) .s-padya{--acc:#5ab0f0}:root:not([data-theme="light"]) .s-kavi{--acc:#3cd0c0}:root:not([data-theme="light"]) .s-kavya{--acc:#ffa04d}:root:not([data-theme="light"]) .s-vyakaran{--acc:#b496ff}}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.sec-head .no{flex:none;width:52px;height:52px;border-radius:16px;background:var(--acc);color:#fff;display:grid;place-items:center;font-family:var(--f-head);font-weight:800;font-size:1.5rem;box-shadow:var(--shadow)}
+.sec-head h2{margin:0;font-family:var(--f-head);font-weight:800;font-size:clamp(1.5rem,5vw,2.2rem);line-height:1.3}
+.sec-head .rule{flex:1;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--acc),transparent);transform-origin:left;transform:scaleX(0);transition:transform 1s .2s}
+.sec-head.in .rule{transform:scaleX(1)}
+h3{font-family:var(--f-head);font-size:1.35rem;margin:30px 0 8px;border-left:5px solid var(--acc);padding-left:10px}
+h4{font-size:1.05rem;margin:22px 0 8px;color:var(--ink)}
+h5{font-size:.95rem;margin:18px 0 6px;color:var(--acc);font-style:normal}
+p{margin:.5rem 0}
+.sub{margin:-6px 0 18px;color:var(--muted)}
+.guess{color:var(--muted);font-style:italic;font-size:.88em}
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+/* ---------- tables ---------- */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow);margin:10px 0 18px}
+table{border-collapse:collapse;width:100%;min-width:480px}
+th,td{padding:.5rem .8rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+thead th{background:color-mix(in srgb,var(--acc) 18%,var(--surface));font-weight:700;position:sticky;top:0;white-space:nowrap}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--acc) 5%,transparent)}
+tbody tr:hover{background:color-mix(in srgb,var(--acc) 14%,transparent)}
+tbody tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600}
+.reveal.in tbody tr{animation:rowin .5s both;animation-delay:calc(var(--r,0)*45ms)}
+@keyframes rowin{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+td .fill{color:var(--muted);font-weight:400;opacity:.45}
+tr.hide{display:none}
+/* filter chips */
+.filter{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 6px}
+.filter button{font:inherit;font-size:.88rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:.2rem .85rem;cursor:pointer;transition:.2s}
+.filter button:hover{border-color:var(--acc)}
+.filter button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+/* ---------- cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;margin:12px 0 22px}
+.card{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--acc);border-radius:16px;padding:14px 16px 12px;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px)!important;box-shadow:0 12px 30px rgba(0,0,0,.14)}
+.card h4{margin:0 0 8px;font-family:var(--f-head);font-size:1.15rem;color:var(--acc)}
+.card dl{margin:0;display:grid;grid-template-columns:7.2rem 1fr;gap:3px 10px;font-size:.93rem;line-height:1.6}
+.card dt{color:var(--muted);font-weight:600}
+.card dd{margin:0}
+.card dl>*{border-bottom:1px dashed var(--line);padding-bottom:2px}
+.note{display:flex;gap:10px;background:color-mix(in srgb,var(--gold) 20%,var(--surface));border:1px solid color-mix(in srgb,var(--gold) 60%,var(--line));border-radius:12px;padding:.6rem .9rem;margin:10px 0;font-size:.92rem}
+.note .ni{flex:none;width:22px;height:22px;border-radius:50%;background:var(--gold);color:#000;display:grid;place-items:center;font-weight:800;font-size:.8rem;margin-top:3px}
+/* ---------- viz frame ---------- */
+.vizbox{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow);margin:14px 0 22px;position:relative}
+.vizbox>.vt{font-weight:700;color:var(--acc);margin:0 0 10px;font-size:.95rem;letter-spacing:.2px}
+.hint{font-size:.85rem;color:var(--muted)}
+/* ---------- era diagram ---------- */
+.era-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;margin:12px 0 22px}
+.era-root{grid-column:1/-1;justify-self:center;text-align:center;background:var(--acc);color:#fff;border-radius:16px;padding:.5rem 1.6rem;box-shadow:var(--shadow);transform:scale(.6);opacity:0;transition:.6s cubic-bezier(.2,.9,.3,1.3)}
+.era-root b{display:block;font-family:var(--f-head);font-size:1.3rem}.era-root small{opacity:.9}
+.era-grid.in .era-root{transform:none;opacity:1}
+.era{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px;position:relative}
+.era-head{text-align:center;margin-bottom:6px}.era-head b{display:block;font-family:var(--f-head);font-size:1.15rem;color:var(--acc)}.era-head small{color:var(--muted)}
+.era-line{height:3px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:10px}
+.era-line span{display:block;height:100%;width:100%;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform 1.4s .5s}
+.era-grid.in .era-line span{transform:none}
+.era.e2 .era-line span{transition-delay:1.1s}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.chip{background:color-mix(in srgb,var(--acc) 14%,var(--surface));border:1px solid color-mix(in srgb,var(--acc) 40%,var(--line));border-radius:99px;padding:.1rem .75rem;font-size:.9rem;opacity:0;transform:scale(.4)}
+.era-grid.in .chip{animation:pop .5s cubic-bezier(.2,.9,.3,1.4) forwards;animation-delay:calc(.9s + var(--i)*70ms)}
+.era-grid.in .e2 .chip{animation-delay:calc(1.5s + var(--i)*70ms)}
+@keyframes pop{to{opacity:1;transform:none}}
+/* ---------- tree ---------- */
+.treewrap{overflow-x:auto;padding:6px 0 10px;margin:12px 0 22px;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.tree{width:max-content;min-width:100%;padding:14px 10px 6px;display:flex;justify-content:center}
+.tree ul{display:flex;justify-content:center;padding:20px 0 0;margin:0;position:relative}
+.tree>ul{padding-top:0}
+.tree li{list-style:none;position:relative;padding:20px 4px 0;text-align:center}
+.tree>ul>li{padding-top:0}
+.tree li::before,.tree li::after{content:'';position:absolute;top:0;right:50%;width:50%;height:20px;border-top:2px solid var(--acc);opacity:0;transition:opacity .5s calc(var(--lvl)*.55s + .15s)}
+.tree li::after{right:auto;left:50%;border-left:2px solid var(--acc)}
+.tree>ul>li::before,.tree>ul>li::after{display:none}
+.tree li:only-child::before,.tree li:only-child::after{display:none}
+.tree li:only-child{padding-top:20px}
+.tree li:first-child::before,.tree li:last-child::after{border:0}
+.tree li:last-child::before{border-right:2px solid var(--acc);border-radius:0 10px 0 0}
+.tree li:first-child::after{border-radius:10px 0 0 0}
+.tree ul ul::before{content:'';position:absolute;top:0;left:50%;border-left:2px solid var(--acc);height:20px;opacity:0;transition:opacity .5s calc(var(--lvl)*.55s + .1s)}
+.tree.in li::before,.tree.in li::after,.tree.in ul ul::before{opacity:1}
+.tree .node{display:inline-block;max-width:160px;min-width:88px;padding:.4rem .7rem;border-radius:14px;background:color-mix(in srgb,var(--acc) 12%,var(--surface));border:2px solid var(--acc);line-height:1.35;opacity:0;transform:scale(.6) translateY(10px);transition:opacity .5s calc(var(--lvl)*.55s + .3s),transform .6s cubic-bezier(.2,.9,.3,1.4) calc(var(--lvl)*.55s + .3s),background .2s,box-shadow .2s}
+.tree.in .node{opacity:1;transform:none}
+.tree .node b{display:block;font-size:.98rem}
+.tree .node small{display:block;font-size:.72rem;color:var(--muted);margin-top:2px;line-height:1.35}
+.tree .n0{background:var(--acc);color:#fff}.tree .n0 small{color:#fff;opacity:.9}
+.tree .node.leaf{cursor:pointer}
+.tree .node.leaf:hover,.tree .node.leaf.sel{background:var(--acc);color:#fff;box-shadow:0 0 0 5px color-mix(in srgb,var(--acc) 30%,transparent)}
+.tree .node.leaf:hover small,.tree .node.leaf.sel small{color:#fff}
+.tree-foot{font-size:.8rem;color:var(--muted);margin:-14px 4px 18px}
+.defpanel{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--acc);border-radius:14px;padding:6px 16px 12px;margin:-8px 0 20px;min-height:84px;box-shadow:var(--shadow)}
+.defpanel h4{margin:10px 0 4px;color:var(--acc);font-family:var(--f-head)}
+.defpanel.flash{animation:flash .6s}
+@keyframes flash{from{background:color-mix(in srgb,var(--acc) 25%,var(--surface))}}
+/* ---------- lifespan ---------- */
+.life{position:relative;margin-top:6px}
+.lrow{display:grid;grid-template-columns:11.5rem 1fr;gap:8px;align-items:center;margin:5px 0;font-size:.88rem}
+.lrow .lb{text-align:right;line-height:1.3}
+.ltrack{position:relative;height:24px;background:color-mix(in srgb,var(--line) 55%,transparent);border-radius:8px;overflow:hidden}
+.lbar{position:absolute;top:0;bottom:0;border-radius:8px;width:0;display:flex;align-items:center;justify-content:center;font-size:.72rem;color:#fff;font-weight:600;white-space:nowrap;transition:width 1.3s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--k)*70ms);overflow:hidden}
+.lbar.k{background:linear-gradient(90deg,#e07a1f,#c8102e)}.lbar.l{background:linear-gradient(90deg,#0f8b8d,#1f7fc4)}
+.lbar.open{background:linear-gradient(90deg,#e07a1f,#c8102e 60%,transparent)}
+.in .lbar{width:var(--w)}
+.axis{display:grid;grid-template-columns:11.5rem 1fr;gap:8px;margin-bottom:2px}
+.axis .ax{position:relative;height:18px;font-size:.72rem;color:var(--muted)}
+.axis .ax span{position:absolute;transform:translateX(-50%)}
+.gridlines{position:absolute;inset:0 0 0 calc(11.5rem + 8px);pointer-events:none}
+.gridlines i{position:absolute;top:0;bottom:0;border-left:1px dashed color-mix(in srgb,var(--line) 90%,transparent)}
+.legend{display:flex;gap:16px;font-size:.84rem;margin-top:10px;flex-wrap:wrap}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:5px}
+.legend .k{background:linear-gradient(90deg,#e07a1f,#c8102e)}.legend .l{background:linear-gradient(90deg,#0f8b8d,#1f7fc4)}
+@media(max-width:640px){
+  .lrow,.axis{grid-template-columns:1fr}.lrow .lb{text-align:left}.axis>span{display:none}.gridlines{inset:0}
+  .era-grid{grid-template-columns:1fr}
+}
+/* ---------- matra ---------- */
+.matra-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin:12px 0 22px}
+.mcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:6px 16px 14px;box-shadow:var(--shadow)}
+.mcard h4{color:var(--acc);font-family:var(--f-head);font-size:1.15rem}.mcard h4 small{display:block;color:var(--muted);font-weight:400;font-size:.8rem}
+.mrow{display:grid;grid-template-columns:6.2rem 1fr;gap:8px;align-items:center;margin:8px 0}
+.ml{font-size:.82rem;color:var(--muted)}
+.mbar{position:relative;display:flex;height:34px;background:color-mix(in srgb,var(--line) 55%,transparent);border-radius:9px}
+.mbar i{display:grid;place-items:center;font-style:normal;font-weight:700;color:#fff;height:100%;width:0;border-radius:9px;transition:width 1.1s cubic-bezier(.2,.8,.2,1) var(--d,0s);overflow:hidden}
+.mbar.odd i{background:#1f7fc4}.mbar.even i{background:#e07a1f}
+.in .mbar i{width:var(--w)}
+.rola .mbar i.s1{background:#0f9b8e;border-radius:9px 0 0 9px}.rola .mbar i.s2{background:#c8102e;border-radius:0 9px 9px 0}
+.rola .mbar i.s2{transition-delay:calc(var(--d) + .9s)}
+.yati{position:absolute;left:45.8%;top:-16px;bottom:-7px;border-left:3px dashed var(--ink);padding-left:5px;color:var(--ink);opacity:0;text-decoration:none;font-size:.72rem;white-space:nowrap;transition:opacity .4s 1.1s}
+.in .yati{opacity:1}
+.mnote{font-size:.86rem;color:var(--muted);margin:10px 0 0}
+.total{font-family:var(--f-head);font-size:1.6rem;margin-top:12px;text-align:center;opacity:0;transform:scale(.7);transition:.6s 2.2s}
+.in .total{opacity:1;transform:none}
+.total b{color:var(--acc)}
+/* ---------- samas ---------- */
+.samas{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:16px;margin:12px 0 20px;--acc:#7b4fc9}
+.scard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:6px 16px 16px;box-shadow:var(--shadow)}
+.scard h4{color:var(--acc);font-family:var(--f-head);font-size:1.15rem;margin-top:14px}
+.sdiag{position:relative;padding:34px 0 8px}
+.boxes{display:flex;align-items:center;gap:6px;justify-content:center}
+.sb{flex:1;text-align:center;font-size:.85rem;padding:.55rem .3rem;border-radius:12px;border:2px solid var(--line);background:color-mix(in srgb,var(--line) 40%,var(--surface));line-height:1.3}
+.plus{font-weight:800;color:var(--muted)}
+.stag{margin:4px 0 6px;text-align:center;font-weight:700;color:var(--acc);font-size:.9rem}
+.sdef{font-size:.88rem;color:var(--muted);margin:0}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 transparent;border-color:var(--line);transform:none}50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--acc) 30%,transparent);border-color:var(--acc);background:color-mix(in srgb,var(--acc) 18%,var(--surface));transform:translateY(-4px)}}
+.in .dv .sb{animation:glow 2.4s ease-in-out infinite}
+.in .dg .sb.pre{animation:glow 3s ease-in-out infinite}.in .dg .sb.post{animation:glow 3s 1.5s ease-in-out infinite}
+.in .km .sb.post{animation:glow 2.4s ease-in-out infinite}.km .sb.pre{opacity:.6}
+.bh .sb{opacity:.55}
+.other{position:absolute;top:0;left:50%;transform:translateX(-50%);padding:.2rem .8rem;border-radius:99px;border:2px solid var(--line);font-size:.82rem;font-weight:600;white-space:nowrap}
+.in .bh .other{animation:glow 2.4s ease-in-out infinite}
+.arrows{position:absolute;top:28px;left:0;right:0;display:flex;justify-content:space-around;padding:0 20%;pointer-events:none}
+.arrows span{width:2px;height:18px;background:var(--acc);opacity:.0;transform-origin:bottom}
+.in .arrows span{animation:arrow 2.4s ease-in-out infinite}
+@keyframes arrow{0%,100%{opacity:.1;transform:scaleY(.3)}50%{opacity:1;transform:scaleY(1)}}
+/* ---------- upsarg demo ---------- */
+.ud-wrap{text-align:center}
+.ud{position:relative;height:84px;display:flex;justify-content:center;align-items:center;font-family:var(--f-head);font-weight:800;font-size:2.4rem}
+.ud .up,.ud .rt{display:inline-block;padding:.05rem .6rem;border-radius:12px}
+.ud .up{background:var(--acc);color:#fff;animation:upin 3.2s both}
+.ud .rt{background:color-mix(in srgb,var(--acc) 15%,var(--surface));border:2px solid var(--acc);animation:rtin 3.2s both}
+.ud .wd{position:absolute;inset:0;display:grid;place-items:center;color:var(--acc);animation:wdin 3.2s both}
+@keyframes upin{0%{opacity:0;transform:translateX(-90px)}18%{opacity:1;transform:translateX(-8px)}45%{opacity:1;transform:translateX(-8px)}58%{opacity:1;transform:translateX(12px)}64%,100%{opacity:0;transform:translateX(12px)}}
+@keyframes rtin{0%{opacity:0;transform:translateX(90px)}18%{opacity:1;transform:translateX(8px)}45%{opacity:1;transform:translateX(8px)}58%{opacity:1;transform:translateX(-12px)}64%,100%{opacity:0;transform:translateX(-12px)}}
+@keyframes wdin{0%,58%{opacity:0;transform:scale(.5)}72%{opacity:1;transform:scale(1.18)}85%,100%{opacity:1;transform:scale(1)}}
+.um{margin:0;color:var(--muted);font-size:.9rem;min-height:1.6em}
+/* ---------- flip ---------- */
+.fbar{display:flex;gap:10px;align-items:center;margin:8px 0 12px;flex-wrap:wrap}
+.btn{font:inherit;font-size:.9rem;border:0;background:var(--acc);color:#fff;border-radius:99px;padding:.3rem 1.1rem;cursor:pointer;font-weight:600}
+.flipgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;margin-bottom:20px}
+.flip{perspective:700px;background:none;border:0;padding:0;height:84px;cursor:pointer;font:inherit;color:inherit}
+.flip.reveal{transition:opacity .5s calc(var(--i)*25ms),transform .5s calc(var(--i)*25ms)}
+.fi{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,.9,.3,1)}
+.flip.on .fi{transform:rotateY(180deg)}
+@media(hover:hover){.flip:hover .fi{transform:rotateY(180deg)}.flip.on:hover .fi{transform:none}}
+.ff,.fb{position:absolute;inset:0;display:grid;place-content:center;text-align:center;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;font-weight:700;font-size:1.15rem;line-height:1.2;border:2px solid var(--acc);box-shadow:var(--shadow)}
+.ff{background:color-mix(in srgb,var(--acc) 12%,var(--surface))}
+.fb{background:var(--acc);color:#fff;transform:rotateY(180deg)}
+.ff small,.fb small{display:block;font-size:.68rem;font-weight:400;opacity:.8;margin-top:3px}
+/* ---------- paryay ---------- */
+.pygrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin-bottom:20px}
+.py{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.6rem .9rem;box-shadow:var(--shadow)}
+.py b{display:block;color:var(--acc);font-family:var(--f-head);font-size:1.05rem}
+.py span{display:flex;flex-wrap:wrap;gap:4px 6px;margin-top:4px}
+.py i{font-style:normal;font-size:.86rem;background:color-mix(in srgb,var(--acc) 12%,var(--surface));border-radius:99px;padding:0 .6rem;opacity:0;transform:translateY(6px)}
+.py.in i{animation:pop2 .4s forwards;animation-delay:calc(var(--i)*40ms + .1s)}
+@keyframes pop2{to{opacity:1;transform:none}}
+.py.in i:nth-child(2){animation-delay:.2s}.py.in i:nth-child(3){animation-delay:.3s}.py.in i:nth-child(4){animation-delay:.4s}.py.in i:nth-child(5){animation-delay:.5s}.py.in i:nth-child(6){animation-delay:.6s}.py.in i:nth-child(7){animation-delay:.7s}
+/* sanskrit col highlight */
+table.sk td:not(:first-child),table.sk th:not(:first-child){text-align:center}
+.sk-wrap{display:block}
+.sk-wrap .tw{margin-top:6px}
+footer{max-width:1100px;margin:0 auto;padding:30px 16px 60px;color:var(--muted);font-size:.88rem;text-align:center;border-top:1px solid var(--line)}
+.toTop{position:fixed;right:16px;bottom:16px;width:44px;height:44px;border-radius:50%;border:0;background:var(--red);color:#fff;font-size:1.2rem;cursor:pointer;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.3s}
+.toTop.show{opacity:1;pointer-events:auto}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal,.chip,.node,.py i,.era-root,.total{opacity:1!important;transform:none!important}
+  .lbar{width:var(--w)!important}.mbar i{width:var(--w)!important}.yati,.tree li::before,.tree li::after,.tree ul ul::before{opacity:1!important}
+  .era-line span,.sec-head .rule{transform:none!important}
+}
+
+h4.sh{margin:22px 0 8px;font-family:var(--f-head);color:var(--acc)}</style></head><body>
+<header class="hero"><h1><span>हिन्दी</span> <span>व्याकरण</span></h1><p>हिन्दी व्याकरण · शब्द रचना · संस्कृत व्याकरण — कक्षा 9 रिवीजन चार्ट</p><span class="badge">हिन्दी · कक्षा 9</span></header>
+<nav class="nav"><div class="nav-in"><a href="#hv">हिन्दी व्याकरण</a><a href="#sk">संस्कृत व्याकरण</a><button class="theme" id="themeBtn" type="button">🌓 थीम</button></div><div class="progress" id="prog"></div></nav>
+<main><section class="sec s-vyakaran" id="hv"><div class="sec-head reveal"><span class="no">७</span><h2>हिन्दी व्याकरण तथा शब्द रचना</h2><span class="rule"></span></div><h4 class="reveal sh">१. वर्तनी तथा विराम-चिह्न</h4><div class="tw reveal"><table class="sk"><thead><tr><th>विराम-चिह्न</th><th>चिह्न</th><th>प्रयोग</th></tr></thead><tbody><tr style="--r:0"><td>पूर्ण विराम</td><td>।</td><td>वाक्य की समाप्ति पर</td></tr><tr style="--r:1"><td>अल्प विराम</td><td>,</td><td>थोड़ा रुकने / सूची में</td></tr><tr style="--r:2"><td>अर्द्ध विराम</td><td>;</td><td>अल्प से अधिक, पूर्ण से कम ठहराव</td></tr><tr style="--r:3"><td>प्रश्नवाचक</td><td>?</td><td>प्रश्न के अन्त में</td></tr><tr style="--r:4"><td>विस्मयादिबोधक</td><td>!</td><td>हर्ष, शोक, आश्चर्य</td></tr><tr style="--r:5"><td>उद्धरण</td><td>“ ”</td><td>किसी के कथन को ज्यों-का-त्यों लिखने में</td></tr><tr style="--r:6"><td>योजक</td><td>-</td><td>द्वन्द्व समास, पुनरुक्त शब्द (माता-पिता)</td></tr><tr style="--r:7"><td>निर्देशक</td><td>—</td><td>आगे कुछ कहने की सूचना</td></tr><tr style="--r:8"><td>कोष्ठक</td><td>( )</td><td>अर्थ-स्पष्टीकरण</td></tr><tr style="--r:9"><td>विवरण</td><td>:-</td><td>विवरण/सूची से पहले</td></tr></tbody></table></div><h4 class="reveal sh">अशुद्ध → शुद्ध वर्तनी</h4><div class="tw reveal"><table class="sk"><thead><tr><th>अशुद्ध</th><th>शुद्ध</th><th>अशुद्ध</th><th>शुद्ध</th></tr></thead><tbody><tr style="--r:0"><td>अत्याधिक</td><td>अत्यधिक</td><td>परिक्षा</td><td>परीक्षा</td></tr><tr style="--r:1"><td>कवियत्री</td><td>कवयित्री</td><td>गृहणी</td><td>गृहिणी</td></tr><tr style="--r:2"><td>श्रीमति</td><td>श्रीमती</td><td>सन्यासी</td><td>संन्यासी</td></tr><tr style="--r:3"><td>उज्वल</td><td>उज्ज्वल</td><td>आर्शीवाद</td><td>आशीर्वाद</td></tr><tr style="--r:4"><td>प्रमाणिक</td><td>प्रामाणिक</td><td>ऊपरोक्त</td><td>उपर्युक्त</td></tr><tr style="--r:5"><td>अध्यन</td><td>अध्ययन</td><td>दुरावस्था</td><td>दुरवस्था</td></tr></tbody></table></div><h4 class="reveal sh">२. शब्द रचना</h4><div class="cards"><article class="card reveal"><h4>उपसर्ग (शब्द से पहले)</h4><dl><dt>संस्कृत के 22</dt><dd>प्र, परा, अप, सम्, अनु, अव, निस्/निर्, दुस्/दुर्, वि, आ, नि, अधि, अपि, अति, सु, उत्, अभि, प्रति, परि, उप</dd><dt>उदाहरण</dt><dd>प्र+हार = प्रहार; वि+ज्ञान = विज्ञान; अनु+शासन = अनुशासन; सम्+बन्ध = सम्बन्ध; सु+न्दर = सुन्दर; दुर्+जन = दुर्जन; उप+कार = उपकार; अभि+मान = अभिमान</dd></dl></article><article class="card reveal"><h4>प्रत्यय (शब्द के बाद)</h4><dl><dt>कृत्</dt><dd>क्रिया से: पढ़+आई = पढ़ाई; सज+आवट = सजावट; लिख+आवट = लिखावट</dd><dt>तद्धित</dt><dd>संज्ञा/विशेषण से: सुन्दर+ता = सुन्दरता; बच्च+पन = बचपन; धर्म+इक = धार्मिक; राष्ट्र+ईय = राष्ट्रीय; गरीब+ई = गरीबी; दया+लु = दयालु</dd></dl></article><article class="card reveal"><h4>तत्सम–तद्भव</h4><dl><dt>तत्सम→तद्भव</dt><dd>अग्नि→आग; दुग्ध→दूध; सर्प→साँप; हस्त→हाथ; कर्ण→कान; रात्रि→रात; अंधकार→अँधेरा; सूर्य→सूरज</dd></dl></article></div><h4 class="reveal sh">३. समास</h4><div class="tw reveal"><table class="sk"><thead><tr><th>समास</th><th>प्रधान पद</th><th>उदाहरण (विग्रह)</th></tr></thead><tbody><tr style="--r:0"><td>अव्ययीभाव</td><td>पूर्वपद</td><td>यथाशक्ति (शक्ति के अनुसार), प्रतिदिन (हर दिन), आजन्म (जन्म से लेकर)</td></tr><tr style="--r:1"><td>तत्पुरुष</td><td>उत्तरपद</td><td>राजपुत्र (राजा का पुत्र), देशभक्ति (देश के लिए भक्ति), हस्तलिखित (हाथ से लिखा)</td></tr><tr style="--r:2"><td>कर्मधारय</td><td>उत्तरपद</td><td>नीलकमल (नीला है जो कमल), महापुरुष (महान है जो पुरुष), चन्द्रमुख (चन्द्र के समान मुख)</td></tr><tr style="--r:3"><td>द्विगु</td><td>उत्तरपद</td><td>त्रिलोक (तीन लोकों का समाहार), नवरत्न, चौराहा, पंचवटी</td></tr><tr style="--r:4"><td>द्वन्द्व</td><td>दोनों पद</td><td>माता-पिता (माता और पिता), राम-लक्ष्मण, भाई-बहन</td></tr><tr style="--r:5"><td>बहुव्रीहि</td><td>अन्य पद</td><td>दशानन (दस हैं आनन जिसके – रावण), लम्बोदर (गणेश), पीताम्बर (श्रीकृष्ण), नीलकण्ठ (शिव)</td></tr></tbody></table></div><h4 class="reveal sh">४. मुहावरे एवं लोकोक्तियाँ</h4><div class="tw reveal"><table class="sk"><thead><tr><th>मुहावरा</th><th>अर्थ</th></tr></thead><tbody><tr style="--r:0"><td>आँखें खुलना</td><td>सचेत होना</td></tr><tr style="--r:1"><td>आसमान टूट पड़ना</td><td>अचानक विपत्ति आना</td></tr><tr style="--r:2"><td>ईंट से ईंट बजाना</td><td>पूरी तरह नष्ट करना</td></tr><tr style="--r:3"><td>कान भरना</td><td>चुगली करना</td></tr><tr style="--r:4"><td>नौ-दो ग्यारह होना</td><td>भाग जाना</td></tr><tr style="--r:5"><td>दाँतों तले उँगली दबाना</td><td>आश्चर्य करना</td></tr><tr style="--r:6"><td>घी के दीये जलाना</td><td>खुशी मनाना</td></tr><tr style="--r:7"><td>पानी-पानी होना</td><td>लज्जित होना</td></tr><tr style="--r:8"><td>आग बबूला होना</td><td>अत्यन्त क्रोधित होना</td></tr><tr style="--r:9"><td>अपने मुँह मियाँ मिट्ठू बनना</td><td>स्वयं अपनी प्रशंसा करना</td></tr></tbody></table></div><div class="tw reveal"><table class="sk"><thead><tr><th>लोकोक्ति</th><th>अर्थ</th></tr></thead><tbody><tr style="--r:0"><td>अधजल गगरी छलकत जाय</td><td>कम ज्ञान वाला अधिक दिखावा करता है</td></tr><tr style="--r:1"><td>आम के आम गुठलियों के दाम</td><td>दोहरा लाभ</td></tr><tr style="--r:2"><td>ऊँट के मुँह में जीरा</td><td>आवश्यकता से बहुत कम</td></tr><tr style="--r:3"><td>एक अनार सौ बीमार</td><td>वस्तु कम, चाहने वाले अधिक</td></tr><tr style="--r:4"><td>कर लो राम-राम जपना, पराया माल अपना</td><td>अनुचित लाभ</td></tr><tr style="--r:5"><td>जैसी करनी वैसी भरनी</td><td>जैसा काम वैसा फल</td></tr><tr style="--r:6"><td>दूध का जला छाछ भी फूँक-फूँककर पीता है</td><td>एक बार धोखा खाने वाला सतर्क रहता है</td></tr><tr style="--r:7"><td>नाच न जाने आँगन टेढ़ा</td><td>अपनी अयोग्यता का दोष दूसरे पर डालना</td></tr><tr style="--r:8"><td>न नौ मन तेल होगा न राधा नाचेगी</td><td>असम्भव शर्त</td></tr></tbody></table></div></section><section class="sec s-padya" id="sk"><div class="sec-head reveal"><span class="no">८</span><h2>संस्कृत व्याकरण</h2><span class="rule"></span></div><h4 class="reveal sh">१. सन्धि</h4><div class="tw reveal"><table class="sk"><thead><tr><th>भेद</th><th>नियम / उप-भेद</th><th>उदाहरण</th></tr></thead><tbody><tr style="--r:0"><td>स्वर सन्धि – दीर्घ</td><td>अ/आ+अ/आ=आ; इ/ई+इ/ई=ई; उ/ऊ+उ/ऊ=ऊ</td><td>विद्या+आलय = विद्यालय; मुनि+ईश = मुनीश; भानु+उदय = भानूदय</td></tr><tr style="--r:1"><td>गुण</td><td>अ/आ+इ/ई=ए; +उ/ऊ=ओ; +ऋ=अर्</td><td>देव+इन्द्र = देवेन्द्र; महा+उत्सव = महोत्सव; महा+ऋषि = महर्षि</td></tr><tr style="--r:2"><td>वृद्धि</td><td>अ/आ+ए/ऐ=ऐ; +ओ/औ=औ</td><td>सदा+एव = सदैव; वन+औषधि = वनौषधि</td></tr><tr style="--r:3"><td>यण</td><td>इ,ई+भिन्न स्वर=य्; उ,ऊ=व्; ऋ=र्</td><td>इति+आदि = इत्यादि; सु+आगत = स्वागत; पितृ+आज्ञा = पित्राज्ञा</td></tr><tr style="--r:4"><td>अयादि</td><td>ए,ऐ,ओ,औ+स्वर = अय्,आय्,अव्,आव्</td><td>ने+अन = नयन; नै+अक = नायक; पो+अन = पवन; पौ+अक = पावक</td></tr><tr style="--r:5"><td>व्यंजन सन्धि</td><td>त् का ज्, द्, ग् आदि में बदलना (त्+ज = ज्ज; क्+ग = ग्ग; त्+ई = दी)</td><td>सत्+जन = सज्जन; दिक्+गज = दिग्गज; जगत्+ईश = जगदीश; उत्+नति = उन्नति</td></tr><tr style="--r:6"><td>विसर्ग सन्धि</td><td>विसर्ग का ओ/र्/श् आदि</td><td>मनः+हर = मनोहर; निः+चल = निश्चल; नमः+ते = नमस्ते; निः+आशा = निराशा</td></tr></tbody></table></div><h4 class="reveal sh">२. शब्द रूप</h4><h4 class="reveal sh">बालक (पुल्लिंग, अकारान्त)</h4><div class="tw reveal"><table class="sk"><thead><tr><th>विभक्ति</th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th></tr></thead><tbody><tr style="--r:0"><td>प्रथमा</td><td>बालकः</td><td>बालकौ</td><td>बालकाः</td></tr><tr style="--r:1"><td>द्वितीया</td><td>बालकम्</td><td>बालकौ</td><td>बालकान्</td></tr><tr style="--r:2"><td>तृतीया</td><td>बालकेन</td><td>बालकाभ्याम्</td><td>बालकैः</td></tr><tr style="--r:3"><td>चतुर्थी</td><td>बालकाय</td><td>बालकाभ्याम्</td><td>बालकेभ्यः</td></tr><tr style="--r:4"><td>पंचमी</td><td>बालकात्</td><td>बालकाभ्याम्</td><td>बालकेभ्यः</td></tr><tr style="--r:5"><td>षष्ठी</td><td>बालकस्य</td><td>बालकयोः</td><td>बालकानाम्</td></tr><tr style="--r:6"><td>सप्तमी</td><td>बालके</td><td>बालकयोः</td><td>बालकेषु</td></tr><tr style="--r:7"><td>सम्बोधन</td><td>हे बालक!</td><td>हे बालकौ!</td><td>हे बालकाः!</td></tr></tbody></table></div><h4 class="reveal sh">लता (स्त्रीलिंग, आकारान्त)</h4><div class="tw reveal"><table class="sk"><thead><tr><th>विभक्ति</th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th></tr></thead><tbody><tr style="--r:0"><td>प्रथमा</td><td>लता</td><td>लते</td><td>लताः</td></tr><tr style="--r:1"><td>द्वितीया</td><td>लताम्</td><td>लते</td><td>लताः</td></tr><tr style="--r:2"><td>तृतीया</td><td>लतया</td><td>लताभ्याम्</td><td>लताभिः</td></tr><tr style="--r:3"><td>चतुर्थी</td><td>लतायै</td><td>लताभ्याम्</td><td>लताभ्यः</td></tr><tr style="--r:4"><td>पंचमी</td><td>लतायाः</td><td>लताभ्याम्</td><td>लताभ्यः</td></tr><tr style="--r:5"><td>षष्ठी</td><td>लतायाः</td><td>लतयोः</td><td>लतानाम्</td></tr><tr style="--r:6"><td>सप्तमी</td><td>लतायाम्</td><td>लतयोः</td><td>लतासु</td></tr><tr style="--r:7"><td>सम्बोधन</td><td>हे लते!</td><td>हे लते!</td><td>हे लताः!</td></tr></tbody></table></div><h4 class="reveal sh">फल (नपुंसकलिंग, अकारान्त)</h4><div class="tw reveal"><table class="sk"><thead><tr><th>विभक्ति</th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th></tr></thead><tbody><tr style="--r:0"><td>प्रथमा</td><td>फलम्</td><td>फले</td><td>फलानि</td></tr><tr style="--r:1"><td>द्वितीया</td><td>फलम्</td><td>फले</td><td>फलानि</td></tr><tr style="--r:2"><td>तृतीया</td><td>फलेन</td><td>फलाभ्याम्</td><td>फलैः</td></tr><tr style="--r:3"><td>चतुर्थी</td><td>फलाय</td><td>फलाभ्याम्</td><td>फलेभ्यः</td></tr><tr style="--r:4"><td>पंचमी</td><td>फलात्</td><td>फलाभ्याम्</td><td>फलेभ्यः</td></tr><tr style="--r:5"><td>षष्ठी</td><td>फलस्य</td><td>फलयोः</td><td>फलानाम्</td></tr><tr style="--r:6"><td>सप्तमी</td><td>फले</td><td>फलयोः</td><td>फलेषु</td></tr><tr style="--r:7"><td>सम्बोधन</td><td>हे फल!</td><td>हे फले!</td><td>हे फलानि!</td></tr></tbody></table></div><h4 class="reveal sh">सर्वनाम (उत्तम व मध्यम पुरुष)</h4><div class="tw reveal"><table class="sk"><thead><tr><th></th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th></tr></thead><tbody><tr style="--r:0"><td>अस्मद् (मैं)</td><td>अहम्</td><td>आवाम्</td><td>वयम्</td></tr><tr style="--r:1"><td>युष्मद् (तुम)</td><td>त्वम्</td><td>युवाम्</td><td>यूयम्</td></tr></tbody></table></div><h4 class="reveal sh">३. धातु रूप</h4><div class="tw reveal"><table class="sk"><thead><tr><th>धातु</th><th>अर्थ</th><th>लट् प्रथम पुरुष एकवचन</th></tr></thead><tbody><tr style="--r:0"><td>पठ्</td><td>पढ़ना</td><td>पठति</td></tr><tr style="--r:1"><td>भू</td><td>होना</td><td>भवति</td></tr><tr style="--r:2"><td>गम्</td><td>जाना</td><td>गच्छति</td></tr><tr style="--r:3"><td>लिख्</td><td>लिखना</td><td>लिखति</td></tr><tr style="--r:4"><td>खाद्</td><td>खाना</td><td>खादति</td></tr><tr style="--r:5"><td>पा</td><td>पीना</td><td>पिबति</td></tr><tr style="--r:6"><td>दृश्</td><td>देखना</td><td>पश्यति</td></tr><tr style="--r:7"><td>कृ</td><td>करना</td><td>करोति</td></tr></tbody></table></div><h4 class="reveal sh">पठ् – लट् (वर्तमान)</h4><div class="tw reveal"><table class="sk"><thead><tr><th>पुरुष</th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th></tr></thead><tbody><tr style="--r:0"><td>प्रथम</td><td>पठति</td><td>पठतः</td><td>पठन्ति</td></tr><tr style="--r:1"><td>मध्यम</td><td>पठसि</td><td>पठथः</td><td>पठथ</td></tr><tr style="--r:2"><td>उत्तम</td><td>पठामि</td><td>पठावः</td><td>पठामः</td></tr></tbody></table></div><h4 class="reveal sh">पठ् – लङ् (भूतकाल)</h4><div class="tw reveal"><table class="sk"><thead><tr><th>पुरुष</th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th></tr></thead><tbody><tr style="--r:0"><td>प्रथम</td><td>अपठत्</td><td>अपठताम्</td><td>अपठन्</td></tr><tr style="--r:1"><td>मध्यम</td><td>अपठः</td><td>अपठतम्</td><td>अपठत</td></tr><tr style="--r:2"><td>उत्तम</td><td>अपठम्</td><td>अपठाव</td><td>अपठाम</td></tr></tbody></table></div><h4 class="reveal sh">पठ् – लृट् (भविष्यत्)</h4><div class="tw reveal"><table class="sk"><thead><tr><th>पुरुष</th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th></tr></thead><tbody><tr style="--r:0"><td>प्रथम</td><td>पठिष्यति</td><td>पठिष्यतः</td><td>पठिष्यन्ति</td></tr><tr style="--r:1"><td>मध्यम</td><td>पठिष्यसि</td><td>पठिष्यथः</td><td>पठिष्यथ</td></tr><tr style="--r:2"><td>उत्तम</td><td>पठिष्यामि</td><td>पठिष्यावः</td><td>पठिष्यामः</td></tr></tbody></table></div><h4 class="reveal sh">पठ् – लोट् (आज्ञा)</h4><div class="tw reveal"><table class="sk"><thead><tr><th>पुरुष</th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th></tr></thead><tbody><tr style="--r:0"><td>प्रथम</td><td>पठतु</td><td>पठताम्</td><td>पठन्तु</td></tr><tr style="--r:1"><td>मध्यम</td><td>पठ</td><td>पठतम्</td><td>पठत</td></tr><tr style="--r:2"><td>उत्तम</td><td>पठानि</td><td>पठाव</td><td>पठाम</td></tr></tbody></table></div><h4 class="reveal sh">पठ् – विधिलिङ् (चाहिए)</h4><div class="tw reveal"><table class="sk"><thead><tr><th>पुरुष</th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th></tr></thead><tbody><tr style="--r:0"><td>प्रथम</td><td>पठेत्</td><td>पठेताम्</td><td>पठेयुः</td></tr><tr style="--r:1"><td>मध्यम</td><td>पठेः</td><td>पठेतम्</td><td>पठेत</td></tr><tr style="--r:2"><td>उत्तम</td><td>पठेयम्</td><td>पठेव</td><td>पठेम</td></tr></tbody></table></div><h4 class="reveal sh">भू – लट्</h4><div class="tw reveal"><table class="sk"><thead><tr><th>पुरुष</th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th></tr></thead><tbody><tr style="--r:0"><td>प्रथम</td><td>भवति</td><td>भवतः</td><td>भवन्ति</td></tr><tr style="--r:1"><td>मध्यम</td><td>भवसि</td><td>भवथः</td><td>भवथ</td></tr><tr style="--r:2"><td>उत्तम</td><td>भवामि</td><td>भवावः</td><td>भवामः</td></tr></tbody></table></div><h4 class="reveal sh">गम् (गच्छ्) – लट्</h4><div class="tw reveal"><table class="sk"><thead><tr><th>पुरुष</th><th>एकवचन</th><th>द्विवचन</th><th>बहुवचन</th></tr></thead><tbody><tr style="--r:0"><td>प्रथम</td><td>गच्छति</td><td>गच्छतः</td><td>गच्छन्ति</td></tr><tr style="--r:1"><td>मध्यम</td><td>गच्छसि</td><td>गच्छथः</td><td>गच्छथ</td></tr><tr style="--r:2"><td>उत्तम</td><td>गच्छामि</td><td>गच्छावः</td><td>गच्छामः</td></tr></tbody></table></div><h4 class="reveal sh">४. हिन्दी-संस्कृत अनुवाद</h4><div class="cards"><article class="card reveal"><h4>अनुवाद के नियम</h4><dl><dt>1</dt><dd>पहले कर्ता, फिर कर्म, अन्त में क्रिया लिखें</dd><dt>2</dt><dd>क्रिया का पुरुष और वचन कर्ता के अनुसार</dd><dt>3</dt><dd>कर्म द्वितीया विभक्ति में (पुस्तकं, फलानि)</dd><dt>4</dt><dd>काल: वर्तमान – लट्, भूत – लङ्, भविष्य – लृट्</dd></dl></article></div><div class="tw reveal"><table class="sk"><thead><tr><th>हिन्दी</th><th>संस्कृत</th></tr></thead><tbody><tr style="--r:0"><td>राम पुस्तक पढ़ता है।</td><td>रामः पुस्तकं पठति।</td></tr><tr style="--r:1"><td>हम विद्यालय जाते हैं।</td><td>वयं विद्यालयं गच्छामः।</td></tr><tr style="--r:2"><td>बालक फल खाते हैं।</td><td>बालकाः फलानि खादन्ति।</td></tr><tr style="--r:3"><td>वह पानी पीती है।</td><td>सा जलं पिबति।</td></tr><tr style="--r:4"><td>मैं पुस्तक लिखूँगा।</td><td>अहं पुस्तकं लेखिष्यामि।</td></tr><tr style="--r:5"><td>तुम कहाँ जाओगे?</td><td>त्वं कुत्र गमिष्यसि?</td></tr><tr style="--r:6"><td>बालक पढ़ता था।</td><td>बालकः अपठत्।</td></tr><tr style="--r:7"><td>हम पढ़ेंगे।</td><td>वयं पठिष्यामः।</td></tr></tbody></table></div><div class="tw reveal"><table class="sk"><thead><tr><th>अव्यय</th><th>अर्थ</th><th>अव्यय</th><th>अर्थ</th></tr></thead><tbody><tr style="--r:0"><td>अत्र</td><td>यहाँ</td><td>तत्र</td><td>वहाँ</td></tr><tr style="--r:1"><td>कुत्र</td><td>कहाँ</td><td>कदा</td><td>कब</td></tr><tr style="--r:2"><td>सदा</td><td>हमेशा</td><td>अद्य</td><td>आज</td></tr><tr style="--r:3"><td>श्वः</td><td>कल (आगामी)</td><td>ह्यः</td><td>कल (बीता)</td></tr><tr style="--r:4"><td>च</td><td>और</td><td>न</td><td>नहीं</td></tr></tbody></table></div></section></main>
+<script>
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.reveal,.viz').forEach(function(e){io.observe(e)});
+addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-innerHeight;document.getElementById('prog').style.width=(h>0?scrollY/h*100:0)+'%'});
+document.getElementById('themeBtn').onclick=function(){var r=document.documentElement,d=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);r.dataset.theme=d?'light':'dark'};
+</script></body></html>

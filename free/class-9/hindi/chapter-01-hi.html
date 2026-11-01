@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>टॉपर्स रिवीजन चार्ट · हिन्दी कक्षा 9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf6ec;--surface:#fffdf8;--ink:#2b221d;--muted:#6f6258;--line:#e6dccb;
+  --red:#c8102e;--gold:#f2b01e;--teal:#0f8b8d;--shadow:0 6px 24px rgba(60,40,20,.08);
+  --hero1:#fbd24a;--hero2:#f6a81c;
+  --f-body:'Noto Sans Devanagari','Nirmala UI','Mangal',system-ui,sans-serif;
+  --f-head:'Noto Serif Devanagari','Noto Sans Devanagari','Mangal',serif;
+}
+:root[data-theme="dark"]{
+  --bg:#16110e;--surface:#211a16;--ink:#f3eadf;--muted:#b3a597;--line:#3a2f28;
+  --red:#ff7487;--gold:#f5c04a;--teal:#3cc4c6;--shadow:0 6px 24px rgba(0,0,0,.4);
+  --hero1:#4a3410;--hero2:#2a1d0c;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#16110e;--surface:#211a16;--ink:#f3eadf;--muted:#b3a597;--line:#3a2f28;
+    --red:#ff7487;--gold:#f5c04a;--teal:#3cc4c6;--shadow:0 6px 24px rgba(0,0,0,.4);
+    --hero1:#4a3410;--hero2:#2a1d0c;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.75;font-size:16px;-webkit-text-size-adjust:100%}
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--hero1),var(--hero2));padding:56px 16px 64px;text-align:center}
+.hero h1{font-family:var(--f-head);font-weight:800;color:var(--red);font-size:clamp(2.2rem,8vw,4.6rem);line-height:1.2;margin:0;position:relative;z-index:2;letter-spacing:.5px}
+.hero h1 span{display:inline-block;animation:drop .8s cubic-bezier(.2,.9,.3,1.2) both}
+.hero h1 span:nth-child(2){animation-delay:.12s}.hero h1 span:nth-child(3){animation-delay:.24s}
+.hero p{position:relative;z-index:2;margin:.6rem auto 0;max-width:36rem;font-weight:500;font-size:1.05rem;color:var(--ink)}
+.hero .badge{display:inline-block;margin-top:1rem;background:var(--surface);color:var(--ink);border-radius:99px;padding:.25rem 1rem;font-weight:600;box-shadow:var(--shadow);position:relative;z-index:2}
+.float{position:absolute;font-family:var(--f-head);font-weight:800;color:var(--red);opacity:.13;animation:floaty 9s ease-in-out infinite;user-select:none;z-index:1}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-18px) rotate(6deg)}}
+@keyframes drop{from{opacity:0;transform:translateY(-30px) scale(.9)}to{opacity:1;transform:none}}
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;gap:.25rem;overflow-x:auto;padding:.4rem 12px;max-width:1100px;margin:auto;scrollbar-width:none;align-items:center}
+.nav-in::-webkit-scrollbar{display:none}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--ink);padding:.3rem .8rem;border-radius:99px;font-size:.92rem;font-weight:500;border:1px solid transparent;transition:.2s}
+.nav a:hover{background:color-mix(in srgb,var(--gold) 25%,transparent)}
+.nav a.on{background:var(--red);color:#fff}
+.theme{margin-left:auto;flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:.25rem .8rem;cursor:pointer;font:inherit;font-size:.85rem}
+.progress{position:absolute;left:0;bottom:-1px;height:3px;width:0;background:var(--red);transition:width .1s}
+/* ---------- layout ---------- */
+main{max-width:1100px;margin:0 auto;padding:0 16px 60px}
+section.sec{margin-top:56px;--acc:var(--red)}
+.s-gadya{--acc:#d9507a}.s-lekhak{--acc:#d98a1c}.s-padya{--acc:#1f7fc4}.s-kavi{--acc:#0f9b8e}.s-kavya{--acc:#e07a1f}.s-vyakaran{--acc:#7b4fc9}
+:root[data-theme="dark"] .s-gadya{--acc:#ff7aa2}:root[data-theme="dark"] .s-lekhak{--acc:#f3b04a}:root[data-theme="dark"] .s-padya{--acc:#5ab0f0}:root[data-theme="dark"] .s-kavi{--acc:#3cd0c0}:root[data-theme="dark"] .s-kavya{--acc:#ffa04d}:root[data-theme="dark"] .s-vyakaran{--acc:#b496ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .s-gadya{--acc:#ff7aa2}:root:not([data-theme="light"]) .s-lekhak{--acc:#f3b04a}:root:not([data-theme="light"]) .s-padya{--acc:#5ab0f0}:root:not([data-theme="light"]) .s-kavi{--acc:#3cd0c0}:root:not([data-theme="light"]) .s-kavya{--acc:#ffa04d}:root:not([data-theme="light"]) .s-vyakaran{--acc:#b496ff}}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.sec-head .no{flex:none;width:52px;height:52px;border-radius:16px;background:var(--acc);color:#fff;display:grid;place-items:center;font-family:var(--f-head);font-weight:800;font-size:1.5rem;box-shadow:var(--shadow)}
+.sec-head h2{margin:0;font-family:var(--f-head);font-weight:800;font-size:clamp(1.5rem,5vw,2.2rem);line-height:1.3}
+.sec-head .rule{flex:1;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--acc),transparent);transform-origin:left;transform:scaleX(0);transition:transform 1s .2s}
+.sec-head.in .rule{transform:scaleX(1)}
+h3{font-family:var(--f-head);font-size:1.35rem;margin:30px 0 8px;border-left:5px solid var(--acc);padding-left:10px}
+h4{font-size:1.05rem;margin:22px 0 8px;color:var(--ink)}
+h5{font-size:.95rem;margin:18px 0 6px;color:var(--acc);font-style:normal}
+p{margin:.5rem 0}
+.sub{margin:-6px 0 18px;color:var(--muted)}
+.guess{color:var(--muted);font-style:italic;font-size:.88em}
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+/* ---------- tables ---------- */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow);margin:10px 0 18px}
+table{border-collapse:collapse;width:100%;min-width:480px}
+th,td{padding:.5rem .8rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+thead th{background:color-mix(in srgb,var(--acc) 18%,var(--surface));font-weight:700;position:sticky;top:0;white-space:nowrap}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--acc) 5%,transparent)}
+tbody tr:hover{background:color-mix(in srgb,var(--acc) 14%,transparent)}
+tbody tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600}
+.reveal.in tbody tr{animation:rowin .5s both;animation-delay:calc(var(--r,0)*45ms)}
+@keyframes rowin{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+td .fill{color:var(--muted);font-weight:400;opacity:.45}
+tr.hide{display:none}
+/* filter chips */
+.filter{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 6px}
+.filter button{font:inherit;font-size:.88rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:.2rem .85rem;cursor:pointer;transition:.2s}
+.filter button:hover{border-color:var(--acc)}
+.filter button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+/* ---------- cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;margin:12px 0 22px}
+.card{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--acc);border-radius:16px;padding:14px 16px 12px;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px)!important;box-shadow:0 12px 30px rgba(0,0,0,.14)}
+.card h4{margin:0 0 8px;font-family:var(--f-head);font-size:1.15rem;color:var(--acc)}
+.card dl{margin:0;display:grid;grid-template-columns:7.2rem 1fr;gap:3px 10px;font-size:.93rem;line-height:1.6}
+.card dt{color:var(--muted);font-weight:600}
+.card dd{margin:0}
+.card dl>*{border-bottom:1px dashed var(--line);padding-bottom:2px}
+.note{display:flex;gap:10px;background:color-mix(in srgb,var(--gold) 20%,var(--surface));border:1px solid color-mix(in srgb,var(--gold) 60%,var(--line));border-radius:12px;padding:.6rem .9rem;margin:10px 0;font-size:.92rem}
+.note .ni{flex:none;width:22px;height:22px;border-radius:50%;background:var(--gold);color:#000;display:grid;place-items:center;font-weight:800;font-size:.8rem;margin-top:3px}
+/* ---------- viz frame ---------- */
+.vizbox{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow);margin:14px 0 22px;position:relative}
+.vizbox>.vt{font-weight:700;color:var(--acc);margin:0 0 10px;font-size:.95rem;letter-spacing:.2px}
+.hint{font-size:.85rem;color:var(--muted)}
+/* ---------- era diagram ---------- */
+.era-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;margin:12px 0 22px}
+.era-root{grid-column:1/-1;justify-self:center;text-align:center;background:var(--acc);color:#fff;border-radius:16px;padding:.5rem 1.6rem;box-shadow:var(--shadow);transform:scale(.6);opacity:0;transition:.6s cubic-bezier(.2,.9,.3,1.3)}
+.era-root b{display:block;font-family:var(--f-head);font-size:1.3rem}.era-root small{opacity:.9}
+.era-grid.in .era-root{transform:none;opacity:1}
+.era{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px;position:relative}
+.era-head{text-align:center;margin-bottom:6px}.era-head b{display:block;font-family:var(--f-head);font-size:1.15rem;color:var(--acc)}.era-head small{color:var(--muted)}
+.era-line{height:3px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:10px}
+.era-line span{display:block;height:100%;width:100%;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform 1.4s .5s}
+.era-grid.in .era-line span{transform:none}
+.era.e2 .era-line span{transition-delay:1.1s}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.chip{background:color-mix(in srgb,var(--acc) 14%,var(--surface));border:1px solid color-mix(in srgb,var(--acc) 40%,var(--line));border-radius:99px;padding:.1rem .75rem;font-size:.9rem;opacity:0;transform:scale(.4)}
+.era-grid.in .chip{animation:pop .5s cubic-bezier(.2,.9,.3,1.4) forwards;animation-delay:calc(.9s + var(--i)*70ms)}
+.era-grid.in .e2 .chip{animation-delay:calc(1.5s + var(--i)*70ms)}
+@keyframes pop{to{opacity:1;transform:none}}
+/* ---------- tree ---------- */
+.treewrap{overflow-x:auto;padding:6px 0 10px;margin:12px 0 22px;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.tree{width:max-content;min-width:100%;padding:14px 10px 6px;display:flex;justify-content:center}
+.tree ul{display:flex;justify-content:center;padding:20px 0 0;margin:0;position:relative}
+.tree>ul{padding-top:0}
+.tree li{list-style:none;position:relative;padding:20px 4px 0;text-align:center}
+.tree>ul>li{padding-top:0}
+.tree li::before,.tree li::after{content:'';position:absolute;top:0;right:50%;width:50%;height:20px;border-top:2px solid var(--acc);opacity:0;transition:opacity .5s calc(var(--lvl)*.55s + .15s)}
+.tree li::after{right:auto;left:50%;border-left:2px solid var(--acc)}
+.tree>ul>li::before,.tree>ul>li::after{display:none}
+.tree li:only-child::before,.tree li:only-child::after{display:none}
+.tree li:only-child{padding-top:20px}
+.tree li:first-child::before,.tree li:last-child::after{border:0}
+.tree li:last-child::before{border-right:2px solid var(--acc);border-radius:0 10px 0 0}
+.tree li:first-child::after{border-radius:10px 0 0 0}
+.tree ul ul::before{content:'';position:absolute;top:0;left:50%;border-left:2px solid var(--acc);height:20px;opacity:0;transition:opacity .5s calc(var(--lvl)*.55s + .1s)}
+.tree.in li::before,.tree.in li::after,.tree.in ul ul::before{opacity:1}
+.tree .node{display:inline-block;max-width:160px;min-width:88px;padding:.4rem .7rem;border-radius:14px;background:color-mix(in srgb,var(--acc) 12%,var(--surface));border:2px solid var(--acc);line-height:1.35;opacity:0;transform:scale(.6) translateY(10px);transition:opacity .5s calc(var(--lvl)*.55s + .3s),transform .6s cubic-bezier(.2,.9,.3,1.4) calc(var(--lvl)*.55s + .3s),background .2s,box-shadow .2s}
+.tree.in .node{opacity:1;transform:none}
+.tree .node b{display:block;font-size:.98rem}
+.tree .node small{display:block;font-size:.72rem;color:var(--muted);margin-top:2px;line-height:1.35}
+.tree .n0{background:var(--acc);color:#fff}.tree .n0 small{color:#fff;opacity:.9}
+.tree .node.leaf{cursor:pointer}
+.tree .node.leaf:hover,.tree .node.leaf.sel{background:var(--acc);color:#fff;box-shadow:0 0 0 5px color-mix(in srgb,var(--acc) 30%,transparent)}
+.tree .node.leaf:hover small,.tree .node.leaf.sel small{color:#fff}
+.tree-foot{font-size:.8rem;color:var(--muted);margin:-14px 4px 18px}
+.defpanel{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--acc);border-radius:14px;padding:6px 16px 12px;margin:-8px 0 20px;min-height:84px;box-shadow:var(--shadow)}
+.defpanel h4{margin:10px 0 4px;color:var(--acc);font-family:var(--f-head)}
+.defpanel.flash{animation:flash .6s}
+@keyframes flash{from{background:color-mix(in srgb,var(--acc) 25%,var(--surface))}}
+/* ---------- lifespan ---------- */
+.life{position:relative;margin-top:6px}
+.lrow{display:grid;grid-template-columns:11.5rem 1fr;gap:8px;align-items:center;margin:5px 0;font-size:.88rem}
+.lrow .lb{text-align:right;line-height:1.3}
+.ltrack{position:relative;height:24px;background:color-mix(in srgb,var(--line) 55%,transparent);border-radius:8px;overflow:hidden}
+.lbar{position:absolute;top:0;bottom:0;border-radius:8px;width:0;display:flex;align-items:center;justify-content:center;font-size:.72rem;color:#fff;font-weight:600;white-space:nowrap;transition:width 1.3s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--k)*70ms);overflow:hidden}
+.lbar.k{background:linear-gradient(90deg,#e07a1f,#c8102e)}.lbar.l{background:linear-gradient(90deg,#0f8b8d,#1f7fc4)}
+.lbar.open{background:linear-gradient(90deg,#e07a1f,#c8102e 60%,transparent)}
+.in .lbar{width:var(--w)}
+.axis{display:grid;grid-template-columns:11.5rem 1fr;gap:8px;margin-bottom:2px}
+.axis .ax{position:relative;height:18px;font-size:.72rem;color:var(--muted)}
+.axis .ax span{position:absolute;transform:translateX(-50%)}
+.gridlines{position:absolute;inset:0 0 0 calc(11.5rem + 8px);pointer-events:none}
+.gridlines i{position:absolute;top:0;bottom:0;border-left:1px dashed color-mix(in srgb,var(--line) 90%,transparent)}
+.legend{display:flex;gap:16px;font-size:.84rem;margin-top:10px;flex-wrap:wrap}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:5px}
+.legend .k{background:linear-gradient(90deg,#e07a1f,#c8102e)}.legend .l{background:linear-gradient(90deg,#0f8b8d,#1f7fc4)}
+@media(max-width:640px){
+  .lrow,.axis{grid-template-columns:1fr}.lrow .lb{text-align:left}.axis>span{display:none}.gridlines{inset:0}
+  .era-grid{grid-template-columns:1fr}
+}
+/* ---------- matra ---------- */
+.matra-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin:12px 0 22px}
+.mcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:6px 16px 14px;box-shadow:var(--shadow)}
+.mcard h4{color:var(--acc);font-family:var(--f-head);font-size:1.15rem}.mcard h4 small{display:block;color:var(--muted);font-weight:400;font-size:.8rem}
+.mrow{display:grid;grid-template-columns:6.2rem 1fr;gap:8px;align-items:center;margin:8px 0}
+.ml{font-size:.82rem;color:var(--muted)}
+.mbar{position:relative;display:flex;height:34px;background:color-mix(in srgb,var(--line) 55%,transparent);border-radius:9px}
+.mbar i{display:grid;place-items:center;font-style:normal;font-weight:700;color:#fff;height:100%;width:0;border-radius:9px;transition:width 1.1s cubic-bezier(.2,.8,.2,1) var(--d,0s);overflow:hidden}
+.mbar.odd i{background:#1f7fc4}.mbar.even i{background:#e07a1f}
+.in .mbar i{width:var(--w)}
+.rola .mbar i.s1{background:#0f9b8e;border-radius:9px 0 0 9px}.rola .mbar i.s2{background:#c8102e;border-radius:0 9px 9px 0}
+.rola .mbar i.s2{transition-delay:calc(var(--d) + .9s)}
+.yati{position:absolute;left:45.8%;top:-16px;bottom:-7px;border-left:3px dashed var(--ink);padding-left:5px;color:var(--ink);opacity:0;text-decoration:none;font-size:.72rem;white-space:nowrap;transition:opacity .4s 1.1s}
+.in .yati{opacity:1}
+.mnote{font-size:.86rem;color:var(--muted);margin:10px 0 0}
+.total{font-family:var(--f-head);font-size:1.6rem;margin-top:12px;text-align:center;opacity:0;transform:scale(.7);transition:.6s 2.2s}
+.in .total{opacity:1;transform:none}
+.total b{color:var(--acc)}
+/* ---------- samas ---------- */
+.samas{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:16px;margin:12px 0 20px;--acc:#7b4fc9}
+.scard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:6px 16px 16px;box-shadow:var(--shadow)}
+.scard h4{color:var(--acc);font-family:var(--f-head);font-size:1.15rem;margin-top:14px}
+.sdiag{position:relative;padding:34px 0 8px}
+.boxes{display:flex;align-items:center;gap:6px;justify-content:center}
+.sb{flex:1;text-align:center;font-size:.85rem;padding:.55rem .3rem;border-radius:12px;border:2px solid var(--line);background:color-mix(in srgb,var(--line) 40%,var(--surface));line-height:1.3}
+.plus{font-weight:800;color:var(--muted)}
+.stag{margin:4px 0 6px;text-align:center;font-weight:700;color:var(--acc);font-size:.9rem}
+.sdef{font-size:.88rem;color:var(--muted);margin:0}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 transparent;border-color:var(--line);transform:none}50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--acc) 30%,transparent);border-color:var(--acc);background:color-mix(in srgb,var(--acc) 18%,var(--surface));transform:translateY(-4px)}}
+.in .dv .sb{animation:glow 2.4s ease-in-out infinite}
+.in .dg .sb.pre{animation:glow 3s ease-in-out infinite}.in .dg .sb.post{animation:glow 3s 1.5s ease-in-out infinite}
+.in .km .sb.post{animation:glow 2.4s ease-in-out infinite}.km .sb.pre{opacity:.6}
+.bh .sb{opacity:.55}
+.other{position:absolute;top:0;left:50%;transform:translateX(-50%);padding:.2rem .8rem;border-radius:99px;border:2px solid var(--line);font-size:.82rem;font-weight:600;white-space:nowrap}
+.in .bh .other{animation:glow 2.4s ease-in-out infinite}
+.arrows{position:absolute;top:28px;left:0;right:0;display:flex;justify-content:space-around;padding:0 20%;pointer-events:none}
+.arrows span{width:2px;height:18px;background:var(--acc);opacity:.0;transform-origin:bottom}
+.in .arrows span{animation:arrow 2.4s ease-in-out infinite}
+@keyframes arrow{0%,100%{opacity:.1;transform:scaleY(.3)}50%{opacity:1;transform:scaleY(1)}}
+/* ---------- upsarg demo ---------- */
+.ud-wrap{text-align:center}
+.ud{position:relative;height:84px;display:flex;justify-content:center;align-items:center;font-family:var(--f-head);font-weight:800;font-size:2.4rem}
+.ud .up,.ud .rt{display:inline-block;padding:.05rem .6rem;border-radius:12px}
+.ud .up{background:var(--acc);color:#fff;animation:upin 3.2s both}
+.ud .rt{background:color-mix(in srgb,var(--acc) 15%,var(--surface));border:2px solid var(--acc);animation:rtin 3.2s both}
+.ud .wd{position:absolute;inset:0;display:grid;place-items:center;color:var(--acc);animation:wdin 3.2s both}
+@keyframes upin{0%{opacity:0;transform:translateX(-90px)}18%{opacity:1;transform:translateX(-8px)}45%{opacity:1;transform:translateX(-8px)}58%{opacity:1;transform:translateX(12px)}64%,100%{opacity:0;transform:translateX(12px)}}
+@keyframes rtin{0%{opacity:0;transform:translateX(90px)}18%{opacity:1;transform:translateX(8px)}45%{opacity:1;transform:translateX(8px)}58%{opacity:1;transform:translateX(-12px)}64%,100%{opacity:0;transform:translateX(-12px)}}
+@keyframes wdin{0%,58%{opacity:0;transform:scale(.5)}72%{opacity:1;transform:scale(1.18)}85%,100%{opacity:1;transform:scale(1)}}
+.um{margin:0;color:var(--muted);font-size:.9rem;min-height:1.6em}
+/* ---------- flip ---------- */
+.fbar{display:flex;gap:10px;align-items:center;margin:8px 0 12px;flex-wrap:wrap}
+.btn{font:inherit;font-size:.9rem;border:0;background:var(--acc);color:#fff;border-radius:99px;padding:.3rem 1.1rem;cursor:pointer;font-weight:600}
+.flipgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;margin-bottom:20px}
+.flip{perspective:700px;background:none;border:0;padding:0;height:84px;cursor:pointer;font:inherit;color:inherit}
+.flip.reveal{transition:opacity .5s calc(var(--i)*25ms),transform .5s calc(var(--i)*25ms)}
+.fi{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,.9,.3,1)}
+.flip.on .fi{transform:rotateY(180deg)}
+@media(hover:hover){.flip:hover .fi{transform:rotateY(180deg)}.flip.on:hover .fi{transform:none}}
+.ff,.fb{position:absolute;inset:0;display:grid;place-content:center;text-align:center;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;font-weight:700;font-size:1.15rem;line-height:1.2;border:2px solid var(--acc);box-shadow:var(--shadow)}
+.ff{background:color-mix(in srgb,var(--acc) 12%,var(--surface))}
+.fb{background:var(--acc);color:#fff;transform:rotateY(180deg)}
+.ff small,.fb small{display:block;font-size:.68rem;font-weight:400;opacity:.8;margin-top:3px}
+/* ---------- paryay ---------- */
+.pygrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin-bottom:20px}
+.py{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.6rem .9rem;box-shadow:var(--shadow)}
+.py b{display:block;color:var(--acc);font-family:var(--f-head);font-size:1.05rem}
+.py span{display:flex;flex-wrap:wrap;gap:4px 6px;margin-top:4px}
+.py i{font-style:normal;font-size:.86rem;background:color-mix(in srgb,var(--acc) 12%,var(--surface));border-radius:99px;padding:0 .6rem;opacity:0;transform:translateY(6px)}
+.py.in i{animation:pop2 .4s forwards;animation-delay:calc(var(--i)*40ms + .1s)}
+@keyframes pop2{to{opacity:1;transform:none}}
+.py.in i:nth-child(2){animation-delay:.2s}.py.in i:nth-child(3){animation-delay:.3s}.py.in i:nth-child(4){animation-delay:.4s}.py.in i:nth-child(5){animation-delay:.5s}.py.in i:nth-child(6){animation-delay:.6s}.py.in i:nth-child(7){animation-delay:.7s}
+/* sanskrit col highlight */
+table.sk td:not(:first-child),table.sk th:not(:first-child){text-align:center}
+.sk-wrap{display:block}
+.sk-wrap .tw{margin-top:6px}
+footer{max-width:1100px;margin:0 auto;padding:30px 16px 60px;color:var(--muted);font-size:.88rem;text-align:center;border-top:1px solid var(--line)}
+.toTop{position:fixed;right:16px;bottom:16px;width:44px;height:44px;border-radius:50%;border:0;background:var(--red);color:#fff;font-size:1.2rem;cursor:pointer;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.3s}
+.toTop.show{opacity:1;pointer-events:auto}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal,.chip,.node,.py i,.era-root,.total{opacity:1!important;transform:none!important}
+  .lbar{width:var(--w)!important}.mbar i{width:var(--w)!important}.yati,.tree li::before,.tree li::after,.tree ul ul::before{opacity:1!important}
+  .era-line span,.sec-head .rule{transform:none!important}
+}
+
+.verse{background:var(--bg,#fff7);border-left:4px solid var(--acc);padding:8px 12px;margin:6px 0 10px;border-radius:8px;font-family:var(--f-head);font-weight:600;line-height:1.8}
+.verse.sk{font-weight:500}.card.wide{grid-column:1/-1}
+</style></head><body>
+<header class="hero"><h1><span>टॉपर्स</span> <span>रिवीजन</span> <span>चार्ट</span></h1><p>जीवन परिचय · कविताओं की व्याख्या · संस्कृत श्लोक व अनुवाद</p><span class="badge">हिन्दी · कक्षा 9</span></header>
+<nav class="nav"><div class="nav-in"><a href="#itihas">इतिहास</a><a href="#lekhak">लेखक</a><a href="#kavi">कवि</a><a href="#kavita">कविताएँ</a><a href="#sanskrit">संस्कृत</a><button class="theme" id="themeBtn" type="button">🌓 थीम</button></div><div class="progress" id="prog"></div></nav>
+<main><section class="sec s-gadya" id="itihas"><div class="sec-head reveal"><span class="no">१</span><h2>हिन्दी साहित्य का इतिहास</h2><span class="rule"></span></div><div class="cards"><div class="card reveal"><h4>गद्य साहित्य के युग</h4><dl><dt>भारतेन्दु युग (1850–1900)</dt><dd>निबन्ध, नाटक, पत्रकारिता; भारतेन्दु, प्रतापनारायण मिश्र, बालकृष्ण भट्ट</dd><dt>द्विवेदी युग (1900–1918)</dt><dd>भाषा-परिष्कार; सरस्वती पत्रिका; महावीरप्रसाद द्विवेदी</dd><dt>शुक्ल युग (1918–1938)</dt><dd>आलोचना, कहानी, उपन्यास; शुक्ल, प्रेमचन्द, प्रसाद</dd><dt>शुक्लोत्तर युग (1938 से)</dt><dd>नई कहानी, एकांकी, संस्मरण, यात्रावृत्त; भारती, अज्ञेय, महादेवी</dd></dl></div></div><div class="cards"><div class="card reveal"><h4>काव्य साहित्य के काल</h4><dl><dt>आदिकाल (1050–1375)</dt><dd>वीरगाथा; चन्दबरदाई, विद्यापति, अमीर खुसरो</dd><dt>भक्तिकाल (1375–1700)</dt><dd>निर्गुण: कबीर; सगुण: सूर, तुलसी, मीरा</dd><dt>रीतिकाल (1700–1900)</dt><dd>शृंगार व नीति; बिहारी, केशव, भूषण</dd><dt>आधुनिक काल (1850 से)</dt><dd>भारतेन्दु, द्विवेदी, छायावाद (प्रसाद, पन्त, निराला, महादेवी), प्रगतिवाद, प्रयोगवाद, नई कविता</dd></dl></div></div></section><section class="sec s-lekhak" id="lekhak"><div class="sec-head reveal"><span class="no">२</span><h2>गद्य लेखकों का संक्षिप्त जीवन परिचय</h2><span class="rule"></span></div><div class="cards"><article class="card reveal"><h4>प्रतापनारायण मिश्र (बात)</h4><dl><dt>जन्म</dt><dd>1856 ई., बैजे ग्राम (उन्नाव)</dd><dt>पिता/स्थान</dt><dd>पिता संकटाप्रसाद (ज्योतिषी)</dd><dt>मृत्यु</dt><dd>1894 ई.</dd><dt>रचनाएँ</dt><dd>प्रताप पीयूष, निबन्ध नवनीत, प्रताप समीक्षा; पत्रिका 'ब्राह्मण'</dd><dt>विशेष</dt><dd>भारतेन्दु मण्डल के प्रमुख लेखक; व्यंग्य-विनोदपूर्ण शैली, मुहावरेदार भाषा।</dd></dl></article><article class="card reveal"><h4>मुंशी प्रेमचन्द (मंत्र)</h4><dl><dt>जन्म</dt><dd>31 जुलाई 1880 ई., लमही (वाराणसी)</dd><dt>पिता/स्थान</dt><dd>पिता अजायब राय; वास्तविक नाम धनपत राय</dd><dt>मृत्यु</dt><dd>8 अक्टूबर 1936 ई.</dd><dt>रचनाएँ</dt><dd>गोदान, गबन, निर्मला, सेवासदन, रंगभूमि, कर्मभूमि; कहानी-संग्रह 'मानसरोवर'; पत्रिकाएँ हंस, जागरण</dd><dt>विशेष</dt><dd>'उपन्यास सम्राट'; यथार्थवादी, सरल-सहज भाषा (उर्दू-हिन्दी मिश्रित)।</dd></dl></article><article class="card reveal"><h4>महादेवी वर्मा (गिल्लू)</h4><dl><dt>जन्म</dt><dd>1907 ई., फर्रुखाबाद</dd><dt>पिता/स्थान</dt><dd>पिता गोविन्द प्रसाद वर्मा</dd><dt>मृत्यु</dt><dd>1987 ई., प्रयाग</dd><dt>रचनाएँ</dt><dd>स्मृति की रेखाएँ, अतीत के चलचित्र, श्रृंखला की कड़ियाँ, मेरा परिवार; काव्य: नीहार, रश्मि, नीरजा, दीपशिखा</dd><dt>विशेष</dt><dd>छायावाद की प्रमुख स्तम्भ; 'यामा' पर ज्ञानपीठ (1982); पद्म भूषण, पद्म विभूषण।</dd></dl></article><article class="card reveal"><h4>श्रीराम शर्मा (स्मृति)</h4><dl><dt>जन्म</dt><dd>1892 ई., किरथरा (मैनपुरी)</dd><dt>पिता/स्थान</dt><dd>—</dd><dt>मृत्यु</dt><dd>1967 ई.</dd><dt>रचनाएँ</dt><dd>शिकार, जंगल के जीव, प्राणों का सौदा, बोलती प्रतिमा, सन्त की स्मृति</dd><dt>विशेष</dt><dd>शिकार-साहित्य व संस्मरण; पत्रिका 'विशाल भारत' का सम्पादन।</dd></dl></article><article class="card reveal"><h4>डॉ. राजेन्द्र प्रसाद (निष्ठामूर्ति कस्तूरबा)</h4><dl><dt>जन्म</dt><dd>3 दिसम्बर 1884 ई., जीरादेई (सिवान, बिहार)</dd><dt>पिता/स्थान</dt><dd>पिता महादेव सहाय</dd><dt>मृत्यु</dt><dd>28 फरवरी 1963 ई.</dd><dt>रचनाएँ</dt><dd>आत्मकथा, बापू के कदमों में, चम्पारन में महात्मा गांधी, भारत विभाजन</dd><dt>विशेष</dt><dd>स्वतन्त्र भारत के प्रथम राष्ट्रपति; सरल, सहज, प्रभावशाली भाषा।</dd></dl></article><article class="card reveal"><h4>धर्मवीर भारती (ठेले पर हिमालय)</h4><dl><dt>जन्म</dt><dd>25 दिसम्बर 1926 ई., इलाहाबाद</dd><dt>पिता/स्थान</dt><dd>—</dd><dt>मृत्यु</dt><dd>4 सितम्बर 1997 ई.</dd><dt>रचनाएँ</dt><dd>गुनाहों का देवता, सूरज का सातवाँ घोड़ा, अन्धा युग, कनुप्रिया, ठण्डा लोहा</dd><dt>विशेष</dt><dd>'धर्मयुग' के सम्पादक; पद्मश्री (1972)।</dd></dl></article><article class="card reveal"><h4>गुरु नानकदेव (पाठ)</h4><dl><dt>नोट</dt><dd>इस पाठ के लेखक का नाम अपनी पाठ्यपुस्तक से देखकर यहाँ जोड़ लें।</dd><dt>गुरु नानकदेव</dt><dd>जन्म 1469 ई., ननकाना साहिब; सिख धर्म के प्रवर्तक; 'जपुजी साहिब'; 'ना कोई हिन्दू, ना मुसलमान' का सन्देश।</dd></dl></article></div></section><section class="sec s-kavi" id="kavi"><div class="sec-head reveal"><span class="no">३</span><h2>कवियों का संक्षिप्त जीवन परिचय</h2><span class="rule"></span></div><div class="cards"><article class="card reveal"><h4>कबीरदास (साखी)</h4><dl><dt>जन्म</dt><dd>1398 ई. (सं. 1455), काशी</dd><dt>पिता/स्थान</dt><dd>पालन-पोषण नीरू-नीमा; गुरु रामानन्द</dd><dt>मृत्यु</dt><dd>1518 ई., मगहर</dd><dt>रचनाएँ</dt><dd>बीजक (साखी, सबद, रमैनी)</dd><dt>विशेष</dt><dd>निर्गुण ज्ञानमार्गी शाखा; सधुक्कड़ी भाषा; समाज-सुधारक।</dd></dl></article><article class="card reveal"><h4>मीराबाई / सूरदास (पदावली)</h4><dl><dt>जन्म</dt><dd>मीरा: लगभग 1498, कुड़की (मेड़ता); सूर: 1478, रुनकता/सीही</dd><dt>पिता/स्थान</dt><dd>मीरा के गुरु रैदास; सूर के गुरु वल्लभाचार्य</dd><dt>मृत्यु</dt><dd>मीरा: द्वारका; सूर: पारसोली</dd><dt>रचनाएँ</dt><dd>मीरा की पदावली, राग गोविन्द; सूरसागर, सूरसारावली, साहित्य लहरी</dd><dt>विशेष</dt><dd>पाठ्यपुस्तक में जिस कवि के पद हैं, उसका परिचय पढ़ें; सूर अष्टछाप के कवि।</dd></dl></article><article class="card reveal"><h4>रहीम / बिहारी (दोहा)</h4><dl><dt>जन्म</dt><dd>रहीम: 1556 ई., लाहौर; बिहारी: 1595 ई., ग्वालियर</dd><dt>पिता/स्थान</dt><dd>रहीम के पिता बैरम खाँ (अकबर के दरबारी)</dd><dt>मृत्यु</dt><dd>रहीम: 1627 ई.; बिहारी: 1663 ई.</dd><dt>रचनाएँ</dt><dd>रहीम सतसई, बरवै नायिका भेद; बिहारी सतसई</dd><dt>विशेष</dt><dd>नीति के दोहे रहीम के; शृंगार-नीति के दोहे बिहारी के — 'गागर में सागर'।</dd></dl></article><article class="card reveal"><h4>भारतेन्दु हरिश्चन्द्र (प्रेम-माधुरी)</h4><dl><dt>जन्म</dt><dd>9 सितम्बर 1850 ई., काशी</dd><dt>पिता/स्थान</dt><dd>पिता गोपालचन्द्र 'गिरिधरदास'</dd><dt>मृत्यु</dt><dd>1885 ई.</dd><dt>रचनाएँ</dt><dd>प्रेम माधुरी, भारत दुर्दशा, अन्धेर नगरी, सत्य हरिश्चन्द्र; पत्रिका कविवचनसुधा</dd><dt>विशेष</dt><dd>आधुनिक हिन्दी साहित्य के जनक; ब्रजभाषा-खड़ीबोली दोनों में रचना।</dd></dl></article><article class="card reveal"><h4>मैथिलीशरण गुप्त (पंचवटी)</h4><dl><dt>जन्म</dt><dd>3 अगस्त 1886 ई., चिरगाँव (झाँसी)</dd><dt>पिता/स्थान</dt><dd>पिता सेठ रामचरण</dd><dt>मृत्यु</dt><dd>12 दिसम्बर 1964 ई.</dd><dt>रचनाएँ</dt><dd>साकेत, पंचवटी, यशोधरा, जयद्रथ वध, भारत-भारती, द्वापर</dd><dt>विशेष</dt><dd>राष्ट्रकवि; पद्म भूषण; राज्यसभा सदस्य; खड़ीबोली के प्रतिष्ठाता।</dd></dl></article><article class="card reveal"><h4>नागार्जुन (बादल को घिरते देखा है)</h4><dl><dt>जन्म</dt><dd>1911 ई., सतलखा (दरभंगा)</dd><dt>पिता/स्थान</dt><dd>वास्तविक नाम वैद्यनाथ मिश्र 'यात्री'</dd><dt>मृत्यु</dt><dd>1998 ई.</dd><dt>रचनाएँ</dt><dd>युगधारा, प्यासी पथराई आँखें, हजार-हजार बाँहों वाली; उपन्यास बलचनमा</dd><dt>विशेष</dt><dd>प्रगतिवादी कवि; साहित्य अकादमी (1969); जनकवि।</dd></dl></article><article class="card reveal"><h4>हरिवंशराय बच्चन (पथ की पहचान)</h4><dl><dt>जन्म</dt><dd>27 नवम्बर 1907 ई., बाबूपट्टी (प्रतापगढ़)</dd><dt>पिता/स्थान</dt><dd>—</dd><dt>मृत्यु</dt><dd>2003 ई.</dd><dt>रचनाएँ</dt><dd>मधुशाला, मधुबाला, निशा निमन्त्रण, सतरंगिनी; आत्मकथा (चार खण्ड)</dd><dt>विशेष</dt><dd>हालावाद के प्रमुख कवि; पद्म भूषण; साहित्य अकादमी।</dd></dl></article><article class="card reveal"><h4>पुनर्मिलन, दान, उन्हें प्रणाम, अच्छा होता सितार-संगीत की रात</h4><dl><dt>नोट</dt><dd>इन कविताओं के कवि का नाम और जीवन-परिचय अपनी पाठ्यपुस्तक से देखकर जोड़ें।</dd></dl></article></div></section><section class="sec s-padya" id="kavita"><div class="sec-head reveal"><span class="no">४</span><h2>कविताएँ: सन्दर्भ, प्रसंग, व्याख्या</h2><span class="rule"></span></div><p class="sub reveal">परीक्षा में पद्यांश लिखने का क्रम: सन्दर्भ → प्रसंग → व्याख्या → काव्य-सौन्दर्य। नीचे प्रमुख पदों के उदाहरण हैं।</p><div class="cards"><article class="card reveal wide"><h4>साखी – कबीर</h4><div class="verse">गुरु गोविन्द दोऊ खड़े, काके लागूँ पाँय।<br>बलिहारी गुरु आपनो, गोविन्द दियो बताय॥</div><dl><dt>सन्दर्भ</dt><dd>प्रस्तुत दोहा हमारी पाठ्य-पुस्तक के 'काव्य खण्ड' की 'साखी' से लिया गया है, जिसके रचयिता कबीरदास हैं।</dd><dt>प्रसंग</dt><dd>इसमें कबीर ने गुरु को ईश्वर से भी ऊँचा स्थान दिया है।</dd><dt>व्याख्या</dt><dd>गुरु और गोविन्द (ईश्वर) दोनों सामने खड़े हों तो पहले किसे प्रणाम करूँ? कबीर कहते हैं कि मैं गुरु पर बलिहारी हूँ, जिसने ईश्वर तक पहुँचने का मार्ग बताया।</dd><dt>काव्य-सौन्दर्य</dt><dd>भाषा सधुक्कड़ी; शान्त रस; दोहा छन्द; प्रश्न-शैली।</dd></dl></article><article class="card reveal wide"><h4>साखी – कबीर</h4><div class="verse">ऐसी बानी बोलिए, मन का आपा खोय।<br>औरन को सीतल करै, आपहु सीतल होय॥</div><dl><dt>सन्दर्भ</dt><dd>पूर्ववत् – 'साखी', कबीरदास।</dd><dt>प्रसंग</dt><dd>मधुर वाणी के महत्त्व का वर्णन।</dd><dt>व्याख्या</dt><dd>अहंकार छोड़कर ऐसी वाणी बोलनी चाहिए जो दूसरों को शीतलता दे और स्वयं को भी शान्ति दे।</dd><dt>काव्य-सौन्दर्य</dt><dd>अनुप्रास अलंकार; सरल भाषा; उपदेशात्मक शैली।</dd></dl></article><article class="card reveal wide"><h4>दोहा – रहीम</h4><div class="verse">रहिमन पानी राखिए, बिन पानी सब सून।<br>पानी गए न ऊबरै, मोती मानुष चून॥</div><dl><dt>सन्दर्भ</dt><dd>यह दोहा 'दोहा' शीर्षक काव्यांश से लिया गया है, कवि रहीम हैं।</dd><dt>प्रसंग</dt><dd>'पानी' के तीन अर्थों (चमक, इज़्ज़त, जल) द्वारा विनम्रता व मर्यादा का महत्त्व।</dd><dt>व्याख्या</dt><dd>पानी (आब/सम्मान/जल) को बचाकर रखो; इसके बिना मोती, मनुष्य और चूना सब व्यर्थ हैं।</dd><dt>काव्य-सौन्दर्य</dt><dd>श्लेष अलंकार ('पानी' के तीन अर्थ); नीति-काव्य; ब्रज-अवधी मिश्रित भाषा।</dd></dl></article><article class="card reveal wide"><h4>दोहा – बिहारी</h4><div class="verse">सतसइया के दोहरे, ज्यों नावक के तीर।<br>देखन में छोटे लगैं, घाव करैं गम्भीर॥</div><dl><dt>सन्दर्भ</dt><dd>'दोहा' शीर्षक से, कवि बिहारीलाल।</dd><dt>प्रसंग</dt><dd>बिहारी सतसई के दोहों की प्रभावशीलता का वर्णन।</dd><dt>व्याख्या</dt><dd>सतसई के दोहे नावक (छोटे तीर) जैसे देखने में छोटे हैं, पर पाठक पर गहरा असर करते हैं।</dd><dt>काव्य-सौन्दर्य</dt><dd>उपमा अलंकार; ब्रजभाषा; 'गागर में सागर' का गुण।</dd></dl></article><article class="card reveal wide"><h4>पंचवटी – मैथिलीशरण गुप्त</h4><div class="verse">चारु चन्द्र की चंचल किरणें, खेल रही हैं जल-थल में।<br>स्वच्छ चाँदनी बिछी हुई है, अवनि और अम्बरतल में॥</div><dl><dt>सन्दर्भ</dt><dd>'पंचवटी' काव्य के अंश से, कवि मैथिलीशरण गुप्त।</dd><dt>प्रसंग</dt><dd>पंचवटी में चाँदनी रात के सौन्दर्य का वर्णन; लक्ष्मण पहरे पर हैं।</dd><dt>व्याख्या</dt><dd>सुन्दर चन्द्रमा की चंचल किरणें जल और थल पर खेल रही हैं, और धरती-आकाश पर निर्मल चाँदनी बिछी है।</dd><dt>काव्य-सौन्दर्य</dt><dd>प्रकृति-चित्रण; मानवीकरण (किरणें खेल रही हैं); अनुप्रास; खड़ीबोली।</dd></dl></article><article class="card reveal"><h4>बादल को घिरते देखा है – नागार्जुन</h4><dl><dt>भाव-सार</dt><dd>कवि हिमालय की झील के किनारे बादलों के घिरने, मानसरोवर के हंसों, कस्तूरी-मृग और किन्नर-किन्नरियों के दृश्य देखते हैं; पर साथ ही कालिदास के मेघदूत की कल्पना से जोड़कर बादल में गतिशील जीवन देखते हैं।</dd><dt>काव्य-सौन्दर्य</dt><dd>प्रकृति-चित्रण, मुक्त छन्द, मानवीकरण, प्रगतिवादी चेतना।</dd></dl></article><article class="card reveal"><h4>पथ की पहचान – बच्चन</h4><dl><dt>भाव-सार</dt><dd>जीवन-पथ पर चलने से पहले राह पहचान लेने, पुस्तकों में लिखे अनुभवों से सीखने, पर अन्ततः स्वयं चलकर अनुभव पाने का सन्देश।</dd><dt>काव्य-सौन्दर्य</dt><dd>प्रेरणादायी स्वर; सरल खड़ीबोली; गीत-शैली।</dd></dl></article></div></section><section class="sec s-vyakaran" id="sanskrit"><div class="sec-head reveal"><span class="no">५</span><h2>अनिवार्य संस्कृत: श्लोक, सन्दर्भ व अनुवाद</h2><span class="rule"></span></div><div class="cards"><article class="card reveal wide"><h4>वन्दना (सरस्वती-वन्दना)</h4><div class="verse sk">या कुन्देन्दुतुषारहारधवला या शुभ्रवस्त्रावृता।<br>या वीणावरदण्डमण्डितकरा या श्वेतपद्मासना॥</div><dl><dt>सन्दर्भ</dt><dd>पाठ 'वन्दना' से (सरस्वती-स्तुति)</dd><dt>अनुवाद</dt><dd>जो कुन्द, चन्द्रमा और हिम के हार के समान श्वेत हैं, जो उज्ज्वल वस्त्र पहने हैं, जिनके हाथ वीणा के वरदण्ड से सुशोभित हैं और जो श्वेत कमल पर विराजमान हैं (वे सरस्वती हमारी रक्षा करें)।</dd><dt>भाव</dt><dd>विद्या और ज्ञान की देवी की प्रार्थना।</dd></dl></article><article class="card reveal wide"><h4>सदाचारः</h4><div class="verse sk">अभिवादनशीलस्य नित्यं वृद्धोपसेविनः।<br>चत्वारि तस्य वर्धन्ते आयुर्विद्या यशो बलम्॥</div><dl><dt>सन्दर्भ</dt><dd>पाठ 'सदाचारः', (मनुस्मृति)</dd><dt>अनुवाद</dt><dd>जो विनम्र है और नित्य वृद्धों की सेवा करता है, उसकी चार चीज़ें बढ़ती हैं — आयु, विद्या, यश और बल।</dd><dt>भाव</dt><dd>बड़ों का आदर सदाचार का मूल है।</dd></dl></article><article class="card reveal wide"><h4>सदाचारः</h4><div class="verse sk">सत्यं ब्रूयात् प्रियं ब्रूयात् न ब्रूयात् सत्यमप्रियम्।<br>प्रियं च नानृतं ब्रूयात् एष धर्मः सनातनः॥</div><dl><dt>सन्दर्भ</dt><dd>पाठ 'सदाचारः'</dd><dt>अनुवाद</dt><dd>सत्य बोलना चाहिए, प्रिय बोलना चाहिए; अप्रिय सत्य नहीं बोलना चाहिए और प्रिय असत्य भी नहीं — यही सनातन धर्म है।</dd><dt>भाव</dt><dd>सत्य के साथ मधुरता आवश्यक।</dd></dl></article><article class="card reveal wide"><h4>पुरुषोत्तमः रामः</h4><div class="verse sk">रामो विग्रहवान् धर्मः साधुः सत्यपराक्रमः।<br>राजा सर्वस्य लोकस्य देवानामिव वासवः॥</div><dl><dt>सन्दर्भ</dt><dd>पाठ 'पुरुषोत्तमः रामः' (वाल्मीकि-रामायण)</dd><dt>अनुवाद</dt><dd>राम धर्म के मूर्तिमान रूप हैं, साधु और सत्य-पराक्रमी हैं; जैसे देवताओं के राजा इन्द्र हैं, वैसे ही वे सम्पूर्ण लोक के राजा हैं।</dd><dt>भाव</dt><dd>राम के आदर्श चरित्र का वर्णन।</dd></dl></article><article class="card reveal wide"><h4>सुभाषितानि</h4><div class="verse sk">विद्या ददाति विनयं विनयाद् याति पात्रताम्।<br>पात्रत्वाद् धनमाप्नोति धनाद् धर्मं ततः सुखम्॥</div><dl><dt>सन्दर्भ</dt><dd>पाठ 'सुभाषितानि'</dd><dt>अनुवाद</dt><dd>विद्या विनय देती है, विनय से योग्यता आती है, योग्यता से धन, धन से धर्म और उससे सुख मिलता है।</dd><dt>भाव</dt><dd>विद्या सुख का मूल।</dd></dl></article><article class="card reveal wide"><h4>सुभाषितानि</h4><div class="verse sk">उद्यमेन हि सिध्यन्ति कार्याणि न मनोरथैः।<br>न हि सुप्तस्य सिंहस्य प्रविशन्ति मुखे मृगाः॥</div><dl><dt>सन्दर्भ</dt><dd>पाठ 'सुभाषितानि'</dd><dt>अनुवाद</dt><dd>काम परिश्रम से सिद्ध होते हैं, केवल इच्छा से नहीं; सोते हुए सिंह के मुख में हिरण स्वयं नहीं घुसते।</dd><dt>भाव</dt><dd>परिश्रम का महत्त्व।</dd></dl></article><article class="card reveal"><h4>सिद्धिमन्त्रः / परमहंसः रामकृष्णः / कृष्णः गोपालनन्दनः</h4><dl><dt>नोट</dt><dd>इन पाठों के श्लोक/गद्यांश अपनी पाठ्यपुस्तक से जोड़ें; सार: सिद्धिमन्त्र — परिश्रम व दृढ़ता से सिद्धि; रामकृष्ण — काली-भक्ति, सर्वधर्म-समभाव, शिष्य विवेकानन्द; कृष्ण — गोकुल की बाल-लीलाएँ व गोपालक रूप।</dd></dl></article></div></section><p class="sub">नोट: कुछ पाठों के लेखक/कवि और श्लोक पाठ्यपुस्तक के अनुसार जोड़ने बाकी हैं — अपनी पुस्तक से मिलान अवश्य करें।</p></main>
+<script>
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal,.viz').forEach(function(e){io.observe(e)});
+addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-innerHeight;document.getElementById('prog').style.width=(h>0?scrollY/h*100:0)+'%'});
+document.getElementById('themeBtn').onclick=function(){var r=document.documentElement,d=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);r.dataset.theme=d?'light':'dark'};
+</script></body></html>
