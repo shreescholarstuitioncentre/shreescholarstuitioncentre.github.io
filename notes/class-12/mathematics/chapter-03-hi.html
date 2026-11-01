@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>कक्षा 12 गणित – अध्याय 2: द्विआधारी संक्रियाएँ</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#fbfcff;--line:#cfe0f5;--ink:#1a3a8f;--red:#c0262d;--grn:#1d7a46;--txt:#1d2433;--box:#fff8d6;--box2:#e8f6ee;--box3:#fde9ea}
+@media(prefers-color-scheme:dark){:root{--paper:#171b26;--line:#26304a;--ink:#8fb0ff;--red:#ff8087;--grn:#6fd69b;--txt:#e6e9f2;--box:#3a3516;--box2:#16342a;--box3:#3b1d22}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--txt);font-family:'Kalam','Segoe Print','Noto Sans Devanagari',cursive;font-size:18px;line-height:32px;
+background-image:repeating-linear-gradient(transparent 0 31px,var(--line) 31px 32px);padding:env(safe-area-inset-top,0px) 14px env(safe-area-inset-bottom,0px) 56px;border-left:3px double var(--red);margin-left:10px}
+main{max-width:860px;margin:auto}
+h1{font-size:2.1rem;color:var(--ink);line-height:44px;margin:24px 0 0;text-decoration:underline wavy var(--red) 1px;text-underline-offset:8px}
+h2{color:var(--red);font-size:1.5rem;margin:40px 0 0;border-bottom:2px solid var(--red);display:inline-block}
+h3{color:var(--ink);font-size:1.2rem;margin:20px 0 0}
+p,ul,ol{margin:0 0 0}ul,ol{padding-left:26px}
+.def,.ex,.key{margin:16px 0;padding:6px 14px;border-radius:6px 14px 8px 12px;border:2px solid var(--ink)}
+.def{background:var(--box)}.ex{background:var(--box2);border-color:var(--grn)}.key{background:var(--box3);border-color:var(--red)}
+.def b.t,.ex b.t,.key b.t{color:var(--red)}
+.m{font-family:'Kalam',serif;color:var(--ink);white-space:nowrap}
+.fig{margin:16px 0;text-align:center;border:2px dashed var(--ink);border-radius:10px;padding:8px;line-height:24px}
+.figs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+svg text{font-family:'Kalam',cursive;fill:var(--txt)}svg .ell{fill:none;stroke:var(--ink);stroke-width:2}
+svg .ln{stroke:var(--red);stroke-width:2.2;fill:none;stroke-dasharray:100;stroke-dashoffset:100;animation:dr 6s ease-in-out infinite}
+@keyframes dr{0%{stroke-dashoffset:100}35%,90%{stroke-dashoffset:0}100%{stroke-dashoffset:100}}
+@media(prefers-reduced-motion:reduce){svg .ln{animation:none;stroke-dashoffset:0}}
+table{border-collapse:collapse;margin:12px 0;line-height:26px}td,th{border:1.5px solid var(--ink);padding:2px 10px}th{background:var(--box)}
+details{margin:10px 0;border-left:4px solid var(--grn);padding-left:12px}summary{cursor:pointer;color:var(--ink);font-weight:700}
+.ans{color:var(--grn)}.lvl{display:inline-block;padding:0 10px;border-radius:12px;background:var(--red);color:#fff;font-size:.85rem;line-height:22px}
+.tag{color:#fff;background:var(--ink);padding:0 8px;border-radius:8px;font-size:.8rem}
+@media(max-width:600px){body{font-size:16px;padding-left:40px}}
+
+.hl{background:var(--box3);animation:p 2.4s ease-in-out infinite}@keyframes p{50%{background:var(--box)}}
+@media(prefers-reduced-motion:reduce){.hl{animation:none}}
+svg .box{fill:var(--box);stroke:var(--ink);stroke-width:2}
+</style></head><body><main>
+<h1>अध्याय 2: द्विआधारी संक्रियाएँ</h1><p>यूपी बोर्ड / एनसीईआरटी – चित्र, हल किए उदाहरण, प्रश्नोत्तर और बहुविकल्पीय प्रश्नों सहित सरल नोट्स।</p>
+<h2>1. द्विआधारी संक्रियाएँ</h2>
+<h3>1.1 परिभाषा</h3>
+<div class="def"><b class="t">परिभाषा:</b> अरिक्त समुच्चय A पर <b>द्विआधारी संक्रिया ∗</b> एक फलन है <span class="m">∗ : A × A → A</span>। यह A के दो अवयव a, b लेकर एक अवयव a ∗ b देती है, जो A में ही होना चाहिए।</div>
+<div class="fig"><div class="figs"><div><svg viewBox="0 0 300 170" width="290" role="img" aria-label="द्विआधारी संक्रिया मशीन"><defs><marker id="m1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#c0262d"/></marker></defs><circle cx="30" cy="55" r="16" class="box"/><text x="26" y="60" font-size="16">a</text><circle cx="30" cy="125" r="16" class="box"/><text x="26" y="130" font-size="16">b</text><rect x="115" y="50" width="70" height="80" rx="8" class="box"/><text x="142" y="100" font-size="30" fill="#c0262d" style="fill:#c0262d">∗</text><ellipse cx="255" cy="90" rx="38" ry="22" class="box"/><text x="237" y="96" font-size="15">a ∗ b</text><path class="ln" pathLength="100" marker-end="url(#m1)" style="animation-delay:0s" d="M48 58L112 80"/><path class="ln" pathLength="100" marker-end="url(#m1)" style="animation-delay:0.6s" d="M48 122L112 100"/><path class="ln" pathLength="100" marker-end="url(#m1)" style="animation-delay:1.3s" d="M187 90L214 90"/><text x="10" y="18" font-size="13">दो निवेश</text><text x="104" y="148" font-size="13">संक्रिया</text><text x="222" y="130" font-size="13">एक निर्गत</text></svg><br><b>द्विआधारी संक्रिया: दो निवेश, एक निर्गत</b></div></div></div>
+<p>“द्विआधारी” का अर्थ है <i>दो</i> निवेश। उचित समुच्चयों पर +, −, ×, ÷ द्विआधारी संक्रियाएँ हैं। नियम से भी संक्रिया बनाई जा सकती है, जैसे a ∗ b = a + b − ab या a ∗ b = |a − b|।</p>
+<h3>1.2 समुच्चय पर द्विआधारी संक्रिया – उदाहरण</h3>
+<table><tr><th>संक्रिया</th><th>समुच्चय</th><th>द्विआधारी?</th><th>कारण</th></tr>
+<tr><td>+</td><td>N, Z, R</td><td>हाँ</td><td>दो सदस्यों का योग सदस्य है</td></tr>
+<tr><td>−</td><td>N</td><td>नहीं</td><td>2 − 5 = −3 ∉ N</td></tr><tr><td>−</td><td>Z</td><td>हाँ</td><td>पूर्णांकों का अंतर पूर्णांक है</td></tr>
+<tr><td>÷</td><td>N</td><td>नहीं</td><td>2 ÷ 5 ∉ N</td></tr><tr><td>÷</td><td>R</td><td>नहीं</td><td>a ÷ 0 अपरिभाषित</td></tr><tr><td>÷</td><td>R − {0}</td><td>हाँ</td><td>भागफल अशून्य वास्तविक है</td></tr></table>
+<div class="key"><b class="t">गणना:</b> यदि n(A) = n, तो A पर द्विआधारी संक्रियाओं की संख्या = <b>n<sup>n²</sup></b>; <b>क्रमविनिमेय</b> संक्रियाओं की संख्या = <b>n<sup>n(n+1)/2</sup></b>। (A × A में n² युग्म हैं, प्रत्येक n अवयवों में से किसी पर जा सकता है।)</div>
+<h3>1.3 संवृत गुण</h3>
+<div class="def"><b class="t">परिभाषा:</b> A, ∗ के अंतर्गत <b>संवृत</b> है यदि <span class="m">सभी a, b ∈ A के लिए a ∗ b ∈ A</span>। संवृत होना और ∗ का A पर द्विआधारी संक्रिया होना एक ही बात है।</div>
+<div class="fig"><div class="figs"><div><svg viewBox="0 0 280 170" width="270" role="img" aria-label="संवृत"><defs><marker id="m2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#c0262d"/></marker></defs><ellipse class="ell" cx="100" cy="90" rx="80" ry="62"/><text x="20" y="40" font-size="16">A</text><circle cx="60" cy="70" r="3" fill="#1a3a8f"/><text x="48" y="64" font-size="14">a</text><circle cx="60" cy="115" r="3" fill="#1a3a8f"/><text x="48" y="135" font-size="14">b</text><circle cx="140" cy="92" r="3" fill="#1d7a46"/><text x="128" y="86" font-size="14">a∗b</text><path class="ln" pathLength="100" marker-end="url(#m2)" style="animation-delay:0s" d="M64 72L136 90"/><path class="ln" pathLength="100" marker-end="url(#m2)" style="animation-delay:0.5s" d="M64 113L136 94"/><text x="190" y="95" font-size="16" style="fill:#1d7a46">संवृत ✔</text></svg><br><b>संवृत: a∗b, A में ही रहता है</b></div><div><svg viewBox="0 0 280 170" width="270" role="img" aria-label="असंवृत"><defs><marker id="m3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#c0262d"/></marker></defs><ellipse class="ell" cx="100" cy="90" rx="80" ry="62"/><text x="20" y="40" font-size="16">A</text><circle cx="60" cy="70" r="3" fill="#1a3a8f"/><text x="48" y="64" font-size="14">a</text><circle cx="60" cy="115" r="3" fill="#1a3a8f"/><text x="48" y="135" font-size="14">b</text><circle cx="235" cy="92" r="3" fill="#c0262d"/><text x="215" y="86" font-size="14">a∗b</text><path class="ln" pathLength="100" marker-end="url(#m3)" style="animation-delay:0s" d="M64 72L230 90"/><path class="ln" pathLength="100" marker-end="url(#m3)" style="animation-delay:0.5s" d="M64 113L230 94"/><text x="150" y="160" font-size="15" style="fill:#c0262d">संवृत नहीं ✘ (निर्गत A से बाहर)</text></svg><br><b>असंवृत: a∗b, A से बाहर जाता है</b></div></div></div>
+<p><b>जाँचने की विधि:</b> a, b ∈ A लें, a ∗ b निकालें और देखें कि वह सदैव A में है या नहीं। खंडन के लिए ऐसा एक युग्म दें जिसका परिणाम A से बाहर हो।</p>
+<h3>1.4 क्रमविनिमेय द्विआधारी संक्रिया</h3>
+<div class="def"><b class="t">परिभाषा:</b> ∗ क्रमविनिमेय है यदि <span class="m">सभी a, b ∈ A के लिए a ∗ b = b ∗ a</span>।</div>
+<p>N, Z, R पर + और × क्रमविनिमेय हैं। − और ÷ नहीं हैं (3 − 2 ≠ 2 − 3)। <b>खंडन</b> के लिए एक प्रत्युदाहरण पर्याप्त है।</p>
+<h3>1.5 साहचर्य द्विआधारी संक्रिया</h3>
+<div class="def"><b class="t">परिभाषा:</b> ∗ साहचर्य है यदि <span class="m">सभी a, b, c ∈ A के लिए (a ∗ b) ∗ c = a ∗ (b ∗ c)</span>।</div>
+<p>+ और × साहचर्य हैं। − नहीं है: (8 − 3) − 2 = 3 परंतु 8 − (3 − 2) = 7। LHS और RHS अलग-अलग निकालकर तुलना करें।</p>
+<h3>1.6 तत्समक अवयव</h3>
+<div class="def"><b class="t">परिभाषा:</b> e ∈ A, ∗ का तत्समक है यदि <span class="m">सभी a ∈ A के लिए a ∗ e = e ∗ a = a</span>।</div>
+<ul><li>+ का तत्समक 0, × का 1; a ∗ b = a + b − ab का तत्समक 0 है।</li><li><b>तत्समक यदि हो तो अद्वितीय होता है।</b> (e और e′ तत्समक हों तो e = e ∗ e′ = e′।)</li>
+<li><b>विधि:</b> a ∗ e = a रखकर e निकालें; फिर जाँचें कि e ∗ a = a भी सत्य है तथा e ∈ A।</li><li>Z पर − का कोई तत्समक नहीं: a − 0 = a परंतु 0 − a ≠ a।</li></ul>
+<h3>1.7 अवयव का प्रतिलोम</h3>
+<div class="def"><b class="t">परिभाषा:</b> माना तत्समक e है। b ∈ A, a का प्रतिलोम है यदि <span class="m">a ∗ b = b ∗ a = e</span>। इसे b = a⁻¹ लिखते हैं।</div>
+<ul><li>प्रतिलोम तभी संभव है जब तत्समक हो।</li><li>साहचर्य संक्रिया में अवयव का प्रतिलोम अद्वितीय होता है।</li><li>+ में a का प्रतिलोम −a; × में 1/a (a ≠ 0)। Z में × के अंतर्गत केवल 1 और −1 के प्रतिलोम हैं।</li>
+<li><b>विधि:</b> a ∗ b = e को b के लिए हल करें और जाँचें b ∈ A।</li></ul>
+<div class="fig"><div class="figs"><div><table style="margin:auto"><tr><th>+₄</th><th class="hl">0</th><th class="">1</th><th class="">2</th><th class="">3</th></tr><tr><th class="hl">0</th><td class="hl">0</td><td class="hl">1</td><td class="hl">2</td><td class="hl">3</td></tr><tr><th class="">1</th><td class="hl">1</td><td class="">2</td><td class="">3</td><td class="">0</td></tr><tr><th class="">2</th><td class="hl">2</td><td class="">3</td><td class="">0</td><td class="">1</td></tr><tr><th class="">3</th><td class="hl">3</td><td class="">0</td><td class="">1</td><td class="">2</td></tr></table><p><small>0 की पंक्ति और स्तंभ शीर्षकों को दोहराते हैं, अतः 0 तत्समक है। सारणी में प्रत्येक 0 एक प्रतिलोम युग्म देता है।</small></p><br><b>{0,1,2,3} पर मॉड्यूलो 4 योग की संक्रिया सारणी</b></div></div></div>
+<h3>1.8 गुणों की जाँच – चरण-दर-चरण</h3>
+<div class="key"><ol><li>संवृत: क्या a ∗ b सदैव A में है?</li><li>क्रमविनिमेय: a ∗ b तथा b ∗ a की तुलना करें।</li><li>साहचर्य: (a ∗ b) ∗ c तथा a ∗ (b ∗ c) निकालें।</li><li>तत्समक: a ∗ e = a हल करें।</li><li>प्रतिलोम: a ∗ b = e हल करें।</li></ol></div>
+
+<h2>2. हल किए गए उदाहरण</h2>
+<div class="ex"><span class="lvl">सरल</span> <b class="t">उदा. 1.</b> क्या N पर − द्विआधारी संक्रिया है?<br><b>हल:</b> 2, 5 ∈ N लें। 2 − 5 = −3 ∉ N। संवृत नहीं, अतः <b>द्विआधारी संक्रिया नहीं</b>।</div>
+<div class="ex"><span class="lvl">सरल</span> <b class="t">उदा. 2.</b> क्या R पर a ∗ b = a² + b² क्रमविनिमेय है?<br><b>हल:</b> b ∗ a = b² + a² = a² + b² = a ∗ b। हाँ, क्रमविनिमेय है।</div>
+<div class="ex"><span class="lvl">सरल</span> <b class="t">उदा. 3.</b> {1,2,3} पर कितनी द्विआधारी संक्रियाएँ हैं? कितनी क्रमविनिमेय?<br><b>हल:</b> n = 3। कुल = 3⁹ = 19683। क्रमविनिमेय = 3<sup>3·4/2</sup> = 3⁶ = 729।</div>
+<div class="ex"><span class="lvl">मध्यम</span> <b class="t">उदा. 4.</b> R पर a ∗ b = a + b − ab। सिद्ध कीजिए कि यह क्रमविनिमेय तथा साहचर्य है; तत्समक एवं प्रतिलोम ज्ञात कीजिए।<br>
+<b>हल:</b> क्रमविनिमेय: b ∗ a = b + a − ba = a ∗ b।<br>
+साहचर्य: (a ∗ b) ∗ c = (a + b − ab) + c − (a + b − ab)c = a + b + c − ab − bc − ca + abc। a ∗ (b ∗ c) से भी यही व्यंजक मिलता है। अतः साहचर्य।<br>
+तत्समक: a ∗ e = a ⇒ a + e − ae = a ⇒ e(1 − a) = 0 ⇒ e = 0। साथ ही 0 ∗ a = a।<br>
+प्रतिलोम: a ∗ b = 0 ⇒ a + b − ab = 0 ⇒ b(1 − a) = −a ⇒ b = a/(a − 1)। यह a ≠ 1 के लिए है; अतः 1 का प्रतिलोम नहीं है।</div>
+<div class="ex"><span class="lvl">मध्यम</span> <b class="t">उदा. 5.</b> R − {−1} पर a ∗ b = a + b + ab। सिद्ध कीजिए कि ∗ द्विआधारी संक्रिया है; तत्समक एवं प्रतिलोम ज्ञात कीजिए।<br>
+<b>हल:</b> a + b + ab = (a + 1)(b + 1) − 1। यदि यह −1 होता तो (a + 1)(b + 1) = 0, जो असंभव है क्योंकि a, b ≠ −1। अतः संवृत।<br>तत्समक: a + e + ae = a ⇒ e(1 + a) = 0 ⇒ e = 0।<br>प्रतिलोम: a + b + ab = 0 ⇒ b = −a/(1 + a), जो −1 के बराबर नहीं है और a ≠ −1 होने से विद्यमान है।</div>
+<div class="ex"><span class="lvl">कठिन</span> <b class="t">उदा. 6.</b> पूर्ण संख्याओं W पर a ∗ b = |a − b|। सभी गुणों की जाँच कीजिए।<br>
+<b>हल:</b> संवृत: |a − b| ≥ 0 पूर्ण संख्या है। क्रमविनिमेय: |a − b| = |b − a|।<br>साहचर्य नहीं: (1 ∗ 2) ∗ 3 = 1 ∗ 3 = 2, परंतु 1 ∗ (2 ∗ 3) = 1 ∗ 1 = 0।<br>तत्समक: a ∗ 0 = |a| = a तथा 0 ∗ a = a, अतः e = 0।<br>प्रतिलोम: a ∗ a = 0, अतः प्रत्येक अवयव स्वयं अपना प्रतिलोम है।</div>
+<div class="ex"><span class="lvl">कठिन</span> <b class="t">उदा. 7.</b> Q⁺ पर a ∗ b = ab/4। तत्समक तथा a का प्रतिलोम ज्ञात कीजिए।<br>
+<b>हल:</b> साहचर्य: (a ∗ b) ∗ c = abc/16 = a ∗ (b ∗ c)।<br>तत्समक: ae/4 = a ⇒ e = 4। प्रतिलोम: ab/4 = 4 ⇒ b = 16/a ∈ Q⁺।</div>
+
+<h2>3. लघु एवं दीर्घ प्रश्नोत्तर (उत्तर देखने के लिए दबाएँ)</h2>
+<details><summary>प्र.1. द्विआधारी संक्रिया की परिभाषा दीजिए।</summary><p class="ans">फलन ∗ : A × A → A; A का प्रत्येक क्रमित युग्म A के एक अद्वितीय अवयव पर जाता है।</p></details>
+<details><summary>प्र.2. क्या Z पर ÷ द्विआधारी संक्रिया है? क्यों?</summary><p class="ans">नहीं। 1 ÷ 2 ∉ Z तथा 0 से भाग अपरिभाषित है।</p></details>
+<details><summary>प्र.3. सिद्ध कीजिए कि तत्समक अवयव अद्वितीय होता है।</summary><p class="ans">माना e, e′ तत्समक हैं। तब e ∗ e′ = e′ (e तत्समक है) तथा e ∗ e′ = e (e′ तत्समक है)। अतः e = e′।</p></details>
+<details><summary>प्र.4. क्या Z पर − का तत्समक है?</summary><p class="ans">नहीं। a − e = a से e = 0, परंतु 0 − a = −a ≠ a। 0 केवल दायाँ तत्समक है।</p></details>
+<details><summary>प्र.5. क्या N पर a ∗ b = a क्रमविनिमेय है?</summary><p class="ans">नहीं। 2 ∗ 3 = 2 परंतु 3 ∗ 2 = 3। यह साहचर्य है: (a ∗ b) ∗ c = a = a ∗ (b ∗ c)।</p></details>
+<details><summary>प्र.6. दीर्घ: सिद्ध कीजिए कि तत्समक e वाली साहचर्य ∗ में प्रतिलोम अद्वितीय है।</summary><p class="ans">माना b तथा c दोनों a के प्रतिलोम हैं। b = b ∗ e = b ∗ (a ∗ c) = (b ∗ a) ∗ c = e ∗ c = c। ∎</p></details>
+<details><summary>प्र.7. Z पर a ∗ b = a + b + 1 का तत्समक ज्ञात कीजिए।</summary><p class="ans">a + e + 1 = a ⇒ e = −1। a का प्रतिलोम: a + b + 1 = −1 ⇒ b = −a − 2।</p></details>
+<details><summary>प्र.8. क्या N पर a ∗ b = LCM(a, b) साहचर्य है? तत्समक?</summary><p class="ans">हाँ, साहचर्य है (तीन संख्याओं का LCM)। तत्समक 1 है क्योंकि LCM(a, 1) = a। केवल 1 का प्रतिलोम है।</p></details>
+
+<h2>4. बहुविकल्पीय प्रश्न</h2>
+<details><summary>1. 2 अवयवों वाले समुच्चय पर द्विआधारी संक्रियाओं की संख्या: (a) 4 (b) 8 (c) 16 (d) 2</summary><p class="ans">(c) 2⁴ = 16।</p></details>
+<details><summary>2. 3 अवयवों वाले समुच्चय पर क्रमविनिमेय संक्रियाओं की संख्या: (a) 9 (b) 81 (c) 729 (d) 19683</summary><p class="ans">(c) 3⁶ = 729।</p></details>
+<details><summary>3. R पर a ∗ b = a + b − ab का तत्समक: (a) 1 (b) 0 (c) −1 (d) कोई नहीं</summary><p class="ans">(b) 0।</p></details>
+<details><summary>4. R पर कौन साहचर्य नहीं है: (a) + (b) × (c) − (d) max</summary><p class="ans">(c) घटाव।</p></details>
+<details><summary>5. Q⁺ पर a ∗ b = ab/4 में 2 का प्रतिलोम: (a) 2 (b) 4 (c) 8 (d) 1/2</summary><p class="ans">(c) 2b/4 = 4 ⇒ b = 8।</p></details>
+<p><i>यह मुख्य संस्करण है। 100+ और प्रश्नोत्तर, MCQ तथा उदाहरणों के लिए “भाग 2” माँगिए।</i></p>
+</main></body></html>

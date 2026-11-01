@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>कक्षा 12 गणित – अध्याय 4: आव्यूह</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#fbfcff;--line:#cfe0f5;--ink:#1a3a8f;--red:#c0262d;--grn:#1d7a46;--txt:#1d2433;--box:#fff8d6;--box2:#e8f6ee;--box3:#fde9ea}
+@media(prefers-color-scheme:dark){:root{--paper:#171b26;--line:#26304a;--ink:#8fb0ff;--red:#ff8087;--grn:#6fd69b;--txt:#e6e9f2;--box:#3a3516;--box2:#16342a;--box3:#3b1d22}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--txt);font-family:'Kalam','Segoe Print','Noto Sans Devanagari',cursive;font-size:18px;line-height:32px;
+background-image:repeating-linear-gradient(transparent 0 31px,var(--line) 31px 32px);padding:env(safe-area-inset-top,0px) 14px env(safe-area-inset-bottom,0px) 56px;border-left:3px double var(--red);margin-left:10px}
+main{max-width:860px;margin:auto}
+h1{font-size:2.1rem;color:var(--ink);line-height:44px;margin:24px 0 0;text-decoration:underline wavy var(--red) 1px;text-underline-offset:8px}
+h2{color:var(--red);font-size:1.5rem;margin:40px 0 0;border-bottom:2px solid var(--red);display:inline-block}
+h3{color:var(--ink);font-size:1.2rem;margin:20px 0 0}
+p,ul,ol{margin:0 0 0}ul,ol{padding-left:26px}
+.def,.ex,.key{margin:16px 0;padding:6px 14px;border-radius:6px 14px 8px 12px;border:2px solid var(--ink)}
+.def{background:var(--box)}.ex{background:var(--box2);border-color:var(--grn)}.key{background:var(--box3);border-color:var(--red)}
+.def b.t,.ex b.t,.key b.t{color:var(--red)}
+.m{font-family:'Kalam',serif;color:var(--ink);white-space:nowrap}
+.fig{margin:16px 0;text-align:center;border:2px dashed var(--ink);border-radius:10px;padding:8px;line-height:24px}
+.figs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+svg text{font-family:'Kalam',cursive;fill:var(--txt)}svg .ell{fill:none;stroke:var(--ink);stroke-width:2}
+svg .ln{stroke:var(--red);stroke-width:2.2;fill:none;stroke-dasharray:100;stroke-dashoffset:100;animation:dr 6s ease-in-out infinite}
+@keyframes dr{0%{stroke-dashoffset:100}35%,90%{stroke-dashoffset:0}100%{stroke-dashoffset:100}}
+@media(prefers-reduced-motion:reduce){svg .ln{animation:none;stroke-dashoffset:0}}
+table{border-collapse:collapse;margin:12px 0;line-height:26px}td,th{border:1.5px solid var(--ink);padding:2px 10px}th{background:var(--box)}
+details{margin:10px 0;border-left:4px solid var(--grn);padding-left:12px}summary{cursor:pointer;color:var(--ink);font-weight:700}
+.ans{color:var(--grn)}.lvl{display:inline-block;padding:0 10px;border-radius:12px;background:var(--red);color:#fff;font-size:.85rem;line-height:22px}
+.tag{color:#fff;background:var(--ink);padding:0 8px;border-radius:8px;font-size:.8rem}
+@media(max-width:600px){body{font-size:16px;padding-left:40px}}
+
+svg .pu{fill-opacity:.35;animation:pu 3s ease-in-out infinite}@keyframes pu{50%{fill-opacity:.08}}
+svg .sh{opacity:0;animation:sh 8s infinite}@keyframes sh{0%,24%{opacity:1}25%,100%{opacity:0}}
+svg .br{fill:none;stroke:var(--txt);stroke-width:2}
+@media(prefers-reduced-motion:reduce){svg .pu{animation:none}svg .sh{animation:none;opacity:.5}}
+</style></head><body><main>
+<h1>अध्याय 4: आव्यूह</h1><p>यूपी बोर्ड / एनसीईआरटी – एनिमेटेड चित्र, सूत्र, हल किए उदाहरण, प्रश्नोत्तर और बहुविकल्पीय प्रश्नों सहित नोट्स।</p>
+<h2>1. आव्यूहों का परिचय</h2>
+<h3>1.1 संकल्पना एवं परिभाषा</h3>
+<div class="def"><b class="t">परिभाषा:</b> <b>आव्यूह</b> संख्याओं (या फलनों) की क्रमबद्ध आयताकार व्यवस्था है, जो <b>पंक्तियों</b> (क्षैतिज) तथा <b>स्तंभों</b> (ऊर्ध्वाधर) में सजी होती है और कोष्ठक [ ] या ( ) में लिखी जाती है। प्रत्येक संख्या एक <b>अवयव</b> कहलाती है।</div>
+<p>आव्यूह आँकड़ों को संक्षेप में रखते हैं, जैसे 3 विद्यार्थियों के 4 विषयों में अंक, या समीकरण निकाय के गुणांक।</p>
+<h3>1.2 संकेतन</h3>
+<div class="fig"><div class="figs"><div><svg viewBox="0 0 330 200" width="320" role="img" aria-label="आव्यूह की संरचना"><path class="br" d="M87 40H80V150H87M193 40H200V150H193"/><rect class="pu" x="86" y="86" width="108" height="26" rx="5" fill="#c0262d"/><rect class="pu" x="162" y="45" width="34" height="100" rx="5" fill="#1a3a8f"/><text x="98" y="77" font-size="15">a₁₁</text><text x="133" y="77" font-size="15">a₁₂</text><text x="168" y="77" font-size="15">a₁₃</text><text x="98" y="110" font-size="15">a₂₁</text><text x="133" y="110" font-size="15">a₂₂</text><text x="168" y="110" font-size="15">a₂₃</text><text x="98" y="143" font-size="15">a₃₁</text><text x="133" y="143" font-size="15">a₃₂</text><text x="168" y="143" font-size="15">a₃₃</text><rect x="165" y="90" width="30" height="20" rx="4" fill="none" stroke="#1d7a46" stroke-width="2.4"/><text x="2" y="110" font-size="14" style="fill:#c0262d">पंक्ति 2</text><text x="150" y="28" font-size="14" style="fill:#1a3a8f">स्तंभ 3</text><text x="205" y="170" font-size="14" style="fill:#1d7a46">अवयव a₂₃</text><text x="80" y="185" font-size="14">क्रम 3 × 3</text></svg><br><b>3×3 आव्यूह A = [aᵢⱼ]: पंक्तियाँ, स्तंभ तथा एक अवयव</b></div></div></div>
+<p>आव्यूहों को A, B, C जैसे बड़े अक्षरों से दर्शाते हैं। लिखते हैं <span class="m">A = [aᵢⱼ]<sub>m×n</sub></span>, जहाँ aᵢⱼ <b>i-वीं पंक्ति तथा j-वें स्तंभ</b> का अवयव है (पहला सूचकांक = पंक्ति, दूसरा = स्तंभ)। उदाहरण: a₂₃ दूसरी पंक्ति, तीसरे स्तंभ में है।</p>
+<h3>1.3 आव्यूह का क्रम</h3>
+<p>m पंक्तियों तथा n स्तंभों वाले आव्यूह का क्रम <b>m × n</b> (“m बाई n”) होता है और उसमें <b>mn</b> अवयव होते हैं। पंक्तियों की संख्या सदैव पहले लिखी जाती है। 2 × 3 आव्यूह में 6 अवयव होते हैं। यदि अवयव p संख्याओं के समुच्चय से लिए जाएँ तो m × n क्रम के आव्यूहों की संख्या <b>p<sup>mn</sup></b> होती है।</p>
+<h3>1.4 आव्यूहों की समानता</h3>
+<div class="def"><b class="t">परिभाषा:</b> A = [aᵢⱼ] तथा B = [bᵢⱼ] समान हैं यदि (i) उनका <b>क्रम समान</b> हो तथा (ii) <b>सभी i, j के लिए aᵢⱼ = bᵢⱼ</b>।</div>
+<h3>1.5 आव्यूहों के प्रकार</h3>
+<table><tr><th>प्रकार</th><th>अर्थ</th><th>उदाहरण</th></tr>
+<tr><td>पंक्ति आव्यूह</td><td>केवल एक पंक्ति, क्रम 1 × n</td><td>[2 5 7]</td></tr><tr><td>स्तंभ आव्यूह</td><td>केवल एक स्तंभ, क्रम m × 1</td><td>[1; 4; 9] (ऊपर-नीचे)</td></tr>
+<tr><td>वर्ग आव्यूह</td><td>m = n (क्रम n)</td><td>[[1,2],[3,4]]</td></tr><tr><td>आयताकार आव्यूह</td><td>m ≠ n</td><td>2 × 3 आव्यूह</td></tr>
+<tr><td>शून्य आव्यूह O</td><td>सभी अवयव 0</td><td>[[0,0],[0,0]]</td></tr>
+<tr><td>विकर्ण आव्यूह</td><td>वर्ग; i ≠ j के लिए aᵢⱼ = 0</td><td>[[3,0],[0,5]]</td></tr>
+<tr><td>अदिश आव्यूह</td><td>विकर्ण, जिसके सभी विकर्ण अवयव k हैं</td><td>[[4,0],[0,4]]</td></tr>
+<tr><td>तत्समक आव्यूह I</td><td>k = 1 वाला अदिश आव्यूह</td><td>[[1,0],[0,1]]</td></tr></table>
+<div class="key"><b class="t">क्रम:</b> तत्समक ⊂ अदिश ⊂ विकर्ण ⊂ वर्ग। वर्ग आव्यूह का <b>मुख्य विकर्ण</b> a₁₁, a₂₂, …, aₙₙ है। इनका योग <b>अनुरेख (trace)</b> कहलाता है। I के लिए AI = IA = A।</div>
+
+<h2>2. आव्यूहों पर संक्रियाएँ</h2>
+<h3>2.1 आव्यूहों का योग एवं अंतर</h3>
+<div class="def"><b class="t">नियम:</b> A ± B केवल तब परिभाषित है जब A तथा B का <b>क्रम समान</b> हो; <b>संगत</b> अवयवों को जोड़ें (या घटाएँ): (A ± B)ᵢⱼ = aᵢⱼ ± bᵢⱼ।</div>
+<h3>2.2 अदिश से गुणन</h3>
+<p>kA = [k·aᵢⱼ]: प्रत्येक अवयव को k से गुणा करें। साथ ही −A = (−1)A तथा A − B = A + (−B)।</p>
+<h3>2.3 आव्यूह योग के गुणधर्म</h3>
+<ul><li>क्रमविनिमेय: A + B = B + A। साहचर्य: (A + B) + C = A + (B + C)।</li><li>योज्य तत्समक: A + O = A। योज्य प्रतिलोम: A + (−A) = O।</li>
+<li>k(A + B) = kA + kB; (k + l)A = kA + lA; (kl)A = k(lA); 1·A = A।</li></ul>
+<h3>2.4 आव्यूहों का गुणन</h3>
+<div class="def"><b class="t">नियम:</b> AB तभी परिभाषित है जब <b>A के स्तंभों की संख्या = B की पंक्तियों की संख्या</b>। यदि A, m × n तथा B, n × p हो तो AB का क्रम <b>m × p</b> है और <span class="m">(AB)ᵢⱼ = aᵢ₁b₁ⱼ + aᵢ₂b₂ⱼ + … + aᵢₙbₙⱼ</span>।</div>
+<div class="fig"><div class="figs"><div><svg viewBox="0 0 390 200" width="380" role="img" aria-label="आव्यूहों का गुणन"><path class="br" d="M22 32H15V108H22M94 32H101V108H94"/><text x="31" y="67" font-size="17">1</text><text x="65" y="67" font-size="17">2</text><text x="31" y="101" font-size="17">3</text><text x="65" y="101" font-size="17">4</text><path class="br" d="M142 32H135V108H142M214 32H221V108H214"/><text x="151" y="67" font-size="17">5</text><text x="185" y="67" font-size="17">6</text><text x="151" y="101" font-size="17">7</text><text x="185" y="101" font-size="17">8</text><path class="br" d="M277 32H270V108H277M349 32H356V108H349"/><text x="286" y="67" font-size="17">19</text><text x="320" y="67" font-size="17">22</text><text x="286" y="101" font-size="17">43</text><text x="320" y="101" font-size="17">50</text><text x="108" y="75" font-size="22">×</text><text x="233" y="75" font-size="22">=</text><text x="38" y="26" font-size="13">A (2×2)</text><text x="158" y="26" font-size="13">B (2×2)</text><text x="285" y="26" font-size="13">AB (2×2)</text><g class="sh" style="animation-delay:0s"><rect x="25" y="48" width="66" height="26" rx="5" fill="#c0262d" fill-opacity=".3"/><rect x="143" y="38" width="30" height="64" rx="5" fill="#1a3a8f" fill-opacity=".3"/><rect x="278" y="48" width="30" height="26" rx="5" fill="#1d7a46" fill-opacity=".4"/><text x="95" y="150" font-size="16">पंक्ति 1, × स्तंभ 1:  1×5 + 2×7 = 19</text></g><g class="sh" style="animation-delay:2s"><rect x="25" y="48" width="66" height="26" rx="5" fill="#c0262d" fill-opacity=".3"/><rect x="177" y="38" width="30" height="64" rx="5" fill="#1a3a8f" fill-opacity=".3"/><rect x="312" y="48" width="30" height="26" rx="5" fill="#1d7a46" fill-opacity=".4"/><text x="95" y="150" font-size="16">पंक्ति 1, × स्तंभ 2:  1×6 + 2×8 = 22</text></g><g class="sh" style="animation-delay:4s"><rect x="25" y="82" width="66" height="26" rx="5" fill="#c0262d" fill-opacity=".3"/><rect x="143" y="38" width="30" height="64" rx="5" fill="#1a3a8f" fill-opacity=".3"/><rect x="278" y="82" width="30" height="26" rx="5" fill="#1d7a46" fill-opacity=".4"/><text x="95" y="150" font-size="16">पंक्ति 2, × स्तंभ 1:  3×5 + 4×7 = 43</text></g><g class="sh" style="animation-delay:6s"><rect x="25" y="82" width="66" height="26" rx="5" fill="#c0262d" fill-opacity=".3"/><rect x="177" y="38" width="30" height="64" rx="5" fill="#1a3a8f" fill-opacity=".3"/><rect x="312" y="82" width="30" height="26" rx="5" fill="#1d7a46" fill-opacity=".4"/><text x="95" y="150" font-size="16">पंक्ति 2, × स्तंभ 2:  3×6 + 4×8 = 50</text></g><text x="20" y="190" font-size="12">AB का प्रत्येक अवयव = (A की पंक्ति) × (B का स्तंभ), संगत अवयवों का गुणा करके जोड़ें।</text></svg><br><b>आव्यूह गुणन, अवयव-दर-अवयव</b></div></div></div>
+<p>“पंक्ति गुणा स्तंभ” सोचें: A की i-वीं पंक्ति तथा B का j-वाँ स्तंभ लें, संगत अवयव गुणा करें और जोड़ दें। पहले क्रम जाँचें: (m × n)(n × p) में बीच की संख्याएँ बराबर हों, बाहर की संख्याएँ उत्तर का क्रम देती हैं।</p>
+<h3>2.5 आव्यूह गुणन के गुणधर्म</h3>
+<ul><li>साहचर्य: (AB)C = A(BC)। वितरण: A(B + C) = AB + AC; (A + B)C = AC + BC।</li><li>तत्समक: AI = IA = A। A·O = O।</li><li>k(AB) = (kA)B = A(kB)।</li></ul>
+<h3>2.6 क्रमविनिमेयता का अभाव</h3>
+<div class="key"><b class="t">सामान्यतः AB ≠ BA।</b> AB परिभाषित होने पर भी BA परिभाषित न हो (क्रम मेल न खाएँ), या भिन्न क्रम का हो, या समान क्रम का होकर भी भिन्न अवयवों वाला हो। इसलिए (A + B)² = A² + AB + BA + B² (न कि A² + 2AB + B²), और सामान्यतः (AB)ᵏ ≠ AᵏBᵏ।</div>
+<h3>2.7 अशून्य आव्यूह जिनका गुणनफल शून्य आव्यूह हो</h3>
+<p>AB = O से यह निष्कर्ष <b>नहीं</b> निकलता कि A = O या B = O। उदाहरण: A = [[1,0],[0,0]], B = [[0,0],[0,1]]; दोनों अशून्य हैं फिर भी AB = O। इसी प्रकार AB = AC से B = C नहीं निकलता (काट-छाँट नियम लागू नहीं)।</p>
+
+<h2>3. आव्यूह का परिवर्त</h2>
+<h3>3.1 परिवर्त</h3>
+<div class="def"><b class="t">परिभाषा:</b> Aᵀ (या A′) पंक्तियों और स्तंभों को आपस में बदलने पर मिलता है। यदि A, m × n है तो Aᵀ, n × m है तथा (Aᵀ)ᵢⱼ = aⱼᵢ।</div>
+<div class="fig"><div class="figs"><div><svg viewBox="0 0 360 180" width="350" role="img" aria-label="परिवर्त"><defs><marker id="mt" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#c0262d"/></marker></defs><path class="br" d="M27 40H20V104H27M123 40H130V104H123"/><text x="38" y="66" font-size="17" style="fill:#c0262d">1</text><text x="72" y="66" font-size="17" style="fill:#c0262d">2</text><text x="106" y="66" font-size="17" style="fill:#c0262d">3</text><text x="38" y="96" font-size="17" style="fill:#1a3a8f">4</text><text x="72" y="96" font-size="17" style="fill:#1a3a8f">5</text><text x="106" y="96" font-size="17" style="fill:#1a3a8f">6</text><path class="br" d="M247 24H240V124H247M313 24H320V124H313"/><text x="258" y="52" font-size="17" style="fill:#c0262d">1</text><text x="292" y="52" font-size="17" style="fill:#1a3a8f">4</text><text x="258" y="82" font-size="17" style="fill:#c0262d">2</text><text x="292" y="82" font-size="17" style="fill:#1a3a8f">5</text><text x="258" y="112" font-size="17" style="fill:#c0262d">3</text><text x="292" y="112" font-size="17" style="fill:#1a3a8f">6</text><path class="ln" pathLength="100" marker-end="url(#mt)" d="M140 72Q190 72 232 72"/><text x="38" y="30" font-size="14">A (2×3)</text><text x="245" y="18" font-size="14">Aᵀ (3×2)</text><text x="150" y="62" font-size="13">पंक्तियाँ → स्तंभ</text><text x="20" y="145" font-size="13" style="fill:#c0262d">पंक्ति 1 → स्तंभ 1</text><text x="20" y="165" font-size="13" style="fill:#1a3a8f">पंक्ति 2 → स्तंभ 2</text></svg><br><b>परिवर्त: A की पंक्तियाँ, Aᵀ के स्तंभ बन जाती हैं</b></div></div></div>
+<h3>3.2 परिवर्त के गुणधर्म</h3>
+<ul><li>(Aᵀ)ᵀ = A &nbsp; (A + B)ᵀ = Aᵀ + Bᵀ &nbsp; (kA)ᵀ = kAᵀ</li><li><b>(AB)ᵀ = BᵀAᵀ</b> (क्रम उलट जाता है; (ABC)ᵀ = CᵀBᵀAᵀ भी)।</li></ul>
+<h3>3.3 सममित आव्यूह</h3>
+<div class="def"><b class="t">परिभाषा:</b> वह वर्ग आव्यूह जिसके लिए <span class="m">Aᵀ = A</span>, अर्थात् aᵢⱼ = aⱼᵢ। अवयव मुख्य विकर्ण के दोनों ओर दर्पण-प्रतिबिंब होते हैं।</div>
+<h3>3.4 विषम-सममित आव्यूह</h3>
+<div class="def"><b class="t">परिभाषा:</b> वह वर्ग आव्यूह जिसके लिए <span class="m">Aᵀ = −A</span>, अर्थात् aᵢⱼ = −aⱼᵢ। i = j रखने पर 2aᵢᵢ = 0, अतः <b>सभी विकर्ण अवयव 0</b> होते हैं।</div>
+<div class="key"><b class="t">प्रमेय:</b> (1) किसी भी वर्ग आव्यूह A के लिए A + Aᵀ सममित तथा A − Aᵀ विषम-सममित होता है। (2) प्रत्येक वर्ग आव्यूह को एक सममित तथा एक विषम-सममित आव्यूह के योग के रूप में अद्वितीय ढंग से लिखा जा सकता है: A = ½(A + Aᵀ) + ½(A − Aᵀ)।</div>
+
+<h2>4. प्रारंभिक संक्रियाएँ तथा प्रतिलोम</h2>
+<h3>4.1 प्रारंभिक पंक्ति संक्रियाएँ</h3>
+<p>तीन संक्रियाएँ (R से दर्शायी जाती हैं): (i) <b>अदल-बदल</b> Rᵢ ↔ Rⱼ; (ii) <b>गुणन</b> पंक्ति को अशून्य k से: Rᵢ → kRᵢ; (iii) <b>योग</b> किसी अन्य पंक्ति का गुणज जोड़ना: Rᵢ → Rᵢ + kRⱼ।</p>
+<h3>4.2 प्रारंभिक स्तंभ संक्रियाएँ</h3>
+<p>स्तंभों पर वही तीन संक्रियाएँ: Cᵢ ↔ Cⱼ, Cᵢ → kCᵢ, Cᵢ → Cᵢ + kCⱼ।</p>
+<h3>4.3 व्युत्क्रमणीय आव्यूह तथा प्रतिलोम</h3>
+<div class="def"><b class="t">परिभाषा:</b> n क्रम का वर्ग आव्यूह A <b>व्युत्क्रमणीय</b> है यदि उसी क्रम का वर्ग आव्यूह B ऐसा हो कि <span class="m">AB = BA = I</span>। तब B = A⁻¹।</div>
+<ul><li>केवल वर्ग आव्यूह व्युत्क्रमणीय हो सकते हैं; सभी वर्ग आव्यूह नहीं होते (जैसे O)।</li><li>(AB)⁻¹ = B⁻¹A⁻¹; (A⁻¹)⁻¹ = A; (Aᵀ)⁻¹ = (A⁻¹)ᵀ।</li></ul>
+<h3>4.4 प्रतिलोम की अद्वितीयता</h3>
+<div class="key"><b class="t">प्रमेय:</b> वर्ग आव्यूह का प्रतिलोम, यदि विद्यमान हो, अद्वितीय होता है।<br><b>उपपत्ति:</b> माना B तथा C दोनों A के प्रतिलोम हैं। तब B = BI = B(AC) = (BA)C = IC = C। ∎</div>
+<h3>4.5 प्रारंभिक संक्रियाओं से प्रतिलोम ज्ञात करना</h3>
+<p>A = IA लिखें और बाएँ पक्ष में A पर तथा दाएँ पक्ष में पूर्व-गुणक I पर <b>केवल पंक्ति संक्रियाएँ</b> साथ-साथ तब तक करें जब तक A, I न बन जाए: तब I = BA और B = A⁻¹। (या A = AI से केवल स्तंभ संक्रियाएँ।) <b>पंक्ति और स्तंभ संक्रियाएँ कभी मिलाएँ नहीं।</b> यदि बाएँ पक्ष में कोई पूरी पंक्ति शून्य हो जाए तो A⁻¹ विद्यमान नहीं है।</p>
+
+<h2>5. हल किए गए उदाहरण</h2>
+<div class="ex"><span class="lvl">सरल</span> <b class="t">उदा. 1.</b> aᵢⱼ = 2i − j वाला 2 × 2 आव्यूह बनाइए।<br><b>हल:</b> a₁₁ = 2 − 1 = 1; a₁₂ = 2 − 2 = 0; a₂₁ = 4 − 1 = 3; a₂₂ = 4 − 2 = 2। अतः A = [[1, 0], [3, 2]]।</div>
+<div class="ex"><span class="lvl">सरल</span> <b class="t">उदा. 2.</b> यदि [[x + y, 2], [5, 8]] = [[6, 2], [5, xy]] तो x, y ज्ञात कीजिए।<br><b>हल:</b> समान आव्यूहों से x + y = 6 तथा xy = 8। तब x, y समीकरण t² − 6t + 8 = 0 के मूल हैं ⇒ t = 2, 4। अतः (x, y) = (2, 4) या (4, 2)।</div>
+<div class="ex"><span class="lvl">सरल</span> <b class="t">उदा. 3.</b> A = [[1,2],[3,4]], B = [[5,6],[7,8]] हो तो A + B तथा 2A − B ज्ञात कीजिए।<br><b>हल:</b> A + B = [[6, 8], [10, 12]]। 2A = [[2,4],[6,8]], अतः 2A − B = [[−3, −2], [−1, 0]]।</div>
+<div class="ex"><span class="lvl">मध्यम</span> <b class="t">उदा. 4.</b> उदा. 3 के A, B के लिए AB ज्ञात कीजिए।<br><b>हल:</b> क्रम 2×2 तथा 2×2 ⇒ AB, 2×2 होगा। (1,1): 1·5 + 2·7 = 19; (1,2): 1·6 + 2·8 = 22; (2,1): 3·5 + 4·7 = 43; (2,2): 3·6 + 4·8 = 50। AB = [[19, 22], [43, 50]]।</div>
+<div class="ex"><span class="lvl">मध्यम</span> <b class="t">उदा. 5.</b> A = [[1,2],[3,4]], B = [[0,1],[1,0]]। दिखाइए कि AB ≠ BA।<br><b>हल:</b> AB = [[1·0+2·1, 1·1+2·0],[3·0+4·1, 3·1+4·0]] = [[2, 1], [4, 3]]। BA = [[0·1+1·3, 0·2+1·4],[1·1+0·3, 1·2+0·4]] = [[3, 4], [1, 2]]। दोनों आव्यूह भिन्न हैं, अतः AB ≠ BA।</div>
+<div class="ex"><span class="lvl">मध्यम</span> <b class="t">उदा. 6.</b> यदि A = [[1,2],[2,1]] तो सिद्ध कीजिए A² − 2A − 3I = O।<br><b>हल:</b> A² = [[1+4, 2+2],[2+2, 4+1]] = [[5,4],[4,5]]। 2A = [[2,4],[4,2]], 3I = [[3,0],[0,3]]। A² − 2A − 3I = [[5−2−3, 4−4−0],[4−4−0, 5−2−3]] = O। ∎</div>
+<div class="ex"><span class="lvl">मध्यम</span> <b class="t">उदा. 7.</b> A = [[3,5],[1,−1]] को एक सममित तथा एक विषम-सममित आव्यूह के योग के रूप में व्यक्त कीजिए।<br><b>हल:</b> Aᵀ = [[3,1],[5,−1]]। P = ½(A + Aᵀ) = [[3,3],[3,−1]] (सममित)। Q = ½(A − Aᵀ) = [[0,2],[−2,0]] (विषम-सममित)। जाँच: P + Q = [[3,5],[1,−1]] = A ✔।</div>
+<div class="ex"><span class="lvl">कठिन</span> <b class="t">उदा. 8.</b> सिद्ध कीजिए (AB)ᵀ = BᵀAᵀ।<br><b>उपपत्ति:</b> माना A, m × n तथा B, n × p है। (AB)ᵀ, p × m है। इसका (i, j) अवयव = (AB)ⱼᵢ = Σₖ aⱼₖbₖᵢ। साथ ही BᵀAᵀ का क्रम (p × n)(n × m) = p × m है, और उसका (i, j) अवयव = Σₖ (Bᵀ)ᵢₖ(Aᵀ)ₖⱼ = Σₖ bₖᵢaⱼₖ। सभी i, j के लिए दोनों बराबर हैं। ∎</div>
+<div class="ex"><span class="lvl">कठिन</span> <b class="t">उदा. 9.</b> प्रारंभिक पंक्ति संक्रियाओं से A = [[2,1],[1,1]] का प्रतिलोम ज्ञात कीजिए।<br><b>हल:</b> A = IA लिखें: [[2,1],[1,1]] = [[1,0],[0,1]]A।<br>R₁ → R₁ − R₂: [[1,0],[1,1]] = [[1,−1],[0,1]]A।<br>R₂ → R₂ − R₁: [[1,0],[0,1]] = [[1,−1],[−1,2]]A।<br>अतः <b>A⁻¹ = [[1,−1],[−1,2]]</b>। जाँच: A·A⁻¹ = [[2−1, −2+2],[1−1, −1+2]] = I ✔।</div>
+<div class="ex"><span class="lvl">कठिन</span> <b class="t">उदा. 10.</b> A = [[cos θ, sin θ],[−sin θ, cos θ]]। दिखाइए AAᵀ = I।<br><b>हल:</b> Aᵀ = [[cos θ, −sin θ],[sin θ, cos θ]]। AAᵀ = [[cos²θ + sin²θ, −cos θ sin θ + sin θ cos θ],[−sin θ cos θ + cos θ sin θ, sin²θ + cos²θ]] = [[1,0],[0,1]] = I। ∎</div>
+
+<h2>6. लघु एवं दीर्घ प्रश्नोत्तर (उत्तर देखने के लिए दबाएँ)</h2>
+<details><summary>प्र.1. 3 × 4 आव्यूह में कितने अवयव होते हैं?</summary><p class="ans">3 × 4 = 12।</p></details>
+<details><summary>प्र.2. क्या प्रत्येक तत्समक आव्यूह अदिश आव्यूह होता है? क्या विलोम सत्य है?</summary><p class="ans">हाँ, I एक अदिश आव्यूह है (k = 1)। विलोम असत्य है: [[4,0],[0,4]] अदिश है परंतु तत्समक नहीं।</p></details>
+<details><summary>प्र.3. AB कब परिभाषित होता है? उसका क्रम क्या होगा?</summary><p class="ans">जब A के स्तंभों की संख्या = B की पंक्तियों की संख्या। A (m × n) तथा B (n × p) के लिए AB का क्रम m × p होगा।</p></details>
+<details><summary>प्र.4. A, 2 × 3 तथा B, 3 × 2 है। क्या AB और BA दोनों विद्यमान हैं?</summary><p class="ans">हाँ। AB, 2 × 2 तथा BA, 3 × 3 है, अतः वे निश्चित ही असमान हैं।</p></details>
+<details><summary>प्र.5. विषम-सममित आव्यूह के विकर्ण अवयव शून्य क्यों होते हैं?</summary><p class="ans">Aᵀ = −A से aᵢᵢ = −aᵢᵢ, अतः 2aᵢᵢ = 0 और aᵢᵢ = 0।</p></details>
+<details><summary>प्र.6. दीर्घ: दिखाइए A + Aᵀ सममित तथा A − Aᵀ विषम-सममित है।</summary><p class="ans">(A + Aᵀ)ᵀ = Aᵀ + (Aᵀ)ᵀ = Aᵀ + A = A + Aᵀ ⇒ सममित। (A − Aᵀ)ᵀ = Aᵀ − A = −(A − Aᵀ) ⇒ विषम-सममित। ∎</p></details>
+<details><summary>प्र.7. सिद्ध कीजिए (AB)⁻¹ = B⁻¹A⁻¹।</summary><p class="ans">(AB)(B⁻¹A⁻¹) = A(BB⁻¹)A⁻¹ = AIA⁻¹ = AA⁻¹ = I, और इसी प्रकार (B⁻¹A⁻¹)(AB) = I। प्रतिलोम की अद्वितीयता से (AB)⁻¹ = B⁻¹A⁻¹। ∎</p></details>
+<details><summary>प्र.8. यदि AB = O हो तो क्या A या B का O होना आवश्यक है?</summary><p class="ans">नहीं। A = [[1,0],[0,0]], B = [[0,0],[0,1]] के लिए AB = O जबकि A ≠ O, B ≠ O।</p></details>
+
+<h2>7. बहुविकल्पीय प्रश्न</h2>
+<details><summary>1. यदि A, 3 × 2 तथा B, 2 × 4 हो तो AB का क्रम: (a) 3 × 4 (b) 2 × 2 (c) 4 × 3 (d) परिभाषित नहीं</summary><p class="ans">(a) 3 × 4।</p></details>
+<details><summary>2. विषम-सममित आव्यूह के विकर्ण अवयव होते हैं: (a) 1 (b) 0 (c) समान (d) कुछ भी</summary><p class="ans">(b) 0।</p></details>
+<details><summary>3. (AB)ᵀ = ? (a) AᵀBᵀ (b) BᵀAᵀ (c) AB (d) BA</summary><p class="ans">(b) BᵀAᵀ।</p></details>
+<details><summary>4. 0 या 1 अवयवों वाले 2 × 2 आव्यूहों की संख्या: (a) 4 (b) 8 (c) 16 (d) 2</summary><p class="ans">(c) 2⁴ = 16।</p></details>
+<details><summary>5. आव्यूह का प्रतिलोम, यदि हो, होता है: (a) अनेक (b) अद्वितीय (c) सदैव I (d) सदैव O</summary><p class="ans">(b) अद्वितीय।</p></details>
+<p><i>यह मुख्य संस्करण है। 100+ और प्रश्नोत्तर, MCQ तथा उदाहरणों (3 × 3 का प्रतिलोम, स्तंभ संक्रियाएँ, और प्रमेय) के लिए “भाग 2” माँगिए।</i></p>
+</main></body></html>

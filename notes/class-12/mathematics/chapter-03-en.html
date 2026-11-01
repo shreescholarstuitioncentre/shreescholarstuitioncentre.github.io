@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Class 12 Maths – Chapter 2: Binary Operations</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#fbfcff;--line:#cfe0f5;--ink:#1a3a8f;--red:#c0262d;--grn:#1d7a46;--txt:#1d2433;--box:#fff8d6;--box2:#e8f6ee;--box3:#fde9ea}
+@media(prefers-color-scheme:dark){:root{--paper:#171b26;--line:#26304a;--ink:#8fb0ff;--red:#ff8087;--grn:#6fd69b;--txt:#e6e9f2;--box:#3a3516;--box2:#16342a;--box3:#3b1d22}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--txt);font-family:'Kalam','Segoe Print','Noto Sans Devanagari',cursive;font-size:18px;line-height:32px;
+background-image:repeating-linear-gradient(transparent 0 31px,var(--line) 31px 32px);padding:env(safe-area-inset-top,0px) 14px env(safe-area-inset-bottom,0px) 56px;border-left:3px double var(--red);margin-left:10px}
+main{max-width:860px;margin:auto}
+h1{font-size:2.1rem;color:var(--ink);line-height:44px;margin:24px 0 0;text-decoration:underline wavy var(--red) 1px;text-underline-offset:8px}
+h2{color:var(--red);font-size:1.5rem;margin:40px 0 0;border-bottom:2px solid var(--red);display:inline-block}
+h3{color:var(--ink);font-size:1.2rem;margin:20px 0 0}
+p,ul,ol{margin:0 0 0}ul,ol{padding-left:26px}
+.def,.ex,.key{margin:16px 0;padding:6px 14px;border-radius:6px 14px 8px 12px;border:2px solid var(--ink)}
+.def{background:var(--box)}.ex{background:var(--box2);border-color:var(--grn)}.key{background:var(--box3);border-color:var(--red)}
+.def b.t,.ex b.t,.key b.t{color:var(--red)}
+.m{font-family:'Kalam',serif;color:var(--ink);white-space:nowrap}
+.fig{margin:16px 0;text-align:center;border:2px dashed var(--ink);border-radius:10px;padding:8px;line-height:24px}
+.figs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+svg text{font-family:'Kalam',cursive;fill:var(--txt)}svg .ell{fill:none;stroke:var(--ink);stroke-width:2}
+svg .ln{stroke:var(--red);stroke-width:2.2;fill:none;stroke-dasharray:100;stroke-dashoffset:100;animation:dr 6s ease-in-out infinite}
+@keyframes dr{0%{stroke-dashoffset:100}35%,90%{stroke-dashoffset:0}100%{stroke-dashoffset:100}}
+@media(prefers-reduced-motion:reduce){svg .ln{animation:none;stroke-dashoffset:0}}
+table{border-collapse:collapse;margin:12px 0;line-height:26px}td,th{border:1.5px solid var(--ink);padding:2px 10px}th{background:var(--box)}
+details{margin:10px 0;border-left:4px solid var(--grn);padding-left:12px}summary{cursor:pointer;color:var(--ink);font-weight:700}
+.ans{color:var(--grn)}.lvl{display:inline-block;padding:0 10px;border-radius:12px;background:var(--red);color:#fff;font-size:.85rem;line-height:22px}
+.tag{color:#fff;background:var(--ink);padding:0 8px;border-radius:8px;font-size:.8rem}
+@media(max-width:600px){body{font-size:16px;padding-left:40px}}
+
+.hl{background:var(--box3);animation:p 2.4s ease-in-out infinite}@keyframes p{50%{background:var(--box)}}
+@media(prefers-reduced-motion:reduce){.hl{animation:none}}
+svg .box{fill:var(--box);stroke:var(--ink);stroke-width:2}
+</style></head><body><main>
+<h1>Chapter 2: Binary Operations</h1><p>UP Board / NCERT – simple notes with figures, solved examples, Q&amp;A and MCQs.</p>
+<h2>1. Binary Operations</h2>
+<h3>1.1 Definition</h3>
+<div class="def"><b class="t">Definition:</b> A <b>binary operation ∗</b> on a non-empty set A is a function <span class="m">∗ : A × A → A</span>. It takes two elements a, b of A and gives one element a ∗ b, which must also be in A.</div>
+<div class="fig"><div class="figs"><div><svg viewBox="0 0 300 170" width="290" role="img" aria-label="Binary operation machine"><defs><marker id="m1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#c0262d"/></marker></defs><circle cx="30" cy="55" r="16" class="box"/><text x="26" y="60" font-size="16">a</text><circle cx="30" cy="125" r="16" class="box"/><text x="26" y="130" font-size="16">b</text><rect x="115" y="50" width="70" height="80" rx="8" class="box"/><text x="142" y="100" font-size="30" fill="#c0262d" style="fill:#c0262d">∗</text><ellipse cx="255" cy="90" rx="38" ry="22" class="box"/><text x="237" y="96" font-size="15">a ∗ b</text><path class="ln" pathLength="100" marker-end="url(#m1)" style="animation-delay:0s" d="M48 58L112 80"/><path class="ln" pathLength="100" marker-end="url(#m1)" style="animation-delay:0.6s" d="M48 122L112 100"/><path class="ln" pathLength="100" marker-end="url(#m1)" style="animation-delay:1.3s" d="M187 90L214 90"/><text x="10" y="18" font-size="13">two inputs</text><text x="104" y="148" font-size="13">operation</text><text x="222" y="130" font-size="13">one output</text></svg><br><b>Binary operation: two inputs, one output</b></div></div></div>
+<p>“Binary” means <i>two</i> inputs. Usual operations +, −, ×, ÷ are binary operations on suitable sets. Other operations can be defined by a rule, e.g. a ∗ b = a + b − ab or a ∗ b = |a − b|.</p>
+<h3>1.2 Binary Operation on a Set – Examples</h3>
+<table><tr><th>Operation</th><th>Set</th><th>Binary operation?</th><th>Reason</th></tr>
+<tr><td>+</td><td>N, Z, R</td><td>Yes</td><td>sum of two members is a member</td></tr>
+<tr><td>−</td><td>N</td><td>No</td><td>2 − 5 = −3 ∉ N</td></tr><tr><td>−</td><td>Z</td><td>Yes</td><td>difference of integers is an integer</td></tr>
+<tr><td>÷</td><td>N</td><td>No</td><td>2 ÷ 5 ∉ N</td></tr><tr><td>÷</td><td>R</td><td>No</td><td>a ÷ 0 undefined</td></tr><tr><td>÷</td><td>R − {0}</td><td>Yes</td><td>quotient is non-zero real</td></tr></table>
+<div class="key"><b class="t">Counting:</b> if n(A) = n, number of binary operations on A = <b>n<sup>n²</sup></b>; number of <b>commutative</b> ones = <b>n<sup>n(n+1)/2</sup></b>. (A × A has n² pairs, each can go to any of n elements.)</div>
+<h3>1.3 Closure Property</h3>
+<div class="def"><b class="t">Definition:</b> A is <b>closed</b> under ∗ if <span class="m">a ∗ b ∈ A for all a, b ∈ A</span>. Closure is the same as saying ∗ is a binary operation on A.</div>
+<div class="fig"><div class="figs"><div><svg viewBox="0 0 280 170" width="270" role="img" aria-label="Closure ok"><defs><marker id="m2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#c0262d"/></marker></defs><ellipse class="ell" cx="100" cy="90" rx="80" ry="62"/><text x="20" y="40" font-size="16">A</text><circle cx="60" cy="70" r="3" fill="#1a3a8f"/><text x="48" y="64" font-size="14">a</text><circle cx="60" cy="115" r="3" fill="#1a3a8f"/><text x="48" y="135" font-size="14">b</text><circle cx="140" cy="92" r="3" fill="#1d7a46"/><text x="128" y="86" font-size="14">a∗b</text><path class="ln" pathLength="100" marker-end="url(#m2)" style="animation-delay:0s" d="M64 72L136 90"/><path class="ln" pathLength="100" marker-end="url(#m2)" style="animation-delay:0.5s" d="M64 113L136 94"/><text x="190" y="95" font-size="16" style="fill:#1d7a46">Closed ✔</text></svg><br><b>Closed: a∗b stays in A</b></div><div><svg viewBox="0 0 280 170" width="270" role="img" aria-label="Not closed"><defs><marker id="m3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#c0262d"/></marker></defs><ellipse class="ell" cx="100" cy="90" rx="80" ry="62"/><text x="20" y="40" font-size="16">A</text><circle cx="60" cy="70" r="3" fill="#1a3a8f"/><text x="48" y="64" font-size="14">a</text><circle cx="60" cy="115" r="3" fill="#1a3a8f"/><text x="48" y="135" font-size="14">b</text><circle cx="235" cy="92" r="3" fill="#c0262d"/><text x="215" y="86" font-size="14">a∗b</text><path class="ln" pathLength="100" marker-end="url(#m3)" style="animation-delay:0s" d="M64 72L230 90"/><path class="ln" pathLength="100" marker-end="url(#m3)" style="animation-delay:0.5s" d="M64 113L230 94"/><text x="150" y="160" font-size="15" style="fill:#c0262d">Not closed ✘ (output outside A)</text></svg><br><b>Not closed: a∗b leaves A</b></div></div></div>
+<p><b>How to check:</b> take a, b ∈ A, compute a ∗ b, and see whether it always lies in A. To disprove, give one pair whose result lies outside A.</p>
+<h3>1.4 Commutative Binary Operation</h3>
+<div class="def"><b class="t">Definition:</b> ∗ is commutative if <span class="m">a ∗ b = b ∗ a for all a, b ∈ A</span>.</div>
+<p>+ and × are commutative on N, Z, R. − and ÷ are not (3 − 2 ≠ 2 − 3). <b>To disprove</b>, one counter-example is enough.</p>
+<h3>1.5 Associative Binary Operation</h3>
+<div class="def"><b class="t">Definition:</b> ∗ is associative if <span class="m">(a ∗ b) ∗ c = a ∗ (b ∗ c) for all a, b, c ∈ A</span>.</div>
+<p>+ and × are associative. − is not: (8 − 3) − 2 = 3 but 8 − (3 − 2) = 7. Find LHS and RHS separately and compare.</p>
+<h3>1.6 Identity Element</h3>
+<div class="def"><b class="t">Definition:</b> e ∈ A is the identity for ∗ if <span class="m">a ∗ e = e ∗ a = a for all a ∈ A</span>.</div>
+<ul><li>Identity for + is 0; for × is 1; for ∗ defined as a ∗ b = a + b − ab it is 0.</li><li><b>Identity, if it exists, is unique.</b> (If e and e′ are identities, e = e ∗ e′ = e′.)</li>
+<li><b>Method:</b> put a ∗ e = a and solve for e; then check e ∗ a = a also holds and e ∈ A.</li><li>− on Z has no identity: a − 0 = a but 0 − a ≠ a.</li></ul>
+<h3>1.7 Inverse of an Element</h3>
+<div class="def"><b class="t">Definition:</b> Let e be the identity. b ∈ A is the inverse of a if <span class="m">a ∗ b = b ∗ a = e</span>. We write b = a⁻¹.</div>
+<ul><li>Inverse exists only if the identity exists.</li><li>For an associative operation, inverse of an element is unique.</li><li>Under +, inverse of a is −a; under ×, inverse of a is 1/a (a ≠ 0). In Z under ×, only 1 and −1 have inverses.</li>
+<li><b>Method:</b> solve a ∗ b = e for b and check b ∈ A.</li></ul>
+<div class="fig"><div class="figs"><div><table style="margin:auto"><tr><th>+₄</th><th class="hl">0</th><th class="">1</th><th class="">2</th><th class="">3</th></tr><tr><th class="hl">0</th><td class="hl">0</td><td class="hl">1</td><td class="hl">2</td><td class="hl">3</td></tr><tr><th class="">1</th><td class="hl">1</td><td class="">2</td><td class="">3</td><td class="">0</td></tr><tr><th class="">2</th><td class="hl">2</td><td class="">3</td><td class="">0</td><td class="">1</td></tr><tr><th class="">3</th><td class="hl">3</td><td class="">0</td><td class="">1</td><td class="">2</td></tr></table><p><small>Row and column of 0 repeat the headings, so 0 is the identity. Each 0 in the table gives a pair of inverses.</small></p><br><b>Operation table of addition modulo 4 on {0,1,2,3}</b></div></div></div>
+<h3>1.8 Checking Properties – Step by Step</h3>
+<div class="key"><ol><li>Closure: is a ∗ b ∈ A always?</li><li>Commutative: compare a ∗ b and b ∗ a.</li><li>Associative: compute (a ∗ b) ∗ c and a ∗ (b ∗ c).</li><li>Identity: solve a ∗ e = a.</li><li>Inverse: solve a ∗ b = e.</li></ol></div>
+
+<h2>2. Solved Examples</h2>
+<div class="ex"><span class="lvl">Easy</span> <b class="t">Ex 1.</b> Is − a binary operation on N?<br><b>Solution:</b> Take 2, 5 ∈ N. 2 − 5 = −3 ∉ N. Not closed, so <b>not a binary operation</b>.</div>
+<div class="ex"><span class="lvl">Easy</span> <b class="t">Ex 2.</b> Is a ∗ b = a² + b² commutative on R?<br><b>Solution:</b> b ∗ a = b² + a² = a² + b² = a ∗ b. Yes, commutative.</div>
+<div class="ex"><span class="lvl">Easy</span> <b class="t">Ex 3.</b> How many binary operations on {1,2,3}? How many commutative?<br><b>Solution:</b> n = 3. Total = 3⁹ = 19683. Commutative = 3<sup>3·4/2</sup> = 3⁶ = 729.</div>
+<div class="ex"><span class="lvl">Medium</span> <b class="t">Ex 4.</b> On R, a ∗ b = a + b − ab. Show it is commutative and associative; find identity and inverse.<br>
+<b>Solution:</b> Commutative: b ∗ a = b + a − ba = a ∗ b.<br>
+Associative: (a ∗ b) ∗ c = (a + b − ab) + c − (a + b − ab)c = a + b + c − ab − bc − ca + abc. a ∗ (b ∗ c) gives the same expression. So associative.<br>
+Identity: a ∗ e = a ⇒ a + e − ae = a ⇒ e(1 − a) = 0 ⇒ e = 0. Also 0 ∗ a = a.<br>
+Inverse: a ∗ b = 0 ⇒ a + b − ab = 0 ⇒ b(1 − a) = −a ⇒ b = a/(a − 1). Exists for a ≠ 1; so 1 has no inverse.</div>
+<div class="ex"><span class="lvl">Medium</span> <b class="t">Ex 5.</b> On R − {−1}, a ∗ b = a + b + ab. Show ∗ is a binary operation; find identity and inverse.<br>
+<b>Solution:</b> Note a + b + ab = (a + 1)(b + 1) − 1. If it were −1, then (a + 1)(b + 1) = 0, impossible as a, b ≠ −1. So closed.<br>Identity: a + e + ae = a ⇒ e(1 + a) = 0 ⇒ e = 0.<br>Inverse: a + b + ab = 0 ⇒ b = −a/(1 + a), which is ≠ −1 and exists since a ≠ −1.</div>
+<div class="ex"><span class="lvl">Hard</span> <b class="t">Ex 6.</b> On W (whole numbers), a ∗ b = |a − b|. Check all properties.<br>
+<b>Solution:</b> Closed: |a − b| ≥ 0 is a whole number. Commutative: |a − b| = |b − a|.<br>Not associative: (1 ∗ 2) ∗ 3 = 1 ∗ 3 = 2, but 1 ∗ (2 ∗ 3) = 1 ∗ 1 = 0.<br>Identity: a ∗ 0 = |a| = a and 0 ∗ a = a, so e = 0.<br>Inverse: a ∗ a = 0, so every element is its own inverse.</div>
+<div class="ex"><span class="lvl">Hard</span> <b class="t">Ex 7.</b> On Q⁺, a ∗ b = ab/4. Find identity and inverse of a.<br>
+<b>Solution:</b> Associative: (a ∗ b) ∗ c = abc/16 = a ∗ (b ∗ c).<br>Identity: ae/4 = a ⇒ e = 4. Inverse: ab/4 = 4 ⇒ b = 16/a ∈ Q⁺.</div>
+
+<h2>3. Short &amp; Long Q&amp;A (tap to see answer)</h2>
+<details><summary>Q1. Define a binary operation.</summary><p class="ans">A function ∗ : A × A → A; every ordered pair of A is sent to a unique element of A.</p></details>
+<details><summary>Q2. Is ÷ a binary operation on Z? Why?</summary><p class="ans">No. 1 ÷ 2 ∉ Z, and division by 0 is undefined.</p></details>
+<details><summary>Q3. Show that identity element is unique.</summary><p class="ans">Let e, e′ be identities. Then e ∗ e′ = e′ (since e is identity) and e ∗ e′ = e (since e′ is identity). So e = e′.</p></details>
+<details><summary>Q4. Does − on Z have an identity?</summary><p class="ans">No. a − e = a gives e = 0, but 0 − a = −a ≠ a. 0 is only a right identity.</p></details>
+<details><summary>Q5. Is a ∗ b = a on N commutative?</summary><p class="ans">No. 2 ∗ 3 = 2 but 3 ∗ 2 = 3. It is associative though: (a ∗ b) ∗ c = a = a ∗ (b ∗ c).</p></details>
+<details><summary>Q6. Long: show inverse is unique for an associative ∗ with identity e.</summary><p class="ans">Let b and c both be inverses of a. b = b ∗ e = b ∗ (a ∗ c) = (b ∗ a) ∗ c = e ∗ c = c. ∎</p></details>
+<details><summary>Q7. Find the identity of ∗ on Z: a ∗ b = a + b + 1.</summary><p class="ans">a + e + 1 = a ⇒ e = −1. Inverse of a: a + b + 1 = −1 ⇒ b = −a − 2.</p></details>
+<details><summary>Q8. Is ∗ on N, a ∗ b = LCM(a, b), associative? Identity?</summary><p class="ans">Yes, associative (LCM of three numbers). Identity is 1 since LCM(a, 1) = a. Only 1 has an inverse.</p></details>
+
+<h2>4. MCQs</h2>
+<details><summary>1. Number of binary operations on a set of 2 elements: (a) 4 (b) 8 (c) 16 (d) 2</summary><p class="ans">(c) 2⁴ = 16.</p></details>
+<details><summary>2. Number of commutative binary operations on a 3-element set: (a) 9 (b) 81 (c) 729 (d) 19683</summary><p class="ans">(c) 3⁶ = 729.</p></details>
+<details><summary>3. Identity of ∗ on R, a ∗ b = a + b − ab: (a) 1 (b) 0 (c) −1 (d) none</summary><p class="ans">(b) 0.</p></details>
+<details><summary>4. Which is NOT associative on R: (a) + (b) × (c) − (d) max</summary><p class="ans">(c) subtraction.</p></details>
+<details><summary>5. Inverse of 2 under a ∗ b = ab/4 on Q⁺: (a) 2 (b) 4 (c) 8 (d) 1/2</summary><p class="ans">(c) 2b/4 = 4 ⇒ b = 8.</p></details>
+<p><i>This is the core version. Ask for “Part 2” for 100+ more Q&amp;A, MCQs and examples.</i></p>
+</main></body></html>

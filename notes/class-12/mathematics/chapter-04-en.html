@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Class 12 Maths – Chapter 4: Matrices</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#fbfcff;--line:#cfe0f5;--ink:#1a3a8f;--red:#c0262d;--grn:#1d7a46;--txt:#1d2433;--box:#fff8d6;--box2:#e8f6ee;--box3:#fde9ea}
+@media(prefers-color-scheme:dark){:root{--paper:#171b26;--line:#26304a;--ink:#8fb0ff;--red:#ff8087;--grn:#6fd69b;--txt:#e6e9f2;--box:#3a3516;--box2:#16342a;--box3:#3b1d22}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--txt);font-family:'Kalam','Segoe Print','Noto Sans Devanagari',cursive;font-size:18px;line-height:32px;
+background-image:repeating-linear-gradient(transparent 0 31px,var(--line) 31px 32px);padding:env(safe-area-inset-top,0px) 14px env(safe-area-inset-bottom,0px) 56px;border-left:3px double var(--red);margin-left:10px}
+main{max-width:860px;margin:auto}
+h1{font-size:2.1rem;color:var(--ink);line-height:44px;margin:24px 0 0;text-decoration:underline wavy var(--red) 1px;text-underline-offset:8px}
+h2{color:var(--red);font-size:1.5rem;margin:40px 0 0;border-bottom:2px solid var(--red);display:inline-block}
+h3{color:var(--ink);font-size:1.2rem;margin:20px 0 0}
+p,ul,ol{margin:0 0 0}ul,ol{padding-left:26px}
+.def,.ex,.key{margin:16px 0;padding:6px 14px;border-radius:6px 14px 8px 12px;border:2px solid var(--ink)}
+.def{background:var(--box)}.ex{background:var(--box2);border-color:var(--grn)}.key{background:var(--box3);border-color:var(--red)}
+.def b.t,.ex b.t,.key b.t{color:var(--red)}
+.m{font-family:'Kalam',serif;color:var(--ink);white-space:nowrap}
+.fig{margin:16px 0;text-align:center;border:2px dashed var(--ink);border-radius:10px;padding:8px;line-height:24px}
+.figs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+svg text{font-family:'Kalam',cursive;fill:var(--txt)}svg .ell{fill:none;stroke:var(--ink);stroke-width:2}
+svg .ln{stroke:var(--red);stroke-width:2.2;fill:none;stroke-dasharray:100;stroke-dashoffset:100;animation:dr 6s ease-in-out infinite}
+@keyframes dr{0%{stroke-dashoffset:100}35%,90%{stroke-dashoffset:0}100%{stroke-dashoffset:100}}
+@media(prefers-reduced-motion:reduce){svg .ln{animation:none;stroke-dashoffset:0}}
+table{border-collapse:collapse;margin:12px 0;line-height:26px}td,th{border:1.5px solid var(--ink);padding:2px 10px}th{background:var(--box)}
+details{margin:10px 0;border-left:4px solid var(--grn);padding-left:12px}summary{cursor:pointer;color:var(--ink);font-weight:700}
+.ans{color:var(--grn)}.lvl{display:inline-block;padding:0 10px;border-radius:12px;background:var(--red);color:#fff;font-size:.85rem;line-height:22px}
+.tag{color:#fff;background:var(--ink);padding:0 8px;border-radius:8px;font-size:.8rem}
+@media(max-width:600px){body{font-size:16px;padding-left:40px}}
+
+svg .pu{fill-opacity:.35;animation:pu 3s ease-in-out infinite}@keyframes pu{50%{fill-opacity:.08}}
+svg .sh{opacity:0;animation:sh 8s infinite}@keyframes sh{0%,24%{opacity:1}25%,100%{opacity:0}}
+svg .br{fill:none;stroke:var(--txt);stroke-width:2}
+@media(prefers-reduced-motion:reduce){svg .pu{animation:none}svg .sh{animation:none;opacity:.5}}
+</style></head><body><main>
+<h1>Chapter 4: Matrices</h1><p>UP Board / NCERT – notes with animated figures, formulas, solved examples, Q&amp;A and MCQs.</p>
+<h2>1. Introduction to Matrices</h2>
+<h3>1.1 Concept and Definition</h3>
+<div class="def"><b class="t">Definition:</b> A <b>matrix</b> is an ordered rectangular arrangement of numbers (or functions) in <b>rows</b> (horizontal) and <b>columns</b> (vertical), enclosed in brackets [ ] or ( ). Each number is an <b>element</b> (entry).</div>
+<p>Matrices store data compactly, e.g. marks of 3 students in 4 subjects, or the coefficients of a system of equations.</p>
+<h3>1.2 Notation</h3>
+<div class="fig"><div class="figs"><div><svg viewBox="0 0 330 200" width="320" role="img" aria-label="anatomy of a matrix"><path class="br" d="M87 40H80V150H87M193 40H200V150H193"/><rect class="pu" x="86" y="86" width="108" height="26" rx="5" fill="#c0262d"/><rect class="pu" x="162" y="45" width="34" height="100" rx="5" fill="#1a3a8f"/><text x="98" y="77" font-size="15">a₁₁</text><text x="133" y="77" font-size="15">a₁₂</text><text x="168" y="77" font-size="15">a₁₃</text><text x="98" y="110" font-size="15">a₂₁</text><text x="133" y="110" font-size="15">a₂₂</text><text x="168" y="110" font-size="15">a₂₃</text><text x="98" y="143" font-size="15">a₃₁</text><text x="133" y="143" font-size="15">a₃₂</text><text x="168" y="143" font-size="15">a₃₃</text><rect x="165" y="90" width="30" height="20" rx="4" fill="none" stroke="#1d7a46" stroke-width="2.4"/><text x="2" y="110" font-size="14" style="fill:#c0262d">Row 2</text><text x="150" y="28" font-size="14" style="fill:#1a3a8f">Column 3</text><text x="205" y="170" font-size="14" style="fill:#1d7a46">Element a₂₃</text><text x="80" y="185" font-size="14">Order 3 × 3</text></svg><br><b>A 3×3 matrix A = [aᵢⱼ]: rows, columns and an element</b></div></div></div>
+<p>Matrices are named by capital letters A, B, C. We write <span class="m">A = [aᵢⱼ]<sub>m×n</sub></span>, where aᵢⱼ is the element in the <b>i-th row and j-th column</b> (first subscript = row, second = column). Example: a₂₃ is in row 2, column 3.</p>
+<h3>1.3 Order of a Matrix</h3>
+<p>A matrix with m rows and n columns has order <b>m × n</b> (read “m by n”) and has <b>mn</b> elements. Rows are always written first. A 2 × 3 matrix has 6 elements. If entries come from a set of p numbers, the number of matrices of order m × n is <b>p<sup>mn</sup></b>.</p>
+<h3>1.4 Equality of Matrices</h3>
+<div class="def"><b class="t">Definition:</b> A = [aᵢⱼ] and B = [bᵢⱼ] are equal if (i) they have the <b>same order</b> and (ii) <b>aᵢⱼ = bᵢⱼ for all i, j</b>.</div>
+<h3>1.5 Types of Matrices</h3>
+<table><tr><th>Type</th><th>Meaning</th><th>Example</th></tr>
+<tr><td>Row matrix</td><td>only one row, order 1 × n</td><td>[2 5 7]</td></tr><tr><td>Column matrix</td><td>only one column, order m × 1</td><td>[1; 4; 9] (stacked)</td></tr>
+<tr><td>Square matrix</td><td>m = n (order n)</td><td>[[1,2],[3,4]]</td></tr><tr><td>Rectangular matrix</td><td>m ≠ n</td><td>2 × 3 matrix</td></tr>
+<tr><td>Zero (null) matrix O</td><td>all elements 0</td><td>[[0,0],[0,0]]</td></tr>
+<tr><td>Diagonal matrix</td><td>square; aᵢⱼ = 0 for i ≠ j</td><td>[[3,0],[0,5]]</td></tr>
+<tr><td>Scalar matrix</td><td>diagonal with all diagonal entries equal to k</td><td>[[4,0],[0,4]]</td></tr>
+<tr><td>Identity matrix I</td><td>scalar with k = 1</td><td>[[1,0],[0,1]]</td></tr></table>
+<div class="key"><b class="t">Chain:</b> Identity ⊂ Scalar ⊂ Diagonal ⊂ Square. In a square matrix the <b>principal (main) diagonal</b> is a₁₁, a₂₂, …, aₙₙ. The sum of these is the <b>trace</b>. I satisfies AI = IA = A.</div>
+
+<h2>2. Operations on Matrices</h2>
+<h3>2.1 Addition and Subtraction</h3>
+<div class="def"><b class="t">Rule:</b> A ± B is defined only when A and B have the <b>same order</b>; add (or subtract) <b>corresponding</b> elements: (A ± B)ᵢⱼ = aᵢⱼ ± bᵢⱼ.</div>
+<h3>2.2 Multiplication by a Scalar</h3>
+<p>kA = [k·aᵢⱼ]: every element is multiplied by k. Also −A = (−1)A and A − B = A + (−B).</p>
+<h3>2.3 Properties of Matrix Addition</h3>
+<ul><li>Commutative: A + B = B + A. Associative: (A + B) + C = A + (B + C).</li><li>Additive identity: A + O = A. Additive inverse: A + (−A) = O.</li>
+<li>k(A + B) = kA + kB; (k + l)A = kA + lA; (kl)A = k(lA); 1·A = A.</li></ul>
+<h3>2.4 Multiplication of Matrices</h3>
+<div class="def"><b class="t">Rule:</b> AB is defined only if <b>number of columns of A = number of rows of B</b>. If A is m × n and B is n × p, then AB is <b>m × p</b>, and <span class="m">(AB)ᵢⱼ = aᵢ₁b₁ⱼ + aᵢ₂b₂ⱼ + … + aᵢₙbₙⱼ</span>.</div>
+<div class="fig"><div class="figs"><div><svg viewBox="0 0 390 200" width="380" role="img" aria-label="matrix multiplication"><path class="br" d="M22 32H15V108H22M94 32H101V108H94"/><text x="31" y="67" font-size="17">1</text><text x="65" y="67" font-size="17">2</text><text x="31" y="101" font-size="17">3</text><text x="65" y="101" font-size="17">4</text><path class="br" d="M142 32H135V108H142M214 32H221V108H214"/><text x="151" y="67" font-size="17">5</text><text x="185" y="67" font-size="17">6</text><text x="151" y="101" font-size="17">7</text><text x="185" y="101" font-size="17">8</text><path class="br" d="M277 32H270V108H277M349 32H356V108H349"/><text x="286" y="67" font-size="17">19</text><text x="320" y="67" font-size="17">22</text><text x="286" y="101" font-size="17">43</text><text x="320" y="101" font-size="17">50</text><text x="108" y="75" font-size="22">×</text><text x="233" y="75" font-size="22">=</text><text x="38" y="26" font-size="13">A (2×2)</text><text x="158" y="26" font-size="13">B (2×2)</text><text x="285" y="26" font-size="13">AB (2×2)</text><g class="sh" style="animation-delay:0s"><rect x="25" y="48" width="66" height="26" rx="5" fill="#c0262d" fill-opacity=".3"/><rect x="143" y="38" width="30" height="64" rx="5" fill="#1a3a8f" fill-opacity=".3"/><rect x="278" y="48" width="30" height="26" rx="5" fill="#1d7a46" fill-opacity=".4"/><text x="95" y="150" font-size="16">Row 1, × column 1:  1×5 + 2×7 = 19</text></g><g class="sh" style="animation-delay:2s"><rect x="25" y="48" width="66" height="26" rx="5" fill="#c0262d" fill-opacity=".3"/><rect x="177" y="38" width="30" height="64" rx="5" fill="#1a3a8f" fill-opacity=".3"/><rect x="312" y="48" width="30" height="26" rx="5" fill="#1d7a46" fill-opacity=".4"/><text x="95" y="150" font-size="16">Row 1, × column 2:  1×6 + 2×8 = 22</text></g><g class="sh" style="animation-delay:4s"><rect x="25" y="82" width="66" height="26" rx="5" fill="#c0262d" fill-opacity=".3"/><rect x="143" y="38" width="30" height="64" rx="5" fill="#1a3a8f" fill-opacity=".3"/><rect x="278" y="82" width="30" height="26" rx="5" fill="#1d7a46" fill-opacity=".4"/><text x="95" y="150" font-size="16">Row 2, × column 1:  3×5 + 4×7 = 43</text></g><g class="sh" style="animation-delay:6s"><rect x="25" y="82" width="66" height="26" rx="5" fill="#c0262d" fill-opacity=".3"/><rect x="177" y="38" width="30" height="64" rx="5" fill="#1a3a8f" fill-opacity=".3"/><rect x="312" y="82" width="30" height="26" rx="5" fill="#1d7a46" fill-opacity=".4"/><text x="95" y="150" font-size="16">Row 2, × column 2:  3×6 + 4×8 = 50</text></g><text x="20" y="190" font-size="12">Each entry of AB = (row of A) × (column of B), multiplied pairwise and added.</text></svg><br><b>Matrix multiplication, entry by entry</b></div></div></div>
+<p>Think “row by column”: take the i-th row of A and the j-th column of B, multiply pairwise, add. Check orders first: (m × n)(n × p) → inner numbers must match, outer numbers give the answer.</p>
+<h3>2.5 Properties of Matrix Multiplication</h3>
+<ul><li>Associative: (AB)C = A(BC). Distributive: A(B + C) = AB + AC; (A + B)C = AC + BC.</li><li>Identity: AI = IA = A. A·O = O.</li><li>k(AB) = (kA)B = A(kB).</li></ul>
+<h3>2.6 Non-Commutativity</h3>
+<div class="key"><b class="t">AB ≠ BA in general.</b> Even if AB exists, BA may not exist (orders mismatch), or may have a different order, or the same order but different entries. Hence (A + B)² = A² + AB + BA + B² (not A² + 2AB + B²), and (AB)ᵏ ≠ AᵏBᵏ in general.</div>
+<h3>2.7 Non-zero Matrices with Zero Product</h3>
+<p>AB = O does <b>not</b> imply A = O or B = O. Example: A = [[1,0],[0,0]], B = [[0,0],[0,1]]; AB = O although both are non-zero. Likewise AB = AC does not imply B = C (no cancellation law).</p>
+
+<h2>3. Transpose of a Matrix</h2>
+<h3>3.1 Transpose</h3>
+<div class="def"><b class="t">Definition:</b> Aᵀ (or A′) is obtained by interchanging rows and columns. If A is m × n, then Aᵀ is n × m and (Aᵀ)ᵢⱼ = aⱼᵢ.</div>
+<div class="fig"><div class="figs"><div><svg viewBox="0 0 360 180" width="350" role="img" aria-label="transpose"><defs><marker id="mt" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#c0262d"/></marker></defs><path class="br" d="M27 40H20V104H27M123 40H130V104H123"/><text x="38" y="66" font-size="17" style="fill:#c0262d">1</text><text x="72" y="66" font-size="17" style="fill:#c0262d">2</text><text x="106" y="66" font-size="17" style="fill:#c0262d">3</text><text x="38" y="96" font-size="17" style="fill:#1a3a8f">4</text><text x="72" y="96" font-size="17" style="fill:#1a3a8f">5</text><text x="106" y="96" font-size="17" style="fill:#1a3a8f">6</text><path class="br" d="M247 24H240V124H247M313 24H320V124H313"/><text x="258" y="52" font-size="17" style="fill:#c0262d">1</text><text x="292" y="52" font-size="17" style="fill:#1a3a8f">4</text><text x="258" y="82" font-size="17" style="fill:#c0262d">2</text><text x="292" y="82" font-size="17" style="fill:#1a3a8f">5</text><text x="258" y="112" font-size="17" style="fill:#c0262d">3</text><text x="292" y="112" font-size="17" style="fill:#1a3a8f">6</text><path class="ln" pathLength="100" marker-end="url(#mt)" d="M140 72Q190 72 232 72"/><text x="38" y="30" font-size="14">A (2×3)</text><text x="245" y="18" font-size="14">Aᵀ (3×2)</text><text x="150" y="62" font-size="13">rows become columns</text><text x="20" y="145" font-size="13" style="fill:#c0262d">Row 1 → Column 1</text><text x="20" y="165" font-size="13" style="fill:#1a3a8f">Row 2 → Column 2</text></svg><br><b>Transpose: rows of A become columns of Aᵀ</b></div></div></div>
+<h3>3.2 Properties of Transpose</h3>
+<ul><li>(Aᵀ)ᵀ = A &nbsp; (A + B)ᵀ = Aᵀ + Bᵀ &nbsp; (kA)ᵀ = kAᵀ</li><li><b>(AB)ᵀ = BᵀAᵀ</b> (order reverses; also (ABC)ᵀ = CᵀBᵀAᵀ).</li></ul>
+<h3>3.3 Symmetric Matrix</h3>
+<div class="def"><b class="t">Definition:</b> A square matrix with <span class="m">Aᵀ = A</span>, i.e. aᵢⱼ = aⱼᵢ. Entries are mirror images across the main diagonal.</div>
+<h3>3.4 Skew-Symmetric Matrix</h3>
+<div class="def"><b class="t">Definition:</b> A square matrix with <span class="m">Aᵀ = −A</span>, i.e. aᵢⱼ = −aⱼᵢ. Putting i = j gives 2aᵢᵢ = 0, so <b>all diagonal elements are 0</b>.</div>
+<div class="key"><b class="t">Theorems:</b> (1) For any square A, A + Aᵀ is symmetric and A − Aᵀ is skew-symmetric. (2) Every square matrix is uniquely the sum of a symmetric and a skew-symmetric matrix: A = ½(A + Aᵀ) + ½(A − Aᵀ).</div>
+
+<h2>4. Elementary Operations and Inverse</h2>
+<h3>4.1 Elementary Row Operations</h3>
+<p>Three operations (written with R): (i) <b>Interchange</b> Rᵢ ↔ Rⱼ; (ii) <b>Multiply</b> a row by non-zero k: Rᵢ → kRᵢ; (iii) <b>Add</b> a multiple of another row: Rᵢ → Rᵢ + kRⱼ.</p>
+<h3>4.2 Elementary Column Operations</h3>
+<p>The same three with columns: Cᵢ ↔ Cⱼ, Cᵢ → kCᵢ, Cᵢ → Cᵢ + kCⱼ.</p>
+<h3>4.3 Invertible Matrices and Inverse</h3>
+<div class="def"><b class="t">Definition:</b> A square matrix A of order n is <b>invertible</b> if there is a square matrix B of the same order with <span class="m">AB = BA = I</span>. Then B = A⁻¹.</div>
+<ul><li>Only square matrices can be invertible; not all square matrices are (e.g. O).</li><li>(AB)⁻¹ = B⁻¹A⁻¹; (A⁻¹)⁻¹ = A; (Aᵀ)⁻¹ = (A⁻¹)ᵀ.</li></ul>
+<h3>4.4 Uniqueness of Inverse</h3>
+<div class="key"><b class="t">Theorem:</b> The inverse of a square matrix, if it exists, is unique.<br><b>Proof:</b> Let B and C both be inverses of A. Then B = BI = B(AC) = (BA)C = IC = C. ∎</div>
+<h3>4.5 Finding Inverse by Elementary Operations</h3>
+<p>Write A = IA and apply <b>only row operations</b> on A (left side) and on the I (pre-factor) together, until A becomes I: then I = BA and B = A⁻¹. (Or use only column operations with A = AI.) <b>Never mix rows and columns.</b> If a whole row of zeros appears on the left, A⁻¹ does not exist.</p>
+
+<h2>5. Solved Examples</h2>
+<div class="ex"><span class="lvl">Easy</span> <b class="t">Ex 1.</b> Construct a 2 × 2 matrix with aᵢⱼ = 2i − j.<br><b>Solution:</b> a₁₁ = 2 − 1 = 1; a₁₂ = 2 − 2 = 0; a₂₁ = 4 − 1 = 3; a₂₂ = 4 − 2 = 2. So A = [[1, 0], [3, 2]].</div>
+<div class="ex"><span class="lvl">Easy</span> <b class="t">Ex 2.</b> If [[x + y, 2], [5, 8]] = [[6, 2], [5, xy]], find x, y.<br><b>Solution:</b> Equal matrices: x + y = 6 and xy = 8. Then x, y are roots of t² − 6t + 8 = 0 ⇒ t = 2, 4. So (x, y) = (2, 4) or (4, 2).</div>
+<div class="ex"><span class="lvl">Easy</span> <b class="t">Ex 3.</b> A = [[1,2],[3,4]], B = [[5,6],[7,8]]. Find A + B and 2A − B.<br><b>Solution:</b> A + B = [[6, 8], [10, 12]]. 2A = [[2,4],[6,8]], so 2A − B = [[−3, −2], [−1, 0]].</div>
+<div class="ex"><span class="lvl">Medium</span> <b class="t">Ex 4.</b> Find AB for the A, B of Ex 3.<br><b>Solution:</b> Orders 2×2 and 2×2 ⇒ AB is 2×2. (1,1): 1·5 + 2·7 = 19; (1,2): 1·6 + 2·8 = 22; (2,1): 3·5 + 4·7 = 43; (2,2): 3·6 + 4·8 = 50. AB = [[19, 22], [43, 50]].</div>
+<div class="ex"><span class="lvl">Medium</span> <b class="t">Ex 5.</b> A = [[1,2],[3,4]], B = [[0,1],[1,0]]. Show AB ≠ BA.<br><b>Solution:</b> AB = [[1·0+2·1, 1·1+2·0],[3·0+4·1, 3·1+4·0]] = [[2, 1], [4, 3]]. BA = [[0·1+1·3, 0·2+1·4],[1·1+0·3, 1·2+0·4]] = [[3, 4], [1, 2]]. Since the matrices differ, AB ≠ BA.</div>
+<div class="ex"><span class="lvl">Medium</span> <b class="t">Ex 6.</b> If A = [[1,2],[2,1]], show A² − 2A − 3I = O.<br><b>Solution:</b> A² = [[1+4, 2+2],[2+2, 4+1]] = [[5,4],[4,5]]. 2A = [[2,4],[4,2]], 3I = [[3,0],[0,3]]. A² − 2A − 3I = [[5−2−3, 4−4−0],[4−4−0, 5−2−3]] = O. ∎</div>
+<div class="ex"><span class="lvl">Medium</span> <b class="t">Ex 7.</b> Express A = [[3,5],[1,−1]] as sum of a symmetric and a skew-symmetric matrix.<br><b>Solution:</b> Aᵀ = [[3,1],[5,−1]]. P = ½(A + Aᵀ) = [[3,3],[3,−1]] (symmetric). Q = ½(A − Aᵀ) = [[0,2],[−2,0]] (skew-symmetric). Check: P + Q = [[3,5],[1,−1]] = A ✔.</div>
+<div class="ex"><span class="lvl">Hard</span> <b class="t">Ex 8.</b> Prove (AB)ᵀ = BᵀAᵀ.<br><b>Proof:</b> Let A be m × n and B be n × p. (AB)ᵀ is p × m. Its (i, j) entry = (AB)ⱼᵢ = Σₖ aⱼₖbₖᵢ. Also BᵀAᵀ is p × n times n × m = p × m, with (i, j) entry = Σₖ (Bᵀ)ᵢₖ(Aᵀ)ₖⱼ = Σₖ bₖᵢaⱼₖ. Both are equal for all i, j. ∎</div>
+<div class="ex"><span class="lvl">Hard</span> <b class="t">Ex 9.</b> Find A⁻¹ for A = [[2,1],[1,1]] by elementary row operations.<br><b>Solution:</b> Write A = IA: [[2,1],[1,1]] = [[1,0],[0,1]]A.<br>R₁ → R₁ − R₂: [[1,0],[1,1]] = [[1,−1],[0,1]]A.<br>R₂ → R₂ − R₁: [[1,0],[0,1]] = [[1,−1],[−1,2]]A.<br>So <b>A⁻¹ = [[1,−1],[−1,2]]</b>. Check: A·A⁻¹ = [[2−1, −2+2],[1−1, −1+2]] = I ✔.</div>
+<div class="ex"><span class="lvl">Hard</span> <b class="t">Ex 10.</b> A = [[cos θ, sin θ],[−sin θ, cos θ]]. Show AAᵀ = I.<br><b>Solution:</b> Aᵀ = [[cos θ, −sin θ],[sin θ, cos θ]]. AAᵀ = [[cos²θ + sin²θ, −cos θ sin θ + sin θ cos θ],[−sin θ cos θ + cos θ sin θ, sin²θ + cos²θ]] = [[1,0],[0,1]] = I. ∎</div>
+
+<h2>6. Short &amp; Long Q&amp;A (tap to see answer)</h2>
+<details><summary>Q1. How many elements does a 3 × 4 matrix have?</summary><p class="ans">3 × 4 = 12.</p></details>
+<details><summary>Q2. Is every identity matrix a scalar matrix? Is the converse true?</summary><p class="ans">Yes, I is a scalar matrix with k = 1. The converse is false: [[4,0],[0,4]] is scalar but not identity.</p></details>
+<details><summary>Q3. When is AB defined? What is its order?</summary><p class="ans">When columns of A = rows of B. For A m × n and B n × p, order of AB is m × p.</p></details>
+<details><summary>Q4. A is 2 × 3, B is 3 × 2. Do AB and BA both exist?</summary><p class="ans">Yes. AB is 2 × 2 and BA is 3 × 3, so they are certainly unequal.</p></details>
+<details><summary>Q5. Why must diagonal entries of a skew-symmetric matrix be zero?</summary><p class="ans">Aᵀ = −A gives aᵢᵢ = −aᵢᵢ, so 2aᵢᵢ = 0 and aᵢᵢ = 0.</p></details>
+<details><summary>Q6. Long: Show A + Aᵀ is symmetric and A − Aᵀ is skew-symmetric.</summary><p class="ans">(A + Aᵀ)ᵀ = Aᵀ + (Aᵀ)ᵀ = Aᵀ + A = A + Aᵀ ⇒ symmetric. (A − Aᵀ)ᵀ = Aᵀ − A = −(A − Aᵀ) ⇒ skew-symmetric. ∎</p></details>
+<details><summary>Q7. Show that (AB)⁻¹ = B⁻¹A⁻¹.</summary><p class="ans">(AB)(B⁻¹A⁻¹) = A(BB⁻¹)A⁻¹ = AIA⁻¹ = AA⁻¹ = I, and similarly (B⁻¹A⁻¹)(AB) = I. By uniqueness of the inverse, (AB)⁻¹ = B⁻¹A⁻¹. ∎</p></details>
+<details><summary>Q8. If AB = O, must A or B be O?</summary><p class="ans">No. A = [[1,0],[0,0]], B = [[0,0],[0,1]] give AB = O with A ≠ O, B ≠ O.</p></details>
+
+<h2>7. MCQs</h2>
+<details><summary>1. If A is 3 × 2 and B is 2 × 4, order of AB: (a) 3 × 4 (b) 2 × 2 (c) 4 × 3 (d) not defined</summary><p class="ans">(a) 3 × 4.</p></details>
+<details><summary>2. For a skew-symmetric matrix, diagonal elements are: (a) 1 (b) 0 (c) equal (d) any</summary><p class="ans">(b) 0.</p></details>
+<details><summary>3. (AB)ᵀ = ? (a) AᵀBᵀ (b) BᵀAᵀ (c) AB (d) BA</summary><p class="ans">(b) BᵀAᵀ.</p></details>
+<details><summary>4. Number of 2 × 2 matrices with entries 0 or 1: (a) 4 (b) 8 (c) 16 (d) 2</summary><p class="ans">(c) 2⁴ = 16.</p></details>
+<details><summary>5. Inverse of a matrix, if it exists, is: (a) not unique (b) unique (c) always I (d) always O</summary><p class="ans">(b) unique.</p></details>
+<p><i>This is the core version. Ask for “Part 2” for 100+ more Q&amp;A, MCQs and examples (3 × 3 inverse, column operations, more proofs).</i></p>
+</main></body></html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Class 12 Maths – Maxima and Minima (English Notes)</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fffdf3;--ink:#1d2b53;--line:#cfe3f5;--red:#c0392b;--grn:#1e7d4f;--box:#fff3b0;--card:#ffffffcc;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1f2b;--ink:#e8ecf8;--line:#2c3550;--red:#ff8a7a;--grn:#6fdba4;--box:#3b3a1c;--card:#232838cc}}
+:root[data-theme="dark"]{--bg:#1b1f2b;--ink:#e8ecf8;--line:#2c3550;--red:#ff8a7a;--grn:#6fdba4;--box:#3b3a1c;--card:#232838cc}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Kalam','Segoe Print',cursive,sans-serif;font-size:19px;line-height:32px;background-image:repeating-linear-gradient(var(--bg) 0 31px,var(--line) 31px 32px);border-left:3px double var(--red)}
+main{max-width:860px;margin:auto;padding:12px 18px 60px}
+h1{text-align:center;font-size:2rem;line-height:1.3;border-bottom:3px wavy var(--red);padding-bottom:6px}
+h2{color:var(--red);margin:34px 0 4px;font-size:1.5rem;line-height:1.3;text-decoration:underline wavy;text-underline-offset:6px}
+h3{color:var(--grn);margin:18px 0 0;line-height:1.3}
+.box{background:var(--box);border:2px dashed var(--ink);border-radius:10px;padding:6px 14px;margin:12px 0;line-height:30px}
+.eg{background:var(--card);border-left:5px solid var(--grn);padding:4px 14px;margin:12px 0;border-radius:6px;line-height:30px}
+.tag{font-weight:700;padding:0 8px;border-radius:12px;background:var(--grn);color:var(--bg);font-size:.8rem}
+.tag.m{background:#d98c00}.tag.h{background:var(--red)}
+svg{width:100%;max-width:560px;display:block;margin:10px auto;background:var(--card);border:2px solid var(--ink);border-radius:8px}
+svg text{fill:var(--ink);font-family:'Kalam',cursive;font-size:12px}
+table{border-collapse:collapse;width:100%;line-height:26px}td,th{border:2px solid var(--ink);padding:2px 8px;text-align:center}
+details{background:var(--card);border:1px solid var(--ink);border-radius:8px;padding:2px 12px;margin:8px 0}summary{cursor:pointer;font-weight:700}
+.step{display:block;padding-left:12px}.note{text-align:center;opacity:.75;font-size:.9rem}
+@media print{details{display:block}}
+</style></head><body><main>
+<h1>✎ Class 12 Maths · Unit 3 Calculus<br>Chapter 11: Maxima and Minima</h1>
+<p class="note">UP Board / NCERT style notes · Step-by-step · Animated diagrams</p>
+
+<h2>1. Local Maximum and Local Minimum</h2>
+<div class="box"><b>Local maximum:</b> f has a local maximum at x = c if f(c) ≥ f(x) for all x in a small interval around c. f(c) is the <b>local maximum value</b>.<br>
+<b>Local minimum:</b> f(c) ≤ f(x) for all x near c. f(c) is the <b>local minimum value</b>.<br>Together they are called <b>local extrema</b> (turning points). A function can have many local maxima and minima, and a local minimum can even be larger than a local maximum.</div>
+
+<h2>2. Absolute Maximum and Absolute Minimum</h2>
+<div class="box"><b>Absolute (global) maximum</b> on an interval I: f(c) ≥ f(x) for <b>every</b> x in I. <b>Absolute minimum:</b> f(c) ≤ f(x) for every x in I.<br><b>Extreme Value Theorem:</b> a function continuous on a closed interval [a, b] always attains its absolute maximum and absolute minimum on [a, b].</div>
+
+<h2>3. Critical Points &amp; 4. Stationary Points</h2>
+<div class="box"><b>Critical point:</b> a point c in the domain where f′(c) = 0 <b>or</b> f′(c) does not exist.<br><b>Stationary point:</b> a point where f′(c) = 0 (tangent is horizontal).<br>Every stationary point is a critical point, but not conversely: f(x) = |x| has a critical point at 0 (f′ does not exist) which is not stationary.<br><b>Necessary condition:</b> if f has a local extremum at c and f′(c) exists, then f′(c) = 0. <b>Not sufficient:</b> f(x) = x³ has f′(0) = 0 but no extremum.</div>
+
+<svg viewBox="0 0 300 200" aria-label="Local and absolute extrema">
+<line x1="30" y1="120" x2="30" y2="180" stroke="var(--ink)" stroke-dasharray="3 3"/><line x1="275" y1="30" x2="275" y2="180" stroke="var(--ink)" stroke-dasharray="3 3"/>
+<line x1="15" y1="180" x2="290" y2="180" stroke="var(--ink)"/>
+<path d="M30,120 C55,40 70,40 90,40 C130,40 170,140 210,140 C240,140 258,90 275,30" fill="none" stroke="var(--ink)" stroke-width="2.5" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0;0" keyTimes="0;.5;1" dur="5s" repeatCount="indefinite"/></path>
+<circle r="5" fill="var(--red)"><animateMotion dur="6s" repeatCount="indefinite" path="M30,120 C55,40 70,40 90,40 C130,40 170,140 210,140 C240,140 258,90 275,30"/></circle>
+<circle cx="90" cy="40" r="5" fill="none" stroke="var(--grn)" stroke-width="2"/><circle cx="210" cy="140" r="6" fill="none" stroke="var(--red)" stroke-width="2.5"/><circle cx="275" cy="30" r="6" fill="none" stroke="var(--red)" stroke-width="2.5"/>
+<text x="20" y="195">x = a</text><text x="258" y="195">x = b</text>
+<text x="40" y="30" style="fill:var(--grn)">Local MAX (not absolute)</text>
+<text x="140" y="165" style="fill:var(--red)">Local MIN = ABSOLUTE MIN</text>
+<text x="168" y="20" style="fill:var(--red)">ABSOLUTE MAX at x = b</text></svg>
+<p class="note">Fig. 1: On [a, b] the red dot visits every critical point. Absolute extrema occur at critical points or at end points.</p>
+
+<h2>5. First Derivative Test</h2>
+<div class="box">Let c be a critical point (f continuous at c).<br>① f′ changes <b>+ to −</b> as x increases through c ⇒ <b>local maximum</b>.<br>② f′ changes <b>− to +</b> ⇒ <b>local minimum</b>.<br>③ f′ does <b>not change sign</b> ⇒ neither (point of inflection).</div>
+<h2>6. Second Derivative Test</h2>
+<div class="box">Let f′(c) = 0 and f″ exist at c.<br>① f″(c) &lt; 0 ⇒ local maximum. ② f″(c) &gt; 0 ⇒ local minimum. ③ f″(c) = 0 ⇒ test fails, use the first derivative test.<br><b>Reason:</b> f″ &lt; 0 means f′ is decreasing, so f′ goes from + to − through 0.<br><b>Higher-order test:</b> if f′(c) = … = f⁽ⁿ⁻¹⁾(c) = 0 and f⁽ⁿ⁾(c) ≠ 0: n even and f⁽ⁿ⁾ &lt; 0 ⇒ max; n even and f⁽ⁿ⁾ &gt; 0 ⇒ min; n odd ⇒ neither.</div>
+<svg viewBox="0 0 300 200" aria-label="Stationary point of inflection">
+<line x1="20" y1="100" x2="290" y2="100" stroke="var(--ink)" stroke-opacity=".5"/><line x1="150" y1="10" x2="150" y2="190" stroke="var(--ink)" stroke-opacity=".5"/>
+<path id="p3" d="M90,167.5 C100,133.75 130,100 150,100 C170,100 200,66.25 210,32.5" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+<line x1="105" y1="100" x2="195" y2="100" stroke="var(--grn)" stroke-width="2" stroke-dasharray="5 4"/>
+<circle r="5" fill="var(--red)"><animateMotion dur="6s" repeatCount="indefinite" path="M90,167.5 C100,133.75 130,100 150,100 C170,100 200,66.25 210,32.5"/></circle>
+<text x="212" y="38">y = x³</text><text x="156" y="94" style="fill:var(--grn)">f′(0) = 0, f″(0) = 0</text><text x="20" y="20">Stationary point, but NOT a max or min</text><text x="20" y="34">f′ = 3x² ≥ 0 : no sign change (inflection)</text><text x="154" y="116">O</text></svg>
+<p class="note">Fig. 2: y = x³ has a horizontal tangent at O, yet the curve keeps rising. f′ does not change sign, so it is neither a maximum nor a minimum.</p>
+
+<h2>7. Finding Maximum and Minimum Values</h2>
+<div class="box"><b>Local extrema:</b> ① find f′(x); ② solve f′(x) = 0 (also note points where f′ does not exist); ③ apply the first or second derivative test; ④ compute f(c).<br><b>Absolute extrema on [a, b]:</b> ① find all critical points inside (a, b); ② compute f at each critical point and at a and b; ③ the largest value is the absolute maximum, the smallest is the absolute minimum.</div>
+<h2>8. Optimization Problems</h2>
+<div class="box"><b>Steps:</b> ① Read carefully and draw a figure. ② Name the quantity Q to maximise/minimise. ③ Use the given constraint to write Q in <b>one</b> variable. ④ Find dQ/dx = 0. ⑤ Confirm max/min with d²Q/dx² (or first derivative test). ⑥ Check the value is in the allowed domain and state the answer with units.</div>
+<h2>9. Real-Life Applications</h2>
+<p>Maximum profit, minimum cost of material, largest area for a given fence, largest volume of a box or tank, shortest distance or least travel time, and least surface area for a given volume (tins, tanks) are all solved by this method.</p>
+
+<h2>Solved Examples (step by step)</h2>
+<div class="eg"><span class="tag">Easy</span> <b>Ex 1.</b> Find the local minimum value of f(x) = x² − 6x + 5.<br><span class="step">f′ = 2x − 6 = 0 ⇒ x = 3. f″ = 2 &gt; 0 ⇒ local minimum.</span><span class="step">f(3) = 9 − 18 + 5 = <b>−4</b>.</span></div>
+<div class="eg"><span class="tag">Easy</span> <b>Ex 2.</b> Find the critical points of f(x) = x³ − 3x².<br><span class="step">f′ = 3x² − 6x = 3x(x − 2) = 0 ⇒ <b>x = 0, 2</b>. (f′ exists everywhere.)</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 3.</b> Show f(x) = |x| has a critical point at 0 that is not stationary; find its absolute minimum.<br><span class="step">LHD = −1, RHD = 1 ⇒ f′(0) does not exist: critical point, but f′ ≠ 0 anywhere, so no stationary point.</span><span class="step">|x| ≥ 0 = f(0) for all x: absolute minimum <b>0</b> at x = 0.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 4.</b> Find local maxima and minima of f(x) = 2x³ − 21x² + 36x − 20.<br><span class="step">f′ = 6x² − 42x + 36 = 6(x − 1)(x − 6) = 0 ⇒ x = 1, 6. f″ = 12x − 42.</span><span class="step">f″(1) = −30 &lt; 0 ⇒ local maximum, f(1) = 2 − 21 + 36 − 20 = <b>−3</b>.</span><span class="step">f″(6) = 30 &gt; 0 ⇒ local minimum, f(6) = 432 − 756 + 216 − 20 = <b>−128</b>.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 5.</b> Use the first derivative test for f(x) = x³ − 6x² + 9x + 15.<br><span class="step">f′ = 3(x − 1)(x − 3). Critical points 1, 3.</span><span class="step">x &lt; 1: f′ &gt; 0; 1 &lt; x &lt; 3: f′ &lt; 0; x &gt; 3: f′ &gt; 0.</span><span class="step">At 1: + to − ⇒ local maximum f(1) = <b>19</b>. At 3: − to + ⇒ local minimum f(3) = <b>15</b>.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 6.</b> Find absolute max and min of f(x) = x³ − 3x on [0, 2].<br><span class="step">f′ = 3x² − 3 = 0 ⇒ x = ±1; only x = 1 lies in [0, 2].</span><span class="step">f(0) = 0, f(1) = −2, f(2) = 2.</span><span class="step">Absolute maximum <b>2</b> at x = 2; absolute minimum <b>−2</b> at x = 1.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 7.</b> Find absolute extrema of f(x) = sin x + cos x on [0, π].<br><span class="step">f′ = cos x − sin x = 0 ⇒ x = π/4 in [0, π].</span><span class="step">f(π/4) = √2; f(0) = 1; f(π) = −1.</span><span class="step">Absolute maximum <b>√2</b> at π/4; absolute minimum <b>−1</b> at x = π.</span></div>
+<div class="eg"><span class="tag h">Hard</span> <b>Ex 8.</b> Decide the nature of x = 0 for f(x) = x³ and f(x) = x⁴.<br><span class="step">x³: f′ = 3x² ≥ 0, f′(0) = 0, f″(0) = 0, f‴(0) = 6 ≠ 0, n = 3 odd ⇒ <b>neither</b> (inflection).</span><span class="step">x⁴: f′ = 4x³, f″(0) = 0, f‴(0) = 0, f⁗(0) = 24 &gt; 0, n = 4 even ⇒ <b>local minimum</b>, value 0.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 9.</b> Find the minimum value of f(x) = x + 1/x for x &gt; 0.<br><span class="step">f′ = 1 − 1/x² = 0 ⇒ x = 1 (x &gt; 0). f″ = 2/x³ = 2 &gt; 0 ⇒ minimum.</span><span class="step">Minimum value f(1) = <b>2</b>.</span></div>
+<div class="eg"><span class="tag">Easy</span> <b>Ex 10.</b> Two positive numbers sum to 20. Find them if their product is maximum.<br><span class="step">P = x(20 − x) = 20x − x². P′ = 20 − 2x = 0 ⇒ x = 10. P″ = −2 &lt; 0 ⇒ max.</span><span class="step">Numbers: <b>10 and 10</b>; maximum product 100.</span></div>
+<div class="eg"><span class="tag h">Hard</span> <b>Ex 11.</b> Show that the rectangle of maximum area inscribed in a circle of radius r is a square.<br><span class="step">Sides x, y: x² + y² = 4r² (diagonal = diameter). A = xy, so A² = x²(4r² − x²) = S.</span><span class="step">S′ = 8r²x − 4x³ = 0 ⇒ x² = 2r². S″ = 8r² − 12x² = −16r² &lt; 0 ⇒ maximum.</span><span class="step">Then y² = 4r² − 2r² = 2r² = x² ⇒ x = y: a <b>square</b>, area 2r². ∎</span></div>
+<div class="eg"><span class="tag h">Hard</span> <b>Ex 12.</b> Find the maximum volume of a right circular cylinder inscribed in a sphere of radius R.<br><span class="step">Cylinder radius r, height h: r² + h²/4 = R². V = πr²h = π(R²h − h³/4).</span><span class="step">V′ = π(R² − 3h²/4) = 0 ⇒ h = 2R/√3. V″ = −3πh/2 &lt; 0 ⇒ maximum.</span><span class="step">r² = R² − R²/3 = 2R²/3. V = π(2R²/3)(2R/√3) = <b>4πR³/(3√3)</b>.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 13.</b> Profit P(x) = −2x² + 80x − 200. Find the number of units for maximum profit.<br><span class="step">P′ = −4x + 80 = 0 ⇒ x = 20. P″ = −4 &lt; 0 ⇒ maximum.</span><span class="step">P(20) = −800 + 1600 − 200 = <b>₹600</b> at 20 units.</span></div>
+<div class="eg"><span class="tag h">Hard</span> <b>Ex 14.</b> Find the point on y = x² nearest to (0, 5).<br><span class="step">D² = x² + (x² − 5)² = x⁴ − 9x² + 25. Let u = x² ≥ 0: D² = u² − 9u + 25.</span><span class="step">d/du = 2u − 9 = 0 ⇒ u = 9/2; second derivative 2 &gt; 0 ⇒ minimum.</span><span class="step">x = ±3/√2, y = 9/2. Minimum D² = 81/4 − 81/2 + 25 = 19/4, so <b>D = √19/2</b>. Points <b>(±3/√2, 9/2)</b>.</span></div>
+<div class="eg"><span class="tag h">Hard</span> <b>Ex 15.</b> An open tank with a square base must hold volume V. Show least material is used when depth = half the base side.<br><span class="step">Base side x, depth h: V = x²h. Surface S = x² + 4xh = x² + 4V/x.</span><span class="step">S′ = 2x − 4V/x² = 0 ⇒ x³ = 2V ⇒ h = V/x² = x/2. S″ = 2 + 8V/x³ &gt; 0 ⇒ minimum. ∎</span></div>
+
+<h2>Q &amp; A Practice (tap to open)</h2>
+<h3>Short Questions</h3>
+<details><summary>Q1. Define a critical point.</summary>A point c in the domain with f′(c) = 0 or f′(c) not existing.</details>
+<details><summary>Q2. Are all critical points stationary points?</summary>No. Stationary points need f′ = 0; for |x| at 0, f′ does not exist.</details>
+<details><summary>Q3. Is f′(c) = 0 enough for an extremum?</summary>No. For x³ at 0, f′ = 0 but there is no extremum.</details>
+<details><summary>Q4. What does f″(c) &gt; 0 with f′(c) = 0 imply?</summary>Local minimum at c.</details>
+<details><summary>Q5. Where do absolute extrema of a continuous function on [a, b] occur?</summary>At critical points inside (a, b) or at the end points a, b.</details>
+<details><summary>Q6. Maximum value of sin x?</summary>1, at x = π/2.</details>
+<h3>Long Questions</h3>
+<details><summary>Q7. Show that of all rectangles of given perimeter, the square has the maximum area.</summary>Perimeter 2p, sides x and p − x. A = x(p − x), A′ = p − 2x = 0 ⇒ x = p/2, A″ = −2 &lt; 0. Both sides p/2: a square.</details>
+<details><summary>Q8. Show that a closed cylinder of given volume has minimum surface area when h = 2r.</summary>S = 2πr² + 2V/r; S′ = 4πr − 2V/r² = 0 ⇒ V = 2πr³ ⇒ h = 2r; S″ = 4π + 4V/r³ &gt; 0 ⇒ minimum. ∎</details>
+<details><summary>Q9. Find local extrema of f(x) = x⁴ − 4x³.</summary>f(x) = x⁴ − 4x³: f′ = 4x²(x − 3) = 0 ⇒ x = 0, 3. At 0 f′ does not change sign (negative on both sides) ⇒ no extremum. At 3: − to + ⇒ local minimum f(3) = 81 − 108 = −27.</details>
+<h3>MCQs</h3>
+<details><summary>Q10. The minimum value of x² − 4x + 7 is: (a) 3 (b) 7 (c) 4 (d) 0</summary><b>(a)</b> At x = 2: 4 − 8 + 7 = 3.</details>
+<details><summary>Q11. If f′(c) = 0, f″(c) = 0 the second derivative test: (a) says max (b) says min (c) fails (d) says inflection</summary><b>(c)</b> It is inconclusive.</details>
+<details><summary>Q12. Sum of two numbers is 10; their product is maximum when numbers are: (a) 4, 6 (b) 5, 5 (c) 3, 7 (d) 2, 8</summary><b>(b)</b> x(10 − x) is maximum at x = 5.</details>
+<p class="note">Version 1: core notes. Ask me for more Q&amp;A, harder examples or more diagrams and I will add them.</p>
+</main></body></html>

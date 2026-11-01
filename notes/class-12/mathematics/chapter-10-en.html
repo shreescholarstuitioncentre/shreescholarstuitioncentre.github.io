@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Class 12 Maths – Tangents and Normals (English Notes)</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fffdf3;--ink:#1d2b53;--line:#cfe3f5;--red:#c0392b;--grn:#1e7d4f;--box:#fff3b0;--card:#ffffffcc;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1f2b;--ink:#e8ecf8;--line:#2c3550;--red:#ff8a7a;--grn:#6fdba4;--box:#3b3a1c;--card:#232838cc}}
+:root[data-theme="dark"]{--bg:#1b1f2b;--ink:#e8ecf8;--line:#2c3550;--red:#ff8a7a;--grn:#6fdba4;--box:#3b3a1c;--card:#232838cc}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Kalam','Segoe Print',cursive,sans-serif;font-size:19px;line-height:32px;background-image:repeating-linear-gradient(var(--bg) 0 31px,var(--line) 31px 32px);border-left:3px double var(--red)}
+main{max-width:860px;margin:auto;padding:12px 18px 60px}
+h1{text-align:center;font-size:2rem;line-height:1.3;border-bottom:3px wavy var(--red);padding-bottom:6px}
+h2{color:var(--red);margin:34px 0 4px;font-size:1.5rem;line-height:1.3;text-decoration:underline wavy;text-underline-offset:6px}
+h3{color:var(--grn);margin:18px 0 0;line-height:1.3}
+.box{background:var(--box);border:2px dashed var(--ink);border-radius:10px;padding:6px 14px;margin:12px 0;line-height:30px}
+.eg{background:var(--card);border-left:5px solid var(--grn);padding:4px 14px;margin:12px 0;border-radius:6px;line-height:30px}
+.tag{font-weight:700;padding:0 8px;border-radius:12px;background:var(--grn);color:var(--bg);font-size:.8rem}
+.tag.m{background:#d98c00}.tag.h{background:var(--red)}
+svg{width:100%;max-width:560px;display:block;margin:10px auto;background:var(--card);border:2px solid var(--ink);border-radius:8px}
+svg text{fill:var(--ink);font-family:'Kalam',cursive;font-size:12px}
+table{border-collapse:collapse;width:100%;line-height:26px}td,th{border:2px solid var(--ink);padding:2px 8px;text-align:center}
+details{background:var(--card);border:1px solid var(--ink);border-radius:8px;padding:2px 12px;margin:8px 0}summary{cursor:pointer;font-weight:700}
+.step{display:block;padding-left:12px}.note{text-align:center;opacity:.75;font-size:.9rem}
+@media print{details{display:block}}
+</style></head><body><main>
+<h1>✎ Class 12 Maths · Unit 3 Calculus<br>Chapter 10: Tangents and Normals</h1>
+<p class="note">UP Board / NCERT style notes · Step-by-step · Animated diagrams</p>
+
+<h2>1. Slope of a Tangent</h2>
+<p>A <b>tangent</b> to a curve at a point P touches the curve at P and has the same direction as the curve there. Its slope equals the value of the derivative at P. If the tangent makes angle θ with the positive x-axis, slope = tan θ.</p>
+<div class="box"><b>Slope of tangent at P(x₁, y₁):</b> m = [dy/dx]<sub>(x₁, y₁)</sub><br>
+<b>Parametric curve</b> x = φ(t), y = ψ(t): m = (dy/dt)/(dx/dt) at t = t₁.<br>
+<b>Implicit curve:</b> differentiate both sides w.r.t. x, solve for dy/dx, then put (x₁, y₁).</div>
+
+<h2>2. Equation of a Tangent to a Curve</h2>
+<div class="box">Tangent at P(x₁, y₁): <b>y − y₁ = m (x − x₁)</b>, where m = [dy/dx] at P.</div>
+<p><b>Special cases:</b> if m = 0 the tangent is <b>y = y₁</b> (horizontal). If dy/dx is infinite (vertical tangent) the tangent is <b>x = x₁</b>.</p>
+
+<h2>3. Slope of a Normal &amp; 4. Equation of a Normal</h2>
+<p>The <b>normal</b> at P is the line through P perpendicular to the tangent at P. Since the product of slopes of perpendicular lines is −1:</p>
+<div class="box"><b>Slope of normal = −1/m = −1/[dy/dx]</b><br>
+<b>Normal at P(x₁, y₁):</b> y − y₁ = −(1/m)(x − x₁) &nbsp;or&nbsp; (x − x₁) + m (y − y₁) = 0.<br>
+If m = 0: normal is x = x₁. If tangent is vertical: normal is y = y₁.</div>
+<svg viewBox="0 0 300 200" aria-label="Tangent and normal">
+<line x1="20" y1="170" x2="290" y2="170" stroke="var(--ink)"/><line x1="150" y1="20" x2="150" y2="190" stroke="var(--ink)"/>
+<path d="M66,44 Q150,296 234,44" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+<line x1="164" y1="198" x2="234" y2="58" stroke="var(--red)" stroke-width="2.5" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0;0;0" keyTimes="0;.25;.6;1" dur="8s" repeatCount="indefinite"/></line>
+<line x1="122" y1="72" x2="262" y2="142" stroke="var(--grn)" stroke-width="2.5" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;1;0;0" keyTimes="0;.3;.6;1" dur="8s" repeatCount="indefinite"/></line>
+<path d="M210.5,105.1 L219.4,109.6 L214.9,118.5" fill="none" stroke="var(--ink)" stroke-width="1.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.6;.7;1" dur="8s" repeatCount="indefinite"/></path>
+<circle cx="206" cy="114" r="5" fill="var(--ink)"/>
+<text x="154" y="184">O</text><text x="272" y="165">X</text><text x="154" y="30">Y</text>
+<text x="160" y="108">P(x₁, y₁)</text><text x="228" y="52" style="fill:var(--red)">Tangent: slope m</text>
+<text x="196" y="150" style="fill:var(--grn)">Normal: slope −1/m</text><text x="222" y="102">90°</text><text x="85" y="40">y = f(x)</text></svg>
+<p class="note">Fig. 1: At P the tangent (red) and normal (green) are perpendicular (90°).</p>
+
+<h2>5. Tangents Parallel to the Coordinate Axes</h2>
+<div class="box"><b>Parallel to x-axis</b> ⇔ slope = 0 ⇔ dy/dx = 0.<br><b>Parallel to y-axis</b> ⇔ slope infinite ⇔ dx/dy = 0 (i.e. 1/(dy/dx) = 0).<br><b>Parallel to line y = mx + c:</b> dy/dx = m. <b>Perpendicular to it:</b> dy/dx = −1/m.</div>
+<h2>6. Normals Parallel to the Coordinate Axes</h2>
+<div class="box"><b>Normal ∥ x-axis</b> ⇔ tangent ∥ y-axis (dx/dy = 0).<br><b>Normal ∥ y-axis</b> ⇔ tangent ∥ x-axis (dy/dx = 0).</div>
+<svg viewBox="0 0 300 200" aria-label="Circle tangents parallel to axes">
+<line x1="20" y1="100" x2="290" y2="100" stroke="var(--ink)" stroke-opacity=".5"/><line x1="150" y1="10" x2="150" y2="190" stroke="var(--ink)" stroke-opacity=".5"/>
+<circle cx="150" cy="100" r="60" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+<g><line x1="150" y1="100" x2="210" y2="100" stroke="var(--grn)" stroke-width="2"/><line x1="210" y1="55" x2="210" y2="145" stroke="var(--red)" stroke-width="2.5"/><circle cx="210" cy="100" r="5" fill="var(--red)"/>
+<animateTransform attributeName="transform" type="rotate" from="0 150 100" to="-360 150 100" dur="10s" repeatCount="indefinite"/></g>
+<text x="75" y="30">Top (0, r): tangent ∥ x-axis, dy/dx = 0</text><text x="218" y="92">(r, 0)</text><text x="218" y="124">tangent ∥ y-axis</text><text x="218" y="138">dy/dx → ∞</text><text x="154" y="116" style="fill:var(--grn)">normal</text><text x="20" y="190">Red: rotating tangent · Green: normal through centre</text></svg>
+<p class="note">Fig. 2: On a circle, the tangent is horizontal at the top and bottom and vertical at the left and right. Every normal passes through the centre.</p>
+
+<h2>7. Tangents and Normals at a Given Point</h2>
+<div class="box"><b>Steps:</b> ① Check the point lies on the curve. ② Find dy/dx. ③ Substitute the point to get m. ④ Tangent: y − y₁ = m(x − x₁). ⑤ Normal: y − y₁ = −(1/m)(x − x₁). ⑥ Simplify into the form ax + by + c = 0.</div>
+<h2>8. Problems Based on Tangents and Normals</h2>
+<div class="box"><b>Lengths (bonus, for UP Board):</b> with m = dy/dx at (x, y):<br>Sub-tangent = |y/m|; Sub-normal = |y·m|; Length of tangent = |(y/m)√(1+m²)|; Length of normal = |y√(1+m²)|.<br><b>If the point is not given:</b> take a general point (x₁, y₁) on the curve, use the given condition (parallel/perpendicular/passing through a point) to get equations, then solve.</div>
+
+<h2>Solved Examples (step by step)</h2>
+<div class="eg"><span class="tag">Easy</span> <b>Ex 1.</b> Find the slope of the tangent to y = x² − 3x + 2 at (1, 0).<br><span class="step">dy/dx = 2x − 3. At x = 1: m = 2 − 3 = <b>−1</b>.</span></div>
+<div class="eg"><span class="tag">Easy</span> <b>Ex 2.</b> Find the tangent and normal to y = x²/2 at (2, 2).<br><span class="step">dy/dx = x ⇒ m = 2.</span><span class="step">Tangent: y − 2 = 2(x − 2) ⇒ <b>2x − y − 2 = 0</b>.</span><span class="step">Normal slope = −1/2: y − 2 = −½(x − 2) ⇒ <b>x + 2y − 6 = 0</b>. (Fig. 1)</span></div>
+<div class="eg"><span class="tag">Easy</span> <b>Ex 3.</b> Tangent and normal to y = x³ at (1, 1).<br><span class="step">dy/dx = 3x² = 3 at x = 1.</span><span class="step">Tangent: y − 1 = 3(x − 1) ⇒ <b>3x − y − 2 = 0</b>.</span><span class="step">Normal: y − 1 = −⅓(x − 1) ⇒ <b>x + 3y − 4 = 0</b>.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 4.</b> Tangent and normal to x² + y² = 25 at (3, 4).<br><span class="step">2x + 2y dy/dx = 0 ⇒ dy/dx = −x/y = −3/4.</span><span class="step">Tangent: y − 4 = −¾(x − 3) ⇒ <b>3x + 4y = 25</b>.</span><span class="step">Normal slope 4/3: y − 4 = (4/3)(x − 3) ⇒ <b>4x − 3y = 0</b> (passes through the centre).</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 5.</b> For x = at², y = 2at, find tangent and normal at t = 1.<br><span class="step">dy/dt = 2a, dx/dt = 2at ⇒ dy/dx = 1/t = 1. Point = (a, 2a).</span><span class="step">Tangent: y − 2a = x − a ⇒ <b>x − y + a = 0</b>.</span><span class="step">Normal: y − 2a = −(x − a) ⇒ <b>x + y − 3a = 0</b>.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 6.</b> Find points on y = x³ − 3x where the tangent is parallel to the x-axis.<br><span class="step">dy/dx = 3x² − 3 = 0 ⇒ x = ±1.</span><span class="step">y(1) = −2, y(−1) = 2. Points: <b>(1, −2) and (−1, 2)</b>; tangents y = −2 and y = 2.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 7.</b> For (x − 1)² + y² = 4 find points where tangent is parallel to (a) y-axis, (b) x-axis.<br><span class="step">2(x − 1) + 2y y′ = 0 ⇒ y′ = −(x − 1)/y.</span><span class="step">(a) Parallel to y-axis: y = 0 ⇒ (x − 1)² = 4 ⇒ x = 3 or −1: points <b>(3, 0), (−1, 0)</b>.</span><span class="step">(b) Parallel to x-axis: x = 1 ⇒ y² = 4: points <b>(1, 2), (1, −2)</b>.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 8.</b> Find the tangent to y = x² − 2x + 7 parallel to 2x − y + 9 = 0.<br><span class="step">Line slope = 2. dy/dx = 2x − 2 = 2 ⇒ x = 2; y = 4 − 4 + 7 = 7.</span><span class="step">Tangent: y − 7 = 2(x − 2) ⇒ <b>2x − y + 3 = 0</b>.</span></div>
+<div class="eg"><span class="tag h">Hard</span> <b>Ex 9.</b> Find the normals to y = x² that pass through (0, 3/2).<br><span class="step">Point (t, t²), slope of tangent 2t, normal: y − t² = −(1/2t)(x − t).</span><span class="step">Put (0, 3/2): 3/2 − t² = −(1/2t)(−t) = 1/2 ⇒ t² = 1 ⇒ t = ±1.</span><span class="step">t = 1: <b>x + 2y − 3 = 0</b>; t = −1: <b>x − 2y + 3 = 0</b>.</span></div>
+<div class="eg"><span class="tag h">Hard</span> <b>Ex 10.</b> Show that for xy = c² the triangle formed by any tangent and the axes has constant area.<br><span class="step">y = c²/x ⇒ dy/dx = −y₁/x₁ at (x₁, y₁). Tangent: y − y₁ = −(y₁/x₁)(x − x₁).</span><span class="step">Put y = 0: x = 2x₁. Put x = 0: y = 2y₁.</span><span class="step">Area = ½ · 2x₁ · 2y₁ = 2x₁y₁ = <b>2c²</b>, a constant. ∎</span></div>
+<div class="eg"><span class="tag h">Hard</span> <b>Ex 11.</b> Find a, b so that y² = ax³ + b touches y = 4x − 5 at (2, 3).<br><span class="step">Point on curve: 9 = 8a + b … (i).</span><span class="step">2y y′ = 3ax² ⇒ y′ = 3ax²/(2y) = 12a/6 = 2a at (2, 3). Slope of line = 4 ⇒ a = 2.</span><span class="step">From (i): b = 9 − 16 = <b>−7</b>. So a = 2, b = −7.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 12.</b> For y = x² at (1, 1) find sub-tangent, sub-normal and lengths of tangent and normal.<br><span class="step">m = 2, y = 1.</span><span class="step">Sub-tangent = |y/m| = <b>1/2</b>; sub-normal = |y m| = <b>2</b>.</span><span class="step">Tangent length = (1/2)√5 = <b>√5/2</b>; normal length = 1·√5 = <b>√5</b>.</span></div>
+
+<h2>Q &amp; A Practice (tap to open)</h2>
+<h3>Short Questions</h3>
+<details><summary>Q1. Write the equation of the tangent at (x₁, y₁).</summary>y − y₁ = (dy/dx)<sub>(x₁, y₁)</sub> (x − x₁).</details>
+<details><summary>Q2. What is the slope of the normal?</summary>−1/(dy/dx) at the point, since normal ⟂ tangent.</details>
+<details><summary>Q3. When is the tangent parallel to the x-axis?</summary>When dy/dx = 0.</details>
+<details><summary>Q4. When is the tangent parallel to the y-axis?</summary>When dx/dy = 0 (dy/dx not finite).</details>
+<details><summary>Q5. Slope of the tangent to y = x² at x = 3?</summary>2x = 6.</details>
+<details><summary>Q6. If the tangent is vertical, what is the normal?</summary>Horizontal: y = y₁.</details>
+<h3>Long Questions</h3>
+<details><summary>Q7. Find the tangent and normal to y² = 4ax at (at², 2at).</summary>2y y′ = 4a ⇒ y′ = 2a/y = 1/t. Tangent: ty = x + at². Normal slope −t: y − 2at = −t(x − at²) ⇒ y = −tx + 2at + at³.</details>
+<details><summary>Q8. Show that the tangent to x² + y² = r² at (x₁, y₁) is xx₁ + yy₁ = r².</summary>y′ = −x₁/y₁. Tangent: y − y₁ = −(x₁/y₁)(x − x₁) ⇒ yy₁ − y₁² = −xx₁ + x₁² ⇒ xx₁ + yy₁ = x₁² + y₁² = r². ∎</details>
+<details><summary>Q9. Find the tangent to y = x³ − x that is perpendicular to the line x + 2y = 0.</summary>Line slope −1/2, so tangent slope 2: 3x² − 1 = 2 ⇒ x = ±1. Points (1, 0), (−1, 0). Tangents: y = 2(x − 1) and y = 2(x + 1).</details>
+<h3>MCQs</h3>
+<details><summary>Q10. Slope of the normal to y = x² at (1, 1): (a) 2 (b) −2 (c) 1/2 (d) −1/2</summary><b>(d)</b> m = 2 ⇒ normal slope −1/2.</details>
+<details><summary>Q11. Tangent to y = 3x² − 6x at its vertex is: (a) parallel to x-axis (b) parallel to y-axis (c) y = x (d) none</summary><b>(a)</b> y′ = 6x − 6 = 0 at x = 1.</details>
+<details><summary>Q12. Normal to x² + y² = 25 at (3, 4) passes through: (a) (0, 0) (b) (1, 1) (c) (5, 0) (d) (0, 5)</summary><b>(a)</b> The normal of a circle passes through the centre.</details>
+<p class="note">Version 1: core notes. Ask me for more Q&amp;A, harder examples or more diagrams and I will add them.</p>
+</main></body></html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Class 12 Maths – Differentiation of Composite Functions (English Notes)</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fffdf3;--ink:#1d2b53;--line:#cfe3f5;--red:#c0392b;--grn:#1e7d4f;--box:#fff3b0;--card:#ffffffcc;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1f2b;--ink:#e8ecf8;--line:#2c3550;--red:#ff8a7a;--grn:#6fdba4;--box:#3b3a1c;--card:#232838cc}}
+:root[data-theme="dark"]{--bg:#1b1f2b;--ink:#e8ecf8;--line:#2c3550;--red:#ff8a7a;--grn:#6fdba4;--box:#3b3a1c;--card:#232838cc}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Kalam','Segoe Print',cursive,sans-serif;font-size:19px;line-height:32px;background-image:repeating-linear-gradient(var(--bg) 0 31px,var(--line) 31px 32px);border-left:3px double var(--red)}
+main{max-width:860px;margin:auto;padding:12px 18px 60px}
+h1{text-align:center;font-size:2rem;line-height:1.3;border-bottom:3px wavy var(--red);padding-bottom:6px}
+h2{color:var(--red);margin:34px 0 4px;font-size:1.5rem;line-height:1.3;text-decoration:underline wavy;text-underline-offset:6px}
+h3{color:var(--grn);margin:18px 0 0;line-height:1.3}
+.box{background:var(--box);border:2px dashed var(--ink);border-radius:10px;padding:6px 14px;margin:12px 0;line-height:30px}
+.eg{background:var(--card);border-left:5px solid var(--grn);padding:4px 14px;margin:12px 0;border-radius:6px;line-height:30px}
+.tag{font-weight:700;padding:0 8px;border-radius:12px;background:var(--grn);color:var(--bg);font-size:.8rem}
+.tag.m{background:#d98c00}.tag.h{background:var(--red)}
+svg{width:100%;max-width:560px;display:block;margin:10px auto;background:var(--card);border:2px solid var(--ink);border-radius:8px}
+svg text{fill:var(--ink);font-family:'Kalam',cursive;font-size:12px}
+table{border-collapse:collapse;width:100%;line-height:26px}td,th{border:2px solid var(--ink);padding:2px 8px;text-align:center}
+details{background:var(--card);border:1px solid var(--ink);border-radius:8px;padding:2px 12px;margin:8px 0}summary{cursor:pointer;font-weight:700}
+.step{display:block;padding-left:12px}.note{text-align:center;opacity:.75;font-size:.9rem}
+@media print{details{display:block}}
+</style></head><body><main>
+<h1>✎ Class 12 Maths · Unit 3 Calculus<br>Chapter 8: Differentiation of Composite Functions</h1>
+<p class="note">UP Board / NCERT style notes · Step-by-step · Animated diagrams</p>
+
+<h2>1. Derivative of Composite Functions</h2>
+<p>A <b>composite function</b> is a function inside another function: (f∘g)(x) = f(g(x)). Examples: sin(x²) (outer = sin, inner = x²), e^(3x), log(sin x). To differentiate such functions we cannot use the basic table directly; we need the chain rule.</p>
+
+<h2>2. Chain Rule</h2>
+<div class="box"><b>If y = f(u) and u = g(x):</b> dy/dx = (dy/du) · (du/dx)<br>
+<b>In short:</b> d/dx [f(g(x))] = f′(g(x)) · g′(x) &nbsp;(derivative of outer at inner × derivative of inner).<br>
+<b>Longer chain:</b> y = f(u), u = g(v), v = h(x) ⇒ dy/dx = (dy/du)(du/dv)(dv/dx).</div>
+<p><b>Method:</b> <span class="step">① Identify outer and inner function. ② Differentiate the outer keeping the inner unchanged. ③ Multiply by the derivative of the inner. ④ Repeat for deeper layers (work from outside to inside).</span></p>
+<p><b>Common results:</b> d/dx (sin f) = cos f · f′; d/dx (tan f) = sec²f · f′; d/dx (f ⁿ) = n fⁿ⁻¹ f′; d/dx (√f) = f′/(2√f).</p>
+
+<h2>3. Derivatives of Inverse Trigonometric Functions</h2>
+<table><tr><th>f(x)</th><th>f′(x)</th><th>Domain</th></tr>
+<tr><td>sin⁻¹x</td><td>1/√(1−x²)</td><td>(−1, 1)</td></tr><tr><td>cos⁻¹x</td><td>−1/√(1−x²)</td><td>(−1, 1)</td></tr>
+<tr><td>tan⁻¹x</td><td>1/(1+x²)</td><td>R</td></tr><tr><td>cot⁻¹x</td><td>−1/(1+x²)</td><td>R</td></tr>
+<tr><td>sec⁻¹x</td><td>1/(|x|√(x²−1))</td><td>|x| &gt; 1</td></tr><tr><td>cosec⁻¹x</td><td>−1/(|x|√(x²−1))</td><td>|x| &gt; 1</td></tr></table>
+<p><b>Proof for sin⁻¹x:</b> Let y = sin⁻¹x, so x = sin y, y ∈ (−π/2, π/2).<br>
+<span class="step">Differentiate w.r.t. x: 1 = cos y · dy/dx.</span><span class="step">dy/dx = 1/cos y = 1/√(1 − sin²y) (cos y &gt; 0 here) = <b>1/√(1−x²)</b>. ∎</span></p>
+<div class="box"><b>Simplifying substitutions:</b> x = tan θ for √(1+x²); x = sin θ for √(1−x²); x = a tan θ for a²+x². <br>Useful: tan⁻¹[2x/(1−x²)] = 2tan⁻¹x; sin⁻¹[2x/(1+x²)] = 2tan⁻¹x; cos⁻¹[(1−x²)/(1+x²)] = 2tan⁻¹x.</div>
+
+<h2>4. Differentiation of Implicit Functions</h2>
+<p>When y cannot be easily written as y = f(x) (e.g. x² + y² = 25), the relation is <b>implicit</b>.</p>
+<div class="box"><b>Method:</b> ① Differentiate every term w.r.t. x; ② treat y as a function of x, so d/dx(yⁿ) = n yⁿ⁻¹ · dy/dx and use product rule on xy; ③ collect dy/dx terms on one side and solve.</div>
+
+<h2>5. Exponential Functions and Derivatives</h2>
+<div class="box">d/dx (eˣ) = eˣ; d/dx (aˣ) = aˣ log a; d/dx (e^f(x)) = e^f(x) · f′(x); d/dx (a^f(x)) = a^f(x) · log a · f′(x).</div>
+<h2>6. Logarithmic Functions and Derivatives</h2>
+<div class="box">d/dx (log x) = 1/x; d/dx (log<sub>a</sub> x) = 1/(x log a); d/dx [log f(x)] = f′(x)/f(x).<br>Laws: log(mn) = log m + log n; log(m/n) = log m − log n; log mⁿ = n log m.</div>
+
+<h2>7. Logarithmic Differentiation</h2>
+<p>Use it when the function is of the form <b>[f(x)]^g(x)</b>, or a long product/quotient of powers.</p>
+<div class="box"><b>Steps:</b> ① Take log of both sides. ② Simplify with log laws. ③ Differentiate both sides w.r.t. x (LHS gives (1/y) dy/dx). ④ Multiply by y and replace y by the original expression.</div>
+
+<h2>8. Parametric Functions</h2>
+<div class="box">If x = φ(t), y = ψ(t): <b>dy/dx = (dy/dt) / (dx/dt)</b>, provided dx/dt ≠ 0.</div>
+<h2>9. Second-Order Derivatives</h2>
+<div class="box">d²y/dx² = d/dx (dy/dx), also written y″ or f″(x).<br><b>Parametric:</b> d²y/dx² = [ d/dt (dy/dx) ] / (dx/dt).</div>
+
+<h2>10. Rolle’s Theorem</h2>
+<div class="box">If f is (i) continuous on [a, b], (ii) differentiable on (a, b), (iii) f(a) = f(b), then there exists at least one c ∈ (a, b) with <b>f′(c) = 0</b>.</div>
+<p>All three conditions are needed. Example of failure: f(x) = |x| on [−1, 1] is not differentiable at 0, and f′ is never 0.</p>
+<svg viewBox="0 0 300 190" aria-label="Rolle theorem">
+<line x1="40" y1="60" x2="260" y2="60" stroke="var(--grn)" stroke-dasharray="4 4"/>
+<line x1="40" y1="60" x2="40" y2="170" stroke="var(--ink)" stroke-dasharray="3 3"/><line x1="260" y1="60" x2="260" y2="170" stroke="var(--ink)" stroke-dasharray="3 3"/>
+<line x1="150" y1="130" x2="150" y2="170" stroke="var(--ink)" stroke-dasharray="3 3"/>
+<path d="M40,60 Q150,200 260,60" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+<line stroke="var(--red)" stroke-width="2.5" x1="0" y1="9.1" x2="80" y2="110.9">
+<animate attributeName="x1" values="0;55;110;165;220" dur="6s" repeatCount="indefinite"/><animate attributeName="y1" values="9.1;87;130;138;110.9" dur="6s" repeatCount="indefinite"/>
+<animate attributeName="x2" values="80;135;190;245;300" dur="6s" repeatCount="indefinite"/><animate attributeName="y2" values="110.9;138;130;87;9.1" dur="6s" repeatCount="indefinite"/></line>
+<circle r="5" fill="var(--red)" cx="40" cy="60"><animate attributeName="cx" values="40;95;150;205;260" dur="6s" repeatCount="indefinite"/><animate attributeName="cy" values="60;112.5;130;112.5;60" dur="6s" repeatCount="indefinite"/></circle>
+<text x="22" y="52">A</text><text x="262" y="52">B</text><text x="12" y="185">x = a</text><text x="238" y="185">x = b</text><text x="132" y="185">x = c</text>
+<text x="100" y="52" style="fill:var(--grn)">f(a) = f(b)</text><text x="95" y="150" style="fill:var(--red)">Tangent ∥ x-axis at c: f′(c) = 0</text></svg>
+<p class="note">Fig. 1: The moving red tangent becomes horizontal (slope 0) at x = c.</p>
+
+<h2>11. Lagrange’s Mean Value Theorem (LMVT)</h2>
+<div class="box">If f is continuous on [a, b] and differentiable on (a, b), there exists c ∈ (a, b) with<br><b>f′(c) = [ f(b) − f(a) ] / (b − a)</b>.</div>
+<p><b>Proof (via Rolle).</b> Define φ(x) = f(x) − f(a) − [ (f(b) − f(a))/(b − a) ] (x − a).<br>
+<span class="step">φ is continuous on [a, b], differentiable on (a, b).</span><span class="step">φ(a) = 0 and φ(b) = f(b) − f(a) − (f(b) − f(a)) = 0.</span><span class="step">By Rolle, ∃ c: φ′(c) = 0 ⇒ f′(c) − (f(b) − f(a))/(b − a) = 0. ∎</span></p>
+<h2>12. Geometrical Interpretation</h2>
+<p><b>Rolle:</b> if the end points of a smooth curve are at the same height, some point has a <b>horizontal tangent</b>. <b>LMVT:</b> some point of the curve has a tangent <b>parallel to the chord AB</b> (slope of chord = (f(b) − f(a))/(b − a)).</p>
+<svg viewBox="0 0 300 190" aria-label="LMVT">
+<path d="M40,150 Q160,20 260,70" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+<line x1="40" y1="150" x2="260" y2="70" stroke="var(--grn)" stroke-width="2.5"/>
+<line x1="40" y1="106.8" x2="260" y2="26.8" stroke="var(--red)" stroke-width="2.5" stroke-dasharray="6 4"><animateTransform attributeName="transform" type="translate" values="0 43;0 0;0 0" keyTimes="0;.6;1" dur="5s" repeatCount="indefinite"/></line>
+<circle cx="40" cy="150" r="4" fill="var(--ink)"/><circle cx="260" cy="70" r="4" fill="var(--ink)"/><circle cx="155" cy="65" r="5" fill="var(--red)"/>
+<text x="20" y="168">A(a, f(a))</text><text x="225" y="92">B(b, f(b))</text><text x="140" y="56">C(c, f(c))</text>
+<text x="70" y="140" style="fill:var(--grn)">Chord AB</text><text x="175" y="30" style="fill:var(--red)">Tangent at C ∥ chord AB</text></svg>
+<p class="note">Fig. 2: A line parallel to the chord slides up and touches the curve at C: f′(c) = slope of AB.</p>
+
+<h2>Solved Examples (step by step)</h2>
+<div class="eg"><span class="tag">Easy</span> <b>Ex 1.</b> Differentiate sin(x²).<br><span class="step">Outer = sin u, inner u = x². dy/dx = cos(x²) · 2x = <b>2x cos x²</b>.</span></div>
+<div class="eg"><span class="tag">Easy</span> <b>Ex 2.</b> Differentiate log(sec x).<br><span class="step">dy/dx = (1/sec x) · sec x tan x = <b>tan x</b>.</span></div>
+<div class="eg"><span class="tag">Easy</span> <b>Ex 3.</b> If x² + y² = 25, find dy/dx.<br><span class="step">2x + 2y dy/dx = 0 ⇒ <b>dy/dx = −x/y</b>.</span></div>
+<div class="eg"><span class="tag">Easy</span> <b>Ex 4.</b> If x = a cos θ, y = a sin θ, find dy/dx.<br><span class="step">dx/dθ = −a sin θ, dy/dθ = a cos θ. dy/dx = <b>−cot θ</b>.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 5.</b> Differentiate y = xˣ.<br><span class="step">log y = x log x.</span><span class="step">(1/y) y′ = log x + 1.</span><span class="step"><b>y′ = xˣ (1 + log x)</b>.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 6.</b> If x³ + y³ = 3axy, find dy/dx.<br><span class="step">3x² + 3y² y′ = 3a(y + x y′).</span><span class="step">y′(y² − ax) = ay − x².</span><span class="step"><b>y′ = (ay − x²)/(y² − ax)</b>.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 7.</b> Differentiate tan⁻¹[(√(1+x²) − 1)/x].<br><span class="step">Put x = tan θ: (sec θ − 1)/tan θ = (1 − cos θ)/sin θ = tan(θ/2).</span><span class="step">So y = θ/2 = ½ tan⁻¹x. <b>dy/dx = 1/[2(1+x²)]</b>.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 8.</b> If y = a sin x + b cos x, show y″ + y = 0.<br><span class="step">y′ = a cos x − b sin x; y″ = −a sin x − b cos x = −y. Hence y″ + y = 0. ∎</span></div>
+<div class="eg"><span class="tag h">Hard</span> <b>Ex 9.</b> Differentiate y = x^(sin x) + (sin x)^x.<br><span class="step">Let u = x^(sin x): log u = sin x log x ⇒ u′ = x^(sin x) [ sin x/x + cos x log x ].</span><span class="step">Let v = (sin x)^x: log v = x log sin x ⇒ v′ = (sin x)^x [ log sin x + x cot x ].</span><span class="step"><b>y′ = u′ + v′</b>.</span></div>
+<div class="eg"><span class="tag h">Hard</span> <b>Ex 10.</b> If x = a(θ − sin θ), y = a(1 − cos θ), find d²y/dx².<br><span class="step">dy/dx = a sin θ / [a(1 − cos θ)] = cot(θ/2).</span><span class="step">d/dθ (dy/dx) = −½ cosec²(θ/2); dx/dθ = a(1 − cos θ) = 2a sin²(θ/2).</span><span class="step">d²y/dx² = −½ cosec²(θ/2) / [2a sin²(θ/2)] = <b>−1 / [4a sin⁴(θ/2)]</b>.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 11.</b> Verify Rolle’s theorem for f(x) = x² − 4x + 3 on [1, 3].<br><span class="step">Polynomial ⇒ continuous and differentiable. f(1) = 0 = f(3).</span><span class="step">f′(x) = 2x − 4 = 0 ⇒ c = 2 ∈ (1, 3). Verified.</span></div>
+<div class="eg"><span class="tag h">Hard</span> <b>Ex 12.</b> Verify LMVT for f(x) = x(x−1)(x−2) on [0, ½].<br><span class="step">f(0) = 0; f(½) = ½ · (−½) · (−3/2) = 3/8. Slope of chord = (3/8)/(1/2) = 3/4.</span><span class="step">f′(x) = 3x² − 6x + 2 = 3/4 ⇒ 12x² − 24x + 5 = 0 ⇒ x = (6 ± √21)/6.</span><span class="step">c = 1 − √21/6 ≈ 0.236 ∈ (0, ½). Verified.</span></div>
+
+<h2>Q &amp; A Practice (tap to open)</h2>
+<h3>Short Questions</h3>
+<details><summary>Q1. State the chain rule.</summary>If y = f(u), u = g(x), then dy/dx = (dy/du)(du/dx).</details>
+<details><summary>Q2. Find d/dx (e^(sin x)).</summary>e^(sin x) · cos x.</details>
+<details><summary>Q3. Find d/dx [log(x² + 1)].</summary>2x/(x² + 1).</details>
+<details><summary>Q4. Find d/dx (tan⁻¹ x²).</summary>2x/(1 + x⁴).</details>
+<details><summary>Q5. State Rolle’s theorem.</summary>See Section 10.</details>
+<details><summary>Q6. Why does Rolle’s theorem fail for |x| on [−1, 1]?</summary>f is not differentiable at x = 0, so condition (ii) fails.</details>
+<h3>Long Questions</h3>
+<details><summary>Q7. Prove d/dx (tan⁻¹x) = 1/(1+x²).</summary>y = tan⁻¹x ⇒ x = tan y ⇒ 1 = sec²y · y′ ⇒ y′ = 1/(1 + tan²y) = 1/(1 + x²).</details>
+<details><summary>Q8. Prove LMVT using Rolle’s theorem.</summary>See the proof in Section 11.</details>
+<details><summary>Q9. Differentiate (log x)^x w.r.t. x.</summary>log y = x log(log x) ⇒ y′/y = log(log x) + 1/log x ⇒ y′ = (log x)^x [ log(log x) + 1/log x ].</details>
+<h3>MCQs</h3>
+<details><summary>Q10. d/dx sin⁻¹x = ? (a) 1/√(1−x²) (b) −1/√(1−x²) (c) 1/(1+x²) (d) 1/x</summary><b>(a)</b>.</details>
+<details><summary>Q11. If x = t², y = t³, dy/dx = ? (a) 3t/2 (b) 2t/3 (c) t (d) 3t²</summary><b>(a)</b> (3t²)/(2t) = 3t/2.</details>
+<details><summary>Q12. c in Rolle’s theorem for f(x) = x² − 4x + 3 on [1, 3]: (a) 1 (b) 2 (c) 3 (d) 0</summary><b>(b)</b> c = 2.</details>
+<p class="note">Version 1: core notes. Ask me for more Q&amp;A, harder examples or more diagrams and I will add them.</p>
+</main></body></html>

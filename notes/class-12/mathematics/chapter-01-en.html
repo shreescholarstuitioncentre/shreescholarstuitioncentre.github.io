@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Class 12 Maths – Chapter 1: Relations and Functions</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#fbfcff;--line:#cfe0f5;--ink:#1a3a8f;--red:#c0262d;--grn:#1d7a46;--txt:#1d2433;--box:#fff8d6;--box2:#e8f6ee;--box3:#fde9ea}
+@media(prefers-color-scheme:dark){:root{--paper:#171b26;--line:#26304a;--ink:#8fb0ff;--red:#ff8087;--grn:#6fd69b;--txt:#e6e9f2;--box:#3a3516;--box2:#16342a;--box3:#3b1d22}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--txt);font-family:'Kalam','Segoe Print','Noto Sans Devanagari',cursive;font-size:18px;line-height:32px;
+background-image:repeating-linear-gradient(transparent 0 31px,var(--line) 31px 32px);padding:env(safe-area-inset-top,0px) 14px env(safe-area-inset-bottom,0px) 56px;border-left:3px double var(--red);margin-left:10px}
+main{max-width:860px;margin:auto}
+h1{font-size:2.1rem;color:var(--ink);line-height:44px;margin:24px 0 0;text-decoration:underline wavy var(--red) 1px;text-underline-offset:8px}
+h2{color:var(--red);font-size:1.5rem;margin:40px 0 0;border-bottom:2px solid var(--red);display:inline-block}
+h3{color:var(--ink);font-size:1.2rem;margin:20px 0 0}
+p,ul,ol{margin:0 0 0}ul,ol{padding-left:26px}
+.def,.ex,.key{margin:16px 0;padding:6px 14px;border-radius:6px 14px 8px 12px;border:2px solid var(--ink)}
+.def{background:var(--box)}.ex{background:var(--box2);border-color:var(--grn)}.key{background:var(--box3);border-color:var(--red)}
+.def b.t,.ex b.t,.key b.t{color:var(--red)}
+.m{font-family:'Kalam',serif;color:var(--ink);white-space:nowrap}
+.fig{margin:16px 0;text-align:center;border:2px dashed var(--ink);border-radius:10px;padding:8px;line-height:24px}
+.figs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+svg text{font-family:'Kalam',cursive;fill:var(--txt)}svg .ell{fill:none;stroke:var(--ink);stroke-width:2}
+svg .ln{stroke:var(--red);stroke-width:2.2;fill:none;stroke-dasharray:100;stroke-dashoffset:100;animation:dr 6s ease-in-out infinite}
+@keyframes dr{0%{stroke-dashoffset:100}35%,90%{stroke-dashoffset:0}100%{stroke-dashoffset:100}}
+@media(prefers-reduced-motion:reduce){svg .ln{animation:none;stroke-dashoffset:0}}
+table{border-collapse:collapse;margin:12px 0;line-height:26px}td,th{border:1.5px solid var(--ink);padding:2px 10px}th{background:var(--box)}
+details{margin:10px 0;border-left:4px solid var(--grn);padding-left:12px}summary{cursor:pointer;color:var(--ink);font-weight:700}
+.ans{color:var(--grn)}.lvl{display:inline-block;padding:0 10px;border-radius:12px;background:var(--red);color:#fff;font-size:.85rem;line-height:22px}
+.tag{color:#fff;background:var(--ink);padding:0 8px;border-radius:8px;font-size:.8rem}
+@media(max-width:600px){body{font-size:16px;padding-left:40px}}
+</style></head><body><main>
+<h1>Chapter 1: Relations and Functions</h1><p>UP Board / NCERT – Notes in simple words with examples, figures, Q&amp;A and MCQs.</p>
+<h2>1. Relations</h2>
+<h3>1.1 Definition of a Relation</h3>
+<div class="def"><b class="t">Definition:</b> If A and B are two non-empty sets, a <b>relation R from A to B</b> is any subset of the Cartesian product A × B.<br>
+If (a, b) ∈ R we write <span class="m">a R b</span> (“a is related to b”). If A = B, R is a relation <i>on</i> A.</div>
+<ul><li>A × B = {(a, b) : a ∈ A, b ∈ B}.</li><li>If n(A) = m and n(B) = n, then n(A × B) = mn, so the total number of relations from A to B = <b>2<sup>mn</sup></b>.</li>
+<li>Domain of R = set of all first elements; Range = set of all second elements; Codomain = B.</li></ul>
+<p><b>Example:</b> A = {1, 2, 3}, R = {(a, b) : b = a + 1}. Then R = {(1,2), (2,3)}. Domain = {1, 2}, Range = {2, 3}.</p>
+<h3>1.2 Types of Relations</h3>
+<ul><li><b>Empty relation:</b> R = ∅ (no element is related to any element).</li><li><b>Universal relation:</b> R = A × A (every element is related to every element).</li>
+<li><b>Identity relation:</b> I<sub>A</sub> = {(a, a) : a ∈ A}.</li></ul>
+<p>Empty and universal relations are called <b>trivial relations</b>.</p>
+<h3>1.3 Reflexive Relation</h3>
+<div class="def"><b class="t">Definition:</b> R on A is reflexive if <span class="m">(a, a) ∈ R for every a ∈ A</span>.</div>
+<p>Trick: in the matrix/list of pairs, all “diagonal” pairs must be present. If even one (a, a) is missing → <b>not</b> reflexive.</p>
+<p>Examples: “x = y”, “x ≤ y”, “x is a divisor of y” on N are reflexive. “x &lt; y” is not.</p>
+<h3>1.4 Symmetric Relation</h3>
+<div class="def"><b class="t">Definition:</b> R is symmetric if <span class="m">(a, b) ∈ R ⇒ (b, a) ∈ R</span>.</div>
+<p>Examples: “x = y”, “x is a sibling of y”, “|x − y| is even” are symmetric. “x ≤ y”, “x &lt; y” are not.</p>
+<h3>1.5 Transitive Relation</h3>
+<div class="def"><b class="t">Definition:</b> R is transitive if <span class="m">(a, b) ∈ R and (b, c) ∈ R ⇒ (a, c) ∈ R</span>.</div>
+<p>Examples: “x &lt; y”, “x ≤ y”, “x divides y”, “x = y” are transitive. “x is perpendicular to y” is not (if a ⊥ b and b ⊥ c then a ∥ c).</p>
+<h3>1.6 Equivalence Relation</h3>
+<div class="key"><b class="t">Definition:</b> R is an equivalence relation if it is <b>reflexive + symmetric + transitive</b>.</div>
+<p><b>Equivalence class</b> of a: [a] = {x ∈ A : (x, a) ∈ R}. Equivalence classes partition A into disjoint sets whose union is A.</p>
+<table><tr><th>Relation</th><th>Refl.</th><th>Sym.</th><th>Trans.</th><th>Equiv.?</th></tr>
+<tr><td>x = y</td><td>✔</td><td>✔</td><td>✔</td><td>Yes</td></tr><tr><td>x ≤ y</td><td>✔</td><td>✘</td><td>✔</td><td>No</td></tr>
+<tr><td>x &lt; y</td><td>✘</td><td>✘</td><td>✔</td><td>No</td></tr><tr><td>|x−y| even</td><td>✔</td><td>✔</td><td>✔</td><td>Yes</td></tr></table>
+
+<h2>2. Functions</h2>
+<h3>2.1 Definition of a Function</h3>
+<div class="def"><b class="t">Definition:</b> A relation f from A to B is a <b>function</b> if <b>every</b> element of A has <b>exactly one</b> image in B. Written f : A → B, y = f(x).</div>
+<p>Vertical line test: every vertical line cuts the graph at most once. “One element of A going to two elements of B” is <b>not</b> a function; an element of A left without an arrow is also <b>not</b> a function.</p>
+<h3>2.2 Domain, Codomain and Range</h3>
+<ul><li><b>Domain</b> = A (all inputs). <b>Codomain</b> = B (the set where outputs are allowed to lie). <b>Range</b> = {f(x) : x ∈ A} ⊆ B (outputs actually obtained).</li></ul>
+<p>Example: f : R → R, f(x) = x². Domain = R, Codomain = R, Range = [0, ∞).</p>
+<div class="fig"><div class="figs"><div><svg viewBox="0 0 280 220" width="270" role="img" aria-label="One-one (not onto)"><defs><marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#c0262d"/></marker></defs><ellipse class="ell" cx="60" cy="118.0" rx="42" ry="84.0"/><ellipse class="ell" cx="220" cy="118.0" rx="42" ry="84.0"/><text x="30" y="18" font-size="14">Domain A</text><text x="190" y="18" font-size="14">Codomain B</text><circle cx="60" cy="88.0" r="3" fill="#1a3a8f"/><text x="40" y="93.0" font-size="16">1</text><circle cx="60" cy="128.0" r="3" fill="#1a3a8f"/><text x="40" y="133.0" font-size="16">2</text><circle cx="60" cy="168.0" r="3" fill="#1a3a8f"/><text x="40" y="173.0" font-size="16">3</text><circle cx="220" cy="68.0" r="3" fill="#1a3a8f"/><text x="232" y="73.0" font-size="16">a</text><circle cx="220" cy="108.0" r="3" fill="#1a3a8f"/><text x="232" y="113.0" font-size="16">b</text><circle cx="220" cy="148.0" r="3" fill="#1a3a8f"/><text x="232" y="153.0" font-size="16">c</text><circle cx="220" cy="188.0" r="3" fill="#1a3a8f"/><text x="232" y="193.0" font-size="16">d</text><path class="ln" pathLength="100" marker-end="url(#a1)" style="animation-delay:0.0s" d="M64 88.0L214 68.0"/><path class="ln" pathLength="100" marker-end="url(#a1)" style="animation-delay:0.5s" d="M64 128.0L214 108.0"/><path class="ln" pathLength="100" marker-end="url(#a1)" style="animation-delay:1.0s" d="M64 168.0L214 148.0"/></svg><br><b>One-one (not onto)</b></div><div><svg viewBox="0 0 280 220" width="270" role="img" aria-label="Onto (many-one)"><defs><marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#c0262d"/></marker></defs><ellipse class="ell" cx="60" cy="118.0" rx="42" ry="84.0"/><ellipse class="ell" cx="220" cy="118.0" rx="42" ry="84.0"/><text x="30" y="18" font-size="14">Domain A</text><text x="190" y="18" font-size="14">Codomain B</text><circle cx="60" cy="68.0" r="3" fill="#1a3a8f"/><text x="40" y="73.0" font-size="16">1</text><circle cx="60" cy="108.0" r="3" fill="#1a3a8f"/><text x="40" y="113.0" font-size="16">2</text><circle cx="60" cy="148.0" r="3" fill="#1a3a8f"/><text x="40" y="153.0" font-size="16">3</text><circle cx="60" cy="188.0" r="3" fill="#1a3a8f"/><text x="40" y="193.0" font-size="16">4</text><circle cx="220" cy="88.0" r="3" fill="#1a3a8f"/><text x="232" y="93.0" font-size="16">a</text><circle cx="220" cy="128.0" r="3" fill="#1a3a8f"/><text x="232" y="133.0" font-size="16">b</text><circle cx="220" cy="168.0" r="3" fill="#1a3a8f"/><text x="232" y="173.0" font-size="16">c</text><path class="ln" pathLength="100" marker-end="url(#a2)" style="animation-delay:0.0s" d="M64 68.0L214 88.0"/><path class="ln" pathLength="100" marker-end="url(#a2)" style="animation-delay:0.5s" d="M64 108.0L214 88.0"/><path class="ln" pathLength="100" marker-end="url(#a2)" style="animation-delay:1.0s" d="M64 148.0L214 128.0"/><path class="ln" pathLength="100" marker-end="url(#a2)" style="animation-delay:1.5s" d="M64 188.0L214 168.0"/></svg><br><b>Onto (many-one)</b></div><div><svg viewBox="0 0 280 180" width="270" role="img" aria-label="One-one and onto (bijective)"><defs><marker id="a3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#c0262d"/></marker></defs><ellipse class="ell" cx="60" cy="98.0" rx="42" ry="64.0"/><ellipse class="ell" cx="220" cy="98.0" rx="42" ry="64.0"/><text x="30" y="18" font-size="14">Domain A</text><text x="190" y="18" font-size="14">Codomain B</text><circle cx="60" cy="68.0" r="3" fill="#1a3a8f"/><text x="40" y="73.0" font-size="16">1</text><circle cx="60" cy="108.0" r="3" fill="#1a3a8f"/><text x="40" y="113.0" font-size="16">2</text><circle cx="60" cy="148.0" r="3" fill="#1a3a8f"/><text x="40" y="153.0" font-size="16">3</text><circle cx="220" cy="68.0" r="3" fill="#1a3a8f"/><text x="232" y="73.0" font-size="16">a</text><circle cx="220" cy="108.0" r="3" fill="#1a3a8f"/><text x="232" y="113.0" font-size="16">b</text><circle cx="220" cy="148.0" r="3" fill="#1a3a8f"/><text x="232" y="153.0" font-size="16">c</text><path class="ln" pathLength="100" marker-end="url(#a3)" style="animation-delay:0.0s" d="M64 68.0L214 108.0"/><path class="ln" pathLength="100" marker-end="url(#a3)" style="animation-delay:0.5s" d="M64 108.0L214 148.0"/><path class="ln" pathLength="100" marker-end="url(#a3)" style="animation-delay:1.0s" d="M64 148.0L214 68.0"/></svg><br><b>One-one and onto (bijective)</b></div></div></div><p><small>Figure: arrows draw one by one (animated). Left oval = domain A, right oval = codomain B.</small></p>
+<h3>2.3 One-one (Injective) Function</h3>
+<div class="def"><b class="t">Definition:</b> f is one-one if different elements have different images: <span class="m">f(x₁) = f(x₂) ⇒ x₁ = x₂</span>.</div>
+<p><b>Method:</b> take f(x₁) = f(x₂), simplify, and show x₁ = x₂. To disprove, give two different inputs with the same output. Horizontal line test: no horizontal line cuts the graph twice. If n(A) = m, n(B) = n, number of one-one functions = <sup>n</sup>P<sub>m</sub> (n ≥ m).</p>
+<h3>2.4 Onto (Surjective) Function</h3>
+<div class="def"><b class="t">Definition:</b> f is onto if <b>Range = Codomain</b>, i.e. for every y ∈ B there is some x ∈ A with f(x) = y.</div>
+<p><b>Method:</b> take y ∈ B, solve y = f(x) for x in terms of y, and check that x lies in A.</p>
+<h3>2.5 Bijective Function</h3>
+<div class="key"><b class="t">Definition:</b> f is bijective if it is both one-one and onto. If n(A) = n(B) = n, number of bijections = n!.</div>
+<h3>2.6 Composite Function</h3>
+<div class="def"><b class="t">Definition:</b> If f : A → B and g : B → C, then <span class="m">gof : A → C, (gof)(x) = g(f(x))</span>.</div>
+<ul><li>First apply f, then g (work from the inside out).</li><li>In general gof ≠ fog (not commutative).</li><li>h o (g o f) = (h o g) o f (associative).</li>
+<li>If f and g are one-one, gof is one-one; if both onto, gof is onto.</li></ul>
+<h3>2.7 Inverse of a Function</h3>
+<div class="def"><b class="t">Definition:</b> f : A → B has an inverse f⁻¹ : B → A <b>if and only if f is bijective</b>. Then f⁻¹(y) = x ⇔ f(x) = y.</div>
+<ul><li>f⁻¹of = I<sub>A</sub> and fof⁻¹ = I<sub>B</sub>. (f⁻¹)⁻¹ = f.</li><li><b>(gof)⁻¹ = f⁻¹ o g⁻¹</b> (order reverses).</li>
+<li><b>Finding f⁻¹:</b> put y = f(x), solve for x, replace y by x.</li></ul>
+
+<h2>3. Solved Examples (step by step)</h2>
+<div class="ex"><span class="lvl">Easy</span> <b class="t">Ex 1.</b> A = {1,2,3}, R = {(1,1),(2,2),(1,2),(2,1)}. Is R reflexive?<br>
+<b>Solution:</b> Step 1: Reflexive needs (1,1), (2,2), (3,3).<br>Step 2: (1,1) ∈ R, (2,2) ∈ R but (3,3) ∉ R.<br>Step 3: So R is <b>not reflexive</b>. (R is symmetric, and also transitive.)</div>
+<div class="ex"><span class="lvl">Easy</span> <b class="t">Ex 2.</b> Find the number of relations from A = {1,2} to B = {a,b,c}.<br>
+<b>Solution:</b> n(A×B) = 2×3 = 6. Number of subsets = 2⁶ = <b>64</b>.</div>
+<div class="ex"><span class="lvl">Medium</span> <b class="t">Ex 3.</b> <u>To prove:</u> R = {(a,b) : |a − b| is even} on Z is an equivalence relation.<br>
+<b>Proof:</b> (i) Reflexive: |a − a| = 0, which is even ⇒ (a,a) ∈ R.<br>
+(ii) Symmetric: if |a − b| is even then |b − a| = |a − b| is even ⇒ (b,a) ∈ R.<br>
+(iii) Transitive: let |a − b| and |b − c| be even. Then a − b = 2m, b − c = 2n. Adding: a − c = 2(m + n), even ⇒ (a,c) ∈ R.<br>
+Hence R is reflexive, symmetric and transitive, so R is an <b>equivalence relation</b>. ∎</div>
+<div class="ex"><span class="lvl">Medium</span> <b class="t">Ex 4.</b> <u>To show:</u> f : R → R, f(x) = 3x + 2 is bijective; find f⁻¹.<br>
+<b>Solution:</b> One-one: f(x₁) = f(x₂) ⇒ 3x₁ + 2 = 3x₂ + 2 ⇒ x₁ = x₂.<br>
+Onto: let y ∈ R. y = 3x + 2 ⇒ x = (y − 2)/3 ∈ R and f(x) = y. So onto.<br>
+Hence bijective. Inverse: f⁻¹(y) = (y − 2)/3, i.e. <b>f⁻¹(x) = (x − 2)/3</b>.</div>
+<div class="ex"><span class="lvl">Hard</span> <b class="t">Ex 5.</b> f : N → N, f(x) = x². Show f is one-one but not onto. Also show g : R → R, g(x) = x² is neither.<br>
+<b>Solution:</b> x₁² = x₂² with x₁, x₂ &gt; 0 ⇒ x₁ = x₂, so f is one-one. 2 ∈ N but no natural number has square 2 ⇒ not onto.<br>
+For g: g(2) = g(−2) = 4 ⇒ not one-one. −1 ∈ codomain has no pre-image ⇒ not onto.</div>
+<div class="ex"><span class="lvl">Hard</span> <b class="t">Ex 6.</b> f(x) = 2x + 1, g(x) = x². Find fog, gof and (gof)⁻¹ condition.<br>
+<b>Solution:</b> (fog)(x) = f(g(x)) = f(x²) = 2x² + 1.<br>(gof)(x) = g(f(x)) = (2x + 1)² = 4x² + 4x + 1.<br>Clearly fog ≠ gof. (gof is not one-one on R, since g is not, so its inverse does not exist on R.)</div>
+
+<h2>4. Short &amp; Long Q&amp;A (tap to see answer)</h2>
+<details><summary>Q1. Define a relation. How many relations are there from A to B with n(A)=m, n(B)=n?</summary><p class="ans">A subset of A × B. Total = 2<sup>mn</sup>, as A × B has mn elements and each can be in or out.</p></details>
+<details><summary>Q2. Is “x &lt; y” on R an equivalence relation?</summary><p class="ans">No. It is transitive but not reflexive (a &lt; a is false) and not symmetric.</p></details>
+<details><summary>Q3. Difference between range and codomain?</summary><p class="ans">Codomain is the set of allowed outputs; range is the set of outputs actually obtained. Range ⊆ codomain; they are equal only for onto functions.</p></details>
+<details><summary>Q4. Why is f : R → R, f(x) = x³ bijective?</summary><p class="ans">x₁³ = x₂³ ⇒ x₁ = x₂ (one-one). For any y, x = y<sup>1/3</sup> ∈ R gives f(x) = y (onto).</p></details>
+<details><summary>Q5. When does f⁻¹ exist?</summary><p class="ans">Only when f is bijective: one-one makes the inverse single-valued; onto makes it defined on all of B.</p></details>
+<details><summary>Q6. If f(x)=x+1, g(x)=2x, find (gof)(3) and (fog)(3).</summary><p class="ans">(gof)(3) = g(4) = 8; (fog)(3) = f(6) = 7.</p></details>
+<details><summary>Q7. Long: Prove (gof)⁻¹ = f⁻¹ o g⁻¹.</summary><p class="ans">Let f, g be bijective. (gof)o(f⁻¹og⁻¹) = g o (f o f⁻¹) o g⁻¹ = g o I o g⁻¹ = g o g⁻¹ = I. Similarly (f⁻¹og⁻¹)o(gof) = I. Hence f⁻¹og⁻¹ is the inverse of gof. ∎</p></details>
+<details><summary>Q8. Number of one-one and onto functions from a 3-element set to a 3-element set?</summary><p class="ans">3! = 6.</p></details>
+
+<h2>5. MCQs</h2>
+<details><summary>1. A relation on A that is reflexive, symmetric and transitive is called: (a) partial (b) equivalence (c) universal (d) identity</summary><p class="ans">(b) equivalence.</p></details>
+<details><summary>2. If n(A)=3, n(B)=2, number of relations from A to B: (a) 6 (b) 8 (c) 32 (d) 64</summary><p class="ans">(d) 2⁶ = 64.</p></details>
+<details><summary>3. f(x) = |x| from R to R is: (a) one-one (b) onto (c) bijective (d) neither</summary><p class="ans">(d) f(1) = f(−1) and negatives have no image.</p></details>
+<details><summary>4. Number of functions from a set of 2 elements to a set of 3 elements: (a) 6 (b) 8 (c) 9 (d) 5</summary><p class="ans">(c) 3² = 9.</p></details>
+<details><summary>5. Inverse of f(x) = 2x − 3 is: (a) (x+3)/2 (b) (x−3)/2 (c) 2x+3 (d) x/2 − 3</summary><p class="ans">(a) y = 2x − 3 ⇒ x = (y + 3)/2.</p></details>
+<p><i>This file is a core version. Ask for “Part 2” to get 100+ more Q&amp;A, MCQs and examples.</i></p>
+</main></body></html>

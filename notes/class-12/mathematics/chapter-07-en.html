@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Class 12 Maths – Differentiability (English Notes)</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fffdf3;--ink:#1d2b53;--line:#cfe3f5;--red:#c0392b;--grn:#1e7d4f;--box:#fff3b0;--card:#ffffffcc;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1f2b;--ink:#e8ecf8;--line:#2c3550;--red:#ff8a7a;--grn:#6fdba4;--box:#3b3a1c;--card:#232838cc}}
+:root[data-theme="dark"]{--bg:#1b1f2b;--ink:#e8ecf8;--line:#2c3550;--red:#ff8a7a;--grn:#6fdba4;--box:#3b3a1c;--card:#232838cc}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Kalam','Segoe Print',cursive,sans-serif;font-size:19px;line-height:32px;background-image:repeating-linear-gradient(var(--bg) 0 31px,var(--line) 31px 32px);border-left:3px double var(--red)}
+main{max-width:860px;margin:auto;padding:12px 18px 60px}
+h1{text-align:center;font-size:2rem;line-height:1.3;border-bottom:3px wavy var(--red);padding-bottom:6px}
+h2{color:var(--red);margin:34px 0 4px;font-size:1.5rem;line-height:1.3;text-decoration:underline wavy;text-underline-offset:6px}
+h3{color:var(--grn);margin:18px 0 0;line-height:1.3}
+.box{background:var(--box);border:2px dashed var(--ink);border-radius:10px;padding:6px 14px;margin:12px 0;line-height:30px}
+.eg{background:var(--card);border-left:5px solid var(--grn);padding:4px 14px;margin:12px 0;border-radius:6px;line-height:30px}
+.tag{font-weight:700;padding:0 8px;border-radius:12px;background:var(--grn);color:var(--bg);font-size:.8rem}
+.tag.m{background:#d98c00}.tag.h{background:var(--red)}
+svg{width:100%;max-width:560px;display:block;margin:10px auto;background:var(--card);border:2px solid var(--ink);border-radius:8px}
+svg text{fill:var(--ink);font-family:'Kalam',cursive;font-size:13px}
+table{border-collapse:collapse;width:100%;line-height:26px}td,th{border:2px solid var(--ink);padding:2px 8px;text-align:center}
+details{background:var(--card);border:1px solid var(--ink);border-radius:8px;padding:2px 12px;margin:8px 0}summary{cursor:pointer;font-weight:700}
+.step{display:block;padding-left:12px}.note{text-align:center;opacity:.75;font-size:.9rem}
+@media print{details{display:block}}
+</style></head><body><main>
+<h1>✎ Class 12 Maths · Unit 3 Calculus<br>Chapter 7: Differentiability</h1>
+<p class="note">UP Board / NCERT style notes · Neat, step-by-step, with animated diagrams</p>
+
+<h2>1. Introduction to Differentiability</h2>
+<p>Continuity tells us a graph has <b>no break</b>. Differentiability tells us a graph is also <b>smooth</b> (no sharp corner, no vertical tangent) at that point. Geometrically, a function is differentiable at a point if a <b>unique non-vertical tangent</b> can be drawn there. Its slope is the <b>derivative</b>, which also measures the <b>instantaneous rate of change</b> of y with respect to x.</p>
+
+<h2>2. Derivative of a Function &amp; 3. First Principles</h2>
+<div class="box"><b>Definition:</b> f′(a) = lim<sub>h→0</sub> [ f(a+h) − f(a) ] / h, provided the limit exists and is finite.<br>
+<b>General function:</b> f′(x) = lim<sub>h→0</sub> [ f(x+h) − f(x) ] / h &nbsp; (also written dy/dx, Df(x), y′).</div>
+<p><b>Meaning of each part:</b> f(a+h) − f(a) = change in y; h = change in x; their ratio = slope of the <b>secant (chord)</b> through P(a, f(a)) and Q(a+h, f(a+h)). As h → 0, Q slides towards P and the secant becomes the <b>tangent</b>.</p>
+
+<svg viewBox="0 0 300 190" aria-label="Secant becoming tangent">
+<path d="M20,160 Q150,-20 280,160" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+<line x1="0" y1="138.7" x2="250" y2="0.2" stroke="var(--grn)" stroke-width="2" stroke-dasharray="6 4"/>
+<line x1="98" y1="84.4" x2="254" y2="127.6" stroke="var(--red)" stroke-width="2.5">
+<animate attributeName="x2" values="254;202;150;124;98;254" keyTimes="0;.2;.4;.6;.8;1" dur="7s" repeatCount="indefinite"/>
+<animate attributeName="y2" values="127.6;84.4;70;73.6;84.4;127.6" keyTimes="0;.2;.4;.6;.8;1" dur="7s" repeatCount="indefinite"/></line>
+<circle cx="98" cy="84.4" r="5" fill="var(--ink)"/>
+<circle cx="254" cy="127.6" r="5" fill="var(--red)"><animate attributeName="cx" values="254;202;150;124;98;254" keyTimes="0;.2;.4;.6;.8;1" dur="7s" repeatCount="indefinite"/><animate attributeName="cy" values="127.6;84.4;70;73.6;84.4;127.6" keyTimes="0;.2;.4;.6;.8;1" dur="7s" repeatCount="indefinite"/></circle>
+<text x="70" y="78">P(a, f(a))</text><text x="205" y="150" style="fill:var(--red)">Q(a+h, f(a+h)) → P</text>
+<text x="170" y="22" style="fill:var(--grn)">Tangent (limit of secant)</text><text x="8" y="182">Red secant → green tangent as h → 0</text></svg>
+<p class="note">Fig. 1: Secant PQ turns into the tangent at P as Q moves towards P.</p>
+
+<h2>4. Left-Hand Derivative (LHD)</h2>
+<div class="box">Lf′(a) = lim<sub>h→0⁺</sub> [ f(a−h) − f(a) ] / (−h) &nbsp;=&nbsp; lim<sub>x→a⁻</sub> [ f(x) − f(a) ] / (x − a)</div>
+<h2>5. Right-Hand Derivative (RHD)</h2>
+<div class="box">Rf′(a) = lim<sub>h→0⁺</sub> [ f(a+h) − f(a) ] / h &nbsp;=&nbsp; lim<sub>x→a⁺</sub> [ f(x) − f(a) ] / (x − a)</div>
+
+<h2>6. Differentiability at a Point</h2>
+<div class="box"><b>f is differentiable at x = a ⇔ Lf′(a) = Rf′(a) = finite number.</b><br>That common value is f′(a). On an interval: differentiable on (a, b) if differentiable at every point; on [a, b] if differentiable on (a, b) and RHD at a and LHD at b exist.</div>
+<p><b>Steps to test:</b> <span class="step">① Write f near a on both sides. ② Find LHD. ③ Find RHD. ④ Compare. Equal and finite → differentiable; otherwise → not differentiable.</span></p>
+
+<svg viewBox="0 0 300 170" aria-label="Graph of |x|">
+<line x1="10" y1="140" x2="290" y2="140" stroke="var(--ink)"/><line x1="150" y1="10" x2="150" y2="160" stroke="var(--ink)"/>
+<path d="M40,30 L150,140 L260,30" fill="none" stroke="var(--red)" stroke-width="3" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0;0" keyTimes="0;.5;1" dur="5s" repeatCount="indefinite"/></path>
+<circle cx="150" cy="140" r="5" fill="var(--grn)"/>
+<text x="55" y="100">Slope = −1 (LHD)</text><text x="175" y="100">Slope = +1 (RHD)</text>
+<text x="156" y="156">O: sharp corner</text><text x="235" y="22">y = |x|</text><text x="270" y="136">X</text><text x="154" y="14">Y</text></svg>
+<p class="note">Fig. 2: y = |x| has LHD = −1 and RHD = 1 at 0, so it is not differentiable there.</p>
+
+<h2>7. Relationship Between Continuity and Differentiability</h2>
+<div class="box"><b>Theorem:</b> Every differentiable function is continuous. <b>Converse is false.</b></div>
+<p><b>Proof.</b> Let f be differentiable at a, so f′(a) = lim<sub>x→a</sub> [f(x) − f(a)]/(x − a) exists.<br>
+<span class="step">For x ≠ a: f(x) − f(a) = [ (f(x) − f(a)) / (x − a) ] · (x − a).</span>
+<span class="step">Take limit x → a: lim [f(x) − f(a)] = f′(a) · 0 = 0.</span>
+<span class="step">So lim f(x) = f(a). Hence f is continuous at a. ∎</span></p>
+<p><b>Converse counter-example:</b> f(x) = |x| is continuous at 0 but not differentiable at 0. <br><b>Remember:</b> Not continuous ⇒ not differentiable. Continuous ⇏ differentiable.</p>
+
+<h2>8. Differentiability of Standard Functions</h2>
+<table><tr><th>Function</th><th>Differentiable on</th><th>Not at</th></tr>
+<tr><td>Polynomial</td><td>R</td><td>—</td></tr><tr><td>|x − c|</td><td>R − {c}</td><td>x = c</td></tr>
+<tr><td>[x] (greatest integer)</td><td>R − Z</td><td>every integer</td></tr>
+<tr><td>sin x, cos x, eˣ</td><td>R</td><td>—</td></tr><tr><td>tan x</td><td>R − {(2n+1)π/2}</td><td>odd multiples of π/2</td></tr>
+<tr><td>log x</td><td>(0, ∞)</td><td>x ≤ 0 (undefined)</td></tr></table>
+
+<h2>9. Derivatives of Trigonometric Functions</h2>
+<table><tr><th>f(x)</th><th>f′(x)</th><th>f(x)</th><th>f′(x)</th></tr>
+<tr><td>sin x</td><td>cos x</td><td>cot x</td><td>−cosec²x</td></tr><tr><td>cos x</td><td>−sin x</td><td>sec x</td><td>sec x tan x</td></tr>
+<tr><td>tan x</td><td>sec²x</td><td>cosec x</td><td>−cosec x cot x</td></tr></table>
+<h2>10. Derivatives of Exponential &amp; Logarithmic Functions</h2>
+<table><tr><th>f(x)</th><th>f′(x)</th><th>f(x)</th><th>f′(x)</th></tr>
+<tr><td>eˣ</td><td>eˣ</td><td>log x</td><td>1/x</td></tr><tr><td>aˣ</td><td>aˣ log a</td><td>log<sub>a</sub> x</td><td>1/(x log a)</td></tr></table>
+<p><b>Useful limits:</b> lim sin h / h = 1; lim (1 − cos h)/h = 0; lim (eʰ − 1)/h = 1; lim log(1+h)/h = 1; lim (aʰ − 1)/h = log a.</p>
+
+<h2>Solved Examples (step by step)</h2>
+<div class="eg"><span class="tag">Easy</span> <b>Ex 1.</b> Find f′(3) from first principles, f(x) = x².<br>
+<span class="step">f′(3) = lim [ (3+h)² − 9 ] / h = lim [ 6h + h² ] / h</span><span class="step">= lim (6 + h) = <b>6</b>.</span></div>
+<div class="eg"><span class="tag">Easy</span> <b>Ex 2.</b> Show f(x) = |x| is not differentiable at 0.<br>
+<span class="step">LHD = lim<sub>h→0⁺</sub> [ |−h| − 0 ] / (−h) = h/(−h) = −1.</span><span class="step">RHD = lim [ |h| − 0 ] / h = 1.</span><span class="step">−1 ≠ 1, so not differentiable. ∎</span></div>
+<div class="eg"><span class="tag">Easy</span> <b>Ex 3.</b> Find d/dx (sin x) from first principles.<br>
+<span class="step">= lim [ sin(x+h) − sin x ] / h = lim 2cos(x + h/2) sin(h/2) / h</span><span class="step">= lim cos(x + h/2) · [ sin(h/2) / (h/2) ] = cos x · 1 = <b>cos x</b>.</span></div>
+<div class="eg"><span class="tag">Easy</span> <b>Ex 4.</b> Find d/dx (eˣ).<br>
+<span class="step">= lim (eˣ⁺ʰ − eˣ)/h = eˣ · lim (eʰ − 1)/h = eˣ · 1 = <b>eˣ</b>.</span></div>
+<div class="eg"><span class="tag">Easy</span> <b>Ex 5.</b> Find d/dx (log x).<br>
+<span class="step">= lim [ log(x+h) − log x ] / h = lim (1/h) log(1 + h/x)</span><span class="step">= (1/x) · lim log(1 + h/x)/(h/x) = <b>1/x</b>.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 6.</b> Test f(x) = x|x| at x = 0.<br>
+<span class="step">For x &lt; 0, f(x) = −x²; for x ≥ 0, f(x) = x².</span><span class="step">LHD = lim<sub>h→0⁺</sub> [−h² − 0]/(−h) = lim h = 0.</span><span class="step">RHD = lim h²/h = 0.</span><span class="step">LHD = RHD = 0, so differentiable, f′(0) = 0.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 7.</b> f(x) = x² (x ≤ 1), ax + b (x &gt; 1) is differentiable at 1. Find a, b.<br>
+<span class="step">Differentiable ⇒ continuous: 1 = a + b … (i)</span><span class="step">LHD = 2x at 1 = 2; RHD = a. So a = 2.</span><span class="step">From (i): b = −1. <b>a = 2, b = −1</b>.</span></div>
+<div class="eg"><span class="tag m">Medium</span> <b>Ex 8.</b> f(x) = x sin(1/x), f(0) = 0. Continuous? Differentiable at 0?<br>
+<span class="step">|x sin(1/x)| ≤ |x| → 0, so limit = 0 = f(0): continuous.</span><span class="step">[f(h) − f(0)]/h = sin(1/h), which oscillates between −1 and 1; no limit.</span><span class="step">Continuous but <b>not differentiable</b> at 0.</span></div>
+<div class="eg"><span class="tag h">Hard</span> <b>Ex 9.</b> f(x) = x² sin(1/x), f(0) = 0. Show f is differentiable at 0 but f′ is not continuous at 0.<br>
+<span class="step">f′(0) = lim h² sin(1/h)/h = lim h sin(1/h) = 0.</span><span class="step">For x ≠ 0: f′(x) = 2x sin(1/x) − cos(1/x).</span><span class="step">As x → 0, 2x sin(1/x) → 0 but cos(1/x) oscillates; lim f′(x) does not exist. So f′ is discontinuous at 0.</span></div>
+<div class="eg"><span class="tag h">Hard</span> <b>Ex 10.</b> Discuss differentiability of f(x) = |x − 1| + |x − 2| at x = 1, 2.<br>
+<span class="step">Near 1 (x&lt;1): f = 3 − 2x, slope −2; (1&lt;x&lt;2): f = 1, slope 0. LHD ≠ RHD at 1.</span><span class="step">Near 2: slope 0 on left, +2 on right. Not equal.</span><span class="step">Not differentiable at x = 1 and x = 2.</span></div>
+
+<h2>Q &amp; A Practice (tap to open the answer)</h2>
+<h3>Short Questions</h3>
+<details><summary>Q1. Define derivative of f at x = a.</summary>f′(a) = lim<sub>h→0</sub> [f(a+h) − f(a)]/h, if it exists finitely. It is the slope of the tangent at x = a.</details>
+<details><summary>Q2. When is a function differentiable at a point?</summary>When its LHD and RHD at that point both exist, are finite and are equal.</details>
+<details><summary>Q3. Is every continuous function differentiable?</summary>No. f(x) = |x| is continuous at 0 but its LHD (−1) ≠ RHD (1).</details>
+<details><summary>Q4. Is every differentiable function continuous?</summary>Yes. If f′(a) exists, lim [f(x) − f(a)] = f′(a)·0 = 0, so f is continuous at a.</details>
+<details><summary>Q5. Where is [x] not differentiable?</summary>At every integer, because it is discontinuous there.</details>
+<details><summary>Q6. Find d/dx (aˣ) by first principles.</summary>aˣ lim (aʰ − 1)/h = aˣ log a.</details>
+<h3>Long Questions</h3>
+<details><summary>Q7. Prove: differentiability implies continuity.</summary>See Section 7 for the full proof.</details>
+<details><summary>Q8. Prove d/dx (cos x) = −sin x from first principles.</summary>lim [cos(x+h) − cos x]/h = lim −2 sin(x + h/2) sin(h/2)/h = −sin x · lim sin(h/2)/(h/2) = −sin x.</details>
+<details><summary>Q9. Find d/dx (tan x) from first principles.</summary>[tan(x+h) − tan x]/h = sin h / (h cos(x+h) cos x). As h → 0 this becomes 1/cos²x = sec²x.</details>
+<h3>MCQs</h3>
+<details><summary>Q10. f(x) = |x − 2| at x = 2 is: (a) differentiable (b) continuous but not differentiable (c) discontinuous (d) none</summary><b>(b)</b>. Corner at x = 2; LHD = −1, RHD = 1.</details>
+<details><summary>Q11. d/dx (e²ˣ) = ? (a) e²ˣ (b) 2e²ˣ (c) 2xe²ˣ (d) e²</summary><b>(b)</b> 2e²ˣ by chain rule.</details>
+<details><summary>Q12. LHD of |x| at 0: (a) 1 (b) 0 (c) −1 (d) does not exist</summary><b>(c)</b> −1.</details>
+<details><summary>Q13. If f is differentiable at a then f is: (a) continuous at a (b) discontinuous (c) neither (d) constant</summary><b>(a)</b>.</details>
+<details><summary>Q14. d/dx (log x), x &gt; 0 = ? (a) x (b) 1/x (c) eˣ (d) log x</summary><b>(b)</b> 1/x.</details>
+<p class="note">Version 1: core notes. Ask me for more Q&amp;A, harder examples or extra diagrams and I will add them.</p>
+</main></body></html>

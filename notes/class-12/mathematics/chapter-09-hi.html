@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="hi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>कक्षा 12 गणित – अवकलज के अनुप्रयोग (हिंदी नोट्स)</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fffdf3;--ink:#1d2b53;--line:#cfe3f5;--red:#c0392b;--grn:#1e7d4f;--box:#fff3b0;--card:#ffffffcc;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1f2b;--ink:#e8ecf8;--line:#2c3550;--red:#ff8a7a;--grn:#6fdba4;--box:#3b3a1c;--card:#232838cc}}
+:root[data-theme="dark"]{--bg:#1b1f2b;--ink:#e8ecf8;--line:#2c3550;--red:#ff8a7a;--grn:#6fdba4;--box:#3b3a1c;--card:#232838cc}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Kalam','Noto Sans Devanagari',sans-serif;font-size:19px;line-height:34px;background-image:repeating-linear-gradient(var(--bg) 0 33px,var(--line) 33px 34px);border-left:3px double var(--red)}
+main{max-width:860px;margin:auto;padding:12px 18px 60px}
+h1{text-align:center;font-size:2rem;line-height:1.4;border-bottom:3px wavy var(--red);padding-bottom:6px}
+h2{color:var(--red);margin:34px 0 4px;font-size:1.5rem;line-height:1.4;text-decoration:underline wavy;text-underline-offset:6px}
+h3{color:var(--grn);margin:18px 0 0;line-height:1.4}
+.box{background:var(--box);border:2px dashed var(--ink);border-radius:10px;padding:6px 14px;margin:12px 0;line-height:32px}
+.eg{background:var(--card);border-left:5px solid var(--grn);padding:4px 14px;margin:12px 0;border-radius:6px;line-height:32px}
+.tag{font-weight:700;padding:0 8px;border-radius:12px;background:var(--grn);color:var(--bg);font-size:.8rem}
+.tag.m{background:#d98c00}.tag.h{background:var(--red)}
+svg{width:100%;max-width:560px;display:block;margin:10px auto;background:var(--card);border:2px solid var(--ink);border-radius:8px}
+svg text{fill:var(--ink);font-family:'Kalam',cursive;font-size:12px}
+table{border-collapse:collapse;width:100%;line-height:28px}td,th{border:2px solid var(--ink);padding:2px 8px;text-align:center}
+details{background:var(--card);border:1px solid var(--ink);border-radius:8px;padding:2px 12px;margin:8px 0}summary{cursor:pointer;font-weight:700}
+.step{display:block;padding-left:12px}.note{text-align:center;opacity:.75;font-size:.9rem}
+@media print{details{display:block}}
+</style></head><body><main>
+<h1>✎ कक्षा 12 गणित · इकाई 3 कलन<br>अध्याय 9: अवकलज के अनुप्रयोग</h1>
+<p class="note">उ.प्र. बोर्ड / एन.सी.ई.आर.टी. शैली के नोट्स · चरणबद्ध · एनिमेटेड चित्र</p>
+
+<h2>1. राशियों के परिवर्तन की दर</h2>
+<p>यदि y = f(x), तो <b>dy/dx</b>, x के सापेक्ष y के परिवर्तन की दर है। किसी बिंदु x = x₀ पर इसे [dy/dx]<sub>x=x₀</sub> = f′(x₀) लिखते हैं। यदि dy/dx &gt; 0 हो, तो x बढ़ने पर y बढ़ता है; यदि dy/dx &lt; 0 हो, तो y घटता है। समय t पर निर्भर राशियों के लिए <b>dx/dt</b>, समय के सापेक्ष x के परिवर्तन की दर है।</p>
+<div class="box"><b>प्राचलिक रूप:</b> यदि x = φ(t) और y = ψ(t), तो dy/dx = (dy/dt)/(dx/dt)।<br><b>संबद्ध दरें (शृंखला नियम):</b> यदि V, r पर और r, t पर निर्भर है, तो dV/dt = (dV/dr)(dr/dt)।</div>
+
+<h2>2. वास्तविक जीवन की समस्याओं में परिवर्तन की दर</h2>
+<table><tr><th>आकृति</th><th>सूत्र</th><th>दरें</th></tr>
+<tr><td>वृत्त</td><td>A = πr², C = 2πr</td><td>dA/dt = 2πr dr/dt</td></tr>
+<tr><td>गोला</td><td>V = (4/3)πr³, S = 4πr²</td><td>dV/dt = 4πr² dr/dt; dS/dt = 8πr dr/dt</td></tr>
+<tr><td>घन (कोर x)</td><td>V = x³, S = 6x²</td><td>dV/dt = 3x² dx/dt; dS/dt = 12x dx/dt</td></tr>
+<tr><td>शंकु</td><td>V = (1/3)πr²h</td><td>गुणन नियम से अवकलन</td></tr></table>
+<div class="box"><b>शाब्दिक प्रश्नों के चरण:</b> ① चित्र बनाइए, चरों के नाम लिखिए। ② चरों के बीच संबंध लिखिए। ③ t के सापेक्ष अवकलन कीजिए। ④ दिए गए मान अवकलन <b>के बाद</b> रखिए। ⑤ उत्तर इकाई सहित लिखिए और चिह्न का अर्थ बताइए (ऋणात्मक = घट रहा है)।</div>
+
+<h2>3. वर्धमान फलन एवं 4. ह्रासमान फलन</h2>
+<div class="box"><b>अंतराल I में निरंतर वर्धमान:</b> x₁ &lt; x₂ ⇒ f(x₁) &lt; f(x₂)।<br><b>निरंतर ह्रासमान:</b> x₁ &lt; x₂ ⇒ f(x₁) &gt; f(x₂)। &nbsp;<b>अचर:</b> f(x₁) = f(x₂)।</div>
+<div class="box"><b>प्रमेय।</b> माना f, [a, b] में संतत तथा (a, b) में अवकलनीय है। तब<br>(a, b) में f′(x) &gt; 0 ⇒ f निरंतर वर्धमान; f′(x) &lt; 0 ⇒ निरंतर ह्रासमान; f′(x) = 0 ⇒ अचर।</div>
+<p><b>उपपत्ति (वर्धमान स्थिति)।</b> a ≤ x₁ &lt; x₂ ≤ b लीजिए। LMVT से ∃ c ∈ (x₁, x₂): f(x₂) − f(x₁) = f′(c)(x₂ − x₁)। चूँकि f′(c) &gt; 0 और x₂ − x₁ &gt; 0, अतः f(x₂) &gt; f(x₁)। ∎</p>
+<p><b>अंतराल ज्ञात करने की विधि:</b> <span class="step">① f′(x) ज्ञात कीजिए। ② f′(x) = 0 हल करके क्रांतिक बिंदु पाइए। ③ ये बिंदु वास्तविक रेखा को अंतरालों में बाँटते हैं। ④ प्रत्येक अंतराल में f′ का चिह्न जाँचिए।</span></p>
+
+<svg viewBox="0 0 300 200" aria-label="वर्धमान और ह्रासमान">
+<line x1="150" y1="130" x2="150" y2="170" stroke="var(--ink)" stroke-dasharray="3 3"/>
+<path d="M40,60 Q150,200 260,60" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+<line stroke="var(--red)" stroke-width="2.5" x1="0" y1="9.1" x2="80" y2="110.9">
+<animate attributeName="x1" values="0;55;110;165;220" dur="6s" repeatCount="indefinite"/><animate attributeName="y1" values="9.1;87;130;138;110.9" dur="6s" repeatCount="indefinite"/>
+<animate attributeName="x2" values="80;135;190;245;300" dur="6s" repeatCount="indefinite"/><animate attributeName="y2" values="110.9;138;130;87;9.1" dur="6s" repeatCount="indefinite"/></line>
+<circle r="5" fill="var(--red)" cx="40" cy="60"><animate attributeName="cx" values="40;95;150;205;260" dur="6s" repeatCount="indefinite"/><animate attributeName="cy" values="60;112.5;130;112.5;60" dur="6s" repeatCount="indefinite"/></circle>
+<text x="8" y="30">f′(x) &lt; 0</text><text x="8" y="44">ह्रासमान</text><text x="225" y="30">f′(x) &gt; 0</text><text x="225" y="44">वर्धमान</text>
+<text x="95" y="188" style="fill:var(--grn)">f′(c) = 0 : स्थानीय निम्निष्ठ</text></svg>
+<p class="note">चित्र 1: गतिमान स्पर्श रेखा बाईं ओर ऋणात्मक प्रवणता (गिरता), तल पर शून्य और दाईं ओर धनात्मक प्रवणता (चढ़ता) दर्शाती है।</p>
+
+<h2>5. सन्निकटन में अवकलज के अनुप्रयोग</h2>
+<div class="box">x में छोटे परिवर्तन Δx के लिए: <b>Δy ≈ dy = f′(x) Δx</b>, अतः f(x + Δx) ≈ f(x) + f′(x) Δx।<br>निरपेक्ष त्रुटि = Δx; सापेक्ष त्रुटि = Δx/x; प्रतिशत त्रुटि = (Δx/x) × 100।</div>
+<p><b>विधि:</b> पास का सुविधाजनक मान x (पूर्ण वर्ग/घन) चुनिए, छोटे अंतर को Δx लीजिए, f(x) और f′(x) निकालिए, फिर f′(x)Δx जोड़िए।</p>
+
+<h2>6. उच्चतम एवं निम्नतम मान (परिचय)</h2>
+<div class="box"><b>स्थानीय उच्चतम</b> c पर: c के पास सभी x के लिए f(c) ≥ f(x)। <b>स्थानीय निम्नतम:</b> पास में f(c) ≤ f(x)।<br><b>क्रांतिक बिंदु:</b> वह c जहाँ f′(c) = 0 हो या f′(c) विद्यमान न हो। <b>आवश्यक प्रतिबंध:</b> अवकलनीय फलन के स्थानीय चरम बिंदु पर f′(c) = 0।<br><b>[a, b] में परम उच्चतम/निम्नतम:</b> सभी क्रांतिक बिंदुओं तथा सिरों a, b पर f के मानों की तुलना कीजिए।</div>
+<svg viewBox="0 0 300 190" aria-label="उच्चतम और निम्नतम">
+<path d="M30,120 C55,40 70,40 90,40 C130,40 170,140 210,140 C240,140 255,100 275,40" fill="none" stroke="var(--ink)" stroke-width="2.5" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0;0" keyTimes="0;.5;1" dur="5s" repeatCount="indefinite"/></path>
+<line x1="60" y1="40" x2="120" y2="40" stroke="var(--grn)" stroke-dasharray="4 3"/><line x1="180" y1="140" x2="240" y2="140" stroke="var(--grn)" stroke-dasharray="4 3"/>
+<circle r="5" fill="var(--red)"><animateMotion dur="6s" repeatCount="indefinite" path="M30,120 C55,40 70,40 90,40 C130,40 170,140 210,140 C240,140 255,100 275,40"/></circle>
+<text x="30" y="30">स्थानीय उच्चतम</text><text x="30" y="170" style="fill:var(--grn)">f′: + → −, f″ &lt; 0</text>
+<text x="165" y="162">स्थानीय निम्नतम</text><text x="165" y="178" style="fill:var(--grn)">f′: − → +, f″ &gt; 0</text>
+<text x="85" y="58">(c₁, f(c₁))</text><text x="205" y="128">(c₂, f(c₂))</text></svg>
+<p class="note">चित्र 2: पहाड़ी की चोटी और घाटी के तल पर स्पर्श रेखा (हरी) क्षैतिज होती है।</p>
+
+<h2>7. प्रथम अवकलज परीक्षण</h2>
+<div class="box">माना f क्रांतिक बिंदु c पर संतत है।<br>① c पर f′ का चिह्न <b>+ से −</b> बदले ⇒ <b>स्थानीय उच्चतम</b>।<br>② f′ का चिह्न <b>− से +</b> बदले ⇒ <b>स्थानीय निम्नतम</b>।<br>③ f′ का चिह्न न बदले ⇒ <b>कोई नहीं</b> (नति परिवर्तन बिंदु)।</div>
+<h2>8. द्वितीय अवकलज परीक्षण</h2>
+<div class="box">माना f′(c) = 0 और c पर f″ विद्यमान है।<br>① f″(c) &lt; 0 ⇒ स्थानीय उच्चतम। ② f″(c) &gt; 0 ⇒ स्थानीय निम्नतम। ③ f″(c) = 0 ⇒ परीक्षण असफल; प्रथम अवकलज परीक्षण लगाइए।</div>
+<h2>9. अवकलजों पर आधारित व्यावहारिक समस्याएँ</h2>
+<div class="box"><b>चरण:</b> ① जिस राशि का उच्चतम/निम्नतम मान चाहिए उसे पहचानिए। ② दी गई शर्त से उसे एक चर में लिखिए। ③ f′ = 0 हल कीजिए। ④ f″ से उच्चतम/निम्नतम जाँचिए। ⑤ जाँचिए कि उत्तर मान्य प्रांत में है, फिर अंतिम मान इकाई सहित लिखिए।</div>
+
+<h2>हल सहित उदाहरण (चरण-दर-चरण)</h2>
+<div class="eg"><span class="tag">सरल</span> <b>उदा. 1.</b> वृत्त की त्रिज्या 0.7 सेमी/से की दर से बढ़ रही है। उसकी परिधि के बढ़ने की दर ज्ञात कीजिए।<br><span class="step">C = 2πr ⇒ dC/dt = 2π · dr/dt = 2π(0.7) = <b>1.4π सेमी/से</b>।</span></div>
+<div class="eg"><span class="tag">सरल</span> <b>उदा. 2.</b> r = 5 सेमी पर वृत्त के क्षेत्रफल के परिवर्तन की दर r के सापेक्ष ज्ञात कीजिए।<br><span class="step">A = πr² ⇒ dA/dr = 2πr = 10π = <b>10π सेमी²/सेमी</b>।</span></div>
+<div class="eg"><span class="tag m">मध्यम</span> <b>उदा. 3.</b> गोलाकार गुब्बारे की त्रिज्या 2 सेमी/से की दर से बढ़ रही है। r = 10 सेमी पर आयतन के बढ़ने की दर ज्ञात कीजिए।<br><span class="step">V = (4/3)πr³ ⇒ dV/dt = 4πr² dr/dt = 4π(100)(2) = <b>800π सेमी³/से</b>।</span></div>
+<div class="eg"><span class="tag m">मध्यम</span> <b>उदा. 4.</b> 5 मी लंबी सीढ़ी दीवार से दूर खिसक रही है और उसका निचला सिरा 2 मी/से की दर से बढ़ रहा है। जब निचला सिरा दीवार से 3 मी दूर हो तब ऊपरी सिरा कितनी तेजी से नीचे खिसक रहा है?<br><span class="step">x² + y² = 25। जब x = 3, तब y = 4।</span><span class="step">2x dx/dt + 2y dy/dt = 0 ⇒ dy/dt = −(x/y) dx/dt = −(3/4)(2) = −3/2।</span><span class="step">ऊपरी सिरा <b>1.5 मी/से</b> की दर से नीचे खिसक रहा है।</span></div>
+<div class="eg"><span class="tag m">मध्यम</span> <b>उदा. 5.</b> घन की कोर 3 सेमी/से की दर से बढ़ रही है। कोर = 10 सेमी पर आयतन और पृष्ठीय क्षेत्रफल के बढ़ने की दर ज्ञात कीजिए।<br><span class="step">dV/dt = 3x² dx/dt = 3(100)(3) = <b>900 सेमी³/से</b>।</span><span class="step">dS/dt = 12x dx/dt = 12(10)(3) = <b>360 सेमी²/से</b>।</span></div>
+<div class="eg"><span class="tag">सरल</span> <b>उदा. 6.</b> f(x) = x² − 4x + 6 के वर्धमान और ह्रासमान अंतराल ज्ञात कीजिए।<br><span class="step">f′ = 2x − 4 = 0 ⇒ x = 2।</span><span class="step">x &gt; 2: f′ &gt; 0 ⇒ (2, ∞) में वर्धमान। x &lt; 2: f′ &lt; 0 ⇒ (−∞, 2) में ह्रासमान।</span></div>
+<div class="eg"><span class="tag m">मध्यम</span> <b>उदा. 7.</b> f(x) = 2x³ − 3x² − 36x + 7 के एकदिष्ट अंतराल ज्ञात कीजिए।<br><span class="step">f′ = 6x² − 6x − 36 = 6(x − 3)(x + 2)।</span><span class="step">x &lt; −2 और x &gt; 3 पर f′ &gt; 0: (−∞, −2) ∪ (3, ∞) में वर्धमान।</span><span class="step">−2 &lt; x &lt; 3 पर f′ &lt; 0: (−2, 3) में ह्रासमान।</span></div>
+<div class="eg"><span class="tag h">कठिन</span> <b>उदा. 8.</b> सिद्ध कीजिए कि f(x) = x³ − 3x² + 3x − 100, R पर वर्धमान है।<br><span class="step">f′ = 3x² − 6x + 3 = 3(x − 1)² ≥ 0 सभी x के लिए।</span><span class="step">f′ = 0 केवल x = 1 पर (विलगित बिंदु), अतः दोनों ओर f′ &gt; 0; f, R पर निरंतर वर्धमान है। ∎</span></div>
+<div class="eg"><span class="tag">सरल</span> <b>उदा. 9.</b> √25.3 का सन्निकट मान ज्ञात कीजिए।<br><span class="step">f(x) = √x, x = 25, Δx = 0.3; f(25) = 5; f′(x) = 1/(2√x) = 0.1।</span><span class="step">Δy = 0.1 × 0.3 = 0.03 ⇒ √25.3 ≈ <b>5.03</b>।</span></div>
+<div class="eg"><span class="tag h">कठिन</span> <b>उदा. 10.</b> (3.968)^(3/2) का सन्निकट मान ज्ञात कीजिए।<br><span class="step">f(x) = x^(3/2), x = 4, Δx = −0.032; f(4) = 8; f′ = (3/2)√x = 3।</span><span class="step">Δy = 3 × (−0.032) = −0.096 ⇒ मान ≈ 8 − 0.096 = <b>7.904</b>।</span></div>
+<div class="eg"><span class="tag m">मध्यम</span> <b>उदा. 11.</b> गोले की त्रिज्या 9 सेमी है और उसमें संभावित त्रुटि 0.03 सेमी है। आयतन में सन्निकट त्रुटि ज्ञात कीजिए।<br><span class="step">ΔV ≈ dV = 4πr² Δr = 4π(81)(0.03) = <b>9.72π सेमी³</b>।</span></div>
+<div class="eg"><span class="tag">सरल</span> <b>उदा. 12.</b> द्वितीय अवकलज परीक्षण से f(x) = x³ − 3x के स्थानीय चरम मान ज्ञात कीजिए।<br><span class="step">f′ = 3x² − 3 = 0 ⇒ x = ±1। f″ = 6x।</span><span class="step">f″(1) = 6 &gt; 0 ⇒ स्थानीय निम्नतम, मान f(1) = −2।</span><span class="step">f″(−1) = −6 &lt; 0 ⇒ स्थानीय उच्चतम, मान f(−1) = 2।</span></div>
+<div class="eg"><span class="tag m">मध्यम</span> <b>उदा. 13.</b> प्रथम अवकलज परीक्षण से (0, π/2) में f(x) = sin x + cos x का स्थानीय उच्चतम मान ज्ञात कीजिए।<br><span class="step">f′ = cos x − sin x = 0 ⇒ x = π/4।</span><span class="step">x &lt; π/4 पर f′ &gt; 0; x &gt; π/4 पर f′ &lt; 0: चिह्न + से − बदला।</span><span class="step">π/4 पर स्थानीय उच्चतम, मान <b>√2</b>।</span></div>
+<div class="eg"><span class="tag h">कठिन</span> <b>उदा. 14.</b> दिखाइए कि f(x) = x⁴ के लिए 0 पर द्वितीय अवकलज परीक्षण असफल है, और 0 की प्रकृति ज्ञात कीजिए।<br><span class="step">f′ = 4x³ = 0 पर x = 0; f″ = 12x² = 0 पर 0: परीक्षण असफल।</span><span class="step">प्रथम अवकलज परीक्षण: x &lt; 0 पर f′ &lt; 0 और x &gt; 0 पर f′ &gt; 0 (− से +): स्थानीय निम्नतम, f(0) = 0।</span></div>
+<div class="eg"><span class="tag m">मध्यम</span> <b>उदा. 15.</b> योग 16 वाली दो धनात्मक संख्याएँ ज्ञात कीजिए जिनके घनों का योग निम्नतम हो।<br><span class="step">संख्याएँ x और 16 − x। S = x³ + (16 − x)³।</span><span class="step">S′ = 3x² − 3(16 − x)² = 0 ⇒ x = 16 − x ⇒ x = 8।</span><span class="step">S″ = 6x + 6(16 − x) = 96 &gt; 0 ⇒ निम्नतम। संख्याएँ: <b>8 और 8</b>; निम्नतम योग = 1024।</span></div>
+<div class="eg"><span class="tag m">मध्यम</span> <b>उदा. 16.</b> एक किसान के पास आयताकार खेत के लिए 200 मी बाड़ है। अधिकतम क्षेत्रफल ज्ञात कीजिए।<br><span class="step">2(x + y) = 200 ⇒ y = 100 − x। A = x(100 − x)।</span><span class="step">A′ = 100 − 2x = 0 ⇒ x = 50; A″ = −2 &lt; 0 ⇒ उच्चतम।</span><span class="step">y = 50, अतः खेत वर्गाकार; अधिकतम क्षेत्रफल = <b>2500 मी²</b>।</span></div>
+<div class="eg"><span class="tag h">कठिन</span> <b>उदा. 17.</b> 18 सेमी भुजा के वर्गाकार गत्ते के कोनों से x भुजा के वर्ग काटकर खुला डिब्बा बनाया गया। अधिकतम आयतन के लिए x ज्ञात कीजिए।<br><span class="step">V = x(18 − 2x)² = 4x³ − 72x² + 324x।</span><span class="step">V′ = 12x² − 144x + 324 = 12(x − 3)(x − 9) = 0 ⇒ x = 3 (x = 9 अस्वीकार, क्योंकि 18 − 2x = 0)।</span><span class="step">x = 3 पर V″ = 24x − 144 = −72 &lt; 0 ⇒ उच्चतम। <b>x = 3 सेमी</b>, V = 3 × 12² = 432 सेमी³।</span></div>
+
+<h2>प्रश्नोत्तर अभ्यास (उत्तर के लिए प्रश्न पर दबाएँ)</h2>
+<h3>लघु उत्तरीय प्रश्न</h3>
+<details><summary>प्र.1. dy/dx क्या दर्शाता है?</summary>x के सापेक्ष y के परिवर्तन की दर; ज्यामितीय रूप में स्पर्श रेखा की प्रवणता।</details>
+<details><summary>प्र.2. फलन किसी अंतराल में निरंतर वर्धमान कब होता है?</summary>जब अंतराल के सभी x के लिए f′(x) &gt; 0 हो।</details>
+<details><summary>प्र.3. क्रांतिक बिंदु की परिभाषा लिखिए।</summary>प्रांत का वह बिंदु c जहाँ f′(c) = 0 हो या f′(c) विद्यमान न हो।</details>
+<details><summary>प्र.4. सन्निकटन का सूत्र लिखिए।</summary>f(x + Δx) ≈ f(x) + f′(x)Δx।</details>
+<details><summary>प्र.5. r = 3 पर वृत्त का क्षेत्रफल त्रिज्या के सापेक्ष किस दर से बदलता है?</summary>dA/dr = 2πr = 6π।</details>
+<details><summary>प्र.6. क्या f(x) = x³ का 0 पर कोई चरम मान है?</summary>नहीं। 0 पर f′ = 3x² = 0 है, पर f′ का चिह्न नहीं बदलता; यह नति परिवर्तन बिंदु है।</details>
+<h3>दीर्घ उत्तरीय प्रश्न</h3>
+<details><summary>प्र.7. फलन के वर्धमान होने का प्रतिबंध लिखिए और सिद्ध कीजिए।</summary>खंड 3–4 की प्रमेय और LMVT से उपपत्ति देखिए।</details>
+<details><summary>प्र.8. दिखाइए कि दिए गए परिमाप वाले सभी आयतों में वर्ग का क्षेत्रफल अधिकतम होता है।</summary>परिमाप 2p, भुजाएँ x और p − x। A = x(p − x); A′ = p − 2x = 0 ⇒ x = p/2; A″ = −2 &lt; 0। दोनों भुजाएँ p/2: अर्थात वर्ग।</details>
+<details><summary>प्र.9. दिखाइए कि दिए गए आयतन के बंद बेलन का पृष्ठीय क्षेत्रफल h = 2r पर न्यूनतम होता है।</summary>V = πr²h ⇒ h = V/(πr²)। S = 2πr² + 2πrh = 2πr² + 2V/r। S′ = 4πr − 2V/r² = 0 ⇒ V = 2πr³ ⇒ πr²h = 2πr³ ⇒ h = 2r। S″ = 4π + 4V/r³ &gt; 0 ⇒ निम्नतम। ∎</details>
+<h3>बहुविकल्पीय प्रश्न</h3>
+<details><summary>प्र.10. f(x) = x², किसमें ह्रासमान है? (a) (0, ∞) (b) (−∞, 0) (c) R (d) कोई नहीं</summary><b>(b)</b> x &lt; 0 के लिए f′ = 2x &lt; 0।</details>
+<details><summary>प्र.11. sin x का अधिकतम मान है: (a) 0 (b) 1/2 (c) 1 (d) ∞</summary><b>(c)</b> x = π/2 पर 1 (f″ = −1 &lt; 0)।</details>
+<details><summary>प्र.12. यदि f′(c) = 0 और f″(c) &gt; 0 तो c है: (a) स्थानीय उच्चतम (b) स्थानीय निम्नतम (c) नति परिवर्तन (d) कोई नहीं</summary><b>(b)</b>।</details>
+<p class="note">संस्करण 1: मुख्य नोट्स। और प्रश्नोत्तर, कठिन उदाहरण या अतिरिक्त चित्र चाहिए तो बताइए, मैं जोड़ दूँगा।</p>
+</main></body></html>
