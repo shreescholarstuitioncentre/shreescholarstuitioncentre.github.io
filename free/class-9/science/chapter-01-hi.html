@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>कक्षा 9 भौतिकी - 25 नामांकित चित्र और कार्य-प्रक्रिया</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1b2a41;--red:#d62828;--blue:#1d4ed8;--green:#15803d;--orange:#ea580c;--purple:#7c3aed;--paper:#fffdf5}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Kalam','Noto Sans Devanagari','Mangal',sans-serif;font-size:18px;line-height:1.7;color:var(--ink);
+background:#f3eedb;background-image:repeating-linear-gradient(transparent 0,transparent 31px,#cfe0ee 32px)}
+.wrap{max-width:1000px;margin:0 auto;padding:18px 14px 60px}
+header.hero{text-align:center;background:var(--paper);border:3px solid var(--ink);border-radius:18px 8px 20px 10px;padding:22px 14px;box-shadow:6px 6px 0 #c9bf9d;margin-bottom:22px}
+header.hero h1{font-family:'Kalam','Noto Sans Devanagari','Mangal',sans-serif;font-weight:700;font-size:44px;margin:0;color:var(--blue)}
+header.hero p{margin:6px 0 0}
+.chap{font-family:'Kalam','Noto Sans Devanagari','Mangal',sans-serif;font-weight:700;font-size:38px;color:#fff;background:var(--ink);padding:6px 18px;border-radius:10px 24px 10px 24px;margin:40px 0 16px;display:inline-block;transform:rotate(-1deg)}
+.toc{background:var(--paper);border:2px solid var(--ink);border-radius:14px 6px 16px 8px;padding:14px 18px;margin-bottom:10px}
+.toc h2{font-family:'Kalam','Noto Sans Devanagari','Mangal',sans-serif;font-weight:700;font-size:32px;margin:0 0 6px;color:var(--red)}
+.toc .grp{margin:8px 0}
+.toc b{color:var(--purple)}
+.toc a{display:inline-block;margin:3px 6px 3px 0;padding:2px 10px;border:2px solid var(--ink);border-radius:20px;color:var(--ink);text-decoration:none;background:#fff8c7;font-size:16px}
+.toc a:hover{background:#ffd9d9}
+.card{background:var(--paper);border:3px solid var(--ink);border-radius:16px 8px 18px 8px;padding:16px 18px 18px;margin:22px 0;box-shadow:6px 6px 0 #c9bf9d}
+.card h2{font-family:'Kalam','Noto Sans Devanagari','Mangal',sans-serif;font-weight:700;font-size:34px;margin:0 0 8px;color:var(--blue);display:flex;align-items:center;gap:10px}
+.num{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--red);color:#fff;font-size:24px;border:2px solid var(--ink);flex:none}
+figure{margin:8px 0 12px;background:#fff;border:2px dashed #7f8fa6;border-radius:10px;padding:6px}
+figure svg{width:100%;height:auto;display:block}
+figcaption{text-align:center;font-size:16px;color:#555}
+h3{font-family:'Kalam','Noto Sans Devanagari','Mangal',sans-serif;font-weight:700;font-size:27px;margin:12px 0 2px;color:var(--green)}
+.card p{margin:4px 0 8px}
+.card ol,.card ul{margin:4px 0 8px;padding-left:26px}
+.card li{margin:3px 0}
+.key{background:#fff3b0;border:2px solid #b8860b;border-radius:10px;padding:8px 14px;margin:10px 0}
+.key b{color:var(--red)}
+.tip{background:#dff7e3;border:2px solid var(--green);border-radius:10px;padding:8px 14px;margin:10px 0}
+table{border-collapse:collapse;width:100%;margin:8px 0;background:#fff}
+th,td{border:2px solid var(--ink);padding:4px 8px;text-align:center;font-size:17px}
+th{background:#ffe0a8}
+svg text{letter-spacing:0;font-family:'Kalam','Noto Sans Devanagari','Mangal',sans-serif;font-size:14px;fill:#1b2a41}
+svg .big{font-size:16px}
+svg .sm{font-size:12px}
+svg .r{fill:#d62828}svg .b{fill:#1d4ed8}svg .g{fill:#15803d}svg .o{fill:#ea580c}svg .p{fill:#7c3aed}svg .w{fill:#fff}
+svg .bd{font-weight:700}
+svg .mid{text-anchor:middle}svg .end{text-anchor:end}
+.ar,.arR,.arB,.arG,.arO{fill:none;stroke-width:2.8}
+.ar{stroke:#1b2a41;marker-end:url(#mk)}
+.arR{stroke:#d62828;marker-end:url(#mr)}
+.arB{stroke:#1d4ed8;marker-end:url(#mb)}
+.arG{stroke:#15803d;marker-end:url(#mg)}
+.arO{stroke:#ea580c;marker-end:url(#mo)}
+.ln{stroke:#1b2a41;stroke-width:2;fill:none}
+.thin{stroke:#1b2a41;stroke-width:1.2;fill:none}
+.dash{stroke-dasharray:6 5}
+.pulse{animation:pulse 1.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+footer{text-align:center;margin-top:30px;font-size:17px}
+@media(max-width:600px){body{font-size:17px}.chap{font-size:30px}.card h2{font-size:28px}}
+@media print{.card{break-inside:avoid;box-shadow:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<marker id="mk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#1b2a41"/></marker>
+<marker id="mr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#d62828"/></marker>
+<marker id="mb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#1d4ed8"/></marker>
+<marker id="mg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#15803d"/></marker>
+<marker id="mo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#ea580c"/></marker>
+</defs></svg>
+
+<div class="wrap">
+<header class="hero">
+<h1>कक्षा 9 भौतिकी: 25 नामांकित चित्र</h1>
+<p>गति &bull; बल &bull; गुरुत्वाकर्षण &bull; कार्य और ऊर्जा &bull; ध्वनि</p>
+<p style="font-size:16px">हर चित्र नामांकित और एनिमेटेड है, साथ में स्पष्ट व्याख्या और चरण-दर-चरण कार्य-प्रक्रिया दी गई है।</p>
+</header>
+
+<nav class="toc">
+<h2>अनुक्रमणिका (चित्र पर टैप करें)</h2>
+<div class="grp"><b>गति:</b> <a href="#d1">1 दूरी-समय</a><a href="#d2">2 वेग-समय</a><a href="#d3">3 एकसमान गति</a><a href="#d4">4 असमान गति</a><a href="#d5">5 दूरी और विस्थापन</a></div>
+<div class="grp"><b>बल और गति के नियम:</b> <a href="#d6">6 संतुलित बल</a><a href="#d7">7 असंतुलित बल</a><a href="#d8">8 न्यूटन का प्रथम नियम</a><a href="#d9">9 न्यूटन का द्वितीय नियम</a><a href="#d10">10 न्यूटन का तृतीय नियम</a><a href="#d11">11 क्रिया-प्रतिक्रिया</a></div>
+<div class="grp"><b>गुरुत्वाकर्षण:</b> <a href="#d12">12 सार्वत्रिक नियम</a><a href="#d13">13 मुक्त पतन</a><a href="#d14">14 द्रव्यमान और भार</a><a href="#d15">15 प्रणोद और दाब</a><a href="#d16">16 उत्प्लावन</a><a href="#d17">17 तैरना और डूबना</a></div>
+<div class="grp"><b>कार्य और ऊर्जा:</b> <a href="#d18">18 किया गया कार्य</a><a href="#d19">19 ऊर्जा रूपांतरण</a><a href="#d20">20 स्थितिज और गतिज ऊर्जा</a></div>
+<div class="grp"><b>ध्वनि:</b> <a href="#d21">21 अनुदैर्ध्य तरंग</a><a href="#d22">22 संपीडन और विरलन</a><a href="#d23">23 अनुप्रस्थ तरंग</a><a href="#d24">24 आयाम, तरंगदैर्ध्य, आवृत्ति</a><a href="#d25">25 मानव कान</a></div>
+</nav>
+
+<div class="chap">अध्याय: गति</div>
+
+<!-- ============ 1 ============ -->
+<section class="card" id="d1">
+<h2><span class="num">1</span>दूरी-समय ग्राफ</h2>
+<figure>
+<svg viewBox="0 0 640 340" role="img" aria-label="Distance-time graph">
+<line class="ar" x1="70" y1="300" x2="615" y2="300"/>
+<line class="ar" x1="70" y1="300" x2="70" y2="15"/>
+<text x="560" y="325" class="bd">समय (t) सेकंड में</text>
+<text transform="translate(24,200) rotate(-90)" class="mid bd">दूरी (s) मीटर में</text>
+<text x="52" y="318">O</text>
+<!-- A uniform -->
+<line x1="70" y1="300" x2="420" y2="120" stroke="#d62828" stroke-width="3.5"/>
+<polyline points="160,253.7 320,253.7 320,171.4" fill="rgba(214,40,40,.08)" stroke="#d62828" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="235" y="272" class="r bd">&#916;t</text>
+<text x="332" y="218" class="r bd">&#916;d</text>
+<text x="85" y="205" class="r sm">ढलान = &#916;d / &#916;t</text>
+<text x="85" y="222" class="r sm">= चाल</text>
+<!-- B rest -->
+<line x1="120" y1="60" x2="300" y2="60" stroke="#1d4ed8" stroke-width="3.5"/>
+<text x="120" y="46" class="b">B: विरामावस्था में पिंड (ढलान = 0)</text>
+<!-- C curve -->
+<path id="curveC" d="M70,300 Q330,300 560,40" stroke="#15803d" stroke-width="3.5" fill="none"/>
+<circle r="7" fill="#d62828" stroke="#1b2a41"><animateMotion dur="5s" repeatCount="indefinite" path="M70,300 L420,120"/></circle>
+<circle r="7" fill="#15803d" stroke="#1b2a41"><animateMotion dur="5s" repeatCount="indefinite" path="M70,300 Q330,300 560,40" keyPoints="0;1" keyTimes="0;1" calcMode="linear"/></circle>
+<!-- legend -->
+<g transform="translate(395,225)">
+<rect x="-8" y="-8" width="232" height="86" rx="8" fill="#fffdf5" stroke="#1b2a41"/>
+<line x1="0" y1="8" x2="34" y2="8" stroke="#d62828" stroke-width="4"/><text x="42" y="13" class="sm">A: एकसमान चाल (सीधी रेखा)</text>
+<line x1="0" y1="32" x2="34" y2="32" stroke="#1d4ed8" stroke-width="4"/><text x="42" y="37" class="sm">B: विराम (क्षैतिज रेखा)</text>
+<line x1="0" y1="56" x2="34" y2="56" stroke="#15803d" stroke-width="4"/><text x="42" y="61" class="sm">C: असमान (वक्र रेखा)</text>
+</g>
+</svg>
+<figcaption>तीन प्रकार के दूरी-समय ग्राफ। गतिमान बिंदु रेखा A और C पर चलते हैं।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p>दूरी-समय ग्राफ बताता है कि समय बीतने के साथ कोई वस्तु कितनी दूरी तय करती है। समय हमेशा X-अक्ष पर और दूरी Y-अक्ष पर ली जाती है। रेखा का आकार पूरी गति की कहानी कहता है, और रेखा का <b>ढलान</b> (तिरछापन) हमें <b>चाल</b>बताता है।</p>
+<h3>कार्य-प्रक्रिया (ग्राफ कैसे पढ़ें)</h3>
+<ol>
+<li><b>सीधी तिरछी रेखा (A):</b> बराबर समय में बराबर दूरी, इसलिए चाल स्थिर है (एकसमान गति)।</li>
+<li><b>क्षैतिज रेखा (B):</b> समय बीतने पर भी दूरी नहीं बदलती, इसलिए वस्तु विरामावस्था में है।</li>
+<li><b>वक्र रेखा (C):</b> ढलान लगातार बदलता है, इसलिए चाल बदल रही है (असमान गति)। ऊपर की ओर मुड़ता वक्र बताता है कि चाल बढ़ रही है।</li>
+<li><b>चाल निकालने के लिए:</b> रेखा पर दो बिंदु चुनें, &#916;d (उठान) और &#916;t (चौड़ाई) निकालें, फिर भाग दें: चाल = &#916;d / &#916;t।</li>
+</ol>
+<div class="key"><b>याद रखें:</b> रेखा जितनी तीखी, चाल उतनी अधिक। दूरी-समय ग्राफ कभी नीचे की ओर नहीं ढलता, क्योंकि दूरी कभी घटती नहीं।</div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="card" id="d2">
+<h2><span class="num">2</span>वेग-समय ग्राफ</h2>
+<figure>
+<svg viewBox="0 0 640 340" role="img" aria-label="Velocity-time graph">
+<line class="ar" x1="70" y1="300" x2="615" y2="300"/>
+<line class="ar" x1="70" y1="300" x2="70" y2="15"/>
+<text x="560" y="325" class="bd">समय (t) सेकंड में</text>
+<text transform="translate(24,200) rotate(-90)" class="mid bd">वेग (v) m/s में</text>
+<text x="52" y="318">O</text>
+<!-- shaded area -->
+<polygon points="70,300 300,300 300,167" fill="rgba(29,78,216,.18)"/>
+<line x1="300" y1="300" x2="300" y2="167" class="thin dash"/>
+<line x1="70" y1="167" x2="300" y2="167" class="thin dash"/>
+<text x="300" y="318" class="mid sm">t</text>
+<text x="40" y="171" class="sm">v</text>
+<text x="165" y="270" class="b bd mid">क्षेत्रफल = विस्थापन</text>
+<text x="165" y="288" class="b sm mid">(v-t ग्राफ के नीचे का क्षेत्रफल)</text>
+<!-- accelerated line -->
+<line x1="70" y1="300" x2="500" y2="70" stroke="#d62828" stroke-width="3.5"/>
+<text x="400" y="60" class="r bd">A: एकसमान त्वरण</text>
+<text x="400" y="78" class="r sm">ढलान = &#916;v/&#916;t = त्वरण</text>
+<!-- constant velocity -->
+<line x1="70" y1="215" x2="560" y2="215" stroke="#15803d" stroke-width="3.5" stroke-dasharray="0"/>
+<text x="330" y="205" class="g bd">B: एकसमान वेग (शून्य त्वरण)</text>
+<!-- non uniform -->
+<path d="M70,300 Q250,280 330,230 T600,120" stroke="#7c3aed" stroke-width="3" fill="none" opacity="0"/>
+<path d="M300,300 C380,300 440,290 500,250 S590,170 610,150" stroke="#7c3aed" stroke-width="3" fill="none"/>
+<text x="470" y="285" class="p sm">C: असमान</text>
+<text x="470" y="302" class="p sm">त्वरण</text>
+<circle r="6" fill="#d62828" stroke="#1b2a41"><animateMotion dur="4s" repeatCount="indefinite" path="M70,300 L500,70"/></circle>
+<circle r="6" fill="#15803d" stroke="#1b2a41"><animateMotion dur="4s" repeatCount="indefinite" path="M70,215 L560,215"/></circle>
+</svg>
+<figcaption>वेग-समय ग्राफ: ढलान से त्वरण और क्षेत्रफल से विस्थापन मिलता है।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p>वेग-समय ग्राफ दिखाता है कि समय के साथ किसी वस्तु का वेग कैसे बदलता है। इसके दो विशेष गुण हैं: इसका <b>ढलान</b> हमें <b>त्वरण</b>देता है, और <b>ग्राफ के नीचे का क्षेत्रफल</b> वस्तु का <b>विस्थापन</b> देता है।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>क्षैतिज रेखा (B): वेग स्थिर रहता है, इसलिए त्वरण = 0।</li>
+<li>सीधी तिरछी रेखा (A): बराबर समय में वेग बराबर मात्रा से बदलता है, इसलिए त्वरण एकसमान है। ढलान = (v &minus; u) / t।</li>
+<li>वक्र रेखा (C): ढलान बदलता है, इसलिए त्वरण एकसमान नहीं है।</li>
+<li>विस्थापन निकालने के लिए रेखा और समय-अक्ष के बीच का क्षेत्रफल निकालें (त्रिभुज = &frac12; &times; आधार &times; ऊँचाई, आयत = लंबाई &times; चौड़ाई)।</li>
+</ol>
+<div class="key"><b>सूत्र:</b> a = (v &minus; u)/t &nbsp;|&nbsp; s = v-t ग्राफ के नीचे का क्षेत्रफल &nbsp;|&nbsp; नीचे की ओर ढलती रेखा का अर्थ है मंदन (वेग का घटना)।</div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="card" id="d3">
+<h2><span class="num">3</span>एकसमान गति का ग्राफ</h2>
+<figure>
+<svg viewBox="0 0 640 360" role="img" aria-label="Uniform motion">
+<!-- road -->
+<rect x="20" y="95" width="600" height="46" fill="#9aa5b1" stroke="#1b2a41" stroke-width="2"/>
+<line x1="20" y1="118" x2="620" y2="118" stroke="#fff" stroke-width="3" stroke-dasharray="14 10"/>
+<g class="sm bd mid">
+<line x1="60" y1="141" x2="60" y2="155" class="ln"/><text x="60" y="171">0 m</text>
+<line x1="180" y1="141" x2="180" y2="155" class="ln"/><text x="180" y="171">10 m</text>
+<line x1="300" y1="141" x2="300" y2="155" class="ln"/><text x="300" y="171">20 m</text>
+<line x1="420" y1="141" x2="420" y2="155" class="ln"/><text x="420" y="171">30 m</text>
+<line x1="540" y1="141" x2="540" y2="155" class="ln"/><text x="540" y="171">40 m</text>
+</g>
+<!-- time labels -->
+<g class="sm r mid"><text x="60" y="82">t = 0 s</text><text x="180" y="82">t = 1 s</text><text x="300" y="82">t = 2 s</text><text x="420" y="82">t = 3 s</text><text x="540" y="82">t = 4 s</text></g>
+<!-- car -->
+<g>
+<g><animateTransform attributeName="transform" type="translate" values="0 0;480 0" dur="6s" repeatCount="indefinite"/>
+<rect x="30" y="90" width="60" height="22" rx="5" fill="#d62828" stroke="#1b2a41" stroke-width="2"/>
+<rect x="42" y="78" width="34" height="16" rx="4" fill="#ffd166" stroke="#1b2a41" stroke-width="2"/>
+<circle cx="44" cy="114" r="7" fill="#1b2a41"/><circle cx="76" cy="114" r="7" fill="#1b2a41"/>
+</g></g>
+<text x="320" y="190" class="g bd mid big">हर 1 s के बराबर अंतराल में बराबर दूरी (10 m) &rarr; चाल = 10 m/s</text>
+<!-- small graph -->
+<line class="ar" x1="80" y1="340" x2="300" y2="340"/>
+<line class="ar" x1="80" y1="340" x2="80" y2="205"/>
+<line x1="80" y1="340" x2="270" y2="225" stroke="#d62828" stroke-width="3.5"/>
+<text x="300" y="356" class="sm end">समय (s)</text>
+<text x="86" y="212" class="sm">दूरी (m)</text>
+<text x="170" y="262" class="r bd">सीधी रेखा</text>
+<!-- table -->
+<g transform="translate(340,215)" class="sm">
+<rect width="270" height="125" fill="#fff" stroke="#1b2a41" stroke-width="2"/>
+<line x1="0" y1="25" x2="270" y2="25" class="ln"/><line x1="135" y1="0" x2="135" y2="125" class="ln"/>
+<text x="67" y="18" class="mid bd">समय (s)</text><text x="202" y="18" class="mid bd">दूरी (m)</text>
+<text x="67" y="45" class="mid">1</text><text x="202" y="45" class="mid">10</text>
+<text x="67" y="68" class="mid">2</text><text x="202" y="68" class="mid">20</text>
+<text x="67" y="91" class="mid">3</text><text x="202" y="91" class="mid">30</text>
+<text x="67" y="114" class="mid">4</text><text x="202" y="114" class="mid">40</text>
+</g>
+</svg>
+<figcaption>एक कार जो बराबर समय अंतराल में बराबर दूरी तय करती है।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p>एकसमान गति में वस्तु <b>बराबर समय अंतरालों में बराबर दूरी</b>तय करती है, अंतराल चाहे कितने भी छोटे हों। चाल नहीं बदलती, इसलिए दूरी-समय ग्राफ मूलबिंदु से गुजरने वाली एक सीधी रेखा होता है।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>हर 1 सेकंड के बाद कार की स्थिति अंकित करें: 0, 10, 20, 30, 40 m।</li>
+<li>क्रमागत स्थितियों के बीच के अंतर सभी बराबर (10 m) हैं।</li>
+<li>(समय, दूरी) बिंदुओं को ग्राफ पर आलेखित करें। वे सब एक ही सीधी रेखा पर आते हैं।</li>
+<li>चाल = दूरी / समय = 10 / 1 = 10 m/s, हर क्षण पर।</li>
+</ol>
+<div class="key"><b>याद रखें:</b> एकसमान गति का अर्थ है सीधी रेखा में स्थिर चाल, इसलिए त्वरण = 0।</div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="card" id="d4">
+<h2><span class="num">4</span>असमान गति का ग्राफ</h2>
+<figure>
+<svg viewBox="0 0 640 360" role="img" aria-label="Non-uniform motion">
+<rect x="20" y="95" width="600" height="46" fill="#9aa5b1" stroke="#1b2a41" stroke-width="2"/>
+<line x1="20" y1="118" x2="620" y2="118" stroke="#fff" stroke-width="3" stroke-dasharray="14 10"/>
+<!-- positions at 0,2,8,18,32 m using 12px/m... use 0,5,15,30,50 -->
+<g class="sm bd mid">
+<line x1="50" y1="141" x2="50" y2="155" class="ln"/><text x="50" y="171">0 m</text>
+<line x1="110" y1="141" x2="110" y2="155" class="ln"/><text x="110" y="171">5 m</text>
+<line x1="230" y1="141" x2="230" y2="155" class="ln"/><text x="230" y="171">15 m</text>
+<line x1="410" y1="141" x2="410" y2="155" class="ln"/><text x="410" y="171">30 m</text>
+<line x1="650" y1="141" x2="650" y2="155" class="ln" opacity="0"/>
+<line x1="590" y1="141" x2="590" y2="155" class="ln"/><text x="590" y="171">45 m</text>
+</g>
+<g class="sm r mid"><text x="50" y="82">t = 0 s</text><text x="110" y="82">1 s</text><text x="230" y="82">2 s</text><text x="410" y="82">3 s</text><text x="590" y="82">4 s</text></g>
+<g>
+<g><animateTransform attributeName="transform" type="translate" values="0 0;520 0;520 0" keyTimes="0;0.8;1" calcMode="spline" keySplines="0.45 0 0.9 0.6;0 0 1 1" dur="6s" repeatCount="indefinite"/>
+<rect x="20" y="90" width="60" height="22" rx="5" fill="#ea580c" stroke="#1b2a41" stroke-width="2"/>
+<rect x="32" y="78" width="34" height="16" rx="4" fill="#ffd166" stroke="#1b2a41" stroke-width="2"/>
+<circle cx="34" cy="114" r="7" fill="#1b2a41"/><circle cx="66" cy="114" r="7" fill="#1b2a41"/>
+</g></g>
+<text x="320" y="192" class="r bd mid big">बराबर समय में असमान दूरियाँ (5, 10, 15, 15 m...) &rarr; चाल लगातार बदलती है</text>
+<!-- graph -->
+<line class="ar" x1="80" y1="345" x2="300" y2="345"/>
+<line class="ar" x1="80" y1="345" x2="80" y2="205"/>
+<path d="M80,345 Q200,343 290,215" stroke="#d62828" stroke-width="3.5" fill="none"/>
+<text x="300" y="358" class="sm end">समय (s)</text>
+<text x="86" y="212" class="sm">दूरी (m)</text>
+<text x="150" y="290" class="r bd">वक्र रेखा</text>
+<g transform="translate(340,212)" class="sm">
+<rect width="270" height="130" fill="#fff" stroke="#1b2a41" stroke-width="2"/>
+<line x1="0" y1="25" x2="270" y2="25" class="ln"/><line x1="90" y1="0" x2="90" y2="130" class="ln"/><line x1="180" y1="0" x2="180" y2="130" class="ln"/>
+<text x="45" y="18" class="mid bd">समय (s)</text><text x="135" y="18" class="mid bd">दूरी</text><text x="225" y="18" class="mid bd">अंतर (m)</text>
+<text x="45" y="45" class="mid">1</text><text x="135" y="45" class="mid">5</text><text x="225" y="45" class="mid">5</text>
+<text x="45" y="68" class="mid">2</text><text x="135" y="68" class="mid">15</text><text x="225" y="68" class="mid">10</text>
+<text x="45" y="91" class="mid">3</text><text x="135" y="91" class="mid">30</text><text x="225" y="91" class="mid">15</text>
+<text x="45" y="114" class="mid">4</text><text x="135" y="114" class="mid">45</text><text x="225" y="114" class="mid">15</text>
+</g>
+</svg>
+<figcaption>कार पहले तेज़ होती है, फिर स्थिर चाल से चलती है: स्थितियों के बीच के अंतर असमान हैं।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p>असमान गति में वस्तु <b>बराबर समय अंतरालों में असमान दूरियाँ</b>तय करती है। चाल बढ़ती है, घटती है या दोनों होती है, इसलिए दूरी-समय ग्राफ एक <b>वक्र</b>होता है। अधिकतर वास्तविक यात्राएँ (शहर के ट्रैफ़िक में बस, गिरती हुई गेंद) असमान होती हैं।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>हर सेकंड में तय की गई दूरी दर्ज करें। यहाँ अंतर 5, 10, 15 m हैं (बढ़ते हुए)।</li>
+<li>अंतर अलग-अलग हैं, इसलिए हर सेकंड में चाल अलग है।</li>
+<li>बिंदुओं को आलेखित करें। वे सीधी रेखा पर नहीं, वक्र पर होते हैं।</li>
+<li>पूरी यात्रा के लिए <b>औसत चाल</b> = कुल दूरी / कुल समय = 45 / 4 = 11.25 m/s का उपयोग करें।</li>
+</ol>
+<div class="key"><b>याद रखें:</b> ऊपर की ओर मुड़ता वक्र = चाल बढ़ना। चपटा होता वक्र = चाल घटना।</div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="card" id="d5">
+<h2><span class="num">5</span>दूरी और विस्थापन</h2>
+<figure>
+<svg viewBox="0 0 640 340" role="img" aria-label="Distance and displacement">
+<!-- grid -->
+<g stroke="#dfe7ee" stroke-width="1"><line x1="60" y1="40" x2="60" y2="300"/><line x1="105" y1="40" x2="105" y2="300"/><line x1="150" y1="40" x2="150" y2="300"/><line x1="195" y1="40" x2="195" y2="300"/><line x1="240" y1="40" x2="240" y2="300"/><line x1="285" y1="40" x2="285" y2="300"/><line x1="330" y1="40" x2="330" y2="300"/></g>
+<!-- path A -> C -> B : A(100,290) C(235,290) B(235,110) -->
+<polyline points="100,290 235,290 235,110" fill="none" stroke="#1d4ed8" stroke-width="4"/>
+<polygon points="228,290 228,283 235,283" fill="none" stroke="#1b2a41"/>
+<line x1="100" y1="290" x2="235" y2="110" stroke="#d62828" stroke-width="4" stroke-dasharray="8 6" marker-end="url(#mr)"/>
+<circle cx="100" cy="290" r="8" fill="#15803d" stroke="#1b2a41" stroke-width="2"/><text x="72" y="308" class="bd big">A (प्रारंभ)</text>
+<circle cx="235" cy="110" r="8" fill="#d62828" stroke="#1b2a41" stroke-width="2"/><text x="248" y="106" class="bd big">B (अंत)</text>
+<text x="235" y="318" class="mid bd">C</text>
+<text x="167" y="312" class="b bd mid">3 m पूर्व</text>
+<text x="290" y="205" class="b bd">4 m उत्तर</text>
+<text x="120" y="190" class="r bd" transform="rotate(-53 120 190)">विस्थापन = 5 m</text>
+<circle r="8" fill="#ffd166" stroke="#1b2a41" stroke-width="2"><animateMotion dur="5s" repeatCount="indefinite" path="M100,290 L235,290 L235,110" keyTimes="0;1" calcMode="linear"/></circle>
+<!-- compass -->
+<g transform="translate(40,80)"><line x1="0" y1="25" x2="0" y2="-20" class="ar"/><text x="-4" y="-28" class="bd">उ</text></g>
+<!-- legend -->
+<g transform="translate(380,60)">
+<rect width="245" height="215" rx="10" fill="#fffdf5" stroke="#1b2a41" stroke-width="2"/>
+<line x1="15" y1="28" x2="55" y2="28" stroke="#1d4ed8" stroke-width="4"/><text x="64" y="33" class="b bd">दूरी</text>
+<text x="15" y="55" class="sm">मार्ग की वास्तविक लंबाई = 3 + 4 = 7 m</text>
+<text x="15" y="73" class="sm">अदिश: केवल परिमाण, कभी ऋणात्मक नहीं</text>
+<line x1="15" y1="105" x2="55" y2="105" stroke="#d62828" stroke-width="4" stroke-dasharray="8 5"/><text x="64" y="110" class="r bd">विस्थापन</text>
+<text x="15" y="132" class="sm">A से B तक सबसे छोटी सीधी रेखा</text>
+<text x="15" y="150" class="sm">= &#8730;(3&#178; + 4&#178;) = 5 m, उत्तर-पूर्व की ओर</text>
+<text x="15" y="168" class="sm">सदिश: परिमाण + दिशा</text>
+<text x="15" y="196" class="g bd">दूरी &#8805; |विस्थापन|</text>
+</g>
+</svg>
+<figcaption>एक लड़का 3 m पूर्व और फिर 4 m उत्तर चलता है: दूरी = 7 m, विस्थापन = 5 m।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p><b>दूरी</b> वस्तु द्वारा वास्तव में तय किए गए मार्ग की कुल लंबाई है; यह एक अदिश राशि है। <b>विस्थापन</b> प्रारंभिक बिंदु से अंतिम बिंदु तक की सबसे छोटी सीधी दूरी है, दिशा सहित; यह एक सदिश राशि है। यदि कोई वस्तु अपने प्रारंभिक बिंदु पर लौट आए, तो उसका विस्थापन शून्य होता है, भले ही दूरी शून्य न हो।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>A से शुरू करें और 3 m पूर्व की ओर C तक चलें, फिर 4 m उत्तर की ओर B तक।</li>
+<li>दूरी = AC + CB = 3 + 4 = <b>7 m</b>।</li>
+<li>A को B से सीधी रेखा द्वारा जोड़ें। त्रिभुज ACB का समकोण C पर है, इसलिए AB = &#8730;(3&#178; + 4&#178;) = <b>5 m</b> (पाइथागोरस प्रमेय)।</li>
+<li>विस्थापन = 5 m, उत्तर-पूर्व दिशा में।</li>
+</ol>
+<table><tr><th>दूरी</th><th>विस्थापन</th></tr>
+<tr><td>अदिश</td><td>सदिश</td></tr><tr><td>मार्ग की लंबाई</td><td>A से B की सबसे छोटी दूरी</td></tr>
+<tr><td>गतिमान वस्तु के लिए कभी शून्य नहीं</td><td>शून्य हो सकता है (चक्कर पूरा करने पर)</td></tr></table>
+</section>
+
+<div class="chap">अध्याय: बल और गति के नियम</div>
+
+<!-- ============ 6 ============ -->
+<section class="card" id="d6">
+<h2><span class="num">6</span>संतुलित बल</h2>
+<figure>
+<svg viewBox="0 0 640 330" role="img" aria-label="Balanced forces">
+<line x1="30" y1="220" x2="610" y2="220" stroke="#1b2a41" stroke-width="4"/>
+<g stroke="#1b2a41" stroke-width="1.5"><line x1="50" y1="220" x2="38" y2="234"/><line x1="100" y1="220" x2="88" y2="234"/><line x1="150" y1="220" x2="138" y2="234"/><line x1="500" y1="220" x2="488" y2="234"/><line x1="550" y1="220" x2="538" y2="234"/><line x1="600" y1="220" x2="588" y2="234"/></g>
+<text x="40" y="256" class="sm">चिकनी क्षैतिज मेज़</text>
+<rect x="250" y="120" width="140" height="100" rx="6" fill="#ffd166" stroke="#1b2a41" stroke-width="3"/>
+<text x="320" y="178" class="mid bd big">बक्सा (m)</text>
+<line class="arR pulse" x1="250" y1="170" x2="100" y2="170"/>
+<text x="175" y="156" class="r bd mid">F&#8321; = 10 N</text>
+<line class="arB pulse" x1="390" y1="170" x2="540" y2="170"/>
+<text x="465" y="156" class="b bd mid">F&#8322; = 10 N</text>
+<line class="arG pulse" x1="320" y1="120" x2="320" y2="38"/>
+<text x="332" y="62" class="g bd">अभिलंब प्रतिक्रिया N</text>
+<line class="arO pulse" x1="320" y1="220" x2="320" y2="305"/>
+<text x="332" y="300" class="o bd">भार W = mg</text>
+<text x="320" y="326" class="mid bd">नेट बल = 10 &minus; 10 = 0 तथा N &minus; W = 0</text>
+</svg>
+<figcaption>एक ही रेखा में बराबर और विपरीत बल एक-दूसरे को निरस्त कर देते हैं।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p>जब किसी पिंड पर लगने वाले दो या अधिक बल परिमाण में बराबर, दिशा में विपरीत और एक ही रेखा में हों, तो बल <b>संतुलित</b> कहलाते हैं। उनका परिणामी (नेट बल) शून्य होता है। संतुलित बल पिंड की विराम या एकसमान गति की अवस्था नहीं बदलते, पर उसका आकार बदल सकते हैं (जैसे स्पंज को दबाना)।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>दो व्यक्ति बक्से को विपरीत दिशाओं में 10 N के बराबर बलों से खींचते हैं।</li>
+<li>एक दिशा को धनात्मक लें: नेट बल = +10 &minus; 10 = 0 N।</li>
+<li>ऊर्ध्वाधर दिशा में, मेज़ ऊपर की ओर ठीक बक्से के भार के बराबर बल (N) लगाती है, इसलिए ये भी निरस्त हो जाते हैं।</li>
+<li>शून्य नेट बल होने पर विराम में रखा बक्सा विराम में रहता है; पहले से गतिमान बक्सा अपना वेग बनाए रखता है।</li>
+</ol>
+<div class="key"><b>परिणाम:</b> नेट बल = 0 &rarr; कोई त्वरण नहीं &rarr; चाल या दिशा में कोई परिवर्तन नहीं।</div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="card" id="d7">
+<h2><span class="num">7</span>असंतुलित बल</h2>
+<figure>
+<svg viewBox="0 0 640 300" role="img" aria-label="Unbalanced forces">
+<line x1="20" y1="200" x2="620" y2="200" stroke="#1b2a41" stroke-width="4"/>
+<g>
+<animateTransform attributeName="transform" type="translate" values="0 0;0 0;240 0;240 0;0 0" keyTimes="0;0.1;0.7;0.9;1" calcMode="spline" keySplines="0 0 1 1;0.333 0 0.667 0.333;0 0 1 1;0 0 1 1" dur="6s" repeatCount="indefinite"/>
+<rect x="100" y="110" width="110" height="90" rx="6" fill="#ffd166" stroke="#1b2a41" stroke-width="3"/>
+<text x="155" y="162" class="mid bd big">बक्सा</text>
+<line class="arR" x1="210" y1="150" x2="340" y2="150"/>
+<text x="275" y="136" class="r bd mid">धक्का F = 20 N</text>
+<line class="arB" x1="100" y1="150" x2="55" y2="150"/>
+<text x="75" y="136" class="b bd mid sm">घर्षण 8 N</text>
+</g>
+<text x="320" y="240" class="mid bd big g">नेट बल = 20 &minus; 8 = 12 N, धक्के की दिशा में</text>
+<text x="320" y="268" class="mid">त्वरण a = F / m (यदि m = 4 kg, a = 12 / 4 = 3 m/s&#178;)</text>
+</svg>
+<figcaption>बड़ा बल जीतता है, इसलिए बक्सा दाईं ओर त्वरित होता है।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p>जब किसी पिंड पर लगे बल संतुलित नहीं होते, तो नेट बल शून्य नहीं होता। असंतुलित बल गति <b>शुरू</b> कर सकता है, गतिमान पिंड को <b>रोक</b> सकता है, <b>चाल बदल</b>सकता है, <b>दिशा बदल</b> सकता है या <b>आकार बदल</b>सकता है। पिंड बड़े बल की दिशा में त्वरित होता है।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>धक्का देने वाला बल 20 N दाईं ओर लगता है; घर्षण बल 8 N बाईं ओर लगता है।</li>
+<li>परिणामी बल = बड़ा &minus; छोटा = 20 &minus; 8 = 12 N (दाईं ओर)।</li>
+<li>यह 12 N नेट बल बक्से को त्वरण a = F/m देता है।</li>
+<li>बक्सा नेट बल की दिशा में तेज़ होता जाता है, जब तक बल फिर से संतुलित न हो जाएँ।</li>
+</ol>
+<div class="key"><b>यदि बल एक ही दिशा में लगें</b>तो उन्हें जोड़ें। <b>यदि वे विपरीत दिशाओं में लगें</b>तो उन्हें घटाएँ।</div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="card" id="d8">
+<h2><span class="num">8</span>न्यूटन का गति का प्रथम नियम (जड़त्व)</h2>
+<figure>
+<svg viewBox="0 0 640 340" role="img" aria-label="Newton's first law">
+<line x1="320" y1="20" x2="320" y2="320" stroke="#7f8fa6" stroke-dasharray="6 6"/>
+<text x="160" y="30" class="mid bd">(a) गिलास पर रखे कार्ड पर सिक्का</text>
+<text x="480" y="30" class="mid bd">(b) ब्रेक लगती बस में यात्री</text>
+<!-- glass -->
+<path d="M110,232 L116,300 L164,300 L170,232" fill="#e6f4ff" stroke="#1b2a41" stroke-width="3"/>
+<text x="140" y="320" class="mid sm">गिलास</text>
+<!-- card + coin -->
+<g><animateTransform attributeName="transform" type="translate" values="0 0;0 0;150 0;150 0;0 0" keyTimes="0;0.15;0.25;0.85;1" dur="5s" repeatCount="indefinite"/>
+<rect x="80" y="224" width="120" height="8" fill="#ea580c" stroke="#1b2a41" stroke-width="2"/></g>
+<g><animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 62;0 62;0 0" keyTimes="0;0.15;0.3;0.85;1" dur="5s" repeatCount="indefinite"/>
+<circle cx="140" cy="214" r="9" fill="#ffd166" stroke="#1b2a41" stroke-width="2"/></g>
+<text x="140" y="190" class="mid sm b">सिक्का</text>
+<text x="100" y="250" class="sm o end">कार्ड</text>
+<line class="arR" x1="20" y1="228" x2="72" y2="228"/>
+<text x="20" y="212" class="r sm">तेज़ झटका</text>
+<text x="160" y="342" class="mid sm g bd" style="display:none">.</text>
+<!-- bus -->
+<line x1="335" y1="288" x2="625" y2="288" stroke="#1b2a41" stroke-width="3"/>
+<rect x="350" y="150" width="260" height="120" rx="12" fill="#bfe3ff" stroke="#1b2a41" stroke-width="3"/>
+<rect x="365" y="162" width="46" height="34" fill="#fff" stroke="#1b2a41"/><rect x="540" y="162" width="46" height="34" fill="#fff" stroke="#1b2a41"/>
+<circle cx="396" cy="272" r="17" fill="#1b2a41"/><circle cx="564" cy="272" r="17" fill="#1b2a41"/>
+<line x1="350" y1="252" x2="610" y2="252" stroke="#1b2a41" stroke-width="2"/>
+<g><animateTransform attributeName="transform" type="rotate" values="0 480 252;0 480 252;28 480 252;28 480 252;0 480 252" keyTimes="0;0.15;0.3;0.85;1" dur="5s" repeatCount="indefinite"/>
+<circle cx="480" cy="176" r="11" fill="#ffd9b3" stroke="#1b2a41" stroke-width="2"/>
+<line x1="480" y1="187" x2="480" y2="224" class="ln"/>
+<line x1="480" y1="224" x2="470" y2="252" class="ln"/><line x1="480" y1="224" x2="492" y2="252" class="ln"/>
+<line x1="480" y1="196" x2="466" y2="214" class="ln"/><line x1="480" y1="196" x2="494" y2="214" class="ln"/></g>
+<line class="arG" x1="400" y1="130" x2="520" y2="130"/>
+<text x="460" y="120" class="g sm mid bd">बस इस दिशा में चल रही है</text>
+<text x="560" y="228" class="r bd sm">ब्रेक!</text>
+<text x="480" y="322" class="mid sm">पैर बस के साथ रुक जाते हैं; शरीर का ऊपरी भाग आगे बढ़ता रहता है</text>
+</svg>
+<figcaption>दोनों दृश्य जड़त्व दिखाते हैं: पिंड अपनी विराम या गति की अवस्था में किसी भी परिवर्तन का विरोध करता है।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p><b>न्यूटन का प्रथम नियम:</b> जब तक कोई बाह्य असंतुलित बल न लगे, पिंड अपनी विराम की अवस्था में या सीधी रेखा में एकसमान गति की अवस्था में बना रहता है। परिवर्तन के इस विरोध को <b>जड़त्व</b>कहते हैं। पिंड का द्रव्यमान जितना अधिक, उसका जड़त्व उतना अधिक, इसलिए <b>द्रव्यमान जड़त्व का माप है</b>।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li><b>(a) विराम का जड़त्व:</b> कार्ड को तेज़ी से खिसका दिया जाता है। सिक्के पर कोई क्षैतिज बल नहीं लगता, इसलिए वह अपनी जगह पर ही रहता है और फिर गुरुत्व के कारण गिलास में गिर जाता है।</li>
+<li><b>(b) गति का जड़त्व:</b> बस और यात्री साथ-साथ चल रहे हैं। बस में ब्रेक लगने पर घर्षण पैरों को रोक देता है, पर शरीर का ऊपरी भाग गति जारी रखना चाहता है, इसलिए यात्री आगे की ओर झुक जाता है।</li>
+<li>अन्य उदाहरण: कालीन झाड़ने पर धूल निकल जाती है; बस के अचानक चलने पर यात्री पीछे की ओर झुक जाते हैं।</li>
+</ol>
+<div class="key"><b>जड़त्व के प्रकार:</b> विराम का जड़त्व, गति का जड़त्व और दिशा का जड़त्व। भारी वस्तु को शुरू करना, रोकना या मोड़ना कठिन होता है।</div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="card" id="d9">
+<h2><span class="num">9</span>न्यूटन का गति का द्वितीय नियम (F = ma)</h2>
+<figure>
+<svg viewBox="0 0 640 330" role="img" aria-label="Newton's second law">
+<line x1="20" y1="130" x2="620" y2="130" stroke="#1b2a41" stroke-width="3"/>
+<line x1="20" y1="250" x2="620" y2="250" stroke="#1b2a41" stroke-width="3"/>
+<g><animateTransform attributeName="transform" type="translate" values="0 0;460 0;460 0" keyTimes="0;0.6;1" calcMode="spline" keySplines="0.333 0 0.667 0.333;0 0 1 1" dur="5s" repeatCount="indefinite"/>
+<rect x="30" y="94" width="46" height="34" rx="4" fill="#9be7a5" stroke="#1b2a41" stroke-width="3"/>
+<text x="53" y="116" class="mid bd">1 kg</text>
+<circle cx="42" cy="132" r="5" fill="#1b2a41"/><circle cx="64" cy="132" r="5" fill="#1b2a41"/>
+<line class="arR" x1="76" y1="108" x2="132" y2="108"/><text x="104" y="100" class="r sm bd mid">10 N</text></g>
+<g><animateTransform attributeName="transform" type="translate" values="0 0;92 0;92 0" keyTimes="0;0.6;1" calcMode="spline" keySplines="0.333 0 0.667 0.333;0 0 1 1" dur="5s" repeatCount="indefinite"/>
+<rect x="30" y="196" width="100" height="52" rx="4" fill="#ffb4a2" stroke="#1b2a41" stroke-width="3"/>
+<text x="80" y="228" class="mid bd">5 kg</text>
+<circle cx="50" cy="252" r="5" fill="#1b2a41"/><circle cx="110" cy="252" r="5" fill="#1b2a41"/>
+<line class="arR" x1="130" y1="222" x2="186" y2="222"/><text x="158" y="214" class="r sm bd mid">10 N</text></g>
+<text x="320" y="38" class="mid bd big">समान बल, भिन्न द्रव्यमान, समान समय</text>
+<text x="320" y="62" class="mid g bd">हल्की ट्रॉली: a = F/m = 10/1 = 10 m/s&#178; (अधिक त्वरण)</text>
+<text x="320" y="84" class="mid r bd">भारी ट्रॉली: a = F/m = 10/5 = 2 m/s&#178; (कम त्वरण)</text>
+<text x="320" y="300" class="mid bd big">F = m &times; a &nbsp;&nbsp; 1 N = 1 kg &times; 1 m/s&#178;</text>
+<text x="320" y="322" class="mid sm">साथ ही: F = (mv &minus; mu) / t = संवेग परिवर्तन की दर</text>
+</svg>
+<figcaption>समान समय में 1 kg वाली ट्रॉली 5 kg वाली ट्रॉली से पाँच गुना अधिक दूरी तय करती है।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p><b>न्यूटन का द्वितीय नियम:</b> किसी पिंड के संवेग परिवर्तन की दर लगाए गए असंतुलित बल के अनुक्रमानुपाती होती है और बल की दिशा में होती है। संवेग <b>p = द्रव्यमान &times; वेग</b>है। इससे F = ma मिलता है: दिए गए द्रव्यमान के लिए बड़ा बल अधिक त्वरण देता है, और दिए गए बल के लिए बड़ा द्रव्यमान कम त्वरण देता है।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>1 kg और 5 kg की ट्रॉली पर समान 10 N बल लगाएँ।</li>
+<li>प्रत्येक के लिए a = F/m का प्रयोग करें: 10 m/s&#178; और 2 m/s&#178;।</li>
+<li>समान समय में दूरी s = &frac12; a t&#178; हल्की ट्रॉली के लिए 5 गुना अधिक होती है।</li>
+<li>किसी भी ट्रॉली का त्वरण दोगुना करने के लिए बल को दोगुना करें या द्रव्यमान को आधा करें।</li>
+</ol>
+<div class="key"><b>बल का मात्रक:</b> 1 न्यूटन वह बल है जो 1 kg द्रव्यमान में 1 m/s&#178; का त्वरण उत्पन्न करता है। संवेग का मात्रक: kg m/s।</div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="card" id="d10">
+<h2><span class="num">10</span>न्यूटन का गति का तृतीय नियम</h2>
+<figure>
+<svg viewBox="0 0 640 340" role="img" aria-label="Newton's third law">
+<line x1="320" y1="20" x2="320" y2="320" stroke="#7f8fa6" stroke-dasharray="6 6"/>
+<text x="160" y="28" class="mid bd">(a) गुब्बारा रॉकेट</text>
+<text x="480" y="28" class="mid bd">(b) बंदूक का प्रतिक्षेप</text>
+<!-- string -->
+<line x1="15" y1="130" x2="305" y2="130" stroke="#7f8fa6" stroke-width="2"/>
+<g><animateTransform attributeName="transform" type="translate" values="0 0;150 0;150 0" keyTimes="0;0.7;1" dur="4s" repeatCount="indefinite"/>
+<ellipse cx="100" cy="130" rx="52" ry="30" fill="#ff9aa2" stroke="#1b2a41" stroke-width="3"/>
+<rect x="38" y="125" width="14" height="10" fill="#d62828"/>
+<g class="pulse"><line x1="36" y1="130" x2="8" y2="130" stroke="#1d4ed8" stroke-width="3" stroke-dasharray="6 4"/><line x1="36" y1="120" x2="12" y2="112" stroke="#1d4ed8" stroke-width="3" stroke-dasharray="6 4"/><line x1="36" y1="140" x2="12" y2="148" stroke="#1d4ed8" stroke-width="3" stroke-dasharray="6 4"/></g>
+<line class="arB" x1="160" y1="130" x2="215" y2="130"/>
+<text x="188" y="118" class="b sm bd mid">प्रतिक्रिया</text></g>
+<text x="40" y="190" class="r sm bd">क्रिया: गुब्बारा हवा को पीछे धकेलता है</text>
+<text x="40" y="212" class="b sm bd">प्रतिक्रिया: हवा गुब्बारे को आगे धकेलती है</text>
+<line class="arR" x1="170" y1="228" x2="60" y2="228"/>
+<!-- gun -->
+<g><animateTransform attributeName="transform" type="translate" values="0 0;0 0;-34 0;-34 0;0 0" keyTimes="0;0.15;0.25;0.8;1" dur="4s" repeatCount="indefinite"/>
+<rect x="400" y="110" width="130" height="18" fill="#6b7280" stroke="#1b2a41" stroke-width="3"/>
+<polygon points="400,110 372,110 372,140 400,140" fill="#4b5563" stroke="#1b2a41" stroke-width="3"/>
+<polygon points="395,128 425,128 415,185 380,185" fill="#374151" stroke="#1b2a41" stroke-width="3"/>
+<line class="arB" x1="368" y1="125" x2="330" y2="125"/>
+<text x="345" y="112" class="b sm bd mid">प्रतिक्षेप</text></g>
+<circle r="7" cy="119" fill="#ea580c" stroke="#1b2a41" stroke-width="2"><animate attributeName="cx" values="532;532;615;615;532" keyTimes="0;0.15;0.3;0.8;1" dur="4s" repeatCount="indefinite"/></circle>
+<line class="arR" x1="540" y1="150" x2="610" y2="150"/>
+<text x="575" y="168" class="r sm bd mid">गोली पर क्रिया</text>
+<text x="400" y="230" class="sm">क्रिया: बंदूक गोली को आगे धकेलती है</text>
+<text x="400" y="250" class="sm">प्रतिक्रिया: गोली बंदूक को पीछे धकेलती है</text>
+<text x="400" y="272" class="sm g bd">m&#8321;v&#8321; = &minus;m&#8322;v&#8322; (संवेग संरक्षित)</text>
+<text x="320" y="318" class="mid bd">प्रत्येक क्रिया की बराबर और विपरीत प्रतिक्रिया होती है</text>
+</svg>
+<figcaption>रॉकेट, गुब्बारे, बंदूकें और तैराक सभी न्यूटन के तृतीय नियम से काम करते हैं।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p><b>न्यूटन का तृतीय नियम:</b> प्रत्येक क्रिया की बराबर और विपरीत प्रतिक्रिया होती है। ये दोनों बल सदैव <b>दो अलग-अलग पिंडों</b>पर लगते हैं, इसलिए वे एक-दूसरे को निरस्त नहीं करते। भारी बंदूक हल्की गोली की आगे की चाल से कम चाल से पीछे हटती है, क्योंकि उनके संवेग बराबर और विपरीत होते हैं।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li><b>गुब्बारा:</b> गुब्बारा हवा को पीछे की ओर बाहर निकालता है (क्रिया)। बाहर निकलती हवा गुब्बारे को आगे धकेलती है (प्रतिक्रिया) और वह धागे पर आगे खिसकता है।</li>
+<li><b>बंदूक:</b> जलता हुआ बारूद गोली को आगे धकेलता है (क्रिया)। गोली बंदूक को पीछे धकेलती है (प्रतिक्रिया), जिससे प्रतिक्षेप होता है।</li>
+<li>संवेग संरक्षण: m&#8321;v&#8321; + m&#8322;v&#8322; = 0, इसलिए प्रतिक्षेप वेग v = &minus;(गोली का m&times;v)/(बंदूक का द्रव्यमान)।</li>
+<li>यही विचार: तैराक पानी को पीछे धकेलता है और पानी तैराक को आगे धकेलता है; रॉकेट गर्म गैसों को नीचे फेंकता है और ऊपर उठता है।</li>
+</ol>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="card" id="d11">
+<h2><span class="num">11</span>क्रिया और प्रतिक्रिया बल</h2>
+<figure>
+<svg viewBox="0 0 640 320" role="img" aria-label="Action and reaction on skaters">
+<rect x="20" y="252" width="600" height="14" fill="#cdeffd" stroke="#1b2a41" stroke-width="2"/>
+<text x="580" y="284" class="sm end">चिकनी बर्फ़</text>
+<!-- skater A (left, light 40 kg) -->
+<g><animateTransform attributeName="transform" type="translate" values="0 0;0 0;-170 0;-170 0;0 0" keyTimes="0;0.15;0.55;0.9;1" dur="6s" repeatCount="indefinite"/>
+<circle cx="300" cy="150" r="13" fill="#bfdbfe" stroke="#1b2a41" stroke-width="2"/>
+<line x1="300" y1="163" x2="300" y2="215" class="ln"/><line x1="300" y1="215" x2="288" y2="250" class="ln"/><line x1="300" y1="215" x2="312" y2="250" class="ln"/>
+<line x1="300" y1="175" x2="320" y2="186" class="ln"/><line x1="300" y1="175" x2="285" y2="192" class="ln"/>
+<line class="arB" x1="296" y1="120" x2="220" y2="120"/>
+<text x="258" y="106" class="b sm bd mid">A पर F</text>
+<text x="300" y="132" class="mid sm b bd">A</text></g>
+<!-- skater B (right, heavy 60 kg) -->
+<g><animateTransform attributeName="transform" type="translate" values="0 0;0 0;113 0;113 0;0 0" keyTimes="0;0.15;0.55;0.9;1" dur="6s" repeatCount="indefinite"/>
+<circle cx="340" cy="150" r="15" fill="#fecaca" stroke="#1b2a41" stroke-width="2"/>
+<line x1="340" y1="165" x2="340" y2="215" stroke="#1b2a41" stroke-width="4"/><line x1="340" y1="215" x2="326" y2="250" stroke="#1b2a41" stroke-width="4"/><line x1="340" y1="215" x2="354" y2="250" stroke="#1b2a41" stroke-width="4"/>
+<line x1="340" y1="177" x2="320" y2="186" stroke="#1b2a41" stroke-width="4"/><line x1="340" y1="177" x2="356" y2="194" stroke="#1b2a41" stroke-width="4"/>
+<line class="arR" x1="344" y1="120" x2="420" y2="120"/>
+<text x="382" y="106" class="r sm bd mid">B पर F</text>
+<text x="340" y="132" class="mid sm r bd">B</text></g>
+<text x="320" y="40" class="mid bd big">A (40 kg) B (60 kg) को धकेलता है</text>
+<text x="320" y="64" class="mid">क्रिया: A, B को धकेलता है (लाल) &nbsp;|&nbsp; प्रतिक्रिया: B, A को धकेलता है (नीला)</text>
+<text x="320" y="86" class="mid g bd">बल बराबर हैं, पर a = F/m हल्के स्केटर के लिए अधिक है</text>
+<text x="320" y="304" class="mid sm">A पर F = &minus; B पर F &nbsp;&nbsp; पर &nbsp; a&#8336; = F/40 &gt; a&#8337; = F/60</text>
+</svg>
+<figcaption>दोनों बल क्रिया-प्रतिक्रिया का युग्म बनाते हैं; हल्का स्केटर अधिक दूर जाता है।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p>बल सदैव <b>जोड़ों</b>में होते हैं। यदि पिंड A, पिंड B पर बल (क्रिया) लगाता है, तो B भी A पर विपरीत दिशा में बराबर बल (प्रतिक्रिया) लगाता है। वे एक ही समय पर उत्पन्न और समाप्त होते हैं। चूँकि वे अलग-अलग पिंडों पर लगते हैं, इसलिए हम उन्हें जोड़कर शून्य नहीं कर सकते।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>स्केटर A, स्केटर B को दाईं ओर बल F से धकेलता है (B पर क्रिया)।</li>
+<li>उसी क्षण B, A को बाईं ओर बल F से धकेलता है (A पर प्रतिक्रिया)।</li>
+<li>त्वरण: a<sub>B</sub> = F/60 और a<sub>A</sub> = F/40, इसलिए A तेज़ी से दूर जाता है।</li>
+<li>संवेग: 40 &times; v<sub>A</sub> = 60 &times; v<sub>B</sub>, इसलिए चालों का अनुपात 3 : 2 है।</li>
+</ol>
+<div class="tip"><b>रोज़मर्रा के क्रिया-प्रतिक्रिया युग्म:</b> चलना (पैर ज़मीन को पीछे धकेलता है, ज़मीन आपको आगे धकेलती है), नाव चलाना, नाव से कूदना (नाव पीछे जाती है), हथौड़े का कील पर प्रहार।</div>
+</section>
+
+<div class="chap">अध्याय: गुरुत्वाकर्षण</div>
+
+<!-- ============ 12 ============ -->
+<section class="card" id="d12">
+<h2><span class="num">12</span>सार्वत्रिक गुरुत्वाकर्षण नियम</h2>
+<figure>
+<svg viewBox="0 0 640 350" role="img" aria-label="Universal law of gravitation">
+<circle cx="120" cy="100" r="40" fill="#93c5fd" stroke="#1b2a41" stroke-width="3"/><text x="120" y="106" class="mid bd big">m&#8321;</text>
+<circle cx="470" cy="100" r="26" fill="#fca5a5" stroke="#1b2a41" stroke-width="3"/><text x="470" y="106" class="mid bd big">m&#8322;</text>
+<line x1="120" y1="165" x2="470" y2="165" class="thin"/>
+<line x1="120" y1="158" x2="120" y2="172" class="thin"/><line x1="470" y1="158" x2="470" y2="172" class="thin"/>
+<text x="295" y="186" class="mid bd">केंद्रों के बीच की दूरी = r</text>
+<line class="arR pulse" x1="162" y1="100" x2="270" y2="100"/>
+<text x="216" y="88" class="r bd mid">F</text>
+<line class="arR pulse" x1="440" y1="100" x2="332" y2="100"/>
+<text x="386" y="88" class="r bd mid">F</text>
+<text x="295" y="52" class="mid bd big">प्रत्येक पिंड हर दूसरे पिंड को आकर्षित करता है</text>
+<!-- bars -->
+<line x1="40" y1="332" x2="330" y2="332" class="ln"/>
+<rect x="60" y="232" width="50" height="100" fill="#d62828" opacity=".85"/><text x="85" y="226" class="mid bd">F</text><text x="85" y="348" class="mid sm">r</text>
+<rect x="150" y="307" width="50" height="25" fill="#ea580c" opacity=".85"/><text x="175" y="301" class="mid bd">F/4</text><text x="175" y="348" class="mid sm">2r</text>
+<rect x="240" y="321" width="50" height="11" fill="#15803d" opacity=".85"/><text x="265" y="315" class="mid bd">F/9</text><text x="265" y="348" class="mid sm">3r</text>
+<text x="185" y="208" class="mid sm bd">बल दूरी के वर्ग के साथ घटता है</text>
+<!-- formula -->
+<g transform="translate(350,205)">
+<rect width="275" height="135" rx="10" fill="#fff3b0" stroke="#b8860b" stroke-width="2"/>
+<text x="137" y="30" class="mid bd big r">F = G m&#8321; m&#8322; / r&#178;</text>
+<text x="14" y="58" class="sm">F = गुरुत्वाकर्षण बल (N)</text>
+<text x="14" y="76" class="sm">G = 6.67 &times; 10&#8315;&#185;&#185; N m&#178;/kg&#178;</text>
+<text x="14" y="94" class="sm">m&#8321;, m&#8322; = द्रव्यमान (kg), r = दूरी (m)</text>
+<text x="14" y="118" class="sm g bd">पृथ्वी पर: g = GM/R&#178; = 9.8 m/s&#178;</text>
+</g>
+</svg>
+<figcaption>दो द्रव्यमानों के बीच बराबर और विपरीत आकर्षण; बल दोनों द्रव्यमानों और दूरी पर निर्भर करता है।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p><b>न्यूटन का सार्वत्रिक गुरुत्वाकर्षण नियम:</b> ब्रह्मांड की प्रत्येक वस्तु हर दूसरी वस्तु को ऐसे बल से आकर्षित करती है जो उनके द्रव्यमानों के गुणनफल के अनुक्रमानुपाती और उनके केंद्रों के बीच की दूरी के वर्ग के व्युत्क्रमानुपाती होता है। बल दोनों पिंडों को मिलाने वाली रेखा के अनुदिश लगता है, और दोनों बल क्रिया-प्रतिक्रिया का युग्म होते हैं।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>r दूरी पर रखे दो द्रव्यमान m&#8321; और m&#8322; लें।</li>
+<li>बल m&#8321;m&#8322; के अनुक्रमानुपाती है, इसलिए एक द्रव्यमान दोगुना करने पर बल दोगुना हो जाता है।</li>
+<li>बल 1/r&#178; के अनुक्रमानुपाती है: दूरी दोगुनी करने पर बल 1/4 और तीन गुनी करने पर 1/9 रह जाता है।</li>
+<li>दोनों को मिलाकर: F = G m&#8321;m&#8322;/r&#178;। G बहुत छोटा है, इसलिए गुरुत्व तभी महसूस होता है जब कम से कम एक द्रव्यमान बहुत बड़ा हो, जैसे पृथ्वी।</li>
+</ol>
+<div class="key"><b>उपयोग:</b> यह हमें पृथ्वी से बाँधे रखता है, चंद्रमा को पृथ्वी की और ग्रहों को सूर्य की कक्षा में रखता है, तथा पृथ्वी पर ज्वार-भाटा उत्पन्न करता है।</div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="card" id="d13">
+<h2><span class="num">13</span>किसी वस्तु का मुक्त पतन</h2>
+<figure>
+<svg viewBox="0 0 640 330" role="img" aria-label="Free fall">
+<line x1="60" y1="40" x2="60" y2="272" class="ln"/>
+<!-- ticks -->
+<g class="sm"><line x1="54" y1="40" x2="66" y2="40" class="ln"/><text x="44" y="44" class="end">0</text>
+<line x1="54" y1="64.5" x2="66" y2="64.5" class="ln"/><text x="44" y="68" class="end">4.9</text>
+<line x1="54" y1="138" x2="66" y2="138" class="ln"/><text x="44" y="142" class="end">19.6</text>
+<line x1="54" y1="260.5" x2="66" y2="260.5" class="ln"/><text x="44" y="264" class="end">44.1</text></g>
+<text x="14" y="30" class="sm bd">गिरी ऊँचाई (m)</text>
+<rect x="30" y="272" width="330" height="22" fill="#a16207" stroke="#1b2a41" stroke-width="2"/>
+<text x="195" y="288" class="w mid bd sm">धरातल</text>
+<!-- ghosts -->
+<g fill="#93c5fd" stroke="#1b2a41" stroke-width="1.5" opacity=".55"><circle cx="190" cy="40" r="10"/><circle cx="190" cy="64.5" r="10"/><circle cx="190" cy="138" r="10"/><circle cx="190" cy="260.5" r="10"/></g>
+<g class="sm bd">
+<line x1="204" y1="40" x2="250" y2="40" class="thin dash"/><text x="256" y="44">t = 0 s : v = 0</text>
+<line x1="204" y1="64.5" x2="250" y2="64.5" class="thin dash"/><text x="256" y="68">t = 1 s : s = 4.9 m, v = 9.8 m/s</text>
+<line x1="204" y1="138" x2="250" y2="138" class="thin dash"/><text x="256" y="142">t = 2 s : s = 19.6 m, v = 19.6 m/s</text>
+<line x1="204" y1="260.5" x2="250" y2="260.5" class="thin dash"/><text x="256" y="253">t = 3 s : s = 44.1 m, v = 29.4 m/s</text></g>
+<!-- falling ball -->
+<g><animateTransform attributeName="transform" type="translate" values="0 0;0 220.5;0 220.5" keyTimes="0;0.6;1" calcMode="spline" keySplines="0.333 0 0.667 0.333;0 0 1 1" dur="5s" repeatCount="indefinite"/>
+<circle cx="190" cy="40" r="10" fill="#d62828" stroke="#1b2a41" stroke-width="2.5"/>
+<line class="arO" x1="190" y1="53" x2="190" y2="92"/></g>
+<text x="130" y="100" class="o bd end">g = 9.8 m/s&#178;</text>
+<g transform="translate(395,75)">
+<rect width="230" height="140" rx="10" fill="#fff3b0" stroke="#b8860b" stroke-width="2"/>
+<text x="115" y="26" class="mid bd r big">समीकरण (u = 0, a = g)</text>
+<text x="14" y="55">v = u + g t</text><text x="14" y="82">s = u t + &frac12; g t&#178;</text><text x="14" y="109">v&#178; = u&#178; + 2 g s</text>
+<text x="14" y="130" class="sm g bd">गिरते समय: g = +9.8; ऊपर फेंकने पर: g = &minus;9.8</text>
+</g>
+<text x="510" y="250" class="mid sm">क्रमागत सेकंडों में तय दूरियाँ</text>
+<text x="510" y="270" class="mid sm bd b">1 : 3 : 5 के अनुपात में होती हैं</text>
+</svg>
+<figcaption>मुक्त रूप से गिरती गेंद हर सेकंड 9.8 m/s चाल प्राप्त करती है; छायाचित्र हर सेकंड पर उसकी स्थिति दिखाते हैं।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p>जब कोई वस्तु केवल गुरुत्व के प्रभाव में पृथ्वी की ओर गिरती है (वायु प्रतिरोध नगण्य), तो वह <b>मुक्त पतन</b>में होती है। भारी या हल्की, सभी वस्तुएँ पृथ्वी की सतह के पास समान त्वरण <b>g = 9.8 m/s&#178;</b> (लगभग 10 m/s&#178;) से गिरती हैं। निर्वात में पंख और हथौड़ा एक साथ ज़मीन पर पहुँचते हैं।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>विराम से छोड़ी गई गेंद की u = 0 है। गुरुत्व उसे नीचे की ओर त्वरण g देता है।</li>
+<li>1 s बाद: v = 9.8 m/s और s = &frac12;(9.8)(1)&#178; = 4.9 m।</li>
+<li>2 s बाद: v = 19.6 m/s और s = 19.6 m। 3 s बाद: v = 29.4 m/s और s = 44.1 m।</li>
+<li>छायाचित्रों के बीच अंतर बढ़ते जाते हैं, जो दर्शाता है कि चाल एकसमान दर से बढ़ती रहती है।</li>
+</ol>
+<div class="tip"><b>g क्यों?</b> g = GM/R&#178;, जहाँ M और R पृथ्वी का द्रव्यमान और त्रिज्या हैं। यह गिरने वाली वस्तु के द्रव्यमान पर निर्भर नहीं करता।</div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="card" id="d14">
+<h2><span class="num">14</span>द्रव्यमान और भार</h2>
+<figure>
+<svg viewBox="0 0 640 350" role="img" aria-label="Mass and weight on Earth and Moon">
+<line x1="320" y1="15" x2="320" y2="300" stroke="#7f8fa6" stroke-dasharray="6 6"/>
+<text x="160" y="30" class="mid bd big b">पृथ्वी पर (g = 9.8 m/s&#178;)</text>
+<text x="480" y="30" class="mid bd big o">चंद्रमा पर (g = 1.63 m/s&#178;)</text>
+<!-- Earth balance -->
+<g transform="translate(0,0)">
+<line x1="160" y1="40" x2="160" y2="52" class="ln"/>
+<g stroke="#1b2a41" stroke-width="1.5" class="sm"><line x1="135" y1="55" x2="145" y2="55"/><line x1="135" y1="105" x2="145" y2="105"/><line x1="135" y1="155" x2="145" y2="155"/></g>
+<g class="sm"><text x="128" y="59" class="end">0</text><text x="128" y="109" class="end">50</text><text x="128" y="159" class="end">100 N</text></g>
+<g><animateTransform attributeName="transform" type="translate" values="0 -98;0 0;0 0" keyTimes="0;0.35;1" dur="5s" repeatCount="indefinite"/>
+<line x1="160" y1="153" x2="160" y2="175" class="ln"/>
+<polygon points="146,153 158,148 158,158" fill="#d62828"/>
+<rect x="135" y="175" width="50" height="50" fill="#9be7a5" stroke="#1b2a41" stroke-width="3"/><text x="160" y="205" class="mid bd">10 kg</text></g>
+<rect x="152" y="48" width="16" height="115" rx="4" fill="none" stroke="#1b2a41" stroke-width="3" opacity=".6"/>
+<text x="160" y="262" class="mid bd b">भार W = mg</text>
+<text x="160" y="284" class="mid">= 10 &times; 9.8 = <tspan class="r bd">98 N</tspan></text>
+</g>
+<!-- Moon balance -->
+<g>
+<line x1="480" y1="40" x2="480" y2="52" class="ln"/>
+<g stroke="#1b2a41" stroke-width="1.5"><line x1="455" y1="55" x2="465" y2="55"/><line x1="455" y1="105" x2="465" y2="105"/><line x1="455" y1="155" x2="465" y2="155"/></g>
+<g class="sm"><text x="448" y="59" class="end">0</text><text x="448" y="109" class="end">50</text><text x="448" y="159" class="end">100 N</text></g>
+<g><animateTransform attributeName="transform" type="translate" values="0 -16;0 0;0 0" keyTimes="0;0.35;1" dur="5s" repeatCount="indefinite"/>
+<line x1="480" y1="71" x2="480" y2="93" class="ln"/>
+<polygon points="466,71 478,66 478,76" fill="#d62828"/>
+<rect x="455" y="93" width="50" height="50" fill="#9be7a5" stroke="#1b2a41" stroke-width="3"/><text x="480" y="123" class="mid bd">10 kg</text></g>
+<rect x="472" y="48" width="16" height="115" rx="4" fill="none" stroke="#1b2a41" stroke-width="3" opacity=".6"/>
+<text x="480" y="262" class="mid bd o">भार W = mg</text>
+<text x="480" y="284" class="mid">= 10 &times; 1.63 = <tspan class="r bd">16.3 N</tspan></text>
+</g>
+<text x="320" y="326" class="mid bd g big">द्रव्यमान हर जगह समान (10 kg) रहता है; चंद्रमा पर भार लगभग 6 गुना कम होता है</text>
+<text x="320" y="345" class="mid sm">चंद्रमा पर पिंड का भार = पृथ्वी पर उसके भार का 1/6</text>
+</svg>
+<figcaption>वही गुटका चंद्रमा पर स्प्रिंग तुला को बहुत कम खींचता है।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p><b>द्रव्यमान</b> किसी पिंड में पदार्थ की मात्रा है। यह स्थिर, अदिश राशि है और भुजा तुला से किलोग्राम (kg) में मापी जाती है। <b>भार</b> वह बल है जिससे पृथ्वी (या कोई ग्रह) किसी पिंड को आकर्षित करती है। यह पृथ्वी के केंद्र की ओर निर्देशित सदिश राशि है, स्प्रिंग तुला से न्यूटन (N) में मापी जाती है, और g के मान के साथ बदलती है।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>10 kg के गुटके को पृथ्वी पर स्प्रिंग तुला से लटकाएँ। गुरुत्व उसे W = mg = 98 N बल से खींचता है, इसलिए स्प्रिंग 98 N के निशान तक खिंचती है।</li>
+<li>उसी गुटके को चंद्रमा पर ले जाएँ। चूँकि चंद्रमा पर g<sub>चंद्रमा</sub> = 1.63 m/s&#178; (g का लगभग 1/6) है, खिंचाव केवल 16.3 N है।</li>
+<li>पदार्थ की मात्रा नहीं बदली, इसलिए द्रव्यमान 10 kg ही रहता है।</li>
+<li>गहरे अंतरिक्ष में (g &rarr; 0) भार लगभग शून्य हो जाता है, पर द्रव्यमान फिर भी 10 kg रहता है।</li>
+</ol>
+<table><tr><th>द्रव्यमान</th><th>भार</th></tr>
+<tr><td>पदार्थ की मात्रा</td><td>पिंड पर गुरुत्व बल</td></tr>
+<tr><td>SI मात्रक: kg</td><td>SI मात्रक: न्यूटन (N)</td></tr>
+<tr><td>हर जगह स्थिर</td><td>स्थान के अनुसार बदलता है (g)</td></tr>
+<tr><td>कभी शून्य नहीं</td><td>पृथ्वी के केंद्र पर / मुक्त अंतरिक्ष में शून्य</td></tr></table>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="card" id="d15">
+<h2><span class="num">15</span>प्रणोद और दाब</h2>
+<figure>
+<svg viewBox="0 0 640 350" role="img" aria-label="Thrust and pressure">
+<line x1="320" y1="15" x2="320" y2="310" stroke="#7f8fa6" stroke-dasharray="6 6"/>
+<!-- left -->
+<path d="M30,230 L90,230 L90,236 L260,236 L260,230 L300,230 L300,300 L30,300 Z" fill="#fde68a" stroke="#1b2a41" stroke-width="3"/>
+<rect x="90" y="180" width="170" height="56" fill="#c2410c" stroke="#1b2a41" stroke-width="3"/><text x="175" y="214" class="w mid bd">ईंट</text>
+<line class="arR pulse" x1="175" y1="100" x2="175" y2="176"/><text x="190" y="120" class="r bd">प्रणोद F = 100 N</text>
+<line x1="90" y1="248" x2="260" y2="248" stroke="#15803d" stroke-width="3" marker-start="url(#mg)" marker-end="url(#mg)"/>
+<text x="175" y="272" class="mid sm g bd">बड़ा क्षेत्रफल A = 0.5 m&#178;</text>
+<text x="165" y="32" class="mid bd big">(a) चपटी लेटी हुई</text>
+<text x="165" y="330" class="mid bd">P = 100 / 0.5 = <tspan class="g">200 Pa</tspan> (छोटा गड्ढा)</text>
+<!-- right -->
+<path d="M340,230 L430,230 L430,266 L486,266 L486,230 L610,230 L610,300 L340,300 Z" fill="#fde68a" stroke="#1b2a41" stroke-width="3"/>
+<rect x="430" y="96" width="56" height="170" fill="#c2410c" stroke="#1b2a41" stroke-width="3"/><text x="458" y="188" class="w mid bd">ईंट</text>
+<line class="arR pulse" x1="458" y1="40" x2="458" y2="92"/><text x="475" y="62" class="r bd">प्रणोद F = 100 N</text>
+<line x1="430" y1="280" x2="486" y2="280" stroke="#15803d" stroke-width="3" marker-start="url(#mg)" marker-end="url(#mg)" opacity="0"/>
+<text x="458" y="292" class="mid sm g bd w" style="display:none">.</text>
+<text x="525" y="258" class="sm g bd">छोटा क्षेत्रफल</text>
+<text x="525" y="276" class="sm g bd">A = 0.05 m&#178;</text>
+<text x="475" y="32" class="mid bd big">(b) सिरे पर खड़ी</text>
+<text x="475" y="330" class="mid bd">P = 100 / 0.05 = <tspan class="r">2000 Pa</tspan> (गहरा गड्ढा)</text>
+<text x="320" y="347" class="mid sm">समान प्रणोद, भिन्न क्षेत्रफल &rarr; भिन्न दाब</text>
+</svg>
+<figcaption>वही ईंट अपने छोटे फलक पर खड़ी होने पर स्पंज में अधिक गहरा गड्ढा बनाती है।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p><b>प्रणोद</b> किसी सतह पर लंबवत (समकोण पर) लगने वाला बल है। <b>दाब</b> प्रति इकाई क्षेत्रफल प्रणोद है: P = F/A। इसका SI मात्रक पास्कल (Pa) है, जहाँ 1 Pa = 1 N/m&#178;। दिए गए प्रणोद के लिए क्षेत्रफल जितना छोटा, दाब उतना अधिक।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>ईंट का भार (100 N) स्पंज पर दबाव डालता है। यह लंबवत बल प्रणोद है।</li>
+<li>चपटी लेटने पर संपर्क क्षेत्रफल बड़ा (0.5 m&#178;) है, इसलिए दाब 200 Pa है और गड्ढा उथला है।</li>
+<li>सिरे पर खड़ी होने पर क्षेत्रफल केवल 0.05 m&#178; है, इसलिए समान प्रणोद से 2000 Pa, यानी दस गुना दाब मिलता है, और गड्ढा गहरा होता है।</li>
+<li>अनुप्रयोग: सुइयों, कीलों और चाकुओं के सिरे नुकीले होते हैं ताकि अधिक दाब बने; ट्रैक्टर और ऊँट के चौड़े पैर होते हैं तथा स्कीयर स्की पहनते हैं ताकि दाब कम हो।</li>
+</ol>
+<div class="key"><b>सूत्र:</b> दाब = प्रणोद / क्षेत्रफल &nbsp;&rarr;&nbsp; P = F / A (Pa)। द्रव का दाब: P = h &rho; g।</div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="card" id="d16">
+<h2><span class="num">16</span>उत्प्लावन (उत्क्षेप)</h2>
+<figure>
+<svg viewBox="0 0 640 380" role="img" aria-label="Buoyancy and upthrust">
+<line x1="320" y1="15" x2="320" y2="330" stroke="#7f8fa6" stroke-dasharray="6 6"/>
+<text x="160" y="28" class="mid bd big">(a) हवा में गुटका</text>
+<text x="480" y="28" class="mid bd big">(b) पानी में गुटका</text>
+<!-- left -->
+<line x1="160" y1="108" x2="160" y2="160" class="ln"/>
+<rect x="135" y="38" width="50" height="75" rx="6" fill="#fff" stroke="#1b2a41" stroke-width="3"/>
+<text x="160" y="82" class="mid bd big r">5 N</text>
+<rect x="130" y="160" width="60" height="60" fill="#9be7a5" stroke="#1b2a41" stroke-width="3"/><text x="160" y="196" class="mid bd">गुटका</text>
+<line class="arO" x1="160" y1="222" x2="160" y2="290"/><text x="172" y="284" class="o bd">W = 5 N</text>
+<text x="160" y="320" class="mid sm">पाठ्यांक = वास्तविक भार = 5 N</text>
+<!-- right: beaker -->
+<rect x="385" y="150" width="190" height="170" fill="#c7e6ff" opacity=".85"/>
+<path d="M385,125 L385,320 L575,320 L575,125" fill="none" stroke="#1b2a41" stroke-width="4"/>
+<path d="M385,150 Q405,144 425,150 T465,150 T505,150 T545,150 T575,150" fill="none" stroke="#1d4ed8" stroke-width="2.5"/>
+<text x="535" y="142" class="sm b">पानी</text>
+<g><animateTransform attributeName="transform" type="translate" values="0 -85;0 0;0 0" keyTimes="0;0.4;1" dur="5s" repeatCount="indefinite"/>
+<line x1="480" y1="20" x2="480" y2="200" class="ln"/>
+<rect x="450" y="200" width="60" height="60" fill="#9be7a5" stroke="#1b2a41" stroke-width="3"/><text x="480" y="236" class="mid bd">गुटका</text>
+<g class="pulse"><line class="arG" x1="458" y1="290" x2="458" y2="264"/><line class="arG" x1="480" y1="290" x2="480" y2="264"/><line class="arG" x1="502" y1="290" x2="502" y2="264"/></g>
+<g class="pulse"><line class="arR" x1="462" y1="178" x2="462" y2="198"/><line class="arR" x1="498" y1="178" x2="498" y2="198"/></g></g>
+<rect x="455" y="38" width="50" height="75" rx="6" fill="#fff" stroke="#1b2a41" stroke-width="3"/>
+<text x="480" y="82" class="mid bd big r">3 N</text>
+<text x="402" y="276" class="g bd sm">उत्क्षेप U</text>
+<text x="402" y="294" class="g sm">(नीचे का धक्का अधिक)</text>
+<text x="402" y="190" class="r sm bd">ऊपर का धक्का</text>
+<text x="402" y="206" class="r sm">(कम, कम गहराई)</text>
+<text x="480" y="345" class="mid sm">आभासी भार = 5 &minus; 2 = 3 N</text>
+<text x="320" y="370" class="mid bd g">उत्क्षेप U = हवा में W &minus; पानी में W = 5 &minus; 3 = 2 N</text>
+</svg>
+<figcaption>पानी गुटके को ऊपर की ओर धकेलता है, इसलिए तुला कम पाठ्यांक दिखाती है।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p>किसी तरल (द्रव या गैस) में रखी कोई भी वस्तु <b>ऊपर की ओर बल</b> का अनुभव करती है, जिसे <b>उत्प्लावन बल</b> या <b>उत्क्षेप</b>कहते हैं। यह इसलिए होता है क्योंकि गहराई के साथ दाब बढ़ता है: निचली सतह पर ऊपर की ओर लगने वाला दाब ऊपरी सतह पर नीचे की ओर लगने वाले दाब से अधिक होता है।</p>
+<p><b>आर्कमिडीज़ का सिद्धांत:</b> जब कोई पिंड किसी तरल में आंशिक या पूर्ण रूप से डूबा होता है, तो उस पर ऊपर की ओर एक बल लगता है जो उसके द्वारा हटाए गए तरल के भार के बराबर होता है।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>गुटके को हवा में स्प्रिंग तुला से लटकाएँ: पाठ्यांक 5 N (उसका वास्तविक भार)।</li>
+<li>इसे धीरे-धीरे पानी में उतारें। पाठ्यांक घटकर 3 N हो जाता है।</li>
+<li>यह कमी (5 &minus; 3 = 2 N) उत्क्षेप है, और यह गुटके द्वारा हटाए गए पानी के भार के बराबर है।</li>
+<li>उत्क्षेप डूबे हुए आयतन और द्रव के घनत्व पर निर्भर करता है (U = V &rho; g), गुटके के पदार्थ पर नहीं।</li>
+</ol>
+<div class="tip"><b>अनुप्रयोग:</b> जहाज़, पनडुब्बियाँ, गर्म हवा के गुब्बारे, लैक्टोमीटर और हाइड्रोमीटर।</div>
+</section>
+
+<!-- ============ 17 ============ -->
+<section class="card" id="d17">
+<h2><span class="num">17</span>वस्तुओं का तैरना और डूबना</h2>
+<figure>
+<svg viewBox="0 0 640 400" role="img" aria-label="Floating and sinking">
+<!-- beakers -->
+<g fill="#c7e6ff" opacity=".9"><rect x="40" y="110" width="170" height="210"/><rect x="235" y="110" width="170" height="210"/><rect x="430" y="110" width="170" height="210"/></g>
+<g fill="none" stroke="#1b2a41" stroke-width="4"><path d="M40,60 L40,320 L210,320 L210,60"/><path d="M235,60 L235,320 L405,320 L405,60"/><path d="M430,60 L430,320 L600,320 L600,60"/></g>
+<g fill="none" stroke="#1d4ed8" stroke-width="2.5"><path d="M40,110 L210,110"/><path d="M235,110 L405,110"/><path d="M430,110 L600,110"/></g>
+<text x="125" y="38" class="mid bd big g">(a) तैरता है</text><text x="320" y="38" class="mid bd big b">(b) निलंबित</text><text x="515" y="38" class="mid bd big r">(c) डूबता है</text>
+<!-- a -->
+<g><animateTransform attributeName="transform" type="translate" values="0 0;0 4;0 0;0 -3;0 0" dur="3s" repeatCount="indefinite"/>
+<rect x="95" y="90" width="60" height="50" fill="#d6a76a" stroke="#1b2a41" stroke-width="3"/><text x="125" y="120" class="mid bd sm">कॉर्क</text>
+<line class="arO" x1="84" y1="115" x2="84" y2="165"/><text x="78" y="182" class="o bd end">W</text>
+<line class="arG" x1="166" y1="115" x2="166" y2="68"/><text x="174" y="82" class="g bd">U</text></g>
+<!-- b -->
+<rect x="290" y="165" width="60" height="50" fill="#fef08a" stroke="#1b2a41" stroke-width="3"/><text x="320" y="195" class="mid bd sm">मोम</text>
+<g class="pulse"><line class="arO" x1="279" y1="190" x2="279" y2="238"/><text x="273" y="256" class="o bd end">W</text>
+<line class="arG" x1="361" y1="190" x2="361" y2="142"/><text x="369" y="160" class="g bd">U</text></g>
+<!-- c -->
+<g><animateTransform attributeName="transform" type="translate" values="0 -110;0 100;0 100" keyTimes="0;0.5;1" dur="5s" repeatCount="indefinite"/>
+<rect x="485" y="190" width="60" height="50" fill="#6b7280" stroke="#1b2a41" stroke-width="3"/><text x="515" y="220" class="mid bd sm w">लोहा</text>
+<line class="arO" x1="474" y1="215" x2="474" y2="270"/><text x="468" y="288" class="o bd end">W</text>
+<line class="arG" x1="556" y1="215" x2="556" y2="190"/><text x="564" y="204" class="g bd">U</text></g>
+<g class="sm bd mid">
+<text x="125" y="348">वस्तु का घनत्व &lt; द्रव का घनत्व</text><text x="125" y="366" class="g">U = W &rarr; तैरता है</text><text x="125" y="384" class="sm">(कुछ भाग सतह के ऊपर)</text>
+<text x="320" y="348">वस्तु का घनत्व = द्रव का घनत्व</text><text x="320" y="366" class="b">U = W &rarr; निलंबित रहता है</text><text x="320" y="384" class="sm">(पूरा द्रव के अंदर)</text>
+<text x="515" y="348">वस्तु का घनत्व &gt; द्रव का घनत्व</text><text x="515" y="366" class="r">W &gt; U &rarr; डूबता है</text><text x="515" y="384" class="sm">(तल पर बैठ जाता है)</text>
+</g>
+</svg>
+<figcaption>W = भार (नीचे), U = उत्क्षेप (ऊपर)। परिणाम इस पर निर्भर है कि कौन बड़ा है।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p>कोई वस्तु तैरेगी या डूबेगी, यह उसके <b>भार</b> (नीचे की ओर) और <b>उत्क्षेप</b> (ऊपर की ओर) की तुलना पर निर्भर करता है। समतुल्य रूप से, यह वस्तु के घनत्व की तुलना द्रव के घनत्व से करने पर निर्भर करता है।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li><b>वस्तु का घनत्व &lt; द्रव का घनत्व:</b> पूरी तरह डूबने से पहले ही वस्तु अपने बराबर भार का द्रव हटा देती है, इसलिए U = W और वह तैरती है (कॉर्क, लकड़ी, पानी पर बर्फ़)।</li>
+<li><b>वस्तु का घनत्व = द्रव का घनत्व:</b> पूरी तरह अंदर होने पर भी U = W, इसलिए वह किसी भी गहराई पर निलंबित रहती है।</li>
+<li><b>वस्तु का घनत्व &gt; द्रव का घनत्व:</b> पूरी तरह डूबने पर भी U &lt; W, इसलिए नेट बल नीचे की ओर है और वस्तु डूब जाती है (लोहे की कील, पत्थर)।</li>
+<li>इस्पात घना होने पर भी जहाज़ तैरता है क्योंकि उसका खोखला आकार बहुत अधिक पानी हटाता है, जिससे बड़ा उत्क्षेप मिलता है।</li>
+</ol>
+<div class="key"><b>प्लवन का नियम:</b> तैरता हुआ पिंड अपने भार के बराबर भार का द्रव हटाता है।</div>
+</section>
+
+<div class="chap">अध्याय: कार्य और ऊर्जा</div>
+
+<!-- ============ 18 ============ -->
+<section class="card" id="d18">
+<h2><span class="num">18</span>बल द्वारा किया गया कार्य</h2>
+<figure>
+<svg viewBox="0 0 640 370" role="img" aria-label="Work done by a force">
+<line x1="213" y1="15" x2="213" y2="280" stroke="#7f8fa6" stroke-dasharray="6 6"/>
+<line x1="426" y1="15" x2="426" y2="280" stroke="#7f8fa6" stroke-dasharray="6 6"/>
+<text x="106" y="26" class="mid bd">(a) बल गति की दिशा में</text>
+<text x="320" y="26" class="mid bd">(b) बल गति से 90&deg; पर</text>
+<text x="533" y="26" class="mid bd">(c) बल गति के विपरीत</text>
+<!-- a -->
+<line x1="10" y1="210" x2="205" y2="210" stroke="#1b2a41" stroke-width="4"/>
+<g><animateTransform attributeName="transform" type="translate" values="0 0;100 0;100 0" keyTimes="0;0.7;1" dur="4s" repeatCount="indefinite"/>
+<rect x="20" y="150" width="60" height="60" fill="#ffd166" stroke="#1b2a41" stroke-width="3"/><text x="50" y="186" class="mid bd">m</text>
+<line class="arR" x1="80" y1="180" x2="130" y2="180"/><text x="106" y="170" class="r bd">F</text></g>
+<line class="arG" x1="20" y1="238" x2="120" y2="238"/><text x="70" y="256" class="g bd mid">s (विस्थापन)</text>
+<!-- b -->
+<line x1="223" y1="215" x2="418" y2="215" stroke="#1b2a41" stroke-width="4"/>
+<g><animateTransform attributeName="transform" type="translate" values="0 0;90 0;90 0" keyTimes="0;0.7;1" dur="4s" repeatCount="indefinite"/>
+<circle cx="270" cy="122" r="11" fill="#ffd9b3" stroke="#1b2a41" stroke-width="2"/>
+<line x1="270" y1="133" x2="270" y2="182" class="ln"/><line x1="270" y1="182" x2="258" y2="214" class="ln"/><line x1="270" y1="182" x2="284" y2="214" class="ln"/>
+<line x1="270" y1="145" x2="296" y2="168" class="ln"/>
+<rect x="290" y="168" width="26" height="30" fill="#c084fc" stroke="#1b2a41" stroke-width="2"/>
+<line class="arR" x1="303" y1="165" x2="303" y2="110"/><text x="313" y="118" class="r bd">F (ऊपर)</text></g>
+<line class="arG" x1="255" y1="242" x2="345" y2="242"/><text x="300" y="260" class="g bd mid">s (विस्थापन)</text>
+<!-- c -->
+<line x1="436" y1="210" x2="632" y2="210" stroke="#1b2a41" stroke-width="4"/>
+<g><animateTransform attributeName="transform" type="translate" values="0 0;85 0;85 0" keyTimes="0;0.7;1" calcMode="spline" keySplines="0.2 0.4 0.6 1;0 0 1 1" dur="4s" repeatCount="indefinite"/>
+<rect x="470" y="150" width="60" height="60" fill="#ffd166" stroke="#1b2a41" stroke-width="3"/><text x="500" y="186" class="mid bd">m</text>
+<line class="arB" x1="470" y1="196" x2="432" y2="196" opacity="0"/>
+<line class="arB" x1="528" y1="205" x2="470" y2="205" opacity="0"/>
+<line class="arB" x1="500" y1="140" x2="440" y2="140"/><text x="470" y="130" class="b bd mid">घर्षण f</text></g>
+<line class="arG" x1="470" y1="238" x2="560" y2="238"/><text x="515" y="256" class="g bd mid">s (विस्थापन)</text>
+<g class="sm bd mid">
+<text x="106" y="276" class="g">&theta; = 0&deg;, cos&theta; = 1</text><text x="106" y="294" class="g">W = + F s (धनात्मक)</text>
+<text x="320" y="276" class="r">&theta; = 90&deg;, cos&theta; = 0</text><text x="320" y="294" class="r">W = 0 (शून्य कार्य)</text>
+<text x="533" y="276" class="b">&theta; = 180&deg;, cos&theta; = &minus;1</text><text x="533" y="294" class="b">W = &minus; F s (ऋणात्मक)</text>
+</g>
+<g transform="translate(60,310)"><rect width="520" height="52" rx="10" fill="#fff3b0" stroke="#b8860b" stroke-width="2"/>
+<text x="260" y="22" class="mid bd big r">कार्य W = F &times; s &times; cos &theta;</text>
+<text x="260" y="43" class="mid sm">उदाहरण: F = 10 N, s = 5 m, &theta; = 0&deg; &rarr; W = 10 &times; 5 = 50 J</text></g>
+</svg>
+<figcaption>कार्य के लिए बल और विस्थापन दोनों आवश्यक हैं; उनके बीच का कोण कार्य का चिह्न तय करता है।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p>विज्ञान में <b>कार्य</b> तभी होता है जब किसी पिंड पर बल लगे और पिंड बल की दिशा में (या उसके विपरीत, या आंशिक रूप से अनुदिश) <b>विस्थापित</b> हो। कार्य एक अदिश राशि है। इसका SI मात्रक <b>जूल (J)</b>है: 1 J वह कार्य है जो 1 N बल द्वारा किसी पिंड को उसी की दिशा में 1 m विस्थापित करने पर होता है।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li><b>कार्य की शर्तें:</b> (i) बल लगना चाहिए, (ii) पिंड में कुछ विस्थापन होना चाहिए।</li>
+<li><b>(a)</b> बल और विस्थापन एक ही दिशा में: W = F s = धनात्मक कार्य (ट्रॉली को धकेलना)।</li>
+<li><b>(b)</b> बल विस्थापन से 90&deg; पर: W = F s cos 90&deg; = 0 (थैला क्षैतिज दिशा में ले जाता व्यक्ति थैले पर गुरुत्व के विरुद्ध शून्य कार्य करता है)।</li>
+<li><b>(c)</b> बल विस्थापन के विपरीत: W = &minus;F s = ऋणात्मक कार्य (फिसलते बक्से पर घर्षण, कार पर ब्रेक)।</li>
+</ol>
+<div class="key"><b>शून्य कार्य के उदाहरण:</b> दीवार को धकेलना (s = 0), वृत्ताकार कक्षा में उपग्रह (बल &perp; गति), सिर पर बोझ लेकर क्षैतिज चलता कुली।</div>
+</section>
+
+<!-- ============ 19 ============ -->
+<section class="card" id="d19">
+<h2><span class="num">19</span>ऊर्जा रूपांतरण</h2>
+<figure>
+<svg viewBox="0 0 640 400" role="img" aria-label="Energy transformation in a hydroelectric power station">
+<!-- reservoir -->
+<rect x="20" y="70" width="150" height="230" fill="#7dd3fc" stroke="#1b2a41" stroke-width="3"/>
+<path d="M20,70 Q45,62 70,70 T120,70 T170,70" fill="none" stroke="#1d4ed8" stroke-width="3"/>
+<rect x="170" y="50" width="40" height="250" fill="#9ca3af" stroke="#1b2a41" stroke-width="3"/>
+<text x="190" y="190" class="sm w bd" transform="rotate(-90 190 190)" style="fill:#fff">बाँध</text>
+<line x1="125" y1="74" x2="125" y2="268" stroke="#1b2a41" stroke-width="2" marker-start="url(#mk)" marker-end="url(#mk)"/>
+<text x="133" y="170" class="bd">h</text>
+<text x="95" y="55" class="mid bd">जलाशय</text>
+<!-- pipe -->
+<rect x="210" y="256" width="120" height="26" fill="#7dd3fc" stroke="#1b2a41" stroke-width="3"/>
+<g fill="#1d4ed8"><circle r="5"><animateMotion dur="1.6s" repeatCount="indefinite" path="M215,269 L330,269"/></circle>
+<circle r="5"><animateMotion dur="1.6s" begin="0.5s" repeatCount="indefinite" path="M215,269 L330,269"/></circle>
+<circle r="5"><animateMotion dur="1.6s" begin="1s" repeatCount="indefinite" path="M215,269 L330,269"/></circle></g>
+<text x="270" y="248" class="mid sm bd b">गिरता पानी (KE)</text>
+<!-- turbine -->
+<circle cx="360" cy="269" r="38" fill="#fff" stroke="#1b2a41" stroke-width="3"/>
+<g><animateTransform attributeName="transform" type="rotate" from="0 360 269" to="360 360 269" dur="1.2s" repeatCount="indefinite"/>
+<line x1="360" y1="236" x2="360" y2="302" stroke="#1b2a41" stroke-width="5"/><line x1="327" y1="269" x2="393" y2="269" stroke="#1b2a41" stroke-width="5"/>
+<line x1="337" y1="246" x2="383" y2="292" stroke="#1b2a41" stroke-width="3"/><line x1="383" y1="246" x2="337" y2="292" stroke="#1b2a41" stroke-width="3"/></g>
+<text x="360" y="332" class="mid bd">टरबाइन</text>
+<!-- shaft + generator -->
+<line x1="398" y1="269" x2="430" y2="269" stroke="#1b2a41" stroke-width="6"/>
+<rect x="430" y="235" width="90" height="68" rx="6" fill="#fdba74" stroke="#1b2a41" stroke-width="3"/>
+<text x="475" y="274" class="mid bd">जनरेटर</text>
+<text x="475" y="332" class="mid sm">(कुंडलियाँ चुंबकों के बीच घूमती हैं)</text>
+<!-- wire & bulb -->
+<path d="M520,269 L580,269 L580,150" fill="none" stroke="#1b2a41" stroke-width="3"/>
+<path d="M520,269 L580,269 L580,150" fill="none" stroke="#fde047" stroke-width="3" stroke-dasharray="8 10"><animate attributeName="stroke-dashoffset" from="36" to="0" dur="1s" repeatCount="indefinite"/></path>
+<circle cx="580" cy="126" r="26" fill="#fde047" stroke="#1b2a41" stroke-width="3"><animate attributeName="opacity" values="1;.55;1" dur="1.5s" repeatCount="indefinite"/></circle>
+<line x1="580" y1="152" x2="580" y2="166" stroke="#1b2a41" stroke-width="6"/>
+<g stroke="#ea580c" stroke-width="3"><line x1="540" y1="126" x2="530" y2="126"/><line x1="620" y1="126" x2="630" y2="126"/><line x1="580" y1="88" x2="580" y2="78"/><line x1="552" y1="98" x2="545" y2="91"/><line x1="608" y1="98" x2="615" y2="91"/></g>
+<text x="580" y="60" class="mid bd">बल्ब: प्रकाश + ऊष्मा</text>
+<text x="425" y="215" class="mid sm bd">विद्युत धारा</text>
+<!-- boxes -->
+<g class="sm bd mid">
+<rect x="6" y="350" width="112" height="42" rx="8" fill="#bae6fd" stroke="#1b2a41" stroke-width="2"/><text x="62" y="367">स्थितिज ऊर्जा</text><text x="62" y="384" class="sm">(ऊँचाई पर पानी)</text>
+<rect x="136" y="350" width="112" height="42" rx="8" fill="#bbf7d0" stroke="#1b2a41" stroke-width="2"/><text x="192" y="367">गतिज ऊर्जा</text><text x="192" y="384" class="sm">(बहता पानी)</text>
+<rect x="266" y="350" width="112" height="42" rx="8" fill="#fed7aa" stroke="#1b2a41" stroke-width="2"/><text x="322" y="367">यांत्रिक ऊर्जा</text><text x="322" y="384" class="sm">(घूमती टरबाइन)</text>
+<rect x="396" y="350" width="112" height="42" rx="8" fill="#fde68a" stroke="#1b2a41" stroke-width="2"/><text x="452" y="367">विद्युत ऊर्जा</text><text x="452" y="384" class="sm">(जनरेटर)</text>
+<rect x="526" y="350" width="108" height="42" rx="8" fill="#fecaca" stroke="#1b2a41" stroke-width="2"/><text x="580" y="367">प्रकाश + ऊष्मा</text><text x="580" y="384" class="sm">(बल्ब)</text>
+</g>
+<g class="bd r big"><text x="123" y="376">&rarr;</text><text x="253" y="376">&rarr;</text><text x="383" y="376">&rarr;</text><text x="513" y="376">&rarr;</text></g>
+</svg>
+<figcaption>जलविद्युत केंद्र में हर चरण पर ऊर्जा का रूप बदलता है, पर कुल ऊर्जा समान रहती है।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p>ऊर्जा को न तो उत्पन्न किया जा सकता है, न नष्ट; उसे केवल एक रूप से दूसरे रूप में बदला जा सकता है। यही <b>ऊर्जा संरक्षण का नियम</b>है: रूपांतरण से पहले और बाद में कुल ऊर्जा समान रहती है। इस प्रक्रिया में कुछ ऊर्जा प्रायः कम उपयोगी ऊष्मा में बदल जाती है, पर कभी नष्ट नहीं होती।</p>
+<h3>कार्य-प्रक्रिया (जलविद्युत संयंत्र)</h3>
+<ol>
+<li>ऊँचाई h पर बाँध के पीछे संग्रहित पानी में <b>स्थितिज ऊर्जा</b> (mgh) होती है।</li>
+<li>पाइप में छोड़े जाने पर वह गिरता है, और स्थितिज ऊर्जा <b>गतिज ऊर्जा</b> (&frac12;mv&#178;) में बदल जाती है।</li>
+<li>तेज़ गति से बहता पानी टरबाइन के पंखों से टकराकर उन्हें घुमाता है: <b>यांत्रिक ऊर्जा</b>।</li>
+<li>टरबाइन जनरेटर की कुंडली को चुंबकीय क्षेत्र में घुमाती है, जिससे <b>विद्युत ऊर्जा</b>उत्पन्न होती है।</li>
+<li>बल्ब विद्युत ऊर्जा को <b>प्रकाश और ऊष्मा</b>में बदलता है।</li>
+</ol>
+<div class="tip"><b>अन्य उदाहरण:</b> सूर्य &rarr; सौर सेल (प्रकाश &rarr; विद्युत); बिजली का पंखा (विद्युत &rarr; यांत्रिक); माइक्रोफ़ोन (ध्वनि &rarr; विद्युत); लाउडस्पीकर (विद्युत &rarr; ध्वनि); जलती मोमबत्ती (रासायनिक &rarr; ऊष्मा + प्रकाश)।</div>
+</section>
+
+<!-- ============ 20 ============ -->
+<section class="card" id="d20">
+<h2><span class="num">20</span>स्थितिज ऊर्जा और गतिज ऊर्जा</h2>
+<figure>
+<svg viewBox="0 0 640 380" role="img" aria-label="Potential and kinetic energy in a pendulum">
+<!-- support -->
+<rect x="110" y="26" width="120" height="12" fill="#6b7280" stroke="#1b2a41" stroke-width="2"/>
+<!-- ghosts -->
+<path d="M70,213.2 A200,200 0 0 0 270,213.2" fill="none" stroke="#7f8fa6" stroke-width="2" stroke-dasharray="6 5"/>
+<line x1="170" y1="40" x2="70" y2="213.2" stroke="#9ca3af" stroke-dasharray="4 4"/><line x1="170" y1="40" x2="270" y2="213.2" stroke="#9ca3af" stroke-dasharray="4 4"/>
+<line x1="40" y1="213.2" x2="300" y2="213.2" stroke="#d62828" stroke-dasharray="3 5" stroke-width="1.5"/>
+<line x1="40" y1="240" x2="300" y2="240" stroke="#15803d" stroke-dasharray="3 5" stroke-width="1.5"/>
+<line x1="305" y1="213.2" x2="305" y2="240" stroke="#1b2a41" stroke-width="2" marker-start="url(#mk)" marker-end="url(#mk)"/>
+<text x="312" y="231" class="bd sm">h</text>
+<text x="52" y="204" class="bd r end" style="text-anchor:start">A</text><text x="282" y="204" class="bd r">B</text><text x="170" y="272" class="mid bd g">O</text>
+<!-- bob -->
+<g><animateTransform attributeName="transform" type="rotate" values="-30 170 40;0 170 40;30 170 40;0 170 40;-30 170 40" keyTimes="0;0.25;0.5;0.75;1" calcMode="spline" keySplines="0.4 0 0.8 0.6;0.2 0.4 0.6 1;0.4 0 0.8 0.6;0.2 0.4 0.6 1" dur="4s" repeatCount="indefinite"/>
+<line x1="170" y1="40" x2="170" y2="240" stroke="#1b2a41" stroke-width="3"/>
+<circle cx="170" cy="240" r="15" fill="#d62828" stroke="#1b2a41" stroke-width="3"/></g>
+<circle cx="170" cy="40" r="5" fill="#1b2a41"/>
+<!-- text -->
+<g class="sm bd">
+<text x="20" y="300" class="r">A और B पर (सबसे ऊँचे): v = 0 &rarr; KE = 0, PE = अधिकतम</text>
+<text x="20" y="320" class="g">O पर (सबसे नीचे): v = अधिकतम &rarr; KE = अधिकतम, PE = 0</text>
+<text x="20" y="340" class="b">हर बिंदु पर: PE + KE = स्थिर (कुल यांत्रिक ऊर्जा)</text>
+</g>
+<!-- formulas -->
+<g transform="translate(320,40)"><rect width="165" height="108" rx="10" fill="#fff3b0" stroke="#b8860b" stroke-width="2"/>
+<text x="82" y="26" class="mid bd r">PE = m g h</text>
+<text x="82" y="52" class="mid bd b">KE = &frac12; m v&#178;</text>
+<text x="82" y="76" class="mid sm">m = 2 kg, h = 5 m</text>
+<text x="82" y="96" class="mid sm bd">PE = 98 J, v = 9.9 m/s</text></g>
+<!-- stacked bar -->
+<line x1="505" y1="330" x2="600" y2="330" class="ln"/>
+<line x1="505" y1="180" x2="600" y2="180" stroke="#1b2a41" stroke-dasharray="5 4"/>
+<text x="552" y="172" class="mid sm bd">कुल ऊर्जा (स्थिर)</text>
+<rect x="520" y="180" width="60" height="150" fill="#fca5a5" stroke="#1b2a41" stroke-width="2"><animate attributeName="height" values="150;0;150;0;150" keyTimes="0;0.25;0.5;0.75;1" calcMode="spline" keySplines="0.37 0 0.63 1;0.37 0 0.63 1;0.37 0 0.63 1;0.37 0 0.63 1" dur="4s" repeatCount="indefinite"/></rect>
+<rect x="520" y="330" width="60" height="0" fill="#86efac" stroke="#1b2a41" stroke-width="2"><animate attributeName="height" values="0;150;0;150;0" keyTimes="0;0.25;0.5;0.75;1" calcMode="spline" keySplines="0.37 0 0.63 1;0.37 0 0.63 1;0.37 0 0.63 1;0.37 0 0.63 1" dur="4s" repeatCount="indefinite"/><animate attributeName="y" values="330;180;330;180;330" keyTimes="0;0.25;0.5;0.75;1" calcMode="spline" keySplines="0.37 0 0.63 1;0.37 0 0.63 1;0.37 0 0.63 1;0.37 0 0.63 1" dur="4s" repeatCount="indefinite"/></rect>
+<rect x="500" y="205" width="14" height="14" fill="#fca5a5" stroke="#1b2a41" style="display:none"/>
+<g transform="translate(335,170)"><rect width="14" height="14" fill="#fca5a5" stroke="#1b2a41"/><text x="22" y="12" class="sm bd">PE (ऊपरी भाग)</text>
+<rect y="24" width="14" height="14" fill="#86efac" stroke="#1b2a41"/><text x="22" y="36" class="sm bd">KE (निचला भाग)</text></g>
+</svg>
+<figcaption>जैसे-जैसे लोलक झूलता है, PE और KE आपस में बदलते रहते हैं, पर उनका योग (पट्टी की ऊँचाई) कभी नहीं बदलता।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p><b>स्थितिज ऊर्जा (PE)</b> वह ऊर्जा है जो किसी पिंड में उसकी स्थिति या विन्यास (भूमि से ऊँचाई, खिंची हुई स्प्रिंग) के कारण होती है। पृथ्वी के पास PE = mgh। <b>गतिज ऊर्जा (KE)</b> वह ऊर्जा है जो किसी पिंड में उसकी गति के कारण होती है: KE = &frac12;mv&#178;। दोनों जूल में मापी जाती हैं। जिस पिंड में इनमें से कोई भी हो, वह कार्य कर सकता है।</p>
+<h3>कार्य-प्रक्रिया (लोलक)</h3>
+<ol>
+<li>चरम स्थिति A पर गोलक सबसे अधिक ऊँचाई पर और क्षणभर के लिए विराम में होता है: PE अधिकतम, KE = 0।</li>
+<li>नीचे झूलते समय ऊँचाई घटती है, इसलिए PE घटती है; चाल बढ़ती है, इसलिए KE बढ़ती है।</li>
+<li>सबसे निचले बिंदु O पर: PE = 0 और KE अधिकतम होती है।</li>
+<li>दूसरी ओर ऊपर जाते समय KE वापस PE में बदलती है। वायु प्रतिरोध नगण्य मानें तो हर बिंदु पर PE + KE समान रहती है।</li>
+<li>जाँच: h = 5 m से, mgh = 2 &times; 9.8 &times; 5 = 98 J, और नीचे पर &frac12;mv&#178; = 98 J से v = &#8730;98 &asymp; 9.9 m/s मिलता है।</li>
+</ol>
+<div class="key"><b>कार्य-ऊर्जा प्रमेय:</b> किसी पिंड पर किया गया कार्य उसकी गतिज ऊर्जा में परिवर्तन के बराबर होता है। <b>शक्ति</b> = कार्य / समय (मात्रक वाट, 1 W = 1 J/s)।</div>
+</section>
+
+<div class="chap">अध्याय: ध्वनि</div>
+
+<!-- ============ 21 ============ -->
+<section class="card" id="d21">
+<h2><span class="num">21</span>अनुदैर्ध्य तरंग</h2>
+<figure>
+<svg viewBox="0 0 640 330" role="img" aria-label="Longitudinal wave">
+<text x="320" y="22" class="mid bd big">कण तरंग की दिशा के समानांतर कंपन करते हैं</text>
+<line x1="214" y1="70" x2="278" y2="70" stroke="#d62828" stroke-width="3" marker-start="url(#mr)" marker-end="url(#mr)"/>
+<text x="246" y="52" class="mid sm r bd">यह कण आगे-पीछे गति करता है</text>
+<rect x="30" y="100" width="580" height="100" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+<g id="w21lines"></g>
+<g id="w21lab" class="bd"></g>
+<line id="w21dim" y1="232" y2="232" stroke="#1b2a41" stroke-width="2" marker-start="url(#mk)" marker-end="url(#mk)"/>
+<line id="w21t1" y1="205" y2="240" stroke="#1b2a41" stroke-dasharray="4 3"/><line id="w21t2" y1="205" y2="240" stroke="#1b2a41" stroke-dasharray="4 3"/>
+<text id="w21lam" y="224" class="mid bd p big">&lambda;</text>
+<text x="320" y="262" class="mid sm">&lambda; = दो क्रमागत संपीडनों (या दो विरलनों) के बीच की दूरी</text>
+<line class="ar" x1="60" y1="290" x2="580" y2="290"/>
+<text x="320" y="316" class="mid bd">तरंग के संचरण की दिशा</text>
+</svg>
+<figcaption>सटी हुई रेखाओं के पट्टे संपीडन (C) हैं; फैली हुई रेखाओं के पट्टे विरलन (R) हैं। ये दाईं ओर चलते हैं, पर हर कण केवल अपनी जगह पर कंपन करता है।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p>किसी <b>अनुदैर्ध्य तरंग</b> में माध्यम के कण तरंग की गति की दिशा के <b>समानांतर</b> (अनुदिश) कंपन करते हैं। तरंग <b>संपीडनों</b> (जहाँ कण सटे होते हैं) और <b>विरलनों</b> (जहाँ कण दूर-दूर होते हैं) की श्रृंखला के रूप में चलती है। <b>हवा में ध्वनि एक अनुदैर्ध्य तरंग है</b>। इसे भौतिक माध्यम (ठोस, द्रव या गैस) चाहिए और यह निर्वात में नहीं चल सकती।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>कंपन करता स्रोत (स्वरित्र, स्वर-तंतु, लाउडस्पीकर) आसपास के कणों को आगे धकेलता है, जिससे संपीडन बनता है।</li>
+<li>वे कण अपने पड़ोसी कणों को धकेलकर लौट आते हैं, और पड़ोसी भी यही करते हैं; इस प्रकार विक्षोभ माध्यम में आगे बढ़ता है।</li>
+<li>जब स्रोत पीछे हटता है, तो वह निम्न दाब का क्षेत्र, यानी विरलन, छोड़ता है जो संपीडन के पीछे-पीछे चलता है।</li>
+<li>कोई कण तरंग के साथ नहीं चलता। केवल ऊर्जा और विक्षोभ आगे बढ़ते हैं।</li>
+</ol>
+<div class="key"><b>उदाहरण:</b> ध्वनि तरंगें, स्लिंकी में लंबाई के अनुदिश धक्का-खिंचाव से बनी तरंगें, पराश्रव्य तरंगें। <b>ध्वनि की चाल</b> 25&deg;C पर हवा में लगभग 346 m/s होती है; यह ठोसों में द्रवों और गैसों से अधिक होती है।</div>
+</section>
+
+<!-- ============ 22 ============ -->
+<section class="card" id="d22">
+<h2><span class="num">22</span>संपीडन और विरलन</h2>
+<figure>
+<svg viewBox="0 0 640 410" role="img" aria-label="Compression and rarefaction with pressure graph">
+<!-- tuning fork -->
+<g>
+<path d="M58,60 L58,150 Q58,162 74,162 Q90,162 90,150 L90,60" fill="none" stroke="#6b7280" stroke-width="10" stroke-linecap="round"/>
+<line x1="74" y1="162" x2="74" y2="215" stroke="#6b7280" stroke-width="9" stroke-linecap="round"/>
+<g><animateTransform attributeName="transform" type="translate" values="0 0;6 0;0 0;-2 0;0 0" dur="0.5s" repeatCount="indefinite"/>
+<line x1="90" y1="62" x2="90" y2="148" stroke="#d62828" stroke-width="10" stroke-linecap="round"/></g>
+<text x="74" y="236" class="mid sm bd">स्वरित्र</text></g>
+<g id="w22dots" fill="#1d4ed8"></g>
+<g id="w22lab" class="bd"></g>
+<text x="375" y="186" class="mid sm">C = संपीडन (कण सटे हुए, उच्च दाब)</text>
+<text x="375" y="204" class="mid sm">R = विरलन (कण फैले हुए, निम्न दाब)</text>
+<!-- graph -->
+<line class="ar" x1="140" y1="300" x2="620" y2="300"/>
+<line class="ar" x1="140" y1="360" x2="140" y2="238"/>
+<text x="130" y="262" class="end sm bd">उच्च</text><text x="130" y="344" class="end sm bd">निम्न</text>
+<text x="118" y="305" class="end sm">सामान्य</text>
+<path id="w22graph" d="" fill="none" stroke="#d62828" stroke-width="3.5"/>
+<g id="w22glab" class="bd"></g>
+<text x="380" y="396" class="mid bd">स्रोत से दूरी &rarr;</text>
+<text transform="translate(40,300) rotate(-90)" class="mid bd sm">दाब / घनत्व</text>
+</svg>
+<figcaption>सटे हुए बिंदु (संपीडन) दाब ग्राफ के शीर्षों से मेल खाते हैं; फैले हुए बिंदु (विरलन) उसके गर्तों से।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p><b>संपीडन (C)</b> ध्वनि तरंग का वह क्षेत्र है जहाँ कण पास-पास होते हैं, इसलिए <b>घनत्व और दाब अधिक</b>होते हैं। <b>विरलन (R)</b> वह क्षेत्र है जहाँ कण दूर-दूर होते हैं, इसलिए <b>घनत्व और दाब कम</b>होते हैं। एक संपीडन और अगला विरलन मिलकर एक पूर्ण तरंग बनाते हैं। दूरी के साथ दाब (या घनत्व) का ग्राफ एक सहज तरंग है जिसके शीर्ष संपीडनों पर और गर्त विरलनों पर होते हैं।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>जब स्वरित्र की भुजा दाईं ओर चलती है, तो वह अपने सामने की हवा को दबाती है: हवा सिकुड़ती है और <b>संपीडन</b> बनता है।</li>
+<li>जब भुजा बाईं ओर लौटती है, तो उसके पास की हवा पतली रह जाती है: <b>विरलन</b> बनता है।</li>
+<li>ये एकांतर क्षेत्र स्वरित्र से ध्वनि की चाल से दूर जाते हैं।</li>
+<li>श्रोता के कान का पर्दा एकांतर उच्च और निम्न दाब महसूस करता है, जिसे हम ध्वनि के रूप में सुनते हैं।</li>
+</ol>
+<div class="key"><b>तरंगदैर्ध्य (&lambda;)</b> = दो क्रमागत संपीडनों या विरलनों के बीच की दूरी। <b>आवृत्ति (f)</b> = प्रति सेकंड किसी बिंदु से गुजरने वाले संपीडनों की संख्या। <b>चाल v = f &times; &lambda;</b>।</div>
+</section>
+
+<!-- ============ 23 ============ -->
+<section class="card" id="d23">
+<h2><span class="num">23</span>अनुप्रस्थ तरंग (अवधारणा समझने के लिए)</h2>
+<figure>
+<svg viewBox="0 0 640 345" role="img" aria-label="Transverse wave">
+<text x="320" y="24" class="mid bd big">कण तरंग की दिशा के लंबवत कंपन करते हैं</text>
+<line x1="30" y1="170" x2="620" y2="170" stroke="#1b2a41" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="618" y="190" class="end sm">माध्य स्थिति</text>
+<line x1="45" y1="170" x2="45" y2="115" stroke="#15803d" stroke-width="3" marker-start="url(#mg)" marker-end="url(#mg)"/>
+<text x="54" y="148" class="g bd">A</text>
+<text x="20" y="104" class="g sm bd" style="text-anchor:start">आयाम (A)</text>
+<path id="w23path" d="" fill="none" stroke="#1d4ed8" stroke-width="4"/>
+<line x1="330" y1="105" x2="330" y2="235" stroke="#d62828" stroke-width="2.5" marker-start="url(#mr)" marker-end="url(#mr)" stroke-dasharray="4 3"/>
+<circle id="w23dot" cx="330" cy="170" r="8" fill="#d62828" stroke="#1b2a41" stroke-width="2"/>
+<g id="w23lab" class="bd"></g>
+<line id="w23dim" y1="70" y2="70" stroke="#7c3aed" stroke-width="2.5" marker-start="url(#mk)" marker-end="url(#mk)"/>
+<line id="w23t1" y1="70" y2="112" stroke="#7c3aed" stroke-dasharray="4 3"/><line id="w23t2" y1="70" y2="112" stroke="#7c3aed" stroke-dasharray="4 3"/>
+<text id="w23lam" y="60" class="mid bd p">&lambda; (तरंगदैर्ध्य)</text>
+<text x="320" y="272" class="mid sm">लाल कण केवल ऊपर-नीचे चलता है, पर तरंग दाईं ओर चलती है</text>
+<line class="ar" x1="60" y1="305" x2="580" y2="305"/>
+<text x="320" y="330" class="mid bd">तरंग के संचरण की दिशा</text>
+</svg>
+<figcaption>शीर्ष और गर्त रस्सी के अनुदिश चलते हैं, जबकि हर कण केवल ऊपर-नीचे चलता है।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p>किसी <b>अनुप्रस्थ तरंग</b> में माध्यम के कण तरंग की दिशा के <b>लंबवत</b> कंपन करते हैं। तरंग <b>शीर्षों</b> (सबसे ऊँचे बिंदु) और <b>गर्तों</b> (सबसे निचले बिंदु) से बनी होती है। तनी हुई डोरी पर तरंगें, पानी की लहरें और प्रकाश तरंगें अनुप्रस्थ होती हैं। <b>हवा में ध्वनि अनुप्रस्थ नहीं होती</b>; यह चित्र केवल दोनों प्रकार की तरंगों की तुलना के लिए दिया गया है।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>रस्सी का एक सिरा ऊपर-नीचे हिलाएँ। एक उभार (शीर्ष) बनता है और रस्सी के अनुदिश चलता है।</li>
+<li>अगला नीचे का झटका एक गड्ढा (गर्त) बनाता है जो उसके पीछे चलता है।</li>
+<li>रस्सी का हर कण अपनी माध्य स्थिति के आसपास केवल ऊपर-नीचे चलता है (लाल बिंदु)।</li>
+<li>दो क्रमागत शीर्षों (या गर्तों) के बीच की दूरी तरंगदैर्ध्य है; माध्य स्थिति से अधिकतम विस्थापन आयाम है।</li>
+</ol>
+<table><tr><th>अनुदैर्ध्य तरंग</th><th>अनुप्रस्थ तरंग</th></tr>
+<tr><td>कंपन तरंग की दिशा के समानांतर</td><td>कंपन तरंग की दिशा के लंबवत</td></tr>
+<tr><td>संपीडन और विरलन</td><td>शीर्ष और गर्त</td></tr>
+<tr><td>माध्यम आवश्यक (जैसे ध्वनि)</td><td>कुछ को माध्यम चाहिए (रस्सी); प्रकाश को नहीं</td></tr></table>
+</section>
+
+<!-- ============ 24 ============ -->
+<section class="card" id="d24">
+<h2><span class="num">24</span>ध्वनि तरंग: आयाम, तरंगदैर्ध्य और आवृत्ति</h2>
+<figure>
+<svg viewBox="0 0 640 490" role="img" aria-label="Amplitude wavelength and frequency">
+<defs><clipPath id="clipL"><rect x="24" y="300" width="284" height="172"/></clipPath><clipPath id="clipR"><rect x="334" y="300" width="284" height="172"/></clipPath></defs>
+<text x="320" y="22" class="mid bd big">तरंग का वर्णन करने वाले पद</text>
+<line class="ar" x1="60" y1="130" x2="618" y2="130"/>
+<line class="ar" x1="60" y1="210" x2="60" y2="40"/>
+<text x="600" y="150" class="end sm bd">समय या दूरी</text>
+<text x="66" y="48" class="sm bd">विस्थापन</text>
+<path id="w24main" d="" fill="none" stroke="#1d4ed8" stroke-width="4"/>
+<line x1="100" y1="130" x2="100" y2="90" stroke="#15803d" stroke-width="3" marker-start="url(#mg)" marker-end="url(#mg)"/>
+<text x="110" y="114" class="g bd">A</text><text x="100" y="80" class="mid bd sm">शीर्ष</text><text x="180" y="188" class="mid bd sm">गर्त</text>
+<line x1="100" y1="64" x2="260" y2="64" stroke="#7c3aed" stroke-width="2.5" marker-start="url(#mk)" marker-end="url(#mk)"/>
+<line x1="100" y1="64" x2="100" y2="88" stroke="#7c3aed" stroke-dasharray="3 3"/><line x1="260" y1="64" x2="260" y2="88" stroke="#7c3aed" stroke-dasharray="3 3"/>
+<text x="180" y="56" class="mid bd p">&lambda; (तरंगदैर्ध्य) = एक पूर्ण तरंग</text>
+<text x="340" y="170" class="sm"><tspan class="g bd">A (आयाम)</tspan> = माध्य स्थिति से अधिकतम विस्थापन</text>
+<text x="340" y="190" class="sm"><tspan class="b bd">f (आवृत्ति)</tspan> = प्रति सेकंड पूर्ण तरंगों की संख्या (हर्ट्ज़, Hz)</text>
+<text x="340" y="210" class="sm"><tspan class="r bd">T (आवर्तकाल)</tspan> = एक तरंग का समय = 1/f (सेकंड)</text>
+<g transform="translate(150,226)"><rect width="340" height="30" rx="8" fill="#fff3b0" stroke="#b8860b" stroke-width="2"/>
+<text x="170" y="21" class="mid bd">चाल v = f &times; &lambda; &nbsp;&nbsp; | &nbsp;&nbsp; f = 1/T</text></g>
+<!-- panels -->
+<rect x="20" y="272" width="292" height="208" rx="10" fill="#fffdf5" stroke="#1b2a41" stroke-width="2"/>
+<rect x="330" y="272" width="292" height="208" rx="10" fill="#fffdf5" stroke="#1b2a41" stroke-width="2"/>
+<text x="166" y="292" class="mid bd r">प्रबलता आयाम पर निर्भर करती है</text>
+<text x="476" y="292" class="mid bd r">तारत्व आवृत्ति पर निर्भर करता है</text>
+<g clip-path="url(#clipL)">
+<path id="w24loud" d="" fill="none" stroke="#d62828" stroke-width="3"><animateTransform attributeName="transform" type="translate" from="0 0" to="80 0" dur="1.6s" repeatCount="indefinite"/></path>
+<path id="w24soft" d="" fill="none" stroke="#15803d" stroke-width="3"><animateTransform attributeName="transform" type="translate" from="0 0" to="80 0" dur="1.6s" repeatCount="indefinite"/></path></g>
+<g clip-path="url(#clipR)">
+<path id="w24high" d="" fill="none" stroke="#7c3aed" stroke-width="3"><animateTransform attributeName="transform" type="translate" from="0 0" to="50 0" dur="1s" repeatCount="indefinite"/></path>
+<path id="w24low" d="" fill="none" stroke="#ea580c" stroke-width="3"><animateTransform attributeName="transform" type="translate" from="0 0" to="120 0" dur="2.4s" repeatCount="indefinite"/></path></g>
+<text x="166" y="330" class="mid sm bd r" style="fill:#d62828">प्रबल: बड़ा आयाम</text>
+<text x="166" y="414" class="mid sm bd g">मंद: छोटा आयाम</text>
+<text x="476" y="330" class="mid sm bd p">उच्च तारत्व: उच्च f, छोटा &lambda;</text>
+<text x="476" y="414" class="mid sm bd o">निम्न तारत्व: निम्न f, लंबा &lambda;</text>
+<text x="166" y="466" class="mid sm">समान आवृत्ति, भिन्न प्रबलता</text>
+<text x="476" y="466" class="mid sm">समान आयाम, भिन्न तारत्व</text>
+</svg>
+<figcaption>बड़ा आयाम यानी अधिक प्रबल ध्वनि; प्रति सेकंड अधिक तरंगें (उच्च आवृत्ति) यानी उच्च तारत्व।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p>हर ध्वनि तरंग का वर्णन कुछ राशियों से होता है। <b>आयाम</b> तय करता है कि ध्वनि कितनी प्रबल है (प्रबलता उसके द्वारा ले जाई जाने वाली ऊर्जा से संबंधित है)। <b>आवृत्ति</b> तारत्व तय करती है: तीखी ध्वनि (सीटी) की आवृत्ति उच्च होती है, गहरी ध्वनि (ढोल) की निम्न। <b>तरंगदैर्ध्य</b> एक तरंग की लंबाई है। किसी दिए गए माध्यम में चाल स्थिर रहती है, इसलिए उच्च आवृत्ति का अर्थ सदैव छोटा तरंगदैर्ध्य होता है।</p>
+<h3>कार्य-प्रक्रिया</h3>
+<ol>
+<li>स्वरित्र पर पहले हल्की, फिर ज़ोर से चोट करें: भुजाएँ अधिक दूरी तय करती हैं (बड़ा आयाम), इसलिए ध्वनि अधिक प्रबल होती है, पर तारत्व नहीं बदलता।</li>
+<li>छोटा स्वरित्र लें: वह तेज़ी से कंपन करता है (उच्च f), इसलिए ध्वनि का तारत्व अधिक होता है।</li>
+<li>एक सेकंड में किसी बिंदु से गुजरने वाली पूर्ण तरंगें गिनकर हर्ट्ज़ में आवृत्ति पाएँ। आवर्तकाल T = 1/f।</li>
+<li>v = f &times; &lambda; का प्रयोग करें। उदाहरण: f = 500 Hz, &lambda; = 0.68 m &rarr; v = 340 m/s।</li>
+</ol>
+<div class="key"><b>मनुष्यों का श्रव्य परास:</b> 20 Hz से 20,000 Hz। 20 Hz से नीचे अवश्रव्य और 20 kHz से ऊपर पराश्रव्य ध्वनि है। प्रबलता डेसिबल (dB) में मापी जाती है।</div>
+</section>
+
+<!-- ============ 25 ============ -->
+<section class="card" id="d25">
+<h2><span class="num">25</span>मानव कान</h2>
+<figure>
+<svg viewBox="0 0 640 420" role="img" aria-label="Human ear">
+<!-- sections -->
+<rect x="10" y="36" width="242" height="320" rx="10" fill="#fdf2f8" stroke="#be185d" stroke-width="2"/>
+<rect x="252" y="36" width="93" height="320" fill="#fffbeb" stroke="#b45309" stroke-width="2"/>
+<rect x="345" y="36" width="285" height="320" rx="10" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+<text x="131" y="28" class="mid bd">बाह्य कान</text><text x="298" y="28" class="mid bd">मध्य कान</text><text x="487" y="28" class="mid bd">आंतरिक कान</text>
+<!-- pinna -->
+<path d="M102,150 C44,96 12,180 38,236 C54,268 92,258 102,226 Z" fill="#fbcfe8" stroke="#1b2a41" stroke-width="3"/>
+<path d="M88,170 C60,140 42,186 56,220" fill="none" stroke="#1b2a41" stroke-width="2"/>
+<!-- canal -->
+<rect x="102" y="185" width="148" height="32" fill="#fce7f3" stroke="#1b2a41" stroke-width="3"/>
+<!-- eardrum -->
+<path d="M250,170 Q258,201 250,232" fill="none" stroke="#ea580c" stroke-width="5"><animate attributeName="d" values="M250,170 Q258,201 250,232;M250,170 Q242,201 250,232;M250,170 Q258,201 250,232" dur="0.8s" repeatCount="indefinite"/></path>
+<!-- middle ear cavity -->
+<rect x="252" y="150" width="93" height="100" fill="#fff7d6" stroke="#1b2a41" stroke-width="2.5"/>
+<!-- ossicles -->
+<g><animateTransform attributeName="transform" type="translate" values="0 0;2 0;0 0;-2 0;0 0" dur="0.8s" repeatCount="indefinite"/>
+<polyline points="254,201 280,186" fill="none" stroke="#d62828" stroke-width="7" stroke-linecap="round"/><circle cx="282" cy="185" r="6" fill="#d62828"/>
+<polyline points="284,186 306,200 298,216" fill="none" stroke="#1d4ed8" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M306,202 L330,210 M306,214 L330,218 M330,208 L330,220" fill="none" stroke="#15803d" stroke-width="5" stroke-linecap="round"/></g>
+<!-- eustachian -->
+<path d="M300,250 C300,300 285,325 255,358" fill="none" stroke="#1b2a41" stroke-width="14" stroke-linecap="round"/>
+<path d="M300,250 C300,300 285,325 255,358" fill="none" stroke="#fda4af" stroke-width="9" stroke-linecap="round"/>
+<!-- oval window + vestibule + link -->
+<ellipse cx="345" cy="214" rx="5" ry="12" fill="#a16207" stroke="#1b2a41" stroke-width="2"/>
+<circle cx="372" cy="214" r="20" fill="#bbf7d0" stroke="#1b2a41" stroke-width="3"/>
+<!-- semicircular canals -->
+<g fill="none" stroke="#1b2a41" stroke-width="12"><ellipse cx="440" cy="120" rx="32" ry="16"/><ellipse cx="440" cy="120" rx="32" ry="16" transform="rotate(60 440 120)"/><ellipse cx="440" cy="120" rx="32" ry="16" transform="rotate(120 440 120)"/></g>
+<g fill="none" stroke="#fdba74" stroke-width="7"><ellipse cx="440" cy="120" rx="32" ry="16"/><ellipse cx="440" cy="120" rx="32" ry="16" transform="rotate(60 440 120)"/><ellipse cx="440" cy="120" rx="32" ry="16" transform="rotate(120 440 120)"/></g>
+<line x1="428" y1="148" x2="380" y2="196" stroke="#1b2a41" stroke-width="12"/><line x1="428" y1="148" x2="380" y2="196" stroke="#fdba74" stroke-width="7"/>
+<!-- cochlea -->
+<path id="spOut" d="" fill="none" stroke="#1b2a41" stroke-width="22" stroke-linecap="round"/>
+<path id="spIn" d="" fill="none" stroke="#ddd6fe" stroke-width="16" stroke-linecap="round"/>
+<line x1="390" y1="218" x2="404" y2="236" stroke="#1b2a41" stroke-width="16"/><line x1="390" y1="218" x2="404" y2="236" stroke="#ddd6fe" stroke-width="10"/>
+<!-- nerve + brain -->
+<path d="M462,240 Q520,252 552,214 L570,196" fill="none" stroke="#1b2a41" stroke-width="12" stroke-linecap="round"/>
+<path d="M462,240 Q520,252 552,214 L570,196" fill="none" stroke="#fde047" stroke-width="7" stroke-linecap="round"/>
+<ellipse cx="594" cy="168" rx="34" ry="28" fill="#fecdd3" stroke="#1b2a41" stroke-width="3"/>
+<path d="M572,168 Q584,150 594,168 T616,164" fill="none" stroke="#1b2a41" stroke-width="2"/>
+<text x="594" y="173" class="mid bd sm">मस्तिष्क</text>
+<!-- sound path -->
+<path d="M40,201 L248,201" stroke="#d62828" stroke-width="3.5" stroke-dasharray="10 8" fill="none"><animate attributeName="stroke-dashoffset" from="36" to="0" dur="1s" repeatCount="indefinite"/></path>
+<circle r="7" fill="#d62828" stroke="#fff" stroke-width="2"><animateMotion dur="5s" repeatCount="indefinite" path="M30,201 L250,201 L280,186 L306,200 L330,212 L372,214 L404,236 L440,262 L500,246 L552,214 L590,176"/></circle>
+<g fill="none" stroke="#d62828" stroke-width="3"><path d="M10,176 Q-4,201 10,226" opacity=".9"/><path d="M24,184 Q14,201 24,218"/></g>
+<text x="22" y="170" class="r sm bd">ध्वनि</text>
+<!-- labels -->
+<g class="sm bd" stroke="none">
+<text x="14" y="296">कर्ण पल्लव</text><line x1="40" y1="288" x2="52" y2="260" class="thin"/>
+<text x="106" y="262">कर्ण नलिका</text><line x1="150" y1="254" x2="150" y2="219" class="thin"/>
+<text x="92" y="108">कर्ण पटह</text><line x1="140" y1="112" x2="248" y2="174" class="thin"/>
+<text x="196" y="82">मैलियस (हथौड़ी)</text><line x1="262" y1="88" x2="268" y2="193" class="thin"/>
+<text x="285" y="58">इंकस (निहाई)</text><line x1="312" y1="63" x2="298" y2="190" class="thin"/>
+<text x="296" y="132">स्टेपीज़ (रकाब)</text><line x1="322" y1="138" x2="322" y2="205" class="thin"/>
+<text x="352" y="272">अंडाकार खिड़की</text><line x1="368" y1="262" x2="346" y2="226" class="thin"/>
+<text x="262" y="380">यूस्टेकियन नलिका (गले तक)</text><line x1="262" y1="372" x2="270" y2="345" class="thin"/>
+<text x="352" y="90">अर्धवृत्ताकार</text><text x="352" y="104">नलिकाएँ (संतुलन)</text><line x1="400" y1="108" x2="412" y2="116" class="thin"/>
+<text x="425" y="318">कॉक्लिया</text><line x1="455" y1="308" x2="455" y2="291" class="thin"/>
+<text x="512" y="290">श्रवण तंत्रिका</text><line x1="540" y1="280" x2="525" y2="249" class="thin"/>
+</g>
+</svg>
+<figcaption>लाल बिंदु हवा से मस्तिष्क तक ध्वनि का मार्ग दिखाता है (बाह्य कान &rarr; मध्य कान &rarr; आंतरिक कान &rarr; तंत्रिका)।</figcaption>
+</figure>
+<h3>व्याख्या</h3>
+<p>मानव कान हवा में ध्वनि तरंगों को विद्युत संकेतों में बदलता है जिन्हें मस्तिष्क समझता है। इसके तीन भाग हैं। <b>बाह्य कान</b> (कर्ण पल्लव और कर्ण नलिका) ध्वनि एकत्र करता है। <b>मध्य कान</b> (कर्ण पटह और तीन छोटी अस्थियाँ) कंपनों को आगे ले जाता और प्रवर्धित करता है। <b>आंतरिक कान</b> (कॉक्लिया) कंपनों को विद्युत संकेतों में बदलता है। आंतरिक कान की अर्धवृत्ताकार नलिकाएँ संतुलन बनाए रखने में मदद करती हैं; सुनने में उनकी कोई भूमिका नहीं है।</p>
+<h3>कार्य-प्रक्रिया (हम कैसे सुनते हैं)</h3>
+<ol>
+<li><b>कर्ण पल्लव</b> ध्वनि तरंगों को एकत्र करके <b>कर्ण नलिका</b>में भेजता है।</li>
+<li>तरंगें पतले, कसे हुए <b>कर्ण पटह</b> से टकराती हैं और उसे उसी आवृत्ति से कंपित करती हैं (संपीडन उसे अंदर धकेलता है, विरलन बाहर खींचता है)।</li>
+<li>कंपन तीन अस्थियों में जाते हैं: <b>मैलियस &rarr; इंकस &rarr; स्टेपीज़</b>। ये लीवर की तरह काम करके कंपनों को कई गुना बढ़ा देती हैं।</li>
+<li>स्टेपीज़ कॉक्लिया की <b>अंडाकार खिड़की</b> को धकेलती है, जिससे उसके अंदर का द्रव गतिमान हो जाता है।</li>
+<li><b>कॉक्लिया</b> की सूक्ष्म रोम कोशिकाएँ इन गतियों को विद्युत संकेतों में बदलती हैं।</li>
+<li><b>श्रवण तंत्रिका</b> संकेतों को <b>मस्तिष्क</b>तक ले जाती है, जो उन्हें ध्वनि के रूप में समझता है।</li>
+</ol>
+<div class="tip"><b>यूस्टेकियन नलिका:</b> मध्य कान को गले से जोड़ती है और कर्ण पटह के दोनों ओर वायुदाब बराबर रखती है (इसीलिए उड़ान के दौरान कान "खुलते" हैं)। <b>श्रवण परास:</b> 20 Hz से 20,000 Hz।</div>
+</section>
+
+<!-- ============ revision ============ -->
+<section class="card" id="rev">
+<h2><span class="num" style="background:#15803d">&#9733;</span>त्वरित पुनरावृत्ति: मुख्य सूत्र</h2>
+<table>
+<tr><th>विषय</th><th>सूत्र</th><th>SI मात्रक</th></tr>
+<tr><td>चाल</td><td>v = दूरी / समय</td><td>m/s</td></tr>
+<tr><td>त्वरण</td><td>a = (v &minus; u) / t</td><td>m/s&#178;</td></tr>
+<tr><td>गति के समीकरण</td><td>v = u + at; s = ut + &frac12;at&#178;; v&#178; = u&#178; + 2as</td><td>m, m/s</td></tr>
+<tr><td>न्यूटन का द्वितीय नियम</td><td>F = ma ; p = mv</td><td>N ; kg m/s</td></tr>
+<tr><td>गुरुत्वाकर्षण</td><td>F = G m&#8321;m&#8322; / r&#178; ; W = mg</td><td>N</td></tr>
+<tr><td>दाब</td><td>P = F / A</td><td>पास्कल (N/m&#178;)</td></tr>
+<tr><td>कार्य</td><td>W = F s cos&theta;</td><td>जूल (J)</td></tr>
+<tr><td>ऊर्जा</td><td>PE = mgh ; KE = &frac12;mv&#178;</td><td>J</td></tr>
+<tr><td>शक्ति</td><td>P = W / t</td><td>वाट (W)</td></tr>
+<tr><td>तरंग</td><td>v = f &lambda; ; T = 1/f</td><td>m/s ; s</td></tr>
+</table>
+</section>
+
+<footer>कक्षा 9 भौतिकी की पुनरावृत्ति के लिए बनाया गया। परीक्षा के लिए शुभकामनाएँ!</footer>
+</div>
+
+<script>
+(function(){
+var NS='http://www.w3.org/2000/svg',PI=Math.PI;
+function el(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;}
+function sine(x0,x1,yc,A,wl,step){var d='';for(var x=x0;x<=x1;x+=step||3){var y=yc-A*Math.sin(2*PI*(x-x0)/wl);d+=(d?'L':'M')+x.toFixed(1)+','+y.toFixed(1);}return d;}
+function mod(a,b){return ((a%b)+b)%b;}
+
+/* ---------- static / SMIL waves for diagram 24 ---------- */
+function setD(id,d){var e=document.getElementById(id);if(e)e.setAttribute('d',d);}
+setD('w24main',sine(60,600,130,40,160,3));
+setD('w24loud',sine(24-80,308+80,345,32,80,3));
+setD('w24soft',sine(24-80,308+80,430,10,80,3));
+setD('w24high',sine(334-50,618+50,345,22,50,2));
+setD('w24low',sine(334-120,618+120,430,22,120,3));
+
+/* ---------- cochlea spiral (diagram 25) ---------- */
+(function(){var cx=455,cy=240,d='';for(var th=0;th<=2.6*2*PI;th+=0.12){var r=48-38*(th/(2.6*2*PI));var ph=PI+th;d+=(d?'L':'M')+(cx+r*Math.cos(ph)).toFixed(1)+','+(cy+r*Math.sin(ph)).toFixed(1);}setD('spOut',d);setD('spIn',d);})();
+
+/* ---------- helper for moving labels ---------- */
+function labels(parent,n,txt,cls){var a=[];for(var i=0;i<n;i++){var t=el('text',{'class':'mid '+cls+' big','text-anchor':'middle'},parent);t.textContent=txt;a.push(t);}return a;}
+function place(arr,xs,y,lo,hi){for(var i=0;i<arr.length;i++){var x=xs[i];if(x>lo&&x<hi){arr[i].setAttribute('x',x.toFixed(1));arr[i].setAttribute('y',y);arr[i].style.display='';}else arr[i].style.display='none';}}
+
+/* ---------- diagram 21 ---------- */
+var g21=document.getElementById('w21lines'),L21=[],N21=41,sp21=14,x21=50,lam21=168,k21=2*PI/lam21,w21=2*PI/3,A21=11;
+if(g21){
+ for(var i=0;i<N21;i++){var hi=(i===14);L21.push(el('line',{y1:hi?104:108,y2:hi?196:192,stroke:hi?'#d62828':'#1b2a41','stroke-width':hi?4:2.2},g21));}
+ var c21=labels(document.getElementById('w21lab'),7,'C','r'),r21=labels(document.getElementById('w21lab'),7,'R','b');
+ var dim=document.getElementById('w21dim'),t1=document.getElementById('w21t1'),t2=document.getElementById('w21t2'),lm=document.getElementById('w21lam');
+}
+/* ---------- diagram 22 ---------- */
+var g22=document.getElementById('w22dots'),D22=[],N22=31,sp22=15,x22=140,lam22=150,k22=2*PI/lam22,A22=10,rows22=[85,105,125,145];
+if(g22){
+ for(var r=0;r<rows22.length;r++){for(var i=0;i<N22;i++){D22.push({e:el('circle',{r:3.6,cy:rows22[r]},g22),s:i*sp22});}}
+ var lab22=document.getElementById('w22lab'),glab22=document.getElementById('w22glab');
+ var c22=labels(lab22,5,'C','r'),r22=labels(lab22,5,'R','b'),gc22=labels(glab22,5,'C','r'),gr22=labels(glab22,5,'R','b');
+ var gp22=document.getElementById('w22graph');
+}
+/* ---------- diagram 23 ---------- */
+var p23=document.getElementById('w23path'),lam23=220,k23=2*PI/lam23,w23=PI/2,A23=55,y23=170;
+if(p23){
+ var lab23=document.getElementById('w23lab'),cr23=[],tr23=[];
+ for(var i=0;i<4;i++){var a=el('text',{'class':'b big','text-anchor':'middle'},lab23);a.textContent='शीर्ष';cr23.push(a);var b=el('text',{'class':'r big','text-anchor':'middle'},lab23);b.textContent='गर्त';tr23.push(b);}
+ var dim23=document.getElementById('w23dim'),q1=document.getElementById('w23t1'),q2=document.getElementById('w23t2'),lm23=document.getElementById('w23lam'),dot23=document.getElementById('w23dot');
+}
+
+function frame(ms){
+ var t=ms/1000;
+ if(g21){
+  for(var i=0;i<N21;i++){var s=i*sp21,x=x21+s+A21*Math.sin(k21*s-w21*t);L21[i].setAttribute('x1',x.toFixed(1));L21[i].setAttribute('x2',x.toFixed(1));}
+  var bc=mod((PI+w21*t)/k21,lam21),br=mod(w21*t/k21,lam21),cs=[],rs=[];
+  for(var n=-1;n<6;n++){cs.push(x21+bc+n*lam21);rs.push(x21+br+n*lam21);}
+  place(c21,cs,94,60,600);place(r21,rs,94,60,600);
+  var vis=cs.filter(function(v){return v>60&&v<600;});
+  if(vis.length>1){dim.setAttribute('x1',vis[0]);dim.setAttribute('x2',vis[1]);t1.setAttribute('x1',vis[0]);t1.setAttribute('x2',vis[0]);t2.setAttribute('x1',vis[1]);t2.setAttribute('x2',vis[1]);lm.setAttribute('x',(vis[0]+vis[1])/2);}
+ }
+ if(g22){
+  for(var j=0;j<D22.length;j++){var d=D22[j];d.e.setAttribute('cx',(x22+d.s+A22*Math.sin(k22*d.s-w21*t)).toFixed(1));}
+  var path='';for(var s2=0;s2<=450;s2+=5){var y=300+40*Math.cos(k22*s2-w21*t);path+=(path?'L':'M')+(x22+s2)+','+y.toFixed(1);}gp22.setAttribute('d',path);
+  var bc2=mod((PI+w21*t)/k22,lam22),br2=mod(w21*t/k22,lam22),cs2=[],rs2=[];
+  for(var n2=-1;n2<4;n2++){cs2.push(x22+bc2+n2*lam22);rs2.push(x22+br2+n2*lam22);}
+  place(c22,cs2,66,150,600);place(r22,rs2,66,150,600);place(gc22,cs2,250,150,600);place(gr22,rs2,358,150,600);
+ }
+ if(p23){
+  var d23='';for(var x=40;x<=610;x+=4){d23+=(d23?'L':'M')+x+','+(y23-A23*Math.sin(k23*x-w23*t)).toFixed(1);}p23.setAttribute('d',d23);
+  dot23.setAttribute('cy',(y23-A23*Math.sin(k23*330-w23*t)).toFixed(1));
+  var bcr=mod((PI/2+w23*t)/k23,lam23),btr=mod((-PI/2+w23*t)/k23,lam23),crs=[],trs=[];
+  for(var n3=-1;n3<4;n3++){crs.push(bcr+n3*lam23);trs.push(btr+n3*lam23);}
+  place(cr23,crs,y23-A23-14,60,600);place(tr23,trs,y23+A23+26,60,600);
+  var vc=crs.filter(function(v){return v>70&&v<590-lam23*0;});
+  if(vc.length>1){var a1=vc[0],a2=vc[1];dim23.setAttribute('x1',a1);dim23.setAttribute('x2',a2);q1.setAttribute('x1',a1);q1.setAttribute('x2',a1);q2.setAttribute('x1',a2);q2.setAttribute('x2',a2);lm23.setAttribute('x',(a1+a2)/2);}
+ }
+ requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
