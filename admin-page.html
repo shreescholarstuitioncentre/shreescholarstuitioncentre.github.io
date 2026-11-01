@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SSTC Admin Dashboard</title>
-  
+
 <!-- Login check: bina login ke andar nahi aane dega -->
 <script>
   if (sessionStorage.getItem('sstcAdmin') !== 'true' || !sessionStorage.getItem('sstcAdminToken')) {
@@ -45,6 +45,18 @@
   .btn-sm:hover { transform:translateY(-2px); }
   .pw { font-family:monospace; }
   .mini { color:#6b7280; font-size:.76rem; }
+  .cal { display:grid; grid-template-columns:repeat(7,1fr); gap:6px; padding:12px; }
+  .cal .h { text-align:center; font-weight:700; font-size:.75rem; color:#8a6d3b; }
+  .day { min-height:64px; border-radius:12px; background:#fff8ec; padding:4px 6px; cursor:pointer; font-size:.78rem; border:2px solid transparent; transition:.2s; overflow:hidden; }
+  .day:hover { transform:translateY(-3px); box-shadow:0 6px 14px rgba(0,0,0,.12); }
+  .day.t { border-color:var(--red); } .day.s { background:#ffe0b2; }
+  .day b { display:block; color:#0a7d3b; font-size:.7rem; }
+  .bars { display:flex; align-items:flex-end; gap:8px; height:170px; padding:14px; }
+  .bar { flex:1; text-align:center; font-size:.68rem; display:flex; flex-direction:column; justify-content:flex-end; height:100%; }
+  .bar i { display:block; border-radius:8px 8px 0 0; background:linear-gradient(#ff6a00,#d62828); transform-origin:bottom; animation:grow .8s both; }
+  .row-i { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:8px 14px; border-bottom:1px solid #f5ecdc; font-size:.84rem; }
+  @keyframes grow { from{transform:scaleY(0)} to{transform:none} }
+  @media (max-width:576px){ .day{min-height:48px;font-size:.68rem;padding:3px} .cal{gap:3px;padding:6px} }
   @keyframes up { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
   @keyframes spin { to{transform:rotate(360deg)} }
   .spin { animation:spin .8s linear infinite; display:inline-block; }
@@ -73,6 +85,46 @@
     <div class="col-6 col-md-4 col-lg"><div class="stat g3" style="animation-delay:.15s"><span class="ic">⏸️</span><div class="n" id="s3">0</div><div class="l">Inactive Students</div></div></div>
     <div class="col-6 col-md-6 col-lg"><div class="stat g4" style="animation-delay:.2s"><span class="ic">📘</span><div class="n" id="s4">0</div><div class="l">Pending E-book Rentals</div></div></div>
     <div class="col-12 col-md-6 col-lg"><div class="stat g5" style="animation-delay:.25s"><span class="ic">📝</span><div class="n" id="s5">0</div><div class="l">Pending Notes Rentals</div></div></div>
+  </div>
+
+  <!-- INCOME CARDS -->
+  <div class="row g-3 mt-1">
+    <div class="col-6 col-lg"><div class="stat g2"><span class="ic">💰</span><div class="n" id="i1">₹0</div><div class="l">Total Income (Active + Expired)</div></div></div>
+    <div class="col-6 col-lg"><div class="stat g1"><span class="ic">📅</span><div class="n" id="i2">₹0</div><div class="l">This Month</div></div></div>
+    <div class="col-6 col-lg"><div class="stat g4"><span class="ic">☀️</span><div class="n" id="i3">₹0</div><div class="l">Today</div></div></div>
+    <div class="col-6 col-lg"><div class="stat g5"><span class="ic">⏳</span><div class="n" id="i4">₹0</div><div class="l">Paid-claimed, approval pending</div></div></div>
+    <div class="col-12 col-lg"><div class="stat g3"><span class="ic">📚</span><div class="n" id="i5" style="font-size:1.15rem">-</div><div class="l">E-book | Notes income</div></div></div>
+  </div>
+
+  <div class="row g-0 gx-lg-3">
+    <!-- CALENDAR -->
+    <div class="col-lg-7"><section class="panel">
+      <div class="panel-h">
+        <h2>📅 <span id="calTitle">Calendar</span></h2>
+        <button class="btn btn-outline-danger btn-sm" onclick="calGo(-1)">◀</button>
+        <button class="btn btn-danger btn-sm" onclick="calGo(0)">Today</button>
+        <button class="btn btn-outline-danger btn-sm" onclick="calGo(1)">▶</button>
+      </div>
+      <div class="px-3 pt-2 mini" id="calSum"></div>
+      <div class="cal" id="calGrid"></div>
+      <div class="px-3 pb-3" id="dayBox"></div>
+    </section></div>
+
+    <div class="col-lg-5">
+      <!-- MONTH-WISE INCOME -->
+      <section class="panel">
+        <div class="panel-h"><h2>📊 Month-wise Income (6 months)</h2>
+          <button class="btn btn-outline-success btn-sm" onclick="expIncome()">⬇ Income CSV</button>
+          <button class="btn btn-outline-primary btn-sm" onclick="expStudents()">⬇ Students CSV</button></div>
+        <div class="bars" id="bars"></div>
+      </section>
+      <!-- ACTION CENTER -->
+      <section class="panel">
+        <div class="panel-h"><h2>⚡ Action Center</h2></div>
+        <div class="px-3 pt-2 fw-bold small">💳 Payment claimed, approve karo</div><div id="claims"></div>
+        <div class="px-3 pt-3 fw-bold small">⏰ Expiring in 7 days</div><div id="soon" class="pb-2"></div>
+      </section>
+    </div>
   </div>
 
   <!-- STUDENTS -->
@@ -215,6 +267,7 @@ function stats() {
   countUp('s3', s.filter(x => x.status !== 'Active').length);
   countUp('s4', T.rentals.data.filter(x => x.status === 'Pending').length);
   countUp('s5', T.notes.data.filter(x => x.status === 'Pending').length);
+  extras();
 }
 
 function toast(msg, type) {
@@ -298,6 +351,112 @@ function adminLogout() {
   sessionStorage.removeItem('sstcAdmin');
   sessionStorage.removeItem('sstcAdminToken');
   window.location.href = 'sstc-access.html';
+}
+
+/* ===== INCOME + CALENDAR + ACTION CENTER ===== */
+const inr = n => '₹' + Number(n || 0).toLocaleString('en-IN');
+const pad = n => String(n).padStart(2, '0');
+const dk = d => d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+const paidF = x => x.status === 'Active' || x.status === 'Expired';
+const RN = () => T.rentals.data.map(x => Object.assign({ kind: 'E-book' }, x)).concat(T.notes.data.map(x => Object.assign({ kind: 'Notes' }, x)));
+let EV = {}, cal = new Date(), sel = dk(new Date());
+cal.setDate(1);
+
+function pd(v) {
+  if (!v) return null;
+  const s = String(v);
+  if (/^\d{4}-\d{2}-\d{2}/.test(s)) { const d = new Date(s); return isNaN(d) ? null : d; }
+  const m = s.match(/(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})/);
+  if (m) { let day = +m[1], mon = +m[2]; if (mon > 12) { day = +m[2]; mon = +m[1]; } return new Date(+m[3], mon - 1, day); }
+  const d = new Date(s); return isNaN(d) ? null : d;
+}
+
+function buildEv() {
+  const ev = {}, g = k => ev[k] || (ev[k] = { inc: 0, paid: [], reg: [], req: [], exp: [] });
+  T.students.data.forEach(s => { const d = pd(s.registrationDate); if (d) g(dk(d)).reg.push(s); });
+  RN().forEach(x => {
+    const r = pd(x.requestedOn); if (r) g(dk(r)).req.push(x);
+    if (paidF(x)) { const d = pd(x.startDate) || r; if (d) { const e = g(dk(d)); e.inc += Number(x.price || 0); e.paid.push(x); } }
+    const ex = pd(x.expiryDate); if (ex && x.status === 'Active') g(dk(ex)).exp.push(x);
+  });
+  return ev;
+}
+
+function extras() {
+  EV = buildEv();
+  const all = RN(), paid = all.filter(paidF), now = new Date(), today = dk(now), ym = today.slice(0, 7);
+  const sum = a => a.reduce((s, x) => s + Number(x.price || 0), 0);
+  const inc = x => dk(pd(x.startDate) || pd(x.requestedOn) || new Date(0));
+  const set = (id, v) => document.getElementById(id).textContent = v;
+  set('i1', inr(sum(paid)));
+  set('i2', inr(sum(paid.filter(x => inc(x).slice(0, 7) === ym))));
+  set('i3', inr(sum(paid.filter(x => inc(x) === today))));
+  set('i4', inr(sum(all.filter(x => x.status === 'Pending' && x.paymentClaimedOn))));
+  set('i5', inr(sum(paid.filter(x => x.kind === 'E-book'))) + ' | ' + inr(sum(paid.filter(x => x.kind === 'Notes'))));
+
+  const months = [];
+  for (let i = 5; i >= 0; i--) { const d = new Date(now.getFullYear(), now.getMonth() - i, 1); months.push({ k: d.getFullYear() + '-' + pad(d.getMonth() + 1), l: d.toLocaleDateString('en-IN', { month: 'short' }), v: 0 }); }
+  Object.keys(EV).forEach(k => { const m = months.find(x => x.k === k.slice(0, 7)); if (m) m.v += EV[k].inc; });
+  const mx = Math.max.apply(null, months.map(m => m.v).concat([1]));
+  document.getElementById('bars').innerHTML = months.map(m =>
+    `<div class="bar"><span>${inr(m.v)}</span><i style="height:${Math.max(m.v / mx * 100 * .75, 3)}%"></i><span class="fw-bold">${m.l}</span></div>`).join('');
+
+  const claims = all.filter(x => x.status === 'Pending' && x.paymentClaimedOn);
+  document.getElementById('claims').innerHTML = claims.length ? claims.map(x =>
+    `<div class="row-i"><span>${esc(x.studentName || x.studentId)} · ${esc(x.subject)} <span class="mini">(${x.kind}) ${inr(x.price)}</span></span>
+     <button class="btn btn-success btn-sm" data-act="on" data-t="${x.kind === 'Notes' ? 'notes' : 'rentals'}" data-id="${esc(x.rentalId)}">✅ Approve</button></div>`).join('')
+    : '<div class="px-3 py-2 mini">Koi pending payment nahi 🎉</div>';
+
+  const soon = all.filter(x => { const e = pd(x.expiryDate); return x.status === 'Active' && e && (e - now) / 864e5 <= 7; });
+  document.getElementById('soon').innerHTML = soon.length ? soon.map(x => {
+    const dl = Math.ceil((pd(x.expiryDate) - now) / 864e5);
+    return `<div class="row-i"><span>${esc(x.studentName || x.studentId)} · ${esc(x.subject)} <span class="mini">(${x.kind})</span></span><span class="badge bg-${dl < 0 ? 'danger' : 'warning text-dark'}">${dl < 0 ? 'Expired' : dl + ' din'}</span></div>`;
+  }).join('') : '<div class="px-3 py-2 mini">Koi expiry nazdeek nahi ✅</div>';
+
+  drawCal();
+}
+
+function drawCal() {
+  const y = cal.getFullYear(), m = cal.getMonth(), first = new Date(y, m, 1).getDay(), days = new Date(y, m + 1, 0).getDate(), pre = y + '-' + pad(m + 1), today = dk(new Date());
+  let h = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d => `<div class="h">${d}</div>`).join(''), mi = 0, ns = 0, nr = 0;
+  for (let i = 0; i < first; i++) h += '<div></div>';
+  for (let d = 1; d <= days; d++) {
+    const k = pre + '-' + pad(d), e = EV[k];
+    if (e) { mi += e.inc; ns += e.reg.length; nr += e.req.length; }
+    h += `<div class="day${k === today ? ' t' : ''}${k === sel ? ' s' : ''}" data-d="${k}">${d}${e && e.inc ? '<b>' + inr(e.inc) + '</b>' : ''}<div>${e && e.reg.length ? '👤' + e.reg.length + ' ' : ''}${e && e.req.length ? '📥' + e.req.length + ' ' : ''}${e && e.exp.length ? '⏰' + e.exp.length : ''}</div></div>`;
+  }
+  document.getElementById('calGrid').innerHTML = h;
+  document.getElementById('calTitle').textContent = cal.toLocaleDateString('en-IN', { month: 'long', year: 'numeric' });
+  document.getElementById('calSum').textContent = 'Is mahine: Income ' + inr(mi) + ' · Naye students ' + ns + ' · Rental requests ' + nr;
+  dayDetail(sel);
+}
+
+function dayDetail(k) {
+  const e = EV[k] || { inc: 0, paid: [], reg: [], req: [], exp: [] };
+  const li = (t, a) => a.length ? `<div class="fw-bold small mt-2">${t}</div>` + a.map(x => `<div class="mini text-dark">• ${x}</div>`).join('') : '';
+  const body = li('💰 Income', e.paid.map(x => esc(x.studentName || x.studentId) + ' · ' + esc(x.subject) + ' (' + x.kind + ') ' + inr(x.price)))
+    + li('👤 Naye students', e.reg.map(s => esc(s.fullName) + ' · Class ' + esc(s.className)))
+    + li('📥 Rental requests', e.req.map(x => esc(x.studentName || x.studentId) + ' · ' + esc(x.subject) + ' · ' + esc(x.status)))
+    + li('⏰ Expiry', e.exp.map(x => esc(x.studentName || x.studentId) + ' · ' + esc(x.subject)));
+  document.getElementById('dayBox').innerHTML = `<div class="fw-bold mt-2">${fmt(k + 'T00:00:00')} · ${inr(e.inc)}</div>` + (body || '<div class="mini">Is din koi activity nahi.</div>');
+}
+
+function calGo(n) { if (n === 0) { cal = new Date(); cal.setDate(1); sel = dk(new Date()); } else cal = new Date(cal.getFullYear(), cal.getMonth() + n, 1); drawCal(); }
+document.getElementById('calGrid').addEventListener('click', e => { const d = e.target.closest('[data-d]'); if (d) { sel = d.dataset.d; drawCal(); } });
+
+function csv(name, rows) {
+  const q = v => { v = String(v == null ? '' : v); if (/^[=+\-@]/.test(v)) v = "'" + v; return '"' + v.replace(/"/g, '""') + '"'; };
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob(['\ufeff' + rows.map(r => r.map(q).join(',')).join('\n')], { type: 'text/csv' }));
+  a.download = name; a.click(); URL.revokeObjectURL(a.href);
+}
+function expIncome() {
+  csv('sstc-income.csv', [['Date','Type','Rental ID','Student ID','Student','Subject','Plan','Amount']].concat(
+    RN().filter(paidF).map(x => [dk(pd(x.startDate) || pd(x.requestedOn) || new Date(0)), x.kind, x.rentalId, x.studentId, x.studentName, x.subject, x.plan, x.price])));
+}
+function expStudents() {
+  csv('sstc-students.csv', [['Student ID','Name','Class','Board','Mobile','Email','School','Place','Registered','Status']].concat(
+    T.students.data.map(s => [s.studentId, s.fullName, s.className, s.board, s.mobileNumber, s.emailId, s.schoolName, s.schoolPlace, s.registrationDate, s.status])));
 }
 
 loadAll();
