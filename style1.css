@@ -200,3 +200,85 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   opacity:0;pointer-events:none;transform:translateY(12px);transition:.3s}
 #toTop.show{opacity:1;pointer-events:auto;transform:none}
 @media(max-width:600px){.offer-plan,.course-item{box-shadow:3px 3px 0 var(--ink)}}
+/* =====================================================
+   RENT PLANS — poster style (Question Bank & Notes)
+   style1.css ke SABSE NEECHE paste karein
+===================================================== */
+.rent-plans{padding:40px 14px 20px;text-align:center}
+
+/* ---------- Title ---------- */
+.rp-head{margin-bottom:22px}
+.rp-title{display:flex;flex-direction:column;align-items:center;margin:0}
+.rp-title-top{display:inline-block;padding:8px 34px;border-radius:18px;
+  background:linear-gradient(180deg,#1c3f94,#0b1e3c);border:3px solid #f5c242;
+  color:#ffe14d;font-size:clamp(22px,5.4vw,44px);font-weight:800;line-height:1.2;
+  text-shadow:2px 2px 0 rgba(0,0,0,.35);box-shadow:0 8px 20px rgba(11,30,60,.3)}
+.rp-title-ribbon{display:inline-block;margin-top:-4px;padding:4px 48px;
+  background:linear-gradient(180deg,#e53935,#b71c1c);color:#fff;
+  font-size:clamp(24px,6vw,48px);font-weight:800;line-height:1.2;text-shadow:2px 2px 0 rgba(0,0,0,.3);
+  clip-path:polygon(0 0,100% 0,calc(100% - 18px) 50%,100% 100%,0 100%,18px 50%)}
+.rp-tagline{display:inline-block;margin:16px auto 0;padding:8px 22px;border-radius:12px;
+  background:#0b1e3c;color:#fff;font-weight:800;font-style:italic;
+  font-size:clamp(14px,3.4vw,20px);transform:rotate(-1.5deg)}
+.rp-tagline b{color:#ffd54f}
+
+/* ---------- 3 cards ---------- */
+.rp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px;text-align:left}
+.rp-card{--c1:#1e63d6;--c2:#0d3b9e;--tint:#dbe9ff;--tint2:#f4f8ff;--hi:#ffe14d;
+  padding:0 0 12px;overflow:hidden;border-radius:24px;border:3px solid var(--c1);
+  background:linear-gradient(180deg,var(--c1),var(--c2));
+  box-shadow:0 18px 36px -14px rgba(11,30,60,.45);transition:transform .25s}
+.rp-card:hover{transform:translateY(-6px)}
+.rp-green{--c1:#3aa63a;--c2:#1b6e1b;--tint:#d9f2cf;--tint2:#f5fcf0}
+.rp-purple{--c1:#9b3fe0;--c2:#5a1a9e;--tint:#ead9ff;--tint2:#faf6ff}
+.rp-class{margin:0;padding:10px 8px 8px;text-align:center;color:#fff;
+  font-size:clamp(26px,4vw,34px);line-height:1.2;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.rp-class span{color:var(--hi)}
+
+/* ---------- Table ---------- */
+.rp-table{width:calc(100% - 20px);margin:0 10px;border-collapse:separate;border-spacing:0;
+  background:var(--tint2);border-radius:14px;overflow:hidden;font-size:clamp(12px,3.3vw,15px)}
+.rp-table thead th{padding:10px 4px;background:var(--tint);color:#10224a;font-weight:800;
+  text-align:center;line-height:1.15;border-bottom:1px solid rgba(11,30,60,.15)}
+.rp-table tbody th,.rp-table tbody td{padding:9px 4px;text-align:center;vertical-align:middle;
+  line-height:1.2;border-bottom:1px solid rgba(11,30,60,.12)}
+.rp-table tbody tr:last-child th,.rp-table tbody tr:last-child td{border-bottom:0}
+.rp-table tbody th{width:49%;color:#10224a;font-weight:700;font-size:.93em}
+.rp-table th+th,.rp-table td{border-left:1px solid rgba(11,30,60,.12)}
+.rp-table td{width:25.5%;color:#d32f2f;font-family:'Baloo 2','Nunito',sans-serif;font-size:1.35em;font-weight:800}
+.rp-table .rp-bundle-row>*{background:rgba(255,213,79,.2)}
+.rp-table tbody tr:hover>*{background:rgba(255,235,59,.35)}
+
+/* ---------- Feature strip ---------- */
+.rp-features{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:22px 0 16px;
+  padding:12px;background:#fff;border:2px solid #0b1e3c;border-radius:18px;
+  box-shadow:4px 4px 0 #0b1e3c;text-align:left}
+.rp-feat{display:flex;align-items:center;gap:8px;color:#0b1e3c;font-weight:800;font-size:13px;line-height:1.25}
+.rp-ico{font-size:26px;flex-shrink:0}
+
+/* ---------- CTA bar ---------- */
+.rp-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 24px;
+  padding:16px;border-radius:20px;background:linear-gradient(135deg,#0b1e3c,#1c2f66);color:#fff}
+.rp-limited{padding:8px 16px;border-radius:12px;background:#ffe14d;color:#8e1b1b;
+  font-weight:800;line-height:1.25;text-align:center;transform:rotate(-2deg)}
+.rp-limited strong{display:block;color:#c62828;font-family:'Baloo 2','Nunito',sans-serif;font-size:clamp(18px,4.6vw,26px)}
+.rp-btn{display:inline-block;padding:12px 28px;border:2px solid #fff;border-radius:999px;
+  background:linear-gradient(180deg,#f44336,#c62828);color:#fff;text-decoration:none;
+  font-family:'Baloo 2','Nunito',sans-serif;font-weight:800;font-size:clamp(17px,4.4vw,24px);
+  box-shadow:0 6px 0 #8e1b1b,0 12px 22px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s}
+.rp-btn:hover{color:#fff;transform:translateY(-2px)}
+.rp-btn:active{transform:translateY(4px);box-shadow:0 2px 0 #8e1b1b}
+.rp-mission{margin:0;color:#ffe14d;font-weight:800;font-style:italic}
+.rent-plans .offer-registration{max-width:760px;margin:18px auto 0}
+
+/* ---------- Responsive ---------- */
+@media(max-width:992px){
+  .rp-grid{grid-template-columns:1fr;max-width:540px;margin-left:auto;margin-right:auto}
+}
+@media(max-width:768px){
+  .rp-features{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:400px){
+  .rp-features{grid-template-columns:1fr}
+  .rp-title-ribbon{padding:4px 34px}
+}
