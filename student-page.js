@@ -1394,18 +1394,24 @@ const SSTC_EBOOKS = {
     "Chemistry": {
         "description": "Class 12 Chemistry E-Book Library",
         "image": "subject-images/class-12/chemistry.png",
-        "chapters": [
-            { "number": 1, "title": "Chapter 1: Solutions / अध्याय 1: विलयन", "pdf": "ebooks/class-12/chemistry/chapter-01.pdf" },
-            { "number": 2, "title": "Chapter 2: Electrochemistry / अध्याय 2: वैद्युतरसायन", "pdf": "ebooks/class-12/chemistry/chapter-02.pdf" },
-            { "number": 3, "title": "Chapter 3: Chemical Kinetics / अध्याय 3: रासायनिक बलगतिकी", "pdf": "ebooks/class-12/chemistry/chapter-03.pdf" },
-            { "number": 4, "title": "Chapter 4: The d- and f-Block Elements / अध्याय 4: d एवं f-ब्लॉक के तत्व", "pdf": "ebooks/class-12/chemistry/chapter-04.pdf" },
-            { "number": 5, "title": "Chapter 5: Coordination Compounds / अध्याय 5: उपसहसंयोजन यौगिक", "pdf": "ebooks/class-12/chemistry/chapter-05.pdf" },
-            { "number": 6, "title": "Chapter 6: Haloalkanes and Haloarenes / अध्याय 6: हैलोऐल्केन तथा हैलोऐरीन", "pdf": "ebooks/class-12/chemistry/chapter-06.pdf" },
-            { "number": 7, "title": "Chapter 7: Alcohols, Phenols and Ethers / अध्याय 7: ऐल्कोहॉल, फीनॉल एवं ईथर", "pdf": "ebooks/class-12/chemistry/chapter-07.pdf" },
-            { "number": 8, "title": "Chapter 8: Aldehydes, Ketones and Carboxylic Acids / अध्याय 8: ऐल्डिहाइड, कीटोन एवं कार्बोक्सिलिक अम्ल", "pdf": "ebooks/class-12/chemistry/chapter-08.pdf" },
-            { "number": 9, "title": "Chapter 9: Amines / अध्याय 9: ऐमीन", "pdf": "ebooks/class-12/chemistry/chapter-09.pdf" },
-            { "number": 10, "title": "Chapter 10: Biomolecules / अध्याय 10: जैव अणु", "pdf": "ebooks/class-12/chemistry/chapter-10.pdf" }
-        ]
+          "chapters": [
+             { "number": 1, "title": "Chapter 1: The Solid State / अध्याय 1: ठोस अवस्था", "pdf": "" },
+             { "number": 2, "title": "Chapter 2: Solutions / अध्याय 2: विलयन", "pdf": "ebooks/class-12/chemistry/chapter-01.pdf" },
+             { "number": 3, "title": "Chapter 3: Electrochemistry / अध्याय 3: वैद्युतरसायन", "pdf": "ebooks/class-12/chemistry/chapter-02.pdf" },
+             { "number": 4, "title": "Chapter 4: Chemical Kinetics / अध्याय 4: रासायनिक बलगतिकी", "pdf": "ebooks/class-12/chemistry/chapter-03.pdf" },
+             { "number": 5, "title": "Chapter 5: Surface Chemistry / अध्याय 5: पृष्ठ रसायन", "pdf": "" },
+             { "number": 6, "title": "Chapter 6: General Principles and Processes of Isolation of Elements / अध्याय 6: तत्वों के निष्कर्षण के सिद्धांत एवं प्रक्रम", "pdf": "" },
+             { "number": 7, "title": "Chapter 7: p-Block Elements / अध्याय 7: p-ब्लॉक के तत्व", "pdf": "" },
+             { "number": 8, "title": "Chapter 8: The d- and f-Block Elements / अध्याय 8: d एवं f-ब्लॉक के तत्व", "pdf": "ebooks/class-12/chemistry/chapter-04.pdf" },
+             { "number": 9, "title": "Chapter 9: Coordination Compounds / अध्याय 9: उपसहसंयोजन यौगिक", "pdf": "ebooks/class-12/chemistry/chapter-05.pdf" },
+             { "number": 10, "title": "Chapter 10: Haloalkanes and Haloarenes / अध्याय 10: हैलोऐल्केन तथा हैलोऐरीन", "pdf": "ebooks/class-12/chemistry/chapter-06.pdf" },
+             { "number": 11, "title": "Chapter 11: Alcohols, Phenols and Ethers / अध्याय 11: ऐल्कोहॉल, फीनॉल एवं ईथर", "pdf": "ebooks/class-12/chemistry/chapter-07.pdf" },
+             { "number": 12, "title": "Chapter 12: Aldehydes, Ketones and Carboxylic Acids / अध्याय 12: ऐल्डिहाइड, कीटोन एवं कार्बोक्सिलिक अम्ल", "pdf": "ebooks/class-12/chemistry/chapter-08.pdf" },
+             { "number": 13, "title": "Chapter 13: Organic Compounds Containing Nitrogen (Amines) / अध्याय 13: ऐमीन", "pdf": "ebooks/class-12/chemistry/chapter-09.pdf" },
+             { "number": 14, "title": "Chapter 14: Biomolecules / अध्याय 14: जैव अणु", "pdf": "ebooks/class-12/chemistry/chapter-10.pdf" },
+             { "number": 15, "title": "Chapter 15: Polymers / अध्याय 15: बहुलक", "pdf": "" },
+             { "number": 16, "title": "Chapter 16: Chemistry in Everyday Life / अध्याय 16: दैनिक जीवन में रसायन", "pdf": "" }
+           ]
     },
 
     "Biology": {
