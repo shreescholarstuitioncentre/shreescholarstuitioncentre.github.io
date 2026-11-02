@@ -4,12 +4,59 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#09244b">
     <meta name="robots" content="noindex,nofollow,noarchive">
     <meta name="googlebot" content="noindex,nofollow,noarchive">
 
     <title>SSTC | Student Registration</title>
 
-    <link rel="stylesheet" href="student-registration.css">
+    <!-- Fonts + Bootstrap (Bootstrap pehle, apni CSS uske baad) -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script>
+    /*
+     * AUTO VERSION (version-free CSS)
+     * File GitHub par badli -> naya version -> browser nayi CSS leta hai.
+     * File nahi badli -> cache se turant load.
+     */
+    (function () {
+
+        function sstcVersion(path) {
+
+            try {
+
+                var xhr = new XMLHttpRequest();
+
+                xhr.open("HEAD", path, false);
+                xhr.setRequestHeader("Cache-Control", "no-cache");
+                xhr.send();
+
+                if (xhr.status >= 200 && xhr.status < 300) {
+
+                    var modified = Date.parse(xhr.getResponseHeader("Last-Modified"));
+
+                    if (!isNaN(modified)) {
+                        return modified;
+                    }
+                }
+            }
+            catch (error) {
+                /* neeche fallback chalega */
+            }
+
+            /* Fallback: har 10 minute me version badlega */
+            return Math.floor(Date.now() / 600000);
+        }
+
+        window.SSTC_ASSET = function (path) {
+            return path + "?v=" + sstcVersion(path);
+        };
+
+    })();
+
+    document.write('<link rel="stylesheet" href="' + SSTC_ASSET("student-registration.css") + '">');
+    </script>
 
 </head>
 
@@ -42,220 +89,340 @@
 
 
 <!-- =========================================================
-     REGISTRATION PAGE
+     REGISTRATION PAGE  (Bootstrap grid: left info + right form)
 ========================================================= -->
 
 <main class="registration-page">
 
-    <div class="registration-container">
+    <div class="container">
 
-        <!-- HEADING -->
-
-        <div class="registration-heading">
-
-            <div class="registration-icon">🎓</div>
-
-            <h2>Student Registration</h2>
-
-            <p>Create your SSTC Student Portal account</p>
-
-            <span>Your Student ID and Password will be generated automatically after registration</span>
-
-        </div>
+        <div class="row g-4 g-xl-5 align-items-start">
 
 
-        <!-- FORM CARD -->
+            <!-- ================= LEFT : WELCOME + STEPS ================= -->
 
-        <div class="registration-card">
+            <aside class="col-lg-5 reg-aside">
 
-            <form id="studentRegistrationForm" novalidate>
+                <div class="reg-hero">
 
-                <h3>Student Details</h3>
-                <p class="form-subtitle">Please fill in accurate information</p>
+                    <div class="reg-hero-icon">🎓</div>
 
+                    <h2>Student Registration</h2>
 
-                <!-- FULL NAME -->
+                    <p>Create your SSTC Student Portal account</p>
 
-                <label for="fullName">Full Name</label>
-
-                <div class="input-box">
-                    <span>🧑</span>
-                    <input type="text" id="fullName" placeholder="Enter student's full name" required>
-                </div>
-
-
-                <!-- MOBILE -->
-
-                <label for="mobile">Mobile Number</label>
-
-                <div class="input-box">
-                    <span>📱</span>
-                    <input type="tel" id="mobile" placeholder="10-digit mobile number" maxlength="10" required>
-                </div>
-
-
-                <!-- GENDER -->
-
-                <label>Gender</label>
-
-                <div class="gender-options">
-
-                    <label class="gender-choice">
-                        <input type="radio" name="gender" value="Male" required>
-                        <span>Male</span>
-                    </label>
-
-                    <label class="gender-choice">
-                        <input type="radio" name="gender" value="Female">
-                        <span>Female</span>
-                    </label>
-
-                    <label class="gender-choice">
-                        <input type="radio" name="gender" value="Other">
-                        <span>Other</span>
-                    </label>
+                    <span>Your Student ID and Password will be generated automatically after registration</span>
 
                 </div>
 
-
-                <!-- EMAIL -->
-
-                <label for="email">Email ID</label>
-
-                <div class="input-box">
-                    <span>✉️</span>
-                    <input type="email" id="email" placeholder="Enter email address" required>
-                </div>
-
-
-                <!-- CLASS -->
-
-                <label for="studentClass">Class</label>
-
-                <div class="input-box select-box">
-                    <span>🏫</span>
-                    <select id="studentClass" required>
-                        <option value="" disabled selected>Select class</option>
-                        <!-- <option value="LKG">LKG</option>
-                        <option value="UKG">UKG</option>
-                        <option value="1">Class 1</option>
-                        <option value="2">Class 2</option>
-                        <option value="3">Class 3</option>
-                        <option value="4">Class 4</option>
-                        <option value="5">Class 5</option>
-                        <option value="6">Class 6</option>
-                        <option value="7">Class 7</option>
-                        <option value="8">Class 8</option> -->
-                        <option value="9">Class 9</option>
-                        <option value="10">Class 10</option>
-                        <!-- <option value="11">Class 11</option> -->
-                        <!-- <option value="12">Class 12</option> -->
-                    </select>
-                </div>
-
-
-                <!-- BOARD -->
-
-                <label for="board">Board</label>
-
-                <div class="input-box select-box">
-                    <span>📘</span>
-                    <select id="board" required>
-                        <option value="" disabled selected>Select board</option>
-                        <option value="CBSE">CBSE</option>
-                        <option value="ICSE">ICSE</option>
-                        <option value="UP Board">UP Board</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-
-
-                <!-- SCHOOL NAME -->
-
-                <label for="schoolName">School Name</label>
-
-                <div class="input-box">
-                    <span>🏢</span>
-                    <input type="text" id="schoolName" placeholder="Enter school name" required>
-                </div>
-
-
-                <!-- SCHOOL PLACE -->
-
-                <label for="schoolPlace">School Place</label>
-
-                <div class="input-box">
-                    <span>📍</span>
-                    <input type="text" id="schoolPlace" placeholder="Enter school location / city" required>
-                </div>
-
-
-                <!-- AUTO GENERATED (readonly, filled after success) -->
-
-                <label for="studentId">Student ID</label>
-
-                <div class="input-box readonly-box">
-                    <span>🎫</span>
-                    <input type="text" id="studentId" readonly>
-                </div>
-
-                <label for="generatedPassword">Password</label>
-
-                <div class="input-box readonly-box">
-                    <span>🔑</span>
-                    <input type="text" id="generatedPassword" readonly>
-                </div>
-
-
-                <!-- CONFIRM -->
-
-                <label class="confirm-row">
-                    <input type="checkbox" id="confirmInformation">
-                    <span>I confirm that the above information is correct.</span>
-                </label>
-
-
-                <!-- SUBMIT -->
-
-                <button type="submit" class="register-button" id="registerButton">
-                    🎓 Register Student
+                <!-- Mobile par band (button se khulta hai), desktop par hamesha khula -->
+                <button
+                    class="reg-more-btn d-lg-none"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#regBenefits"
+                    aria-expanded="false"
+                    aria-controls="regBenefits">
+                    <b>✨ Steps &amp; fayde dekhein</b>
+                    <span aria-hidden="true">▾</span>
                 </button>
 
+                <div class="collapse d-lg-block" id="regBenefits">
 
-                <!-- MESSAGE -->
+                    <div class="reg-steps">
 
-                <div id="registrationMessage" class="registration-message"></div>
+                        <h4>3 Simple Steps</h4>
 
+                        <div class="reg-step">
+                            <div class="reg-step-no">1</div>
+                            <div>
+                                <strong>Details bharein</strong>
+                                <span>Form me student ki sahi jaankari likhein.</span>
+                            </div>
+                        </div>
 
-                <!-- SUCCESS BOX -->
+                        <div class="reg-step">
+                            <div class="reg-step-no">2</div>
+                            <div>
+                                <strong>ID &amp; Password paayein</strong>
+                                <span>Registration ke turant baad Student ID aur Password dikhega — use save kar lein.</span>
+                            </div>
+                        </div>
 
-                <div id="registrationSuccess" class="registration-success" style="display:none;">
+                        <div class="reg-step">
+                            <div class="reg-step-no">3</div>
+                            <div>
+                                <strong>Login karke padhein</strong>
+                                <span>Student Login se andar jaakar Free chapters, Notes aur Question Bank use karein.</span>
+                            </div>
+                        </div>
 
-                    <h4>🎉 Registration Successful!</h4>
-
-                    <p>Please save these details — you will need them to log in.</p>
-
-                    <div class="success-row">
-                        <span>Student ID</span>
-                        <strong id="successStudentId">-</strong>
                     </div>
 
-                    <div class="success-row">
-                        <span>Password</span>
-                        <strong id="successPassword">-</strong>
-                    </div>
+                    <div class="reg-perks">
 
-                    <a href="sstc-access.html" class="go-login-btn">🔐 Go to Login</a>
+                        <div class="reg-perk">
+                            <div class="reg-perk-icon">🎁</div>
+                            <strong>Free Chapters</strong>
+                            <span>Kuch chapters bilkul free</span>
+                        </div>
+
+                        <div class="reg-perk">
+                            <div class="reg-perk-icon">📝</div>
+                            <strong>Chapter Notes</strong>
+                            <span>English &amp; Hindi medium</span>
+                        </div>
+
+                        <div class="reg-perk">
+                            <div class="reg-perk-icon">📚</div>
+                            <strong>E-Book QB</strong>
+                            <span>3, 6 ya 12 mahine ke rent plan</span>
+                        </div>
+
+                        <div class="reg-perk">
+                            <div class="reg-perk-icon">🔒</div>
+                            <strong>Secure Portal</strong>
+                            <span>Sirf aapke ID se access</span>
+                        </div>
+
+                    </div>
 
                 </div>
 
-            </form>
-
-        </div>
+            </aside>
 
 
-        <div class="already-registered">
-            Already registered? <a href="sstc-access.html">Login here</a>
+            <!-- ================= RIGHT : FORM ================= -->
+
+            <section class="col-lg-7">
+
+                <div class="registration-card">
+
+                    <!-- Progress (sirf dikhane ke liye, form ka kaam nahi badalta) -->
+                    <div class="reg-progress" id="regProgress">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span>Form progress</span>
+                            <strong id="regProgressText">0 / 9 done</strong>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" id="regProgressBar" role="progressbar"
+                                 style="width:0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <form id="studentRegistrationForm" novalidate>
+
+                        <h3>Student Details</h3>
+                        <p class="form-subtitle">Please fill in accurate information</p>
+
+
+                        <!-- ===== 1. PERSONAL ===== -->
+
+                        <div class="reg-section-title"><i>1</i> Personal Details</div>
+
+                        <div class="row g-3">
+
+                            <div class="col-12">
+                                <label class="form-label" for="fullName">Full Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">🧑</span>
+                                    <input type="text" class="form-control" id="fullName" placeholder="Enter student's full name" autocomplete="name" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="mobile">Mobile Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">📱</span>
+                                    <input type="tel" class="form-control" id="mobile" placeholder="10-digit mobile number" maxlength="10" inputmode="numeric" autocomplete="tel" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="email">Email ID</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">✉️</span>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter email address" autocomplete="email" required>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-label" id="genderLabel">Gender</div>
+
+                                <div class="gender-options" role="radiogroup" aria-labelledby="genderLabel">
+
+                                    <label class="gender-choice">
+                                        <input type="radio" name="gender" value="Male" required>
+                                        <span>Male</span>
+                                    </label>
+
+                                    <label class="gender-choice">
+                                        <input type="radio" name="gender" value="Female">
+                                        <span>Female</span>
+                                    </label>
+
+                                    <label class="gender-choice">
+                                        <input type="radio" name="gender" value="Other">
+                                        <span>Other</span>
+                                    </label>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!-- ===== 2. SCHOOL ===== -->
+
+                        <div class="reg-section-title"><i>2</i> School Details</div>
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="studentClass">Class</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">🏫</span>
+                                    <select class="form-select" id="studentClass" required>
+                                        <option value="" disabled selected>Select class</option>
+                                        <!-- <option value="LKG">LKG</option>
+                                        <option value="UKG">UKG</option>
+                                        <option value="1">Class 1</option>
+                                        <option value="2">Class 2</option>
+                                        <option value="3">Class 3</option>
+                                        <option value="4">Class 4</option>
+                                        <option value="5">Class 5</option>
+                                        <option value="6">Class 6</option>
+                                        <option value="7">Class 7</option>
+                                        <option value="8">Class 8</option> -->
+                                        <option value="9">Class 9</option>
+                                        <option value="10">Class 10</option>
+                                        <!-- <option value="11">Class 11</option> -->
+                                        <!-- <option value="12">Class 12</option> -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="board">Board</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">📘</span>
+                                    <select class="form-select" id="board" required>
+                                        <option value="" disabled selected>Select board</option>
+                                        <option value="CBSE">CBSE</option>
+                                        <option value="ICSE">ICSE</option>
+                                        <option value="UP Board">UP Board</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-7">
+                                <label class="form-label" for="schoolName">School Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">🏢</span>
+                                    <input type="text" class="form-control" id="schoolName" placeholder="Enter school name" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5">
+                                <label class="form-label" for="schoolPlace">School Place</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">📍</span>
+                                    <input type="text" class="form-control" id="schoolPlace" placeholder="School location / city" required>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!-- ===== 3. AUTO GENERATED ===== -->
+
+                        <div class="reg-section-title">
+                            <i>3</i> Your Login <small>auto-generated</small>
+                        </div>
+
+                        <div class="reg-login-box">
+
+                            <p class="reg-login-note">
+                                Ye dono khaane registration ke baad apne aap bhar jayenge. Inhe khud mat likhiye.
+                            </p>
+
+                            <div class="row g-3">
+
+                                <div class="col-md-6">
+                                    <label class="form-label" for="studentId">Student ID</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">🎫</span>
+                                        <input type="text" class="form-control" id="studentId" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label" for="generatedPassword">Password</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">🔑</span>
+                                        <input type="text" class="form-control" id="generatedPassword" readonly>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- CONFIRM -->
+
+                        <label class="confirm-row">
+                            <input type="checkbox" id="confirmInformation">
+                            <span>I confirm that the above information is correct.</span>
+                        </label>
+
+
+                        <!-- SUBMIT -->
+
+                        <button type="submit" class="register-button" id="registerButton">
+                            🎓 Register Student
+                        </button>
+
+
+                        <!-- MESSAGE -->
+
+                        <div id="registrationMessage" class="registration-message"></div>
+
+
+                        <!-- SUCCESS BOX -->
+
+                        <div id="registrationSuccess" class="registration-success" style="display:none;">
+
+                            <h4>🎉 Registration Successful!</h4>
+
+                            <p>Please save these details — you will need them to log in.</p>
+
+                            <div class="success-row">
+                                <span>Student ID</span>
+                                <strong id="successStudentId">-</strong>
+                            </div>
+
+                            <div class="success-row">
+                                <span>Password</span>
+                                <strong id="successPassword">-</strong>
+                            </div>
+
+                            <a href="sstc-access.html" class="go-login-btn">🔐 Go to Login</a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <div class="already-registered">
+                    Already registered? <a href="sstc-access.html">Login here</a>
+                </div>
+
+            </section>
+
         </div>
 
     </div>
@@ -300,7 +467,65 @@
 </script>
 
 <script src="student-registration.js"></script>
-    <script src="sstc-assistant.js" defer></script>
+<script src="sstc-assistant.js" defer></script>
+
+<!-- Bootstrap JS (mobile par steps wala collapse isi se chalta hai) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<!-- Form progress bar (sirf padhta hai, student-registration.js ko nahi chhedta) -->
+<script>
+(function () {
+
+    var form = document.getElementById("studentRegistrationForm");
+    var bar  = document.getElementById("regProgressBar");
+    var text = document.getElementById("regProgressText");
+    var wrap = document.getElementById("regProgress");
+
+    if (!form || !bar || !text || !wrap) { return; }
+
+    function val(id) {
+        var el = document.getElementById(id);
+        return el ? el.value.trim() : "";
+    }
+
+    function update() {
+
+        var email   = document.getElementById("email");
+        var confirm = document.getElementById("confirmInformation");
+
+        var checks = [
+            val("fullName").length >= 2,
+            /^\d{10}$/.test(val("mobile")),
+            !!form.querySelector('input[name="gender"]:checked'),
+            !!email && email.value.trim() !== "" && email.checkValidity(),
+            val("studentClass") !== "",
+            val("board") !== "",
+            val("schoolName").length >= 2,
+            val("schoolPlace").length >= 2,
+            !!confirm && confirm.checked
+        ];
+
+        var done = checks.filter(Boolean).length;
+        var pct  = Math.round(done / checks.length * 100);
+
+        bar.style.width = pct + "%";
+        bar.setAttribute("aria-valuenow", pct);
+
+        text.textContent = (done === checks.length)
+            ? "Ready to register ✅"
+            : done + " / " + checks.length + " done";
+
+        wrap.classList.toggle("done", done === checks.length);
+    }
+
+    form.addEventListener("input", update);
+    form.addEventListener("change", update);
+    form.addEventListener("reset", function () { setTimeout(update, 0); });
+
+    update();
+
+})();
+</script>
 
 </body>
 </html>
