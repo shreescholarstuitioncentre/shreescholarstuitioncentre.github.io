@@ -710,6 +710,7 @@ const SSTC_EBOOKS = {
                        { "number": 18, "title": "काव्य खंड 9: पथ की पहचान", "pdf": "ebooks/class-9/hindi/chapter-18.pdf" },
                        { "number": 19, "title": "काव्य खंड 10: बादल को घिरते देखा है", "pdf": "ebooks/class-9/hindi/chapter-19.pdf" },
                        { "number": 20, "title": "काव्य खंड 11: अच्छा होता, सितार-संगीत की रात", "pdf": "ebooks/class-9/hindi/chapter-20.pdf" },
+                        { "number": 45, "title": "काव्य खंड 12: प्रभु जी तुम चंदन हम पानी", "pdf": "ebooks/class-9/hindi/chapter-45.pdf" },
                
                        // ==============================
                        // संस्कृत खंड
@@ -1005,7 +1006,40 @@ const SSTC_EBOOKS = {
                 { "number": 29, "title": "Chapter 29: Chiti - Chandralok me Pratham Baar - Sumitranandan Pant / अध्याय 29: चींटी - चन्द्रलोक में प्रथम बार - सुमित्रानन्दन पन्त", "pdf": "ebooks/class-10/hindi/chapter-29.pdf" },
                 { "number": 30, "title": "Chapter 30: Haldighaati - Shyaamnarayan Pandey  / अध्याय 30: हल्दीघाटी - श्यामनारायण पाण्डेय", "pdf": "ebooks/class-10/hindi/chapter-30.pdf" },
                 { "number": 31, "title": "Chapter 31: Ken kim Vardhate? / अध्याय 31: केन किं वर्धते?", "pdf": "ebooks/class-10/hindi/chapter-31.pdf" },
-                { "number": 32, "title": "Chapter 32: Jhanshi ki Rani ki Samadhi par - Subhadrakumari Chauhan (Kavya) / अध्याय 32: झाँसी की रानी की समाधि परी - सुभद्राकुमारी चौहान (काव्य)", "pdf": "ebooks/class-10/hindi/chapter-32.pdf" }
+                { "number": 32, "title": "Chapter 32: Jhanshi ki Rani ki Samadhi par - Subhadrakumari Chauhan (Kavya) / अध्याय 32: झाँसी की रानी की समाधि परी - सुभद्राकुमारी चौहान (काव्य)", "pdf": "ebooks/class-10/hindi/chapter-32.pdf" },
+                 // ==============================
+                       // काव्य सौन्दर्य के तत्त्व
+                       // ==============================
+               
+                       { "number": 33, "title": "काव्य सौन्दर्य: रस", "pdf": "ebooks/class-10/hindi/chapter-33.pdf" },
+                       { "number": 34, "title": "काव्य सौन्दर्य: छन्द", "pdf": "ebooks/class-10/hindi/chapter-34.pdf" },
+                       { "number": 35, "title": "काव्य सौन्दर्य: अलंकार", "pdf": "ebooks/class-10/hindi/chapter-35.pdf" },
+               
+                       // ==============================
+                       // हिन्दी व्याकरण तथा शब्द रचना
+                       // ==============================
+               
+                       { "number": 36, "title": "हिन्दी व्याकरण: वर्तनी तथा विराम-चिह्न", "pdf": "ebooks/class-10/hindi/chapter-36.pdf" },
+                       { "number": 37, "title": "हिन्दी व्याकरण: शब्द रचना", "pdf": "ebooks/class-10/hindi/chapter-37.pdf" },
+                       { "number": 38, "title": "हिन्दी व्याकरण: समास", "pdf": "ebooks/class-10/hindi/chapter-38.pdf" },
+                       { "number": 39, "title": "हिन्दी व्याकरण: मुहावरे एवं लोकोक्तियाँ", "pdf": "ebooks/class-10/hindi/chapter-39.pdf" },
+               
+                       // ==============================
+                       // संस्कृत व्याकरण
+                       // ==============================
+               
+                       { "number": 40, "title": "संस्कृत व्याकरण: सन्धि", "pdf": "ebooks/class-10/hindi/chapter-40.pdf" },
+                       { "number": 41, "title": "संस्कृत व्याकरण: शब्द रूप", "pdf": "ebooks/class-10/hindi/chapter-41.pdf" },
+                       { "number": 42, "title": "संस्कृत व्याकरण: धातु रूप", "pdf": "ebooks/class-10/hindi/chapter-42.pdf" },
+                       { "number": 43, "title": "संस्कृत व्याकरण: हिन्दी-संस्कृत अनुवाद", "pdf": "ebooks/class-10/hindi/chapter-43.pdf" },
+               
+                       // ==============================
+                       // पत्र लेखन
+                       // ==============================
+               
+                       { "number": 44, "title": "पत्र लेखन: प्रार्थना पत्र", "pdf": "ebooks/class-10/hindi/chapter-44.pdf" }
+
+
              ]
          },
 
