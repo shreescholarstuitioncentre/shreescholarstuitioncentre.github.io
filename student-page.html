@@ -9,7 +9,10 @@
     <meta name="googlebot" content="noindex,nofollow,noarchive">
 
     <title>SSTC | Student E-Book Portal</title>
-
+    
+       <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
     <script>
     /*
      * AUTO VERSION (file badalne par hi naya version)
@@ -54,6 +57,7 @@
 
     document.write('<link rel="stylesheet" href="' + SSTC_ASSET("student-page.css") + '">');
     document.write('<link rel="stylesheet" href="' + SSTC_ASSET("student-notes.css") + '">');
+    document.write('<link rel="stylesheet" href="' + SSTC_ASSET("student-ui.css") + '">');
     </script>
 
 </head>
@@ -121,61 +125,73 @@
     ====================================================== -->
 
     <section class="portal-title">
-
+ 
     <div class="pt-left">
-
+ 
         <!-- Student Portal badge + Session timer ek hi line me -->
         <div class="pt-top">
             <span class="portal-badge">🎓 STUDENT PORTAL</span>
             <div id="sstcTrackerSlot"></div>
         </div>
-
-        <h2>SSTC E-Book Question Banks & Notes</h2>
-
+ 
+        <h2>SSTC E-Book Question Banks &amp; Notes</h2>
+ 
         <p>Access your purchased and rented e-books securely.</p>
-
+ 
     </div>
-
-    <!-- ✅ NAYA: SSTC FREE'S button (Notes se pehle) -->
-    <button
-        type="button"
-        class="notes-btn sstc-notes-btn sstc-free-btn"
-        id="sstcFreeBtn"
-        onclick="openSstcFree()">
-
-        <span class="sstc-notes-title">🎁 SSTC FREE'S</span>
-        <span class="sstc-notes-sub">(Free Chapters - Click Here)</span>
-        <span class="sstc-notes-sub">(Free Ke Liye Yahan Click Kare)</span>
-
-    </button>
-
-    <button
-        type="button"
-        class="notes-btn sstc-notes-btn"
-        id="sstcNotesBtn"
-        aria-expanded="false"
-        aria-controls="sstcNotesSection"
-        onclick="toggleSstcNotes()">
-
-        <span class="sstc-notes-title">📝 SSTC NOTES</span>
-        <span class="sstc-notes-sub">(For Notes - Click Here)</span>
-        <span class="sstc-notes-sub">(Notes Ke Liye Yahan Click Kare)</span>
-
-    </button>
-
-    <button
-        type="button"
-        class="notes-btn sstc-notes-btn"
-        id="sstcEbookBtn"
-        onclick="openSstcEbook()">
-
-        <span class="sstc-notes-title">📚 SSTC E-BOOK QB's</span>
-        <span class="sstc-notes-sub">(Questions E-Book Ke Liye Yahan Click Kare)</span>
-        <span class="sstc-notes-sub">(For Questions E-Book - Click Kare)</span>
-    </button>
-
+ 
+    <!-- Bootstrap grid: desktop par 3 barabar buttons, mobile par ek ke neeche ek -->
+    <div class="row g-3 sstc-actions">
+ 
+        <div class="col-12 col-md-4">
+            <button
+                type="button"
+                class="notes-btn sstc-notes-btn sstc-free-btn"
+                id="sstcFreeBtn"
+                onclick="openSstcFree()">
+ 
+                <span class="sstc-notes-title">🎁 SSTC FREE'S</span>
+                <span class="sstc-notes-sub">(Free Chapters - Click Here)</span>
+                <span class="sstc-notes-sub">(Free Ke Liye Yahan Click Kare)</span>
+ 
+            </button>
+        </div>
+ 
+        <div class="col-12 col-md-4">
+            <button
+                type="button"
+                class="notes-btn sstc-notes-btn"
+                id="sstcNotesBtn"
+                aria-expanded="false"
+                aria-controls="sstcNotesSection"
+                onclick="toggleSstcNotes()">
+ 
+                <span class="sstc-notes-title">📝 SSTC NOTES</span>
+                <span class="sstc-notes-sub">(For Notes - Click Here)</span>
+                <span class="sstc-notes-sub">(Notes Ke Liye Yahan Click Kare)</span>
+ 
+            </button>
+        </div>
+ 
+        <div class="col-12 col-md-4">
+            <button
+                type="button"
+                class="notes-btn sstc-notes-btn"
+                id="sstcEbookBtn"
+                onclick="openSstcEbook()">
+ 
+                <span class="sstc-notes-title">📚 SSTC E-BOOK QB's</span>
+                <span class="sstc-notes-sub">(Questions E-Book Ke Liye Yahan Click Kare)</span>
+                <span class="sstc-notes-sub">(For Questions E-Book - Click Kare)</span>
+ 
+            </button>
+        </div>
+ 
+    </div>
+ 
 </section>
 
+    
 <section class="profile-card pf3" id="sstcProfileCard">
 
     <!-- Hamesha dikhne wali patli strip (click = open / close) -->
@@ -497,14 +513,12 @@
                 <button
                     type="button"
                     id="payNowBtn"
+                    class="pay-now-btn mt-3"
                     onclick="openPaymentModal()"
-                    hidden
-                    style="margin-top:14px;background:#16a34a;color:#fff;border:0;
-                           padding:10px 18px;border-radius:8px;font-weight:700;
-                           cursor:pointer;font-size:14px;">
+                    hidden>
                     💳 Pay Now
                 </button>
-
+                
             </div>
 
             <div class="study-panel-side">
@@ -896,7 +910,7 @@
     document.write('<script src="' + SSTC_ASSET("sstc-assistant.js") + '"><\/script>');
 </script>
 <script src="student-free.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>
