@@ -1,0 +1,214 @@
+/* =====================================================
+   student-ui.css — SSTC Student Portal design upgrade
+   Load order: Bootstrap -> student-page.css -> student-notes.css -> student-ui.css (SABSE LAST)
+   Koi id / JS class nahi badli — sirf look, spacing aur readability.
+===================================================== */
+:root{
+  --s-navy:#09244b; --s-ink:#0b1e3c; --s-muted:#4b5f7a;
+  --s-teal:#0f766e; --s-green:#16a34a; --s-blue:#2563eb;
+  --s-shadow:0 2px 4px rgba(11,30,60,.05),0 14px 32px rgba(11,30,60,.10);
+}
+
+/* ---------- 1. Bootstrap reboot neutraliser ----------
+   Bootstrap h1-h6 / p par margin-bottom lagata hai; purana design 0 margin par bana hai.
+   :where() ki wajah se ye rules purani class-rules ko override nahi karte. */
+:where(.sstc-header,.student-page,.sstc-footer,.sstc-rent-modal) :is(h1,h2,h3,h4,h5,h6){margin-bottom:0;font-weight:700}
+:where(.sstc-header,.student-page,.sstc-footer,.sstc-rent-modal) p{margin-bottom:0}
+
+/* ---------- 2. Base ---------- */
+html{scroll-padding-top:96px}
+body{font-family:'Nunito','Segoe UI',Arial,sans-serif;font-size:16px;line-height:1.55;color:#12264a}
+body::before{opacity:.08}
+.portal-title h2,.section-heading h2,.chapter-header h2,.nt-head h2,.fr-head h2,
+.brand-text h1,.sstc-rent-head h3{font-family:'Baloo 2','Nunito',sans-serif}
+:focus-visible{outline:3px solid #93c5fd;outline-offset:2px}
+
+/* ---------- 3. Header ---------- */
+.sstc-header{background:linear-gradient(135deg,#09244b,#0d3470);
+  border-bottom:3px solid transparent;
+  border-image:linear-gradient(90deg,#d32f2f,#ff9800,#6c2bd9) 1;
+  box-shadow:0 8px 24px rgba(9,36,75,.28)}
+.brand-text h1{font-size:19px;letter-spacing:.5px}
+.brand-text h1 span{font-size:12.5px}
+.brand-text p{font-size:11.5px}
+.main-nav a,.logout-btn{padding:10px 18px;border-radius:999px;font-size:15px;font-family:inherit}
+.main-nav a:hover{color:#fff;background:rgba(255,255,255,.22)}
+.main-nav a.active,.main-nav a.active:hover{background:#fff;color:#09244b}
+
+/* ---------- 4. Page title + 3 action buttons ---------- */
+.student-page{max-width:1180px;padding:28px 18px 64px}
+.portal-title{flex-direction:column;align-items:stretch;gap:18px;margin-bottom:22px}
+.portal-title .pt-left{width:100%}
+.portal-badge{padding:7px 16px;font-size:12.5px}
+.portal-title h2{margin-top:12px;font-size:clamp(25px,4.2vw,36px);line-height:1.2;color:var(--s-ink)}
+.portal-title p{margin-top:6px;font-size:15.5px;color:var(--s-muted)}
+
+.sstc-actions>[class*="col"]{display:flex}
+.portal-title .notes-btn.sstc-notes-btn{flex:1;width:100%;min-width:0;min-height:96px;
+  padding:16px 18px;gap:4px;border:2px solid rgba(255,255,255,.4);border-radius:18px}
+.sstc-notes-title{font-size:clamp(17px,2.3vw,21px)!important}
+.portal-title .sstc-notes-sub{font-size:13px}
+#sstcFreeBtn{background:linear-gradient(135deg,#22c55e,#15803d);box-shadow:0 10px 24px rgba(22,163,74,.38)}
+#sstcNotesBtn{background:linear-gradient(135deg,#14b8a6,#0f766e);box-shadow:0 10px 24px rgba(15,118,110,.38)}
+#sstcEbookBtn{background:linear-gradient(135deg,#3b82f6,#1d4ed8);box-shadow:0 10px 24px rgba(37,99,235,.38)}
+#sstcNotesBtn[aria-expanded="true"]{outline:4px solid rgba(15,118,110,.35);outline-offset:3px}
+
+/* ---------- 5. Profile strip ---------- */
+.profile-card.pf3{border-radius:18px;border:1px solid #d3e0f3;box-shadow:var(--s-shadow)}
+.pf3-bar{padding:12px 18px 12px 22px}
+.pf3-avatar{width:46px;height:46px;font-size:20px}
+.pf3-mini h2{font-size:17px}
+.pf3-mini p{font-size:13px}
+.pf3-bar .student-status{padding:4px 12px;font-size:12.5px}
+.pf3-hint{font-size:12.5px}
+.pf3-chip{padding:9px 12px}
+.pf3-chip span{font-size:11px}
+.pf3-chip strong{font-size:14px}
+
+/* ---------- 6. Notes section (teal) ---------- */
+.nt-section{margin-top:22px;padding:clamp(16px,3vw,30px);border-radius:22px;box-shadow:var(--s-shadow)}
+.nt-tag{font-size:12.5px}
+.nt-head h2{font-size:clamp(22px,3vw,28px)}
+.nt-head p{max-width:620px;font-size:14.5px}
+.nt-medium{padding:5px;border-radius:14px}
+.nt-medium button{min-height:42px;padding:10px 18px;border-radius:10px;font-size:14px}
+.nt-close{padding:10px 16px;border-radius:10px;font-size:13px}
+.nt-rent-panel{padding:16px 18px;border-radius:16px}
+.nt-rent-title{font-size:15.5px}
+.nt-chip{padding:8px 14px;font-size:13px}
+.nt-chip small{font-size:12px}
+.nt-pay-btn{padding:12px 20px;font-size:14px}
+.nt-rent-status{font-size:12.5px}
+.nt-step-title{font-size:17px}
+.nt-step-no{width:30px;height:30px;font-size:14px}
+
+/* subject cards */
+.nt-subject{border-radius:16px}
+.nt-subject-img img{padding:6px}
+.nt-subject-tag{padding:4px 8px;font-size:10.5px}
+.nt-subject-body h4{font-size:15px;line-height:1.25;white-space:normal;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.nt-subject-count{font-size:12.5px}
+.nt-subject-rent{padding:10px 8px;border-radius:10px;font-size:12.5px}
+.nt-subject.active{box-shadow:0 0 0 4px rgba(15,118,110,.2),0 12px 26px rgba(15,118,110,.28)}
+@media(min-width:651px){
+  .nt-subjects{grid-template-columns:repeat(auto-fill,minmax(172px,1fr));gap:16px}
+  .nt-subject-img{height:200px;background:linear-gradient(180deg,#f2fbf9,#fff)}
+}
+@media(max-width:650px){
+  .nt-subject-img{height:150px}
+}
+
+/* chapter list */
+.nt-chapters{max-height:min(62vh,600px);gap:10px;padding:2px 6px 2px 2px;
+  scrollbar-width:thin;scrollbar-color:#0d9488 #e3f1ee}
+.nt-chapters::-webkit-scrollbar{width:8px}
+.nt-chapters::-webkit-scrollbar-track{background:#e3f1ee;border-radius:8px}
+.nt-chapters::-webkit-scrollbar-thumb{background:#0d9488;border-radius:8px}
+.nt-chapters>.nt-empty{grid-column:1/-1}
+.nt-chapter{padding:14px 16px;border-radius:14px}
+.nt-chapter-no{font-size:16px}
+.nt-chapter-title{font-size:15.5px;line-height:1.4}
+.nt-free{padding:3px 10px;font-size:11px}
+.nt-chapter-open{padding:9px 14px;font-size:13px}
+@media(min-width:651px){
+  .nt-chapter{grid-template-columns:46px 1fr auto}
+}
+@media(min-width:992px){
+  .nt-chapters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start}
+}
+
+/* notes viewer */
+.nt-viewer{border-radius:18px;box-shadow:var(--s-shadow)}
+.nt-bar{padding:14px 18px}
+.nt-bar-title strong{font-size:16.5px}
+.nt-bar-title small{font-size:12.5px}
+.nt-bar-actions button{padding:9px 14px;font-size:13px}
+.nt-frame-wrap{height:min(84vh,860px)}
+
+/* ---------- 7. Free's section ---------- */
+.fr-section{padding:clamp(16px,3vw,26px);border-radius:20px;box-shadow:var(--s-shadow)}
+.fr-tag{font-size:12.5px}
+.fr-head h2{font-size:clamp(22px,3vw,26px)}
+.fr-head p{font-size:14.5px}
+.fr-medium button{padding:10px 20px;font-size:14px}
+.fr-subject-title{font-size:16px}
+.fr-subject-count{font-size:13px}
+.fr-item-info h3{font-size:16px}
+.fr-item-info p{font-size:13px}
+.fr-item-open{padding:8px 14px;font-size:13px}
+.fr-frame-wrap{height:min(80vh,820px)}
+
+/* ---------- 8. E-Book QB (subject cards, chapters, reader) ---------- */
+.section-badge,.chapter-label{font-size:12px}
+.section-heading h2{font-size:clamp(22px,3.2vw,28px)}
+.section-heading p{font-size:14.5px}
+.library-count strong{font-size:24px}
+.study-panel{padding:16px 18px;border-radius:16px}
+.study-panel-title{font-size:15.5px}
+.rented-chip{padding:7px 14px;font-size:13px}
+.subject-filter button{padding:9px 14px;font-size:13px}
+.save-status{font-size:12px}
+
+.subject-card{border-radius:16px}
+.subject-card-content{padding:12px 14px 14px}
+.subject-card-badge{padding:4px 8px;font-size:11px}
+.subject-card-content h3{font-size:16px;line-height:1.3}
+.subject-card-content p{font-size:12.5px;min-height:0}
+.subject-chapter-count{font-size:12.5px}
+.subject-rent-toggle{padding:10px 8px;border-radius:10px;font-size:12.5px}
+@media(min-width:1001px){
+  .subject-card{flex:0 0 calc((100% - 36px)/4)}
+  .subject-card-image{height:230px}
+}
+@media(min-width:651px) and (max-width:1000px){
+  .subject-card{flex:0 0 calc((100% - 24px)/3)}
+}
+@media(max-width:650px){
+  .subject-card{flex:0 0 calc((100% - 12px)/2)}
+}
+@media(max-width:420px){
+  .subject-card{flex:0 0 100%}
+}
+
+.chapter-section{padding:24px;border-radius:20px}
+.chapter-header h2{font-size:clamp(21px,3vw,26px)}
+.chapter-header p{font-size:14.5px}
+.chapter-info h3{font-size:16.5px}
+.chapter-info p{font-size:13.5px}
+.chapter-open{padding:10px 16px;font-size:13.5px}
+.chapter-rent-banner{font-size:14px}
+
+.reader-section{border-radius:20px}
+.reader-book-info h3{font-size:16.5px}
+.reader-book-info p{font-size:12.5px}
+.reader-actions button{width:38px;height:38px}
+.reader-security{font-size:12.5px}
+.pdf-viewer{height:min(82vh,820px)}
+.reader-footer-controls button{padding:10px 16px;font-size:13px}
+.page-indicator{font-size:13px}
+
+/* ---------- 9. Summary cards ---------- */
+.summary-card{padding:20px;border-radius:16px}
+.summary-card span{font-size:13px}
+.summary-card strong{font-size:24px}
+
+/* ---------- 10. Rent / Pay windows ---------- */
+.sstc-rent-dialog{border-radius:22px}
+.sstc-rent-head h3{font-size:20px}
+.sstc-rent-head p{font-size:13px}
+.sstc-rent-plan-main strong{font-size:16px}
+.sstc-rent-plan-main small{font-size:12.5px}
+.sstc-rent-plan-price{font-size:24px}
+.sstc-rent-detail-row{font-size:14px}
+.sstc-rent-btn{padding:12px 20px;font-size:14px}
+
+/* ---------- 11. Footer ---------- */
+.footer-container h3{font-size:15px}
+.footer-container p{font-size:12.5px}
+.footer-links{font-size:12.5px}
+.copyright{font-size:11.5px}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
