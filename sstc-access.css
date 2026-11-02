@@ -1,998 +1,331 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
+/* =========================================================
+   SSTC ACCESS (Student + Admin login) — Bootstrap + custom design
+   Load order: Bootstrap  ->  sstc-access.css (ye file)
+   JS ke liye same hain: .login-tab(.active), .login-form(.active-form),
+   .login-message, .password-toggle, #studentTab, #adminTab
+   ========================================================= */
+
+:root{
+  --a-ink:#0b1e3c;
+  --a-muted:#4b5f7a;
+  --a-line:#cfdcf0;
+  --a-blue:#2563eb;
+  --a-vio:#6c2bd9;
+  --a-shadow:0 2px 4px rgba(11,30,60,.05),0 20px 44px rgba(11,30,60,.14);
 }
 
-html{
-  scroll-behavior:smooth;
-}
-
+/* ---------------- Base + background ---------------- */
 body{
   min-height:100vh;
-  color:#333;
-  background:#fff8e1;
-  position:relative;
-}
-
-
-/* =========================
-   BACKGROUND
-========================= */
-
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-
-  background:url("background.jpg")
-    no-repeat center center/cover;
-
-  opacity:.25;
-
-  z-index:-2;
-}
-
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-
-  background:linear-gradient(
-    135deg,
-    rgba(255,255,255,.88),
-    rgba(255,248,225,.88)
-  );
-
-  z-index:-1;
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
-header{
-  position:sticky;
-  top:0;
-  left:0;
-
-  width:100%;
-  min-height:76px;
-
-  z-index:1000;
-
-  display:flex;
-  align-items:center;
-
-  padding:8px 20px;
-
-  background:rgba(255,255,255,.94);
-
-  backdrop-filter:blur(10px);
-
-  box-shadow:
-    0 3px 15px rgba(0,0,0,.10);
-
-  transition:.3s;
-}
-
-header.scrolled{
-  padding:5px 20px;
-
-  background:rgba(255,255,255,.98);
-}
-
-
-/* LOGO */
-
-.logo-link{
-  display:flex;
-  align-items:center;
-  text-decoration:none;
-}
-
-header img{
-  width:auto;
-  height:70px;
-
-  object-fit:contain;
-
-  transition:.3s;
-}
-
-header.scrolled img{
-  height:55px;
-}
-
-
-/* HEADER TEXT */
-
-.nav-text{
-  flex:1;
-  text-align:center;
-}
-
-.nav-text h1{
-  font-size:30px;
-  color:#d32f2f;
-  line-height:1.2;
-}
-
-.nav-text p{
-  margin-top:3px;
-
-  font-size:14px;
-  color:#555;
-}
-
-
-/* HEADER BUTTONS */
-
-.header-buttons{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.header-btn{
-  display:inline-block;
-
-  padding:9px 14px;
-
-  border-radius:10px;
-
-  text-decoration:none;
-
-  font-size:13px;
-  font-weight:bold;
-
-  transition:.3s;
-}
-
-.home-btn{
-  color:#d32f2f;
-  background:#fff;
-
-  border:2px solid #d32f2f;
-}
-
-.home-btn:hover{
-  background:#d32f2f;
-  color:#fff;
-
-  transform:translateY(-2px);
-}
-
-.contact-btn{
-  color:#fff;
-
-  background:
-    linear-gradient(
-      45deg,
-      #d32f2f,
-      #ff5722
-    );
-
-  box-shadow:
-    0 4px 12px rgba(211,47,47,.25);
-}
-
-.contact-btn:hover{
-  transform:translateY(-2px) scale(1.03);
-}
-
-
-/* =========================
-   ACCESS PAGE
-========================= */
-
-.access-page{
-  min-height:calc(100vh - 76px);
-
-  padding:60px 20px 80px;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-.access-container{
-  width:100%;
-  max-width:850px;
-}
-
-
-/* =========================
-   HEADING
-========================= */
-
-.access-heading{
-  text-align:center;
-
-  margin-bottom:25px;
-}
-
-.access-icon{
-  width:75px;
-  height:75px;
-
-  margin:0 auto 12px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:50%;
-
-  font-size:35px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #6c2bd9,
-      #9c4dff
-    );
-
-  box-shadow:
-    0 10px 25px rgba(108,43,217,.30);
-}
-
-.access-heading h2{
-  font-size:38px;
-
-  color:#6c2bd9;
-
-  margin-bottom:5px;
-}
-
-.access-heading p{
-  color:#555;
-  font-size:17px;
-}
-
-.access-heading span{
-  display:inline-block;
-
-  margin-top:5px;
-
-  color:#777;
-  font-size:13px;
-}
-
-
-/* =========================
-   LOGIN CARD
-========================= */
-
-.login-card{
-  max-width:500px;
-
-  margin:auto;
-
-  padding:30px;
-
-  background:rgba(255,255,255,.95);
-
-  border-radius:25px;
-
-  box-shadow:
-    0 15px 45px rgba(0,0,0,.16);
-
-  border:1px solid rgba(255,255,255,.8);
-}
-
-
-/* =========================
-   LOGIN TABS
-========================= */
-
-.login-tabs{
-  display:flex;
-
-  gap:10px;
-
-  padding:5px;
-
-  margin-bottom:25px;
-
-  background:#f1f1f1;
-
-  border-radius:15px;
-}
-
-.login-tab{
-  flex:1;
-
-  padding:12px;
-
-  border:none;
-
-  border-radius:11px;
-
-  background:transparent;
-
-  color:#666;
-
-  font-size:15px;
-  font-weight:bold;
-
-  cursor:pointer;
-
-  transition:.3s;
-}
-
-.login-tab.active{
-  color:#fff;
-
-  background:
-    linear-gradient(
-      45deg,
-      #d32f2f,
-      #ff5722
-    );
-
-  box-shadow:
-    0 5px 15px rgba(211,47,47,.25);
-}
-
-
-/* =========================
-   FORMS
-========================= */
-
-.login-form{
-  display:none;
-}
-
-.login-form.active-form{
-  display:block;
-
-  animation:fadeIn .4s ease;
-}
-
-@keyframes fadeIn{
-
-  from{
-    opacity:0;
-    transform:translateY(10px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-
-}
-
-.login-form h3{
-  text-align:center;
-
-  font-size:25px;
-
-  color:#222;
-}
-
-.form-subtitle{
-  text-align:center;
-
-  color:#777;
-
-  font-size:14px;
-
-  margin:5px 0 25px;
-}
-
-.login-form label{
-  display:block;
-
-  margin:12px 0 7px;
-
-  font-size:14px;
-  font-weight:bold;
-
-  color:#444;
-}
-
-
-/* =========================
-   INPUT
-========================= */
-
-.input-box{
-  display:flex;
-  align-items:center;
-
-  gap:10px;
-
-  width:100%;
-
-  padding:3px 12px;
-
-  background:#fafafa;
-
-  border:1px solid #ddd;
-
-  border-radius:12px;
-
-  transition:.3s;
-}
-
-.input-box:focus-within{
-  border-color:#6c2bd9;
-
-  box-shadow:
-    0 0 0 3px rgba(108,43,217,.10);
-}
-
-.input-box span{
-  font-size:18px;
-}
-
-.input-box input{
-  width:100%;
-
-  border:none;
-  outline:none;
-
-  padding:12px 5px;
-
-  background:transparent;
-
-  font-size:15px;
-}
-
-.password-toggle{
-  border:none;
-
-  background:transparent;
-
-  cursor:pointer;
-
-  font-size:17px;
-}
-
-
-/* =========================
-   LOGIN OPTIONS
-========================= */
-
-.login-options{
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  margin:15px 0;
-
-  font-size:13px;
-}
-
-.login-options a{
-  color:#6c2bd9;
-
-  text-decoration:none;
-
-  font-weight:bold;
-}
-
-.login-options a:hover{
-  text-decoration:underline;
-}
-
-.remember{
-  display:flex !important;
-
-  align-items:center;
-
-  gap:5px;
-
-  margin:0 !important;
-
-  font-weight:normal !important;
-}
-
-
-/* =========================
-   LOGIN BUTTON
-========================= */
-
-.login-button{
-  width:100%;
-
-  padding:14px;
-
-  border:none;
-
-  border-radius:13px;
-
-  background:
-    linear-gradient(
-      45deg,
-      #d32f2f,
-      #ff5722
-    );
-
-  color:#fff;
-
+  font-family:'Nunito','Segoe UI',Arial,sans-serif;
   font-size:16px;
-  font-weight:bold;
-
-  cursor:pointer;
-
-  box-shadow:
-    0 7px 18px rgba(211,47,47,.25);
-
-  transition:.3s;
+  line-height:1.55;
+  color:#12264a;
+  background-color:#f4f8ff;
 }
-
-.login-button:hover{
-  transform:translateY(-2px);
-
-  box-shadow:
-    0 10px 25px rgba(211,47,47,.35);
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;
+  background:url("background.jpg") no-repeat center center/cover;
+  opacity:.18;
 }
-
-.login-button:disabled{
-  opacity:.75;
-
-  cursor:not-allowed;
-
-  transform:none;
-}
-
-.admin-login-button{
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   background:
-    linear-gradient(
-      45deg,
-      #6c2bd9,
-      #9c4dff
-    );
+    radial-gradient(60% 40% at 0% 0%,rgba(211,47,47,.10),transparent 70%),
+    radial-gradient(50% 40% at 100% 8%,rgba(108,43,217,.14),transparent 70%),
+    radial-gradient(60% 40% at 50% 100%,rgba(255,152,0,.14),transparent 70%),
+    linear-gradient(135deg,rgba(255,255,255,.86),rgba(244,248,255,.86));
+}
+:focus-visible{outline:3px solid #93c5fd;outline-offset:2px}
 
-  box-shadow:
-    0 7px 18px rgba(108,43,217,.25);
+/* ---------------- Header ---------------- */
+#mainHeader{
+  position:sticky;top:0;z-index:1000;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  min-height:72px;padding:10px clamp(14px,3vw,28px);
+  background:linear-gradient(135deg,#09244b,#0d3470);
+  border-bottom:3px solid transparent;
+  border-image:linear-gradient(90deg,#d32f2f,#ff9800,#6c2bd9) 1;
+  box-shadow:0 8px 24px rgba(9,36,75,.28);
+  transition:padding .3s;
+}
+#mainHeader.scrolled{padding-top:6px;padding-bottom:6px}
+.logo-link{display:flex;align-items:center;text-decoration:none}
+#mainHeader img{
+  display:block;width:54px;height:54px;border-radius:13px;object-fit:contain;
+  background:#ffb300;box-shadow:0 5px 15px rgba(0,0,0,.25);transition:.3s;
+}
+#mainHeader.scrolled img{width:46px;height:46px}
+.nav-text{flex:1;min-width:180px}
+.nav-text h1{
+  margin:0;color:#fff;line-height:1.2;
+  font-family:'Baloo 2','Nunito',sans-serif;font-size:clamp(17px,2.4vw,22px);font-weight:800;
+}
+.nav-text p{margin:2px 0 0;color:#d9e7ff;font-size:12.5px}
+.header-buttons{display:flex;align-items:center;gap:8px}
+.header-btn{
+  display:inline-block;padding:10px 18px;border-radius:999px;
+  background:rgba(255,255,255,.12);color:#fff;
+  font-size:14px;font-weight:800;text-decoration:none;transition:.2s;
+}
+.header-btn:hover{background:rgba(255,255,255,.24);color:#fff}
+.contact-btn{background:linear-gradient(135deg,#d32f2f,#ff5722)}
+.contact-btn:hover{color:#fff;filter:brightness(1.08)}
+
+/* ---------------- Page ---------------- */
+.access-page{padding:clamp(22px,4vw,52px) 0 90px}
+
+/* ---------------- Left: hero ---------------- */
+.access-hero{
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;gap:14px;
+  padding:18px 20px;border-radius:22px;color:#fff;
+  background:linear-gradient(145deg,#09244b,#1c2f66 60%,#4a1d9e);
+  box-shadow:0 22px 44px -16px rgba(9,36,75,.55);
+}
+.access-hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(rgba(255,255,255,.13) 1.2px,transparent 1.4px) 0 0/18px 18px;
+}
+.access-hero::after{
+  content:"";position:absolute;right:-70px;top:-70px;width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,152,0,.5),transparent 70%);
+}
+.access-hero>*{position:relative;z-index:1}
+.access-icon{
+  flex:0 0 54px;display:grid;place-items:center;width:54px;height:54px;
+  border-radius:16px;font-size:27px;
+  background:linear-gradient(135deg,#ffb300,#ff7043);
+  box-shadow:0 10px 22px rgba(0,0,0,.3);
+  animation:aFloat 3.4s ease-in-out infinite;
+}
+@keyframes aFloat{50%{transform:translateY(-5px) rotate(-4deg)}}
+.access-hero-text h2{
+  margin:0;color:#fff;font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:26px;font-weight:800;line-height:1.15;
+}
+.access-hero-text p{margin:3px 0 0;color:#ffd9a0;font-size:14px;font-weight:700;line-height:1.35}
+.access-hero-text span{display:none;margin-top:8px;color:#cfe0ff;font-size:14px}
+
+.access-points{margin-top:22px}
+.access-point{
+  display:flex;align-items:center;gap:12px;margin-bottom:10px;padding:12px 14px;
+  border:1px solid rgba(255,255,255,.18);border-radius:16px;background:rgba(255,255,255,.1);
+  transition:background .2s,transform .2s;
+}
+.access-point:hover{background:rgba(255,255,255,.18);transform:translateX(4px)}
+.access-point b{
+  flex:0 0 42px;display:grid;place-items:center;height:42px;border-radius:12px;
+  background:rgba(255,255,255,.16);font-size:22px;font-weight:400;
+}
+.access-point strong{display:block;font-size:15.5px}
+.access-point span{display:block;color:#cfe0ff;font-size:13px;line-height:1.4}
+.access-new{
+  display:block;margin-top:14px;padding:12px 16px;border:2px solid #0b1e3c;border-radius:14px;
+  background:#ffc857;color:#0b1e3c;text-align:center;text-decoration:none;
+  font-size:15px;font-weight:800;box-shadow:3px 3px 0 #0b1e3c;transition:transform .15s,box-shadow .15s;
+}
+.access-new:hover{color:#0b1e3c;transform:translate(-2px,-2px);box-shadow:5px 5px 0 #0b1e3c}
+
+@media(min-width:992px){
+  .access-hero{display:block;padding:30px 28px}
+  .access-icon{width:66px;height:66px;margin-bottom:14px;font-size:32px;border-radius:18px}
+  .access-hero-text h2{font-size:clamp(32px,3.6vw,42px)}
+  .access-hero-text p{font-size:18px}
+  .access-hero-text span{display:block}
 }
 
+/* ---------------- Right: login card ---------------- */
+.login-card{
+  position:relative;overflow:hidden;
+  max-width:520px;margin:0 auto;padding:clamp(20px,3vw,32px);
+  border:1px solid #fff;border-radius:24px;
+  background:rgba(255,255,255,.96);box-shadow:var(--a-shadow);
+}
+.login-card::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:5px;
+  background:linear-gradient(90deg,var(--a-blue),var(--a-vio),#ec4899);
+  transition:background .3s;
+}
+.login-card:has(#adminTab.active)::before{
+  background:linear-gradient(90deg,#0b1e3c,#4a1d9e,#ff9800);
+}
 
-/* =========================
-   MESSAGE
-========================= */
+/* tabs (JS .active lagata hai) */
+.login-tabs{display:flex;gap:6px;margin:6px 0 24px;padding:5px;border-radius:16px;background:#eaf0fb}
+.login-tab{
+  flex:1;padding:12px 10px;border:0;border-radius:12px;background:transparent;
+  color:var(--a-muted);font-family:inherit;font-size:16px;font-weight:800;cursor:pointer;transition:.25s;
+}
+.login-tab:hover:not(.active){background:rgba(255,255,255,.75);color:var(--a-ink)}
+.login-tab.active{color:#fff;background:linear-gradient(135deg,var(--a-blue),var(--a-vio));box-shadow:0 6px 16px rgba(37,99,235,.35)}
+#adminTab.active{background:linear-gradient(135deg,#0b1e3c,#4a1d9e);box-shadow:0 6px 16px rgba(11,30,60,.4)}
 
+/* forms (JS .active-form lagata hai) */
+.login-form{display:none}
+.login-form.active-form{display:block;animation:aFade .35s ease}
+@keyframes aFade{from{opacity:0;transform:translateY(8px)}}
+.login-form h3{
+  margin:0;text-align:center;color:var(--a-ink);
+  font-family:'Baloo 2','Nunito',sans-serif;font-size:28px;font-weight:800;
+}
+.form-subtitle{margin:2px 0 20px;text-align:center;color:var(--a-muted);font-size:15px}
+
+/* fields (Bootstrap input-group) */
+.login-card .form-label{margin:14px 0 6px;font-size:14.5px;font-weight:800;color:#123d6b}
+.login-card .input-group-text{
+  padding:0 14px;border:1.5px solid var(--a-line);border-right:0;
+  border-radius:12px 0 0 12px;background:#eef4ff;font-size:18px;
+}
+.login-card .form-control{
+  min-height:50px;border:1.5px solid var(--a-line);border-radius:0 12px 12px 0;
+  background-color:#fbfdff;font-size:16px;color:var(--a-ink);
+}
+.login-card .form-control::placeholder{color:#8a9bb5}
+.login-card .form-control:focus{
+  border-color:var(--a-blue);background-color:#fff;
+  box-shadow:0 0 0 .25rem rgba(37,99,235,.18);
+}
+.login-card .input-group:focus-within .input-group-text,
+.login-card .input-group:focus-within .password-toggle{border-color:var(--a-blue)}
+.login-card .input-group:focus-within .input-group-text{background:#dbe8ff}
+
+/* password eye */
+.login-card .password-toggle{
+  min-width:54px;padding:0 14px;border:1.5px solid var(--a-line);border-left:0;
+  border-radius:0 12px 12px 0;background:#eef4ff;font-size:18px;line-height:1;cursor:pointer;transition:background .2s;
+}
+.login-card .password-toggle:hover{background:#dbe8ff}
+
+/* remember / forgot */
+.login-options{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:16px 0}
+.remember{display:flex;align-items:center;gap:8px;margin:0;color:#35507a;font-size:14.5px;font-weight:600;cursor:pointer}
+.remember input{width:18px;height:18px;margin:0;accent-color:var(--a-blue)}
+.login-options a{color:var(--a-vio);font-size:14.5px;font-weight:800;text-decoration:none}
+.login-options a:hover{text-decoration:underline}
+
+/* login buttons */
+.login-button{
+  display:block;position:relative;width:100%;padding:15px;
+  border:2px solid var(--a-ink);border-radius:14px;
+  background:linear-gradient(135deg,var(--a-blue),var(--a-vio));color:#fff;
+  font-family:'Baloo 2','Nunito',sans-serif;font-size:19px;font-weight:800;letter-spacing:.3px;
+  box-shadow:4px 4px 0 var(--a-ink);cursor:pointer;transition:transform .15s,box-shadow .15s;
+}
+.login-button:hover:not(:disabled){transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--a-ink)}
+.login-button:active:not(:disabled){transform:translate(3px,3px);box-shadow:1px 1px 0 var(--a-ink)}
+.login-button:disabled{opacity:.7;cursor:not-allowed}
+.admin-login-button{background:linear-gradient(135deg,#0b1e3c,#4a1d9e)}
+
+/* message */
 .login-message{
-  min-height:20px;
-
-  margin-top:12px;
-
-  text-align:center;
-
-  font-size:13px;
-
-  font-weight:bold;
+  margin-top:14px;padding:11px 14px;border:1px solid #e2e8f0;border-radius:12px;background:#f8fafc;
+  text-align:center;font-size:14.5px;font-weight:800;line-height:1.45;
 }
-
-
-/* =========================
-   SECURITY
-========================= */
-
-.security-note{
-  display:flex;
-
-  align-items:flex-start;
-
-  gap:10px;
-
-  margin-top:25px;
-
-  padding:13px;
-
-  border-radius:12px;
-
-  background:#f6f2ff;
-
-  color:#555;
-
-  font-size:12px;
-}
-
-.security-note span{
-  font-size:20px;
-}
-
-.security-note strong{
-  color:#6c2bd9;
-}
-
-.security-note p{
-  margin-top:2px;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-  padding:30px 20px 15px;
-
-  background:#111827;
-
-  color:#fff;
-}
-
-.footer-content{
-  max-width:1100px;
-
-  margin:auto;
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  gap:20px;
-}
-
-.footer-brand{
-  display:flex;
-
-  align-items:center;
-
-  gap:12px;
-}
-
-.footer-brand img{
-  width:55px;
-  height:55px;
-
-  object-fit:contain;
-}
-
-.footer-brand h3{
-  font-size:17px;
-}
-
-.footer-brand p{
-  color:#bbb;
-
-  font-size:12px;
-}
-
-.footer-links{
-  display:flex;
-
-  flex-wrap:wrap;
-
-  gap:15px;
-}
-
-.footer-links a{
-  color:#fff;
-
-  text-decoration:none;
-
-  font-size:13px;
-
-  transition:.3s;
-}
-
-.footer-links a:hover{
-  color:#ff9800;
-}
-
-.footer-bottom{
-  text-align:center;
-
-  margin-top:25px;
-  padding-top:15px;
-
-  border-top:1px solid rgba(255,255,255,.12);
-
-  color:#aaa;
-
-  font-size:12px;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:900px){
-
-  .nav-text h1{
-    font-size:24px;
-  }
-
-}
-
-@media(max-width:600px){
-
-  header{
-    min-height:65px;
-
-    padding:6px 10px;
-  }
-
-  header img{
-    height:45px;
-  }
-
-  header.scrolled img{
-    height:40px;
-  }
-
-  .nav-text h1{
-    font-size:15px;
-  }
-
-  .nav-text p{
-    display:none;
-  }
-
-  .header-buttons{
-    gap:4px;
-  }
-
-  .header-btn{
-    padding:7px 8px;
-
-    font-size:10px;
-  }
-
-  .access-page{
-    padding:40px 12px 60px;
-  }
-
-  .access-heading h2{
-    font-size:30px;
-  }
-
-  .login-card{
-    padding:20px 16px;
-
-    border-radius:20px;
-  }
-
-  .footer-content{
-    flex-direction:column;
-
-    text-align:center;
-  }
-
-  .footer-brand{
-    justify-content:center;
-  }
-
-  .footer-links{
-    justify-content:center;
-  }
-
-}
-
-@media(max-width:380px){
-
-  .nav-text{
-    display:none;
-  }
-
-  header{
-    justify-content:space-between;
-  }
-
-  .header-buttons{
-    margin-left:auto;
-  }
-
-}
-
-
-/* =========================================================
-   NEW STUDENT REGISTRATION
-========================================================= */
-
+.login-message:empty{display:none}
+.login-message.error{color:#b91c1c;background:#fef2f2;border-color:#fecaca}
+.login-message.success{color:#087b43;background:#effcf4;border-color:#b9efd1}
+
+/* new student box */
 .student-register-box{
-
-  width:100%;
-
-  margin-top:14px;
-
-  text-align:center;
-
-  font-size:14px;
-
-  color:#666;
-
+  margin-top:18px;padding:14px;border:2px dashed #b5c9ea;border-radius:16px;
+  background:linear-gradient(135deg,#f4f8ff,#faf5ff);
+  text-align:center;color:var(--a-muted);font-size:15px;font-weight:700;
 }
-
-
 .student-register-link{
-  display:inline-block;
-  margin-left:5px;
-  padding:11px 20px;
-  border:2px solid #ffc857;
-  border-radius:30px;
-  background:linear-gradient(135deg,#6d28d9,#8b35db);
-  color:#fff;
-  font-size:14px;
-  font-weight:700;
-  line-height:1.4;
-  text-decoration:none;
-  vertical-align:middle;
-  box-shadow:0 5px 16px rgba(109,40,217,.30),0 0 0 3px rgba(255,200,87,.18);
-  transition:transform .25s ease,box-shadow .25s ease;
+  display:inline-block;margin-left:6px;padding:10px 20px;
+  border:2px solid var(--a-ink);border-radius:999px;background:#ffc857;color:var(--a-ink);
+  font-size:14.5px;font-weight:800;line-height:1.4;text-decoration:none;vertical-align:middle;
+  box-shadow:3px 3px 0 var(--a-ink);transition:transform .15s,box-shadow .15s;
 }
+.student-register-link::after{content:" →";font-weight:800}
+.student-register-link:hover{color:var(--a-ink);transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--a-ink)}
 
-.student-register-link:hover{
-  color:#fff;
-  transform:translateY(-2px);
-  text-decoration:none;
-  box-shadow:0 8px 22px rgba(109,40,217,.40),0 0 0 4px rgba(255,200,87,.25);
+/* security note */
+.security-note{
+  display:flex;align-items:flex-start;gap:10px;margin-top:22px;padding:13px 14px;
+  border-radius:14px;background:#f6f2ff;color:var(--a-muted);font-size:13.5px;
 }
+.security-note>span{font-size:22px;line-height:1.2}
+.security-note strong{color:var(--a-vio);font-size:14.5px}
+.security-note p{margin:2px 0 0;line-height:1.45}
 
-.student-register-link:focus-visible{
-  outline:3px solid #d32f2f;
-  outline-offset:4px;
+/* ---------------- Footer ---------------- */
+footer{background:linear-gradient(135deg,#09244b,#0d3470);color:#fff}
+.footer-content{
+  max-width:1140px;margin:auto;padding:24px 20px;
+  display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
 }
+.footer-brand{display:flex;align-items:center;gap:12px}
+.footer-brand img{width:46px;height:46px;border-radius:10px;object-fit:contain}
+.footer-brand h3{margin:0;color:#fff;font-size:15.5px;font-weight:800}
+.footer-brand p{margin:3px 0 0;color:#bfd0e7;font-size:12.5px}
+.footer-links{display:flex;flex-wrap:wrap;gap:16px;font-size:13.5px;font-weight:700}
+.footer-links a{color:#dbe8f9;text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:#ffb74d;text-decoration:underline}
+.footer-bottom{padding:12px;border-top:1px solid rgba(255,255,255,.12);text-align:center;color:#aebfd5;font-size:12px}
 
+/* ---------------- Responsive ---------------- */
+@media(max-width:1024px){
+  .access-page{padding-bottom:170px}   /* floating chat buttons ke liye jagah */
+}
+@media(max-width:600px){
+  #mainHeader{position:static;min-height:60px;padding:8px 12px}
+  #mainHeader img{width:42px;height:42px}
+  .nav-text{min-width:0}
+  .nav-text h1{font-size:15px}
+  .nav-text p{display:none}
+  .header-buttons{gap:5px}
+  .header-btn{padding:8px 11px;font-size:12px}
+
+  .access-page{padding:14px 0 180px}   /* JS (fixBottomSpace) isse apne hisab se badal deta hai */
+  .access-hero{padding:14px 16px;border-radius:18px}
+  .access-hero-text h2{font-size:23px}
+  .access-hero-text p{font-size:13px}
+
+  .login-card{padding:20px 16px;border-radius:20px}
+  .login-tabs{margin-bottom:16px}
+  .login-form h3{font-size:24px}
+  .form-subtitle{margin-bottom:10px}
+  .login-card .form-label{margin-top:10px}
+
+  .student-register-box span{display:block;margin-bottom:8px}
+  .student-register-link{margin-left:0}
+
+  .footer-content{flex-direction:column;text-align:center}
+  .footer-brand,.footer-links{justify-content:center}
+}
+@media(max-width:380px){
+  .nav-text{display:none}
+  #mainHeader{justify-content:space-between}
+  .header-buttons{margin-left:auto}
+}
 @media(prefers-reduced-motion:reduce){
-  .student-register-link{transition:none}
-  .student-register-link:hover{transform:none}
-}
-
-
-.student-register-link::after{
-
-  content:" →";
-
-  font-weight:800;
-
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
 
 /* =========================================================
-   MOBILE / TABLET FIX: login button poora dikhe
-   (file ke sabse END me rakhein)
-   ========================================================= */
-
-html,
-body {
-    height: auto !important;
-    min-height: 100% !important;
-    overflow-x: hidden !important;
-    overflow-y: auto !important;      /* kisi script ka scroll-lock hatao */
-    position: static !important;
+   SCROLL-LOCK SAFETY (purane fix — hatana mat)
+   Kisi bhi script ya chat widget ke scroll-lock se login button chhupna nahi chahiye.
+========================================================= */
+html,body{
+  height:auto!important;
+  min-height:100%!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  position:static!important;
 }
-
-.access-page {
-    display: block !important;
-    height: auto !important;
-    min-height: 0 !important;
-    overflow: visible !important;
+.access-page{
+  display:block!important;
+  height:auto!important;
+  min-height:0!important;
+  overflow:visible!important;
 }
-
-.access-container,
 .login-card,
 .login-form,
-.login-form.active-form {
-    height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
+.login-form.active-form{
+  height:auto!important;
+  max-height:none!important;
 }
-
-.login-button {
-    display: block !important;
-    position: relative !important;
-    z-index: 1 !important;
-}
-
-/* TABLET + MOBILE */
-@media (max-width: 1024px) {
-
-    /* neeche badi jagah: floating chat buttons ke peeche button na chhupe */
-    .access-page {
-        padding: 24px 12px 230px !important;
-    }
-
-    .login-card {
-        padding: 22px 18px !important;
-    }
-}
-
-/* MOBILE: sab kuch chhota karo taaki button pehli screen me aa jaye */
-@media (max-width: 600px) {
-
-    header {
-        position: static !important;   /* sticky header jagah na ghere */
-    }
-
-    .access-page {
-        padding: 14px 10px 240px !important;
-    }
-
-    .access-heading {
-        margin-bottom: 12px !important;
-    }
-
-    .access-icon {
-        width: 52px !important;
-        height: 52px !important;
-        font-size: 24px !important;
-        margin-bottom: 8px !important;
-    }
-
-    .access-heading h2 {
-        font-size: 24px !important;
-    }
-
-    .access-heading p {
-        font-size: 14px !important;
-    }
-
-    .login-tabs {
-        margin-bottom: 14px !important;
-    }
-
-    .login-form h3 {
-        font-size: 20px !important;
-    }
-
-    .form-subtitle {
-        margin: 4px 0 12px !important;
-    }
-
-    .login-form label {
-        margin: 8px 0 5px !important;
-    }
-
-    .input-box input {
-        padding: 10px 5px !important;
-    }
-
-    .login-options {
-        margin: 10px 0 !important;
-    }
-
-    .login-button {
-        padding: 13px !important;
-        margin-bottom: 6px !important;
-    }
-}
-/* =========================================================
-   MOBILE ONLY FIX (phone): login button hamesha dikhe
-   ========================================================= */
-@media (max-width: 600px) {
-
-    html, body {
-        height: auto !important;
-        min-height: 100dvh !important;
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* phone me neeche kaafi jagah, taaki button chat buttons ke upar scroll ho sake */
-    .access-page {
-        display: block !important;
-        height: auto !important;
-        min-height: 0 !important;
-        padding: 12px 10px 320px !important;
-        overflow: visible !important;
-    }
-
-    .login-card {
-        margin-bottom: 40px !important;
-    }
-
-    .login-button {
-        scroll-margin-bottom: 260px;
-    }
-
-    /* header chhota */
-    header {
-        position: static !important;
-        min-height: 56px !important;
-    }
-}
+.login-form{overflow:visible!important}
+.login-button{display:block!important}
