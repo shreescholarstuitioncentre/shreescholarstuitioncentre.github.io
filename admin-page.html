@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09244b">
 <title>SSTC Admin Dashboard</title>
 
 <!-- Login check: bina login ke andar nahi aane dega -->
@@ -12,128 +13,368 @@
   }
 </script>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Theme (dark/light) page dikhne se pehle set hota hai, taaki flash na ho -->
+<script>
+  try {
+    var savedTheme = localStorage.getItem('sstcAdminTheme');
+    if (savedTheme) { document.documentElement.setAttribute('data-theme', savedTheme); }
+  } catch (e) {}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 <style>
-  :root { --red:#d62828; --red2:#f4511e; --cream:#fff8ec; --ink:#1d2130; }
-  body { background: radial-gradient(circle at top right,#ffe9c7,var(--cream) 45%); color:var(--ink); min-height:100vh;
-         font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif; }
-  .topbar { background:linear-gradient(90deg,var(--red),var(--red2)); color:#fff; position:sticky; top:0; z-index:50;
-            box-shadow:0 4px 18px rgba(214,40,40,.35); }
-  .topbar h1 { font-size:1.15rem; margin:0; font-weight:800; }
-  .topbar small { opacity:.85; }
-  .topbar .btn { font-weight:700; border-radius:10px; }
-  .stat { border:0; border-radius:18px; color:#fff; padding:16px 18px; position:relative; overflow:hidden;
-          box-shadow:0 10px 24px rgba(0,0,0,.12); transition:transform .25s; animation:up .6s both; }
-  .stat:hover { transform:translateY(-5px) scale(1.02); }
-  .stat .n { font-size:2rem; font-weight:800; line-height:1; }
-  .stat .l { font-size:.85rem; opacity:.92; }
-  .stat .ic { position:absolute; right:12px; top:6px; font-size:2.6rem; opacity:.25; }
-  .g1{background:linear-gradient(135deg,#6a11cb,#8e54e9)} .g2{background:linear-gradient(135deg,#11998e,#38ef7d)}
-  .g3{background:linear-gradient(135deg,#636e72,#b2bec3)} .g4{background:linear-gradient(135deg,#f7971e,#ffb347)}
-  .g5{background:linear-gradient(135deg,#ee0979,#ff6a00)}
-  .panel { background:#fff; border:0; border-radius:20px; box-shadow:0 12px 32px rgba(0,0,0,.09); margin-top:22px;
-           overflow:hidden; animation:up .7s both; }
-  .panel-h { padding:14px 18px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; border-bottom:1px solid #f0e6d6; }
-  .panel-h h2 { font-size:1.1rem; margin:0; font-weight:800; flex:1 1 180px; }
-  .panel-h .form-control,.panel-h .form-select { max-width:200px; border-radius:10px; font-size:.88rem; }
-  .table { margin:0; font-size:.86rem; white-space:nowrap; }
-  .table thead th { background:#fff3e0; position:sticky; top:0; font-size:.78rem; text-transform:uppercase; letter-spacing:.4px; }
-  .table tbody tr { animation:up .45s both; animation-delay:calc(var(--i)*25ms); transition:background .2s; }
-  .table tbody tr:hover { background:#fff8ec; }
-  .scroll { max-height:520px; overflow:auto; }
-  .btn-sm { border-radius:8px; font-weight:600; transition:transform .15s; }
-  .btn-sm:hover { transform:translateY(-2px); }
-  .pw { font-family:monospace; }
-  .mini { color:#6b7280; font-size:.76rem; }
-  .cal { display:grid; grid-template-columns:repeat(7,1fr); gap:6px; padding:12px; }
-  .cal .h { text-align:center; font-weight:700; font-size:.75rem; color:#8a6d3b; }
-  .day { min-height:64px; border-radius:12px; background:#fff8ec; padding:4px 6px; cursor:pointer; font-size:.78rem; border:2px solid transparent; transition:.2s; overflow:hidden; }
-  .day:hover { transform:translateY(-3px); box-shadow:0 6px 14px rgba(0,0,0,.12); }
-  .day.t { border-color:var(--red); } .day.s { background:#ffe0b2; }
-  .day b { display:block; color:#0a7d3b; font-size:.7rem; }
-  .bars { display:flex; align-items:flex-end; gap:8px; height:170px; padding:14px; }
-  .bar { flex:1; text-align:center; font-size:.68rem; display:flex; flex-direction:column; justify-content:flex-end; height:100%; }
-  .bar i { display:block; border-radius:8px 8px 0 0; background:linear-gradient(#ff6a00,#d62828); transform-origin:bottom; animation:grow .8s both; }
-  .row-i { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:8px 14px; border-bottom:1px solid #f5ecdc; font-size:.84rem; }
-  @keyframes grow { from{transform:scaleY(0)} to{transform:none} }
-  @media (max-width:576px){ .day{min-height:48px;font-size:.68rem;padding:3px} .cal{gap:3px;padding:6px} }
-  @keyframes up { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
-  @keyframes spin { to{transform:rotate(360deg)} }
-  .spin { animation:spin .8s linear infinite; display:inline-block; }
-  .toast-wrap { position:fixed; right:14px; bottom:14px; z-index:2000; }
-  @media (max-width:576px){ .panel-h .form-control,.panel-h .form-select{max-width:100%;flex:1 1 130px} }
+/* =====================================================
+   SSTC ADMIN DASHBOARD — control-room design
+   (Light + Dark, sab sections minimize ho sakte hain)
+===================================================== */
+:root{
+  --bg:#f3f7ff; --card:#ffffff; --card2:#f6f9ff; --ink:#0b1e3c; --muted:#5b6b85; --line:#e1e9f6;
+  --head:#eef3fd; --hover:#f2f6ff; --glass:rgba(255,255,255,.92);
+  --shadow:0 2px 4px rgba(11,30,60,.05),0 14px 34px rgba(11,30,60,.09);
+  --blue:#2563eb; --vio:#6c2bd9; --red:#d32f2f; --saf:#ff9800;
+  --sh:130px;
+}
+[data-theme="dark"]{
+  --bg:#080f22; --card:#101a35; --card2:#15203f; --ink:#e8eefc; --muted:#9aa9c9; --line:#22305a;
+  --head:#18244a; --hover:#172346; --glass:rgba(12,20,42,.92);
+  --shadow:0 2px 4px rgba(0,0,0,.3),0 16px 36px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--sh) + 8px)}
+body{min-height:100vh;font-family:'Nunito','Segoe UI',system-ui,-apple-system,Arial,sans-serif;
+     font-size:15px;color:var(--ink);background:var(--bg)}
+.aurora{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(60% 40% at 0% 0%,rgba(211,47,47,.10),transparent 70%),
+    radial-gradient(50% 40% at 100% 5%,rgba(108,43,217,.14),transparent 70%),
+    radial-gradient(60% 40% at 50% 100%,rgba(255,152,0,.12),transparent 70%)}
+[data-theme="dark"] .aurora{opacity:.7}
+.wrap{width:100%;max-width:1360px;margin-inline:auto;padding-inline:clamp(12px,2vw,24px)}
+:focus-visible{outline:3px solid #93c5fd;outline-offset:2px}
+
+/* ---------- sticky header (topbar + section nav) ---------- */
+.sticky-head{position:sticky;top:0;z-index:60;transition:top .3s ease}
+.topbar{background:linear-gradient(135deg,#09244b,#0d3470);color:#fff;
+  border-bottom:3px solid transparent;border-image:linear-gradient(90deg,var(--red),var(--saf),var(--vio)) 1;
+  box-shadow:0 8px 24px rgba(9,36,75,.3)}
+.topbar .wrap{min-height:62px;padding-top:8px;padding-bottom:8px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-logo{width:44px;height:44px;flex-shrink:0;border-radius:12px;object-fit:contain;background:#ffb300;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.brand h1{margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#fff;
+  font-family:'Baloo 2','Nunito',sans-serif;font-size:clamp(16px,2.2vw,21px);font-weight:800;line-height:1.15}
+.brand small{display:flex;align-items:center;gap:6px;color:#cfe0ff;font-size:12px;white-space:nowrap}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.7)}70%,100%{box-shadow:0 0 0 8px rgba(34,197,94,0)}}
+.tools{display:flex;gap:8px;flex-shrink:0}
+.tbtn{display:inline-flex;align-items:center;gap:4px;padding:8px 14px;border:0;border-radius:999px;
+  background:rgba(255,255,255,.14);color:#fff;font:inherit;font-size:13.5px;font-weight:800;text-decoration:none;cursor:pointer;
+  transition:background .2s,transform .15s}
+.tbtn:hover{background:rgba(255,255,255,.26);color:#fff;transform:translateY(-1px)}
+.tbtn-out{background:linear-gradient(135deg,#d32f2f,#ff5722)}
+
+.subnav{background:var(--glass);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);box-shadow:0 6px 18px rgba(11,30,60,.06)}
+.subnav-in{display:flex;align-items:center;gap:6px;padding-top:8px;padding-bottom:8px;overflow-x:auto;scrollbar-width:none}
+.subnav-in::-webkit-scrollbar{display:none}
+.subnav a,.subbtn{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;padding:8px 14px;
+  border:1.5px solid transparent;border-radius:999px;background:transparent;color:var(--muted);
+  font:inherit;font-size:13.5px;font-weight:800;text-decoration:none;white-space:nowrap;cursor:pointer;transition:.2s}
+.subnav a:hover{background:var(--hover);color:var(--ink)}
+.subnav a.active{color:#fff;background:linear-gradient(135deg,var(--blue),var(--vio));box-shadow:0 6px 14px rgba(37,99,235,.3)}
+.subnav-sp{flex:1 0 12px}
+.subbtn{border-color:var(--line);background:var(--card2);color:var(--ink)}
+.subbtn:hover{border-color:var(--blue)}
+.pill-count{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;
+  background:#ef4444;color:#fff;font-size:11.5px;font-weight:800;line-height:1}
+
+/* ---------- layout ---------- */
+main.wrap{padding-top:22px;padding-bottom:80px}
+.sec-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.sec-head h2{margin:0;color:var(--ink);font-family:'Baloo 2','Nunito',sans-serif;font-size:22px;font-weight:800}
+.row-label{margin:14px 0 8px;color:var(--muted);font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase}
+.min-btn{padding:6px 14px;border:1.5px solid var(--line);border-radius:999px;background:var(--card2);color:var(--ink);
+  font-size:13px;font-weight:800;white-space:nowrap;transition:.2s}
+.min-btn:hover{border-color:var(--blue);background:var(--hover);color:var(--ink)}
+
+/* ---------- stat cards ---------- */
+.stat{position:relative;overflow:hidden;height:100%;padding:16px 18px;border:0;border-radius:20px;color:#fff;
+  box-shadow:0 12px 26px rgba(11,30,60,.16);transition:transform .25s,box-shadow .25s;animation:up .6s both}
+.stat[data-jump]{cursor:pointer}
+.stat::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(rgba(255,255,255,.16) 1.2px,transparent 1.4px) 0 0/16px 16px}
+.stat::after{content:"";position:absolute;right:-30px;bottom:-40px;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.14)}
+.stat:hover{transform:translateY(-5px);box-shadow:0 18px 34px rgba(11,30,60,.22)}
+.stat .n{position:relative;z-index:1;font-family:'Baloo 2','Nunito',sans-serif;font-size:2.2rem;font-weight:800;line-height:1}
+.stat .l{position:relative;z-index:1;margin-top:4px;font-size:.84rem;font-weight:700;line-height:1.3;opacity:.95}
+.stat .ic{position:absolute;z-index:1;right:12px;top:8px;font-size:2.4rem;opacity:.3}
+.stat:focus-visible{outline:3px solid #93c5fd;outline-offset:3px}
+.g1{background:linear-gradient(135deg,#5b21b6,#6366f1)} .g2{background:linear-gradient(135deg,#0f9d8a,#34d399)}
+.g3{background:linear-gradient(135deg,#475569,#94a3b8)} .g4{background:linear-gradient(135deg,#f59e0b,#fb923c)}
+.g5{background:linear-gradient(135deg,#db2777,#f97316)}
+
+/* ---------- panels ---------- */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden;animation:up .7s both}
+.panel.sep{margin-top:22px}
+.stackcol{display:flex;flex-direction:column;gap:18px}
+@media (min-width:992px){.col-lg-7>.panel{height:100%}}
+.panel-h{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:14px 18px;
+  border-bottom:1px solid var(--line);background:linear-gradient(90deg,var(--head),transparent)}
+.panel-h:has(+ .collapse:not(.show)){border-bottom-color:transparent}
+.panel-h h2{flex:1 1 180px;margin:0;color:var(--ink);font-family:'Baloo 2','Nunito',sans-serif;font-size:19px;font-weight:800}
+.ph-tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.panel-h .form-control,.panel-h .form-select{width:200px;max-width:100%;border-radius:12px;font-size:.88rem}
+.act-h{padding:12px 16px 4px;color:var(--muted);font-size:.76rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase}
+
+/* ---------- forms / buttons ---------- */
+.form-control,.form-select{background-color:var(--card2);color:var(--ink);border:1.5px solid var(--line)}
+.form-control::placeholder{color:var(--muted)}
+.form-control:focus,.form-select:focus{background-color:var(--card);color:var(--ink);border-color:var(--blue);box-shadow:0 0 0 .2rem rgba(37,99,235,.18)}
+[data-theme="dark"] .form-select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23cbd5f5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e")}
+option{background:var(--card);color:var(--ink)}
+.btn-sm{padding:.3rem .75rem;border-radius:999px;font-size:.78rem;font-weight:800;transition:transform .15s,box-shadow .15s}
+.btn-sm:hover{transform:translateY(-2px)}
+[data-theme="dark"] .btn-light{background:var(--card2);border-color:var(--line);color:var(--ink)}
+.cal-btn{padding:6px 12px;border:1.5px solid var(--line);border-radius:999px;background:var(--card2);color:var(--ink);font-weight:800}
+.cal-btn:hover{border-color:var(--blue);color:var(--ink)}
+.cal-today{border-color:transparent;background:linear-gradient(135deg,var(--blue),var(--vio));color:#fff}
+.cal-today:hover{color:#fff}
+.badge{padding:.4em .75em;border-radius:999px;font-weight:800;letter-spacing:.2px}
+.badge.bg-info{background-color:#22d3ee!important;color:#053a45!important}
+
+/* ---------- tables ---------- */
+.table{--bs-table-bg:transparent;margin:0;color:var(--ink);border-color:var(--line);font-size:.87rem;white-space:nowrap}
+.table>:not(caption)>*>*{padding:.7rem .75rem;background-color:transparent;color:inherit;border-bottom-color:var(--line)}
+.table thead th{position:sticky;top:0;z-index:2;background:var(--head);color:var(--muted);
+  font-size:.74rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;border-bottom:2px solid var(--line)}
+.table tbody tr{animation:up .45s both;animation-delay:calc(var(--i)*25ms)}
+.table thead th:last-child{right:0;z-index:3}
+.table tbody td:last-child{position:sticky;right:0;background-color:var(--card);box-shadow:-10px 0 14px -10px rgba(11,30,60,.22)}
+#b-students td:nth-child(5),#b-students td:nth-child(6){max-width:180px;overflow:hidden;text-overflow:ellipsis}
+.table tbody tr:hover>*{background-color:var(--hover)}
+.table tbody tr:has(.badge.bg-warning)>td:first-child{box-shadow:inset 4px 0 0 #f59e0b}
+.table tbody tr:has(.badge.bg-info)>td:first-child{box-shadow:inset 4px 0 0 #06b6d4}
+.scroll{max-height:min(62vh,560px);overflow:auto;scrollbar-width:thin;scrollbar-color:var(--vio) transparent}
+.pw{font-family:ui-monospace,Consolas,monospace;letter-spacing:1px}
+.mini{color:var(--muted);font-size:.78rem}
+.text-muted{color:var(--muted)!important}
+.mini.text-dark{color:var(--ink)!important}
+
+/* ---------- calendar ---------- */
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;padding:12px}
+.cal .h{text-align:center;color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase}
+.day{min-height:68px;padding:5px 7px;overflow:hidden;border:2px solid transparent;border-radius:14px;background:var(--card2);
+  font-size:.8rem;font-weight:700;cursor:pointer;transition:.2s}
+.day:hover{transform:translateY(-3px);box-shadow:0 8px 16px rgba(11,30,60,.14)}
+.day.t{border-color:var(--red)}
+.day.s{border-color:var(--blue);background:linear-gradient(135deg,rgba(37,99,235,.16),rgba(108,43,217,.18))}
+.day b{display:block;color:#0a8a3f;font-size:.68rem}
+[data-theme="dark"] .day b{color:#4ade80}
+
+/* ---------- income bars ---------- */
+.bars{display:flex;align-items:flex-end;gap:10px;height:200px;padding:16px 16px 12px}
+.bar{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;height:100%;text-align:center;color:var(--muted);font-size:.7rem}
+.bar i{display:block;margin:4px 0;border-radius:10px 10px 4px 4px;background:linear-gradient(180deg,#60a5fa,#6c2bd9);
+  transform-origin:bottom;animation:grow .8s both}
+.bar:last-child i{background:linear-gradient(180deg,#ffb300,#d32f2f)}
+.bar .fw-bold{color:var(--ink)}
+
+/* ---------- action center ---------- */
+.row-i{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 16px;
+  border-bottom:1px solid var(--line);font-size:.86rem}
+.row-i:hover{background:var(--hover)}
+#claims,#soon{max-height:300px;overflow:auto;scrollbar-width:thin}
+
+/* ---------- modal / toast / misc ---------- */
+.modal-content{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.toast-wrap{position:fixed;right:14px;bottom:14px;z-index:2000}
+#toTop{position:fixed;left:16px;bottom:18px;z-index:70;width:46px;height:46px;border:2px solid var(--ink);border-radius:50%;
+  background:var(--card);color:var(--ink);font-size:20px;box-shadow:3px 3px 0 var(--ink);cursor:pointer;
+  opacity:0;pointer-events:none;transform:translateY(12px);transition:.3s}
+#toTop.show{opacity:1;pointer-events:auto;transform:none}
+.spin{display:inline-block;animation:spin .8s linear infinite}
+
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes grow{from{transform:scaleY(0)}to{transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media (max-width:991px){
+  .panel.sep{margin-top:18px}
+}
+@media (max-width:768px){
+  /* chhoti screen par Actions column sticky nahi (nahi to baaki columns dhak jate hain) */
+  .table tbody td:last-child{position:static;box-shadow:none}
+  .table thead th:last-child{right:auto}
+}
+@media (max-width:576px){
+  .adm-lbl{display:none}
+  .tbtn .lbl{display:none}
+  .tbtn{padding:9px 12px}
+  .brand-logo{width:38px;height:38px}
+  .brand small{font-size:11px}
+  .stat .n{font-size:1.8rem}
+  .panel-h{padding:12px}
+  .panel-h .form-control,.panel-h .form-select{width:auto;max-width:100%;flex:1 1 130px}
+  .day{min-height:48px;padding:3px;font-size:.68rem}
+  .cal{gap:3px;padding:6px}
+  .sec-head h2{font-size:19px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
 </style>
 </head>
 <body>
 
-<nav class="topbar">
-  <div class="container-xl py-2 d-flex align-items-center justify-content-between gap-2 flex-wrap">
-    <div><h1>🎓 Shree Scholars Tuition Centre</h1><small>Admin Dashboard · <span id="upd">loading...</span></small></div>
-    <div class="d-flex gap-2">
-      <button class="btn btn-light btn-sm" id="refresh"><span id="rIc">🔄</span> Refresh</button>
-      <a href="index.html" class="btn btn-light btn-sm">🏠 Home</a>
-      <button class="btn btn-dark btn-sm" onclick="adminLogout()">Logout</button>
-    </div>
-  </div>
-</nav>
+<div class="aurora" aria-hidden="true"></div>
 
-<main class="container-xl py-4">
+<!-- ===================== HEADER + SECTION NAV ===================== -->
+<div class="sticky-head" id="stickyHead">
 
-  <div class="row g-3">
-    <div class="col-6 col-md-4 col-lg"><div class="stat g1" style="animation-delay:.05s"><span class="ic">👨‍🎓</span><div class="n" id="s1">0</div><div class="l">Total Students</div></div></div>
-    <div class="col-6 col-md-4 col-lg"><div class="stat g2" style="animation-delay:.1s"><span class="ic">✅</span><div class="n" id="s2">0</div><div class="l">Active Students</div></div></div>
-    <div class="col-6 col-md-4 col-lg"><div class="stat g3" style="animation-delay:.15s"><span class="ic">⏸️</span><div class="n" id="s3">0</div><div class="l">Inactive Students</div></div></div>
-    <div class="col-6 col-md-6 col-lg"><div class="stat g4" style="animation-delay:.2s"><span class="ic">📘</span><div class="n" id="s4">0</div><div class="l">Pending E-book Rentals</div></div></div>
-    <div class="col-12 col-md-6 col-lg"><div class="stat g5" style="animation-delay:.25s"><span class="ic">📝</span><div class="n" id="s5">0</div><div class="l">Pending Notes Rentals</div></div></div>
-  </div>
-
-  <!-- INCOME CARDS -->
-  <div class="row g-3 mt-1">
-    <div class="col-6 col-lg"><div class="stat g2"><span class="ic">💰</span><div class="n" id="i1">₹0</div><div class="l">Total Income (Active + Expired)</div></div></div>
-    <div class="col-6 col-lg"><div class="stat g1"><span class="ic">📅</span><div class="n" id="i2">₹0</div><div class="l">This Month</div></div></div>
-    <div class="col-6 col-lg"><div class="stat g4"><span class="ic">☀️</span><div class="n" id="i3">₹0</div><div class="l">Today</div></div></div>
-    <div class="col-6 col-lg"><div class="stat g5"><span class="ic">⏳</span><div class="n" id="i4">₹0</div><div class="l">Paid-claimed, approval pending</div></div></div>
-    <div class="col-12 col-lg"><div class="stat g3"><span class="ic">📚</span><div class="n" id="i5" style="font-size:1.15rem">-</div><div class="l">E-book | Notes income</div></div></div>
-  </div>
-
-  <div class="row g-0 gx-lg-3">
-    <!-- CALENDAR -->
-    <div class="col-lg-7"><section class="panel">
-      <div class="panel-h">
-        <h2>📅 <span id="calTitle">Calendar</span></h2>
-        <button class="btn btn-outline-danger btn-sm" onclick="calGo(-1)">◀</button>
-        <button class="btn btn-danger btn-sm" onclick="calGo(0)">Today</button>
-        <button class="btn btn-outline-danger btn-sm" onclick="calGo(1)">▶</button>
+  <header class="topbar" id="topbar">
+    <div class="wrap d-flex align-items-center justify-content-between gap-2">
+      <div class="brand">
+        <img src="Logo.png" alt="SSTC" class="brand-logo" onerror="this.style.display='none'">
+        <div style="min-width:0">
+          <h1>Shree Scholars Tuition Centre</h1>
+          <small><span class="live-dot"></span><span class="adm-lbl">Admin Dashboard · </span><span id="upd">loading...</span></small>
+        </div>
       </div>
-      <div class="px-3 pt-2 mini" id="calSum"></div>
-      <div class="cal" id="calGrid"></div>
-      <div class="px-3 pb-3" id="dayBox"></div>
-    </section></div>
+      <div class="tools">
+        <button type="button" class="tbtn" id="refresh" title="Data refresh karein"><span id="rIc">🔄</span><span class="lbl"> Refresh</span></button>
+        <button type="button" class="tbtn" id="themeBtn" title="Dark / Light mode"><span id="themeIc">🌙</span></button>
+        <a href="index.html" class="tbtn" title="Home">🏠<span class="lbl"> Home</span></a>
+        <button type="button" class="tbtn tbtn-out" onclick="adminLogout()" title="Logout">⏻<span class="lbl"> Logout</span></button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="Dashboard sections">
+    <div class="wrap subnav-in" id="subnavIn">
+      <a href="#sec-overview" class="active">📊 Overview</a>
+      <a href="#sec-calendar">📅 Calendar</a>
+      <a href="#sec-action">⚡ Action <span class="pill-count" id="actCount" hidden>0</span></a>
+      <a href="#sec-students">👨‍🎓 Students</a>
+      <a href="#sec-rentals">📘 E-book</a>
+      <a href="#sec-notes">📝 Notes</a>
+      <span class="subnav-sp"></span>
+      <button type="button" class="subbtn" id="minAll">⊟ Sab minimize</button>
+      <button type="button" class="subbtn" id="maxAll">⊞ Sab expand</button>
+    </div>
+  </nav>
+
+</div>
+
+
+<main class="wrap">
+
+  <!-- ===================== OVERVIEW ===================== -->
+  <section id="sec-overview">
+
+    <div class="sec-head">
+      <h2>📊 Overview</h2>
+      <button type="button" class="btn btn-sm min-btn" data-bs-toggle="collapse" data-bs-target="#p-overview" aria-expanded="true" aria-controls="p-overview">➖ Minimize</button>
+    </div>
+
+    <div class="collapse show" id="p-overview">
+
+      <div class="row-label">Students &amp; Pending (card par click = table filter)</div>
+      <div class="row g-3">
+        <div class="col-6 col-md-4 col-lg"><div class="stat g1" role="button" tabindex="0" data-jump="students" data-filter="" style="animation-delay:.05s"><span class="ic">👨‍🎓</span><div class="n" id="s1">0</div><div class="l">Total Students</div></div></div>
+        <div class="col-6 col-md-4 col-lg"><div class="stat g2" role="button" tabindex="0" data-jump="students" data-filter="Active" style="animation-delay:.1s"><span class="ic">✅</span><div class="n" id="s2">0</div><div class="l">Active Students</div></div></div>
+        <div class="col-6 col-md-4 col-lg"><div class="stat g3" role="button" tabindex="0" data-jump="students" data-filter="Inactive" style="animation-delay:.15s"><span class="ic">⏸️</span><div class="n" id="s3">0</div><div class="l">Inactive Students</div></div></div>
+        <div class="col-6 col-md-6 col-lg"><div class="stat g4" role="button" tabindex="0" data-jump="rentals" data-filter="Pending" style="animation-delay:.2s"><span class="ic">📘</span><div class="n" id="s4">0</div><div class="l">Pending E-book Rentals</div></div></div>
+        <div class="col-12 col-md-6 col-lg"><div class="stat g5" role="button" tabindex="0" data-jump="notes" data-filter="Pending" style="animation-delay:.25s"><span class="ic">📝</span><div class="n" id="s5">0</div><div class="l">Pending Notes Rentals</div></div></div>
+      </div>
+
+      <!-- INCOME CARDS -->
+      <div class="row-label">Income</div>
+      <div class="row g-3">
+        <div class="col-6 col-lg"><div class="stat g2"><span class="ic">💰</span><div class="n" id="i1">₹0</div><div class="l">Total Income (Active + Expired)</div></div></div>
+        <div class="col-6 col-lg"><div class="stat g1"><span class="ic">📅</span><div class="n" id="i2">₹0</div><div class="l">This Month</div></div></div>
+        <div class="col-6 col-lg"><div class="stat g4"><span class="ic">☀️</span><div class="n" id="i3">₹0</div><div class="l">Today</div></div></div>
+        <div class="col-6 col-lg"><div class="stat g5" role="button" tabindex="0" data-jump="action"><span class="ic">⏳</span><div class="n" id="i4">₹0</div><div class="l">Paid-claimed, approval pending</div></div></div>
+        <div class="col-12 col-lg"><div class="stat g3"><span class="ic">📚</span><div class="n" id="i5" style="font-size:1.15rem">-</div><div class="l">E-book | Notes income</div></div></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== CALENDAR + INCOME + ACTION ===================== -->
+  <div class="row g-3 g-lg-4 mt-1">
+
+    <!-- CALENDAR -->
+    <div class="col-lg-7">
+      <section class="panel" id="sec-calendar">
+        <div class="panel-h">
+          <h2>📅 <span id="calTitle">Calendar</span></h2>
+          <div class="ph-tools">
+            <button type="button" class="btn btn-sm cal-btn" onclick="calGo(-1)">◀</button>
+            <button type="button" class="btn btn-sm cal-btn cal-today" onclick="calGo(0)">Today</button>
+            <button type="button" class="btn btn-sm cal-btn" onclick="calGo(1)">▶</button>
+            <button type="button" class="btn btn-sm min-btn" data-bs-toggle="collapse" data-bs-target="#p-calendar" aria-expanded="true" aria-controls="p-calendar">➖ Minimize</button>
+          </div>
+        </div>
+        <div class="collapse show" id="p-calendar">
+          <div class="px-3 pt-2 mini" id="calSum"></div>
+          <div class="cal" id="calGrid"></div>
+          <div class="px-3 pb-3" id="dayBox"></div>
+        </div>
+      </section>
+    </div>
 
     <div class="col-lg-5">
-      <!-- MONTH-WISE INCOME -->
-      <section class="panel">
-        <div class="panel-h"><h2>📊 Month-wise Income (6 months)</h2>
-          <button class="btn btn-outline-success btn-sm" onclick="expIncome()">⬇ Income CSV</button>
-          <button class="btn btn-outline-primary btn-sm" onclick="expStudents()">⬇ Students CSV</button></div>
-        <div class="bars" id="bars"></div>
-      </section>
-      <!-- ACTION CENTER -->
-      <section class="panel">
-        <div class="panel-h"><h2>⚡ Action Center</h2></div>
-        <div class="px-3 pt-2 fw-bold small">💳 Payment claimed, approve karo</div><div id="claims"></div>
-        <div class="px-3 pt-3 fw-bold small">⏰ Expiring in 7 days</div><div id="soon" class="pb-2"></div>
-      </section>
+      <div class="stackcol">
+
+        <!-- MONTH-WISE INCOME -->
+        <section class="panel" id="sec-income">
+          <div class="panel-h">
+            <h2>📊 Month-wise Income <small class="text-muted fw-normal">(6 months)</small></h2>
+            <div class="ph-tools">
+              <button type="button" class="btn btn-outline-success btn-sm" onclick="expIncome()">⬇ Income CSV</button>
+              <button type="button" class="btn btn-outline-primary btn-sm" onclick="expStudents()">⬇ Students CSV</button>
+              <button type="button" class="btn btn-sm min-btn" data-bs-toggle="collapse" data-bs-target="#p-income" aria-expanded="true" aria-controls="p-income">➖ Minimize</button>
+            </div>
+          </div>
+          <div class="collapse show" id="p-income">
+            <div class="bars" id="bars"></div>
+          </div>
+        </section>
+
+        <!-- ACTION CENTER -->
+        <section class="panel" id="sec-action">
+          <div class="panel-h">
+            <h2>⚡ Action Center <span class="pill-count" id="actCount2" hidden>0</span></h2>
+            <div class="ph-tools">
+              <button type="button" class="btn btn-sm min-btn" data-bs-toggle="collapse" data-bs-target="#p-action" aria-expanded="true" aria-controls="p-action">➖ Minimize</button>
+            </div>
+          </div>
+          <div class="collapse show" id="p-action">
+            <div class="act-h">💳 Payment claimed, approve karo</div>
+            <div id="claims"></div>
+            <div class="act-h">⏰ Expiring in 7 days</div>
+            <div id="soon" class="pb-2"></div>
+          </div>
+        </section>
+
+      </div>
     </div>
+
   </div>
 
-  <!-- STUDENTS -->
-  <section class="panel">
+
+  <!-- ===================== STUDENTS ===================== -->
+  <section class="panel sep" id="sec-students">
     <div class="panel-h">
       <h2>👨‍🎓 Students <span class="badge bg-secondary" id="c-students">0</span></h2>
-      <input class="form-control form-control-sm" id="q-students" placeholder="🔍 Search student...">
-      <select class="form-select form-select-sm" id="f-students"><option value="">All status</option><option>Active</option><option>Inactive</option></select>
-      <button class="btn btn-outline-danger btn-sm" data-bs-toggle="collapse" data-bs-target="#p-students" data-min="students">➖ Minimize</button>
+      <div class="ph-tools">
+        <input class="form-control form-control-sm" id="q-students" placeholder="🔍 Search student...">
+        <select class="form-select form-select-sm" id="f-students"><option value="">All status</option><option>Active</option><option>Inactive</option></select>
+        <button type="button" class="btn btn-sm min-btn" data-bs-toggle="collapse" data-bs-target="#p-students" data-min="students" aria-expanded="true" aria-controls="p-students">➖ Minimize</button>
+      </div>
     </div>
     <div class="collapse show" id="p-students"><div class="scroll table-responsive">
       <table class="table align-middle"><thead><tr>
@@ -142,13 +383,15 @@
     </div></div>
   </section>
 
-  <!-- RENTALS -->
-  <section class="panel" style="animation-delay:.1s">
+  <!-- ===================== RENTALS ===================== -->
+  <section class="panel sep" id="sec-rentals">
     <div class="panel-h">
       <h2>📘 E-book Rentals <span class="badge bg-secondary" id="c-rentals">0</span></h2>
-      <input class="form-control form-control-sm" id="q-rentals" placeholder="🔍 Search rental...">
-      <select class="form-select form-select-sm" id="f-rentals"><option value="">All status</option><option>Pending</option><option>Active</option><option>Expired</option><option>Cancelled</option></select>
-      <button class="btn btn-outline-danger btn-sm" data-bs-toggle="collapse" data-bs-target="#p-rentals" data-min="rentals">➖ Minimize</button>
+      <div class="ph-tools">
+        <input class="form-control form-control-sm" id="q-rentals" placeholder="🔍 Search rental...">
+        <select class="form-select form-select-sm" id="f-rentals"><option value="">All status</option><option>Pending</option><option>Active</option><option>Expired</option><option>Cancelled</option></select>
+        <button type="button" class="btn btn-sm min-btn" data-bs-toggle="collapse" data-bs-target="#p-rentals" data-min="rentals" aria-expanded="true" aria-controls="p-rentals">➖ Minimize</button>
+      </div>
     </div>
     <div class="collapse show" id="p-rentals"><div class="scroll table-responsive">
       <table class="table align-middle"><thead><tr>
@@ -157,13 +400,15 @@
     </div></div>
   </section>
 
-  <!-- NOTES RENTALS -->
-  <section class="panel" style="animation-delay:.2s">
+  <!-- ===================== NOTES RENTALS ===================== -->
+  <section class="panel sep" id="sec-notes">
     <div class="panel-h">
       <h2>📝 Notes Rentals <span class="badge bg-secondary" id="c-notes">0</span></h2>
-      <input class="form-control form-control-sm" id="q-notes" placeholder="🔍 Search notes rental...">
-      <select class="form-select form-select-sm" id="f-notes"><option value="">All status</option><option>Pending</option><option>Active</option><option>Expired</option><option>Cancelled</option></select>
-      <button class="btn btn-outline-danger btn-sm" data-bs-toggle="collapse" data-bs-target="#p-notes" data-min="notes">➖ Minimize</button>
+      <div class="ph-tools">
+        <input class="form-control form-control-sm" id="q-notes" placeholder="🔍 Search notes rental...">
+        <select class="form-select form-select-sm" id="f-notes"><option value="">All status</option><option>Pending</option><option>Active</option><option>Expired</option><option>Cancelled</option></select>
+        <button type="button" class="btn btn-sm min-btn" data-bs-toggle="collapse" data-bs-target="#p-notes" data-min="notes" aria-expanded="true" aria-controls="p-notes">➖ Minimize</button>
+      </div>
     </div>
     <div class="collapse show" id="p-notes"><div class="scroll table-responsive">
       <table class="table align-middle"><thead><tr>
@@ -173,6 +418,8 @@
   </section>
 
 </main>
+
+<button type="button" id="toTop" aria-label="Upar jayein" title="Upar jayein">↑</button>
 
 <!-- DELETE CONFIRM -->
 <div class="modal fade" id="delModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content" style="border-radius:18px">
@@ -188,7 +435,11 @@
 
 <div class="toast-wrap" id="toasts"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<!-- =====================================================
+     DASHBOARD LOGIC  (aapka purana code — as it is)
+===================================================== -->
 <script>
 const API = "https://script.google.com/macros/s/AKfycbzSPSlkswNdmRtJkZ0Uq3Et5hAPIBorvbgVoQvZD4e0Ed36TwPzk7bh-xSAWmdFpmqynw/exec";
 const TOKEN = sessionStorage.getItem('sstcAdminToken') || "";
@@ -461,5 +712,142 @@ function expStudents() {
 
 loadAll();
 </script>
+
+<!-- =====================================================
+     NAYA: UI helpers (theme, minimize yaad rakhna, nav, card-click filter)
+     Upar ke dashboard code ko ye chhuta nahi, sirf page ke dikhne ka kaam karta hai.
+===================================================== -->
+<script>
+(function () {
+
+  var root = document.documentElement;
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+
+  /* ---------- Dark / Light ---------- */
+  var themeIc = $('#themeIc');
+  function setTheme(t) {
+    root.setAttribute('data-theme', t);
+    try { localStorage.setItem('sstcAdminTheme', t); } catch (e) {}
+    themeIc.textContent = (t === 'dark') ? '☀️' : '🌙';
+  }
+  themeIc.textContent = (root.getAttribute('data-theme') === 'dark') ? '☀️' : '🌙';
+  $('#themeBtn').addEventListener('click', function () {
+    setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  /* ---------- Minimize / Expand (yaad rakhta hai) ---------- */
+  var KEY = 'sstcAdminCollapsed';
+  function getSaved() { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; } }
+  function putSaved(a) { try { localStorage.setItem(KEY, JSON.stringify(a)); } catch (e) {} }
+  function inst(el) { return bootstrap.Collapse.getInstance(el) || new bootstrap.Collapse(el, { toggle: false }); }
+
+  function setLabel(id, open) {
+    $$('[data-bs-target="#' + id + '"]').forEach(function (b) {
+      b.textContent = open ? '➖ Minimize' : '➕ Expand';
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      b.classList.toggle('collapsed', !open);
+    });
+  }
+
+  getSaved().forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.remove('show'); setLabel(id, false); }
+  });
+
+  document.addEventListener('hidden.bs.collapse', function (e) {
+    var id = e.target.id; if (!id) return;
+    setLabel(id, false);
+    var a = getSaved(); if (a.indexOf(id) < 0) { a.push(id); putSaved(a); }
+  });
+  document.addEventListener('shown.bs.collapse', function (e) {
+    var id = e.target.id; if (!id) return;
+    setLabel(id, true);
+    putSaved(getSaved().filter(function (x) { return x !== id; }));
+  });
+
+  function bulk(open) {
+    $$('.collapse[id^="p-"]').forEach(function (el) {
+      var c = inst(el); if (open) c.show(); else c.hide();
+    });
+  }
+  $('#minAll').addEventListener('click', function () { bulk(false); });
+  $('#maxAll').addEventListener('click', function () { bulk(true); });
+
+  function openPanel(id) {
+    var el = document.getElementById(id);
+    if (el && !el.classList.contains('show')) inst(el).show();
+  }
+  function go(id) {
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* ---------- Card par click = table filter ---------- */
+  function jump(card) {
+    var t = card.getAttribute('data-jump'), f = card.getAttribute('data-filter') || '';
+    if (t === 'action') { openPanel('p-action'); go('sec-action'); return; }
+    var q = $('#q-' + t), sel = $('#f-' + t);
+    if (q) { q.value = ''; q.dispatchEvent(new Event('input')); }
+    if (sel) { sel.value = f; sel.dispatchEvent(new Event('change')); }
+    openPanel('p-' + t);
+    go('sec-' + t);
+  }
+  $$('.stat[data-jump]').forEach(function (c) {
+    c.addEventListener('click', function () { jump(c); });
+    c.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); jump(c); }
+    });
+  });
+
+  /* ---------- Action count (nav + panel header) ---------- */
+  var claimsEl = $('#claims');
+  function updAct() {
+    var n = $$('.row-i', claimsEl).length;
+    ['actCount', 'actCount2'].forEach(function (id) {
+      var b = document.getElementById(id);
+      if (b) { b.textContent = n; b.hidden = !n; }
+    });
+  }
+  if (claimsEl && window.MutationObserver) {
+    new MutationObserver(updAct).observe(claimsEl, { childList: true });
+  }
+  updAct();
+
+  /* ---------- Section nav highlight ---------- */
+  var navIn = $('#subnavIn');
+  var links = $$('#subnavIn a[href^="#sec-"]'), map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var a = map[en.target.id]; if (!a) return;
+        links.forEach(function (l) { l.classList.remove('active'); });
+        a.classList.add('active');
+        navIn.scrollLeft = a.offsetLeft - (navIn.clientWidth - a.offsetWidth) / 2;
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+  }
+
+  /* ---------- Smart header (neeche scroll = topbar chhupe, upar = wapas) ---------- */
+  var head = $('#stickyHead'), topbar = $('#topbar'), toTop = $('#toTop'), lastY = window.pageYOffset;
+  function measure() { root.style.setProperty('--sh', head.offsetHeight + 'px'); }
+  window.addEventListener('scroll', function () {
+    var y = window.pageYOffset;
+    if (y > lastY + 6 && y > 140) { head.style.top = (-topbar.offsetHeight) + 'px'; }
+    else if (y < lastY - 6 || y <= 140) { head.style.top = '0px'; }
+    lastY = y;
+    toTop.classList.toggle('show', y > 600);
+  }, { passive: true });
+  toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  window.addEventListener('resize', measure);
+  window.addEventListener('load', measure);
+  measure();
+
+})();
+</script>
+
 </body>
 </html>
