@@ -6784,6 +6784,30 @@ const SSTC_FREE_CHAPTERS_BY_CLASS = {
                 { title: "SSTC Hindi One Page Revision", en: "free/class-10/hindi/chapter-01-en.html", hi: "free/class-10/science/chapter-01-hi.html" }
             ]
         },
+       {
+            subject: "Commerce",
+            chapters: [
+                { title: "SSTC Commerce One Page Revision", en: "free/class-10/commerce/chapter-01-en.html", hi: "free/class-10/commerce/chapter-01-hi.html" }
+            ]
+        },
+         {
+            subject: "Chitrakala",
+            chapters: [
+                { title: "SSTC Chitrakala One Page Revision", en: "free/class-10/chitrakala/chapter-01-en.html", hi: "free/class-10/chitrakala/chapter-01-hi.html" }
+            ]
+        },
+         {
+            subject: "Computer",
+            chapters: [
+                { title: "SSTC Computer One Page Revision", en: "free/class-10/computer/chapter-01-en.html", hi: "free/class-10/computer/chapter-01-hi.html" }
+            ]
+        },
+         {
+            subject: "Home Science",
+            chapters: [
+                { title: "SSTC Home Science One Page Revision", en: "free/class-10/home-science/chapter-01-en.html", hi: "free/class-10/home-science/chapter-01-hi.html" }
+            ]
+        },
     ],
 
     "12": [
