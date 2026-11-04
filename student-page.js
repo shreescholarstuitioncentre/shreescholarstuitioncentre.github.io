@@ -1262,6 +1262,32 @@ const SSTC_EBOOKS = {
              ]
         },
 
+       "Biology": {
+             "description": "Class 11 Biology E-Book Library",
+             "image": "subject-images/class-11/biology.png",
+             "chapters": [
+                { "number": 1, "title": "Chapter 1: The Living World / अध्याय 1: जीव जगत", "pdf": "ebooks/class-11/biology/chapter-01.pdf" },
+                { "number": 2, "title": "Chapter 2: Biological Classification / अध्याय 2: जीव जगत का वर्गीकरण", "pdf": "ebooks/class-11/biology/chapter-02.pdf" },
+                { "number": 3, "title": "Chapter 3: Plant Kingdom / अध्याय 3: वनस्पति जगत", "pdf": "ebooks/class-11/biology/chapter-03.pdf" },
+                { "number": 4, "title": "Chapter 4: Animal Kingdom / अध्याय 4: प्राणि जगत", "pdf": "ebooks/class-11/biology/chapter-04.pdf" },
+                { "number": 5, "title": "Chapter 5: Morphology of Flowering Plants / अध्याय 5: पुष्पी पादपों की आकारिकी", "pdf": "ebooks/class-11/biology/chapter-05.pdf" },
+                { "number": 6, "title": "Chapter 6: Anatomy of Angiospermic Plants / अध्याय 6: पुष्पी पादपों का शारीर", "pdf": "ebooks/class-11/biology/chapter-06.pdf" },
+                { "number": 7, "title": "Chapter 7: Structural Organisation in Animals / अध्याय 7: प्राणियों में संरचनात्मक संगठन", "pdf": "ebooks/class-11/biology/chapter-07.pdf" },
+                { "number": 8, "title": "Chapter 8: Cell: The Unit of Life / अध्याय 8: कोशिका: जीवन की इकाई", "pdf": "ebooks/class-11/biology/chapter-08.pdf" },
+                { "number": 9, "title": "Chapter 9: Biomolecules / अध्याय 9: जैव अणु", "pdf": "ebooks/class-11/biology/chapter-09.pdf" },
+                { "number": 10, "title": "Chapter 10: Cell Cycle and Cell Division / अध्याय 10: कोशिका चक्र और कोशिका विभाजन", "pdf": "ebooks/class-11/biology/chapter-10.pdf" },
+                { "number": 11, "title": "Chapter 11: Photosynthesis in Higher Plants / अध्याय 11: उच्च पादपों में प्रकाश-संश्लेषण", "pdf": "ebooks/class-11/biology/chapter-11.pdf" },
+                { "number": 12, "title": "Chapter 12: Respiration in Plants / अध्याय 12: पादपों में श्वसन", "pdf": "ebooks/class-11/biology/chapter-12.pdf" },
+                { "number": 13, "title": "Chapter 13: Plant Growth and Development / अध्याय 13: पादप वृद्धि एवं परिवर्धन", "pdf": "ebooks/class-11/biology/chapter-13.pdf" },
+                { "number": 14, "title": "Chapter 14: Breathing and Exchange of Gases / अध्याय 14: श्वसन और गैसों का विनिमय", "pdf": "ebooks/class-11/biology/chapter-14.pdf" },
+                { "number": 15, "title": "Chapter 15: Body Fluids and Circulation / अध्याय 15: शरीर द्रव तथा परिसंचरण", "pdf": "ebooks/class-11/biology/chapter-15.pdf" },
+                { "number": 16, "title": "Chapter 16: Excretory Products and their Elimination / अध्याय 16: उत्सर्जी उत्पाद एवं उनका निष्कासन", "pdf": "ebooks/class-11/biology/chapter-16.pdf" },
+                { "number": 17, "title": "Chapter 17: Locomotion and Movement / अध्याय 17: गमन एवं संचलन", "pdf": "ebooks/class-11/biology/chapter-17.pdf" },
+                { "number": 18, "title": "Chapter 18: Neural Control and Co-ordination / अध्याय 18: तंत्रीकीय नियंत्रण एवं समन्वय", "pdf": "ebooks/class-11/biology/chapter-18.pdf" },
+                { "number": 19, "title": "Chapter 19: Chemical Co-ordination and Integration / अध्याय 19: रासायनिक समन्वय तथा एकीकरण", "pdf": "ebooks/class-11/biology/chapter-19.pdf" }
+              ]
+         },
+
         "Mathematics": {
             "description": "Class 11 Mathematics E-Book Library",
             "image": "subject-images/class-11/maths.png",
@@ -1539,24 +1565,24 @@ const SSTC_EBOOKS = {
     },
 
     "Biology": {
-        "description": "Class 12 Biology E-Book Library",
-        "image": "subject-images/class-12/biology.png",
-        "chapters": [
-            { "number": 1, "title": "Chapter 1: Sexual Reproduction in Flowering Plants / अध्याय 1: पुष्पी पादपों में लैंगिक प्रजनन", "pdf": "ebooks/class-12/biology/chapter-01.pdf" },
-            { "number": 2, "title": "Chapter 2: Human Reproduction / अध्याय 2: मानव जनन", "pdf": "ebooks/class-12/biology/chapter-02.pdf" },
-            { "number": 3, "title": "Chapter 3: Reproductive Health / अध्याय 3: जनन स्वास्थ्य", "pdf": "ebooks/class-12/biology/chapter-03.pdf" },
-            { "number": 4, "title": "Chapter 4: Principles of Inheritance and Variation / अध्याय 4: वंशागति तथा विविधता के सिद्धांत", "pdf": "ebooks/class-12/biology/chapter-04.pdf" },
-            { "number": 5, "title": "Chapter 5: Molecular Basis of Inheritance / अध्याय 5: वंशागति का आणविक आधार", "pdf": "ebooks/class-12/biology/chapter-05.pdf" },
-            { "number": 6, "title": "Chapter 6: Evolution / अध्याय 6: विकास", "pdf": "ebooks/class-12/biology/chapter-06.pdf" },
-            { "number": 7, "title": "Chapter 7: Human Health and Disease / अध्याय 7: मानव स्वास्थ्य तथा रोग", "pdf": "ebooks/class-12/biology/chapter-07.pdf" },
-            { "number": 8, "title": "Chapter 8: Microbes in Human Welfare / अध्याय 8: मानव कल्याण में सूक्ष्मजीव", "pdf": "ebooks/class-12/biology/chapter-08.pdf" },
-            { "number": 9, "title": "Chapter 9: Biotechnology: Principles and Processes / अध्याय 9: जैव प्रौद्योगिकी: सिद्धांत एवं प्रक्रम", "pdf": "ebooks/class-12/biology/chapter-09.pdf" },
-            { "number": 10, "title": "Chapter 10: Biotechnology and its Applications / अध्याय 10: जैव प्रौद्योगिकी एवं उसके अनुप्रयोग", "pdf": "ebooks/class-12/biology/chapter-10.pdf" },
-            { "number": 11, "title": "Chapter 11: Organisms and Populations / अध्याय 11: जीव और समष्टियाँ", "pdf": "ebooks/class-12/biology/chapter-11.pdf" },
-            { "number": 12, "title": "Chapter 12: Ecosystem / अध्याय 12: पारितंत्र", "pdf": "ebooks/class-12/biology/chapter-12.pdf" },
-            { "number": 13, "title": "Chapter 13: Biodiversity and Conservation / अध्याय 13: जैव विविधता एवं संरक्षण", "pdf": "ebooks/class-12/biology/chapter-13.pdf" }
-        ]
-    },
+          "description": "Class 12 Biology E-Book Library",
+          "image": "subject-images/class-12/biology.png",
+          "chapters": [
+             { "number": 1, "title": "Chapter 1: Sexual Reproduction in Flowering Plants / अध्याय 1: पुष्पी पादपों में लैंगिक जनन", "pdf": "ebooks/class-12/biology/chapter-01.pdf" },
+             { "number": 2, "title": "Chapter 2: Human Reproduction / अध्याय 2: मानव जनन", "pdf": "ebooks/class-12/biology/chapter-02.pdf" },
+             { "number": 3, "title": "Chapter 3: Reproductive Health / अध्याय 3: जनन स्वास्थ्य", "pdf": "ebooks/class-12/biology/chapter-03.pdf" },
+             { "number": 4, "title": "Chapter 4: Principles of Inheritance and Variation / अध्याय 4: वंशगति तथा विविधता के सिद्धांत", "pdf": "ebooks/class-12/biology/chapter-04.pdf" },
+             { "number": 5, "title": "Chapter 5: Molecular Basis of Inheritance / अध्याय 5: वंशगति के आणविक आधार", "pdf": "ebooks/class-12/biology/chapter-05.pdf" },
+             { "number": 6, "title": "Chapter 6: Evolution / अध्याय 6: विकास", "pdf": "ebooks/class-12/biology/chapter-06.pdf" },
+             { "number": 7, "title": "Chapter 7: Human Health and Disease / अध्याय 7: मानव स्वास्थ्य तथा रोग", "pdf": "ebooks/class-12/biology/chapter-07.pdf" },
+             { "number": 8, "title": "Chapter 8: Microbes in Human Welfare / अध्याय 8: मानव कल्याण में सूक्ष्मजीव", "pdf": "ebooks/class-12/biology/chapter-08.pdf" },
+             { "number": 9, "title": "Chapter 9: Biotechnology: Principles and Processes / अध्याय 9: जैव प्रौद्योगिकी - सिद्धांत व प्रक्रम", "pdf": "ebooks/class-12/biology/chapter-09.pdf" },
+             { "number": 10, "title": "Chapter 10: Biotechnology and its Applications / अध्याय 10: जैव प्रौद्योगिकी एवं उसके उपयोग", "pdf": "ebooks/class-12/biology/chapter-10.pdf" },
+             { "number": 11, "title": "Chapter 11: Organisms and Populations / अध्याय 11: जीव और समष्टियाँ", "pdf": "ebooks/class-12/biology/chapter-11.pdf" },
+             { "number": 12, "title": "Chapter 12: Ecosystem / अध्याय 12: पारितंत्र", "pdf": "ebooks/class-12/biology/chapter-12.pdf" },
+             { "number": 13, "title": "Chapter 13: Biodiversity and Conservation / अध्याय 13: जैव विविधता एवं संरक्षण", "pdf": "ebooks/class-12/biology/chapter-13.pdf" }
+           ]
+      },
 
     "Hindi": {
         "description": "Class 12 Hindi E-Book Library",
@@ -6752,7 +6778,8 @@ const SSTC_FREE_CHAPTERS_BY_CLASS = {
         {
             subject: "Maths",
             chapters: [
-                { title: "SSTC Mathematics One Page Revision", en: "free/class-10/maths/chapter-01-en.html", hi: "free/class-10/maths/chapter-01-hi.html" }
+                { title: "SSTC Mathematics One Page Revision", en: "free/class-10/maths/chapter-01-en.html", hi: "free/class-10/maths/chapter-01-hi.html" },
+               { title: "SSTC Mathematics Formulas & Equations", en: "free/class-10/maths/chapter-02-en.html", hi: "free/class-10/maths/chapter-02-hi.html" }
             ]
         },
         {
@@ -6781,7 +6808,8 @@ const SSTC_FREE_CHAPTERS_BY_CLASS = {
        {
             subject: "Hindi",
             chapters: [
-                { title: "SSTC Hindi One Page Revision", en: "free/class-10/hindi/chapter-01-en.html", hi: "free/class-10/science/chapter-01-hi.html" }
+                { title: "SSTC Hindi One Page Revision", en: "free/class-10/hindi/chapter-01-en.html", hi: "free/class-10/science/chapter-01-hi.html" },
+               { title: "SSTC Hindi & Sanskrit Vyakaran", en: "free/class-10/hindi/chapter-02-en.html", hi: "free/class-10/hindi/chapter-02-hi.html" }
             ]
         },
        {
@@ -6810,6 +6838,64 @@ const SSTC_FREE_CHAPTERS_BY_CLASS = {
         },
     ],
 
+   "11": [
+        {
+            subject: "Maths",
+            chapters: [
+                { title: "SSTC Mathematics One Page Revision", en: "free/class-11/maths/chapter-01-en.html", hi: "free/class-11/maths/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "Physics",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-11/physics/chapter-01-en.html", hi: "free/class-11/physics/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "Chemistry",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-11/chemistry/chapter-01-en.html", hi: "free/class-11/chemistry/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "Biology",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-11/biology/chapter-01-en.html", hi: "free/class-11/biology/chapter-01-hi.html" },
+               { title: "Chapter 1", en: "free/class-11/biology/chapter-01-en.html", hi: "free/class-11/biology/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "English",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-11/english/chapter-01-en.html", hi: "free/class-11/english/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "Hindi",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-11/hindi/chapter-01-en.html", hi: "free/class-11/hindi/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "Business Studies",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-11/business-studies/chapter-01-en.html", hi: "free/class-11/business-studies/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "Accountancy",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-11/accountancy/chapter-01-en.html", hi: "free/class-11/accountancy/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "Economics",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-11/economics/chapter-01-en.html", hi: "free/class-11/economics/chapter-01-hi.html" }
+            ]
+        }
+    ],
+
     "12": [
         {
             subject: "Maths",
@@ -6818,15 +6904,51 @@ const SSTC_FREE_CHAPTERS_BY_CLASS = {
             ]
         },
         {
-            subject: "Science",
+            subject: "Physics",
             chapters: [
-                { title: "Chapter 1", en: "free/class-12/science/chapter-01-en.html", hi: "free/class-12/science/chapter-01-hi.html" }
+                { title: "Chapter 1", en: "free/class-12/physics/chapter-01-en.html", hi: "free/class-12/physics/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "Chemistry",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-12/chemistry/chapter-01-en.html", hi: "free/class-12/chemistry/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "Biology",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-12/biology/chapter-01-en.html", hi: "free/class-12/biology/chapter-01-hi.html" }
             ]
         },
         {
             subject: "English",
             chapters: [
                 { title: "Chapter 1", en: "free/class-12/english/chapter-01-en.html", hi: "free/class-12/english/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "Hindi",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-12/hindi/chapter-01-en.html", hi: "free/class-12/hindi/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "Business Studies",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-12/business-studies/chapter-01-en.html", hi: "free/class-12/business-studies/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "Accountancy",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-12/accountancy/chapter-01-en.html", hi: "free/class-12/accountancy/chapter-01-hi.html" }
+            ]
+        },
+        {
+            subject: "Economics",
+            chapters: [
+                { title: "Chapter 1", en: "free/class-12/economics/chapter-01-en.html", hi: "free/class-12/economics/chapter-01-hi.html" }
             ]
         }
     ]
