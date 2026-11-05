@@ -668,7 +668,11 @@ const SSTC_EBOOKS = {
                 { "number": 28, "title": "Supplementary 7: The Last Leaf", "pdf": "ebooks/class-9/english/chapter-28.pdf" },
                 { "number": 29, "title": "Supplementary 8: A House Is Not a Home", "pdf": "ebooks/class-9/english/chapter-29.pdf" },
                 { "number": 30, "title": "Supplementary 9: The Accidental Tourist", "pdf": "ebooks/class-9/english/chapter-30.pdf" },
-                { "number": 31, "title": "Supplementary 10: The Beggar", "pdf": "ebooks/class-9/english/chapter-31.pdf" }
+                { "number": 31, "title": "Supplementary 10: The Beggar", "pdf": "ebooks/class-9/english/chapter-31.pdf" },
+                { "number": 32, "title": "Grammar: Tenses, Articles, Reordering of Sentences", "pdf": "ebooks/class-9/english/chapter-32.pdf" },
+               { "number": 33, "title": "Grammar: Voice, Narration, Punctuation", "pdf": "ebooks/class-9/english/chapter-33.pdf" },
+               { "number": 34, "title": "Grammar: Composition: Letter, Application, Paragraph, Report & Article", "pdf": "ebooks/class-9/english/chapter-34.pdf" },
+               { "number": 35, "title": "Grammar: Unseen Passage & Translation (Hindi to English)", "pdf": "ebooks/class-9/english/chapter-35.pdf" }
             ]
         },
 
@@ -1074,7 +1078,11 @@ const SSTC_EBOOKS = {
                  { "number": 25, "title": "Chapter 25: The Making of a Scientist (Supplementary) / अध्याय 25: द मेकिंग ऑफ़ ए साइंटिस्ट (पूरक पाठ)", "pdf": "ebooks/class-10/english/chapter-25.pdf" },
                  { "number": 26, "title": "Chapter 26: The Necklace (Supplementary) / अध्याय 26: द नेकलेस (पूरक पाठ)", "pdf": "ebooks/class-10/english/chapter-26.pdf" },
                  { "number": 27, "title": "Chapter 27: Bholi (Supplementary) / अध्याय 27: भोली (पूरक पाठ)", "pdf": "ebooks/class-10/english/chapter-27.pdf" },
-                 { "number": 28, "title": "Chapter 28: The Book That Saved the Earth (Supplementary) / अध्याय 28: द बुक दैट सेव्ड द अर्थ (पूरक पाठ)", "pdf": "ebooks/class-10/english/chapter-28.pdf" }
+                 { "number": 28, "title": "Chapter 28: The Book That Saved the Earth (Supplementary) / अध्याय 28: द बुक दैट सेव्ड द अर्थ (पूरक पाठ)", "pdf": "ebooks/class-10/english/chapter-28.pdf" },
+                { "number": 29, "title": "Grammar: Tenses, Articles, Reordering of Sentences", "pdf": "ebooks/class-10/english/chapter-29.pdf" },
+               { "number": 30, "title": "Grammar: Voice, Narration, Punctuation", "pdf": "ebooks/class-10/english/chapter-30.pdf" },
+               { "number": 31, "title": "Grammar: Composition: Letter, Application, Paragraph, Report & Article", "pdf": "ebooks/class-10/english/chapter-31.pdf" },
+               { "number": 32, "title": "Grammar: Unseen Passage & Translation (Hindi to English)", "pdf": "ebooks/class-10/english/chapter-32.pdf" }
              ]
          },
 
@@ -6734,10 +6742,7 @@ const SSTC_FREE_CHAPTERS_BY_CLASS = {
             subject: "English",
             chapters: [
                 { title: "SSTC English One Page Revision", en: "free/class-9/english/chapter-01-en.html", hi: "free/class-9/english/chapter-01-hi.html" },
-               { title: "SSTC English Grammar: Tenses, Articles, Reordering of Sentences", en: "free/class-9/english/chapter-02-en.html", hi: "free/class-9/english/chapter-02-hi.html" },
-               { title: "SSTC English Grammar: Voice, Narration, Punctuation", en: "free/class-9/english/chapter-03-en.html", hi: "free/class-9/english/chapter-03-hi.html" },
-               { title: "SSTC English Composition: Letter, Application, Paragraph, Report & Article", en: "free/class-9/english/chapter-04-en.html", hi: "free/class-9/english/chapter-04-hi.html" },
-               { title: "SSTC English Unseen Passage & Translation (Hindi to English)", en: "free/class-9/english/chapter-05-en.html", hi: "free/class-9/english/chapter-05-hi.html" }
+               { title: "SSTC English Grammar", en: "free/class-9/english/chapter-02-en.html", hi: "free/class-9/english/chapter-02-hi.html" }
             ]
         },
        {
@@ -6799,10 +6804,7 @@ const SSTC_FREE_CHAPTERS_BY_CLASS = {
             subject: "English",
             chapters: [
                 { title: "SSTC English One Page Revision", en: "free/class-10/english/chapter-01-en.html", hi: "free/class-10/english/chapter-01-hi.html" },
-               { title: "SSTC English Grammar: Tenses, Articles, Reordering of Sentences", en: "free/class-10/english/chapter-02-en.html", hi: "free/class-10/english/chapter-02-hi.html" },
-               { title: "SSTC English Grammar: Voice, Narration, Punctuation", en: "free/class-10/english/chapter-03-en.html", hi: "free/class-10/english/chapter-03-hi.html" },
-               { title: "SSTC English Composition: Letter, Application, Paragraph, Report & Article", en: "free/class-10/english/chapter-04-en.html", hi: "free/class-10/english/chapter-04-hi.html" },
-               { title: "SSTC English Unseen Passage & Translation (Hindi to English)", en: "free/class-10/english/chapter-05-en.html", hi: "free/class-10/english/chapter-05-hi.html" }
+               { title: "SSTC English Grammar", en: "free/class-10/english/chapter-02-en.html", hi: "free/class-10/english/chapter-02-hi.html" }
             ]
         },
        {
