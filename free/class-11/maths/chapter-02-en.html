@@ -1,0 +1,615 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Class 11 Maths – Formulae &amp; Equations</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Hind:wght@400;600&display=swap">
+<style>
+:root{--bg:#fbf6ec;--card:#fff;--ink:#241b3a;--mut:#6b6482;--line:#e5dcc8;--c:#e0452f;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15112a;--card:#201a3b;--ink:#f3effa;--mut:#aaa3c6;--line:#342d58;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15112a;--card:#201a3b;--ink:#f3effa;--mut:#aaa3c6;--line:#342d58;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Hind,system-ui,sans-serif;transition:background .4s}
+h1,h2,h3{font-family:"Baloo 2",sans-serif;margin:0;line-height:1.15}
+header{max-width:1040px;margin:auto;padding:26px 16px 10px;position:relative}
+h1{font-size:clamp(1.8rem,5.6vw,3.1rem);font-weight:800;padding-right:56px;background:linear-gradient(90deg,#e0452f,#f2a900,#2e9e5b,#2a6fdb,#8a3ffc,#e0452f);background-size:300%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:g 8s linear infinite}
+@keyframes g{to{background-position:300%}}
+header p{color:var(--mut);margin:.4em 0 10px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tools input{flex:1 1 240px;font:inherit;padding:8px 14px;border-radius:99px;border:1.5px solid var(--line);background:var(--card);color:var(--ink)}
+.tools input:focus{outline:3px solid #8a3ffc55;border-color:#8a3ffc}
+.pill{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;font:inherit;font-size:.9rem;padding:6px 14px;cursor:pointer;text-decoration:none;transition:.2s;display:inline-block}
+.pill:hover{transform:translateY(-2px)}.pill.on{background:#8a3ffc;border-color:#8a3ffc;color:#fff}
+#th{position:absolute;right:16px;top:22px;padding:4px 10px;font-size:1.1rem}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:8px 14px;scrollbar-width:thin}
+nav button{flex:none;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:.85rem;padding:4px 12px;border-radius:99px;cursor:pointer;transition:.2s}
+nav button:hover{transform:translateY(-2px)}nav button[aria-pressed=true]{background:var(--c);border-color:var(--c);color:#fff}
+button:focus-visible,a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+main{max-width:1040px;margin:auto;padding:16px}
+h2{font-size:clamp(1.5rem,4vw,2.3rem);color:var(--c);margin-bottom:6px;animation:in .5s both}
+h3.s{margin:24px 0 10px;font-size:1.25rem}
+.hint{color:var(--mut);font-size:.92rem;margin:.2em 0 .6em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.fc{position:relative;background:var(--card);border:1.5px solid var(--line);border-left:6px solid var(--c);border-radius:12px;padding:10px 40px 10px 14px;cursor:pointer;animation:in .5s both;transition:transform .2s,box-shadow .2s}
+.fc:hover{transform:translateY(-3px) rotate(-.25deg);box-shadow:0 8px 20px color-mix(in srgb,var(--c) 25%,transparent)}
+.fc.th{border-left-style:double;border-left-width:8px}
+@keyframes in{from{opacity:0;transform:translateY(14px)}}
+.fn{font-family:"Baloo 2",sans-serif;font-weight:600;color:var(--c);font-size:1rem;line-height:1.3}
+.fx{font-family:"Cambria Math","STIX Two Math",Georgia,serif;font-size:1.08rem;margin-top:3px;word-break:break-word;transition:filter .3s}
+.tx{font-size:.95rem;margin-top:3px;transition:filter .3s}
+body.st .fc .fx,body.st .fc .tx{filter:blur(7px)}body.st .fc.rv .fx,body.st .fc.rv .tx{filter:none}
+.star{position:absolute;right:6px;top:4px;border:0;background:none;font-size:1.3rem;color:#f2a900;cursor:pointer;transition:transform .2s}.star:hover{transform:scale(1.3) rotate(12deg)}
+.tg{font-style:normal;font-family:Hind,sans-serif;font-size:.7rem;font-weight:600;border-radius:99px;padding:1px 8px;color:#fff;vertical-align:middle}
+.tgJ{background:#2a6fdb}.tgN{background:#2e9e5b}.tgB{background:#8a3ffc}
+.trick{margin-top:18px;padding:12px 16px;border-radius:14px;background:color-mix(in srgb,var(--c) 12%,var(--card));border:1.5px dashed var(--c);font-weight:600;animation:in .6s both}
+.w{background:var(--card);border:1.5px dashed var(--c);border-radius:14px;padding:12px 14px;animation:in .6s both}
+.tb{background:var(--card);border:1.5px solid var(--line);border-radius:12px;overflow:hidden}
+.tr{display:flex;justify-content:space-between;gap:14px;padding:7px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap}.tr:last-child{border:0}.tr:nth-child(even){background:color-mix(in srgb,var(--c) 6%,transparent)}
+.tr b{font-family:"Cambria Math","STIX Two Math",Georgia,serif;color:var(--c);text-align:right}
+svg{width:100%;max-width:460px;height:auto;display:block;margin:6px auto}
+svg text{fill:var(--ink);font:12px Hind,sans-serif}
+input[type=range]{width:100%;accent-color:var(--c)}
+.row{display:flex;justify-content:space-between;gap:10px;font-weight:600;margin:4px 0}
+.stt{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.stt span{background:color-mix(in srgb,var(--c) 14%,transparent);border-radius:99px;padding:2px 12px;font-weight:600}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--bg);padding:8px 20px;border-radius:99px;font-weight:600;transition:.3s;z-index:20;pointer-events:none}#toast.on{transform:translateX(-50%) translateY(0)}
+footer{text-align:center;color:var(--mut);padding:18px;font-size:.9rem}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<header><button class="pill" id="th" aria-label="theme">🌓</button><h1 id="h1"></h1><p id="sub"></p>
+<div class="tools"><input id="sq" type="search"><button class="pill" id="stb"></button><span class="pill" id="fc" style="cursor:default"></span><a class="pill" id="lg"></a></div></header>
+<nav id="nav"></nav><main id="main"></main><div id="toast"></div><footer id="ft"></footer>
+<script>
+var L="en",I=L=="en"?0:1;
+var U={
+t:["📐 Class 11 Maths – Formulae &amp; Equations","📐 कक्षा 11 गणित – सूत्र एवं समीकरण"],
+s:["SSTC Maths · All 20 chapters · Formulae, Theorems, JEE Special &amp; Live Labs","SSTC गणित · सभी 20 अध्याय · सूत्र, प्रमेय, JEE विशेष व लाइव प्रयोगशालाएँ"],
+ph:["🔍 Search formula, theorem or topic…","🔍 सूत्र, प्रमेय या टॉपिक खोजें…"],
+st:["🙈 Self-test mode","🙈 स्व-परीक्षा मोड"],
+hub:["⚡ JEE Hub","⚡ JEE हब"],
+hubd:["Standard values, conic comparison, limits and derivatives, series sums, identities and must-know results. (NEET has no Maths; this hub is for JEE Main/Advanced, BITSAT, CET and other exams.)","मानक मान, शांकव तुलना, सीमा व अवकलज, श्रेणी योग, सर्वसमिकाएँ व ज़रूरी परिणाम. (NEET में गणित नहीं होता; यह हब JEE Main/Advanced, BITSAT, CET आदि परीक्षाओं के लिए है.)"],
+fav:["⭐ My Sheet","⭐ मेरी शीट"],
+sf:["📐 Core Formulae &amp; Identities","📐 मुख्य सूत्र एवं सर्वसमिकाएँ"],
+stt:["📜 Theorems &amp; Laws","📜 प्रमेय एवं नियम"],
+sj:["🎯 JEE / Competitive Special","🎯 JEE / प्रतियोगी विशेष"],
+sk:["💡 Quick Trick","💡 त्वरित ट्रिक"],
+cp:["Copied!","कॉपी हो गया!"],
+nr:["No results found.","कोई परिणाम नहीं मिला."],
+ne:["Tap ☆ on any formula to build your own revision sheet.","किसी भी सूत्र पर ☆ दबाकर अपनी रिविजन शीट बनाइए."],
+tip:["Tap a card to copy it · ☆ to save · 🙈 for self-test","कार्ड छुएँ तो कॉपी होगा · ☆ से सेव करें · 🙈 से स्व-परीक्षा"],
+tipst:["Self-test: tap a blurred card to reveal it","स्व-परीक्षा: धुंधले कार्ड को छुकर देखें"],
+lg:["हिंदी में खोलें","Open in English"],
+ft:["SSTC Maths · Class 11 · Formulae &amp; Equations","SSTC गणित · कक्षा 11 · सूत्र एवं समीकरण"]};
+function u(k){return U[k][I]}
+var S={w2:["🔵 Unit Circle &amp; Sine Wave","🔵 इकाई वृत्त व ज्या तरंग"],an:["Angle θ","कोण θ"],pl:["▶ Play","▶ चलाएँ"],ps:["⏸ Pause","⏸ रोकें"],und:["undefined","अपरिभाषित"],
+qd:[["Quadrant I (all +)","Quadrant II (sin +)","Quadrant III (tan +)","Quadrant IV (cos +)"],["प्रथम चतुर्थांश (सब +)","द्वितीय चतुर्थांश (sin +)","तृतीय चतुर्थांश (tan +)","चतुर्थ चतुर्थांश (cos +)"]],
+w3:["📈 Quadratic Explorer: y = ax² + bx + c","📈 द्विघात अन्वेषक: y = ax² + bx + c"],n2:["Two distinct real roots","दो भिन्न वास्तविक मूल"],n1:["Equal real roots","बराबर वास्तविक मूल"],n0:["Complex roots","सम्मिश्र मूल"],vx:["Vertex","शीर्ष"],
+w11:["🪃 Parabola: Focus–Directrix Lab","🪃 परवलय: नाभि–नियता प्रयोगशाला"],pa:["Parameter a","प्राचल a"],pd:["Distance PF = PM","दूरी PF = PM"],
+w12:["🥚 Ellipse &amp; Constant Focal Sum","🥚 दीर्घवृत्त व अचर नाभीय योग"],lr:["LR","नाभिलंब"],ar:["Area","क्षेत्रफल"],
+w18:["🎲 Two-Dice Probability Lab","🎲 दो पासों की प्रायिकता प्रयोगशाला"],r1:["Roll 1","1 बार फेंकें"],tot:["Rolls","फेंके"],ls:["Last","अंतिम"],em:["observed","प्रेक्षित"],th:["theory","सैद्धांतिक"]};
+function s(k){return S[k][I]}
+var cols=["#e0452f","#d9830b","#2e9e5b","#c2398a","#2a6fdb","#8a3ffc","#0f9aa8","#a0522d"],TG={J:"JEE Adv",N:"CET·BITSAT",B:"JEE Main"};
+/* item formats: f/j = [nameEn, nameHi, formula, tag?]; t = [nameEn, nameHi, textEn, textHi] */
+var D=[
+{n:["Sets","समुच्चय"],
+f:[["Number of subsets","उपसमुच्चयों की संख्या","n(P(A)) = 2ⁿ · proper subsets 2ⁿ − 1 · non-empty proper 2ⁿ − 2"],
+["Union of two sets","दो समुच्चयों का संघ","n(A∪B) = n(A) + n(B) − n(A∩B)"],
+["Union of three sets","तीन समुच्चयों का संघ","n(A∪B∪C) = Σn(A) − Σn(A∩B) + n(A∩B∩C)"],
+["Difference of sets","समुच्चयों का अंतर","A − B = A ∩ B′ · n(A − B) = n(A) − n(A∩B)"],
+["Symmetric difference","सममित अंतर","A △ B = (A − B) ∪ (B − A) · n = n(A) + n(B) − 2n(A∩B)"],
+["Complement rules","पूरक के नियम","A ∪ A′ = U · A ∩ A′ = ∅ · (A′)′ = A · U′ = ∅"],
+["Disjoint sets","असंयुक्त समुच्चय","A ∩ B = ∅ ⇒ n(A∪B) = n(A) + n(B)"],
+["Intervals","अंतराल","(a, b) open · [a, b] closed · [a, b) half-open · (a, ∞) unbounded"]],
+t:[["De Morgan's laws","डी-मॉर्गन के नियम","(A∪B)′ = A′ ∩ B′ and (A∩B)′ = A′ ∪ B′","(A∪B)′ = A′ ∩ B′ तथा (A∩B)′ = A′ ∪ B′"],
+["Distributive laws","बंटन नियम","A ∪ (B∩C) = (A∪B) ∩ (A∪C) and A ∩ (B∪C) = (A∩B) ∪ (A∩C)","A ∪ (B∩C) = (A∪B) ∩ (A∪C) तथा A ∩ (B∪C) = (A∩B) ∪ (A∩C)"],
+["Algebra of sets","समुच्चयों का बीजगणित","Commutative, associative, idempotent (A∪A = A) and identity (A∪∅ = A, A∩U = A) laws hold.","क्रमविनिमेय, साहचर्य, इडेम्पोटेंट (A∪A = A) तथा तत्समक (A∪∅ = A, A∩U = A) नियम लागू होते हैं."]],
+j:[["Exactly one of two sets","दो में से केवल एक","n = n(A) + n(B) − 2n(A∩B)","B"],
+["Exactly two of three sets","तीन में से ठीक दो","Σn(A∩B) − 3n(A∩B∩C)","J"],
+["Exactly one of three sets","तीन में से ठीक एक","Σn(A) − 2Σn(A∩B) + 3n(A∩B∩C)","J"],
+["Subset equivalence","उपसमुच्चय तुल्यता","A ⊆ B ⇔ A∪B = B ⇔ A∩B = A ⇔ B′ ⊆ A′","B"],
+["Ordered pairs (A, B) with A ⊆ B ⊆ S","क्रमित युग्म (A, B), A ⊆ B ⊆ S","3ⁿ where n = |S| (each element: in A, in B only, or in neither)","J"],
+["Ordered pairs with A ∪ B = S","क्रमित युग्म, A ∪ B = S","3ⁿ · also A ∩ B = ∅ gives 3ⁿ","J"],
+["Power set of ∅","∅ का घात समुच्चय","P(∅) = {∅}, so n(P(∅)) = 1","N"],
+["Number of elements check","अवयव गणना जाँच","n(A′) = n(U) − n(A) · n(A′∩B′) = n(U) − n(A∪B)","B"]],
+k:["Draw the Venn diagram and fill from the innermost region outward (triple intersection first). ∅ ⊂ every set, but {∅} ≠ ∅.","वेन आरेख बनाकर सबसे भीतरी क्षेत्र (तीनों का सर्वनिष्ठ) से बाहर की ओर भरें. ∅ हर समुच्चय का उपसमुच्चय है, पर {∅} ≠ ∅."]},
+
+{n:["Relations &amp; Functions","संबंध एवं फलन"],
+f:[["Size of Cartesian product","कार्तीय गुणनफल का आकार","n(A×B) = mn (m = n(A), n = n(B)) · A×B ≠ B×A"],
+["Number of relations","संबंधों की संख्या","2^(mn) relations from A to B"],
+["Number of functions","फलनों की संख्या","nᵐ functions from A (m elements) to B (n elements)"],
+["One-one functions","एकैकी फलन","ⁿPₘ = n!/(n − m)! (n ≥ m) · A → A: n!"],
+["Onto functions","आच्छादक फलन","Σ(−1)ʳ ⁿCᵣ (n − r)ᵐ · m = n: n! · n = 2: 2ᵐ − 2"],
+["Domain rules","प्रांत के नियम","√f: f ≥ 0 · log f: f &gt; 0 · 1/f: f ≠ 0 · logₐ(f) base a &gt; 0, a ≠ 1"],
+["Composition","संयोजन","(f∘g)(x) = f(g(x)) · generally f∘g ≠ g∘f · (f∘g)∘h = f∘(g∘h)"],
+["Inverse of a function","फलन का प्रतिलोम","f⁻¹ exists ⇔ f is bijective · f(f⁻¹(x)) = x · (f∘g)⁻¹ = g⁻¹∘f⁻¹"],
+["Even and odd","सम और विषम","Even: f(−x) = f(x) · Odd: f(−x) = −f(x)"]],
+t:[["Equivalence relation","तुल्यता संबंध","A relation that is reflexive, symmetric and transitive; it splits the set into disjoint equivalence classes.","स्वतुल्य, सममित व संक्रामक संबंध; यह समुच्चय को असंयुक्त तुल्यता वर्गों में बाँटता है."],
+["Definition of a function","फलन की परिभाषा","Every element of the domain has exactly one image in the codomain; range ⊆ codomain.","प्रांत के प्रत्येक अवयव का सहप्रांत में ठीक एक प्रतिबिंब होता है; परिसर ⊆ सहप्रांत."],
+["Bijection theorem","द्विएकी प्रमेय","A function is invertible iff it is one-one and onto; for finite sets of equal size, one-one ⇔ onto.","फलन व्युत्क्रमणीय ⇔ एकैकी व आच्छादक; समान आकार के परिमित समुच्चयों में एकैकी ⇔ आच्छादक."]],
+j:[["Reflexive relations on an n-set","n-अवयवी समुच्चय पर स्वतुल्य संबंध","2^(n² − n)","J"],
+["Symmetric relations on an n-set","सममित संबंध","2^(n(n + 1)/2)","J"],
+["Even–odd decomposition","सम–विषम विघटन","f(x) = [f(x) + f(−x)]/2 + [f(x) − f(−x)]/2","J"],
+["Periods","आवर्तकाल","sin, cos: 2π · tan, cot: π · |sin x|: π · sin(ax + b): 2π/|a|","B"],
+["Greatest integer function","महत्तम पूर्णांक फलन","[x] ≤ x &lt; [x] + 1 · {x} = x − [x] · [x + n] = [x] + n · [x] + [−x] = 0 or −1","B"],
+["Range of a sin x + b cos x","a sin x + b cos x का परिसर","[−√(a² + b²), √(a² + b²)]","B"],
+["Period of sum of functions","फलनों के योग का आवर्तकाल","T = LCM of periods (if it exists)","J"]],
+k:["Check domain restrictions first. For counting: functions nᵐ, one-one ⁿPₘ, onto by inclusion–exclusion.","पहले प्रांत की शर्तें देखें. गिनती: फलन nᵐ, एकैकी ⁿPₘ, आच्छादक हेतु समावेश-अपवर्जन."]},
+
+{n:["Trigonometric Functions","त्रिकोणमितीय फलन"],
+f:[["Radian measure","रेडियन माप","π rad = 180° · s = rθ · 1° = π/180 rad"],
+["Pythagorean identities","पाइथागोरस सर्वसमिकाएँ","sin²θ + cos²θ = 1 · 1 + tan²θ = sec²θ · 1 + cot²θ = cosec²θ"],
+["Sum and difference","योग व अंतर सूत्र","sin(A ± B) = sinA cosB ± cosA sinB · cos(A ± B) = cosA cosB ∓ sinA sinB"],
+["tan of sum","tan का योग सूत्र","tan(A ± B) = (tanA ± tanB)/(1 ∓ tanA tanB)"],
+["Double angle","द्विगुण कोण","sin2A = 2sinA cosA = 2tanA/(1 + tan²A) · tan2A = 2tanA/(1 − tan²A)"],
+["cos 2A","cos 2A","cos2A = cos²A − sin²A = 2cos²A − 1 = 1 − 2sin²A = (1 − tan²A)/(1 + tan²A)"],
+["Triple angle","त्रिगुण कोण","sin3A = 3sinA − 4sin³A · cos3A = 4cos³A − 3cosA · tan3A = (3tanA − tan³A)/(1 − 3tan²A)"],
+["Half angle","अर्ध कोण","sin²(A/2) = (1 − cosA)/2 · cos²(A/2) = (1 + cosA)/2 · tan(A/2) = sinA/(1 + cosA)"],
+["Product to sum","गुणनफल से योग","2sinA cosB = sin(A + B) + sin(A − B) · 2cosA cosB = cos(A + B) + cos(A − B)"],
+["Sum to product","योग से गुणनफल","sinC + sinD = 2sin((C + D)/2)cos((C − D)/2) · cosC + cosD = 2cos((C + D)/2)cos((C − D)/2)"]],
+t:[["General solutions","व्यापक हल","sinθ = sinα ⇒ θ = nπ + (−1)ⁿα · cosθ = cosα ⇒ θ = 2nπ ± α · tanθ = tanα ⇒ θ = nπ + α","sinθ = sinα ⇒ θ = nπ + (−1)ⁿα · cosθ = cosα ⇒ θ = 2nπ ± α · tanθ = tanα ⇒ θ = nπ + α"],
+["Squared forms","वर्ग रूप","sin²θ = sin²α, cos²θ = cos²α, tan²θ = tan²α all give θ = nπ ± α.","sin²θ = sin²α, cos²θ = cos²α, tan²θ = tan²α सभी से θ = nπ ± α मिलता है."],
+["ASTC rule","ASTC नियम","I: all positive · II: sin · III: tan · IV: cos positive.","I: सब धनात्मक · II: sin · III: tan · IV: cos धनात्मक."],
+["Allied angles","संबद्ध कोण","sin(90° − θ) = cosθ · sin(180° − θ) = sinθ · cos(180° − θ) = −cosθ · tan(180° + θ) = tanθ","sin(90° − θ) = cosθ · sin(180° − θ) = sinθ · cos(180° − θ) = −cosθ · tan(180° + θ) = tanθ"]],
+j:[["Maximum and minimum of a sinθ + b cosθ","a sinθ + b cosθ के उच्चिष्ठ व निम्निष्ठ","± √(a² + b²) · written as R sin(θ + φ)","B"],
+["Product of cosines (doubling)","कोज्याओं का गुणनफल (द्विगुण)","cosA cos2A cos4A … cos2ⁿ⁻¹A = sin(2ⁿA)/(2ⁿ sinA)","J"],
+["Famous products","प्रसिद्ध गुणनफल","cos20° cos40° cos80° = 1/8 · sin20° sin40° sin60° sin80° = 3/16","J"],
+["Exact values","यथार्थ मान","sin15° = (√6 − √2)/4 · tan15° = 2 − √3 · tan75° = 2 + √3 · sin18° = (√5 − 1)/4 · cos36° = (√5 + 1)/4","B"],
+["If A + B + C = π","यदि A + B + C = π","tanA + tanB + tanC = tanA tanB tanC · sin2A + sin2B + sin2C = 4 sinA sinB sinC","J"],
+["Triangle identity","त्रिभुज सर्वसमिका","cos²A + cos²B + cos²C = 1 − 2cosA cosB cosC (A + B + C = π)","J"],
+["Series of sines","ज्याओं की श्रेणी","Σₖ₌₀ⁿ⁻¹ sin(a + kd) = [sin(nd/2)/sin(d/2)] · sin(a + (n − 1)d/2)","J"],
+["Equally spaced cosines","समान अंतर की कोज्याएँ","cosA + cos(A + 120°) + cos(A + 240°) = 0","N"]],
+k:["Reduce everything to sin and cos, then use the half/double angle ladder. In equations always check |sin|, |cos| ≤ 1 and the domain of tan.","सब कुछ sin व cos में बदलें, फिर अर्ध/द्विगुण कोण सूत्र लगाएँ. समीकरणों में |sin|, |cos| ≤ 1 व tan का प्रांत ज़रूर देखें."]},
+
+{n:["Complex Numbers &amp; Quadratics","सम्मिश्र संख्याएँ व द्विघात"],
+f:[["Powers of i","i की घातें","i⁴ᵏ = 1 · i⁴ᵏ⁺¹ = i · i⁴ᵏ⁺² = −1 · i⁴ᵏ⁺³ = −i"],
+["Modulus, conjugate, inverse","मापांक, संयुग्मी, प्रतिलोम","|z| = √(a² + b²) · z·z̄ = |z|² · z⁻¹ = z̄/|z|²"],
+["Polar and Euler form","ध्रुवीय व यूलर रूप","z = r(cosθ + i sinθ) = re^(iθ)"],
+["De Moivre's theorem","डी मोइवर प्रमेय","(cosθ + i sinθ)ⁿ = cos nθ + i sin nθ"],
+["Quadratic roots","द्विघात के मूल","x = (−b ± √D)/2a · D = b² − 4ac"],
+["Sum and product of roots","मूलों का योग व गुणन","α + β = −b/a · αβ = c/a · x² − (α + β)x + αβ = 0"],
+["Cube roots of unity","इकाई के घनमूल","1, ω, ω² · ω = (−1 + i√3)/2 · ω³ = 1 · 1 + ω + ω² = 0"],
+["nth roots of unity","इकाई के n-वें मूल","e^(2πik/n), k = 0 … n−1 · sum = 0 · product = (−1)ⁿ⁻¹"],
+["Triangle inequality","त्रिभुज असमिका","|z₁ + z₂| ≤ |z₁| + |z₂| · ||z₁| − |z₂|| ≤ |z₁ − z₂|"]],
+t:[["Fundamental theorem of algebra","बीजगणित का मूल प्रमेय","A polynomial of degree n has exactly n complex roots (counted with multiplicity).","घात n के बहुपद के गुणनखंडों सहित ठीक n सम्मिश्र मूल होते हैं."],
+["Conjugate root theorem","संयुग्मी मूल प्रमेय","Real coefficients ⇒ complex roots occur in conjugate pairs; rational coefficients ⇒ irrational roots a ± √b occur in pairs.","वास्तविक गुणांक ⇒ सम्मिश्र मूल संयुग्मी युग्म में; परिमेय गुणांक ⇒ अपरिमेय मूल a ± √b युग्म में."],
+["Nature of roots","मूलों की प्रकृति","D &gt; 0 distinct real · D = 0 equal real · D &lt; 0 complex pair · D a perfect square (rational coeff) ⇒ rational roots.","D &gt; 0 भिन्न वास्तविक · D = 0 बराबर · D &lt; 0 सम्मिश्र युग्म · D पूर्ण वर्ग (परिमेय गुणांक) ⇒ परिमेय मूल."]],
+j:[["Location of roots (a &gt; 0)","मूलों की स्थिति (a &gt; 0)","Both roots &gt; k: D ≥ 0, f(k) &gt; 0, −b/2a &gt; k · roots on either side of k: f(k) &lt; 0","J"],
+["Common root condition","उभयनिष्ठ मूल की शर्त","(c₁a₂ − c₂a₁)² = (a₁b₂ − a₂b₁)(b₁c₂ − b₂c₁)","J"],
+["Extreme value of quadratic","द्विघात का चरम मान","At x = −b/2a: value = −D/4a (min if a &gt; 0, max if a &lt; 0)","B"],
+["Loci in the Argand plane","आर्गंड तल में बिंदुपथ","|z − z₁| = |z − z₂|: perpendicular bisector · |z − z₁| = r: circle · |z − z₁| + |z − z₂| = k: ellipse","J"],
+["Argument rules","कोणांक नियम","arg(z₁z₂) = arg z₁ + arg z₂ · arg(z₁/z₂) = arg z₁ − arg z₂ · arg z̄ = −arg z","B"],
+["Sum of powers of ω","ω की घातों का योग","1 + ωⁿ + ω²ⁿ = 3 if 3 | n, else 0","J"],
+["Square root of a complex number","सम्मिश्र संख्या का वर्गमूल","√(a + ib) = ±[√((|z| + a)/2) + i·sgn(b)·√((|z| − a)/2)]","J"],
+["Rotation","घूर्णन","Multiplying by i rotates by 90° · by e^(iα) rotates by α","B"]],
+k:["Real coefficients ⇒ use the conjugate root. For loci, translate |z − z₁| into distance and identify the curve geometrically.","वास्तविक गुणांक हों तो संयुग्मी मूल लें. बिंदुपथ में |z − z₁| को दूरी मानकर आकृति पहचानें."]},
+
+{n:["Linear Inequalities","रैखिक असमिकाएँ"],
+f:[["Basic rules","मूल नियम","a &lt; b ⇒ a + c &lt; b + c · multiply/divide by a negative reverses the sign"],
+["Absolute value (less than)","निरपेक्ष मान (छोटा)","|x| &lt; a ⇔ −a &lt; x &lt; a (a &gt; 0)"],
+["Absolute value (greater than)","निरपेक्ष मान (बड़ा)","|x| &gt; a ⇔ x &lt; −a or x &gt; a"],
+["Shifted modulus","विस्थापित मापांक","|x − a| &lt; r ⇔ a − r &lt; x &lt; a + r"],
+["Quadratic inequality","द्विघात असमिका","(x − α)(x − β) &lt; 0 ⇔ α &lt; x &lt; β · &gt; 0 ⇔ x outside [α, β] (α &lt; β)"],
+["Half-plane","अर्धतल","ax + by ≤ c: shade the side containing (0, 0) if c &gt; 0"],
+["Reciprocals","व्युत्क्रम","x &gt; 0 ⇒ 1/x &gt; 0 · 0 &lt; a &lt; b ⇒ 1/a &gt; 1/b"]],
+t:[["AM–GM inequality","AM–GM असमिका","For positive reals AM ≥ GM ≥ HM; equality iff all numbers are equal.","धनात्मक वास्तविक संख्याओं के लिए AM ≥ GM ≥ HM; समता तभी जब सभी संख्याएँ बराबर."],
+["Triangle inequality","त्रिभुज असमिका","|a + b| ≤ |a| + |b| and ||a| − |b|| ≤ |a − b|","|a + b| ≤ |a| + |b| तथा ||a| − |b|| ≤ |a − b|"],
+["Cauchy–Schwarz","कौशी–श्वार्ज़","(a₁b₁ + a₂b₂)² ≤ (a₁² + a₂²)(b₁² + b₂²)","(a₁b₁ + a₂b₂)² ≤ (a₁² + a₂²)(b₁² + b₂²)"]],
+j:[["Minimum of x + 1/x","x + 1/x का न्यूनतम","≥ 2 for x &gt; 0 (equality at x = 1) · ≤ −2 for x &lt; 0","B"],
+["Two-modulus minimum","दो मापांक का न्यूनतम","|x − a| + |x − b| ≥ |a − b| (min on the segment between a and b)","J"],
+["Classic inequalities","प्रसिद्ध असमिकाएँ","a² + b² + c² ≥ ab + bc + ca · (a + b + c)(1/a + 1/b + 1/c) ≥ 9","J"],
+["Max of xᵐyⁿ given x + y = k","x + y = k पर xᵐyⁿ का उच्चिष्ठ","Attained when x/m = y/n","J"],
+["Wavy curve method","तरंगी वक्र विधि","Mark critical points; signs alternate across simple roots, not across even-power roots","J"],
+["Inequality with modulus","मापांक वाली असमिका","|f(x)| &lt; g(x) ⇔ −g(x) &lt; f(x) &lt; g(x)","B"],
+["Fixed sum or product","नियत योग या गुणन","Product fixed ⇒ sum is least when numbers are equal · sum fixed ⇒ product is greatest when equal","B"]],
+k:["Never multiply an inequality by an expression of unknown sign. For fractions, bring everything to one side and use the wavy-curve method.","अज्ञात चिह्न वाली राशि से कभी गुणा न करें. भिन्न वाली असमिका में सब एक ओर लाकर तरंगी वक्र विधि लगाएँ."]},
+
+{n:["Permutations &amp; Combinations","क्रमचय और संचय"],
+f:[["Fundamental principle","गणना का मूल सिद्धांत","AND ⇒ multiply (m × n) · OR ⇒ add (m + n)"],
+["Permutation and combination","क्रमचय व संचय","ⁿPᵣ = n!/(n − r)! · ⁿCᵣ = n!/(r!(n − r)!) · ⁿPᵣ = r! ⁿCᵣ"],
+["Properties of ⁿCᵣ","ⁿCᵣ के गुण","ⁿCᵣ = ⁿCₙ₋ᵣ · ⁿCᵣ + ⁿCᵣ₋₁ = ⁿ⁺¹Cᵣ · ⁿCᵣ = (n/r) ⁿ⁻¹Cᵣ₋₁"],
+["Circular arrangements","वृत्ताकार व्यवस्था","(n − 1)! · necklace or garland: (n − 1)!/2"],
+["With repeated objects","पुनरावृत्त वस्तुओं सहित","n!/(p! q! r!) · with unlimited repetition: nʳ"],
+["Selections","चयन","From n distinct: 2ⁿ − 1 non-empty · from n identical: n"],
+["Dividing into groups","समूहों में विभाजन","Equal groups of size m, n groups unlabeled: (mn)!/((m!)ⁿ n!)"],
+["Distribution of identical objects","एक-सी वस्तुओं का वितरण","n identical into r distinct boxes: ⁿ⁺ʳ⁻¹Cᵣ₋₁ (empty allowed) · ⁿ⁻¹Cᵣ₋₁ (none empty)"]],
+t:[["Multiplication and addition principle","गुणन व योग सिद्धांत","If a job has m ways and a second has n ways: both ⇒ mn; either ⇒ m + n (when mutually exclusive).","काम 1 के m व काम 2 के n तरीके: दोनों ⇒ mn; कोई एक ⇒ m + n (परस्पर अपवर्जी होने पर)."],
+["Pigeonhole principle","कबूतर-खाना सिद्धांत","Putting n + 1 objects into n boxes forces some box to hold at least two.","n + 1 वस्तुएँ n डिब्बों में रखने पर किसी डिब्बे में कम से कम दो होंगी."],
+["Inclusion–exclusion","समावेश–अपवर्जन","|A₁∪…∪Aₙ| = Σ|Aᵢ| − Σ|Aᵢ∩Aⱼ| + Σ|Aᵢ∩Aⱼ∩Aₖ| − …","|A₁∪…∪Aₙ| = Σ|Aᵢ| − Σ|Aᵢ∩Aⱼ| + Σ|Aᵢ∩Aⱼ∩Aₖ| − …"]],
+j:[["Derangements","विषमकरण (डिरेंजमेंट)","Dₙ = n!(1 − 1/1! + 1/2! − … + (−1)ⁿ/n!) · D₃ = 2, D₄ = 9, D₅ = 44","J"],
+["Number of divisors","भाजकों की संख्या","N = p^a q^b r^c ⇒ (a + 1)(b + 1)(c + 1) · sum = Π (p^(a+1) − 1)/(p − 1)","B"],
+["Geometry counting","ज्यामिति गणना","Diagonals n(n − 3)/2 · triangles from n points with p collinear: ⁿC₃ − ᵖC₃","B"],
+["Chessboard","शतरंज पट्ट","Rectangles on 8×8: ⁹C₂ × ⁹C₂ = 1296 · squares: Σk² = 204","B"],
+["Sum of digit arrangements","अंक व्यवस्थाओं का योग","Sum of all n-digit numbers from n distinct digits = (n − 1)!·(Σ digits)·(11…1, n ones)","J"],
+["Exponent of prime in n!","n! में अभाज्य का घातांक","Legendre: Σ ⌊n/pᵏ⌋","J"],
+["Two items together / apart","दो वस्तुएँ साथ / अलग","Together: 2·(n − 1)! · apart: n! − 2·(n − 1)!","B"],
+["Number of integral solutions","पूर्णांक हल की संख्या","x₁ + … + xᵣ = n, xᵢ ≥ 0: ⁿ⁺ʳ⁻¹Cᵣ₋₁","J"]],
+k:["'At least one' ⇒ total − none. Treat items that must stay together as one block, then multiply by internal arrangements.","'कम से कम एक' ⇒ कुल − कोई नहीं. साथ रहने वाली वस्तुओं को एक इकाई मानें, फिर आंतरिक व्यवस्थाओं से गुणा करें."]},
+
+{n:["Binomial Theorem","द्विपद प्रमेय"],
+f:[["Binomial expansion","द्विपद प्रसार","(a + b)ⁿ = Σ ⁿCᵣ aⁿ⁻ʳ bʳ · n + 1 terms"],
+["General term","व्यापक पद","T(r + 1) = ⁿCᵣ aⁿ⁻ʳ bʳ"],
+["Middle term(s)","मध्य पद","n even: T(n/2 + 1) · n odd: T((n + 1)/2) and T((n + 3)/2)"],
+["Sum of coefficients","गुणांकों का योग","ΣⁿCᵣ = 2ⁿ · ΣⁿCᵣ(−1)ʳ = 0 · even-place sum = odd-place sum = 2ⁿ⁻¹"],
+["Pascal's identity","पास्कल सर्वसमिका","ⁿCᵣ + ⁿCᵣ₋₁ = ⁿ⁺¹Cᵣ · ⁿCᵣ/ⁿCᵣ₋₁ = (n − r + 1)/r"],
+["Special cases","विशेष स्थितियाँ","(1 + x)ⁿ = ΣⁿCᵣxʳ · (x + a)ⁿ + (x − a)ⁿ has only even-index terms doubled"],
+["Index any rational (|x| &lt; 1)","कोई भी परिमेय घात (|x| &lt; 1)","(1 + x)ⁿ = 1 + nx + n(n − 1)x²/2! + n(n − 1)(n − 2)x³/3! + …"],
+["Useful expansions","उपयोगी प्रसार","(1 − x)⁻¹ = 1 + x + x² + … · (1 + x)⁻¹ = 1 − x + x² − …"]],
+t:[["Binomial theorem (positive integer n)","द्विपद प्रमेय (धनपूर्णांक n)","(a + b)ⁿ expands into n + 1 terms with binomial coefficients; coefficients are symmetric: ⁿCᵣ = ⁿCₙ₋ᵣ.","(a + b)ⁿ का प्रसार n + 1 पदों में; गुणांक सममित: ⁿCᵣ = ⁿCₙ₋ᵣ."],
+["Greatest term","महत्तम पद","In (1 + x)ⁿ the greatest term has r = ⌊(n + 1)|x|/(1 + |x|)⌋; if this is an integer, two terms are equal.","(1 + x)ⁿ में महत्तम पद का r = ⌊(n + 1)|x|/(1 + |x|)⌋; यह पूर्णांक हो तो दो पद बराबर."],
+["Greatest binomial coefficient","महत्तम द्विपद गुणांक","ⁿC(n/2) if n even; ⁿC((n ± 1)/2) if n odd.","n सम हो तो ⁿC(n/2); n विषम हो तो ⁿC((n ± 1)/2)."]],
+j:[["Weighted sums","भारित योग","Σ r·ⁿCᵣ = n·2ⁿ⁻¹ · Σ r²·ⁿCᵣ = n(n + 1)·2ⁿ⁻²","J"],
+["Vandermonde / sum of squares","वैंडरमोंड / वर्गों का योग","Σ (ⁿCᵣ)² = ²ⁿCₙ","J"],
+["Reciprocal weights","व्युत्क्रम भार","Σ ⁿCᵣ/(r + 1) = (2ⁿ⁺¹ − 1)/(n + 1)","J"],
+["Terms in multinomial","बहुपद में पदों की संख्या","(x + y + z)ⁿ has ⁿ⁺²C₂ terms","B"],
+["Approximation","सन्निकटन","(1 + x)ⁿ ≈ 1 + nx for tiny x · (1.01)¹⁰ ≈ 1.1","B"],
+["Integer and fractional part","पूर्णांक व भिन्नात्मक भाग","(√2 + 1)ⁿ + (√2 − 1)ⁿ is an integer (n even); use for ⌊(√2 + 1)ⁿ⌋","J"],
+["Remainder problems","शेषफल प्रश्न","Write 7ⁿ = (8 − 1)ⁿ or (1 + 6)ⁿ and read off divisibility","J"],
+["Term independent of x","x से स्वतंत्र पद","Set power of x in T(r + 1) to zero and solve for r","B"]],
+k:["General term is T(r + 1), not T(r). For 'independent of x' equate the exponent to zero; keep signs inside b.","व्यापक पद T(r + 1) है, T(r) नहीं. 'x से स्वतंत्र' में घातांक शून्य रखें; ऋण चिह्न b के भीतर रखें."]},
+
+{n:["Sequences &amp; Series","अनुक्रम तथा श्रेणी"],
+f:[["Arithmetic progression","समांतर श्रेणी","aₙ = a + (n − 1)d · Sₙ = (n/2)[2a + (n − 1)d] = (n/2)(a + l)"],
+["Geometric progression","गुणोत्तर श्रेणी","aₙ = arⁿ⁻¹ · Sₙ = a(rⁿ − 1)/(r − 1)"],
+["Infinite GP","अनंत GP","S∞ = a/(1 − r), |r| &lt; 1"],
+["Means","माध्य","AM = (a + b)/2 · GM = √(ab) · HM = 2ab/(a + b) · GM² = AM·HM"],
+["Natural number sums","प्राकृत संख्याओं के योग","Σn = n(n + 1)/2 · Σn² = n(n + 1)(2n + 1)/6 · Σn³ = [n(n + 1)/2]²"],
+["Inserting means","माध्य निविष्ट करना","n AMs between a, b: d = (b − a)/(n + 1) · n GMs: r = (b/a)^(1/(n + 1))"],
+["Arithmetico-geometric","समांतर-गुणोत्तर श्रेणी","S∞ = a/(1 − r) + dr/(1 − r)² (|r| &lt; 1)"],
+["Harmonic progression","हरात्मक श्रेणी","a, b, c in HP ⇔ 1/a, 1/b, 1/c in AP · b = 2ac/(a + c)"]],
+t:[["AM ≥ GM ≥ HM","AM ≥ GM ≥ HM","For positive numbers, equality only when all are equal.","धनात्मक संख्याओं के लिए; समता तभी जब सभी बराबर."],
+["Property of AP","AP का गुण","Three terms a, b, c are in AP iff 2b = a + c; any term is the mean of its neighbours.","a, b, c समांतर श्रेणी में ⇔ 2b = a + c; हर पद अपने पड़ोसियों का माध्य है."],
+["Property of GP","GP का गुण","a, b, c in GP iff b² = ac; product of terms equidistant from ends is constant.","a, b, c गुणोत्तर श्रेणी में ⇔ b² = ac; छोरों से समान दूरी वाले पदों का गुणनफल नियत."]],
+j:[["Telescoping sums","दूरदर्शी (टेलीस्कोपिक) योग","Σ 1/(r(r + 1)) = n/(n + 1) · Σ 1/(r(r + 1)(r + 2)) = n(n + 3)/(4(n + 1)(n + 2))","J"],
+["Σ r·r!","Σ r·r!","= (n + 1)! − 1","J"],
+["1 + 11 + 111 + … (n terms)","1 + 11 + 111 + … (n पद)","(10ⁿ⁺¹ − 9n − 10)/81","J"],
+["Σ r(r + 1)","Σ r(r + 1)","= n(n + 1)(n + 2)/3","B"],
+["Recurring decimal","आवर्ती दशमलव","0.ababab… = ab/99 · treat as infinite GP with r = 1/10ᵏ (k = repeating digits)","B"],
+["AP sum symmetry","AP योग सममिति","If Sₘ = Sₙ then Sₘ₊ₙ = 0 · if aₘ = n and aₙ = m then aₘ₊ₙ = 0","J"],
+["Sum of n terms from sums of AP","AP के योग से पद","aₙ = Sₙ − Sₙ₋₁ for n ≥ 2, a₁ = S₁","B"],
+["Product of GP terms","GP पदों का गुणनफल","Product of n terms = (a·l)^(n/2) = aⁿ r^(n(n − 1)/2)","J"]],
+k:["For 'sum of series with polynomial terms' use Σn, Σn², Σn³. Three numbers in AP: a − d, a, a + d; in GP: a/r, a, ar.","बहुपद पदों वाली श्रेणी में Σn, Σn², Σn³ लगाएँ. AP में तीन पद: a − d, a, a + d; GP में: a/r, a, ar."]},
+
+{n:["Straight Lines","सरल रेखाएँ"],
+f:[["Slope","ढाल","m = tanθ = (y₂ − y₁)/(x₂ − x₁) = −a/b for ax + by + c = 0"],
+["Standard forms","मानक रूप","y = mx + c · y − y₁ = m(x − x₁) · x/a + y/b = 1 · normal: x cosα + y sinα = p"],
+["Two-point form","द्वि-बिंदु रूप","(y − y₁)/(y₂ − y₁) = (x − x₁)/(x₂ − x₁)"],
+["Angle between lines","रेखाओं के बीच कोण","tanθ = |(m₁ − m₂)/(1 + m₁m₂)| · ∥: m₁ = m₂ · ⊥: m₁m₂ = −1"],
+["Distance from a point","बिंदु से दूरी","d = |Ax₁ + By₁ + C|/√(A² + B²)"],
+["Distance between parallel lines","समांतर रेखाओं के बीच दूरी","d = |c₁ − c₂|/√(a² + b²)"],
+["Family of lines","रेखा-कुल","L₁ + λL₂ = 0 passes through the point of intersection of L₁ = 0 and L₂ = 0"],
+["Concurrency","संगामिता","|a₁ b₁ c₁; a₂ b₂ c₂; a₃ b₃ c₃| = 0 for three concurrent lines"]],
+t:[["Slope conditions","ढाल की शर्तें","Parallel lines have equal slopes; perpendicular lines have slopes whose product is −1.","समांतर रेखाओं के ढाल समान; लंबवत् रेखाओं के ढालों का गुणनफल −1."],
+["Angle bisectors","कोण समद्विभाजक","(a₁x + b₁y + c₁)/√(a₁² + b₁²) = ± (a₂x + b₂y + c₂)/√(a₂² + b₂²)","(a₁x + b₁y + c₁)/√(a₁² + b₁²) = ± (a₂x + b₂y + c₂)/√(a₂² + b₂²)"],
+["Collinearity of three points","तीन बिंदुओं की संरेखता","Slopes of AB and BC are equal, or area of triangle ABC = 0.","AB व BC के ढाल बराबर, या त्रिभुज ABC का क्षेत्रफल = 0."]],
+j:[["Foot of perpendicular","लंब पाद","(x − x₁)/a = (y − y₁)/b = −(ax₁ + by₁ + c)/(a² + b²)","B"],
+["Image (reflection) in a line","रेखा में प्रतिबिंब","(x − x₁)/a = (y − y₁)/b = −2(ax₁ + by₁ + c)/(a² + b²)","B"],
+["Area cut off by axes","अक्षों से कटा क्षेत्रफल","Line ax + by + c = 0 makes triangle of area c²/(2|ab|)","B"],
+["Pair of lines","रेखा-युग्म","ax² + 2hxy + by² = 0 · tanθ = |2√(h² − ab)/(a + b)| · perpendicular if a + b = 0","J"],
+["Area of parallelogram","समांतर चतुर्भुज का क्षेत्रफल","p₁p₂/sinθ (p's: distances between opposite pairs of parallel sides)","J"],
+["Intercept form check","अंतःखंड रूप जाँच","Equal intercepts ⇒ slope −1 · line through (h, k) with sum of intercepts fixed ⇒ use x/a + y/b = 1","B"],
+["Ratio in which a line divides a segment","रेखा द्वारा खंड का विभाजन अनुपात","λ = −(ax₁ + by₁ + c)/(ax₂ + by₂ + c)","J"],
+["Slope from angle","कोण से ढाल","Line making angle α with x-axis: m = tanα · inclination between 0° and 180°","N"]],
+k:["Use the family L₁ + λL₂ = 0 whenever a line passes through an intersection point. For images and feet, use the vector form with (a, b).","किसी प्रतिच्छेद बिंदु से जाने वाली रेखा हेतु L₁ + λL₂ = 0 लें. प्रतिबिंब व लंब पाद में (a, b) वाला सूत्र लगाएँ."]},
+
+{n:["Cartesian Coordinates","कार्तीय निर्देशांक"],
+f:[["Distance formula","दूरी सूत्र","d = √((x₂ − x₁)² + (y₂ − y₁)²)"],
+["Section formula (internal)","विभाजन सूत्र (अंतः)","((mx₂ + nx₁)/(m + n), (my₂ + ny₁)/(m + n))"],
+["Section formula (external)","विभाजन सूत्र (बाह्य)","((mx₂ − nx₁)/(m − n), (my₂ − ny₁)/(m − n))"],
+["Midpoint","मध्य बिंदु","((x₁ + x₂)/2, (y₁ + y₂)/2)"],
+["Centroid","केंद्रक","G = ((x₁ + x₂ + x₃)/3, (y₁ + y₂ + y₃)/3)"],
+["Area of triangle","त्रिभुज का क्षेत्रफल","½|x₁(y₂ − y₃) + x₂(y₃ − y₁) + x₃(y₁ − y₂)|"],
+["Incentre","अंतःकेंद्र","((ax₁ + bx₂ + cx₃)/(a + b + c), (ay₁ + by₂ + cy₃)/(a + b + c))"],
+["Shifting of origin","मूलबिंदु स्थानांतरण","x = X + h · y = Y + k"],
+["Rotation of axes","अक्षों का घूर्णन","x = X cosθ − Y sinθ · y = X sinθ + Y cosθ"]],
+t:[["Apollonius' theorem","अपोलोनियस प्रमेय","In triangle ABC with median AD: AB² + AC² = 2(AD² + BD²).","त्रिभुज ABC में माध्यिका AD हो तो AB² + AC² = 2(AD² + BD²)."],
+["Centroid theorem","केंद्रक प्रमेय","Medians meet at G which divides each median 2 : 1 from the vertex.","माध्यिकाएँ G पर मिलती हैं जो शीर्ष से 2 : 1 में विभाजित करता है."],
+["Collinearity test","संरेखता परीक्षण","Three points are collinear iff the area of the triangle formed is zero.","तीन बिंदु संरेख ⇔ उनसे बने त्रिभुज का क्षेत्रफल शून्य."]],
+j:[["Polar to Cartesian","ध्रुवीय से कार्तीय","x = r cosθ · y = r sinθ · r² = x² + y² · tanθ = y/x","B"],
+["Orthocentre, circumcentre, centroid","लंबकेंद्र, परिकेंद्र, केंद्रक","O, G, H are collinear with G dividing OH in 1 : 2 (Euler line)","J"],
+["Right-triangle test","समकोण त्रिभुज परीक्षण","AB² + BC² = CA² (Pythagoras on the three distances)","B"],
+["Polygon area (shoelace)","बहुभुज क्षेत्रफल (शू-लेस)","½|Σ(xᵢyᵢ₊₁ − xᵢ₊₁yᵢ)|","J"],
+["Excentre","बहिःकेंद्र","Opposite A: ((−ax₁ + bx₂ + cx₃)/(−a + b + c), …)","J"],
+["Locus of a moving point","चल बिंदु का बिंदुपथ","Write the condition, eliminate parameter, get relation in x, y","B"],
+["Parallelogram test","समांतर चतुर्भुज परीक्षण","Diagonals bisect: midpoint of AC = midpoint of BD","B"]],
+k:["For 'find D so that ABCD is a parallelogram' equate diagonal midpoints. For ratio questions, assume ratio λ : 1 and use the section formula.","समांतर चतुर्भुज हेतु विकर्णों के मध्य बिंदु बराबर रखें. अनुपात के प्रश्नों में λ : 1 मानकर विभाजन सूत्र लगाएँ."]},
+
+{n:["Circle","वृत्त"],
+f:[["Standard form","मानक रूप","(x − h)² + (y − k)² = r²"],
+["General form","व्यापक रूप","x² + y² + 2gx + 2fy + c = 0 · centre (−g, −f) · r = √(g² + f² − c)"],
+["Diameter form","व्यास रूप","(x − x₁)(x − x₂) + (y − y₁)(y − y₂) = 0"],
+["Parametric form","प्राचलिक रूप","x = h + r cosθ · y = k + r sinθ"],
+["Tangent at (x₁, y₁)","(x₁, y₁) पर स्पर्श रेखा","xx₁ + yy₁ + g(x + x₁) + f(y + y₁) + c = 0 (i.e. T = 0)"],
+["Slope form of tangent","ढाल रूप स्पर्श रेखा","y = mx ± r√(1 + m²) for x² + y² = r²"],
+["Length of tangent","स्पर्श रेखा की लंबाई","√S₁ = √(x₁² + y₁² + 2gx₁ + 2fy₁ + c)"],
+["Chord of contact and midpoint chord","स्पर्श जीवा व मध्य बिंदु जीवा","Chord of contact: T = 0 · chord with midpoint (x₁, y₁): T = S₁"],
+["Radical axis","मूलाक्ष","S₁ − S₂ = 0 (a straight line)"]],
+t:[["Tangent–radius theorem","स्पर्श रेखा–त्रिज्या प्रमेय","A tangent is perpendicular to the radius at the point of contact.","स्पर्श रेखा, स्पर्श बिंदु पर त्रिज्या के लंबवत् होती है."],
+["Power of a point","बिंदु की घात","PA·PB = PT² = S₁ for any secant PAB and tangent PT from external point P.","बाह्य बिंदु P से छेदक PAB व स्पर्श रेखा PT के लिए PA·PB = PT² = S₁."],
+["Radical axis theorem","मूलाक्ष प्रमेय","Radical axes of three circles taken in pairs are concurrent (radical centre).","तीन वृत्तों के युग्मों के मूलाक्ष संगामी होते हैं (मूलकेंद्र)."]],
+j:[["Tangency condition","स्पर्श की शर्त","y = mx + c touches x² + y² = r² iff c² = r²(1 + m²)","B"],
+["Chord length by a line","रेखा द्वारा कटी जीवा की लंबाई","2√(r² − p²) where p = distance of centre from the line","B"],
+["Intercept on x-axis","x-अक्ष पर अंतःखंड","2√(g² − c) (and 2√(f² − c) on y-axis) · touches x-axis if g² = c","B"],
+["Orthogonal circles","लंबकोणीय वृत्त","2g₁g₂ + 2f₁f₂ = c₁ + c₂","J"],
+["Number of common tangents","उभयनिष्ठ स्पर्श रेखाओं की संख्या","d &gt; r₁ + r₂: 4 · d = r₁ + r₂: 3 · |r₁ − r₂| &lt; d &lt; r₁ + r₂: 2 · d = |r₁ − r₂|: 1 · d &lt; |r₁ − r₂|: 0","J"],
+["Angle between two circles","दो वृत्तों के बीच कोण","cosθ = (r₁² + r₂² − d²)/(2r₁r₂)","J"],
+["Circle touching both axes","दोनों अक्षों को छूने वाला वृत्त","(x − a)² + (y − a)² = a² (first quadrant)","B"],
+["Family of circles","वृत्त-कुल","S₁ + λS₂ = 0 · S + λL = 0 (circle through intersection of circle and line)","J"],
+["Director circle idea","निर्देशक वृत्त","Locus of intersection of perpendicular tangents to x² + y² = r² is x² + y² = 2r²","J"]],
+k:["Complete squares to get centre and radius. 'Touches' means distance from centre to the line equals the radius.","वर्ग पूरा करके केंद्र व त्रिज्या निकालें. 'स्पर्श करे' ⇒ केंद्र से रेखा की दूरी = त्रिज्या."]},
+
+{n:["Parabola","परवलय"],
+f:[["Standard parabola y² = 4ax","मानक परवलय y² = 4ax","Focus (a, 0) · directrix x = −a · axis y = 0 · LR = 4a · vertex (0, 0)"],
+["Other orientations","अन्य दिशाएँ","y² = −4ax (left) · x² = 4ay (up, focus (0, a)) · x² = −4ay (down)"],
+["Shifted parabola","विस्थापित परवलय","(y − k)² = 4a(x − h): vertex (h, k), focus (h + a, k)"],
+["Parametric form","प्राचलिक रूप","(at², 2at)"],
+["Focal distance","नाभीय दूरी","SP = x + a = a(t² + 1)"],
+["Tangent at (x₁, y₁)","(x₁, y₁) पर स्पर्श रेखा","yy₁ = 2a(x + x₁) · at t: ty = x + at²"],
+["Slope form","ढाल रूप","y = mx + a/m (tangent) · condition c = a/m"],
+["Normal at t","t पर अभिलंब","y + tx = 2at + at³ · slope form y = mx − 2am − am³"]],
+t:[["Definition","परिभाषा","Locus of a point whose distance from a fixed point (focus) equals its distance from a fixed line (directrix): e = 1.","उस बिंदु का बिंदुपथ जिसकी नाभि से दूरी = नियता से दूरी: e = 1."],
+["Reflection property","परावर्तन गुण","A ray parallel to the axis reflects through the focus (basis of dishes and headlights).","अक्ष के समांतर किरण परावर्तन के बाद नाभि से गुज़रती है (डिश व हेडलाइट का आधार)."],
+["Tangent at the vertex","शीर्ष पर स्पर्श रेखा","The foot of the perpendicular from the focus on any tangent lies on the tangent at the vertex (x = 0).","नाभि से किसी स्पर्श रेखा पर लंब का पाद शीर्ष की स्पर्श रेखा (x = 0) पर होता है."]],
+j:[["Focal chord property","नाभीय जीवा गुण","If a focal chord has end parameters t₁, t₂ then t₁t₂ = −1 · length = a(t + 1/t)² (min = 4a)","J"],
+["Harmonic mean property","हरात्मक माध्य गुण","1/SP + 1/SQ = 1/a for a focal chord PQ (semi-latus rectum a is the HM)","J"],
+["Perpendicular tangents","लंबवत् स्पर्श रेखाएँ","They meet on the directrix; tangents at ends of a focal chord meet on the directrix","J"],
+["Number of tangents / normals","स्पर्श रेखाएँ / अभिलंब","From an external point: 2 tangents · from a general point: up to 3 normals","J"],
+["Chord of contact","स्पर्श जीवा","T = 0: yy₁ = 2a(x + x₁) for external point (x₁, y₁)","B"],
+["Ends of latus rectum","नाभिलंब के सिरे","(a, ±2a) for y² = 4ax","B"],
+["Position of a point","बिंदु की स्थिति","S₁ = y₁² − 4ax₁: &gt; 0 outside · = 0 on · &lt; 0 inside","B"]],
+k:["For any parabola question, shift to the form y² = 4ax and use the parameter (at², 2at). Focus–directrix distance equality solves most locus questions.","किसी भी परवलय के प्रश्न में y² = 4ax रूप लें और प्राचल (at², 2at) चुनें. नाभि–नियता दूरी की समता से अधिकांश बिंदुपथ हल होते हैं."]},
+
+{n:["Ellipse","दीर्घवृत्त"],
+f:[["Standard ellipse","मानक दीर्घवृत्त","x²/a² + y²/b² = 1 (a &gt; b) · centre (0, 0)"],
+["Eccentricity","उत्केंद्रता","e = √(1 − b²/a²) · b² = a²(1 − e²) · 0 &lt; e &lt; 1"],
+["Foci and directrices","नाभियाँ व नियताएँ","Foci (±ae, 0) · directrices x = ±a/e"],
+["Latus rectum","नाभिलंब","LR = 2b²/a · ends (±ae, ±b²/a)"],
+["Axes","अक्ष","Major axis 2a · minor axis 2b · distance between foci 2ae"],
+["Parametric form","प्राचलिक रूप","(a cosθ, b sinθ) · θ is the eccentric angle"],
+["Area","क्षेत्रफल","A = πab"],
+["Focal radii","नाभीय त्रिज्याएँ","SP = a − ex · S′P = a + ex · SP + S′P = 2a"],
+["Vertical major axis","ऊर्ध्वाधर दीर्घ अक्ष","x²/b² + y²/a² = 1 (a &gt; b): foci (0, ±ae)"]],
+t:[["Definition","परिभाषा","Locus of a point whose sum of distances from two fixed foci is constant (= 2a, greater than the distance between foci).","उस बिंदु का बिंदुपथ जिसकी दो नाभियों से दूरियों का योग नियत (= 2a) हो."],
+["Auxiliary circle","सहायक वृत्त","x² + y² = a² is the circle on the major axis as diameter; eccentric angle is measured on it.","x² + y² = a² दीर्घ अक्ष को व्यास मानकर बना वृत्त; उत्केंद्र कोण इसी पर मापा जाता है."],
+["Director circle","निर्देशक वृत्त","Perpendicular tangents meet on x² + y² = a² + b².","लंबवत् स्पर्श रेखाएँ x² + y² = a² + b² पर मिलती हैं."]],
+j:[["Tangent at (x₁, y₁)","(x₁, y₁) पर स्पर्श रेखा","xx₁/a² + yy₁/b² = 1","B"],
+["Slope form of tangent","ढाल रूप स्पर्श रेखा","y = mx ± √(a²m² + b²) · condition c² = a²m² + b²","B"],
+["Normal at (x₁, y₁)","(x₁, y₁) पर अभिलंब","a²x/x₁ − b²y/y₁ = a² − b²","J"],
+["Position of a point","बिंदु की स्थिति","S₁ = x₁²/a² + y₁²/b² − 1: &gt; 0 outside · = 0 on · &lt; 0 inside","B"],
+["Reflection property","परावर्तन गुण","A ray from one focus passes through the other after reflection; tangent makes equal angles with focal radii","J"],
+["Product of focal perpendiculars","नाभीय लंबों का गुणनफल","Product of perpendiculars from foci on any tangent = b²","J"],
+["Equal axes","बराबर अक्ष","a = b ⇒ e = 0 ⇒ circle","N"]],
+k:["Decide major axis by the larger denominator. Always keep b² = a²(1 − e²); the sum of focal distances 2a never changes.","बड़े हर वाले पद से दीर्घ अक्ष तय करें. b² = a²(1 − e²) याद रखें; नाभीय दूरियों का योग 2a सदा नियत रहता है."]},
+
+{n:["Hyperbola","अतिपरवलय"],
+f:[["Standard hyperbola","मानक अतिपरवलय","x²/a² − y²/b² = 1 · transverse axis 2a · conjugate axis 2b"],
+["Eccentricity","उत्केंद्रता","e = √(1 + b²/a²) · b² = a²(e² − 1) · e &gt; 1"],
+["Foci and directrices","नाभियाँ व नियताएँ","Foci (±ae, 0) · directrices x = ±a/e"],
+["Asymptotes","अनंतस्पर्शी","y = ±(b/a)x · joint equation x²/a² − y²/b² = 0"],
+["Latus rectum","नाभिलंब","LR = 2b²/a"],
+["Parametric form","प्राचलिक रूप","(a secθ, b tanθ)"],
+["Conjugate hyperbola","संयुग्मी अतिपरवलय","−x²/a² + y²/b² = 1 · 1/e² + 1/e′² = 1"],
+["Rectangular hyperbola","आयताकार अतिपरवलय","a = b · e = √2 · asymptotes ⟂ · xy = c² with parametric (ct, c/t)"],
+["Focal radii","नाभीय त्रिज्याएँ","|SP − S′P| = 2a · SP = |ex − a|"]],
+t:[["Definition","परिभाषा","Locus of a point whose difference of distances from two fixed foci is constant (= 2a).","उस बिंदु का बिंदुपथ जिसकी दो नाभियों से दूरियों का अंतर नियत (= 2a) हो."],
+["Asymptote property","अनंतस्पर्शी गुण","The curve approaches the asymptotes at infinity; the product of distances of a point on the curve from the asymptotes is constant = a²b²/(a² + b²).","वक्र अनंत पर अनंतस्पर्शियों के पास पहुँचता है; वक्र पर बिंदु की अनंतस्पर्शियों से दूरियों का गुणनफल नियत = a²b²/(a² + b²)."],
+["Director circle","निर्देशक वृत्त","Perpendicular tangents meet on x² + y² = a² − b² (real only if a &gt; b).","लंबवत् स्पर्श रेखाएँ x² + y² = a² − b² पर मिलती हैं (a &gt; b होने पर ही वास्तविक)."]],
+j:[["Tangent at (x₁, y₁)","(x₁, y₁) पर स्पर्श रेखा","xx₁/a² − yy₁/b² = 1","B"],
+["Slope form of tangent","ढाल रूप स्पर्श रेखा","y = mx ± √(a²m² − b²) · condition c² = a²m² − b²","B"],
+["Angle between asymptotes","अनंतस्पर्शियों के बीच कोण","2 tan⁻¹(b/a)","J"],
+["Rectangular hyperbola xy = c²","आयताकार अतिपरवलय xy = c²","Tangent at t: x/t + ty = 2c · foci (±c√2, ±c√2) · vertices (±c, ±c)","J"],
+["Position of a point","बिंदु की स्थिति","S₁ = x₁²/a² − y₁²/b² − 1: &gt; 0 outside · = 0 on the curve · &lt; 0 inside (between branches' foci side)","B"],
+["Eccentricity comparison","उत्केंद्रता तुलना","Ellipse e &lt; 1 · parabola e = 1 · hyperbola e &gt; 1 · circle e = 0","B"],
+["Auxiliary circle","सहायक वृत्त","x² + y² = a² (eccentric angle θ gives (a secθ, b tanθ))","J"]],
+k:["Hyperbola: c² = a² + b² (minus for ellipse). The positive term decides the transverse axis. Asymptotes come free by replacing 1 with 0.","अतिपरवलय में c² = a² + b² (दीर्घवृत्त में ऋण). धनात्मक पद अनुप्रस्थ अक्ष तय करता है. 1 की जगह 0 रखकर अनंतस्पर्शी मिल जाते हैं."]},
+
+{n:["3D Geometry","त्रिविमीय ज्यामिति"],
+f:[["Distance formula","दूरी सूत्र","d = √((x₂ − x₁)² + (y₂ − y₁)² + (z₂ − z₁)²)"],
+["Section formula","विभाजन सूत्र","((mx₂ + nx₁)/(m + n), (my₂ + ny₁)/(m + n), (mz₂ + nz₁)/(m + n))"],
+["Midpoint and centroid","मध्य बिंदु व केंद्रक","Mid: ((x₁ + x₂)/2, …) · centroid of triangle: (Σx/3, Σy/3, Σz/3)"],
+["Distance from axes","अक्षों से दूरी","From x-axis: √(y² + z²) · y-axis: √(x² + z²) · z-axis: √(x² + y²)"],
+["Distance from planes","तलों से दूरी","From xy-plane: |z| · yz-plane: |x| · zx-plane: |y|"],
+["Octants","अष्टांशक","Signs (±, ±, ±) give 8 octants; first octant (+, +, +)"],
+["Direction cosines","दिक्कोज्याएँ","l = cosα, m = cosβ, n = cosγ · l² + m² + n² = 1"],
+["Sphere","गोला","(x − a)² + (y − b)² + (z − c)² = r²"]],
+t:[["Section formula theorem","विभाजन सूत्र प्रमेय","Point dividing PQ in ratio m : n internally has coordinates weighted by n and m as shown; use −n for external division.","PQ को m : n में अंतः विभाजित करने वाले बिंदु के निर्देशांक उक्त भारित रूप में; बाह्य विभाजन में n की जगह −n."],
+["Right-handed system","दक्षिणावर्त निकाय","x, y, z axes follow the right-hand rule: x × y = z.","x, y, z अक्ष दाएँ हाथ के नियम का पालन करते हैं: x × y = z."],
+["Coplanarity of four points","चार बिंदुओं की समतलीयता","Four points are coplanar iff the scalar triple product of the three edge vectors is zero.","चार बिंदु समतलीय ⇔ तीन किनारा-सदिशों का अदिश त्रिक गुणनफल शून्य."]],
+j:[["Direction cosines of a line through two points","दो बिंदुओं से जाने वाली रेखा की दिक्कोज्याएँ","(x₂ − x₁, y₂ − y₁, z₂ − z₁)/d","B"],
+["Angle between two lines","दो रेखाओं के बीच कोण","cosθ = l₁l₂ + m₁m₂ + n₁n₂","J"],
+["Reflection in a coordinate plane","निर्देशांक तल में प्रतिबिंब","In xy-plane: (x, y, −z) · yz-plane: (−x, y, z) · zx-plane: (x, −y, z)","B"],
+["Centroid of a tetrahedron","चतुष्फलक का केंद्रक","((Σx)/4, (Σy)/4, (Σz)/4)","J"],
+["Collinearity in space","अंतरिक्ष में संरेखता","A, B, C collinear iff AB + BC = AC or they divide in a fixed ratio","B"],
+["Points on axes","अक्षों पर बिंदु","x-axis: (a, 0, 0) · y-axis: (0, b, 0) · z-axis: (0, 0, c)","N"],
+["Equilateral check","समबाहु जाँच","Compute all three distances; equal ⇒ equilateral","N"]],
+k:["Distances from axes use the other two coordinates; from planes use the remaining one. Direction cosines always satisfy l² + m² + n² = 1.","अक्षों से दूरी में बाकी दो निर्देशांक, तलों से दूरी में शेष एक निर्देशांक लगता है. दिक्कोज्याओं में l² + m² + n² = 1 सदा."]},
+
+{n:["Limits","सीमा"],
+f:[["Trigonometric limits","त्रिकोणमितीय सीमाएँ","lim sinx/x = 1 · lim tanx/x = 1 · lim (1 − cosx)/x² = ½ · (x → 0, x in radians)"],
+["Exponential and log limits","चरघातांकी व लघुगणकीय सीमाएँ","lim (eˣ − 1)/x = 1 · lim (aˣ − 1)/x = ln a · lim ln(1 + x)/x = 1"],
+["Power limit","घात सीमा","lim (xⁿ − aⁿ)/(x − a) = n aⁿ⁻¹ (x → a)"],
+["Number e","संख्या e","lim (1 + x)^(1/x) = e (x → 0) · lim (1 + 1/x)ˣ = e (x → ∞)"],
+["Algebra of limits","सीमाओं का बीजगणित","lim(f ± g) = lim f ± lim g · lim(fg) = lim f · lim g · lim(f/g) = lim f / lim g (lim g ≠ 0)"],
+["One-sided limits","एकपक्षीय सीमाएँ","Limit exists ⇔ LHL = RHL (finite)"],
+["Limit at infinity","अनंत पर सीमा","Ratio of polynomials: compare highest degrees · same degree ⇒ ratio of leading coefficients"],
+["Expansions near 0","0 के निकट प्रसार","sinx ≈ x − x³/6 · cosx ≈ 1 − x²/2 · eˣ ≈ 1 + x + x²/2 · ln(1 + x) ≈ x − x²/2"]],
+t:[["Sandwich (squeeze) theorem","सैंडविच प्रमेय","If g(x) ≤ f(x) ≤ h(x) and lim g = lim h = L then lim f = L.","यदि g(x) ≤ f(x) ≤ h(x) तथा lim g = lim h = L तो lim f = L."],
+["L'Hôpital's rule","L'Hôpital नियम","For 0/0 or ∞/∞: lim f/g = lim f′/g′ (if the latter exists).","0/0 या ∞/∞ रूप में: lim f/g = lim f′/g′ (यदि बाद वाली सीमा विद्यमान हो)."],
+["Standard form 1^∞","मानक रूप 1^∞","If f → 1 and g → ∞ then lim f^g = e^(lim g(f − 1)).","यदि f → 1 व g → ∞ तो lim f^g = e^(lim g(f − 1))."]],
+j:[["Important results","महत्वपूर्ण परिणाम","lim (tanx − x)/x³ = 1/3 · lim (x − sinx)/x³ = 1/6 · lim (aˣ − bˣ)/x = ln(a/b)","J"],
+["Exponent forms","घातांकी रूप","lim (1 + a/x)^(bx) = e^(ab) as x → ∞","B"],
+["Rationalisation","परिमेयीकरण","(√(x + h) − √x)/h → 1/(2√x) · multiply and divide by the conjugate","B"],
+["Limit of [x] type","[x] प्रकार की सीमा","Evaluate left and right separately; [x] jumps at integers","J"],
+["Substitution trick","प्रतिस्थापन ट्रिक","Put x = a + h, h → 0, to reduce to a standard limit","B"],
+["sin x / x form check","sin x / x रूप जाँच","Arguments must tend to 0 in both numerator and denominator: lim sin(ax)/(bx) = a/b","B"],
+["Infinite expansions","अनंत प्रसार","1 + x + x² + … = 1/(1 − x) for |x| &lt; 1 · eˣ = Σxⁿ/n!","J"],
+["Number of indeterminate forms","अनिर्धार्य रूप","0/0, ∞/∞, 0·∞, ∞ − ∞, 0⁰, 1^∞, ∞⁰","N"]],
+k:["Try direct substitution first. If 0/0: factorise, rationalise, or use a standard limit. For 1^∞ use e^(lim g(f − 1)).","पहले सीधे मान रखें. 0/0 आए तो गुणनखंड, परिमेयीकरण या मानक सीमा लगाएँ. 1^∞ में e^(lim g(f − 1))."]},
+
+{n:["Derivatives","अवकलज"],
+f:[["First principle","प्रथम सिद्धांत","f′(x) = lim (h → 0) [f(x + h) − f(x)]/h"],
+["Algebra of derivatives","अवकलजों का बीजगणित","(u ± v)′ = u′ ± v′ · (uv)′ = u′v + uv′ · (u/v)′ = (u′v − uv′)/v²"],
+["Chain rule","शृंखला नियम","d/dx f(g(x)) = f′(g(x))·g′(x) · dy/dx = (dy/du)(du/dx)"],
+["Power and exponential","घात व चरघातांकी","(xⁿ)′ = nxⁿ⁻¹ · (eˣ)′ = eˣ · (aˣ)′ = aˣ ln a · (ln x)′ = 1/x · (logₐx)′ = 1/(x ln a)"],
+["Trigonometric derivatives","त्रिकोणमितीय अवकलज","(sinx)′ = cosx · (cosx)′ = −sinx · (tanx)′ = sec²x · (cotx)′ = −cosec²x"],
+["Sec and cosec","sec व cosec","(secx)′ = secx tanx · (cosecx)′ = −cosecx cotx"],
+["Parametric differentiation","प्राचलिक अवकलन","dy/dx = (dy/dt)/(dx/dt)"],
+["Inverse trigonometric","प्रतिलोम त्रिकोणमितीय","(sin⁻¹x)′ = 1/√(1 − x²) · (cos⁻¹x)′ = −1/√(1 − x²) · (tan⁻¹x)′ = 1/(1 + x²)"]],
+t:[["Differentiability implies continuity","अवकलनीयता ⇒ संततता","If f is differentiable at a point it is continuous there; the converse is false (f(x) = |x| at 0).","बिंदु पर अवकलनीय ⇒ वहाँ संतत; विलोम असत्य (0 पर f(x) = |x|)."],
+["Product and quotient rules","गुणन व भागफल नियम","(uv)′ = u′v + uv′; (u/v)′ = (u′v − uv′)/v².","(uv)′ = u′v + uv′; (u/v)′ = (u′v − uv′)/v²."],
+["Chain rule theorem","शृंखला नियम प्रमेय","Derivative of a composite function is the derivative of the outer at the inner times the derivative of the inner.","संयुक्त फलन का अवकलज = बाह्य का अवकलज (आंतरिक पर) × आंतरिक का अवकलज."]],
+j:[["Logarithmic differentiation","लघुगणकीय अवकलन","y = xˣ ⇒ ln y = x ln x ⇒ y′ = xˣ(1 + ln x)","J"],
+["Derivative of |x|","|x| का अवकलज","d/dx |x| = x/|x| (x ≠ 0) = sgn(x) · not differentiable at 0","B"],
+["nth derivatives","n-वें अवकलज","(eᵃˣ)⁽ⁿ⁾ = aⁿeᵃˣ · (xⁿ)⁽ⁿ⁾ = n! · (sin x)⁽ⁿ⁾ = sin(x + nπ/2)","J"],
+["Implicit differentiation","अप्रत्यक्ष अवकलन","Differentiate both sides w.r.t. x and treat y as y(x): dy/dx = −Fₓ/Fᵧ","B"],
+["Slope of tangent","स्पर्श रेखा का ढाल","Tangent at (x₀, y₀): y − y₀ = f′(x₀)(x − x₀) · normal slope −1/f′(x₀)","B"],
+["Differentiation of inverse functions","प्रतिलोम फलन का अवकलन","dx/dy = 1/(dy/dx) when dy/dx ≠ 0","J"],
+["Derivative of a constant and sum","अचर व योग का अवकलज","(c)′ = 0 · (cf)′ = c f′ · (f ± g)′ = f′ ± g′","N"],
+["Simplify before differentiating","अवकलन से पहले सरलीकरण","tan⁻¹ and sin⁻¹ expressions often simplify using substitution x = tanθ","J"]],
+k:["Product rule when two functions multiply; quotient rule when divided; chain rule for any function of a function. For xˣ, use logarithms.","दो फलनों का गुणन हो तो गुणन नियम, भाग हो तो भागफल नियम, फलन का फलन हो तो शृंखला नियम. xˣ के लिए लघुगणक लें."]},
+
+{n:["Statistics","सांख्यिकी"],
+f:[["Mean (arithmetic)","माध्य (समांतर)","x̄ = Σx/n · grouped: x̄ = Σfx/Σf"],
+["Median","माध्यिका","Middle value of sorted data · grouped: l + [(N/2 − cf)/f]·h"],
+["Mode","बहुलक","Most frequent value · grouped: l + [(f₁ − f₀)/(2f₁ − f₀ − f₂)]·h"],
+["Mean deviation","माध्य विचलन","MD(x̄) = Σ|x − x̄|/n · MD(M) = Σ|x − M|/n"],
+["Variance and SD","प्रसरण व मानक विचलन","σ² = Σ(x − x̄)²/n = Σx²/n − x̄² · σ = √σ²"],
+["Coefficient of variation","विचरण गुणांक","CV = (σ/x̄) × 100 %"],
+["Step-deviation method","पद-विचलन विधि","x̄ = A + h(Σfu/Σf) where u = (x − A)/h"],
+["Range","परिसर","Range = maximum − minimum"]],
+t:[["Empirical relation","आनुभविक संबंध","Mode = 3 Median − 2 Mean for moderately skewed data.","मध्यम विषम बंटन के लिए बहुलक = 3 माध्यिका − 2 माध्य."],
+["Effect of change of origin and scale","मूल व पैमाना बदलने का प्रभाव","y = ax + b ⇒ ȳ = ax̄ + b · σ_y = |a|σ_x · Var(y) = a²Var(x).","y = ax + b ⇒ ȳ = ax̄ + b · σ_y = |a|σ_x · Var(y) = a²Var(x)."],
+["Minimising property","न्यूनतमीकरण गुण","Σ(x − A)² is least at A = mean; Σ|x − A| is least at A = median.","Σ(x − A)² का न्यूनतम माध्य पर; Σ|x − A| का न्यूनतम माध्यिका पर."]],
+j:[["Variance of first n natural numbers","प्रथम n प्राकृत संख्याओं का प्रसरण","(n² − 1)/12 · SD of an AP with difference d: d√((n² − 1)/12)","J"],
+["Combined mean","संयुक्त माध्य","x̄ = (n₁x̄₁ + n₂x̄₂)/(n₁ + n₂)","B"],
+["Combined variance","संयुक्त प्रसरण","σ² = [n₁(σ₁² + d₁²) + n₂(σ₂² + d₂²)]/(n₁ + n₂), dᵢ = x̄ᵢ − x̄","J"],
+["Mean after wrong entry","गलत प्रविष्टि के बाद माध्य","Correct Σx = old Σx − wrong + right; recompute x̄ and σ","B"],
+["Consistency","संगतता","Smaller CV ⇒ more consistent · compare CVs, not σ, when means differ","B"],
+["Shortcut variance","शॉर्टकट प्रसरण","σ² = h²[Σfu²/Σf − (Σfu/Σf)²]","J"],
+["Adding or multiplying data","आँकड़ों में जोड़/गुणा","Add k: mean + k, σ same · multiply by k: mean × k, σ × |k|","B"]],
+k:["Variance is unaffected by shifting the data, but scales by k² when data is multiplied by k. Compare CV when comparing consistency.","आँकड़ों को खिसकाने से प्रसरण नहीं बदलता, k से गुणा करने पर k² गुना होता है. संगतता की तुलना CV से करें."]},
+
+{n:["Probability","प्रायिकता"],
+f:[["Classical probability","चिरसम्मत प्रायिकता","P(E) = favourable / total outcomes · 0 ≤ P ≤ 1"],
+["Complement","पूरक","P(E′) = 1 − P(E) · P(at least one) = 1 − P(none)"],
+["Addition theorem","योग प्रमेय","P(A∪B) = P(A) + P(B) − P(A∩B) · mutually exclusive: P(A∩B) = 0"],
+["Conditional probability","सप्रतिबंध प्रायिकता","P(A|B) = P(A∩B)/P(B)"],
+["Multiplication theorem","गुणन प्रमेय","P(A∩B) = P(A)P(B|A) · independent: P(A∩B) = P(A)P(B)"],
+["Odds","अनुपात (ऑड्स)","Odds in favour = m : (n − m) when P(E) = m/n"],
+["Binomial distribution","द्विपद बंटन","P(X = r) = ⁿCᵣ pʳ qⁿ⁻ʳ · mean = np · variance = npq"],
+["Exactly one of A, B","A, B में से ठीक एक","P(A) + P(B) − 2P(A∩B)"],
+["De Morgan in probability","प्रायिकता में डी-मॉर्गन","P(A′∩B′) = 1 − P(A∪B) · P(A′∪B′) = 1 − P(A∩B)"]],
+t:[["Addition theorem","योग प्रमेय","For any two events P(A ∪ B) = P(A) + P(B) − P(A ∩ B).","किन्हीं दो घटनाओं के लिए P(A ∪ B) = P(A) + P(B) − P(A ∩ B)."],
+["Total probability theorem","पूर्ण प्रायिकता प्रमेय","If E₁…Eₙ partition the sample space: P(A) = ΣP(Eᵢ)P(A|Eᵢ).","यदि E₁…Eₙ प्रतिदर्श समष्टि का विभाजन करें: P(A) = ΣP(Eᵢ)P(A|Eᵢ)."],
+["Bayes' theorem","बेज़ प्रमेय","P(Eᵢ|A) = P(Eᵢ)P(A|Eᵢ) / ΣP(Eⱼ)P(A|Eⱼ).","P(Eᵢ|A) = P(Eᵢ)P(A|Eᵢ) / ΣP(Eⱼ)P(A|Eⱼ)."]],
+j:[["Two dice","दो पासे","36 outcomes · P(sum 7) = 1/6 · P(sum 2) = P(sum 12) = 1/36 · P(doublet) = 1/6","B"],
+["At least one success in n trials","n प्रयासों में कम से कम एक सफलता","1 − qⁿ · for n coins at least one head: 1 − (1/2)ⁿ","B"],
+["Cards","ताश","52 cards: 4 suits × 13 · 26 red · 12 face cards · 4 aces","B"],
+["Independent vs exclusive","स्वतंत्र बनाम अपवर्जी","Mutually exclusive events with positive probabilities are never independent","J"],
+["Derangement probability","विषमकरण प्रायिकता","P(no letter in its own envelope) = Dₙ/n! ≈ 1/e","J"],
+["Birthday problem","जन्मदिन समस्या","P(all n birthdays differ) = 365Pₙ/365ⁿ · 23 people ⇒ ≈ 50 % chance of a match","J"],
+["Geometric probability","ज्यामितीय प्रायिकता","P = favourable length (area) / total length (area)","J"],
+["Expected value","प्रत्याशित मान","E(X) = Σ xᵢ pᵢ · Var(X) = E(X²) − [E(X)]²","J"]],
+k:["'At least one' ⇒ 1 − P(none). Draw a tree for sequential events. Replacement ⇒ independent; no replacement ⇒ conditional.","'कम से कम एक' ⇒ 1 − P(कोई नहीं). क्रमिक घटनाओं में ट्री बनाएँ. प्रतिस्थापन ⇒ स्वतंत्र; बिना प्रतिस्थापन ⇒ सप्रतिबंध."]},
+
+{n:["Sine &amp; Cosine Formulae","ज्या और कोज्या सूत्र"],
+f:[["Sine rule","ज्या नियम","a/sinA = b/sinB = c/sinC = 2R"],
+["Cosine rule","कोज्या नियम","a² = b² + c² − 2bc cosA · cosA = (b² + c² − a²)/2bc"],
+["Projection formulae","प्रक्षेप सूत्र","a = b cosC + c cosB · b = c cosA + a cosC · c = a cosB + b cosA"],
+["Area of triangle","त्रिभुज का क्षेत्रफल","Δ = ½ab sinC = ½bc sinA = ½ca sinB"],
+["Heron's formula","हेरोन सूत्र","Δ = √(s(s − a)(s − b)(s − c)), s = (a + b + c)/2"],
+["Inradius and circumradius","अंतःत्रिज्या व परित्रिज्या","r = Δ/s · R = abc/(4Δ) · Δ = rs"],
+["Half-angle formulae","अर्ध कोण सूत्र","sin(A/2) = √((s − b)(s − c)/bc) · cos(A/2) = √(s(s − a)/bc) · tan(A/2) = √((s − b)(s − c)/(s(s − a)))"],
+["Napier's analogy","नेपियर समरूपता","tan((B − C)/2) = ((b − c)/(b + c)) cot(A/2)"],
+["Exradii","बहिःत्रिज्याएँ","r₁ = Δ/(s − a) · r₂ = Δ/(s − b) · r₃ = Δ/(s − c)"]],
+t:[["Sine rule","ज्या नियम","The sides of a triangle are proportional to the sines of the opposite angles; common ratio is the circumdiameter.","त्रिभुज की भुजाएँ सम्मुख कोणों की ज्याओं के समानुपाती; उभयनिष्ठ अनुपात परिव्यास है."],
+["Cosine rule","कोज्या नियम","Generalised Pythagoras: a² = b² + c² − 2bc cosA; reduces to Pythagoras when A = 90°.","व्यापक पाइथागोरस: a² = b² + c² − 2bc cosA; A = 90° पर पाइथागोरस प्रमेय."],
+["Ambiguous case (SSA)","संदिग्ध स्थिति (SSA)","Given a, b, A: if a &lt; b sinA no triangle; a = b sinA one; b sinA &lt; a &lt; b two; a ≥ b one.","दिए a, b, A: a &lt; b sinA तो त्रिभुज नहीं; a = b sinA तो एक; b sinA &lt; a &lt; b तो दो; a ≥ b तो एक."]],
+j:[["Relations among r, R and angles","r, R व कोणों में संबंध","r = 4R sin(A/2) sin(B/2) sin(C/2) · r = (s − a)tan(A/2)","J"],
+["Exradii identities","बहिःत्रिज्या सर्वसमिकाएँ","r₁ + r₂ + r₃ − r = 4R · Δ² = r·r₁·r₂·r₃ · 1/r = 1/r₁ + 1/r₂ + 1/r₃","J"],
+["Median length","माध्यिका की लंबाई","mₐ = ½√(2b² + 2c² − a²)","B"],
+["Angle bisector length","कोण समद्विभाजक की लंबाई","βₐ = 2bc cos(A/2)/(b + c)","J"],
+["Area in terms of R","R के पदों में क्षेत्रफल","Δ = 2R² sinA sinB sinC = abc/4R","B"],
+["Euler's distance","यूलर दूरी","OI² = R² − 2Rr, so R ≥ 2r (equality iff equilateral)","J"],
+["Equilateral triangle","समबाहु त्रिभुज","Δ = (√3/4)a² · R = a/√3 · r = a/(2√3)","B"],
+["Triangle with A + B + C = π","जब A + B + C = π","sinA + sinB + sinC = 4cos(A/2)cos(B/2)cos(C/2)","J"]],
+k:["Given two sides and the included angle, use the cosine rule; given two angles and a side, use the sine rule. For SSA check for two solutions.","दो भुजा व अंतर्गत कोण पर कोज्या नियम; दो कोण व एक भुजा पर ज्या नियम. SSA में दो हल की संभावना जाँचें."]}
+];
+var HUB=[
+[["📏 Standard Trigonometric Values","📏 मानक त्रिकोणमितीय मान"],[
+["sin θ for 0°, 30°, 45°, 60°, 90°","sin θ (0°, 30°, 45°, 60°, 90°)","0, ½, 1/√2, √3/2, 1"],["cos θ for 0°, 30°, 45°, 60°, 90°","cos θ (0°, 30°, 45°, 60°, 90°)","1, √3/2, 1/√2, ½, 0"],["tan θ for 0°, 30°, 45°, 60°, 90°","tan θ (0°, 30°, 45°, 60°, 90°)","0, 1/√3, 1, √3, ∞"],["15° and 75°","15° व 75°","sin15° = (√6 − √2)/4 · cos15° = (√6 + √2)/4 · tan15° = 2 − √3 · tan75° = 2 + √3"],["18° and 36°","18° व 36°","sin18° = (√5 − 1)/4 · cos36° = (√5 + 1)/4"],["Radian values","रेडियन मान","30° = π/6 · 45° = π/4 · 60° = π/3 · 90° = π/2 · 180° = π"],["Constants","स्थिरांक","π ≈ 3.1416 · e ≈ 2.7183 · √2 ≈ 1.414 · √3 ≈ 1.732 · √5 ≈ 2.236 · ln2 ≈ 0.693 · ln10 ≈ 2.303"]]],
+[["🔷 Conic Sections at a Glance","🔷 शांकव एक नज़र में"],[
+["Circle x² + y² = r²","वृत्त x² + y² = r²","e = 0 · tangent y = mx ± r√(1 + m²) · T: xx₁ + yy₁ = r²"],["Parabola y² = 4ax","परवलय y² = 4ax","e = 1 · focus (a, 0) · directrix x = −a · LR = 4a · tangent y = mx + a/m"],["Ellipse x²/a² + y²/b² = 1","दीर्घवृत्त","0 &lt; e &lt; 1 · b² = a²(1 − e²) · foci (±ae, 0) · LR = 2b²/a · tangent c² = a²m² + b²"],["Hyperbola x²/a² − y²/b² = 1","अतिपरवलय","e &gt; 1 · b² = a²(e² − 1) · foci (±ae, 0) · LR = 2b²/a · tangent c² = a²m² − b²"],["Tangent at (x₁, y₁)","(x₁, y₁) पर स्पर्श रेखा","Parabola yy₁ = 2a(x + x₁) · Ellipse xx₁/a² + yy₁/b² = 1 · Hyperbola xx₁/a² − yy₁/b² = 1"],["Director circle","निर्देशक वृत्त","Circle: x² + y² = 2r² · Ellipse: x² + y² = a² + b² · Hyperbola: x² + y² = a² − b² · Parabola: directrix"],["Rectangular hyperbola","आयताकार अतिपरवलय","xy = c² · e = √2 · (ct, c/t)"]]],
+[["📈 Standard Limits &amp; Derivatives","📈 मानक सीमाएँ व अवकलज"],[
+["Trigonometric limits","त्रिकोणमितीय सीमाएँ","sinx/x → 1 · tanx/x → 1 · (1 − cosx)/x² → ½"],["Exponential limits","चरघातांकी सीमाएँ","(eˣ − 1)/x → 1 · (aˣ − 1)/x → ln a · ln(1 + x)/x → 1"],["Algebraic limit","बीजीय सीमा","(xⁿ − aⁿ)/(x − a) → naⁿ⁻¹"],["Exponent limits","घातांक सीमाएँ","(1 + x)^(1/x) → e · (1 + 1/x)ˣ → e"],["Derivatives of trig functions","त्रिकोणमितीय फलनों के अवकलज","(sin)′ = cos · (cos)′ = −sin · (tan)′ = sec² · (cot)′ = −cosec² · (sec)′ = sec tan · (cosec)′ = −cosec cot"],["Derivatives of other functions","अन्य फलनों के अवकलज","(xⁿ)′ = nxⁿ⁻¹ · (eˣ)′ = eˣ · (aˣ)′ = aˣ ln a · (ln x)′ = 1/x"],["Inverse trig derivatives","प्रतिलोम त्रिकोणमितीय अवकलज","(sin⁻¹x)′ = 1/√(1 − x²) · (tan⁻¹x)′ = 1/(1 + x²)"]]],
+[["➕ Series Sums &amp; Algebraic Identities","➕ श्रेणी योग व बीजीय सर्वसमिकाएँ"],[
+["Natural number sums","प्राकृत संख्याओं के योग","Σn = n(n + 1)/2 · Σn² = n(n + 1)(2n + 1)/6 · Σn³ = [n(n + 1)/2]²"],["Odd and even sums","विषम व सम योग","1 + 3 + … + (2n − 1) = n² · 2 + 4 + … + 2n = n(n + 1)"],["GP sums","GP योग","Sₙ = a(rⁿ − 1)/(r − 1) · S∞ = a/(1 − r), |r| &lt; 1"],["Exponential and log series","चरघातांकी व लघुगणकीय श्रेणी","eˣ = Σxⁿ/n! · ln(1 + x) = x − x²/2 + x³/3 − … (|x| ≤ 1)"],["Square and cube identities","वर्ग व घन सर्वसमिकाएँ","(a ± b)² = a² ± 2ab + b² · (a ± b)³ = a³ ± 3a²b + 3ab² ± b³"],["Factorisation","गुणनखंड","a² − b² = (a − b)(a + b) · a³ ± b³ = (a ± b)(a² ∓ ab + b²)"],["Symmetric identity","सममित सर्वसमिका","a³ + b³ + c³ − 3abc = (a + b + c)(a² + b² + c² − ab − bc − ca)"]]],
+[["🚀 Must-know Results","🚀 ज़रूर याद रखने योग्य परिणाम"],[
+["AM–GM–HM","AM–GM–HM","AM ≥ GM ≥ HM · GM² = AM·HM (two numbers)"],["Counting","गणना","ⁿPᵣ = n!/(n − r)! · ⁿCᵣ = ⁿCₙ₋ᵣ · circular (n − 1)! · derangements D₄ = 9"],["Binomial sums","द्विपद योग","ΣⁿCᵣ = 2ⁿ · Σr·ⁿCᵣ = n·2ⁿ⁻¹ · Σ(ⁿCᵣ)² = ²ⁿCₙ"],["Quadratic","द्विघात","D = b² − 4ac · α + β = −b/a · αβ = c/a"],["Complex numbers","सम्मिश्र संख्याएँ","1 + ω + ω² = 0 · ω³ = 1 · |z|² = z z̄"],["Triangle formulae","त्रिभुज सूत्र","Δ = rs = abc/4R · r₁ = Δ/(s − a) · r₁ + r₂ + r₃ − r = 4R"],["Probability","प्रायिकता","P(A∪B) = P(A) + P(B) − P(A∩B) · Bayes P(E|A) = P(E)P(A|E)/P(A)"],["Statistics","सांख्यिकी","σ² = Σx²/n − x̄² · Var(ax + b) = a²Var(x) · CV = σ/x̄ × 100"]]]
+];
+var cur=0,favs={},st=false,q="",$=function(x){return document.querySelector(x)};
+try{favs=JSON.parse(localStorage.getItem("sstc11mathfav")||"{}")}catch(e){}
+function sv(){try{localStorage.setItem("sstc11mathfav",JSON.stringify(favs))}catch(e){}}
+function g(sec,it){return sec=="t"?{n:it[I],x:it[2+I],t:1}:{n:it[I],x:it[2],g:it[3]}}
+function card(ci,sec,ix,it){var o=g(sec,it),id=ci+"|"+sec+"|"+ix;
+ return '<div class="fc'+(o.t?' th':'')+'" style="--c:'+cols[ci%8]+';animation-delay:'+Math.min(ix,10)*.04+'s" data-id="'+id+'"><button class="star" aria-label="save" data-id="'+id+'">'+(favs[id]?"★":"☆")+'</button><div class="fn">'+o.n+(o.g?' <i class="tg tg'+o.g+'">'+TG[o.g]+'</i>':'')+'</div><div class="'+(o.t?'tx':'fx')+'">'+o.x+'</div></div>'}
+function grid(ci,sec,key){var c=D[ci];return '<h3 class="s">'+u(key)+'</h3><div class="grid">'+c[sec].map(function(it,i){return card(ci,sec,i,it)}).join("")+'</div>'}
+function sim(i){var h='<h3 class="s">';
+ if(i==2)return h+s("w2")+'</h3><div class="w">'+sl("tt",s("an"),0,360,45)+'<svg id="ts" viewBox="0 0 400 210"></svg><div class="stt" id="tst"></div><button class="pill" id="tp" style="margin-top:8px">'+s("pl")+'</button></div>';
+ if(i==3)return h+s("w3")+'</h3><div class="w">'+sl("qa","a",-3,3,1,0.5)+sl("qb","b",-6,6,-2)+sl("qc","c",-8,8,-3)+'<svg id="qs" viewBox="0 0 400 240"></svg><div class="stt" id="qst"></div></div>';
+ if(i==11)return h+s("w11")+'</h3><div class="w">'+sl("pa",s("pa"),1,4,2,0.5)+'<svg id="pq" viewBox="0 0 400 240"></svg><div class="stt" id="pqs"></div></div>';
+ if(i==12)return h+s("w12")+'</h3><div class="w">'+sl("ea","a",2,9,6)+sl("eb","b",1,7,4)+'<svg id="es" viewBox="0 0 400 240"></svg><div class="stt" id="est"></div></div>';
+ if(i==18)return h+s("w18")+'</h3><div class="w"><button class="pill" id="r1">🎲 '+s("r1")+'</button> <button class="pill" id="r100">🎲×100</button> <button class="pill" id="rr">↺</button><div id="db" style="display:flex;gap:4px;margin-top:12px"></div><div class="stt" id="dst"></div></div>';
+ return ""}
+function sl(id,l,mn,mx,v,sp){return '<div class="row"><span>'+l+'</span><span id="'+id+'v"></span></div><input type="range" id="'+id+'" min="'+mn+'" max="'+mx+'" value="'+v+'" step="'+(sp||1)+'">'}
+function chap(ci){var c=D[ci];
+ return '<section style="--c:'+cols[ci%8]+'"><h2>'+(ci+1)+'. '+c.n[I]+'</h2><p class="hint">'+u(st?"tipst":"tip")+'</p>'+grid(ci,"f","sf")+grid(ci,"t","stt")+grid(ci,"j","sj")+'<div class="trick">💡 '+c.k[I]+'</div>'+sim(ci)+'</section>'}
+function hub(){return '<section style="--c:#8a3ffc"><h2>'+u("hub")+'</h2><p class="hint">'+u("hubd")+'</p>'+HUB.map(function(b,bi){return '<h3 class="s" style="color:'+cols[(bi+4)%8]+'">'+b[0][I]+'</h3><div class="tb" style="--c:'+cols[(bi+4)%8]+'">'+b[1].map(function(r){return '<div class="tr"><span>'+r[I]+'</span><b>'+r[2]+'</b></div>'}).join("")+'</div>'}).join("")+'</section>'}
+function favv(){var ids=Object.keys(favs).sort(function(a,b){return parseInt(a)-parseInt(b)});
+ if(!ids.length)return '<section><h2>'+u("fav")+'</h2><p class="hint">'+u("ne")+'</p></section>';
+ return '<section><h2>'+u("fav")+'</h2><div class="grid">'+ids.map(function(id){var p=id.split("|");return card(+p[0],p[1],+p[2],D[+p[0]][p[1]][+p[2]])}).join("")+'</div></section>'}
+function search(){var z=q.toLowerCase(),h="",n=0;
+ D.forEach(function(c,ci){var b="";["f","t","j"].forEach(function(sec){c[sec].forEach(function(it,ix){var tx=(it[0]+" "+it[1]+" "+it[2]+(sec=="t"?" "+it[3]:"")).replace(/<[^>]+>/g,"").toLowerCase();if(tx.indexOf(z)>-1){b+=card(ci,sec,ix,it);n++}})});
+  if(b)h+='<h3 class="s" style="color:'+cols[ci%8]+'">'+(ci+1)+'. '+c.n[I]+'</h3><div class="grid" style="--c:'+cols[ci%8]+'">'+b+'</div>'});
+ return n?h:'<p class="hint">'+u("nr")+'</p>'}
+function nav(){var h=D.map(function(c,i){return '<button data-i="'+i+'" aria-pressed="'+(!q&&i==cur)+'" style="'+(!q&&i==cur?"--c:"+cols[i%8]:"")+'">'+(i+1)+'. '+c.n[I]+'</button>'}).join("");
+ h+='<button data-i="20" aria-pressed="'+(!q&&cur==20)+'" style="--c:#8a3ffc">'+u("hub")+'</button><button data-i="21" aria-pressed="'+(!q&&cur==21)+'" style="--c:#f2a900">'+u("fav")+'</button>';
+ $("#nav").innerHTML=h;[].forEach.call(document.querySelectorAll("nav button"),function(b){b.onclick=function(){cur=+b.dataset.i;q="";$("#sq").value="";draw();scrollTo({top:0,behavior:"smooth"})}})}
+function draw(){nav();cancelAnimationFrame(window.raf);var m=$("#main");
+ if(q)m.innerHTML=search();else if(cur<20){m.innerHTML=chap(cur);wire(cur)}else if(cur==20)m.innerHTML=hub();else m.innerHTML=favv();
+ document.body.classList.toggle("st",st);$("#stb").classList.toggle("on",st);$("#fc").textContent="⭐ "+Object.keys(favs).length}
+function toast(t){var e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(window.tt);window.tt=setTimeout(function(){e.classList.remove("on")},1300)}
+$("#main").addEventListener("click",function(e){var b=e.target.closest(".star"),c=e.target.closest(".fc");if(!c)return;
+ if(b){var id=b.dataset.id;if(favs[id])delete favs[id];else favs[id]=1;sv();if(cur==21&&!q)draw();else{b.textContent=favs[id]?"★":"☆";$("#fc").textContent="⭐ "+Object.keys(favs).length}return}
+ if(st&&!c.classList.contains("rv")){c.classList.add("rv");return}
+ var t=c.querySelector(".fn").textContent+": "+c.querySelector(".fx,.tx").textContent;try{navigator.clipboard.writeText(t)}catch(x){}toast(u("cp"))});
+$("#th").onclick=function(){var r=document.documentElement,d=r.dataset.theme?r.dataset.theme=="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=d?"light":"dark"};
+$("#stb").onclick=function(){st=!st;[].forEach.call(document.querySelectorAll(".fc.rv"),function(c){c.classList.remove("rv")});draw()};
+$("#sq").oninput=function(){q=this.value.trim();draw()};
+function wire(i){
+ if(i==2){var th=45,pl=0,S2=Math.sin,C2=Math.cos,dr=function(){var r=th*Math.PI/180,c=C2(r),sn=S2(r),X=120+85*c,Y=105-85*sn,p="",xs=230+th*160/360;for(var k=0;k<=72;k++)p+=(k?"L":"M")+(230+k*160/72).toFixed(1)+" "+(105-85*S2(k*5*Math.PI/180)).toFixed(1);
+  $("#ttv").textContent=th+"° = "+r.toFixed(3)+" rad";
+  $("#ts").innerHTML='<circle cx="120" cy="105" r="85" fill="none" stroke="var(--line)" stroke-width="2"/><line x1="25" y1="105" x2="215" y2="105" stroke="var(--mut)"/><line x1="120" y1="10" x2="120" y2="200" stroke="var(--mut)"/><line x1="120" y1="105" x2="'+X+'" y2="105" stroke="#2a6fdb" stroke-width="4"/><line x1="'+X+'" y1="105" x2="'+X+'" y2="'+Y+'" stroke="var(--c)" stroke-width="4"/><line x1="120" y1="105" x2="'+X+'" y2="'+Y+'" stroke="var(--ink)" stroke-width="2.5"/><circle cx="'+X+'" cy="'+Y+'" r="7" fill="var(--c)"/><line x1="230" y1="105" x2="390" y2="105" stroke="var(--mut)"/><path d="'+p+'" fill="none" stroke="var(--mut)" stroke-width="2"/><line x1="'+X+'" y1="'+Y+'" x2="'+xs+'" y2="'+Y+'" stroke="var(--c)" stroke-dasharray="3 3"/><circle cx="'+xs+'" cy="'+Y+'" r="6" fill="var(--c)"/><text x="125" y="120" style="fill:#2a6fdb">cos</text>';
+  $("#tst").innerHTML='<span>sin = '+sn.toFixed(3)+'</span><span>cos = '+c.toFixed(3)+'</span><span>tan = '+(Math.abs(c)<1e-3?s("und"):(sn/c).toFixed(3))+'</span><span>'+s("qd")[th==360?3:Math.floor((th%360)/90)]+'</span>'};
+  $("#tt").oninput=function(){th=+this.value;dr()};$("#tp").onclick=function(){pl=!pl;this.textContent=pl?s("ps"):s("pl")};dr();
+  (function f(){if(!$("#ts"))return;if(pl){th=(th+1)%361;$("#tt").value=th;dr()}window.raf=requestAnimationFrame(f)})()}
+ if(i==3){var qf=function(){var a=+$("#qa").value||.5,b=+$("#qb").value,c=+$("#qc").value,Dd=b*b-4*a*c,p="",vx=-b/(2*a),vy=c-b*b/(4*a),h="",rs;for(var x=-10;x<=10.01;x+=.25){var y=a*x*x+b*x+c;p+=(x==-10?"M":"L")+(200+x*20).toFixed(1)+" "+Math.max(-40,Math.min(280,120-y*20)).toFixed(1)}
+  $("#qav").textContent=a;$("#qbv").textContent=b;$("#qcv").textContent=c;
+  h='<line x1="0" y1="120" x2="400" y2="120" stroke="var(--mut)"/><line x1="200" y1="0" x2="200" y2="240" stroke="var(--mut)"/><path d="'+p+'" fill="none" stroke="var(--c)" stroke-width="3"/><circle cx="'+(200+vx*20)+'" cy="'+(120-vy*20)+'" r="5" fill="#d9830b"/>';
+  if(Dd>=0){var r1=(-b+Math.sqrt(Dd))/(2*a),r2=(-b-Math.sqrt(Dd))/(2*a);h+='<circle cx="'+(200+r1*20)+'" cy="120" r="6" fill="#2e9e5b"/><circle cx="'+(200+r2*20)+'" cy="120" r="6" fill="#2e9e5b"/>';rs='x = '+r1.toFixed(2)+', '+r2.toFixed(2)}else rs='x = '+(-b/(2*a)).toFixed(2)+' ± '+(Math.sqrt(-Dd)/(2*Math.abs(a))).toFixed(2)+'i';
+  $("#qs").innerHTML=h;$("#qst").innerHTML='<span>D = '+Dd+'</span><span>'+(Dd>0?s("n2"):Dd==0?s("n1"):s("n0"))+'</span><span>'+rs+'</span><span>'+s("vx")+' ('+vx.toFixed(2)+', '+vy.toFixed(2)+')</span><span>Σ = '+(-b/a).toFixed(2)+', Π = '+(c/a).toFixed(2)+'</span>'};["qa","qb","qc"].forEach(function(z){$("#"+z).oninput=qf});qf()}
+ if(i==11){var pu=function(){$("#pav").textContent=$("#pa").value};$("#pa").oninput=pu;pu();
+  (function f(n){if(!$("#pq"))return;var a=+$("#pa").value,k=9,ox=40,oy=120,t=1.5*Math.sin(n/900),px=ox+k*a*t*t,py=oy-k*2*a*t,fx=ox+k*a,dx=ox-k*a,pth="";
+   for(var u2=-1.7;u2<=1.701;u2+=.1)pth+=(u2<-1.69?"M":"L")+(ox+k*a*u2*u2).toFixed(1)+" "+(oy-k*2*a*u2).toFixed(1);
+   $("#pq").innerHTML='<line x1="0" y1="120" x2="400" y2="120" stroke="var(--line)"/><line x1="'+dx+'" y1="0" x2="'+dx+'" y2="240" stroke="#d9830b" stroke-width="2" stroke-dasharray="6 4"/><path d="'+pth+'" fill="none" stroke="var(--c)" stroke-width="3"/><line x1="'+fx+'" y1="120" x2="'+px+'" y2="'+py+'" stroke="#2a6fdb" stroke-width="2.5"/><line x1="'+dx+'" y1="'+py+'" x2="'+px+'" y2="'+py+'" stroke="#2e9e5b" stroke-width="2.5"/><circle cx="'+fx+'" cy="120" r="5" fill="var(--ink)"/><circle cx="'+px+'" cy="'+py+'" r="7" fill="var(--c)"/><text x="'+(fx-4)+'" y="136">F</text><text x="'+(dx+4)+'" y="14">x = −a</text>';
+   $("#pqs").innerHTML='<span>PF = PM = a(t² + 1) = '+(a*(t*t+1)).toFixed(2)+'</span><span>LR = 4a = '+(4*a)+'</span><span>F = ('+a+', 0)</span>';window.raf=requestAnimationFrame(f)})(0)}
+ if(i==12){var st=function(){var a=+$("#ea").value,b=+$("#eb").value,A=Math.max(a,b),B=Math.min(a,b),c=Math.sqrt(A*A-B*B);$("#eav").textContent=a;$("#ebv").textContent=b;$("#est").innerHTML='<span>e = '+(c/A).toFixed(3)+'</span><span>c = '+c.toFixed(2)+'</span><span>'+s("lr")+' = '+(2*B*B/A).toFixed(2)+'</span><span>PF₁ + PF₂ = 2·'+A+' = '+2*A+'</span><span>'+s("ar")+' = '+(Math.PI*a*b).toFixed(1)+'</span>'};["ea","eb"].forEach(function(z){$("#"+z).oninput=st});st();
+  (function f(n){if(!$("#es"))return;var a=+$("#ea").value,b=+$("#eb").value,A=Math.max(a,b),B=Math.min(a,b),c=Math.sqrt(A*A-B*B),hz=a>=b,t=n/700,px=200+a*20*Math.cos(t),py=120-b*20*Math.sin(t),f1=hz?[200-c*20,120]:[200,120-c*20],f2=hz?[200+c*20,120]:[200,120+c*20];
+   $("#es").innerHTML='<line x1="0" y1="120" x2="400" y2="120" stroke="var(--line)"/><line x1="200" y1="0" x2="200" y2="240" stroke="var(--line)"/><ellipse cx="200" cy="120" rx="'+a*20+'" ry="'+b*20+'" fill="none" stroke="var(--c)" stroke-width="3"/><line x1="'+f1[0]+'" y1="'+f1[1]+'" x2="'+px+'" y2="'+py+'" stroke="#2a6fdb" stroke-width="2"/><line x1="'+f2[0]+'" y1="'+f2[1]+'" x2="'+px+'" y2="'+py+'" stroke="#2e9e5b" stroke-width="2"/><circle cx="'+f1[0]+'" cy="'+f1[1]+'" r="5" fill="var(--ink)"/><circle cx="'+f2[0]+'" cy="'+f2[1]+'" r="5" fill="var(--ink)"/><circle cx="'+px+'" cy="'+py+'" r="7" fill="var(--c)"/>';window.raf=requestAnimationFrame(f)})(0)}
+ if(i==18){var cn=[],tot=0,last="–";for(var z=0;z<13;z++)cn.push(0);
+  var dw=function(){var m=Math.max.apply(null,cn.concat([1])),h="";for(var sm=2;sm<=12;sm++){var t=(6-Math.abs(sm-7))/36;h+='<div style="flex:1;text-align:center;font-size:.8rem"><div style="position:relative;height:110px;display:flex;align-items:flex-end"><div style="width:100%;height:'+cn[sm]/m*100+'px;background:var(--c);border-radius:5px 5px 0 0;transition:height .3s"></div><i style="position:absolute;left:0;right:0;bottom:'+Math.min(110,t*tot/m*100)+'px;border-top:2px dashed var(--ink)"></i></div>'+sm+'</div>'}
+   $("#db").innerHTML=h;$("#dst").innerHTML='<span>'+s("tot")+' = '+tot+'</span><span>'+s("ls")+': '+last+'</span><span>P(7) '+s("em")+' = '+(tot?(cn[7]/tot).toFixed(3):"–")+'</span><span>'+s("th")+' = 1/6 = 0.167</span>'};
+  var roll=function(n){for(var k=0;k<n;k++){var a=1+Math.floor(Math.random()*6),b=1+Math.floor(Math.random()*6);cn[a+b]++;tot++;last=a+" + "+b+" = "+(a+b)}dw()};
+  $("#r1").onclick=function(){roll(1)};$("#r100").onclick=function(){roll(100)};$("#rr").onclick=function(){cn=cn.map(function(){return 0});tot=0;last="–";dw()};dw()}}
+document.documentElement.lang=L=="en"?"en":"hi";
+document.title=u("t").replace(/&amp;/g,"&").replace("⚛️ ","");
+$("#h1").innerHTML=u("t");$("#sub").innerHTML=u("s");$("#sq").placeholder=u("ph").replace("🔍 ","");$("#stb").textContent=u("st");$("#ft").innerHTML=u("ft");
+$("#lg").textContent=u("lg");$("#lg").href=L=="en"?"maths11-formulae-hi.html":"maths11-formulae-en.html";
+draw();
+</script></body></html>
