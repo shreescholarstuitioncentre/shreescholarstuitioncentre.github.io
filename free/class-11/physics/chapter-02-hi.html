@@ -1,0 +1,445 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Class 11 Physics – Formulae &amp; Equations</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Hind:wght@400;600&display=swap">
+<style>
+:root{--bg:#fbf6ec;--card:#fff;--ink:#241b3a;--mut:#6b6482;--line:#e5dcc8;--c:#e0452f;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15112a;--card:#201a3b;--ink:#f3effa;--mut:#aaa3c6;--line:#342d58;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15112a;--card:#201a3b;--ink:#f3effa;--mut:#aaa3c6;--line:#342d58;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Hind,system-ui,sans-serif;transition:background .4s}
+h1,h2,h3{font-family:"Baloo 2",sans-serif;margin:0;line-height:1.15}
+header{max-width:1040px;margin:auto;padding:26px 16px 10px;position:relative}
+h1{font-size:clamp(1.8rem,5.6vw,3.1rem);font-weight:800;padding-right:56px;background:linear-gradient(90deg,#e0452f,#f2a900,#2e9e5b,#2a6fdb,#8a3ffc,#e0452f);background-size:300%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:g 8s linear infinite}
+@keyframes g{to{background-position:300%}}
+header p{color:var(--mut);margin:.4em 0 10px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tools input{flex:1 1 240px;font:inherit;padding:8px 14px;border-radius:99px;border:1.5px solid var(--line);background:var(--card);color:var(--ink)}
+.tools input:focus{outline:3px solid #8a3ffc55;border-color:#8a3ffc}
+.pill{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;font:inherit;font-size:.9rem;padding:6px 14px;cursor:pointer;text-decoration:none;transition:.2s;display:inline-block}
+.pill:hover{transform:translateY(-2px)}.pill.on{background:#8a3ffc;border-color:#8a3ffc;color:#fff}
+#th{position:absolute;right:16px;top:22px;padding:4px 10px;font-size:1.1rem}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:8px 14px;scrollbar-width:thin}
+nav button{flex:none;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:.85rem;padding:4px 12px;border-radius:99px;cursor:pointer;transition:.2s}
+nav button:hover{transform:translateY(-2px)}nav button[aria-pressed=true]{background:var(--c);border-color:var(--c);color:#fff}
+button:focus-visible,a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+main{max-width:1040px;margin:auto;padding:16px}
+h2{font-size:clamp(1.5rem,4vw,2.3rem);color:var(--c);margin-bottom:6px;animation:in .5s both}
+h3.s{margin:24px 0 10px;font-size:1.25rem}
+.hint{color:var(--mut);font-size:.92rem;margin:.2em 0 .6em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.fc{position:relative;background:var(--card);border:1.5px solid var(--line);border-left:6px solid var(--c);border-radius:12px;padding:10px 40px 10px 14px;cursor:pointer;animation:in .5s both;transition:transform .2s,box-shadow .2s}
+.fc:hover{transform:translateY(-3px) rotate(-.25deg);box-shadow:0 8px 20px color-mix(in srgb,var(--c) 25%,transparent)}
+.fc.th{border-left-style:double;border-left-width:8px}
+@keyframes in{from{opacity:0;transform:translateY(14px)}}
+.fn{font-family:"Baloo 2",sans-serif;font-weight:600;color:var(--c);font-size:1rem;line-height:1.3}
+.fx{font-family:"Cambria Math","STIX Two Math",Georgia,serif;font-size:1.08rem;margin-top:3px;word-break:break-word;transition:filter .3s}
+.tx{font-size:.95rem;margin-top:3px;transition:filter .3s}
+body.st .fc .fx,body.st .fc .tx{filter:blur(7px)}body.st .fc.rv .fx,body.st .fc.rv .tx{filter:none}
+.star{position:absolute;right:6px;top:4px;border:0;background:none;font-size:1.3rem;color:#f2a900;cursor:pointer;transition:transform .2s}.star:hover{transform:scale(1.3) rotate(12deg)}
+.tg{font-style:normal;font-family:Hind,sans-serif;font-size:.7rem;font-weight:600;border-radius:99px;padding:1px 8px;color:#fff;vertical-align:middle}
+.tgJ{background:#2a6fdb}.tgN{background:#2e9e5b}.tgB{background:#8a3ffc}
+.trick{margin-top:18px;padding:12px 16px;border-radius:14px;background:color-mix(in srgb,var(--c) 12%,var(--card));border:1.5px dashed var(--c);font-weight:600;animation:in .6s both}
+.w{background:var(--card);border:1.5px dashed var(--c);border-radius:14px;padding:12px 14px;animation:in .6s both}
+.tb{background:var(--card);border:1.5px solid var(--line);border-radius:12px;overflow:hidden}
+.tr{display:flex;justify-content:space-between;gap:14px;padding:7px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap}.tr:last-child{border:0}.tr:nth-child(even){background:color-mix(in srgb,var(--c) 6%,transparent)}
+.tr b{font-family:"Cambria Math","STIX Two Math",Georgia,serif;color:var(--c);text-align:right}
+svg{width:100%;max-width:460px;height:auto;display:block;margin:6px auto}
+svg text{fill:var(--ink);font:12px Hind,sans-serif}
+input[type=range]{width:100%;accent-color:var(--c)}
+.row{display:flex;justify-content:space-between;gap:10px;font-weight:600;margin:4px 0}
+.stt{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.stt span{background:color-mix(in srgb,var(--c) 14%,transparent);border-radius:99px;padding:2px 12px;font-weight:600}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--bg);padding:8px 20px;border-radius:99px;font-weight:600;transition:.3s;z-index:20;pointer-events:none}#toast.on{transform:translateX(-50%) translateY(0)}
+footer{text-align:center;color:var(--mut);padding:18px;font-size:.9rem}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<header><button class="pill" id="th" aria-label="theme">🌓</button><h1 id="h1"></h1><p id="sub"></p>
+<div class="tools"><input id="sq" type="search"><button class="pill" id="stb"></button><span class="pill" id="fc" style="cursor:default"></span><a class="pill" id="lg"></a></div></header>
+<nav id="nav"></nav><main id="main"></main><div id="toast"></div><footer id="ft"></footer>
+<script>
+var L="hi",I=L=="en"?0:1;
+var U={
+t:["⚛️ Class 11 Physics – Formulae &amp; Equations","⚛️ कक्षा 11 भौतिक विज्ञान – सूत्र एवं समीकरण"],
+s:["SSTC Physics · All 15 chapters · Formulae, Theorems, JEE/NEET Special &amp; Simulators","SSTC भौतिक विज्ञान · सभी 15 अध्याय · सूत्र, प्रमेय, JEE/NEET विशेष व सिम्युलेटर"],
+ph:["🔍 Search formula, law or topic…","🔍 सूत्र, नियम या टॉपिक खोजें…"],
+st:["🙈 Self-test mode","🙈 स्व-परीक्षा मोड"],
+hub:["⚡ JEE/NEET Hub","⚡ JEE/NEET हब"],
+hubd:["Constants, dimensions, graph meanings and must-know results for competitive exams.","प्रतियोगी परीक्षाओं के लिए नियतांक, विमाएँ, ग्राफ के अर्थ व ज़रूरी परिणाम."],
+fav:["⭐ My Sheet","⭐ मेरी शीट"],
+sf:["📐 Core Formulae &amp; Equations","📐 मुख्य सूत्र एवं समीकरण"],
+stt:["📜 Theorems &amp; Laws","📜 प्रमेय एवं नियम"],
+sj:["🎯 JEE / NEET Special","🎯 JEE / NEET विशेष"],
+sk:["💡 Quick Trick","💡 त्वरित ट्रिक"],
+cp:["Copied!","कॉपी हो गया!"],
+nr:["No results found.","कोई परिणाम नहीं मिला."],
+ne:["Tap ☆ on any formula to build your own revision sheet.","किसी भी सूत्र पर ☆ दबाकर अपनी रिविजन शीट बनाइए."],
+tip:["Tap a card to copy it · ☆ to save · 🙈 for self-test","कार्ड छुएँ तो कॉपी होगा · ☆ से सेव करें · 🙈 से स्व-परीक्षा"],
+tipst:["Self-test: tap a blurred card to reveal it","स्व-परीक्षा: धुंधले कार्ड को छुकर देखें"],
+lg:["हिंदी में खोलें","Open in English"],
+ft:["SSTC Physics · Class 11 · Formulae &amp; Equations","SSTC भौतिक विज्ञान · कक्षा 11 · सूत्र एवं समीकरण"]};
+function u(k){return U[k][I]}
+var S={w3:["🎯 Projectile Simulator","🎯 प्रक्षेप्य सिम्युलेटर"],sp:["Speed u","चाल u"],an:["Angle θ","कोण θ"],mx:["✨ Maximum range!","✨ अधिकतम परास!"],
+w13:["🌀 SHM Spring–Mass Lab","🌀 SHM कमानी–द्रव्यमान प्रयोगशाला"],ms:["Mass m","द्रव्यमान m"],ks:["Spring constant k","कमानी स्थिरांक k"],am:["Amplitude A","आयाम A"],slow:["Animation is slowed 3× for visibility.","स्पष्ट दिखने के लिए गति 3 गुना धीमी है."],
+w14:["🌊 Travelling Wave","🌊 प्रगामी तरंग"],wl:["Wavelength λ","तरंगदैर्ध्य λ"],fr:["Frequency f","आवृत्ति f"],
+w11:["🔥 Carnot Engine Lab","🔥 कार्नो इंजन प्रयोगशाला"],t1:["Source T₁ (K)","स्रोत T₁ (K)"],t2:["Sink T₂ (K)","सिंक T₂ (K)"],eff:["Efficiency","दक्षता"],
+w7:["🛰️ Satellite Orbit Lab","🛰️ उपग्रह कक्षा प्रयोगशाला"],hh:["Height h above Earth (km)","पृथ्वी से ऊँचाई h (km)"],ho:["Time period","आवर्तकाल"]};
+function s(k){return S[k][I]}
+var cols=["#e0452f","#d9830b","#2e9e5b","#c2398a","#2a6fdb","#8a3ffc","#0f9aa8","#a0522d"],TG={J:"JEE",N:"NEET",B:"JEE·NEET"};
+/* item formats: f/j = [nameEn, nameHi, formula, tag?]; t = [nameEn, nameHi, textEn, textHi] */
+var D=[
+{n:["Physical World","भौतिक जगत"],
+f:[["Relative strength of forces","बलों की आपेक्षिक सामर्थ्य","Strong : EM : Weak : Gravity ≈ 1 : 10⁻² : 10⁻¹³ : 10⁻³⁸"],
+["Electromagnetic force","विद्युतचुंबकीय बल","F = kq₁q₂/r² · mediator: photon · infinite range"],
+["Gravitational force","गुरुत्वाकर्षण बल","F = Gm₁m₂/r² · always attractive · infinite range"],
+["Strong nuclear force","प्रबल नाभिकीय बल","Range ≈ 10⁻¹⁵ m · binds nucleons · mediator: gluon/meson"],
+["Weak nuclear force","दुर्बल नाभिकीय बल","β-decay · range ≈ 10⁻¹⁸ m · mediators W⁺, W⁻, Z⁰"],
+["Mass–energy relation","द्रव्यमान–ऊर्जा संबंध","E = mc²"]],
+t:[["Law of conservation of energy","ऊर्जा संरक्षण नियम","Energy can neither be created nor destroyed; it only changes from one form to another.","ऊर्जा न उत्पन्न की जा सकती है न नष्ट; केवल एक रूप से दूसरे में बदलती है."],
+["Conservation laws and symmetry","संरक्षण नियम व सममिति","Time symmetry → energy; space symmetry → linear momentum; rotational symmetry → angular momentum.","काल सममिति → ऊर्जा; दिक् सममिति → रेखीय संवेग; घूर्णन सममिति → कोणीय संवेग."]],
+j:[["Force carriers (exchange particles)","बल वाहक कण","Strong–gluon · EM–photon · Weak–W, Z bosons · Gravity–graviton","N"],
+["Nature of nuclear force","नाभिकीय बल की प्रकृति","Short range · charge-independent · non-central · saturated","B"],
+["Gravity dominates at large scale","गुरुत्व बड़े पैमाने पर प्रभावी","Matter is neutral overall, gravity only attracts ⇒ adds up","N"]],
+k:["Order to remember: Strong &gt; EM &gt; Weak &gt; Gravity. 'Which is weakest?' → Gravity.","याद रखें क्रम: प्रबल &gt; विद्युतचुंबकीय &gt; दुर्बल &gt; गुरुत्व. 'सबसे दुर्बल?' → गुरुत्व."]},
+
+{n:["Units &amp; Measurement","मात्रक व मापन"],
+f:[["SI base units","SI मूल मात्रक","m · kg · s · A · K · mol · cd"],
+["Dimensions of common quantities","सामान्य राशियों की विमाएँ","[F] = MLT⁻² · [E] = ML²T⁻² · [P] = ML²T⁻³"],
+["Dimensions of G and h","G व h की विमाएँ","[G] = M⁻¹L³T⁻² · [h] = ML²T⁻¹"],
+["Error in sum / difference","योग / अंतर में त्रुटि","Z = A ± B ⇒ ΔZ = ΔA + ΔB"],
+["Error in product / quotient","गुणन / भाग में त्रुटि","Z = AᵃBᵇ ⇒ ΔZ/Z = a(ΔA/A) + b(ΔB/B)"],
+["Percentage error","प्रतिशत त्रुटि","(ΔA/A) × 100 %"],
+["Vernier least count","वर्नियर अल्पतमांक","LC = 1 MSD − 1 VSD"],
+["Screw gauge least count","स्क्रू गेज अल्पतमांक","LC = Pitch / No. of circular scale divisions"]],
+t:[["Principle of homogeneity","समांगता का सिद्धांत","Dimensions of every term on both sides of a physical equation must be the same; only like quantities add or subtract.","भौतिक समीकरण के दोनों ओर हर पद की विमाएँ समान होती हैं; केवल समान राशियाँ जोड़ी/घटाई जा सकती हैं."],
+["Rules for significant figures","सार्थक अंकों के नियम","Non-zero digits and zeros between them are significant; trailing zeros after the decimal are significant; leading zeros are not.","अशून्य अंक व उनके बीच के शून्य सार्थक; दशमलव के बाद अंत के शून्य सार्थक; शुरुआती शून्य नहीं."]],
+j:[["Uses of dimensional analysis","विमीय विश्लेषण के उपयोग","Check equation · convert units · derive relations, e.g. T = 2π√(l/g)","B"],
+["Unit conversion","मात्रक परिवर्तन","n₂ = n₁ [M₁/M₂]ᵃ [L₁/L₂]ᵇ [T₁/T₂]ᶜ","J"],
+["Surface tension, viscosity, Young's modulus","पृष्ठ तनाव, श्यानता, यंग गुणांक","[S] = MT⁻² · [η] = ML⁻¹T⁻¹ · [Y] = [P] = ML⁻¹T⁻²","B"],
+["Same-dimension pairs","समान विमा वाली राशियाँ","Work = Energy = Torque · Impulse = Momentum · Stress = Pressure","B"],
+["Error in a power-law (pendulum)","घात-संबंध में त्रुटि","T = 2π√(l/g): ΔT/T = ½Δl/l + ½Δg/g","J"]],
+k:["Errors always ADD — even for differences. Dimensional analysis cannot give constants like ½ or 2π.","त्रुटियाँ सदैव जुड़ती हैं — अंतर में भी. विमीय विश्लेषण से ½ या 2π जैसे स्थिरांक नहीं मिलते."]},
+
+{n:["Motion in a Straight Line","सरल रेखा में गति"],
+f:[["First equation","पहला समीकरण","v = u + at"],
+["Second equation","दूसरा समीकरण","s = ut + ½at²"],
+["Third equation","तीसरा समीकरण","v² = u² + 2as"],
+["Distance in nth second","nवें सेकंड में दूरी","sₙ = u + (a/2)(2n − 1)"],
+["Free fall / vertical throw","मुक्त पतन / ऊर्ध्वाधर प्रक्षेपण","H = u²/2g · T = 2u/g · v = gt · h = ½gt²"],
+["Relative velocity","सापेक्ष वेग","v_AB = v_A − v_B"],
+["Calculus relations","कलन संबंध","v = dx/dt · a = dv/dt = v dv/dx"]],
+t:[["Graph meanings","ग्राफ के अर्थ","x–t slope = v · v–t slope = a · v–t area = displacement · a–t area = Δv","x–t की ढाल = v · v–t की ढाल = a · v–t का क्षेत्रफल = विस्थापन · a–t का क्षेत्रफल = Δv"],
+["Validity of equations","समीकरणों की वैधता","The three equations hold only for constant acceleration along a straight line.","तीनों समीकरण केवल सरल रेखा में नियत त्वरण पर लागू होते हैं."]],
+j:[["Equal time intervals from rest","विरामावस्था से समान समय अंतराल","s₁ : s₂ : s₃ = 1 : 3 : 5 · total distances 1 : 4 : 9","B"],
+["Equal distances from rest","विरामावस्था से समान दूरियाँ","t₁ : t₂ : t₃ = 1 : (√2 − 1) : (√3 − √2)","J"],
+["Average speed, equal distances","समान दूरियों पर औसत चाल","v̄ = 2v₁v₂/(v₁ + v₂) (harmonic mean)","B"],
+["Average speed, equal times","समान समयों पर औसत चाल","v̄ = (v₁ + v₂)/2","B"],
+["Stopping distance","रुकने की दूरी","s = u²/2a ⇒ s ∝ u² (same retardation)","N"],
+["Chase / meeting","पीछा / मिलना","s_rel = u_rel t + ½a_rel t², put s_rel = gap","J"],
+["Variable acceleration","परिवर्ती त्वरण","a = kt ⇒ v = u + kt²/2 · a = f(x) ⇒ ∫v dv = ∫a dx","J"]],
+k:["Time up = time down = u/g; speed at the same height while going up and down is equal.","चढ़ने व उतरने का समय = u/g; एक ही ऊँचाई पर ऊपर-नीचे जाते समय चाल बराबर होती है."]},
+
+{n:["Motion in a Plane","समतल में गति"],
+f:[["Resultant of two vectors","दो सदिशों का परिणामी","R = √(A² + B² + 2AB cosθ) · tanα = B sinθ/(A + B cosθ)"],
+["Dot and cross product","अदिश व सदिश गुणनफल","A·B = AB cosθ · |A × B| = AB sinθ"],
+["Projectile: time, height, range","प्रक्षेप्य: समय, ऊँचाई, परास","T = 2u sinθ/g · H = u²sin²θ/2g · R = u²sin2θ/g"],
+["Trajectory equation","पथ का समीकरण","y = x tanθ − gx²/(2u²cos²θ)"],
+["Horizontal projectile","क्षैतिज प्रक्षेप्य","t = √(2h/g) · R = u√(2h/g)"],
+["Circular motion","वृत्तीय गति","v = rω · aₙ = v²/r = ω²r · ω = 2π/T = 2πf"],
+["Tangential and total acceleration","स्पर्शीय व कुल त्वरण","a_t = rα · a = √(a_c² + a_t²)"]],
+t:[["Parallelogram law of vectors","सदिशों का समांतर चतुर्भुज नियम","Diagonal from the common point of two adjacent sides gives the resultant.","दो आसन्न भुजाओं के उभयनिष्ठ बिंदु से खींचा गया विकर्ण परिणामी देता है."],
+["Independence of motions","गतियों की स्वतंत्रता","Horizontal and vertical motions of a projectile are independent of each other.","प्रक्षेप्य की क्षैतिज व ऊर्ध्वाधर गतियाँ एक-दूसरे से स्वतंत्र होती हैं."]],
+j:[["Same range","समान परास","R(θ) = R(90° − θ) · R_max = u²/g at 45°","B"],
+["H and R relation","H व R संबंध","H/R = tanθ/4 · R = 4H at 45° · R = 4H cotθ","J"],
+["Projectile on an incline (angle β)","आनत तल पर प्रक्षेप्य (कोण β)","R = 2u² cosθ sin(θ − β)/(g cos²β)","J"],
+["River–boat: least time","नदी–नाव: न्यूनतम समय","t = d/v_b (head perpendicular) · drift = v_r t","B"],
+["River–boat: shortest path","नदी–नाव: न्यूनतम पथ","sinθ = v_r/v_b (upstream) · t = d/√(v_b² − v_r²)","J"],
+["Rain and man","वर्षा व मनुष्य","tanθ = v_man/v_rain (umbrella tilt from vertical)","B"],
+["Velocity at top","शीर्ष पर वेग","v_top = u cosθ · KE_top = KE cos²θ","N"]],
+k:["Top of path: only vertical velocity is zero; acceleration is still g downward. θ = 45° gives R = 4H.","शीर्ष पर केवल ऊर्ध्वाधर वेग शून्य; त्वरण फिर भी g नीचे. θ = 45° पर R = 4H."]},
+
+{n:["Laws of Motion","गति के नियम"],
+f:[["Newton's second law","न्यूटन का द्वितीय नियम","F = dp/dt = ma"],
+["Impulse","आवेग","J = FΔt = Δp = area under F–t graph"],
+["Momentum conservation","संवेग संरक्षण","m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂"],
+["Friction","घर्षण","f_s ≤ μ_sN · f_k = μ_kN · tanλ = μ"],
+["Block on incline","आनत तल पर गुटका","a = g(sinθ − μ cosθ) · N = mg cosθ"],
+["Atwood machine","एटवुड मशीन","a = (m₁ − m₂)g/(m₁ + m₂) · T = 2m₁m₂g/(m₁ + m₂)"],
+["Apparent weight in lift","लिफ्ट में आभासी भार","N = m(g ± a)"],
+["Safe speed on level road","समतल सड़क पर सुरक्षित चाल","v_max = √(μrg)"],
+["Banking angle","ढाल कोण","tanθ = v²/rg"]],
+t:[["Newton's three laws","न्यूटन के तीन नियम","1. Inertia · 2. F = dp/dt · 3. Action and reaction act on different bodies, equal and opposite.","1. जड़त्व · 2. F = dp/dt · 3. क्रिया-प्रतिक्रिया अलग पिंडों पर, बराबर व विपरीत."],
+["Lami's theorem","लामी का प्रमेय","Three concurrent forces in equilibrium: F₁/sinα = F₂/sinβ = F₃/sinγ.","साम्य में तीन संगामी बल: F₁/sinα = F₂/sinβ = F₃/sinγ."]],
+j:[["Vertical circle","ऊर्ध्वाधर वृत्त","v_top(min) = √(gr) · v_bottom(min) = √(5gr) · T_bottom − T_top = 6mg","B"],
+["Banking with friction","घर्षण सहित ढाल","v² = rg (μ + tanθ)/(1 − μ tanθ)","J"],
+["Conical pendulum","शंक्वाकार लोलक","T = 2π√(L cosθ/g)","J"],
+["Rocket thrust","रॉकेट प्रणोद","F = v_rel (dm/dt) · v = u ln(m₀/m)","J"],
+["Minimum pulling force on rough floor","खुरदरी सतह पर न्यूनतम बल","F = μmg/(cosθ + μ sinθ) · F_min = mg sinλ","J"],
+["Recoil of gun","बंदूक का प्रतिक्षेप","v_gun = −(m/M)v_bullet","N"]],
+k:["String constraint: total length is fixed, so accelerations are related. Draw FBD for each block separately.","डोरी की लंबाई नियत ⇒ त्वरण संबंधित. हर गुटके का अलग FBD बनाइए."]},
+
+{n:["Work, Energy &amp; Power","कार्य, ऊर्जा व शक्ति"],
+f:[["Work","कार्य","W = F·d cosθ = ∫F dx"],
+["Kinetic energy","गतिज ऊर्जा","K = ½mv² = p²/2m"],
+["Potential energy","स्थितिज ऊर्जा","U = mgh · U_spring = ½kx²"],
+["Power","शक्ति","P = W/t = F·v · 1 hp = 746 W"],
+["Conservative force","संरक्षी बल","F = −dU/dx"],
+["Coefficient of restitution","प्रत्यावस्थान गुणांक","e = (v₂ − v₁)/(u₁ − u₂)"],
+["Elastic collision (1-D)","प्रत्यास्थ टक्कर (1-D)","v₁ = [(m₁ − m₂)u₁ + 2m₂u₂]/(m₁ + m₂)"]],
+t:[["Work–energy theorem","कार्य–ऊर्जा प्रमेय","Net work done on a body equals the change in its kinetic energy: W_net = ΔK.","पिंड पर किया गया कुल कार्य उसकी गतिज ऊर्जा में परिवर्तन के बराबर: W_net = ΔK."],
+["Conservation of mechanical energy","यांत्रिक ऊर्जा संरक्षण","Under conservative forces only, K + U stays constant.","केवल संरक्षी बलों में K + U नियत रहता है."]],
+j:[["KE lost, perfectly inelastic","पूर्णतः अप्रत्यास्थ में KE हानि","ΔK = ½ [m₁m₂/(m₁ + m₂)] (u₁ − u₂)²","J"],
+["Ballistic pendulum","बैलिस्टिक लोलक","v = [(m + M)/m] √(2gh)","J"],
+["Bouncing ball","उछलती गेंद","vₙ = eⁿv · hₙ = e²ⁿh","B"],
+["Equal masses, elastic","समान द्रव्यमान, प्रत्यास्थ","Velocities are exchanged","B"],
+["Momentum–energy link","संवेग–ऊर्जा संबंध","p = √(2mK) · same p ⇒ K ∝ 1/m · same K ⇒ p ∝ √m","B"],
+["Stable equilibrium","स्थायी साम्य","dU/dx = 0 and d²U/dx² &gt; 0","J"],
+["Vehicle power on incline","आनत पर वाहन शक्ति","P = (mg sinθ + f + ma) v","J"]],
+k:["Work by centripetal force or any force ⟂ displacement = 0. Perfectly inelastic: max KE loss, momentum still conserved.","अभिकेंद्र बल या विस्थापन के लंबवत् बल का कार्य शून्य. पूर्णतः अप्रत्यास्थ में KE की अधिकतम हानि, संवेग संरक्षित."]},
+
+{n:["System of Particles &amp; Rotation","कणों का निकाय व घूर्णी गति"],
+f:[["Centre of mass","द्रव्यमान केंद्र","R_cm = Σmᵢrᵢ/Σmᵢ"],
+["Torque","बलआघूर्ण","τ = r × F = Iα = dL/dt"],
+["Angular momentum","कोणीय संवेग","L = r × p = Iω"],
+["Rotational KE and power","घूर्णी KE व शक्ति","K = ½Iω² · P = τω"],
+["Radius of gyration","परिभ्रमण त्रिज्या","I = Mk²"],
+["Rotational kinematics","घूर्णी शुद्धगतिकी","ω = ω₀ + αt · θ = ω₀t + ½αt² · ω² = ω₀² + 2αθ"],
+["Rolling (no slip)","बिना फिसले लोटन","v = Rω · K = ½mv²(1 + k²/R²)"]],
+t:[["Parallel axis theorem","समांतर अक्ष प्रमेय","I = I_cm + Md² (axis parallel to one through centre of mass).","I = I_cm + Md² (द्रव्यमान केंद्र वाले अक्ष के समांतर)."],
+["Perpendicular axis theorem","लंबवत् अक्ष प्रमेय","For planar bodies: I_z = I_x + I_y.","समतल पिंडों के लिए: I_z = I_x + I_y."],
+["Conservation of angular momentum","कोणीय संवेग संरक्षण","If τ_ext = 0 then L = constant (ice skater, diver).","τ_ext = 0 हो तो L नियत (स्केटर, गोताखोर)."]],
+j:[["Moment of inertia (centre axis)","जड़त्व आघूर्ण (केंद्रीय अक्ष)","Ring MR² · Disc ½MR² · Solid sphere ⅖MR² · Hollow sphere ⅔MR² · Rod ML²/12","B"],
+["Acceleration on incline (rolling)","आनत पर लोटन त्वरण","a = g sinθ/(1 + k²/R²) · v = √(2gh/(1 + k²/R²))","B"],
+["Rotational share of KE","घूर्णी KE का अंश","Ring ½ · Disc ⅓ · Solid sphere 2/7 of total KE","J"],
+["Race down an incline","आनत तल पर दौड़","Solid sphere &gt; Disc &gt; Ring (least k²/R² wins)","B"],
+["Friction needed for rolling","लोटन हेतु घर्षण","f = mg sinθ/(1 + R²/k²)","J"],
+["Angular impulse","कोणीय आवेग","∫τ dt = ΔL","J"]],
+k:["Rotational analogues: F↔τ, m↔I, v↔ω, p↔L. Pulling arms in reduces I so ω increases.","घूर्णी समतुल्य: F↔τ, m↔I, v↔ω, p↔L. हाथ समेटने पर I घटता है, ω बढ़ता है."]},
+
+{n:["Gravitation","गुरुत्वाकर्षण"],
+f:[["Newton's law of gravitation","न्यूटन का गुरुत्वाकर्षण नियम","F = Gm₁m₂/r² · G = 6.67×10⁻¹¹"],
+["Acceleration due to gravity","गुरुत्वीय त्वरण","g = GM/R² = (4/3)πGρR"],
+["Variation of g","g में परिवर्तन","g_h ≈ g(1 − 2h/R) · g_d = g(1 − d/R)"],
+["Gravitational potential energy","गुरुत्वीय स्थितिज ऊर्जा","U = −GMm/r · V = −GM/r"],
+["Escape and orbital speed","पलायन व कक्षीय चाल","v_e = √(2GM/R) = √(2gR) = 11.2 km/s · v_o = √(gR) = 7.9 km/s"],
+["Satellite time period","उपग्रह आवर्तकाल","T = 2π√(r³/GM) · T² ∝ r³"],
+["Satellite energies","उपग्रह की ऊर्जाएँ","K = GMm/2r · U = −GMm/r · E = −GMm/2r"]],
+t:[["Kepler's laws","केप्लर के नियम","1. Orbits are ellipses with Sun at a focus · 2. Equal areas in equal times (L conserved) · 3. T² ∝ a³.","1. कक्षाएँ दीर्घवृत्त, सूर्य नाभि पर · 2. समान समय में समान क्षेत्रफल (L संरक्षित) · 3. T² ∝ a³."],
+["Shell theorem","कोश प्रमेय","Outside a uniform shell: field as if mass at centre. Inside: field is zero.","एकसमान कोश के बाहर: क्षेत्र ऐसे जैसे द्रव्यमान केंद्र पर हो. भीतर: क्षेत्र शून्य."]],
+j:[["Field inside a uniform solid sphere","ठोस गोले के भीतर क्षेत्र","g_in = GMr/R³ = g r/R","B"],
+["Effect of latitude and rotation","अक्षांश व घूर्णन का प्रभाव","g′ = g − Rω²cos²λ (zero effect at poles)","B"],
+["Satellite near surface","पृष्ठ के निकट उपग्रह","T = 2π√(R/g) ≈ 84.6 min ≈ 5063 s","B"],
+["Escape vs orbital speed","पलायन बनाम कक्षीय चाल","v_e = √2 · v_o","B"],
+["Binding energy of satellite","उपग्रह की बंधन ऊर्जा","B.E. = GMm/2r","J"],
+["Geostationary satellite","भूस्थैतिक उपग्रह","T = 24 h · h ≈ 36,000 km · r ≈ 42,400 km · equatorial · west→east","N"],
+["Orbit change energy","कक्षा परिवर्तन ऊर्जा","W = GMm (1/2r₁ − 1/2r₂)","J"]],
+k:["g = 0 at Earth's centre; mass never changes, weight does. Orbital velocity is independent of the satellite's mass.","पृथ्वी के केंद्र पर g = 0; द्रव्यमान नहीं बदलता, भार बदलता है. कक्षीय चाल उपग्रह के द्रव्यमान पर निर्भर नहीं."]},
+
+{n:["Mechanical Properties of Solids","ठोसों के यांत्रिक गुण"],
+f:[["Stress and strain","प्रतिबल व विकृति","σ = F/A · ε = ΔL/L"],
+["Young's modulus","यंग गुणांक","Y = FL/(AΔL)"],
+["Bulk modulus","आयतन प्रत्यास्थता गुणांक","B = −ΔP/(ΔV/V)"],
+["Shear modulus","अपरूपण गुणांक","η = F/(Aθ)"],
+["Poisson's ratio","पॉयसन अनुपात","σ = −(lateral strain)/(longitudinal strain)"],
+["Strain energy","विकृति ऊर्जा","U = ½F·ΔL · u = ½ × stress × strain = ½Yε²"],
+["Spring constant of a wire","तार का कमानी स्थिरांक","k = YA/L"]],
+t:[["Hooke's law","हुक का नियम","Within the elastic limit, stress is directly proportional to strain.","प्रत्यास्थ सीमा में प्रतिबल, विकृति के समानुपाती होता है."],
+["Elastic limit and yield","प्रत्यास्थ सीमा व नमन","Beyond the elastic limit the body does not regain its shape; yield point, ultimate stress, fracture follow.","प्रत्यास्थ सीमा के बाद पिंड पूर्व आकार नहीं पाता; फिर नमन बिंदु, चरम प्रतिबल, भंजन."]],
+j:[["Wire hanging under own weight","अपने भार से लटका तार","ΔL = ρgL²/2Y","J"],
+["Elastic constants relation","प्रत्यास्थ गुणांक संबंध","Y = 3B(1 − 2σ) = 2η(1 + σ)","J"],
+["Poisson ratio limits","पॉयसन अनुपात की सीमा","−1 &lt; σ &lt; 0.5 (practically 0 to 0.5)","B"],
+["Thermal stress","तापीय प्रतिबल","σ = YαΔT (rod fixed between supports)","J"],
+["Elongation comparison","दीर्घन की तुलना","ΔL ∝ FL/(r²Y)","B"],
+["Bulk modulus of gas","गैस का आयतन गुणांक","B_isothermal = P · B_adiabatic = γP","J"],
+["Compressibility","संपीड्यता","K = 1/B","N"]],
+k:["Y depends only on material (steel &gt; rubber). Slope of stress–strain = Y; area under it = energy per unit volume.","Y केवल पदार्थ पर निर्भर (इस्पात &gt; रबर). प्रतिबल–विकृति की ढाल = Y; क्षेत्रफल = प्रति इकाई आयतन ऊर्जा."]},
+
+{n:["Mechanical Properties of Fluids","तरलों के यांत्रिक गुण"],
+f:[["Pressure at depth","गहराई पर दाब","P = P₀ + ρgh"],
+["Pascal's law (hydraulic lift)","पास्कल नियम (द्रवचालित लिफ्ट)","F₂ = F₁ (A₂/A₁)"],
+["Equation of continuity","सांतत्य समीकरण","A₁v₁ = A₂v₂"],
+["Bernoulli's equation","बरनौली समीकरण","P + ½ρv² + ρgh = constant"],
+["Stokes' law and terminal velocity","स्टोक्स नियम व सीमांत वेग","F = 6πηrv · v_t = 2r²(ρ − σ)g/9η"],
+["Surface tension and energy","पृष्ठ तनाव व ऊर्जा","S = F/l = W/ΔA"],
+["Excess pressure","आधिक्य दाब","Drop 2S/r · Soap bubble 4S/r"],
+["Capillary rise","केशिका उन्नयन","h = 2S cosθ/(rρg)"]],
+t:[["Archimedes' principle","आर्किमिडीज़ सिद्धांत","Buoyant force equals weight of fluid displaced: F_B = ρ_fluid V g.","उत्प्लावन बल विस्थापित तरल के भार के बराबर: F_B = ρ_तरल V g."],
+["Bernoulli's theorem","बरनौली प्रमेय","For ideal, steady, non-viscous, incompressible flow, energy per unit volume is conserved along a streamline.","आदर्श, स्थिर, अश्यान, असंपीड्य प्रवाह में धारारेखा पर प्रति इकाई आयतन ऊर्जा संरक्षित."]],
+j:[["Torricelli's speed of efflux","टोरिसेली निष्कासन चाल","v = √(2gh) · range x = 2√(h(H − h))","B"],
+["Poiseuille's formula","प्वाज़ेई सूत्र","V = πPr⁴/8ηl (flow ∝ r⁴)","J"],
+["Reynolds number","रेनॉल्ड्स संख्या","Re = ρvd/η · &lt; 1000 streamline · &gt; 2000 turbulent","B"],
+["Floating body","तैरता पिंड","Fraction submerged = ρ_body/ρ_liquid","N"],
+["Coalescence of drops","बूँदों का संयोजन","R = n^(1/3) r · energy released = 4πr²S(n − n^(2/3))","J"],
+["Work in blowing a soap bubble","साबुन के बुलबुले में कार्य","W = 8πr²S (two surfaces)","B"],
+["Venturimeter","वेंचुरीमीटर","v₁ = A₂√(2ΔP/ρ(A₁² − A₂²))","J"]],
+k:["Terminal velocity ∝ r². High velocity ⇒ low pressure. Liquid viscosity falls with temperature; gas viscosity rises.","सीमांत वेग ∝ r². अधिक वेग ⇒ कम दाब. ताप बढ़ने पर द्रव की श्यानता घटती, गैस की बढ़ती है."]},
+
+{n:["Thermal Properties of Matter","पदार्थ के तापीय गुण"],
+f:[["Temperature scales","ताप पैमाने","C/5 = (F − 32)/9 = (K − 273)/5"],
+["Thermal expansion","तापीय प्रसार","ΔL = LαΔT · ΔA = AβΔT · ΔV = VγΔT"],
+["Relation of coefficients","गुणांकों में संबंध","α : β : γ = 1 : 2 : 3"],
+["Heat and latent heat","ऊष्मा व गुप्त ऊष्मा","Q = mcΔT · Q = mL"],
+["Conduction","चालन","Q/t = KA(T₁ − T₂)/d"],
+["Stefan–Boltzmann law","स्टीफ़न–बोल्ट्ज़मैन नियम","E = σT⁴ · P = σAeT⁴"],
+["Wien's displacement law","वीन विस्थापन नियम","λ_m T = 2.9 × 10⁻³ m K"]],
+t:[["Newton's law of cooling","न्यूटन का शीतलन नियम","Rate of cooling ∝ (T − T_s) for small excess temperature: dT/dt = −k(T − T_s).","शीतलन दर ∝ (T − T_s) (छोटे ताप-अंतर पर): dT/dt = −k(T − T_s)."],
+["Kirchhoff's law","किरखोफ़ नियम","Good absorbers are good emitters; for a black body emissive power is maximum.","अच्छे अवशोषक अच्छे उत्सर्जक होते हैं; कृष्णिका का उत्सर्जन अधिकतम."]],
+j:[["Newton cooling (average form)","शीतलन (औसत रूप)","(T₁ − T₂)/t = K[(T₁ + T₂)/2 − T_s]","J"],
+["Composite rods in series","श्रेणी में छड़ें","K = (d₁ + d₂)/(d₁/K₁ + d₂/K₂)","J"],
+["Composite rods in parallel","समांतर में छड़ें","K = (K₁A₁ + K₂A₂)/(A₁ + A₂)","J"],
+["Net radiation","नेट विकिरण","P = σAe(T⁴ − T₀⁴)","B"],
+["Real expansion of liquid","द्रव का वास्तविक प्रसार","γ_real = γ_apparent + γ_vessel","B"],
+["Clock error","घड़ी में त्रुटि","Time lost/gained per sec = ½αΔθ","J"],
+["Ice thickness growth","बर्फ की मोटाई वृद्धि","x² = 2Kθt/(ρL)","J"],
+["Water's anomalous expansion","जल का असंगत प्रसार","Maximum density at 4 °C","N"]],
+k:["No temperature change during a phase change. Heat current (thermal) ↔ current in circuits: R = d/KA.","अवस्था परिवर्तन में ताप नहीं बदलता. ऊष्मा धारा ↔ विद्युत धारा: R = d/KA."]},
+
+{n:["Thermodynamics","ऊष्मागतिकी"],
+f:[["First law","प्रथम नियम","ΔQ = ΔU + W · W = ∫P dV"],
+["Isothermal process","समतापीय प्रक्रम","PV = const · W = nRT ln(V₂/V₁) · ΔU = 0"],
+["Adiabatic process","रुद्धोष्म प्रक्रम","PVᵞ = const · TVᵞ⁻¹ = const · W = (P₁V₁ − P₂V₂)/(γ − 1)"],
+["Isobaric / Isochoric","समदाबी / समआयतनिक","Isobaric W = PΔV = nRΔT · Isochoric W = 0, Q = nC_vΔT"],
+["Specific heats","विशिष्ट ऊष्माएँ","C_p − C_v = R · γ = C_p/C_v · C_v = R/(γ − 1)"],
+["Heat engine","ऊष्मा इंजन","η = W/Q₁ = 1 − Q₂/Q₁ = 1 − T₂/T₁"],
+["Refrigerator","प्रशीतक","COP = Q₂/W = T₂/(T₁ − T₂)"]],
+t:[["Zeroth law","शून्यांक नियम","Two bodies each in thermal equilibrium with a third are in equilibrium with each other.","यदि दो पिंड तीसरे के साथ तापीय साम्य में हों तो वे आपस में भी साम्य में होते हैं."],
+["Second law","द्वितीय नियम","Kelvin–Planck: no engine is 100% efficient. Clausius: heat cannot flow from cold to hot on its own.","केल्विन–प्लांक: कोई इंजन 100% दक्ष नहीं. क्लॉसियस: ऊष्मा स्वतः ठंडे से गर्म पिंड में नहीं जाती."],
+["Carnot's theorem","कार्नो प्रमेय","No engine between two temperatures is more efficient than a reversible Carnot engine.","दो तापों के बीच कोई इंजन उत्क्रमणीय कार्नो इंजन से अधिक दक्ष नहीं हो सकता."]],
+j:[["Polytropic process","बहुवैकल्पिक (पॉलीट्रॉपिक) प्रक्रम","PVⁿ = const · W = (P₁V₁ − P₂V₂)/(n − 1) · C = C_v + R/(1 − n)","J"],
+["Slope comparison","ढाल की तुलना","|Slope adiabatic| = γ × |slope isothermal|","B"],
+["Molar heat capacities","मोलर ऊष्माधारिता","Monatomic C_v = 3R/2, C_p = 5R/2 · Diatomic C_v = 5R/2, C_p = 7R/2","B"],
+["Cyclic process","चक्रीय प्रक्रम","ΔU = 0 ⇒ Q = W = area of loop","B"],
+["Free expansion","मुक्त प्रसार","Q = 0, W = 0, ΔU = 0 (ideal gas: T unchanged)","J"],
+["Entropy change","एन्ट्रॉपी परिवर्तन","ΔS = Q/T (reversible)","J"]],
+k:["Always use Kelvin in η. Clockwise loop on P–V = positive work. Adiabatic curve is steeper than isotherm.","η में सदैव केल्विन लें. P–V पर दक्षिणावर्त लूप = धनात्मक कार्य. रुद्धोष्म वक्र समतापीय से अधिक तीव्र."]},
+
+{n:["Kinetic Theory","अणुगति सिद्धांत"],
+f:[["Ideal gas equation","आदर्श गैस समीकरण","PV = nRT = NkT"],
+["Pressure of gas","गैस का दाब","P = ⅓ρv²_rms = ⅔(N/V)·(½mv²)"],
+["Average KE","औसत गतिज ऊर्जा","K = (3/2)kT per molecule"],
+["Three speeds","तीन चालें","v_rms = √(3RT/M) · v_avg = √(8RT/πM) · v_mp = √(2RT/M)"],
+["Internal energy","आंतरिक ऊर्जा","U = (f/2)nRT · C_v = (f/2)R · γ = 1 + 2/f"],
+["Mean free path","माध्य मुक्त पथ","λ = 1/(√2 π d² n)"],
+["Dalton's partial pressures","डाल्टन का आंशिक दाब नियम","P = P₁ + P₂ + …"]],
+t:[["Law of equipartition of energy","ऊर्जा समविभाजन नियम","Each degree of freedom has average energy ½kT per molecule.","प्रत्येक स्वातंत्र्य कोटि पर प्रति अणु औसत ऊर्जा ½kT."],
+["Gas laws","गैस नियम","Boyle: PV = const (T) · Charles: V/T = const (P) · Gay-Lussac: P/T = const (V).","बॉयल: PV = नियत (T) · चार्ल्स: V/T = नियत (P) · गे-लुसाक: P/T = नियत (V)."]],
+j:[["Degrees of freedom","स्वातंत्र्य कोटि","Monatomic 3 (γ = 5/3) · Diatomic 5 (γ = 7/5) · Non-linear polyatomic 6 (γ = 4/3)","B"],
+["Speed ratio","चालों का अनुपात","v_rms : v_avg : v_mp = √3 : √(8/π) : √2","B"],
+["Graham's law of diffusion","ग्राहम का विसरण नियम","r ∝ 1/√M","N"],
+["Mixture of gases","गैसों का मिश्रण","γ_mix = (n₁C_p1 + n₂C_p2)/(n₁C_v1 + n₂C_v2)","J"],
+["Van der Waals equation","वान डर वाल्स समीकरण","(P + an²/V²)(V − nb) = nRT","J"],
+["Density of gas","गैस का घनत्व","ρ = PM/RT","B"],
+["Vibrational mode","कंपन विधा","Diatomic with vibration: f = 7","J"]],
+k:["Average KE depends only on T. v_rms is the largest of the three speeds. Same T ⇒ same average KE for all gases.","औसत KE केवल T पर निर्भर. तीनों चालों में v_rms सबसे अधिक. समान T पर सभी गैसों की औसत KE समान."]},
+
+{n:["Oscillations","दोलन"],
+f:[["SHM definition","SHM परिभाषा","a = −ω²x · x = A sin(ωt + φ)"],
+["Velocity and acceleration","वेग व त्वरण","v = ω√(A² − x²) · v_max = Aω · a_max = Aω²"],
+["Time period","आवर्तकाल","T = 2π/ω = 1/f"],
+["Spring–mass system","कमानी–द्रव्यमान","T = 2π√(m/k)"],
+["Simple pendulum","सरल लोलक","T = 2π√(l/g)"],
+["Total energy","कुल ऊर्जा","E = ½kA² = ½mω²A² · K = ½k(A² − x²) · U = ½kx²"],
+["Springs in series / parallel","कमानियाँ श्रेणी / समांतर","Series 1/k = Σ1/kᵢ · Parallel k = Σkᵢ"]],
+t:[["Condition for SHM","SHM की शर्त","Restoring force is proportional to displacement and directed towards the mean position: F = −kx.","प्रत्यानयन बल विस्थापन के समानुपाती व माध्य स्थिति की ओर: F = −kx."],
+["Resonance","अनुनाद","Amplitude is maximum when driving frequency equals natural frequency.","चालक आवृत्ति = प्राकृतिक आवृत्ति होने पर आयाम अधिकतम."]],
+j:[["Physical and torsional pendulum","भौतिक व मरोड़ी लोलक","T = 2π√(I/mgd) · T = 2π√(I/C)","J"],
+["Pendulum in accelerating lift","त्वरित लिफ्ट में लोलक","T = 2π√(l/(g ± a)) · free fall ⇒ T → ∞","B"],
+["Liquid in U-tube / floating cylinder","U-नली में द्रव / तैरता बेलन","T = 2π√(L/2g) · T = 2π√(m/Aρg)","J"],
+["Spring cut into n parts","कमानी के n टुकड़े","k′ = nk (each part)","B"],
+["Superposition of two SHMs","दो SHM का अध्यारोपण","A = √(A₁² + A₂² + 2A₁A₂ cosφ)","J"],
+["Damped oscillation","अवमंदित दोलन","x = A₀e^(−bt/2m) cos(ω′t) · ω′ = √(ω₀² − b²/4m²)","J"],
+["Time fractions in SHM","SHM में समय अंश","Mean → A/2: T/12 · A/2 → A: T/6 · Mean → A: T/4","B"],
+["KE = PE position","KE = PE की स्थिति","x = ± A/√2 · avg K = avg U = E/2","B"]],
+k:["KE and PE oscillate at twice the SHM frequency. Velocity is max at mean, acceleration is max at extremes.","KE व PE की आवृत्ति SHM की दोगुनी. माध्य पर वेग अधिकतम, चरम पर त्वरण अधिकतम."]},
+
+{n:["Waves","तरंगें"],
+f:[["Wave equation","तरंग समीकरण","y = A sin(ωt − kx) · k = 2π/λ"],
+["Wave speed","तरंग वेग","v = fλ = ω/k"],
+["Speed on a string","डोरी में चाल","v = √(T/μ)"],
+["Speed of sound in gas","गैस में ध्वनि चाल","v = √(γP/ρ) (Newton–Laplace) · v ∝ √T"],
+["Organ pipes","आर्गन नलिकाएँ","Open: fₙ = nv/2L · Closed: f = (2n − 1)v/4L"],
+["Beats","विस्पंद","f_beat = |f₁ − f₂|"],
+["Doppler effect","डॉप्लर प्रभाव","f′ = f (v ± v_o)/(v ∓ v_s)"],
+["Phase difference","कला अंतर","Δφ = 2πΔx/λ = 2πΔt/T"]],
+t:[["Principle of superposition","अध्यारोपण का सिद्धांत","Resultant displacement is the algebraic sum of individual displacements of waves at that point.","परिणामी विस्थापन, तरंगों के अलग-अलग विस्थापनों का बीजगणितीय योग होता है."],
+["Standing waves","अप्रगामी तरंगें","Two identical waves in opposite directions: y = 2A cos(kx) sin(ωt); nodes at λ/2 spacing.","विपरीत दिशा में दो समान तरंगें: y = 2A cos(kx) sin(ωt); निस्पंद λ/2 की दूरी पर."]],
+j:[["Intensity and decibel","तीव्रता व डेसिबल","I ∝ A²f² · β = 10 log₁₀(I/I₀) · I₀ = 10⁻¹² W/m²","B"],
+["Interference","व्यतिकरण","I_max/I_min = ((A₁ + A₂)/(A₁ − A₂))²","J"],
+["Sound speed with temperature","ताप के साथ ध्वनि चाल","v_t ≈ v₀ + 0.61 t (m/s)","N"],
+["End correction","सिरा संशोधन","e = 0.3d · λ = 2(l₂ − l₁) (resonance tube)","B"],
+["Power of wave on string","डोरी पर तरंग शक्ति","P = ½μω²A²v","J"],
+["Closed pipe harmonics","बंद नलिका संनादी","f : 3f : 5f … (odd only)","N"],
+["Sonometer","सोनोमीटर","f = (1/2L)√(T/μ) · f ∝ 1/L, ∝ √T","B"]],
+k:["Speed of sound is independent of pressure and ∝ √T. Beats and Doppler appear in almost every NEET paper.","ध्वनि की चाल दाब से स्वतंत्र व ∝ √T. विस्पंद व डॉप्लर लगभग हर NEET पेपर में आते हैं."]}
+];
+var HUB=[
+[["📏 Physical Constants","📏 भौतिक नियतांक"],[
+["Acceleration due to gravity g","गुरुत्वीय त्वरण g","9.8 m/s² (≈ 10 in JEE)"],["Gravitational constant G","गुरुत्वीय नियतांक G","6.67 × 10⁻¹¹ N m² kg⁻²"],["Speed of light c","प्रकाश की चाल c","3 × 10⁸ m/s"],["Planck's constant h","प्लांक नियतांक h","6.63 × 10⁻³⁴ J s"],["Boltzmann constant k","बोल्ट्ज़मैन नियतांक k","1.38 × 10⁻²³ J/K"],["Gas constant R","गैस नियतांक R","8.314 J mol⁻¹ K⁻¹"],["Avogadro number","आवोगाद्रो संख्या","6.022 × 10²³ mol⁻¹"],["Stefan's constant σ","स्टीफ़न नियतांक σ","5.67 × 10⁻⁸ W m⁻² K⁻⁴"],["Wien's constant","वीन नियतांक","2.9 × 10⁻³ m K"],["Atmospheric pressure","वायुमंडलीय दाब","1.013 × 10⁵ Pa = 76 cm Hg"],["Earth: mass / radius","पृथ्वी: द्रव्यमान / त्रिज्या","5.97 × 10²⁴ kg / 6.37 × 10⁶ m"],["Earth–Sun distance","पृथ्वी–सूर्य दूरी","1.5 × 10¹¹ m"],["Speed of sound in air","वायु में ध्वनि चाल","332 m/s at 0 °C · 343 m/s at 20 °C"],["Specific heat of water","जल की विशिष्ट ऊष्मा","4186 J kg⁻¹ K⁻¹"],["Latent heats of water","जल की गुप्त ऊष्मा","L_f = 336 kJ/kg · L_v = 2260 kJ/kg"],["Conversions","परिवर्तन","1 cal = 4.18 J · 1 hp = 746 W · 1 eV = 1.6×10⁻¹⁹ J · 1 kWh = 3.6×10⁶ J"]]],
+[["📐 Dimensions Cheat Table","📐 विमा सारणी"],[
+["Force / Weight","बल / भार","MLT⁻²"],["Work, Energy, Torque","कार्य, ऊर्जा, बलआघूर्ण","ML²T⁻²"],["Power","शक्ति","ML²T⁻³"],["Pressure, Stress, Y","दाब, प्रतिबल, Y","ML⁻¹T⁻²"],["Momentum, Impulse","संवेग, आवेग","MLT⁻¹"],["Angular momentum, h","कोणीय संवेग, h","ML²T⁻¹"],["Surface tension, spring constant","पृष्ठ तनाव, कमानी स्थिरांक","MT⁻²"],["Viscosity η","श्यानता η","ML⁻¹T⁻¹"],["Gravitational constant G","गुरुत्वीय नियतांक G","M⁻¹L³T⁻²"],["Specific heat","विशिष्ट ऊष्मा","L²T⁻²K⁻¹"],["Latent heat","गुप्त ऊष्मा","L²T⁻²"],["Gas constant R, Boltzmann k","गैस नियतांक R, k","ML²T⁻²K⁻¹ (per mol for R)"],["Thermal conductivity K","तापीय चालकता K","MLT⁻³K⁻¹"],["Stefan's constant σ","स्टीफ़न नियतांक σ","MT⁻³K⁻⁴"]]],
+[["📈 Graph Reading Guide","📈 ग्राफ पढ़ने की गाइड"],[
+["x–t graph","x–t ग्राफ","Slope = velocity"],["v–t graph","v–t ग्राफ","Slope = acceleration · Area = displacement"],["a–t graph","a–t ग्राफ","Area = change in velocity"],["F–x graph","F–x ग्राफ","Area = work done"],["F–t graph","F–t ग्राफ","Area = impulse = Δp"],["P–V graph","P–V ग्राफ","Area = work done by gas"],["Stress–strain","प्रतिबल–विकृति","Slope = Y · Area = energy/volume"],["T–t cooling curve","T–t शीतलन वक्र","Steeper at higher excess temperature"]]],
+[["⚙️ Moment of Inertia Table","⚙️ जड़त्व आघूर्ण सारणी"],[
+["Ring (⟂ axis through centre)","वलय (केंद्र से लंबवत् अक्ष)","MR²"],["Ring (diameter)","वलय (व्यास)","½MR²"],["Disc / solid cylinder (axis)","डिस्क / ठोस बेलन (अक्ष)","½MR²"],["Disc (diameter)","डिस्क (व्यास)","¼MR²"],["Solid sphere","ठोस गोला","⅖MR²"],["Hollow sphere","खोखला गोला","⅔MR²"],["Rod about centre","छड़ केंद्र से","ML²/12"],["Rod about end","छड़ सिरे से","ML²/3"],["Rectangular plate (⟂ centre)","आयताकार प्लेट (केंद्र ⟂)","M(a² + b²)/12"]]],
+[["🚀 Must-know Results","🚀 ज़रूर याद रखने योग्य परिणाम"],[
+["Equal masses, elastic collision","समान द्रव्यमान, प्रत्यास्थ टक्कर","Velocities exchange"],["Satellite energy","उपग्रह ऊर्जा","E = −K = U/2"],["Escape vs orbital speed","पलायन बनाम कक्षीय चाल","v_e = √2 v_o"],["Projectile","प्रक्षेप्य","R(θ) = R(90° − θ) · R = 4H at 45°"],["Closed pipe vs open pipe","बंद बनाम खुली नलिका","Closed: odd harmonics only · Open: all harmonics"],["Terminal velocity","सीमांत वेग","v_t ∝ r²"],["Bulk modulus of gas","गैस का आयतन गुणांक","Isothermal P · Adiabatic γP"],["Carnot efficiency (Kelvin!)","कार्नो दक्षता (केल्विन में!)","η = 1 − T₂/T₁"],["Rolling bodies on incline","आनत पर लोटते पिंड","Sphere &gt; Disc &gt; Ring (speed at bottom)"],["Seconds pendulum","सेकंड लोलक","T = 2 s ⇒ l ≈ 1 m"]]]
+];
+var cur=0,favs={},st=false,q="",$=function(x){return document.querySelector(x)};
+try{favs=JSON.parse(localStorage.getItem("sstc11fav")||"{}")}catch(e){}
+function sv(){try{localStorage.setItem("sstc11fav",JSON.stringify(favs))}catch(e){}}
+function g(sec,it){return sec=="t"?{n:it[I],x:it[2+I],t:1}:{n:it[I],x:it[2],g:it[3]}}
+function card(ci,sec,ix,it){var o=g(sec,it),id=ci+"|"+sec+"|"+ix;
+ return '<div class="fc'+(o.t?' th':'')+'" style="--c:'+cols[ci%8]+';animation-delay:'+Math.min(ix,10)*.04+'s" data-id="'+id+'"><button class="star" aria-label="save" data-id="'+id+'">'+(favs[id]?"★":"☆")+'</button><div class="fn">'+o.n+(o.g?' <i class="tg tg'+o.g+'">'+TG[o.g]+'</i>':'')+'</div><div class="'+(o.t?'tx':'fx')+'">'+o.x+'</div></div>'}
+function grid(ci,sec,key){var c=D[ci];return '<h3 class="s">'+u(key)+'</h3><div class="grid">'+c[sec].map(function(it,i){return card(ci,sec,i,it)}).join("")+'</div>'}
+function sim(i){var h='<h3 class="s">';
+ if(i==3)return h+s("w3")+'</h3><div class="w">'+sl("pu",s("sp"),10,50,30)+sl("pa",s("an"),10,80,45)+'<svg id="ps" viewBox="0 0 400 200"></svg><div class="stt" id="pst"></div></div>';
+ if(i==7)return h+s("w7")+'</h3><div class="w">'+sl("oh",s("hh"),0,36000,500,500)+'<svg id="os" viewBox="0 0 400 240"></svg><div class="stt" id="ost"></div></div>';
+ if(i==11)return h+s("w11")+'</h3><div class="w">'+sl("c1",s("t1"),450,1000,600,10)+sl("c2",s("t2"),100,400,300,10)+'<svg id="cs" viewBox="0 0 400 130"></svg><div class="stt" id="cst"></div></div>';
+ if(i==13)return h+s("w13")+'</h3><div class="w">'+sl("sm",s("ms"),0.1,2,0.5,0.1)+sl("sk",s("ks"),10,100,40,5)+sl("sa",s("am"),2,10,6)+'<svg viewBox="0 0 400 110"><rect x="8" y="10" width="12" height="90" fill="var(--mut)"/><polyline id="sp" fill="none" stroke="var(--ink)" stroke-width="3"/><rect id="mb" y="35" width="40" height="40" rx="6" fill="var(--c)"/><line x1="210" y1="85" x2="210" y2="100" stroke="var(--mut)"/><text x="196" y="108">x=0</text></svg><div class="stt" id="sst"></div><p class="hint">'+s("slow")+'</p></div>';
+ if(i==14)return h+s("w14")+'</h3><div class="w">'+sl("wa",s("am"),10,45,30)+sl("wl",s("wl"),40,200,120,10)+sl("wf",s("fr"),1,5,2)+'<svg viewBox="0 0 400 120"><line x1="0" y1="60" x2="400" y2="60" stroke="var(--mut)" stroke-dasharray="4"/><path id="wp" fill="none" stroke="var(--c)" stroke-width="3"/></svg><div class="stt" id="wst"></div></div>';
+ return ""}
+function sl(id,l,mn,mx,v,sp){return '<div class="row"><span>'+l+'</span><span id="'+id+'v"></span></div><input type="range" id="'+id+'" min="'+mn+'" max="'+mx+'" value="'+v+'" step="'+(sp||1)+'">'}
+function chap(ci){var c=D[ci];
+ return '<section style="--c:'+cols[ci%8]+'"><h2>'+(ci+1)+'. '+c.n[I]+'</h2><p class="hint">'+u(st?"tipst":"tip")+'</p>'+grid(ci,"f","sf")+grid(ci,"t","stt")+grid(ci,"j","sj")+'<div class="trick">💡 '+c.k[I]+'</div>'+sim(ci)+'</section>'}
+function hub(){return '<section style="--c:#8a3ffc"><h2>'+u("hub")+'</h2><p class="hint">'+u("hubd")+'</p>'+HUB.map(function(b,bi){return '<h3 class="s" style="color:'+cols[(bi+4)%8]+'">'+b[0][I]+'</h3><div class="tb" style="--c:'+cols[(bi+4)%8]+'">'+b[1].map(function(r){return '<div class="tr"><span>'+r[I]+'</span><b>'+r[2]+'</b></div>'}).join("")+'</div>'}).join("")+'</section>'}
+function favv(){var ids=Object.keys(favs).sort(function(a,b){return parseInt(a)-parseInt(b)});
+ if(!ids.length)return '<section><h2>'+u("fav")+'</h2><p class="hint">'+u("ne")+'</p></section>';
+ return '<section><h2>'+u("fav")+'</h2><div class="grid">'+ids.map(function(id){var p=id.split("|");return card(+p[0],p[1],+p[2],D[+p[0]][p[1]][+p[2]])}).join("")+'</div></section>'}
+function search(){var z=q.toLowerCase(),h="",n=0;
+ D.forEach(function(c,ci){var b="";["f","t","j"].forEach(function(sec){c[sec].forEach(function(it,ix){var tx=(it[0]+" "+it[1]+" "+it[2]+(sec=="t"?" "+it[3]:"")).replace(/<[^>]+>/g,"").toLowerCase();if(tx.indexOf(z)>-1){b+=card(ci,sec,ix,it);n++}})});
+  if(b)h+='<h3 class="s" style="color:'+cols[ci%8]+'">'+(ci+1)+'. '+c.n[I]+'</h3><div class="grid" style="--c:'+cols[ci%8]+'">'+b+'</div>'});
+ return n?h:'<p class="hint">'+u("nr")+'</p>'}
+function nav(){var h=D.map(function(c,i){return '<button data-i="'+i+'" aria-pressed="'+(!q&&i==cur)+'" style="'+(!q&&i==cur?"--c:"+cols[i%8]:"")+'">'+(i+1)+'. '+c.n[I]+'</button>'}).join("");
+ h+='<button data-i="15" aria-pressed="'+(!q&&cur==15)+'" style="--c:#8a3ffc">'+u("hub")+'</button><button data-i="16" aria-pressed="'+(!q&&cur==16)+'" style="--c:#f2a900">'+u("fav")+'</button>';
+ $("#nav").innerHTML=h;[].forEach.call(document.querySelectorAll("nav button"),function(b){b.onclick=function(){cur=+b.dataset.i;q="";$("#sq").value="";draw();scrollTo({top:0,behavior:"smooth"})}})}
+function draw(){nav();cancelAnimationFrame(window.raf);var m=$("#main");
+ if(q)m.innerHTML=search();else if(cur<15){m.innerHTML=chap(cur);wire(cur)}else if(cur==15)m.innerHTML=hub();else m.innerHTML=favv();
+ document.body.classList.toggle("st",st);$("#stb").classList.toggle("on",st);$("#fc").textContent="⭐ "+Object.keys(favs).length}
+function toast(t){var e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(window.tt);window.tt=setTimeout(function(){e.classList.remove("on")},1300)}
+$("#main").addEventListener("click",function(e){var b=e.target.closest(".star"),c=e.target.closest(".fc");if(!c)return;
+ if(b){var id=b.dataset.id;if(favs[id])delete favs[id];else favs[id]=1;sv();if(cur==16&&!q)draw();else{b.textContent=favs[id]?"★":"☆";$("#fc").textContent="⭐ "+Object.keys(favs).length}return}
+ if(st&&!c.classList.contains("rv")){c.classList.add("rv");return}
+ var t=c.querySelector(".fn").textContent+": "+c.querySelector(".fx,.tx").textContent;try{navigator.clipboard.writeText(t)}catch(x){}toast(u("cp"))});
+$("#th").onclick=function(){var r=document.documentElement,d=r.dataset.theme?r.dataset.theme=="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=d?"light":"dark"};
+$("#stb").onclick=function(){st=!st;[].forEach.call(document.querySelectorAll(".fc.rv"),function(c){c.classList.remove("rv")});draw()};
+$("#sq").oninput=function(){q=this.value.trim();draw()};
+function wire(i){
+ if(i==3){var go=function(){var v=+$("#pu").value,d=+$("#pa").value,gg=9.8,r=d*Math.PI/180,T=2*v*Math.sin(r)/gg,R=v*v*Math.sin(2*r)/gg,H=Math.pow(v*Math.sin(r),2)/(2*gg),p="";for(var k=0;k<=40;k++){var t=T*k/40,x=v*Math.cos(r)*t,y=v*Math.sin(r)*t-.5*gg*t*t;p+=(k?"L":"M")+(10+x*1.4).toFixed(1)+" "+(190-y*1.4).toFixed(1)}
+  $("#puv").textContent=v+" m/s";$("#pav").textContent=d+"°";$("#ps").innerHTML='<line x1="0" y1="190" x2="400" y2="190" stroke="var(--mut)" stroke-width="2"/><path d="'+p+'" fill="none" stroke="var(--c)" stroke-dasharray="5 4" stroke-width="2"/><circle r="7" fill="#e0452f"><animateMotion dur="'+(T/2).toFixed(2)+'s" repeatCount="indefinite" path="'+p+'"/></circle>';
+  $("#pst").innerHTML='<span>T = '+T.toFixed(2)+' s</span><span>H = '+H.toFixed(1)+' m</span><span>R = '+R.toFixed(1)+' m</span>'+(d==45?'<span>'+s("mx")+'</span>':'')};["pu","pa"].forEach(function(x){$("#"+x).oninput=go});go()}
+ if(i==7){var og=function(){var h=+$("#oh").value,GM=3.986e14,R=6.371e6,r=R+h*1000,gh=GM/(r*r),vo=Math.sqrt(GM/r),T=2*Math.PI*Math.sqrt(r*r*r/GM),ro=16*r/R,dur=Math.min(12,Math.max(2,T/900));
+  $("#ohv").textContent=h+" km";$("#os").innerHTML='<circle cx="200" cy="120" r="'+ro.toFixed(1)+'" fill="none" stroke="var(--mut)" stroke-dasharray="4 4"/><circle cx="200" cy="120" r="16" fill="#2a6fdb"/><g><circle cx="'+(200+ro).toFixed(1)+'" cy="120" r="5" fill="#e0452f"/><animateTransform attributeName="transform" type="rotate" from="0 200 120" to="360 200 120" dur="'+dur.toFixed(1)+'s" repeatCount="indefinite"/></g>';
+  $("#ost").innerHTML='<span>g<sub>h</sub> = '+gh.toFixed(2)+' m/s²</span><span>v<sub>o</sub> = '+(vo/1000).toFixed(2)+' km/s</span><span>v<sub>e</sub> = '+(vo*1.4142/1000).toFixed(2)+' km/s</span><span>'+s("ho")+' = '+(T>7200?(T/3600).toFixed(2)+' h':(T/60).toFixed(1)+' min')+'</span>'};$("#oh").oninput=og;og()}
+ if(i==11){var cg=function(){var a=+$("#c1").value,b=+$("#c2").value,e=1-b/a,w=e*100,q2=100-w,cop=b/(a-b);
+  $("#c1v").textContent=a+" K";$("#c2v").textContent=b+" K";
+  $("#cs").innerHTML='<text x="4" y="14">Q₁ = 100 J</text><rect x="4" y="18" width="340" height="16" rx="4" fill="#e0452f"/><text x="4" y="55">W = '+w.toFixed(1)+' J</text><rect x="4" y="59" width="'+(w*3.4).toFixed(1)+'" height="16" rx="4" fill="#2e9e5b"/><text x="4" y="96">Q₂ = '+q2.toFixed(1)+' J</text><rect x="4" y="100" width="'+(q2*3.4).toFixed(1)+'" height="16" rx="4" fill="#2a6fdb"/>';
+  $("#cst").innerHTML='<span>η = 1 − T₂/T₁ = '+(e*100).toFixed(1)+' %</span><span>COP = T₂/(T₁−T₂) = '+cop.toFixed(2)+'</span>'};["c1","c2"].forEach(function(x){$("#"+x).oninput=cg});cg()}
+ if(i==13){var m,k,A,w,T,upd=function(){m=+$("#sm").value;k=+$("#sk").value;A=+$("#sa").value;w=Math.sqrt(k/m);T=2*Math.PI/w;$("#smv").textContent=m+" kg";$("#skv").textContent=k+" N/m";$("#sav").textContent=A+" cm";$("#sst").innerHTML='<span>T = 2π√(m/k) = '+T.toFixed(2)+' s</span><span>f = '+(1/T).toFixed(2)+' Hz</span><span>v<sub>max</sub> = '+(A*w/100).toFixed(2)+' m/s</span>'};["sm","sk","sa"].forEach(function(x){$("#"+x).oninput=upd});upd();
+  (function f(n){if(!$("#mb"))return;var x=210+A*12*Math.cos(w*n/1000/3),p="20,55 ";for(var j=1;j<=12;j++)p+=(20+(x-20-20)*j/12).toFixed(1)+","+(j%2?40:70)+" ";p+=(x-20)+",55";$("#sp").setAttribute("points",p);$("#mb").setAttribute("x",x-20);window.raf=requestAnimationFrame(f)})(0)}
+ if(i==14){var wq=function(){$("#wav").textContent=$("#wa").value;$("#wlv").textContent=$("#wl").value+" cm";$("#wfv").textContent=$("#wf").value+" Hz";var A=+$("#wa").value,Lm=+$("#wl").value,F=+$("#wf").value;$("#wst").innerHTML='<span>v = fλ = '+F+' × '+Lm+' = '+F*Lm+' cm/s</span><span>k = 2π/λ = '+(6.283/Lm).toFixed(3)+'</span>'};["wa","wl","wf"].forEach(function(x){$("#"+x).oninput=wq});wq();
+  (function f(n){if(!$("#wp"))return;var A=+$("#wa").value,Lm=+$("#wl").value,F=+$("#wf").value,p="";for(var x=0;x<=400;x+=4)p+=(x?"L":"M")+x+" "+(60-A*Math.sin(6.283*x/Lm-6.283*F*n/3000)).toFixed(1);$("#wp").setAttribute("d",p);window.raf=requestAnimationFrame(f)})(0)}}
+document.documentElement.lang=L=="en"?"en":"hi";
+document.title=u("t").replace(/&amp;/g,"&").replace("⚛️ ","");
+$("#h1").innerHTML=u("t");$("#sub").innerHTML=u("s");$("#sq").placeholder=u("ph").replace("🔍 ","");$("#stb").textContent=u("st");$("#ft").innerHTML=u("ft");
+$("#lg").textContent=u("lg");$("#lg").href=L=="en"?"physics11-formulae-hi.html":"physics11-formulae-en.html";
+draw();
+</script></body></html>
