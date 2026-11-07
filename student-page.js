@@ -6790,6 +6790,9 @@ const SSTC_FREE_CHAPTERS_BY_CLASS = {
         {
             subject: "Science",
             chapters: [
+               { title: "SSTC Science One Page Revision (Physics)", en: "free/class-10/science/chapter-04-en.html", hi: "free/class-10/science/chapter-04-hi.html" },
+               { title: "SSTC Science One Page Revision (Chemistry)", en: "free/class-10/science/chapter-02-en.html", hi: "free/class-10/science/chapter-02-hi.html" },
+               { title: "SSTC Science One Page Revision (Biology)", en: "free/class-10/science/chapter-03-en.html", hi: "free/class-10/science/chapter-03-hi.html" },
                 { title: "SSTC Science One Page Revision", en: "free/class-10/science/chapter-01-en.html", hi: "free/class-10/science/chapter-01-hi.html" }
             ]
         },
