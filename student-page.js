@@ -6875,7 +6875,8 @@ const SSTC_FREE_CHAPTERS_BY_CLASS = {
         {
             subject: "English",
             chapters: [
-                { title: "Chapter 1", en: "free/class-11/english/chapter-01-en.html", hi: "free/class-11/english/chapter-01-hi.html" }
+                { title: "Chapter 1", en: "free/class-11/english/chapter-01-en.html", hi: "free/class-11/english/chapter-01-hi.html" },
+               { title: "SSTC English Grammar", en: "free/class-11/english/chapter-02-en.html", hi: "free/class-11/english/chapter-02-hi.html" }               
             ]
         },
         {
