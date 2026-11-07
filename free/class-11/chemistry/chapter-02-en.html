@@ -1,0 +1,493 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Class 11 Physics – Formulae &amp; Equations</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Hind:wght@400;600&display=swap">
+<style>
+:root{--bg:#fbf6ec;--card:#fff;--ink:#241b3a;--mut:#6b6482;--line:#e5dcc8;--c:#e0452f;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15112a;--card:#201a3b;--ink:#f3effa;--mut:#aaa3c6;--line:#342d58;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15112a;--card:#201a3b;--ink:#f3effa;--mut:#aaa3c6;--line:#342d58;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Hind,system-ui,sans-serif;transition:background .4s}
+h1,h2,h3{font-family:"Baloo 2",sans-serif;margin:0;line-height:1.15}
+header{max-width:1040px;margin:auto;padding:26px 16px 10px;position:relative}
+h1{font-size:clamp(1.8rem,5.6vw,3.1rem);font-weight:800;padding-right:56px;background:linear-gradient(90deg,#e0452f,#f2a900,#2e9e5b,#2a6fdb,#8a3ffc,#e0452f);background-size:300%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:g 8s linear infinite}
+@keyframes g{to{background-position:300%}}
+header p{color:var(--mut);margin:.4em 0 10px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tools input{flex:1 1 240px;font:inherit;padding:8px 14px;border-radius:99px;border:1.5px solid var(--line);background:var(--card);color:var(--ink)}
+.tools input:focus{outline:3px solid #8a3ffc55;border-color:#8a3ffc}
+.pill{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;font:inherit;font-size:.9rem;padding:6px 14px;cursor:pointer;text-decoration:none;transition:.2s;display:inline-block}
+.pill:hover{transform:translateY(-2px)}.pill.on{background:#8a3ffc;border-color:#8a3ffc;color:#fff}
+#th{position:absolute;right:16px;top:22px;padding:4px 10px;font-size:1.1rem}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:8px 14px;scrollbar-width:thin}
+nav button{flex:none;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:.85rem;padding:4px 12px;border-radius:99px;cursor:pointer;transition:.2s}
+nav button:hover{transform:translateY(-2px)}nav button[aria-pressed=true]{background:var(--c);border-color:var(--c);color:#fff}
+button:focus-visible,a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+main{max-width:1040px;margin:auto;padding:16px}
+h2{font-size:clamp(1.5rem,4vw,2.3rem);color:var(--c);margin-bottom:6px;animation:in .5s both}
+h3.s{margin:24px 0 10px;font-size:1.25rem}
+.hint{color:var(--mut);font-size:.92rem;margin:.2em 0 .6em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.fc{position:relative;background:var(--card);border:1.5px solid var(--line);border-left:6px solid var(--c);border-radius:12px;padding:10px 40px 10px 14px;cursor:pointer;animation:in .5s both;transition:transform .2s,box-shadow .2s}
+.fc:hover{transform:translateY(-3px) rotate(-.25deg);box-shadow:0 8px 20px color-mix(in srgb,var(--c) 25%,transparent)}
+.fc.th{border-left-style:double;border-left-width:8px}
+@keyframes in{from{opacity:0;transform:translateY(14px)}}
+.fn{font-family:"Baloo 2",sans-serif;font-weight:600;color:var(--c);font-size:1rem;line-height:1.3}
+.fx{font-family:"Cambria Math","STIX Two Math",Georgia,serif;font-size:1.08rem;margin-top:3px;word-break:break-word;transition:filter .3s}
+.tx{font-size:.95rem;margin-top:3px;transition:filter .3s}
+body.st .fc .fx,body.st .fc .tx{filter:blur(7px)}body.st .fc.rv .fx,body.st .fc.rv .tx{filter:none}
+.star{position:absolute;right:6px;top:4px;border:0;background:none;font-size:1.3rem;color:#f2a900;cursor:pointer;transition:transform .2s}.star:hover{transform:scale(1.3) rotate(12deg)}
+.tg{font-style:normal;font-family:Hind,sans-serif;font-size:.7rem;font-weight:600;border-radius:99px;padding:1px 8px;color:#fff;vertical-align:middle}
+.tgJ{background:#2a6fdb}.tgN{background:#2e9e5b}.tgB{background:#8a3ffc}
+.trick{margin-top:18px;padding:12px 16px;border-radius:14px;background:color-mix(in srgb,var(--c) 12%,var(--card));border:1.5px dashed var(--c);font-weight:600;animation:in .6s both}
+.w{background:var(--card);border:1.5px dashed var(--c);border-radius:14px;padding:12px 14px;animation:in .6s both}
+.tb{background:var(--card);border:1.5px solid var(--line);border-radius:12px;overflow:hidden}
+.tr{display:flex;justify-content:space-between;gap:14px;padding:7px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap}.tr:last-child{border:0}.tr:nth-child(even){background:color-mix(in srgb,var(--c) 6%,transparent)}
+.tr b{font-family:"Cambria Math","STIX Two Math",Georgia,serif;color:var(--c);text-align:right}
+svg{width:100%;max-width:460px;height:auto;display:block;margin:6px auto}
+svg text{fill:var(--ink);font:12px Hind,sans-serif}
+input[type=range]{width:100%;accent-color:var(--c)}
+.row{display:flex;justify-content:space-between;gap:10px;font-weight:600;margin:4px 0}
+.stt{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.stt span{background:color-mix(in srgb,var(--c) 14%,transparent);border-radius:99px;padding:2px 12px;font-weight:600}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--bg);padding:8px 20px;border-radius:99px;font-weight:600;transition:.3s;z-index:20;pointer-events:none}#toast.on{transform:translateX(-50%) translateY(0)}
+footer{text-align:center;color:var(--mut);padding:18px;font-size:.9rem}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<header><button class="pill" id="th" aria-label="theme">🌓</button><h1 id="h1"></h1><p id="sub"></p>
+<div class="tools"><input id="sq" type="search"><button class="pill" id="stb"></button><span class="pill" id="fc" style="cursor:default"></span><a class="pill" id="lg"></a></div></header>
+<nav id="nav"></nav><main id="main"></main><div id="toast"></div><footer id="ft"></footer>
+<script>
+var L="en",I=L=="en"?0:1;
+var U={
+t:["🧪 Class 11 Chemistry – Formulae &amp; Equations","🧪 कक्षा 11 रसायन विज्ञान – सूत्र एवं समीकरण"],
+s:["SSTC Chemistry · All 14 chapters · Formulae, Reactions, Laws, JEE/NEET Special &amp; Simulators","SSTC रसायन विज्ञान · सभी 14 अध्याय · सूत्र, अभिक्रियाएँ, नियम, JEE/NEET विशेष व सिम्युलेटर"],
+ph:["🔍 Search formula, reaction or topic…","🔍 सूत्र, अभिक्रिया या टॉपिक खोजें…"],
+st:["🙈 Self-test mode","🙈 स्व-परीक्षा मोड"],
+hub:["⚡ JEE/NEET Hub","⚡ JEE/NEET हब"],
+hubd:["Constants, periodic trends, shapes, named processes and must-know orders for competitive exams.","प्रतियोगी परीक्षाओं के लिए नियतांक, आवर्त प्रवृत्तियाँ, आकृतियाँ, प्रमुख प्रक्रम व ज़रूरी क्रम."],
+fav:["⭐ My Sheet","⭐ मेरी शीट"],
+sf:["📐 Core Formulae &amp; Reactions","📐 मुख्य सूत्र एवं अभिक्रियाएँ"],
+stt:["📜 Laws, Rules &amp; Theories","📜 नियम, सिद्धांत व वाद"],
+sj:["🎯 JEE / NEET Special","🎯 JEE / NEET विशेष"],
+sk:["💡 Quick Trick","💡 त्वरित ट्रिक"],
+cp:["Copied!","कॉपी हो गया!"],
+nr:["No results found.","कोई परिणाम नहीं मिला."],
+ne:["Tap ☆ on any formula to build your own revision sheet.","किसी भी सूत्र पर ☆ दबाकर अपनी रिविजन शीट बनाइए."],
+tip:["Tap a card to copy it · ☆ to save · 🙈 for self-test","कार्ड छुएँ तो कॉपी होगा · ☆ से सेव करें · 🙈 से स्व-परीक्षा"],
+tipst:["Self-test: tap a blurred card to reveal it","स्व-परीक्षा: धुंधले कार्ड को छुकर देखें"],
+lg:["हिंदी में खोलें","Open in English"],
+ft:["SSTC Chemistry · Class 11 · Formulae &amp; Equations","SSTC रसायन विज्ञान · कक्षा 11 · सूत्र एवं समीकरण"]};
+function u(k){return U[k][I]}
+var S={w1:["⚛️ Bohr Atom: Spectral Lines","⚛️ बोर परमाणु: स्पेक्ट्रमी रेखाएँ"],a1:["From orbit nᵢ","कक्षा nᵢ से"],a2:["To orbit n_f","कक्षा n_f तक"],em:["🔆 Emission","🔆 उत्सर्जन"],ab:["🌑 Absorption","🌑 अवशोषण"],
+se:[["Lyman (UV)","Balmer (mostly visible)","Paschen (IR)","Brackett (IR)","Pfund (IR)","Humphreys (IR)","IR"],["लाइमन (UV)","बामर (अधिकांश दृश्य)","पाश्चेन (IR)","ब्रैकेट (IR)","फ़ुंड (IR)","हम्फ्रीज़ (IR)","IR"]],
+w5:["🧪 pH Beaker","🧪 pH बीकर"],ph:["pH","pH"],ac:["🍋 Acidic","🍋 अम्लीय"],ba:["🧼 Basic","🧼 क्षारीय"],ne:["💧 Neutral","💧 उदासीन"],
+w12:["🎈 Gas in a Box (PV = nRT)","🎈 बक्से में गैस (PV = nRT)"],gt:["Temperature T","ताप T"],gv:["Volume V","आयतन V"]};
+function s(k){return S[k][I]}
+var cols=["#e0452f","#d9830b","#2e9e5b","#c2398a","#2a6fdb","#8a3ffc","#0f9aa8","#a0522d"],TG={J:"JEE",N:"NEET",B:"JEE·NEET"};
+/* item formats: f/j = [nameEn, nameHi, formula, tag?]; t = [nameEn, nameHi, textEn, textHi] */
+var D=[
+{n:["Basic Concepts","मूल अवधारणाएँ"],
+f:[["Mole concept","मोल संकल्पना","n = m/M = N/N_A = V/22.4 L (at STP)"],
+["Molarity","मोलरता","M = n(solute) / V(solution in L)"],
+["Molality","मोललता","m = n(solute) / mass of solvent (kg)"],
+["Mole fraction","मोल-अंश","xₐ = nₐ/(nₐ + n_b) · Σx = 1"],
+["Mass percent / ppm","द्रव्यमान प्रतिशत / ppm","% = (m solute/m solution)×100 · ppm = (m solute/m solution)×10⁶"],
+["Dilution formula","तनुकरण सूत्र","M₁V₁ = M₂V₂"],
+["Molarity from density","घनत्व से मोलरता","M = (10 × d × w%)/M_solute"],
+["Percentage yield","प्रतिशत लब्धि","% yield = (actual/theoretical) × 100"],
+["Molecular formula","अणुसूत्र","n = molar mass / empirical formula mass · MF = (EF)ₙ"]],
+t:[["Law of conservation of mass &amp; definite proportions","द्रव्यमान संरक्षण व स्थिर अनुपात","Mass is neither created nor destroyed; a pure compound always has the same elements in a fixed mass ratio.","द्रव्यमान न उत्पन्न होता है न नष्ट; शुद्ध यौगिक में तत्वों का द्रव्यमान अनुपात सदैव स्थिर रहता है."],
+["Law of multiple proportions","गुणित अनुपात का नियम","When two elements form more than one compound, masses of one combining with a fixed mass of the other are in simple whole-number ratio.","दो तत्व एक से अधिक यौगिक बनाएँ तो एक तत्व के नियत द्रव्यमान से जुड़ने वाले दूसरे के द्रव्यमान सरल पूर्ण अनुपात में होते हैं."],
+["Gay-Lussac's law of gaseous volumes","गे-लुसैक का गैसीय आयतन नियम","Gases react in simple whole-number volume ratios at the same T and P.","समान T व P पर गैसें सरल पूर्ण संख्या के आयतन अनुपात में अभिक्रिया करती हैं."],
+["Avogadro's law","आवोगाद्रो का नियम","Equal volumes of gases at the same T and P contain equal numbers of molecules (V ∝ n).","समान T व P पर गैसों के समान आयतन में अणुओं की संख्या बराबर होती है (V ∝ n)."]],
+j:[["Limiting reagent","सीमांत अभिकर्मक","Smallest value of (moles ÷ stoichiometric coefficient) decides the limiting reagent","B"],
+["Equivalent weight and normality","तुल्यांकी भार व प्रसामान्यता","E = M/n-factor · N = M × n-factor","B"],
+["Law of equivalence","तुल्यांक का नियम","Eq(A) = Eq(B) ⇒ N₁V₁ = N₂V₂","J"],
+["Average molar mass of mixture","मिश्रण का औसत मोलर द्रव्यमान","M_avg = Σxᵢ Mᵢ · M = 2 × vapour density","B"],
+["Molality–molarity link","मोललता–मोलरता संबंध","m = 1000 M /(1000 d − M × M_solute)","J"],
+["Combustion analysis","दहन विश्लेषण","%C = (12/44)(m CO₂/m)×100 · %H = (2/18)(m H₂O/m)×100","B"],
+["Atomic mass unit","परमाणु द्रव्यमान मात्रक","1 amu = 1.66 × 10⁻²⁷ kg = 1/12 of mass of ¹²C atom","N"],
+["Significant figures","सार्थक अंक","Multiplication/division: least number of s.f. · Addition/subtraction: least decimal places","B"]],
+k:["Molarity changes with temperature; molality and mole fraction do not. Always find the limiting reagent before computing yield.","मोलरता ताप से बदलती है; मोललता व मोल-अंश नहीं. लब्धि निकालने से पहले सीमांत अभिकर्मक ज़रूर ज्ञात करें."]},
+
+{n:["Structure of Atom","परमाणु की संरचना"],
+f:[["Bohr radius","बोर त्रिज्या","rₙ = 0.529 n²/Z Å"],
+["Bohr energy","बोर ऊर्जा","Eₙ = −13.6 Z²/n² eV = −2.18×10⁻¹⁸ Z²/n² J"],
+["Bohr velocity","बोर वेग","vₙ = 2.18×10⁶ Z/n m/s"],
+["Rydberg formula","रिडबर्ग सूत्र","1/λ = R_H Z² (1/n₁² − 1/n₂²) · R_H = 1.097×10⁷ m⁻¹"],
+["Planck's relation","प्लांक संबंध","E = hν = hc/λ · c = νλ · wave number ν̄ = 1/λ"],
+["de Broglie wavelength","डी-ब्रॉग्ली तरंगदैर्ध्य","λ = h/mv = h/p"],
+["Heisenberg uncertainty","हाइज़ेनबर्ग अनिश्चितता","Δx · Δp ≥ h/4π"],
+["Photoelectric effect","प्रकाश-विद्युत प्रभाव","hν = hν₀ + ½mv²(max) · eV₀ = hν − hν₀"],
+["Nodes","नोड","Radial = n − l − 1 · Angular = l · Total = n − 1"]],
+t:[["Aufbau principle and (n + l) rule","आफबाउ सिद्धांत व (n + l) नियम","Electrons fill orbitals in increasing (n + l); if equal, lower n first: 1s 2s 2p 3s 3p 4s 3d 4p …","इलेक्ट्रॉन (n + l) के बढ़ते क्रम में भरते हैं; बराबर हो तो कम n पहले: 1s 2s 2p 3s 3p 4s 3d 4p …"],
+["Pauli exclusion principle","पाउली अपवर्जन सिद्धांत","No two electrons in an atom can have the same four quantum numbers; an orbital holds at most 2 electrons of opposite spin.","किसी परमाणु में दो इलेक्ट्रॉनों की चारों क्वांटम संख्याएँ समान नहीं हो सकतीं; एक कक्षक में अधिकतम 2 विपरीत-चक्रण इलेक्ट्रॉन."],
+["Hund's rule of maximum multiplicity","हुंड का अधिकतम बहुकता नियम","Degenerate orbitals are first singly occupied with parallel spins, then paired.","समशक्तिक कक्षकों में पहले एक-एक इलेक्ट्रॉन समान चक्रण से भरते हैं, फिर युग्मित होते हैं."],
+["Bohr's postulates","बोर के अभिधारणाएँ","Stationary orbits with angular momentum mvr = nh/2π; no radiation in an orbit; ΔE = hν on jumping.","स्थिर कक्षाएँ जिनमें कोणीय संवेग mvr = nh/2π; कक्षा में विकिरण नहीं; कक्षा बदलने पर ΔE = hν."]],
+j:[["Orbitals and electrons count","कक्षक व इलेक्ट्रॉन संख्या","Orbitals in shell = n² · electrons in shell = 2n² · in subshell = 2(2l + 1)","B"],
+["Quantum number ranges","क्वांटम संख्याओं की सीमा","l = 0 … n−1 · mₗ = −l … +l · mₛ = ±½","B"],
+["Spin-only magnetic moment","केवल-चक्रण चुंबकीय आघूर्ण","μ = √(n(n + 2)) BM (n = unpaired e⁻)","B"],
+["Spectral series","स्पेक्ट्रमी श्रेणियाँ","Lyman n→1 (UV) · Balmer n→2 (visible) · Paschen n→3 · Brackett n→4 · Pfund n→5 (IR)","B"],
+["Number of spectral lines","स्पेक्ट्रमी रेखाओं की संख्या","From level n to ground: n(n − 1)/2","J"],
+["Angular momentum","कोणीय संवेग","Orbital: √(l(l+1)) h/2π · Bohr orbit: mvr = nh/2π","J"],
+["Exceptional configurations","अपवाद विन्यास","Cr = [Ar]3d⁵4s¹ · Cu = [Ar]3d¹⁰4s¹ (half/full-filled stability)","B"],
+["Ion formation (transition metals)","आयन बनना (संक्रमण धातु)","4s electrons are removed before 3d: Fe²⁺ = [Ar]3d⁶","B"]],
+k:["Isoelectronic species ⇒ same number of electrons. Spin-only μ: 1 unpaired = 1.73, 2 = 2.83, 3 = 3.87, 4 = 4.90, 5 = 5.92 BM.","समइलेक्ट्रॉनिक स्पीशीज़ = समान इलेक्ट्रॉन संख्या. μ: 1 अयुग्मित = 1.73, 2 = 2.83, 3 = 3.87, 4 = 4.90, 5 = 5.92 BM."]},
+
+{n:["Periodicity","आवर्तिता"],
+f:[["Effective nuclear charge","प्रभावी नाभिकीय आवेश","Z_eff = Z − σ (Slater's shielding constant)"],
+["Ionisation enthalpy","आयनन एन्थैल्पी","M(g) → M⁺(g) + e⁻ · ΔH = IE₁ · IE₁ &lt; IE₂ &lt; IE₃"],
+["Electron gain enthalpy","इलेक्ट्रॉन लब्धि एन्थैल्पी","X(g) + e⁻ → X⁻(g) · ΔH_eg"],
+["Mulliken electronegativity","मुलिकन विद्युतऋणात्मकता","χ = (IE + EA)/2"],
+["Ionic radius rule","आयनिक त्रिज्या नियम","Cation &lt; parent atom &lt; anion"],
+["Isoelectronic radius","समइलेक्ट्रॉनिक त्रिज्या","r ∝ 1/Z_eff · N³⁻ &gt; O²⁻ &gt; F⁻ &gt; Na⁺ &gt; Mg²⁺ &gt; Al³⁺"],
+["Types of atomic radius","परमाणु त्रिज्या के प्रकार","Covalent &lt; Metallic &lt; van der Waals"],
+["Valency","संयोजकता","Valency = number of valence e⁻ (or 8 − valence e⁻)"]],
+t:[["Modern periodic law","आधुनिक आवर्त नियम","Physical and chemical properties of elements are periodic functions of their atomic numbers.","तत्वों के भौतिक व रासायनिक गुण उनके परमाणु क्रमांक के आवर्ती फलन होते हैं."],
+["Mendeleev's periodic law","मेंडेलीफ़ का आवर्त नियम","Properties are periodic functions of atomic masses (gaps left for undiscovered elements).","गुण परमाणु द्रव्यमान के आवर्ती फलन (अनाविष्कृत तत्वों के लिए रिक्त स्थान छोड़े गए)."],
+["Lanthanide contraction","लैन्थेनाइड संकुचन","Poor shielding by 4f electrons shrinks later radii; 4d and 5d radii become nearly equal (Zr ≈ Hf).","4f का दुर्बल परिरक्षण त्रिज्या घटाता है; 4d व 5d की त्रिज्याएँ लगभग समान (Zr ≈ Hf)."]],
+j:[["Trend summary (→ period, ↓ group)","प्रवृत्ति सार (→ आवर्त, ↓ वर्ग)","Radius ↓ / ↑ · IE ↑ / ↓ · EN ↑ / ↓ · metallic character ↓ / ↑","B"],
+["IE order in 2nd period","द्वितीय आवर्त में IE क्रम","Li &lt; B &lt; Be &lt; C &lt; O &lt; N &lt; F &lt; Ne","B"],
+["Electron gain enthalpy order","इलेक्ट्रॉन लब्धि क्रम","Cl &gt; F &gt; Br &gt; I · S &gt; O (magnitude)","B"],
+["Successive IE jump","क्रमिक IE में उछाल","Huge jump after all valence e⁻ are removed: Mg shows IE₃ ≫ IE₂","J"],
+["Nature of oxides (3rd period)","ऑक्साइड की प्रकृति (तृतीय आवर्त)","Na₂O, MgO basic → Al₂O₃ amphoteric → SiO₂, P₄O₁₀, SO₃, Cl₂O₇ acidic","B"],
+["Pauling scale","पॉलिंग मापनी","F = 4.0 (highest) · O = 3.5 · N = Cl = 3.0 · Cs = 0.7 (lowest)","N"],
+["Diagonal relationships","विकर्ण संबंध","Li–Mg · Be–Al · B–Si","B"],
+["Anomalous EA","असंगत EA","EA of F &lt; Cl because of small 2p crowding; EA of Be, N, noble gases ≈ 0 or positive","J"]],
+k:["IE anomalies to memorise: Be &gt; B, Mg &gt; Al, N &gt; O, P &gt; S (filled / half-filled stability).","IE विसंगतियाँ याद रखें: Be &gt; B, Mg &gt; Al, N &gt; O, P &gt; S (पूर्ण/अर्ध-पूरित स्थायित्व)."]},
+
+{n:["Chemical Bonding","रासायनिक आबंधन"],
+f:[["Formal charge","औपचारिक आवेश","FC = V − N − B/2 (V valence e⁻, N non-bonding e⁻, B bonding e⁻)"],
+["Bond order (MOT)","आबंध क्रम (MOT)","BO = ½(N_b − Nₐ)"],
+["Dipole moment","द्विध्रुव आघूर्ण","μ = q × d · 1 D = 3.336 × 10⁻³⁰ C m"],
+["Percent ionic character","प्रतिशत आयनिक गुण","(μ observed / μ ionic) × 100"],
+["Hybridisation number","संकरण संख्या","H = ½(V + M − C + A)"],
+["Bond length and energy","आबंध लंबाई व ऊर्जा","Bond length ∝ 1/BO · bond energy ∝ BO"],
+["σ and π bonds","σ व π आबंध","Single: 1σ · Double: 1σ + 1π · Triple: 1σ + 2π"],
+["Lattice energy","जालक ऊर्जा","U ∝ q₁q₂/r (higher charge, smaller size ⇒ higher U)"],
+["Born–Haber cycle","बोर्न–हेबर चक्र","ΔH_f° = ΔH_sub + IE + ½ΔH_diss + ΔH_eg + U"]],
+t:[["VSEPR theory","VSEPR सिद्धांत","Electron pairs around the central atom arrange to minimise repulsion: lp–lp &gt; lp–bp &gt; bp–bp.","केंद्रीय परमाणु के इलेक्ट्रॉन युग्म प्रतिकर्षण न्यूनतम करने हेतु व्यवस्थित होते हैं: lp–lp &gt; lp–bp &gt; bp–bp."],
+["Fajans' rules","फ़ाजान के नियम","Covalent character rises with small, highly charged cation and large, highly charged anion.","छोटे, उच्च आवेश वाले धनायन व बड़े, उच्च आवेश वाले ऋणायन से सहसंयोजी गुण बढ़ता है."],
+["Molecular orbital theory (LCAO)","आण्विक कक्षक सिद्धांत (LCAO)","Atomic orbitals combine to form bonding (lower) and antibonding (higher) molecular orbitals; fill by Aufbau, Pauli, Hund.","परमाणु कक्षक मिलकर आबंधी (कम ऊर्जा) व प्रतिआबंधी (अधिक ऊर्जा) आण्विक कक्षक बनाते हैं; भरना आफबाउ, पाउली, हुंड से."],
+["Octet rule and exceptions","अष्टक नियम व अपवाद","Atoms tend to have 8 valence e⁻. Exceptions: BeCl₂, BF₃ (incomplete), PCl₅, SF₆ (expanded), NO (odd-electron).","परमाणु 8 संयोजी e⁻ चाहते हैं. अपवाद: BeCl₂, BF₃ (अपूर्ण), PCl₅, SF₆ (विस्तारित), NO (विषम इलेक्ट्रॉन)."]],
+j:[["Shapes and hybridisation","आकृति व संकरण","sp linear 180° · sp² trigonal planar 120° · sp³ tetrahedral 109.5° · sp³d TBP · sp³d² octahedral","B"],
+["Bond angles with lone pairs","एकाकी युग्म सहित आबंध कोण","CH₄ 109.5° &gt; NH₃ 107° &gt; H₂O 104.5°","B"],
+["MO order","MO क्रम","O₂, F₂: σ2p_z below π2p · B₂, C₂, N₂: π2p below σ2p_z","J"],
+["Bond order list","आबंध क्रम सूची","N₂ 3 · O₂ 2 · O₂⁺ 2.5 · O₂⁻ 1.5 · O₂²⁻ 1 · F₂ 1 · He₂ 0","B"],
+["Magnetic behaviour","चुंबकीय व्यवहार","O₂, B₂ paramagnetic · N₂, C₂, F₂ diamagnetic","B"],
+["Resonance bond orders","अनुनाद आबंध क्रम","O₃ 1.5 · CO₃²⁻ and NO₃⁻ 1.33 · benzene 1.5","B"],
+["s-character and bond length","s-गुण व आबंध लंबाई","sp 50 % &gt; sp² 33 % &gt; sp³ 25 % (more s ⇒ shorter, stronger bond)","J"],
+["Hydrogen bond strength","हाइड्रोजन आबंध सामर्थ्य","F–H···F &gt; O–H···O &gt; N–H···N · bp: H₂O &gt; H₂Te &gt; H₂Se &gt; H₂S","B"],
+["Bond angle trends","आबंध कोण प्रवृत्ति","NH₃ &gt; PH₃ &gt; AsH₃ · H₂O &gt; H₂S &gt; H₂Se","N"]],
+k:["Count steric number = σ bonds + lone pairs: 2 sp, 3 sp², 4 sp³, 5 sp³d, 6 sp³d². Shape then follows from lone pairs.","स्टेरिक संख्या = σ आबंध + एकाकी युग्म: 2 sp, 3 sp², 4 sp³, 5 sp³d, 6 sp³d². आकृति एकाकी युग्मों से तय."]},
+
+{n:["Thermodynamics","ऊष्मागतिकी"],
+f:[["First law","प्रथम नियम","ΔU = q + w · w = −PΔV (work on system +ve)"],
+["Enthalpy","एन्थैल्पी","H = U + PV · ΔH = ΔU + Δn_g RT"],
+["q at constant V / P","स्थिर V / P पर q","q_v = ΔU · q_p = ΔH"],
+["Heat capacity","ऊष्माधारिता","q = mcΔT = CΔT · C_p − C_v = R"],
+["Enthalpy of reaction","अभिक्रिया की एन्थैल्पी","ΔH° = ΣΔH_f°(products) − ΣΔH_f°(reactants)"],
+["Bond enthalpy method","आबंध एन्थैल्पी विधि","ΔH = ΣBE(reactants) − ΣBE(products)"],
+["Entropy","एन्ट्रॉपी","ΔS = q_rev/T · ΔS_fus = ΔH_fus/T_f · ΔS_vap = ΔH_vap/T_b"],
+["Gibbs energy","गिब्स ऊर्जा","ΔG = ΔH − TΔS · ΔG° = −RT ln K = −2.303 RT log K · ΔG° = −nFE°"],
+["Reversible isothermal work","उत्क्रमणीय समतापी कार्य","w = −2.303 nRT log(V₂/V₁) = −2.303 nRT log(P₁/P₂)"]],
+t:[["First law of thermodynamics","ऊष्मागतिकी का प्रथम नियम","Energy of the universe is constant; energy can be converted but not created or destroyed.","ब्रह्मांड की ऊर्जा नियत है; ऊर्जा रूप बदलती है, उत्पन्न या नष्ट नहीं होती."],
+["Second law","द्वितीय नियम","For a spontaneous process, entropy of the universe increases: ΔS_total &gt; 0.","स्वतः प्रक्रम में ब्रह्मांड की एन्ट्रॉपी बढ़ती है: ΔS_कुल &gt; 0."],
+["Third law","तृतीय नियम","Entropy of a perfectly crystalline substance is zero at absolute zero.","परम शून्य पर पूर्ण क्रिस्टलीय पदार्थ की एन्ट्रॉपी शून्य होती है."],
+["Hess's law of constant heat summation","हेस का नियम","ΔH of a reaction is the same whether it occurs in one step or several steps.","अभिक्रिया की ΔH एक चरण या कई चरणों में समान रहती है."],
+["Lavoisier–Laplace law","लवॉज़ियर–लाप्लास नियम","ΔH of forward reaction = −ΔH of reverse reaction.","अग्र अभिक्रिया की ΔH = −(पश्च अभिक्रिया की ΔH)."]],
+j:[["Spontaneity (ΔG sign table)","स्वतःप्रवृत्ति (ΔG तालिका)","ΔH −, ΔS + : always · ΔH +, ΔS − : never · ΔH −, ΔS − : low T · ΔH +, ΔS + : high T","B"],
+["Equilibrium temperature","साम्य ताप","ΔG = 0 ⇒ T = ΔH/ΔS","J"],
+["Kirchhoff's equation","किरखोफ़ समीकरण","ΔH₂ − ΔH₁ = ΔC_p (T₂ − T₁)","J"],
+["Adiabatic process","रुद्धोष्म प्रक्रम","q = 0 · ΔU = w = nC_vΔT","B"],
+["Free expansion","मुक्त प्रसार","w = 0, q = 0, ΔU = 0 for ideal gas","B"],
+["ΔS for ideal gas","आदर्श गैस के लिए ΔS","ΔS = nC_v ln(T₂/T₁) + nR ln(V₂/V₁)","J"],
+["Standard enthalpy of formation","मानक विरचन एन्थैल्पी","ΔH_f° of an element in its standard state = 0","B"],
+["Neutralisation and Trouton","उदासीनीकरण व ट्राउटन","Strong acid + strong base ≈ −57 kJ/mol · ΔS_vap ≈ 88 J mol⁻¹K⁻¹","N"],
+["Entropy order","एन्ट्रॉपी क्रम","Gas &gt; liquid &gt; solid · more moles of gas ⇒ more entropy","B"]],
+k:["Extensive: U, H, S, G, V, mass. Intensive: T, P, density. State functions: U, H, S, G; path functions: q, w.","विस्तारी: U, H, S, G, V, द्रव्यमान. गहन: T, P, घनत्व. अवस्था फलन: U, H, S, G; पथ फलन: q, w."]},
+
+{n:["Equilibrium","साम्यावस्था"],
+f:[["Equilibrium constant K_c","साम्य स्थिरांक K_c","aA + bB ⇌ cC + dD : K_c = [C]ᶜ[D]ᵈ / [A]ᵃ[B]ᵇ"],
+["K_p and K_c","K_p व K_c","K_p = K_c (RT)^Δn · Δn = moles of gaseous products − reactants"],
+["Reaction quotient","अभिक्रिया भागफल","Q &lt; K → forward · Q = K → equilibrium · Q &gt; K → backward"],
+["Manipulating K","K में परिवर्तन","Reverse: 1/K · ×n: Kⁿ · add reactions: K₁ × K₂"],
+["pH scale","pH पैमाना","pH = −log[H⁺] · pOH = −log[OH⁻] · pH + pOH = pK_w = 14 (25 °C)"],
+["Ostwald's dilution","ऑस्टवाल्ड तनुता","α = √(K_a/C) · [H⁺] = Cα = √(K_a C)"],
+["Conjugate pair","संयुग्मी युग्म","K_a × K_b = K_w · pK_a + pK_b = 14"],
+["Henderson equation","हेंडरसन समीकरण","Acidic buffer: pH = pK_a + log([salt]/[acid]) · Basic: pOH = pK_b + log([salt]/[base])"],
+["Solubility product","विलेयता गुणनफल","AₓB_y: K_sp = xˣ yʸ S^(x+y)"]],
+t:[["Law of mass action","द्रव्य अनुपाती क्रिया का नियम","Rate of a reaction is proportional to the product of active masses (concentrations) of reactants.","अभिक्रिया की दर अभिकारकों की सक्रिय मात्राओं (सांद्रता) के गुणनफल के समानुपाती."],
+["Le Chatelier's principle","ले-शातेलिए सिद्धांत","If a system at equilibrium is disturbed, it shifts to oppose the change.","साम्य पर निकाय में बाधा डालने पर वह परिवर्तन का विरोध करने की दिशा में खिसकता है."],
+["Common ion effect","उभयनिष्ठ आयन प्रभाव","Adding an ion common to a weak electrolyte or sparingly soluble salt suppresses its ionisation or solubility.","दुर्बल विद्युतअपघट्य या अल्प-विलेय लवण में उभयनिष्ठ आयन मिलाने से आयनन/विलेयता घटती है."],
+["Acid–base concepts","अम्ल–क्षार अवधारणाएँ","Arrhenius: H⁺/OH⁻ · Brønsted–Lowry: proton donor/acceptor · Lewis: e⁻ pair acceptor/donor.","अर्हीनियस: H⁺/OH⁻ · ब्रॉन्स्टेड–लॉरी: प्रोटॉन दाता/ग्राही · लूईस: e⁻ युग्म ग्राही/दाता."]],
+j:[["Effect of changes on equilibrium","परिवर्तनों का प्रभाव","↑T favours endothermic · ↑P favours fewer gas moles · catalyst: no shift · inert gas at const. V: no effect","B"],
+["PCl₅ dissociation","PCl₅ का वियोजन","K_p = α²P/(1 − α²) (for PCl₅ ⇌ PCl₃ + Cl₂)","J"],
+["Hydrolysis: weak acid + strong base","जलअपघटन: दुर्बल अम्ल + प्रबल क्षार","pH = ½(pK_w + pK_a + log C) · K_h = K_w/K_a","J"],
+["Hydrolysis: strong acid + weak base","जलअपघटन: प्रबल अम्ल + दुर्बल क्षार","pH = ½(pK_w − pK_b − log C)","J"],
+["Solubility from K_sp","K_sp से विलेयता","AB: S = √K_sp · AB₂: S = (K_sp/4)^(1/3) · AB₃: S = (K_sp/27)^(1/4)","B"],
+["Precipitation condition","अवक्षेपण की शर्त","Ionic product &gt; K_sp ⇒ precipitate forms","B"],
+["Buffer facts","बफर तथ्य","Maximum capacity at [salt] = [acid] (pH = pK_a) · useful range pH = pK_a ± 1","B"],
+["Very dilute strong acid","अत्यंत तनु प्रबल अम्ल","10⁻⁸ M HCl: pH ≈ 6.98 (include water: [H⁺] = (C + √(C² + 4K_w))/2)","J"],
+["Polyprotic acids","बहुप्रोटिक अम्ल","K_a1 ≫ K_a2 ≫ K_a3 · mostly the first ionisation sets pH","B"],
+["Van 't Hoff equation","वांट हॉफ समीकरण","log(K₂/K₁) = (ΔH°/2.303R)(1/T₁ − 1/T₂)","J"]],
+k:["Only temperature changes K. Salt of strong acid + weak base is acidic; weak acid + strong base is basic; both weak depends on K_a vs K_b.","K केवल ताप से बदलता है. प्रबल अम्ल + दुर्बल क्षार का लवण अम्लीय; दुर्बल अम्ल + प्रबल क्षार का क्षारीय."]},
+
+{n:["Redox Reactions","अपचयोपचय अभिक्रियाएँ"],
+f:[["Oxidation and reduction","ऑक्सीकरण व अपचयन","Oxidation: loss of e⁻ (O.N. ↑) · Reduction: gain of e⁻ (O.N. ↓)"],
+["Oxidation number sum","ऑक्सीकरण संख्या योग","Σ O.N. = net charge on species (0 for neutral molecule)"],
+["Usual oxidation numbers","सामान्य ऑक्सीकरण संख्याएँ","O = −2 (peroxide −1, OF₂ +2) · H = +1 (metal hydrides −1) · alkali +1 · alkaline earth +2 · F = −1"],
+["Permanganate (acidic)","परमैंगनेट (अम्लीय)","MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O"],
+["Dichromate (acidic)","डाइक्रोमेट (अम्लीय)","Cr₂O₇²⁻ + 14H⁺ + 6e⁻ → 2Cr³⁺ + 7H₂O"],
+["Cell potential","सेल विभव","E°_cell = E°_cathode − E°_anode"],
+["Free energy and EMF","मुक्त ऊर्जा व EMF","ΔG° = −nFE° · F = 96500 C/mol"],
+["Equivalent weight","तुल्यांकी भार","E = M / n-factor"]],
+t:[["Electron balance principle","इलेक्ट्रॉन संतुलन सिद्धांत","In a redox reaction total electrons lost = total electrons gained; equivalents of oxidant = equivalents of reductant.","अपचयोपचय में खोए गए इलेक्ट्रॉन = प्राप्त इलेक्ट्रॉन; ऑक्सीकारक के तुल्यांक = अपचायक के तुल्यांक."],
+["Disproportionation and comproportionation","असमानुपातन व समानुपातन","One species is both oxidised and reduced (e.g. 2H₂O₂ → 2H₂O + O₂). The reverse mixes two oxidation states into one.","एक ही स्पीशीज़ का ऑक्सीकरण व अपचयन (जैसे 2H₂O₂ → 2H₂O + O₂). समानुपातन में दो अवस्थाएँ एक में मिलती हैं."],
+["Electrochemical series","विद्युतरासायनिक श्रेणी","Higher (more positive) E° ⇒ stronger oxidising agent; lower E° ⇒ stronger reducing agent.","अधिक धनात्मक E° ⇒ प्रबल ऑक्सीकारक; कम E° ⇒ प्रबल अपचायक."]],
+j:[["n-factors of common agents","सामान्य अभिकर्मकों के n-गुणांक","KMnO₄: 5 (acid), 3 (neutral), 1 (strong base) · K₂Cr₂O₇: 6 · H₂C₂O₄: 2 · FeSO₄: 1 · H₂O₂: 2","B"],
+["Fractional oxidation numbers","भिन्नात्मक ऑक्सीकरण संख्या","Fe in Fe₃O₄ = +8/3 · S in Na₂S₄O₆ = +2.5 · S in Na₂S₂O₃ (avg) = +2","B"],
+["Peroxy compounds","परॉक्सी यौगिक","CrO₅: Cr = +6 · H₂SO₅: S = +6 (peroxide O = −1)","J"],
+["Nernst equation","नर्न्स्ट समीकरण","E = E° − (0.0591/n) log Q (at 298 K)","J"],
+["Iodometric titration","आयोडोमितीय अनुमापन","2Na₂S₂O₃ + I₂ → Na₂S₄O₆ + 2NaI","B"],
+["Disproportionation examples","असमानुपातन उदाहरण","Cl₂ + 2OH⁻ → Cl⁻ + ClO⁻ + H₂O · 2Cu⁺ → Cu²⁺ + Cu · P₄ + 3OH⁻ + 3H₂O → PH₃ + 3H₂PO₂⁻","B"],
+["Balancing in basic medium","क्षारीय माध्यम में संतुलन","Balance as in acid, then add OH⁻ equal to H⁺ on both sides and combine to H₂O","J"],
+["KMnO₄ self-indicator","KMnO₄ स्वयं सूचक","Purple → colourless (Mn²⁺) in acid; end point = permanent faint pink","N"]],
+k:["Reducing agent loses electrons and is itself oxidised. In disproportionation the same element goes both up and down in O.N.","अपचायक e⁻ खोता है और स्वयं ऑक्सीकृत होता है. असमानुपातन में एक ही तत्व की O.N. बढ़ती व घटती दोनों है."]},
+
+{n:["Organic Basics","कार्बनिक मूल"],
+f:[["Degree of unsaturation","असंतृप्तता की कोटि","DBE = (2C + 2 + N − H − X)/2"],
+["Dumas method","डूमा विधि","%N = (28 × V_N₂ at STP in mL)/(22400 × m) × 100"],
+["Kjeldahl method","कैल्डाल विधि","%N = 1.4 × N × V/m (V = mL of acid neutralised, N = normality)"],
+["Carius: halogens","कैरियस: हैलोजन","%Cl = (35.5/143.5)(m AgCl/m) × 100 · %Br = (80/188)(m AgBr/m) × 100"],
+["Carius: sulphur","कैरियस: सल्फर","%S = (32/233)(m BaSO₄/m) × 100"],
+["Phosphorus estimation","फ़ॉस्फ़ोरस आकलन","%P = (62/222)(m Mg₂P₂O₇/m) × 100"],
+["Combustion: C and H","दहन: C व H","%C = (12/44)(m CO₂/m)×100 · %H = (2/18)(m H₂O/m)×100"],
+["Chromatography R_f","क्रोमैटोग्राफी R_f","R_f = distance by solute / distance by solvent front"],
+["Oxygen","ऑक्सीजन","%O = 100 − (sum of all other %) (by difference)"]],
+t:[["Hückel's rule","हकल नियम","A planar, cyclic, fully conjugated system with (4n + 2) π electrons is aromatic.","समतलीय, चक्रीय, पूर्ण संयुग्मित तंत्र जिसमें (4n + 2) π इलेक्ट्रॉन हों ऐरोमैटिक है."],
+["Resonance rules","अनुनाद के नियम","Only electrons move (not atoms); more equivalent, neutral, complete-octet structures ⇒ more stable.","केवल इलेक्ट्रॉन चलते हैं (परमाणु नहीं); अधिक समतुल्य, उदासीन, पूर्ण अष्टक संरचनाएँ ⇒ अधिक स्थायित्व."],
+["Cahn–Ingold–Prelog (CIP) rules","कैन–इंगोल्ड–प्रेलॉग नियम","Priority by atomic number of atoms attached to the stereocentre; decides R/S and E/Z.","स्टीरियोकेंद्र से जुड़े परमाणुओं के परमाणु क्रमांक से प्राथमिकता; R/S व E/Z तय होते हैं."]],
+j:[["Carbocation stability","कार्बधनायन स्थायित्व","3° &gt; 2° &gt; 1° &gt; CH₃⁺ · allyl, benzyl ≫ 3°","B"],
+["Carbanion and free radical","कार्बऋणायन व मुक्त मूलक","Carbanion: CH₃⁻ &gt; 1° &gt; 2° &gt; 3° · Free radical: 3° &gt; 2° &gt; 1°","B"],
+["−I effect order","−I प्रभाव क्रम","NO₂ &gt; CN &gt; F &gt; Cl &gt; Br &gt; I &gt; OH &gt; OCH₃ &gt; C₆H₅","B"],
+["+I effect order","+I प्रभाव क्रम","(CH₃)₃C– &gt; (CH₃)₂CH– &gt; CH₃CH₂– &gt; CH₃–","B"],
+["Hyperconjugation","अतिसंयुग्मन","Number of resonance forms = number of α-H","J"],
+["Number of stereoisomers","त्रिविम समावयवी संख्या","2ⁿ for n different chiral centres (fewer if meso)","J"],
+["Types of isomerism","समावयवता के प्रकार","Chain · position · functional · metamerism · tautomerism · geometrical · optical","B"],
+["Lassaigne's test","लैसेन परीक्षण","N: Prussian blue · S: violet (nitroprusside) · N + S: blood red · halogen: AgX ppt","N"],
+["Purification techniques","शोधन तकनीकें","Crystallisation · sublimation · distillation · steam distillation · chromatography","N"]],
+k:["Resonance &gt; inductive; more resonance forms and hyperconjugation ⇒ more stable. Kjeldahl fails for nitro, azo and ring-N compounds.","अनुनाद &gt; प्रेरणिक; अधिक अनुनाद संरचनाएँ व अतिसंयुग्मन ⇒ अधिक स्थायी. कैल्डाल विधि नाइट्रो, ऐज़ो व वलय-N पर विफल."]},
+
+{n:["Hydrocarbons","हाइड्रोकार्बन"],
+f:[["General formulae","सामान्य सूत्र","Alkane CₙH₂ₙ₊₂ · Alkene CₙH₂ₙ · Alkyne CₙH₂ₙ₋₂"],
+["Combustion of alkane","ऐल्केन का दहन","CₙH₂ₙ₊₂ + (3n+1)/2 O₂ → nCO₂ + (n+1)H₂O"],
+["Wurtz reaction","वुर्ट्ज़ अभिक्रिया","2R–X + 2Na → R–R + 2NaX (dry ether)"],
+["Dehydrohalogenation","विहाइड्रोहैलोजनीकरण","R–CH₂CH₂X + alc. KOH → R–CH=CH₂ + KX + H₂O"],
+["Markovnikov addition","मार्कोनिकोव योग","CH₃CH=CH₂ + HBr → CH₃CHBrCH₃"],
+["Ozonolysis","ओज़ोनी अपघटन","R₂C=CHR′ + O₃ then Zn/H₂O → R₂C=O + R′CHO"],
+["Acetylene preparation","ऐसीटिलीन विरचन","CaC₂ + 2H₂O → C₂H₂ + Ca(OH)₂"],
+["Nitration of benzene","बेंज़ीन का नाइट्रोकरण","C₆H₆ + HNO₃ (conc. H₂SO₄) → C₆H₅NO₂ + H₂O"],
+["Friedel–Crafts alkylation","फ्रीडेल–क्राफ्ट्स ऐल्किलन","C₆H₆ + RCl (anhyd. AlCl₃) → C₆H₅R + HCl"]],
+t:[["Markovnikov's rule","मार्कोनिकोव नियम","In addition of HX to an unsymmetrical alkene, the negative part goes to the carbon with fewer hydrogens.","असममित ऐल्कीन में HX के योग पर ऋणात्मक भाग कम हाइड्रोजन वाले कार्बन से जुड़ता है."],
+["Kharasch peroxide effect","खराश परॉक्साइड प्रभाव","With peroxides, HBr adds anti-Markovnikov (free-radical mechanism); not for HCl or HI.","परॉक्साइड की उपस्थिति में HBr प्रति-मार्कोनिकोव जुड़ता है (मुक्त मूलक); HCl व HI के साथ नहीं."],
+["Saytzeff's rule","सेटज़ेफ़ नियम","In elimination, the more substituted (more stable) alkene is the major product.","विलोपन में अधिक प्रतिस्थापित (अधिक स्थायी) ऐल्कीन मुख्य उत्पाद होती है."],
+["Hückel's rule (aromaticity)","हकल नियम (ऐरोमैटिकता)","(4n + 2) π electrons, planar, cyclic, conjugated: benzene (6), naphthalene (10).","(4n + 2) π इलेक्ट्रॉन, समतलीय, चक्रीय, संयुग्मित: बेंज़ीन (6), नैफ़थलीन (10)."]],
+j:[["Directing groups in benzene","बेंज़ीन में निर्देशी समूह","o/p-directing, activating: –OH, –NH₂, –R, –OR · m-directing, deactivating: –NO₂, –CN, –CHO, –COOH, –SO₃H","B"],
+["Halogens as directing groups","हैलोजन निर्देशी समूह","–X is deactivating yet o/p-directing","J"],
+["Stereoselective reductions","त्रिविम-वरणात्मक अपचयन","Lindlar's catalyst: alkyne → cis-alkene · Na/liq. NH₃: alkyne → trans-alkene","J"],
+["Acidic character of hydrocarbons","हाइड्रोकार्बनों की अम्लीयता","HC≡CH &gt; H₂C=CH₂ &gt; CH₃CH₃ (more s-character ⇒ more acidic)","B"],
+["C–C bond lengths","C–C आबंध लंबाई","C–C 154 pm &gt; benzene 139 pm &gt; C=C 134 pm &gt; C≡C 120 pm","B"],
+["Hydration of alkynes","ऐल्काइन का जलयोजन","HC≡CH + H₂O (HgSO₄/H₂SO₄) → CH₃CHO · other alkynes give ketones","B"],
+["Boiling point trend","क्वथनांक प्रवृत्ति","Increases with chain length; decreases with branching","N"],
+["Conformations","संरूपण","Ethane: staggered more stable than eclipsed · butane: anti most stable","B"],
+["Tests for unsaturation","असंतृप्तता के परीक्षण","Br₂ water decolourised · Baeyer's reagent (cold dil. KMnO₄) decolourised · Tollens' for terminal alkynes","N"]],
+k:["Halogenation: Cl₂ is fast and less selective; Br₂ is slow and selective (3° &gt; 2° &gt; 1° H). Peroxide effect: HBr only.","हैलोजनीकरण: Cl₂ तेज़ व कम चयनात्मक; Br₂ धीमा व चयनात्मक (3° &gt; 2° &gt; 1° H). परॉक्साइड प्रभाव केवल HBr."]},
+
+{n:["p-Block (Groups 13, 14)","p-ब्लॉक (वर्ग 13, 14)"],
+f:[["Borax","बोरैक्स","Na₂B₄O₇·10H₂O → (Δ) Na₂B₄O₇ → 2NaBO₂ + B₂O₃ (borax bead)"],
+["Boric acid as Lewis acid","बोरिक अम्ल (लूईस अम्ल)","B(OH)₃ + 2H₂O ⇌ [B(OH)₄]⁻ + H₃O⁺"],
+["Diborane preparation","डाइबोरेन विरचन","4BF₃ + 3LiAlH₄ → 2B₂H₆ + 3LiF + 3AlF₃"],
+["Hydrolysis of BCl₃","BCl₃ का जलअपघटन","BCl₃ + 3H₂O → H₃BO₃ + 3HCl"],
+["Amphoteric Al₂O₃","उभयधर्मी Al₂O₃","Al₂O₃ + 6HCl → 2AlCl₃ + 3H₂O · Al₂O₃ + 2NaOH + 3H₂O → 2Na[Al(OH)₄]"],
+["Carbon monoxide","कार्बन मोनोऑक्साइड","HCOOH → (conc. H₂SO₄, Δ) CO + H₂O"],
+["Water gas and producer gas","जल गैस व प्रोड्यूसर गैस","C + H₂O → CO + H₂ · 2C + O₂ + 4N₂ → 2CO + 4N₂"],
+["Silica and HF","सिलिका व HF","SiO₂ + 4HF → SiF₄ + 2H₂O"],
+["Silicones","सिलिकोन","R₂SiCl₂ + 2H₂O → R₂Si(OH)₂ → (–R₂Si–O–)ₙ"]],
+t:[["Inert pair effect","अक्रिय युग्म प्रभाव","Reluctance of ns² electrons to take part in bonding: lower oxidation state (n−2) stabilises down the group (Tl⁺, Pb²⁺).","ns² इलेक्ट्रॉनों का बंध में भाग न लेना: वर्ग में नीचे निम्न ऑक्सीकरण अवस्था स्थायी (Tl⁺, Pb²⁺)."],
+["Three-centre two-electron (3c–2e) bond","त्रि-केंद्रीय द्वि-इलेक्ट्रॉन आबंध","Diborane B₂H₆ has 4 terminal 2c–2e B–H bonds and 2 bridging 3c–2e (banana) bonds; B is sp³.","डाइबोरेन में 4 सिरे के 2c–2e B–H तथा 2 सेतु 3c–2e (केला) आबंध; B sp³ है."],
+["Back bonding (pπ–pπ)","पश्च आबंधन (pπ–pπ)","Filled p orbital of halogen donates to empty p of B in BX₃; strongest for F (2p–2p), so BF₃ is the weakest Lewis acid.","हैलोजन का भरा p कक्षक B के रिक्त p को e⁻ देता है; F में सर्वाधिक (2p–2p) ⇒ BF₃ सबसे दुर्बल लूईस अम्ल."]],
+j:[["Lewis acidity of BX₃","BX₃ की लूईस अम्लता","BF₃ &lt; BCl₃ &lt; BBr₃ &lt; BI₃","B"],
+["Allotropes of carbon","कार्बन के अपररूप","Diamond sp³ (hardest, insulator) · graphite sp² (layered, conductor) · fullerene C₆₀ (20 hexagons + 12 pentagons)","B"],
+["Catenation","शृंखलन","C ≫ Si &gt; Ge ≈ Sn ≫ Pb","N"],
+["Stability of hydrides","हाइड्राइड स्थायित्व","CH₄ &gt; SiH₄ &gt; GeH₄ &gt; SnH₄ &gt; PbH₄","B"],
+["Stable oxidation states","स्थायी ऑक्सीकरण अवस्थाएँ","Tl⁺ &gt; Tl³⁺ · Pb²⁺ &gt; Pb⁴⁺ · Sn²⁺ reducing, Pb⁴⁺ oxidising","B"],
+["Silicate structures","सिलिकेट संरचनाएँ","SiO₄⁴⁻ tetrahedron · pyrosilicate Si₂O₇⁶⁻ · chain (SiO₃)ₙ²ⁿ⁻ · sheet (Si₂O₅)ₙ²ⁿ⁻ · 3D SiO₂","J"],
+["Borazine","बोरेज़ीन","3B₂H₆ + 6NH₃ → 3[BH₂(NH₃)₂]⁺[BH₄]⁻ → 2B₃N₃H₆ + 12H₂ (inorganic benzene)","J"],
+["AlCl₃ dimer","AlCl₃ का द्वितयन","Exists as Al₂Cl₆ (bridging Cl) to complete octet","J"],
+["CO and CO₂","CO व CO₂","CO binds haemoglobin (poisonous) · CO₂ linear sp · greenhouse gas","N"]],
+k:["Boric acid is NOT a proton donor — it accepts OH⁻ (monobasic Lewis acid). Graphite conducts, diamond does not.","बोरिक अम्ल प्रोटॉन दाता नहीं — यह OH⁻ ग्रहण करता है (एकक्षारीय लूईस अम्ल). ग्रेफ़ाइट चालक, हीरा नहीं."]},
+
+{n:["s-Block Elements","s-ब्लॉक तत्व"],
+f:[["Solvay process","सॉल्वे प्रक्रम","NaCl + NH₃ + CO₂ + H₂O → NaHCO₃ + NH₄Cl · 2NaHCO₃ → Na₂CO₃ + H₂O + CO₂"],
+["Alkali metals and water","क्षार धातुएँ व जल","2M + 2H₂O → 2MOH + H₂"],
+["Reaction with oxygen","ऑक्सीजन से अभिक्रिया","Li → Li₂O · Na → Na₂O₂ · K, Rb, Cs → MO₂ (superoxide)"],
+["Washing soda","धावन सोडा","Na₂CO₃·10H₂O (loses water on standing: efflorescence)"],
+["Quicklime","बिना बुझा चूना","CaCO₃ → (1070–1270 K) CaO + CO₂ · CaO + H₂O → Ca(OH)₂"],
+["Lime water test","चूने के पानी का परीक्षण","Ca(OH)₂ + CO₂ → CaCO₃↓ + H₂O (milky) · excess CO₂ → Ca(HCO₃)₂ (clear)"],
+["Plaster of Paris","प्लास्टर ऑफ़ पेरिस","2CaSO₄·2H₂O → (393 K) 2CaSO₄·½H₂O + 3H₂O · setting: POP + 1½H₂O → gypsum"],
+["Magnesium with nitrogen","मैग्नीशियम व नाइट्रोजन","3Mg + N₂ → Mg₃N₂ · Mg₃N₂ + 6H₂O → 3Mg(OH)₂ + 2NH₃"]],
+t:[["Diagonal relationship","विकर्ण संबंध","Li resembles Mg; Be resembles Al (similar charge/size ratio): Li₂CO₃ and MgCO₃ decompose; BeO and Al₂O₃ amphoteric.","Li, Mg से तथा Be, Al से समानता (समान आवेश/आकार अनुपात): Li₂CO₃, MgCO₃ अपघटित; BeO, Al₂O₃ उभयधर्मी."],
+["Solubility rule","विलेयता नियम","If hydration energy &gt; lattice energy the salt dissolves; large anion needs large cation.","जलयोजन ऊर्जा &gt; जालक ऊर्जा हो तो लवण घुलता है; बड़े ऋणायन के लिए बड़ा धनायन चाहिए."],
+["Anomalous behaviour of Li and Be","Li व Be का असंगत व्यवहार","Small size, high polarising power: covalent compounds, no peroxides/superoxides for Li, BeCl₂ covalent.","छोटा आकार, उच्च ध्रुवण क्षमता: सहसंयोजी यौगिक; Li के परॉक्साइड/सुपरऑक्साइड नहीं; BeCl₂ सहसंयोजी."]],
+j:[["Flame colours","ज्वाला के रंग","Li crimson · Na golden yellow · K lilac · Rb red-violet · Cs blue · Ca brick red · Sr crimson · Ba apple green","N"],
+["Hydration enthalpy and mobility","जलयोजन एन्थैल्पी व गतिशीलता","Hydration: Li⁺ &gt; Na⁺ &gt; K⁺ · ionic mobility in water: Cs⁺ &gt; K⁺ &gt; Na⁺ &gt; Li⁺","B"],
+["Reducing power in water","जल में अपचायक क्षमता","Li &gt; Cs &gt; Rb &gt; K &gt; Na (Li has highest hydration enthalpy)","B"],
+["Thermal stability of carbonates","कार्बोनेट का तापीय स्थायित्व","Alkali: Li₂CO₃ unstable, others stable · Alkaline earth: stability ↑ down the group","B"],
+["Thermal decomposition of nitrates","नाइट्रेट का तापीय अपघटन","4LiNO₃ → 2Li₂O + 4NO₂ + O₂ · 2NaNO₃ → 2NaNO₂ + O₂","J"],
+["Solubility trends (group 2)","विलेयता प्रवृत्ति (वर्ग 2)","Sulphates ↓ down (BaSO₄ least) · hydroxides ↑ down","B"],
+["Superoxide property","सुपरऑक्साइड गुण","KO₂ is paramagnetic and coloured (O₂⁻ has an unpaired e⁻)","J"],
+["Biological role","जैविक भूमिका","Na⁺/K⁺ pump: 3Na⁺ out, 2K⁺ in · Mg in chlorophyll · Ca in bones/teeth","N"],
+["Amphoteric Be","उभयधर्मी Be","Be(OH)₂ + 2OH⁻ → [Be(OH)₄]²⁻ · Be(OH)₂ + 2H⁺ → Be²⁺ + 2H₂O","J"]],
+k:["Basic strength of hydroxides rises down the group; thermal stability of carbonates rises down group 2. Li is the odd one out of group 1.","हाइड्रॉक्साइड की क्षारीयता वर्ग में नीचे बढ़ती है; वर्ग 2 के कार्बोनेट का स्थायित्व नीचे बढ़ता है. वर्ग 1 में Li अपवाद."]},
+
+{n:["Hydrogen","हाइड्रोजन"],
+f:[["Preparation from metals","धातुओं से विरचन","Zn + 2HCl → ZnCl₂ + H₂ · Zn + 2NaOH → Na₂ZnO₂ + H₂"],
+["Water gas","जल गैस","C + H₂O → (1273 K) CO + H₂"],
+["Water-gas shift","जल-गैस शिफ़्ट","CO + H₂O → (673 K, catalyst) CO₂ + H₂"],
+["Steam reforming","भाप सुधार","CH₄ + H₂O → (1270 K, Ni) CO + 3H₂"],
+["Electrolysis","विद्युत अपघटन","2H₂O → 2H₂ + O₂ (acidified/alkaline water, Pt electrodes)"],
+["Clark's method","क्लार्क विधि","Ca(HCO₃)₂ + Ca(OH)₂ → 2CaCO₃↓ + 2H₂O"],
+["Ion exchange","आयन विनिमय","2NaR + M²⁺ → MR₂ + 2Na⁺ (zeolite or resin)"],
+["Hydrogen peroxide prep","H₂O₂ विरचन","BaO₂·8H₂O + H₂SO₄ → BaSO₄ + H₂O₂ + 8H₂O"],
+["H₂O₂ decomposition","H₂O₂ अपघटन","2H₂O₂ → 2H₂O + O₂"],
+["Volume strength of H₂O₂","H₂O₂ की आयतन सामर्थ्य","N = V/5.6 · M = V/11.2 · % w/v ≈ 0.303 × V"]],
+t:[["Classification of hydrides","हाइड्राइडों का वर्गीकरण","Ionic (saline: NaH, CaH₂) · covalent/molecular (CH₄, NH₃, H₂O) · metallic/interstitial (TiH₁.₇₃, PdHₓ).","आयनिक (NaH, CaH₂) · सहसंयोजी (CH₄, NH₃, H₂O) · धात्विक/अंतराकाशी (TiH₁.₇₃, PdHₓ)."],
+["Electron-deficient, precise, rich hydrides","इलेक्ट्रॉन-न्यून, समुचित, समृद्ध हाइड्राइड","Deficient: B₂H₆ · precise: CH₄, SiH₄ · rich: NH₃, H₂O, HF (lone pairs).","न्यून: B₂H₆ · समुचित: CH₄, SiH₄ · समृद्ध: NH₃, H₂O, HF (एकाकी युग्म)."],
+["Hydrogen bonding","हाइड्रोजन आबंधन","Intermolecular (raises bp) and intramolecular (o-nitrophenol, chelation, lowers bp).","अंतराअणुक (क्वथनांक बढ़ाता है) व अंतःअणुक (o-नाइट्रोफ़ीनॉल, कीलेशन, क्वथनांक घटाता है)."],
+["Position of hydrogen","हाइड्रोजन की स्थिति","Resembles alkali metals (1 e⁻, H⁺) and halogens (H⁻, diatomic) yet unique.","क्षार धातुओं (1 e⁻, H⁺) व हैलोजनों (H⁻, द्विपरमाणुक) से समानता, फिर भी विशिष्ट."]],
+j:[["Isotopes","समस्थानिक","Protium ¹H (99.985 %) · Deuterium ²H (D) · Tritium ³H (radioactive, β⁻)","B"],
+["H₂O₂ as oxidant","H₂O₂ ऑक्सीकारक के रूप में","2Fe²⁺ + H₂O₂ + 2H⁺ → 2Fe³⁺ + 2H₂O","B"],
+["H₂O₂ as reductant","H₂O₂ अपचायक के रूप में","2MnO₄⁻ + 5H₂O₂ + 6H⁺ → 2Mn²⁺ + 8H₂O + 5O₂","B"],
+["Structure of H₂O₂","H₂O₂ की संरचना","Non-planar open-book, O–O single bond, sp³ oxygens","B"],
+["Hardness","कठोरता","Temporary: bicarbonates (boiling, Clark) · Permanent: Cl⁻/SO₄²⁻ of Ca, Mg (Calgon, ion exchange)","B"],
+["Calgon","कैलगॉन","Na₆P₆O₁₈ = sodium hexametaphosphate: 2Ca²⁺ + Na₄[Na₂(PO₃)₆] → Na₄[Ca₂(PO₃)₆] + 2Na⁺","J"],
+["Heavy water D₂O","भारी जल D₂O","Moderator in nuclear reactors · higher mp and bp than H₂O","N"],
+["Ortho and para hydrogen","ऑर्थो व पैरा हाइड्रोजन","Nuclear-spin isomers · para form is more stable at low temperature","J"],
+["Hydrogen as fuel","हाइड्रोजन ईंधन","H₂ + ½O₂ → H₂O, ΔH = −286 kJ/mol (clean, high energy per gram)","N"]],
+k:["Hard water: temporary = HCO₃⁻ (boil it), permanent = Cl⁻/SO₄²⁻ (Calgon or ion exchange). 20 V H₂O₂ gives 20 mL O₂ per mL at STP.","कठोर जल: अस्थायी = HCO₃⁻ (उबालें), स्थायी = Cl⁻/SO₄²⁻ (कैलगॉन/आयन विनिमय). 20 V H₂O₂ का 1 mL STP पर 20 mL O₂ देता है."]},
+
+{n:["States of Matter","पदार्थ की अवस्थाएँ"],
+f:[["Boyle's law","बॉयल का नियम","PV = constant (T, n constant) · P₁V₁ = P₂V₂"],
+["Charles' law","चार्ल्स का नियम","V/T = constant (P, n constant)"],
+["Gay-Lussac's law","गे-लुसैक का नियम","P/T = constant (V, n constant)"],
+["Ideal gas equation","आदर्श गैस समीकरण","PV = nRT · R = 0.0821 L atm K⁻¹ mol⁻¹ = 8.314 J K⁻¹ mol⁻¹"],
+["Gas density","गैस का घनत्व","d = PM/RT"],
+["Dalton's law","डाल्टन का नियम","P_total = P₁ + P₂ + … · Pᵢ = xᵢ P_total"],
+["Graham's law","ग्राहम का नियम","r₁/r₂ = √(M₂/M₁) = √(d₂/d₁)"],
+["Root mean square speed","वर्ग माध्य मूल चाल","u_rms = √(3RT/M) · KE per mole = (3/2)RT"],
+["Van der Waals equation","वान डर वाल्स समीकरण","(P + an²/V²)(V − nb) = nRT"],
+["Compressibility factor","संपीड्यता गुणांक","Z = PV/nRT (Z = 1 for ideal gas)"]],
+t:[["Kinetic molecular theory postulates","अणुगति सिद्धांत की अभिधारणाएँ","Gas molecules are point masses in random motion; collisions elastic; no intermolecular forces; average KE ∝ T.","गैस अणु बिंदु द्रव्यमान, यादृच्छिक गति; टक्करें प्रत्यास्थ; अंतराअणुक बल नहीं; औसत KE ∝ T."],
+["Avogadro's law","आवोगाद्रो नियम","Equal volumes of all gases at same T, P have equal moles: V ∝ n.","समान T, P पर सभी गैसों के समान आयतन में मोल समान: V ∝ n."],
+["Maxwell–Boltzmann distribution","मैक्सवेल–बोल्ट्ज़मैन वितरण","Distribution of molecular speeds; on heating the peak shifts to higher speed and flattens.","अणु-चालों का वितरण; गर्म करने पर शिखर अधिक चाल की ओर खिसकता व चपटा होता है."]],
+j:[["Three types of speed","तीन प्रकार की चाल","u_mp = √(2RT/M) · u_avg = √(8RT/πM) · u_rms = √(3RT/M) · ratio 1 : 1.128 : 1.224","B"],
+["Critical constants","क्रांतिक स्थिरांक","T_c = 8a/27Rb · P_c = a/27b² · V_c = 3b","J"],
+["Boyle temperature","बॉयल ताप","T_B = a/Rb","J"],
+["Meaning of a and b","a व b का अर्थ","a: intermolecular attraction (bigger a ⇒ easier liquefaction) · b: excluded volume (molecular size)","B"],
+["Deviation conditions","विचलन की स्थितियाँ","Real gases ≈ ideal at high T and low P · Z &lt; 1: attraction dominates · Z &gt; 1: repulsion dominates","B"],
+["H₂ and He","H₂ व He","Z &gt; 1 at all pressures at 273 K (very weak attraction)","J"],
+["Intermolecular forces order","अंतराअणुक बल क्रम","Ion–dipole &gt; H-bond &gt; dipole–dipole &gt; dipole–induced dipole &gt; London dispersion","B"],
+["Liquefaction","द्रवीकरण","Gas liquefies only below T_c; Joule–Thomson expansion cools real gases","J"],
+["Liquid properties","द्रव के गुण","Surface tension ↓ with T · viscosity of liquids ↓ with T · vapour pressure ↑ with T","N"]],
+k:["Same T ⇒ same average KE for all gases; lighter gas moves faster and effuses faster. Rate of diffusion ∝ 1/√M.","समान T पर सभी गैसों की औसत KE समान; हल्की गैस तेज़ चलती व विसरित होती है. विसरण दर ∝ 1/√M."]},
+
+{n:["Environmental Chemistry","पर्यावरणीय रसायन"],
+f:[["Ozone formation","ओज़ोन निर्माण","O₂ → (UV) 2O · O + O₂ → O₃"],
+["CFC ozone depletion","CFC से ओज़ोन क्षरण","CF₂Cl₂ → (UV) •CF₂Cl + Cl• · Cl• + O₃ → ClO• + O₂ · ClO• + O → Cl• + O₂"],
+["Photochemical smog","प्रकाश-रासायनिक धूम","NO₂ → (hν) NO + O · O + O₂ → O₃ · O₃ + NO → NO₂ + O₂"],
+["Acid rain: sulphur","अम्ल वर्षा: सल्फर","2SO₂ + O₂ → 2SO₃ · SO₃ + H₂O → H₂SO₄"],
+["Acid rain: nitrogen","अम्ल वर्षा: नाइट्रोजन","4NO₂ + O₂ + 2H₂O → 4HNO₃"],
+["Natural rain acidity","प्राकृतिक वर्षा अम्लता","CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻ (pH ≈ 5.6)"],
+["Taj Mahal marble damage","ताजमहल संगमरमर क्षति","CaCO₃ + H₂SO₄ → CaSO₄ + H₂O + CO₂"],
+["Catalytic converter","उत्प्रेरकी परिवर्तक","2CO + 2NO → 2CO₂ + N₂ (Pt–Pd–Rh)"]],
+t:[["Greenhouse effect","हरित गृह प्रभाव","Gases (CO₂, CH₄, N₂O, CFC, O₃, H₂O vapour) trap outgoing IR radiation and warm the troposphere.","गैसें (CO₂, CH₄, N₂O, CFC, O₃, जलवाष्प) बाहर जाते IR विकिरण को रोककर क्षोभमंडल गर्म करती हैं."],
+["Stratospheric ozone depletion","समताप मंडल में ओज़ोन क्षरण","Cl• from CFCs acts as a chain catalyst; one Cl• destroys about 10⁵ O₃ molecules; Antarctic hole needs polar stratospheric clouds.","CFC से Cl• श्रृंखला उत्प्रेरक है; एक Cl• लगभग 10⁵ O₃ नष्ट करता है; अंटार्कटिक छिद्र हेतु ध्रुवीय समताप बादल."],
+["Green chemistry","हरित रसायन","Prevent waste, use safer solvents (e.g. liquid CO₂ in dry cleaning), renewable feedstock, design for degradation, catalysis.","अपशिष्ट रोकना, सुरक्षित विलायक (जैसे शुष्क धुलाई में द्रव CO₂), नवीकरणीय कच्चा माल, उत्प्रेरण."]],
+j:[["Acid rain threshold","अम्ल वर्षा सीमा","pH &lt; 5.6 · caused by SO₂, NOₓ","N"],
+["BOD and DO","BOD व DO","Clean water BOD &lt; 5 ppm · polluted &gt; 17 ppm · fish need DO &gt; 6 ppm","N"],
+["Eutrophication","सुपोषण","Phosphates and nitrates ⇒ algal bloom ⇒ oxygen depletion","N"],
+["Smog types","धूम के प्रकार","Classical (reducing): SO₂ + smoke, cool humid · Photochemical (oxidising): NOₓ + hydrocarbons + sunlight, warm dry","B"],
+["Biomagnification","जैव आवर्धन","DDT and heavy metals concentrate up the food chain","N"],
+["Toxic limits in water","जल में विषैली सीमाएँ","Nitrate &gt; 50 ppm: blue-baby syndrome · fluoride &gt; 2 ppm: mottling of teeth","N"],
+["Global warming potential","भूमंडलीय तापन विभव","Per molecule: CFC &gt; N₂O &gt; CH₄ &gt; CO₂","J"],
+["Carbon monoxide hazard","कार्बन मोनोऑक्साइड का खतरा","Binds haemoglobin 200+ times stronger than O₂ forming carboxyhaemoglobin","N"],
+["International agreements","अंतर्राष्ट्रीय समझौते","Montreal Protocol (ozone, CFC phase-out) · Kyoto Protocol (greenhouse gases)","N"]],
+k:["Ozone is a protector in the stratosphere and a pollutant in the troposphere. Natural rain pH ≈ 5.6; acid rain is below it.","ओज़ोन समताप मंडल में रक्षक व क्षोभ मंडल में प्रदूषक है. प्राकृतिक वर्षा pH ≈ 5.6; अम्ल वर्षा इससे कम."]}
+];
+var HUB=[
+[["📏 Physical Constants","📏 भौतिक नियतांक"],[
+["Avogadro number N_A","आवोगाद्रो संख्या N_A","6.022 × 10²³ mol⁻¹"],["Gas constant R","गैस नियतांक R","8.314 J K⁻¹ mol⁻¹ = 0.0821 L atm K⁻¹ mol⁻¹ = 1.987 cal K⁻¹ mol⁻¹"],["Faraday constant F","फ़ैराडे नियतांक F","96500 C mol⁻¹"],["Planck's constant h","प्लांक नियतांक h","6.626 × 10⁻³⁴ J s"],["Speed of light c","प्रकाश की चाल c","3 × 10⁸ m s⁻¹"],["Boltzmann constant k","बोल्ट्ज़मैन नियतांक k","1.38 × 10⁻²³ J K⁻¹"],["Charge / mass of electron","इलेक्ट्रॉन का आवेश / द्रव्यमान","1.602 × 10⁻¹⁹ C / 9.11 × 10⁻³¹ kg"],["Mass of proton / neutron","प्रोटॉन / न्यूट्रॉन का द्रव्यमान","1.673 × 10⁻²⁷ kg / 1.675 × 10⁻²⁷ kg"],["Bohr radius a₀","बोर त्रिज्या a₀","0.529 Å = 52.9 pm"],["Rydberg constant","रिडबर्ग नियतांक","R_H = 1.097 × 10⁷ m⁻¹ · 13.6 eV = 2.18 × 10⁻¹⁸ J"],["Molar volume at STP","STP पर मोलर आयतन","22.4 L (273 K, 1 atm) · 22.7 L (273 K, 1 bar)"],["Pressure units","दाब मात्रक","1 atm = 760 mmHg = 101.325 kPa = 1.013 bar"],["Energy units","ऊर्जा मात्रक","1 cal = 4.184 J · 1 eV = 1.602 × 10⁻¹⁹ J = 96.5 kJ mol⁻¹"],["Ionic product of water","जल का आयनिक गुणनफल","K_w = 10⁻¹⁴ at 25 °C"]]],
+[["📈 Periodic Trends (→ period, ↓ group)","📈 आवर्त प्रवृत्तियाँ (→ आवर्त, ↓ वर्ग)"],[
+["Atomic radius","परमाणु त्रिज्या","→ decreases · ↓ increases"],["Ionisation enthalpy","आयनन एन्थैल्पी","→ increases · ↓ decreases"],["Electronegativity","विद्युतऋणात्मकता","→ increases · ↓ decreases"],["Electron gain enthalpy","इलेक्ट्रॉन लब्धि एन्थैल्पी","→ more negative · ↓ less negative (Cl highest)"],["Metallic character","धात्विक गुण","→ decreases · ↓ increases"],["Basic nature of oxides","ऑक्साइड की क्षारीयता","→ decreases · ↓ increases"],["Reducing power","अपचायक क्षमता","→ decreases · ↓ increases"]]],
+[["🔷 Shapes &amp; Hybridisation","🔷 आकृतियाँ व संकरण"],[
+["BeCl₂, CO₂, C₂H₂","BeCl₂, CO₂, C₂H₂","sp · linear · 180°"],["BF₃, SO₃, CO₃²⁻","BF₃, SO₃, CO₃²⁻","sp² · trigonal planar · 120°"],["CH₄, NH₄⁺","CH₄, NH₄⁺","sp³ · tetrahedral · 109.5°"],["NH₃","NH₃","sp³ · pyramidal · 107°"],["H₂O","H₂O","sp³ · bent · 104.5°"],["PCl₅","PCl₅","sp³d · trigonal bipyramidal"],["SF₄","SF₄","sp³d · see-saw"],["ClF₃","ClF₃","sp³d · T-shaped"],["XeF₂, I₃⁻","XeF₂, I₃⁻","sp³d · linear"],["SF₆","SF₆","sp³d² · octahedral"],["BrF₅","BrF₅","sp³d² · square pyramidal"],["XeF₄","XeF₄","sp³d² · square planar"],["IF₇","IF₇","sp³d³ · pentagonal bipyramidal"]]],
+[["⚗️ Named Processes &amp; Reactions","⚗️ प्रमुख प्रक्रम व अभिक्रियाएँ"],[
+["Haber process","हेबर प्रक्रम","N₂ + 3H₂ ⇌ 2NH₃ · Fe catalyst · ≈ 700 K, 200 atm · ΔH = −92 kJ"],["Contact process","संस्पर्श प्रक्रम","2SO₂ + O₂ ⇌ 2SO₃ · V₂O₅ catalyst"],["Solvay process","सॉल्वे प्रक्रम","Manufacture of Na₂CO₃ from NaCl, NH₃, CO₂"],["Wurtz reaction","वुर्ट्ज़ अभिक्रिया","2RX + 2Na → R–R + 2NaX"],["Friedel–Crafts","फ्रीडेल–क्राफ्ट्स","Arene + RX/RCOCl, anhydrous AlCl₃ → alkyl/acyl arene"],["Kolbe's electrolysis","कोल्बे विद्युत अपघटन","2RCOONa + 2H₂O → R–R + 2CO₂ + 2NaOH + H₂"],["Sabatier–Senderens","साबातिए–सेंडेरेंस","Alkene/alkyne + H₂ (Ni, 573 K) → alkane"],["Kharasch effect","खराश प्रभाव","Alkene + HBr + peroxide → anti-Markovnikov"],["Hall–Héroult","हॉल–हेरोल्ट","Electrolysis of Al₂O₃ in molten cryolite → Al"]]],
+[["🔥 Flame Test Colours","🔥 ज्वाला परीक्षण के रंग"],[
+["Li","Li","Crimson red"],["Na","Na","Golden yellow"],["K","K","Lilac / violet"],["Rb","Rb","Red-violet"],["Cs","Cs","Blue"],["Ca","Ca","Brick red"],["Sr","Sr","Crimson red"],["Ba","Ba","Apple green"],["Cu (borax bead)","Cu (बोरैक्स मनका)","Green / blue"]]],
+[["🚀 Must-know Orders","🚀 ज़रूर याद रखने योग्य क्रम"],[
+["Acid strength (oxoacids of Cl)","अम्ल सामर्थ्य (Cl के ऑक्सोअम्ल)","HClO₄ &gt; HClO₃ &gt; HClO₂ &gt; HClO"],["Acid strength (hydrogen halides)","अम्ल सामर्थ्य (हाइड्रोजन हैलाइड)","HI &gt; HBr &gt; HCl &gt; HF"],["Acidity of organic acids","कार्बनिक अम्लों की अम्लीयता","RCOOH &gt; C₆H₅OH &gt; H₂O &gt; ROH &gt; HC≡CH"],["Lewis acidity of boron halides","बोरॉन हैलाइड की लूईस अम्लता","BF₃ &lt; BCl₃ &lt; BBr₃"],["Thermal stability of hydrides (14)","वर्ग 14 हाइड्राइड स्थायित्व","CH₄ &gt; SiH₄ &gt; GeH₄ &gt; SnH₄"],["Bond energy","आबंध ऊर्जा","C≡C &gt; C=C &gt; C–C · H–F &gt; H–Cl &gt; H–Br &gt; H–I"],["Bond order","आबंध क्रम","N₂ (3) &gt; O₂⁺ (2.5) &gt; O₂ (2) &gt; O₂⁻ (1.5) &gt; O₂²⁻ (1)"],["Spin-only moment","केवल-चक्रण आघूर्ण","μ = √(n(n+2)) BM: n = 1…5 → 1.73, 2.83, 3.87, 4.90, 5.92"],["Gas speeds","गैस चालें","u_rms &gt; u_avg &gt; u_mp"],["Spontaneity","स्वतःप्रवृत्ति","ΔG &lt; 0 ⇔ K &gt; 1 ⇔ E°cell &gt; 0"]]]
+];
+var cur=0,favs={},st=false,q="",$=function(x){return document.querySelector(x)};
+try{favs=JSON.parse(localStorage.getItem("sstc11chemfav")||"{}")}catch(e){}
+function sv(){try{localStorage.setItem("sstc11chemfav",JSON.stringify(favs))}catch(e){}}
+function g(sec,it){return sec=="t"?{n:it[I],x:it[2+I],t:1}:{n:it[I],x:it[2],g:it[3]}}
+function card(ci,sec,ix,it){var o=g(sec,it),id=ci+"|"+sec+"|"+ix;
+ return '<div class="fc'+(o.t?' th':'')+'" style="--c:'+cols[ci%8]+';animation-delay:'+Math.min(ix,10)*.04+'s" data-id="'+id+'"><button class="star" aria-label="save" data-id="'+id+'">'+(favs[id]?"★":"☆")+'</button><div class="fn">'+o.n+(o.g?' <i class="tg tg'+o.g+'">'+TG[o.g]+'</i>':'')+'</div><div class="'+(o.t?'tx':'fx')+'">'+o.x+'</div></div>'}
+function grid(ci,sec,key){var c=D[ci];return '<h3 class="s">'+u(key)+'</h3><div class="grid">'+c[sec].map(function(it,i){return card(ci,sec,i,it)}).join("")+'</div>'}
+function sim(i){var h='<h3 class="s">';
+ if(i==1)return h+s("w1")+'</h3><div class="w">'+sl("an1",s("a1"),1,7,3)+sl("an2",s("a2"),1,7,2)+'<svg id="as" viewBox="0 0 400 200"></svg><div class="stt" id="ast"></div></div>';
+ if(i==5)return h+s("w5")+'</h3><div class="w">'+sl("ph",s("ph"),0,14,7,0.1)+'<svg viewBox="0 0 400 170"><path d="M130 10V140Q130 158 148 158H252Q270 158 270 140V10" fill="none" stroke="var(--ink)" stroke-width="4"/><rect id="liq" x="133" y="70" width="134" height="86" rx="6" style="transition:fill .4s"/><circle r="4" fill="#fff" opacity=".6"><animate attributeName="cy" values="150;80" dur="2s" repeatCount="indefinite"/><animate attributeName="cx" values="170;175" dur="2s" repeatCount="indefinite"/></circle><circle r="3" fill="#fff" opacity=".6"><animate attributeName="cy" values="150;85" dur="1.5s" repeatCount="indefinite"/><animate attributeName="cx" values="220;215" dur="1.5s" repeatCount="indefinite"/></circle></svg><div class="stt" id="pst"></div></div>';
+ if(i==12)return h+s("w12")+'</h3><div class="w">'+sl("gt",s("gt"),100,600,300,10)+sl("gv",s("gv"),10,50,25)+'<svg viewBox="0 0 400 160"><rect id="gb" x="4" y="4" height="150" fill="none" stroke="var(--c)" stroke-width="4" rx="6"/><g id="gp"></g></svg><div class="stt" id="gst"></div></div>';
+ return ""}
+function sl(id,l,mn,mx,v,sp){return '<div class="row"><span>'+l+'</span><span id="'+id+'v"></span></div><input type="range" id="'+id+'" min="'+mn+'" max="'+mx+'" value="'+v+'" step="'+(sp||1)+'">'}
+function chap(ci){var c=D[ci];
+ return '<section style="--c:'+cols[ci%8]+'"><h2>'+(ci+1)+'. '+c.n[I]+'</h2><p class="hint">'+u(st?"tipst":"tip")+'</p>'+grid(ci,"f","sf")+grid(ci,"t","stt")+grid(ci,"j","sj")+'<div class="trick">💡 '+c.k[I]+'</div>'+sim(ci)+'</section>'}
+function hub(){return '<section style="--c:#8a3ffc"><h2>'+u("hub")+'</h2><p class="hint">'+u("hubd")+'</p>'+HUB.map(function(b,bi){return '<h3 class="s" style="color:'+cols[(bi+4)%8]+'">'+b[0][I]+'</h3><div class="tb" style="--c:'+cols[(bi+4)%8]+'">'+b[1].map(function(r){return '<div class="tr"><span>'+r[I]+'</span><b>'+r[2]+'</b></div>'}).join("")+'</div>'}).join("")+'</section>'}
+function favv(){var ids=Object.keys(favs).sort(function(a,b){return parseInt(a)-parseInt(b)});
+ if(!ids.length)return '<section><h2>'+u("fav")+'</h2><p class="hint">'+u("ne")+'</p></section>';
+ return '<section><h2>'+u("fav")+'</h2><div class="grid">'+ids.map(function(id){var p=id.split("|");return card(+p[0],p[1],+p[2],D[+p[0]][p[1]][+p[2]])}).join("")+'</div></section>'}
+function search(){var z=q.toLowerCase(),h="",n=0;
+ D.forEach(function(c,ci){var b="";["f","t","j"].forEach(function(sec){c[sec].forEach(function(it,ix){var tx=(it[0]+" "+it[1]+" "+it[2]+(sec=="t"?" "+it[3]:"")).replace(/<[^>]+>/g,"").toLowerCase();if(tx.indexOf(z)>-1){b+=card(ci,sec,ix,it);n++}})});
+  if(b)h+='<h3 class="s" style="color:'+cols[ci%8]+'">'+(ci+1)+'. '+c.n[I]+'</h3><div class="grid" style="--c:'+cols[ci%8]+'">'+b+'</div>'});
+ return n?h:'<p class="hint">'+u("nr")+'</p>'}
+function nav(){var h=D.map(function(c,i){return '<button data-i="'+i+'" aria-pressed="'+(!q&&i==cur)+'" style="'+(!q&&i==cur?"--c:"+cols[i%8]:"")+'">'+(i+1)+'. '+c.n[I]+'</button>'}).join("");
+ h+='<button data-i="14" aria-pressed="'+(!q&&cur==14)+'" style="--c:#8a3ffc">'+u("hub")+'</button><button data-i="15" aria-pressed="'+(!q&&cur==15)+'" style="--c:#f2a900">'+u("fav")+'</button>';
+ $("#nav").innerHTML=h;[].forEach.call(document.querySelectorAll("nav button"),function(b){b.onclick=function(){cur=+b.dataset.i;q="";$("#sq").value="";draw();scrollTo({top:0,behavior:"smooth"})}})}
+function draw(){nav();cancelAnimationFrame(window.raf);var m=$("#main");
+ if(q)m.innerHTML=search();else if(cur<14){m.innerHTML=chap(cur);wire(cur)}else if(cur==14)m.innerHTML=hub();else m.innerHTML=favv();
+ document.body.classList.toggle("st",st);$("#stb").classList.toggle("on",st);$("#fc").textContent="⭐ "+Object.keys(favs).length}
+function toast(t){var e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(window.tt);window.tt=setTimeout(function(){e.classList.remove("on")},1300)}
+$("#main").addEventListener("click",function(e){var b=e.target.closest(".star"),c=e.target.closest(".fc");if(!c)return;
+ if(b){var id=b.dataset.id;if(favs[id])delete favs[id];else favs[id]=1;sv();if(cur==15&&!q)draw();else{b.textContent=favs[id]?"★":"☆";$("#fc").textContent="⭐ "+Object.keys(favs).length}return}
+ if(st&&!c.classList.contains("rv")){c.classList.add("rv");return}
+ var t=c.querySelector(".fn").textContent+": "+c.querySelector(".fx,.tx").textContent;try{navigator.clipboard.writeText(t)}catch(x){}toast(u("cp"))});
+$("#th").onclick=function(){var r=document.documentElement,d=r.dataset.theme?r.dataset.theme=="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=d?"light":"dark"};
+$("#stb").onclick=function(){st=!st;[].forEach.call(document.querySelectorAll(".fc.rv"),function(c){c.classList.remove("rv")});draw()};
+$("#sq").oninput=function(){q=this.value.trim();draw()};
+function wire(i){
+ if(i==1){var go=function(){var a=+$("#an1").value,b=+$("#an2").value,x=Math.abs(1/(b*b)-1/(a*a)),h="";for(var n=1;n<=7;n++)h+='<circle cx="200" cy="100" r="'+(13*n+7)+'" fill="none" stroke="'+(n==a?"#d9830b":n==b?"var(--c)":"var(--line)")+'" stroke-width="'+(n==a||n==b?3:1.5)+'" '+(n==a?'stroke-dasharray="5 4"':"")+'/>';
+  $("#an1v").textContent="n = "+a;$("#an2v").textContent="n = "+b;
+  $("#as").innerHTML=h+'<circle cx="200" cy="100" r="9" fill="#e0452f"/><text x="194" y="104" style="fill:#fff;font-size:11px">+</text><g><circle cx="'+(200+13*b+7)+'" cy="100" r="6" fill="var(--c)"/><animateTransform attributeName="transform" type="rotate" from="0 200 100" to="360 200 100" dur="'+(1.5+b*.6)+'s" repeatCount="indefinite"/></g>';
+  $("#ast").innerHTML=a==b?'<span>ΔE = 0</span>':'<span>'+(a>b?s("em"):s("ab"))+'</span><span>ΔE = '+(13.6*x).toFixed(2)+' eV</span><span>λ = '+(1e9/(1.097e7*x)).toFixed(1)+' nm</span><span>'+S.se[I][Math.min(a,b)-1]+'</span>'};["an1","an2"].forEach(function(z){$("#"+z).oninput=go});go()}
+ if(i==5){var pq=function(){var p=+$("#ph").value,hh=Math.pow(10,-p),o=Math.pow(10,p-14);$("#phv").textContent="pH = "+p.toFixed(1);$("#liq").style.fill="hsl("+(p/14*270)+",75%,52%)";$("#pst").innerHTML='<span>[H⁺] = '+hh.toExponential(1)+' M</span><span>[OH⁻] = '+o.toExponential(1)+' M</span><span>pOH = '+(14-p).toFixed(1)+'</span><span>'+(p<6.95?s("ac"):p>7.05?s("ba"):s("ne"))+'</span>'};$("#ph").oninput=pq;pq()}
+ if(i==12){var P=[],W=100,j;for(j=0;j<28;j++)P.push({x:Math.random()*60+10,y:Math.random()*130+10,a:Math.random()*6.28});
+  var up=function(){var T=+$("#gt").value,V=+$("#gv").value;W=20+V*5.6;$("#gtv").textContent=T+" K";$("#gvv").textContent=V+" L";$("#gb").setAttribute("width",W);$("#gst").innerHTML='<span>P = nRT/V = '+(0.0821*T/V).toFixed(2)+' atm</span><span>KE = 3kT/2 = '+(2.07e-2*T).toFixed(1)+'×10⁻²¹ J</span><span>n = 1 mol</span>'};["gt","gv"].forEach(function(z){$("#"+z).oninput=up});up();
+  (function f(){if(!$("#gp"))return;var sp2=Math.sqrt(+$("#gt").value)/6,hh="";P.forEach(function(p){p.x+=Math.cos(p.a)*sp2;p.y+=Math.sin(p.a)*sp2;if(p.x<8||p.x>W){p.a=Math.PI-p.a;p.x=Math.max(8,Math.min(W,p.x))}if(p.y<8||p.y>150){p.a=-p.a;p.y=Math.max(8,Math.min(150,p.y))}hh+='<circle cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="5" fill="var(--c)"/>'});$("#gp").innerHTML=hh;window.raf=requestAnimationFrame(f)})()}}
+document.documentElement.lang=L=="en"?"en":"hi";
+document.title=u("t").replace(/&amp;/g,"&").replace("⚛️ ","");
+$("#h1").innerHTML=u("t");$("#sub").innerHTML=u("s");$("#sq").placeholder=u("ph").replace("🔍 ","");$("#stb").textContent=u("st");$("#ft").innerHTML=u("ft");
+$("#lg").textContent=u("lg");$("#lg").href=L=="en"?"chemistry11-formulae-hi.html":"chemistry11-formulae-en.html";
+draw();
+</script></body></html>
