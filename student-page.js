@@ -6847,26 +6847,29 @@ const SSTC_FREE_CHAPTERS_BY_CLASS = {
         {
             subject: "Maths",
             chapters: [
-                { title: "SSTC Mathematics One Page Revision", en: "free/class-11/maths/chapter-01-en.html", hi: "free/class-11/maths/chapter-01-hi.html" }
+                { title: "SSTC Mathematics One Page Revision", en: "free/class-11/maths/chapter-01-en.html", hi: "free/class-11/maths/chapter-01-hi.html" },
+               { title: "SSTC Mathematics Formulas & Equations", en: "free/class-11/maths/chapter-02-en.html", hi: "free/class-11/maths/chapter-02-hi.html" }
             ]
         },
         {
             subject: "Physics",
             chapters: [
-                { title: "Chapter 1", en: "free/class-11/physics/chapter-01-en.html", hi: "free/class-11/physics/chapter-01-hi.html" }
+                { title: "SSTC Physics One Page Revision", en: "free/class-11/physics/chapter-01-en.html", hi: "free/class-11/physics/chapter-01-hi.html" },
+               { title: "SSTC Physics Formulas & Equations", en: "free/class-11/physics/chapter-02-en.html", hi: "free/class-11/physics/chapter-02-hi.html" }
             ]
         },
         {
             subject: "Chemistry",
             chapters: [
-                { title: "Chapter 1", en: "free/class-11/chemistry/chapter-01-en.html", hi: "free/class-11/chemistry/chapter-01-hi.html" }
+                { title: "SSTC Chemistry One Page Revision", en: "free/class-11/chemistry/chapter-01-en.html", hi: "free/class-11/chemistry/chapter-01-hi.html" },
+               { title: "SSTC Chemistry Formulas & Equations", en: "free/class-11/chemistry/chapter-02-en.html", hi: "free/class-11/chemistry/chapter-02-hi.html" }
             ]
         },
         {
             subject: "Biology",
             chapters: [
-                { title: "Chapter 1", en: "free/class-11/biology/chapter-01-en.html", hi: "free/class-11/biology/chapter-01-hi.html" },
-               { title: "Chapter 1", en: "free/class-11/biology/chapter-01-en.html", hi: "free/class-11/biology/chapter-01-hi.html" }
+                { title: "SSTC Biology One Page Revision", en: "free/class-11/biology/chapter-01-en.html", hi: "free/class-11/biology/chapter-01-hi.html" },
+               { title: "SSTC Biology Formulas & Equations", en: "free/class-11/biology/chapter-02-en.html", hi: "free/class-11/biology/chapter-02-hi.html" }
             ]
         },
         {
