@@ -202,83 +202,123 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 @media(max-width:600px){.offer-plan,.course-item{box-shadow:3px 3px 0 var(--ink)}}
 /* =====================================================
    RENT PLANS — poster style (Question Bank & Notes)
-   style1.css ke SABSE NEECHE paste karein
+   Poster jaisa look: navy gradient panel, gold borders,
+   white cards + coloured class headers.
+   Prices: Nov 2026 price card (12-month bundles revised,
+   purana price strike-through me dikhta hai).
 ===================================================== */
-.rent-plans{padding:40px 14px 20px;text-align:center}
+.rent-plans{
+  --rp-pad:20px;
+  --rp-gold:#ffc61a; --rp-gold-l:#ffd94a; --rp-red:#d81b1b;
+  position:relative;
+  margin:40px auto;
+  padding:26px var(--rp-pad) 0;
+  border-radius:26px;
+  overflow:hidden;
+  text-align:center;
+  color:#fff;
+  background:
+    radial-gradient(ellipse at 18% 4%,rgba(255,255,255,.16),rgba(255,255,255,0) 42%),
+    radial-gradient(ellipse at 88% 14%,rgba(255,255,255,.10),rgba(255,255,255,0) 38%),
+    linear-gradient(165deg,#0b3f96 0%,#0a2b6d 44%,#061a45 100%);
+  box-shadow:0 24px 50px -22px rgba(6,26,69,.65);
+}
 
 /* ---------- Title ---------- */
-.rp-head{margin-bottom:22px}
+.rp-head{margin:0 0 6px}
+.rp-tagline{display:inline-block;margin:0 auto 10px;font-size:clamp(13px,2.6vw,19px);
+  font-weight:800;font-style:italic;color:#fff;letter-spacing:.3px}
+.rp-tagline b{color:var(--rp-gold)}
 .rp-title{display:flex;flex-direction:column;align-items:center;margin:0}
-.rp-title-top{display:inline-block;padding:8px 34px;border-radius:18px;
-  background:linear-gradient(180deg,#1c3f94,#0b1e3c);border:3px solid #f5c242;
-  color:#ffe14d;font-size:clamp(22px,5.4vw,44px);font-weight:800;line-height:1.2;
-  text-shadow:2px 2px 0 rgba(0,0,0,.35);box-shadow:0 8px 20px rgba(11,30,60,.3)}
-.rp-title-ribbon{display:inline-block;margin-top:-4px;padding:4px 48px;
-  background:linear-gradient(180deg,#e53935,#b71c1c);color:#fff;
-  font-size:clamp(24px,6vw,48px);font-weight:800;line-height:1.2;text-shadow:2px 2px 0 rgba(0,0,0,.3);
-  clip-path:polygon(0 0,100% 0,calc(100% - 18px) 50%,100% 100%,0 100%,18px 50%)}
-.rp-tagline{display:inline-block;margin:16px auto 0;padding:8px 22px;border-radius:12px;
-  background:#0b1e3c;color:#fff;font-weight:800;font-style:italic;
-  font-size:clamp(14px,3.4vw,20px);transform:rotate(-1.5deg)}
-.rp-tagline b{color:#ffd54f}
+.rp-title-top{display:inline-block;padding:10px 34px;border-radius:14px;
+  background:linear-gradient(180deg,#12489f,#08285f);
+  border-top:4px solid var(--rp-gold);border-bottom:4px solid var(--rp-gold);
+  color:#fff;font-size:clamp(21px,4.4vw,42px);font-weight:800;line-height:1.2;
+  box-shadow:0 10px 24px -10px rgba(0,0,0,.6)}
+.rp-title-top b{color:var(--rp-gold)}
+.rp-title-ribbon{display:inline-block;margin-top:8px;padding:6px 42px;border-radius:12px;
+  background:linear-gradient(180deg,#e8332b,#b01212);border:3px solid var(--rp-gold);
+  color:#fff;font-size:clamp(19px,4vw,36px);font-weight:800;letter-spacing:2px;line-height:1.25;
+  text-transform:uppercase}
 
-/* ---------- 3 cards ---------- */
-.rp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px;text-align:left}
-.rp-card{--c1:#1e63d6;--c2:#0d3b9e;--tint:#dbe9ff;--tint2:#f4f8ff;--hi:#ffe14d;
-  padding:0 0 12px;overflow:hidden;border-radius:24px;border:3px solid var(--c1);
-  background:linear-gradient(180deg,var(--c1),var(--c2));
-  box-shadow:0 18px 36px -14px rgba(11,30,60,.45);transition:transform .25s}
-.rp-card:hover{transform:translateY(-6px)}
-.rp-green{--c1:#3aa63a;--c2:#1b6e1b;--tint:#d9f2cf;--tint2:#f5fcf0}
-.rp-purple{--c1:#9b3fe0;--c2:#5a1a9e;--tint:#ead9ff;--tint2:#faf6ff}
-.rp-class{margin:0;padding:10px 8px 8px;text-align:center;color:#fff;
-  font-size:clamp(26px,4vw,34px);line-height:1.2;text-shadow:0 2px 0 rgba(0,0,0,.25)}
-.rp-class span{color:var(--hi)}
+/* ---------- 3 class cards ---------- */
+.rp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;
+  margin-top:22px;text-align:left}
+.rp-card{--c1:#0d47a1;--c2:#1565c0;display:flex;flex-direction:column;
+  background:#fff;border:3px solid #fff;border-radius:16px;overflow:hidden;
+  box-shadow:0 16px 30px -14px rgba(0,0,0,.55);transition:transform .25s}
+.rp-card:hover{transform:translateY(-5px)}
+.rp-green{--c1:#0b7a35;--c2:#12a349}
+.rp-purple{--c1:#6a1b9a;--c2:#8e24aa}
+.rp-class{margin:0;padding:11px 8px;text-align:center;color:#fff;
+  background:linear-gradient(180deg,var(--c2),var(--c1));
+  font-size:clamp(19px,3vw,28px);line-height:1.2;font-weight:800;letter-spacing:.5px}
 
 /* ---------- Table ---------- */
-.rp-table{width:calc(100% - 20px);margin:0 10px;border-collapse:separate;border-spacing:0;
-  background:var(--tint2);border-radius:14px;overflow:hidden;font-size:clamp(12px,3.3vw,15px)}
-.rp-table thead th{padding:10px 4px;background:var(--tint);color:#10224a;font-weight:800;
-  text-align:center;line-height:1.15;border-bottom:1px solid rgba(11,30,60,.15)}
-.rp-table tbody th,.rp-table tbody td{padding:9px 4px;text-align:center;vertical-align:middle;
-  line-height:1.2;border-bottom:1px solid rgba(11,30,60,.12)}
-.rp-table tbody tr:last-child th,.rp-table tbody tr:last-child td{border-bottom:0}
-.rp-table tbody th{width:49%;color:#10224a;font-weight:700;font-size:.93em}
-.rp-table th+th,.rp-table td{border-left:1px solid rgba(11,30,60,.12)}
-.rp-table td{width:25.5%;color:#d32f2f;font-family:'Baloo 2','Nunito',sans-serif;font-size:1.35em;font-weight:800}
-.rp-table .rp-bundle-row>*{background:rgba(255,213,79,.2)}
-.rp-table tbody tr:hover>*{background:rgba(255,235,59,.35)}
+.rp-table{width:100%;border-collapse:collapse;background:#fff;
+  font-size:clamp(11px,2.4vw,14px)}
+.rp-table thead th{padding:9px 3px;background:#eef3fb;color:#0a2b6d;font-weight:800;
+  text-align:center;line-height:1.15;border-bottom:2px solid #0a2b6d}
+.rp-table tbody th,.rp-table tbody td{padding:8px 6px;vertical-align:middle;line-height:1.2;
+  border-bottom:1px solid #d9e2f0}
+.rp-table tbody tr:nth-child(even)>*{background:#f6f9ff}
+.rp-table tbody tr:last-child>*{border-bottom:0}
+.rp-table tbody th{width:46%;text-align:left;color:#12233f;font-weight:700;font-size:.95em}
+.rp-table tbody td{width:27%;text-align:center;color:var(--rp-red);
+  font-family:'Baloo 2','Nunito',sans-serif;font-size:1.5em;font-weight:800}
+.rp-table .rp-bundle-row>th{color:#0a2b6d}
+.rp-table tbody tr:hover>*{background:#fff8e1}
+/* purana price (strike-through) */
+.rp-old{display:block;font-family:'Nunito',sans-serif;font-size:.46em;font-weight:700;
+  color:#8b96a8;text-decoration:line-through;line-height:1.15;margin-bottom:1px}
 
 /* ---------- Feature strip ---------- */
-.rp-features{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:22px 0 16px;
-  padding:12px;background:#fff;border:2px solid #0b1e3c;border-radius:18px;
-  box-shadow:4px 4px 0 #0b1e3c;text-align:left}
-.rp-feat{display:flex;align-items:center;gap:8px;color:#0b1e3c;font-weight:800;font-size:13px;line-height:1.25}
-.rp-ico{font-size:26px;flex-shrink:0}
+.rp-features{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;
+  margin-top:20px;padding:14px 8px;border:3px solid var(--rp-gold);border-radius:14px;
+  background:rgba(255,255,255,.10);text-align:center}
+.rp-feat{display:flex;flex-direction:column;align-items:center;gap:6px;color:#fff;
+  font-weight:800;font-size:clamp(10px,2.2vw,14px);line-height:1.25}
+.rp-ico{font-size:clamp(18px,3.6vw,26px);line-height:1}
 
-/* ---------- CTA bar ---------- */
-.rp-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 24px;
-  padding:16px;border-radius:20px;background:linear-gradient(135deg,#0b1e3c,#1c2f66);color:#fff}
-.rp-limited{padding:8px 16px;border-radius:12px;background:#ffe14d;color:#8e1b1b;
-  font-weight:800;line-height:1.25;text-align:center;transform:rotate(-2deg)}
-.rp-limited strong{display:block;color:#c62828;font-family:'Baloo 2','Nunito',sans-serif;font-size:clamp(18px,4.6vw,26px)}
-.rp-btn{display:inline-block;padding:12px 28px;border:2px solid #fff;border-radius:999px;
-  background:linear-gradient(180deg,#f44336,#c62828);color:#fff;text-decoration:none;
-  font-family:'Baloo 2','Nunito',sans-serif;font-weight:800;font-size:clamp(17px,4.4vw,24px);
-  box-shadow:0 6px 0 #8e1b1b,0 12px 22px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s}
+/* ---------- CTA ---------- */
+.rp-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 26px;
+  margin-top:20px;padding:0;background:none}
+.rp-limited{padding:9px 20px;border-radius:12px;border:3px solid #fff;
+  background:linear-gradient(180deg,#ff3b2f,#c11212);color:#fff;line-height:1.2}
+.rp-limited strong{display:block;color:#fff;font-family:'Baloo 2','Nunito',sans-serif;
+  font-size:clamp(19px,4vw,34px);font-style:italic}
+.rp-limited span{display:inline-block;margin-top:7px;padding:5px 12px;border-radius:8px;
+  background:var(--rp-gold-l);color:#0a2b6d;font-weight:800;font-size:clamp(11px,2.4vw,17px)}
+.rp-btn{display:inline-block;padding:13px 34px;border:3px solid var(--rp-gold);border-radius:999px;
+  background:linear-gradient(180deg,#e8332b,#a80f0f);color:#fff;text-decoration:none;
+  font-family:'Baloo 2','Nunito',sans-serif;font-weight:800;font-size:clamp(16px,3.4vw,26px);
+  box-shadow:0 6px 0 #7d0c0c,0 12px 22px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s}
 .rp-btn:hover{color:#fff;transform:translateY(-2px)}
-.rp-btn:active{transform:translateY(4px);box-shadow:0 2px 0 #8e1b1b}
-.rp-mission{margin:0;color:#ffe14d;font-weight:800;font-style:italic}
-.rent-plans .offer-registration{max-width:760px;margin:18px auto 0}
+.rp-btn:active{transform:translateY(3px);box-shadow:0 2px 0 #7d0c0c}
+.rp-mission{margin:0;color:var(--rp-gold);font-weight:800;font-style:italic;
+  font-size:clamp(15px,3vw,26px);line-height:1.2}
+
+/* ---------- Registration block (dark panel par saaf dikhe) ---------- */
+.rent-plans .offer-registration{max-width:620px;margin:20px auto 0;padding:16px 14px;
+  background:rgba(255,255,255,.95);border:3px solid var(--rp-gold);border-radius:16px}
+
+/* ---------- Gold footer bar ---------- */
+.rp-foot{margin:22px calc(var(--rp-pad) * -1) 0;padding:14px 12px;
+  background:linear-gradient(180deg,#ffd94a,#f0a800);border-top:5px solid #fff}
+.rp-foot .f1{color:#0a2b6d;font-weight:800;font-size:clamp(15px,3.4vw,28px);letter-spacing:.4px}
+.rp-foot .f2{color:#8a2b06;font-weight:700;font-size:clamp(10px,2.2vw,16px);margin-top:3px}
 
 /* ---------- Responsive ---------- */
 @media(max-width:992px){
-  .rp-grid{grid-template-columns:1fr;max-width:540px;margin-left:auto;margin-right:auto}
-}
-@media(max-width:768px){
+  .rp-grid{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto}
   .rp-features{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+  .rent-plans{--rp-pad:12px;margin:26px auto;padding-top:20px;border-radius:20px}
+  .rp-title-top{padding:8px 18px}
+  .rp-title-ribbon{padding:5px 22px;letter-spacing:1px}
+  .rp-cta{flex-direction:column;gap:12px}
 }
 @media(max-width:400px){
   .rp-features{grid-template-columns:1fr}
-  .rp-title-ribbon{padding:4px 34px}
 }
