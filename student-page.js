@@ -6875,89 +6875,103 @@ const SSTC_FREE_CHAPTERS_BY_CLASS = {
         {
             subject: "English",
             chapters: [
-                { title: "Chapter 1", en: "free/class-11/english/chapter-01-en.html", hi: "free/class-11/english/chapter-01-hi.html" },
+                { title: "SSTC English One Page Revision", en: "free/class-11/english/chapter-01-en.html", hi: "free/class-11/english/chapter-01-hi.html" },
                { title: "SSTC English Grammar", en: "free/class-11/english/chapter-02-en.html", hi: "free/class-11/english/chapter-02-hi.html" }               
             ]
         },
         {
             subject: "Hindi",
             chapters: [
-                { title: "Chapter 1", en: "free/class-11/hindi/chapter-01-en.html", hi: "free/class-11/hindi/chapter-01-hi.html" }
+                { title: "SSTC Hindi One Page Revision", en: "free/class-11/hindi/chapter-01-en.html", hi: "free/class-11/hindi/chapter-01-hi.html" },
+               { title: "SSTC Hindi Vyakaran", en: "free/class-11/hindi/chapter-02-en.html", hi: "free/class-11/hindi/chapter-02-hi.html" }
             ]
         },
         {
             subject: "Business Studies",
             chapters: [
-                { title: "Chapter 1", en: "free/class-11/business-studies/chapter-01-en.html", hi: "free/class-11/business-studies/chapter-01-hi.html" }
+                { title: "SSTC Business Studies One Page Revision", en: "free/class-11/business-studies/chapter-01-en.html", hi: "free/class-11/business-studies/chapter-01-hi.html" },
+               { title: "SSTC Business Studies Formulas & Equations", en: "free/class-11/business-studies/chapter-02-en.html", hi: "free/class-11/business-studies/chapter-02-hi.html" }
             ]
         },
         {
             subject: "Accountancy",
             chapters: [
-                { title: "Chapter 1", en: "free/class-11/accountancy/chapter-01-en.html", hi: "free/class-11/accountancy/chapter-01-hi.html" }
+                { title: "SSTC Accountancy One Page Revision", en: "free/class-11/accountancy/chapter-01-en.html", hi: "free/class-11/accountancy/chapter-01-hi.html" },
+               { title: "SSTC Accountancy Formulas & Equations", en: "free/class-11/accountancy/chapter-02-en.html", hi: "free/class-11/accountancy/chapter-02-hi.html" }
             ]
         },
         {
             subject: "Economics",
             chapters: [
-                { title: "Chapter 1", en: "free/class-11/economics/chapter-01-en.html", hi: "free/class-11/economics/chapter-01-hi.html" }
+                { title: "SSTC Economics One Page Revision", en: "free/class-11/economics/chapter-01-en.html", hi: "free/class-11/economics/chapter-01-hi.html" },
+               { title: "SSTC Economics Formulas & Equations", en: "free/class-11/economics/chapter-02-en.html", hi: "free/class-11/economics/chapter-02-hi.html" }
             ]
         }
     ],
 
     "12": [
+        
         {
             subject: "Maths",
             chapters: [
-                { title: "Chapter 1", en: "free/class-12/maths/chapter-01-en.html", hi: "free/class-12/maths/chapter-01-hi.html" }
+                { title: "SSTC Mathematics One Page Revision", en: "free/class-12/maths/chapter-01-en.html", hi: "free/class-12/maths/chapter-01-hi.html" },
+               { title: "SSTC Mathematics Formulas & Equations", en: "free/class-12/maths/chapter-02-en.html", hi: "free/class-12/maths/chapter-02-hi.html" }
             ]
         },
         {
             subject: "Physics",
             chapters: [
-                { title: "Chapter 1", en: "free/class-12/physics/chapter-01-en.html", hi: "free/class-12/physics/chapter-01-hi.html" }
+                { title: "SSTC Physics One Page Revision", en: "free/class-12/physics/chapter-01-en.html", hi: "free/class-12/physics/chapter-01-hi.html" },
+               { title: "SSTC Physics Formulas & Equations", en: "free/class-12/physics/chapter-02-en.html", hi: "free/class-12/physics/chapter-02-hi.html" }
             ]
         },
         {
             subject: "Chemistry",
             chapters: [
-                { title: "Chapter 1", en: "free/class-12/chemistry/chapter-01-en.html", hi: "free/class-12/chemistry/chapter-01-hi.html" }
+                { title: "SSTC Chemistry One Page Revision", en: "free/class-12/chemistry/chapter-01-en.html", hi: "free/class-12/chemistry/chapter-01-hi.html" },
+               { title: "SSTC Chemistry Formulas & Equations", en: "free/class-12/chemistry/chapter-02-en.html", hi: "free/class-12/chemistry/chapter-02-hi.html" }
             ]
         },
         {
             subject: "Biology",
             chapters: [
-                { title: "Chapter 1", en: "free/class-12/biology/chapter-01-en.html", hi: "free/class-12/biology/chapter-01-hi.html" }
+                { title: "SSTC Biology One Page Revision", en: "free/class-12/biology/chapter-01-en.html", hi: "free/class-12/biology/chapter-01-hi.html" },
+               { title: "SSTC Biology Formulas & Equations", en: "free/class-12/biology/chapter-02-en.html", hi: "free/class-12/biology/chapter-02-hi.html" }
             ]
         },
         {
             subject: "English",
             chapters: [
-                { title: "Chapter 1", en: "free/class-12/english/chapter-01-en.html", hi: "free/class-12/english/chapter-01-hi.html" }
+                { title: "SSTC English One Page Revision", en: "free/class-12/english/chapter-01-en.html", hi: "free/class-12/english/chapter-01-hi.html" },
+               { title: "SSTC English Grammar", en: "free/class-12/english/chapter-02-en.html", hi: "free/class-12/english/chapter-02-hi.html" }               
             ]
         },
         {
             subject: "Hindi",
             chapters: [
-                { title: "Chapter 1", en: "free/class-12/hindi/chapter-01-en.html", hi: "free/class-12/hindi/chapter-01-hi.html" }
+                { title: "SSTC Hindi One Page Revision", en: "free/class-12/hindi/chapter-01-en.html", hi: "free/class-12/hindi/chapter-01-hi.html" },
+               { title: "SSTC Hindi Vyakaran", en: "free/class-12/hindi/chapter-02-en.html", hi: "free/class-12/hindi/chapter-02-hi.html" }
             ]
         },
         {
             subject: "Business Studies",
             chapters: [
-                { title: "Chapter 1", en: "free/class-12/business-studies/chapter-01-en.html", hi: "free/class-12/business-studies/chapter-01-hi.html" }
+                { title: "SSTC Business Studies One Page Revision", en: "free/class-12/business-studies/chapter-01-en.html", hi: "free/class-12/business-studies/chapter-01-hi.html" },
+               { title: "SSTC Business Studies Formulas & Equations", en: "free/class-12/business-studies/chapter-02-en.html", hi: "free/class-12/business-studies/chapter-02-hi.html" }
             ]
         },
         {
             subject: "Accountancy",
             chapters: [
-                { title: "Chapter 1", en: "free/class-12/accountancy/chapter-01-en.html", hi: "free/class-12/accountancy/chapter-01-hi.html" }
+                { title: "SSTC Accountancy One Page Revision", en: "free/class-12/accountancy/chapter-01-en.html", hi: "free/class-12/accountancy/chapter-01-hi.html" },
+               { title: "SSTC Accountancy Formulas & Equations", en: "free/class-12/accountancy/chapter-02-en.html", hi: "free/class-12/accountancy/chapter-02-hi.html" }
             ]
         },
         {
             subject: "Economics",
             chapters: [
-                { title: "Chapter 1", en: "free/class-12/economics/chapter-01-en.html", hi: "free/class-12/economics/chapter-01-hi.html" }
+                { title: "SSTC Economics One Page Revision", en: "free/class-12/economics/chapter-01-en.html", hi: "free/class-12/economics/chapter-01-hi.html" },
+               { title: "SSTC Economics Formulas & Equations", en: "free/class-12/economics/chapter-02-en.html", hi: "free/class-12/economics/chapter-02-hi.html" }
             ]
         }
     ]
