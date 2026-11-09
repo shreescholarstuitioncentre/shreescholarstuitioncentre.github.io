@@ -127,7 +127,7 @@ const SSTC_RENT_PLANS = [
     {
         months: 12,
         label: "12 Months (1 Year) · Any 6 Subjects",
-        price: 399,
+        price: 349,
         actualPrice: 594,
         subjects: 6,
         bundle: true
@@ -172,7 +172,7 @@ const SSTC_RENT_NOTES_PLANS = [
     {
         months: 12,
         label: "12 Months (1 Year) · Any 6 Subject Notes",
-        price: 599,
+        price: 529,
         actualPrice: 1200,
         subjects: 6,
         bundle: true
@@ -184,6 +184,14 @@ const SSTC_RENT_NOTES_PLANS = [
 let sstcRentPlans = SSTC_RENT_PLANS.filter(function (plan) {
     return !plan.bundle;
 });
+
+/*
+ * Server (code.gs) se aayi hui plans — class ke hisaab se price badalta hai
+ * (6-8: 8 subjects bundle, 11-12: 5 subjects bundle). Jab tak server se
+ * plans na aayein, neeche ke local tables fallback ki tarah kaam karte hain.
+ */
+let sstcServerRentPlans = null;
+let sstcServerNotesPlans = null;
 
 
 
@@ -3271,7 +3279,8 @@ async function callRentalApi(action, params) {
 }
 
 function getSstcSingleRentPlan(months) {
-    return SSTC_RENT_PLANS.find(function (plan) {
+    const list = sstcServerRentPlans || SSTC_RENT_PLANS;
+    return list.find(function (plan) {
         return Number(plan.months) === Number(months) &&
                !plan.bundle;
     }) || null;
@@ -3279,16 +3288,16 @@ function getSstcSingleRentPlan(months) {
 
 
 function getSstcBundleRentPlan(months) {
-    return SSTC_RENT_PLANS.find(function (plan) {
-        return Number(plan.months) === Number(months) &&
-               plan.bundle &&
-               Number(plan.subjects) === 6;
+    const list = sstcServerRentPlans || SSTC_RENT_PLANS;
+    return list.find(function (plan) {
+        return Number(plan.months) === Number(months) && plan.bundle;
     }) || null;
 }
 
 
 function getSstcSingleNotesPlan(months) {
-    return SSTC_RENT_NOTES_PLANS.find(function (plan) {
+    const list = sstcServerNotesPlans || SSTC_RENT_NOTES_PLANS;
+    return list.find(function (plan) {
         return Number(plan.months) === Number(months) &&
                !plan.bundle;
     }) || null;
@@ -3296,10 +3305,9 @@ function getSstcSingleNotesPlan(months) {
 
 
 function getSstcBundleNotesPlan(months) {
-    return SSTC_RENT_NOTES_PLANS.find(function (plan) {
-        return Number(plan.months) === Number(months) &&
-               plan.bundle &&
-               Number(plan.subjects) === 6;
+    const list = sstcServerNotesPlans || SSTC_RENT_NOTES_PLANS;
+    return list.find(function (plan) {
+        return Number(plan.months) === Number(months) && plan.bundle;
     }) || null;
 }
 
@@ -3312,6 +3320,18 @@ function applyRentalsResult(result) {
     });
 
     if (Array.isArray(result.plans) && result.plans.length) {
+
+        /* Notes ke plans hain ya Question Bank ke — label se pata chalta hai */
+        const looksLikeNotes = result.plans.some(function (p) {
+            return /notes/i.test(String(p.label || ""));
+        });
+
+        if (looksLikeNotes) {
+            sstcServerNotesPlans = result.plans;
+        }
+        else {
+            sstcServerRentPlans = result.plans;
+        }
 
         sstcRentPlans = localSinglePlans.map(function (localPlan) {
 
