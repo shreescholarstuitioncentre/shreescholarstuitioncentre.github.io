@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chapter 13: States of Matter – Notes</title><link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet"><style>
+:root{--paper:#fbfaf3;--ink:#1d2b5a;--red:#c0392b;--grn:#1e7a46;--hl:#fff3a3;--line:#cfe0ef}
+@media(prefers-color-scheme:dark){:root{--paper:#1c2030;--ink:#dfe6ff;--red:#ff8a7a;--grn:#7fdc9f;--hl:#4a4520;--line:#2c3550}}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:'Kalam','Caveat','Segoe Print',cursive;font-size:19px;line-height:32px;
+background-image:repeating-linear-gradient(transparent 0 31px,var(--line) 31px 32px);padding:0 14px 60px}
+main{max-width:860px;margin:auto;border-left:3px solid var(--red);padding-left:18px}
+h1{font-size:34px;line-height:44px;margin:24px 0 4px;color:var(--red)}
+h2{font-size:26px;margin:36px 0 6px;border-bottom:3px wavy var(--grn);display:inline-block;color:var(--grn)}
+h3{font-size:21px;margin:14px 0 0;text-decoration:underline}
+.hl{background:var(--hl);padding:0 4px}.box{border:2px dashed var(--red);padding:6px 14px;margin:12px 0;background:color-mix(in srgb,var(--paper) 88%,var(--red))}
+table{border-collapse:collapse;margin:10px 0;display:block;overflow-x:auto}td,th{border:2px solid var(--ink);padding:2px 10px;line-height:26px}
+th{background:var(--hl)}
+details{margin:6px 0;border-left:4px solid var(--grn);padding-left:10px}summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:3px solid var(--red)}
+details[open] summary{color:var(--red)}
+svg{max-width:100%;height:auto;display:block;margin:10px auto;background:color-mix(in srgb,var(--paper) 92%,#fff);border:2px solid var(--ink)}
+svg text{fill:var(--ink);font-family:inherit}
+.flow{stroke-dasharray:8 6;animation:mv 1s linear infinite}@keyframes mv{to{stroke-dashoffset:-14}}
+.bub{animation:up 2.4s ease-in infinite}@keyframes up{0%{transform:translateY(0);opacity:1}100%{transform:translateY(-60px);opacity:0}}
+@media(prefers-reduced-motion:reduce){.flow,.bub{animation:none}}
+</style></head><body><main><h1>Chapter 13 : States of Matter</h1><p>Class 11 Chemistry (UP Board) • handwritten-style notes</p>
+<div class="box"><b>Core idea:</b> state of matter = balance between <span class="hl">intermolecular forces</span> (pull molecules together) and <span class="hl">thermal energy</span> (pushes them apart).</div>
+<h2>1. Intermolecular forces</h2>
+<table><tr><th>Force</th><th>Between</th><th>Example</th></tr>
+<tr><td>Dispersion / London</td><td>All molecules; instantaneous dipole ↔ induced dipole; ∝ 1/r⁶, stronger with size</td><td>Ar, Cl₂, noble gases</td></tr>
+<tr><td>Dipole–dipole</td><td>Permanent polar molecules; ∝ 1/r³ (fixed), 1/r⁶ (rotating)</td><td>HCl, SO₂</td></tr>
+<tr><td>Dipole–induced dipole</td><td>Polar + non-polar; ∝ 1/r⁶</td><td>HCl + Ar, O₂ in water</td></tr>
+<tr><td>Hydrogen bond</td><td>H (bonded to N/O/F) ↔ N/O/F; strongest (≈ 10–40 kJ/mol)</td><td>H₂O, HF, NH₃</td></tr></table>
+<p>All these together are called <b>van der Waals forces</b>; they are fairly weak (0.1–10 kJ/mol). Due to H-bonding, H₂O boils far higher than H₂S.</p>
+<h2>2. Gas laws</h2>
+<table><tr><th>Law</th><th>Statement & formula</th></tr>
+<tr><td>Boyle (T, n const.)</td><td>P ∝ 1/V ⇒ P₁V₁ = P₂V₂ (isotherm = hyperbola)</td></tr>
+<tr><td>Charles (P, n const.)</td><td>V ∝ T (in K) ⇒ V₁/T₁ = V₂/T₂; volume changes by 1/273.15 of its 0°C value per °C; at –273.15°C V → 0 (absolute zero)</td></tr>
+<tr><td>Gay-Lussac (V, n const.)</td><td>P ∝ T ⇒ P₁/T₁ = P₂/T₂</td></tr>
+<tr><td>Avogadro (P, T const.)</td><td>V ∝ n; equal volumes of gases contain equal molecules; at STP 1 mol = 22.4 L; N_A = 6.022×10²³</td></tr></table>
+<h2>3. Ideal gas equation</h2>
+<p><b>Derivation:</b> V ∝ 1/P (Boyle), V ∝ T (Charles), V ∝ n (Avogadro) ⇒ V ∝ nT/P ⇒ <span class="hl">PV = nRT</span>. <b>Values of R:</b> 0.0821 L atm K⁻¹ mol⁻¹ = 8.314 J K⁻¹ mol⁻¹ = 8.314 kPa dm³ K⁻¹ mol⁻¹ = 1.987 cal K⁻¹ mol⁻¹. <b>Density:</b> n = w/M ⇒ PV = (w/M)RT ⇒ <span class="hl">d = PM/RT</span> ⇒ M = dRT/P.</p>
+<h3>Dalton's law of partial pressures</h3><p>For non-reacting gases P_total = p₁ + p₂ + p₃…; p_i = x_i·P_total (x = mole fraction). Moist gas: P_dry = P_total – aqueous tension.</p>
+<h2>4. Kinetic theory of gases</h2>
+<p><b>Postulates:</b> (1) Gas has very many molecules in continuous random motion. (2) Molecular volume is negligible compared to container volume. (3) No attraction/repulsion between molecules. (4) Collisions are perfectly elastic. (5) Average kinetic energy ∝ absolute temperature; KE = (3/2)RT per mole. (6) Pressure arises from collisions with the wall.</p>
+<p>Kinetic equation: PV = ⅓ mN u²_rms. <b>Three speeds:</b> u_mp = √(2RT/M); u_av = √(8RT/πM); u_rms = √(3RT/M); u_mp : u_av : u_rms = 1 : 1.128 : 1.224.</p>
+<h3>Maxwell–Boltzmann distribution</h3>
+<svg viewBox="0 0 700 360" role="img" aria-label="Maxwell–Boltzmann distribution">
+<style>.dr{stroke-dasharray:900;stroke-dashoffset:900;animation:dr 4s ease-out infinite}@keyframes dr{0%{stroke-dashoffset:900}60%,100%{stroke-dashoffset:0}}@media(prefers-reduced-motion:reduce){.dr{animation:none;stroke-dashoffset:0}}</style>
+<text x="350" y="22" text-anchor="middle" font-size="19" font-weight="700">Maxwell–Boltzmann distribution</text>
+<line x1="60" y1="300" x2="660" y2="300" stroke="currentColor" stroke-width="2.5"/><line x1="60" y1="300" x2="60" y2="40" stroke="currentColor" stroke-width="2.5"/>
+<text x="360" y="335" text-anchor="middle" font-size="15">Molecular speed (u)</text><text x="22" y="170" font-size="15" transform="rotate(-90 22 170)" text-anchor="middle">Fraction of molecules</text>
+<path class="dr" d="M60 300 C110 300,150 70,200 70 C260 70,290 270,640 298" fill="none" stroke="#c0392b" stroke-width="3.5"/>
+<path class="dr" style="animation-delay:.6s" d="M60 300 C140 300,230 140,310 140 C400 140,470 270,640 296" fill="none" stroke="#1e7a46" stroke-width="3.5"/>
+<line x1="200" y1="70" x2="200" y2="300" stroke="currentColor" stroke-dasharray="4 4"/><line x1="228" y1="78" x2="228" y2="300" stroke="currentColor" stroke-dasharray="4 4"/><line x1="250" y1="95" x2="250" y2="300" stroke="currentColor" stroke-dasharray="4 4"/>
+<text x="200" y="318" text-anchor="middle" font-size="13">u<tspan font-size="10" dy="3">mp</tspan></text><text x="230" y="318" text-anchor="middle" font-size="13">u<tspan font-size="10" dy="3">av</tspan></text><text x="258" y="318" text-anchor="middle" font-size="13">u<tspan font-size="10" dy="3">rms</tspan></text>
+<text x="110" y="60" font-size="16" style="fill:#c0392b">T₁ (low temp)</text><text x="400" y="130" font-size="16" style="fill:#1e7a46">T₂ (high temp) &gt; T₁</text>
+<text x="420" y="60" font-size="14">Peak shifts right and flattens on heating</text></svg>
+<p>On heating, the peak (u_mp) moves right and its height falls (flatter curve), but the area under the curve (total number of molecules) stays the same. For heavier molecules the curve lies to the left and is narrower.</p>
+<h2>5. Real gases</h2>
+<p>Real gases deviate from ideality at <b>high pressure and low temperature</b>, because molecular volume and intermolecular attraction can no longer be ignored. <b>Compressibility factor</b> Z = PV/nRT. Ideal gas: Z = 1; Z &lt; 1 (attraction dominates, e.g. CO₂, NH₃); Z &gt; 1 (repulsion/volume dominates, e.g. H₂, He at high P).</p>
+<p><b>van der Waals equation (n mol):</b> <span class="hl">(P + an²/V²)(V – nb) = nRT</span>. a – measure of attraction (atm L² mol⁻²); b – effective molecular volume (L mol⁻¹, ≈ 4× real volume). Larger a ⇒ easier liquefaction.</p>
+<p><b>Boyle temperature:</b> temperature at which a gas obeys Boyle's law over a wide pressure range; T_B = a/Rb.</p>
+<h2>6. Liquefaction of gases</h2>
+<p><b>Critical temperature T_c:</b> above this a gas cannot be liquefied by any pressure. <b>P_c:</b> minimum pressure to liquefy at T_c. <b>V_c:</b> volume of 1 mol at T_c, P_c. T_c = 8a/27Rb, P_c = a/27b², V_c = 3b. CO₂ has T_c = 304 K (31.1°C), so it liquefies under pressure below that temperature. Andrews' isotherms confirm this.</p>
+<h2>7. Liquid state</h2>
+<p><b>Vapour pressure:</b> pressure of vapour in equilibrium with its liquid at a given temperature; rises with temperature; weaker intermolecular forces ⇒ higher. When vapour pressure = external pressure ⇒ <b>boiling</b> (normal boiling point at 1 atm).</p>
+<p><b>Surface tension (γ):</b> force/work needed to increase the surface by unit area; unit N m⁻¹. Cause: surface molecules feel a net inward pull ⇒ drops are spherical (minimum surface area). Decreases with temperature. Examples: capillary rise, insects walking on water.</p>
+<p><b>Viscosity (η):</b> internal resistance to flow between layers. F = ηA(du/dz). Unit: poise (1 P = 0.1 N s m⁻²). Viscosity of liquids falls with temperature; stronger intermolecular forces (H-bonding, e.g. glycerol) ⇒ higher viscosity.</p>
+<h2>8. Solved examples (step by step)</h2>
+<details><summary>Example 1 (easy): 2 L gas at 1 atm is compressed to 0.5 L; new pressure?</summary><p>Boyle: P₁V₁ = P₂V₂ ⇒ 1×2 = P₂×0.5 ⇒ <b>P₂ = 4 atm</b>.</p></details>
+<details><summary>Example 2 (medium): Density of CO₂ at 27°C and 1 atm?</summary><p>T = 300 K, M = 44 g/mol. d = PM/RT = (1×44)/(0.0821×300) = 44/24.63 = <b>1.786 g/L</b>.</p></details>
+<details><summary>Example 3 (medium): Mixture of 0.5 mol N₂ and 1.5 mol O₂ at total 2 atm; partial pressures?</summary><p>x(N₂) = 0.5/2 = 0.25; x(O₂) = 0.75. p(N₂) = 0.25×2 = <b>0.5 atm</b>; p(O₂) = 0.75×2 = <b>1.5 atm</b>.</p></details>
+<details><summary>Example 4 (hard): u_rms of O₂ at 300 K?</summary><p>M = 0.032 kg/mol. u = √(3×8.314×300/0.032) = √(233,831) = <b>≈ 484 m/s</b>.</p></details>
+<details><summary>Prove (hard): Boyle temperature T_B = a/Rb</summary><p>At low pressure, for one mole Z = PV/RT ≈ 1 + (b – a/RT)P/RT. When b = a/RT, Z = 1 (Boyle's law obeyed). Hence <b>T_B = a/Rb</b>.</p></details>
+<h2>9. Questions & Answers</h2>
+<h3>Very short / short</h3>
+<details><summary>Q1. What causes London forces?</summary><p>Instantaneous dipoles from momentary distortion of the electron cloud.</p></details><details><summary>Q2. Why does H₂O boil higher than H₂S?</summary><p>H₂O has hydrogen bonding; H₂S does not.</p></details><details><summary>Q3. What is absolute zero?</summary><p>–273.15°C (0 K), where an ideal gas would have zero volume.</p></details><details><summary>Q4. Volume of 1 mol gas at STP?</summary><p>22.4 L (273.15 K, 1 atm); (IUPAC STP at 1 bar: 22.7 L).</p></details><details><summary>Q5. Value of R in L atm?</summary><p>0.0821 L atm K⁻¹ mol⁻¹.</p></details><details><summary>Q6. What is the most probable speed?</summary><p>Speed at the peak of the distribution, u_mp = √(2RT/M).</p></details><details><summary>Q7. What does Z < 1 mean?</summary><p>Gas is more compressible than ideal; attraction dominates.</p></details><details><summary>Q8. Units of a and b?</summary><p>a: atm L² mol⁻²; b: L mol⁻¹.</p></details><details><summary>Q9. What is critical temperature?</summary><p>Highest temperature at which a gas can be liquefied by pressure.</p></details><details><summary>Q10. Unit of surface tension?</summary><p>N m⁻¹ (SI), dyne cm⁻¹ (CGS).</p></details><details><summary>Q11. How does viscosity change with temperature?</summary><p>Falls for liquids, rises for gases.</p></details><details><summary>Q12. Why are drops spherical?</summary><p>Surface tension minimises surface area; a sphere has the least area for a given volume.</p></details>
+<h3>Long answer</h3>
+<details><summary>Q1. Derive the van der Waals equation.</summary><p>For an ideal gas V is the free volume. In a real gas molecules have their own volume, so free volume is (V – nb). Attraction reduces the pressure on the wall, so measured P is lower: P_ideal = P + an²/V² because attraction ∝ (n/V)². Substituting in PV = nRT gives (P + an²/V²)(V – nb) = nRT.</p></details><details><summary>Q2. Express critical constants in terms of a and b.</summary><p>Writing the vdW equation as a cubic in V and equating all three roots at the critical point gives V_c = 3b, P_c = a/27b², T_c = 8a/27Rb. Hence Z_c = P_cV_c/RT_c = 3/8.</p></details><details><summary>Q3. State conclusions of the Maxwell–Boltzmann distribution.</summary><p>(i) Molecules have different speeds; most are near average. (ii) Higher T shifts the peak right and flattens it. (iii) u_mp < u_av < u_rms. (iv) Area is constant. (v) Heavier molecules shift the curve left.</p></details>
+<h3>MCQs</h3>
+<details><summary>Q1. Strongest intermolecular force? (a) London (b) Dipole-dipole (c) H-bond (d) Dipole-induced dipole</summary><p>Correct answer: (c) H-bond – Hydrogen bond.</p></details><details><summary>Q2. u_mp : u_av : u_rms? (a) 1:1.128:1.224 (b) 1:1.224:1.128 (c) 1.224:1.128:1 (d) 1:1:1</summary><p>Correct answer: (a) 1:1.128:1.224 – Standard ratio.</p></details><details><summary>Q3. Boyle temperature? (a) a/Rb (b) 8a/27Rb (c) 2a/Rb (d) a/b</summary><p>Correct answer: (a) a/Rb – T_B = a/Rb.</p></details><details><summary>Q4. When is Z > 1? (a) H₂ at high P (b) CO₂ at low T (c) Ideal gas (d) NH₃ at low P</summary><p>Correct answer: (a) H₂ at high P – Repulsion/volume effect dominates.</p></details><details><summary>Q5. T_c of CO₂? (a) 304 K (b) 190 K (c) 33 K (d) 150 K</summary><p>Correct answer: (a) 304 K – ≈ 304 K (31.1°C).</p></details>
+</main></body></html>
