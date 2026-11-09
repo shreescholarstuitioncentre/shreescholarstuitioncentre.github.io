@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="manifest" href="./manifest.json">
-<meta name="theme-color" content="#0b1e3c">
+<meta name="theme-color" content="#071733">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -2117,7 +2117,10 @@ iframe{height:450px}
 </style>
 
 	<script>document.write('<link rel="stylesheet" href="style1.css?h=' + Math.floor(Date.now()/3600000) + '">');</script>
+<link rel="stylesheet" href="tailwind-rent.css?v=1">
+<link rel="stylesheet" href="sstc-v3.css?v=1">
 	
+
 <body>
 <header id="mainHeader">
   
@@ -2145,167 +2148,259 @@ iframe{height:450px}
 		</div>
 </header>
 
+<section class="hero-pro" id="home">
+  <div class="hero-box">
+
+    <span class="v2-eyebrow">Nursery to Class 12 &bull; English &amp; Hindi Medium</span>
+    <h1>Best Tuition in <span class="hl">Gorakhpur</span></h1>
+    <p class="tagline">From Weak to Topper — Proven Results</p>
+
+    <div class="hero-buttons">
+      <a href="#leadbox" class="btn primary">📞 Book Free Demo</a>
+      <a href="#pricing" class="btn outline">💰 View Fees</a>
+    </div>
+
+    <div class="hero-tags">
+      <span>🎁 Free Demo Class</span>
+      <span>🔥 50% Scholarship · First 20 Students</span>
+      <span>⚠️ Limited Seats</span>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat"><b>100%</b><span>Board Result</span></div>
+      <div class="hero-stat"><b>90%+</b><span>Top Scores</span></div>
+      <div class="hero-stat"><b>500+</b><span>Students Taught</span></div>
+    </div>
+
+  </div>
+</section>
+
 <!-- =====================================================
-     🏷️ QUESTION BANK & NOTES — RENT PLANS (POSTER STYLE)
-     Class 6-8 / 9-10 / 11-12
-     12-month bundle prices revised (purana price strike-through).
+     🏷️ RENT PLANS — Tailwind component (Bootstrap tabs behaviour)
+     Class swap + staggered card-swap animation, compact grid.
 ===================================================== -->
-<section class="rent-plans container" id="offerAccess" aria-labelledby="rentPlansTitle">
+<section class="container rent-tw" id="offerAccess" aria-labelledby="rentPlansTitle">
+  <div class="rounded-[22px] border border-ink/10 bg-white p-4 shadow-soft sm:p-6">
 
-  <!-- TITLE -->
-  <div class="rp-head">
-    <p class="rp-tagline">Study Smart&hellip; <b>Pay Less&hellip;</b> Achieve More&hellip;</p>
-    <h2 class="rp-title" id="rentPlansTitle">
-      <span class="rp-title-top">Question Bank &amp; <b>Notes</b></span>
-      <span class="rp-title-ribbon">&#9733; Rent Plans &#9733;</span>
-    </h2>
-  </div>
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div class="text-left">
+        <span class="inline-flex items-center gap-2 rounded-full bg-amber/15 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[.18em] text-ink/70">
+          Study material on rent
+        </span>
+        <h2 id="rentPlansTitle" class="mt-2 font-display text-[26px] font-extrabold leading-tight text-ink sm:text-[32px]">
+          Question Bank &amp; Notes
+          <span class="ml-1 inline-block rounded-md bg-ink px-2 py-1 align-middle text-[10px] font-extrabold uppercase tracking-[.2em] text-amber2">Rent Plans</span>
+        </h2>
+        <p class="mt-1 text-[13px] font-bold italic text-ink/55">
+          Study Smart… <b class="text-ink">Pay Less…</b> Achieve More…
+        </p>
+      </div>
 
-  <!-- THREE CLASS CARDS -->
-  <div class="rp-grid">
-    <!-- ========== CLASS 6 - 8 ========== -->
-    <article class="rp-card rp-blue">
-      <h3 class="rp-class">Class <span>6 &ndash; 8</span></h3>
-      <table class="rp-table">
-        <caption class="visually-hidden">Class 6 to 8 rent plans</caption>
-        <thead>
-          <tr>
-            <th scope="col">Plan</th>
-            <th scope="col">Question Bank</th>
-            <th scope="col">Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">1 Subject,<br>3 Months</th><td>&#8377;29</td><td>&#8377;39</td></tr>
-          <tr><th scope="row">1 Subject,<br>6 Months</th><td>&#8377;59</td><td>&#8377;79</td></tr>
-          <tr><th scope="row">1 Subject,<br>12 Months</th><td>&#8377;79</td><td>&#8377;99</td></tr>
-          <tr class="rp-bundle-row"><th scope="row">8 Subjects<br>Bundle, 6 Months</th><td>&#8377;349</td><td>&#8377;449</td></tr>
-          <tr class="rp-bundle-row"><th scope="row">8 Subjects<br>Bundle, 12 Months</th><td><span class="rp-old" aria-hidden="true">&#8377;699</span>&#8377;499</td><td><span class="rp-old" aria-hidden="true">&#8377;799</span>&#8377;599</td></tr>
-        </tbody>
-      </table>
-    </article>
-    <!-- ========== CLASS 9 - 10 ========== -->
-    <article class="rp-card rp-green">
-      <h3 class="rp-class">Class <span>9 &ndash; 10</span></h3>
-      <table class="rp-table">
-        <caption class="visually-hidden">Class 9 to 10 rent plans</caption>
-        <thead>
-          <tr>
-            <th scope="col">Plan</th>
-            <th scope="col">Question Bank</th>
-            <th scope="col">Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">1 Subject,<br>3 Months</th><td>&#8377;49</td><td>&#8377;69</td></tr>
-          <tr><th scope="row">1 Subject,<br>6 Months</th><td>&#8377;69</td><td>&#8377;99</td></tr>
-          <tr><th scope="row">1 Subject,<br>12 Months</th><td>&#8377;99</td><td>&#8377;149</td></tr>
-          <tr class="rp-bundle-row"><th scope="row">6 Subjects<br>Bundle, 6 Months</th><td>&#8377;199</td><td>&#8377;399</td></tr>
-          <tr class="rp-bundle-row"><th scope="row">6 Subjects<br>Bundle, 12 Months</th><td><span class="rp-old" aria-hidden="true">&#8377;599</span>&#8377;349</td><td><span class="rp-old" aria-hidden="true">&#8377;999</span>&#8377;529</td></tr>
-        </tbody>
-      </table>
-    </article>
-    <!-- ========== CLASS 11 - 12 ========== -->
-    <article class="rp-card rp-purple">
-      <h3 class="rp-class">Class <span>11 &ndash; 12</span></h3>
-      <table class="rp-table">
-        <caption class="visually-hidden">Class 11 to 12 rent plans</caption>
-        <thead>
-          <tr>
-            <th scope="col">Plan</th>
-            <th scope="col">Question Bank</th>
-            <th scope="col">Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">1 Subject,<br>3 Months</th><td>&#8377;49</td><td>&#8377;69</td></tr>
-          <tr><th scope="row">1 Subject,<br>6 Months</th><td>&#8377;69</td><td>&#8377;99</td></tr>
-          <tr><th scope="row">1 Subject,<br>12 Months</th><td>&#8377;99</td><td>&#8377;149</td></tr>
-          <tr class="rp-bundle-row"><th scope="row">Bundle, 6 Months<br>(5 Subjects)</th><td>&#8377;169</td><td>&#8377;269</td></tr>
-          <tr class="rp-bundle-row"><th scope="row">Bundle, 12 Months<br>(5 Subjects)</th><td><span class="rp-old" aria-hidden="true">&#8377;499</span>&#8377;269</td><td><span class="rp-old" aria-hidden="true">&#8377;749</span>&#8377;399</td></tr>
-        </tbody>
-      </table>
-    </article>
-  </div>
-
-  <!-- FEATURE STRIP -->
-  <div class="rp-features">
-    <div class="rp-feat"><span class="rp-ico" aria-hidden="true">📖</span><span>Chapterwise<br>Question Bank</span></div>
-    <div class="rp-feat"><span class="rp-ico" aria-hidden="true">📝</span><span>Well-Organized<br>Notes</span></div>
-    <div class="rp-feat"><span class="rp-ico" aria-hidden="true">🎯</span><span>Exam-Oriented<br>Study Material</span></div>
-    <div class="rp-feat"><span class="rp-ico" aria-hidden="true">⚡</span><span>Affordable<br>Rent Plans</span></div>
-  </div>
-
-  <!-- CTA BAR -->
-  <div class="rp-cta">
-    <div class="rp-limited">
-      <strong>Limited Time Offer!</strong>
-      <span>Rent Now &amp; Prepare Smartly!</span>
+      <ul class="nav tw-tabs self-start md:self-end" id="rpTabs" role="tablist">
+        <li role="presentation">
+          <button class="tw-tab active" id="rptab-68" data-bs-toggle="pill" data-bs-target="#rp-68" type="button" role="tab" aria-controls="rp-68" aria-selected="true">Class 6–8</button>
+        </li>
+        <li role="presentation">
+          <button class="tw-tab" id="rptab-910" data-bs-toggle="pill" data-bs-target="#rp-910" type="button" role="tab" aria-controls="rp-910" aria-selected="false">Class 9–10</button>
+        </li>
+        <li role="presentation">
+          <button class="tw-tab" id="rptab-1112" data-bs-toggle="pill" data-bs-target="#rp-1112" type="button" role="tab" aria-controls="rp-1112" aria-selected="false">Class 11–12</button>
+        </li>
+      </ul>
     </div>
-    <a href="sstc-access.html" class="rp-btn">Get Your Plan Today!</a>
-    <p class="rp-mission">Your Success,<br>Our Mission&hellip;</p>
-  </div>
 
-  <!-- REGISTRATION (pehle wala block, as it is) -->
-  <div class="offer-registration">
-    <p class="offer-opening">
-      <span class="offer-opening-label">Mark your calendar · Registration opens</span>
-      <time datetime="2026-10-19">19 October 2026</time>
+    <div class="tab-content mt-4" id="rpTabContent">
+      <div class="tab-pane tw-pane active" id="rp-68" role="tabpanel" aria-labelledby="rptab-68" tabindex="0">
+        <div class="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-5">
+            <article class="tw-card">
+              
+              <div class="tw-months">3 Months</div>
+              <div class="tw-sub">1 Subject</div>
+              <div class="tw-prices">
+                <div class="tw-p"><span class="tw-lab">Question Bank</span><span class="tw-val">&#8377;29</span></div>
+                <div class="tw-p"><span class="tw-lab">Notes</span><span class="tw-val">&#8377;39</span></div>
+              </div>
+            </article>
+            <article class="tw-card">
+              
+              <div class="tw-months">6 Months</div>
+              <div class="tw-sub">1 Subject</div>
+              <div class="tw-prices">
+                <div class="tw-p"><span class="tw-lab">Question Bank</span><span class="tw-val">&#8377;59</span></div>
+                <div class="tw-p"><span class="tw-lab">Notes</span><span class="tw-val">&#8377;79</span></div>
+              </div>
+            </article>
+            <article class="tw-card">
+              
+              <div class="tw-months">12 Months</div>
+              <div class="tw-sub">1 Subject</div>
+              <div class="tw-prices">
+                <div class="tw-p"><span class="tw-lab">Question Bank</span><span class="tw-val">&#8377;79</span></div>
+                <div class="tw-p"><span class="tw-lab">Notes</span><span class="tw-val">&#8377;99</span></div>
+              </div>
+            </article>
+            <article class="tw-card tw-card-best pt-7">
+              <span class="tw-flag">Best Value</span>
+              <div class="tw-months">6 Months</div>
+              <div class="tw-sub">8 Subjects Bundle</div>
+              <div class="tw-prices">
+                <div class="tw-p"><span class="tw-lab">Question Bank</span><span class="tw-val">&#8377;349</span></div>
+                <div class="tw-p"><span class="tw-lab">Notes</span><span class="tw-val">&#8377;449</span></div>
+              </div>
+            </article>
+            <article class="tw-card tw-card-best pt-7">
+              <span class="tw-flag">Best Value</span>
+              <div class="tw-months">12 Months</div>
+              <div class="tw-sub">8 Subjects Bundle</div>
+              <div class="tw-prices">
+                <div class="tw-p"><span class="tw-lab">Question Bank</span><span class="tw-was">&#8377;549</span><span class="tw-val">&#8377;499</span></div>
+                <div class="tw-p"><span class="tw-lab">Notes</span><span class="tw-was">&#8377;649</span><span class="tw-val">&#8377;599</span></div>
+              </div>
+            </article>
+        </div>
+      </div>
+      <div class="tab-pane tw-pane" id="rp-910" role="tabpanel" aria-labelledby="rptab-910" tabindex="0">
+        <div class="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-5">
+            <article class="tw-card">
+              
+              <div class="tw-months">3 Months</div>
+              <div class="tw-sub">1 Subject</div>
+              <div class="tw-prices">
+                <div class="tw-p"><span class="tw-lab">Question Bank</span><span class="tw-val">&#8377;49</span></div>
+                <div class="tw-p"><span class="tw-lab">Notes</span><span class="tw-val">&#8377;69</span></div>
+              </div>
+            </article>
+            <article class="tw-card">
+              
+              <div class="tw-months">6 Months</div>
+              <div class="tw-sub">1 Subject</div>
+              <div class="tw-prices">
+                <div class="tw-p"><span class="tw-lab">Question Bank</span><span class="tw-val">&#8377;69</span></div>
+                <div class="tw-p"><span class="tw-lab">Notes</span><span class="tw-val">&#8377;99</span></div>
+              </div>
+            </article>
+            <article class="tw-card">
+              
+              <div class="tw-months">12 Months</div>
+              <div class="tw-sub">1 Subject</div>
+              <div class="tw-prices">
+                <div class="tw-p"><span class="tw-lab">Question Bank</span><span class="tw-val">&#8377;99</span></div>
+                <div class="tw-p"><span class="tw-lab">Notes</span><span class="tw-val">&#8377;149</span></div>
+              </div>
+            </article>
+            <article class="tw-card tw-card-best pt-7">
+              <span class="tw-flag">Best Value</span>
+              <div class="tw-months">6 Months</div>
+              <div class="tw-sub">6 Subjects Bundle</div>
+              <div class="tw-prices">
+                <div class="tw-p"><span class="tw-lab">Question Bank</span><span class="tw-val">&#8377;199</span></div>
+                <div class="tw-p"><span class="tw-lab">Notes</span><span class="tw-val">&#8377;399</span></div>
+              </div>
+            </article>
+            <article class="tw-card tw-card-best pt-7">
+              <span class="tw-flag">Best Value</span>
+              <div class="tw-months">12 Months</div>
+              <div class="tw-sub">6 Subjects Bundle</div>
+              <div class="tw-prices">
+                <div class="tw-p"><span class="tw-lab">Question Bank</span><span class="tw-was">&#8377;399</span><span class="tw-val">&#8377;349</span></div>
+                <div class="tw-p"><span class="tw-lab">Notes</span><span class="tw-was">&#8377;599</span><span class="tw-val">&#8377;529</span></div>
+              </div>
+            </article>
+        </div>
+      </div>
+      <div class="tab-pane tw-pane" id="rp-1112" role="tabpanel" aria-labelledby="rptab-1112" tabindex="0">
+        <div class="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-5">
+            <article class="tw-card">
+              
+              <div class="tw-months">3 Months</div>
+              <div class="tw-sub">1 Subject</div>
+              <div class="tw-prices">
+                <div class="tw-p"><span class="tw-lab">Question Bank</span><span class="tw-val">&#8377;49</span></div>
+                <div class="tw-p"><span class="tw-lab">Notes</span><span class="tw-val">&#8377;69</span></div>
+              </div>
+            </article>
+            <article class="tw-card">
+              
+              <div class="tw-months">6 Months</div>
+              <div class="tw-sub">1 Subject</div>
+              <div class="tw-prices">
+                <div class="tw-p"><span class="tw-lab">Question Bank</span><span class="tw-val">&#8377;69</span></div>
+                <div class="tw-p"><span class="tw-lab">Notes</span><span class="tw-val">&#8377;99</span></div>
+              </div>
+            </article>
+            <article class="tw-card">
+              
+              <div class="tw-months">12 Months</div>
+              <div class="tw-sub">1 Subject</div>
+              <div class="tw-prices">
+                <div class="tw-p"><span class="tw-lab">Question Bank</span><span class="tw-val">&#8377;99</span></div>
+                <div class="tw-p"><span class="tw-lab">Notes</span><span class="tw-val">&#8377;149</span></div>
+              </div>
+            </article>
+            <article class="tw-card tw-card-best pt-7">
+              <span class="tw-flag">Best Value</span>
+              <div class="tw-months">6 Months</div>
+              <div class="tw-sub">5 Subjects Bundle</div>
+              <div class="tw-prices">
+                <div class="tw-p"><span class="tw-lab">Question Bank</span><span class="tw-val">&#8377;169</span></div>
+                <div class="tw-p"><span class="tw-lab">Notes</span><span class="tw-val">&#8377;269</span></div>
+              </div>
+            </article>
+            <article class="tw-card tw-card-best pt-7">
+              <span class="tw-flag">Best Value</span>
+              <div class="tw-months">12 Months</div>
+              <div class="tw-sub">5 Subjects Bundle</div>
+              <div class="tw-prices">
+                <div class="tw-p"><span class="tw-lab">Question Bank</span><span class="tw-was">&#8377;299</span><span class="tw-val">&#8377;269</span></div>
+                <div class="tw-p"><span class="tw-lab">Notes</span><span class="tw-was">&#8377;449</span><span class="tw-val">&#8377;399</span></div>
+              </div>
+            </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-4 flex flex-col gap-3 border-t border-ink/10 pt-4 lg:flex-row lg:items-center lg:justify-between">
+      <div class="flex flex-wrap gap-1.5">
+        <span class="tw-chip">📖 Chapterwise Question Bank</span>
+        <span class="tw-chip">📝 Well-Organized Notes</span>
+        <span class="tw-chip">🎯 Exam-Oriented Material</span>
+        <span class="tw-chip">⚡ Affordable Rent Plans</span>
+      </div>
+      <div class="flex flex-none flex-wrap items-center justify-end gap-2">
+        <a href="sstc-access.html"
+           class="whitespace-nowrap rounded-full bg-ink px-5 py-2.5 text-[13px] font-extrabold text-sand shadow-soft transition hover:-translate-y-0.5 hover:bg-ink2">
+          Get Your Plan Today!
+        </a>
+        <a href="student-registration.html"
+           class="whitespace-nowrap rounded-full border border-ink/20 px-5 py-2.5 text-[13px] font-extrabold text-ink transition hover:border-ink hover:bg-ink hover:text-sand">
+          Register Soon →
+        </a>
+      </div>
+    </div>
+
+    <p class="mt-3 text-left text-[11px] font-bold text-ink/45">
+      💡 12-month plans par sabse zyada bachat — purana price cut kar ke naya price diya gaya hai.
     </p>
-    <a href="student-registration.html" class="offer-register-btn">Register Soon <span aria-hidden="true">→</span></a>
-  </div>
 
-  <!-- GOLD FOOTER BAR -->
-  <div class="rp-foot">
-    <div class="f1">Shree Scholars Tuition Centre</div>
-    <div class="f2">— From Foundation to Future —</div>
   </div>
-
 </section>
 
-	<!-- =====================================================
-     📲 SHREE SCHOLARS APP INSTALL
-===================================================== -->
-
-<div class="pwa-install-box" id="pwaInstallBox">
-
-  <div class="pwa-install-left">
-
-    <img
-      src="Logo.png"
-      class="pwa-install-icon"
-      alt="Shree Scholars App">
-
-    <div class="pwa-install-text">
-      <strong>📲 Install Shree Scholars App</strong>
-      <span>Fast access • App-like experience • Free</span>
-    </div>
-
-  </div>
-
-  <button
-    type="button"
-    class="pwa-install-btn"
-    id="pwaInstallBtn">
-    INSTALL
-  </button>
-
-</div>
-
-<div class="pwa-help" id="pwaHelp">
-  📱 Agar Install option nahi aa raha hai, browser ke
-  <b>⋮ Menu → Add to Home screen</b> option ka use karein.
-</div>
-
-
-	
 <section class="features container">
-<div class="card"><h3>Expert Teachers</h3><p>Highly experienced faculty</p></div>
-<div class="card"><h3>All Subjects</h3><p>Nursery to Class 12</p></div>
-<div class="card"><h3>Top Results</h3><p>Excellent performance</p></div>
+  <div class="v2-feat v2-feat-lg">
+    <span class="ic" aria-hidden="true">👩‍🏫</span>
+    <div><h3>Expert Teachers</h3><p>Highly experienced faculty — har student par personal dhyan aur regular doubt sessions.</p></div>
+  </div>
+  <div class="v2-feat">
+    <span class="ic" aria-hidden="true">📚</span>
+    <div><h3>All Subjects</h3><p>Nursery to Class 12</p></div>
+  </div>
+  <div class="v2-feat">
+    <span class="ic" aria-hidden="true">🏆</span>
+    <div><h3>Top Results</h3><p>Excellent performance</p></div>
+  </div>
 </section>
 
-	<section class="results container">
+<section class="results container">
 <canvas id="fireworksCanvas"></canvas>
   <h2>🏆 Our Class 10 Board Toppers</h2>
   <p class="result-sub">Outstanding Results • Proven Excellence • Trusted by Parents</p>
@@ -2379,35 +2474,6 @@ iframe{height:450px}
 
 </section>
 
-	<section class="hero-pro" id="home">
-  <div class="hero-box">
-
-    <h1>🎯 Best Tuition in Gorakhpur</h1>
-    <p class="tagline">From Weak to Topper — Proven Results</p>
-
-    <!-- OFFER BOX -->
-    <div class="offer-highlight">
-      <h3>🎁 Free Demo Class Available</h3>
-      <p>🔥 50% Scholarship for First 20 Students</p>
-    </div>
-
-    <!-- BUTTONS -->
-    <div class="hero-buttons">
-      <a href="#leadbox" class="btn primary">
-        📞 Book Free Demo
-      </a>
-
-      <a href="#pricing" class="btn outline">
-        💰 View Fees
-      </a>
-    </div>
-
-    <!-- URGENCY -->
-    <p class="urgent">⚠️ Limited Seats</p>
-
-  </div>
-</section>
-
 	
 <section class="courses container">
 
@@ -2425,7 +2491,157 @@ iframe{height:450px}
 </div>
 </section>
 
-	<section class="testimonials container">
+	
+<section class="pricing-table container" id="pricing">
+<div class="card"><h3>💎 Fees Structure</h3><p>Nursery to 12 • English & Hindi Medium</p><p class="subtitle">Quality Education with 50% Scholarship</p></div>
+
+<div class="pricing-row">
+
+  <div class="pricing-col popular">
+    <h3>Nursery – 2</h3>
+    <p class="desc">All Subjects</p>
+    <p class="price">₹500 <span>/month</span></p>
+    <p class="old">₹1000</p>
+    <a href="#leadbox" class="btn highlight">Join Now</a>
+
+    <ul>
+      <li>✔ Basic Foundation</li>
+      <li>✔ Personal Attention</li>
+      <li>✔ Homework Support</li>
+    </ul>
+  </div>
+
+  <div class="pricing-col popular">
+    <h3>Class 3 – 5</h3>
+    <p class="desc">All Subjects</p>
+    <p class="price">₹1000 <span>/month</span></p>
+    <p class="old">₹2000</p>
+    <a href="#leadbox" class="btn highlight">Join Now</a>
+
+    <ul>
+      <li>✔ Strong Concept Building</li>
+      <li>✔ Weekly Tests</li>
+      <li>✔ Doubt Clearing</li>
+    </ul>
+  </div>
+
+  <div class="pricing-col popular">
+    <h3>Class 6 – 8</h3>
+    <p class="desc">All Subjects</p>
+    <p class="price">₹1100 <span>/month</span></p>
+    <p class="old">₹2200</p>
+    <a href="#leadbox" class="btn highlight">Join Now</a>
+
+    <ul>
+      <li>✔ Concept + Practice</li>
+      <li>✔ Exam Preparation</li>
+      <li>✔ Regular Tests</li>
+    </ul>
+  </div>
+
+  <div class="pricing-col popular">
+    <h3>Class 9 – 10</h3>
+    <p class="desc">All Subjects</p>
+    <p class="price">₹1500 <span>/month</span></p>
+    <p class="old">₹3000</p>
+    <a href="#leadbox" class="btn highlight">Join Now</a>
+
+    <ul>
+      <li>✔ Board Preparation</li>
+      <li>✔ All 6 Subjects</li>
+      <li>✔ ₹300 / Subject</li>
+    </ul>
+  </div>
+
+  <div class="pricing-col popular">
+    <h3>Class 11 – 12</h3>
+    <p class="desc">PCM / PCB / Commerce</p>
+    <p class="price">₹1800 <span>/month</span></p>
+    <p class="old">₹3600</p>
+    <a href="#leadbox" class="btn highlight">Join Now</a>
+
+    <ul>
+      <li>✔ Stream-wise Coaching</li>
+      <li>✔ 3 Subjects</li>
+      <li>✔ ₹600 / Subject</li>
+    </ul>
+  </div>
+
+</div>
+
+</section>
+
+   
+<section class="gallery container">
+	<div class="card"><h3>🔥 Our Toppers 🔥 </h3><p>Nursery to 12 • English & Hindi Medium</p></div>
+
+<div class="slider">
+  <button class="prev">&#10094;</button>
+
+  <div class="slides" id="slides">
+    <img src="tp7.jpg">
+    <img src="tp1.jpg">
+    <img src="tp9.jpg">
+    <img src="tp2.jpg">
+    <img src="tp3.jpg">
+    <img src="tp4.jpg">
+    <img src="tp5.jpg">
+    <img src="tp6.jpg">    
+    <img src="tp12.jpg">
+    <img src="tp10.jpg">
+    <img src="tp11.jpg">
+    <img src="tp8.jpg">    
+    <img src="tp13.jpg">
+    <img src="tp14.jpg">
+    <img src="tp15.jpg">
+    <img src="tp16.jpg">
+    <img src="tp17.jpg">
+    <img src="tp18.jpg">
+    <img src="tp19.jpg">
+    <img src="tp20.jpg">
+    <img src="tp21.jpg">
+    <img src="tp22.jpg">
+    <img src="tp23.jpg">
+    <img src="tp24.jpg">
+  </div>
+
+  <button class="next">&#10095;</button>
+</div>
+</section>
+	
+
+  
+<section class="premium-gallery container">
+	  <div class="card"><h3>📸 Memomories of Journey</h3></div>
+
+  <div class="gallery-wrapper">
+
+    <div class="gallery-track" id="galleryTrack">
+
+      <!-- <div class="gallery-card"><img src="Mem1.jpg"></div>
+      <div class="gallery-card"><img src="Mem2.jpg"></div> -->
+      <div class="gallery-card"><img src="Mem3.jpg"></div>
+      <div class="gallery-card"><img src="Mem4.jpg"></div>
+      <div class="gallery-card"><img src="Mem5.jpg"></div>
+      <div class="gallery-card"><img src="Mem.jpg"></div>
+      <div class="gallery-card"><img src="Mem7.jpg"></div>
+      <div class="gallery-card"><img src="Mem8.jpg"></div>
+		<div class="gallery-card"><img src="Mem9.jpg"></div>
+		<div class="gallery-card"><img src="Mem10.jpg"></div>
+		<div class="gallery-card"><img src="Mem11.jpg"></div>
+
+    </div>
+
+    <!-- controls -->
+    <button class="g-btn prev">‹</button>
+    <button class="g-btn next">›</button>
+
+  </div>
+</section>
+
+  
+
+<section class="testimonials container">
 
  <div class="card">
 
@@ -2528,6 +2744,63 @@ iframe{height:450px}
 </section>
 
 
+
+<section class="testimonials container">
+
+  <div class="card">
+    <h3>💬 What Parents / Student's Say</h3>
+    <p class="sub-text">Over 1000+ parents trust us</p>
+  </div>
+
+  <div class="video-testimonials">
+
+    <!-- VIDEO 1 -->
+    <div class="video-card">
+      <video controls poster="thumb1.jpg">
+        <source src="video1.mp4" type="video/mp4">
+      </video>
+      <div class="video-name">Rakesh Sharma</div>
+    </div>
+
+    <!-- VIDEO 2 -->
+    <div class="video-card">
+      <video controls poster="thumb2.jpg">
+        <source src="video2.mp4" type="video/mp4">
+      </video>
+      <div class="video-name">Sunita Verma</div>
+    </div>
+
+    <!-- VIDEO 3 -->
+    <div class="video-card">
+      <video controls poster="thumb3.jpg">
+        <source src="video3.mp4" type="video/mp4">
+      </video>
+      <div class="video-name">Amit Singh</div>
+    </div>
+
+    <!-- VIDEO 4 -->
+    <div class="video-card">
+      <video controls poster="thumb4.jpg">
+        <source src="video4.mp4" type="video/mp4">
+      </video>
+      <div class="video-name">Priya Gupta</div>
+    </div>
+
+    <!-- VIDEO 5 -->
+    <div class="video-card">
+      <video controls poster="thumb5.jpg">
+        <source src="video5.mp4" type="video/mp4">
+      </video>
+      <div class="video-name">Neha Mishra</div>
+    </div>
+
+  </div>
+
+</section>
+
+	
+
+  
 <section class="lead-box container" id="leadbox">
 
   <!-- HEADING -->
@@ -2594,73 +2867,7 @@ iframe{height:450px}
 </section>
 	
 	
-<section class="gallery container">
-	<div class="card"><h3>🔥 Our Toppers 🔥 </h3><p>Nursery to 12 • English & Hindi Medium</p></div>
 
-<div class="slider">
-  <button class="prev">&#10094;</button>
-
-  <div class="slides" id="slides">
-    <img src="tp7.jpg">
-    <img src="tp1.jpg">
-    <img src="tp9.jpg">
-    <img src="tp2.jpg">
-    <img src="tp3.jpg">
-    <img src="tp4.jpg">
-    <img src="tp5.jpg">
-    <img src="tp6.jpg">    
-    <img src="tp12.jpg">
-    <img src="tp10.jpg">
-    <img src="tp11.jpg">
-    <img src="tp8.jpg">    
-    <img src="tp13.jpg">
-    <img src="tp14.jpg">
-    <img src="tp15.jpg">
-    <img src="tp16.jpg">
-    <img src="tp17.jpg">
-    <img src="tp18.jpg">
-    <img src="tp19.jpg">
-    <img src="tp20.jpg">
-    <img src="tp21.jpg">
-    <img src="tp22.jpg">
-    <img src="tp23.jpg">
-    <img src="tp24.jpg">
-  </div>
-
-  <button class="next">&#10095;</button>
-</div>
-</section>
-	
-
-  <section class="premium-gallery container">
-	  <div class="card"><h3>📸 Memomories of Journey</h3></div>
-
-  <div class="gallery-wrapper">
-
-    <div class="gallery-track" id="galleryTrack">
-
-      <!-- <div class="gallery-card"><img src="Mem1.jpg"></div>
-      <div class="gallery-card"><img src="Mem2.jpg"></div> -->
-      <div class="gallery-card"><img src="Mem3.jpg"></div>
-      <div class="gallery-card"><img src="Mem4.jpg"></div>
-      <div class="gallery-card"><img src="Mem5.jpg"></div>
-      <div class="gallery-card"><img src="Mem.jpg"></div>
-      <div class="gallery-card"><img src="Mem7.jpg"></div>
-      <div class="gallery-card"><img src="Mem8.jpg"></div>
-		<div class="gallery-card"><img src="Mem9.jpg"></div>
-		<div class="gallery-card"><img src="Mem10.jpg"></div>
-		<div class="gallery-card"><img src="Mem11.jpg"></div>
-
-    </div>
-
-    <!-- controls -->
-    <button class="g-btn prev">‹</button>
-    <button class="g-btn next">›</button>
-
-  </div>
-</section>
-
-  
 <section class="contact-section container">
 
   <!-- LEFT: FORM -->
@@ -2690,141 +2897,8 @@ iframe{height:450px}
 
 </section>
 
-<section class="testimonials container">
 
-  <div class="card">
-    <h3>💬 What Parents / Student's Say</h3>
-    <p class="sub-text">Over 1000+ parents trust us</p>
-  </div>
-
-  <div class="video-testimonials">
-
-    <!-- VIDEO 1 -->
-    <div class="video-card">
-      <video controls poster="thumb1.jpg">
-        <source src="video1.mp4" type="video/mp4">
-      </video>
-      <div class="video-name">Rakesh Sharma</div>
-    </div>
-
-    <!-- VIDEO 2 -->
-    <div class="video-card">
-      <video controls poster="thumb2.jpg">
-        <source src="video2.mp4" type="video/mp4">
-      </video>
-      <div class="video-name">Sunita Verma</div>
-    </div>
-
-    <!-- VIDEO 3 -->
-    <div class="video-card">
-      <video controls poster="thumb3.jpg">
-        <source src="video3.mp4" type="video/mp4">
-      </video>
-      <div class="video-name">Amit Singh</div>
-    </div>
-
-    <!-- VIDEO 4 -->
-    <div class="video-card">
-      <video controls poster="thumb4.jpg">
-        <source src="video4.mp4" type="video/mp4">
-      </video>
-      <div class="video-name">Priya Gupta</div>
-    </div>
-
-    <!-- VIDEO 5 -->
-    <div class="video-card">
-      <video controls poster="thumb5.jpg">
-        <source src="video5.mp4" type="video/mp4">
-      </video>
-      <div class="video-name">Neha Mishra</div>
-    </div>
-
-  </div>
-
-</section>
-
-	
-
-  <section class="pricing-table container" id="pricing">
-<div class="card"><h3>💎 Fees Structure</h3><p>Nursery to 12 • English & Hindi Medium</p><p class="subtitle">Quality Education with 50% Scholarship</p></div>
-
-<div class="pricing-row">
-
-  <div class="pricing-col popular">
-    <h3>Nursery – 2</h3>
-    <p class="desc">All Subjects</p>
-    <p class="price">₹500 <span>/month</span></p>
-    <p class="old">₹1000</p>
-    <a href="#leadbox" class="btn highlight">Join Now</a>
-
-    <ul>
-      <li>✔ Basic Foundation</li>
-      <li>✔ Personal Attention</li>
-      <li>✔ Homework Support</li>
-    </ul>
-  </div>
-
-  <div class="pricing-col popular">
-    <h3>Class 3 – 5</h3>
-    <p class="desc">All Subjects</p>
-    <p class="price">₹1000 <span>/month</span></p>
-    <p class="old">₹2000</p>
-    <a href="#leadbox" class="btn highlight">Join Now</a>
-
-    <ul>
-      <li>✔ Strong Concept Building</li>
-      <li>✔ Weekly Tests</li>
-      <li>✔ Doubt Clearing</li>
-    </ul>
-  </div>
-
-  <div class="pricing-col popular">
-    <h3>Class 6 – 8</h3>
-    <p class="desc">All Subjects</p>
-    <p class="price">₹1100 <span>/month</span></p>
-    <p class="old">₹2200</p>
-    <a href="#leadbox" class="btn highlight">Join Now</a>
-
-    <ul>
-      <li>✔ Concept + Practice</li>
-      <li>✔ Exam Preparation</li>
-      <li>✔ Regular Tests</li>
-    </ul>
-  </div>
-
-  <div class="pricing-col popular">
-    <h3>Class 9 – 10</h3>
-    <p class="desc">All Subjects</p>
-    <p class="price">₹1500 <span>/month</span></p>
-    <p class="old">₹3000</p>
-    <a href="#leadbox" class="btn highlight">Join Now</a>
-
-    <ul>
-      <li>✔ Board Preparation</li>
-      <li>✔ All 6 Subjects</li>
-      <li>✔ ₹300 / Subject</li>
-    </ul>
-  </div>
-
-  <div class="pricing-col popular">
-    <h3>Class 11 – 12</h3>
-    <p class="desc">PCM / PCB / Commerce</p>
-    <p class="price">₹1800 <span>/month</span></p>
-    <p class="old">₹3600</p>
-    <a href="#leadbox" class="btn highlight">Join Now</a>
-
-    <ul>
-      <li>✔ Stream-wise Coaching</li>
-      <li>✔ 3 Subjects</li>
-      <li>✔ ₹600 / Subject</li>
-    </ul>
-  </div>
-
-</div>
-
-</section>
-
-   <section class="saas-section container">
+<section class="saas-section container">
 
 	   
 <div class="card"><h3>🚀 Skill & Technology Programs</h3><p class="saas-sub">Upgrade Your Skills with Industry-Level Training</p></div>
@@ -2881,10 +2955,45 @@ iframe{height:450px}
 </section>
 
   
+
+<div class="pwa-install-box" id="pwaInstallBox">
+
+  <div class="pwa-install-left">
+
+    <img
+      src="Logo.png"
+      class="pwa-install-icon"
+      alt="Shree Scholars App">
+
+    <div class="pwa-install-text">
+      <strong>📲 Install Shree Scholars App</strong>
+      <span>Fast access • App-like experience • Free</span>
+    </div>
+
+  </div>
+
+  <button
+    type="button"
+    class="pwa-install-btn"
+    id="pwaInstallBtn">
+    INSTALL
+  </button>
+
+</div>
+
+<div class="pwa-help" id="pwaHelp">
+  📱 Agar Install option nahi aa raha hai, browser ke
+  <b>⋮ Menu → Add to Home screen</b> option ka use karein.
+</div>
+
+
+	
+
 <section class="cta">
 <h2>Admissions Open Now</h2>
 <p>Location : Infront of Govind Ram Haveli, Jata Shankar Chowk, Dilezakpur, Gorakhpur, Uttar Pradesh - 273001</p>
 </section>
+
 <a href="#class2" class="whatsapp-btn w1">
   💬 <span>Chat Sir</span>
 </a>
@@ -2892,10 +3001,44 @@ iframe{height:450px}
 <a href="#class1" class="whatsapp-btn w2">
   💬 <span>Chat Ma'am</span>
 </a>
-<footer>
-© 2026 Shree Scholars Tuition Centre
-</footer>
 
+<footer class="v2-footer">
+  <div class="f-wrap">
+    <div class="f-brand">
+      <div class="brand">
+        <img src="Logo.png" alt="Shree Scholars logo">
+        <div>
+          <b>Shree Scholars Tuition Centre</b>
+          <span>From Foundation to Future</span>
+        </div>
+      </div>
+      <p>Nursery se Class 12 tak — English &amp; Hindi medium, all subjects, expert faculty aur personal attention.</p>
+      <p class="f-addr">Infront of Govind Ram Haveli, Jata Shankar Chowk, Dilezakpur, Gorakhpur, Uttar Pradesh – 273001</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#offerAccess">Rent Plans</a></li>
+        <li><a href="#pricing">Fees Structure</a></li>
+        <li><a href="#leadbox">Book a Demo</a></li>
+        <li><a href="sstc-access.html">SSTC Access</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Get in Touch</h4>
+      <ul>
+        <li><a href="#class1">💬 Chat Ma'am</a></li>
+        <li><a href="#class2">💬 Chat Sir</a></li>
+        <li><a href="student-registration.html">Student Registration</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <span>© 2026 Shree Scholars Tuition Centre</span>
+    <span>Gorakhpur, Uttar Pradesh</span>
+  </div>
+</footer>
 <script>
 window.addEventListener("scroll", function(){
   document.querySelector("header").classList.toggle("scrolled", window.scrollY > 50);
@@ -3306,5 +3449,6 @@ if ("serviceWorker" in navigator) {
   
 <script src="sstc-assistant.js" defer></script>
 	
+
 </body>
 </html>
