@@ -118,7 +118,7 @@
               </p>
 
               <span>
-                Secure Student &amp; Admin Access
+                Secure Student Access
               </span>
 
             </div>
@@ -165,32 +165,7 @@
 
         <section class="col-lg-6 col-xl-5">
 
-          <div class="login-card">
-
-            <div class="login-tabs">
-
-              <button
-                type="button"
-                class="login-tab active"
-                id="studentTab"
-                onclick="switchLogin('student')">
-
-                👨‍🎓 Student
-
-              </button>
-
-              <button
-                type="button"
-                class="login-tab"
-                id="adminTab"
-                onclick="switchLogin('admin')">
-
-                👨‍💼 Admin
-
-              </button>
-
-            </div>
-
+          
 
             <!-- =========================
                  STUDENT LOGIN
@@ -313,113 +288,7 @@
             </form>
 
 
-            <!-- =========================
-                 ADMIN LOGIN
-            ========================= -->
-
-            <form
-              id="adminLogin"
-              class="login-form"
-              onsubmit="adminLoginSubmit(event)">
-
-              <h3>Admin Login</h3>
-
-              <p class="form-subtitle">
-                Authorized administration access only
-              </p>
-
-
-              <!-- ADMIN ID -->
-
-              <label class="form-label" for="adminId">
-                Admin ID
-              </label>
-
-              <div class="input-group">
-
-                <span class="input-group-text">👤</span>
-
-                <input
-                  type="text"
-                  class="form-control"
-                  id="adminId"
-                  name="adminId"
-                  placeholder="Enter Admin ID"
-                  autocomplete="username"
-                  required>
-
-              </div>
-
-
-              <!-- ADMIN PASSWORD -->
-
-              <label class="form-label" for="adminPassword">
-                Admin Password
-              </label>
-
-              <div class="input-group">
-
-                <span class="input-group-text">🔑</span>
-
-                <input
-                  type="password"
-                  class="form-control"
-                  id="adminPassword"
-                  name="adminPassword"
-                  placeholder="Enter Admin Password"
-                  autocomplete="current-password"
-                  required>
-
-                <button
-                  type="button"
-                  class="password-toggle"
-                  onclick="togglePassword('adminPassword', this)"
-                  aria-label="Show or hide password">
-
-                  👁️
-
-                </button>
-
-              </div>
-
-
-              <!-- REMEMBER ME -->
-
-              <div class="login-options">
-
-                <label class="remember">
-
-                  <input
-                    type="checkbox"
-                    id="rememberAdmin">
-
-                  <span>Remember me</span>
-
-                </label>
-
-              </div>
-
-
-              <!-- LOGIN BUTTON -->
-
-              <button
-                type="submit"
-                class="login-button admin-login-button">
-
-                🛡️ Admin Access
-
-              </button>
-
-
-              <!-- MESSAGE -->
-
-              <div
-                id="adminMessage"
-                class="login-message">
-              </div>
-
-            </form>
-
+      
 
             <!-- =========================
                  SECURITY
