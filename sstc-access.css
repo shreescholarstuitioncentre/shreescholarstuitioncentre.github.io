@@ -329,3 +329,371 @@ html,body{
 }
 .login-form{overflow:visible!important}
 .login-button{display:block!important}
+/* =====================================================
+   STUDENT LOGIN – PREMIUM LOOK (file ke END me rakho)
+   ===================================================== */
+
+/* ---------- Card ---------- */
+.login-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.93) !important;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 0 !important;
+  border-radius: 26px !important;
+  padding: 30px 26px 24px !important;
+  box-shadow:
+    0 30px 70px rgba(9, 36, 75, 0.28),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset !important;
+  overflow: hidden;
+  animation: stuCardIn 0.7s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+/* Upar ki rang-birangi chalti hui patti */
+.login-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #ff9800, #ff4d4d, #7c3aed, #2563eb, #ff9800);
+  background-size: 300% 100%;
+  animation: stuBar 5s linear infinite;
+}
+
+/* Peeche halka glow */
+.login-card::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  right: -90px;
+  bottom: -90px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.22), transparent 70%);
+  pointer-events: none;
+}
+
+/* ---------- Top badge ---------- */
+#studentLogin .stu-top {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+#studentLogin .stu-avatar {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  margin: 4px auto 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  box-shadow: 0 12px 26px rgba(79, 70, 229, 0.4);
+  animation: stuFloat 3.2s ease-in-out infinite;
+}
+
+#studentLogin .stu-avatar::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 2px dashed rgba(124, 58, 237, 0.45);
+  animation: stuSpin 14s linear infinite;
+}
+
+#studentLogin .stu-top h3 {
+  margin: 0 0 4px;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  font-size: 1.55rem;
+  background: linear-gradient(90deg, #09244b, #4f46e5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#studentLogin .stu-top .form-subtitle {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+/* ---------- Labels ---------- */
+#studentLogin .form-label {
+  display: block;
+  margin: 14px 0 6px;
+  font-weight: 800;
+  font-size: 0.82rem;
+  color: #09244b;
+  letter-spacing: 0.3px;
+}
+
+/* ---------- Input boxes ---------- */
+#studentLogin .input-group {
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  border: 2px solid #e3e8f4;
+  box-shadow: 0 4px 12px rgba(9, 36, 75, 0.06);
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+
+#studentLogin .input-group:focus-within {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.18), 0 10px 22px rgba(79, 70, 229, 0.18);
+  transform: translateY(-2px);
+}
+
+#studentLogin .input-group-text {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: linear-gradient(135deg, #eef2ff, #f5f3ff) !important;
+  font-size: 1.05rem;
+  padding: 0 14px;
+}
+
+#studentLogin .form-control {
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: #fff !important;
+  padding: 13px 14px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #09244b;
+}
+
+#studentLogin .form-control::placeholder {
+  color: #9aa5bb;
+  font-weight: 500;
+}
+
+#studentLogin .password-toggle {
+  border: 0 !important;
+  background: #f1f4fb !important;
+  padding: 0 14px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+#studentLogin .password-toggle:hover {
+  background: #e0e7ff !important;
+  transform: scale(1.08);
+}
+
+/* ---------- Remember / Forgot ---------- */
+#studentLogin .login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 14px 0 18px;
+  font-size: 0.82rem;
+}
+
+#studentLogin .login-options a {
+  font-weight: 800;
+  color: #6d28d9;
+  text-decoration: none;
+  position: relative;
+}
+
+#studentLogin .login-options a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: #6d28d9;
+  transition: width 0.25s;
+}
+
+#studentLogin .login-options a:hover::after {
+  width: 100%;
+}
+
+/* ---------- Login button (shimmer) ---------- */
+#studentLogin .login-button {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border: 0 !important;
+  border-radius: 16px !important;
+  padding: 14px 18px !important;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: #fff;
+  letter-spacing: 0.4px;
+  background: linear-gradient(120deg, #2563eb, #7c3aed, #db2777);
+  background-size: 200% 100%;
+  box-shadow: 0 14px 28px rgba(99, 102, 241, 0.4) !important;
+  transition: transform 0.25s, box-shadow 0.25s, background-position 0.5s;
+  cursor: pointer;
+}
+
+#studentLogin .login-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-20deg);
+  animation: stuShine 3s ease-in-out infinite;
+}
+
+#studentLogin .login-button:hover {
+  transform: translateY(-3px);
+  background-position: 100% 0;
+  box-shadow: 0 20px 36px rgba(99, 102, 241, 0.5) !important;
+}
+
+#studentLogin .login-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+#studentLogin .login-button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+/* ---------- Message box: khali ho to chhupa do ---------- */
+.login-message:empty {
+  display: none !important;
+}
+
+.login-message:not(:empty) {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-align: center;
+  animation: stuCardIn 0.35s both;
+}
+
+/* ---------- Chips ---------- */
+#studentLogin .stu-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 18px 0 4px;
+}
+
+#studentLogin .stu-chips span {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #4338ca;
+  background: #eef2ff;
+  border: 1px solid #dfe4ff;
+  transition: transform 0.2s, background 0.2s;
+}
+
+#studentLogin .stu-chips span:hover {
+  transform: translateY(-3px);
+  background: #e0e7ff;
+}
+
+/* ---------- Register box ---------- */
+#studentLogin .student-register-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 2px dashed #c7d2fe;
+  background: linear-gradient(135deg, #f8f9ff, #faf5ff);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+#studentLogin .student-register-link {
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  color: #5b2100;
+  background: linear-gradient(135deg, #ffd45e, #ffb02e);
+  box-shadow: 0 8px 16px rgba(255, 176, 46, 0.4);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+#studentLogin .student-register-link:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 14px 22px rgba(255, 176, 46, 0.5);
+}
+
+/* ---------- Security note ---------- */
+.login-card .security-note {
+  position: relative;
+  z-index: 1;
+  border-radius: 14px;
+  margin-top: 16px;
+}
+
+/* ---------- Animations ---------- */
+@keyframes stuCardIn {
+  from { opacity: 0; transform: translateY(26px) scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes stuBar {
+  from { background-position: 0 0; }
+  to   { background-position: 300% 0; }
+}
+
+@keyframes stuFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+
+@keyframes stuSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes stuShine {
+  0%, 55% { left: -80%; }
+  100%    { left: 140%; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 576px) {
+  .login-card {
+    padding: 26px 18px 20px !important;
+    border-radius: 22px !important;
+  }
+
+  #studentLogin .stu-top h3 {
+    font-size: 1.3rem;
+  }
+
+  #studentLogin .stu-avatar {
+    width: 62px;
+    height: 62px;
+    font-size: 29px;
+  }
+}
+
+/* Jinke phone me animation kam chahiye unke liye */
+@media (prefers-reduced-motion: reduce) {
+  .login-card,
+  .login-card::before,
+  #studentLogin .stu-avatar,
+  #studentLogin .stu-avatar::before,
+  #studentLogin .login-button::before {
+    animation: none !important;
+  }
+}
