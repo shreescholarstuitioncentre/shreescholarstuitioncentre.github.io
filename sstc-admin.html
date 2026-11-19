@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09244b">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>SSTC Admin | Shree Scholars Tuition Centre</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <script>
+  (function () {
+    function sstcVersion(path) {
+      try {
+        var xhr = new XMLHttpRequest();
+        xhr.open("HEAD", path, false);
+        xhr.setRequestHeader("Cache-Control", "no-cache");
+        xhr.send();
+        if (xhr.status >= 200 && xhr.status < 300) {
+          var modified = Date.parse(xhr.getResponseHeader("Last-Modified"));
+          if (!isNaN(modified)) { return modified; }
+        }
+      } catch (error) {}
+      return Math.floor(Date.now() / 600000);
+    }
+    window.SSTC_ASSET = function (path) {
+      return path + "?v=" + sstcVersion(path);
+    };
+  })();
+
+  document.write('<link rel="stylesheet" href="' + SSTC_ASSET("sstc-access.css") + '">');
+  </script>
+</head>
+
+<body>
+
+  <header id="mainHeader">
+    <a href="index.html" class="logo-link">
+      <img src="Logo.png" alt="Shree Scholars Tuition Centre Logo">
+    </a>
+
+    <div class="nav-text">
+      <h1>Shree Scholars Tuition Centre</h1>
+      <p>From Foundation to Future</p>
+    </div>
+
+    <div class="header-buttons">
+      <a href="index.html" class="header-btn home-btn">🏠 Home</a>
+      <a href="index.html#leadbox" class="header-btn contact-btn">📞 Contact</a>
+    </div>
+  </header>
+
+
+  <main class="access-page">
+    <div class="container">
+      <div class="row g-4 justify-content-center">
+
+        <section class="col-lg-6 col-xl-5">
+          <div class="login-card">
+
+            <form
+              id="adminLogin"
+              class="login-form active-form"
+              onsubmit="adminLoginSubmit(event)">
+
+              <h3>Admin Login</h3>
+
+              <p class="form-subtitle">
+                Authorized administration access only
+              </p>
+
+              <label class="form-label" for="adminId">Admin ID</label>
+
+              <div class="input-group">
+                <span class="input-group-text">👤</span>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="adminId"
+                  name="adminId"
+                  placeholder="Enter Admin ID"
+                  autocomplete="username"
+                  required>
+              </div>
+
+              <label class="form-label" for="adminPassword">Admin Password</label>
+
+              <div class="input-group">
+                <span class="input-group-text">🔑</span>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="adminPassword"
+                  name="adminPassword"
+                  placeholder="Enter Admin Password"
+                  autocomplete="current-password"
+                  required>
+                <button
+                  type="button"
+                  class="password-toggle"
+                  onclick="togglePassword('adminPassword', this)"
+                  aria-label="Show or hide password">
+                  👁️
+                </button>
+              </div>
+
+              <div class="login-options">
+                <label class="remember">
+                  <input type="checkbox" id="rememberAdmin">
+                  <span>Remember me</span>
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                class="login-button admin-login-button">
+                🛡️ Admin Access
+              </button>
+
+              <div id="adminMessage" class="login-message"></div>
+
+            </form>
+
+            <div class="security-note">
+              <span>🛡️</span>
+              <div>
+                <strong>Secure Access</strong>
+                <p>Please do not share your login credentials with anyone.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="Logo.png" alt="SSTC Logo">
+        <div>
+          <h3>Shree Scholars Tuition Centre</h3>
+          <p>From Foundation to Future</p>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#leadbox">Contact</a>
+        <a href="index.html#pricing">Fees</a>
+        <a href="sstc-access.html">SSTC Access</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 Shree Scholars Tuition Centre • All Rights Reserved
+    </div>
+  </footer>
+
+  <script src="sstc-access.js"></script>
+  <script src="admin-login-snippet.js"></script>
+</body>
+</html>
