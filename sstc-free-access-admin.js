@@ -7,10 +7,10 @@
 
   /* 👇 Apna Apps Script /exec URL yahan daalo
      (wahi jo admin-page.js / admin-login-snippet.js me hai) */
-  var API_URL = "PASTE_YOUR_APPS_SCRIPT_EXEC_URL_HERE";
+  var API_URL = "https://script.google.com/macros/s/AKfycbzSPSlkswNdmRtJkZ0Uq3Et5hAPIBorvbgVoQvZD4e0Ed36TwPzk7bh-xSAWmdFpmqynw/exec";
 
   /* Admin token kis key me save hota hai pata ho to yahan likho, warna auto-detect hoga */
-  var TOKEN_KEY = "";
+  var TOKEN_KEY = "sstcAdminToken";
 
   function findToken() {
     var stores = [sessionStorage, localStorage];
@@ -46,16 +46,23 @@
     });
   }
 
-  function api(params) {
+    function api(params) {
     var token = findToken();
     if (!token) {
       return Promise.reject(new Error("Admin token nahi mila. Logout karke dobara admin login karein."));
     }
+    if (!API_URL || API_URL.indexOf("script.google.com") === -1) {
+      return Promise.reject(new Error("API_URL set nahi hai. sstc-free-access-admin.js me Apps Script /exec URL daalein."));
+    }
     var q = new URLSearchParams(params);
     q.set("adminToken", token);
     return fetch(API_URL + "?" + q.toString())
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
+      .then(function (r) { return r.text(); })
+      .then(function (txt) {
+        var d;
+        try { d = JSON.parse(txt); }
+        catch (e) { throw new Error("Server ne JSON nahi diya. Apps Script deployment/URL check karein."); }
+        if (d && d.type === "unauthorized") throw new Error("Admin login expire ho gaya. Logout karke dobara login karein.");
         if (d && d.success === false) throw new Error(d.message || "Error");
         return d;
       });
