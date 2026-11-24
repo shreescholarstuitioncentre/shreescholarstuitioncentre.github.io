@@ -2402,7 +2402,7 @@ iframe{height:450px}
 
 <section class="results container">
 <canvas id="fireworksCanvas"></canvas>
-  <h2>🏆 Our Class 10 Board Toppers</h2>
+  <h2>Session 2025 - 26 🏆 Our Class 10 Board Toppers</h2>
   <p class="result-sub">Outstanding Results • Proven Excellence • Trusted by Parents</p>
 
   <div class="result-grid">
@@ -2457,6 +2457,65 @@ iframe{height:450px}
 
   </div>
 
+
+	<h2>Session 2026 - 27 🏆 Our Class 10 Board Toppers</h2>
+  <p class="result-sub">Outstanding Results • Proven Excellence • Trusted by Parents</p>
+
+  <div class="result-grid">
+
+    <!-- STUDENT 1 -->
+    <div class="result-card">
+      <div class="img-box">
+		 
+        <img src="t1.jpeg">
+        
+      </div>
+      <h3>Student Upcoming</h3>
+		 <!-- <div class="badge">TOPPER</div>
+		<div>______________________________</div>
+      <p class="percent">80% UP Board</p>
+      <p class="division">1<sup>st</sup> Division (Distinction)</p>
+		<p class="division">Mahatama Gandhi Inter College, Gorakhpur</p>
+    </div> -->
+
+    <!-- STUDENT 2 -->
+    <div class="result-card">
+      <div class="img-box">
+        <img src="t2.jpeg">
+      </div>
+      <h3>Student Upcoming</h3>
+      <!-- <p class="percent">78% UP Board</p>
+      <p class="division">1<sup>st</sup> Division (Distinction)</p>
+		<p class="division">Saraswati Vidya Mandir Inter College, Gorakhpur</p>
+    </div> -->
+
+    <!-- STUDENT 3 -->
+    <div class="result-card">
+      <div class="img-box">
+        <img src="t3.jpeg">
+      </div>
+      <h3>Student Upcoming</h3>
+      <!-- <p class="percent">63% UP Board</p>
+      <p class="division">1<sup>st</sup> Division</p>
+		<p class="division">Mahatama Gandhi Inter College, Gorakhpur</p>
+    </div> -->
+
+    <!-- STUDENT 4 -->
+    <!-- <div class="result-card">
+      <div class="img-box">
+        <img src="t4.jpg">
+      </div>
+      <h3>Neha Gupta</h3>
+      <p class="percent">90%</p>
+      <p class="division">First Division</p>
+		<p class="division">Mahatama Gandhi Inter College, Gorakhpur</p>
+    </div> -->
+
+  </div>
+
+
+
+	
   <!-- STATS -->
   <div class="stats">
     <div><h3>100%</h3><p>Result</p></div>
@@ -3463,12 +3522,125 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+
+
+		<script>
+/* =====================================================
+   AUTO + ARROW SLIDERS (Our Toppers & Memories of Journey)
+===================================================== */
+(function () {
+  var AUTO_DELAY = 3000;      // auto slide kitni der baad (3000 = 3 second)
+  var PAUSE_AFTER_CLICK = 6000; // arrow dabane ke baad auto slide kitni der ruke
+
+  var sliders = [
+    { track: "#slides",       wrap: ".slider",          prev: ".prev",   next: ".next" },
+    { track: "#galleryTrack", wrap: ".gallery-wrapper", prev: ".g-btn.prev", next: ".g-btn.next" }
+  ];
+
+  sliders.forEach(function (cfg) {
+    var track = document.querySelector(cfg.track);
+    var wrap  = document.querySelector(cfg.wrap);
+    if (!track || !wrap) return;
+
+    var prevBtn = wrap.querySelector(cfg.prev);
+    var nextBtn = wrap.querySelector(cfg.next);
+    var paused = false;
+    var resumeTimer = null;
+
+    function stepSize() {
+      var first = track.children[0];
+      if (!first) return track.clientWidth;
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      return first.getBoundingClientRect().width + gap;
+    }
+
+    function atEnd() {
+      return track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+    }
+
+    function goNext() {
+      if (atEnd()) {
+        track.scrollTo({ left: 0, behavior: "smooth" });   // end par wapas shuru
+      } else {
+        track.scrollBy({ left: stepSize(), behavior: "smooth" });
+      }
+    }
+
+    function goPrev() {
+      if (track.scrollLeft <= 8) {
+        track.scrollTo({ left: track.scrollWidth, behavior: "smooth" }); // shuru se seedha end
+      } else {
+        track.scrollBy({ left: -stepSize(), behavior: "smooth" });
+      }
+    }
+
+    function pauseFor(ms) {
+      paused = true;
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(function () { paused = false; }, ms);
+    }
+
+    /* Arrow click: capture me pakadte hain taaki koi purana handler beech me na aaye */
+    document.addEventListener("click", function (e) {
+      var btn = e.target.closest ? e.target.closest("button") : null;
+      if (!btn) return;
+      if (btn === nextBtn) { e.stopImmediatePropagation(); goNext(); pauseFor(PAUSE_AFTER_CLICK); }
+      if (btn === prevBtn) { e.stopImmediatePropagation(); goPrev(); pauseFor(PAUSE_AFTER_CLICK); }
+    }, true);
+
+    /* Hover / touch par auto slide ruk jaye */
+    wrap.addEventListener("mouseenter", function () { paused = true; });
+    wrap.addEventListener("mouseleave", function () { pauseFor(1000); });
+    wrap.addEventListener("touchstart", function () { pauseFor(PAUSE_AFTER_CLICK); }, { passive: true });
+
+    /* AUTO SLIDE */
+    setInterval(function () {
+      if (!paused && !document.hidden) goNext();
+    }, AUTO_DELAY);
+  });
+})();
+</script>
+		
 	
 <script src="sstc-enhance.js" defer></script>
 
   
 <script src="sstc-assistant.js" defer></script>
-	
+	<style>
+/* =====================================================
+   CLASS 10 TOPPERS — photo poori dikhe (crop nahi)
+===================================================== */
+.results .result-card .img-box{
+  width:100% !important;
+  height:260px !important;          /* frame ki height, chahe to 220px / 300px kar lo */
+  margin:0 auto 12px !important;
+  border-radius:18px !important;    /* gol ki jagah rounded rectangle */
+  border:3px solid #ff9800 !important;
+  background:linear-gradient(135deg,#f8f9fa,#e9ecef) !important;
+  box-shadow:0 8px 20px rgba(0,0,0,.15) !important;
+  overflow:hidden !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+
+.results .result-card .img-box img{
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  object-fit:contain !important;    /* cover nahi, poori photo dikhegi */
+  object-position:center !important;
+  border-radius:0 !important;       /* photo ka gol crop hata diya */
+  border:0 !important;
+  display:block !important;
+}
+
+/* mobile par thodi chhoti height */
+@media(max-width:600px){
+  .results .result-card .img-box{height:230px !important}
+}
+</style>
 
 </body>
 </html>
