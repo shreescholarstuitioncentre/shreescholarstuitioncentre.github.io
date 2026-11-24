@@ -3444,6 +3444,26 @@ if ("serviceWorker" in navigator) {
 	</script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+	<script>
+/* Video landscape hai ya portrait, detect karke card ko adjust karo */
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".video-testimonials .video-card video").forEach(function (v) {
+    var card = v.closest(".video-card");
+
+    function check() {
+      if (v.videoWidth && v.videoHeight) {
+        card.classList.toggle("is-landscape", v.videoWidth > v.videoHeight);
+      }
+    }
+
+    v.setAttribute("preload", "metadata");
+    v.addEventListener("loadedmetadata", check);
+    if (v.readyState >= 1) { check(); } else { v.load(); }
+  });
+});
+</script>
+	
 <script src="sstc-enhance.js" defer></script>
 
   
