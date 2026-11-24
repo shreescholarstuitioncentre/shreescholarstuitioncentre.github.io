@@ -322,3 +322,28 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 @media(max-width:400px){
   .rp-features{grid-template-columns:1fr}
 }
+/* =====================================================
+   VIDEO CARDS — video ke ratio ke hisaab se (landscape/portrait)
+===================================================== */
+.video-testimonials{align-items:flex-start}
+
+.video-testimonials .video-card{
+  flex:0 0 min(78vw,300px);   /* portrait card width */
+  align-self:flex-start;      /* card stretch nahi hoga, khali navy jagah nahi bachegi */
+  background:#000;
+  overflow:hidden;
+}
+
+/* landscape video ho to card chauda */
+.video-testimonials .video-card.is-landscape{
+  flex-basis:min(88vw,480px);
+}
+
+.video-testimonials .video-card video{
+  width:100%;
+  height:auto;                /* fixed height hata di */
+  max-height:80vh;            /* bahut lamba portrait ho to screen se bahar na jaye */
+  object-fit:contain;         /* cover nahi, poora video dikhega */
+  background:#000;
+  display:block;
+}
