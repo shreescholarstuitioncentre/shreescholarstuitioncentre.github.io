@@ -1481,9 +1481,12 @@ const SSTC_EBOOKS = {
 
            { "number": 21, "title": "Poem 7: Evans Tries an O-Level  / कविता 7: इवांस O-लेवल की परीक्षा देता है", "pdf": "ebooks/class-12/english/chapter-21.pdf" },
            { "number": 22, "title": "Chapter 9: Should Wizard Hit Mommy? / अध्याय 9: क्या जादूगर को मम्मी को मारना चाहिए?", "pdf": "ebooks/class-12/english/chapter-22.pdf" },
-
-            { "number": 23, "title": "Writing Skills: Notice, Invitation, Letter & Report / लेखन कौशल", "pdf": "ebooks/class-12/english/chapter-23.pdf" },
-            { "number": 24, "title": "Reading Skills: Unseen Passages / पठन कौशल: अपठित गद्यांश", "pdf": "ebooks/class-12/english/chapter-24.pdf" }
+               { "number": 23, "title": "Grammar: Creative Writing", "pdf": "ebooks/class-11/english/chapter-23.pdf" },
+               { "number": 24, "title": "Grammar: Essay Writing", "pdf": "ebooks/class-11/english/chapter-24.pdf" },
+               { "number": 25, "title": "Grammar: Letter Writing", "pdf": "ebooks/class-11/english/chapter-25.pdf" },
+               { "number": 26, "title": "Grammar: Note Making", "pdf": "ebooks/class-11/english/chapter-26.pdf" },
+               { "number": 27, "title": "Grammar: Sub-Titling", "pdf": "ebooks/class-11/english/chapter-27.pdf" },
+               { "number": 28, "title": "Grammar: Summarising", "pdf": "ebooks/class-11/english/chapter-28.pdf" }
         ]
     },
 
