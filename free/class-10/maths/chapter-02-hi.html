@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>गणित सूत्र संग्रह — NCERT · CBSE · कक्षा 10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Mukta:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f1e9; --surface:#fffdf8; --surface2:#f1ebe1;
+  --ink:#211c17; --dim:#7b6f61; --rule:rgba(33,28,23,.13);
+  --accent:#b4451f; --accent-soft:rgba(180,69,31,.07);
+  --sage:#5c7a3f; --sage-soft:rgba(92,122,63,.09);
+  --font-head:"Instrument Serif","Tiro Devanagari Hindi",Georgia,serif;
+  --font-body:"IBM Plex Sans","Mukta",-apple-system,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --font-math:"Source Serif 4","Tiro Devanagari Hindi",Georgia,serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#171310; --surface:#1f1a16; --surface2:#251f1a;
+    --ink:#f2eae0; --dim:#a3988a; --rule:rgba(255,255,255,.1);
+    --accent:#e2794b; --accent-soft:rgba(226,121,75,.1);
+    --sage:#a8c47a; --sage-soft:rgba(168,196,122,.1);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; padding:36px 40px 80px; background:var(--bg); color:var(--ink);
+  font-family:var(--font-body); font-size:15px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    linear-gradient(var(--rule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+  background-size:100% 100%, 100% 100%;
+  background-image:
+    radial-gradient(circle at 12% 0%, var(--accent-soft), transparent 45%),
+    radial-gradient(circle at 88% 4%, var(--sage-soft), transparent 42%);
+}
+.wrap{max-width:1340px;margin:0 auto;display:grid;grid-template-columns:214px minmax(0,1fr);gap:0 44px}
+.main{min-width:0}
+
+/* ---------- toc ---------- */
+.toc{position:sticky;top:26px;align-self:start;grid-row:1/-1;padding:12px 0;
+     max-height:calc(100dvh - 52px);overflow-y:auto}
+.toc::-webkit-scrollbar{width:3px}
+.toc::-webkit-scrollbar-thumb{background:var(--rule);border-radius:2px}
+.toc-title{font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:2.4px;
+  text-transform:uppercase;color:var(--dim);padding-bottom:10px;margin-bottom:10px;
+  border-bottom:1px solid var(--rule)}
+.toc a{display:block;font-size:11.5px;color:var(--dim);text-decoration:none;padding:5px 9px;
+  border-radius:5px;border-left:2px solid transparent;transition:all .15s;line-height:1.35;
+  margin-bottom:1px}
+.toc a span{font-family:var(--font-mono);font-size:9.5px;opacity:.65;margin-right:5px}
+.toc a:hover{color:var(--ink);background:var(--surface2)}
+.toc a.active{color:var(--ink);border-left-color:var(--accent);background:var(--surface2)}
+
+/* ---------- hero ---------- */
+.hero{padding:26px 0 40px;border-bottom:2px solid var(--ink);margin-bottom:14px}
+.kicker{font-family:var(--font-mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:18px}
+.hero h1{font-family:var(--font-head);font-weight:400;font-size:clamp(38px,5.6vw,68px);
+  line-height:1.02;letter-spacing:-.015em;margin:0 0 18px}
+.hero p{max-width:62ch;color:var(--dim);font-size:15.5px;margin:0 0 26px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.7px;padding:5px 11px;
+  border:1px solid var(--rule);border-radius:999px;color:var(--dim);background:var(--surface)}
+
+/* ---------- chapter ---------- */
+.chapter{padding:46px 0 12px;border-bottom:1px solid var(--rule);scroll-margin-top:24px}
+.chapter:last-of-type{border-bottom:none}
+.ch-head{display:flex;gap:20px;align-items:flex-start;margin-bottom:24px}
+.ch-num{font-family:var(--font-head);font-size:44px;line-height:.9;color:var(--accent);
+  opacity:.55;font-variant-numeric:tabular-nums;min-width:56px}
+.ch-kicker{font-family:var(--font-mono);font-size:9.5px;letter-spacing:2.2px;
+  text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.ch-head h2{font-family:var(--font-head);font-weight:400;font-size:clamp(24px,3.2vw,34px);
+  line-height:1.15;margin:0;letter-spacing:-.01em}
+
+.rows{border-top:1px solid var(--rule)}
+.frow{display:grid;grid-template-columns:minmax(0,206px) minmax(0,1fr);gap:0 26px;
+  padding:15px 10px 15px 0;border-bottom:1px dashed var(--rule);align-items:start;
+  transition:background .15s}
+.frow:hover{background:var(--accent-soft)}
+.flabel{font-family:var(--font-mono);font-size:10px;letter-spacing:1.1px;text-transform:uppercase;
+  color:var(--dim);line-height:1.55;padding-top:5px;overflow-wrap:break-word}
+.fbody{min-width:0}
+.fmath{font-family:var(--font-math);font-size:19px;line-height:1.7;color:var(--ink);
+  overflow-wrap:break-word;font-variant-numeric:tabular-nums}
+.fnote{font-size:12.5px;color:var(--dim);margin-top:5px;line-height:1.55;max-width:70ch}
+
+/* math atoms */
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;
+  margin:0 .16em;line-height:1.18}
+.fr-n{padding:0 .3em;border-bottom:1.2px solid currentColor}
+.fr-d{padding:0 .3em}
+.sq{display:inline-flex;align-items:flex-start;margin:0 .05em}
+.sq .rad{border-top:1.2px solid currentColor;padding:.08em .26em 0 .12em;margin-left:-.05em}
+.ovl{text-decoration:overline;padding:0 .04em}
+sup,sub{font-size:.62em;line-height:0}
+
+/* ---------- tables ---------- */
+.tbl-wrap{margin:30px 0 4px;overflow-x:auto;background:var(--surface);
+  border:1px solid var(--rule);border-radius:8px;padding:18px 20px 16px}
+.tbl-cap{font-family:var(--font-mono);font-size:9.5px;letter-spacing:2.2px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:12px}
+.tbl{width:100%;border-collapse:collapse;min-width:430px}
+.tbl th,.tbl td{padding:9px 12px;text-align:center;border-bottom:1px solid var(--rule);
+  font-family:var(--font-math);font-size:17px}
+.tbl thead th{font-family:var(--font-mono);font-size:10px;letter-spacing:1.4px;
+  text-transform:uppercase;color:var(--dim);font-weight:500;border-bottom:1.5px solid var(--ink)}
+.tbl th.rowh{text-align:left;font-family:var(--font-math);font-size:17px;font-weight:600;
+  color:var(--ink);white-space:nowrap}
+.tbl th.rowh small{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:1px;
+  color:var(--dim);font-weight:400;margin-top:2px}
+.tbl tbody tr:hover{background:var(--accent-soft)}
+.tbl tbody tr:last-child th,.tbl tbody tr:last-child td{border-bottom:none}
+.tbl-note{font-size:11.5px;color:var(--dim);margin:12px 0 0;font-family:var(--font-body)}
+
+/* ---------- tip ---------- */
+.tip{margin:26px 0 8px;padding:16px 20px;background:var(--sage-soft);
+  border-left:3px solid var(--sage);border-radius:0 7px 7px 0}
+.tip-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:2.2px;text-transform:uppercase;
+  color:var(--sage);display:block;margin-bottom:6px}
+.tip p{margin:0;font-size:13.5px;line-height:1.62;color:var(--ink);max-width:78ch}
+
+footer{padding:44px 0 0;margin-top:10px;border-top:1px solid var(--rule);
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.6px;color:var(--dim);line-height:1.9}
+
+/* ---------- mobile ---------- */
+@media (max-width:1000px){
+  body{padding:0 22px 60px}
+  .wrap{grid-template-columns:1fr}
+  .toc{position:sticky;top:0;z-index:200;max-height:none;display:flex;gap:4px;
+    align-items:center;overflow-x:auto;-webkit-overflow-scrolling:touch;background:var(--bg);
+    border-bottom:1px solid var(--rule);padding:10px 0;margin:0 -22px;padding-left:22px;
+    padding-right:22px;grid-row:auto}
+  .toc::-webkit-scrollbar{display:none}
+  .toc-title{display:none}
+  .toc a{white-space:nowrap;flex-shrink:0;border-left:none;border-bottom:2px solid transparent;
+    border-radius:4px 4px 0 0;padding:6px 9px;font-size:10.5px}
+  .toc a.active{border-left:none;border-bottom-color:var(--accent);background:var(--surface)}
+  .hero{padding-top:26px}
+  .chapter{scroll-margin-top:54px}
+  .frow{grid-template-columns:1fr;gap:4px;padding:14px 0}
+  .flabel{padding-top:0}
+  .fmath{font-size:17.5px}
+}
+@media (max-width:560px){
+  .ch-head{gap:12px}
+  .ch-num{font-size:32px;min-width:40px}
+  .fmath{font-size:16.5px}
+  .tbl th,.tbl td{padding:7px 6px;font-size:14px}
+}
+
+/* ---------- print ---------- */
+@media print{
+  body{padding:0;background:#fff;font-size:11pt}
+  .toc,.chips{display:none}
+  .wrap{display:block;max-width:none}
+  .chapter{break-before:page;padding-top:0;border-bottom:none}
+  .chapter:first-of-type{break-before:auto}
+  .frow{break-inside:avoid}
+  .tip,.tbl-wrap{break-inside:avoid}
+  .hero{border-bottom:2px solid #000}
+  .fmath{font-size:12pt}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="toc" id="toc">
+    <div class="toc-title">विषय-सूची</div>
+    <a href="#ch1"><span>01</span>वास्तविक संख्याएँ</a><a href="#ch2"><span>02</span>बहुपद</a><a href="#ch3"><span>03</span>दो चरों वाले रैखिक समीकरण युग्म</a><a href="#ch4"><span>04</span>द्विघात समीकरण</a><a href="#ch5"><span>05</span>समांतर श्रेढ़ियाँ</a><a href="#ch6"><span>06</span>त्रिभुज</a><a href="#ch7"><span>07</span>निर्देशांक ज्यामिति</a><a href="#ch8"><span>08</span>त्रिकोणमिति का परिचय</a><a href="#ch9"><span>09</span>त्रिकोणमिति के कुछ अनुप्रयोग</a><a href="#ch10"><span>10</span>वृत्त</a><a href="#ch11"><span>11</span>वृत्तों से संबंधित क्षेत्रफल</a><a href="#ch12"><span>12</span>पृष्ठीय क्षेत्रफल और आयतन</a><a href="#ch13"><span>13</span>सांख्यिकी</a><a href="#ch14"><span>14</span>प्रायिकता</a>
+  </nav>
+  <div class="main">
+    <header class="hero">
+      <div class="kicker">NCERT · CBSE · कक्षा 10</div>
+      <h1>गणित सूत्र संग्रह</h1>
+      <p>कक्षा 10 गणित की पाठ्यपुस्तक के सभी 14 अध्यायों के सूत्र और समीकरण, अध्याय-दर-अध्याय — शर्तों और परीक्षा-टिप के साथ।</p>
+      <div class="chips"><span class="chip">14 अध्याय</span><span class="chip">NCERT पाठ्यक्रम</span><span class="chip">प्रिंट के लिए उपयुक्त</span></div>
+    </header>
+    
+    <section class="chapter" id="ch1">
+      <div class="ch-head">
+        <div class="ch-num">01</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">अध्याय 1</div>
+          <h2>वास्तविक संख्याएँ</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">यूक्लिड विभाजन प्रमेयिका</div><div class="fbody"><div class="fmath">a = bq + r</div><div class="fnote">0 ≤ r &lt; b। दो संख्याओं का म.स. चरणबद्ध निकालने के लिए।</div></div></div><div class="frow"><div class="flabel">म.स. और ल.स. का संबंध</div><div class="fbody"><div class="fmath">म.स.(a, b) × ल.स.(a, b) = a × b</div><div class="fnote">केवल दो संख्याओं के लिए सत्य, तीन या अधिक के लिए नहीं।</div></div></div><div class="frow"><div class="flabel">ल.स. म.स. का गुणज है</div><div class="fbody"><div class="fmath">ल.स.(a, b) = k × म.स.(a, b)</div><div class="fnote">k एक धनात्मक पूर्णांक है।</div></div></div><div class="frow"><div class="flabel">अंकगणित की आधारभूत प्रमेय</div><div class="fbody"><div class="fmath">N = p<sub>1</sub><sup>a<sub>1</sub></sup> · p<sub>2</sub><sup>a<sub>2</sub></sup> ⋯ p<sub>k</sub><sup>a<sub>k</sub></sup></div><div class="fnote">प्रत्येक भाज्य संख्या का अभाज्य गुणनखंडन अद्वितीय होता है, केवल गुणनखंडों के क्रम को छोड़कर।</div></div></div><div class="frow"><div class="flabel">सांत दशमलव</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">p</span><span class="fr-d">q</span></span> सांत है  ⇔  q = 2<sup>m</sup> · 5<sup>n</sup></div><div class="fnote">q न्यूनतम रूप में हो; m और n पूर्ण संख्याएँ हैं।</div></div></div><div class="frow"><div class="flabel">असांत आवर्ती दशमलव</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">p</span><span class="fr-d">q</span></span> आवर्ती है  ⇔  q में 2 या 5 के अतिरिक्त कोई अभाज्य गुणनखंड है</div><div class="fnote">2 और 5 के अतिरिक्त कोई भी गुणनखंड आवर्ती दशमलव देता है।</div></div></div><div class="frow"><div class="flabel">अपरिमेय संख्याएँ</div><div class="fbody"><div class="fmath"><span class="sq">&radic;<span class="rad">p</span></span> अपरिमेय है, प्रत्येक अभाज्य p के लिए</div><div class="fnote">साथ ही: परिमेय ± अपरिमेय = अपरिमेय, और शून्येतर परिमेय × अपरिमेय = अपरिमेय।</div></div></div><div class="frow"><div class="flabel">भिन्नों का म.स.</div><div class="fbody"><div class="fmath">म.स. = <span class="frac"><span class="fr-n">अंशों का म.स.</span><span class="fr-d">हरों का ल.स.</span></span></div><div class="fnote">पहले सभी भिन्नों को न्यूनतम रूप में लिखिए।</div></div></div><div class="frow"><div class="flabel">भिन्नों का ल.स.</div><div class="fbody"><div class="fmath">ल.स. = <span class="frac"><span class="fr-n">अंशों का ल.स.</span><span class="fr-d">हरों का म.स.</span></span></div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">परीक्षा टिप</span><p>म.स.–ल.स. का संबंध और सांत दशमलव की जाँच लगभग हर वर्ष आती है। याद रखें, यह संबंध केवल दो संख्याओं के लिए लागू है।</p></div>
+    </section>
+    <section class="chapter" id="ch2">
+      <div class="ch-head">
+        <div class="ch-num">02</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">अध्याय 2</div>
+          <h2>बहुपद</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">बहुपद का शून्यक</div><div class="fbody"><div class="fmath">p(x) = 0  ⇒  x = α एक शून्यक है</div><div class="fnote">शून्यकों की संख्या बहुपद की घात से अधिक नहीं होती।</div></div></div><div class="frow"><div class="flabel">शून्यकों का योग (द्विघात)</div><div class="fbody"><div class="fmath">α + β = -<span class="frac"><span class="fr-n">b</span><span class="fr-d">a</span></span></div><div class="fnote">ax² + bx + c के लिए।</div></div></div><div class="frow"><div class="flabel">शून्यकों का गुणनफल (द्विघात)</div><div class="fbody"><div class="fmath">αβ = <span class="frac"><span class="fr-n">c</span><span class="fr-d">a</span></span></div></div></div><div class="frow"><div class="flabel">शून्यकों से बहुपद</div><div class="fbody"><div class="fmath">x<sup>2</sup> - (α + β)x + αβ = 0</div><div class="fnote">या k[x² − (योग)x + (गुणनफल)], किसी भी k ≠ 0 के लिए।</div></div></div><div class="frow"><div class="flabel">शून्यकों का योग (त्रिघात)</div><div class="fbody"><div class="fmath">α + β + γ = -<span class="frac"><span class="fr-n">b</span><span class="fr-d">a</span></span></div><div class="fnote">ax³ + bx² + cx + d के लिए।</div></div></div><div class="frow"><div class="flabel">दो-दो के गुणनफलों का योग</div><div class="fbody"><div class="fmath">αβ + βγ + γα = <span class="frac"><span class="fr-n">c</span><span class="fr-d">a</span></span></div></div></div><div class="frow"><div class="flabel">शून्यकों का गुणनफल (त्रिघात)</div><div class="fbody"><div class="fmath">αβγ = -<span class="frac"><span class="fr-n">d</span><span class="fr-d">a</span></span></div></div></div><div class="frow"><div class="flabel">विभाजन एल्गोरिथ्म</div><div class="fbody"><div class="fmath">p(x) = g(x) · q(x) + r(x)</div><div class="fnote">या तो r(x) = 0, या r(x) की घात g(x) की घात से कम है।</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">परीक्षा टिप</span><p>यदि शून्यक दिए हों तो बहुपद x² − (α + β)x + αβ के रूप में बनाइए। चिह्न दो बार जाँचिए — यहीं सबसे अधिक गलती होती है।</p></div>
+    </section>
+    <section class="chapter" id="ch3">
+      <div class="ch-head">
+        <div class="ch-num">03</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">अध्याय 3</div>
+          <h2>दो चरों वाले रैखिक समीकरण युग्म</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">मानक रूप</div><div class="fbody"><div class="fmath">a<sub>1</sub>x + b<sub>1</sub>y + c<sub>1</sub> = 0  ,  a<sub>2</sub>x + b<sub>2</sub>y + c<sub>2</sub> = 0</div><div class="fnote">a₁, b₁, a₂, b₂ एक साथ शून्य नहीं हैं।</div></div></div><div class="frow"><div class="flabel">अद्वितीय हल</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">a<sub>1</sub></span><span class="fr-d">a<sub>2</sub></span></span> ≠ <span class="frac"><span class="fr-n">b<sub>1</sub></span><span class="fr-d">b<sub>2</sub></span></span></div><div class="fnote">ग्राफ: प्रतिच्छेदी रेखाएँ। युग्म संगत है।</div></div></div><div class="frow"><div class="flabel">अपरिमित रूप से अनेक हल</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">a<sub>1</sub></span><span class="fr-d">a<sub>2</sub></span></span> = <span class="frac"><span class="fr-n">b<sub>1</sub></span><span class="fr-d">b<sub>2</sub></span></span> = <span class="frac"><span class="fr-n">c<sub>1</sub></span><span class="fr-d">c<sub>2</sub></span></span></div><div class="fnote">ग्राफ: संपाती रेखाएँ। संगत और आश्रित।</div></div></div><div class="frow"><div class="flabel">कोई हल नहीं</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">a<sub>1</sub></span><span class="fr-d">a<sub>2</sub></span></span> = <span class="frac"><span class="fr-n">b<sub>1</sub></span><span class="fr-d">b<sub>2</sub></span></span> ≠ <span class="frac"><span class="fr-n">c<sub>1</sub></span><span class="fr-d">c<sub>2</sub></span></span></div><div class="fnote">ग्राफ: समांतर रेखाएँ। युग्म असंगत है।</div></div></div><div class="frow"><div class="flabel">वज्र-गुणन विधि</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">x</span><span class="fr-d">b<sub>1</sub>c<sub>2</sub> - b<sub>2</sub>c<sub>1</sub></span></span> = <span class="frac"><span class="fr-n">y</span><span class="fr-d">c<sub>1</sub>a<sub>2</sub> - c<sub>2</sub>a<sub>1</sub></span></span> = <span class="frac"><span class="fr-n">1</span><span class="fr-d">a<sub>1</sub>b<sub>2</sub> - a<sub>2</sub>b<sub>1</sub></span></span></div><div class="fnote">पहले समीकरणों को चिह्नों सहित a₁x + b₁y + c₁ = 0 के रूप में लिखिए।</div></div></div><div class="frow"><div class="flabel">विलोपन विधि</div><div class="fbody"><div class="fmath">a<sub>1</sub>b<sub>2</sub> - a<sub>2</sub>b<sub>1</sub> ≠ 0  ⇒  अद्वितीय (x, y)</div><div class="fnote">एक गुणांक समान करने के लिए गुणा कीजिए, फिर घटाइए।</div></div></div><div class="frow"><div class="flabel">संगत युग्म</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">a<sub>1</sub></span><span class="fr-d">a<sub>2</sub></span></span> ≠ <span class="frac"><span class="fr-n">b<sub>1</sub></span><span class="fr-d">b<sub>2</sub></span></span>   or   <span class="frac"><span class="fr-n">a<sub>1</sub></span><span class="fr-d">a<sub>2</sub></span></span> = <span class="frac"><span class="fr-n">b<sub>1</sub></span><span class="fr-d">b<sub>2</sub></span></span> = <span class="frac"><span class="fr-n">c<sub>1</sub></span><span class="fr-d">c<sub>2</sub></span></span></div><div class="fnote">वह युग्म जिसका कम से कम एक हल हो।</div></div></div><div class="frow"><div class="flabel">असंगत युग्म</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">a<sub>1</sub></span><span class="fr-d">a<sub>2</sub></span></span> = <span class="frac"><span class="fr-n">b<sub>1</sub></span><span class="fr-d">b<sub>2</sub></span></span> ≠ <span class="frac"><span class="fr-n">c<sub>1</sub></span><span class="fr-d">c<sub>2</sub></span></span></div><div class="fnote">कोई हल नहीं।</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">परीक्षा टिप</span><p>a₁/a₂, b₁/b₂, c₁/c₂ की तुलना से पहले दोनों समीकरणों को ax + by + c = 0 के रूप में लिखिए। यही तुलना अद्वितीय, अपरिमित या कोई हल नहीं — तय करती है।</p></div>
+    </section>
+    <section class="chapter" id="ch4">
+      <div class="ch-head">
+        <div class="ch-num">04</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">अध्याय 4</div>
+          <h2>द्विघात समीकरण</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">मानक रूप</div><div class="fbody"><div class="fmath">ax<sup>2</sup> + bx + c = 0 ,  a ≠ 0</div><div class="fnote">द्विघात समीकरण के अधिकतम दो वास्तविक मूल होते हैं।</div></div></div><div class="frow"><div class="flabel">द्विघात सूत्र (श्रीधराचार्य)</div><div class="fbody"><div class="fmath">x = <span class="frac"><span class="fr-n">-b ± <span class="sq">&radic;<span class="rad">b<sup>2</sup> - 4ac</span></span></span><span class="fr-d">2a</span></span></div><div class="fnote">जब गुणनखंडन स्पष्ट न हो तब प्रयोग कीजिए।</div></div></div><div class="frow"><div class="flabel">विविक्तकर</div><div class="fbody"><div class="fmath">D = b<sup>2</sup> - 4ac</div><div class="fnote">D मूलों की प्रकृति तय करता है।</div></div></div><div class="frow"><div class="flabel">D &gt; 0</div><div class="fbody"><div class="fmath">दो भिन्न वास्तविक मूल :  <span class="frac"><span class="fr-n">-b + <span class="sq">&radic;<span class="rad">D</span></span></span><span class="fr-d">2a</span></span> , <span class="frac"><span class="fr-n">-b - <span class="sq">&radic;<span class="rad">D</span></span></span><span class="fr-d">2a</span></span></div><div class="fnote">ग्राफ x-अक्ष को दो बिंदुओं पर काटता है।</div></div></div><div class="frow"><div class="flabel">D = 0</div><div class="fbody"><div class="fmath">दो बराबर वास्तविक मूल :  x = -<span class="frac"><span class="fr-n">b</span><span class="fr-d">2a</span></span></div><div class="fnote">ग्राफ x-अक्ष को एक बिंदु पर स्पर्श करता है।</div></div></div><div class="frow"><div class="flabel">D &lt; 0</div><div class="fbody"><div class="fmath">कोई वास्तविक मूल नहीं</div><div class="fnote">ग्राफ x-अक्ष से नहीं मिलता।</div></div></div><div class="frow"><div class="flabel">मूलों का योग और गुणनफल</div><div class="fbody"><div class="fmath">α + β = -<span class="frac"><span class="fr-n">b</span><span class="fr-d">a</span></span> ,  αβ = <span class="frac"><span class="fr-n">c</span><span class="fr-d">a</span></span></div></div></div><div class="frow"><div class="flabel">मूलों से समीकरण</div><div class="fbody"><div class="fmath">x<sup>2</sup> - (α + β)x + αβ = 0</div></div></div><div class="frow"><div class="flabel">पूर्ण वर्ग बनाना</div><div class="fbody"><div class="fmath">(x + <span class="frac"><span class="fr-n">b</span><span class="fr-d">2a</span></span>)<sup>2</sup> = <span class="frac"><span class="fr-n">b<sup>2</sup> - 4ac</span><span class="fr-d">4a<sup>2</sup></span></span></div><div class="fnote">पूर्ण वर्ग बनाने के लिए (b/2a)² जोड़िए और घटाइए।</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">परीक्षा टिप</span><p>पहले D = b² − 4ac निकालिए। इससे पता चलता है कि कितने मूल अपेक्षित हैं, और जिस समीकरण का वास्तविक मूल ही नहीं उसे हल करने की गलती नहीं होती।</p></div>
+    </section>
+    <section class="chapter" id="ch5">
+      <div class="ch-head">
+        <div class="ch-num">05</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">अध्याय 5</div>
+          <h2>समांतर श्रेढ़ियाँ</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">nवाँ पद</div><div class="fbody"><div class="fmath">a<sub>n</sub> = a + (n - 1)d</div><div class="fnote">a प्रथम पद है, d सार्व अंतर।</div></div></div><div class="frow"><div class="flabel">सार्व अंतर</div><div class="fbody"><div class="fmath">d = a<sub>2</sub> - a<sub>1</sub> = a<sub>3</sub> - a<sub>2</sub> = …</div><div class="fnote">पूरी श्रेढ़ी के लिए अचर।</div></div></div><div class="frow"><div class="flabel">प्रथम n पदों का योग</div><div class="fbody"><div class="fmath">S<sub>n</sub> = <span class="frac"><span class="fr-n">n</span><span class="fr-d">2</span></span>[2a + (n - 1)d]</div></div></div><div class="frow"><div class="flabel">अंतिम पद ज्ञात होने पर योग</div><div class="fbody"><div class="fmath">S<sub>n</sub> = <span class="frac"><span class="fr-n">n</span><span class="fr-d">2</span></span>(a + l)</div><div class="fnote">l अंतिम पद है।</div></div></div><div class="frow"><div class="flabel">योग से nवाँ पद</div><div class="fbody"><div class="fmath">a<sub>n</sub> = S<sub>n</sub> - S<sub>n-1</sub></div></div></div><div class="frow"><div class="flabel">पदों की संख्या</div><div class="fbody"><div class="fmath">n = <span class="frac"><span class="fr-n">l - a</span><span class="fr-d">d</span></span> + 1</div></div></div><div class="frow"><div class="flabel">प्रथम n प्राकृत संख्याओं का योग</div><div class="fbody"><div class="fmath">1 + 2 + 3 + … + n = <span class="frac"><span class="fr-n">n(n + 1)</span><span class="fr-d">2</span></span></div><div class="fnote">a = 1, d = 1 वाली समांतर श्रेढ़ी।</div></div></div><div class="frow"><div class="flabel">समांतर श्रेढ़ी में तीन पद</div><div class="fbody"><div class="fmath">a - d ,  a ,  a + d</div><div class="fnote">योग = 3a। जब तीन पदों का योग दिया हो तब उपयोगी।</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">परीक्षा टिप</span><p>सबसे पहले a, d और n लिखिए। यदि अंतिम पद दिया हो तो पूर्ण सूत्र की तुलना में Sₙ = n/2 (a + l) तेज़ है।</p></div>
+    </section>
+    <section class="chapter" id="ch6">
+      <div class="ch-head">
+        <div class="ch-num">06</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">अध्याय 6</div>
+          <h2>त्रिभुज</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">आधारभूत समानुपातिकता प्रमेय (थेल्स)</div><div class="fbody"><div class="fmath">DE ∥ BC  ⇒  <span class="frac"><span class="fr-n">AD</span><span class="fr-d">DB</span></span> = <span class="frac"><span class="fr-n">AE</span><span class="fr-d">EC</span></span></div><div class="fnote">एक भुजा के समांतर रेखा अन्य दो भुजाओं को समान अनुपात में विभाजित करती है।</div></div></div><div class="frow"><div class="flabel">आधारभूत समानुपातिकता प्रमेय का विलोम</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">AD</span><span class="fr-d">DB</span></span> = <span class="frac"><span class="fr-n">AE</span><span class="fr-d">EC</span></span>  ⇒  DE ∥ BC</div></div></div><div class="frow"><div class="flabel">समरूपता की कसौटियाँ</div><div class="fbody"><div class="fmath">AA  ·  SSS  ·  SAS</div><div class="fnote">AAA और AA एक ही कसौटी हैं: दो बराबर कोण पर्याप्त हैं।</div></div></div><div class="frow"><div class="flabel">समरूप त्रिभुजों की संगत भुजाएँ</div><div class="fbody"><div class="fmath">△ABC ~ △DEF  ⇒  <span class="frac"><span class="fr-n">AB</span><span class="fr-d">DE</span></span> = <span class="frac"><span class="fr-n">BC</span><span class="fr-d">EF</span></span> = <span class="frac"><span class="fr-n">CA</span><span class="fr-d">FD</span></span></div></div></div><div class="frow"><div class="flabel">क्षेत्रफलों का अनुपात</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">क्षेत्रफल(△ABC)</span><span class="fr-d">क्षेत्रफल(△DEF)</span></span> = (<span class="frac"><span class="fr-n">AB</span><span class="fr-d">DE</span></span>)<sup>2</sup></div><div class="fnote">क्षेत्रफलों का अनुपात = भुजाओं के अनुपात का वर्ग।</div></div></div><div class="frow"><div class="flabel">परिमाप, माध्यिकाओं, शीर्षलंबों का अनुपात</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">परिमाप(ABC)</span><span class="fr-d">परिमाप(DEF)</span></span> = <span class="frac"><span class="fr-n">AB</span><span class="fr-d">DE</span></span></div><div class="fnote">वर्ग नहीं — यह भुजाओं के अनुपात के बराबर रहता है।</div></div></div><div class="frow"><div class="flabel">पाइथागोरस प्रमेय</div><div class="fbody"><div class="fmath">AC<sup>2</sup> = AB<sup>2</sup> + BC<sup>2</sup></div><div class="fnote">समकोण त्रिभुज में, ∠B = 90°, AC कर्ण है।</div></div></div><div class="frow"><div class="flabel">पाइथागोरस का विलोम</div><div class="fbody"><div class="fmath">AC<sup>2</sup> = AB<sup>2</sup> + BC<sup>2</sup>  ⇒  ∠B = 90°</div><div class="fnote">यह जाँचने के लिए कि त्रिभुज समकोण है या नहीं।</div></div></div><div class="frow"><div class="flabel">समबाहु त्रिभुज</div><div class="fbody"><div class="fmath">शीर्षलंब = <span class="frac"><span class="fr-n"><span class="sq">&radic;<span class="rad">3</span></span></span><span class="fr-d">2</span></span>a ,  क्षेत्रफल = <span class="frac"><span class="fr-n"><span class="sq">&radic;<span class="rad">3</span></span></span><span class="fr-d">4</span></span>a<sup>2</sup></div><div class="fnote">a भुजा है।</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">परीक्षा टिप</span><p>क्षेत्रफल के अनुपात वाले प्रश्नों में अनुपात का वर्ग होता है। परिमाप, माध्यिका और शीर्षलंब वाले प्रश्नों में नहीं। इस अध्याय में यही सबसे आम गलती है।</p></div>
+    </section>
+    <section class="chapter" id="ch7">
+      <div class="ch-head">
+        <div class="ch-num">07</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">अध्याय 7</div>
+          <h2>निर्देशांक ज्यामिति</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">दूरी सूत्र</div><div class="fbody"><div class="fmath">d = <span class="sq">&radic;<span class="rad">(x<sub>2</sub> - x<sub>1</sub>)<sup>2</sup> + (y<sub>2</sub> - y<sub>1</sub>)<sup>2</sup></span></span></div><div class="fnote">P(x₁, y₁) और Q(x₂, y₂) के बीच।</div></div></div><div class="frow"><div class="flabel">मूल बिंदु से दूरी</div><div class="fbody"><div class="fmath">d = <span class="sq">&radic;<span class="rad">x<sup>2</sup> + y<sup>2</sup></span></span></div></div></div><div class="frow"><div class="flabel">विभाजन सूत्र (अंत:)</div><div class="fbody"><div class="fmath">P = ( <span class="frac"><span class="fr-n">m<sub>1</sub>x<sub>2</sub> + m<sub>2</sub>x<sub>1</sub></span><span class="fr-d">m<sub>1</sub> + m<sub>2</sub></span></span> , <span class="frac"><span class="fr-n">m<sub>1</sub>y<sub>2</sub> + m<sub>2</sub>y<sub>1</sub></span><span class="fr-d">m<sub>1</sub> + m<sub>2</sub></span></span> )</div><div class="fnote">PQ को m₁ : m₂ के अनुपात में विभाजित करता है।</div></div></div><div class="frow"><div class="flabel">मध्य-बिंदु</div><div class="fbody"><div class="fmath">M = ( <span class="frac"><span class="fr-n">x<sub>1</sub> + x<sub>2</sub></span><span class="fr-d">2</span></span> , <span class="frac"><span class="fr-n">y<sub>1</sub> + y<sub>2</sub></span><span class="fr-d">2</span></span> )</div><div class="fnote">m₁ : m₂ = 1 : 1 वाला विभाजन सूत्र।</div></div></div><div class="frow"><div class="flabel">त्रिभाजन के बिंदु</div><div class="fbody"><div class="fmath">1 : 2  and  2 : 1</div><div class="fnote">विभाजन सूत्र दो बार लगाइए।</div></div></div><div class="frow"><div class="flabel">त्रिभुज का केन्द्रक</div><div class="fbody"><div class="fmath">G = ( <span class="frac"><span class="fr-n">x<sub>1</sub> + x<sub>2</sub> + x<sub>3</sub></span><span class="fr-d">3</span></span> , <span class="frac"><span class="fr-n">y<sub>1</sub> + y<sub>2</sub> + y<sub>3</sub></span><span class="fr-d">3</span></span> )</div><div class="fnote">तीनों शीर्षों का औसत।</div></div></div><div class="frow"><div class="flabel">त्रिभुज का क्षेत्रफल</div><div class="fbody"><div class="fmath">A = <span class="frac"><span class="fr-n">1</span><span class="fr-d">2</span></span> |x<sub>1</sub>(y<sub>2</sub> - y<sub>3</sub>) + x<sub>2</sub>(y<sub>3</sub> - y<sub>1</sub>) + x<sub>3</sub>(y<sub>1</sub> - y<sub>2</sub>)|</div><div class="fnote">ऊर्ध्व रेखाएँ निरपेक्ष मान दर्शाती हैं — क्षेत्रफल ऋणात्मक नहीं होता।</div></div></div><div class="frow"><div class="flabel">संरेख बिंदु</div><div class="fbody"><div class="fmath">त्रिभुज का क्षेत्रफल = 0</div><div class="fnote">एक ही सरल रेखा पर स्थित तीन बिंदु।</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">परीक्षा टिप</span><p>सूत्र चुनने से पहले एक कच्चा चित्र बनाकर दिए गए बिंदु अंकित कीजिए। 'अनुपात ज्ञात कीजिए' वाले प्रश्नों में अनुपात को k : 1 मानिए — बीजगणित बहुत छोटा हो जाता है।</p></div>
+    </section>
+    <section class="chapter" id="ch8">
+      <div class="ch-head">
+        <div class="ch-num">08</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">अध्याय 8</div>
+          <h2>त्रिकोणमिति का परिचय</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">मुख्य अनुपात</div><div class="fbody"><div class="fmath">sin θ = <span class="frac"><span class="fr-n">P</span><span class="fr-d">H</span></span> ,  cos θ = <span class="frac"><span class="fr-n">B</span><span class="fr-d">H</span></span> ,  tan θ = <span class="frac"><span class="fr-n">P</span><span class="fr-d">B</span></span></div><div class="fnote">P लंब, B आधार, H कर्ण।</div></div></div><div class="frow"><div class="flabel">व्युत्क्रम अनुपात</div><div class="fbody"><div class="fmath">cosec θ = <span class="frac"><span class="fr-n">H</span><span class="fr-d">P</span></span> ,  sec θ = <span class="frac"><span class="fr-n">H</span><span class="fr-d">B</span></span> ,  cot θ = <span class="frac"><span class="fr-n">B</span><span class="fr-d">P</span></span></div><div class="fnote">cosec θ = 1/sin θ, sec θ = 1/cos θ, cot θ = 1/tan θ।</div></div></div><div class="frow"><div class="flabel">अनुपातों में संबंध</div><div class="fbody"><div class="fmath">tan θ = <span class="frac"><span class="fr-n">sin θ</span><span class="fr-d">cos θ</span></span> ,  cot θ = <span class="frac"><span class="fr-n">cos θ</span><span class="fr-d">sin θ</span></span></div></div></div><div class="frow"><div class="flabel">सर्वसमिका 1</div><div class="fbody"><div class="fmath">sin<sup>2</sup>θ + cos<sup>2</sup>θ = 1</div><div class="fnote">प्रत्येक कोण θ के लिए सत्य।</div></div></div><div class="frow"><div class="flabel">सर्वसमिका 2</div><div class="fbody"><div class="fmath">1 + tan<sup>2</sup>θ = sec<sup>2</sup>θ</div><div class="fnote">सर्वसमिका 1 को cos²θ से भाग दीजिए।</div></div></div><div class="frow"><div class="flabel">सर्वसमिका 3</div><div class="fbody"><div class="fmath">1 + cot<sup>2</sup>θ = cosec<sup>2</sup>θ</div><div class="fnote">सर्वसमिका 1 को sin²θ से भाग दीजिए।</div></div></div><div class="frow"><div class="flabel">पूरक कोण</div><div class="fbody"><div class="fmath">sin(90° - θ) = cos θ ,  tan(90° - θ) = cot θ ,  sec(90° - θ) = cosec θ</div><div class="fnote">और विलोम: cos(90° − θ) = sin θ, इत्यादि।</div></div></div><div class="frow"><div class="flabel">मानों का परिसर</div><div class="fbody"><div class="fmath">0 ≤ sin θ ≤ 1 ,  0 ≤ cos θ ≤ 1 ,  sec θ ≥ 1 ,  cosec θ ≥ 1</div></div></div></div>
+      <div class="tbl-wrap"><div class="tbl-cap">मानक मान</div><table class="tbl"><thead><tr><th class="rowh">अनुपात</th><th>0°</th><th>30°</th><th>45°</th><th>60°</th><th>90°</th></tr></thead><tbody><tr><th class="rowh">sin θ</th><td>0</td><td><span class="frac"><span class="fr-n">1</span><span class="fr-d">2</span></span></td><td><span class="frac"><span class="fr-n">1</span><span class="fr-d"><span class="sq">&radic;<span class="rad">2</span></span></span></span></td><td><span class="frac"><span class="fr-n"><span class="sq">&radic;<span class="rad">3</span></span></span><span class="fr-d">2</span></span></td><td>1</td></tr><tr><th class="rowh">cos θ</th><td>1</td><td><span class="frac"><span class="fr-n"><span class="sq">&radic;<span class="rad">3</span></span></span><span class="fr-d">2</span></span></td><td><span class="frac"><span class="fr-n">1</span><span class="fr-d"><span class="sq">&radic;<span class="rad">2</span></span></span></span></td><td><span class="frac"><span class="fr-n">1</span><span class="fr-d">2</span></span></td><td>0</td></tr><tr><th class="rowh">tan θ</th><td>0</td><td><span class="frac"><span class="fr-n">1</span><span class="fr-d"><span class="sq">&radic;<span class="rad">3</span></span></span></span></td><td>1</td><td><span class="sq">&radic;<span class="rad">3</span></span></td><td>अपरिभाषित</td></tr></tbody></table></div>
+      <div class="tip"><span class="tip-lbl">परीक्षा टिप</span><p>0°–30°–45°–60°–90° की सारणी कंठस्थ कीजिए। बोर्ड के अधिकांश प्रश्न उससे एक मान पढ़कर प्रतिस्थापित करने पर हल हो जाते हैं।</p></div>
+    </section>
+    <section class="chapter" id="ch9">
+      <div class="ch-head">
+        <div class="ch-num">09</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">अध्याय 9</div>
+          <h2>त्रिकोणमिति के कुछ अनुप्रयोग</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">दृष्टि रेखा</div><div class="fbody"><div class="fmath">प्रेक्षक की आँख  →  वस्तु</div><div class="fnote">प्रेक्षक की आँख से देखी गई वस्तु तक खींची गई रेखा।</div></div></div><div class="frow"><div class="flabel">उन्नयन कोण</div><div class="fbody"><div class="fmath">क्षैतिज के ऊपर का कोण</div><div class="fnote">जब वस्तु प्रेक्षक से ऊँची हो तब प्रयोग होता है।</div></div></div><div class="frow"><div class="flabel">अवनमन कोण</div><div class="fbody"><div class="fmath">क्षैतिज के नीचे का कोण</div><div class="fnote">जब वस्तु प्रेक्षक से नीची हो तब प्रयोग होता है।</div></div></div><div class="frow"><div class="flabel">मूल संबंध</div><div class="fbody"><div class="fmath">tan θ = <span class="frac"><span class="fr-n">ऊँचाई</span><span class="fr-d">क्षैतिज दूरी</span></span></div><div class="fnote">ऐसा प्रत्येक प्रश्न एक समकोण त्रिभुज है।</div></div></div><div class="frow"><div class="flabel">दूरी से ऊँचाई</div><div class="fbody"><div class="fmath">h = d · tan θ</div></div></div><div class="frow"><div class="flabel">ऊँचाई से दूरी</div><div class="fbody"><div class="fmath">d = h · cot θ = <span class="frac"><span class="fr-n">h</span><span class="fr-d">tan θ</span></span></div></div></div><div class="frow"><div class="flabel">मानक स्थितियाँ</div><div class="fbody"><div class="fmath">θ = 45° ⇒ h = d  ·  30° ⇒ h = <span class="frac"><span class="fr-n">d</span><span class="fr-d"><span class="sq">&radic;<span class="rad">3</span></span></span></span>  ·  60° ⇒ h = d<span class="sq">&radic;<span class="rad">3</span></span></div><div class="fnote">याद रखने योग्य — परीक्षा में एक पूरा चरण बचता है।</div></div></div><div class="frow"><div class="flabel">अवनमन = उन्नयन</div><div class="fbody"><div class="fmath">अवनमन कोण = उन्नयन कोण</div><div class="fnote">दो समांतर क्षैतिज रेखाओं के बीच एकांतर कोण।</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">परीक्षा टिप</span><p>चित्र में समकोण और उन्नयन कोण अवश्य अंकित कीजिए। ऊँचाई के लिए tan θ और भूमि पर दूरी के लिए cot θ प्रयोग कीजिए।</p></div>
+    </section>
+    <section class="chapter" id="ch10">
+      <div class="ch-head">
+        <div class="ch-num">10</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">अध्याय 10</div>
+          <h2>वृत्त</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">त्रिज्या और स्पर्श रेखा</div><div class="fbody"><div class="fmath">OP ⊥ PT</div><div class="fnote">वृत्त के किसी बिंदु पर स्पर्श रेखा स्पर्श बिंदु से जाने वाली त्रिज्या के लंबवत होती है।</div></div></div><div class="frow"><div class="flabel">बराबर स्पर्श रेखाएँ</div><div class="fbody"><div class="fmath">PA = PB</div><div class="fnote">बाह्य बिंदु P से खींची गई दोनों स्पर्श रेखाओं की लंबाइयाँ बराबर होती हैं।</div></div></div><div class="frow"><div class="flabel">स्पर्श बिंदु पर कोण</div><div class="fbody"><div class="fmath">∠OAP = ∠OBP = 90°</div><div class="fnote">OAPB एक चक्रीय चतुर्भुज है जिसमें ∠APB + ∠AOB = 180°।</div></div></div><div class="frow"><div class="flabel">स्पर्श रेखा की लंबाई</div><div class="fbody"><div class="fmath">PT = <span class="sq">&radic;<span class="rad">OP<sup>2</sup> - r<sup>2</sup></span></span></div><div class="fnote">केंद्र से OP दूरी पर स्थित बाह्य बिंदु से।</div></div></div><div class="frow"><div class="flabel">स्पर्श रेखाओं की संख्या</div><div class="fbody"><div class="fmath">अंदर : 0  ·  वृत्त पर : 1  ·  बाहर : 2</div></div></div><div class="frow"><div class="flabel">दो संकेंद्री वृत्त</div><div class="fbody"><div class="fmath">half-chord = <span class="sq">&radic;<span class="rad">R<sup>2</sup> - r<sup>2</sup></span></span></div><div class="fnote">बड़े वृत्त की वह जीवा जो छोटे वृत्त को स्पर्श करती है, स्पर्श बिंदु पर समद्विभाजित होती है।</div></div></div><div class="frow"><div class="flabel">जीवा के समांतर स्पर्श रेखा</div><div class="fbody"><div class="fmath">स्पर्श रेखा ∥ जीवा  ⇒  वह चाप को समद्विभाजित करती है</div><div class="fnote">केंद्र से डाला गया लंब जीवा को समद्विभाजित करता है।</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">परीक्षा टिप</span><p>स्पर्श रेखा का प्रत्येक प्रश्न एक ही तरह शुरू होता है: स्पर्श बिंदु तक त्रिज्या खींचिए, 90° का कोण अंकित कीजिए, फिर पाइथागोरस लगाइए।</p></div>
+    </section>
+    <section class="chapter" id="ch11">
+      <div class="ch-head">
+        <div class="ch-num">11</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">अध्याय 11</div>
+          <h2>वृत्तों से संबंधित क्षेत्रफल</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">परिधि</div><div class="fbody"><div class="fmath">C = 2πr = πd</div><div class="fnote">d = 2r।</div></div></div><div class="frow"><div class="flabel">वृत्त का क्षेत्रफल</div><div class="fbody"><div class="fmath">A = πr<sup>2</sup></div><div class="fnote">प्रश्न के अनुसार π = 22/7 या 3.14 लीजिए।</div></div></div><div class="frow"><div class="flabel">चाप की लंबाई</div><div class="fbody"><div class="fmath">l = <span class="frac"><span class="fr-n">θ</span><span class="fr-d">360°</span></span> × 2πr</div><div class="fnote">θ केंद्रीय कोण (अंशों में) है।</div></div></div><div class="frow"><div class="flabel">त्रिज्यखंड का क्षेत्रफल</div><div class="fbody"><div class="fmath">A = <span class="frac"><span class="fr-n">θ</span><span class="fr-d">360°</span></span> × πr<sup>2</sup></div></div></div><div class="frow"><div class="flabel">चाप से त्रिज्यखंड का क्षेत्रफल</div><div class="fbody"><div class="fmath">A = <span class="frac"><span class="fr-n">1</span><span class="fr-d">2</span></span> × l × r</div><div class="fnote">जब चाप की लंबाई ज्ञात हो तब लघु विधि।</div></div></div><div class="frow"><div class="flabel">वृत्तखंड का क्षेत्रफल</div><div class="fbody"><div class="fmath">A = <span class="frac"><span class="fr-n">θ</span><span class="fr-d">360°</span></span>πr<sup>2</sup> - <span class="frac"><span class="fr-n">1</span><span class="fr-d">2</span></span>r<sup>2</sup> sin θ</div><div class="fnote">त्रिज्यखंड में से दो त्रिज्याओं और जीवा से बने त्रिभुज का क्षेत्रफल घटाइए।</div></div></div><div class="frow"><div class="flabel">त्रिज्यखंड का परिमाप</div><div class="fbody"><div class="fmath">P = l + 2r</div><div class="fnote">चाप और दो त्रिज्याएँ।</div></div></div><div class="frow"><div class="flabel">वलय का क्षेत्रफल</div><div class="fbody"><div class="fmath">A = π(R<sup>2</sup> - r<sup>2</sup>)</div><div class="fnote">R बाहरी त्रिज्या, r भीतरी त्रिज्या।</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">परीक्षा टिप</span><p>पहले कोण को 360° के भिन्न के रूप में बदलिए। त्रिज्यखंड का क्षेत्रफल πr² का वही भिन्न है, और चाप की लंबाई 2πr का वही भिन्न।</p></div>
+    </section>
+    <section class="chapter" id="ch12">
+      <div class="ch-head">
+        <div class="ch-num">12</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">अध्याय 12</div>
+          <h2>पृष्ठीय क्षेत्रफल और आयतन</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">शंकु की तिर्यक ऊँचाई</div><div class="fbody"><div class="fmath">l = <span class="sq">&radic;<span class="rad">h<sup>2</sup> + r<sup>2</sup></span></span></div><div class="fnote">शंकु के किसी पृष्ठीय क्षेत्रफल से पहले आवश्यक।</div></div></div><div class="frow"><div class="flabel">छिन्नक की तिर्यक ऊँचाई</div><div class="fbody"><div class="fmath">l = <span class="sq">&radic;<span class="rad">h<sup>2</sup> + (r<sub>1</sub> - r<sub>2</sub>)<sup>2</sup></span></span></div><div class="fnote">r₁ और r₂ दोनों त्रिज्याएँ हैं।</div></div></div><div class="frow"><div class="flabel">शंकु का छिन्नक</div><div class="fbody"><div class="fmath">CSA = πl(r<sub>1</sub> + r<sub>2</sub>)</div></div></div><div class="frow"><div class="flabel">छिन्नक का संपूर्ण पृष्ठ</div><div class="fbody"><div class="fmath">TSA = πl(r<sub>1</sub> + r<sub>2</sub>) + πr<sub>1</sub><sup>2</sup> + πr<sub>2</sub><sup>2</sup></div></div></div><div class="frow"><div class="flabel">छिन्नक का आयतन</div><div class="fbody"><div class="fmath">V = <span class="frac"><span class="fr-n">1</span><span class="fr-d">3</span></span>πh(r<sub>1</sub><sup>2</sup> + r<sub>1</sub>r<sub>2</sub> + r<sub>2</sub><sup>2</sup>)</div></div></div><div class="frow"><div class="flabel">खोखला बेलन</div><div class="fbody"><div class="fmath">V = π(R<sup>2</sup> - r<sup>2</sup>)h</div><div class="fnote">R बाहरी, r भीतरी त्रिज्या।</div></div></div><div class="frow"><div class="flabel">इकाई परिवर्तन</div><div class="fbody"><div class="fmath">1 m<sup>3</sup> = 1000 लीटर ,  1 लीटर = 1000 cm<sup>3</sup></div><div class="fnote">प्रतिस्थापन से पहले सभी माप एक ही इकाई में रखिए।</div></div></div><div class="frow"><div class="flabel">ठोसों का रूपांतरण</div><div class="fbody"><div class="fmath">पहले का आयतन = बाद का आयतन</div><div class="fnote">पिघलाने, ढालने और बहते पानी वाले सभी प्रश्न इसे प्रयोग करते हैं।</div></div></div></div>
+      <div class="tbl-wrap"><div class="tbl-cap">सात ठोस</div><table class="tbl"><thead><tr><th>ठोस</th><th>वक्र पृष्ठीय क्षेत्रफल</th><th>संपूर्ण पृष्ठीय क्षेत्रफल</th><th>आयतन</th></tr></thead><tbody><tr><th class="rowh">घन<small>a</small></th><td>4a<sup>2</sup></td><td>6a<sup>2</sup></td><td>a<sup>3</sup></td></tr><tr><th class="rowh">घनाभ<small>l, b, h</small></th><td>2h(l + b)</td><td>2(lb + bh + hl)</td><td>lbh</td></tr><tr><th class="rowh">बेलन<small>r, h</small></th><td>2πrh</td><td>2πr(r + h)</td><td>πr<sup>2</sup>h</td></tr><tr><th class="rowh">शंकु<small>r, h, l</small></th><td>πrl</td><td>πr(l + r)</td><td><span class="frac"><span class="fr-n">1</span><span class="fr-d">3</span></span>πr<sup>2</sup>h</td></tr><tr><th class="rowh">गोला<small>r</small></th><td>4πr<sup>2</sup></td><td>4πr<sup>2</sup></td><td><span class="frac"><span class="fr-n">4</span><span class="fr-d">3</span></span>πr<sup>3</sup></td></tr><tr><th class="rowh">अर्धगोला<small>r</small></th><td>2πr<sup>2</sup></td><td>3πr<sup>2</sup></td><td><span class="frac"><span class="fr-n">2</span><span class="fr-d">3</span></span>πr<sup>3</sup></td></tr><tr><th class="rowh">छिन्नक<small>r₁, r₂, h, l</small></th><td>πl(r<sub>1</sub> + r<sub>2</sub>)</td><td>πl(r<sub>1</sub> + r<sub>2</sub>) + πr<sub>1</sub><sup>2</sup> + πr<sub>2</sub><sup>2</sup></td><td><span class="frac"><span class="fr-n">1</span><span class="fr-d">3</span></span>πh(r<sub>1</sub><sup>2</sup> + r<sub>1</sub>r<sub>2</sub> + r<sub>2</sub><sup>2</sup>)</td></tr></tbody></table><p class="tbl-note">r = त्रिज्या, h = ऊँचाई, l = तिर्यक ऊँचाई, a = भुजा; घनाभ के लिए l, b, h = लंबाई, चौड़ाई, ऊँचाई</p></div>
+      <div class="tip"><span class="tip-lbl">परीक्षा टिप</span><p>पहले सूत्र लिखिए, फिर मान रखिए। पूरे प्रश्न में इकाइयाँ एक जैसी रखिए — और याद रखें 1 m³ = 1000 लीटर।</p></div>
+    </section>
+    <section class="chapter" id="ch13">
+      <div class="ch-head">
+        <div class="ch-num">13</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">अध्याय 13</div>
+          <h2>सांख्यिकी</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">वर्ग-चिह्न</div><div class="fbody"><div class="fmath">x<sub>i</sub> = <span class="frac"><span class="fr-n">निचली सीमा + ऊपरी सीमा</span><span class="fr-d">2</span></span></div><div class="fnote">वर्ग अंतराल का मध्य-बिंदु।</div></div></div><div class="frow"><div class="flabel">माध्य — प्रत्यक्ष विधि</div><div class="fbody"><div class="fmath"><span class="ovl">x</span> = <span class="frac"><span class="fr-n">Σf<sub>i</sub>x<sub>i</sub></span><span class="fr-d">Σf<sub>i</sub></span></span></div></div></div><div class="frow"><div class="flabel">माध्य — कल्पित माध्य विधि</div><div class="fbody"><div class="fmath"><span class="ovl">x</span> = a + <span class="frac"><span class="fr-n">Σf<sub>i</sub>d<sub>i</sub></span><span class="fr-d">Σf<sub>i</sub></span></span> ,  d<sub>i</sub> = x<sub>i</sub> - a</div><div class="fnote">a कल्पित माध्य है।</div></div></div><div class="frow"><div class="flabel">माध्य — पग विचलन विधि</div><div class="fbody"><div class="fmath"><span class="ovl">x</span> = a + h(<span class="frac"><span class="fr-n">Σf<sub>i</sub>u<sub>i</sub></span><span class="fr-d">Σf<sub>i</sub></span></span>) ,  u<sub>i</sub> = <span class="frac"><span class="fr-n">x<sub>i</sub> - a</span><span class="fr-d">h</span></span></div><div class="fnote">h वर्ग माप है। जब वर्ग समान हों तब सबसे तेज़।</div></div></div><div class="frow"><div class="flabel">बहुलक</div><div class="fbody"><div class="fmath">बहुलक = l + (<span class="frac"><span class="fr-n">f<sub>1</sub> - f<sub>0</sub></span><span class="fr-d">2f<sub>1</sub> - f<sub>0</sub> - f<sub>2</sub></span></span>) × h</div><div class="fnote">l बहुलक वर्ग की निचली सीमा, f₁ उसकी बारंबारता, f₀ उससे पहले की, f₂ उसके बाद की।</div></div></div><div class="frow"><div class="flabel">माध्यक</div><div class="fbody"><div class="fmath">माध्यक = l + (<span class="frac"><span class="fr-n"><span class="frac"><span class="fr-n">n</span><span class="fr-d">2</span></span> - cf</span><span class="fr-d">f</span></span>) × h</div><div class="fnote">n कुल बारंबारता, cf माध्यक वर्ग से पहले की संचयी बारंबारता, f उस वर्ग की बारंबारता।</div></div></div><div class="frow"><div class="flabel">आनुभविक संबंध</div><div class="fbody"><div class="fmath">3 माध्यक = बहुलक + 2 माध्य</div><div class="fnote">दो माप दिए हों तो तीसरा निकालने के लिए।</div></div></div><div class="frow"><div class="flabel">संचयी बारंबारता</div><div class="fbody"><div class="fmath">cf<sub>i</sub> = cf<sub>i-1</sub> + f<sub>i</sub></div><div class="fnote">प्रत्येक बारंबारता को चालू योग में जोड़िए।</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">परीक्षा टिप</span><p>प्रश्न ध्यान से पढ़िए: माध्य, माध्यक और बहुलक — तीनों के लिए सारणी के स्तंभ अलग हैं। माध्यक के लिए संचयी बारंबारता का स्तंभ चाहिए; माध्य के लिए नहीं।</p></div>
+    </section>
+    <section class="chapter" id="ch14">
+      <div class="ch-head">
+        <div class="ch-num">14</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">अध्याय 14</div>
+          <h2>प्रायिकता</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">सैद्धांतिक प्रायिकता</div><div class="fbody"><div class="fmath">P(E) = <span class="frac"><span class="fr-n">अनुकूल परिणामों की संख्या</span><span class="fr-d">कुल परिणामों की संख्या</span></span></div><div class="fnote">सभी परिणाम समप्रायिक होने चाहिए।</div></div></div><div class="frow"><div class="flabel">प्रायिकता का परिसर</div><div class="fbody"><div class="fmath">0 ≤ P(E) ≤ 1</div></div></div><div class="frow"><div class="flabel">पूरक घटना</div><div class="fbody"><div class="fmath">P(E) + P(<span class="ovl">E</span>) = 1</div><div class="fnote">Ē का अर्थ 'E नहीं'। अतः P(E नहीं) = 1 − P(E)।</div></div></div><div class="frow"><div class="flabel">निश्चित और असंभव घटनाएँ</div><div class="fbody"><div class="fmath">P(निश्चित) = 1 ,  P(असंभव) = 0</div></div></div><div class="frow"><div class="flabel">प्राथमिक घटनाओं की प्रायिकताओं का योग</div><div class="fbody"><div class="fmath">Σ P(e<sub>i</sub>) = 1</div></div></div><div class="frow"><div class="flabel">प्रतिदर्श समष्टि: एक पासा</div><div class="fbody"><div class="fmath">6 परिणाम : 1, 2, 3, 4, 5, 6</div><div class="fnote">दो पासे: 36 परिणाम।</div></div></div><div class="frow"><div class="flabel">प्रतिदर्श समष्टि: दो सिक्के</div><div class="fbody"><div class="fmath">4 परिणाम : HH, HT, TH, TT</div></div></div><div class="frow"><div class="flabel">प्रतिदर्श समष्टि: ताश की गड्डी</div><div class="fbody"><div class="fmath">52 पत्ते = 4 रंग × 13</div><div class="fnote">26 लाल, 26 काले, 12 तस्वीर वाले पत्ते (J, Q, K), 4 इक्के।</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">परीक्षा टिप</span><p>पहले प्रतिदर्श समष्टि गिनिए — एक पासे के 6, दो पासों के 36, गड्डी के 52, दो सिक्कों के 4। अधिकांश गलतियाँ कुल संख्या गलत लेने से होती हैं।</p></div>
+    </section>
+    <footer>कक्षा 10 के विद्यार्थियों के लिए · NCERT गणित पाठ्यपुस्तक पर आधारित · केवल सूत्र, पाठ्यपुस्तक से मिलान अवश्य कीजिए</footer>
+  </div>
+</div>
+<script>
+(function(){
+  var toc=document.getElementById('toc'), links=[].slice.call(toc.querySelectorAll('a')), secs=[];
+  links.forEach(function(l){
+    var el=document.getElementById(l.getAttribute('href').slice(1));
+    if(el) secs.push({el:el,link:l});
+  });
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      links.forEach(function(l){l.classList.remove('active')});
+      secs.forEach(function(s){
+        if(s.el===e.target){
+          s.link.classList.add('active');
+          if(window.innerWidth<=1000) s.link.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+        }
+      });
+    });
+  },{rootMargin:'-8% 0px -82% 0px'});
+  secs.forEach(function(s){obs.observe(s.el)});
+})();
+</script>
+</body>
+</html>

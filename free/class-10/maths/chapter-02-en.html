@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mathematics Formula Handbook — NCERT · CBSE · Class 10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f1e9; --surface:#fffdf8; --surface2:#f1ebe1;
+  --ink:#211c17; --dim:#7b6f61; --rule:rgba(33,28,23,.13);
+  --accent:#b4451f; --accent-soft:rgba(180,69,31,.07);
+  --sage:#5c7a3f; --sage-soft:rgba(92,122,63,.09);
+  --font-head:"Instrument Serif","Tiro Devanagari Hindi",Georgia,serif;
+  --font-body:"IBM Plex Sans","Mukta",-apple-system,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --font-math:"Source Serif 4","Tiro Devanagari Hindi",Georgia,serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#171310; --surface:#1f1a16; --surface2:#251f1a;
+    --ink:#f2eae0; --dim:#a3988a; --rule:rgba(255,255,255,.1);
+    --accent:#e2794b; --accent-soft:rgba(226,121,75,.1);
+    --sage:#a8c47a; --sage-soft:rgba(168,196,122,.1);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; padding:36px 40px 80px; background:var(--bg); color:var(--ink);
+  font-family:var(--font-body); font-size:15px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    linear-gradient(var(--rule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+  background-size:100% 100%, 100% 100%;
+  background-image:
+    radial-gradient(circle at 12% 0%, var(--accent-soft), transparent 45%),
+    radial-gradient(circle at 88% 4%, var(--sage-soft), transparent 42%);
+}
+.wrap{max-width:1340px;margin:0 auto;display:grid;grid-template-columns:214px minmax(0,1fr);gap:0 44px}
+.main{min-width:0}
+
+/* ---------- toc ---------- */
+.toc{position:sticky;top:26px;align-self:start;grid-row:1/-1;padding:12px 0;
+     max-height:calc(100dvh - 52px);overflow-y:auto}
+.toc::-webkit-scrollbar{width:3px}
+.toc::-webkit-scrollbar-thumb{background:var(--rule);border-radius:2px}
+.toc-title{font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:2.4px;
+  text-transform:uppercase;color:var(--dim);padding-bottom:10px;margin-bottom:10px;
+  border-bottom:1px solid var(--rule)}
+.toc a{display:block;font-size:11.5px;color:var(--dim);text-decoration:none;padding:5px 9px;
+  border-radius:5px;border-left:2px solid transparent;transition:all .15s;line-height:1.35;
+  margin-bottom:1px}
+.toc a span{font-family:var(--font-mono);font-size:9.5px;opacity:.65;margin-right:5px}
+.toc a:hover{color:var(--ink);background:var(--surface2)}
+.toc a.active{color:var(--ink);border-left-color:var(--accent);background:var(--surface2)}
+
+/* ---------- hero ---------- */
+.hero{padding:26px 0 40px;border-bottom:2px solid var(--ink);margin-bottom:14px}
+.kicker{font-family:var(--font-mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:18px}
+.hero h1{font-family:var(--font-head);font-weight:400;font-size:clamp(38px,5.6vw,68px);
+  line-height:1.02;letter-spacing:-.015em;margin:0 0 18px}
+.hero p{max-width:62ch;color:var(--dim);font-size:15.5px;margin:0 0 26px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.7px;padding:5px 11px;
+  border:1px solid var(--rule);border-radius:999px;color:var(--dim);background:var(--surface)}
+
+/* ---------- chapter ---------- */
+.chapter{padding:46px 0 12px;border-bottom:1px solid var(--rule);scroll-margin-top:24px}
+.chapter:last-of-type{border-bottom:none}
+.ch-head{display:flex;gap:20px;align-items:flex-start;margin-bottom:24px}
+.ch-num{font-family:var(--font-head);font-size:44px;line-height:.9;color:var(--accent);
+  opacity:.55;font-variant-numeric:tabular-nums;min-width:56px}
+.ch-kicker{font-family:var(--font-mono);font-size:9.5px;letter-spacing:2.2px;
+  text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.ch-head h2{font-family:var(--font-head);font-weight:400;font-size:clamp(24px,3.2vw,34px);
+  line-height:1.15;margin:0;letter-spacing:-.01em}
+
+.rows{border-top:1px solid var(--rule)}
+.frow{display:grid;grid-template-columns:minmax(0,206px) minmax(0,1fr);gap:0 26px;
+  padding:15px 10px 15px 0;border-bottom:1px dashed var(--rule);align-items:start;
+  transition:background .15s}
+.frow:hover{background:var(--accent-soft)}
+.flabel{font-family:var(--font-mono);font-size:10px;letter-spacing:1.1px;text-transform:uppercase;
+  color:var(--dim);line-height:1.55;padding-top:5px;overflow-wrap:break-word}
+.fbody{min-width:0}
+.fmath{font-family:var(--font-math);font-size:19px;line-height:1.7;color:var(--ink);
+  overflow-wrap:break-word;font-variant-numeric:tabular-nums}
+.fnote{font-size:12.5px;color:var(--dim);margin-top:5px;line-height:1.55;max-width:70ch}
+
+/* math atoms */
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;
+  margin:0 .16em;line-height:1.18}
+.fr-n{padding:0 .3em;border-bottom:1.2px solid currentColor}
+.fr-d{padding:0 .3em}
+.sq{display:inline-flex;align-items:flex-start;margin:0 .05em}
+.sq .rad{border-top:1.2px solid currentColor;padding:.08em .26em 0 .12em;margin-left:-.05em}
+.ovl{text-decoration:overline;padding:0 .04em}
+sup,sub{font-size:.62em;line-height:0}
+
+/* ---------- tables ---------- */
+.tbl-wrap{margin:30px 0 4px;overflow-x:auto;background:var(--surface);
+  border:1px solid var(--rule);border-radius:8px;padding:18px 20px 16px}
+.tbl-cap{font-family:var(--font-mono);font-size:9.5px;letter-spacing:2.2px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:12px}
+.tbl{width:100%;border-collapse:collapse;min-width:430px}
+.tbl th,.tbl td{padding:9px 12px;text-align:center;border-bottom:1px solid var(--rule);
+  font-family:var(--font-math);font-size:17px}
+.tbl thead th{font-family:var(--font-mono);font-size:10px;letter-spacing:1.4px;
+  text-transform:uppercase;color:var(--dim);font-weight:500;border-bottom:1.5px solid var(--ink)}
+.tbl th.rowh{text-align:left;font-family:var(--font-math);font-size:17px;font-weight:600;
+  color:var(--ink);white-space:nowrap}
+.tbl th.rowh small{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:1px;
+  color:var(--dim);font-weight:400;margin-top:2px}
+.tbl tbody tr:hover{background:var(--accent-soft)}
+.tbl tbody tr:last-child th,.tbl tbody tr:last-child td{border-bottom:none}
+.tbl-note{font-size:11.5px;color:var(--dim);margin:12px 0 0;font-family:var(--font-body)}
+
+/* ---------- tip ---------- */
+.tip{margin:26px 0 8px;padding:16px 20px;background:var(--sage-soft);
+  border-left:3px solid var(--sage);border-radius:0 7px 7px 0}
+.tip-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:2.2px;text-transform:uppercase;
+  color:var(--sage);display:block;margin-bottom:6px}
+.tip p{margin:0;font-size:13.5px;line-height:1.62;color:var(--ink);max-width:78ch}
+
+footer{padding:44px 0 0;margin-top:10px;border-top:1px solid var(--rule);
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.6px;color:var(--dim);line-height:1.9}
+
+/* ---------- mobile ---------- */
+@media (max-width:1000px){
+  body{padding:0 22px 60px}
+  .wrap{grid-template-columns:1fr}
+  .toc{position:sticky;top:0;z-index:200;max-height:none;display:flex;gap:4px;
+    align-items:center;overflow-x:auto;-webkit-overflow-scrolling:touch;background:var(--bg);
+    border-bottom:1px solid var(--rule);padding:10px 0;margin:0 -22px;padding-left:22px;
+    padding-right:22px;grid-row:auto}
+  .toc::-webkit-scrollbar{display:none}
+  .toc-title{display:none}
+  .toc a{white-space:nowrap;flex-shrink:0;border-left:none;border-bottom:2px solid transparent;
+    border-radius:4px 4px 0 0;padding:6px 9px;font-size:10.5px}
+  .toc a.active{border-left:none;border-bottom-color:var(--accent);background:var(--surface)}
+  .hero{padding-top:26px}
+  .chapter{scroll-margin-top:54px}
+  .frow{grid-template-columns:1fr;gap:4px;padding:14px 0}
+  .flabel{padding-top:0}
+  .fmath{font-size:17.5px}
+}
+@media (max-width:560px){
+  .ch-head{gap:12px}
+  .ch-num{font-size:32px;min-width:40px}
+  .fmath{font-size:16.5px}
+  .tbl th,.tbl td{padding:7px 6px;font-size:14px}
+}
+
+/* ---------- print ---------- */
+@media print{
+  body{padding:0;background:#fff;font-size:11pt}
+  .toc,.chips{display:none}
+  .wrap{display:block;max-width:none}
+  .chapter{break-before:page;padding-top:0;border-bottom:none}
+  .chapter:first-of-type{break-before:auto}
+  .frow{break-inside:avoid}
+  .tip,.tbl-wrap{break-inside:avoid}
+  .hero{border-bottom:2px solid #000}
+  .fmath{font-size:12pt}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="toc" id="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#ch1"><span>01</span>Real Numbers</a><a href="#ch2"><span>02</span>Polynomials</a><a href="#ch3"><span>03</span>Pair of Linear Equations in Two Variables</a><a href="#ch4"><span>04</span>Quadratic Equations</a><a href="#ch5"><span>05</span>Arithmetic Progressions</a><a href="#ch6"><span>06</span>Triangles</a><a href="#ch7"><span>07</span>Coordinate Geometry</a><a href="#ch8"><span>08</span>Introduction to Trigonometry</a><a href="#ch9"><span>09</span>Some Applications of Trigonometry</a><a href="#ch10"><span>10</span>Circles</a><a href="#ch11"><span>11</span>Areas Related to Circles</a><a href="#ch12"><span>12</span>Surface Areas and Volumes</a><a href="#ch13"><span>13</span>Statistics</a><a href="#ch14"><span>14</span>Probability</a>
+  </nav>
+  <div class="main">
+    <header class="hero">
+      <div class="kicker">NCERT · CBSE · Class 10</div>
+      <h1>Mathematics Formula Handbook</h1>
+      <p>Every formula and equation from the 14 chapters of the Class 10 Mathematics textbook, chapter by chapter — with the conditions and exam tips that decide the answer.</p>
+      <div class="chips"><span class="chip">14 chapters</span><span class="chip">NCERT syllabus</span><span class="chip">Print friendly</span></div>
+    </header>
+    
+    <section class="chapter" id="ch1">
+      <div class="ch-head">
+        <div class="ch-num">01</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">Chapter 1</div>
+          <h2>Real Numbers</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">Euclid's division lemma</div><div class="fbody"><div class="fmath">a = bq + r</div><div class="fnote">0 ≤ r &lt; b. Used to find the HCF of two numbers step by step.</div></div></div><div class="frow"><div class="flabel">HCF and LCM relation</div><div class="fbody"><div class="fmath">HCF(a, b) × LCM(a, b) = a × b</div><div class="fnote">True only for two numbers, not for three or more.</div></div></div><div class="frow"><div class="flabel">LCM is a multiple of HCF</div><div class="fbody"><div class="fmath">LCM(a, b) = k × HCF(a, b)</div><div class="fnote">k is a positive integer.</div></div></div><div class="frow"><div class="flabel">Fundamental Theorem of Arithmetic</div><div class="fbody"><div class="fmath">N = p<sub>1</sub><sup>a<sub>1</sub></sup> · p<sub>2</sub><sup>a<sub>2</sub></sup> ⋯ p<sub>k</sub><sup>a<sub>k</sub></sup></div><div class="fnote">Every composite number has a unique prime factorisation, apart from the order of the factors.</div></div></div><div class="frow"><div class="flabel">Terminating decimal</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">p</span><span class="fr-d">q</span></span> terminates  ⇔  q = 2<sup>m</sup> · 5<sup>n</sup></div><div class="fnote">q must be in its lowest terms; m and n are whole numbers.</div></div></div><div class="frow"><div class="flabel">Non-terminating repeating decimal</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">p</span><span class="fr-d">q</span></span> repeats  ⇔  q has a prime factor other than 2 or 5</div><div class="fnote">Any factor other than 2 and 5 gives a repeating decimal.</div></div></div><div class="frow"><div class="flabel">Irrational numbers</div><div class="fbody"><div class="fmath"><span class="sq">&radic;<span class="rad">p</span></span> is irrational, for every prime p</div><div class="fnote">Also: rational ± irrational = irrational, and non-zero rational × irrational = irrational.</div></div></div><div class="frow"><div class="flabel">HCF of fractions</div><div class="fbody"><div class="fmath">HCF = <span class="frac"><span class="fr-n">HCF of numerators</span><span class="fr-d">LCM of denominators</span></span></div><div class="fnote">Write all fractions in lowest terms first.</div></div></div><div class="frow"><div class="flabel">LCM of fractions</div><div class="fbody"><div class="fmath">LCM = <span class="frac"><span class="fr-n">LCM of numerators</span><span class="fr-d">HCF of denominators</span></span></div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">Exam tip</span><p>The HCF–LCM relation and the terminating-decimal test appear almost every year. Remember the relation holds only for two numbers.</p></div>
+    </section>
+    <section class="chapter" id="ch2">
+      <div class="ch-head">
+        <div class="ch-num">02</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">Chapter 2</div>
+          <h2>Polynomials</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">Zero of a polynomial</div><div class="fbody"><div class="fmath">p(x) = 0  ⇒  x = α is a zero</div><div class="fnote">The number of zeroes is at most the degree of the polynomial.</div></div></div><div class="frow"><div class="flabel">Sum of zeroes (quadratic)</div><div class="fbody"><div class="fmath">α + β = -<span class="frac"><span class="fr-n">b</span><span class="fr-d">a</span></span></div><div class="fnote">For ax² + bx + c.</div></div></div><div class="frow"><div class="flabel">Product of zeroes (quadratic)</div><div class="fbody"><div class="fmath">αβ = <span class="frac"><span class="fr-n">c</span><span class="fr-d">a</span></span></div></div></div><div class="frow"><div class="flabel">Polynomial from its zeroes</div><div class="fbody"><div class="fmath">x<sup>2</sup> - (α + β)x + αβ = 0</div><div class="fnote">Or k[x² − (sum)x + (product)], for any k ≠ 0.</div></div></div><div class="frow"><div class="flabel">Sum of zeroes (cubic)</div><div class="fbody"><div class="fmath">α + β + γ = -<span class="frac"><span class="fr-n">b</span><span class="fr-d">a</span></span></div><div class="fnote">For ax³ + bx² + cx + d.</div></div></div><div class="frow"><div class="flabel">Sum of products taken two at a time</div><div class="fbody"><div class="fmath">αβ + βγ + γα = <span class="frac"><span class="fr-n">c</span><span class="fr-d">a</span></span></div></div></div><div class="frow"><div class="flabel">Product of zeroes (cubic)</div><div class="fbody"><div class="fmath">αβγ = -<span class="frac"><span class="fr-n">d</span><span class="fr-d">a</span></span></div></div></div><div class="frow"><div class="flabel">Division algorithm</div><div class="fbody"><div class="fmath">p(x) = g(x) · q(x) + r(x)</div><div class="fnote">Either r(x) = 0, or degree of r(x) &lt; degree of g(x).</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">Exam tip</span><p>If the zeroes are given, build the polynomial as x² − (α + β)x + αβ. Check the signs twice — a sign slip is the commonest error here.</p></div>
+    </section>
+    <section class="chapter" id="ch3">
+      <div class="ch-head">
+        <div class="ch-num">03</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">Chapter 3</div>
+          <h2>Pair of Linear Equations in Two Variables</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">Standard form</div><div class="fbody"><div class="fmath">a<sub>1</sub>x + b<sub>1</sub>y + c<sub>1</sub> = 0  ,  a<sub>2</sub>x + b<sub>2</sub>y + c<sub>2</sub> = 0</div><div class="fnote">a₁, b₁, a₂, b₂ are not zero together.</div></div></div><div class="frow"><div class="flabel">Unique solution</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">a<sub>1</sub></span><span class="fr-d">a<sub>2</sub></span></span> ≠ <span class="frac"><span class="fr-n">b<sub>1</sub></span><span class="fr-d">b<sub>2</sub></span></span></div><div class="fnote">Graph: intersecting lines. The pair is consistent.</div></div></div><div class="frow"><div class="flabel">Infinitely many solutions</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">a<sub>1</sub></span><span class="fr-d">a<sub>2</sub></span></span> = <span class="frac"><span class="fr-n">b<sub>1</sub></span><span class="fr-d">b<sub>2</sub></span></span> = <span class="frac"><span class="fr-n">c<sub>1</sub></span><span class="fr-d">c<sub>2</sub></span></span></div><div class="fnote">Graph: coincident lines. Consistent and dependent.</div></div></div><div class="frow"><div class="flabel">No solution</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">a<sub>1</sub></span><span class="fr-d">a<sub>2</sub></span></span> = <span class="frac"><span class="fr-n">b<sub>1</sub></span><span class="fr-d">b<sub>2</sub></span></span> ≠ <span class="frac"><span class="fr-n">c<sub>1</sub></span><span class="fr-d">c<sub>2</sub></span></span></div><div class="fnote">Graph: parallel lines. The pair is inconsistent.</div></div></div><div class="frow"><div class="flabel">Cross-multiplication method</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">x</span><span class="fr-d">b<sub>1</sub>c<sub>2</sub> - b<sub>2</sub>c<sub>1</sub></span></span> = <span class="frac"><span class="fr-n">y</span><span class="fr-d">c<sub>1</sub>a<sub>2</sub> - c<sub>2</sub>a<sub>1</sub></span></span> = <span class="frac"><span class="fr-n">1</span><span class="fr-d">a<sub>1</sub>b<sub>2</sub> - a<sub>2</sub>b<sub>1</sub></span></span></div><div class="fnote">Write the equations as a₁x + b₁y + c₁ = 0 first, with signs.</div></div></div><div class="frow"><div class="flabel">Elimination method</div><div class="fbody"><div class="fmath">a<sub>1</sub>b<sub>2</sub> - a<sub>2</sub>b<sub>1</sub> ≠ 0  ⇒  unique (x, y)</div><div class="fnote">Multiply to equalise one coefficient, then subtract.</div></div></div><div class="frow"><div class="flabel">Consistent pair</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">a<sub>1</sub></span><span class="fr-d">a<sub>2</sub></span></span> ≠ <span class="frac"><span class="fr-n">b<sub>1</sub></span><span class="fr-d">b<sub>2</sub></span></span>   or   <span class="frac"><span class="fr-n">a<sub>1</sub></span><span class="fr-d">a<sub>2</sub></span></span> = <span class="frac"><span class="fr-n">b<sub>1</sub></span><span class="fr-d">b<sub>2</sub></span></span> = <span class="frac"><span class="fr-n">c<sub>1</sub></span><span class="fr-d">c<sub>2</sub></span></span></div><div class="fnote">A pair with at least one solution.</div></div></div><div class="frow"><div class="flabel">Inconsistent pair</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">a<sub>1</sub></span><span class="fr-d">a<sub>2</sub></span></span> = <span class="frac"><span class="fr-n">b<sub>1</sub></span><span class="fr-d">b<sub>2</sub></span></span> ≠ <span class="frac"><span class="fr-n">c<sub>1</sub></span><span class="fr-d">c<sub>2</sub></span></span></div><div class="fnote">No solution at all.</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">Exam tip</span><p>Write both equations as ax + by + c = 0 before comparing a₁/a₂, b₁/b₂, c₁/c₂. That one comparison decides unique, infinite or no solution.</p></div>
+    </section>
+    <section class="chapter" id="ch4">
+      <div class="ch-head">
+        <div class="ch-num">04</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">Chapter 4</div>
+          <h2>Quadratic Equations</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">Standard form</div><div class="fbody"><div class="fmath">ax<sup>2</sup> + bx + c = 0 ,  a ≠ 0</div><div class="fnote">A quadratic equation has at most two real roots.</div></div></div><div class="frow"><div class="flabel">Quadratic formula</div><div class="fbody"><div class="fmath">x = <span class="frac"><span class="fr-n">-b ± <span class="sq">&radic;<span class="rad">b<sup>2</sup> - 4ac</span></span></span><span class="fr-d">2a</span></span></div><div class="fnote">Use when factorisation is not obvious.</div></div></div><div class="frow"><div class="flabel">Discriminant</div><div class="fbody"><div class="fmath">D = b<sup>2</sup> - 4ac</div><div class="fnote">D decides the nature of the roots.</div></div></div><div class="frow"><div class="flabel">D &gt; 0</div><div class="fbody"><div class="fmath">two distinct real roots :  <span class="frac"><span class="fr-n">-b + <span class="sq">&radic;<span class="rad">D</span></span></span><span class="fr-d">2a</span></span> , <span class="frac"><span class="fr-n">-b - <span class="sq">&radic;<span class="rad">D</span></span></span><span class="fr-d">2a</span></span></div><div class="fnote">Graph cuts the x-axis at two points.</div></div></div><div class="frow"><div class="flabel">D = 0</div><div class="fbody"><div class="fmath">two equal real roots :  x = -<span class="frac"><span class="fr-n">b</span><span class="fr-d">2a</span></span></div><div class="fnote">Graph touches the x-axis at one point.</div></div></div><div class="frow"><div class="flabel">D &lt; 0</div><div class="fbody"><div class="fmath">no real roots</div><div class="fnote">Graph does not meet the x-axis.</div></div></div><div class="frow"><div class="flabel">Sum and product of roots</div><div class="fbody"><div class="fmath">α + β = -<span class="frac"><span class="fr-n">b</span><span class="fr-d">a</span></span> ,  αβ = <span class="frac"><span class="fr-n">c</span><span class="fr-d">a</span></span></div></div></div><div class="frow"><div class="flabel">Equation from its roots</div><div class="fbody"><div class="fmath">x<sup>2</sup> - (α + β)x + αβ = 0</div></div></div><div class="frow"><div class="flabel">Completing the square</div><div class="fbody"><div class="fmath">(x + <span class="frac"><span class="fr-n">b</span><span class="fr-d">2a</span></span>)<sup>2</sup> = <span class="frac"><span class="fr-n">b<sup>2</sup> - 4ac</span><span class="fr-d">4a<sup>2</sup></span></span></div><div class="fnote">Add and subtract (b/2a)² to build a perfect square.</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">Exam tip</span><p>Find D = b² − 4ac first. It tells you how many roots to expect, and saves you from solving an equation that has no real roots.</p></div>
+    </section>
+    <section class="chapter" id="ch5">
+      <div class="ch-head">
+        <div class="ch-num">05</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">Chapter 5</div>
+          <h2>Arithmetic Progressions</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">nth term</div><div class="fbody"><div class="fmath">a<sub>n</sub> = a + (n - 1)d</div><div class="fnote">a is the first term, d the common difference.</div></div></div><div class="frow"><div class="flabel">Common difference</div><div class="fbody"><div class="fmath">d = a<sub>2</sub> - a<sub>1</sub> = a<sub>3</sub> - a<sub>2</sub> = …</div><div class="fnote">Constant for the whole progression.</div></div></div><div class="frow"><div class="flabel">Sum of first n terms</div><div class="fbody"><div class="fmath">S<sub>n</sub> = <span class="frac"><span class="fr-n">n</span><span class="fr-d">2</span></span>[2a + (n - 1)d]</div></div></div><div class="frow"><div class="flabel">Sum when the last term is known</div><div class="fbody"><div class="fmath">S<sub>n</sub> = <span class="frac"><span class="fr-n">n</span><span class="fr-d">2</span></span>(a + l)</div><div class="fnote">l is the nth (last) term.</div></div></div><div class="frow"><div class="flabel">nth term from the sum</div><div class="fbody"><div class="fmath">a<sub>n</sub> = S<sub>n</sub> - S<sub>n-1</sub></div></div></div><div class="frow"><div class="flabel">Number of terms</div><div class="fbody"><div class="fmath">n = <span class="frac"><span class="fr-n">l - a</span><span class="fr-d">d</span></span> + 1</div></div></div><div class="frow"><div class="flabel">Sum of first n natural numbers</div><div class="fbody"><div class="fmath">1 + 2 + 3 + … + n = <span class="frac"><span class="fr-n">n(n + 1)</span><span class="fr-d">2</span></span></div><div class="fnote">An AP with a = 1, d = 1.</div></div></div><div class="frow"><div class="flabel">Three terms in AP</div><div class="fbody"><div class="fmath">a - d ,  a ,  a + d</div><div class="fnote">Sum = 3a. Useful when the sum of three terms is given.</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">Exam tip</span><p>Write down a, d and n before anything else. If the last term is given, Sₙ = n/2 (a + l) is faster than the full formula.</p></div>
+    </section>
+    <section class="chapter" id="ch6">
+      <div class="ch-head">
+        <div class="ch-num">06</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">Chapter 6</div>
+          <h2>Triangles</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">Basic Proportionality Theorem (Thales)</div><div class="fbody"><div class="fmath">DE ∥ BC  ⇒  <span class="frac"><span class="fr-n">AD</span><span class="fr-d">DB</span></span> = <span class="frac"><span class="fr-n">AE</span><span class="fr-d">EC</span></span></div><div class="fnote">A line parallel to one side divides the other two sides in the same ratio.</div></div></div><div class="frow"><div class="flabel">Converse of BPT</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">AD</span><span class="fr-d">DB</span></span> = <span class="frac"><span class="fr-n">AE</span><span class="fr-d">EC</span></span>  ⇒  DE ∥ BC</div></div></div><div class="frow"><div class="flabel">Similarity criteria</div><div class="fbody"><div class="fmath">AA  ·  SSS  ·  SAS</div><div class="fnote">AAA and AA are the same test: two equal angles are enough.</div></div></div><div class="frow"><div class="flabel">Corresponding sides of similar triangles</div><div class="fbody"><div class="fmath">△ABC ~ △DEF  ⇒  <span class="frac"><span class="fr-n">AB</span><span class="fr-d">DE</span></span> = <span class="frac"><span class="fr-n">BC</span><span class="fr-d">EF</span></span> = <span class="frac"><span class="fr-n">CA</span><span class="fr-d">FD</span></span></div></div></div><div class="frow"><div class="flabel">Ratio of areas</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">ar(△ABC)</span><span class="fr-d">ar(△DEF)</span></span> = (<span class="frac"><span class="fr-n">AB</span><span class="fr-d">DE</span></span>)<sup>2</sup></div><div class="fnote">Area ratio = square of the side ratio.</div></div></div><div class="frow"><div class="flabel">Ratio of perimeters, medians, altitudes</div><div class="fbody"><div class="fmath"><span class="frac"><span class="fr-n">perimeter(ABC)</span><span class="fr-d">perimeter(DEF)</span></span> = <span class="frac"><span class="fr-n">AB</span><span class="fr-d">DE</span></span></div><div class="fnote">Not squared — it stays equal to the side ratio.</div></div></div><div class="frow"><div class="flabel">Pythagoras theorem</div><div class="fbody"><div class="fmath">AC<sup>2</sup> = AB<sup>2</sup> + BC<sup>2</sup></div><div class="fnote">In a right triangle, angle B = 90°, AC is the hypotenuse.</div></div></div><div class="frow"><div class="flabel">Converse of Pythagoras</div><div class="fbody"><div class="fmath">AC<sup>2</sup> = AB<sup>2</sup> + BC<sup>2</sup>  ⇒  ∠B = 90°</div><div class="fnote">Used to test whether a triangle is right-angled.</div></div></div><div class="frow"><div class="flabel">Equilateral triangle</div><div class="fbody"><div class="fmath">altitude = <span class="frac"><span class="fr-n"><span class="sq">&radic;<span class="rad">3</span></span></span><span class="fr-d">2</span></span>a ,  area = <span class="frac"><span class="fr-n"><span class="sq">&radic;<span class="rad">3</span></span></span><span class="fr-d">4</span></span>a<sup>2</sup></div><div class="fnote">a is the side.</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">Exam tip</span><p>In area-ratio questions the ratio is squared. In perimeter, median and altitude questions it is not. This is the most common slip in this chapter.</p></div>
+    </section>
+    <section class="chapter" id="ch7">
+      <div class="ch-head">
+        <div class="ch-num">07</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">Chapter 7</div>
+          <h2>Coordinate Geometry</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">Distance formula</div><div class="fbody"><div class="fmath">d = <span class="sq">&radic;<span class="rad">(x<sub>2</sub> - x<sub>1</sub>)<sup>2</sup> + (y<sub>2</sub> - y<sub>1</sub>)<sup>2</sup></span></span></div><div class="fnote">Between P(x₁, y₁) and Q(x₂, y₂).</div></div></div><div class="frow"><div class="flabel">Distance from the origin</div><div class="fbody"><div class="fmath">d = <span class="sq">&radic;<span class="rad">x<sup>2</sup> + y<sup>2</sup></span></span></div></div></div><div class="frow"><div class="flabel">Section formula (internal)</div><div class="fbody"><div class="fmath">P = ( <span class="frac"><span class="fr-n">m<sub>1</sub>x<sub>2</sub> + m<sub>2</sub>x<sub>1</sub></span><span class="fr-d">m<sub>1</sub> + m<sub>2</sub></span></span> , <span class="frac"><span class="fr-n">m<sub>1</sub>y<sub>2</sub> + m<sub>2</sub>y<sub>1</sub></span><span class="fr-d">m<sub>1</sub> + m<sub>2</sub></span></span> )</div><div class="fnote">Divides PQ in the ratio m₁ : m₂.</div></div></div><div class="frow"><div class="flabel">Midpoint</div><div class="fbody"><div class="fmath">M = ( <span class="frac"><span class="fr-n">x<sub>1</sub> + x<sub>2</sub></span><span class="fr-d">2</span></span> , <span class="frac"><span class="fr-n">y<sub>1</sub> + y<sub>2</sub></span><span class="fr-d">2</span></span> )</div><div class="fnote">The section formula with m₁ : m₂ = 1 : 1.</div></div></div><div class="frow"><div class="flabel">Points of trisection</div><div class="fbody"><div class="fmath">1 : 2  and  2 : 1</div><div class="fnote">Apply the section formula twice.</div></div></div><div class="frow"><div class="flabel">Centroid of a triangle</div><div class="fbody"><div class="fmath">G = ( <span class="frac"><span class="fr-n">x<sub>1</sub> + x<sub>2</sub> + x<sub>3</sub></span><span class="fr-d">3</span></span> , <span class="frac"><span class="fr-n">y<sub>1</sub> + y<sub>2</sub> + y<sub>3</sub></span><span class="fr-d">3</span></span> )</div><div class="fnote">Average of the three vertices.</div></div></div><div class="frow"><div class="flabel">Area of a triangle</div><div class="fbody"><div class="fmath">A = <span class="frac"><span class="fr-n">1</span><span class="fr-d">2</span></span> |x<sub>1</sub>(y<sub>2</sub> - y<sub>3</sub>) + x<sub>2</sub>(y<sub>3</sub> - y<sub>1</sub>) + x<sub>3</sub>(y<sub>1</sub> - y<sub>2</sub>)|</div><div class="fnote">The vertical bars mean absolute value — area is never negative.</div></div></div><div class="frow"><div class="flabel">Collinear points</div><div class="fbody"><div class="fmath">area of triangle = 0</div><div class="fnote">Three points on one straight line.</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">Exam tip</span><p>Draw a rough figure and mark the given points before choosing a formula. For 'find the ratio' questions, take the ratio as k : 1 — the algebra becomes much shorter.</p></div>
+    </section>
+    <section class="chapter" id="ch8">
+      <div class="ch-head">
+        <div class="ch-num">08</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">Chapter 8</div>
+          <h2>Introduction to Trigonometry</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">Primary ratios</div><div class="fbody"><div class="fmath">sin θ = <span class="frac"><span class="fr-n">P</span><span class="fr-d">H</span></span> ,  cos θ = <span class="frac"><span class="fr-n">B</span><span class="fr-d">H</span></span> ,  tan θ = <span class="frac"><span class="fr-n">P</span><span class="fr-d">B</span></span></div><div class="fnote">P perpendicular, B base, H hypotenuse.</div></div></div><div class="frow"><div class="flabel">Reciprocal ratios</div><div class="fbody"><div class="fmath">cosec θ = <span class="frac"><span class="fr-n">H</span><span class="fr-d">P</span></span> ,  sec θ = <span class="frac"><span class="fr-n">H</span><span class="fr-d">B</span></span> ,  cot θ = <span class="frac"><span class="fr-n">B</span><span class="fr-d">P</span></span></div><div class="fnote">cosec θ = 1/sin θ, sec θ = 1/cos θ, cot θ = 1/tan θ.</div></div></div><div class="frow"><div class="flabel">Ratio relations</div><div class="fbody"><div class="fmath">tan θ = <span class="frac"><span class="fr-n">sin θ</span><span class="fr-d">cos θ</span></span> ,  cot θ = <span class="frac"><span class="fr-n">cos θ</span><span class="fr-d">sin θ</span></span></div></div></div><div class="frow"><div class="flabel">Identity 1</div><div class="fbody"><div class="fmath">sin<sup>2</sup>θ + cos<sup>2</sup>θ = 1</div><div class="fnote">Valid for every angle θ.</div></div></div><div class="frow"><div class="flabel">Identity 2</div><div class="fbody"><div class="fmath">1 + tan<sup>2</sup>θ = sec<sup>2</sup>θ</div><div class="fnote">Divide identity 1 by cos²θ.</div></div></div><div class="frow"><div class="flabel">Identity 3</div><div class="fbody"><div class="fmath">1 + cot<sup>2</sup>θ = cosec<sup>2</sup>θ</div><div class="fnote">Divide identity 1 by sin²θ.</div></div></div><div class="frow"><div class="flabel">Complementary angles</div><div class="fbody"><div class="fmath">sin(90° - θ) = cos θ ,  tan(90° - θ) = cot θ ,  sec(90° - θ) = cosec θ</div><div class="fnote">And the reverse: cos(90° − θ) = sin θ, and so on.</div></div></div><div class="frow"><div class="flabel">Range of values</div><div class="fbody"><div class="fmath">0 ≤ sin θ ≤ 1 ,  0 ≤ cos θ ≤ 1 ,  sec θ ≥ 1 ,  cosec θ ≥ 1</div></div></div></div>
+      <div class="tbl-wrap"><div class="tbl-cap">Standard values</div><table class="tbl"><thead><tr><th class="rowh">Ratio</th><th>0°</th><th>30°</th><th>45°</th><th>60°</th><th>90°</th></tr></thead><tbody><tr><th class="rowh">sin θ</th><td>0</td><td><span class="frac"><span class="fr-n">1</span><span class="fr-d">2</span></span></td><td><span class="frac"><span class="fr-n">1</span><span class="fr-d"><span class="sq">&radic;<span class="rad">2</span></span></span></span></td><td><span class="frac"><span class="fr-n"><span class="sq">&radic;<span class="rad">3</span></span></span><span class="fr-d">2</span></span></td><td>1</td></tr><tr><th class="rowh">cos θ</th><td>1</td><td><span class="frac"><span class="fr-n"><span class="sq">&radic;<span class="rad">3</span></span></span><span class="fr-d">2</span></span></td><td><span class="frac"><span class="fr-n">1</span><span class="fr-d"><span class="sq">&radic;<span class="rad">2</span></span></span></span></td><td><span class="frac"><span class="fr-n">1</span><span class="fr-d">2</span></span></td><td>0</td></tr><tr><th class="rowh">tan θ</th><td>0</td><td><span class="frac"><span class="fr-n">1</span><span class="fr-d"><span class="sq">&radic;<span class="rad">3</span></span></span></span></td><td>1</td><td><span class="sq">&radic;<span class="rad">3</span></span></td><td>not defined</td></tr></tbody></table></div>
+      <div class="tip"><span class="tip-lbl">Exam tip</span><p>Learn the 0°–30°–45°–60°–90° table by heart. Most board questions reduce to reading one value from it and substituting.</p></div>
+    </section>
+    <section class="chapter" id="ch9">
+      <div class="ch-head">
+        <div class="ch-num">09</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">Chapter 9</div>
+          <h2>Some Applications of Trigonometry</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">Line of sight</div><div class="fbody"><div class="fmath">observer's eye  →  object</div><div class="fnote">The line drawn from the eye of the observer to the object seen.</div></div></div><div class="frow"><div class="flabel">Angle of elevation</div><div class="fbody"><div class="fmath">angle above the horizontal</div><div class="fnote">Used when the object is higher than the observer.</div></div></div><div class="frow"><div class="flabel">Angle of depression</div><div class="fbody"><div class="fmath">angle below the horizontal</div><div class="fnote">Used when the object is lower than the observer.</div></div></div><div class="frow"><div class="flabel">Basic relation</div><div class="fbody"><div class="fmath">tan θ = <span class="frac"><span class="fr-n">height</span><span class="fr-d">horizontal distance</span></span></div><div class="fnote">Every such problem is one right triangle.</div></div></div><div class="frow"><div class="flabel">Height from distance</div><div class="fbody"><div class="fmath">h = d · tan θ</div></div></div><div class="frow"><div class="flabel">Distance from height</div><div class="fbody"><div class="fmath">d = h · cot θ = <span class="frac"><span class="fr-n">h</span><span class="fr-d">tan θ</span></span></div></div></div><div class="frow"><div class="flabel">Standard cases</div><div class="fbody"><div class="fmath">θ = 45° ⇒ h = d  ·  30° ⇒ h = <span class="frac"><span class="fr-n">d</span><span class="fr-d"><span class="sq">&radic;<span class="rad">3</span></span></span></span>  ·  60° ⇒ h = d<span class="sq">&radic;<span class="rad">3</span></span></div><div class="fnote">Worth memorising — they save a full step in the exam.</div></div></div><div class="frow"><div class="flabel">Depression equals elevation</div><div class="fbody"><div class="fmath">angle of depression = angle of elevation</div><div class="fnote">Alternate angles between two parallel horizontal lines.</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">Exam tip</span><p>Always mark the right angle and the angle of elevation in your figure. Heights use tan θ, distances along the ground use cot θ.</p></div>
+    </section>
+    <section class="chapter" id="ch10">
+      <div class="ch-head">
+        <div class="ch-num">10</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">Chapter 10</div>
+          <h2>Circles</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">Radius and tangent</div><div class="fbody"><div class="fmath">OP ⊥ PT</div><div class="fnote">The tangent at any point of a circle is perpendicular to the radius through the point of contact.</div></div></div><div class="frow"><div class="flabel">Equal tangents</div><div class="fbody"><div class="fmath">PA = PB</div><div class="fnote">Lengths of the two tangents drawn from an external point P are equal.</div></div></div><div class="frow"><div class="flabel">Angle at the point of contact</div><div class="fbody"><div class="fmath">∠OAP = ∠OBP = 90°</div><div class="fnote">OAPB is a cyclic quadrilateral with ∠APB + ∠AOB = 180°.</div></div></div><div class="frow"><div class="flabel">Length of a tangent</div><div class="fbody"><div class="fmath">PT = <span class="sq">&radic;<span class="rad">OP<sup>2</sup> - r<sup>2</sup></span></span></div><div class="fnote">From an external point at distance OP from the centre.</div></div></div><div class="frow"><div class="flabel">Number of tangents</div><div class="fbody"><div class="fmath">inside : 0  ·  on the circle : 1  ·  outside : 2</div></div></div><div class="frow"><div class="flabel">Two concentric circles</div><div class="fbody"><div class="fmath">half-chord = <span class="sq">&radic;<span class="rad">R<sup>2</sup> - r<sup>2</sup></span></span></div><div class="fnote">The chord of the larger circle that touches the smaller one is bisected at the point of contact.</div></div></div><div class="frow"><div class="flabel">Tangent parallel to a chord</div><div class="fbody"><div class="fmath">tangent ∥ chord  ⇒  it bisects the arc</div><div class="fnote">The perpendicular from the centre bisects the chord.</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">Exam tip</span><p>Every tangent question starts the same way: draw the radius to the point of contact, mark the 90° angle, then use Pythagoras.</p></div>
+    </section>
+    <section class="chapter" id="ch11">
+      <div class="ch-head">
+        <div class="ch-num">11</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">Chapter 11</div>
+          <h2>Areas Related to Circles</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">Circumference</div><div class="fbody"><div class="fmath">C = 2πr = πd</div><div class="fnote">d = 2r.</div></div></div><div class="frow"><div class="flabel">Area of a circle</div><div class="fbody"><div class="fmath">A = πr<sup>2</sup></div><div class="fnote">Take π = 22/7 or 3.14 as the question says.</div></div></div><div class="frow"><div class="flabel">Length of an arc</div><div class="fbody"><div class="fmath">l = <span class="frac"><span class="fr-n">θ</span><span class="fr-d">360°</span></span> × 2πr</div><div class="fnote">θ is the central angle in degrees.</div></div></div><div class="frow"><div class="flabel">Area of a sector</div><div class="fbody"><div class="fmath">A = <span class="frac"><span class="fr-n">θ</span><span class="fr-d">360°</span></span> × πr<sup>2</sup></div></div></div><div class="frow"><div class="flabel">Area of a sector from arc length</div><div class="fbody"><div class="fmath">A = <span class="frac"><span class="fr-n">1</span><span class="fr-d">2</span></span> × l × r</div><div class="fnote">Shortcut when the arc length is already known.</div></div></div><div class="frow"><div class="flabel">Area of a segment</div><div class="fbody"><div class="fmath">A = <span class="frac"><span class="fr-n">θ</span><span class="fr-d">360°</span></span>πr<sup>2</sup> - <span class="frac"><span class="fr-n">1</span><span class="fr-d">2</span></span>r<sup>2</sup> sin θ</div><div class="fnote">Sector minus the triangle formed by the two radii and the chord.</div></div></div><div class="frow"><div class="flabel">Perimeter of a sector</div><div class="fbody"><div class="fmath">P = l + 2r</div><div class="fnote">Arc plus the two radii.</div></div></div><div class="frow"><div class="flabel">Area of a ring</div><div class="fbody"><div class="fmath">A = π(R<sup>2</sup> - r<sup>2</sup>)</div><div class="fnote">R outer radius, r inner radius.</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">Exam tip</span><p>Convert the angle into a fraction of 360° first. Sector area is simply that fraction of πr², and arc length the same fraction of 2πr.</p></div>
+    </section>
+    <section class="chapter" id="ch12">
+      <div class="ch-head">
+        <div class="ch-num">12</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">Chapter 12</div>
+          <h2>Surface Areas and Volumes</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">Slant height of a cone</div><div class="fbody"><div class="fmath">l = <span class="sq">&radic;<span class="rad">h<sup>2</sup> + r<sup>2</sup></span></span></div><div class="fnote">Needed before any cone surface area.</div></div></div><div class="frow"><div class="flabel">Slant height of a frustum</div><div class="fbody"><div class="fmath">l = <span class="sq">&radic;<span class="rad">h<sup>2</sup> + (r<sub>1</sub> - r<sub>2</sub>)<sup>2</sup></span></span></div><div class="fnote">r₁ and r₂ are the two radii.</div></div></div><div class="frow"><div class="flabel">Frustum</div><div class="fbody"><div class="fmath">CSA = πl(r<sub>1</sub> + r<sub>2</sub>)</div></div></div><div class="frow"><div class="flabel">Total surface of a frustum</div><div class="fbody"><div class="fmath">TSA = πl(r<sub>1</sub> + r<sub>2</sub>) + πr<sub>1</sub><sup>2</sup> + πr<sub>2</sub><sup>2</sup></div></div></div><div class="frow"><div class="flabel">Volume of a frustum</div><div class="fbody"><div class="fmath">V = <span class="frac"><span class="fr-n">1</span><span class="fr-d">3</span></span>πh(r<sub>1</sub><sup>2</sup> + r<sub>1</sub>r<sub>2</sub> + r<sub>2</sub><sup>2</sup>)</div></div></div><div class="frow"><div class="flabel">Hollow cylinder</div><div class="fbody"><div class="fmath">V = π(R<sup>2</sup> - r<sup>2</sup>)h</div><div class="fnote">R outer, r inner radius.</div></div></div><div class="frow"><div class="flabel">Unit conversion</div><div class="fbody"><div class="fmath">1 m<sup>3</sup> = 1000 litres ,  1 litre = 1000 cm<sup>3</sup></div><div class="fnote">Keep every measurement in the same unit before substituting.</div></div></div><div class="frow"><div class="flabel">Conversion of solids</div><div class="fbody"><div class="fmath">volume before = volume after</div><div class="fnote">Melting, recasting and flowing water questions all use this.</div></div></div></div>
+      <div class="tbl-wrap"><div class="tbl-cap">The seven solids</div><table class="tbl"><thead><tr><th>Solid</th><th>Curved surface area</th><th>Total surface area</th><th>Volume</th></tr></thead><tbody><tr><th class="rowh">Cube<small>a</small></th><td>4a<sup>2</sup></td><td>6a<sup>2</sup></td><td>a<sup>3</sup></td></tr><tr><th class="rowh">Cuboid<small>l, b, h</small></th><td>2h(l + b)</td><td>2(lb + bh + hl)</td><td>lbh</td></tr><tr><th class="rowh">Cylinder<small>r, h</small></th><td>2πrh</td><td>2πr(r + h)</td><td>πr<sup>2</sup>h</td></tr><tr><th class="rowh">Cone<small>r, h, l</small></th><td>πrl</td><td>πr(l + r)</td><td><span class="frac"><span class="fr-n">1</span><span class="fr-d">3</span></span>πr<sup>2</sup>h</td></tr><tr><th class="rowh">Sphere<small>r</small></th><td>4πr<sup>2</sup></td><td>4πr<sup>2</sup></td><td><span class="frac"><span class="fr-n">4</span><span class="fr-d">3</span></span>πr<sup>3</sup></td></tr><tr><th class="rowh">Hemisphere<small>r</small></th><td>2πr<sup>2</sup></td><td>3πr<sup>2</sup></td><td><span class="frac"><span class="fr-n">2</span><span class="fr-d">3</span></span>πr<sup>3</sup></td></tr><tr><th class="rowh">Frustum<small>r₁, r₂, h, l</small></th><td>πl(r<sub>1</sub> + r<sub>2</sub>)</td><td>πl(r<sub>1</sub> + r<sub>2</sub>) + πr<sub>1</sub><sup>2</sup> + πr<sub>2</sub><sup>2</sup></td><td><span class="frac"><span class="fr-n">1</span><span class="fr-d">3</span></span>πh(r<sub>1</sub><sup>2</sup> + r<sub>1</sub>r<sub>2</sub> + r<sub>2</sub><sup>2</sup>)</td></tr></tbody></table><p class="tbl-note">r = radius, h = height, l = slant height, a = side; for a cuboid l, b, h = length, breadth, height</p></div>
+      <div class="tip"><span class="tip-lbl">Exam tip</span><p>Write the formula, then substitute. Keep units the same throughout — and remember 1 m³ = 1000 litres.</p></div>
+    </section>
+    <section class="chapter" id="ch13">
+      <div class="ch-head">
+        <div class="ch-num">13</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">Chapter 13</div>
+          <h2>Statistics</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">Class mark</div><div class="fbody"><div class="fmath">x<sub>i</sub> = <span class="frac"><span class="fr-n">lower limit + upper limit</span><span class="fr-d">2</span></span></div><div class="fnote">The midpoint of a class interval.</div></div></div><div class="frow"><div class="flabel">Mean — direct method</div><div class="fbody"><div class="fmath"><span class="ovl">x</span> = <span class="frac"><span class="fr-n">Σf<sub>i</sub>x<sub>i</sub></span><span class="fr-d">Σf<sub>i</sub></span></span></div></div></div><div class="frow"><div class="flabel">Mean — assumed mean method</div><div class="fbody"><div class="fmath"><span class="ovl">x</span> = a + <span class="frac"><span class="fr-n">Σf<sub>i</sub>d<sub>i</sub></span><span class="fr-d">Σf<sub>i</sub></span></span> ,  d<sub>i</sub> = x<sub>i</sub> - a</div><div class="fnote">a is the assumed mean.</div></div></div><div class="frow"><div class="flabel">Mean — step deviation method</div><div class="fbody"><div class="fmath"><span class="ovl">x</span> = a + h(<span class="frac"><span class="fr-n">Σf<sub>i</sub>u<sub>i</sub></span><span class="fr-d">Σf<sub>i</sub></span></span>) ,  u<sub>i</sub> = <span class="frac"><span class="fr-n">x<sub>i</sub> - a</span><span class="fr-d">h</span></span></div><div class="fnote">h is the class size. Quickest when the classes are equal.</div></div></div><div class="frow"><div class="flabel">Mode</div><div class="fbody"><div class="fmath">Mode = l + (<span class="frac"><span class="fr-n">f<sub>1</sub> - f<sub>0</sub></span><span class="fr-d">2f<sub>1</sub> - f<sub>0</sub> - f<sub>2</sub></span></span>) × h</div><div class="fnote">l lower limit of the modal class, f₁ its frequency, f₀ the frequency before it, f₂ the frequency after it.</div></div></div><div class="frow"><div class="flabel">Median</div><div class="fbody"><div class="fmath">Median = l + (<span class="frac"><span class="fr-n"><span class="frac"><span class="fr-n">n</span><span class="fr-d">2</span></span> - cf</span><span class="fr-d">f</span></span>) × h</div><div class="fnote">n total frequency, cf cumulative frequency of the class before the median class, f its frequency.</div></div></div><div class="frow"><div class="flabel">Empirical relation</div><div class="fbody"><div class="fmath">3 Median = Mode + 2 Mean</div><div class="fnote">Used to find the third measure when two are given.</div></div></div><div class="frow"><div class="flabel">Cumulative frequency</div><div class="fbody"><div class="fmath">cf<sub>i</sub> = cf<sub>i-1</sub> + f<sub>i</sub></div><div class="fnote">Add each frequency to the running total.</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">Exam tip</span><p>Read the question carefully: mean, median and mode each need different table columns. Median needs a cumulative-frequency column; mean does not.</p></div>
+    </section>
+    <section class="chapter" id="ch14">
+      <div class="ch-head">
+        <div class="ch-num">14</div>
+        <div class="ch-title-wrap">
+          <div class="ch-kicker">Chapter 14</div>
+          <h2>Probability</h2>
+        </div>
+      </div>
+      <div class="rows"><div class="frow"><div class="flabel">Theoretical probability</div><div class="fbody"><div class="fmath">P(E) = <span class="frac"><span class="fr-n">Number of favourable outcomes</span><span class="fr-d">Total number of outcomes</span></span></div><div class="fnote">All outcomes must be equally likely.</div></div></div><div class="frow"><div class="flabel">Range of probability</div><div class="fbody"><div class="fmath">0 ≤ P(E) ≤ 1</div></div></div><div class="frow"><div class="flabel">Complement</div><div class="fbody"><div class="fmath">P(E) + P(<span class="ovl">E</span>) = 1</div><div class="fnote">Ē means 'not E'. So P(not E) = 1 − P(E).</div></div></div><div class="frow"><div class="flabel">Sure and impossible events</div><div class="fbody"><div class="fmath">P(sure) = 1 ,  P(impossible) = 0</div></div></div><div class="frow"><div class="flabel">Sum of elementary probabilities</div><div class="fbody"><div class="fmath">Σ P(e<sub>i</sub>) = 1</div></div></div><div class="frow"><div class="flabel">Sample space: one die</div><div class="fbody"><div class="fmath">6 outcomes : 1, 2, 3, 4, 5, 6</div><div class="fnote">Two dice: 36 outcomes.</div></div></div><div class="frow"><div class="flabel">Sample space: two coins</div><div class="fbody"><div class="fmath">4 outcomes : HH, HT, TH, TT</div></div></div><div class="frow"><div class="flabel">Sample space: a deck of cards</div><div class="fbody"><div class="fmath">52 cards = 4 suits × 13</div><div class="fnote">26 red, 26 black, 12 face cards (J, Q, K), 4 aces.</div></div></div></div>
+      
+      <div class="tip"><span class="tip-lbl">Exam tip</span><p>Count the sample space first — 6 for a die, 36 for two dice, 52 for a deck, 4 for two coins. Most errors come from a wrong total.</p></div>
+    </section>
+    <footer>Built for Class 10 students · Based on the NCERT Mathematics textbook · Formulas only, always cross-check with your textbook</footer>
+  </div>
+</div>
+<script>
+(function(){
+  var toc=document.getElementById('toc'), links=[].slice.call(toc.querySelectorAll('a')), secs=[];
+  links.forEach(function(l){
+    var el=document.getElementById(l.getAttribute('href').slice(1));
+    if(el) secs.push({el:el,link:l});
+  });
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      links.forEach(function(l){l.classList.remove('active')});
+      secs.forEach(function(s){
+        if(s.el===e.target){
+          s.link.classList.add('active');
+          if(window.innerWidth<=1000) s.link.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+        }
+      });
+    });
+  },{rootMargin:'-8% 0px -82% 0px'});
+  secs.forEach(function(s){obs.observe(s.el)});
+})();
+</script>
+</body>
+</html>
